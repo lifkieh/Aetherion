@@ -20,6 +20,9 @@ var _home := Vector2.ZERO
 var _player: Node2D = null
 var _spawner = null
 
+var _base_color := Color.WHITE
+var _wet_marker: Node2D = null
+
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hpbar: ProgressBar = $HPBar
 @onready var tame_hint: Label = $TameHint
@@ -49,7 +52,23 @@ func _build_sprite() -> void:
 		sprite.play("idle_down")
 	var tint: String = inst.get("tint", "")
 	if tint != "":
-		sprite.modulate = Color(tint)
+		_base_color = Color(tint)
+	sprite.modulate = _base_color
+	_build_wet_marker()
+
+func _build_wet_marker() -> void:
+	# Science demo: a Wet target shows dripping cyan dots (rain/thunderstorm).
+	_wet_marker = Node2D.new()
+	_wet_marker.name = "WetMarker"
+	_wet_marker.position = Vector2(0, -10)
+	_wet_marker.visible = false
+	add_child(_wet_marker)
+	for off in [Vector2(-4, 0), Vector2(0, -2), Vector2(4, 1)]:
+		var d := ColorRect.new()
+		d.color = Color(0.45, 0.75, 1.0, 0.9)
+		d.size = Vector2(2, 3)
+		d.position = off
+		_wet_marker.add_child(d)
 
 func _setup_bars() -> void:
 	hpbar.max_value = max_hp
@@ -71,6 +90,8 @@ func _physics_process(delta: float) -> void:
 	_attack_cd = maxf(0.0, _attack_cd - delta)
 	_state_timer -= delta
 	is_wet = WorldState.is_wet_weather()
+	if _wet_marker:
+		_wet_marker.visible = is_wet
 	_update_tame_hint()
 
 	if _player == null or not is_instance_valid(_player):
@@ -247,11 +268,9 @@ func _update_tame_hint() -> void:
 # --- FX helpers -------------------------------------------------------------
 
 func _flash() -> void:
-	var base: Color = sprite.modulate
-	base.a = 1.0
 	sprite.modulate = Color(1, 0.4, 0.4, 1)
 	var tw := create_tween()
-	tw.tween_property(sprite, "modulate", base, 0.15)
+	tw.tween_property(sprite, "modulate", _base_color, 0.15)
 
 func _spawn_damage_number(amount: int, crit: bool, effective: bool) -> void:
 	var dn := preload("res://scenes/ui/DamageNumber.tscn").instantiate()

@@ -41,6 +41,7 @@ func _build_sprite() -> void:
 func _physics_process(delta: float) -> void:
 	_tick_timers(delta)
 	_regen_mp(delta)
+	_update_infusion_aura(delta)
 
 	if _dodge_timer > 0.0:
 		velocity = _dodge_dir * DODGE_SPEED
@@ -147,6 +148,11 @@ func _apply_melee(skill: Dictionary, reach: float) -> void:
 	if not aoe and targets.size() > 1:
 		targets.sort_custom(func(a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
 		targets = [targets[0]]
+	# swing flourish, tinted by the effective attack element
+	var swing_elem: String = skill.get("element", "none")
+	if swing_elem == "none":
+		swing_elem = atk.get("element", "none")
+	Vfx.swing(get_parent(), global_position, fv, swing_elem)
 	for m in targets:
 		var ctx := CombatResolver.build_ctx(m.is_wet)
 		var res := CombatResolver.resolve(atk, m.combat_view(), skill, ctx)
@@ -154,18 +160,33 @@ func _apply_melee(skill: Dictionary, reach: float) -> void:
 		if res.get("chain", false):
 			_chain_lightning(m, res, skill, ctx)
 
-func _chain_lightning(origin: Node2D, res: Dictionary, skill: Dictionary, ctx: Dictionary) -> void:
+func _chain_lightning(origin: Node2D, _res: Dictionary, skill: Dictionary, ctx: Dictionary) -> void:
 	# Science demo: lightning arcs to nearby wet monsters (v0.3 §7).
 	var atk := PlayerData.combat_stats()
+	var chained := 0
 	for m in get_tree().get_nodes_in_group("monsters"):
 		if m == origin or not is_instance_valid(m):
 			continue
-		if m.global_position.distance_to(origin.global_position) < 90.0:
+		if not m.is_wet:
+			continue  # only conducts to wet targets (science)
+		if m.global_position.distance_to(origin.global_position) < 96.0:
 			var chain_res := CombatResolver.resolve(atk, m.combat_view(), skill, ctx)
 			chain_res["damage"] = int(chain_res["damage"] * 0.6)
 			m.take_hit(chain_res, self)
-			EventBus.toast.emit("⚡ Chain!")
-			break
+			Vfx.chain_arc(get_parent(), origin.global_position, m.global_position, "lightning")
+			chained += 1
+			if chained >= 3:
+				break
+	if chained > 0:
+		EventBus.toast.emit("⚡ Chain x%d (musuh basah)!" % chained)
+
+func _update_infusion_aura(_delta: float) -> void:
+	if PlayerData.has_active_infusion():
+		var c := Vfx.elem_color(PlayerData.infusion.get("element", "none"))
+		var pulse := 0.6 + 0.4 * sin(Time.get_ticks_msec() / 120.0)
+		sprite.modulate = Color(1, 1, 1).lerp(c, 0.5 * pulse)
+	else:
+		sprite.modulate = Color.WHITE
 
 func _fire_projectile(skill: Dictionary) -> void:
 	var proj := preload("res://scenes/actors/Projectile.tscn").instantiate()

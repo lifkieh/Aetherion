@@ -11,6 +11,7 @@ var exp_bar: ProgressBar
 var clock_label: Label
 var moon_label: Label
 var weather_label: Label
+var infusion_label: Label
 var gold_label: Label
 var level_label: Label
 var toast_box: VBoxContainer
@@ -56,6 +57,9 @@ func _build() -> void:
 	topleft.add_child(moon_label)
 	weather_label = _mk_label("Cerah", 14)
 	topleft.add_child(weather_label)
+	infusion_label = _mk_label("", 14)
+	infusion_label.visible = false
+	topleft.add_child(infusion_label)
 
 	# --- Top-right: gold / level ---
 	var topright := VBoxContainer.new()
@@ -133,6 +137,18 @@ func _connect() -> void:
 	EventBus.moon_phase_changed.connect(func(_i): _refresh_sky())
 	EventBus.minute_passed.connect(func(_d): _refresh_clock())
 	EventBus.toast.connect(_on_toast)
+
+func _process(_delta: float) -> void:
+	if infusion_label == null:
+		return
+	if PlayerData.has_active_infusion():
+		var elem: String = PlayerData.infusion.get("element", "")
+		var remain: int = PlayerData.infusion.get("expires_unix", 0) - GameClock.unix_now()
+		infusion_label.visible = true
+		infusion_label.text = "⚡ Infus: %s (%ds)" % [elem.capitalize(), max(0, remain)]
+		infusion_label.add_theme_color_override("font_color", Vfx.elem_color(elem))
+	else:
+		infusion_label.visible = false
 
 func _refresh_all() -> void:
 	_refresh_clock()

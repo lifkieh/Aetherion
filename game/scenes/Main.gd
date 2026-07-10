@@ -40,6 +40,34 @@ func _ready() -> void:
 	if OS.get_environment("AETHER_COMBAT") == "1":
 		_combat_demo()
 		_screenshot_at = 2.6
+	if OS.get_environment("AETHER_ELEM") == "1":
+		_elem_demo()
+		_screenshot_at = 2.4
+
+func _elem_demo() -> void:
+	# Science demo: rain -> monsters Wet -> Lightning infusion chains between them.
+	await get_tree().process_frame
+	WorldState.force_weather("rain")
+	PlayerData.apply_infusion("lightning", 60)
+	player.facing = "right"
+	EventBus.damage_dealt.connect(func(_a, t, amt, crit, elem):
+		if t != player:
+			print("[elem] MONSTER took %d elem=%s%s" % [amt, elem, (" CRIT" if crit else "")]))
+	for i in range(4):
+		var inst := MonsterFactory.make("grey_wolf", 2, 3)
+		var m := preload("res://scenes/actors/Monster.tscn").instantiate()
+		add_child(m)
+		m.global_position = player.global_position + Vector2(30 + i * 14, -10 + i * 10)
+		m.setup(inst, self)
+		_monster_count += 1
+	var t := Timer.new()
+	t.wait_time = 0.4
+	t.autostart = true
+	add_child(t)
+	t.timeout.connect(func():
+		if is_instance_valid(player):
+			player.facing = "right"
+			player._do_attack())
 
 func _combat_demo() -> void:
 	# Spawn a cluster of monsters beside the player and auto-attack for a shot.
