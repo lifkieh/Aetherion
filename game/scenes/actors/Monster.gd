@@ -32,12 +32,18 @@ func setup(instance: Dictionary, spawner = null) -> void:
 	_spawner = spawner
 	max_hp = inst.get("max_hp", 100)
 	hp = max_hp
+	# setup() is called after add_child() (node already in tree), so build the
+	# real sprite now that inst is populated.
+	if is_inside_tree():
+		_build_sprite()
+		_setup_bars()
 
 func _ready() -> void:
 	add_to_group("monsters")
 	_home = global_position
-	_build_sprite()
-	_setup_bars()
+	if not inst.is_empty():
+		_build_sprite()
+		_setup_bars()
 	_player = get_tree().get_first_node_in_group("player")
 	_state = State.WANDER
 	EventBus.monster_spawned.emit(self)

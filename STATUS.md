@@ -22,7 +22,11 @@
   - Element Flow infusion (Fire/Lightning, keys 1/2) with pulsing aura + HUD indicator
   - Fire swing uses fire_flow VFX; lightning chain draws arcs between **wet** monsters only
   - Rain → monsters show wet droplet markers → Lightning chains (verified: 1 direct + 3 chain hits/swing); Fire −30% vs wet (unit-tested)
-- [ ] M4 — Taming & pet (TamingSystem DONE+tested; TODO: pet follow, mount, tame UI/feedback polish)
+- [x] **M4 — Taming & pet** ✅ DONE
+  - TamingSystem roll (rarity×orb×weather×skill + pity), HP<5% gate, orb consume, enrage on fail — tested
+  - Pet follows player + auto-fights nearby enemies (ally marker); PetManager keeps active pet spawned
+  - Mount toggle (R) for Medium+ rideable pets → speed boost, pet hides
+  - Fixed critical sprite bug (see BUGS.md #1) that affected all monsters
 - [ ] M5 — Gathering & crafting (GatherNode DONE; TODO: inventory UI, crafting bench, shop NPC)
 - [ ] M6 — Homestead (HomesteadSystem growth DONE+tested; TODO: homestead scene, plots, plant/harvest)
 - [ ] M7 — Hidden Scenario (data DONE; TODO: ScenarioManager, counter trigger, Lunar Warren scene)

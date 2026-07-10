@@ -43,6 +43,37 @@ func _ready() -> void:
 	if OS.get_environment("AETHER_ELEM") == "1":
 		_elem_demo()
 		_screenshot_at = 2.4
+	if OS.get_environment("AETHER_PET") == "1":
+		_pet_demo()
+		_screenshot_at = 1.3
+
+func _pet_demo() -> void:
+	# Tame a weakened wolf, confirm it follows/fights, then mount it.
+	await get_tree().process_frame
+	var wolf := preload("res://scenes/actors/Monster.tscn").instantiate()
+	add_child(wolf)
+	wolf.setup(MonsterFactory.make("grey_wolf", 3, 3), self)
+	wolf.global_position = player.global_position + Vector2(30, 0)
+	await get_tree().process_frame
+	wolf.hp = int(wolf.max_hp * 0.04)
+	PlayerData.add_item("basic_orb", 5)
+	wolf.attempt_tame()
+	print("[pet] party size = ", PlayerData.monsters.size(), " active = ", PlayerData.active_pet_index)
+	# spawn an enemy for the pet to fight
+	for i in range(2):
+		var e := preload("res://scenes/actors/Monster.tscn").instantiate()
+		add_child(e)
+		e.setup(MonsterFactory.make("verdant_slime", 1, 3), self)
+		e.global_position = player.global_position + Vector2(60, 40 + i * 10)
+		_monster_count += 1
+	var t := Timer.new()
+	t.wait_time = 1.6
+	t.one_shot = true
+	t.autostart = true
+	add_child(t)
+	t.timeout.connect(func():
+		PlayerData.mounted = true
+		print("[pet] mounted = ", PlayerData.mounted, " (rideable pet)"))
 
 func _elem_demo() -> void:
 	# Science demo: rain -> monsters Wet -> Lightning infusion chains between them.
@@ -227,6 +258,10 @@ func _add_hud() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
 	# gathering/interaction + save handled by a small controller
 	add_child(preload("res://scenes/systems/WorldController.tscn").instantiate())
+	var pm := Node.new()
+	pm.name = "PetManager"
+	pm.set_script(load("res://scenes/systems/PetManager.gd"))
+	add_child(pm)
 
 func _spawn_gathering_nodes() -> void:
 	var holder := Node2D.new()

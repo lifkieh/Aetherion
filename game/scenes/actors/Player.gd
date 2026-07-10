@@ -4,6 +4,7 @@ extends CharacterBody2D
 ## Element Flow infusion. Reads stats from PlayerData; combat via CombatResolver.
 
 const BASE_SPEED := 92.0
+const MOUNT_SPEED := 168.0
 const DODGE_SPEED := 260.0
 const DODGE_TIME := 0.22
 const DODGE_CD := 0.7
@@ -70,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("infuse_lightning"):
 		PlayerData.apply_infusion("lightning", 45)
 
-	var speed := BASE_SPEED
+	var speed := MOUNT_SPEED if PlayerData.mounted else BASE_SPEED
 	velocity = input * speed
 	move_and_slide()
 
