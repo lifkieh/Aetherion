@@ -1,0 +1,95 @@
+[
+  {
+    "id": "fluffbit", "name": "Fluffbit", "rarity": "common", "element": "wood",
+    "archetype": "swift", "bst": 300, "size": "small", "rideable": false,
+    "is_rabbit": true, "level": 2,
+    "sprite": "res://assets/game/sprites/monsters/fluffbit.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish",
+    "traits": ["lucky_foot"], "skills": ["tackle"],
+    "loot_table": "greenvale_fluffbit", "tame_base": 0.85,
+    "evolution": "moonbit", "aggro_radius": 90, "lore": "Kelinci mungil pembawa hoki; kunci rahasia Lunar Warren."
+  },
+  {
+    "id": "grey_wolf", "name": "Grey Wolf", "rarity": "common", "element": "none",
+    "archetype": "bruiser", "bst": 300, "size": "medium", "rideable": true,
+    "is_rabbit": false, "level": 3,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee",
+    "traits": ["pack_hunter"], "skills": ["bite", "howl"],
+    "loot_table": "greenvale_wolf", "tame_base": 0.80,
+    "evolution": "dire_wolf", "aggro_radius": 160, "lore": "Pemburu berkelompok; tunggangan darat pertama."
+  },
+  {
+    "id": "verdant_slime", "name": "Verdant Slime", "rarity": "common", "element": "water",
+    "archetype": "tank", "bst": 300, "size": "small", "rideable": false,
+    "is_rabbit": false, "level": 2,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee",
+    "traits": ["split"], "skills": ["tackle"],
+    "loot_table": "greenvale_slime", "tame_base": 0.70,
+    "evolution": "king_slime", "aggro_radius": 120, "lore": "Gumpalan jeli hijau; pecah dua saat mati."
+  },
+  {
+    "id": "wild_boar", "name": "Wild Boar", "rarity": "common", "element": "earth",
+    "archetype": "bruiser", "bst": 300, "size": "medium", "rideable": false,
+    "level": 4, "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee", "tint": "b98a5a",
+    "traits": ["charge"], "skills": ["charge", "tackle"],
+    "loot_table": "greenvale_boar", "tame_base": 0.55,
+    "evolution": "ironhide_boar", "aggro_radius": 140, "lore": "Babi hutan galak; ternak daging homestead."
+  },
+  {
+    "id": "honeybuzz", "name": "Honeybuzz", "rarity": "common", "element": "wind",
+    "archetype": "assassin", "bst": 300, "size": "small", "rideable": false,
+    "level": 3, "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish", "tint": "e8c84a",
+    "traits": ["sting"], "skills": ["sting"],
+    "loot_table": "greenvale_bee", "tame_base": 0.5,
+    "evolution": "queen_buzz", "aggro_radius": 100, "lore": "Lebah penyengat; apiari madu homestead."
+  },
+  {
+    "id": "sporeling", "name": "Sporeling", "rarity": "common", "element": "poison",
+    "archetype": "caster", "bst": 300, "size": "small", "rideable": false,
+    "level": 4, "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "ranged", "tint": "8a6fb0",
+    "traits": ["spore_cloud"], "skills": ["spore_cloud"],
+    "loot_table": "greenvale_spore", "tame_base": 0.5,
+    "evolution": "myconid_sage", "aggro_radius": 130, "lore": "Jamur berjalan; menyembur spora racun."
+  },
+  {
+    "id": "forest_fox", "name": "Forest Fox", "rarity": "rare", "element": "wind",
+    "archetype": "swift", "bst": 360, "size": "small", "rideable": false,
+    "level": 6, "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish", "tint": "d98a4a",
+    "traits": ["keen_nose"], "skills": ["bite", "gust"],
+    "loot_table": "greenvale_fox", "tame_base": 0.45,
+    "evolution": "ninetail_kit", "aggro_radius": 150, "lore": "Rubah hutan pelacak herbal."
+  },
+  {
+    "id": "cervel", "name": "Cervel", "rarity": "rare", "element": "wood",
+    "archetype": "swift", "bst": 360, "size": "medium", "rideable": true,
+    "level": 7, "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish", "tint": "c8a56a",
+    "traits": ["graceful"], "skills": ["charge"],
+    "loot_table": "greenvale_deer", "tame_base": 0.45,
+    "evolution": "sylvan_stag", "aggro_radius": 140, "lore": "Rusa anggun; tunggangan & pelari darat."
+  },
+  {
+    "id": "treant_sapling", "name": "Treant Sapling", "rarity": "epic", "element": "wood",
+    "archetype": "tank", "bst": 440, "size": "medium", "rideable": false,
+    "level": 9, "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee", "tint": "4a7a3a",
+    "traits": ["rooted"], "skills": ["tackle"],
+    "loot_table": "greenvale_treant", "tame_base": 0.35,
+    "evolution": "elder_treant", "aggro_radius": 110, "lore": "Tunas pohon berjiwa; tank pendamping."
+  },
+  {
+    "id": "timberwing_owl", "name": "Timberwing Owl", "rarity": "rare", "element": "wind",
+    "archetype": "caster", "bst": 360, "size": "small", "rideable": false,
+    "level": 6, "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16, "cols": 4, "rows": 4, "ai": "ranged", "tint": "9a7a5a",
+    "traits": ["night_sight"], "skills": ["gust"],
+    "loot_table": "greenvale_owl", "tame_base": 0.45,
+    "evolution": "strix_sage", "aggro_radius": 150, "lore": "Burung hantu malam; pemberi visi malam."
+  }
+]

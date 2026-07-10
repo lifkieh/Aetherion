@@ -1,0 +1,15 @@
+[
+  {
+    "id": "moon_rabbit_warren",
+    "name": "Warren of the Moon Rabbit",
+    "counters": {"rabbits_killed": 10000},
+    "sky": {"full_moon": true},
+    "trigger_action": "sleep_at_inn",
+    "no_fail": true,
+    "scene": "res://scenes/scenarios/LunarWarren.tscn",
+    "reward_item": "carrot_of_calamity",
+    "reward_trait": "moon_marked",
+    "hint": "Saat Rasi Kelinci menggantung, dia yang berlumur dosa seribu telinga akan dijemput cahaya pucat.",
+    "debug_counters": {"rabbits_killed": 10}
+  }
+]

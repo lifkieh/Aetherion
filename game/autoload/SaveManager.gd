@@ -1,0 +1,136 @@
+extends Node
+## SaveManager — 3 slots + backup rotation + schema_version + atomic write.
+## Atomic write: write temp -> rename (Fase0 §8).
+
+const SCHEMA_VERSION := 1
+const SAVE_DIR := "user://save/"
+const MAX_BACKUPS := 3
+
+func _ready() -> void:
+	_ensure_dir()
+
+func _ensure_dir() -> void:
+	if not DirAccess.dir_exists_absolute(SAVE_DIR):
+		DirAccess.make_dir_recursive_absolute(SAVE_DIR)
+
+func slot_path(slot: int) -> String:
+	return SAVE_DIR + "slot_%d.json" % slot
+
+func backup_path(slot: int, n: int) -> String:
+	return SAVE_DIR + "slot_%d.bak%d.json" % [slot, n]
+
+func has_save(slot: int) -> bool:
+	return FileAccess.file_exists(slot_path(slot))
+
+func build_payload() -> Dictionary:
+	return {
+		"schema_version": SCHEMA_VERSION,
+		"saved_at": GameClock.unix_now(),
+		"saved_at_str": GameClock.date_string() + " " + GameClock.time_string(),
+		"player": PlayerData.to_save(),
+		"world": WorldState.to_save(),
+		"economy": Economy.to_save(),
+	}
+
+func save_game(slot: int) -> bool:
+	_ensure_dir()
+	_rotate_backups(slot)
+	var payload := build_payload()
+	var json := JSON.stringify(payload, "\t")
+	var tmp := slot_path(slot) + ".tmp"
+	var f := FileAccess.open(tmp, FileAccess.WRITE)
+	if f == null:
+		push_error("[SaveManager] cannot open temp for slot %d" % slot)
+		return false
+	f.store_string(json)
+	f.close()
+	# atomic replace
+	var da := DirAccess.open(SAVE_DIR)
+	if da:
+		if da.file_exists(slot_path(slot).get_file()):
+			da.remove(slot_path(slot).get_file())
+		var err := da.rename(tmp.get_file(), slot_path(slot).get_file())
+		if err != OK:
+			push_error("[SaveManager] rename failed (%d)" % err)
+			return false
+	EventBus.save_completed.emit(slot)
+	EventBus.toast.emit("Game tersimpan (slot %d)" % slot)
+	return true
+
+func _rotate_backups(slot: int) -> void:
+	if not has_save(slot):
+		return
+	var da := DirAccess.open(SAVE_DIR)
+	if da == null:
+		return
+	# shift bak(n-1)->bak(n)
+	for n in range(MAX_BACKUPS, 1, -1):
+		var older := backup_path(slot, n - 1).get_file()
+		var newer := backup_path(slot, n).get_file()
+		if da.file_exists(older):
+			if da.file_exists(newer):
+				da.remove(newer)
+			da.rename(older, newer)
+	# current -> bak1 (copy)
+	var cur := FileAccess.get_file_as_string(slot_path(slot))
+	var bf := FileAccess.open(backup_path(slot, 1), FileAccess.WRITE)
+	if bf:
+		bf.store_string(cur)
+		bf.close()
+
+func load_game(slot: int) -> bool:
+	if not has_save(slot):
+		return _try_load_backup(slot)
+	var txt := FileAccess.get_file_as_string(slot_path(slot))
+	var data = JSON.parse_string(txt)
+	if data == null or not (data is Dictionary):
+		push_warning("[SaveManager] slot %d corrupt, trying backup" % slot)
+		return _try_load_backup(slot)
+	return _apply(data, slot)
+
+func _try_load_backup(slot: int) -> bool:
+	for n in range(1, MAX_BACKUPS + 1):
+		if FileAccess.file_exists(backup_path(slot, n)):
+			var txt := FileAccess.get_file_as_string(backup_path(slot, n))
+			var data = JSON.parse_string(txt)
+			if data is Dictionary:
+				return _apply(data, slot)
+	return false
+
+func _apply(data: Dictionary, slot: int) -> bool:
+	data = _migrate(data)
+	PlayerData.from_save(data.get("player", {}))
+	WorldState.from_save(data.get("world", {}))
+	Economy.from_save(data.get("economy", {}))
+	EventBus.game_loaded.emit(slot)
+	EventBus.toast.emit("Game dimuat (slot %d)" % slot)
+	return true
+
+func _migrate(data: Dictionary) -> Dictionary:
+	var v: int = data.get("schema_version", 0)
+	# Future migrations chain here: while v < SCHEMA_VERSION: ...
+	if v < SCHEMA_VERSION:
+		data["schema_version"] = SCHEMA_VERSION
+	return data
+
+func delete_save(slot: int) -> void:
+	var da := DirAccess.open(SAVE_DIR)
+	if da == null:
+		return
+	for p in [slot_path(slot)] + range(1, MAX_BACKUPS + 1).map(func(n): return backup_path(slot, n)):
+		var fn: String = p.get_file()
+		if da.file_exists(fn):
+			da.remove(fn)
+
+func save_meta(slot: int) -> Dictionary:
+	if not has_save(slot):
+		return {}
+	var txt := FileAccess.get_file_as_string(slot_path(slot))
+	var data = JSON.parse_string(txt)
+	if data is Dictionary:
+		return {
+			"saved_at_str": data.get("saved_at_str", "?"),
+			"level": data.get("player", {}).get("level", 1),
+			"name": data.get("player", {}).get("char_name", "?"),
+		}
+	return {}

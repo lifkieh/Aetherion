@@ -1,0 +1,40 @@
+[
+  {"id": "wooden_sword", "name": "Pedang Kayu", "tier": "F", "type": "weapon", "atk": 6, "element": "none", "value": 40, "stack": 1, "shop_stock": 5, "shop_demand": 6},
+  {"id": "copper_sword", "name": "Pedang Tembaga", "tier": "E", "type": "weapon", "atk": 14, "element": "metal", "value": 160, "stack": 1, "shop_stock": 3, "shop_demand": 8},
+  {"id": "bone_club", "name": "Gada Tulang", "tier": "F", "type": "weapon", "atk": 9, "element": "none", "value": 70, "stack": 1},
+  {"id": "carrot_of_calamity", "name": "Carrot of Calamity", "tier": "S", "type": "weapon", "atk": 120, "element": "moon", "value": 0, "stack": 1, "desc": "Pedang wortel terkutuk dari Lunar Warren. Berdenyut saat purnama."},
+
+  {"id": "basic_orb", "name": "Orb Dasar", "tier": "E", "type": "orb", "tame_bonus": 1.0, "value": 50, "stack": 99, "shop_stock": 30, "shop_demand": 15},
+  {"id": "greater_orb", "name": "Orb Unggul", "tier": "C", "type": "orb", "tame_bonus": 1.5, "value": 250, "stack": 99, "shop_stock": 10, "shop_demand": 12},
+  {"id": "master_orb", "name": "Orb Master", "tier": "A", "type": "orb", "tame_bonus": 2.5, "value": 2000, "stack": 99, "shop_stock": 1, "shop_demand": 6},
+
+  {"id": "minor_potion", "name": "Ramuan Kecil", "tier": "F", "type": "consumable", "heal": 60, "value": 30, "stack": 99, "shop_stock": 40, "shop_demand": 25},
+  {"id": "mana_draught", "name": "Teguk Mana", "tier": "F", "type": "consumable", "restore_mp": 40, "value": 35, "stack": 99, "shop_stock": 30, "shop_demand": 18},
+
+  {"id": "fluff", "name": "Bulu Halus", "tier": "F", "type": "material", "value": 6, "stack": 999, "shop_stock": 0, "shop_demand": 20},
+  {"id": "rabbit_foot", "name": "Kaki Kelinci", "tier": "E", "type": "material", "value": 25, "stack": 999},
+  {"id": "wolf_pelt", "name": "Kulit Serigala", "tier": "F", "type": "material", "value": 12, "stack": 999, "shop_demand": 22},
+  {"id": "wolf_fang", "name": "Taring Serigala", "tier": "E", "type": "material", "value": 30, "stack": 999},
+  {"id": "beast_essence", "name": "Esensi Buas", "tier": "D", "type": "material", "value": 90, "stack": 999},
+  {"id": "slime_jelly", "name": "Jeli Slime", "tier": "F", "type": "material", "value": 8, "stack": 999, "shop_demand": 20},
+  {"id": "boar_meat", "name": "Daging Babi Hutan", "tier": "F", "type": "material", "value": 18, "stack": 999},
+  {"id": "honey", "name": "Madu", "tier": "E", "type": "material", "value": 22, "stack": 999},
+  {"id": "spore_cap", "name": "Tudung Spora", "tier": "E", "type": "material", "value": 20, "stack": 999},
+  {"id": "fox_tail", "name": "Ekor Rubah", "tier": "D", "type": "material", "value": 45, "stack": 999},
+  {"id": "deer_antler", "name": "Tanduk Rusa", "tier": "D", "type": "material", "value": 55, "stack": 999},
+  {"id": "living_bark", "name": "Kulit Kayu Hidup", "tier": "C", "type": "material", "value": 120, "stack": 999},
+  {"id": "owl_feather", "name": "Bulu Burung Hantu", "tier": "D", "type": "material", "value": 40, "stack": 999},
+
+  {"id": "wood_log", "name": "Batang Kayu", "tier": "F", "type": "material", "value": 5, "stack": 999, "shop_stock": 0, "shop_demand": 30},
+  {"id": "plank", "name": "Papan", "tier": "F", "type": "material", "value": 14, "stack": 999, "shop_demand": 24},
+  {"id": "copper_ore", "name": "Bijih Tembaga", "tier": "F", "type": "material", "value": 10, "stack": 999, "shop_demand": 28},
+  {"id": "copper_bar", "name": "Batangan Tembaga", "tier": "E", "type": "material", "value": 35, "stack": 999, "shop_demand": 20},
+
+  {"id": "herb_mintleaf", "name": "Daun Mint", "tier": "F", "type": "material", "value": 12, "stack": 999, "shop_demand": 16},
+  {"id": "herb_sunbud", "name": "Kuncup Surya", "tier": "E", "type": "material", "value": 20, "stack": 999, "shop_demand": 14},
+  {"id": "seed_mintleaf", "name": "Benih Mint", "tier": "F", "type": "seed", "value": 8, "stack": 999, "shop_stock": 50, "shop_demand": 20},
+  {"id": "seed_sunbud", "name": "Benih Kuncup Surya", "tier": "F", "type": "seed", "value": 14, "stack": 999, "shop_stock": 40, "shop_demand": 16},
+
+  {"id": "saddle", "name": "Pelana", "tier": "D", "type": "gear", "value": 300, "stack": 1, "shop_stock": 4, "shop_demand": 8},
+  {"id": "health_charm", "name": "Jimat Vitalitas", "tier": "D", "type": "gear", "hp_bonus": 40, "value": 400, "stack": 1}
+]

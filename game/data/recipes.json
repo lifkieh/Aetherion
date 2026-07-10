@@ -1,0 +1,16 @@
+[
+  {"id": "craft_plank", "result": "plank", "qty": 1, "station": "bench", "profession": "carpenter", "level": 1, "success_rate": 1.0,
+   "ingredients": [{"item": "wood_log", "qty": 2}]},
+  {"id": "craft_copper_bar", "result": "copper_bar", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 1, "success_rate": 0.95,
+   "ingredients": [{"item": "copper_ore", "qty": 3}]},
+  {"id": "craft_wooden_sword", "result": "wooden_sword", "qty": 1, "station": "bench", "profession": "carpenter", "level": 1, "success_rate": 0.9,
+   "ingredients": [{"item": "plank", "qty": 2}]},
+  {"id": "craft_copper_sword", "result": "copper_sword", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 2, "success_rate": 0.75,
+   "ingredients": [{"item": "copper_bar", "qty": 2}, {"item": "plank", "qty": 1}]},
+  {"id": "craft_minor_potion", "result": "minor_potion", "qty": 2, "station": "bench", "profession": "alchemist", "level": 1, "success_rate": 0.9,
+   "ingredients": [{"item": "herb_mintleaf", "qty": 2}]},
+  {"id": "craft_saddle", "result": "saddle", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 3, "success_rate": 0.7,
+   "ingredients": [{"item": "wolf_pelt", "qty": 3}, {"item": "copper_bar", "qty": 1}]},
+  {"id": "craft_basic_orb", "result": "basic_orb", "qty": 1, "station": "bench", "profession": "tamer", "level": 1, "success_rate": 0.85,
+   "ingredients": [{"item": "slime_jelly", "qty": 2}, {"item": "fluff", "qty": 1}]}
+]

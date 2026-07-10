@@ -1,0 +1,25 @@
+# === Godot 4 ===
+.godot/
+game/.godot/
+# Godot export output
+export/
+*.exe
+*.pck
+*.zip
+*.rar
+
+# === Tooling / large binaries (kept local, not versioned) ===
+_tools/
+_tmp/
+
+# === Python ===
+__pycache__/
+*.pyc
+
+# === OS ===
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# NOTE: assets_raw/ IS tracked so source assets + licenses are preserved.
+# The root asset .zip/.rar archives are ignored (already extracted to assets_raw/).

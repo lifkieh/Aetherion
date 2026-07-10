@@ -1,0 +1,15 @@
+[
+  {"id": "strike", "name": "Tebas", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "mp_cost": 0, "cooldown": 0.35, "range": 34, "aoe": false, "desc": "Serangan normal."},
+  {"id": "flame_slash", "name": "Tebasan Api", "type": "active", "kind": "physical", "element": "fire", "skill_mod": 1.7, "mp_cost": 8, "cooldown": 2.2, "range": 44, "aoe": true, "aoe_radius": 40, "desc": "Ayunan berapi mengenai area di depan."},
+  {"id": "spark_bolt", "name": "Panah Petir", "type": "active", "kind": "magic", "element": "lightning", "skill_mod": 1.5, "mp_cost": 10, "cooldown": 2.6, "range": 160, "projectile": true, "projectile_speed": 320, "desc": "Menembakkan petir yang menyambar target basah."},
+  {"id": "element_flow", "name": "Element Flow", "type": "active", "kind": "buff", "element": "none", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Mengalirkan elemen ke senjata (30-60 dtk)."},
+
+  {"id": "bite", "name": "Gigit", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.1, "cooldown": 1.4, "range": 26},
+  {"id": "tackle", "name": "Seruduk", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "cooldown": 1.6, "range": 24},
+  {"id": "howl", "name": "Lolongan", "type": "active", "kind": "buff", "element": "none", "cooldown": 8.0, "duration": 6, "atk_buff": 0.1, "range": 0},
+  {"id": "split", "name": "Membelah", "type": "passive", "kind": "special", "element": "water"},
+  {"id": "sting", "name": "Sengat", "type": "active", "kind": "physical", "element": "poison", "skill_mod": 0.9, "cooldown": 1.5, "range": 22, "apply_status": "poison"},
+  {"id": "spore_cloud", "name": "Awan Spora", "type": "active", "kind": "magic", "element": "poison", "skill_mod": 1.2, "cooldown": 3.0, "range": 60, "aoe": true},
+  {"id": "charge", "name": "Terjang", "type": "active", "kind": "physical", "element": "earth", "skill_mod": 1.3, "cooldown": 3.0, "range": 80},
+  {"id": "gust", "name": "Embusan", "type": "active", "kind": "magic", "element": "wind", "skill_mod": 1.1, "cooldown": 2.2, "range": 90}
+]

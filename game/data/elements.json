@@ -1,0 +1,67 @@
+{
+  "list": ["fire","water","wind","earth","lightning","ice","light","darkness","poison","metal","wood","spirit","void","sky","star","sun","moon"],
+  "matrix": {
+    "fire":     {"wood": 1.3, "ice": 1.3, "metal": 1.3, "water": 0.7, "earth": 0.7, "fire": 1.0},
+    "water":    {"fire": 1.3, "earth": 1.3, "lightning": 0.7, "wood": 0.7, "water": 1.0},
+    "wind":     {"earth": 1.3, "poison": 1.3, "wind": 1.0, "metal": 0.7},
+    "earth":    {"lightning": 1.3, "metal": 1.3, "fire": 1.3, "wind": 0.7, "water": 0.7, "earth": 1.0},
+    "lightning":{"water": 1.3, "metal": 1.3, "sky": 1.3, "earth": 0.7, "wood": 0.7, "lightning": 1.0},
+    "ice":      {"wood": 1.3, "earth": 1.3, "sky": 1.3, "fire": 0.7, "metal": 0.7, "ice": 1.0},
+    "light":    {"darkness": 1.3, "spirit": 1.3, "void": 1.3, "light": 1.0},
+    "darkness": {"light": 1.3, "spirit": 1.3, "darkness": 0.7},
+    "poison":   {"wood": 1.3, "metal": 1.3, "poison": 0.7, "spirit": 0.7},
+    "metal":    {"ice": 1.3, "wood": 1.3, "fire": 0.7, "lightning": 0.7, "metal": 1.0},
+    "wood":     {"water": 1.3, "earth": 1.3, "fire": 0.7, "ice": 0.7, "wood": 1.0},
+    "spirit":   {"spirit": 1.3, "darkness": 1.0, "metal": 0.7},
+    "void":     {"light": 1.3, "spirit": 1.3, "void": 1.0, "darkness": 0.7},
+    "sky":      {"earth": 1.3, "wind": 1.0, "lightning": 0.7},
+    "star":     {"void": 1.3, "darkness": 1.3, "star": 1.0},
+    "sun":      {"wood": 1.3, "darkness": 1.3, "ice": 1.3, "water": 0.7, "sun": 1.0},
+    "moon":     {"void": 1.3, "spirit": 1.3, "sun": 0.7, "moon": 1.0}
+  },
+  "rules": {
+    "fire": [
+      {"desc": "Api padam di bawah air", "if": {"underwater": true}, "mult": 0.5},
+      {"desc": "Target basah / hujan mengurangi api", "if": {"target_wet": true}, "mult": 0.7},
+      {"desc": "Angin memasok oksigen", "if": {"wind_active": true}, "mult": 1.25}
+    ],
+    "lightning": [
+      {"desc": "Konduksi lewat air: target basah +30% dan menyambar (chain)", "if": {"target_wet": true}, "mult": 1.3, "chain": true},
+      {"desc": "Target grounded (Earth) kebal chain", "if": {"target_grounded": true}, "mult": 0.7, "chain": false}
+    ],
+    "ice": [
+      {"desc": "Es meleleh di area panas", "if": {"hot_zone": true}, "mult": 0.7}
+    ],
+    "water": [
+      {"desc": "Membasahi target (menerapkan status Wet)", "if": {}, "apply_status": "wet"}
+    ],
+    "wood": [
+      {"desc": "Fotosintesis: siang hari regen/growth", "if": {"is_day": true}, "mult": 1.1}
+    ],
+    "darkness": [
+      {"desc": "Kuat di malam / gua", "if": {"is_night": true}, "mult": 1.2}
+    ],
+    "light": [
+      {"desc": "Terik siang memperkuat cahaya", "if": {"is_day": true}, "mult": 1.1}
+    ],
+    "star": [
+      {"desc": "Kuat saat langit cerah malam", "if": {"is_night": true, "clear_sky": true}, "mult": 1.25},
+      {"desc": "Mati rasa saat mendung", "if": {"overcast": true}, "mult": 0.7}
+    ],
+    "sun": [
+      {"desc": "Puncak tengah hari", "if": {"solar_noon": true}, "mult": 1.3},
+      {"desc": "Lemah di malam hari", "if": {"is_night": true}, "mult": 0.7}
+    ],
+    "moon": [
+      {"desc": "Mengikuti fase bulan: purnama puncak", "if": {"full_moon": true}, "mult": 1.3},
+      {"desc": "Lemah saat bulan baru", "if": {"new_moon": true}, "mult": 0.7}
+    ]
+  },
+  "combos": [
+    {"a": "fire", "b": "water", "result": "steam", "effect": "accuracy_down_area"},
+    {"a": "fire", "b": "ice", "result": "thermal_shock", "mult": 1.5},
+    {"a": "sun", "b": "wood", "result": "overgrowth"},
+    {"a": "moon", "b": "water", "result": "small_tsunami", "requires": {"full_moon": true}},
+    {"a": "star", "b": "void", "result": "supernova"}
+  ]
+}

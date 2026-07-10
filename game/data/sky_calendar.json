@@ -1,0 +1,13 @@
+[
+  {"date": "2026-03-20", "name": "Equinox Maret", "type": "equinox"},
+  {"date": "2026-06-21", "name": "Solstice Juni", "type": "solstice"},
+  {"date": "2026-08-12", "name": "Hujan Meteor Perseid", "type": "meteor_shower"},
+  {"date": "2026-09-22", "name": "Equinox September", "type": "equinox"},
+  {"date": "2026-12-14", "name": "Hujan Meteor Geminid", "type": "meteor_shower"},
+  {"date": "2026-12-21", "name": "Solstice Desember", "type": "solstice"},
+  {"date": "2027-01-03", "name": "Hujan Meteor Quadrantid", "type": "meteor_shower"},
+  {"date": "2027-03-20", "name": "Equinox Maret", "type": "equinox"},
+  {"date": "2027-06-21", "name": "Solstice Juni", "type": "solstice"},
+  {"date": "2027-08-12", "name": "Hujan Meteor Perseid", "type": "meteor_shower"},
+  {"date": "2027-12-14", "name": "Hujan Meteor Geminid", "type": "meteor_shower"}
+]

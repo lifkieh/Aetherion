@@ -1,0 +1,11 @@
+{
+  "godotTools.editorPath.godot4": "D:\\2DGAME\\_tools\\godot\\Godot_v4.3-stable_win64.exe",
+  "files.associations": {
+    "*.gd": "gdscript",
+    "*.tscn": "godot-scene",
+    "*.tres": "godot-resource"
+  },
+  "files.exclude": {
+    "**/.godot": true
+  }
+}
