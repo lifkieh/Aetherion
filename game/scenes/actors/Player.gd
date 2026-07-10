@@ -105,8 +105,7 @@ func _do_attack() -> void:
 	_attack_cd = 0.35
 	_attacking = ATTACK_TIME
 	sprite.play("walk_" + facing)
-	_position_hitbox(40.0)
-	_apply_melee(Db.skill("strike"))
+	_apply_melee(Db.skill("strike"), 42.0)
 	Audio.play_sfx("attack")
 
 func _do_skill(skill_id: String) -> void:
@@ -125,36 +124,35 @@ func _do_skill(skill_id: String) -> void:
 	if sk.get("projectile", false):
 		_fire_projectile(sk)
 	else:
-		var r: float = sk.get("range", 44)
-		_position_hitbox(r)
-		_apply_melee(sk)
+		_apply_melee(sk, sk.get("range", 44))
 	Audio.play_sfx("attack")
 
-func _position_hitbox(reach: float) -> void:
-	var v := _facing_vec()
-	hitbox.position = v * (reach * 0.5)
-	(hit_shape.shape as RectangleShape2D).size = Vector2(reach, reach)
-	hit_shape.disabled = false
-	hitbox.monitoring = true
-
-func _apply_melee(skill: Dictionary) -> void:
-	var ctx := CombatResolver.build_ctx()
+## Geometric melee: hit monsters within `reach` and inside a ~120° cone ahead.
+## Robust in headless (no Area2D overlap timing) and matches on-screen swing.
+func _apply_melee(skill: Dictionary, reach: float) -> void:
+	var fv := _facing_vec()
 	var atk := PlayerData.combat_stats()
-	var hit_any := false
-	for body in hitbox.get_overlapping_bodies():
-		if body.is_in_group("monsters") and body.has_method("take_hit"):
-			var target_wet := body.get("is_wet") if body.get("is_wet") != null else false
-			ctx["target_wet"] = target_wet or WorldState.is_wet_weather()
-			var res := CombatResolver.resolve(atk, body.combat_view(), skill, ctx)
-			body.take_hit(res, self)
-			hit_any = true
-			if res.get("chain", false):
-				_chain_lightning(body, res, skill, ctx)
-	# hitbox is a quick sweep; disable shortly after
-	get_tree().create_timer(0.12).timeout.connect(func():
-		if is_instance_valid(hit_shape):
-			hit_shape.disabled = true
-			hitbox.monitoring = false)
+	var aoe: bool = skill.get("aoe", false)
+	var targets := []
+	for m in get_tree().get_nodes_in_group("monsters"):
+		if not is_instance_valid(m) or not m.has_method("take_hit"):
+			continue
+		var to: Vector2 = m.global_position - global_position
+		if to.length() > reach:
+			continue
+		if to != Vector2.ZERO and fv.dot(to.normalized()) < 0.35:
+			continue  # not in front
+		targets.append(m)
+	# single-target attacks hit the nearest; aoe hits all in cone
+	if not aoe and targets.size() > 1:
+		targets.sort_custom(func(a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
+		targets = [targets[0]]
+	for m in targets:
+		var ctx := CombatResolver.build_ctx(m.is_wet)
+		var res := CombatResolver.resolve(atk, m.combat_view(), skill, ctx)
+		m.take_hit(res, self)
+		if res.get("chain", false):
+			_chain_lightning(m, res, skill, ctx)
 
 func _chain_lightning(origin: Node2D, res: Dictionary, skill: Dictionary, ctx: Dictionary) -> void:
 	# Science demo: lightning arcs to nearby wet monsters (v0.3 §7).
@@ -182,6 +180,7 @@ func take_hit(result: Dictionary, _from) -> void:
 		return
 	var dmg: int = result.get("damage", 0)
 	PlayerData.take_damage(dmg)
+	EventBus.damage_dealt.emit(_from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
 	_iframes = 0.4
 	Audio.play_sfx("hurt")
 	if PlayerData.is_dead():

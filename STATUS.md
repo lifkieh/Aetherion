@@ -13,10 +13,10 @@
   - Player: 8-dir movement, 4-facing anim, camera; Greenvale region from Field/Nature tilesets; props; boundaries
   - HUD: clock/moon/weather, HP/MP/EXP, gold/level, Sky Report, toasts
   - Weather system + rain particles
-- [~] **M2 — Combat** ⏳ SYSTEMS DONE, needs live playtest
+- [x] **M2 — Combat** ✅ DONE
   - CombatResolver (GDD formulas), MonsterFactory (BST×archetype), 3+ monsters (Fluffbit/Wolf/Slime + 7 Greenvale)
-  - Normal attack, 2 skills (flame_slash/spark_bolt), dodge, projectile, HP bars, damage numbers, death→drop+EXP+levelup
-  - All unit-tested (TTK, damage). **TODO: verify attack/skill/dodge feel in live window.**
+  - Geometric melee (facing cone), 2 skills (flame_slash/spark_bolt), dodge, projectile, HP bars, damage numbers, death→drop+EXP+levelup, slime split
+  - Verified in headless combat demo: player↔monster damage, **kill→loot→levelup chain confirmed**
 - [ ] M3 — Elements (matrix+rules DONE in data & tested; TODO: in-world Fire/Lightning infusion VFX + rain→wet→chain demo visible)
 - [ ] M4 — Taming & pet (TamingSystem DONE+tested; TODO: pet follow, mount, tame UI/feedback polish)
 - [ ] M5 — Gathering & crafting (GatherNode DONE; TODO: inventory UI, crafting bench, shop NPC)

@@ -37,6 +37,38 @@ func _ready() -> void:
 	# Optional automated screenshot for verification (--screenshot arg or env)
 	if "--shot" in OS.get_cmdline_user_args() or OS.get_environment("AETHER_SHOT") == "1":
 		_screenshot_at = 1.6
+	if OS.get_environment("AETHER_COMBAT") == "1":
+		_combat_demo()
+		_screenshot_at = 2.6
+
+func _combat_demo() -> void:
+	# Spawn a cluster of monsters beside the player and auto-attack for a shot.
+	await get_tree().process_frame
+	EventBus.damage_dealt.connect(func(_a, t, amt, crit, elem):
+		var who := "player" if t == player else "MONSTER"
+		print("[dmg] -> %s  %d%s elem=%s" % [who, amt, (" CRIT" if crit else ""), elem]))
+	EventBus.monster_killed.connect(func(sp, _m): print("[kill] ", sp))
+	EventBus.item_gained.connect(func(id, q): print("[loot] +%d %s" % [q, id]))
+	EventBus.player_leveled_up.connect(func(lv): print("[levelup] Lv ", lv))
+	player.facing = "right"
+	PlayerData.equipped_weapon = "copper_sword"
+	PlayerData.recalculate_stats()
+	PlayerData.hp = PlayerData.max_hp
+	for i in range(4):
+		var inst := MonsterFactory.make("verdant_slime", 1, 3)
+		var m := preload("res://scenes/actors/Monster.tscn").instantiate()
+		add_child(m)
+		m.global_position = player.global_position + Vector2(30 + i * 4, -6 + i * 8)
+		m.setup(inst, self)
+		_monster_count += 1
+	var t := Timer.new()
+	t.wait_time = 0.35
+	t.autostart = true
+	add_child(t)
+	t.timeout.connect(func():
+		if is_instance_valid(player):
+			player.facing = "right"
+			player._do_attack())
 
 func _process(delta: float) -> void:
 	if canvas_mod:
@@ -217,7 +249,13 @@ func on_monster_died(_m) -> void:
 	_monster_count = max(0, _monster_count - 1)
 
 func _take_screenshot() -> void:
+	if DisplayServer.get_name() == "headless":
+		get_tree().quit()
+		return
 	var img := get_viewport().get_texture().get_image()
+	if img == null:
+		get_tree().quit()
+		return
 	var path := "user://shot.png"
 	img.save_png(path)
 	print("[shot] saved ", ProjectSettings.globalize_path(path))
