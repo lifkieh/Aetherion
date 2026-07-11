@@ -878,5 +878,27 @@
     "value": 75,
     "stack": 99,
     "flavor": "Organ penghasil listrik dari makhluk badai."
+  },
+  {
+    "id": "book_frost_bolt",
+    "name": "Kitab: Panah Es",
+    "tier": "D",
+    "type": "skillbook",
+    "skill_book": "frost_bolt",
+    "value": 320,
+    "stack": 1,
+    "shop_stock": 1,
+    "shop_demand": 4,
+    "flavor": "Halaman-halaman berselaput embun beku. Baca (klik) untuk menguasai Panah Es — dan elemen Es."
+  },
+  {
+    "id": "book_spore_cloud",
+    "name": "Kitab: Awan Spora",
+    "tier": "D",
+    "type": "skillbook",
+    "skill_book": "spore_cloud",
+    "value": 300,
+    "stack": 1,
+    "flavor": "Traktat lembap beraroma jamur. Baca (klik) untuk menguasai Awan Spora."
   }
 ]

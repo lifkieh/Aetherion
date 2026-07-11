@@ -68,7 +68,7 @@ var discovered: Dictionary = {"monsters": {}, "items": {}, "weathers": {}}  # Ae
 var craft_insight: Dictionary = {}     # recipe_id -> accumulated success bonus
 var daily_quests: Dictionary = {}      # {date, quests:[...]} — Daily Quest Board
 var prof_xp: Dictionary = {}           # profession -> xp (miner, lumberjack, ...)
-var hotbar: Array = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"]  # 5 slots
+var hotbar: Array = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"]  # 5 slots
 var discovered_fusions: Array = []     # combo results the player has cast (first-discovery)
 var char_config: Dictionary = {}       # Aetherion Character System v2 look (CharGen)
 var onboarding_seen: Array = []        # contextual tip ids already shown (UI/UX §5)
@@ -79,6 +79,12 @@ func _ready() -> void:
 	recalculate_stats()
 	hp = max_hp
 	mp = max_mp
+	EventBus.monster_killed.connect(_on_monster_killed)
+
+## Boss first-kill skill unlocks (PC4) — one hook for both perspectives.
+func _on_monster_killed(species_id: String, node) -> void:
+	if is_instance_valid(node) and ("inst" in node) and node.inst.get("is_boss", false):
+		on_boss_killed(species_id)
 
 ## Reset to a fresh character (New Game). birth_sign from creation date (v0.3 §3.3).
 func new_game() -> void:
@@ -103,7 +109,7 @@ func new_game() -> void:
 	craft_insight = {}
 	daily_quests = {}
 	prof_xp = {}
-	hotbar = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"]
+	hotbar = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"]
 	discovered_fusions = []
 	char_config = CharGen.default_config()
 	onboarding_seen = []
@@ -140,7 +146,80 @@ func gain_exp(amount: int) -> void:
 		mp = max_mp
 		EventBus.player_leveled_up.emit(level)
 		EventBus.toast.emit("Level Up! Lv %d" % level)
+		_learn_level_milestones()
 	EventBus.player_exp_changed.emit(exp, exp_to_next())
+
+# --- Skill acquisition (PC4) -------------------------------------------------
+
+## True if the player may prime this skill: flow skills need the element mastered;
+## every other active skill must be in known_skills.
+func can_use_skill(sid: String) -> bool:
+	var sk := Db.skill(sid)
+	if sk.is_empty():
+		return false
+	if sk.get("kind", "") == "flow":
+		return sk.get("element", "") in mastered_elements
+	return sid in known_skills
+
+## Learn an active skill. Idempotent. Applies element mastery ("masters") too.
+## Returns true only if it was newly learned.
+func learn_skill(sid: String) -> bool:
+	var sk := Db.skill(sid)
+	if sk.is_empty() or sid in known_skills:
+		return false
+	known_skills.append(sid)
+	var mastered: String = sk.get("masters", "")
+	if mastered != "" and not (mastered in mastered_elements):
+		mastered_elements.append(mastered)
+	EventBus.skill_learned.emit(sid)
+	var star := "★ " if sk.get("ultimate", false) else ""
+	EventBus.toast.emit("%sSkill dipelajari: %s!" % [star, sk.get("name", sid)])
+	Audio.play_sfx("levelup", 1.1)
+	return true
+
+## Auto-learn every level-milestone skill the player now qualifies for.
+func _learn_level_milestones() -> void:
+	for sk in Db.skills.values():
+		var u: Dictionary = sk.get("unlock", {})
+		if u.get("source", "") == "level" and level >= int(u.get("level", 999)):
+			learn_skill(sk.get("id", ""))
+
+## Boss first-kill unlocks: learn any skill gated behind this boss species.
+func on_boss_killed(species_id: String) -> void:
+	for sk in Db.skills.values():
+		var u: Dictionary = sk.get("unlock", {})
+		if u.get("source", "") == "boss" and u.get("boss", "") == species_id:
+			learn_skill(sk.get("id", ""))
+
+## Learn from a Skill Book item in the bag (consumes it). Returns true on success.
+func use_skillbook(item_id: String) -> bool:
+	var it := Db.item(item_id)
+	var sid: String = it.get("skill_book", "")
+	if sid == "":
+		return false
+	if sid in known_skills:
+		EventBus.toast.emit("Skill ini sudah dikuasai.")
+		return false
+	if learn_skill(sid):
+		remove_item(item_id, 1)
+		return true
+	return false
+
+## Pay a trainer to learn a skill (gold + level prereq). Returns true on success.
+func train_skill(sid: String) -> bool:
+	var sk := Db.skill(sid)
+	var u: Dictionary = sk.get("unlock", {})
+	if u.get("source", "") != "trainer" or sid in known_skills:
+		return false
+	if level < int(u.get("level", 1)):
+		EventBus.toast.emit("Butuh Level %d untuk melatih %s." % [int(u.get("level", 1)), sk.get("name", sid)])
+		return false
+	var cost: int = int(u.get("cost", 0))
+	if gold < cost:
+		EventBus.toast.emit("Gold tidak cukup (%d G)." % cost)
+		return false
+	add_gold(-cost)
+	return learn_skill(sid)
 
 # --- Derived stats ----------------------------------------------------------
 
@@ -396,7 +475,7 @@ func from_save(d: Dictionary) -> void:
 	craft_insight = d.get("craft_insight", {})
 	daily_quests = d.get("daily_quests", {})
 	prof_xp = d.get("prof_xp", {})
-	hotbar = d.get("hotbar", ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"])
+	hotbar = d.get("hotbar", ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"])
 	discovered_fusions = d.get("discovered_fusions", [])
 	char_config = d.get("char_config", CharGen.default_config())
 	onboarding_seen = d.get("onboarding_seen", [])

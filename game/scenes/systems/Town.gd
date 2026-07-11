@@ -237,6 +237,7 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 		["board", Vector2(48, -104)],         # quest board at the town hall
 		["guide", Vector2(-40, 96)],          # Pemandu by the plaza/well
 		["mirror", Vector2(198, -56)],        # Cermin Jiwa (re-customize) by the inn
+		["trainer", Vector2(-232, 96)],       # Guru Skill near the forge/plaza
 	]
 	for n in npcs:
 		var node := preload("res://scenes/world/Interactable.tscn").instantiate()

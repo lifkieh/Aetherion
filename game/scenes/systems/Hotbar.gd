@@ -32,7 +32,12 @@ func _slot_skill(slot: int) -> String:
 
 ## Number key (slot 0..4). Chains into a fusion if pressed within the combo window.
 func press_slot(slot: int) -> void:
-	if _slot_skill(slot) == "":
+	var sid := _slot_skill(slot)
+	if sid == "":
+		return
+	if not PlayerData.can_use_skill(sid):
+		EventBus.toast.emit("%s belum dipelajari." % Db.skill(sid).get("name", sid))
+		Audio.play_sfx("menu", 0.6)
 		return
 	if primed >= 0 and not (slot in fusion_slots) and _combo_t > 0.0:
 		if fusion_slots.is_empty():
@@ -140,11 +145,16 @@ func _cast_single(actor: Node2D, aim: Vector2, sid: String) -> bool:
 		_no_mana()
 		return false
 	match sk.get("kind", "physical"):
+		"heal":
+			PlayerData.heal(int(sk.get("heal_amount", 30)))
+			Vfx.spark(actor.get_parent(), actor.global_position, "light")
+			Audio.play_sfx("levelup", 1.3)
 		"magic":
 			PlayerCombat.fire_pooled(actor, aim, sk.get("projectile_id", "spark"), sk.get("skill_mod", 1.0))
+			Audio.play_sfx("attack", 1.05)
 		_:
 			PlayerCombat.melee_arc(actor, aim, sk.get("range", 48), sk.get("aoe_arc", 120), sk)
-	Audio.play_sfx("attack", 1.05)
+			Audio.play_sfx("attack", 1.05)
 	return true
 
 func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:

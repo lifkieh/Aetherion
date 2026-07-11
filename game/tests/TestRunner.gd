@@ -39,6 +39,7 @@ func _ready() -> void:
 	_test_v3content()
 	_test_onboarding()
 	_test_skill_audit()
+	_test_skill_acquisition()
 	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
@@ -356,6 +357,69 @@ func _test_skill_audit() -> void:
 	check("wind flow grants double jump", pr.get("wind", {}).get("double_jump", false))
 	check("ice flow freezes puddles", pr.get("ice", {}).get("freeze_puddle", false))
 
+func _test_skill_acquisition() -> void:
+	print("[Skill Acquisition — PC4]")
+	PlayerData.new_game()
+	# --- 16 player skills, each with an unlock source ---
+	var player_skills := 0
+	var ultimate := 0
+	for sk in Db.skills.values():
+		if sk.has("unlock"):
+			player_skills += 1
+			if sk.get("ultimate", false):
+				ultimate += 1
+	check("16 player skills declared with unlock sources", player_skills == 16, str(player_skills))
+	check("exactly 1 Ultimate candidate", ultimate == 1, str(ultimate))
+	check("meteor is the ultimate", Db.skill("meteor").get("ultimate", false))
+	# --- start with only the 3 basics; flow gated by mastered elements ---
+	check("starts with 3 known active skills", PlayerData.known_skills.size() == 3)
+	check("can use starter flame_slash", PlayerData.can_use_skill("flame_slash"))
+	check("can use flow_fire (fire mastered)", PlayerData.can_use_skill("flow_fire"))
+	check("CANNOT use flow_ice (ice not mastered)", not PlayerData.can_use_skill("flow_ice"))
+	check("CANNOT use unlearned frost_bolt", not PlayerData.can_use_skill("frost_bolt"))
+	# --- learn_skill applies element mastery (masters) ---
+	check("frost_bolt learned = true (new)", PlayerData.learn_skill("frost_bolt"))
+	check("frost_bolt now usable", PlayerData.can_use_skill("frost_bolt"))
+	check("learning frost_bolt masters ice -> flow_ice usable", PlayerData.can_use_skill("flow_ice"))
+	check("re-learning returns false (idempotent)", not PlayerData.learn_skill("frost_bolt"))
+	# --- level milestone auto-learn (gust @ Lv3, quake @ Lv8) ---
+	PlayerData.new_game()
+	check("gust locked at Lv1", not PlayerData.can_use_skill("gust"))
+	PlayerData.level = 2
+	PlayerData.gain_exp(PlayerData.exp_to_next())   # -> Lv3, triggers milestone
+	check("gust auto-learned at Lv3", PlayerData.can_use_skill("gust"))
+	check("gust masters wind -> flow_wind usable", PlayerData.can_use_skill("flow_wind"))
+	check("quake still locked (needs Lv8)", not PlayerData.can_use_skill("quake"))
+	# --- skill book item learns + is consumed ---
+	PlayerData.new_game()
+	PlayerData.add_item("book_spore_cloud", 1)
+	check("spore_cloud locked before book", not PlayerData.can_use_skill("spore_cloud"))
+	check("use_skillbook learns it", PlayerData.use_skillbook("book_spore_cloud"))
+	check("spore_cloud usable after book", PlayerData.can_use_skill("spore_cloud"))
+	check("book consumed", PlayerData.item_count("book_spore_cloud") == 0)
+	# --- trainer: gold + level prereq (stone_lance: Lv6, 450g) ---
+	PlayerData.new_game()
+	PlayerData.gold = 9999
+	check("train fails below level prereq", not PlayerData.train_skill("stone_lance"))
+	PlayerData.level = 6
+	PlayerData.gold = 100
+	check("train fails without gold", not PlayerData.train_skill("stone_lance"))
+	PlayerData.gold = 500
+	check("train succeeds with level+gold", PlayerData.train_skill("stone_lance"))
+	check("stone_lance usable + earth mastered", PlayerData.can_use_skill("stone_lance") and PlayerData.can_use_skill("flow_earth"))
+	check("gold deducted by cost", PlayerData.gold == 50)
+	# --- boss first-kill (holy_ray from king_slime) ---
+	PlayerData.new_game()
+	check("holy_ray locked before boss", not PlayerData.can_use_skill("holy_ray"))
+	PlayerData.on_boss_killed("king_slime")
+	check("holy_ray learned on king_slime kill", PlayerData.can_use_skill("holy_ray"))
+	check("meteor learned on frost_titan kill", func_learn_boss("frost_titan", "meteor"))
+	PlayerData.new_game()
+
+func func_learn_boss(boss: String, sid: String) -> bool:
+	PlayerData.on_boss_killed(boss)
+	return PlayerData.can_use_skill(sid)
+
 func _test_v3content() -> void:
 	print("[v0.3 content — Frostpeak/Storm]")
 	# Thermal Shock fusion (Fire + Ice), symmetric
@@ -560,7 +624,9 @@ func _test_hotbar() -> void:
 	add_child(actor)
 	await get_tree().process_frame
 	var hb := Hotbar.new()
-	# ensure known hotbar layout: slots map to flow elements for deterministic fusion
+	# ensure known hotbar layout: slots map to flow elements for deterministic fusion.
+	# master every element the test primes so can_use_skill gates don't block (PC4).
+	PlayerData.mastered_elements = ["fire", "lightning", "ice", "wind", "earth", "poison"]
 	PlayerData.hotbar = ["flow_fire", "flow_lightning", "flow_fire", "spark_bolt", "flow_ice"]
 	# --- rev B: no cooldowns, channelled cast ---
 	check("cooldown_frac always 0 (no CDs)", hb.cooldown_frac(0) == 0.0)

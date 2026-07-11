@@ -33,6 +33,22 @@ VIT→HP+resist, INT→MATK+mana+mana-regen, DEX→accuracy+gather quality, LUK�
 
 Tests: 282 pass (+ channel drain, no-CD levers, per-source hit-immunity, infusion reach, tiered-fusion rate/recipes).
 
+**PC3 — fusion HUD.** Hotbar exposes prime_chain_str/is_recast_fusion/recast_frac; HUD shows the live
+prime chain ("1+2+5"), labels 3-4 element fusions as recast, and draws a small recast-progress bar. (285 tests.)
+
+**PC4 — Skill acquisition.** 16 player skills, each with an `unlock` source in skills.json. Start with only
+the 3 basics (strike/flame_slash/spark_bolt) + Fire/Lightning flows; the rest are earned:
+- **Level milestones:** gust @ Lv3 (masters Wind), quake @ Lv8.
+- **Skill Book items** (`type:skillbook`, click to read): `book_frost_bolt` (masters Ice, shop + Frost Elemental
+  5% drop), `book_spore_cloud` (Greenvale spore 3% drop).
+- **Trainer NPC** ("Guru Skill" in Greenvale): stone_lance (Lv6, 450g, masters Earth), heal (Lv4, 300g) —
+  gold + level prereq, purchasable from the Skill Book tab.
+- **Boss first-kill:** holy_ray (King Slime), **meteor** [★ ULTIMATE candidate] (Frost Titan).
+Flow skills are gated by element mastery (learning frost_bolt/gust/stone_lance masters Ice/Wind/Earth →
+their flows unlock). `Hotbar.press_slot` now refuses un-learned skills. New **Skill Book tab**: hotbar row,
+"Dikuasai" list (assign →slot), "Belum dikuasai" list with unlock hints + trainer buy buttons + ★ ultimate mark.
+Boss-kill hook is centralised on `EventBus.monster_killed` (covers both perspectives). Tests: 313 pass (+31).
+
 ## 2026-07-12 — v0.3-alpha content: Frostpeak complete + Storm Island
 
 Playtest of the character system passed; built the rest of v0.3.

@@ -76,6 +76,10 @@ func _build() -> void:
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "short", "hair_color": "#6b4226", "shirt": "#2e6b3f", "pants": "#453d5c"})
 		label.text = "Pemandu [E]"
+	elif kind == "trainer":
+		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
+			"hair": "long", "hair_color": "#b0b0c0", "shirt": "#334a6b", "pants": "#2b2b3a"})
+		label.text = "Guru Skill [E]"
 	elif kind == "shop":
 		_char_sprite({"head_race": "human2", "torso_race": "human2", "legs_race": "human2",
 			"hair": "short", "hair_color": "#241f36", "shirt": "#c9a227", "pants": "#453d5c"})
@@ -150,6 +154,11 @@ func interact() -> void:
 		await Stage.say(["Bintang-bintang berbisik malam ini...",
 			"Mau kubacakan ramalan langit untukmu?"], "Astrolog", sprite.texture)
 		menu.open("sky", self)
+	elif kind == "trainer":
+		await Stage.say(["Ah, seorang petualang yang haus ilmu.",
+			"Kuajarkan jurus-jurus lanjutan — bila level & emasmu cukup.",
+			"Lihat daftar 'Belum dikuasai' di Skill Book."], "Guru Skill", sprite.texture)
+		menu.open("skill", self)
 	else:
 		await Stage.say("Perlu meramu sesuatu? Bengkel ini siap membantu.", "Pandai Besi")
 		menu.open("crafting", self)

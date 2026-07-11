@@ -22,11 +22,13 @@ func _ready() -> void:
 	EventBus.gold_changed.connect(func(_g): if root.visible: _refresh_gold())
 	EventBus.item_crafted.connect(func(_i, _s): if root.visible: _rebuild())
 
-func _mk_label(t: String, s: int = 16) -> Label:
+func _mk_label(t: String, s: int = 16, col: Color = Color.WHITE) -> Label:
 	var l := Label.new()
 	l.text = t
 	if _font: l.add_theme_font_override("font", _font)
 	l.add_theme_font_size_override("font_size", s)
+	if col != Color.WHITE:
+		l.add_theme_color_override("font_color", col)
 	return l
 
 ## Category icon for an item, as a 24x24 TextureRect (UI/UX §7). Adds it to `row`.
@@ -158,29 +160,60 @@ func _rebuild() -> void:
 		"status": _build_status()
 
 func _build_skill() -> void:
-	title.text = "Skill Book — Hotbar (1-5)"
-	content.add_child(_mk_label("Slot saat ini:", 15))
+	title.text = "Skill Book"
+	content.add_child(_mk_label("Slot hotbar saat ini:", 15))
 	var row := _row()
 	for i in range(5):
-		var sid: String = PlayerData.hotbar[i] if i < PlayerData.hotbar.size() else ""
-		var l := _mk_label("[%d] %s" % [i + 1, Db.skill(sid).get("name", "-")], 13)
+		var hsid: String = PlayerData.hotbar[i] if i < PlayerData.hotbar.size() else ""
+		var usable: bool = hsid != "" and PlayerData.can_use_skill(hsid)
+		var l := _mk_label("[%d] %s" % [i + 1, Db.skill(hsid).get("name", "-")], 13, Color(0.9, 0.9, 0.9) if usable else Color(0.7, 0.4, 0.4))
 		l.custom_minimum_size = Vector2(100, 0)
 		row.add_child(l)
-	content.add_child(_mk_label("Prime dengan tekan angka → klik-kiri lepas ke kursor. Dua angka <1.5s = Fusion.", 11))
-	content.add_child(_mk_label("— Skill tersedia (klik →slot) —", 15))
-	var castable := ["flame_slash", "spark_bolt", "frost_bolt", "flow_fire", "flow_lightning", "flow_ice", "flow_wind"]
-	for sid in castable:
-		if not Db.skills.has(sid):
+	content.add_child(_mk_label("Prime = tekan angka → tahan klik-kiri untuk channel. Dua+ angka <1.5s = Fusion.", 11))
+
+	# --- Dikuasai (assign to hotbar) ---
+	content.add_child(_mk_label("— Dikuasai (klik →slot untuk pasang) —", 15, Color(0.6, 0.9, 0.6)))
+	for sk in Db.skills.values():
+		var sid: String = sk.get("id", "")
+		if not sk.has("unlock") or not PlayerData.can_use_skill(sid):
 			continue
-		var sk := Db.skill(sid)
 		var h := _row()
-		var _mana: int = int(sk.get("mana_cost", 0))
-		var _cost_txt: String = ("%d MP/cast" % _mana) if _mana > 0 else "drain" if sk.get("kind", "") == "flow" else "gratis"
-		var l := _mk_label("%s [%s] · %s" % [sk.get("name", sid), sk.get("element", "-"), _cost_txt], 13)
-		l.custom_minimum_size = Vector2(240, 0)
+		var mana: int = int(sk.get("mana_cost", 0))
+		var cost_txt: String = ("%d MP/cast" % mana) if mana > 0 else ("drain" if sk.get("kind", "") == "flow" else "gratis")
+		var star: String = "★ " if sk.get("ultimate", false) else ""
+		var l := _mk_label("%s%s [%s] · %s" % [star, sk.get("name", sid), sk.get("element", "-"), cost_txt], 13)
+		l.custom_minimum_size = Vector2(230, 0)
 		h.add_child(l)
 		for slot in range(5):
-			h.add_child(_btn("→%d" % (slot + 1), func(): PlayerData.hotbar[slot] = sid; EventBus.toast.emit("Slot %d: %s" % [slot + 1, sk.get("name", sid)]); _rebuild()))
+			var s2 := sid
+			h.add_child(_btn("→%d" % (slot + 1), func(): PlayerData.hotbar[slot] = s2; EventBus.toast.emit("Slot %d: %s" % [slot + 1, sk.get("name", s2)]); _rebuild()))
+
+	# --- Belum dikuasai (source hints + trainer purchase) ---
+	content.add_child(_mk_label("— Belum dikuasai —", 15, Color(0.8, 0.7, 0.5)))
+	for sk in Db.skills.values():
+		var sid: String = sk.get("id", "")
+		if not sk.has("unlock") or PlayerData.can_use_skill(sid):
+			continue
+		var u: Dictionary = sk.get("unlock", {})
+		var h := _row()
+		var star: String = "★ " if sk.get("ultimate", false) else ""
+		var l := _mk_label("%s%s [%s] — %s" % [star, sk.get("name", sid), sk.get("element", "-"), _unlock_hint(u)], 13, Color(0.7, 0.7, 0.72))
+		l.custom_minimum_size = Vector2(330, 0)
+		h.add_child(l)
+		if u.get("source", "") == "trainer":
+			var can_train: bool = PlayerData.level >= int(u.get("level", 1)) and PlayerData.gold >= int(u.get("cost", 0))
+			var b := _btn("Latih %d G" % int(u.get("cost", 0)), func(): if PlayerData.train_skill(sid): _rebuild())
+			b.disabled = not can_train
+			h.add_child(b)
+
+func _unlock_hint(u: Dictionary) -> String:
+	match u.get("source", ""):
+		"level": return "buka di Level %d" % int(u.get("level", 1))
+		"book": return "pelajari dari %s" % Db.item(u.get("book", "")).get("name", "Kitab")
+		"trainer": return "Pelatih: %d G (min Lv %d)" % [int(u.get("cost", 0)), int(u.get("level", 1))]
+		"boss": return "kalahkan %s pertama kali" % Db.monster(u.get("boss", "")).get("name", "bos")
+		"element": return "kuasai elemen %s" % u.get("element", "")
+		_: return "?"
 
 func _build_prof() -> void:
 	title.text = "Profesi (1 Utama + 2 Sub)"
@@ -413,7 +446,8 @@ func _item_tooltip(id: String, def: Dictionary) -> String:
 	var t := "%s  [%s]\n" % [def.get("name", id), def.get("tier", "F")]
 	var type_id: String = def.get("type", "")
 	t += {"weapon": "Senjata", "material": "Bahan", "consumable": "Ramuan", "orb": "Orb",
-		"seed": "Benih", "gear": "Perlengkapan", "bait": "Umpan", "junk": "Rongsokan"}.get(type_id, type_id)
+		"seed": "Benih", "gear": "Perlengkapan", "bait": "Umpan", "junk": "Rongsokan",
+		"skillbook": "Kitab Skill"}.get(type_id, type_id)
 	var stats := []
 	if def.has("atk"): stats.append("ATK %d" % int(def.atk))
 	if def.has("matk_bonus"): stats.append("MATK +%d" % int(def.matk_bonus))
@@ -437,6 +471,9 @@ func _use_item(id: String, def: Dictionary) -> void:
 			_rebuild()
 		"consumable":
 			_use_consumable(id, def)
+		"skillbook":
+			if PlayerData.use_skillbook(id):
+				_rebuild()
 
 func _use_consumable(id: String, def: Dictionary) -> void:
 	if PlayerData.item_count(id) <= 0: return
