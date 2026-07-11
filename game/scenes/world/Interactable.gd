@@ -3,6 +3,7 @@ extends Node2D
 
 var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon
 var dungeon_scene := "res://scenes/world/GreenvaleDepths.tscn"
+var dungeon_label := "Gua Greenvale ▼ [E]"
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var label: Label = $Label
@@ -35,7 +36,7 @@ func _build() -> void:
 		sprite.texture = at2
 		sprite.modulate = Color(0.35, 0.3, 0.45)
 		sprite.offset = Vector2(0, -8)
-		label.text = "Gua Greenvale ▼ [E]"
+		label.text = dungeon_label
 	elif kind == "astrologer":
 		var at := AtlasTexture.new()
 		at.atlas = load("res://assets/game/sprites/player/idle.png")

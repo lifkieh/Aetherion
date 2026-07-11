@@ -147,7 +147,11 @@ func _on_weather(w: String) -> void:
 
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
-	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
+	if WorldState.pending_return_pos != null:
+		player.global_position = WorldState.pending_return_pos
+		WorldState.pending_return_pos = null
+	else:
+		player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
 	add_child(player)
 
 func _add_ui() -> void:
@@ -162,6 +166,13 @@ func _add_ui() -> void:
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Kembali ke Greenvale [E]")
 	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 32)
+	# side-view dungeon entrance
+	var dungeon := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(dungeon)
+	dungeon.dungeon_scene = "res://scenes/world/GummyCavern.tscn"
+	dungeon.dungeon_label = "Gummy Cavern ▼ [E]"
+	dungeon.setup("dungeon")
+	dungeon.global_position = Vector2(MAP_W * TILE * 0.5 + 80, MAP_H * TILE - 90)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()

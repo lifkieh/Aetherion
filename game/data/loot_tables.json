@@ -106,5 +106,10 @@
     {"item": "slime_jelly", "chance": 1.0, "min": 5, "max": 10},
     {"item": "gel_core", "chance": 1.0, "min": 1, "max": 1},
     {"item": "greater_orb", "chance": 0.3, "min": 1, "max": 1}
+  ]},
+  {"id": "gummy_titan", "drops": [
+    {"item": "gummy_jelly", "chance": 1.0, "min": 6, "max": 12},
+    {"item": "sugar_crystal", "chance": 1.0, "min": 3, "max": 5},
+    {"item": "gel_core", "chance": 0.5, "min": 1, "max": 1}
   ]}
 ]

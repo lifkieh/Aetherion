@@ -101,6 +101,15 @@
     "tame_base": 0.4, "evolution": "", "aggro_radius": 160, "lore": "Kelelawar gua; terbang zig-zag."
   },
   {
+    "id": "gummy_titan", "name": "Gummy Titan", "rarity": "epic", "element": "water",
+    "archetype": "tank", "bst": 460, "size": "large", "rideable": false, "level": 25,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "ff8ac4", "traits": ["split"], "skills": ["tackle"],
+    "loot_table": "gummy_titan", "tame_base": 0.06, "evolution": "",
+    "is_boss": true, "add_species": "gummy_slime",
+    "aggro_radius": 400, "lore": "Titan gummy raksasa yang memantul; bos Gummy Cavern."
+  },
+  {
     "id": "cave_spitter", "name": "Cave Spitter", "rarity": "common", "element": "poison",
     "archetype": "caster", "bst": 300, "size": "small", "rideable": false, "level": 13,
     "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,

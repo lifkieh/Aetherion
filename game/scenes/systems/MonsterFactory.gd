@@ -94,6 +94,7 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 		"behavior": def.get("behavior", ""),
 		"projectile": def.get("projectile", ""),
 		"passive": def.get("passive", false),
+		"add_species": def.get("add_species", "verdant_slime"),
 	}
 
 ## Grant kill rewards (EXP + loot + gold) for an instance. Shared by the top-down

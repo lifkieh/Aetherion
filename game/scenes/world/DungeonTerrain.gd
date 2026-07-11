@@ -24,13 +24,14 @@ var height := 0
 func _ready() -> void:
 	add_to_group("terrain")
 
-func build_from(layout: Array) -> void:
+func build_from(layout: Array, tile_tint: Color = Color.WHITE) -> void:
 	height = layout.size()
 	width = 0
 	for row in layout:
 		width = maxi(width, String(row).length())
 	solid = TileMapLayer.new()
 	solid.tile_set = _make_tileset()
+	solid.modulate = tile_tint
 	add_child(solid)
 	_body = StaticBody2D.new()
 	_body.collision_layer = 4        # value 4 = solid dungeon terrain

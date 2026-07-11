@@ -240,7 +240,7 @@ func _spawn_adds(n: int) -> void:
 	if get_parent() == null:
 		return
 	for i in range(n):
-		var child := MonsterFactory.make("verdant_slime", 10, 3)
+		var child := MonsterFactory.make(inst.get("add_species", "verdant_slime"), 10, 3)
 		if child.is_empty():
 			continue
 		child["_no_split"] = true

@@ -266,6 +266,10 @@ func _test_dungeon_combat() -> void:
 	await get_tree().physics_frame
 	check("boss enters phase 2 under 40% HP", boss._phase == 2)
 	Engine.time_scale = 1.0
+	# candy boss + configurable adds (Gummy Cavern content)
+	var gt := MonsterFactory.make("gummy_titan", 25, 4)
+	check("gummy titan is boss", gt.get("is_boss", false))
+	check("gummy titan spawns gummy_slime adds", gt.get("add_species", "") == "gummy_slime")
 	boss.queue_free()
 	# cleanup any adds
 	for m in get_tree().get_nodes_in_group("monsters"):
