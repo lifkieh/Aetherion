@@ -28,7 +28,7 @@ var RACE_FEATURES := {
 	"undead": ["ribs", "hollow_eyes"],
 }
 const RACES := ["human", "human2", "wolfkin", "lizardkin", "candyfolk", "frostkin", "undead"]
-const HAIR_STYLES := ["short", "long", "spiky", "none"]
+const HAIR_STYLES := ["short", "long", "spiky", "mohawk", "bun", "none"]
 
 var _cache := {}
 
@@ -169,6 +169,10 @@ func _draw_head(img: Image, race: String, direction: String, skin: Array, hair: 
 	elif hair == "spiky":
 		for x in [4, 6, 8, 10]: _r(img, x, 0, x, 2, hc)
 		_r(img, 4, 2, 11, 3, hc)
+	elif hair == "mohawk":
+		_r(img, 7, 0, 8, 3, hc); _r(img, 4, 2, 11, 3, hc)
+	elif hair == "bun":
+		_r(img, 4, 1, 11, 3, hc); _r(img, 6, 0, 9, 1, hc)
 	if direction == "up":
 		var has_hair: bool = (hair != "" and hair != "none") or ("gum_hair" in f)
 		_r(img, 4, 2, 11, 8, hc if has_hair else sh)
@@ -252,6 +256,10 @@ func sprite_frames(config: Dictionary, fps: float = 8.0) -> SpriteFrames:
 			sf.add_frame("walk_" + dir, _atlas(tex, fr, r))
 		sf.add_animation("idle_" + dir); sf.set_animation_speed("idle_" + dir, 2.0)
 		sf.add_frame("idle_" + dir, _atlas(tex, 1, r))
+		# 2-frame attack swing (windup pose -> strike pose), non-looping
+		sf.add_animation("attack_" + dir); sf.set_animation_speed("attack_" + dir, 14.0); sf.set_animation_loop("attack_" + dir, false)
+		sf.add_frame("attack_" + dir, _atlas(tex, 0, r))
+		sf.add_frame("attack_" + dir, _atlas(tex, 2, r))
 	return sf
 
 func _atlas(tex: Texture2D, col: int, row: int) -> AtlasTexture:

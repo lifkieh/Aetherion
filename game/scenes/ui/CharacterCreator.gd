@@ -5,7 +5,7 @@ extends CanvasLayer
 
 const RACE_NAME := {"human": "Manusia", "human2": "Manusia II", "wolfkin": "Serigala",
 	"lizardkin": "Kadal", "candyfolk": "Permen", "frostkin": "Es", "undead": "Mayat Hidup"}
-const HAIR_NAME := {"short": "Pendek", "long": "Panjang", "spiky": "Jabrik", "none": "Tanpa"}
+const HAIR_NAME := {"short": "Pendek", "long": "Panjang", "spiky": "Jabrik", "mohawk": "Mohawk", "bun": "Sanggul", "none": "Tanpa"}
 const SKIN_SWATCH := ["", "#f5c9a2", "#c98a5c", "#a5713f", "#8d5a3a", "#e8b98f", "#6fb4d9", "#f78fc8", "#a89fc4", "#4fa352"]
 const HAIR_SWATCH := ["#241f36", "#6b4226", "#3a2a1a", "#c9a227", "#e8e2f4", "#8f2611", "#3a6fa0", "#b8e4f2", "#c4302b", "#eefaff"]
 const CLOTH_SWATCH := ["#2e6b3f", "#8a3a6b", "#1e3a5c", "#8f2611", "#453d5c", "#3a6fa0", "#5c2380", "#6b4226", "#d95fa4", "#c9a227", "#2b2b3a", "#e8e2f4"]

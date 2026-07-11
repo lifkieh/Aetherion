@@ -363,6 +363,8 @@ func _test_chargen() -> void:
 	check("walk_down has 4 frames (0-1-2-1)", sf.get_frame_count("walk_down") == 4)
 	check("idle_down animation present", sf.has_animation("idle_down"))
 	check("all 4 directions have walk anims", sf.has_animation("walk_up") and sf.has_animation("walk_left") and sf.has_animation("walk_right"))
+	check("attack_down is a 2-frame non-loop swing", sf.has_animation("attack_down") and sf.get_frame_count("attack_down") == 2 and not sf.get_animation_loop("attack_down"))
+	check("6 hair styles (added mohawk/bun)", CharGen.hair_styles().size() == 6)
 
 func _test_onboarding() -> void:
 	print("[Onboarding + Guide chain]")

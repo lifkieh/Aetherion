@@ -127,7 +127,7 @@ func _do_attack() -> void:
 	aim = aim.normalized() if aim.length() > 2.0 else _facing_vec()
 	facing = SheetUtil.dir_from_vec(aim)
 	_attacking = ATTACK_TIME
-	sprite.play("walk_" + facing)
+	sprite.play("attack_" + facing)
 	match _weapon_type():
 		"bow":
 			_attack_cd = 0.3

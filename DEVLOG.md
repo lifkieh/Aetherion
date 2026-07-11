@@ -20,6 +20,11 @@ migrated townsfolk (walking Villagers + guide/shop/astrologer NPCs) to CharGen �
 race×part combos compose without crash, save/load config, creator navigable. QC vs owner reference in
 `reports/chargen_gd_preview.png`.
 
+Generator improvements (owner-encouraged, iterating from in-game screenshots): added a 2-frame **attack swing**
+per direction (`attack_<dir>`, non-looping) wired into `Player._do_attack` (replaces the old walk-anim hack), and two
+more hair styles (**mohawk**, **bun**). Player/villager sprites are now full 32px characters (was 16px). Remaining
+generator ideas (dedicated attack-pose art, a separate outfit-shape layer, per-region races) tracked for later.
+
 ## 2026-07-12 — Tree feedback CORRECTION (owner clarified)
 
 I had over-deleted. Owner clarified: only the box/blob-canopy style was unwanted; other trees return as pure decor.
