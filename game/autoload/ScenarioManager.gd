@@ -23,6 +23,16 @@ func threshold(sc: Dictionary) -> int:
 		return int(sc.debug_counters.get("rabbits_killed", 10))
 	return int(sc.get("counters", {}).get("rabbits_killed", 10000))
 
+## Generic: are ALL of a scenario's counters at/over threshold? (debug values in debug mode)
+func _counters_met(sc: Dictionary) -> bool:
+	var counters: Dictionary = sc.get("counters", {})
+	if _debug() and sc.has("debug_counters"):
+		counters = sc.debug_counters
+	for key in counters.keys():
+		if WorldState.get_counter(key) < int(counters[key]):
+			return false
+	return true
+
 ## Pure check: which scenario would trigger for this action right now (or "").
 func would_trigger(action: String) -> String:
 	for sc in Db.scenarios:
@@ -32,7 +42,7 @@ func would_trigger(action: String) -> String:
 		var flag: String = PlayerData.scenario_flags.get(id, "")
 		if flag == "cleared" or flag == "failed":
 			continue   # no_fail: permanent, never re-triggers
-		if WorldState.get_counter("rabbits_killed") < threshold(sc):
+		if not _counters_met(sc):
 			continue
 		var needs_full: bool = sc.get("sky", {}).get("full_moon", false)
 		if needs_full and not GameClock.is_full_moon() and not _debug():

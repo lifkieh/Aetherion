@@ -50,7 +50,8 @@
   {"id": "soda_syrup", "name": "Sirup Soda", "tier": "E", "type": "material", "value": 26, "stack": 999},
   {"id": "pixie_dust", "name": "Debu Peri", "tier": "D", "type": "material", "value": 80, "stack": 999},
   {"id": "choco_wood", "name": "Kayu Cokelat", "tier": "F", "type": "material", "value": 16, "stack": 999, "shop_demand": 14},
-  {"id": "candy_bar", "name": "Cokelat Batangan", "tier": "E", "type": "consumable", "heal": 90, "value": 45, "stack": 99},
+  {"id": "candy_bar", "name": "Cokelat Batangan", "tier": "E", "type": "consumable", "heal": 90, "value": 45, "stack": 99, "candy": true},
+  {"id": "royal_tea_cake", "name": "Kue Teh Kerajaan", "tier": "S", "type": "consumable", "heal": 400, "restore_mp": 200, "value": 0, "stack": 99, "candy": true, "desc": "Resep [S] Sugar Queen. Menyembuhkan total & memberi vigor."},
 
   {"id": "fish_carp", "name": "Ikan Mas", "tier": "F", "type": "material", "value": 20, "stack": 999, "shop_demand": 14},
   {"id": "fish_trout", "name": "Trout Pagi", "tier": "F", "type": "material", "value": 35, "stack": 999},
@@ -73,7 +74,7 @@
 
   {"id": "grilled_fish", "name": "Ikan Bakar", "tier": "E", "type": "consumable", "heal": 110, "value": 55, "stack": 99},
   {"id": "fish_sushi", "name": "Sushi", "tier": "D", "type": "consumable", "heal": 80, "restore_mp": 50, "value": 95, "stack": 99},
-  {"id": "candy_cake", "name": "Kue Permen", "tier": "D", "type": "consumable", "heal": 200, "value": 130, "stack": 99},
+  {"id": "candy_cake", "name": "Kue Permen", "tier": "D", "type": "consumable", "heal": 200, "value": 130, "stack": 99, "candy": true},
   {"id": "cactus_juice", "name": "Jus Kaktus", "tier": "E", "type": "consumable", "restore_mp": 90, "value": 50, "stack": 99},
   {"id": "meat_jerky", "name": "Dendeng", "tier": "E", "type": "consumable", "heal": 140, "value": 70, "stack": 99},
   {"id": "moonfish_feast", "name": "Jamuan Moonfish", "tier": "C", "type": "consumable", "heal": 320, "restore_mp": 120, "value": 300, "stack": 99},

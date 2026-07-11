@@ -328,6 +328,12 @@ func _use_consumable(id: String, def: Dictionary) -> void:
 	if def.has("restore_mp"): PlayerData.restore_mp(int(def.restore_mp))
 	Audio.play_sfx("success")
 	EventBus.toast.emit("Menggunakan " + def.get("name", id))
+	# Eating candy feeds the Sugar Queen's Tea Party hidden scenario (v0.2 §8.2).
+	if def.get("candy", false):
+		WorldState.add_counter("candies_eaten")
+		close_menu()
+		if ScenarioManager.try_trigger("eat_candy"):
+			return
 	_rebuild()
 
 func _build_crafting() -> void:

@@ -24,6 +24,7 @@ func _ready() -> void:
 	_test_economy()
 	_test_crafting()
 	_test_scenario()
+	await _test_sugarqueen()
 	_test_saveload()
 	_test_achievements()
 	_test_quests()
@@ -553,6 +554,44 @@ func _test_saveload() -> void:
 	check("backup created", FileAccess.file_exists(SaveManager.backup_path(3, 1)))
 	check("schema version present", SaveManager.build_payload().get("schema_version", 0) == SaveManager.SCHEMA_VERSION)
 	SaveManager.delete_save(3)
+
+func _test_sugarqueen() -> void:
+	print("[Sugar Queen Tea Party]")
+	check("scenario loaded", not ScenarioManager.find("sugar_queen_tea").is_empty())
+	PlayerData.new_game()
+	PlayerData.scenario_flags.erase("sugar_queen_tea")
+	WorldState.set_counter("candies_eaten", 0)
+	check("no trigger below candy threshold", ScenarioManager.would_trigger("eat_candy") == "")
+	WorldState.set_counter("candies_eaten", 100)
+	check("triggers at 100 candies", ScenarioManager.would_trigger("eat_candy") == "sugar_queen_tea")
+	# reward
+	PlayerData.inventory.clear()
+	PlayerData.scenario_flags.erase("sugar_queen_tea")
+	ScenarioManager.apply_result("sugar_queen_tea", true)
+	check("clear gives Royal Tea Cake [S]", PlayerData.item_count("royal_tea_cake") == 1)
+	check("clear grants sugar_blessed", "sugar_blessed" in PlayerData.titles)
+	# quiz: all correct -> win + Peppermint Fairy
+	var tp = preload("res://scenes/scenarios/TeaParty.tscn").instantiate()
+	tp._shot_at = 999.0   # block resolve()/scene change
+	add_child(tp)
+	await get_tree().process_frame
+	var pets_before: int = PlayerData.monsters.size()
+	for q in tp.QUESTIONS:
+		tp.answer(int(q.correct))
+	check("all-correct wins quiz", tp.resolved and tp.idx == tp.QUESTIONS.size())
+	check("win grants Peppermint Fairy pet", PlayerData.monsters.size() == pets_before + 1)
+	tp.queue_free()
+	# quiz: 3 wrong -> expelled
+	var tp2 = preload("res://scenes/scenarios/TeaParty.tscn").instantiate()
+	tp2._shot_at = 999.0
+	add_child(tp2)
+	await get_tree().process_frame
+	var wc: int = (int(tp2.QUESTIONS[0].correct) + 1) % tp2.QUESTIONS[0].a.size()
+	tp2.answer(wc); tp2.answer(wc); tp2.answer(wc)   # wrong stays on Q0
+	check("3 wrong = expelled (fail)", tp2.resolved and tp2.wrong >= 3)
+	tp2.queue_free()
+	PlayerData.new_game()
+	WorldState.set_counter("candies_eaten", 0)
 
 func _test_scenario() -> void:
 	print("[ScenarioManager]")

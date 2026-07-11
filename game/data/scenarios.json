@@ -13,6 +13,18 @@
     "debug_counters": {"rabbits_killed": 10}
   },
   {
+    "id": "sugar_queen_tea",
+    "name": "The Sugar Queen's Tea Party",
+    "counters": {"candies_eaten": 100},
+    "trigger_action": "eat_candy",
+    "no_fail": true,
+    "scene": "res://scenes/scenarios/TeaParty.tscn",
+    "reward_item": "royal_tea_cake",
+    "reward_trait": "sugar_blessed",
+    "hint": "Cicipi seratus manis dalam sehari, dan sang Ratu Gula akan mengundangmu ke jamuan.",
+    "debug_counters": {"candies_eaten": 5}
+  },
+  {
     "id": "star_whale_belly",
     "name": "Belly of the Star Whale",
     "trigger_action": "hook_starwhale",

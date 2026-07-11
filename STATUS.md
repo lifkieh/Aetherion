@@ -129,7 +129,9 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 ## Next steps (exact) — for the next session, resume here
 0. **Profession polish**: profession-gated recipe access (main-only A+ tier), reawaken/change-main quest,
    profession-level EXP display in HUD. (Core XP+perks already done.)
-1. **Sugar Queen Tea Party** hidden scenario (Candyveil): trigger "eat 100 different candies in a day"
+1. ✅ **Sugar Queen Tea Party** — DONE (eat 100 candies [debug 5] → 3-round etiquette quiz → 3 wrong = expelled
+   permanent; clear → Royal Tea Cake [S] + Peppermint Fairy pet + sugar_blessed). Generic scenario counters now.
+   ~~trigger "eat 100 different candies in a day"~~
    (track candy-eating in a daily counter) → etiquette quiz scene (3-round Q&A, 3 wrong = fail permanent) →
    reward Cook [S] recipe + Peppermint Fairy pet. ScenarioManager.trigger_scenario supports the entry.
 2. **Frostpeak Mountain** region (Monster_Roster §2.4, 7 monsters incl. Ice element; blizzard weather that

@@ -25,5 +25,7 @@
   {"id": "cook_jerky", "result": "meat_jerky", "qty": 2, "station": "bench", "profession": "cook", "level": 1, "success_rate": 0.9,
    "ingredients": [{"item": "boar_meat", "qty": 2}, {"item": "sandstone", "qty": 1}]},
   {"id": "cook_moonfeast", "result": "moonfish_feast", "qty": 1, "station": "bench", "profession": "cook", "level": 4, "success_rate": 0.6,
-   "ingredients": [{"item": "fish_moon", "qty": 1}, {"item": "sugar_crystal", "qty": 2}]}
+   "ingredients": [{"item": "fish_moon", "qty": 1}, {"item": "sugar_crystal", "qty": 2}]},
+  {"id": "cook_royal_cake", "result": "royal_tea_cake", "qty": 1, "station": "bench", "profession": "cook", "tier": "S", "level": 20, "success_rate": 0.01,
+   "ingredients": [{"item": "candy_cake", "qty": 1}, {"item": "sugar_crystal", "qty": 5}, {"item": "gel_core", "qty": 1}]}
 ]
