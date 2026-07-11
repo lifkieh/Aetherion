@@ -2,6 +2,24 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — v0.2-alpha closeout (tag reconcile · balance re-verify · re-export · FREEZE)
+
+- **`v0.1-alpha` tag reconciled.** Investigated the DEVLOG "points at pre-purge orphan" note — it was stale:
+  `git merge-base --is-ancestor` showed the tag already resolved to `4b2ae50`, an in-history commit (filter-repo had
+  rewritten the tag object during the purge, and it had since been pushed). Recreated the annotated tag on the same
+  correct commit (`4b2ae50` — last Fase-0 commit before the UI/UX round) with an annotation explaining the post-purge
+  equivalence, and force-pushed. Both `v0.1-alpha`→`4b2ae50` and `v0.2-alpha`→`8451f55` now resolve cleanly.
+- **Balance re-verified TTK-neutral.** Re-ran `AETHER_BALANCE=1` after SKILL_AUDIT: probe numbers are **identical** to
+  the Fase-0 baseline. SKILL_AUDIT changed mana *cost* (not `skill_mod`) and attack *routing* (not the `CombatResolver`
+  math the probe drives), so TTK cannot have moved. The residual >30% deviations are the pre-existing, by-design
+  archetype ones (fragile/swift glass-cannons die fast; every tank on/near target). No retune — that's a balance call
+  for the owner playtest. Documented in `BALANCE_REPORT.md`.
+- **Re-exported `.exe` from v0.2-alpha.** `godot --headless --path game --export-release "Windows Desktop"` →
+  `export/Aetherion.exe` **84.9 MB** (embedded PCK, includes the new `HouseInterior.scn` + all §7 assets). Standalone
+  boot verified headless: engine inits, `[Db] Loaded: 33 monsters, 72 items, 16 skills, 14 recipes…`, no script errors.
+- **FREEZE.** Feature/content development halted pending owner playtest. Frozen next-content list (Frostpeak, Storm
+  Island, Pact System, extended roster) recorded in `STATUS.md` for reactivation after feedback.
+
 ## 2026-07-11 — UI/UX §7: Asset & polish + v0.2-alpha (DONE)
 
 All assets below are **original** (generated with PIL / procedural audio) — self-contained, no external packs.

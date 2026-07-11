@@ -1,3 +1,29 @@
+# BALANCE REPORT — TTK aktual vs target
+
+## Re-verifikasi v0.2-alpha (2026-07-11, pasca SKILL_AUDIT §6)
+
+Owner meminta re-run karena SKILL_AUDIT mengubah DPS-per-mana (flame_slash mp 8→9,
+spark_bolt 10→9) dan weapon behavior (top-down kini bercabang per `weapon_type`).
+
+**Hasil: TTK IDENTIK dengan baseline di bawah — SKILL_AUDIT bersifat TTK-netral.** Sebabnya:
+- Probe mengukur damah lewat `CombatResolver` memakai `skill_mod` (`strike` + `flame_slash` tiap hit ke-6).
+  `flame_slash.skill_mod` tetap **1.7** — yang berubah cuma `mp_cost` (biaya mana, bukan damage). Probe tidak
+  membelanjakan mana, jadi angkanya tak bergeser sedikit pun.
+- Perubahan weapon-behavior hanya me-*rute*-kan serangan (melee arc vs proyektil ke kursor); probe memakai
+  `CombatResolver` langsung dengan `copper_sword`, bukan jalur input serangan.
+
+Angka run v0.2-alpha (sama persis dengan tabel Fase 0): fluffbit −73%, verdant_slime −20%, grey_wolf −54%,
+wild_boar −47%, forest_fox −65%, cervel −73%, treant_sapling −14%, king_slime +24%, gummy_slime −34%,
+rock_golem −4%.
+
+**Keputusan retune: TIDAK.** Deviasi >30% yang tersisa **bukan** akibat SKILL_AUDIT — semuanya pra-ada dan
+sudah didokumentasikan sebagai **by-design arketipe** (swift/bruiser rapuh = glass cannon mati cepat; **setiap
+tank on/near-target**). Menaikkan lantai HP arketipe rapuh (rekomendasi #2) adalah perubahan balance yang lebih
+tepat divalidasi oleh **playtest owner** yang akan datang — bukan tebakan pra-playtest. Konten & balance
+di-freeze sampai feedback masuk.
+
+---
+
 # BALANCE REPORT — TTK aktual vs target (Fase 0)
 
 Digenerate oleh probe headless `AETHER_BALANCE=1` (200 trial/monster, pemain **se-level** dengan gear

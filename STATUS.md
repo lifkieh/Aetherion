@@ -171,7 +171,30 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   the purged repo) → made original icons instead. **FPS 60 maintained** (134 props, 680 nodes — still ringan). Verified
   renders `reports/{monster_preview,item_icons,inventory_icons,interior}.png`. 229/229 tests.
 
-**Round status: parts 0–7 all ✅ DONE. Ready to tag v0.2-alpha.**
+**Round status: parts 0–7 all ✅ DONE. Tagged `v0.2-alpha`.**
+
+### Penutupan v0.2-alpha (2026-07-11)
+- **Tag `v0.1-alpha` direkonsiliasi** — dibuat ulang di commit in-history `4b2ae50` (commit Fase-0 terakhir sebelum
+  ronde UI/UX), anotasi mencatat kesetaraan pasca-purge; force-push. Ternyata tag lama **sudah** menunjuk commit valid
+  di riwayat (bukan yatim lagi) — DEVLOG lama kadaluarsa; kini bersih & jelas. `v0.2-alpha` → `8451f55`.
+- **Balance re-verify** — probe TTK di-run ulang pasca SKILL_AUDIT: **angka identik dengan baseline** (audit hanya
+  ubah biaya mana + rute serangan, bukan matematika damage). Deviasi >30% tersisa = arketipe rapuh by-design (tank
+  on-target). **Tidak retune** — perubahan balance menunggu playtest. Lihat `BALANCE_REPORT.md` bagian v0.2-alpha.
+- **Re-export `.exe`** — `export/Aetherion.exe` **84.9 MB** (embedded PCK, <150 MB), **boot standalone OK** (Godot 4.3
+  init, `[Db] Loaded: 33 monsters/72 items/16 skills…`, tanpa script error).
+
+## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER
+Ronde UI/UX (v0.2-alpha) selesai & di-tag. **Pengembangan fitur/konten DIHENTIKAN** sampai feedback playtest owner
+masuk. Tujuan berikutnya ditentukan oleh hasil playtest (bug, feel, kejelasan onboarding, balance in-game).
+
+### Konten BEKU — diaktifkan kembali setelah feedback
+Sengaja ditunda saat ronde UI/UX dan tetap beku sampai owner memberi lampu hijau:
+- **Frostpeak** — region salju/es (top-down) + dungeon side-view temanya.
+- **Storm Island** — region badai/petir + dungeon.
+- **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).
+- **Roster monster lanjutan** — spesies tahap berikut untuk region baru + evolusi lanjutan.
+Saat diaktifkan: ikuti pola data-driven yang ada (regions = scene + safe_zone di `towns.json`, monster di
+`monsters.json`, dungeon via `DungeonBase`, sprite/SFX orisinal), dan pertahankan target *game ringan* (ukur FPS).
 - Rule: game ringan (measure FPS before/after), headless test per system, commit+push per part, **tag v0.2-alpha** at end.
 - **Definition of done:** a brand-new player with zero explanation understands how to play within 10 minutes.
 
