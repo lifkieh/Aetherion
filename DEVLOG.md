@@ -2,6 +2,24 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — Aetherion Character System v2 + Celestia canon (owner directive)
+
+Owner FINAL decision: **LPC rejected** (no share-alike assets). Character system = our own modular
+**Aetherion Character System** (`gen_charsys_v2.py`, ported to `CharGen.gd`). Characters compose per-body-part
+layers, each with its own race: tail → legs → torso+arms → head → hair. 7 races (human, human2, wolfkin,
+lizardkin, candyfolk, frostkin, undead) mix freely (chimera). Per-part skin + hair + outfit colours are free params.
+
+**NEW CANON — Celestia Kingdom:** the capital where **all races unite** (multi-race is its identity). To be built
+later as the largest city. Recorded here + in the in-game Aetherpedia ("Dunia" section). Other settlements have
+thematic races (Greenvale = 100% human; Frostpeak village = frostkin/wolfkin/furry humans).
+
+Delivered: CharGen autoload (96×128 sheet from config, cached, sprite_frames 0-1-2-1 + idle); player builds its look
+from `PlayerData.char_config` (saved as JSON); in-game **Character Creator** at New Game (per-part race, hair,
+per-part skin, outfit colours, live 4-dir preview, randomize) + **Cermin Jiwa** NPC (re-customize for 150 g);
+migrated townsfolk (walking Villagers + guide/shop/astrologer NPCs) to CharGen — Greenvale all human. Tests: all 343
+race×part combos compose without crash, save/load config, creator navigable. QC vs owner reference in
+`reports/chargen_gd_preview.png`.
+
 ## 2026-07-12 — Tree feedback CORRECTION (owner clarified)
 
 I had over-deleted. Owner clarified: only the box/blob-canopy style was unwanted; other trees return as pure decor.

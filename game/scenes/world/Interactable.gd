@@ -45,13 +45,9 @@ func _build() -> void:
 		sprite.offset = Vector2(0, -14)
 		label.text = dungeon_label
 	elif kind == "astrologer":
-		var at := AtlasTexture.new()
-		at.atlas = load("res://assets/game/sprites/player/idle.png")
-		at.region = Rect2(0, 0, 16, 16)
-		sprite.texture = at
-		sprite.scale = Vector2(1.4, 1.4)
-		sprite.modulate = Color(0.7, 0.7, 1.0)
-		label.text = "Astrologer [E]"
+		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
+			"hair": "long", "hair_color": "#3a6fa0", "shirt": "#5c2380", "pants": "#453d5c"})
+		label.text = "Astrolog [E]"
 	elif kind == "pond":
 		sprite.texture = load("res://assets/game/tiles/pond.png")
 		sprite.scale = Vector2(1.6, 1.6)
@@ -77,27 +73,29 @@ func _build() -> void:
 		sprite.offset = Vector2(0, -8)
 		label.text = "Cermin Jiwa [E]"
 	elif kind == "guide":
-		var at := AtlasTexture.new()
-		at.atlas = load("res://assets/game/sprites/player/idle.png")
-		at.region = Rect2(0, 0, 16, 16)
-		sprite.texture = at
-		sprite.scale = Vector2(1.5, 1.5)
-		sprite.modulate = Color(0.6, 1.0, 0.7)   # friendly green guide
+		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
+			"hair": "short", "hair_color": "#6b4226", "shirt": "#2e6b3f", "pants": "#453d5c"})
 		label.text = "Pemandu [E]"
 	elif kind == "shop":
-		# NPC placeholder: player base sprite, first frame, tinted.
-		var at := AtlasTexture.new()
-		at.atlas = load("res://assets/game/sprites/player/idle.png")
-		at.region = Rect2(0, 0, 16, 16)
-		sprite.texture = at
-		sprite.scale = Vector2(1.4, 1.4)
-		sprite.modulate = Color(1.0, 0.9, 0.6)
+		_char_sprite({"head_race": "human2", "torso_race": "human2", "legs_race": "human2",
+			"hair": "short", "hair_color": "#241f36", "shirt": "#c9a227", "pants": "#453d5c"})
 		label.text = "Pedagang [E]"
 	else:
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(1.8, 1.4)
 		sprite.modulate = Color(0.7, 0.5, 0.35)
 		label.text = "Bengkel [E]"
+
+## Render a townsfolk NPC from a CharGen config (idle, facing down).
+func _char_sprite(config: Dictionary) -> void:
+	var tex := CharGen.sheet_texture(config)
+	var at := AtlasTexture.new()
+	at.atlas = tex
+	at.region = Rect2(CharGen.CW, 0, CharGen.CW, CharGen.CH)   # frame 1 (idle), row 0 (down)
+	sprite.texture = at
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	sprite.scale = Vector2.ONE
+	sprite.offset = Vector2(0, -8)
 
 func interact() -> void:
 	if Stage.is_busy():

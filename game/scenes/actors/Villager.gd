@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 const SPEED := 26.0
 
-var _tint := Color(1, 1, 1)
+var _config: Dictionary = {}
 var _name := "Warga"
 var _waypoints: Array = []       # global positions to loop between
 var _wp := 0
@@ -13,9 +13,9 @@ var _pause := 0.0
 var _sprite: AnimatedSprite2D
 var _label: Label
 
-func setup(nm: String, tint: Color, waypoints: Array) -> void:
+func setup(nm: String, config: Dictionary, waypoints: Array) -> void:
 	_name = nm
-	_tint = tint
+	_config = config
 	_waypoints = waypoints
 	if is_inside_tree():
 		global_position = waypoints[0]
@@ -31,10 +31,9 @@ func _ready() -> void:
 
 func _build() -> void:
 	_sprite = AnimatedSprite2D.new()
-	var tex := load("res://assets/game/sprites/player/walk.png")
-	_sprite.sprite_frames = SheetUtil.build_directional(tex, 16, 4, 4, 8.0)
-	_sprite.modulate = _tint
+	_sprite.sprite_frames = CharGen.sprite_frames(_config if not _config.is_empty() else CharGen.default_config())
 	_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_sprite.offset = Vector2(0, -8)     # 32px cell: feet at the node origin
 	_sprite.play("idle_down")
 	add_child(_sprite)
 	_label = Label.new()

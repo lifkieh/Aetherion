@@ -286,6 +286,20 @@ func _build_quests() -> void:
 
 func _build_pedia() -> void:
 	title.text = "Aetherpedia"
+	# --- Dunia / lore (Celestia canon) ---
+	var lore := _mk_label("🌍 Dunia Aetherion", 18)
+	lore.add_theme_color_override("font_color", UiTheme.ACCENT)
+	content.add_child(lore)
+	for line in [
+		"Celestia Kingdom — ibukota agung tempat SEMUA ras hidup berdampingan. Multi-ras adalah jati dirinya; kota terbesar di Aetherion.",
+		"Ras: Manusia, Serigala (Wolfkin), Kadal (Lizardkin), Permen (Candyfolk), Es (Frostkin), dan Mayat Hidup (Undead).",
+		"Tiap pemukiman punya warna rasnya: Greenvale kaum manusia; Frostpeak dihuni Frostkin & Wolfkin berbulu tebal.",
+	]:
+		var b := _mk_label(line, 13)
+		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		b.custom_minimum_size = Vector2(500, 0)
+		content.add_child(b)
+	content.add_child(_mk_label(" ", 8))
 	var mon_seen := Achievements.discovered_count("monsters")
 	var mon_total := Achievements.total_monsters()
 	content.add_child(_mk_label("Monster ditemukan: %d / %d" % [mon_seen, mon_total], 16))

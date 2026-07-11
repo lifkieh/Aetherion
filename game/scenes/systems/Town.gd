@@ -246,13 +246,19 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 
 # --- strolling villagers ----------------------------------------------------
 
+static func _human(hair: String, hc: String, shirt: String, pants: String, dark := false) -> Dictionary:
+	var race := "human2" if dark else "human"
+	return {"head_race": race, "torso_race": race, "legs_race": race,
+		"hair": hair, "hair_color": hc, "shirt": shirt, "pants": pants}
+
 static func _place_villagers(host: Node2D, center: Vector2) -> void:
+	# Greenvale = 100% human — varied looks from CharGen (Aetherion Character System).
 	var routes := [
-		["Bu Sari", Color(1.0, 0.8, 0.7), [Vector2(-140, 0), Vector2(140, 10), Vector2(120, 120), Vector2(-120, 110)]],
-		["Pak Budi", Color(0.75, 0.85, 1.0), [Vector2(0, -80), Vector2(200, -40), Vector2(60, 90)]],
-		["Rina", Color(1.0, 0.95, 0.65), [Vector2(-200, 100), Vector2(-40, 60), Vector2(-260, 40)]],
-		["Joko", Color(0.8, 1.0, 0.8), [Vector2(100, 40), Vector2(260, 120), Vector2(120, 170)]],
-		["Nenek Ijah", Color(0.9, 0.8, 1.0), [Vector2(-60, 150), Vector2(60, 160), Vector2(0, 60)]],
+		["Bu Sari", _human("long", "#241f36", "#8a3a6b", "#5c2380", true), [Vector2(-140, 0), Vector2(140, 10), Vector2(120, 120), Vector2(-120, 110)]],
+		["Pak Budi", _human("short", "#3a2a1a", "#1e3a5c", "#453d5c"), [Vector2(0, -80), Vector2(200, -40), Vector2(60, 90)]],
+		["Rina", _human("long", "#c9a227", "#2e6b3f", "#6b4226"), [Vector2(-200, 100), Vector2(-40, 60), Vector2(-260, 40)]],
+		["Joko", _human("short", "#241f36", "#8f2611", "#2b2b3a", true), [Vector2(100, 40), Vector2(260, 120), Vector2(120, 170)]],
+		["Nenek Ijah", _human("long", "#e8e2f4", "#5c2380", "#453d5c"), [Vector2(-60, 150), Vector2(60, 160), Vector2(0, 60)]],
 	]
 	for r in routes:
 		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
