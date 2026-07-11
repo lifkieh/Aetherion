@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dssyxi00brh21"
-path="res://.godot/imported/tree_birch.png-1478236f649f52adda53c9b1c9c0d16c.ctex"
+uid="uid://bictiagje4svb"
+path="res://.godot/imported/tree_pine_big.png-c76cbc2d824fdfc0449d7d952840c95a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/sprites/props/tree_birch.png"
-dest_files=["res://.godot/imported/tree_birch.png-1478236f649f52adda53c9b1c9c0d16c.ctex"]
+source_file="res://assets/game/sprites/props/tree_pine_big.png"
+dest_files=["res://.godot/imported/tree_pine_big.png-c76cbc2d824fdfc0449d7d952840c95a.ctex"]
 
 [params]
 

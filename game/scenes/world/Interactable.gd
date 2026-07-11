@@ -37,12 +37,12 @@ func _process(delta: float) -> void:
 
 func _build() -> void:
 	if kind == "dungeon":
-		var at2 := AtlasTexture.new()
-		at2.atlas = load("res://assets/game/tiles/nature.png")
-		at2.region = Rect2(16, 48, 32, 32)
-		sprite.texture = at2
-		sprite.modulate = Color(0.35, 0.3, 0.45)
-		sprite.offset = Vector2(0, -8)
+		# a dark stone archway reads as a cave/dungeon mouth (no more blob-tree sprite)
+		sprite.texture = load("res://assets/game/sprites/props/stone_gate.png")
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.scale = Vector2(1.3, 1.3)
+		sprite.modulate = Color(0.5, 0.45, 0.6)
+		sprite.offset = Vector2(0, -14)
 		label.text = dungeon_label
 	elif kind == "astrologer":
 		var at := AtlasTexture.new()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgbk56kbpddjl"
-path="res://.godot/imported/tree_oak.png-e5f59a8acfe6b18fa970fb292b994746.ctex"
+uid="uid://7fklf5phe5xt"
+path="res://.godot/imported/tree_pine_snow_a.png-bb1d9317fc2fd842c0d72f49df65b516.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/sprites/props/tree_oak.png"
-dest_files=["res://.godot/imported/tree_oak.png-e5f59a8acfe6b18fa970fb292b994746.ctex"]
+source_file="res://assets/game/sprites/props/tree_pine_snow_a.png"
+dest_files=["res://.godot/imported/tree_pine_snow_a.png-bb1d9317fc2fd842c0d72f49df65b516.ctex"]
 
 [params]
 

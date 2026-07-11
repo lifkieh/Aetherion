@@ -10,6 +10,7 @@ var kind := "tree"
 var node_id := ""
 var _hits_left := 3
 var _depleted := false
+var _tree_variant := "tree_pine_b"
 
 @onready var sprite: Sprite2D = $Sprite
 
@@ -27,7 +28,11 @@ func _ready() -> void:
 		_apply()
 
 func _apply() -> void:
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	z_index = int(global_position.y)          # y-sort so the player can walk behind
 	_build_sprite()
+	if kind == "tree":
+		_add_trunk_collision()                # trunk-only: canopy stays walkable
 	_set_depleted(not WorldState.node_ready(node_id, RESPAWN.get(kind, 60)))
 
 func _build_sprite() -> void:
@@ -38,16 +43,43 @@ func _build_sprite() -> void:
 		sprite.texture = load("res://assets/game/tiles/desert/rock.png")
 		sprite.scale = Vector2(1.8, 1.6)
 	elif kind == "tree":
-		var at := AtlasTexture.new()
-		at.atlas = load("res://assets/game/tiles/nature.png")
-		at.region = Rect2(16, 48, 32, 32)
-		sprite.texture = at
-		sprite.offset = Vector2(0, -8)
+		# choppable trees use ONLY the approved pine style (3 sizes, stable per node)
+		_tree_variant = ["tree_pine_a", "tree_pine_b", "tree_pine_c"][_variant_index()]
+		# actual sprite (tree vs stump) is set by _set_depleted below
 	else:
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(1.6, 1.6)
 		sprite.modulate = Color(0.85, 0.55, 0.35)
 	_hits_left = HITS.get(kind, 3)
+
+func _variant_index() -> int:
+	var s := 0
+	for i in range(node_id.length()):
+		s += node_id.unicode_at(i)
+	return s % 3
+
+func _prop(name: String) -> Texture2D:
+	return load("res://assets/game/sprites/props/%s.png" % name)
+
+func _show_prop(name: String) -> void:
+	var tex := _prop(name)
+	sprite.texture = tex
+	sprite.offset = Vector2(0, -tex.get_height() * 0.5 + 1)   # base sits at the node origin
+	sprite.rotation = 0.0
+	sprite.modulate.a = 1.0
+
+func _add_trunk_collision() -> void:
+	if has_node("Trunk"):
+		return
+	var body := StaticBody2D.new()
+	body.name = "Trunk"
+	var cs := CollisionShape2D.new()
+	var shape := RectangleShape2D.new()
+	shape.size = Vector2(7, 6)
+	cs.shape = shape
+	cs.position = Vector2(0, -1)
+	body.add_child(cs)
+	add_child(body)
 
 func _process(_delta: float) -> void:
 	if _depleted and WorldState.node_ready(node_id, RESPAWN.get(kind, 60)):
@@ -68,14 +100,33 @@ func harvest() -> bool:
 		return false
 	_hits_left -= 1
 	Audio.play_sfx("mine" if kind == "ore" else "dodge")
-	var tw := create_tween()
-	tw.tween_property(sprite, "position:x", 2.0, 0.05)
-	tw.tween_property(sprite, "position:x", 0.0, 0.05)
+	if kind == "tree":
+		_sway()
+	else:
+		var tw := create_tween()
+		tw.tween_property(sprite, "position:x", 2.0, 0.05)
+		tw.tween_property(sprite, "position:x", 0.0, 0.05)
 	if _hits_left <= 0:
+		_depleted = true                       # lock immediately so it can't be re-hit
 		_do_drop()
-		_set_depleted(true)
 		WorldState.mark_node_harvested(node_id)
+		if kind == "tree":
+			await _fall()                      # timber! lean over, then leave a stump
+		_set_depleted(true)
 	return true
+
+func _sway() -> void:
+	var tw := create_tween()
+	tw.tween_property(sprite, "rotation", 0.13, 0.06)
+	tw.tween_property(sprite, "rotation", -0.06, 0.06)
+	tw.tween_property(sprite, "rotation", 0.0, 0.08)
+
+func _fall() -> void:
+	var tw := create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(sprite, "rotation", 1.35, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.tween_property(sprite, "modulate:a", 0.0, 0.4)
+	await tw.finished
 
 func _do_drop() -> void:
 	var prof := "miner" if kind in ["ore", "sandstone"] else "lumberjack"
@@ -91,4 +142,11 @@ func _do_drop() -> void:
 
 func _set_depleted(v: bool) -> void:
 	_depleted = v
-	modulate.a = 0.35 if v else 1.0
+	if kind == "tree":
+		if v:
+			_show_prop("stump")               # chopped -> stump (regrows on respawn)
+		else:
+			_show_prop(_tree_variant)          # regrown pine
+		modulate.a = 1.0
+	else:
+		modulate.a = 0.35 if v else 1.0

@@ -8,20 +8,28 @@ extends RefCounted
 const TILE := 16
 const PDIR := "res://assets/game/sprites/props/"
 
-# Themed decorative sprite pools (weighted by repetition).
+# Themed decorative sprite pools (weighted by repetition). Trees use ONLY the two
+# approved styles: tiered pointed pines (living) and bare dead trunks (gloomy).
 const THEMES := {
-	"forest": ["tree_oak", "tree_oak", "tree_pine", "tree_birch", "bush", "bush", "stump",
-		"log_fallen", "tree_dead", "mushroom", "flower_pink", "flower_blue", "rock", "pebbles", "grass"],
+	"forest": ["tree_pine_b", "tree_pine_b", "tree_pine_a", "tree_pine_c", "tree_dead_a",
+		"bush", "bush", "stump", "log_fallen", "mushroom", "flower_pink", "flower_blue", "rock", "pebbles", "grass"],
+	"frost": ["tree_pine_snow_a", "tree_pine_snow_b", "tree_pine_snow_a", "tree_dead_b", "rock", "pebbles", "stump"],
 	"candy": ["tree_candy", "tree_candy", "gumdrop", "lollipop", "candy_cane", "bush",
 		"flower_pink", "flower_pink", "pebbles", "mushroom"],
 	"desert": ["cactus", "cactus_ball", "dead_bush", "dead_bush", "desert_rock", "desert_rock",
-		"tree_dead", "rock", "pebbles"],
+		"tree_dead_c", "rock", "pebbles"],
 }
 # Edge-band sprite (natural wall) per theme.
-const EDGE := {"forest": ["tree_pine", "tree_oak"], "candy": ["tree_candy", "gumdrop"], "desert": ["desert_rock", "cactus"]}
+const EDGE := {
+	"forest": ["tree_pine_c", "tree_pine_b", "tree_dead_a"],
+	"frost": ["tree_pine_snow_b", "tree_pine_snow_a"],
+	"candy": ["tree_candy", "gumdrop"],
+	"desert": ["desert_rock", "cactus"],
+}
 # Directional landmarks [sprite, scale] — N, E, S, W.
 const LANDMARKS := {
-	"forest": [["tree_giant", 1.4], ["statue", 1.4], ["stone_gate", 1.3], ["ruins", 1.3]],
+	"forest": [["tree_pine_big", 1.3], ["statue", 1.4], ["stone_gate", 1.3], ["ruins", 1.3]],
+	"frost": [["tree_pine_snow_b", 1.9], ["statue", 1.4], ["stone_gate", 1.4], ["ruins", 1.3]],
 	"candy": [["tree_candy", 2.4], ["lollipop", 2.6], ["gumdrop", 2.6], ["ruins", 1.2]],
 	"desert": [["ruins", 1.4], ["statue", 1.4], ["stone_gate", 1.4], ["cactus", 2.2]],
 }

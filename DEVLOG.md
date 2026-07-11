@@ -2,6 +2,23 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — v0.3-alpha (start): tree sprite overhaul (owner visual feedback)
+
+Owner disliked the box/dark-blob canopy trees. Only two tree styles are now allowed: (a) tiered pointed **pines**
+and (b) bare **dead trunks**.
+- **Removed** every blob tree: deleted `tree_oak/tree_birch/tree_giant` sprites; the choppable `GatherNode` tree no
+  longer uses the `nature.png` blob region; the dungeon-door `Interactable` swapped from that blob to a dark
+  `stone_gate` archway (reads as a cave mouth).
+- **New tree set** (PIL, official palette, consistent outline): pines in 3 sizes (`tree_pine_a/b/c`) + a landmark
+  (`tree_pine_big`), 2 **snow pines** for the upcoming Frostpeak (`tree_pine_snow_a/b`), and 3 dead-trunk variants
+  (`tree_dead_a/b/c`) — so the forest isn't uniform.
+- **WildDresser** rewired: forest pool/edge/landmark use pines + occasional dead trunks; desert uses dead trunks;
+  candy keeps its (light, thematic) candy puffs; added a `frost` theme (snow pines) ready for Frostpeak.
+- **Choppable trees** upgraded: pine sprite (stable per node), **trunk-only collision** + z-index-by-Y so the player
+  walks *behind* the canopy, a **sway** on each chop, a **timber fall** on the last hit, then a **stump** that
+  **regrows** via the existing respawn timer.
+- Before/after screenshots per region in `reports/`. 233/233 tests (+4 tree checks).
+
 ## 2026-07-12 — RONDE 2: World Density & Visual Richness → v0.2.1-alpha (DONE)
 
 Owner playtest: "world building kurang, kurang bangunan, UI kurang banget." Diagnosis: too sparse. New content

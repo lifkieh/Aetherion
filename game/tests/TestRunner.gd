@@ -666,6 +666,18 @@ func _test_bugfixes() -> void:
 	check("gather node kind applied on setup", gn.kind == "ore")
 	check("ore node needs 4 hits (not tree's 3)", gn.get("_hits_left") == 4)
 	gn.queue_free()
+	# R2b: choppable trees use the approved pine style + trunk collision + chop-to-stump
+	var tn := preload("res://scenes/world/GatherNode.tscn").instantiate()
+	add_child(tn)
+	tn.setup("tree", "gn_tree_test")
+	await get_tree().process_frame
+	check("choppable tree uses a pine sprite", str(tn.get("_tree_variant")).begins_with("tree_pine"))
+	check("choppable tree has trunk collision", tn.has_node("Trunk"))
+	tn._set_depleted(true)
+	check("chopped tree shows a stump", tn.get_node("Sprite").texture.resource_path.ends_with("stump.png"))
+	tn._set_depleted(false)
+	check("regrown tree shows a pine", tn.get_node("Sprite").texture.resource_path.contains("tree_pine"))
+	tn.queue_free()
 	# Bug 3: craft_insight resets on new_game
 	PlayerData.craft_insight["craft_x"] = 0.05
 	PlayerData.new_game()
