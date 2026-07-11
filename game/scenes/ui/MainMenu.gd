@@ -124,9 +124,8 @@ func _spacer(h: int) -> Control:
 	return c
 
 func _new_game() -> void:
-	PlayerData.new_game()
-	WorldState.new_game()
-	Stage.go_to_scene("res://scenes/Main.tscn")
+	# Character Creator first (it runs new_game() + sets the look on confirm).
+	Stage.go_to_scene("res://scenes/ui/CharacterCreator.tscn")
 
 func _load(slot: int) -> void:
 	if SaveManager.load_game(slot):

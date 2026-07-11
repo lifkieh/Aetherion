@@ -70,6 +70,12 @@ func _build() -> void:
 		sprite.scale = Vector2(2.4, 2.0)
 		sprite.modulate = Color(0.55, 0.45, 0.75)
 		label.text = "Penginapan — Tidur [E]"
+	elif kind == "mirror":
+		sprite.texture = load("res://assets/game/sprites/props/mirror.png")
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.scale = Vector2(1.5, 1.5)
+		sprite.offset = Vector2(0, -8)
+		label.text = "Cermin Jiwa [E]"
 	elif kind == "guide":
 		var at := AtlasTexture.new()
 		at.atlas = load("res://assets/game/sprites/player/idle.png")
@@ -107,6 +113,16 @@ func interact() -> void:
 	if kind == "dungeon":
 		WorldState.pending_return_pos = global_position
 		Stage.go_to_scene(dungeon_scene)
+		return
+	if kind == "mirror":
+		if Stage.is_busy():
+			return
+		if PlayerData.gold < 150:
+			await Stage.say("Cermin Jiwa berbisik: ubah rupamu perlu 150 gold. Kembalilah bila cukup.", "Cermin Jiwa")
+			return
+		await Stage.say(["Tatap Cermin Jiwa... rupamu bisa kau bentuk ulang (150 gold)."], "Cermin Jiwa")
+		var cc := preload("res://scenes/ui/CharacterCreator.tscn").instantiate()
+		get_tree().current_scene.add_child(cc)
 		return
 	if kind == "house_door":
 		if solid_landmark:
