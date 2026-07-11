@@ -75,7 +75,11 @@ func _build() -> void:
 		label.text = "Bengkel [E]"
 
 func interact() -> void:
+	if Stage.is_busy():
+		return
 	if kind == "inn":
+		await Stage.say(["Istirahatlah, petualang. Malam masih panjang.",
+			"Tidur di sini memulihkan HP & MP-mu."], "Penjaga Wisma")
 		_sleep()
 		return
 	if kind == "pond":
@@ -83,18 +87,24 @@ func interact() -> void:
 		return
 	if kind == "dungeon":
 		WorldState.pending_return_pos = global_position
-		get_tree().change_scene_to_file(dungeon_scene)
+		Stage.go_to_scene(dungeon_scene)
 		return
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
 	if menu == null:
 		return
 	if kind == "shop":
+		await Stage.say(["Selamat datang di kedaiku, kawan!",
+			"Silakan lihat-lihat dagangannya."], "Pedagang", sprite.texture)
 		menu.open("shop", self)
 	elif kind == "board":
+		await Stage.say("Papan misi desa. Ambil tugas harian untuk emas & EXP.", "Papan Quest")
 		menu.open("quest", self)
 	elif kind == "astrologer":
+		await Stage.say(["Bintang-bintang berbisik malam ini...",
+			"Mau kubacakan ramalan langit untukmu?"], "Astrolog", sprite.texture)
 		menu.open("sky", self)
 	else:
+		await Stage.say("Perlu meramu sesuatu? Bengkel ini siap membantu.", "Pandai Besi")
 		menu.open("crafting", self)
 
 func _fish() -> void:

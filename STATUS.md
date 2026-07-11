@@ -137,8 +137,13 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   = 5 element-icon slots + prime glow + cooldown shade + fusion indicator (verified render `reports/hotbar.png`);
   normal attack stays without prime. Fixed edit-displacement bug that had `_build_hotbar()`/toast_box orphaned inside
   `_refresh_hotbar()` (hotbar never built). 191/191 headless tests pass.
-- **(3) FF-style overworld** ⏳ NEXT — NPC dialog box (dark-blue JRPG frame, speaker name, per-letter typing, portrait),
-  FF-window menus/shop, fade transitions, elegant area-name banner on entry, per-region music/ambience, tidy town layout.
+- **(3) FF-style overworld** ✅ DONE — new `Stage` autoload (persistent CanvasLayer overlay): `say()` dark-blue JRPG
+  dialog box (gold-framed, speaker name tab, portrait, per-letter typing + blinking ▼, click/E/Space to advance/skip);
+  `banner()`/`enter_region()` elegant gold-ruled area-name banner + per-region music (Greenvale/Candyveil/Desert/
+  dungeons); `go_to_scene()` fade-out→swap→fade-in used by all transitions (dungeon, homestead, region gates, scenarios,
+  main-menu, load). NPCs (shop/board/astrologer/inn/bench) now converse before opening their menu. Tidy Greenvale plaza:
+  service NPCs in two even rows, region gates at corners, props cleared within `PLAZA_RADIUS`. FF-window menus/shop
+  already unified by §1 UiTheme. Verified renders `reports/dialog.png`, `reports/town.png`. 191/191 tests pass.
 - **(4) Town = safe zone + guards** ⏳ safe_zone polygon per town (data); monsters can't enter/spawn, lose aggro at
   edge; immortal gate-guard NPC that knockbacks approaching monsters.
 - **(5) Onboarding & guide** ⏳ contextual one-time popups (tree/monster/levelup/orb/dungeon-door/town), Pemandu NPC

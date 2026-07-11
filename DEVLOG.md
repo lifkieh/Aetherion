@@ -2,6 +2,29 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — UI/UX §3: FF-style overworld (DONE)
+
+- New **`Stage`** autoload — a persistent high-layer CanvasLayer overlay (survives scene changes) that owns all the
+  Final-Fantasy presentation:
+  - `say(lines, speaker, portrait)` — dark-blue gold-framed dialog box anchored to the bottom, with a speaker name
+    tab, a pixel-art portrait frame, per-letter typing (`Label.visible_characters` @ 42 cps + soft blip SFX), a
+    blinking ▼ arrow, and click/E/Space to advance (first press skips typing, second advances). Awaitable; pauses the
+    tree while shown. NPCs (`Interactable`: shop/board/astrologer/inn/bench) now speak a short Bahasa-Indonesia line
+    *before* opening their menu.
+  - `banner()` / `enter_region(title, subtitle, music)` — an elegant gold-ruled area-name banner that fades+slides in
+    on region entry, plus the per-region explore track. Wired into Greenvale, Candyveil, Desert and every dungeon
+    (`DungeonBase.cfg().name`). Music map (only 3 tracks exist): Greenvale/dungeon-forest → Clearing, Candyveil →
+    Lost Village, Desert/dungeon → Road.
+  - `go_to_scene(path)` — fade-to-black → `change_scene_to_file` → fade-in. Replaced every gameplay
+    `change_scene_to_file` (Interactable dungeon door, Homestead/region Portals, ScenarioManager enter/resolve,
+    MainMenu new-game/continue, MenuUI return/load) so all transitions are smooth.
+- **Tidy Greenvale plaza**: service NPCs laid out in two even rows (Papan Quest/Bengkel/Pedagang/Astrolog north;
+  Penginapan/Rumah/Gua south), region gates pushed to the plaza corners, ponds moved well outside town, and
+  `_scatter_props()` now skips anything within `PLAZA_RADIUS` (210 px) so boulders never clutter the town center.
+  Added `_place_interactable()`/`_place_portal()` helpers to de-duplicate the spawn code.
+- FF-window menus/shop already share one look via §1 `UiTheme`; the dialog box reuses its palette (WINDOW/ACCENT/TEXT).
+- Verified renders: `reports/dialog.png` (dialog + banner), `reports/town.png` (cleared plaza). 191/191 tests pass.
+
 ## 2026-07-11 — UI/UX §2: Skill hotbar + element fusion (DONE)
 
 - New shared `Hotbar` (RefCounted) drives BOTH `Player` (top-down) and `PlayerPlatformer` (side-view) — one control

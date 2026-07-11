@@ -31,7 +31,7 @@ func _ready() -> void:
 	EventBus.weather_changed.connect(_on_weather)
 	Settings.changed.connect(func(): _on_weather(WorldState.weather))
 	_on_weather(WorldState.weather)
-	Audio.play_music("11 - Clearing.ogg")
+	Stage.enter_region("Padang Candyveil", "Ladang permen pastel — manis tapi menipu", "26 - Lost Village.ogg")
 	EventBus.toast.emit("Candyveil Meadows — padang gula kapas. Awas Gummy Mimic!")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6

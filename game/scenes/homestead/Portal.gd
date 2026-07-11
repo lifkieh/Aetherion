@@ -33,4 +33,4 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file(target_scene)
+	Stage.go_to_scene(target_scene)

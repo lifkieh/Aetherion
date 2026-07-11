@@ -10,6 +10,7 @@ const GRASS_VARIANTS := [Vector2i(3, 6), Vector2i(4, 6)]
 
 const SPAWN_TABLE := ["fluffbit", "fluffbit", "grey_wolf", "verdant_slime", "wild_boar", "forest_fox"]
 const MAX_MONSTERS := 12
+const PLAZA_RADIUS := 210.0   # town plaza kept clear of props (tidy layout, UI/UX §3)
 
 var ground: TileMapLayer
 var canvas_mod: CanvasModulate
@@ -34,7 +35,7 @@ func _ready() -> void:
 	EventBus.weather_changed.connect(_on_weather_changed)
 	Settings.changed.connect(func(): _on_weather_changed(WorldState.weather))
 	_on_weather_changed(WorldState.weather)
-	Audio.play_music("11 - Clearing.ogg")
+	Stage.enter_region("Hutan Greenvale", "Wilayah awal — aman di siang hari", "11 - Clearing.ogg")
 	# Optional automated screenshot for verification (--screenshot arg or env)
 	if "--shot" in OS.get_cmdline_user_args() or OS.get_environment("AETHER_SHOT") == "1":
 		_screenshot_at = 1.6
@@ -53,6 +54,14 @@ func _ready() -> void:
 				player.hotbar.press_slot(2)   # flow_fire
 				player.hotbar.press_slot(4)   # flow_ice -> fusion ready
 			_screenshot_at = 0.01)
+	if OS.get_environment("AETHER_DIALOG") == "1":
+		get_tree().create_timer(0.6).timeout.connect(func():
+			var at := AtlasTexture.new()
+			at.atlas = load("res://assets/game/sprites/player/idle.png")
+			at.region = Rect2(0, 0, 16, 16)
+			Stage.say(["Selamat datang di kedaiku, kawan!",
+				"Silakan lihat-lihat dagangannya."], "Pedagang", at)
+			get_tree().create_timer(1.4).timeout.connect(_take_screenshot))
 	if OS.get_environment("AETHER_FISH") == "1":
 		get_tree().create_timer(0.8).timeout.connect(func():
 			FishingUI.open("")
@@ -219,11 +228,15 @@ func _scatter_props() -> void:
 	add_child(props)
 	var grass := load("res://assets/game/sprites/props/grass.png")
 	var rock := load("res://assets/game/sprites/props/rock.png")
+	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
 	for i in range(120):
+		var pos := Vector2(randf_range(24, MAP_W * TILE - 24), randf_range(24, MAP_H * TILE - 24))
+		if pos.distance_to(center) < PLAZA_RADIUS:   # keep the town plaza tidy/clear
+			continue
 		var s := Sprite2D.new()
 		s.texture = grass if randf() < 0.7 else rock
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		s.position = Vector2(randf_range(24, MAP_W * TILE - 24), randf_range(24, MAP_H * TILE - 24))
+		s.position = pos
 		props.add_child(s)
 
 func _build_sky() -> void:
@@ -306,57 +319,49 @@ func _spawn_gathering_nodes() -> void:
 		_add_gather_node(holder, "ore", Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48)))
 
 func _spawn_interactables() -> void:
+	# Tidy town plaza (UI/UX §3): service NPCs in two even rows above/below the
+	# spawn, region gates pushed to the plaza corners, ponds well outside town.
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
-	var bench := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(bench)
-	bench.setup("bench")
-	bench.global_position = center + Vector2(-48, 40)
-	var shop := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(shop)
-	shop.setup("shop")
-	shop.global_position = center + Vector2(56, 40)
-	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
-	add_child(portal)
-	portal.setup("res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
-	portal.global_position = center + Vector2(8, 72)
-	var inn := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(inn)
-	inn.setup("inn")
-	inn.global_position = center + Vector2(-96, 8)
-	var cv := preload("res://scenes/homestead/Portal.tscn").instantiate()
-	add_child(cv)
-	cv.setup("res://scenes/world/Candyveil.tscn", "Candyveil Meadows [E]")
-	cv.global_position = center + Vector2(120, -40)
-	var board := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(board)
-	board.setup("board")
-	board.global_position = center + Vector2(-40, -40)
-	var astro := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(astro)
-	astro.setup("astrologer")
-	astro.global_position = center + Vector2(96, 8)
-	var ds := preload("res://scenes/homestead/Portal.tscn").instantiate()
-	add_child(ds)
-	ds.setup("res://scenes/world/Desert.tscn", "Desert of Ruins [E]")
-	ds.global_position = center + Vector2(-120, -40)
-	var dungeon := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(dungeon)
-	dungeon.setup("dungeon")
-	dungeon.global_position = center + Vector2(200, 120)
-	# fishing ponds scattered around the region
-	for p in [Vector2(-260, 180), Vector2(300, -220), Vector2(-320, -180)]:
-		var pond := preload("res://scenes/world/Interactable.tscn").instantiate()
-		add_child(pond)
-		pond.setup("pond")
-		pond.global_position = center + p
-	# Echo Vendors — ghost kiosks that make the hub feel lived-in
+
+	# --- Service NPCs: top row (north of spawn), evenly spaced 112px apart ---
+	_place_interactable("board", center + Vector2(-168, -72))       # Papan Quest
+	_place_interactable("bench", center + Vector2(-56, -72))        # Bengkel
+	_place_interactable("shop", center + Vector2(56, -72))          # Pedagang
+	_place_interactable("astrologer", center + Vector2(168, -72))   # Astrolog
+
+	# --- Service row: south of spawn ---
+	_place_interactable("inn", center + Vector2(-112, 84))          # Penginapan
+	_place_portal(center + Vector2(0, 84), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
+	_place_interactable("dungeon", center + Vector2(112, 84))       # Gua
+
+	# --- Region gates at the plaza corners (like town exits) ---
+	_place_portal(center + Vector2(-200, -168), "res://scenes/world/Desert.tscn", "Gurun Reruntuhan ▶ [E]")
+	_place_portal(center + Vector2(200, -168), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
+
+	# --- fishing ponds well outside the plaza ---
+	for p in [Vector2(-300, 220), Vector2(340, -260), Vector2(-360, -220)]:
+		_place_interactable("pond", center + p)
+
+	# Echo Vendors — ghost kiosks flanking the plaza edges (lived-in feel)
 	var evs := Db.echo_vendors
-	var ev_spots := [Vector2(-150, 90), Vector2(150, 90), Vector2(0, 130)]
+	var ev_spots := [Vector2(-236, 20), Vector2(236, 20), Vector2(0, 168)]
 	for i in range(min(evs.size(), ev_spots.size())):
 		var ev := preload("res://scenes/world/EchoVendor.tscn").instantiate()
 		add_child(ev)
 		ev.setup(evs[i])
 		ev.global_position = center + ev_spots[i]
+
+func _place_interactable(kind: String, pos: Vector2) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n)
+	n.setup(kind)
+	n.global_position = pos
+
+func _place_portal(pos: Vector2, scene: String, label: String) -> void:
+	var p := preload("res://scenes/homestead/Portal.tscn").instantiate()
+	add_child(p)
+	p.setup(scene, label)
+	p.global_position = pos
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	var node := preload("res://scenes/world/GatherNode.tscn").instantiate()

@@ -15,7 +15,7 @@ var player: Node
 ## Override this in each dungeon.
 func cfg() -> Dictionary:
 	return {
-		"id": "dungeon", "w": 46, "h": 46,
+		"id": "dungeon", "name": "Gua Bawah Tanah", "w": 46, "h": 46,
 		"bg": Color(0.10, 0.09, 0.13), "ambient": Color(0.16, 0.15, 0.22),
 		"tile_tint": Color(1, 1, 1),
 		"spawn_kinds": ["cave_bat", "verdant_slime", "cave_spitter"],
@@ -43,9 +43,8 @@ func _ready() -> void:
 	_spawn_boss(c.get("boss", ""))
 	_place_exit(c.get("return_scene", "res://scenes/Main.tscn"), c.get("exit_label", "Keluar [E]"))
 	_add_ui(c.get("hint", ""))
-	Audio.play_music(c.get("music", "23 - Road.ogg"))
+	Stage.enter_region(c.get("name", "Dungeon"), c.get("intro", ""), c.get("music", "23 - Road.ogg"))
 	EventBus.dungeon_entered.emit(c.get("id", "dungeon"))
-	EventBus.toast.emit(c.get("intro", ""))
 	if OS.get_environment("AETHER_ARENA") == "1" and player:
 		player.global_position = Vector2(W * TILE * 0.5, (H - 5) * TILE)
 	if OS.get_environment("AETHER_SHOT") == "1":

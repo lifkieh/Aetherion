@@ -321,12 +321,12 @@ func _build_system() -> void:
 	mute.toggled.connect(func(v): Settings.set_muted_pref(v))
 	content.add_child(mute)
 	content.add_child(_mk_label(" ", 8))
-	content.add_child(_btn("Kembali ke Menu Utama", func(): close_menu(); get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")))
+	content.add_child(_btn("Kembali ke Menu Utama", func(): close_menu(); Stage.go_to_scene("res://scenes/ui/MainMenu.tscn")))
 
 func _load_slot(slot: int) -> void:
 	if SaveManager.load_game(slot):
 		close_menu()
-		get_tree().change_scene_to_file("res://scenes/Main.tscn")
+		Stage.go_to_scene("res://scenes/Main.tscn")
 
 func _build_inventory() -> void:
 	title.text = "Tas"

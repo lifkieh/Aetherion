@@ -108,8 +108,8 @@ func _spacer(h: int) -> Control:
 func _new_game() -> void:
 	PlayerData.new_game()
 	WorldState.new_game()
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	Stage.go_to_scene("res://scenes/Main.tscn")
 
 func _load(slot: int) -> void:
 	if SaveManager.load_game(slot):
-		get_tree().change_scene_to_file("res://scenes/Main.tscn")
+		Stage.go_to_scene("res://scenes/Main.tscn")

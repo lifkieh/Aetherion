@@ -60,7 +60,7 @@ func try_trigger(action: String) -> bool:
 	rabbits_killed_in_scenario = 0
 	EventBus.scenario_triggered.emit(id)
 	EventBus.toast.emit("✦ Sesuatu menarikmu ke tempat lain...")
-	get_tree().change_scene_to_file(sc.get("scene", "res://scenes/Main.tscn"))
+	Stage.go_to_scene(sc.get("scene", "res://scenes/Main.tscn"))
 	return true
 
 ## Directly enter a scenario by id (used by action triggers like fishing that
@@ -74,7 +74,7 @@ func trigger_scenario(id: String) -> bool:
 		return false
 	active_scenario = id
 	EventBus.scenario_triggered.emit(id)
-	get_tree().change_scene_to_file(sc.get("scene", "res://scenes/Main.tscn"))
+	Stage.go_to_scene(sc.get("scene", "res://scenes/Main.tscn"))
 	return true
 
 ## Pure result application (flags + rewards). Returns the reward summary.
@@ -117,7 +117,7 @@ func resolve(success: bool) -> void:
 	if PlayerData.is_dead():
 		PlayerData.respawn()   # don't persist a 0-HP state after a death-fail
 	SaveManager.save_game(SaveManager.current_slot)   # no_fail: persist immediately
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	Stage.go_to_scene("res://scenes/Main.tscn")
 
 func note_rabbit_killed_in_scenario() -> void:
 	rabbits_killed_in_scenario += 1
