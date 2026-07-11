@@ -30,6 +30,8 @@ signal player_exp_changed(cur: int, needed: int)
 signal counter_changed(key: String, value: int)
 signal item_gained(item_id: String, qty: int)
 signal gold_changed(amount: int)
+signal achievement_unlocked(id: String, name: String, title: String)
+signal codex_discovered(kind: String, id: String)
 
 # --- Taming / pets ---
 signal tame_attempted(species_id: String, success: bool, chance: float)

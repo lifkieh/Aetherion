@@ -50,6 +50,9 @@ var homestead_plots: Array = []        # [{crop_id, planted_at_unix, watered}]
 var scenario_flags: Dictionary = {}    # id -> "cleared"/"failed"/"locked"
 var titles: Array = []
 var professions: Dictionary = {"main": "adventurer", "sub": []}
+var achievements: Array = []           # unlocked achievement ids
+var active_title: String = ""          # equipped title (micro-buff)
+var discovered: Dictionary = {"monsters": {}, "items": {}, "weathers": {}}  # Aetherpedia
 
 func _ready() -> void:
 	recalculate_stats()
@@ -73,6 +76,9 @@ func new_game() -> void:
 	scenario_flags = {}
 	titles = []
 	professions = {"main": "adventurer", "sub": []}
+	achievements = []
+	active_title = ""
+	discovered = {"monsters": {}, "items": {}, "weathers": {}}
 	birth_sign = _birth_sign_from_today()
 	recalculate_stats()
 	hp = max_hp
@@ -124,6 +130,9 @@ func recalculate_stats() -> void:
 	max_hp = 140 + e * 16 + lv * 12
 	max_mp = 40 + i * 6 + lv * 4
 	atk = 24 + s * 5 + lv * 3 + _weapon_atk()
+	# Title micro-buff (neutral prestige, GDD v0.2 §10.3). Guarded for autoload order.
+	if has_node("/root/Achievements"):
+		atk = int(atk * (1.0 + get_node("/root/Achievements").active_buff("atk_pct")))
 	def = 8 + e * 2 + lv
 	matk = 20 + i * 5 + lv * 3
 	mdef = 6 + i + e + lv
@@ -247,6 +256,7 @@ func to_save() -> Dictionary:
 		"mastered_elements": mastered_elements, "monsters": monsters,
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
 		"scenario_flags": scenario_flags, "titles": titles, "professions": professions,
+		"achievements": achievements, "active_title": active_title, "discovered": discovered,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -267,6 +277,9 @@ func from_save(d: Dictionary) -> void:
 	scenario_flags = d.get("scenario_flags", {})
 	titles = d.get("titles", [])
 	professions = d.get("professions", {"main": "adventurer", "sub": []})
+	achievements = d.get("achievements", [])
+	active_title = d.get("active_title", "")
+	discovered = d.get("discovered", {"monsters": {}, "items": {}, "weathers": {}})
 	recalculate_stats()
 	hp = d.get("hp", max_hp)
 	mp = d.get("mp", max_mp)

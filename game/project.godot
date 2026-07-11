@@ -23,6 +23,7 @@ SaveManager="*res://autoload/SaveManager.gd"
 Audio="*res://autoload/Audio.gd"
 ScenarioManager="*res://autoload/ScenarioManager.gd"
 Settings="*res://autoload/Settings.gd"
+Achievements="*res://autoload/Achievements.gd"
 
 [display]
 

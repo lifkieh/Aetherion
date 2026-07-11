@@ -61,7 +61,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"]]:
+	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["pedia", "Pedia"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -135,6 +135,30 @@ func _rebuild() -> void:
 		"crafting": _build_crafting()
 		"shop": _build_shop()
 		"system": _build_system()
+		"pedia": _build_pedia()
+
+func _build_pedia() -> void:
+	title.text = "Aetherpedia"
+	var mon_seen := Achievements.discovered_count("monsters")
+	var mon_total := Achievements.total_monsters()
+	content.add_child(_mk_label("Monster ditemukan: %d / %d" % [mon_seen, mon_total], 16))
+	for id in Db.monsters.keys():
+		var seen: bool = PlayerData.discovered.get("monsters", {}).has(id)
+		var def := Db.monster(id)
+		var txt := "%s — %s/%s" % [def.get("name", id), def.get("rarity", "?"), def.get("element", "-")] if seen else "??? (belum ditemui)"
+		var l := _mk_label(txt, 14)
+		if not seen: l.modulate = Color(0.5, 0.5, 0.5)
+		content.add_child(l)
+	content.add_child(_mk_label("— Gelar (klik untuk pasang) —", 16))
+	if PlayerData.titles.is_empty():
+		content.add_child(_mk_label("(belum ada gelar — raih pencapaian!)", 13))
+	for t in PlayerData.titles:
+		var h := _row()
+		var marker := "★ " if t == PlayerData.active_title else ""
+		var l := _mk_label(marker + t, 14)
+		l.custom_minimum_size = Vector2(300, 0)
+		h.add_child(l)
+		h.add_child(_btn("Pasang", func(): PlayerData.active_title = t; PlayerData.recalculate_stats(); _rebuild()))
 
 func _build_system() -> void:
 	title.text = "Menu Sistem"

@@ -21,6 +21,7 @@ func _ready() -> void:
 	_test_crafting()
 	_test_scenario()
 	_test_saveload()
+	_test_achievements()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -151,6 +152,28 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_achievements() -> void:
+	print("[Achievements/Aetherpedia]")
+	check("achievements data loaded", Db.achievements.size() >= 5)
+	PlayerData.achievements.clear()
+	PlayerData.titles.clear()
+	PlayerData.active_title = ""
+	PlayerData.discovered = {"monsters": {}, "items": {}, "weathers": {}}
+	WorldState.set_counter("trees_cut", 0)
+	WorldState.add_counter("trees_cut", 25)   # emits counter_changed -> unlock woodcutter
+	check("woodcutter unlocked at 25 trees", "woodcutter" in PlayerData.achievements)
+	check("title granted", "Penebang" in PlayerData.titles)
+	check("first title auto-equipped", PlayerData.active_title == "Penebang")
+	EventBus.item_gained.emit("wolf_pelt", 1)
+	check("aetherpedia records item", PlayerData.discovered["items"].has("wolf_pelt"))
+	# neutral micro-buff via equipped title
+	PlayerData.achievements.append("hunter_50")
+	PlayerData.active_title = "Pemburu"
+	check("atk_pct title buff active", abs(Achievements.active_buff("atk_pct") - 0.02) < 0.001)
+	# cleanup
+	WorldState.set_counter("trees_cut", 0)
+	PlayerData.new_game()
 
 func _test_saveload() -> void:
 	print("[SaveManager]")

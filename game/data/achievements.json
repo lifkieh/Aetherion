@@ -1,0 +1,7 @@
+[
+  {"id": "first_blood", "name": "Darah Pertama", "desc": "Kalahkan monster pertamamu.", "counter": "monsters_killed", "threshold": 1, "title": "Petualang", "buff": {}},
+  {"id": "hunter_50", "name": "Pemburu", "desc": "Kalahkan 50 monster.", "counter": "monsters_killed", "threshold": 50, "title": "Pemburu", "buff": {"atk_pct": 0.02}},
+  {"id": "woodcutter", "name": "Penebang", "desc": "Tebang 25 pohon.", "counter": "trees_cut", "threshold": 25, "title": "Penebang", "buff": {"chop_speed": 0.15}},
+  {"id": "miner", "name": "Penambang", "desc": "Tambang 25 bijih.", "counter": "ore_mined", "threshold": 25, "title": "Penambang", "buff": {}},
+  {"id": "sinner_100", "name": "Berlumur Dosa", "desc": "Seribu telinga mulai berbisik... (100 kelinci).", "counter": "rabbits_killed", "threshold": 100, "title": "Berlumur Dosa", "buff": {}}
+]
