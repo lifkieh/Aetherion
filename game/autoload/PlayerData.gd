@@ -49,7 +49,7 @@ var mounted: bool = false
 var homestead_plots: Array = []        # [{crop_id, planted_at_unix, watered}]
 var scenario_flags: Dictionary = {}    # id -> "cleared"/"failed"/"locked"
 var titles: Array = []
-var professions: Dictionary = {"main": "adventurer", "sub": []}
+var professions: Dictionary = {"main": "", "sub": [], "last_main_change": 0}
 var achievements: Array = []           # unlocked achievement ids
 var active_title: String = ""          # equipped title (micro-buff)
 var discovered: Dictionary = {"monsters": {}, "items": {}, "weathers": {}}  # Aetherpedia
@@ -78,7 +78,7 @@ func new_game() -> void:
 	homestead_plots = []
 	scenario_flags = {}
 	titles = []
-	professions = {"main": "adventurer", "sub": []}
+	professions = {"main": "", "sub": [], "last_main_change": 0}
 	achievements = []
 	active_title = ""
 	discovered = {"monsters": {}, "items": {}, "weathers": {}}
@@ -293,7 +293,7 @@ func from_save(d: Dictionary) -> void:
 	homestead_plots = d.get("homestead_plots", [])
 	scenario_flags = d.get("scenario_flags", {})
 	titles = d.get("titles", [])
-	professions = d.get("professions", {"main": "adventurer", "sub": []})
+	professions = d.get("professions", {"main": "", "sub": [], "last_main_change": 0})
 	achievements = d.get("achievements", [])
 	active_title = d.get("active_title", "")
 	discovered = d.get("discovered", {"monsters": {}, "items": {}, "weathers": {}})

@@ -142,28 +142,29 @@ func _rebuild() -> void:
 		"echo": _build_echo()
 
 func _build_prof() -> void:
-	title.text = "Profesi"
-	var main: String = PlayerData.professions.get("main", "")
-	content.add_child(_mk_label("Profesi Utama: %s (+50%% EXP)" % (Db.professions.get(main, {}).get("name", "belum dipilih")), 15))
+	title.text = "Profesi (1 Utama + 2 Sub)"
+	var main: String = ProfessionSystem.main()
+	var subs: Array = ProfessionSystem.subs()
+	content.add_child(_mk_label("Utama: %s (+50%% EXP, cap Lv%d) · Sub: %s (75%% efisiensi, cap Lv%d)" % [
+		Db.professions.get(main, {}).get("name", "-"), ProfessionSystem.MAIN_CAP,
+		("/".join(subs.map(func(s): return Db.professions.get(s, {}).get("name", s))) if not subs.is_empty() else "-"),
+		ProfessionSystem.SUB_CAP], 13))
+	content.add_child(_mk_label("Ganti utama: %dG + cooldown %d hari. Hanya utama+sub yang dapat XP." % [ProfessionSystem.CHANGE_MAIN_COST, ProfessionSystem.CHANGE_COOLDOWN / 86400], 11))
 	for id in Db.professions.keys():
 		var def: Dictionary = Db.professions[id]
-		var lvl := PlayerData.prof_level(id)
+		var role := ProfessionSystem.role(id)
+		var lvl := ProfessionSystem.effective_level(id)
 		var xp: int = PlayerData.prof_xp.get(id, 0)
 		var h := _row()
-		var mark := "★ " if id == main else ""
-		var l := _mk_label("%s%s — Lv %d (%d XP)" % [mark, def.get("name", id), lvl, xp], 14)
-		l.custom_minimum_size = Vector2(300, 0)
+		var mark := "★" if role == "main" else ("+" if role == "sub" else "")
+		var l := _mk_label("%s %s — Lv %d (%d XP)%s" % [mark, def.get("name", id), lvl, xp, (" [%s]" % role.to_upper() if role != "none" else "")], 14)
+		l.custom_minimum_size = Vector2(280, 0)
+		if role == "none": l.modulate = Color(0.6, 0.6, 0.6)
 		h.add_child(l)
-		# next perk hint
-		var next_perk := ""
-		for p in def.get("perks", []):
-			if int(p.get("level", 0)) > lvl:
-				next_perk = "Lv%d: %s" % [p.level, p.desc]
-				break
-		if next_perk != "":
-			h.add_child(_mk_label(next_perk, 11))
-		if id != main:
-			h.add_child(_btn("Jadikan Utama", func(): PlayerData.professions["main"] = id; EventBus.toast.emit("Profesi utama: " + def.get("name", id)); _rebuild()))
+		if role != "main":
+			h.add_child(_btn("Utama", func(): var r = ProfessionSystem.set_main(id); if not r.ok: EventBus.toast.emit(r.reason); _rebuild()))
+		if role != "main":
+			h.add_child(_btn(("−Sub" if role == "sub" else "+Sub"), func(): var r = ProfessionSystem.toggle_sub(id); if not r.ok: EventBus.toast.emit(r.reason); _rebuild()))
 
 func _build_echo() -> void:
 	var d: Dictionary = _ctx if _ctx is Dictionary else {}
@@ -337,12 +338,17 @@ func _build_crafting() -> void:
 		var ing_txt := []
 		for ing in r.get("ingredients", []):
 			ing_txt.append("%s x%d" % [Db.item_name(ing.get("item", "")), ing.get("qty", 1)])
-		var can := CraftingSystem.can_craft(r)
+		var access: Dictionary = ProfessionSystem.can_use_recipe(r)
+		var can: bool = CraftingSystem.can_craft(r) and bool(access.ok)
 		var rate := int(round(CraftingSystem.success_rate(r) * 100))
-		var l := _mk_label("%s  (%d%%)  ← %s" % [result_name, rate, ", ".join(ing_txt)], 14)
+		var tier: String = Db.item(r.get("result", "")).get("tier", "F")
+		var l := _mk_label("%s [%s]  (%d%%)  ← %s" % [result_name, tier, rate, ", ".join(ing_txt)], 14)
 		l.custom_minimum_size = Vector2(400, 0)
 		if not can: l.modulate = Color(0.6, 0.6, 0.6)
+		if not access.ok: l.tooltip_text = access.reason
 		h.add_child(l)
+		if not access.ok:
+			h.add_child(_mk_label("🔒", 14))
 		var b := _btn("Craft", func(): CraftingSystem.craft(r.get("id", "")); _rebuild())
 		b.disabled = not can
 		h.add_child(b)

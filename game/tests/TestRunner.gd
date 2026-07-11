@@ -198,24 +198,54 @@ func _test_skycalendar() -> void:
 	check("upcoming events sorted ascending", sorted)
 
 func _test_professions() -> void:
-	print("[ProfessionSystem]")
+	print("[ProfessionSystem: 1 main + 2 sub]")
 	check("professions data loaded", Db.professions.size() >= 5)
 	PlayerData.new_game()
-	PlayerData.professions["main"] = "adventurer"
-	ProfessionSystem.award("lumberjack", 5)
-	check("non-main XP is 1x", PlayerData.prof_xp.get("lumberjack", 0) == 5)
-	PlayerData.professions["main"] = "miner"
+	# --- XP gating: only main+sub earn XP ---
+	PlayerData.professions = {"main": "miner", "sub": ["fisherman"], "last_main_change": 0}
 	ProfessionSystem.award("miner", 10)
-	check("main profession +50% XP", PlayerData.prof_xp.get("miner", 0) == 15)
-	# perks unlock by level
-	PlayerData.prof_xp["miner"] = 800   # -> level ~7
-	check("miner is high level", PlayerData.prof_level("miner") >= 6)
-	check("miner 'faster' perk unlocked (Lv3)", ProfessionSystem.perk_value("miner", "faster") >= 1.0)
-	check("miner 'bonus_yield' perk unlocked (Lv6)", ProfessionSystem.perk_value("miner", "bonus_yield") >= 1.0)
-	# event-driven award through the existing harvest signal
-	var before: int = PlayerData.prof_xp.get("lumberjack", 0)
-	EventBus.node_harvested.emit("tree", "wood_log", 2)
-	check("harvest signal awards Lumberjack XP", PlayerData.prof_xp.get("lumberjack", 0) > before)
+	check("main +50% XP", PlayerData.prof_xp.get("miner", 0) == 15)
+	ProfessionSystem.award("fisherman", 10)
+	check("sub 1.0x XP", PlayerData.prof_xp.get("fisherman", 0) == 10)
+	ProfessionSystem.award("lumberjack", 10)
+	check("inactive profession earns NO XP", PlayerData.prof_xp.get("lumberjack", 0) == 0)
+	# --- efficiency 75% for sub ---
+	check("main efficiency 1.0", abs(ProfessionSystem.efficiency("miner") - 1.0) < 0.001)
+	check("sub efficiency 0.75", abs(ProfessionSystem.efficiency("fisherman") - 0.75) < 0.001)
+	check("inactive efficiency 0.0", abs(ProfessionSystem.efficiency("lumberjack") - 0.0) < 0.001)
+	# --- level caps: sub ~60% of main ---
+	PlayerData.prof_xp["miner"] = 999999
+	PlayerData.prof_xp["fisherman"] = 999999
+	check("main level capped at MAIN_CAP", ProfessionSystem.effective_level("miner") == ProfessionSystem.MAIN_CAP)
+	check("sub level capped at SUB_CAP", ProfessionSystem.effective_level("fisherman") == ProfessionSystem.SUB_CAP)
+	check("sub cap < main cap (~60%)", ProfessionSystem.SUB_CAP < ProfessionSystem.MAIN_CAP)
+	# --- recipe tier gate ---
+	var basic := {"profession": "blacksmith", "result": "copper_sword", "tier": "E"}
+	check("basic recipe usable by anyone", ProfessionSystem.can_use_recipe(basic).ok)
+	var b_tier := {"profession": "lumberjack", "tier": "B"}   # lumberjack is inactive here
+	check("B-tier needs active profession", not ProfessionSystem.can_use_recipe(b_tier).ok)
+	var a_main := {"profession": "miner", "tier": "A"}         # miner is main
+	check("A-tier usable by MAIN", ProfessionSystem.can_use_recipe(a_main).ok)
+	var a_sub := {"profession": "fisherman", "tier": "A"}      # fisherman is only sub
+	check("A-tier NOT usable by sub", not ProfessionSystem.can_use_recipe(a_sub).ok)
+	# --- perk value scaled by role efficiency ---
+	PlayerData.prof_xp["miner"] = 800
+	check("main perk full value", ProfessionSystem.perk_value("miner", "faster") >= 1.0)
+	PlayerData.professions = {"main": "fisherman", "sub": ["miner"], "last_main_change": 0}
+	PlayerData.prof_xp["miner"] = 800
+	check("same perk as SUB is reduced (x0.75)", ProfessionSystem.perk_value("miner", "faster") < 1.0 and ProfessionSystem.perk_value("miner", "faster") > 0.0)
+	# --- max 2 subs + set main flow ---
+	PlayerData.professions = {"main": "", "sub": [], "last_main_change": 0}
+	PlayerData.gold = 999999
+	check("first main pick is free", ProfessionSystem.set_main("miner").ok)
+	ProfessionSystem.toggle_sub("fisherman")
+	ProfessionSystem.toggle_sub("cook")
+	var third := ProfessionSystem.toggle_sub("herbalist")
+	check("cannot add a 3rd sub", not third.ok and ProfessionSystem.subs().size() == 2)
+	# event-driven award still works for an active profession
+	var lb_before: int = PlayerData.prof_xp.get("miner", 0)
+	EventBus.block_mined.emit(Vector2i(0, 0), "block")
+	check("block_mined awards active Miner", PlayerData.prof_xp.get("miner", 0) > lb_before)
 	PlayerData.new_game()
 
 func _test_fishing() -> void:
@@ -307,6 +337,7 @@ func _test_platformer() -> void:
 	check("ladder cell detected", terrain.is_ladder(terrain.solid.map_to_local(Vector2i(2, 2))))
 	check("non-ladder cell false", not terrain.is_ladder(terrain.solid.map_to_local(Vector2i(2, 3))))
 	PlayerData.new_game()
+	PlayerData.professions = {"main": "miner", "sub": [], "last_main_change": 0}  # miner active for XP
 	var before: int = PlayerData.item_count("copper_ore")
 	check("bedrock is undiggable", not terrain.try_mine(terrain.solid.map_to_local(Vector2i(0, 0))))
 	check("bedrock cell intact", terrain.solid.get_cell_source_id(Vector2i(0, 0)) != -1)

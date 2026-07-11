@@ -40,6 +40,11 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 	var recipe := find_recipe(recipe_id)
 	if recipe.is_empty():
 		return {"success": false, "reason": "unknown_recipe"}
+	# profession tier gate (GDD v0.2 §3): sub max tier B, A+ main-only
+	var access := ProfessionSystem.can_use_recipe(recipe)
+	if not access.ok:
+		EventBus.toast.emit(access.reason)
+		return {"success": false, "reason": "profession_gate"}
 	if not can_craft(recipe):
 		EventBus.toast.emit("Bahan tidak cukup.")
 		return {"success": false, "reason": "missing_ingredients"}
