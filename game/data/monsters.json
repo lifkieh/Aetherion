@@ -936,5 +936,114 @@
     "evolution": "",
     "aggro_radius": 150,
     "lore": "Ular soda berbuih; semburan AoE menyegarkan."
+  },
+  {
+    "id": "frost_fox",
+    "name": "Frost Fox",
+    "rarity": "common",
+    "element": "ice",
+    "archetype": "swift",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 22,
+    "sprite": "res://assets/game/sprites/monsters/frost_fox.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "traits": [
+      "snow_walker"
+    ],
+    "skills": [
+      "bite"
+    ],
+    "loot_table": "frost_fox",
+    "tame_base": 0.7,
+    "evolution": "aurora_fox",
+    "aggro_radius": 150,
+    "lore": "Rubah salju gesit; kakinya tak terperosok di salju tebal."
+  },
+  {
+    "id": "ice_wolf",
+    "name": "Ice Wolf",
+    "rarity": "common",
+    "element": "ice",
+    "archetype": "bruiser",
+    "bst": 320,
+    "size": "medium",
+    "rideable": true,
+    "level": 24,
+    "sprite": "res://assets/game/sprites/monsters/ice_wolf.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "traits": [
+      "pack_hunter"
+    ],
+    "skills": [
+      "bite",
+      "howl"
+    ],
+    "loot_table": "ice_wolf",
+    "tame_base": 0.7,
+    "evolution": "frost_dire_wolf",
+    "aggro_radius": 170,
+    "lore": "Serigala es pemburu kelompok; tunggangan tangguh di lereng bersalju."
+  },
+  {
+    "id": "snow_owl",
+    "name": "Snow Owl",
+    "rarity": "common",
+    "element": "wind",
+    "archetype": "caster",
+    "bst": 290,
+    "size": "small",
+    "rideable": false,
+    "level": 23,
+    "sprite": "res://assets/game/sprites/monsters/snow_owl.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "ranged",
+    "traits": [
+      "blizzard_sight"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "snow_owl",
+    "tame_base": 0.6,
+    "evolution": "",
+    "aggro_radius": 190,
+    "lore": "Burung hantu salju yang tetap awas menembus badai."
+  },
+  {
+    "id": "yeti_cub",
+    "name": "Yeti Cub",
+    "rarity": "rare",
+    "element": "ice",
+    "archetype": "tank",
+    "bst": 460,
+    "size": "medium",
+    "rideable": false,
+    "level": 28,
+    "sprite": "res://assets/game/sprites/monsters/yeti_cub.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "traits": [
+      "thick_fur"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "yeti_cub",
+    "tame_base": 0.4,
+    "evolution": "yeti",
+    "aggro_radius": 150,
+    "lore": "Anak Yeti berbulu tebal; kecil-kecil sudah kuat mendorong."
   }
 ]

@@ -395,6 +395,7 @@ func _spawn_interactables() -> void:
 	# Town exits at the fence road-gaps (leaving town → wild / other regions).
 	_place_portal(center + Vector2(-400, 24), "res://scenes/world/Desert.tscn", "◀ Gurun Reruntuhan [E]")
 	_place_portal(center + Vector2(400, 24), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
+	_place_portal(center + Vector2(0, -372), "res://scenes/world/Frostpeak.tscn", "▲ Frostpeak [E]")
 	_place_portal(center + Vector2(70, 116), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
 	# Dungeon entrance just outside the south gate (dirt path leads to it).
 	_place_interactable("dungeon", center + Vector2(0, 430))

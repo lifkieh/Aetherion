@@ -2,6 +2,18 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — v0.3-alpha: Frostpeak Mountain region (content unfrozen)
+
+Owner cue ("pohon pinus versi salju untuk Frostpeak yang sedang dibangun") unfroze Frostpeak. Built a playable slice:
+- **New region** `Frostpeak.gd/.tscn` (70×52, lvl 22-38) — procedural snow/ice ground (`snow_0/snow_1/ice_patch`
+  tiles), the `frost` WildDresser theme (snow pines + pines + dead trunks + rocks), falling-snow `Ambience`, a cold
+  blue-white tint, and a return portal to Greenvale. Reached from Greenvale's **north gate** (new portal).
+- **4 original ice monsters** (PIL directional sheets): Frost Fox (Ice/swift), Ice Wolf (Ice/bruiser, rideable),
+  Snow Owl (Wind/caster), Yeti Cub (Ice/tank, rare) — per Monster_Roster §2.4, with evolutions noted for later.
+- **5 frost items** (frost_pelt/ice_shard/snow_feather/thick_fur/frost_essence) with flavor + **4 loot tables**.
+- 60 fps @ 782 nodes. 237/237 tests (+4 Frostpeak checks). Remaining §2.4 species (Frost Elemental, Woolly Calf,
+  Frost Wyvern), evolutions, and a Frostpeak dungeon/boss are the next v0.3 steps.
+
 ## 2026-07-12 — v0.3-alpha (start): tree sprite overhaul (owner visual feedback)
 
 Owner disliked the box/dark-blob canopy trees. Only two tree styles are now allowed: (a) tiered pointed **pines**

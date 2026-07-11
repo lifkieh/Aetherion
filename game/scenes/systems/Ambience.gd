@@ -14,6 +14,8 @@ func setup(t: String) -> void:
 func _ready() -> void:
 	z_index = 30
 	match theme:
+		"snow":
+			_day = _make(_dot(Color(1, 1, 1, 0.95), 3), 26, Vector2(5, 26), Color(1, 1, 1), 4.2)  # falling flakes
 		"candy":
 			_day = _make(_dot(Color(1, 1, 1, 0.9), 3), 16, Vector2(6, -14), Color(1, 0.9, 0.95), 3.2)
 		"desert":

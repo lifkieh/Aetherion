@@ -114,6 +114,11 @@ func _test_db() -> void:
 	# Candyveil content
 	check("candyveil monster loaded", Db.monsters.has("gummy_slime") and Db.monsters.has("gummy_mimic"))
 	check("candyveil loot table", Db.loot_table("candy_gummy_slime").size() > 0)
+	# Frostpeak content (v0.3)
+	check("frostpeak monsters loaded", Db.monsters.has("frost_fox") and Db.monsters.has("yeti_cub"))
+	check("frost monster builds (ice element)", MonsterFactory.make("ice_wolf").get("element", "") == "ice")
+	check("frostpeak loot table", Db.loot_table("yeti_cub").size() > 0)
+	check("frost items have flavor", Db.item("ice_shard").get("flavor", "") != "")
 	check("candyveil monster builds", not MonsterFactory.make("choco_bear").is_empty())
 	# Desert content + grounding science (Rock Golem resists lightning)
 	# Echo vendors + their wares resolve to real items

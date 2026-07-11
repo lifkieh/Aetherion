@@ -208,7 +208,8 @@ playtest ronde 2 masuk. Tujuan berikutnya ditentukan oleh hasil playtest.
 
 ### Konten BEKU — diaktifkan kembali setelah feedback
 Sengaja ditunda saat ronde UI/UX dan tetap beku sampai owner memberi lampu hijau:
-- **Frostpeak** — region salju/es (top-down) + dungeon side-view temanya.
+- ~~**Frostpeak**~~ — ✅ region salju/es DIBANGUN (v0.3-alpha): Frostpeak.tscn, 4 monster es orisinal, salju/dressing,
+  portal gerbang utara Greenvale. Sisa: 3 spesies §2.4, evolusi, dungeon/boss Frost Titan.
 - **Storm Island** — region badai/petir + dungeon.
 - **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).
 - **Roster monster lanjutan** — spesies tahap berikut untuk region baru + evolusi lanjutan.

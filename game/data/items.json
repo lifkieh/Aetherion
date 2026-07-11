@@ -743,5 +743,50 @@
     "value": 400,
     "stack": 1,
     "flavor": "Jimat vitalitas yang menambah ketahanan si pemakai."
+  },
+  {
+    "id": "frost_pelt",
+    "name": "Bulu Beku",
+    "tier": "D",
+    "type": "material",
+    "value": 45,
+    "stack": 99,
+    "flavor": "Bulu tebal makhluk kutub — hangat meski diselimuti salju abadi."
+  },
+  {
+    "id": "ice_shard",
+    "name": "Serpihan Es",
+    "tier": "D",
+    "type": "material",
+    "value": 40,
+    "stack": 99,
+    "flavor": "Pecahan es abadi Frostpeak yang tak pernah mencair di tangan."
+  },
+  {
+    "id": "snow_feather",
+    "name": "Bulu Salju",
+    "tier": "D",
+    "type": "material",
+    "value": 38,
+    "stack": 99,
+    "flavor": "Bulu putih Snow Owl, seringan dan sesenyap salju yang turun."
+  },
+  {
+    "id": "thick_fur",
+    "name": "Bulu Tebal",
+    "tier": "C",
+    "type": "material",
+    "value": 80,
+    "stack": 99,
+    "flavor": "Bulu Yeti setebal selimut — konon tahan badai paling ganas."
+  },
+  {
+    "id": "frost_essence",
+    "name": "Esensi Beku",
+    "tier": "C",
+    "type": "material",
+    "value": 110,
+    "stack": 99,
+    "flavor": "Sari beku berpendar biru; dinginnya menggigit bahkan lewat sarung tangan."
   }
 ]
