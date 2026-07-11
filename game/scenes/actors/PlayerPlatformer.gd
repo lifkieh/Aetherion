@@ -27,6 +27,7 @@ var _drop_timer := 0.0
 var _mp_acc := 0.0
 var _charging := false
 var _charge := 0.0
+var hotbar := Hotbar.new()
 var terrain: Node = null
 
 @onready var sprite: AnimatedSprite2D = $Sprite
@@ -99,23 +100,19 @@ func _physics_process(delta: float) -> void:
 	# --- horizontal ---
 	velocity.x = ix * MOVE_SPEED
 
-	# --- actions (mouse-aimed, Terraria-style) ---
+	# --- actions (mouse-aimed, hotbar + Terraria-style) ---
 	var aim := _aim_dir()
 	if aim.x != 0.0:
 		facing = "right" if aim.x > 0.0 else "left"
-	_handle_attack(aim)
-	if Input.is_action_just_pressed("skill_primary") or Input.is_action_just_pressed("skill_2"):
-		_cast_bolt(aim)
-	if Input.is_action_just_pressed("skill_1"):
-		_cast_flame(aim)
-	if Input.is_action_just_pressed("infuse_fire"):
-		PlayerData.apply_infusion("fire", 45)
-	if Input.is_action_just_pressed("infuse_lightning"):
-		PlayerData.apply_infusion("lightning", 45)
-	if Input.is_action_just_pressed("infuse_ice"):
-		PlayerData.apply_infusion("ice", 45)
-	if Input.is_action_just_pressed("infuse_wind"):
-		PlayerData.apply_infusion("wind", 45)
+	hotbar.tick(delta)
+	for i in range(5):
+		if Input.is_action_just_pressed("slot_%d" % (i + 1)):
+			hotbar.press_slot(i)
+	# left-click: cast primed skill/fusion toward cursor, else weapon attack
+	if Input.is_action_just_pressed("attack") and (hotbar.primed >= 0 or hotbar.fusion_ready):
+		hotbar.cast(self, aim)
+	else:
+		_handle_attack(aim)
 
 	move_and_slide()
 	_animate(ix, on_ladder)

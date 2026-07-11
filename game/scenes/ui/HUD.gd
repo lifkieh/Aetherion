@@ -97,7 +97,7 @@ func _build() -> void:
 	bars.add_child(exp_bar)
 
 	# --- Controls hint (bottom-right) ---
-	hint_label = _mk_label("WASD gerak · J serang · K/L skill · 1/2 infus · Space dodge · T tame · E interaksi · I tas · F5 simpan", 11)
+	hint_label = _mk_label("WASD gerak · 1-5 prime skill · klik-kiri: cast/serang ke kursor · 2 angka = FUSION · Space dodge · T tame · E interaksi · I tas", 11)
 	hint_label.anchor_top = 1.0
 	hint_label.anchor_bottom = 1.0
 	hint_label.anchor_left = 0.0
@@ -106,9 +106,7 @@ func _build() -> void:
 	hint_label.position = Vector2(-8, -18)
 	add_child(hint_label)
 
-func set_hint(text: String) -> void:
-	if hint_label:
-		hint_label.text = text
+	_build_hotbar()
 
 	# --- Toasts (center-bottom) ---
 	toast_box = VBoxContainer.new()
@@ -120,6 +118,73 @@ func set_hint(text: String) -> void:
 	toast_box.custom_minimum_size = Vector2(280, 0)
 	toast_box.alignment = BoxContainer.ALIGNMENT_END
 	add_child(toast_box)
+
+func set_hint(text: String) -> void:
+	if hint_label:
+		hint_label.text = text
+
+# --- Skill hotbar (5 slots) -------------------------------------------------
+
+var hotbar_slots: Array = []          # [{root, icon, num, cd, glow}]
+var fusion_indicator: Label
+
+func _build_hotbar() -> void:
+	var bar := Control.new()
+	bar.anchor_left = 0.5; bar.anchor_right = 0.5
+	bar.anchor_top = 1.0; bar.anchor_bottom = 1.0
+	add_child(bar)
+	for i in range(5):
+		var slot := Panel.new()
+		slot.size = Vector2(44, 44)
+		slot.position = Vector2(-120 + i * 48, -92)
+		var glow := StyleBoxFlat.new()
+		glow.bg_color = Color(0.10, 0.13, 0.28, 0.85)
+		glow.set_border_width_all(2)
+		glow.border_color = Color(0.4, 0.5, 0.8)
+		glow.set_corner_radius_all(4)
+		slot.add_theme_stylebox_override("panel", glow)
+		var icon := TextureRect.new()
+		icon.set_anchors_preset(Control.PRESET_FULL_RECT)
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		slot.add_child(icon)
+		var cd := ColorRect.new()      # cooldown shade (top-down fill)
+		cd.color = Color(0, 0, 0, 0.6)
+		cd.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		cd.size.y = 0
+		slot.add_child(cd)
+		var num := _mk_label(str(i + 1), 11)
+		num.position = Vector2(2, -2)
+		slot.add_child(num)
+		bar.add_child(slot)
+		hotbar_slots.append({"root": slot, "style": glow, "icon": icon, "cd": cd})
+	fusion_indicator = _mk_label("", 14)
+	fusion_indicator.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
+	fusion_indicator.anchor_left = 0.5; fusion_indicator.anchor_right = 0.5
+	fusion_indicator.anchor_top = 1.0; fusion_indicator.anchor_bottom = 1.0
+	fusion_indicator.position = Vector2(-60, -70)
+	add_child(fusion_indicator)
+
+func _refresh_hotbar() -> void:
+	if hotbar_slots.is_empty():
+		return
+	var p := get_tree().get_first_node_in_group("player")
+	var hb = p.hotbar if (p and "hotbar" in p) else null
+	for i in range(hotbar_slots.size()):
+		var s: Dictionary = hotbar_slots[i]
+		var sid: String = PlayerData.hotbar[i] if i < PlayerData.hotbar.size() else ""
+		var elem: String = Db.skill(sid).get("element", "none")
+		var path := "res://assets/game/ui/icons/element_%s_32.png" % elem
+		if s.icon.texture == null and ResourceLoader.exists(path):
+			s.icon.texture = load(path)
+		# prime highlight + cooldown
+		var primed: bool = hb != null and (hb.primed == i or (hb.fusion_ready and (hb.fusion_a == i or hb.fusion_b == i)))
+		s.style.border_color = Color(1.0, 0.85, 0.3) if primed else Color(0.4, 0.5, 0.8)
+		s.style.set_border_width_all(3 if primed else 2)
+		var frac: float = hb.cooldown_frac(i) if hb != null else 0.0
+		s.cd.size = Vector2(s.root.size.x, s.root.size.y * frac)
+	if fusion_indicator:
+		fusion_indicator.text = "⚡ FUSION — klik kiri!" if (hb != null and hb.fusion_ready) else ""
 
 func _mk_bar(color: Color) -> ProgressBar:
 	var b := ProgressBar.new()
@@ -170,6 +235,7 @@ func _refresh_elements() -> void:
 	_last_elem_count = PlayerData.mastered_elements.size()
 
 func _process(_delta: float) -> void:
+	_refresh_hotbar()
 	if PlayerData.mastered_elements.size() != _last_elem_count:
 		_refresh_elements()
 	if infusion_label == null:

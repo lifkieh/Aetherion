@@ -56,6 +56,8 @@ var discovered: Dictionary = {"monsters": {}, "items": {}, "weathers": {}}  # Ae
 var craft_insight: Dictionary = {}     # recipe_id -> accumulated success bonus
 var daily_quests: Dictionary = {}      # {date, quests:[...]} — Daily Quest Board
 var prof_xp: Dictionary = {}           # profession -> xp (miner, lumberjack, ...)
+var hotbar: Array = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"]  # 5 slots
+var discovered_fusions: Array = []     # combo results the player has cast (first-discovery)
 
 func _ready() -> void:
 	recalculate_stats()
@@ -85,6 +87,8 @@ func new_game() -> void:
 	craft_insight = {}
 	daily_quests = {}
 	prof_xp = {}
+	hotbar = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"]
+	discovered_fusions = []
 	birth_sign = _birth_sign_from_today()
 	recalculate_stats()
 	hp = max_hp
@@ -274,6 +278,7 @@ func to_save() -> Dictionary:
 		"scenario_flags": scenario_flags, "titles": titles, "professions": professions,
 		"achievements": achievements, "active_title": active_title, "discovered": discovered,
 		"craft_insight": craft_insight, "daily_quests": daily_quests, "prof_xp": prof_xp,
+		"hotbar": hotbar, "discovered_fusions": discovered_fusions,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -300,6 +305,8 @@ func from_save(d: Dictionary) -> void:
 	craft_insight = d.get("craft_insight", {})
 	daily_quests = d.get("daily_quests", {})
 	prof_xp = d.get("prof_xp", {})
+	hotbar = d.get("hotbar", ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"])
+	discovered_fusions = d.get("discovered_fusions", [])
 	infusion = {}          # transient — never carry over a save
 	mounted = false        # never load mounted (pet may not exist)
 	recalculate_stats()

@@ -63,10 +63,14 @@
     "fire": {"melt_ice": true, "desc": "Api mencairkan es kembali jadi air."}
   },
   "combos": [
-    {"a": "fire", "b": "water", "result": "steam", "effect": "accuracy_down_area"},
-    {"a": "fire", "b": "ice", "result": "thermal_shock", "mult": 1.5},
-    {"a": "sun", "b": "wood", "result": "overgrowth"},
-    {"a": "moon", "b": "water", "result": "small_tsunami", "requires": {"full_moon": true}},
-    {"a": "star", "b": "void", "result": "supernova"}
+    {"a": "fire", "b": "wind", "result": "Firestorm", "element": "fire", "mult": 1.7, "desc": "Badai api menyapu — angin memasok oksigen."},
+    {"a": "lightning", "b": "water", "result": "Thunder Rain", "element": "lightning", "mult": 1.6, "chain": true, "desc": "Hujan menyetrum semua yang basah."},
+    {"a": "fire", "b": "water", "result": "Steam Burst", "element": "water", "mult": 1.3, "desc": "Uap panas — penguapan mengaburkan pandangan."},
+    {"a": "fire", "b": "ice", "result": "Thermal Shock", "element": "fire", "mult": 1.9, "desc": "Ekspansi termal meretakkan target beku."},
+    {"a": "ice", "b": "wind", "result": "Blizzard", "element": "ice", "mult": 1.5, "desc": "Badai salju memperlambat."},
+    {"a": "water", "b": "wind", "result": "Typhoon", "element": "water", "mult": 1.6, "desc": "Topan menghempas."},
+    {"a": "light", "b": "darkness", "result": "Eclipse", "element": "light", "mult": 1.8, "desc": "Gerhana — keseimbangan yang memusnahkan."},
+    {"a": "earth", "b": "fire", "result": "Magma Surge", "element": "fire", "mult": 1.7, "desc": "Lelehan batu menerjang."},
+    {"a": "star", "b": "void", "result": "Supernova", "element": "star", "mult": 2.4, "desc": "Ledakan bintang — lore akhir game."}
   ]
 }

@@ -47,6 +47,12 @@ func _ready() -> void:
 	if OS.get_environment("AETHER_PET") == "1":
 		_pet_demo()
 		_screenshot_at = 1.3
+	if OS.get_environment("AETHER_HOTBAR") == "1":
+		get_tree().create_timer(0.6).timeout.connect(func():
+			if is_instance_valid(player):
+				player.hotbar.press_slot(2)   # flow_fire
+				player.hotbar.press_slot(4)   # flow_ice -> fusion ready
+			_screenshot_at = 0.01)
 	if OS.get_environment("AETHER_FISH") == "1":
 		get_tree().create_timer(0.8).timeout.connect(func():
 			FishingUI.open("")

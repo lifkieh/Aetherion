@@ -19,6 +19,7 @@ var _attacking := 0.0
 var _iframes := 0.0
 var _skill_cd := {}                       # skill_id -> remaining
 var _mp_regen_acc := 0.0
+var hotbar := Hotbar.new()
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hitbox: Area2D = $Hitbox
@@ -56,20 +57,22 @@ func _physics_process(delta: float) -> void:
 	if input.length() > 1.0:
 		input = input.normalized()
 
-	# Actions
+	# Actions (hotbar prime -> left-click cast to cursor; same as dungeon)
 	if Input.is_action_just_pressed("dodge") and _dodge_cd <= 0.0:
 		_start_dodge(input)
 		return
-	if Input.is_action_just_pressed("attack") and _attack_cd <= 0.0:
-		_do_attack()
-	if Input.is_action_just_pressed("skill_1"):
-		_do_skill("flame_slash")
-	if Input.is_action_just_pressed("skill_2"):
-		_do_skill("spark_bolt")
-	if Input.is_action_just_pressed("infuse_fire"):
-		PlayerData.apply_infusion("fire", 45)
-	if Input.is_action_just_pressed("infuse_lightning"):
-		PlayerData.apply_infusion("lightning", 45)
+	hotbar.tick(delta)
+	for i in range(5):
+		if Input.is_action_just_pressed("slot_%d" % (i + 1)):
+			hotbar.press_slot(i)
+	if Input.is_action_just_pressed("attack"):
+		var aim := (get_global_mouse_position() - global_position)
+		aim = aim.normalized() if aim.length() > 2.0 else _facing_vec()
+		if (hotbar.primed >= 0 or hotbar.fusion_ready) and hotbar.cast(self, aim):
+			pass
+		elif _attack_cd <= 0.0:
+			facing = SheetUtil.dir_from_vec(aim)
+			_do_attack()
 
 	var speed := MOUNT_SPEED if PlayerData.mounted else BASE_SPEED
 	velocity = input * speed

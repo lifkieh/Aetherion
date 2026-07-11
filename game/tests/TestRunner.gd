@@ -31,6 +31,7 @@ func _ready() -> void:
 	_test_evolution()
 	await _test_platformer()
 	await _test_dungeon_combat()
+	await _test_hotbar()
 	_test_fishing()
 	_test_professions()
 	_test_skycalendar()
@@ -319,6 +320,48 @@ func _test_fishing() -> void:
 	check("moonfish at full-moon night", "moonfish" in FishingSystem.eligible(21, 0.0, true, "").map(func(f): return f.id))
 	check("snapper at high tide", "tide_snapper" in FishingSystem.eligible(12, 0.7, false, "").map(func(f): return f.id))
 	check("roll yields a catch (carp always eligible)", not FishingSystem.roll("").is_empty())
+
+func _test_hotbar() -> void:
+	print("[Hotbar + fusion]")
+	check("fusion recipes >= 8", Db.elements.get("combos", []).size() >= 8)
+	check("combo lookup order-independent", not Db.elem_combo("fire", "ice").is_empty() and not Db.elem_combo("ice", "fire").is_empty())
+	check("fire+lightning has no recipe", Db.elem_combo("fire", "lightning").is_empty())
+	PlayerData.new_game()
+	PlayerData.mp = 999
+	var actor := Node2D.new()
+	add_child(actor)
+	await get_tree().process_frame
+	var hb := Hotbar.new()
+	# single prime + cast (slot 2 = flow_fire -> infusion)
+	hb.press_slot(2)
+	check("slot primed", hb.primed == 2)
+	check("single cast returns true", hb.cast(actor, Vector2.RIGHT))
+	check("flow cast applied infusion", PlayerData.has_active_infusion())
+	check("cast resets prime", hb.primed == -1)
+	# valid fusion: slot 2 (fire) + slot 4 (ice) = Thermal Shock
+	PlayerData.discovered_fusions.clear()
+	PlayerData.mp = 999
+	hb.press_slot(2)
+	hb.press_slot(4)
+	check("fusion primed on 2nd key in window", hb.fusion_ready)
+	var mp_before: int = PlayerData.mp
+	check("valid fusion casts", hb.cast(actor, Vector2.RIGHT))
+	check("fusion is first-discovered", "Thermal Shock" in PlayerData.discovered_fusions)
+	check("fusion spent 2x mana", PlayerData.mp < mp_before)
+	# fizzle: slot 0 (fire) + slot 1 (lightning) = no recipe
+	PlayerData.mp = 999
+	hb.press_slot(0)
+	hb.press_slot(1)
+	var disc_before: int = PlayerData.discovered_fusions.size()
+	hb.cast(actor, Vector2.RIGHT)
+	check("fizzle discovers nothing", PlayerData.discovered_fusions.size() == disc_before)
+	# combo window expiry -> no fusion
+	hb.press_slot(0)
+	hb.tick(2.0)   # > COMBO_WINDOW (1.5)
+	hb.press_slot(1)
+	check("expired window = single prime, not fusion", hb.primed == 1 and not hb.fusion_ready)
+	actor.queue_free()
+	PlayerData.new_game()
 
 func _test_dungeon_combat() -> void:
 	print("[Dungeon combat / feel]")

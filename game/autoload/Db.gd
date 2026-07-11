@@ -110,6 +110,13 @@ func loot_table(id: String) -> Array:
 		return t.get("drops", [])
 	return []
 
+## Order-independent element fusion recipe lookup (returns {} if none).
+func elem_combo(a: String, b: String) -> Dictionary:
+	for c in elements.get("combos", []):
+		if (c.get("a", "") == a and c.get("b", "") == b) or (c.get("a", "") == b and c.get("b", "") == a):
+			return c
+	return {}
+
 func has_errors() -> bool:
 	return not _errors.is_empty()
 

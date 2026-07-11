@@ -2,6 +2,27 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — UI/UX §2: Skill hotbar + element fusion (DONE)
+
+- New shared `Hotbar` (RefCounted) drives BOTH `Player` (top-down) and `PlayerPlatformer` (side-view) — one control
+  language, no duplication. PRIME a slot with a number key → LEFT-CLICK releases it toward the cursor. Normal weapon
+  attack is unchanged when nothing is primed.
+- **Fusion**: two number keys within `COMBO_WINDOW` (1.5 s) arm a fusion. `elements.json` now has **9 recipes**
+  (Firestorm, Thunder Rain, Steam Burst, Thermal Shock, Blizzard, Typhoon, Eclipse, Magma Surge, Supernova). Lookup is
+  order-independent (`Db.elem_combo` — 1+2 == 2+1). Valid recipe → `fusion_bolt` projectile (element+mult override) +
+  impact arc, mana 2×, first discovery announced and recorded in `PlayerData.discovered_fusions`. No recipe → fizzle
+  (smoke + toast hint, 0.3× mana) so combos are *discovered*, never listed.
+- HUD hotbar UI: 5 element-icon slots (original `element_*_32` icons), gold prime-glow border, top-down cooldown
+  shade, number labels, and a "⚡ FUSION — klik kiri!" indicator when a fusion is armed. Verified render in
+  `reports/hotbar.png`.
+- **Bug fixed**: an earlier edit had displaced the `_build_hotbar()` call and the `toast_box` creation block into the
+  tail of `_refresh_hotbar()`, which returns early while `hotbar_slots` is empty — so the hotbar (and toasts) were
+  never built at runtime. Moved both back into `_build()`. Root-caused via screenshot after discovering the real
+  project path is `game/` (main scene `MainMenu.tscn`); direct-scene run `--path game res://scenes/Main.tscn` with
+  `AETHER_HOTBAR=1 AETHER_SHOT=1` confirmed the fix.
+- 191/191 headless tests pass (incl. the `[Hotbar + fusion]` suite: ≥8 recipes, order-independent lookup, single
+  prime+cast, valid fusion first-discovery + 2× mana, fizzle discovers nothing, expired window = single prime).
+
 ## 2026-07-11 — REPO PURGE (owner-approved): assets_raw removed from history
 
 - Backup first: `git bundle create _tools/aetherion-backup-<sha>.bundle --all` (93 MB, all refs).

@@ -131,12 +131,13 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 - **(0) Repo purge** ✅ assets_raw removed from history (104MB→5.7MB), main force-pushed. Tag reconcile pending.
 - **(1) Unified UI Kit** ✅ `UiTheme` autoload (JRPG blue window + gold border + m5x7 + palette), applied to
   MenuUI/MainMenu/FishingUI. One panel style everywhere.
-- **(2) Skill hotbar + element fusion** ⏳ NEXT — 5 slots (keys 1-5) from Skill Book; PRIME (number) → LEFT-CLICK
-  cast to cursor (top-down AND side-view); two numbers <1.5s = FUSION (≥8 recipes from elements.json, mana 2x);
-  no recipe = fizzle+smoke (discovery, no recipe list, first-discovery announced); hotbar UI icons(orig element
-  icons)/radial cooldown/mana/prime glow/fusion indicator; normal attack stays. Test: prime/combine/valid/fizzle/
-  cast both perspectives.
-- **(3) FF-style overworld** ⏳ NPC dialog box (dark-blue JRPG frame, speaker name, per-letter typing, portrait),
+- **(2) Skill hotbar + element fusion** ✅ DONE — `Hotbar` shared class (top-down + side-view); 5 slots (keys 1-5)
+  from Skill Book; PRIME (number) → LEFT-CLICK cast to cursor; two numbers <1.5s = FUSION (9 recipes in elements.json,
+  mana 2x, order-independent lookup); no recipe = fizzle+smoke (discovery, first-discovery announced); HUD hotbar UI
+  = 5 element-icon slots + prime glow + cooldown shade + fusion indicator (verified render `reports/hotbar.png`);
+  normal attack stays without prime. Fixed edit-displacement bug that had `_build_hotbar()`/toast_box orphaned inside
+  `_refresh_hotbar()` (hotbar never built). 191/191 headless tests pass.
+- **(3) FF-style overworld** ⏳ NEXT — NPC dialog box (dark-blue JRPG frame, speaker name, per-letter typing, portrait),
   FF-window menus/shop, fade transitions, elegant area-name banner on entry, per-region music/ambience, tidy town layout.
 - **(4) Town = safe zone + guards** ⏳ safe_zone polygon per town (data); monsters can't enter/spawn, lose aggro at
   edge; immortal gate-guard NPC that knockbacks approaching monsters.

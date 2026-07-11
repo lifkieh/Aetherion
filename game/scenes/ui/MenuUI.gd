@@ -62,7 +62,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["prof", "Profesi"], ["pedia", "Pedia"]]:
+	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["prof", "Profesi"], ["pedia", "Pedia"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -138,9 +138,33 @@ func _rebuild() -> void:
 		"system": _build_system()
 		"pedia": _build_pedia()
 		"prof": _build_prof()
+		"skill": _build_skill()
 		"quest": _build_quests()
 		"sky": _build_sky()
 		"echo": _build_echo()
+
+func _build_skill() -> void:
+	title.text = "Skill Book — Hotbar (1-5)"
+	content.add_child(_mk_label("Slot saat ini:", 15))
+	var row := _row()
+	for i in range(5):
+		var sid: String = PlayerData.hotbar[i] if i < PlayerData.hotbar.size() else ""
+		var l := _mk_label("[%d] %s" % [i + 1, Db.skill(sid).get("name", "-")], 13)
+		l.custom_minimum_size = Vector2(100, 0)
+		row.add_child(l)
+	content.add_child(_mk_label("Prime dengan tekan angka → klik-kiri lepas ke kursor. Dua angka <1.5s = Fusion.", 11))
+	content.add_child(_mk_label("— Skill tersedia (klik →slot) —", 15))
+	var castable := ["flame_slash", "spark_bolt", "frost_bolt", "flow_fire", "flow_lightning", "flow_ice", "flow_wind"]
+	for sid in castable:
+		if not Db.skills.has(sid):
+			continue
+		var sk := Db.skill(sid)
+		var h := _row()
+		var l := _mk_label("%s [%s] · %dMP" % [sk.get("name", sid), sk.get("element", "-"), sk.get("mp_cost", 0)], 13)
+		l.custom_minimum_size = Vector2(240, 0)
+		h.add_child(l)
+		for slot in range(5):
+			h.add_child(_btn("→%d" % (slot + 1), func(): PlayerData.hotbar[slot] = sid; EventBus.toast.emit("Slot %d: %s" % [slot + 1, sk.get("name", sid)]); _rebuild()))
 
 func _build_prof() -> void:
 	title.text = "Profesi (1 Utama + 2 Sub)"
