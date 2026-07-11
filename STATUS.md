@@ -27,7 +27,11 @@
   - Pet follows player + auto-fights nearby enemies (ally marker); PetManager keeps active pet spawned
   - Mount toggle (R) for Medium+ rideable pets → speed boost, pet hides
   - Fixed critical sprite bug (see BUGS.md #1) that affected all monsters
-- [ ] M5 — Gathering & crafting (GatherNode DONE; TODO: inventory UI, crafting bench, shop NPC)
+- [x] **M5 — Gathering & crafting** ✅ DONE
+  - GatherNode: chop trees / mine copper with respawn (real-time), hits + drops
+  - MenuUI overlay (pauses game): Inventory (equip/use), Crafting (7 recipes, success%, insight on fail), Shop (buy/sell)
+  - CraftingSystem (consume/roll/base-preserve on fail) + Economy supply-demand — tested
+  - Bench + Shop NPC interactables (E to open)
 - [ ] M6 — Homestead (HomesteadSystem growth DONE+tested; TODO: homestead scene, plots, plant/harvest)
 - [ ] M7 — Hidden Scenario (data DONE; TODO: ScenarioManager, counter trigger, Lunar Warren scene)
 - [ ] M8 — Polish (save/load DONE+backup; TODO: 3-slot menu UI, main menu, Sky Report screen, Mode Hemat, full audio, element icons in UI)

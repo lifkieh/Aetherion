@@ -18,6 +18,7 @@ func _ready() -> void:
 	_test_taming()
 	_test_homestead_growth()
 	_test_economy()
+	_test_crafting()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -148,3 +149,38 @@ func _test_economy() -> void:
 	var p1 := Economy.buy_price("minor_potion")
 	check("buy price > 0", p1 > 0)
 	check("sell < buy", Economy.sell_price("minor_potion") < p1)
+	# buying depletes stock -> price should not decrease
+	var before := Economy.buy_price("minor_potion")
+	Economy.buy("minor_potion", 3)
+	check("buying raises/holds price", Economy.buy_price("minor_potion") >= before)
+
+func _test_crafting() -> void:
+	print("[CraftingSystem]")
+	PlayerData.inventory.clear()
+	# guaranteed recipe: plank from 2 wood_log (success 1.0)
+	PlayerData.add_item("wood_log", 2)
+	var r := CraftingSystem.craft("craft_plank")
+	check("plank crafted", r.success and PlayerData.item_count("plank") == 1, str(r))
+	check("ingredients consumed", PlayerData.item_count("wood_log") == 0)
+	# missing ingredients fails cleanly
+	var r2 := CraftingSystem.craft("craft_copper_sword")
+	check("craft fails without mats", not r2.success)
+	# failure preserves the valuable base (deterministic 0% via forced roll)
+	PlayerData.inventory.clear()
+	PlayerData.add_item("copper_bar", 2)
+	PlayerData.add_item("plank", 1)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 2  # force a high roll -> likely fail at 75%
+	var attempts := 0
+	var failed_once := false
+	while attempts < 40 and not failed_once:
+		PlayerData.inventory.clear()
+		PlayerData.add_item("copper_bar", 2)
+		PlayerData.add_item("plank", 1)
+		var rr := CraftingSystem.craft("craft_copper_sword", rng)
+		if not rr.success:
+			failed_once = true
+			# base = highest tier ingredient (copper_bar, tier E) preserved
+			check("failure preserves base copper_bar", PlayerData.item_count("copper_bar") == 2, "had %d" % PlayerData.item_count("copper_bar"))
+		attempts += 1
+	check("crafting can fail (roll works)", failed_once)

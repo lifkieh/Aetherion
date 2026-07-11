@@ -46,6 +46,17 @@ func _ready() -> void:
 	if OS.get_environment("AETHER_PET") == "1":
 		_pet_demo()
 		_screenshot_at = 1.3
+	if OS.get_environment("AETHER_MENU") == "1":
+		_menu_demo()
+
+func _menu_demo() -> void:
+	await get_tree().process_frame
+	for pair in [["wood_log", 6], ["copper_ore", 6], ["herb_mintleaf", 4], ["plank", 2], ["copper_bar", 2], ["slime_jelly", 3], ["fluff", 2], ["wolf_pelt", 3]]:
+		PlayerData.add_item(pair[0], pair[1])
+	var menu := get_tree().get_first_node_in_group("inventory_ui")
+	menu.open(OS.get_environment("AETHER_MENU_TAB") if OS.get_environment("AETHER_MENU_TAB") != "" else "crafting")
+	# pause-immune timer so the shot still fires while the menu has the game paused
+	get_tree().create_timer(1.2).timeout.connect(_take_screenshot)
 
 func _pet_demo() -> void:
 	# Tame a weakened wolf, confirm it follows/fights, then mount it.
@@ -256,8 +267,10 @@ func _spawn_player() -> void:
 
 func _add_hud() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
+	add_child(preload("res://scenes/ui/MenuUI.tscn").instantiate())
 	# gathering/interaction + save handled by a small controller
 	add_child(preload("res://scenes/systems/WorldController.tscn").instantiate())
+	_spawn_interactables()
 	var pm := Node.new()
 	pm.name = "PetManager"
 	pm.set_script(load("res://scenes/systems/PetManager.gd"))
@@ -272,6 +285,17 @@ func _spawn_gathering_nodes() -> void:
 		_add_gather_node(holder, "tree", Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48)))
 	for i in range(8):
 		_add_gather_node(holder, "ore", Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48)))
+
+func _spawn_interactables() -> void:
+	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
+	var bench := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(bench)
+	bench.setup("bench")
+	bench.global_position = center + Vector2(-48, 40)
+	var shop := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(shop)
+	shop.setup("shop")
+	shop.global_position = center + Vector2(56, 40)
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	var node := preload("res://scenes/world/GatherNode.tscn").instantiate()
