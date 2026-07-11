@@ -26,7 +26,7 @@ func _ready() -> void:
 	SafeZone.set_region("greenvale")   # town = monster-free safe zone (UI/UX §4)
 	_build_ground()
 	_build_boundaries()
-	_scatter_props()
+	_dress_wild()                      # R2 Part 2: dense forest outside the town
 	_build_sky()
 	_build_weather()
 	_spawn_player()
@@ -254,6 +254,19 @@ func _build_boundaries() -> void:
 		cs.position = rc.position + rc.size / 2
 		walls.add_child(cs)
 
+func _dress_wild() -> void:
+	# R2 Part 2 — dense forest ring around the town, directional landmarks, edge band,
+	# a dirt path to the dungeon, and ambient butterflies/fireflies.
+	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
+	var town := Rect2(center - Vector2(418, 384), Vector2(836, 768))
+	var dungeon := center + Vector2(0, 430)
+	var paths := [[center + Vector2(0, 360), dungeon]]
+	WildDresser.dress(self, "forest", MAP_W, MAP_H, [town], paths)
+	var amb := Node2D.new()
+	amb.set_script(load("res://scenes/systems/Ambience.gd"))
+	add_child(amb)
+	amb.setup("forest")
+
 func _scatter_props() -> void:
 	var props := Node2D.new()
 	props.name = "Props"
@@ -359,10 +372,19 @@ func _spawn_gathering_nodes() -> void:
 	holder.name = "GatherNodes"
 	holder.y_sort_enabled = true
 	add_child(holder)
+	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
+	var town := Rect2(center - Vector2(430, 396), Vector2(860, 792))
+	for i in range(14):
+		_add_gather_node(holder, "tree", _wild_pos(town))
 	for i in range(10):
-		_add_gather_node(holder, "tree", Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48)))
-	for i in range(8):
-		_add_gather_node(holder, "ore", Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48)))
+		_add_gather_node(holder, "ore", _wild_pos(town))
+
+func _wild_pos(town: Rect2) -> Vector2:
+	for _try in range(12):
+		var p := Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
+		if not town.has_point(p):
+			return p
+	return Vector2(64, 64)
 
 func _spawn_interactables() -> void:
 	# R2 Part 1: a dense, real town — buildings, streets, well, lamps, fences, deco,
@@ -374,8 +396,8 @@ func _spawn_interactables() -> void:
 	_place_portal(center + Vector2(-400, 24), "res://scenes/world/Desert.tscn", "◀ Gurun Reruntuhan [E]")
 	_place_portal(center + Vector2(400, 24), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
 	_place_portal(center + Vector2(70, 116), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
-	# Dungeon entrance just outside the south gate.
-	_place_interactable("dungeon", center + Vector2(0, 300))
+	# Dungeon entrance just outside the south gate (dirt path leads to it).
+	_place_interactable("dungeon", center + Vector2(0, 430))
 
 	# --- fishing ponds well outside the town ---
 	for p in [Vector2(-520, 300), Vector2(540, -300), Vector2(-540, -280)]:

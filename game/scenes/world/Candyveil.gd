@@ -22,6 +22,7 @@ func _ready() -> void:
 	_build_ground()
 	_build_boundaries()
 	_scatter_props()
+	_dress_wild()
 	_build_sky()
 	_build_weather()
 	_spawn_player()
@@ -36,6 +37,16 @@ func _ready() -> void:
 	EventBus.toast.emit("Candyveil Meadows — padang gula kapas. Awas Gummy Mimic!")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6
+
+func _dress_wild() -> void:
+	# R2 Part 2 — candy-themed density: cotton-candy trees, gumdrops, landmarks, edge.
+	var spawn := Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
+	var avoid := [Rect2(spawn - Vector2(130, 140), Vector2(260, 220))]
+	WildDresser.dress(self, "candy", MAP_W, MAP_H, avoid, [])
+	var amb := Node2D.new()
+	amb.set_script(load("res://scenes/systems/Ambience.gd"))
+	add_child(amb)
+	amb.setup("candy")
 
 func _process(delta: float) -> void:
 	if canvas_mod:
