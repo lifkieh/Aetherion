@@ -2,6 +2,22 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — Tree feedback CORRECTION (owner clarified)
+
+I had over-deleted. Owner clarified: only the box/blob-canopy style was unwanted; other trees return as pure decor.
+- **Recreated rounded decorative broadleaf trees** (natural lumpy canopy, NOT box/flat-disc): `tree_oak`, `tree_birch`
+  (white trunk), `tree_round`, `tree_giant`, plus `tree_snow_round` for Frostpeak. Soft thin outline.
+- **Choppable = only two styles**: tiered pines + bare dead trunks (all sizes incl. snow pines). Regenerated with a
+  **thick dark outline** and drawn ~1.12× larger so they read as interactable. Decorative trees keep a soft outline.
+- **Reserved pines/bare-trunks for choppable only** — WildDresser decoration now uses the rounded broadleaf trees
+  (forest: oak/birch/round/giant; frost: snow-round; desert: cactus/rock; candy: candy puffs). No pine/bare-trunk in
+  scenery, so the player can always tell what's choppable. Decorative trees have no collision/interaction/loot.
+- **Frostpeak choppable** trees now use snow pines (GatherNode `biome` param).
+- Updated the onboarding "chop" tip to name the two choppable styles; added easy choppable pines just outside each
+  Greenvale gate so "chop 3 trees" is completable right after leaving town.
+- Self-check: `reports/trees_side_by_side.png` (choppable pine beside decorative oak) + `trees_ingame_wide.png`.
+  237/237 tests.
+
 ## 2026-07-12 — v0.3-alpha: Frostpeak Mountain region (content unfrozen)
 
 Owner cue ("pohon pinus versi salju untuk Frostpeak yang sedang dibangun") unfroze Frostpeak. Built a playable slice:

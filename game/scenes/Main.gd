@@ -74,6 +74,19 @@ func _ready() -> void:
 			get_tree().quit())
 	if OS.get_environment("AETHER_DAY") == "1":
 		_force_day = true
+	if OS.get_environment("AETHER_TREES") == "1":
+		_force_day = true
+		get_tree().create_timer(0.4).timeout.connect(func():
+			var c := player.global_position
+			# choppable pine (gather node) on the left, decorative oak on the right
+			var gn := preload("res://scenes/world/GatherNode.tscn").instantiate()
+			add_child(gn); gn.global_position = c + Vector2(-46, -6); gn.setup("tree", "demo_chop")
+			for pair in [["tree_oak", Vector2(44, -6)], ["tree_round", Vector2(84, 6)]]:
+				var s := Sprite2D.new(); s.texture = load("res://assets/game/sprites/props/%s.png" % pair[0])
+				s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+				s.global_position = c + pair[1]; s.offset = Vector2(0, -s.texture.get_height() * 0.5 + 1)
+				s.z_index = int(s.global_position.y); add_child(s)
+			_screenshot_at = 0.5)
 	if OS.get_environment("AETHER_FPS") == "1":
 		get_tree().create_timer(4.0).timeout.connect(func():
 			print("[fps] fps=%.1f nodes=%d monsters=%d props=%d" % [
@@ -374,7 +387,11 @@ func _spawn_gathering_nodes() -> void:
 	add_child(holder)
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
 	var town := Rect2(center - Vector2(430, 396), Vector2(860, 792))
-	for i in range(14):
+	# a handful of choppable pines right outside the gates so the opening "chop 3
+	# trees" quest is completable the moment the player steps out of town
+	for gp in [Vector2(-40, 420), Vector2(40, 430), Vector2(-410, 90), Vector2(410, -20), Vector2(0, -410)]:
+		_add_gather_node(holder, "tree", center + gp)
+	for i in range(12):
 		_add_gather_node(holder, "tree", _wild_pos(town))
 	for i in range(10):
 		_add_gather_node(holder, "ore", _wild_pos(town))

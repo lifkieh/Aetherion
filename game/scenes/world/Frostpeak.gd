@@ -133,7 +133,7 @@ func _spawn_gathering() -> void:
 		var node := preload("res://scenes/world/GatherNode.tscn").instantiate()
 		holder.add_child(node)
 		node.global_position = Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
-		node.setup("tree", "fp_tree_%d" % i)
+		node.setup("tree", "fp_tree_%d" % i, "frost")
 
 func _prime_monsters() -> void:
 	for i in range(8):

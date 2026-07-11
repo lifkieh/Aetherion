@@ -12,7 +12,7 @@ const TIPS := {
 		"text": "Ini kota — zona aman. Monster tak bisa masuk dan penjaga gerbang menjagamu. Jelajahi dengan tenang, lalu ikuti Panduan di kanan layar."},
 	"tree": {
 		"title": "Menebang & memungut",
-		"text": "Dekati pohon atau batu, lalu tekan E untuk memungut bahan. Bahan dipakai untuk meramu di Bengkel."},
+		"text": "Hanya pohon pinus berjenjang & pohon batang telanjang (bergaris tebal) yang bisa ditebang — dekati lalu tekan E berulang. Pohon rimbun membulat lain cuma hiasan. Batu ditambang dengan cara sama."},
 	"monster": {
 		"title": "Bertarung",
 		"text": "Klik kiri untuk menyerang ke arah kursor. Tekan angka 1–5 untuk 'prime' skill, lalu klik kiri untuk melepasnya. Space untuk menghindar."},

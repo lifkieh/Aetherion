@@ -11,12 +11,14 @@ var node_id := ""
 var _hits_left := 3
 var _depleted := false
 var _tree_variant := "tree_pine_b"
+var biome := "forest"          # "frost" => snow pines
 
 @onready var sprite: Sprite2D = $Sprite
 
-func setup(k: String, id: String) -> void:
+func setup(k: String, id: String, b: String = "forest") -> void:
 	kind = k
 	node_id = id
+	biome = b
 	# setup() runs after add_child (node already in tree), so (re)build now that
 	# kind/id are known — otherwise _ready built with the default kind="tree".
 	if is_inside_tree():
@@ -43,8 +45,11 @@ func _build_sprite() -> void:
 		sprite.texture = load("res://assets/game/tiles/desert/rock.png")
 		sprite.scale = Vector2(1.8, 1.6)
 	elif kind == "tree":
-		# choppable trees use ONLY the approved pine style (3 sizes, stable per node)
-		_tree_variant = ["tree_pine_a", "tree_pine_b", "tree_pine_c"][_variant_index()]
+		# choppable trees use ONLY the approved pine style (snow pines in Frostpeak)
+		if biome == "frost":
+			_tree_variant = ["tree_pine_snow_a", "tree_pine_snow_b"][_variant_index() % 2]
+		else:
+			_tree_variant = ["tree_pine_a", "tree_pine_b", "tree_pine_c"][_variant_index()]
 		# actual sprite (tree vs stump) is set by _set_depleted below
 	else:
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
@@ -67,6 +72,8 @@ func _show_prop(name: String) -> void:
 	sprite.offset = Vector2(0, -tex.get_height() * 0.5 + 1)   # base sits at the node origin
 	sprite.rotation = 0.0
 	sprite.modulate.a = 1.0
+	# choppable pines are drawn a touch larger so they read as interactable vs decor
+	sprite.scale = Vector2(1.12, 1.12) if name.begins_with("tree_pine") else Vector2.ONE
 
 func _add_trunk_collision() -> void:
 	if has_node("Trunk"):
