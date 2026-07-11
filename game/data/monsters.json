@@ -101,6 +101,15 @@
     "tame_base": 0.4, "evolution": "", "aggro_radius": 160, "lore": "Kelelawar gua; terbang zig-zag."
   },
   {
+    "id": "anubis_warden", "name": "Anubis Warden", "rarity": "legendary", "element": "darkness",
+    "archetype": "bruiser", "bst": 540, "size": "large", "rideable": false, "level": 25,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "3a3550", "traits": [], "skills": ["charge", "bite"],
+    "loot_table": "anubis_warden", "tame_base": 0.03, "evolution": "",
+    "is_boss": true, "add_species": "jackal_shade",
+    "aggro_radius": 420, "lore": "Penjaga makam gurun berkepala serigala; bos Desert Barrow."
+  },
+  {
     "id": "gummy_titan", "name": "Gummy Titan", "rarity": "epic", "element": "water",
     "archetype": "tank", "bst": 460, "size": "large", "rideable": false, "level": 25,
     "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,

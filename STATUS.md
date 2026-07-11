@@ -50,7 +50,8 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**119/119 tests**, 0 headless errors, **zero known bugs**. 15 autoloads. **3 regions, 26 monsters, 2 Hidden Scenarios.**
+**146/146 tests**, 0 headless errors, **zero known bugs**. 17 autoloads. **3 overworld regions + 3 side-view
+dungeons, 31 monsters (incl. 3 dungeon bosses), 2 Hidden Scenarios.** Terraria-style dungeon combat complete.
 
 Session 2 round 3 added: **Star Whale hidden scenario**, **6 Cook recipes**, **dynamic music layering**,
 **Echo Vendors** + **proximity labels**.
@@ -98,9 +99,13 @@ Note: headless test run may report OS exit 255 (Godot exit-cleanup artifact re: 
 printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit code.
 **When adding new image assets, run `godot --headless --path game --import` before referencing them.**
 
+## Dungeons (side-view, via DungeonBase — thin cfg() per dungeon, no dup)
+- **Greenvale Depths** (King Slime) · **Gummy Cavern** (Candyveil, Gummy Titan) · **Desert Barrow**
+  (Anubis Warden [A] Ankh Fragment). Each has a door in its overworld region + return-to-door.
+- To add another: new `X.gd extends DungeonBase` overriding `cfg()` (theme/spawns/boss/return) + a `.tscn`
+  + an `Interactable` kind `"dungeon"` door (set `dungeon_scene`/`dungeon_label`). Boss adds via `add_species`.
+
 ## Next steps (exact) — for the next session, resume here
-0. **In-game playtest of the dungeon** enter/exit loop from the overworld door (unit-tested, but confirm feel).
-   Then build the **next dungeons in side-view** (Candyveil "Gummy Cavern", Desert "Barrow") using the pattern above.
 1. **Sugar Queen Tea Party** hidden scenario (Candyveil): trigger "eat 100 different candies in a day"
    (track candy-eating in a daily counter) → etiquette quiz scene (3-round Q&A, 3 wrong = fail permanent) →
    reward Cook [S] recipe + Peppermint Fairy pet. ScenarioManager.trigger_scenario supports the entry.

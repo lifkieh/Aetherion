@@ -2,6 +2,18 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — Dungeons scaled out (Gummy Cavern, Desert Barrow) via DungeonBase
+
+- Extracted **DungeonBase** (`class_name`) holding all shared side-view dungeon logic (terrain build, 3-floor+
+  arena layout, dark+torch lighting, player carried-light, monster/boss spawn, exit portal, HUD hint, perf
+  probe). Each dungeon is now a **thin `cfg()` override** — no duplication.
+- **GreenvaleDepths** refactored to extend DungeonBase (kept its puddles). **Gummy Cavern** (Candyveil,
+  pink candy theme, **Gummy Titan** boss) and **Desert Barrow** (sand theme, **Anubis Warden** boss [A]
+  Ankh Fragment). Boss adds are configurable via `add_species` (King Slime→verdant, Titan→gummy, Anubis→jackal).
+- `DungeonTerrain.build_from(layout, tile_tint)` themes tiles per dungeon. Dungeon doors (`Interactable`
+  kind `dungeon`, configurable `dungeon_scene`/`dungeon_label`) added to Candyveil & Desert; all overworld
+  regions restore the player at the door on return (`pending_return_pos`). Suite 146/146.
+
 ## 2026-07-11 — OWNER PRIORITY: Terraria-style dungeon combat (9 reqs) — DONE
 
 1. **Mouse aim**: dungeon attacks aim at the cursor. Left-click = melee **arc swing** (multi-hit all in a

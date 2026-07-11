@@ -8,6 +8,7 @@
   {"id": "carrot_of_calamity", "name": "Carrot of Calamity", "tier": "S", "type": "weapon", "atk": 120, "element": "moon", "value": 0, "stack": 1, "desc": "Pedang wortel terkutuk dari Lunar Warren. Berdenyut saat purnama."},
   {"id": "ambergris_star", "name": "Ambergris Star", "tier": "S", "type": "material", "value": 0, "stack": 999, "desc": "Material [S] dari perut Star Whale — berbau langit dan laut sekaligus."},
   {"id": "gel_core", "name": "Inti Gel", "tier": "C", "type": "material", "value": 180, "stack": 999, "desc": "Inti King Slime — bahan resep tier B+."},
+  {"id": "ankh_fragment", "name": "Pecahan Ankh", "tier": "A", "type": "material", "value": 0, "stack": 999, "desc": "Material kunci [A] dari Anubis Warden."},
 
   {"id": "basic_orb", "name": "Orb Dasar", "tier": "E", "type": "orb", "tame_bonus": 1.0, "value": 50, "stack": 99, "shop_stock": 30, "shop_demand": 15},
   {"id": "greater_orb", "name": "Orb Unggul", "tier": "C", "type": "orb", "tame_bonus": 1.5, "value": 250, "stack": 99, "shop_stock": 10, "shop_demand": 12},
