@@ -49,6 +49,17 @@ their flows unlock). `Hotbar.press_slot` now refuses un-learned skills. New **Sk
 "Dikuasai" list (assign →slot), "Belum dikuasai" list with unlock hints + trainer buy buttons + ★ ultimate mark.
 Boss-kill hook is centralised on `EventBus.monster_killed` (covers both perspectives). Tests: 313 pass (+31).
 
+**PC5 — Equipment.** Three real slots (weapon/armor/accessory) that actually feed `recalculate_stats`:
+armor → DEF + `hp_bonus`, accessory → MATK + `mp_bonus`; **fixed weapon ATK double-count** (removed the
+separate `_weapon_atk()` — `_gear_stat("atk")` already includes the weapon). New armor chain
+cloth_tunic(F)/leather_vest(E)/iron_mail(D) and accessory chain copper/silver/gold_ring — each tier jump ≈
++27–36% aggregate effectiveness (within the 25-35% target). Starting gear is tier F (`cloth_tunic` equipped).
+`PlayerData.equip_item` toggles equip/unequip for any slot; bag shows the 3 equipped slots with "Lepas"
+buttons and equips on click. **Comparison tooltips**: `ItemSlot.gd` renders a BBCode RichTextLabel with
+green (`+N`) / red (`-N`) stat deltas vs the item currently in that slot (plain `tooltip_text` can't be
+coloured). **Craft chain F→E→D** in Greenvale: each upgrade recipe consumes the lower tier (blacksmith bench).
+Tests: 330 pass (+17: slots, stat wiring, no double-count, toggle, tier scaling, craft-chain links).
+
 ## 2026-07-12 — v0.3-alpha content: Frostpeak complete + Storm Island
 
 Playtest of the character system passed; built the rest of v0.3.

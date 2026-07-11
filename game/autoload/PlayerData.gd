@@ -91,8 +91,10 @@ func new_game() -> void:
 	level = 1; exp = 0; stat_points = 0
 	attributes = {"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5}
 	gold = 200
-	inventory = {"minor_potion": 3, "basic_orb": 2, "wooden_sword": 1, "seed_mintleaf": 3}
+	inventory = {"minor_potion": 3, "basic_orb": 2, "wooden_sword": 1, "cloth_tunic": 1, "seed_mintleaf": 3}
 	equipped_weapon = "wooden_sword"
+	equipped_armor = "cloth_tunic"     # starting gear is tier F (PC5)
+	equipped_accessory = ""
 	known_skills = ["strike", "flame_slash", "spark_bolt"]
 	mastered_elements = ["fire", "lightning"]
 	infusion = {}
@@ -240,9 +242,9 @@ func recalculate_stats() -> void:
 	var l: int = attributes.get("LUK", 5)
 	var lv := level
 	# Hero is deliberately stronger per-point than fodder monsters (BST-based).
-	max_hp = 165 + v * 18 + lv * 14                 # VIT -> HP
-	max_mp = 40 + i * 8 + lv * 4                     # INT -> mana pool
-	atk = 24 + s * 5 + lv * 3 + _weapon_atk() + _gear_stat("atk")   # STR -> physical ATK
+	max_hp = 165 + v * 18 + lv * 14 + _gear_stat("hp_bonus")   # VIT -> HP (+ armor)
+	max_mp = 40 + i * 8 + lv * 4 + _gear_stat("mp_bonus")      # INT -> mana pool (+ accessory)
+	atk = 24 + s * 5 + lv * 3 + _gear_stat("atk")   # STR -> physical ATK (gear atk incl. weapon)
 	if has_node("/root/Achievements"):
 		atk = int(atk * (1.0 + get_node("/root/Achievements").active_buff("atk_pct")))
 	def = 8 + v * 2 + lv + _gear_stat("def")         # VIT -> DEF/resist
@@ -262,6 +264,29 @@ func recalculate_stats() -> void:
 	stats_recalculated.emit()
 	EventBus.player_hp_changed.emit(hp, max_hp)
 	EventBus.player_mp_changed.emit(mp, max_mp)
+
+## Which equipped_* slot an item belongs to ("" if not equippable).
+func slot_for_item(item_id: String) -> String:
+	match Db.item(item_id).get("type", ""):
+		"weapon": return "equipped_weapon"
+		"armor": return "equipped_armor"
+		"accessory": return "equipped_accessory"
+	return ""
+
+## Equip an item (or unequip if it's already in its slot — toggle). Returns the
+## slot name affected, or "" if the item isn't equippable. (PC5)
+func equip_item(item_id: String) -> String:
+	var slot := slot_for_item(item_id)
+	if slot == "":
+		return ""
+	if get(slot) == item_id:
+		set(slot, "")   # toggle off
+		EventBus.toast.emit("Melepas " + Db.item_name(item_id))
+	else:
+		set(slot, item_id)
+		EventBus.toast.emit("Memakai " + Db.item_name(item_id))
+	recalculate_stats()
+	return slot
 
 ## Sum a stat across equipped gear (weapon + armor + accessory). Gear stats really count.
 func _gear_stat(key: String) -> int:
@@ -289,11 +314,6 @@ func respec() -> void:
 		attributes[k] = 5
 	stat_points += max(0, spent)
 	recalculate_stats()
-
-func _weapon_atk() -> int:
-	if equipped_weapon == "":
-		return 0
-	return Db.item(equipped_weapon).get("atk", 0)
 
 ## Stat block consumed by CombatResolver.
 func combat_stats() -> Dictionary:

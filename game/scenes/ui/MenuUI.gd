@@ -404,19 +404,25 @@ func _build_inventory() -> void:
 	for id in PlayerData.inventory.keys():
 		grid.add_child(_item_slot(id))
 	content.add_child(_mk_label(" ", 6))
-	content.add_child(_mk_label("Senjata terpakai: %s" % (Db.item_name(PlayerData.equipped_weapon) if PlayerData.equipped_weapon != "" else "-"), 14))
-	content.add_child(_mk_label("Klik item untuk pakai/gunakan · arahkan kursor untuk info.", 11))
+	content.add_child(_mk_label("— Perlengkapan terpasang —", 15, Color(0.7, 0.85, 1.0)))
+	for pair in [["equipped_weapon", "Senjata"], ["equipped_armor", "Zirah"], ["equipped_accessory", "Aksesori"]]:
+		var eid: String = PlayerData.get(pair[0])
+		var h := _row()
+		h.add_child(_mk_label("%s: %s" % [pair[1], (Db.item_name(eid) if eid != "" else "-")], 14))
+		if eid != "":
+			h.add_child(_btn("Lepas", func(): PlayerData.equip_item(eid); _rebuild()))
+	content.add_child(_mk_label("Klik item untuk pakai/pasang · arahkan kursor untuk banding stat (hijau=lebih baik).", 11))
 
 func _item_slot(id: String) -> Control:
 	var def := Db.item(id)
-	var slot := Panel.new()
+	var slot = preload("res://scenes/ui/ItemSlot.gd").new()
 	slot.custom_minimum_size = Vector2(52, 52)
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.09, 0.12, 0.26, 0.95)
 	sb.border_color = _tier_color(def.get("tier", "F"))
 	sb.set_border_width_all(2); sb.set_corner_radius_all(4)
 	slot.add_theme_stylebox_override("panel", sb)
-	slot.tooltip_text = _item_tooltip(id, def)
+	slot.set_tip(_item_tooltip_bb(id, def), _font)
 	var path := Db.item_icon(id)
 	var icon := TextureRect.new()
 	icon.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -442,32 +448,51 @@ func _tier_color(tier: String) -> Color:
 		"S": Color(1.0, 0.5, 0.5),
 	}.get(tier, Color(0.55, 0.58, 0.66))
 
-func _item_tooltip(id: String, def: Dictionary) -> String:
-	var t := "%s  [%s]\n" % [def.get("name", id), def.get("tier", "F")]
+const _GEAR_STAT_LABELS := [["atk", "ATK"], ["def", "DEF"], ["matk", "MATK"], ["mdef", "MDEF"], ["hp_bonus", "HP"], ["mp_bonus", "MP"]]
+
+## Rich (BBCode) tooltip. For equippable gear, appends a green/red comparison
+## against whatever is currently equipped in that slot (PC5).
+func _item_tooltip_bb(id: String, def: Dictionary) -> String:
+	var tier: String = def.get("tier", "F")
+	var t := "[b]%s[/b]  [color=#%s]『%s』[/color]\n" % [def.get("name", id), _tier_color(tier).to_html(false), tier]
 	var type_id: String = def.get("type", "")
-	t += {"weapon": "Senjata", "material": "Bahan", "consumable": "Ramuan", "orb": "Orb",
-		"seed": "Benih", "gear": "Perlengkapan", "bait": "Umpan", "junk": "Rongsokan",
-		"skillbook": "Kitab Skill"}.get(type_id, type_id)
+	t += "[i]%s[/i]" % {"weapon": "Senjata", "armor": "Zirah", "accessory": "Aksesori", "material": "Bahan",
+		"consumable": "Ramuan", "orb": "Orb", "seed": "Benih", "gear": "Perlengkapan", "bait": "Umpan",
+		"junk": "Rongsokan", "skillbook": "Kitab Skill"}.get(type_id, type_id)
 	var stats := []
-	if def.has("atk"): stats.append("ATK %d" % int(def.atk))
-	if def.has("matk_bonus"): stats.append("MATK +%d" % int(def.matk_bonus))
+	for pair in _GEAR_STAT_LABELS:
+		if def.has(pair[0]): stats.append("%s %d" % [pair[1], int(def[pair[0]])])
 	if def.has("heal"): stats.append("Pulih %d HP" % int(def.heal))
 	if def.has("restore_mp"): stats.append("Pulih %d MP" % int(def.restore_mp))
 	if def.has("value"): stats.append("~%dG" % int(def.value))
 	if not stats.is_empty():
 		t += "\n" + " · ".join(stats)
+	# comparison vs equipped item in the same slot
+	var slot := PlayerData.slot_for_item(id)
+	if slot != "":
+		var eq_id: String = PlayerData.get(slot)
+		if eq_id == id:
+			t += "\n[color=#8fd0ff](terpasang)[/color]"
+		else:
+			var eq := Db.item(eq_id)
+			t += "\n[color=#9aa0b0]vs %s:[/color] " % (Db.item_name(eq_id) if eq_id != "" else "kosong")
+			var deltas := []
+			for pair in _GEAR_STAT_LABELS:
+				var d: int = int(def.get(pair[0], 0)) - int(eq.get(pair[0], 0))
+				if d != 0:
+					var col := "#6fe06f" if d > 0 else "#e56b6b"
+					deltas.append("[color=%s]%s %+d[/color]" % [col, pair[1], d])
+			t += " ".join(deltas) if not deltas.is_empty() else "[color=#9aa0b0]setara[/color]"
 	var flavor: String = def.get("flavor", "")
 	if flavor != "":
-		t += "\n\"%s\"" % flavor
+		t += "\n[color=#b9b2c9][i]\"%s\"[/i][/color]" % flavor
 	return t
 
 func _use_item(id: String, def: Dictionary) -> void:
 	match def.get("type", ""):
-		"weapon":
-			PlayerData.equipped_weapon = id
-			PlayerData.recalculate_stats()
+		"weapon", "armor", "accessory":
+			PlayerData.equip_item(id)
 			Audio.play_sfx("menu")
-			EventBus.toast.emit("Memakai " + def.get("name", id))
 			_rebuild()
 		"consumable":
 			_use_consumable(id, def)

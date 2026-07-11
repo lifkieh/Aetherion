@@ -27,5 +27,19 @@
   {"id": "cook_moonfeast", "result": "moonfish_feast", "qty": 1, "station": "bench", "profession": "cook", "level": 4, "success_rate": 0.6,
    "ingredients": [{"item": "fish_moon", "qty": 1}, {"item": "sugar_crystal", "qty": 2}]},
   {"id": "cook_royal_cake", "result": "royal_tea_cake", "qty": 1, "station": "bench", "profession": "cook", "tier": "S", "level": 20, "success_rate": 0.01,
-   "ingredients": [{"item": "candy_cake", "qty": 1}, {"item": "sugar_crystal", "qty": 5}, {"item": "gel_core", "qty": 1}]}
+   "ingredients": [{"item": "candy_cake", "qty": 1}, {"item": "sugar_crystal", "qty": 5}, {"item": "gel_core", "qty": 1}]},
+
+  {"id": "craft_cloth_tunic", "result": "cloth_tunic", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 1, "success_rate": 0.9,
+   "ingredients": [{"item": "fluff", "qty": 3}, {"item": "wolf_pelt", "qty": 1}]},
+  {"id": "craft_leather_vest", "result": "leather_vest", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 2, "success_rate": 0.7,
+   "ingredients": [{"item": "cloth_tunic", "qty": 1}, {"item": "wolf_pelt", "qty": 2}, {"item": "copper_bar", "qty": 1}]},
+  {"id": "craft_iron_mail", "result": "iron_mail", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 4, "success_rate": 0.55,
+   "ingredients": [{"item": "leather_vest", "qty": 1}, {"item": "copper_bar", "qty": 3}]},
+
+  {"id": "craft_copper_ring", "result": "copper_ring", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 1, "success_rate": 0.85,
+   "ingredients": [{"item": "copper_bar", "qty": 1}, {"item": "slime_jelly", "qty": 1}]},
+  {"id": "craft_silver_ring", "result": "silver_ring", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 2, "success_rate": 0.7,
+   "ingredients": [{"item": "copper_ring", "qty": 1}, {"item": "copper_bar", "qty": 2}, {"item": "slime_jelly", "qty": 2}]},
+  {"id": "craft_gold_ring", "result": "gold_ring", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 4, "success_rate": 0.55,
+   "ingredients": [{"item": "silver_ring", "qty": 1}, {"item": "copper_bar", "qty": 3}, {"item": "glacier_gem", "qty": 1}]}
 ]

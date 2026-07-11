@@ -122,12 +122,12 @@ func _ready() -> void:
 
 func _menu_demo() -> void:
 	await get_tree().process_frame
-	for pair in [["wood_log", 6], ["copper_ore", 6], ["herb_mintleaf", 4], ["plank", 2], ["copper_bar", 2], ["slime_jelly", 3], ["fluff", 2], ["wolf_pelt", 3]]:
+	for pair in [["wood_log", 6], ["copper_ore", 6], ["herb_mintleaf", 4], ["plank", 2], ["copper_bar", 2], ["slime_jelly", 3], ["fluff", 2], ["wolf_pelt", 3], ["leather_vest", 1], ["copper_ring", 1], ["iron_mail", 1]]:
 		PlayerData.add_item(pair[0], pair[1])
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
 	menu.open(OS.get_environment("AETHER_MENU_TAB") if OS.get_environment("AETHER_MENU_TAB") != "" else "crafting")
-	# pause-immune timer so the shot still fires while the menu has the game paused
-	get_tree().create_timer(1.2).timeout.connect(_take_screenshot)
+	# pause-immune timer (process_always=true) so the shot fires while the menu pauses the tree
+	get_tree().create_timer(1.2, true).timeout.connect(_take_screenshot)
 
 func _pet_demo() -> void:
 	# Tame a weakened wolf, confirm it follows/fights, then mount it.

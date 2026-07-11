@@ -40,6 +40,7 @@ func _ready() -> void:
 	_test_onboarding()
 	_test_skill_audit()
 	_test_skill_acquisition()
+	_test_equipment()
 	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
@@ -419,6 +420,66 @@ func _test_skill_acquisition() -> void:
 func func_learn_boss(boss: String, sid: String) -> bool:
 	PlayerData.on_boss_killed(boss)
 	return PlayerData.can_use_skill(sid)
+
+func _test_equipment() -> void:
+	print("[Equipment — PC5]")
+	PlayerData.new_game()
+	# --- slots & starting gear ---
+	check("3 equip slots resolve by type", PlayerData.slot_for_item("wooden_sword") == "equipped_weapon" \
+		and PlayerData.slot_for_item("cloth_tunic") == "equipped_armor" \
+		and PlayerData.slot_for_item("copper_ring") == "equipped_accessory")
+	check("starting armor is tier F equipped", PlayerData.equipped_armor == "cloth_tunic" and Db.item("cloth_tunic").get("tier") == "F")
+	check("non-gear item has no slot", PlayerData.slot_for_item("minor_potion") == "")
+	# --- gear stats really count (def + hp from armor) ---
+	PlayerData.equipped_armor = ""
+	PlayerData.recalculate_stats()
+	var bare_def: int = PlayerData.def
+	var bare_hp: int = PlayerData.max_hp
+	PlayerData.equip_item("cloth_tunic")
+	check("armor adds DEF", PlayerData.def == bare_def + int(Db.item("cloth_tunic").def))
+	check("armor adds HP", PlayerData.max_hp == bare_hp + int(Db.item("cloth_tunic").hp_bonus))
+	# --- accessory adds MATK + MP ---
+	var pre_matk: int = PlayerData.matk
+	var pre_mp: int = PlayerData.max_mp
+	PlayerData.equip_item("copper_ring")
+	check("accessory adds MATK", PlayerData.matk == pre_matk + int(Db.item("copper_ring").matk))
+	check("accessory adds MP", PlayerData.max_mp == pre_mp + int(Db.item("copper_ring").mp_bonus))
+	# --- equip is a toggle (re-equip same = unequip) ---
+	PlayerData.equip_item("copper_ring")
+	check("re-equipping unequips (toggle)", PlayerData.equipped_accessory == "")
+	# --- weapon atk counted exactly once (no double-count) ---
+	PlayerData.equipped_weapon = ""
+	PlayerData.equipped_armor = ""
+	PlayerData.recalculate_stats()
+	var no_wep: int = PlayerData.atk
+	PlayerData.equip_item("wooden_sword")
+	check("weapon atk counted once", PlayerData.atk == no_wep + int(Db.item("wooden_sword").atk))
+	# --- tier scaling ~+25-35% per jump (armor def+hp aggregate) ---
+	var eff := func(item_id):
+		var d := Db.item(item_id)
+		return int(d.get("def", 0)) * 4 + int(d.get("hp_bonus", 0)) + int(d.get("matk", 0)) * 4 + int(d.get("mp_bonus", 0))
+	var af: int = eff.call("cloth_tunic"); var ae: int = eff.call("leather_vest"); var ad: int = eff.call("iron_mail")
+	check("armor F->E effectiveness +20..45%", float(ae) / af >= 1.2 and float(ae) / af <= 1.45, "%.2f" % (float(ae) / af))
+	check("armor E->D effectiveness +20..45%", float(ad) / ae >= 1.2 and float(ad) / ae <= 1.45, "%.2f" % (float(ad) / ae))
+	var rf: int = eff.call("copper_ring"); var re: int = eff.call("silver_ring"); var rd: int = eff.call("gold_ring")
+	check("accessory F->E effectiveness +20..45%", float(re) / rf >= 1.2 and float(re) / rf <= 1.45, "%.2f" % (float(re) / rf))
+	check("accessory E->D effectiveness +20..45%", float(rd) / re >= 1.2 and float(rd) / re <= 1.45, "%.2f" % (float(rd) / re))
+	# --- craft chain F->E->D exists (upgrades consume the lower tier) ---
+	var recipe := func(rid):
+		for r in Db.recipes:
+			if r.get("id", "") == rid: return r
+		return {}
+	check("craft chain: iron_mail (D) consumes leather_vest (E)", _recipe_uses(recipe.call("craft_iron_mail"), "leather_vest"))
+	check("craft chain: leather_vest (E) consumes cloth_tunic (F)", _recipe_uses(recipe.call("craft_leather_vest"), "cloth_tunic"))
+	check("craft chain: gold_ring (D) consumes silver_ring (E)", _recipe_uses(recipe.call("craft_gold_ring"), "silver_ring"))
+	check("craft chain: silver_ring (E) consumes copper_ring (F)", _recipe_uses(recipe.call("craft_silver_ring"), "copper_ring"))
+	PlayerData.new_game()
+
+func _recipe_uses(recipe: Dictionary, item_id: String) -> bool:
+	for ing in recipe.get("ingredients", []):
+		if ing.get("item", "") == item_id:
+			return true
+	return false
 
 func _test_v3content() -> void:
 	print("[v0.3 content — Frostpeak/Storm]")
