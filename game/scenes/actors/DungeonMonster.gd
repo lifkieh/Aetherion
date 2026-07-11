@@ -266,9 +266,20 @@ func _attack() -> void:
 		var res := CombatResolver.resolve(MonsterFactory.combat_stats(inst), pstats, sk, CombatResolver.build_ctx())
 		_player.take_hit(res, self)
 
+var _hit_imm := {}
+
 func take_hit(result: Dictionary, from) -> void:
 	if _dead:
 		return
+	if result.get("miss", false):
+		var dnm := preload("res://scenes/ui/DamageNumber.tscn").instantiate()
+		get_parent().add_child(dnm); dnm.global_position = global_position + Vector2(0, -10); dnm.show_miss()
+		return
+	var now := float(Time.get_ticks_msec()) / 1000.0
+	var key: int = from.get_instance_id() if is_instance_valid(from) else 0
+	if _hit_imm.get(key, 0.0) > now:
+		return
+	_hit_imm[key] = now + CombatFeel.hit_immunity(inst.get("is_boss", false))
 	hp = max(0, hp - int(result.get("damage", 0)))
 	hpbar.visible = true
 	hpbar.value = hp

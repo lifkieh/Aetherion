@@ -1,8 +1,9 @@
 {
   "iframes": 0.5,
   "flash_time": 0.12,
-  "hitstop_frames": 3,
-  "hitstop_frames_crit": 5,
+  "hit_immunity": {"normal": 0.2, "boss": 0.4},
+  "hitstop_frames": 2,
+  "hitstop_frames_crit": 4,
   "screen_shake": {"amount": 3.0, "time": 0.12, "amount_crit": 5.0},
   "knockback": {
     "base": 130.0,

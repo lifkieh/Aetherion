@@ -1,19 +1,24 @@
 [
-  {"id": "strike", "name": "Tebas", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "mp_cost": 0, "cooldown": 0.35, "range": 34, "aoe": false, "desc": "Serangan normal."},
-  {"id": "flame_slash", "name": "Tebasan Api", "type": "active", "kind": "physical", "element": "fire", "skill_mod": 1.7, "mp_cost": 9, "cooldown": 2.2, "range": 44, "aoe": true, "aoe_radius": 40, "desc": "Ayunan berapi mengenai area di depan."},
-  {"id": "spark_bolt", "name": "Panah Petir", "type": "active", "kind": "magic", "element": "lightning", "skill_mod": 1.5, "mp_cost": 9, "cooldown": 2.6, "range": 160, "projectile": true, "projectile_id": "spark", "projectile_speed": 320, "desc": "Menembakkan petir yang menyambar target basah."},
-  {"id": "flow_fire", "name": "Fire Flow", "type": "active", "kind": "flow", "element": "fire", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Api."},
-  {"id": "flow_lightning", "name": "Lightning Flow", "type": "active", "kind": "flow", "element": "lightning", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Petir."},
-  {"id": "flow_ice", "name": "Ice Flow", "type": "active", "kind": "flow", "element": "ice", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Es (bekukan genangan)."},
-  {"id": "flow_wind", "name": "Wind Flow", "type": "active", "kind": "flow", "element": "wind", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Angin (lompatan ganda)."},
-  {"id": "frost_bolt", "name": "Panah Es", "type": "active", "kind": "magic", "element": "ice", "skill_mod": 1.4, "mp_cost": 9, "cooldown": 2.2, "range": 150, "projectile": true, "projectile_id": "frost_shard", "desc": "Menembakkan pecahan es."},
+  {"id": "strike", "name": "Tebas", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "mana_cost": 0, "cast_rate": 3.0, "range": 34, "aoe": false, "desc": "Serangan dasar."},
 
-  {"id": "bite", "name": "Gigit", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.1, "cooldown": 1.4, "range": 26},
-  {"id": "tackle", "name": "Seruduk", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "cooldown": 1.6, "range": 24},
-  {"id": "howl", "name": "Lolongan", "type": "active", "kind": "buff", "element": "none", "cooldown": 8.0, "duration": 6, "atk_buff": 0.1, "range": 0},
+  {"id": "flame_slash", "name": "Tebasan Api", "type": "active", "kind": "physical", "element": "fire", "skill_mod": 1.6, "mana_cost": 5, "cast_rate": 2.2, "range": 46, "aoe": true, "aoe_radius": 40, "desc": "Ayunan berapi mengenai area; tahan klik untuk ayun beruntun."},
+  {"id": "spark_bolt", "name": "Panah Petir", "type": "active", "kind": "magic", "element": "lightning", "skill_mod": 1.25, "mana_cost": 3, "cast_rate": 4.5, "range": 170, "projectile": true, "projectile_id": "spark", "projectile_speed": 320, "desc": "Rentetan petir cepat; menyambar target basah (chain)."},
+  {"id": "frost_bolt", "name": "Panah Es", "type": "active", "kind": "magic", "element": "ice", "skill_mod": 1.35, "mana_cost": 4, "cast_rate": 3.2, "range": 150, "projectile": true, "projectile_id": "frost_shard", "desc": "Pecahan es yang memperlambat."},
+  {"id": "gust", "name": "Embusan", "type": "active", "kind": "magic", "element": "wind", "skill_mod": 1.0, "mana_cost": 3, "cast_rate": 3.8, "range": 120, "aoe": true, "desc": "Embusan angin mendorong."},
+  {"id": "spore_cloud", "name": "Awan Spora", "type": "active", "kind": "magic", "element": "poison", "skill_mod": 1.15, "mana_cost": 5, "cast_rate": 2.0, "range": 90, "aoe": true, "apply_status": "poison", "desc": "Awan racun beracun."},
+  {"id": "stone_lance", "name": "Tombak Batu", "type": "active", "kind": "magic", "element": "earth", "skill_mod": 1.7, "mana_cost": 7, "cast_rate": 1.6, "range": 130, "projectile": true, "projectile_id": "arrow", "desc": "Tombak batu berat, lambat tapi menyakitkan."},
+  {"id": "holy_ray", "name": "Sinar Suci", "type": "active", "kind": "magic", "element": "light", "skill_mod": 1.5, "mana_cost": 6, "cast_rate": 2.4, "range": 160, "projectile": true, "projectile_id": "spark", "desc": "Berkas cahaya; kuat di siang hari."},
+
+  {"id": "flow_fire", "name": "Fire Flow", "type": "active", "kind": "flow", "element": "fire", "mana_cost": 0, "drain": 2.2, "desc": "Aliri senjata dengan Api (arc lebih besar, jejak bakar). Menguras mana per detik."},
+  {"id": "flow_lightning", "name": "Lightning Flow", "type": "active", "kind": "flow", "element": "lightning", "mana_cost": 0, "drain": 2.4, "desc": "Aliri senjata dengan Petir (sengat lurus 1.5x jangkauan, chain saat basah)."},
+  {"id": "flow_ice", "name": "Ice Flow", "type": "active", "kind": "flow", "element": "ice", "mana_cost": 0, "drain": 2.0, "desc": "Aliri senjata dengan Es (perlambat, bekukan genangan)."},
+  {"id": "flow_wind", "name": "Wind Flow", "type": "active", "kind": "flow", "element": "wind", "mana_cost": 0, "drain": 2.0, "desc": "Aliri senjata dengan Angin (arc luas mendorong, lompatan ganda)."},
+  {"id": "flow_earth", "name": "Earth Flow", "type": "active", "kind": "flow", "element": "earth", "mana_cost": 0, "drain": 2.2, "desc": "Aliri senjata dengan Tanah (arc sempit, damage berat, grounding)."},
+
+  {"id": "bite", "name": "Gigit", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.1, "range": 26},
+  {"id": "tackle", "name": "Seruduk", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "range": 24},
+  {"id": "howl", "name": "Lolongan", "type": "active", "kind": "buff", "element": "none", "duration": 6, "atk_buff": 0.1, "range": 0},
   {"id": "split", "name": "Membelah", "type": "passive", "kind": "special", "element": "water"},
-  {"id": "sting", "name": "Sengat", "type": "active", "kind": "physical", "element": "poison", "skill_mod": 0.9, "cooldown": 1.5, "range": 22, "apply_status": "poison"},
-  {"id": "spore_cloud", "name": "Awan Spora", "type": "active", "kind": "magic", "element": "poison", "skill_mod": 1.2, "cooldown": 3.0, "range": 60, "aoe": true},
-  {"id": "charge", "name": "Terjang", "type": "active", "kind": "physical", "element": "earth", "skill_mod": 1.3, "cooldown": 3.0, "range": 80},
-  {"id": "gust", "name": "Embusan", "type": "active", "kind": "magic", "element": "wind", "skill_mod": 1.1, "cooldown": 2.2, "range": 90}
+  {"id": "sting", "name": "Sengat", "type": "active", "kind": "physical", "element": "poison", "skill_mod": 0.9, "range": 22, "apply_status": "poison"},
+  {"id": "charge", "name": "Terjang", "type": "active", "kind": "physical", "element": "earth", "skill_mod": 1.3, "range": 80}
 ]

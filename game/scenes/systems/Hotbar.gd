@@ -1,125 +1,169 @@
 class_name Hotbar
 extends RefCounted
-## Shared skill-hotbar + element-fusion logic (owner UI/UX §2). Used by BOTH the
-## top-down Player and side-view PlayerPlatformer — one control language.
-##
-## PRIME a slot (number key) -> LEFT-CLICK releases it toward the cursor.
-## Press two numbers within COMBO_WINDOW -> FUSION prime; left-click casts the
-## fusion spell if elements.json has a recipe (mana 2x), else FIZZLE (discovery).
+## Skill hotbar + tiered element fusion (owner combat revisions B/C). No single-skill
+## cooldowns: a primed skill is CHANNELLED by holding left-click — each cast costs mana
+## at the skill's cast_rate; mana out = channel stops (empty click). Flow skills TOGGLE a
+## persistent weapon infusion (drained by mana). Fusion: prime 2 (holdable, mana ~2.5x);
+## prime 3-4 for a recast fusion (the only cooldown in the game — see PC3).
 
 const COMBO_WINDOW := 1.5
+const FUSION_BASE_MANA := 6   # min mana base for fusion (flow skills prime at 0 mana)
 
-var primed := -1            # slot armed for a normal cast
-var fusion_a := -1          # first slot of a fusion
-var fusion_b := -1          # second slot of a fusion
+var primed := -1                  # slot armed for a channelled cast
+var fusion_slots: Array = []      # ordered primed slots for a fusion (2-4)
 var fusion_ready := false
 var _combo_t := 0.0
-var _cooldowns := {}        # skill_id -> remaining seconds
+var _cast_t := 0.0                # channel accumulator (seconds until next cast)
+var _empty_t := 0.0               # throttle for the "no mana" click
+var _fusion_announced := false
 
 func tick(delta: float) -> void:
 	_combo_t = maxf(0.0, _combo_t - delta)
-	for k in _cooldowns.keys():
-		_cooldowns[k] = maxf(0.0, _cooldowns[k] - delta)
+	_empty_t = maxf(0.0, _empty_t - delta)
 
-func cooldown_frac(slot: int) -> float:
-	var sid := _slot_skill(slot)
-	var sk := Db.skill(sid)
-	var cd: float = sk.get("cooldown", 0.0)
-	if cd <= 0.0:
-		return 0.0
-	return clampf(_cooldowns.get(sid, 0.0) / cd, 0.0, 1.0)
+# HUD compatibility: no per-skill cooldowns any more.
+func cooldown_frac(_slot: int) -> float:
+	return 0.0
 
 func _slot_skill(slot: int) -> String:
 	if slot >= 0 and slot < PlayerData.hotbar.size():
 		return PlayerData.hotbar[slot]
 	return ""
 
-## Press a number key (slot 0..4). Chains into a fusion if within the window.
+## Number key (slot 0..4). Chains into a fusion if pressed within the combo window.
 func press_slot(slot: int) -> void:
 	if _slot_skill(slot) == "":
 		return
-	if primed >= 0 and primed != slot and _combo_t > 0.0 and not fusion_ready:
-		fusion_a = primed
-		fusion_b = slot
-		fusion_ready = true
-		Audio.play_sfx("prime", 1.35)   # higher pitch = fusion armed
-		EventBus.toast.emit("⚡ FUSION siap — klik kiri untuk melepas!")
+	if primed >= 0 and not (slot in fusion_slots) and _combo_t > 0.0:
+		if fusion_slots.is_empty():
+			fusion_slots = [primed]
+		if not (slot in fusion_slots) and fusion_slots.size() < 4:
+			fusion_slots.append(slot)
+			fusion_ready = fusion_slots.size() >= 2
+			_combo_t = COMBO_WINDOW
+			Audio.play_sfx("prime", 1.15 + 0.1 * fusion_slots.size())
+			EventBus.toast.emit("⚡ Prime %s — klik kiri untuk melepas!" % _chain_str())
 	else:
 		primed = slot
 		fusion_ready = false
-		fusion_a = -1
-		fusion_b = -1
+		fusion_slots = []
 		_combo_t = COMBO_WINDOW
 		Audio.play_sfx("prime")
 
-## Left-click. Returns true if a skill/fusion was cast (caller skips normal attack).
-func cast(actor: Node2D, aim: Vector2) -> bool:
+func _chain_str() -> String:
+	var parts := []
+	for s in fusion_slots:
+		parts.append(str(s + 1))
+	return "+".join(parts)
+
+func is_primed() -> bool:
+	return primed >= 0 or fusion_ready
+
+func primed_is_flow() -> bool:
+	return primed >= 0 and not fusion_ready and Db.skill(_slot_skill(primed)).get("kind", "") == "flow"
+
+## Left-click DOWN. Flow = toggle infusion (one-shot). Otherwise start a channel.
+## Returns true if the click was consumed (caller skips the basic attack).
+func begin_cast(actor: Node2D, aim: Vector2) -> bool:
+	if not is_primed():
+		return false
+	if primed_is_flow():
+		PlayerData.toggle_infusion(Db.skill(_slot_skill(primed)).get("element", "fire"))
+		Audio.play_sfx("prime", 0.9)
+		_reset()
+		return true
+	_fusion_announced = false
+	_cast_t = 0.0
+	_do_cast(actor, aim)
+	_cast_t = 1.0 / maxf(0.5, _cast_rate())
+	return true
+
+## Held each frame while left-click is down and a skill/fusion is primed.
+func channel_tick(actor: Node2D, aim: Vector2, delta: float) -> void:
+	if not is_primed() or primed_is_flow():
+		return
+	_cast_t -= delta
+	if _cast_t <= 0.0:
+		_cast_t = 1.0 / maxf(0.5, _cast_rate())
+		_do_cast(actor, aim)
+
+func end_cast() -> void:
+	_cast_t = 0.0   # next press casts immediately
+
+func _cast_rate() -> float:
 	if fusion_ready:
-		var ok := _cast_fusion(actor, aim)
-		_reset()
-		return ok
+		return 2.0 if fusion_slots.size() == 2 else 0.7   # 3-4 fusion = slow recast (PC3)
+	return float(Db.skill(_slot_skill(primed)).get("cast_rate", 2.0))
+
+func _do_cast(actor: Node2D, aim: Vector2) -> bool:
+	if fusion_ready:
+		return _cast_fusion(actor, aim)
 	if primed >= 0:
-		var ok := _cast_single(actor, aim, _slot_skill(primed))
-		_reset()
-		return ok
+		return _cast_single(actor, aim, _slot_skill(primed))
 	return false
 
 func _reset() -> void:
 	primed = -1
 	fusion_ready = false
-	fusion_a = -1
-	fusion_b = -1
+	fusion_slots = []
+
+func _no_mana() -> void:
+	if _empty_t <= 0.0:
+		_empty_t = 0.35
+		Audio.play_sfx("menu", 0.6)   # empty click
 
 func _cast_single(actor: Node2D, aim: Vector2, sid: String) -> bool:
 	var sk := Db.skill(sid)
 	if sk.is_empty():
 		return false
-	if _cooldowns.get(sid, 0.0) > 0.0:
-		EventBus.toast.emit("%s masih pulih..." % sk.get("name", sid))
+	if not PlayerData.spend_mp(sk.get("mana_cost", 0)):
+		_no_mana()
 		return false
-	if not PlayerData.spend_mp(sk.get("mp_cost", 0)):
-		EventBus.toast.emit("Mana tidak cukup")
-		return false
-	_cooldowns[sid] = sk.get("cooldown", 1.0)
 	match sk.get("kind", "physical"):
-		"flow":
-			PlayerData.apply_infusion(sk.get("element", "fire"), sk.get("duration", 45))
 		"magic":
-			PlayerCombat.fire_pooled(actor, aim, sk.get("projectile_id", "spark"))
+			PlayerCombat.fire_pooled(actor, aim, sk.get("projectile_id", "spark"), sk.get("skill_mod", 1.0))
 		_:
 			PlayerCombat.melee_arc(actor, aim, sk.get("range", 48), sk.get("aoe_arc", 120), sk)
-	Audio.play_sfx("attack")
+	Audio.play_sfx("attack", 1.05)
 	return true
 
 func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:
-	var e1 := Db.skill(_slot_skill(fusion_a)).get("element", "none")
-	var e2 := Db.skill(_slot_skill(fusion_b)).get("element", "none")
-	var combo := Db.elem_combo(e1, e2)
-	var mana := 2 * maxi(Db.skill(_slot_skill(fusion_a)).get("mp_cost", 6), Db.skill(_slot_skill(fusion_b)).get("mp_cost", 6))
+	var elems: Array = []
+	for s in fusion_slots:
+		elems.append(Db.skill(_slot_skill(s)).get("element", "none"))
+	var combo := Db.elem_combo_multi(elems)
+	# Flow skills cost 0 mana to prime, so a fusion needs a floor to stay expensive.
+	var base := FUSION_BASE_MANA
+	for s in fusion_slots:
+		base = maxi(base, int(Db.skill(_slot_skill(s)).get("mana_cost", 3)))
+	var tier := elems.size()
+	var mana := int(base * (2.5 if tier == 2 else (4.0 if tier == 3 else 6.0)))
 	if combo.is_empty():
-		# fizzle — small smoke, a HINT that other combinations may work (discovery)
 		PlayerData.spend_mp(int(mana * 0.3))
 		Vfx.spark(actor.get_parent(), actor.global_position + aim * 14.0, "wind")
 		Audio.play_sfx("fizzle")
-		EventBus.toast.emit("...kombinasi %s+%s tak stabil (fizzle). Coba paduan lain?" % [e1, e2])
+		if not _fusion_announced:
+			_fusion_announced = true
+			EventBus.toast.emit("...paduan %s tak stabil (fizzle). Coba resep lain?" % "+".join(elems))
 		return true
 	if not PlayerData.spend_mp(mana):
-		EventBus.toast.emit("Fusion butuh %d mana!" % mana)
+		_no_mana()
 		return false
-	var elem: String = combo.get("element", e1)
+	var elem: String = combo.get("element", elems[0])
 	var def: Dictionary = Db.projectiles.get("fusion_bolt", {}).duplicate(true)
 	def["element"] = elem
 	def["damage_mult"] = combo.get("mult", 1.6)
 	def["color"] = Vfx.elem_color(elem).to_html(false)
-	var atk := PlayerData.combat_stats()
-	ProjectilePool.spawn_def(actor.global_position + aim * 12.0, aim, def, atk, actor, "monsters")
-	# plus an impact swing for feel
-	PlayerCombat.melee_arc(actor, aim, 56.0, 140.0, {"skill_mod": combo.get("mult", 1.6) * 0.6, "kind": "magic", "element": elem})
+	def["radius"] = 8 + tier * 2
+	ProjectilePool.spawn_def(actor.global_position + aim * 12.0, aim, def, PlayerData.combat_stats(), actor, "monsters")
+	PlayerCombat.melee_arc(actor, aim, 52.0 + tier * 6, 130.0 + tier * 10, {"skill_mod": combo.get("mult", 1.6) * 0.6, "kind": "magic", "element": elem})
 	Audio.play_sfx("fusion")
-	var name: String = combo.get("result", "Fusion")
-	if not (name in PlayerData.discovered_fusions):
-		PlayerData.discovered_fusions.append(name)
-		EventBus.toast.emit("★ FUSION PERTAMA: %s! (%s)" % [name, combo.get("desc", "")])
-	else:
-		EventBus.toast.emit("✦ %s!" % name)
+	var nm: String = combo.get("result", "Fusion")
+	if not _fusion_announced:
+		_fusion_announced = true
+		if not (nm in PlayerData.discovered_fusions):
+			PlayerData.discovered_fusions.append(nm)
+			EventBus.toast.emit("★ FUSION PERTAMA: %s! (%s)" % [nm, combo.get("desc", "")])
+		else:
+			EventBus.toast.emit("✦ %s!" % nm)
 	return true

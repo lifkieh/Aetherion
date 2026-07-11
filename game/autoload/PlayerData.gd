@@ -238,20 +238,49 @@ func current_weapon_element() -> String:
 	return "none"
 
 func has_active_infusion() -> bool:
-	if infusion.is_empty():
-		return false
-	return GameClock.unix_now() < infusion.get("expires_unix", 0)
+	return not infusion.is_empty()   # persistent now — sustained by mana drain (rev E)
 
-func apply_infusion(element: String, duration: int) -> void:
-	infusion = {
-		"element": element,
-		"source": "flow",
-		"expires_unix": GameClock.unix_now() + duration,
-	}
+func apply_infusion(element: String, _duration: int = 0) -> void:
+	var drain: float = Db.skill("flow_" + element).get("drain", 2.0)
+	infusion = {"element": element, "source": "flow", "drain": drain}
 	EventBus.toast.emit("Element Flow: " + element.capitalize())
+
+## Toggle a flow infusion: same element = turn off, different = switch. (rev E)
+func toggle_infusion(element: String) -> void:
+	if infusion.get("element", "") == element:
+		clear_infusion()
+		EventBus.toast.emit("Element Flow dimatikan.")
+	else:
+		apply_infusion(element)
 
 func clear_infusion() -> void:
 	infusion = {}
+
+# fractional mana accumulator (for per-second drain/regen)
+var _mp_frac: float = 0.0
+
+## Drain fractional mana (infusion upkeep). Clears infusion if it runs out.
+func drain_mana(amount: float) -> void:
+	_mp_frac += amount
+	while _mp_frac >= 1.0 and mp > 0:
+		_mp_frac -= 1.0
+		mp -= 1
+	if mp <= 0:
+		mp = 0
+		if has_active_infusion():
+			clear_infusion()
+			EventBus.toast.emit("Mana habis — Element Flow padam.")
+	EventBus.player_mp_changed.emit(mp, max_mp)
+
+## Regenerate fractional mana (base + INT; caller passes the rate*delta).
+func regen_mana(amount: float) -> void:
+	if mp >= max_mp:
+		return
+	_mp_frac += amount
+	while _mp_frac >= 1.0 and mp < max_mp:
+		_mp_frac -= 1.0
+		mp += 1
+	EventBus.player_mp_changed.emit(mp, max_mp)
 
 # --- HP / MP ----------------------------------------------------------------
 

@@ -174,7 +174,9 @@ func _build_skill() -> void:
 			continue
 		var sk := Db.skill(sid)
 		var h := _row()
-		var l := _mk_label("%s [%s] · %dMP" % [sk.get("name", sid), sk.get("element", "-"), sk.get("mp_cost", 0)], 13)
+		var _mana: int = int(sk.get("mana_cost", 0))
+		var _cost_txt: String = ("%d MP/cast" % _mana) if _mana > 0 else "drain" if sk.get("kind", "") == "flow" else "gratis"
+		var l := _mk_label("%s [%s] · %s" % [sk.get("name", sid), sk.get("element", "-"), _cost_txt], 13)
 		l.custom_minimum_size = Vector2(240, 0)
 		h.add_child(l)
 		for slot in range(5):

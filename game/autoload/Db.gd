@@ -156,8 +156,24 @@ func loot_table(id: String) -> Array:
 
 ## Order-independent element fusion recipe lookup (returns {} if none).
 func elem_combo(a: String, b: String) -> Dictionary:
+	return elem_combo_multi([a, b])
+
+## Order-independent lookup for a 2-4 element fusion. A recipe matches when its set
+## of elements (a/b + optional c/d, or an "elems" array) equals the primed set.
+func elem_combo_multi(elems: Array) -> Dictionary:
+	var want := []
+	for e in elems:
+		want.append(e)
+	want.sort()
 	for c in elements.get("combos", []):
-		if (c.get("a", "") == a and c.get("b", "") == b) or (c.get("a", "") == b and c.get("b", "") == a):
+		var have: Array = c.get("elems", [])
+		if have.is_empty():
+			have = [c.get("a", ""), c.get("b", "")]
+			if c.has("c"): have.append(c["c"])
+			if c.has("d"): have.append(c["d"])
+		var hs := have.duplicate()
+		hs.sort()
+		if hs == want:
 			return c
 	return {}
 

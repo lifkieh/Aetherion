@@ -285,7 +285,7 @@ func _refresh_hotbar() -> void:
 		var path := "res://assets/game/ui/icons/element_%s_32.png" % elem
 		if s.icon.texture == null and ResourceLoader.exists(path):
 			s.icon.texture = load(path)
-		var primed: bool = hb != null and (hb.primed == i or (hb.fusion_ready and (hb.fusion_a == i or hb.fusion_b == i)))
+		var primed: bool = hb != null and (hb.primed == i or (hb.fusion_ready and (i in hb.fusion_slots)))
 		s.style.border_color = Color(1.0, 0.85, 0.3) if primed else Color(0.4, 0.5, 0.8)
 		s.style.set_border_width_all(3 if primed else 2)
 		var frac: float = hb.cooldown_frac(i) if hb != null else 0.0

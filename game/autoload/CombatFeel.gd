@@ -19,6 +19,11 @@ func iframes() -> float:
 func flash_time() -> float:
 	return cfg.get("flash_time", 0.12)
 
+## Per-source hit-immunity window (anti-melt, owner combat rev D).
+func hit_immunity(is_boss: bool = false) -> float:
+	var hi: Dictionary = cfg.get("hit_immunity", {})
+	return hi.get("boss", 0.4) if is_boss else hi.get("normal", 0.2)
+
 ## Apply knockback to `target` away from `from_pos`, plus hitstop + shake.
 func on_hit(target: Node, from_pos: Vector2, is_crit: bool = false) -> void:
 	apply_knockback(target, from_pos)

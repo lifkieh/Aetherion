@@ -19,14 +19,13 @@ var facing := "right"
 var _coyote := 0.0
 var _jump_buf := 0.0
 var _attack_cd := 0.0
+var _combat_t := 999.0
 var _mine_cd := 0.0
 var _skill_cd := {}
 var _iframes := 0.0
 var _double_jumped := false
 var _drop_timer := 0.0
 var _mp_acc := 0.0
-var _charging := false
-var _charge := 0.0
 var hotbar := Hotbar.new()
 var terrain: Node = null
 
@@ -109,10 +108,21 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("slot_%d" % (i + 1)):
 			hotbar.press_slot(i)
 	# left-click: cast primed skill/fusion toward cursor, else weapon attack
-	if Input.is_action_just_pressed("attack") and (hotbar.primed >= 0 or hotbar.fusion_ready):
-		hotbar.cast(self, aim)
-	else:
-		_handle_attack(aim)
+	if Input.is_action_pressed("attack"):
+		if hotbar.is_primed():
+			if Input.is_action_just_pressed("attack"):
+				hotbar.begin_cast(self, aim)
+			else:
+				hotbar.channel_tick(self, aim, delta)
+		elif _attack_cd <= 0.0:
+			_attack_cd = _basic_attack_interval()
+			_basic_attack(aim)
+	elif Input.is_action_just_released("attack"):
+		hotbar.end_cast()
+	_combat_t += delta
+	PlayerData.regen_mana(PlayerData.mana_regen * (3.0 if _combat_t > 3.0 else 1.0) * delta)
+	if PlayerData.has_active_infusion():
+		PlayerData.drain_mana(PlayerData.infusion.get("drain", 2.0) * delta)
 
 	move_and_slide()
 	_animate(ix, on_ladder)
@@ -159,61 +169,30 @@ func _weapon_type() -> String:
 		return "sword"
 	return Db.item(w).get("weapon_type", "sword")
 
-## Per-weapon behavior (owner req 5). Element Flow still applies via melee_arc.
-func _handle_attack(aim: Vector2) -> void:
-	var wt := _weapon_type()
-	if wt == "bow":
-		if Input.is_action_pressed("attack"):
-			_charge = minf(1.0, _charge + get_physics_process_delta_time() / 0.8)
-			_charging = true
-		elif _charging and Input.is_action_just_released("attack"):
-			_charging = false
-			PlayerCombat.fire_pooled(self, aim, "arrow", 0.5 + _charge)
-			Audio.play_sfx("attack")
-			_attack_cd = 0.25
-			_charge = 0.0
-		return
-	if not Input.is_action_just_pressed("attack") or _attack_cd > 0.0:
-		return
-	match wt:
-		"spear":
-			_attack_cd = 0.42
-			PlayerCombat.melee_arc(self, aim, 66.0, 34.0, Db.skill("strike"), 1.15)
+const WEAPON_RATE := {"bow": 3.3, "wand": 3.0, "spear": 2.4, "sword": 2.85}
+
+func _basic_attack_interval() -> float:
+	var w := Db.item(PlayerData.equipped_weapon)
+	var rate: float = w.get("attack_rate", WEAPON_RATE.get(_weapon_type(), 2.85))
+	return 1.0 / maxf(0.4, rate * PlayerData.attack_speed)
+
+## Hold-to-attack basic swing/shot at the weapon's rate (rev A). Infusion via melee_arc.
+func _basic_attack(aim: Vector2) -> void:
+	_combat_t = 0.0
+	match _weapon_type():
+		"bow":
+			PlayerCombat.fire_pooled(self, aim, "arrow")
 		"wand":
 			var w := Db.item(PlayerData.equipped_weapon)
-			var cost: int = w.get("mana_cost", 5)
-			if not PlayerData.spend_mp(cost):
-				EventBus.toast.emit("Mana tidak cukup")
+			if not PlayerData.spend_mp(w.get("mana_cost", 3)):
 				return
-			_attack_cd = 0.34
 			PlayerCombat.fire_pooled(self, aim, w.get("projectile", "fireball"))
-		_:  # sword (fast wide arc)
-			_attack_cd = 0.28
+		"spear":
+			PlayerCombat.melee_arc(self, aim, 66.0, 34.0, Db.skill("strike"), 1.15)
+		_:
 			PlayerCombat.melee_arc(self, aim, 46.0, 110.0, Db.skill("strike"))
 	Audio.play_sfx("attack")
 	_try_mine()
-
-func _cast_flame(aim: Vector2) -> void:
-	if _skill_cd.get("flame_slash", 0.0) > 0.0:
-		return
-	var sk := Db.skill("flame_slash")
-	if not PlayerData.spend_mp(sk.get("mp_cost", 8)):
-		EventBus.toast.emit("Mana tidak cukup")
-		return
-	_skill_cd["flame_slash"] = sk.get("cooldown", 2.0)
-	PlayerCombat.melee_arc(self, aim, 52.0, 120.0, sk)
-	Audio.play_sfx("attack")
-
-func _cast_bolt(aim: Vector2) -> void:
-	if _skill_cd.get("spark_bolt", 0.0) > 0.0:
-		return
-	var sk := Db.skill("spark_bolt")
-	if not PlayerData.spend_mp(sk.get("mp_cost", 10)):
-		EventBus.toast.emit("Mana tidak cukup")
-		return
-	_skill_cd["spark_bolt"] = sk.get("cooldown", 2.0)
-	PlayerCombat.fire_pooled(self, aim, "spark")
-	Audio.play_sfx("attack")
 
 func _try_mine() -> void:
 	if _mine_cd > 0.0 or terrain == null or not terrain.has_method("try_mine"):

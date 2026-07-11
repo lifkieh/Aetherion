@@ -57,6 +57,14 @@
       {"desc": "Lemah saat bulan baru", "if": {"new_moon": true}, "mult": 0.7}
     ]
   },
+  "infusion_melee": {
+    "fire":      {"arc_mult": 1.4, "reach_mult": 1.1, "dmg_mult": 1.0, "burn": true},
+    "lightning": {"arc_mult": 1.0, "reach_mult": 1.5, "dmg_mult": 1.0, "sting": true},
+    "ice":       {"arc_mult": 1.0, "reach_mult": 1.0, "dmg_mult": 1.05, "slow": true},
+    "wind":      {"arc_mult": 1.6, "reach_mult": 1.15, "dmg_mult": 0.9, "push": true},
+    "earth":     {"arc_mult": 0.6, "reach_mult": 0.95, "dmg_mult": 1.45},
+    "water":     {"arc_mult": 1.1, "reach_mult": 1.0, "dmg_mult": 0.95, "wet": true}
+  },
   "platformer_rules": {
     "wind": {"double_jump": true, "desc": "Infus Wind memberi lompatan ganda singkat."},
     "ice": {"freeze_puddle": true, "desc": "Infus Ice membekukan genangan air jadi pijakan padat."},
@@ -71,6 +79,12 @@
     {"a": "water", "b": "wind", "result": "Typhoon", "element": "water", "mult": 1.6, "desc": "Topan menghempas."},
     {"a": "light", "b": "darkness", "result": "Eclipse", "element": "light", "mult": 1.8, "desc": "Gerhana — keseimbangan yang memusnahkan."},
     {"a": "earth", "b": "fire", "result": "Magma Surge", "element": "fire", "mult": 1.7, "desc": "Lelehan batu menerjang."},
-    {"a": "star", "b": "void", "result": "Supernova", "element": "star", "mult": 2.4, "desc": "Ledakan bintang — lore akhir game."}
+    {"a": "star", "b": "void", "result": "Supernova", "element": "star", "mult": 2.4, "desc": "Ledakan bintang — lore akhir game."},
+    {"elems": ["fire","wind","lightning"], "result": "Plasma Storm", "element": "lightning", "mult": 2.6, "chain": true, "desc": "Gas terionisasi — badai plasma menyambar berantai."},
+    {"elems": ["water","ice","wind"], "result": "Blizzard Lokal", "element": "ice", "mult": 2.4, "desc": "Zona badai salju lokal — memperlambat & membekukan."},
+    {"elems": ["earth","metal","fire"], "result": "Magma Wall", "element": "fire", "mult": 2.5, "desc": "Dinding magma membara — logam meleleh jadi perisai menyerang."},
+    {"elems": ["light","spirit","water"], "result": "Sanctuary", "element": "light", "mult": 1.4, "heal_zone": true, "desc": "Zona suci — menyembuhkan sekutu di dalamnya."},
+    {"elems": ["fire","water","wind","earth"], "result": "Genesis Tempest", "element": "star", "mult": 3.4, "desc": "Empat elemen purba menyatu — reaksi primordial tak terkendali."},
+    {"elems": ["light","darkness","star","void"], "result": "Entropy Collapse", "element": "void", "mult": 3.8, "desc": "Keruntuhan entropi — kesetimbangan kosmik yang memusnahkan segalanya."}
   ]
 }

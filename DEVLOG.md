@@ -2,6 +2,37 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — Power & Combat Calibration (PC1–PC2) + FINAL combat-model revisions
+
+Owner "Power & Combat Calibration" round. The 6 combat-design revisions below are **owner FINAL decisions**
+and override the related base parts of this round.
+
+**PC1 — Stat system (GDD §3.5).** Attributes are now the 6 canonical stats **STR/AGI/VIT/INT/DEX/LUK**.
+Level-up grants **+5 free points** (no auto-distribute); allocate in the new **Status tab** (MenuUI) with `[+]`
+buttons + 1-line effect text. Wiring (PlayerData.recalculate_stats): STR→physical ATK, AGI→attack speed+evasion,
+VIT→HP+resist, INT→MATK+mana+mana-regen, DEX→accuracy+gather quality, LUK→crit+drop bonus. Accuracy-vs-evasion
+**miss roll** added to CombatResolver (miss = 0 dmg, floats "meleset"). Paid **respec** at NPC (100 + level·20 g).
+
+**PC2 — Combat model rework.** Implemented the owner revisions:
+- **(A) Hold-to-attack.** Holding left-click repeats the basic attack at the weapon's attack rate (scaled by AGI
+  `attack_speed`); both perspectives. `WEAPON_RATE` per type, item `attack_rate` override.
+- **(B) Skills: NO cooldowns — mana + cast-rate economy.** Removed every single-skill cooldown. A primed skill is
+  **channelled** by holding left-click; each cast spends `mana_cost` at the skill's `cast_rate`. Mana out = channel
+  stops (empty click). New skills.json levers: `mana_cost`, `cast_rate`, `skill_mod`. Mana-regen emphasised: base +
+  INT scaling + **3× surge after 3 s out of combat**; flow skills toggle a persistent infusion.
+- **(C) Tiered fusion.** 2-element fusion = no cooldown, **holdable** (cast_rate 2.0), mana ~2.5×. **3–4 element**
+  fusion (prime 3–4 in the combo window) = **recast 0.7/s** (the only "cooldown" in the game), holdable = auto-recast,
+  mana 4×/6×. Added 4 triple + 2 quad recipes (Plasma Storm, Blizzard Lokal, Magma Wall, Sanctuary; quads Genesis
+  Tempest, Entropy Collapse). Discovery + fizzle kept. Fusion mana floor 6 (flow skills prime at 0 mana).
+- **(D) Anti-melt.** Per-**source** hit-immunity window (normal 0.2 s / boss 0.4 s, `combat_feel.json`) so hold-spam
+  is legit but can't stunlock/melt. Different sources still land.
+- **(E) Weapon infusion affects range.** `elements.json.infusion_melee` reshapes melee per element (Fire big arc+burn,
+  Lightning 1.5× reach sting, Ice normal+slow, Wind wide push, Earth narrow+heavy). Upkeep = small mana drain/sec
+  (replaces the old duration timer); toggle/switch freely.
+- Kept for **(F)** in PC6: retune all skills + fusion against the mana-capped BALANCE_TARGETS via harness v2.
+
+Tests: 282 pass (+ channel drain, no-CD levers, per-source hit-immunity, infusion reach, tiered-fusion rate/recipes).
+
 ## 2026-07-12 — v0.3-alpha content: Frostpeak complete + Storm Island
 
 Playtest of the character system passed; built the rest of v0.3.

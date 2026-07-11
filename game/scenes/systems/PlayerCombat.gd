@@ -58,6 +58,14 @@ static func chain_lightning(actor: Node2D, origin: Node2D, skill: Dictionary, ct
 static func melee_arc(actor: Node2D, aim: Vector2, reach: float, arc_deg: float, skill: Dictionary, dmg_mult: float = 1.0) -> int:
 	var origin: Vector2 = actor.global_position
 	var atk := PlayerData.combat_stats()
+	# rev E: an active weapon infusion reshapes the melee (reach/arc/damage per element)
+	if PlayerData.has_active_infusion():
+		var infuse: String = PlayerData.infusion.get("element", "")
+		var im: Dictionary = Db.elements.get("infusion_melee", {}).get(infuse, {})
+		if not im.is_empty():
+			reach *= im.get("reach_mult", 1.0)
+			arc_deg *= im.get("arc_mult", 1.0)
+			dmg_mult *= im.get("dmg_mult", 1.0)
 	var half := deg_to_rad(arc_deg * 0.5)
 	var swing_elem: String = skill.get("element", "none")
 	if swing_elem == "none":

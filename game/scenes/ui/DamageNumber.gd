@@ -3,6 +3,16 @@ extends Node2D
 
 @onready var label: Label = $Label
 
+func show_miss() -> void:
+	label.text = "meleset"
+	label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+	label.add_theme_constant_override("outline_size", 4)
+	label.modulate = Color(0.75, 0.78, 0.85)
+	var tw := create_tween()
+	tw.tween_property(self, "position:y", position.y - 16, 0.5)
+	tw.parallel().tween_property(self, "modulate:a", 0.0, 0.5)
+	tw.tween_callback(queue_free)
+
 func show_number(amount: int, crit: bool, effective: bool) -> void:
 	label.text = str(amount)
 	# crisp dark outline for readability against any background (R2 Part 3)

@@ -230,9 +230,20 @@ func _attack_player() -> void:
 
 # --- Damage / death ---------------------------------------------------------
 
+var _hit_imm := {}     # damage-source instance_id -> next-allowed time (anti-melt, rev D)
+
 func take_hit(result: Dictionary, from) -> void:
 	if _state == State.DEAD:
 		return
+	if result.get("miss", false):
+		_spawn_miss()
+		return
+	# per-source hit-immunity so hold-spam is legit but can't stunlock/melt
+	var now := _now()
+	var key: int = from.get_instance_id() if is_instance_valid(from) else 0
+	if _hit_imm.get(key, 0.0) > now:
+		return
+	_hit_imm[key] = now + CombatFeel.hit_immunity(inst.get("is_boss", false))
 	var dmg: int = result.get("damage", 0)
 	hp = max(0, hp - dmg)
 	hpbar.visible = true
@@ -317,6 +328,12 @@ func _spawn_damage_number(amount: int, crit: bool, effective: bool) -> void:
 	get_parent().add_child(dn)
 	dn.global_position = global_position + Vector2(0, -10)
 	dn.show_number(amount, crit, effective)
+
+func _spawn_miss() -> void:
+	var dn := preload("res://scenes/ui/DamageNumber.tscn").instantiate()
+	get_parent().add_child(dn)
+	dn.global_position = global_position + Vector2(0, -10)
+	dn.show_miss()
 
 func _now() -> float:
 	return float(Time.get_ticks_msec()) / 1000.0

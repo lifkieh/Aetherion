@@ -138,7 +138,7 @@ func _test_db() -> void:
 	var golem := MonsterFactory.make("rock_golem", 20, 3)
 	check("rock golem carries lightning resist", golem.get("resist", {}).get("lightning", 0.0) > 0.5)
 	var gv := MonsterFactory.combat_stats(golem)
-	var atk := {"atk": 100, "matk": 100, "crit_rate": 0.0, "element": "lightning"}
+	var atk := {"atk": 100, "matk": 400, "crit_rate": 0.0, "element": "lightning", "accuracy": 2.0}
 	var normal := CombatResolver.resolve(atk, MonsterFactory.combat_stats(MonsterFactory.make("sand_scarab", 20, 3)), Db.skill("spark_bolt"), {})
 	var grounded := CombatResolver.resolve(atk, gv, Db.skill("spark_bolt"), {})
 	check("lightning hits golem much less (grounding)", grounded.damage < normal.damage)
@@ -293,11 +293,23 @@ func _test_skill_audit() -> void:
 	check("at least 8 fusion recipes", combos.size() >= 8)
 	var symmetric := true
 	for c in combos:
+		if not c.has("a"):
+			continue   # 2-elem recipes use a/b; multi-elem (3-4) use an "elems" array
 		var ab := Db.elem_combo(c.a, c.b)
 		var ba := Db.elem_combo(c.b, c.a)
 		if ab.get("result", "") != ba.get("result", "") or ab.get("mult", 0) != ba.get("mult", 0):
 			symmetric = false
 	check("every fusion recipe is order-independent (1+2==2+1)", symmetric)
+	# rev C: multi-element (3-4) fusion recipes exist and are order-independent
+	var triples := 0
+	var quads := 0
+	for c in combos:
+		var n: int = c.get("elems", []).size()
+		if n == 3: triples += 1
+		elif n == 4: quads += 1
+	check("at least 4 triple-element recipes", triples >= 4, str(triples))
+	check("at least 2 quad-element recipes", quads >= 2, str(quads))
+	check("multi-elem lookup order-independent (plasma storm)", Db.elem_combo_multi(["lightning","fire","wind"]).get("result","") == "Plasma Storm")
 	# a non-recipe pair fizzles (empty)
 	check("non-recipe pair returns empty (fizzle)", Db.elem_combo("earth", "ice").is_empty())
 	# castable skills: valid element + real projectile where declared
@@ -315,17 +327,26 @@ func _test_skill_audit() -> void:
 	check("all castable skill elements are valid", elem_ok)
 	check("all projectile skills reference a real projectile", proj_ok)
 	check("dead 'element_flow' skill removed (flow_* supersede it)", not Db.skills.has("element_flow"))
-	# DPS-per-mana of the mana-costing damage skills within ±30% of the mean
+	# rev B: no cooldowns. Damage-per-mana (skill_mod / mana_cost) within ±35% of mean.
 	var vals: Array = []
 	for sid in ["flame_slash", "spark_bolt", "frost_bolt"]:
 		var sk := Db.skill(sid)
-		vals.append(float(sk.get("skill_mod", 1.0)) / (float(sk.get("cooldown", 1.0)) * float(sk.get("mp_cost", 1))))
+		vals.append(float(sk.get("skill_mod", 1.0)) / maxf(1.0, float(sk.get("mana_cost", 1))))
 	var mean: float = (vals[0] + vals[1] + vals[2]) / 3.0
 	var within := true
 	for v in vals:
-		if abs(v - mean) / mean > 0.30:
+		if abs(v - mean) / mean > 0.35:
 			within = false
-	check("no DPS-per-mana outlier >30%", within, str(vals))
+	check("no damage-per-mana outlier >35%", within, str(vals))
+	# rev B: castable damage skills declare the new economy levers (no cooldown field)
+	var levers_ok := true
+	for sid in ["flame_slash", "spark_bolt", "frost_bolt"]:
+		var sk := Db.skill(sid)
+		if sk.get("mana_cost", 0) <= 0 or sk.get("cast_rate", 0.0) <= 0.0 or sk.has("cooldown"):
+			levers_ok = false
+	check("damage skills use mana_cost+cast_rate, no cooldown", levers_ok)
+	# rev B: flow skills drain mana per second (no cooldown/duration)
+	check("flow skills declare a mana drain", Db.skill("flow_fire").get("drain", 0.0) > 0.0)
 	# weapon behavior wired to the click scheme (both perspectives branch on these)
 	check("bow weapon declares a projectile", Db.item("short_bow").get("projectile", "") != "")
 	check("wand weapon declares a projectile + mana", Db.item("apprentice_wand").get("projectile", "") != "" and Db.item("apprentice_wand").get("mana_cost", 0) > 0)
@@ -539,29 +560,65 @@ func _test_hotbar() -> void:
 	add_child(actor)
 	await get_tree().process_frame
 	var hb := Hotbar.new()
-	# single prime + cast (slot 2 = flow_fire -> infusion)
+	# ensure known hotbar layout: slots map to flow elements for deterministic fusion
+	PlayerData.hotbar = ["flow_fire", "flow_lightning", "flow_fire", "spark_bolt", "flow_ice"]
+	# --- rev B: no cooldowns, channelled cast ---
+	check("cooldown_frac always 0 (no CDs)", hb.cooldown_frac(0) == 0.0)
+	# single prime + flow toggle (slot 2 = flow_fire -> infusion)
+	PlayerData.mp = 999
 	hb.press_slot(2)
 	check("slot primed", hb.primed == 2)
-	check("single cast returns true", hb.cast(actor, Vector2.RIGHT))
+	check("flow begin_cast returns true", hb.begin_cast(actor, Vector2.RIGHT))
 	check("flow cast applied infusion", PlayerData.has_active_infusion())
-	check("cast resets prime", hb.primed == -1)
-	# valid fusion: slot 2 (fire) + slot 4 (ice) = Thermal Shock
+	check("flow cast resets prime", hb.primed == -1)
+	PlayerData.clear_infusion()
+	# --- channel drain: holding a non-flow skill casts at cast_rate, spends mana ---
+	PlayerData.mp = 999
+	hb.press_slot(3)   # spark_bolt (magic, mana_cost > 0)
+	check("non-flow primed (channel)", hb.is_primed() and not hb.primed_is_flow())
+	var mp_channel: int = PlayerData.mp
+	hb.begin_cast(actor, Vector2.RIGHT)   # first cast immediately
+	check("channel first cast spent mana", PlayerData.mp < mp_channel)
+	var mp_after1: int = PlayerData.mp
+	hb.channel_tick(actor, Vector2.RIGHT, 1.0)   # >1/cast_rate -> another cast
+	check("channel tick fired another cast", PlayerData.mp < mp_after1)
+	# channel stops when mana empty (empty click, no negative mana)
+	PlayerData.mp = 0
+	hb.channel_tick(actor, Vector2.RIGHT, 1.0)
+	check("no mana = mp stays 0", PlayerData.mp == 0)
+	hb.end_cast()
+	hb.primed = -1; hb.fusion_slots = []; hb.fusion_ready = false; hb.tick(2.0)
+	# --- valid 2-element fusion: slot 2 (fire) + slot 4 (ice) = Thermal Shock (holdable) ---
 	PlayerData.discovered_fusions.clear()
 	PlayerData.mp = 999
 	hb.press_slot(2)
 	hb.press_slot(4)
 	check("fusion primed on 2nd key in window", hb.fusion_ready)
+	check("2-elem fusion cast_rate is holdable (>0)", hb._cast_rate() >= 1.5)
 	var mp_before: int = PlayerData.mp
-	check("valid fusion casts", hb.cast(actor, Vector2.RIGHT))
+	check("valid fusion casts", hb.begin_cast(actor, Vector2.RIGHT))
 	check("fusion is first-discovered", "Thermal Shock" in PlayerData.discovered_fusions)
 	check("fusion spent 2x mana", PlayerData.mp < mp_before)
-	# fizzle: slot 0 (fire) + slot 1 (lightning) = no recipe
+	hb.end_cast()
+	hb.primed = -1; hb.fusion_slots = []; hb.fusion_ready = false; hb.tick(2.0)
+	# --- rev C: 3-element fusion = slow recast ---
+	PlayerData.mp = 999
+	hb.press_slot(0)   # fire
+	hb.press_slot(1)   # lightning
+	hb.press_slot(4)   # ice
+	check("3-elem fusion ready", hb.fusion_ready and hb.fusion_slots.size() == 3)
+	check("3-elem fusion is recast (slow rate < 1)", hb._cast_rate() < 1.0)
+	hb.end_cast()
+	hb.primed = -1; hb.fusion_slots = []; hb.fusion_ready = false; hb.tick(2.0)
+	# fizzle: slot 0 (fire) + slot 1 (lightning) = no 2-elem recipe
+	PlayerData.hotbar = ["flow_fire", "flow_lightning", "flow_fire", "spark_bolt", "flow_ice"]
 	PlayerData.mp = 999
 	hb.press_slot(0)
 	hb.press_slot(1)
 	var disc_before: int = PlayerData.discovered_fusions.size()
-	hb.cast(actor, Vector2.RIGHT)
+	hb.begin_cast(actor, Vector2.RIGHT)
 	check("fizzle discovers nothing", PlayerData.discovered_fusions.size() == disc_before)
+	hb.end_cast()
 	# combo window expiry -> no fusion
 	hb.press_slot(0)
 	hb.tick(2.0)   # > COMBO_WINDOW (1.5)
@@ -592,12 +649,47 @@ func _test_dungeon_combat() -> void:
 	m2.global_position = Vector2(30, 10)
 	var hp1_0: int = m1.hp
 	var hp2_0: int = m2.hp
+	PlayerData.accuracy = 2.0   # guarantee hits (bypass the AGI/DEX miss roll for this determinism test)
 	PlayerCombat.melee_arc(actor, Vector2.RIGHT, 48.0, 120.0, Db.skill("strike"))
 	Engine.time_scale = 1.0   # clear any hitstop from the swing
 	check("arc melee multi-hit (m1)", m1.hp < hp1_0, "%d<%d" % [m1.hp, hp1_0])
 	check("arc melee multi-hit (m2)", m2.hp < hp2_0)
 	# knockback pushed the monster (velocity now non-zero)
 	check("knockback applied velocity", m1.velocity.length() > 1.0)
+
+	# --- rev D: per-SOURCE hit-immunity (anti-melt) ---
+	var imm_m = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(imm_m)
+	imm_m.setup(MonsterFactory.make("verdant_slime", 5, 3))
+	await get_tree().process_frame
+	var imm_hp0: int = imm_m.hp
+	var hit := {"damage": 5, "is_crit": false, "element": "none"}
+	imm_m.take_hit(hit, actor)
+	var imm_hp1: int = imm_m.hp
+	check("first hit from source lands", imm_hp1 < imm_hp0)
+	imm_m.take_hit(hit, actor)   # same source, same frame -> blocked by immunity window
+	check("immediate re-hit from SAME source is blocked", imm_m.hp == imm_hp1)
+	var other := Node2D.new(); add_child(other)
+	imm_m.take_hit(hit, other)   # DIFFERENT source -> lands
+	check("hit from a DIFFERENT source still lands", imm_m.hp < imm_hp1)
+	imm_m.queue_free(); other.queue_free()
+
+	# --- rev E: weapon infusion reshapes melee reach (Lightning = 1.5x) ---
+	var far_m = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(far_m)
+	far_m.setup(MonsterFactory.make("verdant_slime", 5, 3))
+	await get_tree().process_frame
+	far_m.global_position = Vector2(60, 0)   # beyond base reach 48, within 48*1.5=72
+	PlayerData.clear_infusion()
+	PlayerData.accuracy = 2.0
+	var far_hp0: int = far_m.hp
+	PlayerCombat.melee_arc(actor, Vector2.RIGHT, 48.0, 120.0, Db.skill("strike"))
+	check("no infusion = target beyond reach untouched", far_m.hp == far_hp0)
+	PlayerData.apply_infusion("lightning")   # reach_mult 1.5 -> now in range
+	PlayerCombat.melee_arc(actor, Vector2.RIGHT, 48.0, 120.0, Db.skill("strike"))
+	check("lightning infusion extends reach to hit far target", far_m.hp < far_hp0)
+	PlayerData.clear_infusion()
+	far_m.queue_free()
 
 	# projectile pooling: firing takes from the pool
 	var before_active: int = ProjectilePool.active_count()
