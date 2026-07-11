@@ -12,5 +12,18 @@
   {"id": "craft_saddle", "result": "saddle", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 3, "success_rate": 0.7,
    "ingredients": [{"item": "wolf_pelt", "qty": 3}, {"item": "copper_bar", "qty": 1}]},
   {"id": "craft_basic_orb", "result": "basic_orb", "qty": 1, "station": "bench", "profession": "tamer", "level": 1, "success_rate": 0.85,
-   "ingredients": [{"item": "slime_jelly", "qty": 2}, {"item": "fluff", "qty": 1}]}
+   "ingredients": [{"item": "slime_jelly", "qty": 2}, {"item": "fluff", "qty": 1}]},
+
+  {"id": "cook_grilled_fish", "result": "grilled_fish", "qty": 1, "station": "bench", "profession": "cook", "level": 1, "success_rate": 0.95,
+   "ingredients": [{"item": "fish_carp", "qty": 1}, {"item": "wood_log", "qty": 1}]},
+  {"id": "cook_sushi", "result": "fish_sushi", "qty": 2, "station": "bench", "profession": "cook", "level": 2, "success_rate": 0.8,
+   "ingredients": [{"item": "fish_snapper", "qty": 1}, {"item": "herb_mintleaf", "qty": 1}]},
+  {"id": "cook_candy_cake", "result": "candy_cake", "qty": 1, "station": "bench", "profession": "cook", "level": 2, "success_rate": 0.75,
+   "ingredients": [{"item": "sugar_crystal", "qty": 2}, {"item": "choco_chunk", "qty": 1}, {"item": "candy_wool", "qty": 1}]},
+  {"id": "cook_cactus_juice", "result": "cactus_juice", "qty": 2, "station": "bench", "profession": "cook", "level": 1, "success_rate": 0.9,
+   "ingredients": [{"item": "cactus_water", "qty": 2}]},
+  {"id": "cook_jerky", "result": "meat_jerky", "qty": 2, "station": "bench", "profession": "cook", "level": 1, "success_rate": 0.9,
+   "ingredients": [{"item": "boar_meat", "qty": 2}, {"item": "sandstone", "qty": 1}]},
+  {"id": "cook_moonfeast", "result": "moonfish_feast", "qty": 1, "station": "bench", "profession": "cook", "level": 4, "success_rate": 0.6,
+   "ingredients": [{"item": "fish_moon", "qty": 1}, {"item": "sugar_crystal", "qty": 2}]}
 ]

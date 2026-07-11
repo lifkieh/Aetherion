@@ -27,7 +27,12 @@ var _pool: Array[AudioStreamPlayer] = []
 var _next := 0
 var _cache := {}
 var _music: AudioStreamPlayer
+var _combat: AudioStreamPlayer          # combat-intensity layer (crossfaded)
 var _current_music := ""
+var _combat_on := false
+const COMBAT_MUSIC := "23 - Road.ogg"
+const MUSIC_DB := -8.0
+const QUIET_DB := -40.0
 var muted := false
 
 func _ready() -> void:
@@ -38,8 +43,12 @@ func _ready() -> void:
 		_pool.append(p)
 	_music = AudioStreamPlayer.new()
 	_music.bus = "Master"
-	_music.volume_db = -8.0
+	_music.volume_db = MUSIC_DB
 	add_child(_music)
+	_combat = AudioStreamPlayer.new()
+	_combat.bus = "Master"
+	_combat.volume_db = QUIET_DB
+	add_child(_combat)
 
 func _get_stream(path: String) -> AudioStream:
 	if _cache.has(path):
@@ -81,7 +90,32 @@ func stop_music() -> void:
 	_music.stop()
 	_current_music = ""
 
+## Crossfade a combat layer over the base track (base keeps playing underneath
+## for a seamless resume). Dynamic music layering (GDD v0.2 §10.5).
+func set_combat(active: bool) -> void:
+	if active == _combat_on or muted:
+		return
+	_combat_on = active
+	if active:
+		var s := _get_stream(MUSIC_DIR + COMBAT_MUSIC)
+		if s:
+			if s is AudioStreamOggVorbis:
+				s.loop = true
+			_combat.stream = s
+			_combat.play()
+		_fade(_combat, MUSIC_DB, 0.8)
+		_fade(_music, QUIET_DB, 0.8)
+	else:
+		_fade(_combat, QUIET_DB, 1.2)
+		_fade(_music, MUSIC_DB, 1.2)
+
+func _fade(p: AudioStreamPlayer, to_db: float, secs: float) -> void:
+	var tw := create_tween()
+	tw.tween_property(p, "volume_db", to_db, secs)
+
 func set_muted(m: bool) -> void:
 	muted = m
 	if m:
 		_music.stop()
+		_combat.stop()
+		_combat_on = false

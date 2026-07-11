@@ -3,6 +3,7 @@
   {"id": "copper_sword", "name": "Pedang Tembaga", "tier": "E", "type": "weapon", "atk": 14, "element": "metal", "value": 160, "stack": 1, "shop_stock": 3, "shop_demand": 8},
   {"id": "bone_club", "name": "Gada Tulang", "tier": "F", "type": "weapon", "atk": 9, "element": "none", "value": 70, "stack": 1},
   {"id": "carrot_of_calamity", "name": "Carrot of Calamity", "tier": "S", "type": "weapon", "atk": 120, "element": "moon", "value": 0, "stack": 1, "desc": "Pedang wortel terkutuk dari Lunar Warren. Berdenyut saat purnama."},
+  {"id": "ambergris_star", "name": "Ambergris Star", "tier": "S", "type": "material", "value": 0, "stack": 999, "desc": "Material [S] dari perut Star Whale — berbau langit dan laut sekaligus."},
 
   {"id": "basic_orb", "name": "Orb Dasar", "tier": "E", "type": "orb", "tame_bonus": 1.0, "value": 50, "stack": 99, "shop_stock": 30, "shop_demand": 15},
   {"id": "greater_orb", "name": "Orb Unggul", "tier": "C", "type": "orb", "tame_bonus": 1.5, "value": 250, "stack": 99, "shop_stock": 10, "shop_demand": 12},
@@ -64,6 +65,13 @@
   {"id": "sandstone", "name": "Batu Pasir", "tier": "F", "type": "material", "value": 12, "stack": 999, "shop_demand": 16},
   {"id": "serpent_scale", "name": "Sisik Ular", "tier": "D", "type": "material", "value": 70, "stack": 999},
   {"id": "cactus_water", "name": "Air Kaktus", "tier": "E", "type": "material", "value": 22, "stack": 999},
+
+  {"id": "grilled_fish", "name": "Ikan Bakar", "tier": "E", "type": "consumable", "heal": 110, "value": 55, "stack": 99},
+  {"id": "fish_sushi", "name": "Sushi", "tier": "D", "type": "consumable", "heal": 80, "restore_mp": 50, "value": 95, "stack": 99},
+  {"id": "candy_cake", "name": "Kue Permen", "tier": "D", "type": "consumable", "heal": 200, "value": 130, "stack": 99},
+  {"id": "cactus_juice", "name": "Jus Kaktus", "tier": "E", "type": "consumable", "restore_mp": 90, "value": 50, "stack": 99},
+  {"id": "meat_jerky", "name": "Dendeng", "tier": "E", "type": "consumable", "heal": 140, "value": 70, "stack": 99},
+  {"id": "moonfish_feast", "name": "Jamuan Moonfish", "tier": "C", "type": "consumable", "heal": 320, "restore_mp": 120, "value": 300, "stack": 99},
 
   {"id": "saddle", "name": "Pelana", "tier": "D", "type": "gear", "value": 300, "stack": 1, "shop_stock": 4, "shop_demand": 8},
   {"id": "health_charm", "name": "Jimat Vitalitas", "tier": "D", "type": "gear", "hp_bonus": 40, "value": 400, "stack": 1}

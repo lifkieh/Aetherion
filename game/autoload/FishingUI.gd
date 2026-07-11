@@ -105,6 +105,11 @@ func _hook() -> void:
 		label.text = "🌟 Sesuatu yang RAKSASA menarik kailmu..."
 		Audio.play_sfx("secret")
 		WorldState.add_counter("starwhale_hooked")
+		# Enter the Star Whale hidden scenario (no_fail). Close the UI first.
+		var mgr := ScenarioManager
+		_close()
+		if not mgr.trigger_scenario("star_whale_belly"):
+			EventBus.toast.emit("Paus bintang menyelam kembali ke kegelapan...")
 		return
 	var f := FishingSystem.roll(_bait)
 	if f.is_empty():

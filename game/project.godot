@@ -27,6 +27,7 @@ Achievements="*res://autoload/Achievements.gd"
 QuestSystem="*res://autoload/QuestSystem.gd"
 PhotoMode="*res://autoload/PhotoMode.gd"
 FishingUI="*res://autoload/FishingUI.gd"
+MusicDirector="*res://autoload/MusicDirector.gd"
 
 [display]
 

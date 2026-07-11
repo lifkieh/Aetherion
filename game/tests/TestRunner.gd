@@ -350,6 +350,15 @@ func _test_scenario() -> void:
 	ScenarioManager.apply_result(id, false)
 	check("fail sets permanent flag", PlayerData.scenario_flags.get(id, "") == "failed")
 	WorldState.set_counter("rabbits_killed", 0)
+	# Star Whale scenario (action-triggered via fishing)
+	var wid := "star_whale_belly"
+	check("star whale scenario loaded", not ScenarioManager.find(wid).is_empty())
+	PlayerData.scenario_flags.erase(wid)
+	PlayerData.inventory.clear()
+	ScenarioManager.apply_result(wid, true)
+	check("star whale clear gives Ambergris Star", PlayerData.item_count("ambergris_star") == 1)
+	check("cleared star whale won't re-trigger", not ScenarioManager.trigger_scenario(wid))
+	PlayerData.scenario_flags.erase(wid)
 
 func _test_economy() -> void:
 	print("[Economy]")
@@ -369,6 +378,13 @@ func _test_crafting() -> void:
 	var r := CraftingSystem.craft("craft_plank")
 	check("plank crafted", r.success and PlayerData.item_count("plank") == 1, str(r))
 	check("ingredients consumed", PlayerData.item_count("wood_log") == 0)
+	# Cook recipes present + craftable
+	check("cook recipe exists", not CraftingSystem.find_recipe("cook_grilled_fish").is_empty())
+	PlayerData.inventory.clear()
+	PlayerData.add_item("fish_carp", 1)
+	PlayerData.add_item("wood_log", 1)
+	var rc := CraftingSystem.craft("cook_grilled_fish")
+	check("grilled fish cooked", rc.success and PlayerData.item_count("grilled_fish") == 1)
 	# missing ingredients fails cleanly
 	var r2 := CraftingSystem.craft("craft_copper_sword")
 	check("craft fails without mats", not r2.success)

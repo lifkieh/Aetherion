@@ -11,5 +11,14 @@
     "reward_trait": "moon_marked",
     "hint": "Saat Rasi Kelinci menggantung, dia yang berlumur dosa seribu telinga akan dijemput cahaya pucat.",
     "debug_counters": {"rabbits_killed": 10}
+  },
+  {
+    "id": "star_whale_belly",
+    "name": "Belly of the Star Whale",
+    "trigger_action": "hook_starwhale",
+    "no_fail": true,
+    "scene": "res://scenes/scenarios/StarWhaleBelly.tscn",
+    "reward_item": "ambergris_star",
+    "hint": "Lempar cahaya ke laut saat bintang berjatuhan, dan sesuatu yang purba akan menelanmu."
   }
 ]

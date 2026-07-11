@@ -53,6 +53,20 @@ func try_trigger(action: String) -> bool:
 	get_tree().change_scene_to_file(sc.get("scene", "res://scenes/Main.tscn"))
 	return true
 
+## Directly enter a scenario by id (used by action triggers like fishing that
+## aren't counter/sky-gated). Respects the no_fail permanent lock. Returns bool.
+func trigger_scenario(id: String) -> bool:
+	var flag: String = PlayerData.scenario_flags.get(id, "")
+	if flag == "cleared" or flag == "failed":
+		return false
+	var sc := find(id)
+	if sc.is_empty():
+		return false
+	active_scenario = id
+	EventBus.scenario_triggered.emit(id)
+	get_tree().change_scene_to_file(sc.get("scene", "res://scenes/Main.tscn"))
+	return true
+
 ## Pure result application (flags + rewards). Returns the reward summary.
 func apply_result(id: String, success: bool) -> Dictionary:
 	var sc := find(id)
