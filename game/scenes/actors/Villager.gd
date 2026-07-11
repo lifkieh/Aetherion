@@ -80,23 +80,36 @@ func interact() -> void:
 	var lines: Array = ambient_lines()
 	await Stage.say(lines[randi() % lines.size()], _name)
 
-## Ambient dialogue — references the CURRENT sky so the world feels time-aware.
+## Ambient dialogue — references the CURRENT sky + town so the world feels alive
+## and time-aware. Returns 2-3 rotating lines; interact() picks one at random.
 func ambient_lines() -> Array:
-	var lines := ["Hari yang biasa saja di Greenvale."]
+	var lines: Array = []
 	var weather: String = WorldState.weather
 	var moon: String = GameClock.moon_name()
 	var hour: int = GameClock.wib_hour()
-	if weather == "rain" or weather == "thunderstorm":
-		lines.append("Hujan begini enaknya di dalam rumah, bukan?")
-	elif weather == "blizzard":
-		lines.append("Dingin sekali... jaga kehangatanmu, ya.")
-	else:
-		lines.append("Cuaca cerah — cocok untuk berkebun.")
+	# time-of-day greeting
 	if GameClock.is_night():
-		lines.append("Sudah malam. %s menerangi langit." % moon)
+		lines.append("Sudah larut. %s menggantung di langit malam." % moon)
 	else:
-		lines.append("Selamat %s, petualang!" % ("pagi" if hour < 11 else ("siang" if hour < 16 else "sore")))
+		lines.append("Selamat %s! Semoga harimu menyenangkan." % ("pagi" if hour < 11 else ("siang" if hour < 16 else "sore")))
+	# weather comment
+	if weather == "rain" or weather == "thunderstorm":
+		lines.append("Hujan begini, air di sumur pasti penuh. Enaknya di dalam rumah.")
+	elif weather == "blizzard":
+		lines.append("Brr, dingin menusuk... jaga kehangatanmu, ya.")
+	else:
+		lines.append("Cuaca cerah — pas untuk menjemur atau berkebun.")
+	# moon / omen gossip
 	if GameClock.is_full_moon():
-		lines.append("Bulan purnama... katanya monster jadi lebih ganas.")
-	lines.append("Dengar-dengar ada gua tua di dekat sini. Hati-hati.")
+		lines.append("Bulan purnama... kata Pak Astrolog, monster jadi lebih ganas malam ini.")
+	# rotating town gossip
+	var gossip := [
+		"Pandai besi di Bengkel baru menempa pedang tembaga, katanya.",
+		"Pedagang bilang stok Orb sedang banyak. Mumpung murah!",
+		"Dengar-dengar ada gua tua di sebelah selatan. Hati-hati di sana.",
+		"Kalau lelah, menginaplah di Penginapan Rusa Emas — kasurnya empuk.",
+		"Penjaga gerbang tak pernah tidur; berkat mereka kota ini aman.",
+		"Ada yang bilang melihat rubah perak di hutan saat fajar.",
+	]
+	lines.append(gossip[randi() % gossip.size()])
 	return lines
