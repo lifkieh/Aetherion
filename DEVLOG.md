@@ -60,6 +60,25 @@ green (`+N`) / red (`-N`) stat deltas vs the item currently in that slot (plain 
 coloured). **Craft chain F→E→D** in Greenvale: each upgrade recipe consumes the lower tier (blacksmith bench).
 Tests: 330 pass (+17: slots, stat wiring, no double-count, toggle, tier scaling, craft-chain links).
 
+**PC6 — Difficulty targets + harness v2 + total recalibration (rev F).** Wrote `BALANCE_TARGETS.md`
+(corridor) BEFORE tuning, then built **harness v2** (`AETHER_BALANCE=2`): mana-aware two-way TTK for
+3 builds × Lv 1/5/10/15 with tier gear, both modes, real CombatResolver + 0.5s player i-frames in pack
+sims. Results + accepted deviations in `BALANCE_REPORT_v2.md`. **Structural fixes found by the harness:**
+- Same-level TTK collapsed with level (5s→0.3s) — monster HP now tracks hero growth
+  (`HP_LVL_GROWTH 0.85`, offense `0.09`).
+- Magic formula pathology: flat post-multiplier MDEF floored low-MATK casts to 1 dmg — MDEF now
+  mitigates like DEF inside the multipliers.
+- Monster offense one-shot new players (wolf hit ≈24% HP bar; pack kill <2s) — `THREAT_MULT 0.45`
+  on monster ATK/MATK only (defense untouched). E→P now 6.0–8.7s vs the 6–12s "sempat kabur" band.
+- Mana economy (rev F) ACHIEVED: pool `30+INT·5+lv·3`, combat regen `2.0+INT·0.12` (×3 idle surge),
+  retuned all mana_cost/cast_rate — Lv10 mage channel dries in **12.1s** (target 8–12s); wand basic
+  ≈ break-even (2 mana/shot) so INT builds still shoot when dry; non-INT viable via basics+infusion.
+- Boss pure-DPS proxy 50–107s (band 45–120 ≈ 2–4 min live); dungeon rare tank 21–43s ("commitment").
+**Feel/world parity audit:** open-world non-boss chase speed capped 108 (walk 92, mount 168, leash
+1.8×aggro) = always escapable; boss full speed. **Death penalty dungeon (final): respawn di pintu,
+−10% gold** (no XP/item loss; durability belum ada). **F9 debug overlay** (autoload `DebugOverlay`,
+debug builds only): rolling DPS (5s), last-kill TTK, damage taken, effective stats. Tests: 330 pass.
+
 ## 2026-07-12 — v0.3-alpha content: Frostpeak complete + Storm Island
 
 Playtest of the character system passed; built the rest of v0.3.

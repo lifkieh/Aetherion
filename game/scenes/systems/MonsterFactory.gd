@@ -23,6 +23,13 @@ const RARITY := {
 	"ancient":   {"bst": 800, "growth": 0.040, "exp": 12.0, "tame": 0.0001},
 }
 const STAR_MULT := [0.94, 0.97, 1.00, 1.03, 1.06]   # 1..5 star
+# v2 same-level calibration (PC6): HP tracks hero offense growth; offense is gentler.
+const HP_LVL_GROWTH := 0.85
+const OFF_LVL_GROWTH := 0.09
+# Global monster-offense temper: raw BST fractions one-shot a new player (a wolf hit
+# was ~24% of a Lv1 HP bar; a 3-pack killed in <2s vs the 6-12s corridor). Defense
+# (DEF/MDEF) is NOT tempered — player offense is balanced against full mitigation.
+const THREAT_MULT := 0.45
 const STAR_WEIGHTS := [15, 25, 35, 20, 5]
 const HP_DISPLAY_MULT := 3.0
 # HP multiplier per rarity so TTK tiers (Monster_Roster §1.3) actually separate —
@@ -56,17 +63,21 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 	var level: int = level_override if level_override > 0 else int(def.get("level", 1))
 	var star: int = star_override if star_override > 0 else roll_star(rng)
 	var star_mult: float = STAR_MULT[clampi(star - 1, 0, 4)]
-	var growth: float = rinfo["growth"]
-	var lvl_scale: float = (1.0 + growth * (level - 1)) * star_mult
+	# v2 calibration (PC6): the hero's ATK grows ~+15/level (STR×5 + level), so a
+	# same-level monster's HP must track that or same-level TTK collapses as you level
+	# (see BALANCE_REPORT_v2). HP scales ~+24%/level to hold the 3-6s corridor; offense
+	# scales gentler (+9%/level) so packs stay a threat without one-shotting a geared hero.
+	var hp_scale: float = (1.0 + HP_LVL_GROWTH * (level - 1)) * star_mult
+	var off_scale: float = (1.0 + OFF_LVL_GROWTH * (level - 1)) * star_mult
 
-	var hp := int(round(bst * dist[0] * lvl_scale * HP_DISPLAY_MULT * float(RARITY_HP_MULT.get(rarity, 1.0))))
-	var atk := int(round(bst * dist[1] * lvl_scale))
-	var dfn := int(round(bst * dist[2] * lvl_scale))
-	var matk := int(round(bst * dist[3] * lvl_scale))
-	var mdef := int(round(bst * dist[4] * lvl_scale))
-	var spd := int(round(bst * dist[5] * lvl_scale)) + 60
+	var hp := int(round(bst * dist[0] * hp_scale * HP_DISPLAY_MULT * float(RARITY_HP_MULT.get(rarity, 1.0))))
+	var atk := int(round(bst * dist[1] * off_scale * THREAT_MULT))
+	var dfn := int(round(bst * dist[2] * off_scale))
+	var matk := int(round(bst * dist[3] * off_scale * THREAT_MULT))
+	var mdef := int(round(bst * dist[4] * off_scale))
+	var spd := int(round(bst * dist[5] * off_scale)) + 60
 
-	var eff_bst := bst * lvl_scale
+	var eff_bst := bst * hp_scale
 	var exp_reward := int(round(eff_bst * 0.2 * float(rinfo["exp"])))
 
 	return {

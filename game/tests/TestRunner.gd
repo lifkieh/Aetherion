@@ -12,6 +12,10 @@ func _ready() -> void:
 		_balance_probe()
 		get_tree().quit()
 		return
+	if OS.get_environment("AETHER_BALANCE") == "2":
+		_balance_probe_v2()
+		get_tree().quit()
+		return
 	print("\n===== AETHERION TEST SUITE =====")
 	_test_db()
 	_test_elements()
@@ -96,6 +100,192 @@ func _balance_probe() -> void:
 		print("PROBE|%s|%s|lvl%d|hits=%.1f|ttk=%.1fs|target=%d-%ds|dev=%+.0f%%%s" % [
 			species, m[1], lvl, avg_hits, ttk, m[2], m[3], dev, flag])
 	print("BALANCE_PROBE_END")
+	PlayerData.new_game()
+
+# --- Harness v2 (PC6): mana-aware two-way TTK for 3 builds × 4 levels ---------
+const _V2_DT := 0.05
+const _V2_TRIALS := 24
+
+# archetype -> attribute weights + weapon + channel skill + infusion element
+const _V2_BUILDS := {
+	"fighter":  {"w": {"STR": 0.5, "VIT": 0.3, "AGI": 0.2}, "wt": "sword", "skill": "", "infuse": "earth"},
+	"mage":     {"w": {"INT": 0.7, "VIT": 0.2, "DEX": 0.1}, "wt": "wand", "skill": "frost_bolt", "infuse": ""},
+	"balanced": {"w": {"STR": 0.3, "VIT": 0.3, "INT": 0.2, "AGI": 0.2}, "wt": "sword", "skill": "flame_slash", "infuse": ""},
+}
+const _V2_WEAPON := {
+	"sword": {1: "wooden_sword", 5: "copper_sword", 10: "iron_sword", 15: "iron_sword"},
+	"wand": {1: "apprentice_wand", 5: "apprentice_wand", 10: "apprentice_wand", 15: "apprentice_wand"},
+}
+const _V2_ARMOR := {1: "cloth_tunic", 5: "leather_vest", 10: "iron_mail", 15: "iron_mail"}
+const _V2_ACC := {1: "", 5: "copper_ring", 10: "silver_ring", 15: "gold_ring"}
+const _WEAPON_RATE := {"bow": 3.3, "wand": 3.0, "spear": 2.4, "sword": 2.85}
+
+func _v2_apply_build(build_id: String, level: int) -> void:
+	var b: Dictionary = _V2_BUILDS[build_id]
+	PlayerData.new_game()
+	PlayerData.level = level
+	var pts := (level - 1) * 5
+	var attrs := {"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5}
+	for k in b.w:
+		attrs[k] += int(round(pts * float(b.w[k])))
+	PlayerData.attributes = attrs
+	PlayerData.equipped_weapon = _V2_WEAPON[b.wt][level]
+	PlayerData.equipped_armor = _V2_ARMOR[level]
+	PlayerData.equipped_accessory = _V2_ACC[level]
+	PlayerData.recalculate_stats()
+	PlayerData.hp = PlayerData.max_hp
+	PlayerData.mp = PlayerData.max_mp
+
+## Player → Enemy: seconds to kill one same-level enemy (mana-aware channel/basic).
+func _v2_pve(build_id: String, level: int, species: String, dungeon: bool, rng: RandomNumberGenerator) -> float:
+	var b: Dictionary = _V2_BUILDS[build_id]
+	_v2_apply_build(build_id, level)
+	var ps := PlayerData.combat_stats()
+	var wt: String = b.wt
+	var basic_interval: float = 1.0 / maxf(0.4, _WEAPON_RATE[wt] * PlayerData.attack_speed)
+	# wand basic = magic shot (MATK) costing the wand's small mana_cost; melee = strike
+	var basic_sk: Dictionary = {"kind": "magic", "skill_mod": 1.0, "element": "fire"} if wt == "wand" else Db.skill("strike")
+	var basic_cost: int = int(Db.item(PlayerData.equipped_weapon).get("mana_cost", 0)) if wt == "wand" else 0
+	var chan_id: String = b.skill
+	var chan := Db.skill(chan_id) if chan_id != "" else {}
+	var chan_rate: float = float(chan.get("cast_rate", 2.0))
+	var chan_cost: int = int(chan.get("mana_cost", 0))
+	# infusion damage multiplier for basic-attack builds (rev E)
+	var infuse: String = b.infuse
+	var inf_mult := 1.0
+	var inf_drain := 0.0
+	if infuse != "":
+		var im: Dictionary = Db.elements.get("infusion_melee", {}).get(infuse, {})
+		inf_mult = float(im.get("dmg_mult", 1.0))
+		inf_drain = float(Db.skill("flow_" + infuse).get("drain", 2.0))
+	var total := 0.0
+	for tr in range(_V2_TRIALS):
+		var lvl_scaled := level
+		var inst := MonsterFactory.make(species, lvl_scaled, 3, rng)
+		if inst.is_empty():
+			return -1.0
+		var hp: float = inst.max_hp * (1.2 if dungeon else 1.0)
+		var mstats := MonsterFactory.combat_stats(inst)
+		var mana: float = PlayerData.max_mp
+		var t := 0.0
+		var basic_cd := 0.0
+		var chan_cd := 0.0
+		while hp > 0.0 and t < 600.0:
+			t += _V2_DT
+			mana = minf(PlayerData.max_mp, mana + PlayerData.mana_regen * _V2_DT)
+			if infuse != "":
+				mana = maxf(0.0, mana - inf_drain * _V2_DT)
+			chan_cd -= _V2_DT
+			basic_cd -= _V2_DT
+			# holding LMB = EITHER channel the primed skill (while affordable) OR basic —
+			# never both at once (matches the real input model, rev A/B).
+			if chan_id != "" and mana >= chan_cost:
+				if chan_cd <= 0.0:
+					chan_cd = 1.0 / chan_rate
+					mana -= chan_cost
+					hp -= CombatResolver.resolve(ps, mstats, chan, {}, rng).damage
+			elif basic_cd <= 0.0 and mana >= basic_cost:
+				basic_cd = basic_interval
+				mana -= basic_cost
+				var dmg: float = CombatResolver.resolve(ps, mstats, basic_sk, {}, rng).damage
+				if infuse != "" and mana > 0.0:
+					dmg *= inf_mult
+				hp -= dmg
+		total += t
+	return total / _V2_TRIALS
+
+## Enemy pack → Player: seconds a `count`-pack of same-level enemies needs to kill the player.
+func _v2_epv(build_id: String, level: int, species: String, count: int, dungeon: bool, rng: RandomNumberGenerator) -> float:
+	_v2_apply_build(build_id, level)
+	var pdef := PlayerData.combat_stats()
+	var total := 0.0
+	for tr in range(_V2_TRIALS):
+		var hp: float = PlayerData.max_hp
+		var estats := []
+		var ecd := []
+		for i in range(count):
+			var inst := MonsterFactory.make(species, level, 3, rng)
+			var st := MonsterFactory.combat_stats(inst)
+			if dungeon:
+				st["atk"] = int(st.atk * 1.2)
+				st["matk"] = int(st.matk * 1.2)
+			var sk_id: String = inst.get("skills", ["tackle"])[0]
+			estats.append({"st": st, "sk": Db.skill(sk_id)})
+			ecd.append(0.6 + 0.1 * i)
+		var t := 0.0
+		var iframes := 0.0   # the player's 0.5s post-hit i-frames serialize pack damage
+		while hp > 0.0 and t < 600.0:
+			t += _V2_DT
+			iframes -= _V2_DT
+			for i in range(count):
+				ecd[i] -= _V2_DT
+				if ecd[i] <= 0.0 and iframes <= 0.0:
+					ecd[i] = 1.1   # enemy swing cadence (> hit-immunity window)
+					var res := CombatResolver.resolve(estats[i].st, pdef, estats[i].sk, {}, rng)
+					if res.get("damage", 0) > 0:
+						hp -= res.get("damage", 0)
+						iframes = CombatFeel.iframes()
+		total += t
+	return total / _V2_TRIALS
+
+func _balance_probe_v2() -> void:
+	print("BALANCE_V2_BEGIN")
+	# [species, region, dungeon, kind, ttk_lo, ttk_hi, min_lv]. Targets are tier-appropriate:
+	# common 3-6s (open); rare 7-16s (mini-threat, ~2-3x common); dungeon-rare tank runs
+	# tankier ("dangerous commitment"); boss is a PURE-DPS proxy 45-120s (~2-4min live once
+	# phases/dodging are added — the harness has no downtime). min_lv skips levels where the
+	# fight is out of scope (a Lv1 vs a dungeon rare/boss is intended to be hopeless).
+	var targets := [
+		["verdant_slime", "Greenvale", false, "common", 3, 6, 1],
+		["grey_wolf", "Greenvale", false, "common", 3, 6, 1],
+		["forest_fox", "Greenvale", false, "rare", 7, 16, 5],
+		["ice_wolf", "Frostpeak", false, "common", 3, 6, 1],
+		["yeti_cub", "Foothill-Barrow", true, "rare", 10, 45, 5],
+		["storm_crab", "Storm-Island", false, "common", 3, 6, 1],
+		["king_slime", "Boss", true, "boss", 45, 120, 10],
+	]
+	var levels := [1, 5, 10, 15]
+	var rng := RandomNumberGenerator.new()
+	# P->E table
+	print("== P->E (player kills one same-level enemy), seconds ==")
+	for tg in targets:
+		var species: String = tg[0]
+		for build_id in ["fighter", "mage", "balanced"]:
+			for lvl in levels:
+				if lvl < int(tg[6]):
+					continue
+				rng.seed = 1337
+				var ttk := _v2_pve(build_id, lvl, species, tg[2], rng)
+				var lo: float = tg[4]; var hi: float = tg[5]
+				var flag := ""
+				if ttk >= 0.0 and (ttk < lo or ttk > hi):
+					flag = "  <<DEV"
+				print("V2PVE|%s|%s|%s|Lv%d|ttk=%.1fs|target=%d-%ds%s" % [tg[1], species, build_id, lvl, ttk, int(lo), int(hi), flag])
+	# E->P table (pack of 3 commons; new player = Lv1/5)
+	print("== E->P (pack of 3 kills the player), seconds ==")
+	for tg in targets:
+		if tg[3] != "common":
+			continue
+		for build_id in ["fighter", "mage", "balanced"]:
+			for lvl in [1, 5, 10]:
+				rng.seed = 999
+				var surv := _v2_epv(build_id, lvl, tg[0], 3, tg[2], rng)
+				print("V2EPV|%s|%s|%s|Lv%d|survive=%.1fs|(open target die 6-12s @Lv1-5)" % [tg[1], tg[0], build_id, lvl, surv])
+	# mana sustain: how long can a Lv10 mage channel before running dry?
+	_v2_apply_build("mage", 10)
+	var chan := Db.skill("frost_bolt")
+	var mana: float = PlayerData.max_mp
+	var drain_t := 0.0
+	var cd := 0.0
+	while mana >= chan.mana_cost and drain_t < 120.0:
+		drain_t += _V2_DT
+		mana = minf(PlayerData.max_mp, mana + PlayerData.mana_regen * _V2_DT)
+		cd -= _V2_DT
+		if cd <= 0.0:
+			cd = 1.0 / float(chan.cast_rate)
+			mana -= chan.mana_cost
+	print("V2MANA|mage|Lv10|max_mp=%d|regen=%.1f|channel_frost_bolt_until_dry=%.1fs (target 8-12s)" % [PlayerData.max_mp, PlayerData.mana_regen, drain_t])
+	print("BALANCE_V2_END")
 	PlayerData.new_game()
 
 func check(name: String, cond: bool, detail: String = "") -> void:
@@ -200,6 +390,12 @@ func _test_ttk() -> void:
 	print("[TTK simulation]")
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 999
+	# same-level fight (v2 calibration corridor: 3-6s ≈ 9-17 basic hits @~2.85/s)
+	PlayerData.new_game()
+	PlayerData.level = 3
+	PlayerData.attributes["STR"] += 6   # a Lv3 player has allocated +10 free points
+	PlayerData.attributes["VIT"] += 4
+	PlayerData.recalculate_stats()
 	var player := PlayerData.combat_stats()
 	player["element"] = "none"
 	var wolf := MonsterFactory.make("grey_wolf", 3, 3)
@@ -211,7 +407,8 @@ func _test_ttk() -> void:
 		hp -= r.damage
 		hits += 1
 	check("wolf dies", hp <= 0)
-	check("common TTK sane (3..20 basic hits)", hits >= 3 and hits <= 20, "%d hits" % hits)
+	check("common TTK in corridor (6..25 basic hits same-level)", hits >= 6 and hits <= 25, "%d hits" % hits)
+	PlayerData.new_game()
 
 func _test_taming() -> void:
 	print("[TamingSystem]")

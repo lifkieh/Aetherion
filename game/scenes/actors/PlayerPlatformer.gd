@@ -230,7 +230,11 @@ func _flash_hurt() -> void:
 func _on_death() -> void:
 	if ScenarioManager.active_scenario != "":
 		return
-	EventBus.toast.emit("Kamu tumbang di kegelapan...")
+	# dungeon death penalty (PC6, minor by design): lose 10% gold, respawn at the door.
+	var lost := int(PlayerData.gold * 0.10)
+	if lost > 0:
+		PlayerData.add_gold(-lost)
+	EventBus.toast.emit("Kamu tumbang di kegelapan... (-%d gold)" % lost)
 	PlayerData.respawn()
 	# respawn at dungeon entrance
 	var t := get_tree().get_first_node_in_group("dungeon_spawn")

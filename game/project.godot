@@ -36,6 +36,7 @@ SafeZone="*res://autoload/SafeZone.gd"
 CharGen="*res://autoload/CharGen.gd"
 Stage="*res://autoload/Stage.gd"
 Onboarding="*res://autoload/Onboarding.gd"
+DebugOverlay="*res://autoload/DebugOverlay.gd"
 
 [display]
 

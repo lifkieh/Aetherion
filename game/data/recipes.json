@@ -29,6 +29,9 @@
   {"id": "cook_royal_cake", "result": "royal_tea_cake", "qty": 1, "station": "bench", "profession": "cook", "tier": "S", "level": 20, "success_rate": 0.01,
    "ingredients": [{"item": "candy_cake", "qty": 1}, {"item": "sugar_crystal", "qty": 5}, {"item": "gel_core", "qty": 1}]},
 
+  {"id": "craft_iron_sword", "result": "iron_sword", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 4, "success_rate": 0.6,
+   "ingredients": [{"item": "copper_sword", "qty": 1}, {"item": "copper_bar", "qty": 3}]},
+
   {"id": "craft_cloth_tunic", "result": "cloth_tunic", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 1, "success_rate": 0.9,
    "ingredients": [{"item": "fluff", "qty": 3}, {"item": "wolf_pelt", "qty": 1}]},
   {"id": "craft_leather_vest", "result": "leather_vest", "qty": 1, "station": "bench", "profession": "blacksmith", "level": 2, "success_rate": 0.7,

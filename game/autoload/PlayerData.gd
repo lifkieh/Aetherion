@@ -243,7 +243,9 @@ func recalculate_stats() -> void:
 	var lv := level
 	# Hero is deliberately stronger per-point than fodder monsters (BST-based).
 	max_hp = 165 + v * 18 + lv * 14 + _gear_stat("hp_bonus")   # VIT -> HP (+ armor)
-	max_mp = 40 + i * 8 + lv * 4 + _gear_stat("mp_bonus")      # INT -> mana pool (+ accessory)
+	# rev F: the mana pool IS the sustain cap (full channel dries it in ~8-12s at
+	# equal level), so it scales gently — INT widens it but can't outrun cast costs.
+	max_mp = 30 + i * 5 + lv * 3 + _gear_stat("mp_bonus")      # INT -> mana pool (+ accessory)
 	atk = 24 + s * 5 + lv * 3 + _gear_stat("atk")   # STR -> physical ATK (gear atk incl. weapon)
 	if has_node("/root/Achievements"):
 		atk = int(atk * (1.0 + get_node("/root/Achievements").active_buff("atk_pct")))
@@ -255,7 +257,7 @@ func recalculate_stats() -> void:
 	evasion = clampf(a * 0.006, 0.0, 0.40)           # AGI -> evasion
 	accuracy = clampf(0.90 + dx * 0.006, 0.6, 0.99)  # DEX -> accuracy
 	gather_bonus = dx * 0.02                          # DEX -> gathering quality
-	mana_regen = 3.0 + i * 0.35                       # INT -> mana regen
+	mana_regen = 2.0 + i * 0.12                       # INT -> in-combat regen (x3 surge idle, rev B)
 	crit_rate = clampf(0.05 + l * 0.004, 0.05, 0.60) # LUK -> crit
 	drop_bonus = l * 0.008                            # LUK -> drop chance
 	crit_dmg = 1.5

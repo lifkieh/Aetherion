@@ -2,8 +2,8 @@ class_name CombatResolver
 extends RefCounted
 ## Pure combat math (Fase0 §4). No nodes/UI — this is the future server path.
 ##
-## Damage Fisik = (ATK*SkillMod - DEF*0.6) * ElemMod * CritMod * (1-Resist%)
-## Damage Magic = (MATK*SkillMod) * ElemMod * CritMod * (1-MRes%) - MDEF
+## Damage Fisik = (ATK*SkillMod - DEF*0.5) * ElemMod * CritMod * (1-Resist%)
+## Damage Magic = (MATK*SkillMod - MDEF*0.5) * ElemMod * CritMod * (1-MRes%)   (v2, PC6)
 ## ElemMod = matrix[atk][def] (1.3/1.0/0.7) * product(science rule mults for ctx)
 
 const DEF_FACTOR := 0.5   # tuned down from GDD draft 0.6 for snappier early TTK
@@ -64,9 +64,12 @@ static func resolve(attacker: Dictionary, defender: Dictionary, skill: Dictionar
 
 	var raw := 0.0
 	if kind == "magic":
+		# v2 calibration (PC6): MDEF mitigates like DEF (inside the multipliers).
+		# The old flat post-multiplier subtraction floored low-MATK casts to 1 dmg
+		# vs any tanky target (see BALANCE_REPORT_v2) — wands became useless.
 		var matk := float(attacker.get("matk", 0))
 		var mres := float(defender.get("resist", {}).get(atk_elem, 0.0))
-		raw = (matk * skill_mod) * em * crit_mod * (1.0 - mres) - float(defender.get("mdef", 0))
+		raw = (matk * skill_mod - float(defender.get("mdef", 0)) * DEF_FACTOR) * em * crit_mod * (1.0 - mres)
 	else:
 		var atk := float(attacker.get("atk", 0))
 		var dfn := float(defender.get("def", 0))

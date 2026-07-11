@@ -28,6 +28,20 @@
     "flavor": "Bilah tembaga berkilau kemerahan — senjata andal para petualang pemula."
   },
   {
+    "id": "iron_sword",
+    "name": "Pedang Besi",
+    "tier": "D",
+    "type": "weapon",
+    "weapon_type": "sword",
+    "atk": 22,
+    "element": "metal",
+    "value": 460,
+    "stack": 1,
+    "shop_stock": 2,
+    "shop_demand": 10,
+    "flavor": "Baja tempaan sungguhan — berat, tajam, dan menuntut lengan yang kuat."
+  },
+  {
     "id": "bone_club",
     "name": "Gada Tulang",
     "tier": "F",
@@ -78,7 +92,7 @@
     "matk_bonus": 10,
     "element": "fire",
     "projectile": "fireball",
-    "mana_cost": 6,
+    "mana_cost": 2,
     "value": 180,
     "stack": 1,
     "shop_stock": 2,

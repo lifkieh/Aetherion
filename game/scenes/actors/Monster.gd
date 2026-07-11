@@ -180,7 +180,13 @@ func _wander(delta: float) -> void:
 
 func _move_toward(target: Vector2, delta: float, speed_mult: float = 1.0) -> void:
 	var dir := (target - global_position).normalized()
-	var v: Vector2 = dir * (inst.get("spd", 100) * 0.55 * speed_mult)
+	# Open world stays ESCAPABLE (PC6): non-boss chase caps just above walk speed (92)
+	# so a swift pressures you but the leash (aggro x1.8) breaks the chase; a mount
+	# (168) always outruns. Bosses keep their full speed.
+	var spd: float = inst.get("spd", 100) * 0.55
+	if not inst.get("is_boss", false):
+		spd = minf(spd, 108.0)
+	var v: Vector2 = dir * (spd * speed_mult)
 	# Monsters cannot cross into a town safe zone; they stop at the boundary.
 	if SafeZone.is_active():
 		if SafeZone.contains(global_position + v * delta):
