@@ -644,8 +644,10 @@ func _test_quests() -> void:
 		if q.type == "kill" and q.get("condition", "") == "":
 			kq = q; break
 	if kq != null:
+		# emit the quest's ACTUAL target species (target varies by the date-seeded roll)
+		var kill_species: String = kq.target if kq.target != "any" else "verdant_slime"
 		for i in range(int(kq.count)):
-			EventBus.monster_killed.emit("verdant_slime", null)
+			EventBus.monster_killed.emit(kill_species, null)
 		check("kill quest completes", kq.done)
 		var gold_before: int = PlayerData.gold
 		check("claim grants reward", QuestSystem.claim(kq.id) and PlayerData.gold > gold_before)

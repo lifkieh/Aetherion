@@ -72,6 +72,8 @@ func _ready() -> void:
 					inside += 1
 			print("[safezone] monsters_inside_zone=%d total=%d" % [inside, get_tree().get_nodes_in_group("monsters").size()])
 			get_tree().quit())
+	if OS.get_environment("AETHER_DAY") == "1":
+		_force_day = true
 	if OS.get_environment("AETHER_FPS") == "1":
 		get_tree().create_timer(4.0).timeout.connect(func():
 			print("[fps] fps=%.1f nodes=%d monsters=%d props=%d" % [
@@ -193,9 +195,11 @@ func _combat_demo() -> void:
 			player.facing = "right"
 			player._do_attack())
 
+var _force_day := false
+
 func _process(delta: float) -> void:
 	if canvas_mod:
-		canvas_mod.color = GameClock.ambient_color()
+		canvas_mod.color = Color(1, 1, 1) if _force_day else GameClock.ambient_color()
 	if star_layer:
 		star_layer.modulate.a = lerpf(star_layer.modulate.a, 1.0 if GameClock.is_night() else 0.0, delta * 2.0)
 	_tick_spawner(delta)
@@ -361,44 +365,32 @@ func _spawn_gathering_nodes() -> void:
 		_add_gather_node(holder, "ore", Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48)))
 
 func _spawn_interactables() -> void:
-	# Tidy town plaza (UI/UX §3): service NPCs in two even rows above/below the
-	# spawn, region gates pushed to the plaza corners, ponds well outside town.
+	# R2 Part 1: a dense, real town — buildings, streets, well, lamps, fences, deco,
+	# NPCs at logical posts, strolling villagers and animals (see Town.gd).
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
+	Town.build(self, center)
 
-	# Pemandu (guide NPC) stands right by the spawn so newcomers meet him first.
-	_place_interactable("guide", center + Vector2(-56, 44))
-	# An enterable villager house (interiors, UI/UX §7).
-	_place_interactable("house_door", center + Vector2(150, 40))
+	# Town exits at the fence road-gaps (leaving town → wild / other regions).
+	_place_portal(center + Vector2(-400, 24), "res://scenes/world/Desert.tscn", "◀ Gurun Reruntuhan [E]")
+	_place_portal(center + Vector2(400, 24), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
+	_place_portal(center + Vector2(70, 116), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
+	# Dungeon entrance just outside the south gate.
+	_place_interactable("dungeon", center + Vector2(0, 300))
 
-	# --- Service NPCs: top row (north of spawn), evenly spaced 112px apart ---
-	_place_interactable("board", center + Vector2(-168, -72))       # Papan Quest
-	_place_interactable("bench", center + Vector2(-56, -72))        # Bengkel
-	_place_interactable("shop", center + Vector2(56, -72))          # Pedagang
-	_place_interactable("astrologer", center + Vector2(168, -72))   # Astrolog
-
-	# --- Service row: south of spawn ---
-	_place_interactable("inn", center + Vector2(-112, 84))          # Penginapan
-	_place_portal(center + Vector2(0, 84), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
-	_place_interactable("dungeon", center + Vector2(112, 84))       # Gua
-
-	# --- Region gates at the plaza corners (like town exits) ---
-	_place_portal(center + Vector2(-200, -168), "res://scenes/world/Desert.tscn", "Gurun Reruntuhan ▶ [E]")
-	_place_portal(center + Vector2(200, -168), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
-
-	# --- fishing ponds well outside the plaza ---
-	for p in [Vector2(-300, 220), Vector2(340, -260), Vector2(-360, -220)]:
+	# --- fishing ponds well outside the town ---
+	for p in [Vector2(-520, 300), Vector2(540, -300), Vector2(-540, -280)]:
 		_place_interactable("pond", center + p)
 
-	# Immortal gate guards at each safe-zone gate (UI/UX §4) — repel monsters.
+	# Immortal gate guards at each town gate (UI/UX §4) — repel monsters.
 	for gate in SafeZone.gates():
 		var guard := Node2D.new()
 		guard.set_script(load("res://scenes/actors/Guard.gd"))
 		add_child(guard)
 		guard.global_position = gate
 
-	# Echo Vendors — ghost kiosks flanking the plaza edges (lived-in feel)
+	# Echo Vendors — ghost kiosks by the town edge (lived-in feel)
 	var evs := Db.echo_vendors
-	var ev_spots := [Vector2(-236, 20), Vector2(236, 20), Vector2(0, 168)]
+	var ev_spots := [Vector2(-320, -120), Vector2(320, -140)]
 	for i in range(min(evs.size(), ev_spots.size())):
 		var ev := preload("res://scenes/world/EchoVendor.tscn").instantiate()
 		add_child(ev)

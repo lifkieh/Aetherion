@@ -93,6 +93,7 @@ func combat_view() -> Dictionary:
 # --- AI ---------------------------------------------------------------------
 
 func _physics_process(delta: float) -> void:
+	z_index = int(global_position.y)   # y-sort with town buildings/props (R2)
 	if _state == State.DEAD:
 		return
 	if not _home_set:

@@ -8,17 +8,31 @@ const MAP_W := 20
 const MAP_H := 14
 
 var player: Player
+var variant := "house"
+
+const VARIANTS := {
+	"house":      {"title": "Rumah Warga", "sub": "Hangat & aman — istirahat sejenak", "floor": Color(0.55, 0.40, 0.24)},
+	"blacksmith": {"title": "Bengkel Pandai Besi", "sub": "Bau arang & besi panas", "floor": Color(0.34, 0.30, 0.30)},
+	"inn":        {"title": "Penginapan Rusa Emas", "sub": "Kamar hangat untuk bermalam", "floor": Color(0.50, 0.38, 0.28)},
+	"store":      {"title": "Toko Umum", "sub": "Segala kebutuhan petualang", "floor": Color(0.58, 0.46, 0.30)},
+}
 
 func _ready() -> void:
 	SafeZone.clear()
+	variant = WorldState.pending_interior if WorldState.pending_interior in VARIANTS else "house"
+	var envv := OS.get_environment("AETHER_INTERIOR")
+	if envv in VARIANTS:
+		variant = envv
 	_build_floor()
 	_build_walls()
 	_build_light()
 	_build_furniture()
+	_build_resident()
 	_build_portal()
 	_spawn_player()
 	_add_ui()
-	Stage.enter_region("Rumah Warga", "Hangat & aman — istirahat sejenak", "26 - Lost Village.ogg")
+	var v: Dictionary = VARIANTS[variant]
+	Stage.enter_region(v.title, v.sub, "26 - Lost Village.ogg")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		get_tree().create_timer(1.4).timeout.connect(func():
 			if DisplayServer.get_name() != "headless":
@@ -29,8 +43,8 @@ func _ready() -> void:
 func _build_floor() -> void:
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
-	var floor := ColorRect.new()          # warm plank floor
-	floor.color = Color(0.55, 0.40, 0.24)
+	var floor := ColorRect.new()          # warm plank floor (tinted per variant)
+	floor.color = VARIANTS[variant].floor
 	floor.size = Vector2(w, h)
 	floor.z_index = -10
 	add_child(floor)
@@ -77,21 +91,69 @@ func _deco(path: String, pos: Vector2) -> void:
 	s.z_index = int(pos.y)
 	add_child(s)
 
-func _build_furniture() -> void:
-	var cx := MAP_W * TILE * 0.5
-	_deco("res://assets/game/sprites/props/int_rug.png", Vector2(cx, MAP_H * TILE * 0.5))
-	_deco("res://assets/game/sprites/props/int_bed.png", Vector2(40, 40))
-	_deco("res://assets/game/sprites/props/int_shelf.png", Vector2(MAP_W * TILE - 28, 34))
-	_deco("res://assets/game/sprites/props/int_table.png", Vector2(cx + 30, 60))
-	_deco("res://assets/game/sprites/props/int_lamp.png", Vector2(20, MAP_H * TILE - 40))
-	_deco("res://assets/game/sprites/props/int_lamp.png", Vector2(MAP_W * TILE - 20, MAP_H * TILE - 40))
-	# a warm hearth glow near the shelf
+func _p(name: String) -> String:
+	return "res://assets/game/sprites/props/%s.png" % name
+
+func _hearth(pos: Vector2, col := Color(1.0, 0.8, 0.5), energy := 0.7) -> void:
 	var light := PointLight2D.new()
 	light.texture = _glow_tex()
-	light.color = Color(1.0, 0.8, 0.5)
-	light.energy = 0.7
-	light.position = Vector2(MAP_W * TILE - 28, 34)
+	light.color = col
+	light.energy = energy
+	light.position = pos
 	add_child(light)
+
+func _build_furniture() -> void:
+	var cx := MAP_W * TILE * 0.5
+	var W := MAP_W * TILE
+	var H := MAP_H * TILE
+	_deco(_p("int_rug"), Vector2(cx, H * 0.5))
+	_deco(_p("int_lamp"), Vector2(18, H - 40))
+	_deco(_p("int_lamp"), Vector2(W - 18, H - 40))
+	match variant:
+		"blacksmith":
+			_deco(_p("int_shelf"), Vector2(30, 34))          # tool rack
+			_deco(_p("barrel"), Vector2(W - 30, 40))
+			_deco(_p("crate"), Vector2(W - 50, 46))
+			_deco(_p("int_table"), Vector2(cx + 6, 54))      # anvil bench
+			# forge glow (orange, strong) at the far wall
+			var forge := ColorRect.new()
+			forge.color = Color(1.0, 0.5, 0.1); forge.size = Vector2(26, 18)
+			forge.position = Vector2(W - 58, 20); add_child(forge)
+			_hearth(Vector2(W - 45, 28), Color(1.0, 0.5, 0.2), 1.1)
+		"inn":
+			_deco(_p("int_bed"), Vector2(40, 40))
+			_deco(_p("int_bed"), Vector2(W - 44, 40))
+			_deco(_p("int_bed"), Vector2(40, H - 46))
+			_deco(_p("int_table"), Vector2(cx, 54))
+			_deco(_p("int_shelf"), Vector2(cx + 40, 34))
+			_hearth(Vector2(cx, 40), Color(1.0, 0.85, 0.6), 0.6)
+		"store":
+			_deco(_p("int_shelf"), Vector2(24, 34))
+			_deco(_p("int_shelf"), Vector2(56, 34))
+			_deco(_p("int_shelf"), Vector2(W - 24, 34))
+			_deco(_p("stall"), Vector2(cx, 58))              # shop counter
+			_deco(_p("sack"), Vector2(30, H - 40))
+			_deco(_p("barrel"), Vector2(W - 30, H - 44))
+			_hearth(Vector2(cx, 50), Color(1.0, 0.9, 0.7), 0.5)
+		_:  # cosy home
+			_deco(_p("int_bed"), Vector2(40, 40))
+			_deco(_p("int_shelf"), Vector2(W - 28, 34))
+			_deco(_p("int_table"), Vector2(cx + 30, 60))
+			_deco(_p("flower_pot"), Vector2(W - 24, H - 42))
+			_hearth(Vector2(W - 28, 34), Color(1.0, 0.8, 0.5), 0.7)
+
+func _build_resident() -> void:
+	# A themed NPC inside the building providing its service (reuses Interactable kinds).
+	var kind := ""
+	match variant:
+		"blacksmith": kind = "bench"
+		"inn": kind = "inn"
+		"store": kind = "shop"
+		_: return                      # plain houses have no service NPC
+	var npc := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(npc)
+	npc.setup(kind)
+	npc.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE * 0.5 - 4)
 
 func _glow_tex() -> Texture2D:
 	var img := Image.create(64, 64, false, Image.FORMAT_RGBA8)

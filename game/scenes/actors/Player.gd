@@ -29,7 +29,10 @@ func _ready() -> void:
 	add_to_group("player")
 	_build_sprite()
 	var cam := Camera2D.new()
-	cam.zoom = Vector2(3, 3)
+	# R2: zoom out from 3x → 2x so the player sees the town + landmarks (world felt
+	# empty largely because only ~427x240 world units were visible at 3x).
+	var z := 1.0 if OS.get_environment("AETHER_WIDE") == "1" else 2.0
+	cam.zoom = Vector2(z, z)
 	cam.position_smoothing_enabled = true
 	cam.position_smoothing_speed = 8.0
 	add_child(cam)
@@ -41,6 +44,7 @@ func _build_sprite() -> void:
 		sprite.play("idle_down")
 
 func _physics_process(delta: float) -> void:
+	z_index = int(global_position.y)   # y-sort with town buildings/props (R2)
 	_tick_timers(delta)
 	_regen_mp(delta)
 	_update_infusion_aura(delta)

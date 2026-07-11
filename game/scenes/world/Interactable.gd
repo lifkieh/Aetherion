@@ -1,9 +1,12 @@
 extends Node2D
 ## World interactable (M5): crafting bench or shop NPC. Press E nearby.
 
-var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon
+var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon | house_door | guide
 var dungeon_scene := "res://scenes/world/GreenvaleDepths.tscn"
 var dungeon_label := "Gua Greenvale ▼ [E]"
+var custom_label := ""              # override the door/sign label (R2 town buildings)
+var interior_variant := "house"     # which interior HouseInterior builds on entry
+var solid_landmark := false         # true = building can't be entered (just flavour)
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var label: Label = $Label
@@ -24,6 +27,7 @@ func _process(delta: float) -> void:
 	if _lbl_cd > 0.0:
 		return
 	_lbl_cd = 0.15
+	z_index = int(global_position.y)   # y-sort with town buildings (R2)
 	var p := get_tree().get_first_node_in_group("player")
 	if p and label:
 		var near := global_position.distance_to(p.global_position) < 72.0
@@ -58,10 +62,9 @@ func _build() -> void:
 		sprite.modulate = Color(0.75, 0.6, 0.4)
 		label.text = "Papan Quest [E]"
 	elif kind == "house_door":
-		sprite.texture = load("res://assets/game/sprites/props/rock.png")
-		sprite.scale = Vector2(2.6, 2.8)
-		sprite.modulate = Color(0.6, 0.42, 0.3)   # wooden hut
-		label.text = "Rumah Warga [E]"
+		# R2: the building sprite is drawn by Town; the door is an invisible hotspot.
+		sprite.visible = false
+		label.text = custom_label if custom_label != "" else "Rumah Warga [E]"
 	elif kind == "inn":
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(2.4, 2.0)
@@ -106,6 +109,10 @@ func interact() -> void:
 		Stage.go_to_scene(dungeon_scene)
 		return
 	if kind == "house_door":
+		if solid_landmark:
+			await Stage.say("Pintunya terkunci. Mungkin penghuninya sedang keluar.", custom_label.trim_suffix(" [E]"))
+			return
+		WorldState.pending_interior = interior_variant
 		Stage.go_to_scene("res://scenes/world/HouseInterior.tscn")
 		return
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
