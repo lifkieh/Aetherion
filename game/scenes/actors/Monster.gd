@@ -17,6 +17,7 @@ var _state_timer := 0.0
 var _wander_dir := Vector2.ZERO
 var _attack_cd := 0.0
 var _home := Vector2.ZERO
+var _home_set := false
 var _player: Node2D = null
 var _spawner = null
 
@@ -40,7 +41,6 @@ func setup(instance: Dictionary, spawner = null) -> void:
 
 func _ready() -> void:
 	add_to_group("monsters")
-	_home = global_position
 	if not inst.is_empty():
 		_build_sprite()
 		_setup_bars()
@@ -93,6 +93,11 @@ func combat_view() -> Dictionary:
 func _physics_process(delta: float) -> void:
 	if _state == State.DEAD:
 		return
+	if not _home_set:
+		# Capture leash home once the spawner has finalized our position
+		# (spawn order is add_child -> set position -> setup, so _ready is too early).
+		_home = global_position
+		_home_set = true
 	_attack_cd = maxf(0.0, _attack_cd - delta)
 	_state_timer -= delta
 	is_wet = WorldState.is_wet_weather()

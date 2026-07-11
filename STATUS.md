@@ -49,14 +49,25 @@
   - Element icons (original assets) in HUD; per-scene music; full HUD
 
 ## Now
-**ALL 8 MILESTONES (M1–M8) COMPLETE.** Fase 0 feature-complete, 57/57 tests, 0 errors.
-Entering §4 continuous development: acceptance review, bug sweep, EVALUATION.md, market study, content expansion.
+**ALL 8 MILESTONES COMPLETE + §4 underway.** Fase 0 feature-complete. 63/63 tests, 0 headless errors.
+Done in §4: EVALUATION.md (8/8 acceptance met), MARKET_STUDY.md, and post-launch **Achievements+Titles**
+and **Aetherpedia** features (menu "Pedia" tab). Autoloads now 11 (added Settings, ScenarioManager, Achievements).
+A background bug-hunt agent reviewed all scripts (findings being folded in).
 
-## Next steps (exact)
-1. §5 acceptance check vs Fase0 §1 (8 points) — verify a full ~30-min loop end to end.
-2. §4.1 bug sweep: play full flow via demos + code review → BUGS.md → fix to zero.
-3. §4.2 EVALUATION.md vs docs; §4.3 MARKET_STUDY.md (ATM) → pick 3-5 features → implement.
-4. Expand content: more monsters/recipes/areas from Monster_Roster & GDD.
+## Next steps (exact) — for the next session, resume here
+1. Fold in any remaining bug-hunt findings → BUGS.md → fix.
+2. MARKET_STUDY remaining picks: **Daily Quest Board** (roll from WIB day+weather+moon), **Photo Mode**
+   (hide HUD + free cam), then **Fishing minigame** (fish by hour/tide). All data-driven + tested.
+3. Content expansion: add Candyveil Meadows region + its 8 monsters (Monster_Roster §2.2) as pure JSON +
+   a portal; add more recipes; wire evolutions (fluffbit→moonbit on full moon).
+4. Re-tune combat swarm damage; consider re-tinting/replacing beast.png so "Grey Wolf" reads grey.
+
+## How to run (reminder)
+- Game: `run_godot.bat`  (boots MainMenu)
+- Tests: `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 40`  (expect 63 passed)
+- Verify a scene + screenshot: `godot --path game res://scenes/Main.tscn` with env `AETHER_SHOT=1`
+  (demos: AETHER_COMBAT / AETHER_ELEM / AETHER_PET / AETHER_MENU / AETHER_HOME / AETHER_WARREN_SHOT)
+- Hidden Scenario debug (threshold 10, bypass full-moon): env `AETHER_DEBUG_SCENARIO=1`
 
 ## Health
 - Headless: 0 errors. Test suite: **34/34 pass**.

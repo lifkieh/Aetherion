@@ -53,6 +53,7 @@ var professions: Dictionary = {"main": "adventurer", "sub": []}
 var achievements: Array = []           # unlocked achievement ids
 var active_title: String = ""          # equipped title (micro-buff)
 var discovered: Dictionary = {"monsters": {}, "items": {}, "weathers": {}}  # Aetherpedia
+var craft_insight: Dictionary = {}     # recipe_id -> accumulated success bonus
 
 func _ready() -> void:
 	recalculate_stats()
@@ -79,6 +80,7 @@ func new_game() -> void:
 	achievements = []
 	active_title = ""
 	discovered = {"monsters": {}, "items": {}, "weathers": {}}
+	craft_insight = {}
 	birth_sign = _birth_sign_from_today()
 	recalculate_stats()
 	hp = max_hp
@@ -257,6 +259,7 @@ func to_save() -> Dictionary:
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
 		"scenario_flags": scenario_flags, "titles": titles, "professions": professions,
 		"achievements": achievements, "active_title": active_title, "discovered": discovered,
+		"craft_insight": craft_insight,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -280,6 +283,9 @@ func from_save(d: Dictionary) -> void:
 	achievements = d.get("achievements", [])
 	active_title = d.get("active_title", "")
 	discovered = d.get("discovered", {"monsters": {}, "items": {}, "weathers": {}})
+	craft_insight = d.get("craft_insight", {})
+	infusion = {}          # transient — never carry over a save
+	mounted = false        # never load mounted (pet may not exist)
 	recalculate_stats()
 	hp = d.get("hp", max_hp)
 	mp = d.get("mp", max_mp)

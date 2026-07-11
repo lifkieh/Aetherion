@@ -90,6 +90,8 @@ func resolve(success: bool) -> void:
 		EventBus.toast.emit("✦ Skenario GAGAL — terkunci permanen bagi karaktermu.")
 	EventBus.scenario_resolved.emit(id, success)
 	active_scenario = ""
+	if PlayerData.is_dead():
+		PlayerData.respawn()   # don't persist a 0-HP state after a death-fail
 	SaveManager.save_game(SaveManager.current_slot)   # no_fail: persist immediately
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 

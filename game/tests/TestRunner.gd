@@ -15,13 +15,14 @@ func _ready() -> void:
 	_test_combat_resolver()
 	_test_monster_factory()
 	_test_ttk()
-	_test_taming()
+	await _test_taming()
 	_test_homestead_growth()
 	_test_economy()
 	_test_crafting()
 	_test_scenario()
 	_test_saveload()
 	_test_achievements()
+	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -152,6 +153,31 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_bugfixes() -> void:
+	print("[bug fixes]")
+	# Bug 2: GatherNode rebuilds on setup() -> ore gets ore stats, not tree defaults
+	var gn := preload("res://scenes/world/GatherNode.tscn").instantiate()
+	add_child(gn)
+	gn.setup("ore", "gn_test_1")
+	await get_tree().process_frame
+	check("gather node kind applied on setup", gn.kind == "ore")
+	check("ore node needs 4 hits (not tree's 3)", gn.get("_hits_left") == 4)
+	gn.queue_free()
+	# Bug 3: craft_insight resets on new_game
+	PlayerData.craft_insight["craft_x"] = 0.05
+	PlayerData.new_game()
+	check("craft_insight reset on new_game", PlayerData.craft_insight.is_empty())
+	# Bug 4: mounted + infusion cleared on load
+	PlayerData.new_game()
+	PlayerData.mounted = true
+	PlayerData.apply_infusion("fire", 60)
+	SaveManager.save_game(3)
+	SaveManager.load_game(3)
+	check("mounted reset on load", PlayerData.mounted == false)
+	check("infusion cleared on load", not PlayerData.has_active_infusion())
+	SaveManager.delete_save(3)
+	PlayerData.new_game()
 
 func _test_achievements() -> void:
 	print("[Achievements/Aetherpedia]")

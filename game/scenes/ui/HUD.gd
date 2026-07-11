@@ -210,9 +210,11 @@ func _on_toast(msg: String) -> void:
 	tw.tween_interval(2.2)
 	tw.tween_property(l, "modulate:a", 0.0, 0.6)
 	tw.tween_callback(l.queue_free)
-	# cap toasts
+	# cap toasts (queue_free so the running tween on the node is cleaned up safely)
 	while toast_box.get_child_count() > 5:
-		toast_box.get_child(0).free()
+		var oldest := toast_box.get_child(0)
+		toast_box.remove_child(oldest)
+		oldest.queue_free()
 
 func _emit_sky_report() -> void:
 	var report := {

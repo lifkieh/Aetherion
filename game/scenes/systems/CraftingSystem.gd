@@ -5,8 +5,6 @@ extends RefCounted
 ## ingredient is preserved (support materials burn), plus an Insight stack that
 ## nudges the same recipe's rate up slightly (cap +9%).
 
-static var insight: Dictionary = {}   # recipe_id -> accumulated bonus
-
 const TIER_ORDER := ["F", "E", "D", "C", "B", "A", "S", "SS", "SSS"]
 
 static func find_recipe(recipe_id: String) -> Dictionary:
@@ -23,7 +21,7 @@ static func can_craft(recipe: Dictionary) -> bool:
 
 static func success_rate(recipe: Dictionary) -> float:
 	var base: float = recipe.get("success_rate", 1.0)
-	return clampf(base + insight.get(recipe.get("id", ""), 0.0), 0.0, 1.0)
+	return clampf(base + PlayerData.craft_insight.get(recipe.get("id", ""), 0.0), 0.0, 1.0)
 
 static func _lowest_tier_ingredient(recipe: Dictionary) -> String:
 	# The "base" material kept on failure = highest-tier ingredient (the valuable one).
@@ -68,7 +66,7 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		return {"success": true, "result": recipe.get("result", ""), "reason": "ok"}
 	else:
 		var rid: String = recipe.get("id", "")
-		insight[rid] = minf(0.09, insight.get(rid, 0.0) + 0.002)
+		PlayerData.craft_insight[rid] = minf(0.09, PlayerData.craft_insight.get(rid, 0.0) + 0.002)
 		EventBus.item_crafted.emit(recipe.get("result", ""), false)
 		EventBus.toast.emit("Gagal membuat (bahan dasar aman). +Insight")
 		return {"success": false, "result": "", "reason": "failed_roll"}

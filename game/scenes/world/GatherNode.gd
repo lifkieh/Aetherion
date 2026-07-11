@@ -16,12 +16,19 @@ var _depleted := false
 func setup(k: String, id: String) -> void:
 	kind = k
 	node_id = id
+	# setup() runs after add_child (node already in tree), so (re)build now that
+	# kind/id are known — otherwise _ready built with the default kind="tree".
+	if is_inside_tree():
+		_apply()
 
 func _ready() -> void:
 	add_to_group("gather")
+	if node_id != "":
+		_apply()
+
+func _apply() -> void:
 	_build_sprite()
-	if not WorldState.node_ready(node_id, RESPAWN.get(kind, 60)):
-		_set_depleted(true)
+	_set_depleted(not WorldState.node_ready(node_id, RESPAWN.get(kind, 60)))
 
 func _build_sprite() -> void:
 	if kind == "tree":
