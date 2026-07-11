@@ -34,10 +34,13 @@ Terpilih 5 fitur high-impact/low-cost (memakai EventBus & counter yang SUDAH ada
 | **D. Photo Mode** | Palworld/Stardew | Sembunyikan HUD + free-cam + frame; bagus untuk langit/purnama/Candyveil pastel → marketing organik | Rendah |
 | **E. Fishing minigame** | Stardew | Ikan berbeda per **jam WIB & pasang-surut bulan**; umpan Star Bait → hook Hidden Scenario paus | Sedang |
 
-## 4. Keputusan implementasi (sesi ini)
-Implementasi **B (Achievements+Titles)** dan **C (Aetherpedia)** dan **A (Daily Quests)** lebih dulu —
-ketiganya me-*reuse* signal EventBus & counter yang sudah ada (biaya terendah, dampak retensi tertinggi),
-dan memperkuat loop "alasan login harian + koleksi". D (Photo Mode) menyusul (cepat). E (Fishing) butuh
-scene minigame — dijadwalkan setelah ekspansi konten monster.
+## 4. Status implementasi
+- ✅ **B Achievements + Titles** (micro-buff netral) — implemented (Sesi 1).
+- ✅ **C Aetherpedia** — implemented (Sesi 1, menu "Pedia").
+- ✅ **A Daily Quest Board** — implemented (Sesi 2, menu "Quest" + papan; roll dari tanggal WIB,
+  varian ber-gate cuaca/purnama).
+- ✅ **D Photo Mode** — implemented (Sesi 2, [P] toggle, foto bersih ke user://photos/).
+- ⏳ **E Fishing minigame** — belum; butuh scene minigame + data ikan (per jam WIB & pasang bulan) +
+  Star Bait → Hidden Scenario Star Whale. Prioritas berikutnya.
 
 Semua tetap: data-driven, UI-free logic di systems/, verifikasi headless + test, commit per fitur.

@@ -49,23 +49,37 @@
   - Element icons (original assets) in HUD; per-scene music; full HUD
 
 ## Now
-**ALL 8 MILESTONES COMPLETE + §4 underway.** Fase 0 feature-complete. **72/72 tests**, 0 headless errors.
-Done in §4:
-- EVALUATION.md (8/8 acceptance met), MARKET_STUDY.md (ATM).
-- Post-launch features: **Achievements+Titles** (neutral micro-buffs) + **Aetherpedia** (menu "Pedia" tab).
-- **Bug sweep complete**: full-codebase review found 7 bugs → all fixed → regression tests added (see BUGS.md).
-Autoloads now 11 (added Settings, ScenarioManager, Achievements). **Zero known bugs.**
+**ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
+**90/90 tests**, 0 headless errors, **zero known bugs**. 14 autoloads.
+
+Session 2 (per LAPORAN_PROYEK_AETHERION.md backlog §7) added:
+- **Candyveil Meadows** — 2nd region using original candy tileset + 8 candy monsters + candy items/loot + lollipop gather nodes + portal.
+- **Daily Quest Board** — 3 quests/day rolled from WIB date (weather/moon-gated), progress via EventBus, claim rewards.
+- **Photo Mode** — [P] toggle, HUD-free clean screenshots to user://photos/.
+- **Evolution** — Fluffbit→Moonbit on full moon (+ Moonbit monster).
+Session 1 (§4): EVALUATION.md (8/8 acceptance), MARKET_STUDY.md, Achievements+Titles, Aetherpedia,
+full bug sweep (7 bugs fixed, BUGS.md).
 
 Note: headless test run may report OS exit 255 (Godot exit-cleanup artifact re: tweens/timers) — the
 printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit code.
+**When adding new image assets, run `godot --headless --path game --import` before referencing them.**
 
 ## Next steps (exact) — for the next session, resume here
-1. Fold in any remaining bug-hunt findings → BUGS.md → fix.
-2. MARKET_STUDY remaining picks: **Daily Quest Board** (roll from WIB day+weather+moon), **Photo Mode**
-   (hide HUD + free cam), then **Fishing minigame** (fish by hour/tide). All data-driven + tested.
-3. Content expansion: add Candyveil Meadows region + its 8 monsters (Monster_Roster §2.2) as pure JSON +
-   a portal; add more recipes; wire evolutions (fluffbit→moonbit on full moon).
-4. Re-tune combat swarm damage; consider re-tinting/replacing beast.png so "Grey Wolf" reads grey.
+1. **Fishing minigame** (MARKET_STUDY E): fish vary by WIB hour + moon tide; Star Bait hooks the Star
+   Whale hidden scenario. Needs a small minigame scene + fish data + a pond/coast interactable.
+2. **Astrologer + in-game Sky Calendar** (approved, report §7): NPC showing real moon phase / meteor
+   showers (sky_calendar.json already loaded) + weekly prophecy hinting at Hidden Scenarios.
+3. **More content**: Desert of Ruins region (Monster_Roster §2.3, 7 monsters); more crafting recipes using
+   candy/desert materials; Sugar Queen Tea Party scenario (data-driven ScenarioManager already supports it).
+4. **Polish**: re-tint/replace beast.png so "Grey Wolf" reads grey; original candy-monster sprites (12
+   iconic list, report §7); dynamic music layering (combat vs explore); Echo Vendor.
+5. Re-tune combat swarm damage (4+ monsters can burst the player).
+
+## Verification recipes
+- Tests: `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 40` → expect `90 passed`.
+- Region screenshots: `godot --path game res://scenes/world/Candyveil.tscn` (env `AETHER_SHOT=1`).
+- Demos (env=1 on Main.tscn): AETHER_COMBAT / AETHER_ELEM / AETHER_PET / AETHER_MENU(+AETHER_MENU_TAB=
+  quest|shop) / AETHER_PHOTO / AETHER_HOME(Homestead) / AETHER_WARREN_SHOT(LunarWarren).
 
 ## How to run (reminder)
 - Game: `run_godot.bat`  (boots MainMenu)

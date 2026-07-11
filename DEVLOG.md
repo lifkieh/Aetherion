@@ -2,6 +2,23 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — Session 2: continuation per LAPORAN_PROYEK_AETHERION.md
+
+The handover report `docs/LAPORAN_PROYEK_AETHERION.md` restates the Session-1 mandate (already done) and
+its backlog §7. Continued into content + approved-feature backlog:
+- **Candyveil Meadows** region — built from the original Aetherion candy tiles (grass/path/lollipop/
+  gummy-bush/mint-rock/soda). 8 candy monsters (Monster_Roster §2.2) added as JSON with tinted placeholder
+  sprites (original candy-monster sprites are a noted §7 backlog item). Pink "Sugar Rain" particles. Portal
+  from Greenvale. NOTE: new PNGs need `godot --headless --path game --import` before first reference.
+- **Daily Quest Board** — QuestSystem autoload; 3 quests/day chosen deterministically from a WIB-date seed;
+  sky-gated variants (rain/full-moon) only appear when the real sky matches; progress via existing EventBus
+  signals; claim rewards. Menu "Quest" tab + board interactable.
+- **Photo Mode** — autoload CanvasLayer; [P] freezes + hides HUD (HUD now in group "hud") + frame; [E] saves
+  a clean PNG to user://photos/.
+- **Evolution** — EvolutionSystem (Fluffbit→Moonbit under full moon) + Moonbit monster; hooked to
+  full_moon_began; PetManager now detects in-place species change (tracks a copied species string).
+- Autoloads 11 → 14 (QuestSystem, PhotoMode; +Achievements from S1). Tests 72 → 90, all pass.
+
 ## 2026-07-11 — Session 1 (cont.): M2–M8 complete + §4 post-launch
 
 ### Milestones M2–M8
