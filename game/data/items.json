@@ -1,7 +1,10 @@
 [
-  {"id": "wooden_sword", "name": "Pedang Kayu", "tier": "F", "type": "weapon", "atk": 6, "element": "none", "value": 40, "stack": 1, "shop_stock": 5, "shop_demand": 6},
-  {"id": "copper_sword", "name": "Pedang Tembaga", "tier": "E", "type": "weapon", "atk": 14, "element": "metal", "value": 160, "stack": 1, "shop_stock": 3, "shop_demand": 8},
-  {"id": "bone_club", "name": "Gada Tulang", "tier": "F", "type": "weapon", "atk": 9, "element": "none", "value": 70, "stack": 1},
+  {"id": "wooden_sword", "name": "Pedang Kayu", "tier": "F", "type": "weapon", "weapon_type": "sword", "atk": 6, "element": "none", "value": 40, "stack": 1, "shop_stock": 5, "shop_demand": 6},
+  {"id": "copper_sword", "name": "Pedang Tembaga", "tier": "E", "type": "weapon", "weapon_type": "sword", "atk": 14, "element": "metal", "value": 160, "stack": 1, "shop_stock": 3, "shop_demand": 8},
+  {"id": "bone_club", "name": "Gada Tulang", "tier": "F", "type": "weapon", "weapon_type": "sword", "atk": 9, "element": "none", "value": 70, "stack": 1},
+  {"id": "wooden_spear", "name": "Tombak Kayu", "tier": "F", "type": "weapon", "weapon_type": "spear", "atk": 11, "element": "none", "value": 90, "stack": 1, "shop_stock": 3, "shop_demand": 6},
+  {"id": "short_bow", "name": "Busur Pendek", "tier": "E", "type": "weapon", "weapon_type": "bow", "atk": 12, "element": "none", "projectile": "arrow", "value": 150, "stack": 1, "shop_stock": 3, "shop_demand": 8},
+  {"id": "apprentice_wand", "name": "Tongkat Magang", "tier": "E", "type": "weapon", "weapon_type": "wand", "atk": 8, "matk_bonus": 10, "element": "fire", "projectile": "fireball", "mana_cost": 6, "value": 180, "stack": 1, "shop_stock": 2, "shop_demand": 8},
   {"id": "carrot_of_calamity", "name": "Carrot of Calamity", "tier": "S", "type": "weapon", "atk": 120, "element": "moon", "value": 0, "stack": 1, "desc": "Pedang wortel terkutuk dari Lunar Warren. Berdenyut saat purnama."},
   {"id": "ambergris_star", "name": "Ambergris Star", "tier": "S", "type": "material", "value": 0, "stack": 999, "desc": "Material [S] dari perut Star Whale — berbau langit dan laut sekaligus."},
   {"id": "gel_core", "name": "Inti Gel", "tier": "C", "type": "material", "value": 180, "stack": 999, "desc": "Inti King Slime — bahan resep tier B+."},

@@ -1,0 +1,8 @@
+[
+  {"id": "arrow", "speed": 340, "gravity_scale": 0.35, "pierce": 0, "bounce": 0, "lifetime": 2.0, "element": "none", "damage_mult": 1.0, "color": "ddccaa", "radius": 3, "on_hit_effect": ""},
+  {"id": "spark", "speed": 360, "gravity_scale": 0.0, "pierce": 1, "bounce": 0, "lifetime": 1.4, "element": "lightning", "damage_mult": 1.0, "color": "eedd44", "radius": 4, "on_hit_effect": "chain"},
+  {"id": "fireball", "speed": 280, "gravity_scale": 0.08, "pierce": 0, "bounce": 0, "lifetime": 1.8, "element": "fire", "damage_mult": 1.2, "color": "ff7a2a", "radius": 5, "on_hit_effect": "burn"},
+  {"id": "frost_shard", "speed": 300, "gravity_scale": 0.05, "pierce": 0, "bounce": 0, "lifetime": 1.6, "element": "ice", "damage_mult": 1.0, "color": "9adcff", "radius": 4, "on_hit_effect": ""},
+  {"id": "gel_glob", "speed": 190, "gravity_scale": 0.9, "pierce": 0, "bounce": 1, "lifetime": 3.0, "element": "water", "damage_mult": 0.8, "color": "6aa0ff", "radius": 5, "on_hit_effect": ""},
+  {"id": "enemy_bolt", "speed": 210, "gravity_scale": 0.0, "pierce": 0, "bounce": 0, "lifetime": 2.5, "element": "darkness", "damage_mult": 1.0, "color": "cc66aa", "radius": 4, "on_hit_effect": ""}
+]

@@ -53,6 +53,46 @@ static func chain_lightning(actor: Node2D, origin: Node2D, skill: Dictionary, ct
 	if chained > 0:
 		EventBus.toast.emit("⚡ Chain x%d (musuh basah)!" % chained)
 
+## Terraria-style arc melee toward an aim direction: MULTI-HIT all monsters
+## within `reach` and inside `arc_deg`. Applies knockback + hitstop/shake feel.
+static func melee_arc(actor: Node2D, aim: Vector2, reach: float, arc_deg: float, skill: Dictionary, dmg_mult: float = 1.0) -> int:
+	var origin: Vector2 = actor.global_position
+	var atk := PlayerData.combat_stats()
+	var half := deg_to_rad(arc_deg * 0.5)
+	var swing_elem: String = skill.get("element", "none")
+	if swing_elem == "none":
+		swing_elem = atk.get("element", "none")
+	Vfx.swing(actor.get_parent(), origin, aim, swing_elem)
+	var hits := 0
+	for m in actor.get_tree().get_nodes_in_group("monsters"):
+		if not is_instance_valid(m) or not m.has_method("take_hit"):
+			continue
+		var to: Vector2 = m.global_position - origin
+		if to.length() > reach:
+			continue
+		if to != Vector2.ZERO and absf(aim.angle_to(to)) > half:
+			continue
+		var wet: bool = m.is_wet if ("is_wet" in m) else false
+		var ctx := CombatResolver.build_ctx(wet)
+		var res := CombatResolver.resolve(atk, m.combat_view(), skill, ctx)
+		res["damage"] = int(res["damage"] * dmg_mult)
+		m.take_hit(res, actor)
+		CombatFeel.on_hit(m, origin, res.get("is_crit", false))
+		if res.get("chain", false):
+			chain_lightning(actor, m, skill, ctx)
+		hits += 1
+	return hits
+
+## Fire a pooled data-driven projectile toward `aim` (player shot). dmg_mult
+## scales the shot (e.g. bow charge).
+static func fire_pooled(actor: Node2D, aim: Vector2, proj_id: String, dmg_mult: float = 1.0) -> void:
+	var atk := PlayerData.combat_stats()
+	if dmg_mult != 1.0:
+		atk = atk.duplicate()
+		atk["atk"] = int(atk.get("atk", 10) * dmg_mult)
+		atk["matk"] = int(atk.get("matk", 10) * dmg_mult)
+	ProjectilePool.spawn(actor.global_position + aim * 12.0, aim, proj_id, atk, actor, "monsters")
+
 static func fire_projectile(actor: Node2D, facing: Vector2, skill: Dictionary) -> void:
 	var proj := preload("res://scenes/actors/Projectile.tscn").instantiate()
 	actor.get_parent().add_child(proj)

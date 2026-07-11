@@ -1,0 +1,12 @@
+{
+  "iframes": 0.5,
+  "flash_time": 0.12,
+  "hitstop_frames": 3,
+  "hitstop_frames_crit": 5,
+  "screen_shake": {"amount": 3.0, "time": 0.12, "amount_crit": 5.0},
+  "knockback": {
+    "base": 130.0,
+    "self_recoil": 0.15,
+    "by_archetype": {"tank": 0.35, "bruiser": 0.7, "assassin": 1.2, "caster": 1.0, "support": 0.9, "swift": 1.35}
+  }
+}

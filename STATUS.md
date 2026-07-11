@@ -55,9 +55,23 @@
 Session 2 round 3 added: **Star Whale hidden scenario**, **6 Cook recipes**, **dynamic music layering**,
 **Echo Vendors** + **proximity labels**.
 
-**OWNER DIRECTIVE DONE (2026-07-11): side-view platformer dungeons.** Overworld stays top-down; ALL dungeons
-are Terraria-style side-view. Pilot **Greenvale Depths** (King Slime, 3 floors + boss arena) shipped &
-verified. **131/131 tests** incl. physics (fall/jump/mine/ladder/transition). See DEVLOG for the full contract.
+**OWNER DIRECTIVE DONE (2026-07-11): side-view platformer dungeons + Terraria-style combat.**
+Overworld stays top-down; ALL dungeons are Terraria-style side-view. Pilot **Greenvale Depths** (King Slime,
+3 floors + boss arena). **144/144 tests** incl. physics + combat (arc/pooling/knockback/i-frames/boss phases).
+
+### Dungeon combat (all 9 reqs done — see DEVLOG)
+Mouse aim (L=arc melee/weapon, R=skill), data-driven pooled projectiles (player+enemies), combat feel
+(knockback/i-frames/hitstop/shake), contact damage, weapon_type behaviors (sword/spear/bow/wand), King Slime
+2-phase telegraphed boss, enemy behaviors walker/jumper/shooter/flyer.
+
+### ⚙ Perf audit (full Greenvale Depths dungeon) — req #8
+| Metric | Value | Budget |
+|---|---|---|
+| Scene nodes | **372** | < 1000 ✅ |
+| Collision shapes | **105 merged strips** (was ~600 per-cell) | — ✅ |
+| FPS | **60** | ≥ 60 ✅ |
+| Lights | 21 | cheap PointLight2D ✅ |
+No chunking needed; per-row strip merge already well within budget. Mining rebuilds only the affected row.
 
 ### How to build the NEXT dungeon (reuse this pattern)
 - New scene `res://scenes/world/<Name>.gd/.tscn` modeled on `GreenvaleDepths.gd`.

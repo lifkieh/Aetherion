@@ -25,6 +25,7 @@ func _ready() -> void:
 	_test_quests()
 	_test_evolution()
 	await _test_platformer()
+	await _test_dungeon_combat()
 	_test_fishing()
 	_test_skycalendar()
 	await _test_bugfixes()
@@ -212,6 +213,63 @@ func _test_fishing() -> void:
 	check("moonfish at full-moon night", "moonfish" in FishingSystem.eligible(21, 0.0, true, "").map(func(f): return f.id))
 	check("snapper at high tide", "tide_snapper" in FishingSystem.eligible(12, 0.7, false, "").map(func(f): return f.id))
 	check("roll yields a catch (carp always eligible)", not FishingSystem.roll("").is_empty())
+
+func _test_dungeon_combat() -> void:
+	print("[Dungeon combat / feel]")
+	PlayerData.new_game()
+	check("projectiles data loaded", Db.projectiles.size() >= 5)
+	check("combat_feel loaded", not Db.combat_feel.is_empty())
+	check("iframes = 0.5", abs(CombatFeel.iframes() - 0.5) < 0.001)
+	check("projectile pool prewarmed", ProjectilePool.pool_size() >= 40)
+
+	# arc melee is MULTI-HIT: two monsters in the arc both take damage
+	var actor := Node2D.new()
+	add_child(actor)
+	actor.global_position = Vector2.ZERO
+	var m1 = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	var m2 = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(m1); add_child(m2)
+	m1.setup(MonsterFactory.make("verdant_slime", 5, 3))
+	m2.setup(MonsterFactory.make("verdant_slime", 5, 3))
+	await get_tree().process_frame
+	m1.global_position = Vector2(28, -6)
+	m2.global_position = Vector2(30, 10)
+	var hp1_0: int = m1.hp
+	var hp2_0: int = m2.hp
+	PlayerCombat.melee_arc(actor, Vector2.RIGHT, 48.0, 120.0, Db.skill("strike"))
+	Engine.time_scale = 1.0   # clear any hitstop from the swing
+	check("arc melee multi-hit (m1)", m1.hp < hp1_0, "%d<%d" % [m1.hp, hp1_0])
+	check("arc melee multi-hit (m2)", m2.hp < hp2_0)
+	# knockback pushed the monster (velocity now non-zero)
+	check("knockback applied velocity", m1.velocity.length() > 1.0)
+
+	# projectile pooling: firing takes from the pool
+	var before_active: int = ProjectilePool.active_count()
+	ProjectilePool.spawn(Vector2(0, 0), Vector2.RIGHT, "spark", PlayerData.combat_stats(), actor, "monsters")
+	check("pool spawns an active projectile", ProjectilePool.active_count() == before_active + 1)
+	check("pool size stable (reused, not grown)", ProjectilePool.pool_size() >= 40)
+	m1.queue_free(); m2.queue_free(); actor.queue_free()
+
+	# boss phases: King Slime enters phase 2 under 40% HP + spawns adds
+	var boss = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(boss)
+	boss.setup(MonsterFactory.make("king_slime", 15, 3))
+	await get_tree().process_frame
+	check("boss flagged", boss._boss)
+	check("boss starts phase 1", boss._phase == 1)
+	var monsters_before: int = get_tree().get_nodes_in_group("monsters").size()
+	boss.hp = int(boss.max_hp * 0.7)   # cross the 0.75 add threshold
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	check("boss spawned adds at threshold", get_tree().get_nodes_in_group("monsters").size() > monsters_before)
+	boss.hp = int(boss.max_hp * 0.3)   # below 40% -> phase 2
+	await get_tree().physics_frame
+	check("boss enters phase 2 under 40% HP", boss._phase == 2)
+	Engine.time_scale = 1.0
+	boss.queue_free()
+	# cleanup any adds
+	for m in get_tree().get_nodes_in_group("monsters"):
+		m.queue_free()
 
 func _test_platformer() -> void:
 	print("[Dungeon platformer]")

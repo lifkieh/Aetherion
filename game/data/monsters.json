@@ -101,6 +101,14 @@
     "tame_base": 0.4, "evolution": "", "aggro_radius": 160, "lore": "Kelelawar gua; terbang zig-zag."
   },
   {
+    "id": "cave_spitter", "name": "Cave Spitter", "rarity": "common", "element": "poison",
+    "archetype": "caster", "bst": 300, "size": "small", "rideable": false, "level": 13,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "shooter", "behavior": "shooter", "projectile": "enemy_bolt", "tint": "8ab060",
+    "traits": [], "skills": ["spore_cloud"], "loot_table": "greenvale_spore",
+    "tame_base": 0.4, "evolution": "", "aggro_radius": 220, "lore": "Jamur gua penyembur bisa dari jauh."
+  },
+  {
     "id": "king_slime", "name": "King Slime", "rarity": "epic", "element": "water",
     "archetype": "tank", "bst": 440, "size": "large", "rideable": false, "level": 15,
     "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,

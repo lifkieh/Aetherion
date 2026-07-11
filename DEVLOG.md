@@ -2,6 +2,28 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — OWNER PRIORITY: Terraria-style dungeon combat (9 reqs) — DONE
+
+1. **Mouse aim**: dungeon attacks aim at the cursor. Left-click = melee **arc swing** (multi-hit all in a
+   cone toward cursor) or weapon behavior; right-click = skill (spark bolt to cursor). Hint bar updated
+   (`HUD.set_hint`).
+2. **projectiles.json** (speed/gravity_scale/pierce/bounce/lifetime/element/on_hit_effect) + **ProjectilePool**
+   autoload (object pooling, prewarmed 40). Used by player AND enemies (`target_group`).
+3. **combat_feel.json** + **CombatFeel** autoload: knockback weighted by archetype (both parties), i-frames
+   0.5s + flash, **hitstop** (time_scale blip, ignore-time-scale restore), **screen shake** (camera tween).
+4. **Contact damage** from enemies (skips `passive` species).
+5. **Weapon behaviors** by `weapon_type`: sword=fast wide arc, spear=long narrow thrust, bow=hold-charge
+   (0.5→1.5× dmg on release), wand=mana-cost elemental projectile. Element Flow still applies to melee.
+6. **King Slime 2-phase** (telegraphed): phase 1 jump-chase with a **landing shadow** + spawns 2 Verdant
+   Slimes at each 25% HP threshold; phase 2 (<40% HP) shrinks, faster, higher jumps, **gel-glob** projectile
+   burst on landing. Death split disabled for the boss (adds replace it).
+7. **3+ enemy behaviors**: walker, **jumper** (verdant_slime), **shooter** (cave_spitter → enemy_bolt),
+   plus flyer (cave_bat). `MonsterFactory.make` now propagates is_boss/behavior/projectile/passive.
+8. **Perf audit** (full dungeon): switched per-cell collision → **merged row strips**. Measured:
+   **372 scene nodes (<1000), 105 collision strips (was ~600), 60 FPS, 21 lights.** No chunking needed.
+9. **Headless tests**: arc multi-hit, pooling (spawn/reuse), knockback velocity, i-frames value, boss
+   phase-2 + threshold adds — all pass. Suite now **144/144**.
+
 ## 2026-07-11 — OWNER DECISION (locked): dungeons are side-view platformers
 
 **Directive:** open world stays **top-down**, but **ALL dungeons use a side-view Terraria-style platformer

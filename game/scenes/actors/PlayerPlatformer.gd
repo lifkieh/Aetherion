@@ -25,6 +25,8 @@ var _iframes := 0.0
 var _double_jumped := false
 var _drop_timer := 0.0
 var _mp_acc := 0.0
+var _charging := false
+var _charge := 0.0
 var terrain: Node = null
 
 @onready var sprite: AnimatedSprite2D = $Sprite
@@ -97,13 +99,15 @@ func _physics_process(delta: float) -> void:
 	# --- horizontal ---
 	velocity.x = ix * MOVE_SPEED
 
-	# --- actions ---
-	if Input.is_action_just_pressed("attack") and _attack_cd <= 0.0:
-		_attack()
+	# --- actions (mouse-aimed, Terraria-style) ---
+	var aim := _aim_dir()
+	if aim.x != 0.0:
+		facing = "right" if aim.x > 0.0 else "left"
+	_handle_attack(aim)
+	if Input.is_action_just_pressed("skill_primary") or Input.is_action_just_pressed("skill_2"):
+		_cast_bolt(aim)
 	if Input.is_action_just_pressed("skill_1"):
-		_skill("flame_slash")
-	if Input.is_action_just_pressed("skill_2"):
-		_skill("spark_bolt")
+		_cast_flame(aim)
 	if Input.is_action_just_pressed("infuse_fire"):
 		PlayerData.apply_infusion("fire", 45)
 	if Input.is_action_just_pressed("infuse_lightning"):
@@ -146,26 +150,72 @@ func _animate(ix: float, on_ladder: bool) -> void:
 
 # --- combat (shared) + mining ----------------------------------------------
 
-func _attack() -> void:
-	_attack_cd = 0.34
-	PlayerCombat.melee(self, _facing_vec(), 40.0, Db.skill("strike"))
+func _aim_dir() -> Vector2:
+	var d := get_global_mouse_position() - global_position
+	if d.length() < 2.0:
+		return _facing_vec()
+	return d.normalized()
+
+func _weapon_type() -> String:
+	var w: String = PlayerData.equipped_weapon
+	if w == "":
+		return "sword"
+	return Db.item(w).get("weapon_type", "sword")
+
+## Per-weapon behavior (owner req 5). Element Flow still applies via melee_arc.
+func _handle_attack(aim: Vector2) -> void:
+	var wt := _weapon_type()
+	if wt == "bow":
+		if Input.is_action_pressed("attack"):
+			_charge = minf(1.0, _charge + get_physics_process_delta_time() / 0.8)
+			_charging = true
+		elif _charging and Input.is_action_just_released("attack"):
+			_charging = false
+			PlayerCombat.fire_pooled(self, aim, "arrow", 0.5 + _charge)
+			Audio.play_sfx("attack")
+			_attack_cd = 0.25
+			_charge = 0.0
+		return
+	if not Input.is_action_just_pressed("attack") or _attack_cd > 0.0:
+		return
+	match wt:
+		"spear":
+			_attack_cd = 0.42
+			PlayerCombat.melee_arc(self, aim, 66.0, 34.0, Db.skill("strike"), 1.15)
+		"wand":
+			var w := Db.item(PlayerData.equipped_weapon)
+			var cost: int = w.get("mana_cost", 5)
+			if not PlayerData.spend_mp(cost):
+				EventBus.toast.emit("Mana tidak cukup")
+				return
+			_attack_cd = 0.34
+			PlayerCombat.fire_pooled(self, aim, w.get("projectile", "fireball"))
+		_:  # sword (fast wide arc)
+			_attack_cd = 0.28
+			PlayerCombat.melee_arc(self, aim, 46.0, 110.0, Db.skill("strike"))
 	Audio.play_sfx("attack")
 	_try_mine()
 
-func _skill(id: String) -> void:
-	if _skill_cd.get(id, 0.0) > 0.0:
+func _cast_flame(aim: Vector2) -> void:
+	if _skill_cd.get("flame_slash", 0.0) > 0.0:
 		return
-	var sk := Db.skill(id)
-	if sk.is_empty():
-		return
-	if not PlayerData.spend_mp(sk.get("mp_cost", 0)):
+	var sk := Db.skill("flame_slash")
+	if not PlayerData.spend_mp(sk.get("mp_cost", 8)):
 		EventBus.toast.emit("Mana tidak cukup")
 		return
-	_skill_cd[id] = sk.get("cooldown", 1.0)
-	if sk.get("projectile", false):
-		PlayerCombat.fire_projectile(self, _facing_vec(), sk)
-	else:
-		PlayerCombat.melee(self, _facing_vec(), sk.get("range", 44), sk)
+	_skill_cd["flame_slash"] = sk.get("cooldown", 2.0)
+	PlayerCombat.melee_arc(self, aim, 52.0, 120.0, sk)
+	Audio.play_sfx("attack")
+
+func _cast_bolt(aim: Vector2) -> void:
+	if _skill_cd.get("spark_bolt", 0.0) > 0.0:
+		return
+	var sk := Db.skill("spark_bolt")
+	if not PlayerData.spend_mp(sk.get("mp_cost", 10)):
+		EventBus.toast.emit("Mana tidak cukup")
+		return
+	_skill_cd["spark_bolt"] = sk.get("cooldown", 2.0)
+	PlayerCombat.fire_pooled(self, aim, "spark")
 	Audio.play_sfx("attack")
 
 func _try_mine() -> void:
@@ -183,7 +233,11 @@ func take_hit(result: Dictionary, from) -> void:
 	var dmg: int = result.get("damage", 0)
 	PlayerData.take_damage(dmg)
 	EventBus.damage_dealt.emit(from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
-	_iframes = 0.55
+	_iframes = CombatFeel.iframes()
+	# knockback on the player too (two-directional feel)
+	if from != null and is_instance_valid(from):
+		CombatFeel.apply_knockback(self, from.global_position, 0.8)
+	_flash_hurt()
 	Audio.play_sfx("hurt")
 	if PlayerData.is_dead():
 		EventBus.player_died.emit()
@@ -191,6 +245,11 @@ func take_hit(result: Dictionary, from) -> void:
 
 func combat_view() -> Dictionary:
 	return PlayerData.combat_stats()
+
+func _flash_hurt() -> void:
+	sprite.modulate = Color(1, 0.4, 0.4)
+	var tw := create_tween()
+	tw.tween_property(sprite, "modulate", Color.WHITE, CombatFeel.flash_time())
 
 func _on_death() -> void:
 	if ScenarioManager.active_scenario != "":

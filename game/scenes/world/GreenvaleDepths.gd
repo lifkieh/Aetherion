@@ -40,8 +40,28 @@ func _place_puddles() -> void:
 	Audio.play_music("23 - Road.ogg")
 	EventBus.dungeon_entered.emit(DUNGEON_ID)
 	EventBus.toast.emit("Greenvale Depths — J untuk tebas & gali; naik/panjat tangga; kalahkan King Slime di dasar.")
+	if OS.get_environment("AETHER_ARENA") == "1" and player:
+		player.global_position = Vector2(W * TILE * 0.5, (H - 5) * TILE)
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.8
+	if OS.get_environment("AETHER_PERF") == "1":
+		var t := get_tree().create_timer(2.0)
+		t.timeout.connect(func():
+			var terr = get_tree().get_first_node_in_group("terrain")
+			print("[perf] scene_nodes=%d collision_strips=%d fps=%.1f monsters=%d lights=%d" % [
+				get_tree().get_node_count(),
+				(terr.collision_node_count() if terr else -1),
+				Engine.get_frames_per_second(),
+				get_tree().get_nodes_in_group("monsters").size(),
+				_count_lights()])
+			get_tree().quit())
+
+func _count_lights() -> int:
+	var n := 0
+	for c in get_children():
+		if c is PointLight2D:
+			n += 1
+	return n
 
 func _process(delta: float) -> void:
 	if _shot_at > 0.0:
@@ -171,9 +191,11 @@ func _physics_process(_delta: float) -> void:
 
 func _spawn_monsters() -> void:
 	var floors := [11, 21, 31]
-	for fy in floors:
+	var kinds := ["cave_bat", "verdant_slime", "cave_spitter"]   # flyer / jumper / shooter
+	for fi in range(floors.size()):
+		var fy: int = floors[fi]
 		for i in range(2):
-			var species: String = ["cave_bat", "verdant_slime"][i % 2]
+			var species: String = kinds[(fi + i) % kinds.size()]
 			var inst := MonsterFactory.make(species, 12, 3)
 			var m := preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
 			add_child(m)
@@ -200,6 +222,8 @@ func _place_exit() -> void:
 	portal.global_position = Vector2(4 * TILE, 9 * TILE)
 
 func _add_ui() -> void:
-	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
+	var hud := preload("res://scenes/ui/HUD.tscn").instantiate()
+	add_child(hud)
+	hud.call_deferred("set_hint", "Klik-kiri: serang (arah kursor) · Klik-kanan: skill · WASD gerak · Space lompat · panjat tangga · gali blok · E keluar")
 	add_child(preload("res://scenes/ui/MenuUI.tscn").instantiate())
 	add_child(preload("res://scenes/systems/WorldController.tscn").instantiate())

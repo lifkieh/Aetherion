@@ -90,6 +90,10 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 		"cols": def.get("cols", 4), "rows": def.get("rows", 4),
 		"tint": def.get("tint", ""),
 		"is_rabbit": def.get("is_rabbit", false),
+		"is_boss": def.get("is_boss", false),
+		"behavior": def.get("behavior", ""),
+		"projectile": def.get("projectile", ""),
+		"passive": def.get("passive", false),
 	}
 
 ## Grant kill rewards (EXP + loot + gold) for an instance. Shared by the top-down

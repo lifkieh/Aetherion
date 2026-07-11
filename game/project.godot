@@ -28,6 +28,8 @@ QuestSystem="*res://autoload/QuestSystem.gd"
 PhotoMode="*res://autoload/PhotoMode.gd"
 FishingUI="*res://autoload/FishingUI.gd"
 MusicDirector="*res://autoload/MusicDirector.gd"
+ProjectilePool="*res://autoload/ProjectilePool.gd"
+CombatFeel="*res://autoload/CombatFeel.gd"
 
 [display]
 
@@ -76,6 +78,11 @@ dodge={
 skill_1={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","physical_keycode":75,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+skill_primary={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","button_mask":2,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 skill_2={

@@ -13,6 +13,7 @@ var moon_label: Label
 var weather_label: Label
 var infusion_label: Label
 var elements_row: HBoxContainer
+var hint_label: Label
 var _last_elem_count := -1
 var gold_label: Label
 var level_label: Label
@@ -96,14 +97,18 @@ func _build() -> void:
 	bars.add_child(exp_bar)
 
 	# --- Controls hint (bottom-right) ---
-	var hint := _mk_label("WASD gerak · J serang · K/L skill · 1/2 infus · Space dodge · T tame · E interaksi · I tas · F5 simpan", 11)
-	hint.anchor_top = 1.0
-	hint.anchor_bottom = 1.0
-	hint.anchor_left = 0.0
-	hint.anchor_right = 1.0
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	hint.position = Vector2(-8, -18)
-	add_child(hint)
+	hint_label = _mk_label("WASD gerak · J serang · K/L skill · 1/2 infus · Space dodge · T tame · E interaksi · I tas · F5 simpan", 11)
+	hint_label.anchor_top = 1.0
+	hint_label.anchor_bottom = 1.0
+	hint_label.anchor_left = 0.0
+	hint_label.anchor_right = 1.0
+	hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	hint_label.position = Vector2(-8, -18)
+	add_child(hint_label)
+
+func set_hint(text: String) -> void:
+	if hint_label:
+		hint_label.text = text
 
 	# --- Toasts (center-bottom) ---
 	toast_box = VBoxContainer.new()
@@ -204,6 +209,8 @@ func _refresh_sky() -> void:
 	}.get(WorldState.weather, WorldState.weather)
 
 func _on_toast(msg: String) -> void:
+	if toast_box == null or not is_instance_valid(toast_box):
+		return
 	var l := _mk_label(msg, 14)
 	l.modulate = Color(1, 1, 1)
 	toast_box.add_child(l)

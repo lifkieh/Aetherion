@@ -14,9 +14,9 @@ const BLOCKS := {
 }
 
 var solid: TileMapLayer             # visual tiles only
-var _body: StaticBody2D             # collision (per-cell shapes so mining is exact)
+var _body: StaticBody2D             # collision — merged horizontal STRIPS per row
 var _hp: Dictionary = {}            # Vector2i -> remaining hits
-var _shapes: Dictionary = {}        # Vector2i -> CollisionShape2D
+var _row_shapes: Dictionary = {}    # row y -> Array[CollisionShape2D]
 var _ladder_cells: Dictionary = {} # Vector2i -> true
 var width := 0
 var height := 0
@@ -48,22 +48,45 @@ func build_from(layout: Array) -> void:
 			var cell := Vector2i(x, y)
 			if BLOCKS.has(c):
 				solid.set_cell(cell, BLOCKS[c].source, Vector2i(0, 0))
-				_add_collision(cell)
 				if BLOCKS[c].soft:
 					_hp[cell] = BLOCKS[c].hp
 			elif c == "=":
 				_add_platform(platforms, cell)
 			elif c == "H":
 				_add_ladder(ladder_holder, cell)
+	# merged strip collision (perf: ~rows*few shapes instead of one per cell)
+	for y in range(height):
+		_rebuild_row(y)
 
-func _add_collision(cell: Vector2i) -> void:
-	var cs := CollisionShape2D.new()
-	var shape := RectangleShape2D.new()
-	shape.size = Vector2(TILE, TILE)
-	cs.shape = shape
-	cs.position = Vector2(cell.x * TILE + TILE / 2.0, cell.y * TILE + TILE / 2.0)
-	_body.add_child(cs)
-	_shapes[cell] = cs
+## Rebuild one row's collision as merged horizontal strips of solid cells.
+func _rebuild_row(y: int) -> void:
+	if _row_shapes.has(y):
+		for cs in _row_shapes[y]:
+			if is_instance_valid(cs):
+				cs.queue_free()
+	_row_shapes[y] = []
+	var x := 0
+	while x < width:
+		if solid.get_cell_source_id(Vector2i(x, y)) != -1:
+			var start := x
+			while x < width and solid.get_cell_source_id(Vector2i(x, y)) != -1:
+				x += 1
+			var run := x - start
+			var cs := CollisionShape2D.new()
+			var shape := RectangleShape2D.new()
+			shape.size = Vector2(run * TILE, TILE)
+			cs.shape = shape
+			cs.position = Vector2(start * TILE + run * TILE / 2.0, y * TILE + TILE / 2.0)
+			_body.add_child(cs)
+			_row_shapes[y].append(cs)
+		else:
+			x += 1
+
+func collision_node_count() -> int:
+	var n := 0
+	for y in _row_shapes.keys():
+		n += _row_shapes[y].size()
+	return n
 
 func _make_tileset() -> TileSet:
 	var ts := TileSet.new()
@@ -136,9 +159,7 @@ func try_mine(global_pos: Vector2) -> bool:
 	if _hp[cell] <= 0:
 		solid.erase_cell(cell)
 		_hp.erase(cell)
-		if _shapes.has(cell):
-			_shapes[cell].queue_free()
-			_shapes.erase(cell)
+		_rebuild_row(cell.y)   # split the strip around the removed cell
 		var drop: String = cfg.get("drop", "")
 		if drop != "":
 			var qty := randi_range(1, 2)
