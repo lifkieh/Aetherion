@@ -2,6 +2,22 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — UI/UX §6: SKILL_AUDIT.md + fixes (DONE)
+
+Full audit written to `SKILL_AUDIT.md` (5 axes). Fixes applied:
+- **Bug — top-down attack ignored the weapon.** `PlayerPlatformer` already branched on `weapon_type`, but the
+  overworld `Player._do_attack` always did a facing-cone `strike` — a bow/wand still swung a sword. Rewrote it to aim at
+  the cursor and branch (bow→arrow, wand→projectile+mana, spear→long thrust, sword→wide arc), matching the side-view so
+  the prime→left-click language is truly one language.
+- **Balance — DPS-per-mana.** `flame_slash` mp 8→9 (it is melee *and* AoE, shouldn't also be most mana-efficient) and
+  `spark_bolt` mp 10→9 (the safe ranged option was underpowered). The three mana damage skills now sit within ±17 % of
+  their mean (was a 67 % gap between best/worst).
+- **Cleanup — removed the dead `element_flow` skill** (kind `buff`, element `none`); superseded by the four `flow_*`
+  skills, referenced nowhere, and would have mis-fired as a melee swing if ever slotted.
+- **Verified already-correct:** every skill element valid; Element Flow + platformer rules (wind double-jump, ice
+  freeze) + elemental science all survive the refactor; fusion recipes order-independent (1+2==2+1) across all 9.
+- New `[Skill Audit §6]` regression suite (12 checks). 229/229 headless tests pass.
+
 ## 2026-07-11 — UI/UX §5: Onboarding & guide (DONE)
 
 - New **`Onboarding` autoload** (non-blocking CanvasLayer, never pauses):

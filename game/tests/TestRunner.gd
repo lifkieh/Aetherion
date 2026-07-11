@@ -36,6 +36,7 @@ func _ready() -> void:
 	_test_professions()
 	_test_safezone()
 	_test_onboarding()
+	_test_skill_audit()
 	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
@@ -274,6 +275,55 @@ func _test_safezone() -> void:
 	m.queue_free()
 	# restore the town zone for anything that runs after the tests
 	SafeZone.set_region("greenvale")
+
+func _test_skill_audit() -> void:
+	print("[Skill Audit §6]")
+	# fusion recipe symmetry — 1+2 must equal 2+1 for every recipe
+	var combos: Array = Db.elements.get("combos", [])
+	check("at least 8 fusion recipes", combos.size() >= 8)
+	var symmetric := true
+	for c in combos:
+		var ab := Db.elem_combo(c.a, c.b)
+		var ba := Db.elem_combo(c.b, c.a)
+		if ab.get("result", "") != ba.get("result", "") or ab.get("mult", 0) != ba.get("mult", 0):
+			symmetric = false
+	check("every fusion recipe is order-independent (1+2==2+1)", symmetric)
+	# a non-recipe pair fizzles (empty)
+	check("non-recipe pair returns empty (fizzle)", Db.elem_combo("earth", "ice").is_empty())
+	# castable skills: valid element + real projectile where declared
+	var elist: Array = Db.elements.get("list", [])
+	var castable := ["strike", "flame_slash", "spark_bolt", "frost_bolt", "flow_fire", "flow_lightning", "flow_ice", "flow_wind"]
+	var elem_ok := true
+	var proj_ok := true
+	for sid in castable:
+		var sk := Db.skill(sid)
+		var el: String = sk.get("element", "none")
+		if el != "none" and not (el in elist):
+			elem_ok = false
+		if sk.get("projectile", false) and not Db.projectiles.has(sk.get("projectile_id", "")):
+			proj_ok = false
+	check("all castable skill elements are valid", elem_ok)
+	check("all projectile skills reference a real projectile", proj_ok)
+	check("dead 'element_flow' skill removed (flow_* supersede it)", not Db.skills.has("element_flow"))
+	# DPS-per-mana of the mana-costing damage skills within ±30% of the mean
+	var vals: Array = []
+	for sid in ["flame_slash", "spark_bolt", "frost_bolt"]:
+		var sk := Db.skill(sid)
+		vals.append(float(sk.get("skill_mod", 1.0)) / (float(sk.get("cooldown", 1.0)) * float(sk.get("mp_cost", 1))))
+	var mean: float = (vals[0] + vals[1] + vals[2]) / 3.0
+	var within := true
+	for v in vals:
+		if abs(v - mean) / mean > 0.30:
+			within = false
+	check("no DPS-per-mana outlier >30%", within, str(vals))
+	# weapon behavior wired to the click scheme (both perspectives branch on these)
+	check("bow weapon declares a projectile", Db.item("short_bow").get("projectile", "") != "")
+	check("wand weapon declares a projectile + mana", Db.item("apprentice_wand").get("projectile", "") != "" and Db.item("apprentice_wand").get("mana_cost", 0) > 0)
+	check("wand projectile exists", Db.projectiles.has(Db.item("apprentice_wand").get("projectile", "")))
+	# Element Flow platformer rules survive the refactor
+	var pr: Dictionary = Db.elements.get("platformer_rules", {})
+	check("wind flow grants double jump", pr.get("wind", {}).get("double_jump", false))
+	check("ice flow freezes puddles", pr.get("ice", {}).get("freeze_puddle", false))
 
 func _test_onboarding() -> void:
 	print("[Onboarding + Guide chain]")

@@ -1,8 +1,7 @@
 [
   {"id": "strike", "name": "Tebas", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "mp_cost": 0, "cooldown": 0.35, "range": 34, "aoe": false, "desc": "Serangan normal."},
-  {"id": "flame_slash", "name": "Tebasan Api", "type": "active", "kind": "physical", "element": "fire", "skill_mod": 1.7, "mp_cost": 8, "cooldown": 2.2, "range": 44, "aoe": true, "aoe_radius": 40, "desc": "Ayunan berapi mengenai area di depan."},
-  {"id": "spark_bolt", "name": "Panah Petir", "type": "active", "kind": "magic", "element": "lightning", "skill_mod": 1.5, "mp_cost": 10, "cooldown": 2.6, "range": 160, "projectile": true, "projectile_id": "spark", "projectile_speed": 320, "desc": "Menembakkan petir yang menyambar target basah."},
-  {"id": "element_flow", "name": "Element Flow", "type": "active", "kind": "buff", "element": "none", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Mengalirkan elemen ke senjata (30-60 dtk)."},
+  {"id": "flame_slash", "name": "Tebasan Api", "type": "active", "kind": "physical", "element": "fire", "skill_mod": 1.7, "mp_cost": 9, "cooldown": 2.2, "range": 44, "aoe": true, "aoe_radius": 40, "desc": "Ayunan berapi mengenai area di depan."},
+  {"id": "spark_bolt", "name": "Panah Petir", "type": "active", "kind": "magic", "element": "lightning", "skill_mod": 1.5, "mp_cost": 9, "cooldown": 2.6, "range": 160, "projectile": true, "projectile_id": "spark", "projectile_speed": 320, "desc": "Menembakkan petir yang menyambar target basah."},
   {"id": "flow_fire", "name": "Fire Flow", "type": "active", "kind": "flow", "element": "fire", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Api."},
   {"id": "flow_lightning", "name": "Lightning Flow", "type": "active", "kind": "flow", "element": "lightning", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Petir."},
   {"id": "flow_ice", "name": "Ice Flow", "type": "active", "kind": "flow", "element": "ice", "mp_cost": 12, "cooldown": 8.0, "duration": 45, "desc": "Aliri senjata dengan Es (bekukan genangan)."},

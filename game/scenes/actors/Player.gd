@@ -106,11 +106,37 @@ func _facing_vec() -> Vector2:
 
 # --- Attacks / skills -------------------------------------------------------
 
+func _weapon_type() -> String:
+	var w: String = PlayerData.equipped_weapon
+	return "sword" if w == "" else Db.item(w).get("weapon_type", "sword")
+
 func _do_attack() -> void:
-	_attack_cd = 0.35
+	# Aim toward the cursor so the weapon behavior matches the click scheme, same
+	# control language as the side-view (SKILL_AUDIT §6: weapons ↔ click scheme).
+	var aim := (get_global_mouse_position() - global_position)
+	aim = aim.normalized() if aim.length() > 2.0 else _facing_vec()
+	facing = SheetUtil.dir_from_vec(aim)
 	_attacking = ATTACK_TIME
 	sprite.play("walk_" + facing)
-	_apply_melee(Db.skill("strike"), 42.0)
+	match _weapon_type():
+		"bow":
+			_attack_cd = 0.3
+			PlayerCombat.fire_pooled(self, aim, Db.item(PlayerData.equipped_weapon).get("projectile", "arrow"))
+		"wand":
+			var w := Db.item(PlayerData.equipped_weapon)
+			var cost: int = w.get("mana_cost", 5)
+			if not PlayerData.spend_mp(cost):
+				EventBus.toast.emit("Mana tidak cukup")
+				_attacking = 0.0
+				return
+			_attack_cd = 0.34
+			PlayerCombat.fire_pooled(self, aim, w.get("projectile", "fireball"))
+		"spear":
+			_attack_cd = 0.42
+			PlayerCombat.melee_arc(self, aim, 60.0, 40.0, Db.skill("strike"), 1.15)
+		_:  # sword / default — wide arc toward cursor
+			_attack_cd = 0.35
+			PlayerCombat.melee_arc(self, aim, 46.0, 120.0, Db.skill("strike"))
 	Audio.play_sfx("attack")
 
 func _do_skill(skill_id: String) -> void:

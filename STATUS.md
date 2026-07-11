@@ -157,8 +157,11 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   **Pemandu NPC** (green, by spawn) that talks + opens the guide; **"Panduan" menu tab** = full Bahasa how-to-play
   reference. All Bahasa Indonesia, short, friendly. Verified renders `reports/onboarding.png`, `reports/panduan.png`.
   217/217 tests (+13 onboarding).
-- **(6) SKILL_AUDIT.md** ⏳ all skills vs GDD (element/cost/cooldown/DPS-per-mana outliers>30%; weapon behaviors on
-  new click scheme; Element Flow+science post-refactor; fusion recipe symmetry 1+2==2+1); fix findings.
+- **(6) SKILL_AUDIT.md** ✅ DONE — full audit on 5 axes. Findings fixed: (bug) top-down `Player._do_attack` ignored
+  `weapon_type` (bow/wand/spear all swung a sword) → now aims at cursor + branches like the side-view; (balance)
+  flame_slash mp 8→9 & spark_bolt 10→9 so DPS-per-mana spread ≤±17% (no >30% outlier); (cleanup) removed dead
+  `element_flow` skill (flow_* supersede it). Verified PASS: element correctness, Element Flow + platformer rules +
+  science post-refactor, fusion symmetry 1+2==2+1 (9 recipes). New `[Skill Audit §6]` suite (12 checks). 229/229 tests.
 - **(7) Asset & polish** ⏳ more Greenvale/Candyveil deco variety, interiors, Shikashi/Caz item icons; original
   sprites: Grey Wolf + 2 candy + 2 desert monsters; SFX: prime/fusion/fizzle/menu/dialog-blip.
 - Rule: game ringan (measure FPS before/after), headless test per system, commit+push per part, **tag v0.2-alpha** at end.
