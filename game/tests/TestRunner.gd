@@ -55,6 +55,9 @@ func _balance_probe() -> void:
 		["forest_fox", "rare", 8, 15], ["cervel", "rare", 8, 15],
 		["treant_sapling", "epic", 25, 45], ["king_slime", "epic", 25, 45],
 		["gummy_slime", "common", 3, 6], ["rock_golem", "rare", 8, 15],
+		["ice_wolf", "common", 3, 6], ["yeti_cub", "rare", 8, 15],
+		["frost_wyvern", "epic", 25, 45], ["thunder_hawk", "rare", 8, 15],
+		["storm_elemental", "epic", 25, 45], ["thunder_dragon", "legendary", 25, 45],
 	]
 	var atk_interval := 0.30   # avg swing cadence
 	var trials := 200

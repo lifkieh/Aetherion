@@ -202,15 +202,24 @@ ronde ini memperkaya yang sudah ada. Semua aset ORISINAL (PIL / prosedural).
   (Greenvale 1558 / Candyveil 896 / Desert 789 node — tanpa culling), 229/229 test, commit+push per bagian,
   **tag v0.2.1-alpha**, export `export/Aetherion.exe` **85.1 MB** (boot standalone OK, Db load, tanpa error).
 
-## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER (RONDE 2)
-Ronde World-Density (v0.2.1-alpha) selesai & di-tag. **Pengembangan fitur/konten DIHENTIKAN** sampai feedback
-playtest ronde 2 masuk. Tujuan berikutnya ditentukan oleh hasil playtest.
+## 🧬 RONDE 3 — AETHERION CHARACTER SYSTEM + KONTEN v0.3-alpha — SELESAI
+- **Sistem karakter modular** (LPC DITOLAK): `CharGen` autoload port dari gen_charsys_v2 — komposisi per-bagian
+  (kepala/badan/kaki) 7 ras + chimera, kulit/rambut/baju per-parameter. Character Creator saat New Game (preview 4
+  arah live, acak), NPC **Cermin Jiwa** (re-custom 150G). Player + warga + NPC pakai sistem ini (Greenvale 100%
+  human). **Kanon Celestia Kingdom** (ibukota semua ras) di DEVLOG + Aetherpedia. Frame serang 2-arah + rambut
+  mohawk/sanggul. Semua 343 kombinasi ras×bagian ter-compose tanpa crash.
+- **Frostpeak tuntas:** 7 spesies (§2.4) + evolusi; **pos pendaki** (desa safe-zone, NPC frostkin/wolfkin/human via
+  CharGen); **Foothill Barrow** + bos **Frost Titan** 2-fase (Everfrost Core [A]).
+- **Storm Island (§2.5):** region badai (hujan + kilat), 6 spesies + evolusi, **Thunder Dragon** secret (badai malam),
+  **Zephyr Spire** + bos **Storm Sovereign** (Tempest Heart [S]). Akses via dermaga Greenvale.
+- **Thermal Shock** (Api+Es) teruji; **Dire Wolf → Alpha Wolf** saat purnama.
+- **60 monster**, screenshot self-check di `reports/`, balance probe (pola arketipe konsisten, lihat BALANCE_REPORT),
+  **264 test lulus**, commit+push per bagian, **tag v0.3-alpha**, export exe baru.
 
-### Konten BEKU — diaktifkan kembali setelah feedback
-Sengaja ditunda saat ronde UI/UX dan tetap beku sampai owner memberi lampu hijau:
-- ~~**Frostpeak**~~ — ✅ region salju/es DIBANGUN (v0.3-alpha): Frostpeak.tscn, 4 monster es orisinal, salju/dressing,
-  portal gerbang utara Greenvale. Sisa: 3 spesies §2.4, evolusi, dungeon/boss Frost Titan.
-- **Storm Island** — region badai/petir + dungeon.
+## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER (RONDE 3)
+Ronde v0.3-alpha (character system + Frostpeak + Storm Island) selesai & di-tag. **Menunggu feedback playtest ronde 3.**
+
+### Konten BEKU tersisa — setelah feedback
 - **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).
 - **Roster monster lanjutan** — spesies tahap berikut untuk region baru + evolusi lanjutan.
 Saat diaktifkan: ikuti pola data-driven yang ada (regions = scene + safe_zone di `towns.json`, monster di

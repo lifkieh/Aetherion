@@ -1,5 +1,22 @@
 # BALANCE REPORT — TTK aktual vs target
 
+## v0.3-alpha — monster baru Frostpeak & Storm (2026-07-12)
+
+Probe menambah monster level tinggi baru. Hasil **konsisten dengan pola arketipe** yang sudah didokumentasikan
+(tank TTK panjang, bruiser/swift/caster = glass cannon mati lebih cepat):
+| Monster | Rarity/Arketipe | TTK | Target | Dev | Catatan |
+|---|---|---|---|---|---|
+| ice_wolf | common bruiser | 1.8s | 3–6s | −60% | pola bruiser rapuh (sama seperti grey_wolf) |
+| yeti_cub | rare tank | 15.2s | 8–15s | +32% | tank di tepi atas — wajar |
+| thunder_hawk | rare swift | 4.6s | 8–15s | −60% | swift = glass cannon (pola konsisten) |
+| frost_wyvern | epic bruiser | 23.4s | 25–45s | −33% | bruiser epik sedikit cepat |
+| storm_elemental | epic caster | 10.8s | 25–45s | −69% | caster rapuh |
+| thunder_dragon | legendary bruiser | 60.4s | 25–45s | **+73%** | **sengaja tanky** — bos-mount rahasia prestise, pertarungan epik |
+
+**Keputusan: tidak retune.** Deviasi mengikuti pola per-arketipe yang sudah diterima sebagai by-design (lihat bagian
+Fase 0). Thunder Dragon dibuat tanky sengaja (legendary secret + prestige mount → fight panjang terasa layak). Boss
+(Frost Titan/Storm Sovereign) memakai HP boss + AI 2-fase, di luar cakupan probe TTK-satu-lawan-satu.
+
 ## Re-verifikasi v0.2-alpha (2026-07-11, pasca SKILL_AUDIT §6)
 
 Owner meminta re-run karena SKILL_AUDIT mengubah DPS-per-mana (flame_slash mp 8→9,
