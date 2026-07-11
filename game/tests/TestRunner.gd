@@ -35,6 +35,7 @@ func _ready() -> void:
 	_test_fishing()
 	_test_professions()
 	_test_safezone()
+	_test_chargen()
 	_test_onboarding()
 	_test_skill_audit()
 	_test_skycalendar()
@@ -329,6 +330,39 @@ func _test_skill_audit() -> void:
 	var pr: Dictionary = Db.elements.get("platformer_rules", {})
 	check("wind flow grants double jump", pr.get("wind", {}).get("double_jump", false))
 	check("ice flow freezes puddles", pr.get("ice", {}).get("freeze_puddle", false))
+
+func _test_chargen() -> void:
+	print("[CharGen — Aetherion Character System]")
+	var races: Array = CharGen.races()
+	check("7 races available", races.size() == 7)
+	# every head x torso x legs race combination composes to a 96x128 sheet (no crash)
+	var ok := true
+	var count := 0
+	for h in races:
+		for t in races:
+			for l in races:
+				var cfg := {"head_race": h, "torso_race": t, "legs_race": l,
+					"hair": "short", "hair_color": "#241f36", "shirt": "#2e6b3f", "pants": "#453d5c"}
+				var img := CharGen.sheet_image(cfg)
+				if img.get_width() != 96 or img.get_height() != 128:
+					ok = false
+				count += 1
+	check("all %d race x part combos -> 96x128" % count, ok)
+	# all hair styles compose
+	var hok := true
+	for hs in CharGen.hair_styles():
+		var c := CharGen.default_config(); c["hair"] = hs
+		if CharGen.sheet_image(c).get_width() != 96:
+			hok = false
+	check("all hair styles compose", hok)
+	# per-part skin override
+	var cs := CharGen.default_config(); cs["head_skin"] = "#ff3355"
+	check("per-part skin override composes", CharGen.sheet_image(cs).get_width() == 96)
+	# sprite frames
+	var sf := CharGen.sprite_frames(CharGen.default_config())
+	check("walk_down has 4 frames (0-1-2-1)", sf.get_frame_count("walk_down") == 4)
+	check("idle_down animation present", sf.has_animation("idle_down"))
+	check("all 4 directions have walk anims", sf.has_animation("walk_up") and sf.has_animation("walk_left") and sf.has_animation("walk_right"))
 
 func _test_onboarding() -> void:
 	print("[Onboarding + Guide chain]")
@@ -727,6 +761,8 @@ func _test_saveload() -> void:
 	PlayerData.add_gold(1234)
 	PlayerData.add_item("wolf_fang", 5)
 	WorldState.set_counter("rabbits_killed", 42)
+	PlayerData.char_config = {"head_race": "wolfkin", "torso_race": "human", "legs_race": "lizardkin",
+		"hair": "spiky", "hair_color": "#b8e4f2", "shirt": "#2e6b3f", "pants": "#453d5c"}
 	var ok := SaveManager.save_game(3)
 	check("save writes", ok and SaveManager.has_save(3))
 	# mutate then load
@@ -734,8 +770,10 @@ func _test_saveload() -> void:
 	PlayerData.gold = 0
 	PlayerData.inventory.clear()
 	WorldState.set_counter("rabbits_killed", 0)
+	PlayerData.char_config = {}
 	var loaded := SaveManager.load_game(3)
 	check("load succeeds", loaded)
+	check("char_config restored (chimera)", PlayerData.char_config.get("head_race", "") == "wolfkin" and PlayerData.char_config.get("legs_race", "") == "lizardkin")
 	check("level restored", PlayerData.level == 7, str(PlayerData.level))
 	check("gold restored", PlayerData.gold == 200 + 1234, str(PlayerData.gold))
 	check("item restored", PlayerData.item_count("wolf_fang") == 5)

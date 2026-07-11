@@ -74,6 +74,9 @@ func _ready() -> void:
 			get_tree().quit())
 	if OS.get_environment("AETHER_DAY") == "1":
 		_force_day = true
+	if OS.get_environment("AETHER_CHARGEN") == "1":
+		_chargen_preview()
+		return
 	if OS.get_environment("AETHER_TREES") == "1":
 		_force_day = true
 		get_tree().create_timer(0.4).timeout.connect(func():
@@ -266,6 +269,30 @@ func _build_boundaries() -> void:
 		cs.shape = shape
 		cs.position = rc.position + rc.size / 2
 		walls.add_child(cs)
+
+func _chargen_preview() -> void:
+	# QC montage of all races + chimeras (full 96x128 sheets) saved to user://shot.png
+	var demos := [
+		CharGen.default_config(),
+		{"head_race":"human2","torso_race":"human2","legs_race":"human2","hair":"long","hair_color":"#241f36","shirt":"#8a3a6b","pants":"#5c2380"},
+		{"head_race":"wolfkin","torso_race":"wolfkin","legs_race":"wolfkin","hair":"none","shirt":"#8f2611","pants":"#453d5c"},
+		{"head_race":"lizardkin","torso_race":"lizardkin","legs_race":"lizardkin","hair":"none","pants":"#6b4226"},
+		{"head_race":"candyfolk","torso_race":"candyfolk","legs_race":"candyfolk","hair":"none","hair_color":"#c4302b"},
+		{"head_race":"frostkin","torso_race":"frostkin","legs_race":"frostkin","hair":"spiky","hair_color":"#eefaff","shirt":"#1e3a5c","pants":"#3a6fa0"},
+		{"head_race":"undead","torso_race":"undead","legs_race":"undead","hair":"none","pants":"#453d5c"},
+		{"head_race":"wolfkin","torso_race":"human","legs_race":"human","hair":"none","shirt":"#3a6fa0","pants":"#453d5c"},
+		{"head_race":"frostkin","torso_race":"human2","legs_race":"lizardkin","hair":"spiky","hair_color":"#b8e4f2","shirt":"#2e6b3f"},
+	]
+	var cols := 5
+	var rows := int(ceil(demos.size() / float(cols)))
+	var mont := Image.create(cols * 96 + 8, rows * 128 + 8, false, Image.FORMAT_RGBA8)
+	mont.fill(Color(0.09, 0.08, 0.15))
+	for i in range(demos.size()):
+		var s := CharGen.sheet_image(demos[i])
+		mont.blend_rect(s, Rect2i(0, 0, 96, 128), Vector2i((i % cols) * 96 + 4, (i / cols) * 128 + 4))
+	mont.save_png("user://shot.png")
+	print("[chargen] preview saved")
+	get_tree().quit()
 
 func _dress_wild() -> void:
 	# R2 Part 2 — dense forest ring around the town, directional landmarks, edge band,

@@ -38,10 +38,16 @@ func _ready() -> void:
 	add_child(cam)
 
 func _build_sprite() -> void:
-	var tex := SheetUtil.load_tex("res://assets/game/sprites/player/walk.png")
-	if tex:
-		sprite.sprite_frames = SheetUtil.build_directional(tex, 16, 4, 4, 8.0)
-		sprite.play("idle_down")
+	# Aetherion Character System: build the look from the saved config (CharGen).
+	var cfg: Dictionary = PlayerData.char_config if not PlayerData.char_config.is_empty() else CharGen.default_config()
+	sprite.sprite_frames = CharGen.sprite_frames(cfg)
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	sprite.offset = Vector2(0, -8)     # 32px cell: lift so the character's feet sit at the node origin
+	sprite.play("idle_down")
+
+## Rebuild the sprite after the player re-customizes (Cermin Jiwa).
+func refresh_look() -> void:
+	_build_sprite()
 
 func _physics_process(delta: float) -> void:
 	z_index = int(global_position.y)   # y-sort with town buildings/props (R2)
