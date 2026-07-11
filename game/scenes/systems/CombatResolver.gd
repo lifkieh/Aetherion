@@ -49,6 +49,13 @@ static func resolve(attacker: Dictionary, defender: Dictionary, skill: Dictionar
 	var def_elem: String = defender.get("element", "none")
 	var em := elem_mod(atk_elem, def_elem, ctx)
 
+	# Accuracy vs evasion (DEX vs AGI) — a miss deals no damage.
+	var acc: float = float(attacker.get("accuracy", 1.0))
+	var eva: float = float(defender.get("evasion", 0.0))
+	var hit_chance := clampf(acc - eva, 0.2, 1.0)
+	if (rng.randf() if rng else randf()) > hit_chance:
+		return {"damage": 0, "miss": true, "is_crit": false, "element": atk_elem, "elem_mod": em, "chain": false, "effective": false, "resisted": false}
+
 	# Crit
 	var crit_rate := clampf(float(attacker.get("crit_rate", 0.05)), CRIT_MIN, CRIT_MAX)
 	var roll := rng.randf() if rng else randf()

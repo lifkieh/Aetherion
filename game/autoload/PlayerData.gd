@@ -10,11 +10,21 @@ var birth_sign: String = ""            # set from creation date (v0.3 §3.3)
 var level: int = 1
 var exp: int = 0
 
-# --- Primary attributes (GDD Bagian 3) ---
+# --- Primary attributes (GDD §3.5): STR/AGI/VIT/INT/DEX/LUK ---
 var attributes: Dictionary = {
-	"STR": 5, "END": 5, "AGI": 5, "INT": 5, "LUK": 5,
+	"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5,
 }
 var stat_points: int = 0
+const ATTR_ORDER := ["STR", "AGI", "VIT", "INT", "DEX", "LUK"]
+const ATTR_DESC := {
+	"STR": "Kekuatan — menambah ATK fisik.",
+	"AGI": "Ketangkasan — mempercepat serangan & menaikkan evasion.",
+	"VIT": "Vitalitas — menambah HP & pertahanan.",
+	"INT": "Intelek — menambah MATK, mana, & regen mana.",
+	"DEX": "Kecekatan — menaikkan akurasi & kualitas panen.",
+	"LUK": "Keberuntungan — menaikkan crit & peluang drop.",
+}
+const POINTS_PER_LEVEL := 5
 
 # --- Derived combat stats (recomputed) ---
 var max_hp: int = 100
@@ -34,6 +44,8 @@ var mp: int = 50
 var gold: int = 200
 var inventory: Dictionary = {}         # item_id -> qty
 var equipped_weapon: String = ""       # item_id (affects ATK + weapon element base)
+var equipped_armor: String = ""        # item_id (armor slot — DEF/HP)
+var equipped_accessory: String = ""    # item_id (accessory slot — varied)
 
 # --- Skills / element ---
 var known_skills: Array = ["strike", "flame_slash", "spark_bolt"]
@@ -71,7 +83,7 @@ func _ready() -> void:
 ## Reset to a fresh character (New Game). birth_sign from creation date (v0.3 §3.3).
 func new_game() -> void:
 	level = 1; exp = 0; stat_points = 0
-	attributes = {"STR": 5, "END": 5, "AGI": 5, "INT": 5, "LUK": 5}
+	attributes = {"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5}
 	gold = 200
 	inventory = {"minor_potion": 3, "basic_orb": 2, "wooden_sword": 1, "seed_mintleaf": 3}
 	equipped_weapon = "wooden_sword"
@@ -120,11 +132,7 @@ func gain_exp(amount: int) -> void:
 	while exp >= exp_to_next():
 		exp -= exp_to_next()
 		level += 1
-		stat_points += 3
-		# auto-distribute for now (playable without a stat screen)
-		attributes["STR"] += 1
-		attributes["END"] += 1
-		attributes["INT"] += 1
+		stat_points += POINTS_PER_LEVEL   # +5 free points to allocate in the Status tab
 		leveled = true
 	if leveled:
 		recalculate_stats()
@@ -136,32 +144,72 @@ func gain_exp(amount: int) -> void:
 
 # --- Derived stats ----------------------------------------------------------
 
+# derived combat extras (GDD §3.5 wiring)
+var attack_speed: float = 1.0          # multiplies weapon/skill cast rate (AGI)
+var evasion: float = 0.0               # chance to dodge (AGI)
+var accuracy: float = 0.90             # hit chance (DEX)
+var mana_regen: float = 3.0            # mana/sec base (INT)
+var drop_bonus: float = 0.0            # extra drop chance (LUK)
+var gather_bonus: float = 0.0          # gather/harvest quality (DEX)
+
 func recalculate_stats() -> void:
-	var s: int = attributes.STR
-	var e: int = attributes.END
-	var a: int = attributes.AGI
-	var i: int = attributes.INT
-	var l: int = attributes.LUK
+	var s: int = attributes.get("STR", 5)
+	var a: int = attributes.get("AGI", 5)
+	var v: int = attributes.get("VIT", 5)
+	var i: int = attributes.get("INT", 5)
+	var dx: int = attributes.get("DEX", 5)
+	var l: int = attributes.get("LUK", 5)
 	var lv := level
-	# Hero is deliberately stronger per-point than fodder monsters (BST-based),
-	# so early common monsters die in a handful of hits (Monster_Roster §1.3 TTK).
-	max_hp = 165 + e * 18 + lv * 14   # bumped for swarm survivability
-	max_mp = 40 + i * 6 + lv * 4
-	atk = 24 + s * 5 + lv * 3 + _weapon_atk()
-	# Title micro-buff (neutral prestige, GDD v0.2 §10.3). Guarded for autoload order.
+	# Hero is deliberately stronger per-point than fodder monsters (BST-based).
+	max_hp = 165 + v * 18 + lv * 14                 # VIT -> HP
+	max_mp = 40 + i * 8 + lv * 4                     # INT -> mana pool
+	atk = 24 + s * 5 + lv * 3 + _weapon_atk() + _gear_stat("atk")   # STR -> physical ATK
 	if has_node("/root/Achievements"):
 		atk = int(atk * (1.0 + get_node("/root/Achievements").active_buff("atk_pct")))
-	def = 8 + e * 2 + lv
-	matk = 20 + i * 5 + lv * 3
-	mdef = 6 + i + e + lv
+	def = 8 + v * 2 + lv + _gear_stat("def")         # VIT -> DEF/resist
+	matk = 20 + i * 5 + lv * 3 + _gear_stat("matk")  # INT -> MATK
+	mdef = 6 + i + v + lv + _gear_stat("mdef")
 	spd = 90 + a * 3
-	crit_rate = clampf(0.05 + l * 0.004, 0.05, 0.60)
+	attack_speed = 1.0 + a * 0.03                    # AGI -> attack/cast speed
+	evasion = clampf(a * 0.006, 0.0, 0.40)           # AGI -> evasion
+	accuracy = clampf(0.90 + dx * 0.006, 0.6, 0.99)  # DEX -> accuracy
+	gather_bonus = dx * 0.02                          # DEX -> gathering quality
+	mana_regen = 3.0 + i * 0.35                       # INT -> mana regen
+	crit_rate = clampf(0.05 + l * 0.004, 0.05, 0.60) # LUK -> crit
+	drop_bonus = l * 0.008                            # LUK -> drop chance
 	crit_dmg = 1.5
 	hp = min(hp, max_hp)
 	mp = min(mp, max_mp)
 	stats_recalculated.emit()
 	EventBus.player_hp_changed.emit(hp, max_hp)
 	EventBus.player_mp_changed.emit(mp, max_mp)
+
+## Sum a stat across equipped gear (weapon + armor + accessory). Gear stats really count.
+func _gear_stat(key: String) -> int:
+	var total := 0
+	for slot in ["equipped_weapon", "equipped_armor", "equipped_accessory"]:
+		var id: String = get(slot)
+		if id != "":
+			total += int(Db.item(id).get(key, 0))
+	return total
+
+## Allocate one free point into an attribute. Returns true on success.
+func allocate_point(attr: String) -> bool:
+	if stat_points <= 0 or not attributes.has(attr):
+		return false
+	attributes[attr] += 1
+	stat_points -= 1
+	recalculate_stats()
+	return true
+
+## Respec: reset all attributes to 5, refund points (paid in gold by the caller).
+func respec() -> void:
+	var spent := 0
+	for k in attributes.keys():
+		spent += attributes[k] - 5
+		attributes[k] = 5
+	stat_points += max(0, spent)
+	recalculate_stats()
 
 func _weapon_atk() -> int:
 	if equipped_weapon == "":
@@ -175,6 +223,7 @@ func combat_stats() -> Dictionary:
 		"crit_rate": crit_rate, "crit_dmg": crit_dmg,
 		"level": level, "hp": hp, "max_hp": max_hp,
 		"element": current_weapon_element(),
+		"accuracy": accuracy, "evasion": evasion,
 		"resist": {},
 	}
 
@@ -280,7 +329,8 @@ func to_save() -> Dictionary:
 		"char_name": char_name, "birth_sign": birth_sign,
 		"level": level, "exp": exp, "attributes": attributes, "stat_points": stat_points,
 		"hp": hp, "mp": mp, "gold": gold, "inventory": inventory,
-		"equipped_weapon": equipped_weapon, "known_skills": known_skills,
+		"equipped_weapon": equipped_weapon, "equipped_armor": equipped_armor, "equipped_accessory": equipped_accessory,
+		"known_skills": known_skills,
 		"mastered_elements": mastered_elements, "monsters": monsters,
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
 		"scenario_flags": scenario_flags, "titles": titles, "professions": professions,
@@ -301,6 +351,8 @@ func from_save(d: Dictionary) -> void:
 	gold = d.get("gold", 200)
 	inventory = d.get("inventory", {})
 	equipped_weapon = d.get("equipped_weapon", "")
+	equipped_armor = d.get("equipped_armor", "")
+	equipped_accessory = d.get("equipped_accessory", "")
 	known_skills = d.get("known_skills", known_skills)
 	mastered_elements = d.get("mastered_elements", mastered_elements)
 	monsters = d.get("monsters", [])

@@ -73,7 +73,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
+	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -155,6 +155,7 @@ func _rebuild() -> void:
 		"sky": _build_sky()
 		"echo": _build_echo()
 		"panduan": _build_panduan()
+		"status": _build_status()
 
 func _build_skill() -> void:
 	title.text = "Skill Book — Hotbar (1-5)"
@@ -516,3 +517,43 @@ func _build_panduan() -> void:
 		body.custom_minimum_size = Vector2(480, 0)
 		content.add_child(body)
 		content.add_child(_mk_label(" ", 6))
+
+func _build_status() -> void:
+	title.text = "Status Karakter"
+	content.add_child(_mk_label("%s  ·  Level %d" % [PlayerData.char_name, PlayerData.level], 18))
+	var pts := _mk_label("Poin bebas: %d  (+5 tiap naik level)" % PlayerData.stat_points, 15)
+	pts.add_theme_color_override("font_color", UiTheme.ACCENT)
+	content.add_child(pts)
+	content.add_child(_mk_label(" ", 4))
+	for attr in PlayerData.ATTR_ORDER:
+		var h := _row()
+		var l := _mk_label("%s  %d" % [attr, int(PlayerData.attributes.get(attr, 5))], 16)
+		l.custom_minimum_size = Vector2(90, 0)
+		h.add_child(l)
+		var plus := _btn("+", func():
+			if PlayerData.allocate_point(attr):
+				Audio.play_sfx("menu"); _rebuild())
+		plus.disabled = PlayerData.stat_points <= 0
+		h.add_child(plus)
+		var desc := _mk_label(PlayerData.ATTR_DESC.get(attr, ""), 12)
+		desc.custom_minimum_size = Vector2(360, 0)
+		h.add_child(desc)
+	content.add_child(_mk_label(" ", 4))
+	# derived stats readout
+	for line in [
+		"HP %d/%d · MP %d/%d" % [PlayerData.hp, PlayerData.max_hp, PlayerData.mp, PlayerData.max_mp],
+		"ATK %d · DEF %d · MATK %d · MDEF %d" % [PlayerData.atk, PlayerData.def, PlayerData.matk, PlayerData.mdef],
+		"Kecepatan serang %.2fx · Evasion %d%% · Akurasi %d%%" % [PlayerData.attack_speed, int(PlayerData.evasion * 100), int(PlayerData.accuracy * 100)],
+		"Crit %d%% · Regen mana %.1f/dtk · Bonus panen %d%% · Bonus drop %d%%" % [int(PlayerData.crit_rate * 100), PlayerData.mana_regen, int(PlayerData.gather_bonus * 100), int(PlayerData.drop_bonus * 100)],
+	]:
+		content.add_child(_mk_label(line, 13))
+	content.add_child(_mk_label(" ", 6))
+	# respec (paid)
+	var respec_cost := 100 + PlayerData.level * 20
+	var rrow := _row()
+	rrow.add_child(_mk_label("Reset atribut (respec):", 14))
+	rrow.add_child(_btn("Respec (%dG)" % respec_cost, func():
+		if PlayerData.spend_gold(respec_cost):
+			PlayerData.respec(); Audio.play_sfx("success"); EventBus.toast.emit("Atribut di-reset. Alokasikan ulang poinmu."); _rebuild()
+		else:
+			EventBus.toast.emit("Gold tidak cukup untuk respec.")))
