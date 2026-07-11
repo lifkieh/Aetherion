@@ -54,6 +54,15 @@ func _test_db() -> void:
 	check("candyveil monster loaded", Db.monsters.has("gummy_slime") and Db.monsters.has("gummy_mimic"))
 	check("candyveil loot table", Db.loot_table("candy_gummy_slime").size() > 0)
 	check("candyveil monster builds", not MonsterFactory.make("choco_bear").is_empty())
+	# Desert content + grounding science (Rock Golem resists lightning)
+	check("desert monster loaded", Db.monsters.has("rock_golem") and Db.monsters.has("dune_serpent"))
+	var golem := MonsterFactory.make("rock_golem", 20, 3)
+	check("rock golem carries lightning resist", golem.get("resist", {}).get("lightning", 0.0) > 0.5)
+	var gv := MonsterFactory.combat_stats(golem)
+	var atk := {"atk": 100, "matk": 100, "crit_rate": 0.0, "element": "lightning"}
+	var normal := CombatResolver.resolve(atk, MonsterFactory.combat_stats(MonsterFactory.make("sand_scarab", 20, 3)), Db.skill("spark_bolt"), {})
+	var grounded := CombatResolver.resolve(atk, gv, Db.skill("spark_bolt"), {})
+	check("lightning hits golem much less (grounding)", grounded.damage < normal.damage)
 
 func _test_elements() -> void:
 	print("[elem_mod]")

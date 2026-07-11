@@ -325,6 +325,10 @@ func _spawn_interactables() -> void:
 	add_child(astro)
 	astro.setup("astrologer")
 	astro.global_position = center + Vector2(96, 8)
+	var ds := preload("res://scenes/homestead/Portal.tscn").instantiate()
+	add_child(ds)
+	ds.setup("res://scenes/world/Desert.tscn", "Desert of Ruins [E]")
+	ds.global_position = center + Vector2(-120, -40)
 	# fishing ponds scattered around the region
 	for p in [Vector2(-260, 180), Vector2(300, -220), Vector2(-320, -180)]:
 		var pond := preload("res://scenes/world/Interactable.tscn").instantiate()

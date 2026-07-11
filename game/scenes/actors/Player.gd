@@ -203,7 +203,7 @@ func take_hit(result: Dictionary, _from) -> void:
 	var dmg: int = result.get("damage", 0)
 	PlayerData.take_damage(dmg)
 	EventBus.damage_dealt.emit(_from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
-	_iframes = 0.4
+	_iframes = 0.55   # brief invulnerability caps swarm burst to a fair rate
 	Audio.play_sfx("hurt")
 	if PlayerData.is_dead():
 		EventBus.player_died.emit()

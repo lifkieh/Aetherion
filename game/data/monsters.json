@@ -94,6 +94,63 @@
   },
 
   {
+    "id": "sand_scarab", "name": "Sand Scarab", "rarity": "common", "element": "earth",
+    "archetype": "tank", "bst": 300, "size": "small", "rideable": false, "level": 12,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "b8923f", "traits": ["hard_shell"], "skills": ["tackle"],
+    "loot_table": "desert_scarab", "tame_base": 0.6, "evolution": "khepri_guard",
+    "aggro_radius": 120, "lore": "Kumbang pasir bercangkang keras; panen chitin."
+  },
+  {
+    "id": "dune_viper", "name": "Dune Viper", "rarity": "common", "element": "poison",
+    "archetype": "assassin", "bst": 300, "size": "small", "rideable": false, "level": 13,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "c2b280", "traits": ["venom_fang"], "skills": ["sting"],
+    "loot_table": "desert_viper", "tame_base": 0.4, "evolution": "sidewinder_lord",
+    "aggro_radius": 150, "lore": "Ular gurun berbisa; sengatan meracuni."
+  },
+  {
+    "id": "vulture", "name": "Vulture", "rarity": "common", "element": "wind",
+    "archetype": "swift", "bst": 300, "size": "small", "rideable": false, "level": 14,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "skittish", "tint": "8a7a66", "traits": ["scavenger"], "skills": ["gust"],
+    "loot_table": "desert_vulture", "tame_base": 0.45, "evolution": "",
+    "aggro_radius": 160, "lore": "Bangkai burung pemakan; pet auto-loot."
+  },
+  {
+    "id": "jackal_shade", "name": "Jackal Shade", "rarity": "rare", "element": "darkness",
+    "archetype": "assassin", "bst": 360, "size": "medium", "rideable": false, "level": 18,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "4a3f55", "traits": ["night_prowl"], "skills": ["bite"],
+    "loot_table": "desert_jackal", "tame_base": 0.35, "evolution": "anubis_warden",
+    "aggro_radius": 170, "lore": "Serigala bayangan gurun; kuat di malam hari."
+  },
+  {
+    "id": "rock_golem", "name": "Rock Golem", "rarity": "rare", "element": "earth",
+    "archetype": "tank", "bst": 360, "size": "medium", "rideable": false, "level": 20,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "9a8a6a", "traits": ["grounded"], "skills": ["charge"],
+    "resist": {"lightning": 0.9}, "loot_table": "desert_golem", "tame_base": 0.25,
+    "evolution": "obsidian_golem", "aggro_radius": 120,
+    "lore": "Golem batu ter-ground: hampir kebal petir (sains grounding). Tank tambang."
+  },
+  {
+    "id": "dune_serpent", "name": "Dune Serpent", "rarity": "epic", "element": "earth",
+    "archetype": "bruiser", "bst": 440, "size": "medium", "rideable": true, "level": 24,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "caa860", "traits": ["sand_dive"], "skills": ["charge", "bite"],
+    "loot_table": "desert_serpent", "tame_base": 0.15, "evolution": "desert_wyrm",
+    "aggro_radius": 160, "lore": "Ular pasir raksasa; tunggangan gurun."
+  },
+  {
+    "id": "cactus_fiend", "name": "Cactus Fiend", "rarity": "rare", "element": "wood",
+    "archetype": "support", "bst": 360, "size": "small", "rideable": false, "level": 16,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "ranged", "tint": "6a9a4a", "traits": ["thorns"], "skills": ["spore_cloud"],
+    "loot_table": "desert_cactus", "tame_base": 0.4, "evolution": "",
+    "aggro_radius": 130, "lore": "Iblis kaktus; berduri, farm air/duri."
+  },
+  {
     "id": "moonbit", "name": "Moonbit", "rarity": "rare", "element": "moon",
     "archetype": "swift", "bst": 360, "size": "small", "rideable": false, "is_rabbit": true, "level": 8,
     "sprite": "res://assets/game/sprites/monsters/fluffbit.png", "frame_size": 16, "cols": 4, "rows": 4,

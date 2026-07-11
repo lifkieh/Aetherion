@@ -2,9 +2,9 @@ extends Node2D
 ## Resource node: tree (wood) or ore (copper). Harvest by pressing E nearby.
 ## Depletes, then respawns after a real-time delay tracked in WorldState.
 
-const RESPAWN := {"tree": 60, "ore": 90, "lollipop": 75}
-const LOOT := {"tree": "tree_node", "ore": "copper_node", "lollipop": "lollipop_node"}
-const HITS := {"tree": 3, "ore": 4, "lollipop": 3}
+const RESPAWN := {"tree": 60, "ore": 90, "lollipop": 75, "sandstone": 80}
+const LOOT := {"tree": "tree_node", "ore": "copper_node", "lollipop": "lollipop_node", "sandstone": "sandstone_node"}
+const HITS := {"tree": 3, "ore": 4, "lollipop": 3, "sandstone": 4}
 
 var kind := "tree"
 var node_id := ""
@@ -34,6 +34,9 @@ func _build_sprite() -> void:
 	if kind == "lollipop":
 		sprite.texture = load("res://assets/game/tiles/candyveil/candy_lollipop_tree_32x48.png")
 		sprite.offset = Vector2(0, -16)
+	elif kind == "sandstone":
+		sprite.texture = load("res://assets/game/tiles/desert/rock.png")
+		sprite.scale = Vector2(1.8, 1.6)
 	elif kind == "tree":
 		var at := AtlasTexture.new()
 		at.atlas = load("res://assets/game/tiles/nature.png")

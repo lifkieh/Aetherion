@@ -131,7 +131,7 @@ func recalculate_stats() -> void:
 	var lv := level
 	# Hero is deliberately stronger per-point than fodder monsters (BST-based),
 	# so early common monsters die in a handful of hits (Monster_Roster §1.3 TTK).
-	max_hp = 140 + e * 16 + lv * 12
+	max_hp = 165 + e * 18 + lv * 14   # bumped for swarm survivability
 	max_mp = 40 + i * 6 + lv * 4
 	atk = 24 + s * 5 + lv * 3 + _weapon_atk()
 	# Title micro-buff (neutral prestige, GDD v0.2 §10.3). Guarded for autoload order.

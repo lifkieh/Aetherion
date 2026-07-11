@@ -72,5 +72,31 @@
   {"id": "lollipop_node", "drops": [
     {"item": "choco_wood", "chance": 1.0, "min": 2, "max": 4},
     {"item": "sugar_crystal", "chance": 0.25, "min": 1, "max": 1}
+  ]},
+  {"id": "desert_scarab", "drops": [
+    {"item": "chitin", "chance": 0.9, "min": 1, "max": 2}
+  ]},
+  {"id": "desert_viper", "drops": [
+    {"item": "venom_gland", "chance": 0.7, "min": 1, "max": 1}
+  ]},
+  {"id": "desert_vulture", "drops": [
+    {"item": "feather_dusty", "chance": 0.8, "min": 1, "max": 2}
+  ]},
+  {"id": "desert_jackal", "drops": [
+    {"item": "shadow_pelt", "chance": 0.6, "min": 1, "max": 1},
+    {"item": "beast_essence", "chance": 0.07, "min": 1, "max": 1}
+  ]},
+  {"id": "desert_golem", "drops": [
+    {"item": "sandstone", "chance": 0.9, "min": 1, "max": 3},
+    {"item": "copper_ore", "chance": 0.3, "min": 1, "max": 2}
+  ]},
+  {"id": "desert_serpent", "drops": [
+    {"item": "serpent_scale", "chance": 0.7, "min": 1, "max": 2}
+  ]},
+  {"id": "desert_cactus", "drops": [
+    {"item": "cactus_water", "chance": 0.85, "min": 1, "max": 2}
+  ]},
+  {"id": "sandstone_node", "drops": [
+    {"item": "sandstone", "chance": 1.0, "min": 2, "max": 4}
   ]}
 ]

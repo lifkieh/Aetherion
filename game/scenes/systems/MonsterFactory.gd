@@ -77,7 +77,7 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 		"max_hp": hp, "hp": hp,
 		"atk": atk, "def": dfn, "matk": matk, "mdef": mdef, "spd": spd,
 		"crit_rate": 0.05, "crit_dmg": 1.5,
-		"resist": {},
+		"resist": def.get("resist", {}),   # e.g. Rock Golem {lightning:0.9} = grounding (science)
 		"skills": def.get("skills", ["tackle"]),
 		"traits": def.get("traits", []),
 		"loot_table": def.get("loot_table", ""),

@@ -57,6 +57,14 @@
   {"id": "fishing_rod", "name": "Pancing", "tier": "E", "type": "gear", "value": 120, "stack": 1, "shop_stock": 5, "shop_demand": 10},
   {"id": "star_bait", "name": "Umpan Bintang", "tier": "C", "type": "bait", "value": 150, "stack": 99, "shop_stock": 2, "shop_demand": 6, "desc": "Umpan berkilau; menarik makhluk langit saat hujan meteor."},
 
+  {"id": "chitin", "name": "Chitin", "tier": "F", "type": "material", "value": 16, "stack": 999},
+  {"id": "venom_gland", "name": "Kelenjar Bisa", "tier": "E", "type": "material", "value": 34, "stack": 999},
+  {"id": "feather_dusty", "name": "Bulu Berdebu", "tier": "F", "type": "material", "value": 14, "stack": 999},
+  {"id": "shadow_pelt", "name": "Kulit Bayangan", "tier": "D", "type": "material", "value": 60, "stack": 999},
+  {"id": "sandstone", "name": "Batu Pasir", "tier": "F", "type": "material", "value": 12, "stack": 999, "shop_demand": 16},
+  {"id": "serpent_scale", "name": "Sisik Ular", "tier": "D", "type": "material", "value": 70, "stack": 999},
+  {"id": "cactus_water", "name": "Air Kaktus", "tier": "E", "type": "material", "value": 22, "stack": 999},
+
   {"id": "saddle", "name": "Pelana", "tier": "D", "type": "gear", "value": 300, "stack": 1, "shop_stock": 4, "shop_demand": 8},
   {"id": "health_charm", "name": "Jimat Vitalitas", "tier": "D", "type": "gear", "hp_bonus": 40, "value": 400, "stack": 1}
 ]
