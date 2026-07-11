@@ -271,7 +271,11 @@ func _process_rain_follow() -> void:
 
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
-	player.global_position = Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
+	if WorldState.pending_return_pos != null:
+		player.global_position = WorldState.pending_return_pos
+		WorldState.pending_return_pos = null
+	else:
+		player.global_position = Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
 	add_child(player)
 
 func _add_hud() -> void:
@@ -329,6 +333,10 @@ func _spawn_interactables() -> void:
 	add_child(ds)
 	ds.setup("res://scenes/world/Desert.tscn", "Desert of Ruins [E]")
 	ds.global_position = center + Vector2(-120, -40)
+	var dungeon := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(dungeon)
+	dungeon.setup("dungeon")
+	dungeon.global_position = center + Vector2(200, 120)
 	# fishing ponds scattered around the region
 	for p in [Vector2(-260, 180), Vector2(300, -220), Vector2(-320, -180)]:
 		var pond := preload("res://scenes/world/Interactable.tscn").instantiate()

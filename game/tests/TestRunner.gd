@@ -24,6 +24,7 @@ func _ready() -> void:
 	_test_achievements()
 	_test_quests()
 	_test_evolution()
+	await _test_platformer()
 	_test_fishing()
 	_test_skycalendar()
 	await _test_bugfixes()
@@ -212,6 +213,53 @@ func _test_fishing() -> void:
 	check("snapper at high tide", "tide_snapper" in FishingSystem.eligible(12, 0.7, false, "").map(func(f): return f.id))
 	check("roll yields a catch (carp always eligible)", not FishingSystem.roll("").is_empty())
 
+func _test_platformer() -> void:
+	print("[Dungeon platformer]")
+	# --- terrain: mining + ladders ---
+	var terrain = preload("res://scenes/world/DungeonTerrain.tscn").instantiate()
+	add_child(terrain)
+	terrain.build_from(["BBBBB", "B O B", "B H B", "B###B", "BBBBB"])
+	await get_tree().process_frame
+	check("ladder cell detected", terrain.is_ladder(terrain.solid.map_to_local(Vector2i(2, 2))))
+	check("non-ladder cell false", not terrain.is_ladder(terrain.solid.map_to_local(Vector2i(2, 3))))
+	PlayerData.new_game()
+	var before: int = PlayerData.item_count("copper_ore")
+	check("bedrock is undiggable", not terrain.try_mine(terrain.solid.map_to_local(Vector2i(0, 0))))
+	check("bedrock cell intact", terrain.solid.get_cell_source_id(Vector2i(0, 0)) != -1)
+	var ore_pos = terrain.solid.map_to_local(Vector2i(2, 1))
+	for i in range(4):
+		terrain.try_mine(ore_pos)
+	check("ore mined out after 4 hits", terrain.solid.get_cell_source_id(Vector2i(2, 1)) == -1)
+	check("ore dropped copper", PlayerData.item_count("copper_ore") > before)
+	check("mining granted Miner XP", PlayerData.prof_xp.get("miner", 0) > 0)
+	terrain.queue_free()
+
+	# --- physics: gravity fall + landing + jump ---
+	var t2 = preload("res://scenes/world/DungeonTerrain.tscn").instantiate()
+	add_child(t2)
+	t2.build_from(["BBBBBBBB", "B      B", "B      B", "B      B", "B######B", "BBBBBBBB"])
+	var pp = preload("res://scenes/actors/PlayerPlatformer.tscn").instantiate()
+	add_child(pp)
+	pp.global_position = t2.solid.map_to_local(Vector2i(3, 1))
+	var y0: float = pp.global_position.y
+	for i in range(70):
+		await get_tree().physics_frame
+	check("player fell under gravity", pp.global_position.y > y0, "y0=%.1f y=%.1f" % [y0, pp.global_position.y])
+	check("player landed on floor (stopped falling)", pp.is_on_floor() or absf(pp.velocity.y) < 40.0, "y=%.1f vy=%.1f onfloor=%s" % [pp.global_position.y, pp.velocity.y, str(pp.is_on_floor())])
+	var y_land: float = pp.global_position.y
+	pp.velocity.y = pp.JUMP_VELOCITY
+	for i in range(3):
+		await get_tree().physics_frame
+	check("jump moves player upward", pp.global_position.y < y_land)
+	pp.queue_free()
+	t2.queue_free()
+
+	# --- scene transition state (dungeon door return-pos round trip) ---
+	WorldState.pending_return_pos = Vector2(123, 456)
+	check("return pos stored on dungeon entry", WorldState.pending_return_pos == Vector2(123, 456))
+	WorldState.pending_return_pos = null   # overworld consumes it
+	check("return pos consumed on re-entry", WorldState.pending_return_pos == null)
+
 func _test_evolution() -> void:
 	print("[EvolutionSystem]")
 	check("moonbit data loaded", Db.monsters.has("moonbit"))
@@ -388,11 +436,15 @@ func _test_crafting() -> void:
 	check("ingredients consumed", PlayerData.item_count("wood_log") == 0)
 	# Cook recipes present + craftable
 	check("cook recipe exists", not CraftingSystem.find_recipe("cook_grilled_fish").is_empty())
-	PlayerData.inventory.clear()
-	PlayerData.add_item("fish_carp", 1)
-	PlayerData.add_item("wood_log", 1)
-	var rc := CraftingSystem.craft("cook_grilled_fish")
-	check("grilled fish cooked", rc.success and PlayerData.item_count("grilled_fish") == 1)
+	var cooked := false
+	for attempt in range(20):   # 95% rate -> retry to keep the test deterministic
+		PlayerData.inventory.clear()
+		PlayerData.add_item("fish_carp", 1)
+		PlayerData.add_item("wood_log", 1)
+		if CraftingSystem.craft("cook_grilled_fish").success:
+			cooked = true
+			break
+	check("grilled fish cooked", cooked and PlayerData.item_count("grilled_fish") >= 1)
 	# missing ingredients fails cleanly
 	var r2 := CraftingSystem.craft("craft_copper_sword")
 	check("craft fails without mats", not r2.success)

@@ -233,21 +233,7 @@ func _split() -> void:
 		m.global_position = global_position + Vector2(randf_range(-16, 16), randf_range(-16, 16))
 
 func _grant_rewards(_from) -> void:
-	# EXP
-	PlayerData.gain_exp(inst.get("exp_reward", 5))
-	# Loot
-	var table := Db.loot_table(inst.get("loot_table", ""))
-	for d in table:
-		if randf() <= float(d.get("chance", 0)):
-			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
-			PlayerData.add_item(d.get("item", ""), qty)
-	# Drop a coin pickup for feedback
-	_drop_coin()
-
-func _drop_coin() -> void:
-	var lvl: int = int(inst.get("level", 1))
-	var gold: int = randi_range(1, 4) * maxi(1, lvl)
-	PlayerData.add_gold(gold)
+	MonsterFactory.grant_rewards(inst)   # shared with side-view DungeonMonster
 
 # --- Taming (M4 core; input handled by nearby Player) -----------------------
 

@@ -2,6 +2,50 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — OWNER DECISION (locked): dungeons are side-view platformers
+
+**Directive:** open world stays **top-down**, but **ALL dungeons use a side-view Terraria-style platformer
+perspective.** Rationale (owner): distinct dungeon feel + mining/verticality depth. Binding for all current
+and future dungeons.
+
+Implementation contract (must follow):
+1. New `PlayerPlatformer` controller (gravity, jump, coyote time, jump buffer, ladders, one-way platforms)
+   that **REUSES PlayerData / CombatResolver / element logic** — no combat-logic duplication (shared via
+   `PlayerCombat` helper).
+2. Transition: a dungeon door in the top-down world → side-view scene; exiting returns to the exact door
+   position in the overworld.
+3. Dungeon TileMap with a **soft mineable** block layer (dirt/stone) + **ore veins** embedded in walls (copper
+   in the Greenvale dungeon) giving material + **Miner EXP**; **hard blocks are undiggable** so level design
+   stays controlled.
+4. Dark lighting + torches (CanvasModulate + cheap Light2D point lights, performance-friendly).
+5. Convert the **King Slime dungeon** to this format as the pilot: 3 vertical floors + boss arena at the bottom.
+6. Dungeon monsters use side-view sprites (assets_raw LuizMelo etc.) with simple platformer AI (edge patrol,
+   small hops).
+7. Platformer element rules (as DATA): Wind infusion = brief double jump; Ice freezes puddles into platforms.
+8. Headless tests for basic physics (fall, jump, mine block, scene transition).
+After the pilot passes, resume remaining STATUS.md priorities with **all future dungeons in this side-view format.**
+
+**PILOT DELIVERED & VERIFIED (same day):**
+- `PlayerCombat` helper extracted; top-down `Player` refactored to delegate to it → `PlayerPlatformer`
+  reuses the exact same combat/element logic (no duplication). Confirmed via tests + refactor.
+- `PlayerPlatformer`: gravity, jump (coyote 0.1s + 0.1s buffer), Wind-flow **double jump** (data rule),
+  one-way platform drop (down+jump), ladder climb; attack/skills/mining share PlayerCombat.
+- `DungeonTerrain`: ASCII-layout → visual TileMapLayer + **per-cell StaticBody collision** (robust; the
+  code-built TileSet physics-layer approach tunneled, so switched to per-cell shapes which also make mining
+  remove the exact cell). Soft dirt/stone/copper diggable; **bedrock undiggable**; copper vein → copper +
+  Miner XP (`PlayerData.gain_prof_xp`).
+- `DungeonMonster`: side-view platformer AI (edge/wall patrol via raycasts, small hops; flyer bob for bats);
+  reuses `CombatResolver` + `MonsterFactory.grant_rewards` (shared with top-down Monster).
+- `GreenvaleDepths` (King Slime pilot): 3 floors + ladders + platforms + ore veins + **boss arena** at the
+  bottom (King Slime, split); dark `CanvasModulate` + torch **PointLight2D** + a light carried by the player.
+- Transition: overworld dungeon door sets `WorldState.pending_return_pos` → side-view scene; exit Portal →
+  overworld spawns the player back at the door.
+- Element platformer rules in `elements.json.platformer_rules`; `Puddle` freezes solid under Ice-flow.
+- Infuse keys added: 3=Ice, 4=Wind. Headless physics tests (fall/jump/mine/ladder/transition): **all pass**.
+- Assets: LuizMelo not in the extracted packs → used perspective-neutral slime + a procedurally-generated
+  bat + procedurally-generated dungeon tiles/torch (asset-fallback order honored; original side-view monster
+  art remains a backlog swap).
+
 ## 2026-07-11 — Session 2 (round 3): Star Whale, Cook, music, Echo Vendors
 
 - **Star Whale hidden scenario** — 2nd Hidden Scenario, fully wired to the fishing Star-Bait hook:

@@ -57,6 +57,11 @@
       {"desc": "Lemah saat bulan baru", "if": {"new_moon": true}, "mult": 0.7}
     ]
   },
+  "platformer_rules": {
+    "wind": {"double_jump": true, "desc": "Infus Wind memberi lompatan ganda singkat."},
+    "ice": {"freeze_puddle": true, "desc": "Infus Ice membekukan genangan air jadi pijakan padat."},
+    "fire": {"melt_ice": true, "desc": "Api mencairkan es kembali jadi air."}
+  },
   "combos": [
     {"a": "fire", "b": "water", "result": "steam", "effect": "accuracy_down_area"},
     {"a": "fire", "b": "ice", "result": "thermal_shock", "mult": 1.5},

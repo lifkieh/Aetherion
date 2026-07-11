@@ -29,7 +29,7 @@ static func tamer_skill_mod() -> float:
 	# Placeholder for Tamer profession level (Fase 0: flat small bonus by player level).
 	return 1.0 + minf(0.25, PlayerData.level * 0.01)
 
-static func compute_chance(monster: Monster, orb: Dictionary) -> float:
+static func compute_chance(monster, orb: Dictionary) -> float:
 	var base: float = monster.inst.get("tame_base", 0.4)
 	var affinity_mod := 1.0
 	var chance := base * float(orb.get("mult", 1.0)) * affinity_mod * weather_mod() * tamer_skill_mod()
@@ -37,7 +37,7 @@ static func compute_chance(monster: Monster, orb: Dictionary) -> float:
 	return clampf(chance, 0.0, 0.99)
 
 ## Returns {success, chance, reason}.
-static func attempt(monster: Monster, rng: RandomNumberGenerator = null) -> Dictionary:
+static func attempt(monster, rng: RandomNumberGenerator = null) -> Dictionary:
 	if not monster.can_be_tamed():
 		return {"success": false, "chance": 0.0, "reason": "hp_too_high"}
 	var orb := best_orb()
@@ -53,7 +53,7 @@ static func attempt(monster: Monster, rng: RandomNumberGenerator = null) -> Dict
 		_add_to_party(monster)
 	return {"success": success, "chance": chance, "reason": "ok"}
 
-static func _add_to_party(monster: Monster) -> void:
+static func _add_to_party(monster) -> void:
 	var pet := {
 		"species_id": monster.inst.get("species_id", ""),
 		"name": monster.inst.get("name", ""),

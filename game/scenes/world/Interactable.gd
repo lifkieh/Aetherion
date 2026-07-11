@@ -1,7 +1,8 @@
 extends Node2D
 ## World interactable (M5): crafting bench or shop NPC. Press E nearby.
 
-var kind := "bench"   # bench | shop
+var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon
+var dungeon_scene := "res://scenes/world/GreenvaleDepths.tscn"
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var label: Label = $Label
@@ -27,7 +28,15 @@ func _process(delta: float) -> void:
 		label.visible = global_position.distance_to(p.global_position) < 72.0
 
 func _build() -> void:
-	if kind == "astrologer":
+	if kind == "dungeon":
+		var at2 := AtlasTexture.new()
+		at2.atlas = load("res://assets/game/tiles/nature.png")
+		at2.region = Rect2(16, 48, 32, 32)
+		sprite.texture = at2
+		sprite.modulate = Color(0.35, 0.3, 0.45)
+		sprite.offset = Vector2(0, -8)
+		label.text = "Gua Greenvale ▼ [E]"
+	elif kind == "astrologer":
 		var at := AtlasTexture.new()
 		at.atlas = load("res://assets/game/sprites/player/idle.png")
 		at.region = Rect2(0, 0, 16, 16)
@@ -70,6 +79,10 @@ func interact() -> void:
 		return
 	if kind == "pond":
 		_fish()
+		return
+	if kind == "dungeon":
+		WorldState.pending_return_pos = global_position
+		get_tree().change_scene_to_file(dungeon_scene)
 		return
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
 	if menu == null:

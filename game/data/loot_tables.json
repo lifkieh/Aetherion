@@ -98,5 +98,13 @@
   ]},
   {"id": "sandstone_node", "drops": [
     {"item": "sandstone", "chance": 1.0, "min": 2, "max": 4}
+  ]},
+  {"id": "cave_bat", "drops": [
+    {"item": "fluff", "chance": 0.5, "min": 1, "max": 1}
+  ]},
+  {"id": "king_slime", "drops": [
+    {"item": "slime_jelly", "chance": 1.0, "min": 5, "max": 10},
+    {"item": "gel_core", "chance": 1.0, "min": 1, "max": 1},
+    {"item": "greater_orb", "chance": 0.3, "min": 1, "max": 1}
   ]}
 ]

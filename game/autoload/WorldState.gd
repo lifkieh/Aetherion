@@ -3,6 +3,7 @@ extends Node
 ## Counters (rabbits_killed, trees_cut...) are raised silently from EventBus.
 
 var weather: String = "sunny"          # sunny/rain/thunderstorm/blizzard/blood_moon
+var pending_return_pos = null           # Vector2 set by a dungeon door; consumed on overworld re-entry
 var counters: Dictionary = {}          # key -> int
 var node_states: Dictionary = {}       # gathering node id -> {harvested_at:unix}
 var _weather_timer := 0.0

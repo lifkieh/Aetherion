@@ -94,6 +94,21 @@
   },
 
   {
+    "id": "cave_bat", "name": "Cave Bat", "rarity": "common", "element": "darkness",
+    "archetype": "assassin", "bst": 300, "size": "small", "rideable": false, "level": 12,
+    "sprite": "res://assets/game/sprites/dungeon/bat.png", "frame_size": 16, "cols": 1, "rows": 1,
+    "ai": "flyer", "traits": [], "skills": ["bite"], "loot_table": "cave_bat",
+    "tame_base": 0.4, "evolution": "", "aggro_radius": 160, "lore": "Kelelawar gua; terbang zig-zag."
+  },
+  {
+    "id": "king_slime", "name": "King Slime", "rarity": "epic", "element": "water",
+    "archetype": "tank", "bst": 440, "size": "large", "rideable": false, "level": 15,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "6aa0ff", "traits": ["split"], "skills": ["tackle"],
+    "loot_table": "king_slime", "tame_base": 0.08, "evolution": "",
+    "aggro_radius": 400, "is_boss": true, "lore": "Raja slime bengkak; membelah dan memantul. Bos dungeon Greenvale."
+  },
+  {
     "id": "sand_scarab", "name": "Sand Scarab", "rarity": "common", "element": "earth",
     "archetype": "tank", "bst": 300, "size": "small", "rideable": false, "level": 12,
     "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,

@@ -92,6 +92,18 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 		"is_rabbit": def.get("is_rabbit", false),
 	}
 
+## Grant kill rewards (EXP + loot + gold) for an instance. Shared by the top-down
+## Monster and the side-view DungeonMonster — no duplication.
+static func grant_rewards(inst: Dictionary) -> void:
+	PlayerData.gain_exp(inst.get("exp_reward", 5))
+	var table := Db.loot_table(inst.get("loot_table", ""))
+	for d in table:
+		if randf() <= float(d.get("chance", 0)):
+			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
+			PlayerData.add_item(d.get("item", ""), qty)
+	var lvl: int = int(inst.get("level", 1))
+	PlayerData.add_gold(randi_range(1, 4) * maxi(1, lvl))
+
 ## Combat stat view for CombatResolver.
 static func combat_stats(inst: Dictionary) -> Dictionary:
 	return {

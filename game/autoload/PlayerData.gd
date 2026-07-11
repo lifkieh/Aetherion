@@ -55,6 +55,7 @@ var active_title: String = ""          # equipped title (micro-buff)
 var discovered: Dictionary = {"monsters": {}, "items": {}, "weathers": {}}  # Aetherpedia
 var craft_insight: Dictionary = {}     # recipe_id -> accumulated success bonus
 var daily_quests: Dictionary = {}      # {date, quests:[...]} — Daily Quest Board
+var prof_xp: Dictionary = {}           # profession -> xp (miner, lumberjack, ...)
 
 func _ready() -> void:
 	recalculate_stats()
@@ -83,6 +84,7 @@ func new_game() -> void:
 	discovered = {"monsters": {}, "items": {}, "weathers": {}}
 	craft_insight = {}
 	daily_quests = {}
+	prof_xp = {}
 	birth_sign = _birth_sign_from_today()
 	recalculate_stats()
 	hp = max_hp
@@ -238,6 +240,16 @@ func remove_item(item_id: String, qty: int = 1) -> bool:
 func item_count(item_id: String) -> int:
 	return inventory.get(item_id, 0)
 
+## Profession XP (GDD v0.2 §3). Simple accumulation for now; perks TBD.
+func gain_prof_xp(profession: String, amount: int) -> void:
+	if amount <= 0:
+		return
+	prof_xp[profession] = prof_xp.get(profession, 0) + amount
+	EventBus.prof_xp_gained.emit(profession, prof_xp[profession])
+
+func prof_level(profession: String) -> int:
+	return int(floor(sqrt(prof_xp.get(profession, 0) / 20.0))) + 1
+
 func add_gold(amount: int) -> void:
 	gold = max(0, gold + amount)
 	EventBus.gold_changed.emit(gold)
@@ -261,7 +273,7 @@ func to_save() -> Dictionary:
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
 		"scenario_flags": scenario_flags, "titles": titles, "professions": professions,
 		"achievements": achievements, "active_title": active_title, "discovered": discovered,
-		"craft_insight": craft_insight, "daily_quests": daily_quests,
+		"craft_insight": craft_insight, "daily_quests": daily_quests, "prof_xp": prof_xp,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -287,6 +299,7 @@ func from_save(d: Dictionary) -> void:
 	discovered = d.get("discovered", {"monsters": {}, "items": {}, "weathers": {}})
 	craft_insight = d.get("craft_insight", {})
 	daily_quests = d.get("daily_quests", {})
+	prof_xp = d.get("prof_xp", {})
 	infusion = {}          # transient — never carry over a save
 	mounted = false        # never load mounted (pet may not exist)
 	recalculate_stats()
