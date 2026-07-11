@@ -137,6 +137,38 @@ func _rebuild() -> void:
 		"system": _build_system()
 		"pedia": _build_pedia()
 		"quest": _build_quests()
+		"sky": _build_sky()
+
+func _build_sky() -> void:
+	title.text = "Menara Astrologer"
+	content.add_child(_mk_label("☾ Fase: %s   ·   %s %s WIB" % [GameClock.moon_name(), GameClock.date_string(), GameClock.time_string()], 16))
+	var tide := GameClock.tide_level()
+	var tide_txt := "Pasang tinggi" if tide > 0.3 else ("Surut ekstrem" if tide < -0.3 else "Normal")
+	content.add_child(_mk_label("Pasang-surut: %s   ·   Cuaca: %s" % [tide_txt, WorldState.weather.capitalize()], 14))
+	var rasi: String = PlayerData.birth_sign if PlayerData.birth_sign != "" else "-"
+	content.add_child(_mk_label("Rasi Kelahiranmu: %s" % rasi, 14))
+	content.add_child(_mk_label("— Ramalan Mingguan —", 16))
+	var prophecy := _weekly_prophecy()
+	var pl := _mk_label(prophecy, 14)
+	pl.autowrap_mode = TextServer.AUTOWRAP_WORD
+	pl.custom_minimum_size = Vector2(500, 0)
+	pl.add_theme_color_override("font_color", Color(0.8, 0.85, 1.0))
+	content.add_child(pl)
+	content.add_child(_mk_label("— Langit Mendatang (kalender nyata) —", 16))
+	var events: Array = GameClock.upcoming_events(6)
+	if events.is_empty():
+		content.add_child(_mk_label("(tak ada event terjadwal)", 13))
+	for e in events:
+		var when := "hari ini" if e.days == 0 else ("besok" if e.days == 1 else "%d hari lagi" % e.days)
+		content.add_child(_mk_label("✦ %s — %s (%s)" % [e.name, e.date, when], 14))
+
+func _weekly_prophecy() -> String:
+	# Rotating riddle that hints at an active/eligible Hidden Scenario (v0.3 §3.2).
+	var scs: Array = Db.scenarios.filter(func(s): return s.has("hint"))
+	if scs.is_empty():
+		return "Langit sunyi minggu ini."
+	var pick: Dictionary = scs[GameClock.week_index() % scs.size()]
+	return "\"%s\"" % pick.get("hint", "")
 
 func _build_quests() -> void:
 	title.text = "Papan Quest Harian"

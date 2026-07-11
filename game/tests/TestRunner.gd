@@ -25,6 +25,7 @@ func _ready() -> void:
 	_test_quests()
 	_test_evolution()
 	_test_fishing()
+	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
@@ -160,6 +161,21 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_skycalendar() -> void:
+	print("[Sky Calendar]")
+	check("sky calendar loaded", Db.sky_calendar.size() > 0)
+	check("days_until today == 0", GameClock.days_until(GameClock.date_string()) == 0)
+	check("days_until far future > 0", GameClock.days_until("2099-01-01") > 0)
+	check("days_until past < 0", GameClock.days_until("2000-01-01") < 0)
+	var ev: Array = GameClock.upcoming_events(6)
+	var sorted := true
+	var non_neg := true
+	for i in range(ev.size()):
+		if ev[i].days < 0: non_neg = false
+		if i > 0 and ev[i - 1].days > ev[i].days: sorted = false
+	check("upcoming events non-negative", non_neg)
+	check("upcoming events sorted ascending", sorted)
 
 func _test_fishing() -> void:
 	print("[FishingSystem]")

@@ -321,6 +321,10 @@ func _spawn_interactables() -> void:
 	add_child(board)
 	board.setup("board")
 	board.global_position = center + Vector2(-40, -40)
+	var astro := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(astro)
+	astro.setup("astrologer")
+	astro.global_position = center + Vector2(96, 8)
 	# fishing ponds scattered around the region
 	for p in [Vector2(-260, 180), Vector2(300, -220), Vector2(-320, -180)]:
 		var pond := preload("res://scenes/world/Interactable.tscn").instantiate()

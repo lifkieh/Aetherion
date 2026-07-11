@@ -16,7 +16,15 @@ func _ready() -> void:
 	_build()
 
 func _build() -> void:
-	if kind == "pond":
+	if kind == "astrologer":
+		var at := AtlasTexture.new()
+		at.atlas = load("res://assets/game/sprites/player/idle.png")
+		at.region = Rect2(0, 0, 16, 16)
+		sprite.texture = at
+		sprite.scale = Vector2(1.4, 1.4)
+		sprite.modulate = Color(0.7, 0.7, 1.0)
+		label.text = "Astrologer [E]"
+	elif kind == "pond":
 		sprite.texture = load("res://assets/game/tiles/pond.png")
 		sprite.scale = Vector2(1.6, 1.6)
 		label.text = "Memancing [E]"
@@ -59,6 +67,8 @@ func interact() -> void:
 		menu.open("shop", self)
 	elif kind == "board":
 		menu.open("quest", self)
+	elif kind == "astrologer":
+		menu.open("sky", self)
 	else:
 		menu.open("crafting", self)
 

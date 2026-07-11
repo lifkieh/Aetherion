@@ -136,6 +136,30 @@ func sky_event_today() -> String:
 			return e.get("name", "")
 	return ""
 
+## Whole days from now (WIB) until an ISO date "YYYY-MM-DD" (negative if past).
+func days_until(iso_date: String) -> int:
+	var target := Time.get_unix_time_from_datetime_string(iso_date + "T00:00:00")
+	var now := Time.get_unix_time_from_system() + WIB_OFFSET
+	# compare against WIB midnight today
+	var d := now_wib()
+	var today_mid := Time.get_unix_time_from_datetime_string("%04d-%02d-%02dT00:00:00" % [d.year, d.month, d.day])
+	return int(round((target - today_mid) / 86400.0))
+
+## Next `limit` sky-calendar events, soonest first, with day countdowns.
+func upcoming_events(limit: int = 5) -> Array:
+	_ensure_calendar()
+	var out: Array = []
+	for e in _sky_calendar:
+		var dleft := days_until(e.get("date", ""))
+		if dleft >= 0:
+			out.append({"name": e.get("name", ""), "date": e.get("date", ""), "days": dleft, "type": e.get("type", "")})
+	out.sort_custom(func(a, b): return a.days < b.days)
+	return out.slice(0, limit)
+
+## WIB week index (for the weekly prophecy rotation).
+func week_index() -> int:
+	return int((Time.get_unix_time_from_system() + WIB_OFFSET) / 604800)
+
 # --- Tick / signal emission -------------------------------------------------
 
 func _tick(force: bool) -> void:
