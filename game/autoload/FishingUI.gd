@@ -79,7 +79,7 @@ func _process(delta: float) -> void:
 
 func _start_bite() -> void:
 	state = BITE
-	_bite_window = 0.85
+	_bite_window = 0.85 * (1.0 + ProfessionSystem.perk_value("fisherman", "bite_window"))
 	_timer = _bite_window
 	label.text = "❗ IKAN! Tekan [E]!"
 	bar_fill.color = Color(0.9, 0.7, 0.2)
@@ -116,6 +116,7 @@ func _hook() -> void:
 		label.text = "Tidak ada yang tertangkap di jam ini."
 	else:
 		PlayerData.add_item(f.get("item", ""), 1)
+		EventBus.fish_caught.emit(f.get("id", ""))   # -> Fisherman XP
 		var rar: String = f.get("rarity", "common")
 		var mark := "🏆 " if rar in ["rare", "epic"] else ""
 		label.text = "%sDapat: %s!  [E] lanjut" % [mark, f.get("name", "?")]

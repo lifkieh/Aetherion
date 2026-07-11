@@ -49,8 +49,7 @@ func build_from(layout: Array, tile_tint: Color = Color.WHITE) -> void:
 			var cell := Vector2i(x, y)
 			if BLOCKS.has(c):
 				solid.set_cell(cell, BLOCKS[c].source, Vector2i(0, 0))
-				if BLOCKS[c].soft:
-					_hp[cell] = BLOCKS[c].hp
+				# _hp is initialized lazily on first mine (so the Miner "faster" perk applies)
 			elif c == "=":
 				_add_platform(platforms, cell)
 			elif c == "H":
@@ -155,7 +154,10 @@ func try_mine(global_pos: Vector2) -> bool:
 	if not cfg.get("soft", false):
 		EventBus.toast.emit("Batu ini terlalu keras untuk digali.")
 		return false
-	_hp[cell] = _hp.get(cell, cfg.hp) - 1
+	# Miner "faster" perk reduces the hits needed.
+	if not _hp.has(cell):
+		_hp[cell] = maxi(1, cfg.hp - int(ProfessionSystem.perk_value("miner", "faster")))
+	_hp[cell] -= 1
 	Audio.play_sfx("mine")
 	if _hp[cell] <= 0:
 		solid.erase_cell(cell)
@@ -163,10 +165,9 @@ func try_mine(global_pos: Vector2) -> bool:
 		_rebuild_row(cell.y)   # split the strip around the removed cell
 		var drop: String = cfg.get("drop", "")
 		if drop != "":
-			var qty := randi_range(1, 2)
+			var qty := randi_range(1, 2) + int(ProfessionSystem.perk_value("miner", "bonus_yield"))
 			PlayerData.add_item(drop, qty)
-			EventBus.node_harvested.emit("ore", drop, qty)
-		PlayerData.gain_prof_xp("miner", cfg.get("xp", 1))
+			EventBus.node_harvested.emit("ore", drop, qty)   # -> Miner XP via ProfessionSystem
 		WorldState.add_counter("blocks_mined")
 		EventBus.block_mined.emit(cell, "ore" if drop != "" else "block")
 	return true

@@ -73,12 +73,15 @@ func harvest() -> bool:
 	return true
 
 func _do_drop() -> void:
+	var prof := "miner" if kind in ["ore", "sandstone"] else "lumberjack"
+	var bonus := int(ProfessionSystem.perk_value(prof, "bonus_yield"))
+	var report_kind := "ore" if kind in ["ore", "sandstone"] else "tree"
 	var table := Db.loot_table(LOOT.get(kind, ""))
 	for d in table:
 		if randf() <= float(d.get("chance", 1.0)):
-			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
+			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1))) + bonus
 			PlayerData.add_item(d.get("item", ""), qty)
-			EventBus.node_harvested.emit(kind, d.get("item", ""), qty)
+			EventBus.node_harvested.emit(report_kind, d.get("item", ""), qty)
 	EventBus.toast.emit("Memanen %s" % ("kayu" if kind == "tree" else "tembaga"))
 
 func _set_depleted(v: bool) -> void:

@@ -40,6 +40,8 @@ signal pet_added(instance: Dictionary)
 # --- Gathering / crafting ---
 signal node_harvested(node_type: String, item_id: String, qty: int)
 signal prof_xp_gained(profession: String, total: int)
+signal prof_level_up(profession: String, level: int)
+signal fish_caught(fish_id: String)
 signal block_mined(cell: Vector2i, block_type: String)
 signal dungeon_entered(id: String)
 signal dungeon_exited(id: String)

@@ -19,6 +19,7 @@ var fish: Array = []
 var echo_vendors: Array = []
 var projectiles: Dictionary = {}   # id -> def
 var combat_feel: Dictionary = {}
+var professions: Dictionary = {}   # id -> def
 
 var _errors: Array[String] = []
 
@@ -42,6 +43,7 @@ func load_all() -> void:
 	echo_vendors = _load_array("echo_vendors.json")
 	projectiles = _load_indexed("projectiles.json", "id")
 	combat_feel = _load_object("combat_feel.json")
+	professions = _load_indexed("professions.json", "id")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])

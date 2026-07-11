@@ -27,6 +27,7 @@ func _ready() -> void:
 	await _test_platformer()
 	await _test_dungeon_combat()
 	_test_fishing()
+	_test_professions()
 	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
@@ -195,6 +196,27 @@ func _test_skycalendar() -> void:
 		if i > 0 and ev[i - 1].days > ev[i].days: sorted = false
 	check("upcoming events non-negative", non_neg)
 	check("upcoming events sorted ascending", sorted)
+
+func _test_professions() -> void:
+	print("[ProfessionSystem]")
+	check("professions data loaded", Db.professions.size() >= 5)
+	PlayerData.new_game()
+	PlayerData.professions["main"] = "adventurer"
+	ProfessionSystem.award("lumberjack", 5)
+	check("non-main XP is 1x", PlayerData.prof_xp.get("lumberjack", 0) == 5)
+	PlayerData.professions["main"] = "miner"
+	ProfessionSystem.award("miner", 10)
+	check("main profession +50% XP", PlayerData.prof_xp.get("miner", 0) == 15)
+	# perks unlock by level
+	PlayerData.prof_xp["miner"] = 800   # -> level ~7
+	check("miner is high level", PlayerData.prof_level("miner") >= 6)
+	check("miner 'faster' perk unlocked (Lv3)", ProfessionSystem.perk_value("miner", "faster") >= 1.0)
+	check("miner 'bonus_yield' perk unlocked (Lv6)", ProfessionSystem.perk_value("miner", "bonus_yield") >= 1.0)
+	# event-driven award through the existing harvest signal
+	var before: int = PlayerData.prof_xp.get("lumberjack", 0)
+	EventBus.node_harvested.emit("tree", "wood_log", 2)
+	check("harvest signal awards Lumberjack XP", PlayerData.prof_xp.get("lumberjack", 0) > before)
+	PlayerData.new_game()
 
 func _test_fishing() -> void:
 	print("[FishingSystem]")

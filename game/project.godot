@@ -30,6 +30,7 @@ FishingUI="*res://autoload/FishingUI.gd"
 MusicDirector="*res://autoload/MusicDirector.gd"
 ProjectilePool="*res://autoload/ProjectilePool.gd"
 CombatFeel="*res://autoload/CombatFeel.gd"
+ProfessionSystem="*res://autoload/ProfessionSystem.gd"
 
 [display]
 

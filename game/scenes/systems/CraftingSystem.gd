@@ -60,6 +60,7 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 	if success:
 		var result: String = recipe.get("result", "")
 		var out_qty: int = int(recipe.get("qty", 1))
+		out_qty += int(ProfessionSystem.perk_value(recipe.get("profession", ""), "bonus_yield"))
 		PlayerData.add_item(result, out_qty)
 		EventBus.item_crafted.emit(result, true)
 		EventBus.toast.emit("Berhasil membuat %s x%d!" % [Db.item_name(result), out_qty])

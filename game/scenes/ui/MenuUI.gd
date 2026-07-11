@@ -61,7 +61,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["pedia", "Pedia"]]:
+	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["prof", "Profesi"], ["pedia", "Pedia"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -136,9 +136,34 @@ func _rebuild() -> void:
 		"shop": _build_shop()
 		"system": _build_system()
 		"pedia": _build_pedia()
+		"prof": _build_prof()
 		"quest": _build_quests()
 		"sky": _build_sky()
 		"echo": _build_echo()
+
+func _build_prof() -> void:
+	title.text = "Profesi"
+	var main: String = PlayerData.professions.get("main", "")
+	content.add_child(_mk_label("Profesi Utama: %s (+50%% EXP)" % (Db.professions.get(main, {}).get("name", "belum dipilih")), 15))
+	for id in Db.professions.keys():
+		var def: Dictionary = Db.professions[id]
+		var lvl := PlayerData.prof_level(id)
+		var xp: int = PlayerData.prof_xp.get(id, 0)
+		var h := _row()
+		var mark := "★ " if id == main else ""
+		var l := _mk_label("%s%s — Lv %d (%d XP)" % [mark, def.get("name", id), lvl, xp], 14)
+		l.custom_minimum_size = Vector2(300, 0)
+		h.add_child(l)
+		# next perk hint
+		var next_perk := ""
+		for p in def.get("perks", []):
+			if int(p.get("level", 0)) > lvl:
+				next_perk = "Lv%d: %s" % [p.level, p.desc]
+				break
+		if next_perk != "":
+			h.add_child(_mk_label(next_perk, 11))
+		if id != main:
+			h.add_child(_btn("Jadikan Utama", func(): PlayerData.professions["main"] = id; EventBus.toast.emit("Profesi utama: " + def.get("name", id)); _rebuild()))
 
 func _build_echo() -> void:
 	var d: Dictionary = _ctx if _ctx is Dictionary else {}
