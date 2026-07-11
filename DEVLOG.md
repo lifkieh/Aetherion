@@ -2,6 +2,15 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — REPO PURGE (owner-approved): assets_raw removed from history
+
+- Backup first: `git bundle create _tools/aetherion-backup-<sha>.bundle --all` (93 MB, all refs).
+- `python -m git_filter_repo --path assets_raw --invert-paths --force` rewrote all 38 commits.
+- Result: **`.git` 104 MB → 5.7 MB**; `assets_raw` in **0 commits**; our `game/assets/` (202 files) intact.
+- Re-added origin, `git push origin --all --force` → remote `main` = a56a78b (verified `git ls-remote`).
+- Loose end: the `v0.1-alpha` tag re-push hit an intermittent credential-helper failure; the remote tag still
+  points at the pre-purge orphan. Will be reconciled when `v0.2-alpha` is pushed at the end of this UI/UX round.
+
 ## 2026-07-11 — GitHub connected + PERMANENT RULE
 
 - Remote: `origin = https://github.com/lifkieh/Aetherion.git`. Default branch renamed **master → main**.
