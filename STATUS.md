@@ -200,7 +200,7 @@ ronde ini memperkaya yang sudah ada. Semua aset ORISINAL (PIL / prosedural).
   saat itu + gosip kota.
 - **(5) Verifikasi** ✅ screenshot per area di `reports/` (self-eval vs kota JRPG padat), **60 fps** semua wilayah
   (Greenvale 1558 / Candyveil 896 / Desert 789 node — tanpa culling), 229/229 test, commit+push per bagian,
-  **tag v0.2.1-alpha**, export exe baru.
+  **tag v0.2.1-alpha**, export `export/Aetherion.exe` **85.1 MB** (boot standalone OK, Db load, tanpa error).
 
 ## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER (RONDE 2)
 Ronde World-Density (v0.2.1-alpha) selesai & di-tag. **Pengembangan fitur/konten DIHENTIKAN** sampai feedback
