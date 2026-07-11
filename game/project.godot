@@ -21,6 +21,7 @@ PlayerData="*res://autoload/PlayerData.gd"
 Economy="*res://autoload/Economy.gd"
 SaveManager="*res://autoload/SaveManager.gd"
 Audio="*res://autoload/Audio.gd"
+ScenarioManager="*res://autoload/ScenarioManager.gd"
 
 [display]
 

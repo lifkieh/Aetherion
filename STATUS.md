@@ -36,7 +36,11 @@
   - Separate Homestead instance (portal travel both ways), day/night, HUD/menu
   - 4 plots: plant mint/sunbud seeds → grow in real WIB time (offline growth via planted_at_unix delta) → harvest → product (sellable)
   - Growth stages visible; HomesteadSystem tested (backdated plots ready, young not)
-- [ ] M7 — Hidden Scenario (data DONE; TODO: ScenarioManager, counter trigger, Lunar Warren scene)
+- [x] **M7 — Hidden Scenario** ✅ DONE
+  - Silent `rabbits_killed` counter (no UI); ScenarioManager trigger = threshold + full moon + sleep_at_inn
+  - Shipping threshold **10000** (verified); debug 10 via AETHER_DEBUG_SCENARIO env
+  - Inn interactable (sleep) triggers; Lunar Warren: survive 60s, don't kill rabbits, chased by Moon Rabbit Berserker
+  - no_fail: cleared/failed written permanently to save; clear → Carrot of Calamity [S] + Moon element unlock (tested)
 - [ ] M8 — Polish (save/load DONE+backup; TODO: 3-slot menu UI, main menu, Sky Report screen, Mode Hemat, full audio, element icons in UI)
 
 ## Now

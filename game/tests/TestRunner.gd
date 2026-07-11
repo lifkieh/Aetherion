@@ -19,6 +19,7 @@ func _ready() -> void:
 	_test_homestead_growth()
 	_test_economy()
 	_test_crafting()
+	_test_scenario()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -149,6 +150,34 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_scenario() -> void:
+	print("[ScenarioManager]")
+	var id := "moon_rabbit_warren"
+	PlayerData.scenario_flags.erase(id)
+	WorldState.set_counter("rabbits_killed", 0)
+	check("no trigger below rabbit threshold", ScenarioManager.would_trigger("sleep_at_inn") == "")
+	# threshold uses 10000 (shipping), debug uses 10
+	var sc := ScenarioManager.find(id)
+	check("shipping threshold is 10000", ScenarioManager.threshold(sc) == 10000)
+	# flag blocks re-trigger even if conditions met
+	PlayerData.scenario_flags[id] = "cleared"
+	WorldState.set_counter("rabbits_killed", 99999)
+	check("cleared flag blocks re-trigger (no_fail)", ScenarioManager.would_trigger("sleep_at_inn") == "")
+	# reward application
+	PlayerData.scenario_flags.erase(id)
+	PlayerData.inventory.clear()
+	if "moon" in PlayerData.mastered_elements:
+		PlayerData.mastered_elements.erase("moon")
+	var summary := ScenarioManager.apply_result(id, true)
+	check("clear gives Carrot of Calamity", PlayerData.item_count("carrot_of_calamity") == 1)
+	check("clear unlocks Moon element", "moon" in PlayerData.mastered_elements)
+	check("clear sets flag", PlayerData.scenario_flags.get(id, "") == "cleared")
+	# fail path
+	PlayerData.scenario_flags.erase(id)
+	ScenarioManager.apply_result(id, false)
+	check("fail sets permanent flag", PlayerData.scenario_flags.get(id, "") == "failed")
+	WorldState.set_counter("rabbits_killed", 0)
 
 func _test_economy() -> void:
 	print("[Economy]")

@@ -16,7 +16,12 @@ func _ready() -> void:
 	_build()
 
 func _build() -> void:
-	if kind == "shop":
+	if kind == "inn":
+		sprite.texture = load("res://assets/game/sprites/props/rock.png")
+		sprite.scale = Vector2(2.4, 2.0)
+		sprite.modulate = Color(0.55, 0.45, 0.75)
+		label.text = "Penginapan — Tidur [E]"
+	elif kind == "shop":
 		# NPC placeholder: player base sprite, first frame, tinted.
 		var at := AtlasTexture.new()
 		at.atlas = load("res://assets/game/sprites/player/idle.png")
@@ -32,6 +37,9 @@ func _build() -> void:
 		label.text = "Bengkel [E]"
 
 func interact() -> void:
+	if kind == "inn":
+		_sleep()
+		return
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
 	if menu == null:
 		return
@@ -39,3 +47,11 @@ func interact() -> void:
 		menu.open("shop", self)
 	else:
 		menu.open("crafting", self)
+
+func _sleep() -> void:
+	# Sleeping is the trigger_action for the Moon Rabbit Warren (Fase0 §6).
+	if ScenarioManager.try_trigger("sleep_at_inn"):
+		return
+	PlayerData.respawn()
+	EventBus.toast.emit("Kamu tidur nyenyak. HP & MP pulih.")
+	Audio.play_sfx("success")

@@ -206,9 +206,13 @@ func take_hit(result: Dictionary, _from) -> void:
 	_iframes = 0.4
 	Audio.play_sfx("hurt")
 	if PlayerData.is_dead():
+		EventBus.player_died.emit()
 		_on_death()
 
 func _on_death() -> void:
+	# Don't auto-respawn during a Hidden Scenario — the scene decides the outcome.
+	if ScenarioManager.active_scenario != "":
+		return
 	EventBus.toast.emit("Kamu tumbang! Bangkit kembali...")
 	PlayerData.respawn()
 	global_position = Vector2(200, 200)
