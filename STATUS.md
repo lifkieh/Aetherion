@@ -52,9 +52,22 @@
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
 **119/119 tests**, 0 headless errors, **zero known bugs**. 15 autoloads. **3 regions, 26 monsters, 2 Hidden Scenarios.**
 
-Session 2 round 3 added: **Star Whale hidden scenario** (fishing Star-Bait hook → belly survival → Ambergris
-Star [S]), **6 Cook recipes** (fish/candy/desert → consumables), **dynamic music layering** (combat crossfade
-via MusicDirector), **Echo Vendors** (ghost kiosks in hub) + **proximity interactable labels** (declutter).
+Session 2 round 3 added: **Star Whale hidden scenario**, **6 Cook recipes**, **dynamic music layering**,
+**Echo Vendors** + **proximity labels**.
+
+**OWNER DIRECTIVE DONE (2026-07-11): side-view platformer dungeons.** Overworld stays top-down; ALL dungeons
+are Terraria-style side-view. Pilot **Greenvale Depths** (King Slime, 3 floors + boss arena) shipped &
+verified. **131/131 tests** incl. physics (fall/jump/mine/ladder/transition). See DEVLOG for the full contract.
+
+### How to build the NEXT dungeon (reuse this pattern)
+- New scene `res://scenes/world/<Name>.gd/.tscn` modeled on `GreenvaleDepths.gd`.
+- Build an ASCII layout (`_layout()` returns Array[String]); chars: `B`=bedrock(hard), `#`=stone(soft),
+  `D`=dirt(soft), `O`=ore(soft→material+MinerXP), `=`=one-way platform, `H`=ladder, ` `=empty.
+- `DungeonTerrain.build_from(layout)` handles collision/mining/ladders. Add torches via `_add_light` +
+  torch sprite; a dark `CanvasModulate`. Spawn `DungeonMonster` (side-view AI) + a boss.
+- Player = `PlayerPlatformer.tscn` (reuses PlayerData/PlayerCombat). Exit = `Portal` back to the overworld.
+- Overworld entrance = `Interactable` kind `"dungeon"` with `dungeon_scene` set (sets `pending_return_pos`).
+- New block drops/monsters/bosses/tiles are data — extend monsters.json/loot_tables/items + generate tiles.
 
 Session 2 (per LAPORAN_PROYEK_AETHERION.md backlog §7) added:
 - **Candyveil Meadows** (region 2, original candy tiles, 8 monsters) + **Desert of Ruins** (region 3,
@@ -72,6 +85,8 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 **When adding new image assets, run `godot --headless --path game --import` before referencing them.**
 
 ## Next steps (exact) — for the next session, resume here
+0. **In-game playtest of the dungeon** enter/exit loop from the overworld door (unit-tested, but confirm feel).
+   Then build the **next dungeons in side-view** (Candyveil "Gummy Cavern", Desert "Barrow") using the pattern above.
 1. **Sugar Queen Tea Party** hidden scenario (Candyveil): trigger "eat 100 different candies in a day"
    (track candy-eating in a daily counter) → etiquette quiz scene (3-round Q&A, 3 wrong = fail permanent) →
    reward Cook [S] recipe + Peppermint Fairy pet. ScenarioManager.trigger_scenario supports the entry.
