@@ -42,6 +42,7 @@ func press_slot(slot: int) -> void:
 		fusion_a = primed
 		fusion_b = slot
 		fusion_ready = true
+		Audio.play_sfx("prime", 1.35)   # higher pitch = fusion armed
 		EventBus.toast.emit("⚡ FUSION siap — klik kiri untuk melepas!")
 	else:
 		primed = slot
@@ -49,6 +50,7 @@ func press_slot(slot: int) -> void:
 		fusion_a = -1
 		fusion_b = -1
 		_combo_t = COMBO_WINDOW
+		Audio.play_sfx("prime")
 
 ## Left-click. Returns true if a skill/fusion was cast (caller skips normal attack).
 func cast(actor: Node2D, aim: Vector2) -> bool:
@@ -98,7 +100,7 @@ func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:
 		# fizzle — small smoke, a HINT that other combinations may work (discovery)
 		PlayerData.spend_mp(int(mana * 0.3))
 		Vfx.spark(actor.get_parent(), actor.global_position + aim * 14.0, "wind")
-		Audio.play_sfx("dodge")
+		Audio.play_sfx("fizzle")
 		EventBus.toast.emit("...kombinasi %s+%s tak stabil (fizzle). Coba paduan lain?" % [e1, e2])
 		return true
 	if not PlayerData.spend_mp(mana):
@@ -113,7 +115,7 @@ func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:
 	ProjectilePool.spawn_def(actor.global_position + aim * 12.0, aim, def, atk, actor, "monsters")
 	# plus an impact swing for feel
 	PlayerCombat.melee_arc(actor, aim, 56.0, 140.0, {"skill_mod": combo.get("mult", 1.6) * 0.6, "kind": "magic", "element": elem})
-	Audio.play_sfx("secret")
+	Audio.play_sfx("fusion")
 	var name: String = combo.get("result", "Fusion")
 	if not (name in PlayerData.discovered_fusions):
 		PlayerData.discovered_fusions.append(name)

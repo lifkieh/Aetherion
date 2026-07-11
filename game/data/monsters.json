@@ -1,282 +1,940 @@
 [
   {
-    "id": "fluffbit", "name": "Fluffbit", "rarity": "common", "element": "wood",
-    "archetype": "swift", "bst": 300, "size": "small", "rideable": false,
-    "is_rabbit": true, "level": 2,
+    "id": "fluffbit",
+    "name": "Fluffbit",
+    "rarity": "common",
+    "element": "wood",
+    "archetype": "swift",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "is_rabbit": true,
+    "level": 2,
     "sprite": "res://assets/game/sprites/monsters/fluffbit.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish",
-    "traits": ["lucky_foot"], "skills": ["tackle"],
-    "loot_table": "greenvale_fluffbit", "tame_base": 0.85,
-    "evolution": "moonbit", "aggro_radius": 90, "lore": "Kelinci mungil pembawa hoki; kunci rahasia Lunar Warren."
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "traits": [
+      "lucky_foot"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "greenvale_fluffbit",
+    "tame_base": 0.85,
+    "evolution": "moonbit",
+    "aggro_radius": 90,
+    "lore": "Kelinci mungil pembawa hoki; kunci rahasia Lunar Warren."
   },
   {
-    "id": "grey_wolf", "name": "Grey Wolf", "rarity": "common", "element": "none",
-    "archetype": "bruiser", "bst": 300, "size": "medium", "rideable": true,
-    "is_rabbit": false, "level": 3,
-    "sprite": "res://assets/game/sprites/monsters/beast.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee",
-    "traits": ["pack_hunter"], "skills": ["bite", "howl"],
-    "loot_table": "greenvale_wolf", "tame_base": 0.80,
-    "evolution": "dire_wolf", "aggro_radius": 160, "lore": "Pemburu berkelompok; tunggangan darat pertama."
+    "id": "grey_wolf",
+    "name": "Grey Wolf",
+    "rarity": "common",
+    "element": "none",
+    "archetype": "bruiser",
+    "bst": 300,
+    "size": "medium",
+    "rideable": true,
+    "is_rabbit": false,
+    "level": 3,
+    "sprite": "res://assets/game/sprites/monsters/grey_wolf.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "traits": [
+      "pack_hunter"
+    ],
+    "skills": [
+      "bite",
+      "howl"
+    ],
+    "loot_table": "greenvale_wolf",
+    "tame_base": 0.8,
+    "evolution": "dire_wolf",
+    "aggro_radius": 160,
+    "lore": "Pemburu berkelompok; tunggangan darat pertama."
   },
   {
-    "id": "verdant_slime", "name": "Verdant Slime", "rarity": "common", "element": "water",
-    "archetype": "tank", "bst": 300, "size": "small", "rideable": false,
-    "is_rabbit": false, "level": 2,
+    "id": "verdant_slime",
+    "name": "Verdant Slime",
+    "rarity": "common",
+    "element": "water",
+    "archetype": "tank",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "is_rabbit": false,
+    "level": 2,
     "sprite": "res://assets/game/sprites/monsters/slime.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee",
-    "traits": ["split"], "skills": ["tackle"],
-    "loot_table": "greenvale_slime", "tame_base": 0.70,
-    "evolution": "king_slime", "aggro_radius": 120, "lore": "Gumpalan jeli hijau; pecah dua saat mati."
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "traits": [
+      "split"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "greenvale_slime",
+    "tame_base": 0.7,
+    "evolution": "king_slime",
+    "aggro_radius": 120,
+    "lore": "Gumpalan jeli hijau; pecah dua saat mati."
   },
   {
-    "id": "wild_boar", "name": "Wild Boar", "rarity": "common", "element": "earth",
-    "archetype": "bruiser", "bst": 300, "size": "medium", "rideable": false,
-    "level": 4, "sprite": "res://assets/game/sprites/monsters/beast.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee", "tint": "b98a5a",
-    "traits": ["charge"], "skills": ["charge", "tackle"],
-    "loot_table": "greenvale_boar", "tame_base": 0.55,
-    "evolution": "ironhide_boar", "aggro_radius": 140, "lore": "Babi hutan galak; ternak daging homestead."
+    "id": "wild_boar",
+    "name": "Wild Boar",
+    "rarity": "common",
+    "element": "earth",
+    "archetype": "bruiser",
+    "bst": 300,
+    "size": "medium",
+    "rideable": false,
+    "level": 4,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "b98a5a",
+    "traits": [
+      "charge"
+    ],
+    "skills": [
+      "charge",
+      "tackle"
+    ],
+    "loot_table": "greenvale_boar",
+    "tame_base": 0.55,
+    "evolution": "ironhide_boar",
+    "aggro_radius": 140,
+    "lore": "Babi hutan galak; ternak daging homestead."
   },
   {
-    "id": "honeybuzz", "name": "Honeybuzz", "rarity": "common", "element": "wind",
-    "archetype": "assassin", "bst": 300, "size": "small", "rideable": false,
-    "level": 3, "sprite": "res://assets/game/sprites/monsters/mouse.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish", "tint": "e8c84a",
-    "traits": ["sting"], "skills": ["sting"],
-    "loot_table": "greenvale_bee", "tame_base": 0.5,
-    "evolution": "queen_buzz", "aggro_radius": 100, "lore": "Lebah penyengat; apiari madu homestead."
+    "id": "honeybuzz",
+    "name": "Honeybuzz",
+    "rarity": "common",
+    "element": "wind",
+    "archetype": "assassin",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 3,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "e8c84a",
+    "traits": [
+      "sting"
+    ],
+    "skills": [
+      "sting"
+    ],
+    "loot_table": "greenvale_bee",
+    "tame_base": 0.5,
+    "evolution": "queen_buzz",
+    "aggro_radius": 100,
+    "lore": "Lebah penyengat; apiari madu homestead."
   },
   {
-    "id": "sporeling", "name": "Sporeling", "rarity": "common", "element": "poison",
-    "archetype": "caster", "bst": 300, "size": "small", "rideable": false,
-    "level": 4, "sprite": "res://assets/game/sprites/monsters/slime.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "ranged", "tint": "8a6fb0",
-    "traits": ["spore_cloud"], "skills": ["spore_cloud"],
-    "loot_table": "greenvale_spore", "tame_base": 0.5,
-    "evolution": "myconid_sage", "aggro_radius": 130, "lore": "Jamur berjalan; menyembur spora racun."
+    "id": "sporeling",
+    "name": "Sporeling",
+    "rarity": "common",
+    "element": "poison",
+    "archetype": "caster",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 4,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "ranged",
+    "tint": "8a6fb0",
+    "traits": [
+      "spore_cloud"
+    ],
+    "skills": [
+      "spore_cloud"
+    ],
+    "loot_table": "greenvale_spore",
+    "tame_base": 0.5,
+    "evolution": "myconid_sage",
+    "aggro_radius": 130,
+    "lore": "Jamur berjalan; menyembur spora racun."
   },
   {
-    "id": "forest_fox", "name": "Forest Fox", "rarity": "rare", "element": "wind",
-    "archetype": "swift", "bst": 360, "size": "small", "rideable": false,
-    "level": 6, "sprite": "res://assets/game/sprites/monsters/beast.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish", "tint": "d98a4a",
-    "traits": ["keen_nose"], "skills": ["bite", "gust"],
-    "loot_table": "greenvale_fox", "tame_base": 0.45,
-    "evolution": "ninetail_kit", "aggro_radius": 150, "lore": "Rubah hutan pelacak herbal."
+    "id": "forest_fox",
+    "name": "Forest Fox",
+    "rarity": "rare",
+    "element": "wind",
+    "archetype": "swift",
+    "bst": 360,
+    "size": "small",
+    "rideable": false,
+    "level": 6,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "d98a4a",
+    "traits": [
+      "keen_nose"
+    ],
+    "skills": [
+      "bite",
+      "gust"
+    ],
+    "loot_table": "greenvale_fox",
+    "tame_base": 0.45,
+    "evolution": "ninetail_kit",
+    "aggro_radius": 150,
+    "lore": "Rubah hutan pelacak herbal."
   },
   {
-    "id": "cervel", "name": "Cervel", "rarity": "rare", "element": "wood",
-    "archetype": "swift", "bst": 360, "size": "medium", "rideable": true,
-    "level": 7, "sprite": "res://assets/game/sprites/monsters/beast.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "skittish", "tint": "c8a56a",
-    "traits": ["graceful"], "skills": ["charge"],
-    "loot_table": "greenvale_deer", "tame_base": 0.45,
-    "evolution": "sylvan_stag", "aggro_radius": 140, "lore": "Rusa anggun; tunggangan & pelari darat."
+    "id": "cervel",
+    "name": "Cervel",
+    "rarity": "rare",
+    "element": "wood",
+    "archetype": "swift",
+    "bst": 360,
+    "size": "medium",
+    "rideable": true,
+    "level": 7,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "c8a56a",
+    "traits": [
+      "graceful"
+    ],
+    "skills": [
+      "charge"
+    ],
+    "loot_table": "greenvale_deer",
+    "tame_base": 0.45,
+    "evolution": "sylvan_stag",
+    "aggro_radius": 140,
+    "lore": "Rusa anggun; tunggangan & pelari darat."
   },
   {
-    "id": "treant_sapling", "name": "Treant Sapling", "rarity": "epic", "element": "wood",
-    "archetype": "tank", "bst": 440, "size": "medium", "rideable": false,
-    "level": 9, "sprite": "res://assets/game/sprites/monsters/slime.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "melee", "tint": "4a7a3a",
-    "traits": ["rooted"], "skills": ["tackle"],
-    "loot_table": "greenvale_treant", "tame_base": 0.35,
-    "evolution": "elder_treant", "aggro_radius": 110, "lore": "Tunas pohon berjiwa; tank pendamping."
+    "id": "treant_sapling",
+    "name": "Treant Sapling",
+    "rarity": "epic",
+    "element": "wood",
+    "archetype": "tank",
+    "bst": 440,
+    "size": "medium",
+    "rideable": false,
+    "level": 9,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "4a7a3a",
+    "traits": [
+      "rooted"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "greenvale_treant",
+    "tame_base": 0.35,
+    "evolution": "elder_treant",
+    "aggro_radius": 110,
+    "lore": "Tunas pohon berjiwa; tank pendamping."
   },
   {
-    "id": "timberwing_owl", "name": "Timberwing Owl", "rarity": "rare", "element": "wind",
-    "archetype": "caster", "bst": 360, "size": "small", "rideable": false,
-    "level": 6, "sprite": "res://assets/game/sprites/monsters/mouse.png",
-    "frame_size": 16, "cols": 4, "rows": 4, "ai": "ranged", "tint": "9a7a5a",
-    "traits": ["night_sight"], "skills": ["gust"],
-    "loot_table": "greenvale_owl", "tame_base": 0.45,
-    "evolution": "strix_sage", "aggro_radius": 150, "lore": "Burung hantu malam; pemberi visi malam."
-  },
-
-  {
-    "id": "cave_bat", "name": "Cave Bat", "rarity": "common", "element": "darkness",
-    "archetype": "assassin", "bst": 300, "size": "small", "rideable": false, "level": 12,
-    "sprite": "res://assets/game/sprites/dungeon/bat.png", "frame_size": 16, "cols": 1, "rows": 1,
-    "ai": "flyer", "traits": [], "skills": ["bite"], "loot_table": "cave_bat",
-    "tame_base": 0.4, "evolution": "", "aggro_radius": 160, "lore": "Kelelawar gua; terbang zig-zag."
-  },
-  {
-    "id": "anubis_warden", "name": "Anubis Warden", "rarity": "legendary", "element": "darkness",
-    "archetype": "bruiser", "bst": 540, "size": "large", "rideable": false, "level": 25,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "3a3550", "traits": [], "skills": ["charge", "bite"],
-    "loot_table": "anubis_warden", "tame_base": 0.03, "evolution": "",
-    "is_boss": true, "add_species": "jackal_shade",
-    "aggro_radius": 420, "lore": "Penjaga makam gurun berkepala serigala; bos Desert Barrow."
-  },
-  {
-    "id": "gummy_titan", "name": "Gummy Titan", "rarity": "epic", "element": "water",
-    "archetype": "tank", "bst": 460, "size": "large", "rideable": false, "level": 25,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "ff8ac4", "traits": ["split"], "skills": ["tackle"],
-    "loot_table": "gummy_titan", "tame_base": 0.06, "evolution": "",
-    "is_boss": true, "add_species": "gummy_slime",
-    "aggro_radius": 400, "lore": "Titan gummy raksasa yang memantul; bos Gummy Cavern."
+    "id": "timberwing_owl",
+    "name": "Timberwing Owl",
+    "rarity": "rare",
+    "element": "wind",
+    "archetype": "caster",
+    "bst": 360,
+    "size": "small",
+    "rideable": false,
+    "level": 6,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "ranged",
+    "tint": "9a7a5a",
+    "traits": [
+      "night_sight"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "greenvale_owl",
+    "tame_base": 0.45,
+    "evolution": "strix_sage",
+    "aggro_radius": 150,
+    "lore": "Burung hantu malam; pemberi visi malam."
   },
   {
-    "id": "cave_spitter", "name": "Cave Spitter", "rarity": "common", "element": "poison",
-    "archetype": "caster", "bst": 300, "size": "small", "rideable": false, "level": 13,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "shooter", "behavior": "shooter", "projectile": "enemy_bolt", "tint": "8ab060",
-    "traits": [], "skills": ["spore_cloud"], "loot_table": "greenvale_spore",
-    "tame_base": 0.4, "evolution": "", "aggro_radius": 220, "lore": "Jamur gua penyembur bisa dari jauh."
+    "id": "cave_bat",
+    "name": "Cave Bat",
+    "rarity": "common",
+    "element": "darkness",
+    "archetype": "assassin",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 12,
+    "sprite": "res://assets/game/sprites/dungeon/bat.png",
+    "frame_size": 16,
+    "cols": 1,
+    "rows": 1,
+    "ai": "flyer",
+    "traits": [],
+    "skills": [
+      "bite"
+    ],
+    "loot_table": "cave_bat",
+    "tame_base": 0.4,
+    "evolution": "",
+    "aggro_radius": 160,
+    "lore": "Kelelawar gua; terbang zig-zag."
   },
   {
-    "id": "king_slime", "name": "King Slime", "rarity": "epic", "element": "water",
-    "archetype": "tank", "bst": 440, "size": "large", "rideable": false, "level": 15,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "6aa0ff", "traits": ["split"], "skills": ["tackle"],
-    "loot_table": "king_slime", "tame_base": 0.08, "evolution": "",
-    "aggro_radius": 400, "is_boss": true, "lore": "Raja slime bengkak; membelah dan memantul. Bos dungeon Greenvale."
+    "id": "anubis_warden",
+    "name": "Anubis Warden",
+    "rarity": "legendary",
+    "element": "darkness",
+    "archetype": "bruiser",
+    "bst": 540,
+    "size": "large",
+    "rideable": false,
+    "level": 25,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "3a3550",
+    "traits": [],
+    "skills": [
+      "charge",
+      "bite"
+    ],
+    "loot_table": "anubis_warden",
+    "tame_base": 0.03,
+    "evolution": "",
+    "is_boss": true,
+    "add_species": "jackal_shade",
+    "aggro_radius": 420,
+    "lore": "Penjaga makam gurun berkepala serigala; bos Desert Barrow."
   },
   {
-    "id": "sand_scarab", "name": "Sand Scarab", "rarity": "common", "element": "earth",
-    "archetype": "tank", "bst": 300, "size": "small", "rideable": false, "level": 12,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "b8923f", "traits": ["hard_shell"], "skills": ["tackle"],
-    "loot_table": "desert_scarab", "tame_base": 0.6, "evolution": "khepri_guard",
-    "aggro_radius": 120, "lore": "Kumbang pasir bercangkang keras; panen chitin."
+    "id": "gummy_titan",
+    "name": "Gummy Titan",
+    "rarity": "epic",
+    "element": "water",
+    "archetype": "tank",
+    "bst": 460,
+    "size": "large",
+    "rideable": false,
+    "level": 25,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "ff8ac4",
+    "traits": [
+      "split"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "gummy_titan",
+    "tame_base": 0.06,
+    "evolution": "",
+    "is_boss": true,
+    "add_species": "gummy_slime",
+    "aggro_radius": 400,
+    "lore": "Titan gummy raksasa yang memantul; bos Gummy Cavern."
   },
   {
-    "id": "dune_viper", "name": "Dune Viper", "rarity": "common", "element": "poison",
-    "archetype": "assassin", "bst": 300, "size": "small", "rideable": false, "level": 13,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "c2b280", "traits": ["venom_fang"], "skills": ["sting"],
-    "loot_table": "desert_viper", "tame_base": 0.4, "evolution": "sidewinder_lord",
-    "aggro_radius": 150, "lore": "Ular gurun berbisa; sengatan meracuni."
+    "id": "cave_spitter",
+    "name": "Cave Spitter",
+    "rarity": "common",
+    "element": "poison",
+    "archetype": "caster",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 13,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "shooter",
+    "behavior": "shooter",
+    "projectile": "enemy_bolt",
+    "tint": "8ab060",
+    "traits": [],
+    "skills": [
+      "spore_cloud"
+    ],
+    "loot_table": "greenvale_spore",
+    "tame_base": 0.4,
+    "evolution": "",
+    "aggro_radius": 220,
+    "lore": "Jamur gua penyembur bisa dari jauh."
   },
   {
-    "id": "vulture", "name": "Vulture", "rarity": "common", "element": "wind",
-    "archetype": "swift", "bst": 300, "size": "small", "rideable": false, "level": 14,
-    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "skittish", "tint": "8a7a66", "traits": ["scavenger"], "skills": ["gust"],
-    "loot_table": "desert_vulture", "tame_base": 0.45, "evolution": "",
-    "aggro_radius": 160, "lore": "Bangkai burung pemakan; pet auto-loot."
+    "id": "king_slime",
+    "name": "King Slime",
+    "rarity": "epic",
+    "element": "water",
+    "archetype": "tank",
+    "bst": 440,
+    "size": "large",
+    "rideable": false,
+    "level": 15,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "6aa0ff",
+    "traits": [
+      "split"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "king_slime",
+    "tame_base": 0.08,
+    "evolution": "",
+    "aggro_radius": 400,
+    "is_boss": true,
+    "lore": "Raja slime bengkak; membelah dan memantul. Bos dungeon Greenvale."
   },
   {
-    "id": "jackal_shade", "name": "Jackal Shade", "rarity": "rare", "element": "darkness",
-    "archetype": "assassin", "bst": 360, "size": "medium", "rideable": false, "level": 18,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "4a3f55", "traits": ["night_prowl"], "skills": ["bite"],
-    "loot_table": "desert_jackal", "tame_base": 0.35, "evolution": "anubis_warden",
-    "aggro_radius": 170, "lore": "Serigala bayangan gurun; kuat di malam hari."
+    "id": "sand_scarab",
+    "name": "Sand Scarab",
+    "rarity": "common",
+    "element": "earth",
+    "archetype": "tank",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 12,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "b8923f",
+    "traits": [
+      "hard_shell"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "desert_scarab",
+    "tame_base": 0.6,
+    "evolution": "khepri_guard",
+    "aggro_radius": 120,
+    "lore": "Kumbang pasir bercangkang keras; panen chitin."
   },
   {
-    "id": "rock_golem", "name": "Rock Golem", "rarity": "rare", "element": "earth",
-    "archetype": "tank", "bst": 360, "size": "medium", "rideable": false, "level": 20,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "9a8a6a", "traits": ["grounded"], "skills": ["charge"],
-    "resist": {"lightning": 0.9}, "loot_table": "desert_golem", "tame_base": 0.25,
-    "evolution": "obsidian_golem", "aggro_radius": 120,
+    "id": "dune_viper",
+    "name": "Dune Viper",
+    "rarity": "common",
+    "element": "poison",
+    "archetype": "assassin",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 13,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "c2b280",
+    "traits": [
+      "venom_fang"
+    ],
+    "skills": [
+      "sting"
+    ],
+    "loot_table": "desert_viper",
+    "tame_base": 0.4,
+    "evolution": "sidewinder_lord",
+    "aggro_radius": 150,
+    "lore": "Ular gurun berbisa; sengatan meracuni."
+  },
+  {
+    "id": "vulture",
+    "name": "Vulture",
+    "rarity": "common",
+    "element": "wind",
+    "archetype": "swift",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 14,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "8a7a66",
+    "traits": [
+      "scavenger"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "desert_vulture",
+    "tame_base": 0.45,
+    "evolution": "",
+    "aggro_radius": 160,
+    "lore": "Bangkai burung pemakan; pet auto-loot."
+  },
+  {
+    "id": "jackal_shade",
+    "name": "Jackal Shade",
+    "rarity": "rare",
+    "element": "darkness",
+    "archetype": "assassin",
+    "bst": 360,
+    "size": "medium",
+    "rideable": false,
+    "level": 18,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "4a3f55",
+    "traits": [
+      "night_prowl"
+    ],
+    "skills": [
+      "bite"
+    ],
+    "loot_table": "desert_jackal",
+    "tame_base": 0.35,
+    "evolution": "anubis_warden",
+    "aggro_radius": 170,
+    "lore": "Serigala bayangan gurun; kuat di malam hari."
+  },
+  {
+    "id": "rock_golem",
+    "name": "Rock Golem",
+    "rarity": "rare",
+    "element": "earth",
+    "archetype": "tank",
+    "bst": 360,
+    "size": "medium",
+    "rideable": false,
+    "level": 20,
+    "sprite": "res://assets/game/sprites/monsters/rock_golem.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "",
+    "traits": [
+      "grounded"
+    ],
+    "skills": [
+      "charge"
+    ],
+    "resist": {
+      "lightning": 0.9
+    },
+    "loot_table": "desert_golem",
+    "tame_base": 0.25,
+    "evolution": "obsidian_golem",
+    "aggro_radius": 120,
     "lore": "Golem batu ter-ground: hampir kebal petir (sains grounding). Tank tambang."
   },
   {
-    "id": "dune_serpent", "name": "Dune Serpent", "rarity": "epic", "element": "earth",
-    "archetype": "bruiser", "bst": 440, "size": "medium", "rideable": true, "level": 24,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "caa860", "traits": ["sand_dive"], "skills": ["charge", "bite"],
-    "loot_table": "desert_serpent", "tame_base": 0.15, "evolution": "desert_wyrm",
-    "aggro_radius": 160, "lore": "Ular pasir raksasa; tunggangan gurun."
+    "id": "dune_serpent",
+    "name": "Dune Serpent",
+    "rarity": "epic",
+    "element": "earth",
+    "archetype": "bruiser",
+    "bst": 440,
+    "size": "medium",
+    "rideable": true,
+    "level": 24,
+    "sprite": "res://assets/game/sprites/monsters/dune_serpent.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "",
+    "traits": [
+      "sand_dive"
+    ],
+    "skills": [
+      "charge",
+      "bite"
+    ],
+    "loot_table": "desert_serpent",
+    "tame_base": 0.15,
+    "evolution": "desert_wyrm",
+    "aggro_radius": 160,
+    "lore": "Ular pasir raksasa; tunggangan gurun."
   },
   {
-    "id": "cactus_fiend", "name": "Cactus Fiend", "rarity": "rare", "element": "wood",
-    "archetype": "support", "bst": 360, "size": "small", "rideable": false, "level": 16,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "ranged", "tint": "6a9a4a", "traits": ["thorns"], "skills": ["spore_cloud"],
-    "loot_table": "desert_cactus", "tame_base": 0.4, "evolution": "",
-    "aggro_radius": 130, "lore": "Iblis kaktus; berduri, farm air/duri."
+    "id": "cactus_fiend",
+    "name": "Cactus Fiend",
+    "rarity": "rare",
+    "element": "wood",
+    "archetype": "support",
+    "bst": 360,
+    "size": "small",
+    "rideable": false,
+    "level": 16,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "ranged",
+    "tint": "6a9a4a",
+    "traits": [
+      "thorns"
+    ],
+    "skills": [
+      "spore_cloud"
+    ],
+    "loot_table": "desert_cactus",
+    "tame_base": 0.4,
+    "evolution": "",
+    "aggro_radius": 130,
+    "lore": "Iblis kaktus; berduri, farm air/duri."
   },
   {
-    "id": "dire_wolf", "name": "Dire Wolf", "rarity": "rare", "element": "none",
-    "archetype": "bruiser", "bst": 360, "size": "large", "rideable": true, "level": 10,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "9aa0a8", "traits": ["pack_hunter"], "skills": ["bite", "howl"],
-    "loot_table": "greenvale_wolf", "tame_base": 0.3, "evolution": "alpha_wolf",
-    "aggro_radius": 180, "lore": "Serigala buas evolusi Grey Wolf; tunggangan darat besar."
+    "id": "dire_wolf",
+    "name": "Dire Wolf",
+    "rarity": "rare",
+    "element": "none",
+    "archetype": "bruiser",
+    "bst": 360,
+    "size": "large",
+    "rideable": true,
+    "level": 10,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "9aa0a8",
+    "traits": [
+      "pack_hunter"
+    ],
+    "skills": [
+      "bite",
+      "howl"
+    ],
+    "loot_table": "greenvale_wolf",
+    "tame_base": 0.3,
+    "evolution": "alpha_wolf",
+    "aggro_radius": 180,
+    "lore": "Serigala buas evolusi Grey Wolf; tunggangan darat besar."
   },
   {
-    "id": "moonbit", "name": "Moonbit", "rarity": "rare", "element": "moon",
-    "archetype": "swift", "bst": 360, "size": "small", "rideable": false, "is_rabbit": true, "level": 8,
-    "sprite": "res://assets/game/sprites/monsters/fluffbit.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "skittish", "tint": "b8c0ff", "traits": ["lucky_foot", "moonlit"], "skills": ["tackle"],
-    "loot_table": "greenvale_fluffbit", "tame_base": 0.4, "evolution": "",
-    "aggro_radius": 110, "lore": "Fluffbit yang menyerap cahaya bulan; wujud Moon Rabbit kecil."
+    "id": "moonbit",
+    "name": "Moonbit",
+    "rarity": "rare",
+    "element": "moon",
+    "archetype": "swift",
+    "bst": 360,
+    "size": "small",
+    "rideable": false,
+    "is_rabbit": true,
+    "level": 8,
+    "sprite": "res://assets/game/sprites/monsters/fluffbit.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "b8c0ff",
+    "traits": [
+      "lucky_foot",
+      "moonlit"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "greenvale_fluffbit",
+    "tame_base": 0.4,
+    "evolution": "",
+    "aggro_radius": 110,
+    "lore": "Fluffbit yang menyerap cahaya bulan; wujud Moon Rabbit kecil."
   },
   {
-    "id": "peppermint_fairy", "name": "Peppermint Fairy", "rarity": "epic", "element": "light",
-    "archetype": "support", "bst": 440, "size": "small", "rideable": false, "level": 22,
-    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "skittish", "tint": "ff9ed8", "traits": ["sugar_shield"], "skills": ["gust"],
-    "loot_table": "candy_sprite", "tame_base": 0.0, "evolution": "",
-    "aggro_radius": 120, "lore": "Peri permen dari jamuan Sugar Queen; healer pendamping."
+    "id": "peppermint_fairy",
+    "name": "Peppermint Fairy",
+    "rarity": "epic",
+    "element": "light",
+    "archetype": "support",
+    "bst": 440,
+    "size": "small",
+    "rideable": false,
+    "level": 22,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "ff9ed8",
+    "traits": [
+      "sugar_shield"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "candy_sprite",
+    "tame_base": 0.0,
+    "evolution": "",
+    "aggro_radius": 120,
+    "lore": "Peri permen dari jamuan Sugar Queen; healer pendamping."
   },
   {
-    "id": "gummy_slime", "name": "Gummy Slime", "rarity": "common", "element": "water",
-    "archetype": "tank", "bst": 300, "size": "small", "rideable": false, "level": 18,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "ff9ec4", "traits": ["sticky"], "skills": ["tackle"],
-    "loot_table": "candy_gummy_slime", "tame_base": 0.7, "evolution": "gummy_titan",
-    "aggro_radius": 120, "lore": "Jeli permen kenyal; panen gummy untuk Cook."
+    "id": "gummy_slime",
+    "name": "Gummy Slime",
+    "rarity": "common",
+    "element": "water",
+    "archetype": "tank",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "level": 18,
+    "sprite": "res://assets/game/sprites/monsters/gummy_slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "",
+    "traits": [
+      "sticky"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "candy_gummy_slime",
+    "tame_base": 0.7,
+    "evolution": "gummy_titan",
+    "aggro_radius": 120,
+    "lore": "Jeli permen kenyal; panen gummy untuk Cook."
   },
   {
-    "id": "candyfloss_sheep", "name": "Candyfloss Sheep", "rarity": "common", "element": "sky",
-    "archetype": "support", "bst": 300, "size": "medium", "rideable": false, "level": 20,
-    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "skittish", "tint": "ffd6ec", "traits": ["fluffy"], "skills": ["gust"],
-    "loot_table": "candy_sheep", "tame_base": 0.6, "evolution": "nimbus_sheep",
-    "aggro_radius": 110, "lore": "Domba wol gula kapas; ternak wol premium homestead."
+    "id": "candyfloss_sheep",
+    "name": "Candyfloss Sheep",
+    "rarity": "common",
+    "element": "sky",
+    "archetype": "support",
+    "bst": 300,
+    "size": "medium",
+    "rideable": false,
+    "level": 20,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "ffd6ec",
+    "traits": [
+      "fluffy"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "candy_sheep",
+    "tame_base": 0.6,
+    "evolution": "nimbus_sheep",
+    "aggro_radius": 110,
+    "lore": "Domba wol gula kapas; ternak wol premium homestead."
   },
   {
-    "id": "jellybean_bunny", "name": "Jellybean Bunny", "rarity": "common", "element": "wood",
-    "archetype": "swift", "bst": 300, "size": "small", "rideable": false, "is_rabbit": true, "level": 19,
-    "sprite": "res://assets/game/sprites/monsters/fluffbit.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "skittish", "tint": "ff70a0", "traits": ["sugar_rush"], "skills": ["tackle"],
-    "loot_table": "candy_bunny", "tame_base": 0.75, "evolution": "",
-    "aggro_radius": 100, "lore": "Kelinci jellybean lincah; ikut menghitung dosa kelinci."
+    "id": "jellybean_bunny",
+    "name": "Jellybean Bunny",
+    "rarity": "common",
+    "element": "wood",
+    "archetype": "swift",
+    "bst": 300,
+    "size": "small",
+    "rideable": false,
+    "is_rabbit": true,
+    "level": 19,
+    "sprite": "res://assets/game/sprites/monsters/fluffbit.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "skittish",
+    "tint": "ff70a0",
+    "traits": [
+      "sugar_rush"
+    ],
+    "skills": [
+      "tackle"
+    ],
+    "loot_table": "candy_bunny",
+    "tame_base": 0.75,
+    "evolution": "",
+    "aggro_radius": 100,
+    "lore": "Kelinci jellybean lincah; ikut menghitung dosa kelinci."
   },
   {
-    "id": "choco_bear", "name": "Choco Bear", "rarity": "rare", "element": "earth",
-    "archetype": "bruiser", "bst": 360, "size": "medium", "rideable": true, "level": 24,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "6b3f2a", "traits": ["sweet_tooth"], "skills": ["bite", "charge"],
-    "loot_table": "candy_bear", "tame_base": 0.4, "evolution": "dark_choco_bear",
-    "aggro_radius": 150, "lore": "Beruang cokelat; pendamping tangguh."
+    "id": "choco_bear",
+    "name": "Choco Bear",
+    "rarity": "rare",
+    "element": "earth",
+    "archetype": "bruiser",
+    "bst": 360,
+    "size": "medium",
+    "rideable": true,
+    "level": 24,
+    "sprite": "res://assets/game/sprites/monsters/choco_bear.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "",
+    "traits": [
+      "sweet_tooth"
+    ],
+    "skills": [
+      "bite",
+      "charge"
+    ],
+    "loot_table": "candy_bear",
+    "tame_base": 0.4,
+    "evolution": "dark_choco_bear",
+    "aggro_radius": 150,
+    "lore": "Beruang cokelat; pendamping tangguh."
   },
   {
-    "id": "lollipop_sprite", "name": "Lollipop Sprite", "rarity": "rare", "element": "light",
-    "archetype": "caster", "bst": 360, "size": "small", "rideable": false, "level": 22,
-    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "ranged", "tint": "ff5dd2", "traits": ["sugar_shield"], "skills": ["gust"],
-    "loot_table": "candy_sprite", "tame_base": 0.4, "evolution": "peppermint_fairy",
-    "aggro_radius": 140, "lore": "Peri lolipop; healer kecil bercahaya."
+    "id": "lollipop_sprite",
+    "name": "Lollipop Sprite",
+    "rarity": "rare",
+    "element": "light",
+    "archetype": "caster",
+    "bst": 360,
+    "size": "small",
+    "rideable": false,
+    "level": 22,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "ranged",
+    "tint": "ff5dd2",
+    "traits": [
+      "sugar_shield"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "candy_sprite",
+    "tame_base": 0.4,
+    "evolution": "peppermint_fairy",
+    "aggro_radius": 140,
+    "lore": "Peri lolipop; healer kecil bercahaya."
   },
   {
-    "id": "caramel_golem", "name": "Caramel Golem", "rarity": "epic", "element": "earth",
-    "archetype": "tank", "bst": 440, "size": "medium", "rideable": false, "level": 28,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "c9863f", "traits": ["molten_caramel"], "skills": ["tackle", "charge"],
-    "loot_table": "candy_golem", "tame_base": 0.15, "evolution": "",
-    "aggro_radius": 130, "lore": "Golem karamel; melambat saat panas."
+    "id": "caramel_golem",
+    "name": "Caramel Golem",
+    "rarity": "epic",
+    "element": "earth",
+    "archetype": "tank",
+    "bst": 440,
+    "size": "medium",
+    "rideable": false,
+    "level": 28,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "c9863f",
+    "traits": [
+      "molten_caramel"
+    ],
+    "skills": [
+      "tackle",
+      "charge"
+    ],
+    "loot_table": "candy_golem",
+    "tame_base": 0.15,
+    "evolution": "",
+    "aggro_radius": 130,
+    "lore": "Golem karamel; melambat saat panas."
   },
   {
-    "id": "gummy_mimic", "name": "Gummy Mimic", "rarity": "epic", "element": "darkness",
-    "archetype": "assassin", "bst": 440, "size": "small", "rideable": false, "level": 27,
-    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "melee", "tint": "9b59b6", "traits": ["ambush"], "skills": ["bite"],
-    "loot_table": "candy_mimic", "tame_base": 0.0, "evolution": "",
-    "aggro_radius": 90, "lore": "Peti permen jebakan; menyamar lalu menerkam."
+    "id": "gummy_mimic",
+    "name": "Gummy Mimic",
+    "rarity": "epic",
+    "element": "darkness",
+    "archetype": "assassin",
+    "bst": 440,
+    "size": "small",
+    "rideable": false,
+    "level": 27,
+    "sprite": "res://assets/game/sprites/monsters/slime.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "melee",
+    "tint": "9b59b6",
+    "traits": [
+      "ambush"
+    ],
+    "skills": [
+      "bite"
+    ],
+    "loot_table": "candy_mimic",
+    "tame_base": 0.0,
+    "evolution": "",
+    "aggro_radius": 90,
+    "lore": "Peti permen jebakan; menyamar lalu menerkam."
   },
   {
-    "id": "soda_serpent", "name": "Soda Serpent", "rarity": "rare", "element": "water",
-    "archetype": "caster", "bst": 360, "size": "medium", "rideable": false, "level": 25,
-    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
-    "ai": "ranged", "tint": "5bc0de", "traits": ["fizz_burst"], "skills": ["gust"],
-    "loot_table": "candy_serpent", "tame_base": 0.4, "evolution": "",
-    "aggro_radius": 150, "lore": "Ular soda berbuih; semburan AoE menyegarkan."
+    "id": "soda_serpent",
+    "name": "Soda Serpent",
+    "rarity": "rare",
+    "element": "water",
+    "archetype": "caster",
+    "bst": 360,
+    "size": "medium",
+    "rideable": false,
+    "level": 25,
+    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "frame_size": 16,
+    "cols": 4,
+    "rows": 4,
+    "ai": "ranged",
+    "tint": "5bc0de",
+    "traits": [
+      "fizz_burst"
+    ],
+    "skills": [
+      "gust"
+    ],
+    "loot_table": "candy_serpent",
+    "tame_base": 0.4,
+    "evolution": "",
+    "aggro_radius": 150,
+    "lore": "Ular soda berbuih; semburan AoE menyegarkan."
   }
 ]

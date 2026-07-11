@@ -102,11 +102,18 @@ func _scatter_props() -> void:
 	var props := Node2D.new()
 	props.y_sort_enabled = true
 	add_child(props)
-	var bush := load("res://assets/game/tiles/candyveil/candy_gummy_bush_16.png")
-	var rock := load("res://assets/game/tiles/candyveil/candy_mint_rock_16.png")
-	for i in range(90):
+	# Candy deco variety (UI/UX §7): region tiles + our new candy props.
+	var deco := [
+		"res://assets/game/tiles/candyveil/candy_gummy_bush_16.png",
+		"res://assets/game/tiles/candyveil/candy_gummy_bush_16.png",
+		"res://assets/game/tiles/candyveil/candy_mint_rock_16.png",
+		"res://assets/game/sprites/props/gumdrop.png",
+		"res://assets/game/sprites/props/lollipop.png",
+		"res://assets/game/sprites/props/candy_cane.png",
+	]
+	for i in range(110):
 		var s := Sprite2D.new()
-		s.texture = bush if randf() < 0.6 else rock
+		s.texture = load(deco[randi() % deco.size()])
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		s.position = Vector2(randf_range(24, MAP_W * TILE - 24), randf_range(24, MAP_H * TILE - 24))
 		props.add_child(s)

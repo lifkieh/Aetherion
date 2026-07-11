@@ -21,6 +21,11 @@ const SFX_MAP := {
 	"levelup": "LevelUp1.wav",
 	"success": "Success1.wav",
 	"secret": "Secret1.wav",
+	"prime": "ui_prime.wav",      # original UI SFX (UI/UX §7)
+	"fusion": "ui_fusion.wav",
+	"fizzle": "ui_fizzle.wav",
+	"menu": "ui_menu.wav",
+	"blip": "ui_blip.wav",
 }
 
 var _pool: Array[AudioStreamPlayer] = []

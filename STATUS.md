@@ -162,8 +162,16 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   flame_slash mp 8→9 & spark_bolt 10→9 so DPS-per-mana spread ≤±17% (no >30% outlier); (cleanup) removed dead
   `element_flow` skill (flow_* supersede it). Verified PASS: element correctness, Element Flow + platformer rules +
   science post-refactor, fusion symmetry 1+2==2+1 (9 recipes). New `[Skill Audit §6]` suite (12 checks). 229/229 tests.
-- **(7) Asset & polish** ⏳ more Greenvale/Candyveil deco variety, interiors, Shikashi/Caz item icons; original
-  sprites: Grey Wolf + 2 candy + 2 desert monsters; SFX: prime/fusion/fizzle/menu/dialog-blip.
+- **(7) Asset & polish** ✅ DONE — **5 original monster sprites** (grey_wolf, gummy_slime, choco_bear, rock_golem,
+  dune_serpent — directional 4×4 sheets, wired in monsters.json); **5 original UI SFX** (prime/fusion/fizzle/menu/blip,
+  procedurally generated, wired to hotbar prime/fusion/fizzle, dialog typing+advance, menu buttons); **deco variety**
+  (Greenvale flowers/bush/mushroom/pebbles + Candyveil gumdrop/lollipop/candy_cane); **21 original item icons** +
+  keyword resolver (`Db.item_icon`) shown in inventory/shop rows; **enterable interior** ("Rumah Warga" — warm
+  plank room, furniture, lamps, exit portal, reached via a plaza house door). Shikashi/Caz packs are external (not in
+  the purged repo) → made original icons instead. **FPS 60 maintained** (134 props, 680 nodes — still ringan). Verified
+  renders `reports/{monster_preview,item_icons,inventory_icons,interior}.png`. 229/229 tests.
+
+**Round status: parts 0–7 all ✅ DONE. Ready to tag v0.2-alpha.**
 - Rule: game ringan (measure FPS before/after), headless test per system, commit+push per part, **tag v0.2-alpha** at end.
 - **Definition of done:** a brand-new player with zero explanation understands how to play within 10 minutes.
 

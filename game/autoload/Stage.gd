@@ -260,7 +260,7 @@ func _run_line(line: String) -> void:
 		await get_tree().process_frame
 	_dlg_arrow.visible = true
 	await _advanced
-	Audio.play_sfx("click")
+	Audio.play_sfx("menu")
 
 func _process(delta: float) -> void:
 	# blinking advance arrow
@@ -280,7 +280,7 @@ func _process(delta: float) -> void:
 			_blip_at = n
 			var c := _full_text.substr(maxi(0, n - 1), 1)
 			if c.strip_edges() != "":
-				Audio.play_sfx("click", 1.6)
+				Audio.play_sfx("blip", randf_range(0.94, 1.06))
 
 func _input(event: InputEvent) -> void:
 	if not _dlg_active:

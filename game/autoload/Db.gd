@@ -106,6 +106,48 @@ func crop(id: String) -> Dictionary:
 func item_name(id: String) -> String:
 	return items.get(id, {}).get("name", id)
 
+## Resolve an item to a category icon (UI/UX §7). Returns a res:// path or "".
+func item_icon(id: String) -> String:
+	var it := item(id)
+	var key := ""
+	var wt: String = it.get("weapon_type", "")
+	if wt in ["sword", "bow", "wand", "spear"]:
+		key = wt
+	else:
+		match it.get("type", ""):
+			"orb": key = "orb"
+			"seed": key = "seed"
+			"bait": key = "essence"
+			"gear": key = "pelt"
+			"consumable":
+				key = "mana" if ("mana" in id or "draught" in id) else "potion"
+			_:
+				key = _material_icon_key(id)
+	var path := "res://assets/game/ui/icons/item_%s.png" % key
+	return path if ResourceLoader.exists(path) else ""
+
+func _material_icon_key(id: String) -> String:
+	# ordered keyword rules — candy/food checked before jelly/pelt to avoid clashes
+	var rules := [
+		[["gummy", "choco", "jellybean", "candyfloss", "candy_wool", "peppermint", "lollipop"], "candy"],
+		[["meat", "honey", "boar"], "food"],
+		[["plank"], "plank"],
+		[["bar", "ingot"], "bar"],
+		[["ore"], "ore"],
+		[["log", "wood", "bark", "living_bark"], "wood"],
+		[["herb", "leaf", "bud", "mint", "sunbud", "spore"], "herb"],
+		[["jelly", "gel"], "jelly"],
+		[["pelt", "wool", "fluff", "fox_tail", "rabbit_foot"], "pelt"],
+		[["fang", "antler", "feather", "bone", "fossil"], "bone"],
+		[["essence", "core", "star", "ambergris"], "essence"],
+		[["gem", "crystal", "fragment", "ankh", "carrot_of"], "gem"],
+	]
+	for rule in rules:
+		for kw in rule[0]:
+			if kw in id:
+				return rule[1]
+	return "pouch"
+
 func loot_table(id: String) -> Array:
 	var t = loot_tables.get(id, {})
 	if t is Dictionary:

@@ -72,6 +72,13 @@ func _ready() -> void:
 					inside += 1
 			print("[safezone] monsters_inside_zone=%d total=%d" % [inside, get_tree().get_nodes_in_group("monsters").size()])
 			get_tree().quit())
+	if OS.get_environment("AETHER_FPS") == "1":
+		get_tree().create_timer(4.0).timeout.connect(func():
+			print("[fps] fps=%.1f nodes=%d monsters=%d props=%d" % [
+				Engine.get_frames_per_second(), get_tree().get_node_count(),
+				get_tree().get_nodes_in_group("monsters").size(),
+				(get_node_or_null("Props").get_child_count() if has_node("Props") else -1)])
+			_take_screenshot())
 	if OS.get_environment("AETHER_ONBOARD") == "1":
 		get_tree().create_timer(0.6).timeout.connect(func():
 			Onboarding.tip("town")
@@ -248,15 +255,28 @@ func _scatter_props() -> void:
 	props.name = "Props"
 	props.y_sort_enabled = true
 	add_child(props)
-	var grass := load("res://assets/game/sprites/props/grass.png")
-	var rock := load("res://assets/game/sprites/props/rock.png")
+	# Weighted deco variety (UI/UX §7) — grass is common, flora sprinkled in.
+	const DECO := [
+		["grass", 34], ["grass", 34], ["bush", 12], ["rock", 10],
+		["flower_pink", 8], ["flower_blue", 8], ["mushroom", 5], ["pebbles", 6],
+	]
+	var total := 0
+	for d in DECO:
+		total += d[1]
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
-	for i in range(120):
+	for i in range(150):
 		var pos := Vector2(randf_range(24, MAP_W * TILE - 24), randf_range(24, MAP_H * TILE - 24))
 		if pos.distance_to(center) < PLAZA_RADIUS:   # keep the town plaza tidy/clear
 			continue
+		var roll := randi() % total
+		var pick := "grass"
+		for d in DECO:
+			roll -= d[1]
+			if roll < 0:
+				pick = d[0]
+				break
 		var s := Sprite2D.new()
-		s.texture = grass if randf() < 0.7 else rock
+		s.texture = load("res://assets/game/sprites/props/%s.png" % pick)
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		s.position = pos
 		props.add_child(s)
@@ -347,6 +367,8 @@ func _spawn_interactables() -> void:
 
 	# Pemandu (guide NPC) stands right by the spawn so newcomers meet him first.
 	_place_interactable("guide", center + Vector2(-56, 44))
+	# An enterable villager house (interiors, UI/UX §7).
+	_place_interactable("house_door", center + Vector2(150, 40))
 
 	# --- Service NPCs: top row (north of spawn), evenly spaced 112px apart ---
 	_place_interactable("board", center + Vector2(-168, -72))       # Papan Quest

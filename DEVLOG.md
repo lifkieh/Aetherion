@@ -2,6 +2,28 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — UI/UX §7: Asset & polish + v0.2-alpha (DONE)
+
+All assets below are **original** (generated with PIL / procedural audio) — self-contained, no external packs.
+- **5 original monster sprites** — `grey_wolf`, `gummy_slime`, `choco_bear`, `rock_golem`, `dune_serpent`, each a
+  16px directional 4×4 sheet (down/up/left/right × frames) with per-frame bob/jiggle. Repointed in `monsters.json`
+  (tints cleared so the hand-painted colours show).
+- **5 original UI SFX** — `ui_prime/ui_fusion/ui_fizzle/ui_menu/ui_blip.wav` (procedural tones via Python `wave`).
+  Wired: prime on slot-arm (higher pitch when a fusion arms), fusion on a successful combine, fizzle on a no-recipe
+  combine, blip per typed dialog letter, menu on dialog-advance + every menu button/tab.
+- **Deco variety** — new props: `flower_pink/flower_blue/bush/mushroom/pebbles` (Greenvale, weighted scatter) and
+  `gumdrop/lollipop/candy_cane` (Candyveil). Plaza still kept clear via `PLAZA_RADIUS`.
+- **21 original item icons** + `Db.item_icon(id)` keyword resolver (weapon_type / type / id keywords → category icon),
+  displayed as a 24px `TextureRect` in every inventory & shop row. (Shikashi/Caz are external commercial packs, absent
+  from the purged repo — original icons are the self-contained substitute.)
+- **Enterable interior** — `HouseInterior` (`.gd`+`.tscn`): a warm plank room with a rug, bed, bookshelf, table, two
+  glowing lamps + a hearth `PointLight2D`, an always-lit `CanvasModulate` (interiors don't day/night-dim), and an exit
+  Portal back to Greenvale. Reached from a new `house_door` Interactable in the plaza. Furniture sprites also original.
+- **Performance** — `AETHER_FPS` probe: **60 fps**, 680 nodes, 134 varied props — game stays *ringan*.
+- 229/229 headless tests pass. **Tagged `v0.2-alpha`** — the UI/UX round (parts 0–7) is complete: a brand-new player
+  now gets a themed UI, FF-style dialog/banners, a skill hotbar + element fusion, a safe town with guards, contextual
+  onboarding + a guided opening quest chain, and an audited skill roster.
+
 ## 2026-07-11 — UI/UX §6: SKILL_AUDIT.md + fixes (DONE)
 
 Full audit written to `SKILL_AUDIT.md` (5 axes). Fixes applied:

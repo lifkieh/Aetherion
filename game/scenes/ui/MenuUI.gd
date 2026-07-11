@@ -29,6 +29,17 @@ func _mk_label(t: String, s: int = 16) -> Label:
 	l.add_theme_font_size_override("font_size", s)
 	return l
 
+## Category icon for an item, as a 24x24 TextureRect (UI/UX §7). Adds it to `row`.
+func _add_item_icon(row: HBoxContainer, id: String) -> void:
+	var path := Db.item_icon(id)
+	var tr := TextureRect.new()
+	tr.custom_minimum_size = Vector2(24, 24)
+	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	if path != "":
+		tr.texture = load(path)
+	row.add_child(tr)
+
 func _build_frame() -> void:
 	root = Control.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -66,7 +77,7 @@ func _build_frame() -> void:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
-		b.pressed.connect(func(): mode = m[0]; _rebuild())
+		b.pressed.connect(func(): Audio.play_sfx("menu"); mode = m[0]; _rebuild())
 		tabs.add_child(b)
 	var close := Button.new()
 	close.text = "Tutup (Esc)"
@@ -125,6 +136,7 @@ func _btn(text: String, cb: Callable) -> Button:
 	var b := Button.new()
 	b.text = text
 	if _font: b.add_theme_font_override("font", _font)
+	b.pressed.connect(func(): Audio.play_sfx("menu"))
 	b.pressed.connect(cb)
 	return b
 
@@ -336,8 +348,9 @@ func _build_inventory() -> void:
 	for id in PlayerData.inventory.keys():
 		var def := Db.item(id)
 		var h := _row()
+		_add_item_icon(h, id)
 		var name_l := _mk_label("%s  [%s]  x%d" % [def.get("name", id), def.get("tier", "F"), PlayerData.inventory[id]], 15)
-		name_l.custom_minimum_size = Vector2(320, 0)
+		name_l.custom_minimum_size = Vector2(296, 0)
 		h.add_child(name_l)
 		match def.get("type", ""):
 			"weapon":
@@ -391,17 +404,19 @@ func _build_shop() -> void:
 	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "fishing_rod", "star_bait", "saddle", "copper_sword"]:
 		if not Db.items.has(id): continue
 		var h := _row()
+		_add_item_icon(h, id)
 		var price := Economy.buy_price(id)
 		var l := _mk_label("%s — %dG" % [Db.item_name(id), price], 14)
-		l.custom_minimum_size = Vector2(320, 0)
+		l.custom_minimum_size = Vector2(296, 0)
 		h.add_child(l)
 		h.add_child(_btn("Beli", func(): if Economy.buy(id, 1): _rebuild() else: EventBus.toast.emit("Gagal beli (gold/stok).")))
 	content.add_child(_mk_label("— Jual —", 16))
 	for id in PlayerData.inventory.keys():
 		var h := _row()
+		_add_item_icon(h, id)
 		var sp := Economy.sell_price(id)
 		var l := _mk_label("%s x%d — jual %dG" % [Db.item_name(id), PlayerData.inventory[id], sp], 14)
-		l.custom_minimum_size = Vector2(320, 0)
+		l.custom_minimum_size = Vector2(296, 0)
 		h.add_child(l)
 		h.add_child(_btn("Jual 1", func(): if Economy.sell(id, 1): _rebuild()))
 

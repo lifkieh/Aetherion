@@ -57,6 +57,11 @@ func _build() -> void:
 		sprite.scale = Vector2(2.2, 2.6)
 		sprite.modulate = Color(0.75, 0.6, 0.4)
 		label.text = "Papan Quest [E]"
+	elif kind == "house_door":
+		sprite.texture = load("res://assets/game/sprites/props/rock.png")
+		sprite.scale = Vector2(2.6, 2.8)
+		sprite.modulate = Color(0.6, 0.42, 0.3)   # wooden hut
+		label.text = "Rumah Warga [E]"
 	elif kind == "inn":
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(2.4, 2.0)
@@ -99,6 +104,9 @@ func interact() -> void:
 	if kind == "dungeon":
 		WorldState.pending_return_pos = global_position
 		Stage.go_to_scene(dungeon_scene)
+		return
+	if kind == "house_door":
+		Stage.go_to_scene("res://scenes/world/HouseInterior.tscn")
 		return
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
 	if menu == null:
