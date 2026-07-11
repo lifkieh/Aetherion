@@ -138,6 +138,32 @@ func _rebuild() -> void:
 		"pedia": _build_pedia()
 		"quest": _build_quests()
 		"sky": _build_sky()
+		"echo": _build_echo()
+
+func _build_echo() -> void:
+	var d: Dictionary = _ctx if _ctx is Dictionary else {}
+	title.text = d.get("name", "Gema Pedagang")
+	var greet := _mk_label(d.get("greeting", ""), 14)
+	greet.autowrap_mode = TextServer.AUTOWRAP_WORD
+	greet.custom_minimum_size = Vector2(500, 0)
+	greet.add_theme_color_override("font_color", Color(0.75, 0.7, 0.95))
+	content.add_child(greet)
+	content.add_child(_mk_label("— Kios —", 16))
+	for w in d.get("wares", []):
+		var h := _row()
+		var id: String = w.get("item", "")
+		var price: int = int(w.get("price", 0))
+		var l := _mk_label("%s — %dG" % [Db.item_name(id), price], 14)
+		l.custom_minimum_size = Vector2(320, 0)
+		h.add_child(l)
+		h.add_child(_btn("Beli", func():
+			if PlayerData.spend_gold(price):
+				PlayerData.add_item(id, 1)
+				EventBus.toast.emit("Membeli %s dari gema." % Db.item_name(id))
+				Audio.play_sfx("coin")
+				_rebuild()
+			else:
+				EventBus.toast.emit("Gold tidak cukup.")))
 
 func _build_sky() -> void:
 	title.text = "Menara Astrologer"

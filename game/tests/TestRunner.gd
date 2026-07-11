@@ -55,6 +55,14 @@ func _test_db() -> void:
 	check("candyveil loot table", Db.loot_table("candy_gummy_slime").size() > 0)
 	check("candyveil monster builds", not MonsterFactory.make("choco_bear").is_empty())
 	# Desert content + grounding science (Rock Golem resists lightning)
+	# Echo vendors + their wares resolve to real items
+	check("echo vendors loaded", Db.echo_vendors.size() >= 2)
+	var echo_ok := true
+	for v in Db.echo_vendors:
+		for w in v.get("wares", []):
+			if not Db.items.has(w.get("item", "")):
+				echo_ok = false
+	check("echo vendor wares are real items", echo_ok)
 	check("desert monster loaded", Db.monsters.has("rock_golem") and Db.monsters.has("dune_serpent"))
 	var golem := MonsterFactory.make("rock_golem", 20, 3)
 	check("rock golem carries lightning resist", golem.get("resist", {}).get("lightning", 0.0) > 0.5)

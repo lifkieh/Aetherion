@@ -16,6 +16,7 @@ var sky_calendar: Array = []
 var achievements: Array = []
 var quests: Array = []
 var fish: Array = []
+var echo_vendors: Array = []
 
 var _errors: Array[String] = []
 
@@ -36,6 +37,7 @@ func load_all() -> void:
 	achievements = _load_array("achievements.json")
 	quests = _load_array("quests.json")
 	fish = _load_array("fish.json")
+	echo_vendors = _load_array("echo_vendors.json")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])

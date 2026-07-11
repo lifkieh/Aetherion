@@ -335,6 +335,14 @@ func _spawn_interactables() -> void:
 		add_child(pond)
 		pond.setup("pond")
 		pond.global_position = center + p
+	# Echo Vendors — ghost kiosks that make the hub feel lived-in
+	var evs := Db.echo_vendors
+	var ev_spots := [Vector2(-150, 90), Vector2(150, 90), Vector2(0, 130)]
+	for i in range(min(evs.size(), ev_spots.size())):
+		var ev := preload("res://scenes/world/EchoVendor.tscn").instantiate()
+		add_child(ev)
+		ev.setup(evs[i])
+		ev.global_position = center + ev_spots[i]
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	var node := preload("res://scenes/world/GatherNode.tscn").instantiate()

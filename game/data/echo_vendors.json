@@ -1,0 +1,17 @@
+[
+  {
+    "id": "echo_mira", "name": "Gema: Mira sang Peramu", "tint": "b06ccc",
+    "greeting": "\"...aku pernah berdiri di sini. Ambillah raciankuku.\"",
+    "wares": [{"item": "greater_orb", "price": 300}, {"item": "mana_draught", "price": 40}]
+  },
+  {
+    "id": "echo_bramm", "name": "Gema: Bramm sang Penempa", "tint": "cc8a4a",
+    "greeting": "\"Baja tak pernah tidur. Begitu juga gemaku.\"",
+    "wares": [{"item": "copper_sword", "price": 220}, {"item": "saddle", "price": 400}]
+  },
+  {
+    "id": "echo_sol", "name": "Gema: Sol sang Pemancing", "tint": "4a9acc",
+    "greeting": "\"Langit menuntun ikan. Umpan ini untukmu, pengelana.\"",
+    "wares": [{"item": "star_bait", "price": 180}, {"item": "fishing_rod", "price": 120}]
+  }
+]

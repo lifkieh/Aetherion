@@ -11,9 +11,20 @@ func setup(k: String) -> void:
 	if is_inside_tree():
 		_build()
 
+var _lbl_cd := 0.0
+
 func _ready() -> void:
 	add_to_group("interactable")
 	_build()
+
+func _process(delta: float) -> void:
+	_lbl_cd -= delta
+	if _lbl_cd > 0.0:
+		return
+	_lbl_cd = 0.15
+	var p := get_tree().get_first_node_in_group("player")
+	if p and label:
+		label.visible = global_position.distance_to(p.global_position) < 72.0
 
 func _build() -> void:
 	if kind == "astrologer":
