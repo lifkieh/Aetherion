@@ -50,7 +50,11 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**112/112 tests**, 0 headless errors, **zero known bugs**. 14 autoloads. **3 regions, 26 monsters.**
+**119/119 tests**, 0 headless errors, **zero known bugs**. 15 autoloads. **3 regions, 26 monsters, 2 Hidden Scenarios.**
+
+Session 2 round 3 added: **Star Whale hidden scenario** (fishing Star-Bait hook → belly survival → Ambergris
+Star [S]), **6 Cook recipes** (fish/candy/desert → consumables), **dynamic music layering** (combat crossfade
+via MusicDirector), **Echo Vendors** (ghost kiosks in hub) + **proximity interactable labels** (declutter).
 
 Session 2 (per LAPORAN_PROYEK_AETHERION.md backlog §7) added:
 - **Candyveil Meadows** (region 2, original candy tiles, 8 monsters) + **Desert of Ruins** (region 3,
@@ -68,17 +72,16 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 **When adding new image assets, run `godot --headless --path game --import` before referencing them.**
 
 ## Next steps (exact) — for the next session, resume here
-1. **New Hidden Scenarios** (ScenarioManager is data-driven, add JSON + scene):
-   - **Star Whale "Belly"** — fishing already sets counter `starwhale_hooked` when Star Bait used during a
-     meteor shower; add scenarios.json entry (trigger_action from fishing) + a belly dungeon scene.
-   - **Sugar Queen Tea Party** (Candyveil) — trigger "eat 100 candies in a day"; etiquette quiz scene.
-2. **Crafting expansion**: Cook profession recipes from fish/candy/desert materials (cakes, sushi, jerky);
-   add recipes.json entries + maybe a "kitchen" station.
-3. **Dynamic music layering** (approved): base track + combat intensity layer when enemies near.
-4. **Echo Vendor** (approved, report §6): static "ghost" player vendors in the hub for a lived-in feel.
-5. **Polish sprites**: re-tint/replace beast.png so "Grey Wolf" reads grey; original candy/desert monster
-   sprites (12 iconic list, report §7). Original UI Sky Report / title logo.
-6. More regions from GDD (Frostpeak §2.4, Storm Island §2.5) using the Candyveil/Desert region pattern.
+1. **Sugar Queen Tea Party** hidden scenario (Candyveil): trigger "eat 100 different candies in a day"
+   (track candy-eating in a daily counter) → etiquette quiz scene (3-round Q&A, 3 wrong = fail permanent) →
+   reward Cook [S] recipe + Peppermint Fairy pet. ScenarioManager.trigger_scenario supports the entry.
+2. **Frostpeak Mountain** region (Monster_Roster §2.4, 7 monsters incl. Ice element; blizzard weather that
+   makes Fire −, Ice +). Generate snow/ice tiles procedurally like Desert. Ice→Thermal-Shock combo demo.
+3. **Profession XP + perks** (GDD v0.2 §3): track per-activity XP (chop/mine/fish/cook/craft), levels, the
+   +50% main-profession bonus. Ties titles + Aetherpedia together.
+4. **Polish sprites**: replace beast.png "Grey Wolf" with a greyer canine (Ninja pack Dog/Hyena or generate);
+   original candy/desert monster sprites (12 iconic list, report §7). Original UI Sky Report / title logo.
+5. More regions from GDD (Storm Island §2.5, Emberfall §2.6) using the Candyveil/Desert region pattern.
 
 ## Verification recipes
 - Tests: `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 40` → expect `90 passed`.

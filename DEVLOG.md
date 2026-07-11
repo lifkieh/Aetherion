@@ -2,6 +2,24 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — Session 2 (round 3): Star Whale, Cook, music, Echo Vendors
+
+- **Star Whale hidden scenario** — 2nd Hidden Scenario, fully wired to the fishing Star-Bait hook:
+  `FishingSystem.can_hook_starwhale` (needs meteor-shower sky) → `FishingUI._hook` → new
+  `ScenarioManager.trigger_scenario(id)` (action-triggered, respects no_fail lock) → `StarWhaleBelly` scene
+  (survive 60s dodging welling stomach acid + parasites) → reward Ambergris Star [S]. Reused the survival
+  pattern from LunarWarren.
+- **Cook recipes** — 6 recipes (grilled fish, sushi, candy cake, cactus juice, jerky, moonfish feast) turning
+  fish/candy/desert materials into consumables. Reuses the crafting bench + CraftingSystem.
+- **Dynamic music layering** — Audio gained a 2nd player (`_combat`) crossfaded over the base explore track
+  (base keeps playing underneath → seamless resume). `MusicDirector` autoload raises it on any `damage_dealt`
+  and lowers it after 5s of calm.
+- **Echo Vendors** — data-driven ghost kiosks (`echo_vendors.json`) placed in the hub; semi-transparent bobbing
+  player sprites; interact → `MenuUI` "echo" panel with fixed-price wares. Lived-in hub without netcode (GDD §10.6).
+- **Proximity labels** — Interactable/Portal/EchoVendor now only show their `[E]` label when the player is near,
+  decluttering the busy hub.
+- Autoloads 14 → 16 (MusicDirector; FishingUI counted earlier). Tests 112 → 119. 2 Hidden Scenarios now.
+
 ## 2026-07-11 — Session 2 (cont.): Fishing, Astrologer, Desert region
 
 - **Fishing minigame** — FishingSystem (fish eligibility by WIB hour + lunar tide band + full moon + bait;
