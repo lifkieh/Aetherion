@@ -15,6 +15,7 @@ var label: Label
 var _shot_at := -1.0
 
 func _ready() -> void:
+	SafeZone.clear()
 	_build_ground()
 	_build_boundaries()
 	_build_sky()

@@ -24,6 +24,7 @@ var answers_box: VBoxContainer
 var _font: Font
 
 func _ready() -> void:
+	SafeZone.clear()
 	if ResourceLoader.exists("res://assets/game/fonts/m5x7.ttf"):
 		_font = load("res://assets/game/fonts/m5x7.ttf")
 	_build_bg()

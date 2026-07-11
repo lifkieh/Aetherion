@@ -23,6 +23,8 @@ var _spawner = null
 
 var _base_color := Color.WHITE
 var _wet_marker: Node2D = null
+var _sz_blocked := 0.0        # seconds spent pressed against a town safe-zone edge
+var _knock := Vector2.ZERO    # residual knockback velocity (gate guards, UI/UX §4)
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hpbar: ProgressBar = $HPBar
@@ -108,6 +110,16 @@ func _physics_process(delta: float) -> void:
 	if _player == null or not is_instance_valid(_player):
 		_player = get_tree().get_first_node_in_group("player")
 
+	# Caught inside a town safe zone (pushed in, edge case) — walk straight back out.
+	if SafeZone.is_active() and SafeZone.contains(global_position):
+		var edir: Vector2 = SafeZone.escape_vector(global_position)
+		velocity = edir * (inst.get("spd", 100) * 0.8) + _knock
+		move_and_slide()
+		_knock = _knock.move_toward(Vector2.ZERO, 900.0 * delta)
+		_anim(velocity)
+		enraged_until = _now() + 1.0   # don't attack while fleeing town
+		return
+
 	var ai: String = inst.get("ai", "melee")
 	var dist := 99999.0
 	if _player:
@@ -120,7 +132,11 @@ func _physics_process(delta: float) -> void:
 			if _player and dist < aggro and _now() > enraged_until:
 				_state = State.FLEE if ai == "skittish" else State.CHASE
 		State.CHASE:
-			if _player == null or dist > aggro * 1.8:
+			if _player == null or dist > aggro * 1.8 or _sz_blocked > 0.6:
+				# gave up (leash) or stopped at the town edge — cool off before re-aggro
+				if _sz_blocked > 0.6:
+					enraged_until = _now() + 2.5
+				_sz_blocked = 0.0
 				_enter_wander()
 			elif dist <= _attack_range():
 				_state = State.ATTACK
@@ -151,15 +167,40 @@ func _wander(delta: float) -> void:
 	# leash to home
 	if global_position.distance_to(_home) > 180.0:
 		_wander_dir = (_home - global_position).normalized()
-	velocity = _wander_dir * (inst.get("spd", 100) * 0.25)
+	var base: Vector2 = _wander_dir * (inst.get("spd", 100) * 0.25)
+	# don't wander into the town safe zone either
+	if SafeZone.is_active() and SafeZone.contains(global_position + base * delta):
+		base = Vector2.ZERO
+	velocity = base + _knock
 	move_and_slide()
+	_knock = _knock.move_toward(Vector2.ZERO, 900.0 * delta)
 	_anim(velocity)
 
-func _move_toward(target: Vector2, _delta: float, speed_mult: float = 1.0) -> void:
+func _move_toward(target: Vector2, delta: float, speed_mult: float = 1.0) -> void:
 	var dir := (target - global_position).normalized()
-	velocity = dir * (inst.get("spd", 100) * 0.55 * speed_mult)
+	var v: Vector2 = dir * (inst.get("spd", 100) * 0.55 * speed_mult)
+	# Monsters cannot cross into a town safe zone; they stop at the boundary.
+	if SafeZone.is_active():
+		if SafeZone.contains(global_position + v * delta):
+			v = Vector2.ZERO
+			_sz_blocked += delta
+		else:
+			_sz_blocked = 0.0
+	velocity = v + _knock
 	move_and_slide()
+	_knock = _knock.move_toward(Vector2.ZERO, 900.0 * delta)
 	_anim(velocity)
+
+## Gate guards fling approaching monsters back out of town (immortal-guard, §4).
+func knockback(from_pos: Vector2, force: float = 340.0) -> void:
+	if _state == State.DEAD:
+		return
+	_knock = (global_position - from_pos).normalized() * force
+	_sz_blocked = 0.0
+	enraged_until = _now() + 1.5     # briefly refuse to re-aggro while being shoved
+	if _state == State.CHASE or _state == State.ATTACK:
+		_state = State.WANDER
+		_state_timer = 0.3
 
 func _enter_wander() -> void:
 	_state = State.WANDER

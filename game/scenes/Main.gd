@@ -23,6 +23,7 @@ var _screenshot_at := -1.0
 
 func _ready() -> void:
 	randomize()
+	SafeZone.set_region("greenvale")   # town = monster-free safe zone (UI/UX §4)
 	_build_ground()
 	_build_boundaries()
 	_scatter_props()
@@ -54,6 +55,22 @@ func _ready() -> void:
 				player.hotbar.press_slot(2)   # flow_fire
 				player.hotbar.press_slot(4)   # flow_ice -> fusion ready
 			_screenshot_at = 0.01)
+	if OS.get_environment("AETHER_SAFEZONE") == "1":
+		# Drop a wolf right inside the plaza and one at the edge, let the guards /
+		# safe-zone logic work, then report how many monsters sit inside the zone.
+		for spot in [Vector2(740, 480), Vector2(640, 300), Vector2(540, 560)]:
+			var wm := preload("res://scenes/actors/Monster.tscn").instantiate()
+			add_child(wm)
+			wm.global_position = spot
+			wm.setup(MonsterFactory.make("grey_wolf", 3, 3), self)
+			_monster_count += 1
+		get_tree().create_timer(9.0).timeout.connect(func():
+			var inside := 0
+			for mm in get_tree().get_nodes_in_group("monsters"):
+				if is_instance_valid(mm) and SafeZone.contains(mm.global_position):
+					inside += 1
+			print("[safezone] monsters_inside_zone=%d total=%d" % [inside, get_tree().get_nodes_in_group("monsters").size()])
+			get_tree().quit())
 	if OS.get_environment("AETHER_DIALOG") == "1":
 		get_tree().create_timer(0.6).timeout.connect(func():
 			var at := AtlasTexture.new()
@@ -342,6 +359,13 @@ func _spawn_interactables() -> void:
 	for p in [Vector2(-300, 220), Vector2(340, -260), Vector2(-360, -220)]:
 		_place_interactable("pond", center + p)
 
+	# Immortal gate guards at each safe-zone gate (UI/UX §4) — repel monsters.
+	for gate in SafeZone.gates():
+		var guard := Node2D.new()
+		guard.set_script(load("res://scenes/actors/Guard.gd"))
+		add_child(guard)
+		guard.global_position = gate
+
 	# Echo Vendors — ghost kiosks flanking the plaza edges (lived-in feel)
 	var evs := Db.echo_vendors
 	var ev_spots := [Vector2(-236, 20), Vector2(236, 20), Vector2(0, 168)]
@@ -390,10 +414,15 @@ func _spawn_one() -> void:
 		return
 	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 	add_child(m)
-	# spawn away from player
+	# spawn away from player and never inside the town safe zone (UI/UX §4)
 	var pos := Vector2(randf_range(64, MAP_W * TILE - 64), randf_range(64, MAP_H * TILE - 64))
-	if player and pos.distance_to(player.global_position) < 120:
-		pos += Vector2(140, 140)
+	for _try in range(6):
+		if not SafeZone.contains(pos) and not (player and pos.distance_to(player.global_position) < 120):
+			break
+		pos = Vector2(randf_range(64, MAP_W * TILE - 64), randf_range(64, MAP_H * TILE - 64))
+	if SafeZone.contains(pos):
+		m.queue_free()
+		return
 	m.global_position = pos
 	m.setup(inst, self)
 	_monster_count += 1

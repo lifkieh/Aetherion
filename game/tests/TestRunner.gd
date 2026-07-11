@@ -34,6 +34,7 @@ func _ready() -> void:
 	await _test_hotbar()
 	_test_fishing()
 	_test_professions()
+	_test_safezone()
 	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
@@ -236,6 +237,42 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_safezone() -> void:
+	print("[Safe Zone + Guards]")
+	check("towns data loaded", Db.towns.has("greenvale"))
+	check("greenvale has a polygon", Db.towns.get("greenvale", {}).get("safe_zone", []).size() >= 3)
+	check("greenvale has gates", Db.towns.get("greenvale", {}).get("gates", []).size() >= 1)
+	SafeZone.set_region("greenvale")
+	var center := Vector2(640, 480)
+	check("zone active after set_region", SafeZone.is_active())
+	check("town center is inside safe zone", SafeZone.contains(center))
+	check("far corner is outside safe zone", not SafeZone.contains(Vector2(40, 40)))
+	check("gates resolved to global coords", SafeZone.gates().size() >= 1)
+	# gate posts sit on/near the zone boundary, not deep inside
+	var gate_ok := true
+	for g in SafeZone.gates():
+		if g.distance_to(center) < 100.0:
+			gate_ok = false
+	check("gate posts are at the perimeter", gate_ok)
+	# unknown region / clear() deactivates it (no stale polygon leaks between maps)
+	SafeZone.set_region("nonexistent_town")
+	check("unknown town clears the zone", not SafeZone.is_active())
+	SafeZone.set_region("greenvale")
+	SafeZone.clear()
+	check("clear() deactivates the zone", not SafeZone.is_active())
+	check("contains() is false when inactive", not SafeZone.contains(center))
+	# monster knockback API pushes away from the source and interrupts the chase
+	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
+	add_child(m)
+	m.setup(MonsterFactory.make("grey_wolf", 2, 3), null)
+	m.global_position = Vector2(200, 200)
+	m.knockback(Vector2(180, 200), 300.0)   # guard to the left -> shove right
+	check("knockback stored a rightward impulse", m._knock.x > 0.0)
+	check("knockback suppresses re-aggro briefly", m.enraged_until > m._now())
+	m.queue_free()
+	# restore the town zone for anything that runs after the tests
+	SafeZone.set_region("greenvale")
 
 func _test_skycalendar() -> void:
 	print("[Sky Calendar]")

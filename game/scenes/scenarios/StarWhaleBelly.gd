@@ -16,6 +16,7 @@ var _acid_timer := 0.0
 var _shot_at := -1.0
 
 func _ready() -> void:
+	SafeZone.clear()
 	_build_ground()
 	_build_boundaries()
 	_build_sky()

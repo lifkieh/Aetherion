@@ -10,6 +10,7 @@ var canvas_mod: CanvasModulate
 var player: Player
 
 func _ready() -> void:
+	SafeZone.clear()
 	_ensure_plots()
 	_build_ground()
 	_build_boundaries()

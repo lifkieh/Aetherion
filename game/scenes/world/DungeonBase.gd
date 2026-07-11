@@ -43,6 +43,7 @@ func _ready() -> void:
 	_spawn_boss(c.get("boss", ""))
 	_place_exit(c.get("return_scene", "res://scenes/Main.tscn"), c.get("exit_label", "Keluar [E]"))
 	_add_ui(c.get("hint", ""))
+	SafeZone.clear()   # dungeons are never safe zones (UI/UX §4)
 	Stage.enter_region(c.get("name", "Dungeon"), c.get("intro", ""), c.get("music", "23 - Road.ogg"))
 	EventBus.dungeon_entered.emit(c.get("id", "dungeon"))
 	if OS.get_environment("AETHER_ARENA") == "1" and player:

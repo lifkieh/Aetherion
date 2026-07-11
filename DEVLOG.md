@@ -2,6 +2,26 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — UI/UX §4: Town safe zone + immortal gate guards (DONE)
+
+- **`game/data/towns.json`** — per-town data with a `center`, a `safe_zone` polygon (points relative to center) and
+  `gates` (guard posts). Greenvale ships a 5-point pentagon covering the plaza.
+- **`SafeZone` autoload** — holds the ACTIVE town's polygon in global coords: `set_region(id)` / `clear()` /
+  `contains(p)` (Geometry2D point-in-polygon) / `gates()` / `escape_vector(p)` (outward from town center). Every
+  non-town scene (Candyveil, Desert, DungeonBase, Homestead, the 3 scenario scenes) calls `clear()` on `_ready` so a
+  stale Greenvale polygon can never leak into another map (all maps share one coordinate origin).
+- **Monster AI** (`Monster.gd`): the spawner rejects any position inside the zone; a chasing monster can't step across
+  the edge (velocity zeroed at the boundary) and after ~0.6 s pressed against it gives up and cools off for 2.5 s
+  (loses aggro); a monster somehow caught inside walks straight out along `escape_vector`; added a `knockback()` impulse
+  (decays over time) used by guards.
+- **`Guard.gd`** — self-building immortal NPC at each gate. No HP, can't be hit. Repels any monster within 66 px, always
+  shoving it **outward** (`SafeZone.escape_vector`), never toward the center — this was the key fix: a radial
+  push-from-guard bounced escaping monsters back inward and left one stuck oscillating at the north gate. Also talks
+  (Stage dialog) when the player presses E.
+- Verified by a headless probe (`AETHER_SAFEZONE=1`): 3 wolves force-spawned inside → **0 remain inside after 9 s**.
+  204/204 tests pass (+13 new `[Safe Zone + Guards]` checks: data loaded, contains in/out, gates at perimeter,
+  unknown-region clears, knockback direction + aggro suppression).
+
 ## 2026-07-11 — UI/UX §3: FF-style overworld (DONE)
 
 - New **`Stage`** autoload — a persistent high-layer CanvasLayer overlay (survives scene changes) that owns all the

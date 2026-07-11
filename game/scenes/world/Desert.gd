@@ -26,6 +26,7 @@ func _ready() -> void:
 	_spawn_gathering()
 	_add_ui()
 	_prime_monsters()
+	SafeZone.clear()   # no town safe zone in the wilds (UI/UX §4)
 	Stage.enter_region("Gurun Reruntuhan", "Pasir tandus & sisa peradaban kuno", "23 - Road.ogg")
 	EventBus.toast.emit("Desert of Ruins — reruntuhan kuno. Rock Golem kebal petir (grounding).")
 	if OS.get_environment("AETHER_SHOT") == "1":

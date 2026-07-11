@@ -144,8 +144,12 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   main-menu, load). NPCs (shop/board/astrologer/inn/bench) now converse before opening their menu. Tidy Greenvale plaza:
   service NPCs in two even rows, region gates at corners, props cleared within `PLAZA_RADIUS`. FF-window menus/shop
   already unified by §1 UiTheme. Verified renders `reports/dialog.png`, `reports/town.png`. 191/191 tests pass.
-- **(4) Town = safe zone + guards** ⏳ safe_zone polygon per town (data); monsters can't enter/spawn, lose aggro at
-  edge; immortal gate-guard NPC that knockbacks approaching monsters.
+- **(4) Town = safe zone + guards** ✅ DONE — `towns.json` safe_zone **polygon** per town + `SafeZone` autoload
+  (`set_region`/`clear`/`contains`/`escape_vector`); spawner rejects spawns inside; Monster AI can't path across the
+  edge (stops + loses aggro w/ cooldown) and any monster caught inside walks straight out; **immortal gate-guard** NPCs
+  (`Guard.gd`, self-built) at each gate shove nearby monsters *outward* (never inward). Non-town scenes call `clear()`
+  so no stale polygon leaks. Headless probe: **0 monsters inside the zone** after 9 s (3 force-spawned inside all
+  ejected). 204/204 tests (+13 SafeZone).
 - **(5) Onboarding & guide** ⏳ contextual one-time popups (tree/monster/levelup/orb/dungeon-door/town), Pemandu NPC
   in Greenvale plaza, "Panduan" menu tab, 5-step opening quest chain (chop3→craft1→kill2→tame1→visit board).
 - **(6) SKILL_AUDIT.md** ⏳ all skills vs GDD (element/cost/cooldown/DPS-per-mana outliers>30%; weapon behaviors on
