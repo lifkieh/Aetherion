@@ -1,0 +1,10 @@
+[
+  {"id": "common_carp", "name": "Ikan Mas", "item": "fish_carp", "rarity": "common", "weight": 40, "min_hour": 0, "max_hour": 24, "tide": "any", "value": 20},
+  {"id": "morning_trout", "name": "Trout Pagi", "item": "fish_trout", "rarity": "common", "weight": 25, "min_hour": 5, "max_hour": 9, "tide": "any", "value": 35},
+  {"id": "night_eel", "name": "Belut Malam", "item": "fish_eel", "rarity": "rare", "weight": 18, "min_hour": 19, "max_hour": 28, "tide": "any", "value": 60},
+  {"id": "tide_snapper", "name": "Kakap Pasang", "item": "fish_snapper", "rarity": "rare", "weight": 15, "min_hour": 0, "max_hour": 24, "tide": "high", "value": 80},
+  {"id": "lowtide_crab", "name": "Kepiting Surut", "item": "fish_crab", "rarity": "rare", "weight": 15, "min_hour": 0, "max_hour": 24, "tide": "low", "value": 75},
+  {"id": "moonfish", "name": "Moonfish", "item": "fish_moon", "rarity": "epic", "weight": 6, "min_hour": 19, "max_hour": 28, "tide": "any", "moon": "full", "value": 200},
+  {"id": "star_minnow", "name": "Teri Bintang", "item": "fish_star", "rarity": "epic", "weight": 8, "min_hour": 19, "max_hour": 28, "tide": "any", "bait": "star_bait", "value": 260},
+  {"id": "old_boot", "name": "Sepatu Bot Tua", "item": "old_boot", "rarity": "junk", "weight": 12, "min_hour": 0, "max_hour": 24, "tide": "any", "value": 2}
+]

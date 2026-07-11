@@ -46,6 +46,17 @@
   {"id": "choco_wood", "name": "Kayu Cokelat", "tier": "F", "type": "material", "value": 16, "stack": 999, "shop_demand": 14},
   {"id": "candy_bar", "name": "Cokelat Batangan", "tier": "E", "type": "consumable", "heal": 90, "value": 45, "stack": 99},
 
+  {"id": "fish_carp", "name": "Ikan Mas", "tier": "F", "type": "material", "value": 20, "stack": 999, "shop_demand": 14},
+  {"id": "fish_trout", "name": "Trout Pagi", "tier": "F", "type": "material", "value": 35, "stack": 999},
+  {"id": "fish_eel", "name": "Belut Malam", "tier": "E", "type": "material", "value": 60, "stack": 999},
+  {"id": "fish_snapper", "name": "Kakap Pasang", "tier": "E", "type": "material", "value": 80, "stack": 999},
+  {"id": "fish_crab", "name": "Kepiting Surut", "tier": "E", "type": "material", "value": 75, "stack": 999},
+  {"id": "fish_moon", "name": "Moonfish", "tier": "C", "type": "material", "value": 200, "stack": 999},
+  {"id": "fish_star", "name": "Teri Bintang", "tier": "C", "type": "material", "value": 260, "stack": 999},
+  {"id": "old_boot", "name": "Sepatu Bot Tua", "tier": "F", "type": "junk", "value": 2, "stack": 999},
+  {"id": "fishing_rod", "name": "Pancing", "tier": "E", "type": "gear", "value": 120, "stack": 1, "shop_stock": 5, "shop_demand": 10},
+  {"id": "star_bait", "name": "Umpan Bintang", "tier": "C", "type": "bait", "value": 150, "stack": 99, "shop_stock": 2, "shop_demand": 6, "desc": "Umpan berkilau; menarik makhluk langit saat hujan meteor."},
+
   {"id": "saddle", "name": "Pelana", "tier": "D", "type": "gear", "value": 300, "stack": 1, "shop_stock": 4, "shop_demand": 8},
   {"id": "health_charm", "name": "Jimat Vitalitas", "tier": "D", "type": "gear", "hp_bonus": 40, "value": 400, "stack": 1}
 ]

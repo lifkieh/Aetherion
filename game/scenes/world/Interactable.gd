@@ -16,7 +16,11 @@ func _ready() -> void:
 	_build()
 
 func _build() -> void:
-	if kind == "board":
+	if kind == "pond":
+		sprite.texture = load("res://assets/game/tiles/pond.png")
+		sprite.scale = Vector2(1.6, 1.6)
+		label.text = "Memancing [E]"
+	elif kind == "board":
 		sprite.texture = load("res://assets/game/sprites/props/branch.png")
 		sprite.scale = Vector2(2.2, 2.6)
 		sprite.modulate = Color(0.75, 0.6, 0.4)
@@ -45,6 +49,9 @@ func interact() -> void:
 	if kind == "inn":
 		_sleep()
 		return
+	if kind == "pond":
+		_fish()
+		return
 	var menu := get_tree().get_first_node_in_group("inventory_ui")
 	if menu == null:
 		return
@@ -54,6 +61,14 @@ func interact() -> void:
 		menu.open("quest", self)
 	else:
 		menu.open("crafting", self)
+
+func _fish() -> void:
+	# Consume a Star Bait if held (unlocks star fish / Star Whale hook), else bare hook.
+	var bait := ""
+	if PlayerData.item_count("star_bait") > 0:
+		bait = "star_bait"
+		PlayerData.remove_item("star_bait", 1)
+	FishingUI.open(bait)
 
 func _sleep() -> void:
 	# Sleeping is the trigger_action for the Moon Rabbit Warren (Fase0 §6).

@@ -267,7 +267,7 @@ func _build_crafting() -> void:
 func _build_shop() -> void:
 	title.text = "Toko Greenvale"
 	content.add_child(_mk_label("— Beli —", 16))
-	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "saddle", "copper_sword"]:
+	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "fishing_rod", "star_bait", "saddle", "copper_sword"]:
 		if not Db.items.has(id): continue
 		var h := _row()
 		var price := Economy.buy_price(id)

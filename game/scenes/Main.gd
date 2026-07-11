@@ -47,6 +47,10 @@ func _ready() -> void:
 	if OS.get_environment("AETHER_PET") == "1":
 		_pet_demo()
 		_screenshot_at = 1.3
+	if OS.get_environment("AETHER_FISH") == "1":
+		get_tree().create_timer(0.8).timeout.connect(func():
+			FishingUI.open("")
+			get_tree().create_timer(0.4).timeout.connect(_take_screenshot))
 	if OS.get_environment("AETHER_PHOTO") == "1":
 		get_tree().create_timer(1.0).timeout.connect(func():
 			PhotoMode.toggle()
@@ -317,6 +321,12 @@ func _spawn_interactables() -> void:
 	add_child(board)
 	board.setup("board")
 	board.global_position = center + Vector2(-40, -40)
+	# fishing ponds scattered around the region
+	for p in [Vector2(-260, 180), Vector2(300, -220), Vector2(-320, -180)]:
+		var pond := preload("res://scenes/world/Interactable.tscn").instantiate()
+		add_child(pond)
+		pond.setup("pond")
+		pond.global_position = center + p
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	var node := preload("res://scenes/world/GatherNode.tscn").instantiate()

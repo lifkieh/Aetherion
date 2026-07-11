@@ -24,6 +24,7 @@ func _ready() -> void:
 	_test_achievements()
 	_test_quests()
 	_test_evolution()
+	_test_fishing()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
@@ -159,6 +160,24 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_fishing() -> void:
+	print("[FishingSystem]")
+	check("fish data loaded", Db.fish.size() >= 6)
+	check("tide high", FishingSystem.tide_band(0.6) == "high")
+	check("tide low", FishingSystem.tide_band(-0.6) == "low")
+	check("tide mid", FishingSystem.tide_band(0.0) == "mid")
+	var noon := FishingSystem.eligible(12, 0.0, false, "").map(func(f): return f.id)
+	check("carp available at noon", "common_carp" in noon)
+	check("night_eel not at noon", not ("night_eel" in noon))
+	check("star_minnow needs bait", not ("star_minnow" in noon))
+	var night_star := FishingSystem.eligible(21, 0.0, false, "star_bait").map(func(f): return f.id)
+	check("star_minnow with bait at night", "star_minnow" in night_star)
+	check("night_eel available at 02:00 (wrap window)", "night_eel" in FishingSystem.eligible(2, 0.0, false, "").map(func(f): return f.id))
+	check("moonfish excluded w/o full moon", not ("moonfish" in FishingSystem.eligible(21, 0.0, false, "").map(func(f): return f.id)))
+	check("moonfish at full-moon night", "moonfish" in FishingSystem.eligible(21, 0.0, true, "").map(func(f): return f.id))
+	check("snapper at high tide", "tide_snapper" in FishingSystem.eligible(12, 0.7, false, "").map(func(f): return f.id))
+	check("roll yields a catch (carp always eligible)", not FishingSystem.roll("").is_empty())
 
 func _test_evolution() -> void:
 	print("[EvolutionSystem]")
