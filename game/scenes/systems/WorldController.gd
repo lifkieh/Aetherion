@@ -20,7 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if menu and menu.has_method("open"):
 			menu.open("system")
 	elif Input.is_action_just_pressed("save_game"):
-		SaveManager.save_game(1)
+		SaveManager.save_game(SaveManager.current_slot)
 	elif Input.is_action_just_pressed("tame"):
 		_try_tame()
 	elif Input.is_action_just_pressed("interact"):

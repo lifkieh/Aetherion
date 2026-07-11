@@ -6,6 +6,10 @@ const SCHEMA_VERSION := 1
 const SAVE_DIR := "user://save/"
 const MAX_BACKUPS := 3
 
+## The slot the player is currently playing (set on save/load); used by
+## quick-save (F5) and scenario auto-save so results land in the right slot.
+var current_slot := 1
+
 func _ready() -> void:
 	_ensure_dir()
 
@@ -33,6 +37,7 @@ func build_payload() -> Dictionary:
 	}
 
 func save_game(slot: int) -> bool:
+	current_slot = slot
 	_ensure_dir()
 	_rotate_backups(slot)
 	var payload := build_payload()
@@ -98,6 +103,7 @@ func _try_load_backup(slot: int) -> bool:
 	return false
 
 func _apply(data: Dictionary, slot: int) -> bool:
+	current_slot = slot
 	data = _migrate(data)
 	PlayerData.from_save(data.get("player", {}))
 	WorldState.from_save(data.get("world", {}))

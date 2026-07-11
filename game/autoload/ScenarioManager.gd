@@ -90,7 +90,7 @@ func resolve(success: bool) -> void:
 		EventBus.toast.emit("✦ Skenario GAGAL — terkunci permanen bagi karaktermu.")
 	EventBus.scenario_resolved.emit(id, success)
 	active_scenario = ""
-	SaveManager.save_game(1)   # no_fail: persist immediately
+	SaveManager.save_game(SaveManager.current_slot)   # no_fail: persist immediately
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 
 func note_rabbit_killed_in_scenario() -> void:
