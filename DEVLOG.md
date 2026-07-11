@@ -2,6 +2,18 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — Profession XP + perks (GDD v0.2 §3)
+
+- **ProfessionSystem** autoload awards XP off existing signals (node_harvested→lumberjack/miner,
+  block_mined→miner, crop_harvested→herbalist, item_crafted→recipe's profession, fish_caught→fisherman,
+  tame_attempted→tamer). **+50% XP** when the profession == `PlayerData.professions.main`. Level = floor(sqrt(xp/20))+1.
+- **professions.json** defines milestone perks; `perk_value(prof, type)` is queried by systems. Wired:
+  miner **faster** (−hits, lazy `_hp` init in DungeonTerrain) + **bonus_yield** ore; lumberjack/herbalist/cook
+  **bonus_yield**; fisherman **bite_window** (+30% in FishingUI). Level-ups + perk unlocks toast.
+- **Profesi** menu tab: 9 professions with level/XP/next-perk + "Jadikan Utama" (set main). Persisted via prof_xp.
+- Fixed a MenuUI regression where inserting the prof case displaced the sky/echo match cases (parse error).
+  17 → 18 autoloads. Suite 146 → 153.
+
 ## 2026-07-11 — Dungeons scaled out (Gummy Cavern, Desert Barrow) via DungeonBase
 
 - Extracted **DungeonBase** (`class_name`) holding all shared side-view dungeon logic (terrain build, 3-floor+

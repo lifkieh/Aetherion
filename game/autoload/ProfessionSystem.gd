@@ -1,4 +1,5 @@
 extends Node
+## NOTE: see DEVLOG 2026-07-11 for the profession system rollout.
 ## ProfessionSystem (GDD v0.2 §3) — awards profession XP from existing activity
 ## signals, applies the +50% main-profession bonus, announces level-ups + perk
 ## unlocks, and exposes perk values other systems query.

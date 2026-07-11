@@ -50,8 +50,9 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**146/146 tests**, 0 headless errors, **zero known bugs**. 17 autoloads. **3 overworld regions + 3 side-view
-dungeons, 31 monsters (incl. 3 dungeon bosses), 2 Hidden Scenarios.** Terraria-style dungeon combat complete.
+**153/153 tests**, 0 headless errors, **zero known bugs**. 18 autoloads. **3 overworld regions + 3 side-view
+dungeons, 31 monsters (incl. 3 dungeon bosses), 2 Hidden Scenarios.** Terraria-style dungeon combat +
+**Profession XP/perks** (harvest/mine/fish/craft/tame → XP, +50% main, milestone perks, Profesi menu tab).
 
 Session 2 round 3 added: **Star Whale hidden scenario**, **6 Cook recipes**, **dynamic music layering**,
 **Echo Vendors** + **proximity labels**.
@@ -106,6 +107,8 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   + an `Interactable` kind `"dungeon"` door (set `dungeon_scene`/`dungeon_label`). Boss adds via `add_species`.
 
 ## Next steps (exact) — for the next session, resume here
+0. **Profession polish**: profession-gated recipe access (main-only A+ tier), reawaken/change-main quest,
+   profession-level EXP display in HUD. (Core XP+perks already done.)
 1. **Sugar Queen Tea Party** hidden scenario (Candyveil): trigger "eat 100 different candies in a day"
    (track candy-eating in a daily counter) → etiquette quiz scene (3-round Q&A, 3 wrong = fail permanent) →
    reward Cook [S] recipe + Peppermint Fairy pet. ScenarioManager.trigger_scenario supports the entry.
