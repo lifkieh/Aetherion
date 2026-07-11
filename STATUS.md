@@ -127,6 +127,28 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 | Profession 1 main + 2 sub (GDD §3) | ✅ DONE this session (gating/efficiency/caps/recipe-gate tested) |
 | Level compression decision | ✅ DONE — documented in DEVLOG with stretch table |
 
+## 🎨 UI/UX ROUND (owner directive 2026-07-11) — content frozen, tag v0.2-alpha at end
+- **(0) Repo purge** ✅ assets_raw removed from history (104MB→5.7MB), main force-pushed. Tag reconcile pending.
+- **(1) Unified UI Kit** ✅ `UiTheme` autoload (JRPG blue window + gold border + m5x7 + palette), applied to
+  MenuUI/MainMenu/FishingUI. One panel style everywhere.
+- **(2) Skill hotbar + element fusion** ⏳ NEXT — 5 slots (keys 1-5) from Skill Book; PRIME (number) → LEFT-CLICK
+  cast to cursor (top-down AND side-view); two numbers <1.5s = FUSION (≥8 recipes from elements.json, mana 2x);
+  no recipe = fizzle+smoke (discovery, no recipe list, first-discovery announced); hotbar UI icons(orig element
+  icons)/radial cooldown/mana/prime glow/fusion indicator; normal attack stays. Test: prime/combine/valid/fizzle/
+  cast both perspectives.
+- **(3) FF-style overworld** ⏳ NPC dialog box (dark-blue JRPG frame, speaker name, per-letter typing, portrait),
+  FF-window menus/shop, fade transitions, elegant area-name banner on entry, per-region music/ambience, tidy town layout.
+- **(4) Town = safe zone + guards** ⏳ safe_zone polygon per town (data); monsters can't enter/spawn, lose aggro at
+  edge; immortal gate-guard NPC that knockbacks approaching monsters.
+- **(5) Onboarding & guide** ⏳ contextual one-time popups (tree/monster/levelup/orb/dungeon-door/town), Pemandu NPC
+  in Greenvale plaza, "Panduan" menu tab, 5-step opening quest chain (chop3→craft1→kill2→tame1→visit board).
+- **(6) SKILL_AUDIT.md** ⏳ all skills vs GDD (element/cost/cooldown/DPS-per-mana outliers>30%; weapon behaviors on
+  new click scheme; Element Flow+science post-refactor; fusion recipe symmetry 1+2==2+1); fix findings.
+- **(7) Asset & polish** ⏳ more Greenvale/Candyveil deco variety, interiors, Shikashi/Caz item icons; original
+  sprites: Grey Wolf + 2 candy + 2 desert monsters; SFX: prime/fusion/fizzle/menu/dialog-blip.
+- Rule: game ringan (measure FPS before/after), headless test per system, commit+push per part, **tag v0.2-alpha** at end.
+- **Definition of done:** a brand-new player with zero explanation understands how to play within 10 minutes.
+
 ## Next steps (exact) — for the next session, resume here
 0. **Profession polish**: profession-gated recipe access (main-only A+ tier), reawaken/change-main quest,
    profession-level EXP display in HUD. (Core XP+perks already done.)
