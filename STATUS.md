@@ -106,6 +106,17 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 - To add another: new `X.gd extends DungeonBase` overriding `cfg()` (theme/spawns/boss/return) + a `.tscn`
   + an `Interactable` kind `"dungeon"` door (set `dungeon_scene`/`dungeon_label`). Boss adds via `add_species`.
 
+## Backlog audit (owner request 2026-07-11) — positions
+| Item | Status |
+|---|---|
+| Evolution system (Grey Wolf→Dire Wolf) | ✅ DONE — level-based (Lv≥8) + Fluffbit→Moonbit (full moon); dire_wolf monster; tested |
+| Aetherpedia / bestiary | ✅ DONE — menu "Pedia" tab (auto-log monsters/items/weathers), collection reward hooks |
+| BALANCE_REPORT.md (TTK vs target, dev>30%) | ✅ DONE — headless probe `AETHER_BALANCE=1`; tanks on-target, fragile archetypes documented |
+| EVALUATION.md / MARKET_STUDY.md | ✅ DONE (Session 1) |
+| Windows .exe export pipeline | ⏳ preset ready (`game/export_presets.cfg`); **export templates downloading** — verify build + run once installed |
+| Profession 1 main + 2 sub (GDD §3) | ✅ DONE this session (gating/efficiency/caps/recipe-gate tested) |
+| Level compression decision | ✅ DONE — documented in DEVLOG with stretch table |
+
 ## Next steps (exact) — for the next session, resume here
 0. **Profession polish**: profession-gated recipe access (main-only A+ tier), reawaken/change-main quest,
    profession-level EXP display in HUD. (Core XP+perks already done.)
