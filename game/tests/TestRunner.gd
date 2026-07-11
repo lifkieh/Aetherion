@@ -143,6 +143,12 @@ func _test_homestead_growth() -> void:
 	check("half-grown < ready", half < stages)
 	check("fully grown at elapsed>=grow", done >= stages)
 	check("ready detection", HomesteadSystem.is_ready(grow + 1, grow, stages))
+	# offline growth via plot_status (time-delta based)
+	var ready_plot := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - (grow + 5)}
+	var st := HomesteadSystem.plot_status(ready_plot)
+	check("backdated plot is ready", st.ready and st.stage == st.stages)
+	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
+	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
 
 func _test_economy() -> void:
 	print("[Economy]")

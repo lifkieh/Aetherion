@@ -296,6 +296,10 @@ func _spawn_interactables() -> void:
 	add_child(shop)
 	shop.setup("shop")
 	shop.global_position = center + Vector2(56, 40)
+	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
+	add_child(portal)
+	portal.setup("res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
+	portal.global_position = center + Vector2(8, 72)
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	var node := preload("res://scenes/world/GatherNode.tscn").instantiate()

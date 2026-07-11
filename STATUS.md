@@ -32,7 +32,10 @@
   - MenuUI overlay (pauses game): Inventory (equip/use), Crafting (7 recipes, success%, insight on fail), Shop (buy/sell)
   - CraftingSystem (consume/roll/base-preserve on fail) + Economy supply-demand — tested
   - Bench + Shop NPC interactables (E to open)
-- [ ] M6 — Homestead (HomesteadSystem growth DONE+tested; TODO: homestead scene, plots, plant/harvest)
+- [x] **M6 — Homestead** ✅ DONE
+  - Separate Homestead instance (portal travel both ways), day/night, HUD/menu
+  - 4 plots: plant mint/sunbud seeds → grow in real WIB time (offline growth via planted_at_unix delta) → harvest → product (sellable)
+  - Growth stages visible; HomesteadSystem tested (backdated plots ready, young not)
 - [ ] M7 — Hidden Scenario (data DONE; TODO: ScenarioManager, counter trigger, Lunar Warren scene)
 - [ ] M8 — Polish (save/load DONE+backup; TODO: 3-slot menu UI, main menu, Sky Report screen, Mode Hemat, full audio, element icons in UI)
 
