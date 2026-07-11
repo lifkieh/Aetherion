@@ -214,7 +214,8 @@ ronde ini memperkaya yang sudah ada. Semua aset ORISINAL (PIL / prosedural).
   **Zephyr Spire** + bos **Storm Sovereign** (Tempest Heart [S]). Akses via dermaga Greenvale.
 - **Thermal Shock** (Api+Es) teruji; **Dire Wolf → Alpha Wolf** saat purnama.
 - **60 monster**, screenshot self-check di `reports/`, balance probe (pola arketipe konsisten, lihat BALANCE_REPORT),
-  **264 test lulus**, commit+push per bagian, **tag v0.3-alpha**, export exe baru.
+  **264 test lulus**, commit+push per bagian, **tag v0.3-alpha**, export `export/Aetherion.exe` **85.2 MB**
+  (boot standalone OK, `[Db] Loaded: 60 monsters, 87 items`, tanpa error).
 
 ## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER (RONDE 3)
 Ronde v0.3-alpha (character system + Frostpeak + Storm Island) selesai & di-tag. **Menunggu feedback playtest ronde 3.**
