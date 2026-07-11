@@ -35,6 +35,17 @@
   {"id": "seed_mintleaf", "name": "Benih Mint", "tier": "F", "type": "seed", "value": 8, "stack": 999, "shop_stock": 50, "shop_demand": 20},
   {"id": "seed_sunbud", "name": "Benih Kuncup Surya", "tier": "F", "type": "seed", "value": 14, "stack": 999, "shop_stock": 40, "shop_demand": 16},
 
+  {"id": "gummy_jelly", "name": "Jeli Gummy", "tier": "F", "type": "material", "value": 14, "stack": 999, "shop_demand": 18},
+  {"id": "candy_wool", "name": "Wol Gula Kapas", "tier": "E", "type": "material", "value": 28, "stack": 999, "shop_demand": 16},
+  {"id": "jellybean", "name": "Jellybean", "tier": "F", "type": "material", "value": 10, "stack": 999},
+  {"id": "choco_chunk", "name": "Bongkah Cokelat", "tier": "E", "type": "material", "value": 30, "stack": 999},
+  {"id": "sugar_crystal", "name": "Kristal Gula", "tier": "E", "type": "material", "value": 40, "stack": 999, "shop_demand": 22},
+  {"id": "caramel_ore", "name": "Bijih Karamel", "tier": "E", "type": "material", "value": 38, "stack": 999},
+  {"id": "soda_syrup", "name": "Sirup Soda", "tier": "E", "type": "material", "value": 26, "stack": 999},
+  {"id": "pixie_dust", "name": "Debu Peri", "tier": "D", "type": "material", "value": 80, "stack": 999},
+  {"id": "choco_wood", "name": "Kayu Cokelat", "tier": "F", "type": "material", "value": 16, "stack": 999, "shop_demand": 14},
+  {"id": "candy_bar", "name": "Cokelat Batangan", "tier": "E", "type": "consumable", "heal": 90, "value": 45, "stack": 99},
+
   {"id": "saddle", "name": "Pelana", "tier": "D", "type": "gear", "value": 300, "stack": 1, "shop_stock": 4, "shop_demand": 8},
   {"id": "health_charm", "name": "Jimat Vitalitas", "tier": "D", "type": "gear", "hp_bonus": 40, "value": 400, "stack": 1}
 ]

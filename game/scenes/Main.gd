@@ -305,6 +305,10 @@ func _spawn_interactables() -> void:
 	add_child(inn)
 	inn.setup("inn")
 	inn.global_position = center + Vector2(-96, 8)
+	var cv := preload("res://scenes/homestead/Portal.tscn").instantiate()
+	add_child(cv)
+	cv.setup("res://scenes/world/Candyveil.tscn", "Candyveil Meadows [E]")
+	cv.global_position = center + Vector2(120, -40)
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	var node := preload("res://scenes/world/GatherNode.tscn").instantiate()

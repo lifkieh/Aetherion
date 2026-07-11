@@ -46,6 +46,10 @@ func _test_db() -> void:
 	check("skills loaded", Db.skills.has("strike") and Db.skills.has("spark_bolt"))
 	check("elements matrix", Db.elements.has("matrix"))
 	check("no db errors", not Db.has_errors(), str(Db.get_errors()))
+	# Candyveil content
+	check("candyveil monster loaded", Db.monsters.has("gummy_slime") and Db.monsters.has("gummy_mimic"))
+	check("candyveil loot table", Db.loot_table("candy_gummy_slime").size() > 0)
+	check("candyveil monster builds", not MonsterFactory.make("choco_bear").is_empty())
 
 func _test_elements() -> void:
 	print("[elem_mod]")

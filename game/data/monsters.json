@@ -91,5 +91,70 @@
     "traits": ["night_sight"], "skills": ["gust"],
     "loot_table": "greenvale_owl", "tame_base": 0.45,
     "evolution": "strix_sage", "aggro_radius": 150, "lore": "Burung hantu malam; pemberi visi malam."
+  },
+
+  {
+    "id": "gummy_slime", "name": "Gummy Slime", "rarity": "common", "element": "water",
+    "archetype": "tank", "bst": 300, "size": "small", "rideable": false, "level": 18,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "ff9ec4", "traits": ["sticky"], "skills": ["tackle"],
+    "loot_table": "candy_gummy_slime", "tame_base": 0.7, "evolution": "gummy_titan",
+    "aggro_radius": 120, "lore": "Jeli permen kenyal; panen gummy untuk Cook."
+  },
+  {
+    "id": "candyfloss_sheep", "name": "Candyfloss Sheep", "rarity": "common", "element": "sky",
+    "archetype": "support", "bst": 300, "size": "medium", "rideable": false, "level": 20,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "skittish", "tint": "ffd6ec", "traits": ["fluffy"], "skills": ["gust"],
+    "loot_table": "candy_sheep", "tame_base": 0.6, "evolution": "nimbus_sheep",
+    "aggro_radius": 110, "lore": "Domba wol gula kapas; ternak wol premium homestead."
+  },
+  {
+    "id": "jellybean_bunny", "name": "Jellybean Bunny", "rarity": "common", "element": "wood",
+    "archetype": "swift", "bst": 300, "size": "small", "rideable": false, "is_rabbit": true, "level": 19,
+    "sprite": "res://assets/game/sprites/monsters/fluffbit.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "skittish", "tint": "ff70a0", "traits": ["sugar_rush"], "skills": ["tackle"],
+    "loot_table": "candy_bunny", "tame_base": 0.75, "evolution": "",
+    "aggro_radius": 100, "lore": "Kelinci jellybean lincah; ikut menghitung dosa kelinci."
+  },
+  {
+    "id": "choco_bear", "name": "Choco Bear", "rarity": "rare", "element": "earth",
+    "archetype": "bruiser", "bst": 360, "size": "medium", "rideable": true, "level": 24,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "6b3f2a", "traits": ["sweet_tooth"], "skills": ["bite", "charge"],
+    "loot_table": "candy_bear", "tame_base": 0.4, "evolution": "dark_choco_bear",
+    "aggro_radius": 150, "lore": "Beruang cokelat; pendamping tangguh."
+  },
+  {
+    "id": "lollipop_sprite", "name": "Lollipop Sprite", "rarity": "rare", "element": "light",
+    "archetype": "caster", "bst": 360, "size": "small", "rideable": false, "level": 22,
+    "sprite": "res://assets/game/sprites/monsters/mouse.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "ranged", "tint": "ff5dd2", "traits": ["sugar_shield"], "skills": ["gust"],
+    "loot_table": "candy_sprite", "tame_base": 0.4, "evolution": "peppermint_fairy",
+    "aggro_radius": 140, "lore": "Peri lolipop; healer kecil bercahaya."
+  },
+  {
+    "id": "caramel_golem", "name": "Caramel Golem", "rarity": "epic", "element": "earth",
+    "archetype": "tank", "bst": 440, "size": "medium", "rideable": false, "level": 28,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "c9863f", "traits": ["molten_caramel"], "skills": ["tackle", "charge"],
+    "loot_table": "candy_golem", "tame_base": 0.15, "evolution": "",
+    "aggro_radius": 130, "lore": "Golem karamel; melambat saat panas."
+  },
+  {
+    "id": "gummy_mimic", "name": "Gummy Mimic", "rarity": "epic", "element": "darkness",
+    "archetype": "assassin", "bst": 440, "size": "small", "rideable": false, "level": 27,
+    "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "9b59b6", "traits": ["ambush"], "skills": ["bite"],
+    "loot_table": "candy_mimic", "tame_base": 0.0, "evolution": "",
+    "aggro_radius": 90, "lore": "Peti permen jebakan; menyamar lalu menerkam."
+  },
+  {
+    "id": "soda_serpent", "name": "Soda Serpent", "rarity": "rare", "element": "water",
+    "archetype": "caster", "bst": 360, "size": "medium", "rideable": false, "level": 25,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "ranged", "tint": "5bc0de", "traits": ["fizz_burst"], "skills": ["gust"],
+    "loot_table": "candy_serpent", "tame_base": 0.4, "evolution": "",
+    "aggro_radius": 150, "lore": "Ular soda berbuih; semburan AoE menyegarkan."
   }
 ]
