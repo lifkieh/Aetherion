@@ -131,6 +131,7 @@ func _physics_process(delta: float) -> void:
 			_wander(delta)
 			if _player and dist < aggro and _now() > enraged_until:
 				_state = State.FLEE if ai == "skittish" else State.CHASE
+				Onboarding.tip("monster")
 		State.CHASE:
 			if _player == null or dist > aggro * 1.8 or _sz_blocked > 0.6:
 				# gave up (leash) or stopped at the town edge — cool off before re-aggro

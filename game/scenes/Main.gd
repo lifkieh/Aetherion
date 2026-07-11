@@ -37,6 +37,7 @@ func _ready() -> void:
 	Settings.changed.connect(func(): _on_weather_changed(WorldState.weather))
 	_on_weather_changed(WorldState.weather)
 	Stage.enter_region("Hutan Greenvale", "Wilayah awal — aman di siang hari", "11 - Clearing.ogg")
+	get_tree().create_timer(2.6).timeout.connect(func(): Onboarding.tip("town"))
 	# Optional automated screenshot for verification (--screenshot arg or env)
 	if "--shot" in OS.get_cmdline_user_args() or OS.get_environment("AETHER_SHOT") == "1":
 		_screenshot_at = 1.6
@@ -71,6 +72,10 @@ func _ready() -> void:
 					inside += 1
 			print("[safezone] monsters_inside_zone=%d total=%d" % [inside, get_tree().get_nodes_in_group("monsters").size()])
 			get_tree().quit())
+	if OS.get_environment("AETHER_ONBOARD") == "1":
+		get_tree().create_timer(0.6).timeout.connect(func():
+			Onboarding.tip("town")
+			get_tree().create_timer(0.8).timeout.connect(_take_screenshot))
 	if OS.get_environment("AETHER_DIALOG") == "1":
 		get_tree().create_timer(0.6).timeout.connect(func():
 			var at := AtlasTexture.new()
@@ -339,6 +344,9 @@ func _spawn_interactables() -> void:
 	# Tidy town plaza (UI/UX §3): service NPCs in two even rows above/below the
 	# spawn, region gates pushed to the plaza corners, ponds well outside town.
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
+
+	# Pemandu (guide NPC) stands right by the spawn so newcomers meet him first.
+	_place_interactable("guide", center + Vector2(-56, 44))
 
 	# --- Service NPCs: top row (north of spawn), evenly spaced 112px apart ---
 	_place_interactable("board", center + Vector2(-168, -72))       # Papan Quest

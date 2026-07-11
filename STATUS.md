@@ -150,8 +150,13 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   (`Guard.gd`, self-built) at each gate shove nearby monsters *outward* (never inward). Non-town scenes call `clear()`
   so no stale polygon leaks. Headless probe: **0 monsters inside the zone** after 9 s (3 force-spawned inside all
   ejected). 204/204 tests (+13 SafeZone).
-- **(5) Onboarding & guide** ⏳ contextual one-time popups (tree/monster/levelup/orb/dungeon-door/town), Pemandu NPC
-  in Greenvale plaza, "Panduan" menu tab, 5-step opening quest chain (chop3→craft1→kill2→tame1→visit board).
+- **(5) Onboarding & guide** ✅ DONE — `Onboarding` autoload (non-blocking layer): 6 contextual **one-time tip popups**
+  (town/tree/monster/levelup/orb/dungeon-door, queued, gold-framed, auto-dismiss, persisted in
+  `PlayerData.onboarding_seen`); **5-step opening quest chain** (chop3→craft1→kill2→tame1→visit-board) with an always-on
+  top-right **tracker**, advanced via EventBus, persisted (`guide_step`/`guide_progress`), 100G+3 orb graduation reward;
+  **Pemandu NPC** (green, by spawn) that talks + opens the guide; **"Panduan" menu tab** = full Bahasa how-to-play
+  reference. All Bahasa Indonesia, short, friendly. Verified renders `reports/onboarding.png`, `reports/panduan.png`.
+  217/217 tests (+13 onboarding).
 - **(6) SKILL_AUDIT.md** ⏳ all skills vs GDD (element/cost/cooldown/DPS-per-mana outliers>30%; weapon behaviors on
   new click scheme; Element Flow+science post-refactor; fusion recipe symmetry 1+2==2+1); fix findings.
 - **(7) Asset & polish** ⏳ more Greenvale/Candyveil deco variety, interiors, Shikashi/Caz item icons; original

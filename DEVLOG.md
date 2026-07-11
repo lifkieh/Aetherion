@@ -2,6 +2,26 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — UI/UX §5: Onboarding & guide (DONE)
+
+- New **`Onboarding` autoload** (non-blocking CanvasLayer, never pauses):
+  - **6 contextual one-time tips** — town, tree, monster, levelup, orb, dungeon-door. Each shows once (guarded by
+    `PlayerData.onboarding_seen`, persisted), queued so two never overlap, rendered in a gold-framed popup below the
+    area banner that fades in → holds 6 s → fades out. Triggers wired to their natural moments: town on spawn, tree on
+    proximity to a `GatherNode`, monster on first aggro (`Monster` CHASE), levelup on `player_leveled_up`, orb on
+    `item_gained` of an `*_orb`, dungeon-door on proximity to the dungeon `Interactable`.
+  - **5-step opening quest chain** — chop 3 trees → craft 1 → kill 2 → tame 1 → visit the Quest Board. Sequential;
+    advanced by EventBus (`node_harvested`/`item_crafted`/`monster_killed`/`pet_added`/new `board_visited`). Progress
+    persisted in `PlayerData.guide_step`/`guide_progress` and shown in an always-on top-right tracker
+    ("📜 Panduan n/5 … (x/y)"). Graduation pays 100 G + 3 basic orbs.
+- **Pemandu NPC** — new `Interactable` kind `guide` (friendly green), placed right by the Greenvale spawn; talks via the
+  Stage dialog and opens the guide book.
+- **"Panduan" menu tab** — a full Bahasa how-to-play reference (movement, combat, fusion, gathering/crafting, taming,
+  town/dungeon, time/weather, saving), 8 gold-headed wrapped sections in the unified UiTheme window.
+- Verified renders: `reports/onboarding.png` (tip popup + tracker + Pemandu) and `reports/panduan.png` (guide tab).
+  217/217 tests pass (+13 `[Onboarding + Guide chain]`: tip-once gating, unknown-id no-op, per-step chain advancement,
+  wrong-kind/failed events ignored, post-completion ignored).
+
 ## 2026-07-11 — UI/UX §4: Town safe zone + immortal gate guards (DONE)
 
 - **`game/data/towns.json`** — per-town data with a `center`, a `safe_zone` polygon (points relative to center) and

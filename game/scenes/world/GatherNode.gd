@@ -53,6 +53,11 @@ func _process(_delta: float) -> void:
 	if _depleted and WorldState.node_ready(node_id, RESPAWN.get(kind, 60)):
 		_set_depleted(false)
 		_hits_left = HITS.get(kind, 3)
+	# first-time gathering tip when the player wanders up to a tree (UI/UX §5)
+	if kind == "tree" and not _depleted and "tree" not in PlayerData.onboarding_seen:
+		var p := get_tree().get_first_node_in_group("player")
+		if p and global_position.distance_to(p.global_position) < 56.0:
+			Onboarding.tip("tree")
 
 func can_harvest() -> bool:
 	return not _depleted

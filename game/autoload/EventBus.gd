@@ -46,6 +46,7 @@ signal block_mined(cell: Vector2i, block_type: String)
 signal dungeon_entered(id: String)
 signal dungeon_exited(id: String)
 signal item_crafted(item_id: String, success: bool)
+signal board_visited()                           # player opened the Quest Board (onboarding)
 
 # --- Homestead ---
 signal crop_planted(plot_index: int, crop_id: String)

@@ -62,7 +62,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["prof", "Profesi"], ["pedia", "Pedia"]]:
+	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -142,6 +142,7 @@ func _rebuild() -> void:
 		"quest": _build_quests()
 		"sky": _build_sky()
 		"echo": _build_echo()
+		"panduan": _build_panduan()
 
 func _build_skill() -> void:
 	title.text = "Skill Book — Hotbar (1-5)"
@@ -403,3 +404,25 @@ func _build_shop() -> void:
 		l.custom_minimum_size = Vector2(320, 0)
 		h.add_child(l)
 		h.add_child(_btn("Jual 1", func(): if Economy.sell(id, 1): _rebuild()))
+
+func _build_panduan() -> void:
+	title.text = "Panduan — Cara Bermain"
+	var sections := [
+		["🎮 Gerak & Interaksi", "WASD untuk bergerak. E untuk berinteraksi (NPC, pohon, papan, pintu gua). I membuka Tas. Space untuk menghindar (dodge)."],
+		["⚔️ Bertarung", "Klik kiri menyerang ke arah kursor. Tekan angka 1–5 untuk 'prime' skill di hotbar, lalu klik kiri untuk melepasnya ke kursor. Serangan biasa tetap jalan tanpa prime."],
+		["✨ Fusion Elemen", "Tekan DUA angka dalam 1,5 detik untuk memadukan dua skill. Jika paduannya cocok (mis. Api+Angin), keluar serangan fusion yang lebih kuat (mana 2x). Jika tidak cocok, hanya asap — cobalah paduan lain untuk menemukannya!"],
+		["🌳 Mengumpulkan & Meramu", "Tebang pohon / tambang batu dengan E untuk bahan. Ke Bengkel (E) untuk meramu senjata, alat, dan barang."],
+		["🐾 Menjinakkan Pet", "Lemahkan monster hingga HP sangat rendah, dekati, tekan T. Pet ikut bertarung; sebagian bisa ditunggangi (R)."],
+		["🏰 Kota & Gua", "Kota adalah zona aman — monster tak bisa masuk, penjaga gerbang menghalau mereka. Pintu gua (E) membawamu ke dungeon sisi-samping: lompat, gali, kalahkan bos."],
+		["🌙 Waktu & Cuaca", "Waktu & fase bulan berjalan nyata (WIB). Cuaca memengaruhi pertarungan — mis. Petir lebih kuat saat musuh basah karena hujan."],
+		["💾 Menyimpan", "Game tersimpan otomatis; kamu juga bisa menyimpan lewat menu Sistem (Esc)."],
+	]
+	for s in sections:
+		var head := _mk_label(s[0], 18)
+		head.add_theme_color_override("font_color", UiTheme.ACCENT)
+		content.add_child(head)
+		var body := _mk_label(s[1], 15)
+		body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		body.custom_minimum_size = Vector2(480, 0)
+		content.add_child(body)
+		content.add_child(_mk_label(" ", 6))

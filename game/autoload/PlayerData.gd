@@ -58,6 +58,9 @@ var daily_quests: Dictionary = {}      # {date, quests:[...]} — Daily Quest Bo
 var prof_xp: Dictionary = {}           # profession -> xp (miner, lumberjack, ...)
 var hotbar: Array = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"]  # 5 slots
 var discovered_fusions: Array = []     # combo results the player has cast (first-discovery)
+var onboarding_seen: Array = []        # contextual tip ids already shown (UI/UX §5)
+var guide_step: int = 0                # opening quest chain: current step 0..5 (5 = done)
+var guide_progress: int = 0            # progress within the current opening-chain step
 
 func _ready() -> void:
 	recalculate_stats()
@@ -89,6 +92,9 @@ func new_game() -> void:
 	prof_xp = {}
 	hotbar = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"]
 	discovered_fusions = []
+	onboarding_seen = []
+	guide_step = 0
+	guide_progress = 0
 	birth_sign = _birth_sign_from_today()
 	recalculate_stats()
 	hp = max_hp
@@ -279,6 +285,7 @@ func to_save() -> Dictionary:
 		"achievements": achievements, "active_title": active_title, "discovered": discovered,
 		"craft_insight": craft_insight, "daily_quests": daily_quests, "prof_xp": prof_xp,
 		"hotbar": hotbar, "discovered_fusions": discovered_fusions,
+		"onboarding_seen": onboarding_seen, "guide_step": guide_step, "guide_progress": guide_progress,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -307,6 +314,9 @@ func from_save(d: Dictionary) -> void:
 	prof_xp = d.get("prof_xp", {})
 	hotbar = d.get("hotbar", ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "flow_ice"])
 	discovered_fusions = d.get("discovered_fusions", [])
+	onboarding_seen = d.get("onboarding_seen", [])
+	guide_step = int(d.get("guide_step", 0))
+	guide_progress = int(d.get("guide_progress", 0))
 	infusion = {}          # transient — never carry over a save
 	mounted = false        # never load mounted (pet may not exist)
 	recalculate_stats()

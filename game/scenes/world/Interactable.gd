@@ -26,7 +26,10 @@ func _process(delta: float) -> void:
 	_lbl_cd = 0.15
 	var p := get_tree().get_first_node_in_group("player")
 	if p and label:
-		label.visible = global_position.distance_to(p.global_position) < 72.0
+		var near := global_position.distance_to(p.global_position) < 72.0
+		label.visible = near
+		if near and kind == "dungeon":
+			Onboarding.tip("dungeon_door")
 
 func _build() -> void:
 	if kind == "dungeon":
@@ -59,6 +62,14 @@ func _build() -> void:
 		sprite.scale = Vector2(2.4, 2.0)
 		sprite.modulate = Color(0.55, 0.45, 0.75)
 		label.text = "Penginapan — Tidur [E]"
+	elif kind == "guide":
+		var at := AtlasTexture.new()
+		at.atlas = load("res://assets/game/sprites/player/idle.png")
+		at.region = Rect2(0, 0, 16, 16)
+		sprite.texture = at
+		sprite.scale = Vector2(1.5, 1.5)
+		sprite.modulate = Color(0.6, 1.0, 0.7)   # friendly green guide
+		label.text = "Pemandu [E]"
 	elif kind == "shop":
 		# NPC placeholder: player base sprite, first frame, tinted.
 		var at := AtlasTexture.new()
@@ -97,8 +108,15 @@ func interact() -> void:
 			"Silakan lihat-lihat dagangannya."], "Pedagang", sprite.texture)
 		menu.open("shop", self)
 	elif kind == "board":
+		EventBus.board_visited.emit()
 		await Stage.say("Papan misi desa. Ambil tugas harian untuk emas & EXP.", "Papan Quest")
 		menu.open("quest", self)
+	elif kind == "guide":
+		await Stage.say([
+			"Halo, petualang baru! Aku Pemandu Greenvale.",
+			"Ikuti daftar 'Panduan' di kanan layar untuk belajar dasar-dasarnya.",
+			"Kubuka buku Panduan lengkap untukmu sekarang."], "Pemandu", sprite.texture)
+		menu.open("panduan", self)
 	elif kind == "astrologer":
 		await Stage.say(["Bintang-bintang berbisik malam ini...",
 			"Mau kubacakan ramalan langit untukmu?"], "Astrolog", sprite.texture)

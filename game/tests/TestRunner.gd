@@ -35,6 +35,7 @@ func _ready() -> void:
 	_test_fishing()
 	_test_professions()
 	_test_safezone()
+	_test_onboarding()
 	_test_skycalendar()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
@@ -273,6 +274,47 @@ func _test_safezone() -> void:
 	m.queue_free()
 	# restore the town zone for anything that runs after the tests
 	SafeZone.set_region("greenvale")
+
+func _test_onboarding() -> void:
+	print("[Onboarding + Guide chain]")
+	check("STEPS chain is 5 long", Onboarding.STEPS.size() == 5)
+	check("tips cover the six contexts", Onboarding.TIPS.has("town") and Onboarding.TIPS.has("tree") \
+		and Onboarding.TIPS.has("monster") and Onboarding.TIPS.has("levelup") \
+		and Onboarding.TIPS.has("orb") and Onboarding.TIPS.has("dungeon_door"))
+	# one-time tip gating
+	PlayerData.onboarding_seen = []
+	Onboarding.tip("town")
+	Onboarding.tip("town")
+	check("tip shown once, then suppressed", PlayerData.onboarding_seen.count("town") == 1)
+	Onboarding.tip("nonexistent_tip")
+	check("unknown tip id is a no-op", not ("nonexistent_tip" in PlayerData.onboarding_seen))
+	# opening quest chain advances step by step via EventBus
+	PlayerData.guide_step = 0
+	PlayerData.guide_progress = 0
+	EventBus.node_harvested.emit("ore", "copper_ore", 1)
+	check("wrong gather kind doesn't advance", PlayerData.guide_step == 0 and PlayerData.guide_progress == 0)
+	EventBus.node_harvested.emit("tree", "wood_log", 1)
+	EventBus.node_harvested.emit("tree", "wood_log", 1)
+	check("chop 2/3 — still on step 1", PlayerData.guide_step == 0 and PlayerData.guide_progress == 2)
+	EventBus.node_harvested.emit("tree", "wood_log", 1)
+	check("chop 3/3 advances to craft step", PlayerData.guide_step == 1)
+	EventBus.item_crafted.emit("x", false)
+	check("failed craft doesn't advance", PlayerData.guide_step == 1)
+	EventBus.item_crafted.emit("plank", true)
+	check("craft advances to kill step", PlayerData.guide_step == 2)
+	EventBus.monster_killed.emit("grey_wolf", null)
+	EventBus.monster_killed.emit("grey_wolf", null)
+	check("kill 2 advances to tame step", PlayerData.guide_step == 3)
+	EventBus.pet_added.emit({})
+	check("tame advances to board step", PlayerData.guide_step == 4)
+	EventBus.board_visited.emit()
+	check("visiting board completes the chain", PlayerData.guide_step == 5)
+	EventBus.monster_killed.emit("grey_wolf", null)
+	check("events after completion are ignored", PlayerData.guide_step == 5)
+	# reset for a clean save state
+	PlayerData.guide_step = 0
+	PlayerData.guide_progress = 0
+	PlayerData.onboarding_seen = []
 
 func _test_skycalendar() -> void:
 	print("[Sky Calendar]")
