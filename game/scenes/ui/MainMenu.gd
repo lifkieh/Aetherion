@@ -35,10 +35,22 @@ func _button(t: String, cb: Callable) -> Button:
 	return b
 
 func _build() -> void:
-	var bg := ColorRect.new()
-	bg.color = Color(0.06, 0.07, 0.12)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
+	# blurred/darkened world backdrop (R2 Part 3)
+	if ResourceLoader.exists("res://assets/game/ui/menu_bg.png"):
+		var bgtex := TextureRect.new()
+		bgtex.texture = load("res://assets/game/ui/menu_bg.png")
+		bgtex.set_anchors_preset(Control.PRESET_FULL_RECT)
+		bgtex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		add_child(bgtex)
+	else:
+		var bg := ColorRect.new()
+		bg.color = Color(0.06, 0.07, 0.12)
+		bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+		add_child(bg)
+	var scrim := ColorRect.new()          # readability scrim on the left third
+	scrim.color = Color(0.03, 0.05, 0.12, 0.45)
+	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(scrim)
 
 	# moon icon
 	var mi := TextureRect.new()
@@ -58,9 +70,15 @@ func _build() -> void:
 	add_child(vb)
 
 	var title := _lbl("AETHERION", 56)
-	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
+	title.add_theme_color_override("font_color", Color(1.0, 0.92, 0.66))
 	vb.add_child(title)
-	vb.add_child(_lbl("Dunia yang mengikuti langit sungguhan.", 16))
+	var sub := HBoxContainer.new()
+	sub.add_theme_constant_override("separation", 10)
+	vb.add_child(sub)
+	sub.add_child(_lbl("Dunia yang mengikuti langit sungguhan.", 16))
+	var ver := _lbl("v0.2.1-alpha", 13)
+	ver.add_theme_color_override("font_color", Color(1.0, 0.86, 0.42))
+	sub.add_child(ver)
 
 	# Sky Report
 	var ev := GameClock.sky_event_today()

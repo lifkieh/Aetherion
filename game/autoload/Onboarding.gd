@@ -62,6 +62,16 @@ func _ready() -> void:
 
 # --- Contextual tips --------------------------------------------------------
 
+var _vis_cd := 0.0
+
+func _process(delta: float) -> void:
+	# hide the whole onboarding overlay outside gameplay (e.g. main menu = no player)
+	_vis_cd -= delta
+	if _vis_cd > 0.0:
+		return
+	_vis_cd = 0.3
+	visible = get_tree().get_first_node_in_group("player") != null
+
 ## Show a one-time tip (id from TIPS). No-op if already seen this save.
 func tip(id: String) -> void:
 	if not TIPS.has(id) or id in PlayerData.onboarding_seen:
@@ -168,7 +178,7 @@ func _build_tracker() -> void:
 	_tracker = PanelContainer.new()
 	_tracker.theme = UiTheme.theme
 	_tracker.anchor_left = 1.0; _tracker.anchor_right = 1.0
-	_tracker.position = Vector2(-250, 70)
+	_tracker.position = Vector2(-250, 156)   # below the minimap (R2 HUD)
 	_tracker.custom_minimum_size = Vector2(238, 0)
 	_tracker.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_tracker.visible = false

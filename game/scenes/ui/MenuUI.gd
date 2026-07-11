@@ -345,20 +345,81 @@ func _build_inventory() -> void:
 	title.text = "Tas"
 	if PlayerData.inventory.is_empty():
 		content.add_child(_mk_label("(kosong)", 14))
+	# slotted icon grid with hover tooltips (R2 Part 3)
+	var grid := GridContainer.new()
+	grid.columns = 8
+	grid.add_theme_constant_override("h_separation", 4)
+	grid.add_theme_constant_override("v_separation", 4)
+	content.add_child(grid)
 	for id in PlayerData.inventory.keys():
-		var def := Db.item(id)
-		var h := _row()
-		_add_item_icon(h, id)
-		var name_l := _mk_label("%s  [%s]  x%d" % [def.get("name", id), def.get("tier", "F"), PlayerData.inventory[id]], 15)
-		name_l.custom_minimum_size = Vector2(296, 0)
-		h.add_child(name_l)
-		match def.get("type", ""):
-			"weapon":
-				h.add_child(_btn("Pakai", func(): PlayerData.equipped_weapon = id; PlayerData.recalculate_stats(); EventBus.toast.emit("Memakai " + def.get("name", id)); _rebuild()))
-			"consumable":
-				h.add_child(_btn("Gunakan", func(): _use_consumable(id, def)))
-	var eq := _mk_label("Senjata: %s" % (Db.item_name(PlayerData.equipped_weapon) if PlayerData.equipped_weapon != "" else "-"), 14)
-	content.add_child(eq)
+		grid.add_child(_item_slot(id))
+	content.add_child(_mk_label(" ", 6))
+	content.add_child(_mk_label("Senjata terpakai: %s" % (Db.item_name(PlayerData.equipped_weapon) if PlayerData.equipped_weapon != "" else "-"), 14))
+	content.add_child(_mk_label("Klik item untuk pakai/gunakan · arahkan kursor untuk info.", 11))
+
+func _item_slot(id: String) -> Control:
+	var def := Db.item(id)
+	var slot := Panel.new()
+	slot.custom_minimum_size = Vector2(52, 52)
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.09, 0.12, 0.26, 0.95)
+	sb.border_color = _tier_color(def.get("tier", "F"))
+	sb.set_border_width_all(2); sb.set_corner_radius_all(4)
+	slot.add_theme_stylebox_override("panel", sb)
+	slot.tooltip_text = _item_tooltip(id, def)
+	var path := Db.item_icon(id)
+	var icon := TextureRect.new()
+	icon.set_anchors_preset(Control.PRESET_FULL_RECT)
+	icon.offset_left = 4; icon.offset_top = 3; icon.offset_right = -4; icon.offset_bottom = -9
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	if path != "":
+		icon.texture = load(path)
+	slot.add_child(icon)
+	var qty := _mk_label("x%d" % PlayerData.inventory[id], 11)
+	qty.anchor_top = 1.0; qty.anchor_bottom = 1.0; qty.anchor_left = 1.0; qty.anchor_right = 1.0
+	qty.position = Vector2(-22, -15)
+	slot.add_child(qty)
+	slot.gui_input.connect(func(e):
+		if e is InputEventMouseButton and e.pressed and e.button_index == MOUSE_BUTTON_LEFT:
+			_use_item(id, def))
+	return slot
+
+func _tier_color(tier: String) -> Color:
+	return {
+		"F": Color(0.55, 0.58, 0.66), "E": Color(0.5, 0.7, 0.55), "D": Color(0.45, 0.65, 0.9),
+		"C": Color(0.65, 0.5, 0.9), "B": Color(0.9, 0.6, 0.35), "A": Color(1.0, 0.82, 0.35),
+		"S": Color(1.0, 0.5, 0.5),
+	}.get(tier, Color(0.55, 0.58, 0.66))
+
+func _item_tooltip(id: String, def: Dictionary) -> String:
+	var t := "%s  [%s]\n" % [def.get("name", id), def.get("tier", "F")]
+	var type_id: String = def.get("type", "")
+	t += {"weapon": "Senjata", "material": "Bahan", "consumable": "Ramuan", "orb": "Orb",
+		"seed": "Benih", "gear": "Perlengkapan", "bait": "Umpan", "junk": "Rongsokan"}.get(type_id, type_id)
+	var stats := []
+	if def.has("atk"): stats.append("ATK %d" % int(def.atk))
+	if def.has("matk_bonus"): stats.append("MATK +%d" % int(def.matk_bonus))
+	if def.has("heal"): stats.append("Pulih %d HP" % int(def.heal))
+	if def.has("restore_mp"): stats.append("Pulih %d MP" % int(def.restore_mp))
+	if def.has("value"): stats.append("~%dG" % int(def.value))
+	if not stats.is_empty():
+		t += "\n" + " · ".join(stats)
+	var flavor: String = def.get("flavor", "")
+	if flavor != "":
+		t += "\n\"%s\"" % flavor
+	return t
+
+func _use_item(id: String, def: Dictionary) -> void:
+	match def.get("type", ""):
+		"weapon":
+			PlayerData.equipped_weapon = id
+			PlayerData.recalculate_stats()
+			Audio.play_sfx("menu")
+			EventBus.toast.emit("Memakai " + def.get("name", id))
+			_rebuild()
+		"consumable":
+			_use_consumable(id, def)
 
 func _use_consumable(id: String, def: Dictionary) -> void:
 	if PlayerData.item_count(id) <= 0: return
