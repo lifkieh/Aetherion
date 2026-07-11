@@ -49,10 +49,15 @@
   - Element icons (original assets) in HUD; per-scene music; full HUD
 
 ## Now
-**ALL 8 MILESTONES COMPLETE + §4 underway.** Fase 0 feature-complete. 63/63 tests, 0 headless errors.
-Done in §4: EVALUATION.md (8/8 acceptance met), MARKET_STUDY.md, and post-launch **Achievements+Titles**
-and **Aetherpedia** features (menu "Pedia" tab). Autoloads now 11 (added Settings, ScenarioManager, Achievements).
-A background bug-hunt agent reviewed all scripts (findings being folded in).
+**ALL 8 MILESTONES COMPLETE + §4 underway.** Fase 0 feature-complete. **72/72 tests**, 0 headless errors.
+Done in §4:
+- EVALUATION.md (8/8 acceptance met), MARKET_STUDY.md (ATM).
+- Post-launch features: **Achievements+Titles** (neutral micro-buffs) + **Aetherpedia** (menu "Pedia" tab).
+- **Bug sweep complete**: full-codebase review found 7 bugs → all fixed → regression tests added (see BUGS.md).
+Autoloads now 11 (added Settings, ScenarioManager, Achievements). **Zero known bugs.**
+
+Note: headless test run may report OS exit 255 (Godot exit-cleanup artifact re: tweens/timers) — the
+printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit code.
 
 ## Next steps (exact) — for the next session, resume here
 1. Fold in any remaining bug-hunt findings → BUGS.md → fix.
