@@ -4,6 +4,7 @@ extends Node
 
 var _pet_node: Pet = null
 var _current: Dictionary = {}
+var _current_species := ""   # copied string so in-place evolution is detected
 
 func _ready() -> void:
 	EventBus.pet_added.connect(func(_p): _sync())
@@ -23,8 +24,9 @@ func _sync() -> void:
 			_pet_node.queue_free()
 			_pet_node = null
 			_current = {}
+			_current_species = ""
 		return
-	if _pet_node == null or not is_instance_valid(_pet_node) or active != _current:
+	if _pet_node == null or not is_instance_valid(_pet_node) or active != _current or active.get("species_id", "") != _current_species:
 		_spawn(active)
 
 func _spawn(pet_data: Dictionary) -> void:
@@ -37,6 +39,7 @@ func _spawn(pet_data: Dictionary) -> void:
 	if player:
 		_pet_node.global_position = player.global_position + Vector2(-20, 8)
 	_current = pet_data
+	_current_species = pet_data.get("species_id", "")
 
 func _active_pet() -> Dictionary:
 	var idx := PlayerData.active_pet_index

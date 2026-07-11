@@ -47,6 +47,10 @@ func _ready() -> void:
 	if OS.get_environment("AETHER_PET") == "1":
 		_pet_demo()
 		_screenshot_at = 1.3
+	if OS.get_environment("AETHER_PHOTO") == "1":
+		get_tree().create_timer(1.0).timeout.connect(func():
+			PhotoMode.toggle()
+			get_tree().create_timer(0.6).timeout.connect(_take_screenshot))
 	if OS.get_environment("AETHER_MENU") == "1":
 		_menu_demo()
 

@@ -21,6 +21,7 @@ var moon_icon: TextureRect
 
 func _ready() -> void:
 	layer = 10
+	add_to_group("hud")
 	if ResourceLoader.exists("res://assets/game/fonts/m5x7.ttf"):
 		_font = load("res://assets/game/fonts/m5x7.ttf")
 	for i in range(8):

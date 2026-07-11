@@ -8,6 +8,7 @@ func _ready() -> void:
 	EventBus.monster_killed.connect(func(sp, _m): _discover("monsters", sp))
 	EventBus.item_gained.connect(func(id, _q): _discover("items", id))
 	EventBus.weather_changed.connect(func(w): _discover("weathers", w))
+	EventBus.full_moon_began.connect(func(): EvolutionSystem.check_party())
 
 # --- Achievements -----------------------------------------------------------
 

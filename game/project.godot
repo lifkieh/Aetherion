@@ -25,6 +25,7 @@ ScenarioManager="*res://autoload/ScenarioManager.gd"
 Settings="*res://autoload/Settings.gd"
 Achievements="*res://autoload/Achievements.gd"
 QuestSystem="*res://autoload/QuestSystem.gd"
+PhotoMode="*res://autoload/PhotoMode.gd"
 
 [display]
 
@@ -118,6 +119,11 @@ save_game={
 pause_menu={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+photo_mode={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","physical_keycode":80,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

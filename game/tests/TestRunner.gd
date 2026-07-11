@@ -23,6 +23,7 @@ func _ready() -> void:
 	_test_saveload()
 	_test_achievements()
 	_test_quests()
+	_test_evolution()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
@@ -158,6 +159,22 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_evolution() -> void:
+	print("[EvolutionSystem]")
+	check("moonbit data loaded", Db.monsters.has("moonbit"))
+	check("fluffbit evolves to moonbit", Db.monster("fluffbit").get("evolution", "") == "moonbit")
+	check("fluffbit gated by full_moon", EvolutionSystem.CONDITIONS.get("fluffbit", "") == "full_moon")
+	# non-conditioned species never auto-evolves
+	var slime := {"species_id": "verdant_slime", "level": 3, "star": 3, "element": "water"}
+	check("slime does not auto-evolve (no condition)", not EvolutionSystem.can_evolve(slime))
+	# transform logic (condition-independent)
+	var pet := {"species_id": "fluffbit", "name": "Fluffbit", "level": 8, "star": 4, "element": "wood", "size": "small", "rideable": false, "max_hp": 200, "atk": 20, "spd": 100}
+	var evo := EvolutionSystem.apply(pet, "moonbit")
+	check("apply returns moonbit", evo == "moonbit")
+	check("pet species becomes moonbit", pet.species_id == "moonbit")
+	check("pet element becomes moon", pet.element == "moon")
+	check("can_evolve matches current moon state", EvolutionSystem.can_evolve({"species_id": "fluffbit", "level": 5}) == GameClock.is_full_moon())
 
 func _test_quests() -> void:
 	print("[QuestSystem]")

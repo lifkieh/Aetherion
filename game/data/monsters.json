@@ -94,6 +94,14 @@
   },
 
   {
+    "id": "moonbit", "name": "Moonbit", "rarity": "rare", "element": "moon",
+    "archetype": "swift", "bst": 360, "size": "small", "rideable": false, "is_rabbit": true, "level": 8,
+    "sprite": "res://assets/game/sprites/monsters/fluffbit.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "skittish", "tint": "b8c0ff", "traits": ["lucky_foot", "moonlit"], "skills": ["tackle"],
+    "loot_table": "greenvale_fluffbit", "tame_base": 0.4, "evolution": "",
+    "aggro_radius": 110, "lore": "Fluffbit yang menyerap cahaya bulan; wujud Moon Rabbit kecil."
+  },
+  {
     "id": "gummy_slime", "name": "Gummy Slime", "rarity": "common", "element": "water",
     "archetype": "tank", "bst": 300, "size": "small", "rideable": false, "level": 18,
     "sprite": "res://assets/game/sprites/monsters/slime.png", "frame_size": 16, "cols": 4, "rows": 4,
