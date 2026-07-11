@@ -50,13 +50,16 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**90/90 tests**, 0 headless errors, **zero known bugs**. 14 autoloads.
+**112/112 tests**, 0 headless errors, **zero known bugs**. 14 autoloads. **3 regions, 26 monsters.**
 
 Session 2 (per LAPORAN_PROYEK_AETHERION.md backlog §7) added:
-- **Candyveil Meadows** — 2nd region using original candy tileset + 8 candy monsters + candy items/loot + lollipop gather nodes + portal.
-- **Daily Quest Board** — 3 quests/day rolled from WIB date (weather/moon-gated), progress via EventBus, claim rewards.
-- **Photo Mode** — [P] toggle, HUD-free clean screenshots to user://photos/.
-- **Evolution** — Fluffbit→Moonbit on full moon (+ Moonbit monster).
+- **Candyveil Meadows** (region 2, original candy tiles, 8 monsters) + **Desert of Ruins** (region 3,
+  procedural sand tiles, 7 monsters incl. Rock Golem lightning-immunity = grounding science).
+- **Daily Quest Board** (3 quests/day from WIB date, weather/moon-gated).
+- **Fishing minigame** (fish gated by WIB hour+tide+moon+bait; Star Bait hooks Star Whale).
+- **Astrologer + Sky Calendar** (moon/tide/weather now, weekly prophecy riddle, real upcoming events w/ countdowns).
+- **Photo Mode** ([P], clean screenshots to user://photos/) + **Evolution** (Fluffbit→Moonbit on full moon).
+- Monster **resist** system (data-driven, powers grounding science). Combat swarm re-tune (bulk + iframes).
 Session 1 (§4): EVALUATION.md (8/8 acceptance), MARKET_STUDY.md, Achievements+Titles, Aetherpedia,
 full bug sweep (7 bugs fixed, BUGS.md).
 
@@ -65,15 +68,17 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 **When adding new image assets, run `godot --headless --path game --import` before referencing them.**
 
 ## Next steps (exact) — for the next session, resume here
-1. **Fishing minigame** (MARKET_STUDY E): fish vary by WIB hour + moon tide; Star Bait hooks the Star
-   Whale hidden scenario. Needs a small minigame scene + fish data + a pond/coast interactable.
-2. **Astrologer + in-game Sky Calendar** (approved, report §7): NPC showing real moon phase / meteor
-   showers (sky_calendar.json already loaded) + weekly prophecy hinting at Hidden Scenarios.
-3. **More content**: Desert of Ruins region (Monster_Roster §2.3, 7 monsters); more crafting recipes using
-   candy/desert materials; Sugar Queen Tea Party scenario (data-driven ScenarioManager already supports it).
-4. **Polish**: re-tint/replace beast.png so "Grey Wolf" reads grey; original candy-monster sprites (12
-   iconic list, report §7); dynamic music layering (combat vs explore); Echo Vendor.
-5. Re-tune combat swarm damage (4+ monsters can burst the player).
+1. **New Hidden Scenarios** (ScenarioManager is data-driven, add JSON + scene):
+   - **Star Whale "Belly"** — fishing already sets counter `starwhale_hooked` when Star Bait used during a
+     meteor shower; add scenarios.json entry (trigger_action from fishing) + a belly dungeon scene.
+   - **Sugar Queen Tea Party** (Candyveil) — trigger "eat 100 candies in a day"; etiquette quiz scene.
+2. **Crafting expansion**: Cook profession recipes from fish/candy/desert materials (cakes, sushi, jerky);
+   add recipes.json entries + maybe a "kitchen" station.
+3. **Dynamic music layering** (approved): base track + combat intensity layer when enemies near.
+4. **Echo Vendor** (approved, report §6): static "ghost" player vendors in the hub for a lived-in feel.
+5. **Polish sprites**: re-tint/replace beast.png so "Grey Wolf" reads grey; original candy/desert monster
+   sprites (12 iconic list, report §7). Original UI Sky Report / title logo.
+6. More regions from GDD (Frostpeak §2.4, Storm Island §2.5) using the Candyveil/Desert region pattern.
 
 ## Verification recipes
 - Tests: `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 40` → expect `90 passed`.

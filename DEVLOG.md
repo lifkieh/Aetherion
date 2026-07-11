@@ -2,6 +2,23 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — Session 2 (cont.): Fishing, Astrologer, Desert region
+
+- **Fishing minigame** — FishingSystem (fish eligibility by WIB hour + lunar tide band + full moon + bait;
+  `eligible()` is param-driven so it's unit-testable without touching the clock). Cast→bite→timing UI
+  (autoload FishingUI, pause-immune). 3 ponds in Greenvale (generated pond sprite). Star Bait → Star Whale
+  hook (`can_hook_starwhale` requires meteor-shower sky) sets counter for a future belly scenario.
+- **Astrologer + Sky Calendar** — GameClock.days_until / upcoming_events (uses
+  Time.get_unix_time_from_datetime_string on the real sky_calendar.json dates). Panel shows moon/tide/weather,
+  a rotating **weekly prophecy** (scenario `hint`, week-indexed), and real upcoming events with day countdowns.
+  Verified: Perseid shows "32 hari lagi" etc. This is the "langit sungguhan" pillar made tangible.
+- **Desert of Ruins** (region 3) — sand/stone/rock/cactus/obelisk tiles **generated procedurally** (Pillow,
+  per asset mandate). 7 monsters (Monster_Roster §2.3). Added a **resist** field to monster data +
+  MonsterFactory; **Rock Golem `{lightning:0.9}`** = grounding science (near-immune to Lightning), verified
+  by test (lightning dmg to golem << to a normal target). Sandstone gather nodes.
+- **Combat swarm re-tune**: player max_hp 140→165 base curve, post-hit iframes 0.4→0.55s (caps swarm burst).
+- Autoloads 14 (FishingUI added). Tests 90 → 112. 3 regions, 26 monsters. All pass, 0 errors.
+
 ## 2026-07-11 — Session 2: continuation per LAPORAN_PROYEK_AETHERION.md
 
 The handover report `docs/LAPORAN_PROYEK_AETHERION.md` restates the Session-1 mandate (already done) and
