@@ -113,7 +113,7 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 | Aetherpedia / bestiary | ✅ DONE — menu "Pedia" tab (auto-log monsters/items/weathers), collection reward hooks |
 | BALANCE_REPORT.md (TTK vs target, dev>30%) | ✅ DONE — headless probe `AETHER_BALANCE=1`; tanks on-target, fragile archetypes documented |
 | EVALUATION.md / MARKET_STUDY.md | ✅ DONE (Session 1) |
-| Windows .exe export pipeline | ⏳ preset ready (`game/export_presets.cfg`); **export templates downloading** — verify build + run once installed |
+| Windows .exe export pipeline | ✅ DONE — templates installed; `game/export_presets.cfg`; **exports `export/Aetherion.exe` 84.8 MB** (embedded PCK, <150 MB target), **runs standalone** (Db loads, exit 0). Build: `run_godot.bat --headless --export-release "Windows Desktop" ../export/Aetherion.exe` |
 | Profession 1 main + 2 sub (GDD §3) | ✅ DONE this session (gating/efficiency/caps/recipe-gate tested) |
 | Level compression decision | ✅ DONE — documented in DEVLOG with stretch table |
 

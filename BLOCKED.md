@@ -9,3 +9,7 @@ Nothing currently blocks core progress. Minor/non-blocking items:
 | GameOver jingle | `GameOver1.wav` not found under that exact name in Ninja pack | Using `creature_die` SFX for death | No |
 
 Font (m5x7) downloaded successfully and embedded — no fallback needed.
+
+| `rcedit` not installed | Setting .exe icon/version metadata (Windows) needs `rcedit.exe` configured in Godot editor settings | `application/modify_resources=false` in export_presets.cfg → exe builds & runs fine without embedded icon/version. Install rcedit + set in Editor Settings > Export > Windows to enable metadata later | Optional (cosmetic exe metadata) |
+
+**Export pipeline VERIFIED:** `export/Aetherion.exe` (84.8 MB, embedded PCK) builds and runs standalone.
