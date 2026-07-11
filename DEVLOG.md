@@ -2,6 +2,25 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — v0.3-alpha content: Frostpeak complete + Storm Island
+
+Playtest of the character system passed; built the rest of v0.3.
+- **Frostpeak §2.4 complete:** added Frost Elemental (Ice caster → Glacier Core), Woolly Calf (Earth tank → Mammoth),
+  Frost Wyvern (Ice/Wind bruiser → Blizzard Wyvern) + evolutions of the earlier commons (Aurora Fox, Frost Dire Wolf).
+  11 new original monster sprites; evolutions reuse base sprites via `tint`.
+- **Frostpeak climber outpost** (`Pos Pendaki`): a safe-zone village (towns.json `frostpeak`) with cobbled ground,
+  4 frost-tinted buildings + doors, deco, gate guards, and **CharGen NPCs** — a mix of frostkin/wolfkin/bundled
+  humans (5 walking villagers + a trader), matching the v0.2.1 density bar.
+- **Foothill Barrow** side-view dungeon (`DungeonBase`) from the outpost; boss **Frost Titan** (is_boss, 2-phase via
+  the shared boss AI, spawns yeti adds, drops **Everfrost Core** [A]).
+- **Thermal Shock** (Fire+Ice) verified symmetric in tests.
+- **Dire Wolf → Alpha Wolf** on the full moon (new `alpha_wolf` monster + `EvolutionSystem` condition).
+- **Storm Island** (§2.5, lvl 40-55): stormy ground, driving-rain `Ambience` + periodic **lightning flashes**, storm
+  monsters (Volt Weasel, Storm Crab, Thunder Hawk, Cloud Ray, Volt Eel, Storm Elemental) + evolutions. Reached from a
+  Greenvale dock. **Thunder Dragon** legendary **secret spawn** (night + thunderstorm). **Zephyr Spire** dungeon; boss
+  **Storm Sovereign** (2-phase, drops **Tempest Heart** [S]).
+- 60 total monsters, 10 new items w/ flavor, 13 loot tables. 264 tests (+17). All 4 new scenes boot clean.
+
 ## 2026-07-12 — Aetherion Character System v2 + Celestia canon (owner directive)
 
 Owner FINAL decision: **LPC rejected** (no share-alike assets). Character system = our own modular

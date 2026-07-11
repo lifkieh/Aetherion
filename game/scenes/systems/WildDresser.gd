@@ -19,6 +19,7 @@ const THEMES := {
 		"flower_pink", "flower_pink", "pebbles", "mushroom"],
 	"desert": ["cactus", "cactus_ball", "dead_bush", "dead_bush", "desert_rock", "desert_rock",
 		"rock", "pebbles"],
+	"storm": ["rock", "rock", "desert_rock", "bush", "pebbles", "stump", "dead_bush"],
 }
 # Edge-band sprite (natural wall) per theme.
 const EDGE := {
@@ -26,6 +27,7 @@ const EDGE := {
 	"frost": ["tree_snow_round", "rock"],
 	"candy": ["tree_candy", "gumdrop"],
 	"desert": ["desert_rock", "cactus"],
+	"storm": ["rock", "desert_rock"],
 }
 # Directional landmarks [sprite, scale] — N, E, S, W.
 const LANDMARKS := {
@@ -33,6 +35,7 @@ const LANDMARKS := {
 	"frost": [["tree_snow_round", 1.9], ["statue", 1.4], ["stone_gate", 1.4], ["ruins", 1.3]],
 	"candy": [["tree_candy", 2.4], ["lollipop", 2.6], ["gumdrop", 2.6], ["ruins", 1.2]],
 	"desert": [["ruins", 1.4], ["statue", 1.4], ["stone_gate", 1.4], ["cactus", 2.2]],
+	"storm": [["ruins", 1.6], ["stone_gate", 1.5], ["statue", 1.4], ["ruins", 1.3]],
 }
 
 ## Dress a whole region. `avoid` = Array of Rect2 (world) to keep clear (town/spawn).

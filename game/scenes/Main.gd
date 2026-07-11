@@ -443,6 +443,8 @@ func _spawn_interactables() -> void:
 	_place_portal(center + Vector2(70, 116), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
 	# Dungeon entrance just outside the south gate (dirt path leads to it).
 	_place_interactable("dungeon", center + Vector2(0, 430))
+	# A dock south-west: sail to Storm Island.
+	_place_portal(center + Vector2(-320, 360), "res://scenes/world/StormIsland.tscn", "⛵ Perahu ke Storm Island [E]")
 
 	# --- fishing ponds well outside the town ---
 	for p in [Vector2(-520, 300), Vector2(540, -300), Vector2(-540, -280)]:

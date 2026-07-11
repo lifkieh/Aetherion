@@ -7,6 +7,7 @@ extends RefCounted
 const CONDITIONS := {
 	"fluffbit": "full_moon",
 	"grey_wolf": "level",
+	"dire_wolf": "full_moon",   # Dire Wolf -> Alpha Wolf under the full moon (v0.3)
 }
 # level threshold for "level"-conditioned evolutions
 const LEVEL_REQ := {

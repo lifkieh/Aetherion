@@ -555,5 +555,262 @@
         "max": 1
       }
     ]
+  },
+  {
+    "id": "frost_elemental",
+    "drops": [
+      {
+        "item": "glacier_gem",
+        "chance": 0.5,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item": "ice_shard",
+        "chance": 0.6,
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  {
+    "id": "woolly_calf",
+    "drops": [
+      {
+        "item": "premium_wool",
+        "chance": 0.7,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "thick_fur",
+        "chance": 0.3,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "frost_wyvern",
+    "drops": [
+      {
+        "item": "frost_scale",
+        "chance": 0.8,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "item": "glacier_gem",
+        "chance": 0.3,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item": "dragon_scale",
+        "chance": 0.1,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "frost_titan",
+    "drops": [
+      {
+        "item": "everfrost_core",
+        "chance": 1.0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item": "glacier_gem",
+        "chance": 1.0,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "item": "thick_fur",
+        "chance": 1.0,
+        "min": 2,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "id": "alpha_wolf",
+    "drops": [
+      {
+        "item": "wolf_pelt",
+        "chance": 0.9,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "wolf_fang",
+        "chance": 0.6,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "beast_essence",
+        "chance": 0.3,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "volt_weasel",
+    "drops": [
+      {
+        "item": "static_charge",
+        "chance": 0.7,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "volt_gland",
+        "chance": 0.2,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "storm_crab",
+    "drops": [
+      {
+        "item": "storm_shell",
+        "chance": 0.8,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "static_charge",
+        "chance": 0.2,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "thunder_hawk",
+    "drops": [
+      {
+        "item": "volt_gland",
+        "chance": 0.6,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item": "static_charge",
+        "chance": 0.4,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "owl_feather",
+        "chance": 0.3,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "cloud_ray",
+    "drops": [
+      {
+        "item": "cloud_silk",
+        "chance": 0.8,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "static_charge",
+        "chance": 0.15,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "volt_eel",
+    "drops": [
+      {
+        "item": "volt_gland",
+        "chance": 0.7,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item": "static_charge",
+        "chance": 0.3,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "storm_elemental",
+    "drops": [
+      {
+        "item": "static_charge",
+        "chance": 1.0,
+        "min": 2,
+        "max": 3
+      },
+      {
+        "item": "volt_gland",
+        "chance": 0.5,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "thunder_dragon",
+    "drops": [
+      {
+        "item": "tempest_heart",
+        "chance": 1.0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item": "dragon_scale",
+        "chance": 1.0,
+        "min": 3,
+        "max": 5
+      },
+      {
+        "item": "static_charge",
+        "chance": 1.0,
+        "min": 3,
+        "max": 6
+      }
+    ]
+  },
+  {
+    "id": "storm_sovereign",
+    "drops": [
+      {
+        "item": "tempest_heart",
+        "chance": 1.0,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item": "dragon_scale",
+        "chance": 1.0,
+        "min": 4,
+        "max": 6
+      },
+      {
+        "item": "volt_gland",
+        "chance": 1.0,
+        "min": 3,
+        "max": 5
+      }
+    ]
   }
 ]

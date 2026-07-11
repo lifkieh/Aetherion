@@ -788,5 +788,95 @@
     "value": 110,
     "stack": 99,
     "flavor": "Sari beku berpendar biru; dinginnya menggigit bahkan lewat sarung tangan."
+  },
+  {
+    "id": "everfrost_core",
+    "name": "Inti Everfrost",
+    "tier": "A",
+    "type": "material",
+    "value": 900,
+    "stack": 99,
+    "flavor": "Jantung es abadi Frost Titan; dinginnya tak pernah surut walau di api."
+  },
+  {
+    "id": "glacier_gem",
+    "name": "Permata Gletser",
+    "tier": "C",
+    "type": "material",
+    "value": 180,
+    "stack": 99,
+    "flavor": "Serpihan gletser purba yang memancarkan cahaya biru dingin."
+  },
+  {
+    "id": "premium_wool",
+    "name": "Wol Premium",
+    "tier": "C",
+    "type": "material",
+    "value": 160,
+    "stack": 99,
+    "flavor": "Wol Woolly Calf yang sangat hangat — bahan jubah mewah."
+  },
+  {
+    "id": "frost_scale",
+    "name": "Sisik Beku",
+    "tier": "D",
+    "type": "material",
+    "value": 70,
+    "stack": 99,
+    "flavor": "Sisik Frost Wyvern yang keras dan menggigit dingin."
+  },
+  {
+    "id": "tempest_heart",
+    "name": "Jantung Badai",
+    "tier": "S",
+    "type": "material",
+    "value": 2000,
+    "stack": 99,
+    "flavor": "Inti badai Thunder Dragon; berdenyut petir tiada henti."
+  },
+  {
+    "id": "dragon_scale",
+    "name": "Sisik Naga",
+    "tier": "B",
+    "type": "material",
+    "value": 320,
+    "stack": 99,
+    "flavor": "Sisik naga yang keras luar biasa; bahan senjata legendaris."
+  },
+  {
+    "id": "storm_shell",
+    "name": "Cangkang Badai",
+    "tier": "D",
+    "type": "material",
+    "value": 65,
+    "stack": 99,
+    "flavor": "Cangkang Storm Crab yang menghantarkan listrik."
+  },
+  {
+    "id": "static_charge",
+    "name": "Muatan Statis",
+    "tier": "D",
+    "type": "material",
+    "value": 60,
+    "stack": 99,
+    "flavor": "Percikan listrik yang terperangkap dalam kristal kecil."
+  },
+  {
+    "id": "cloud_silk",
+    "name": "Sutra Awan",
+    "tier": "C",
+    "type": "material",
+    "value": 150,
+    "stack": 99,
+    "flavor": "Serat halus dari Cloud Ray, seringan awan."
+  },
+  {
+    "id": "volt_gland",
+    "name": "Kelenjar Volt",
+    "tier": "D",
+    "type": "material",
+    "value": 75,
+    "stack": 99,
+    "flavor": "Organ penghasil listrik dari makhluk badai."
   }
 ]

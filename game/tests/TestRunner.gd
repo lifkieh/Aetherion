@@ -36,6 +36,7 @@ func _ready() -> void:
 	_test_professions()
 	_test_safezone()
 	_test_chargen()
+	_test_v3content()
 	_test_onboarding()
 	_test_skill_audit()
 	_test_skycalendar()
@@ -330,6 +331,39 @@ func _test_skill_audit() -> void:
 	var pr: Dictionary = Db.elements.get("platformer_rules", {})
 	check("wind flow grants double jump", pr.get("wind", {}).get("double_jump", false))
 	check("ice flow freezes puddles", pr.get("ice", {}).get("freeze_puddle", false))
+
+func _test_v3content() -> void:
+	print("[v0.3 content — Frostpeak/Storm]")
+	# Thermal Shock fusion (Fire + Ice), symmetric
+	check("Thermal Shock fusion (fire+ice)", Db.elem_combo("fire", "ice").get("result", "") == "Thermal Shock")
+	check("Thermal Shock symmetric (ice+fire)", Db.elem_combo("ice", "fire").get("result", "") == "Thermal Shock")
+	# new species build with correct elements
+	check("frost_elemental builds (ice)", MonsterFactory.make("frost_elemental").get("element", "") == "ice")
+	check("frost_wyvern builds", not MonsterFactory.make("frost_wyvern").is_empty())
+	check("woolly_calf builds", not MonsterFactory.make("woolly_calf").is_empty())
+	check("volt_weasel builds (lightning)", MonsterFactory.make("volt_weasel").get("element", "") == "lightning")
+	check("thunder_hawk builds", not MonsterFactory.make("thunder_hawk").is_empty())
+	check("storm_elemental builds", not MonsterFactory.make("storm_elemental").is_empty())
+	check("thunder_dragon is legendary secret", Db.monster("thunder_dragon").get("rarity", "") == "legendary")
+	# bosses
+	check("Frost Titan is a boss", Db.monster("frost_titan").get("is_boss", false))
+	check("Storm Sovereign is a boss", Db.monster("storm_sovereign").get("is_boss", false))
+	check("Everfrost Core drops from Frost Titan", _lt_has("frost_titan", "everfrost_core"))
+	check("Tempest Heart drops from Storm Sovereign", _lt_has("storm_sovereign", "tempest_heart"))
+	# Dire Wolf -> Alpha Wolf (full moon)
+	check("dire_wolf -> alpha_wolf", Db.monster("dire_wolf").get("evolution", "") == "alpha_wolf")
+	check("dire_wolf condition = full_moon", EvolutionSystem.CONDITIONS.get("dire_wolf", "") == "full_moon")
+	var pet := {"species_id": "dire_wolf", "level": 12, "star": 3, "name": "Dire Wolf"}
+	EvolutionSystem.apply(pet, "alpha_wolf")
+	check("apply() transforms Dire -> Alpha Wolf", pet.get("species_id", "") == "alpha_wolf" and pet.get("name", "") == "Alpha Wolf")
+	# frost items flavor
+	check("everfrost_core has flavor", Db.item("everfrost_core").get("flavor", "") != "")
+
+func _lt_has(table: String, item: String) -> bool:
+	for d in Db.loot_table(table):
+		if d.get("item", "") == item:
+			return true
+	return false
 
 func _test_chargen() -> void:
 	print("[CharGen — Aetherion Character System]")
