@@ -6,6 +6,11 @@ extends RefCounted
 # species_id -> condition to evolve into its `evolution`
 const CONDITIONS := {
 	"fluffbit": "full_moon",
+	"grey_wolf": "level",
+}
+# level threshold for "level"-conditioned evolutions
+const LEVEL_REQ := {
+	"grey_wolf": 8,
 }
 
 static func can_evolve(pet: Dictionary) -> bool:
@@ -16,6 +21,7 @@ static func can_evolve(pet: Dictionary) -> bool:
 	var cond: String = CONDITIONS.get(sp, "")
 	match cond:
 		"full_moon": return GameClock.is_full_moon()
+		"level": return int(pet.get("level", 1)) >= int(LEVEL_REQ.get(sp, 999))
 		"": return false
 		_: return false
 

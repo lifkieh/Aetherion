@@ -8,6 +8,10 @@ var failed := 0
 
 func _ready() -> void:
 	await get_tree().process_frame   # let autoloads settle
+	if OS.get_environment("AETHER_BALANCE") == "1":
+		_balance_probe()
+		get_tree().quit()
+		return
 	print("\n===== AETHERION TEST SUITE =====")
 	_test_db()
 	_test_elements()
@@ -32,6 +36,55 @@ func _ready() -> void:
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
+
+## TTK balance probe: same-level player w/ reasonable gear vs each monster,
+## normal attacks + a periodic skill, averaged over trials. Prints a table.
+func _balance_probe() -> void:
+	print("BALANCE_PROBE_BEGIN")
+	# [species, rarity, target_lo_s, target_hi_s]
+	var mons := [
+		["fluffbit", "common", 3, 6], ["verdant_slime", "common", 3, 6],
+		["grey_wolf", "common", 3, 6], ["wild_boar", "common", 3, 6],
+		["forest_fox", "rare", 8, 15], ["cervel", "rare", 8, 15],
+		["treant_sapling", "epic", 25, 45], ["king_slime", "epic", 25, 45],
+		["gummy_slime", "common", 3, 6], ["rock_golem", "rare", 8, 15],
+	]
+	var atk_interval := 0.30   # avg swing cadence
+	var trials := 200
+	for m in mons:
+		var species: String = m[0]
+		var def := Db.monster(species)
+		var lvl: int = def.get("level", 5)
+		# same-level player with a reasonable weapon
+		PlayerData.new_game()
+		PlayerData.level = lvl
+		PlayerData.equipped_weapon = "copper_sword" if lvl < 15 else "wooden_spear"
+		PlayerData.recalculate_stats()
+		var pstats := PlayerData.combat_stats()
+		var rng := RandomNumberGenerator.new()
+		rng.seed = 42
+		var total_hits := 0
+		for t in range(trials):
+			var inst := MonsterFactory.make(species, lvl, 3, rng)
+			var hp: int = inst.max_hp
+			var mstats := MonsterFactory.combat_stats(inst)
+			var hits := 0
+			while hp > 0 and hits < 2000:
+				# every 6th hit is a flame_slash (skill rotation)
+				var sk := Db.skill("flame_slash") if hits % 6 == 5 else Db.skill("strike")
+				var res := CombatResolver.resolve(pstats, mstats, sk, {}, rng)
+				hp -= res.damage
+				hits += 1
+			total_hits += hits
+		var avg_hits := float(total_hits) / trials
+		var ttk := avg_hits * atk_interval
+		var mid: float = (float(m[2]) + float(m[3])) / 2.0
+		var dev: float = (ttk - mid) / mid * 100.0
+		var flag := "  <<< DEVIASI >30%" if absf(dev) > 30.0 else ""
+		print("PROBE|%s|%s|lvl%d|hits=%.1f|ttk=%.1fs|target=%d-%ds|dev=%+.0f%%%s" % [
+			species, m[1], lvl, avg_hits, ttk, m[2], m[3], dev, flag])
+	print("BALANCE_PROBE_END")
+	PlayerData.new_game()
 
 func check(name: String, cond: bool, detail: String = "") -> void:
 	if cond:
@@ -390,6 +443,13 @@ func _test_evolution() -> void:
 	check("pet species becomes moonbit", pet.species_id == "moonbit")
 	check("pet element becomes moon", pet.element == "moon")
 	check("can_evolve matches current moon state", EvolutionSystem.can_evolve({"species_id": "fluffbit", "level": 5}) == GameClock.is_full_moon())
+	# Grey Wolf -> Dire Wolf (level-based evolution)
+	check("dire_wolf data loaded", Db.monsters.has("dire_wolf"))
+	check("grey_wolf evolves to dire_wolf", Db.monster("grey_wolf").get("evolution", "") == "dire_wolf")
+	check("wolf evolves at level >= 8", EvolutionSystem.can_evolve({"species_id": "grey_wolf", "level": 10}))
+	check("wolf does NOT evolve below level 8", not EvolutionSystem.can_evolve({"species_id": "grey_wolf", "level": 5}))
+	var wolf_pet := {"species_id": "grey_wolf", "level": 10, "star": 3, "element": "none", "size": "medium", "rideable": true, "max_hp": 500, "atk": 40, "spd": 100}
+	check("apply wolf evo -> dire_wolf", EvolutionSystem.apply(wolf_pet, "dire_wolf") == "dire_wolf" and wolf_pet.species_id == "dire_wolf")
 
 func _test_quests() -> void:
 	print("[QuestSystem]")

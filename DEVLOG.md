@@ -2,6 +2,23 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-11 — OFFICIAL DECISION: Fase-0 level compression (stretch-ready)
+
+Fase 0 uses **compressed level caps** so early content is reachable, but every cap is a **named constant**
+and every curve is a **single-divisor formula** — the full GDD 1–99 scale is reached later by editing
+constants only, **no code refactor**.
+
+| Domain | Fase 0 cap | GDD full | How to stretch |
+|---|---|---|---|
+| Profession UTAMA | **50** (`ProfessionSystem.MAIN_CAP`) | 99 | raise MAIN_CAP |
+| Profession SUB | **30** (`SUB_CAP`) = 60% of main | 60 | raise SUB_CAP (keep ~60% ratio) |
+| Player combat level | soft ~1–30 (curve `50·lvl^1.5`) | 99 | tune `exp_to_next` divisor/exponent |
+| Monster content level | 1–25 (roster data) | 1–99 | data only (monsters.json `level`) |
+
+Profession XP curve: `prof_level = floor(sqrt(xp/20)) + 1`, clamped to cap. To stretch the curve without
+touching call sites, change the `/20` divisor (bigger = slower) and the cap constants. The **ratio**
+sub≈60% of main is intentional and preserved across the stretch (GDD 60/99 ≈ Fase-0 30/50 = 60%).
+
 ## 2026-07-11 — Profession XP + perks (GDD v0.2 §3)
 
 - **ProfessionSystem** autoload awards XP off existing signals (node_harvested→lumberjack/miner,

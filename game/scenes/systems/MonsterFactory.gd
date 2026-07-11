@@ -24,7 +24,12 @@ const RARITY := {
 }
 const STAR_MULT := [0.94, 0.97, 1.00, 1.03, 1.06]   # 1..5 star
 const STAR_WEIGHTS := [15, 25, 35, 20, 5]
-const HP_DISPLAY_MULT := 2.0
+const HP_DISPLAY_MULT := 3.0
+# HP multiplier per rarity so TTK tiers (Monster_Roster §1.3) actually separate —
+# BST spread alone is too flat (see BALANCE_REPORT.md).
+const RARITY_HP_MULT := {
+	"common": 1.5, "rare": 4.0, "epic": 8.0, "legendary": 12.0, "mythic": 16.0, "ancient": 22.0,
+}
 
 static func roll_star(rng: RandomNumberGenerator = null) -> int:
 	var total := 0
@@ -54,7 +59,7 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 	var growth: float = rinfo["growth"]
 	var lvl_scale: float = (1.0 + growth * (level - 1)) * star_mult
 
-	var hp := int(round(bst * dist[0] * lvl_scale * HP_DISPLAY_MULT))
+	var hp := int(round(bst * dist[0] * lvl_scale * HP_DISPLAY_MULT * float(RARITY_HP_MULT.get(rarity, 1.0))))
 	var atk := int(round(bst * dist[1] * lvl_scale))
 	var dfn := int(round(bst * dist[2] * lvl_scale))
 	var matk := int(round(bst * dist[3] * lvl_scale))

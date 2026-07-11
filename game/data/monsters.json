@@ -192,6 +192,14 @@
     "aggro_radius": 130, "lore": "Iblis kaktus; berduri, farm air/duri."
   },
   {
+    "id": "dire_wolf", "name": "Dire Wolf", "rarity": "rare", "element": "none",
+    "archetype": "bruiser", "bst": 360, "size": "large", "rideable": true, "level": 10,
+    "sprite": "res://assets/game/sprites/monsters/beast.png", "frame_size": 16, "cols": 4, "rows": 4,
+    "ai": "melee", "tint": "9aa0a8", "traits": ["pack_hunter"], "skills": ["bite", "howl"],
+    "loot_table": "greenvale_wolf", "tame_base": 0.3, "evolution": "alpha_wolf",
+    "aggro_radius": 180, "lore": "Serigala buas evolusi Grey Wolf; tunggangan darat besar."
+  },
+  {
     "id": "moonbit", "name": "Moonbit", "rarity": "rare", "element": "moon",
     "archetype": "swift", "bst": 360, "size": "small", "rideable": false, "is_rabbit": true, "level": 8,
     "sprite": "res://assets/game/sprites/monsters/fluffbit.png", "frame_size": 16, "cols": 4, "rows": 4,
