@@ -8,8 +8,9 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 - `.gitignore` now excludes `assets_raw/` (third-party extracted packs — repo slim + license-safe; only
   `ASSET_LOG.md` records them), plus `export/ build/ *.exe *.pck *.tpz .godot/`. Our ORIGINAL assets in
   `game/assets/` stay versioned. `git rm --cached -r assets_raw` untracked them going forward.
-- **PERMANENT RULE (binding):** at the end of **every milestone or session**, run
-  `git push origin --all --tags`, then verify with `git ls-remote`. Never skip.
+- **PERMANENT RULE (binding):** at the end of **every milestone or session**, push then verify:
+  `git push origin --all && git push origin --tags && git ls-remote origin`. Never skip.
+  (Note: git rejects `--all --tags` combined in one invocation — use the two commands above.)
 - History note: `assets_raw` remains in earlier history (~90 MB; largest single file 4.4 MB, **none >50 MB**,
   so no rewrite-blocker). Not rewriting history (per owner rule). A `git filter-repo` purge is available on
   request if a slimmer/cleaner-license history is wanted — see STATUS.

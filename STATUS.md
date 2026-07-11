@@ -107,8 +107,9 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
   + an `Interactable` kind `"dungeon"` door (set `dungeon_scene`/`dungeon_label`). Boss adds via `add_species`.
 
 ## Repo / GitHub
-- Remote `origin = github.com/lifkieh/Aetherion.git`, default branch **main**. **PERMANENT RULE:** push
-  `git push origin --all --tags` at every milestone/session end, then `git ls-remote` to verify.
+- Remote `origin = github.com/lifkieh/Aetherion.git`, default branch **main**. **PERMANENT RULE:** at every
+  milestone/session end run `git push origin --all && git push origin --tags && git ls-remote origin`
+  (two separate pushes — git rejects `--all --tags` combined).
 - `assets_raw/` (third-party packs) is now **git-ignored & untracked** going forward (license-safe, slim).
 - ⚠ **History note (no action taken):** `assets_raw` still exists in commits before this change (~90 MB;
   largest file 4.4 MB, **none >50 MB** so GitHub-safe). Per owner rule, history was NOT rewritten. If a
