@@ -32,6 +32,7 @@ func _ready() -> void:
 	_add_hud()
 	_prime_monsters()
 	EventBus.weather_changed.connect(_on_weather_changed)
+	Settings.changed.connect(func(): _on_weather_changed(WorldState.weather))
 	_on_weather_changed(WorldState.weather)
 	Audio.play_music("11 - Clearing.ogg")
 	# Optional automated screenshot for verification (--screenshot arg or env)
@@ -252,7 +253,7 @@ func _build_weather() -> void:
 
 func _on_weather_changed(w: String) -> void:
 	if rain:
-		rain.emitting = w in ["rain", "thunderstorm"]
+		rain.emitting = (w in ["rain", "thunderstorm"]) and not Settings.eco_mode
 
 func _process_rain_follow() -> void:
 	if rain and player:

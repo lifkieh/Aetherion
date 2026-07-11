@@ -15,7 +15,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
-	if Input.is_action_just_pressed("save_game"):
+	if Input.is_action_just_pressed("pause_menu"):
+		var menu := get_tree().get_first_node_in_group("inventory_ui")
+		if menu and menu.has_method("open"):
+			menu.open("system")
+	elif Input.is_action_just_pressed("save_game"):
 		SaveManager.save_game(1)
 	elif Input.is_action_just_pressed("tame"):
 		_try_tame()

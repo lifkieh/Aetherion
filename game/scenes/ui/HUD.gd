@@ -12,6 +12,8 @@ var clock_label: Label
 var moon_label: Label
 var weather_label: Label
 var infusion_label: Label
+var elements_row: HBoxContainer
+var _last_elem_count := -1
 var gold_label: Label
 var level_label: Label
 var toast_box: VBoxContainer
@@ -60,6 +62,10 @@ func _build() -> void:
 	infusion_label = _mk_label("", 14)
 	infusion_label.visible = false
 	topleft.add_child(infusion_label)
+	elements_row = HBoxContainer.new()
+	elements_row.add_theme_constant_override("separation", 2)
+	topleft.add_child(elements_row)
+	_refresh_elements()
 
 	# --- Top-right: gold / level ---
 	var topright := VBoxContainer.new()
@@ -138,7 +144,28 @@ func _connect() -> void:
 	EventBus.minute_passed.connect(func(_d): _refresh_clock())
 	EventBus.toast.connect(_on_toast)
 
+func _refresh_elements() -> void:
+	if elements_row == null:
+		return
+	for c in elements_row.get_children():
+		c.queue_free()
+	var lbl := _mk_label("Elemen:", 12)
+	elements_row.add_child(lbl)
+	for elem in PlayerData.mastered_elements:
+		var p := "res://assets/game/ui/icons/element_%s_32.png" % elem
+		if ResourceLoader.exists(p):
+			var tr := TextureRect.new()
+			tr.texture = load(p)
+			tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			tr.custom_minimum_size = Vector2(18, 18)
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr.tooltip_text = elem.capitalize()
+			elements_row.add_child(tr)
+	_last_elem_count = PlayerData.mastered_elements.size()
+
 func _process(_delta: float) -> void:
+	if PlayerData.mastered_elements.size() != _last_elem_count:
+		_refresh_elements()
 	if infusion_label == null:
 		return
 	if PlayerData.has_active_infusion():

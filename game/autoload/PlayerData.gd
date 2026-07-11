@@ -56,6 +56,33 @@ func _ready() -> void:
 	hp = max_hp
 	mp = max_mp
 
+## Reset to a fresh character (New Game). birth_sign from creation date (v0.3 §3.3).
+func new_game() -> void:
+	level = 1; exp = 0; stat_points = 0
+	attributes = {"STR": 5, "END": 5, "AGI": 5, "INT": 5, "LUK": 5}
+	gold = 200
+	inventory = {"minor_potion": 3, "basic_orb": 2, "wooden_sword": 1, "seed_mintleaf": 3}
+	equipped_weapon = "wooden_sword"
+	known_skills = ["strike", "flame_slash", "spark_bolt"]
+	mastered_elements = ["fire", "lightning"]
+	infusion = {}
+	monsters = []
+	active_pet_index = -1
+	mounted = false
+	homestead_plots = []
+	scenario_flags = {}
+	titles = []
+	professions = {"main": "adventurer", "sub": []}
+	birth_sign = _birth_sign_from_today()
+	recalculate_stats()
+	hp = max_hp
+	mp = max_mp
+
+func _birth_sign_from_today() -> String:
+	# 12 Rasi Agung mapped by month (v0.3 §3.1) — flavor.
+	var signs := ["Serigala","Paus","Pedang","Timbangan","Naga","Kelinci","Mahkota","Jangkar","Obor","Cermin","Benih","Gerbang"]
+	return signs[(GameClock.now_wib().month - 1) % 12]
+
 # --- EXP / leveling ---------------------------------------------------------
 
 func exp_to_next() -> int:

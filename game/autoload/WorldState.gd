@@ -122,3 +122,8 @@ func from_save(d: Dictionary) -> void:
 	weather = d.get("weather", "sunny")
 	counters = d.get("counters", {})
 	node_states = d.get("node_states", {})
+
+func new_game() -> void:
+	counters = {}
+	node_states = {}
+	_roll_weather(true)

@@ -41,15 +41,22 @@
   - Shipping threshold **10000** (verified); debug 10 via AETHER_DEBUG_SCENARIO env
   - Inn interactable (sleep) triggers; Lunar Warren: survive 60s, don't kill rabbits, chased by Moon Rabbit Berserker
   - no_fail: cleared/failed written permanently to save; clear → Carrot of Calamity [S] + Moon element unlock (tested)
-- [ ] M8 — Polish (save/load DONE+backup; TODO: 3-slot menu UI, main menu, Sky Report screen, Mode Hemat, full audio, element icons in UI)
+- [x] **M8 — Polish** ✅ DONE
+  - Main Menu (New Game / Load 3 slots / Mode Hemat / Mute / Quit) with live Sky Report + moon icon + birth-sign
+  - Save/Load 3 slots + backup rotation + schema_version + atomic write (roundtrip tested)
+  - In-game system menu (Esc): Save/Load slots, Options, back to Main Menu
+  - Mode Hemat (30fps cap, weather VFX off), persisted to user://settings.cfg
+  - Element icons (original assets) in HUD; per-scene music; full HUD
 
 ## Now
-M1, M2, M3 complete & verified (screenshots in reports/). Next: M4 taming/pets.
+**ALL 8 MILESTONES (M1–M8) COMPLETE.** Fase 0 feature-complete, 57/57 tests, 0 errors.
+Entering §4 continuous development: acceptance review, bug sweep, EVALUATION.md, market study, content expansion.
 
 ## Next steps (exact)
-1. M4: pet follows player + assists in combat; mount toggle for Medium+ rideable; tame feedback UI. TamingSystem + roll already done+tested.
-2. M5: inventory UI, crafting bench, shop NPC (Economy done+tested; GatherNode done).
-3. M6: homestead scene + plots (HomesteadSystem growth done+tested).
+1. §5 acceptance check vs Fase0 §1 (8 points) — verify a full ~30-min loop end to end.
+2. §4.1 bug sweep: play full flow via demos + code review → BUGS.md → fix to zero.
+3. §4.2 EVALUATION.md vs docs; §4.3 MARKET_STUDY.md (ATM) → pick 3-5 features → implement.
+4. Expand content: more monsters/recipes/areas from Monster_Roster & GDD.
 
 ## Health
 - Headless: 0 errors. Test suite: **34/34 pass**.

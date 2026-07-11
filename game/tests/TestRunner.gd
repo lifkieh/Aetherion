@@ -20,6 +20,7 @@ func _ready() -> void:
 	_test_economy()
 	_test_crafting()
 	_test_scenario()
+	_test_saveload()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -150,6 +151,32 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_saveload() -> void:
+	print("[SaveManager]")
+	PlayerData.new_game()
+	PlayerData.level = 7
+	PlayerData.add_gold(1234)
+	PlayerData.add_item("wolf_fang", 5)
+	WorldState.set_counter("rabbits_killed", 42)
+	var ok := SaveManager.save_game(3)
+	check("save writes", ok and SaveManager.has_save(3))
+	# mutate then load
+	PlayerData.level = 99
+	PlayerData.gold = 0
+	PlayerData.inventory.clear()
+	WorldState.set_counter("rabbits_killed", 0)
+	var loaded := SaveManager.load_game(3)
+	check("load succeeds", loaded)
+	check("level restored", PlayerData.level == 7, str(PlayerData.level))
+	check("gold restored", PlayerData.gold == 200 + 1234, str(PlayerData.gold))
+	check("item restored", PlayerData.item_count("wolf_fang") == 5)
+	check("world counter restored", WorldState.get_counter("rabbits_killed") == 42)
+	# second save creates a backup
+	SaveManager.save_game(3)
+	check("backup created", FileAccess.file_exists(SaveManager.backup_path(3, 1)))
+	check("schema version present", SaveManager.build_payload().get("schema_version", 0) == SaveManager.SCHEMA_VERSION)
+	SaveManager.delete_save(3)
 
 func _test_scenario() -> void:
 	print("[ScenarioManager]")

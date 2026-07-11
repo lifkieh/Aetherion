@@ -134,6 +134,41 @@ func _rebuild() -> void:
 		"inventory": _build_inventory()
 		"crafting": _build_crafting()
 		"shop": _build_shop()
+		"system": _build_system()
+
+func _build_system() -> void:
+	title.text = "Menu Sistem"
+	content.add_child(_mk_label("— Simpan —", 16))
+	for slot in [1, 2, 3]:
+		var h := _row()
+		var meta := SaveManager.save_meta(slot)
+		var info := "kosong" if meta.is_empty() else "%s Lv%d (%s)" % [meta.get("name", "?"), meta.get("level", 1), meta.get("saved_at_str", "?")]
+		var l := _mk_label("Slot %d: %s" % [slot, info], 14)
+		l.custom_minimum_size = Vector2(340, 0)
+		h.add_child(l)
+		h.add_child(_btn("Simpan", func(): SaveManager.save_game(slot); _rebuild()))
+		if SaveManager.has_save(slot):
+			h.add_child(_btn("Muat", _load_slot.bind(slot)))
+	content.add_child(_mk_label("— Opsi —", 16))
+	var eco := CheckButton.new()
+	eco.text = "Mode Hemat (30fps, tanpa VFX cuaca)"
+	if _font: eco.add_theme_font_override("font", _font)
+	eco.button_pressed = Settings.eco_mode
+	eco.toggled.connect(func(v): Settings.set_eco(v))
+	content.add_child(eco)
+	var mute := CheckButton.new()
+	mute.text = "Bisukan Audio"
+	if _font: mute.add_theme_font_override("font", _font)
+	mute.button_pressed = Settings.muted
+	mute.toggled.connect(func(v): Settings.set_muted_pref(v))
+	content.add_child(mute)
+	content.add_child(_mk_label(" ", 8))
+	content.add_child(_btn("Kembali ke Menu Utama", func(): close_menu(); get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")))
+
+func _load_slot(slot: int) -> void:
+	if SaveManager.load_game(slot):
+		close_menu()
+		get_tree().change_scene_to_file("res://scenes/Main.tscn")
 
 func _build_inventory() -> void:
 	title.text = "Tas"
