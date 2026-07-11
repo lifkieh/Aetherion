@@ -2,6 +2,32 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — RONDE 2: World Density & Visual Richness → v0.2.1-alpha (DONE)
+
+Owner playtest: "world building kurang, kurang bangunan, UI kurang banget." Diagnosis: too sparse. New content
+stayed frozen; this round enriched what exists. All assets original (PIL sprites / procedural audio).
+
+- **Root cause of "empty": camera zoom 3x** — only ~427x240 world units were visible, so the town/landmarks never
+  fit on screen. Dropped to **2x** (biggest single fix), then packed the world to match.
+- **Part 1 — real town** (`Town.gd`): cobbled plaza + streets, 9 facaded buildings (blacksmith w/ forge glow, town
+  hall, 2-storey inn, astrologer tower, store w/ awning+etalase, 3 houses, stable) with collision/signs/doors, a
+  well, night `StreetLamp`s, fences w/ road gaps, market stalls + crates/barrels/pots/laundry/hay, NPCs at logical
+  posts, 5 patrol `Villager`s (reuse player sheet tinted; sky-aware ambient dialogue), `Critter` chickens/cats.
+  6 enterable buildings via a generalized `HouseInterior` (house/blacksmith/inn/store variants). Dense garden fill
+  so no bare grass; safe_zone enlarged to the fenced district. z-index-by-Y sorting for actors + buildings.
+- **Part 2 — dense wilds** (`WildDresser`, reusable): themed scatter (~62% grid fill → 12-20 objects/screen), a
+  natural edge band, 4 directional landmarks for map-less navigation, dirt-path linking. `Ambience` GPU-particle
+  atmosphere (butterflies/fireflies/sugar/dust, off in eco-mode). Applied to Greenvale + Candyveil + Desert.
+- **Part 3 — enriched UI**: framed character panel (portrait + themed HP/MP/XP bars w/ values), clock/moon/weather
+  widget, data-driven radar `Minimap`, framed hotbar, inventory slot-grid + hover tooltips, icon toasts, damage
+  numbers w/ outline+bounce, blurred-world main-menu backdrop + logo + version.
+- **Part 4 — flavor**: 72 items each get a 1-sentence flavor line (tooltip); villager gossip references the current
+  sky (`GameClock`) + town NPCs.
+- **Part 5 — verify/perf/release**: screenshots per area in `reports/` (self-eval vs dense JRPG town), **60 fps**
+  in all regions (Greenvale 1558 / Candyveil 896 / Desert 789 nodes — no culling needed), 229/229 headless tests,
+  commit+push per part, tag **v0.2.1-alpha**, new `.exe` export.
+- Also fixed a date-seeded quest test (emit the rolled quest's actual target species, not a hardcoded one).
+
 ## 2026-07-11 — v0.2-alpha closeout (tag reconcile · balance re-verify · re-export · FREEZE)
 
 - **`v0.1-alpha` tag reconciled.** Investigated the DEVLOG "points at pre-purge orphan" note — it was stale:

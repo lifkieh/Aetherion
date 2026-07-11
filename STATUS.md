@@ -183,9 +183,28 @@ printed `RESULT: N passed, 0 failed` line is authoritative, not the process exit
 - **Re-export `.exe`** — `export/Aetherion.exe` **84.9 MB** (embedded PCK, <150 MB), **boot standalone OK** (Godot 4.3
   init, `[Db] Loaded: 33 monsters/72 items/16 skills…`, tanpa script error).
 
-## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER
-Ronde UI/UX (v0.2-alpha) selesai & di-tag. **Pengembangan fitur/konten DIHENTIKAN** sampai feedback playtest owner
-masuk. Tujuan berikutnya ditentukan oleh hasil playtest (bug, feel, kejelasan onboarding, balance in-game).
+## 🌆 RONDE 2 — WORLD DENSITY & VISUAL RICHNESS (v0.2.1-alpha) — SELESAI
+Menanggapi playtest owner ("world building kurang, kurang bangunan, UI kurang banget"). Konten baru tetap beku;
+ronde ini memperkaya yang sudah ada. Semua aset ORISINAL (PIL / prosedural).
+- **(1) Kota Greenvale nyata** ✅ `Town.gd` — 9 bangunan berfasad (bengkel+cerobong, balai kota, penginapan 2
+  lantai, menara astrolog, toko ber-etalase, 3 rumah, kandang) + sumur, jalan batu, pagar, lampu jalan (nyala
+  malam), stall pasar, peti/tong/pot/jemuran, 6 bangunan enterable (interior varian), NPC di posnya, 5 warga
+  berjalan (dialog sadar-langit), ayam/kucing. Kamera 3x→2x. Isi taman padat: tak ada rumput polos.
+- **(2) 3 wilayah padat** ✅ `WildDresser` — scatter flora bertema (12-20 obj/layar), edge band alami, 4 landmark
+  arah (pohon raksasa/patung/gerbang batu/reruntuhan), jalur tanah ke POI. `Ambience` — kupu-kupu/kunang
+  (hutan), gula melayang (candy), debu (gurun). Greenvale + Candyveil + Desert.
+- **(3) UI diperkaya** ✅ panel karakter (potret + bar HP/MP/XP bertema), widget jam/bulan/cuaca, minimap radar
+  dari data, hotbar berbingkai, inventory grid ikon + tooltip (nama/tier/stat/flavor), toast ber-ikon, damage
+  number outline+bounce, main menu latar dunia blur + logo + versi.
+- **(4) Flavor text** ✅ 72 item dapat 1 kalimat flavor (tooltip); dialog warga bergilir menyebut kondisi langit
+  saat itu + gosip kota.
+- **(5) Verifikasi** ✅ screenshot per area di `reports/` (self-eval vs kota JRPG padat), **60 fps** semua wilayah
+  (Greenvale 1558 / Candyveil 896 / Desert 789 node — tanpa culling), 229/229 test, commit+push per bagian,
+  **tag v0.2.1-alpha**, export exe baru.
+
+## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER (RONDE 2)
+Ronde World-Density (v0.2.1-alpha) selesai & di-tag. **Pengembangan fitur/konten DIHENTIKAN** sampai feedback
+playtest ronde 2 masuk. Tujuan berikutnya ditentukan oleh hasil playtest.
 
 ### Konten BEKU — diaktifkan kembali setelah feedback
 Sengaja ditunda saat ronde UI/UX dan tetap beku sampai owner memberi lampu hijau:

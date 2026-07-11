@@ -32,6 +32,10 @@ func _ready() -> void:
 	EventBus.toast.emit("Desert of Ruins — reruntuhan kuno. Rock Golem kebal petir (grounding).")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6
+	if OS.get_environment("AETHER_FPS") == "1":
+		get_tree().create_timer(4.0).timeout.connect(func():
+			print("[fps] Desert fps=%.1f nodes=%d" % [Engine.get_frames_per_second(), get_tree().get_node_count()])
+			get_tree().quit())
 
 func _dress_wild() -> void:
 	# R2 Part 2 — desert density: cacti, dead brush, sandstone, ruins/statue landmarks.
