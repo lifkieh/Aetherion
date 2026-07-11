@@ -2,7 +2,28 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
-## 2026-07-11 — Session 1: Setup + M1 (Foundation) + M2 systems
+## 2026-07-11 — Session 1 (cont.): M2–M8 complete + §4 post-launch
+
+### Milestones M2–M8
+All eight milestones delivered and verified in one session (see per-milestone commits + STATUS.md).
+Each milestone: playable build, headless verify, screenshot in `reports/`, unit tests, commit.
+Notable fixes: sprite `_ready`-before-`setup` bug (BUGS.md #1, affected all monsters), save `current_slot` tracking.
+
+### Combat tuning decision
+GDD Grey Wolf stat block is internally inconsistent (HP ×4.6 vs ATK ×1.15 over 4 levels). Treated GDD
+numbers as draft (doc says so). `DEF_FACTOR` 0.6→0.5, `HP_DISPLAY_MULT` ×4→×2, hero stats > BST fodder
+→ common TTK ~7 basic hits (Monster_Roster §1.3). Verified by unit test.
+
+### §4 continuous development (post-Fase 0)
+- **Acceptance (§5):** all 8 points of Fase0 §1 met → EVALUATION.md.
+- **Market study (§4.3):** MARKET_STUDY.md (Stardew/Terraria/Palworld/Moonlighter/Forager/Core Keeper/
+  Graveyard Keeper) → picked retention features. Implemented first: **Achievements + Titles** (neutral
+  micro-buffs) and **Aetherpedia** (bestiary/collection) — both pure EventBus/counter hooks (lowest cost,
+  reuses silent counters incl. rabbits_killed which foreshadows the Warren). Menu "Pedia" tab.
+- **Added autoloads:** Settings (Mode Hemat), ScenarioManager, Achievements.
+- Test suite grew 34 → 63 assertions; all pass. 0 headless errors.
+
+### Session 1 — Setup + M1 (Foundation)
 
 ### Environment
 - Detected: Git 2.45, Python 3.14 (Pillow installed), VS Code. Godot absent.
