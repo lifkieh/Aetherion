@@ -608,6 +608,10 @@ func _test_hotbar() -> void:
 	hb.press_slot(4)   # ice
 	check("3-elem fusion ready", hb.fusion_ready and hb.fusion_slots.size() == 3)
 	check("3-elem fusion is recast (slow rate < 1)", hb._cast_rate() < 1.0)
+	# PC3 HUD helpers: prime chain string + recast flag/bar
+	check("prime chain string shows 3 slots", hb.prime_chain_str() == "1+2+5")
+	check("3-elem fusion flagged as recast", hb.is_recast_fusion())
+	check("recast_frac in 0..1", hb.recast_frac() >= 0.0 and hb.recast_frac() <= 1.0)
 	hb.end_cast()
 	hb.primed = -1; hb.fusion_slots = []; hb.fusion_ready = false; hb.tick(2.0)
 	# fizzle: slot 0 (fire) + slot 1 (lightning) = no 2-elem recipe

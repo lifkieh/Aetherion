@@ -232,6 +232,8 @@ func set_hint(text: String) -> void:
 
 var hotbar_slots: Array = []
 var fusion_indicator: Label
+var fusion_recast_bg: ColorRect
+var fusion_recast_fill: ColorRect
 
 func _build_hotbar() -> void:
 	var frame := PanelContainer.new()   # ornamental backing behind the slots
@@ -272,6 +274,19 @@ func _build_hotbar() -> void:
 	fusion_indicator.anchor_top = 1.0; fusion_indicator.anchor_bottom = 1.0
 	fusion_indicator.position = Vector2(-70, -104)
 	add_child(fusion_indicator)
+	# recast bar for 3-4 element fusions (the only cooldown in the game — PC3)
+	fusion_recast_bg = ColorRect.new()
+	fusion_recast_bg.color = Color(0, 0, 0, 0.55)
+	fusion_recast_bg.anchor_left = 0.5; fusion_recast_bg.anchor_right = 0.5
+	fusion_recast_bg.anchor_top = 1.0; fusion_recast_bg.anchor_bottom = 1.0
+	fusion_recast_bg.position = Vector2(-70, -86)
+	fusion_recast_bg.size = Vector2(140, 6)
+	fusion_recast_bg.visible = false
+	add_child(fusion_recast_bg)
+	fusion_recast_fill = ColorRect.new()
+	fusion_recast_fill.color = Color(1.0, 0.6, 0.15)
+	fusion_recast_fill.size = Vector2(0, 6)
+	fusion_recast_bg.add_child(fusion_recast_fill)
 
 func _refresh_hotbar() -> void:
 	if hotbar_slots.is_empty():
@@ -291,7 +306,19 @@ func _refresh_hotbar() -> void:
 		var frac: float = hb.cooldown_frac(i) if hb != null else 0.0
 		s.cd.size = Vector2(s.root.size.x, s.root.size.y * frac)
 	if fusion_indicator:
-		fusion_indicator.text = "⚡ FUSION — klik kiri!" if (hb != null and hb.fusion_ready) else ""
+		if hb != null and hb.fusion_ready:
+			var tier: int = hb.fusion_slots.size()
+			var kind := "PADUAN 3-4 (recast)" if tier >= 3 else "FUSION"
+			fusion_indicator.text = "⚡ %s [%s] — klik kiri!" % [kind, hb.prime_chain_str()]
+		elif hb != null and hb.primed >= 0:
+			fusion_indicator.text = "prime [%s] — tahan klik kiri" % hb.prime_chain_str()
+		else:
+			fusion_indicator.text = ""
+	if fusion_recast_bg and hb != null:
+		var show_recast: bool = hb.is_recast_fusion()
+		fusion_recast_bg.visible = show_recast
+		if show_recast:
+			fusion_recast_fill.size = Vector2(fusion_recast_bg.size.x * hb.recast_frac(), fusion_recast_bg.size.y)
 
 # --- Signals / refresh ------------------------------------------------------
 

@@ -59,6 +59,26 @@ func _chain_str() -> String:
 func is_primed() -> bool:
 	return primed >= 0 or fusion_ready
 
+# --- HUD helpers ---
+## "1+2+3" while a fusion is chained, "2" for a single primed slot, "" otherwise.
+func prime_chain_str() -> String:
+	if fusion_ready:
+		return _chain_str()
+	if primed >= 0:
+		return str(primed + 1)
+	return ""
+
+## True while a 3-4 element (recast) fusion is primed — the only "cooldown" in the game.
+func is_recast_fusion() -> bool:
+	return fusion_ready and fusion_slots.size() >= 3
+
+## 0..1 recast progress for a 3-4 fusion (0 = just fired/cooling, 1 = ready to recast).
+func recast_frac() -> float:
+	if not is_recast_fusion():
+		return 0.0
+	var interval := 1.0 / maxf(0.5, _cast_rate())
+	return clampf(1.0 - _cast_t / interval, 0.0, 1.0)
+
 func primed_is_flow() -> bool:
 	return primed >= 0 and not fusion_ready and Db.skill(_slot_skill(primed)).get("kind", "") == "flow"
 
