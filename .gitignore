@@ -1,12 +1,14 @@
 # === Godot 4 ===
 .godot/
 game/.godot/
-# Godot export output
+# Godot export output / builds
 export/
+build/
 *.exe
 *.pck
 *.zip
 *.rar
+*.tpz
 
 # === Tooling / large binaries (kept local, not versioned) ===
 _tools/
@@ -21,5 +23,8 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# NOTE: assets_raw/ IS tracked so source assets + licenses are preserved.
+# === Third-party extracted assets (NOT versioned — repo slim + license-safe) ===
+# The extracted zip packs live only locally; ASSET_LOG.md records their source/license.
+# Our ORIGINAL assets live in game/assets/ and are versioned.
+assets_raw/
 # The root asset .zip/.rar archives are ignored (already extracted to assets_raw/).
