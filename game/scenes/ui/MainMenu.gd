@@ -7,6 +7,7 @@ var _font: Font
 func _ready() -> void:
 	if ResourceLoader.exists("res://assets/game/fonts/m5x7.ttf"):
 		_font = load("res://assets/game/fonts/m5x7.ttf")
+	theme = UiTheme.theme    # unified UI kit
 	_build()
 	if OS.get_environment("AETHER_SHOT") == "1":
 		get_tree().create_timer(0.8).timeout.connect(func():

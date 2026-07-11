@@ -15,6 +15,7 @@ config/icon="res://icon.svg"
 
 EventBus="*res://autoload/EventBus.gd"
 Db="*res://autoload/Db.gd"
+UiTheme="*res://autoload/UiTheme.gd"
 GameClock="*res://autoload/GameClock.gd"
 WorldState="*res://autoload/WorldState.gd"
 PlayerData="*res://autoload/PlayerData.gd"

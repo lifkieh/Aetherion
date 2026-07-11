@@ -22,6 +22,7 @@ func _ready() -> void:
 func _build() -> void:
 	panel = Control.new()
 	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	panel.theme = UiTheme.theme    # unified UI kit
 	add_child(panel)
 	var dim := ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.35)
