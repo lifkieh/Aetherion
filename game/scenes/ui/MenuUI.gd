@@ -61,7 +61,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["pedia", "Pedia"]]:
+	for m in [["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["pedia", "Pedia"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -136,6 +136,31 @@ func _rebuild() -> void:
 		"shop": _build_shop()
 		"system": _build_system()
 		"pedia": _build_pedia()
+		"quest": _build_quests()
+
+func _build_quests() -> void:
+	title.text = "Papan Quest Harian"
+	QuestSystem.ensure_today()
+	content.add_child(_mk_label("Tanggal: %s (reset tiap hari WIB)" % PlayerData.daily_quests.get("date", "?"), 13))
+	var qs: Array = QuestSystem.quests()
+	if qs.is_empty():
+		content.add_child(_mk_label("(tidak ada quest)", 14))
+	for q in qs:
+		var h := _row()
+		var cond := ""
+		if q.get("condition", "") == "rain": cond = " ☔"
+		elif q.get("condition", "") == "full_moon": cond = " 🌕"
+		var status := "✔" if q.done else "%d/%d" % [q.progress, q.count]
+		var reward := "%dG" % q.reward_gold
+		if q.reward_item != "": reward += " + %s x%d" % [Db.item_name(q.reward_item), q.reward_qty]
+		var l := _mk_label("%s%s  [%s]  → %s" % [q.name, cond, status, reward], 14)
+		l.custom_minimum_size = Vector2(400, 0)
+		if q.claimed: l.modulate = Color(0.5, 0.5, 0.5)
+		h.add_child(l)
+		if q.done and not q.claimed:
+			h.add_child(_btn("Klaim", func(): QuestSystem.claim(q.id); _rebuild()))
+		elif q.claimed:
+			h.add_child(_mk_label("diklaim", 12))
 
 func _build_pedia() -> void:
 	title.text = "Aetherpedia"

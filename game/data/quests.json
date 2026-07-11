@@ -1,0 +1,11 @@
+[
+  {"id": "q_hunt", "name": "Perburuan Harian", "type": "kill", "target": "any", "count": 8, "reward_gold": 120, "reward_item": "minor_potion", "reward_qty": 2, "desc": "Kalahkan 8 monster."},
+  {"id": "q_wet_hunt", "name": "Badai Berburu", "type": "kill", "target": "any", "count": 5, "condition": "rain", "reward_gold": 200, "reward_item": "greater_orb", "reward_qty": 1, "desc": "Kalahkan 5 monster saat hujan (petir menyambar!)."},
+  {"id": "q_wolves", "name": "Ancaman Serigala", "type": "kill", "target": "grey_wolf", "count": 4, "reward_gold": 150, "reward_item": "saddle", "reward_qty": 1, "desc": "Kalahkan 4 Grey Wolf."},
+  {"id": "q_wood", "name": "Kayu Bakar", "type": "gather", "target": "tree", "count": 6, "reward_gold": 90, "reward_item": "plank", "reward_qty": 3, "desc": "Tebang kayu 6 kali."},
+  {"id": "q_mine", "name": "Kilau Tembaga", "type": "gather", "target": "ore", "count": 5, "reward_gold": 110, "reward_item": "copper_bar", "reward_qty": 2, "desc": "Tambang bijih 5 kali."},
+  {"id": "q_craft", "name": "Tukang Rajin", "type": "craft", "target": "any", "count": 3, "reward_gold": 100, "reward_item": "mana_draught", "reward_qty": 2, "desc": "Buat 3 item di bengkel."},
+  {"id": "q_tame", "name": "Sahabat Baru", "type": "tame", "target": "any", "count": 1, "reward_gold": 180, "reward_item": "greater_orb", "reward_qty": 1, "desc": "Jinakkan 1 monster."},
+  {"id": "q_moon_hunt", "name": "Perburuan Purnama", "type": "kill", "target": "any", "count": 10, "condition": "full_moon", "reward_gold": 300, "reward_item": "master_orb", "reward_qty": 1, "desc": "Kalahkan 10 monster saat purnama."},
+  {"id": "q_candy", "name": "Panen Manis", "type": "gather", "target": "lollipop", "count": 4, "reward_gold": 130, "reward_item": "sugar_crystal", "reward_qty": 3, "desc": "Panen 4 pohon lolipop di Candyveil."}
+]

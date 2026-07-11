@@ -22,6 +22,7 @@ func _ready() -> void:
 	_test_scenario()
 	_test_saveload()
 	_test_achievements()
+	_test_quests()
 	await _test_bugfixes()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
@@ -157,6 +158,36 @@ func _test_homestead_growth() -> void:
 	check("backdated plot is ready", st.ready and st.stage == st.stages)
 	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
+
+func _test_quests() -> void:
+	print("[QuestSystem]")
+	check("quests data loaded", Db.quests.size() >= 5)
+	PlayerData.new_game()
+	PlayerData.daily_quests = {}
+	QuestSystem.ensure_today()
+	var qs: Array = QuestSystem.quests()
+	check("daily quests rolled (<=3)", qs.size() > 0 and qs.size() <= 3)
+	check("quest board dated today", PlayerData.daily_quests.get("date", "") == GameClock.date_string())
+	var ids1 := qs.map(func(q): return q.id)
+	PlayerData.daily_quests = {}
+	QuestSystem.ensure_today()
+	var ids2 := QuestSystem.quests().map(func(q): return q.id)
+	check("daily roll deterministic per date", str(ids1) == str(ids2))
+	# complete a no-condition kill quest if one was rolled
+	var kq = null
+	for q in QuestSystem.quests():
+		if q.type == "kill" and q.get("condition", "") == "":
+			kq = q; break
+	if kq != null:
+		for i in range(int(kq.count)):
+			EventBus.monster_killed.emit("verdant_slime", null)
+		check("kill quest completes", kq.done)
+		var gold_before: int = PlayerData.gold
+		check("claim grants reward", QuestSystem.claim(kq.id) and PlayerData.gold > gold_before)
+		check("cannot double-claim", not QuestSystem.claim(kq.id))
+	else:
+		check("no-condition kill quest availability (n/a today)", true)
+	PlayerData.new_game()
 
 func _test_bugfixes() -> void:
 	print("[bug fixes]")

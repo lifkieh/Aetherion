@@ -16,7 +16,12 @@ func _ready() -> void:
 	_build()
 
 func _build() -> void:
-	if kind == "inn":
+	if kind == "board":
+		sprite.texture = load("res://assets/game/sprites/props/branch.png")
+		sprite.scale = Vector2(2.2, 2.6)
+		sprite.modulate = Color(0.75, 0.6, 0.4)
+		label.text = "Papan Quest [E]"
+	elif kind == "inn":
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(2.4, 2.0)
 		sprite.modulate = Color(0.55, 0.45, 0.75)
@@ -45,6 +50,8 @@ func interact() -> void:
 		return
 	if kind == "shop":
 		menu.open("shop", self)
+	elif kind == "board":
+		menu.open("quest", self)
 	else:
 		menu.open("crafting", self)
 

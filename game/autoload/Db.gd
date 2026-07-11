@@ -14,6 +14,7 @@ var crops: Dictionary = {}         # id -> def
 var loot_tables: Dictionary = {}   # id -> table
 var sky_calendar: Array = []
 var achievements: Array = []
+var quests: Array = []
 
 var _errors: Array[String] = []
 
@@ -32,6 +33,7 @@ func load_all() -> void:
 	elements = _load_object("elements.json")
 	sky_calendar = _load_array("sky_calendar.json")
 	achievements = _load_array("achievements.json")
+	quests = _load_array("quests.json")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])
