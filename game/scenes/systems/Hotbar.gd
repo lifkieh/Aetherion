@@ -185,6 +185,7 @@ func _cast_single(actor: Node2D, aim: Vector2, sid: String) -> bool:
 		_:
 			PlayerCombat.melee_arc(actor, aim, sk.get("range", 48), sk.get("aoe_arc", 120), sk)
 			Audio.play_sfx("attack", 1.05)
+	EventBus.skill_cast.emit(sid)   # opening-quest hook (FF-2g)
 	return true
 
 func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:

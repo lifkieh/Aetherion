@@ -45,6 +45,7 @@ func _ready() -> void:
 	_test_skill_audit()
 	_test_skill_acquisition()
 	_test_classes()
+	_test_opening()
 	_test_save_modern()
 	_test_equipment()
 	_test_skycalendar()
@@ -620,6 +621,30 @@ func func_learn_boss(boss: String, sid: String) -> bool:
 	PlayerData.on_boss_killed(boss)
 	return PlayerData.can_use_skill(sid)
 
+func _test_opening() -> void:
+	print("[30 menit pertama — FF-2g]")
+	PlayerData.new_game()
+	PlayerData.guide_step = 0
+	PlayerData.guide_progress = 0
+	# step 1: kill 2 -> reward gold + potion (satu sistem, satu reward jelas)
+	var g0: int = PlayerData.gold
+	var p0: int = PlayerData.item_count("minor_potion")
+	EventBus.monster_killed.emit("verdant_slime", null)
+	EventBus.monster_killed.emit("verdant_slime", null)
+	check("step 1 (kill 2) completes", PlayerData.guide_step == 1)
+	check("step 1 reward: +40G +2 potion", PlayerData.gold == g0 + 40 and PlayerData.item_count("minor_potion") == p0 + 2)
+	# step 2: cast a class skill via the hotbar hook
+	EventBus.skill_cast.emit("flame_slash")
+	check("step 2 (skill cast) completes", PlayerData.guide_step == 2)
+	# every step declares a reward (reward loop 5-10 menit pertama)
+	var all_rewarded := true
+	for s in Onboarding.STEPS:
+		if not (s.has("reward_gold") or s.has("reward_item")):
+			all_rewarded = false
+	check("every opening step has a clear reward", all_rewarded)
+	check("opening has 6 steps (one system each)", Onboarding.STEPS.size() == 6)
+	PlayerData.new_game()
+
 func _test_save_modern() -> void:
 	print("[Save modern — FF-2e]")
 	# metadata slot kaya: name/class/level/playtime/location
@@ -825,7 +850,7 @@ func _test_chargen() -> void:
 
 func _test_onboarding() -> void:
 	print("[Onboarding + Guide chain]")
-	check("STEPS chain is 5 long", Onboarding.STEPS.size() == 5)
+	check("STEPS chain is 6 long (FF-2g)", Onboarding.STEPS.size() == 6)
 	check("tips cover the six contexts", Onboarding.TIPS.has("town") and Onboarding.TIPS.has("tree") \
 		and Onboarding.TIPS.has("monster") and Onboarding.TIPS.has("levelup") \
 		and Onboarding.TIPS.has("orb") and Onboarding.TIPS.has("dungeon_door"))
@@ -836,29 +861,31 @@ func _test_onboarding() -> void:
 	check("tip shown once, then suppressed", PlayerData.onboarding_seen.count("town") == 1)
 	Onboarding.tip("nonexistent_tip")
 	check("unknown tip id is a no-op", not ("nonexistent_tip" in PlayerData.onboarding_seen))
-	# opening quest chain advances step by step via EventBus
+	# opening quest chain (FF-2g order): kill 2 -> skill -> chop 3 -> craft -> tame -> board
 	PlayerData.guide_step = 0
 	PlayerData.guide_progress = 0
-	EventBus.node_harvested.emit("ore", "copper_ore", 1)
-	check("wrong gather kind doesn't advance", PlayerData.guide_step == 0 and PlayerData.guide_progress == 0)
+	EventBus.node_harvested.emit("tree", "wood_log", 1)
+	check("wrong kind doesn't advance (tree during kill step)", PlayerData.guide_step == 0 and PlayerData.guide_progress == 0)
+	EventBus.monster_killed.emit("grey_wolf", null)
+	check("kill 1/2 — still step 1", PlayerData.guide_step == 0 and PlayerData.guide_progress == 1)
+	EventBus.monster_killed.emit("grey_wolf", null)
+	check("kill 2/2 advances to skill step", PlayerData.guide_step == 1)
+	EventBus.skill_cast.emit("flame_slash")
+	check("skill cast advances to gather step", PlayerData.guide_step == 2)
 	EventBus.node_harvested.emit("tree", "wood_log", 1)
 	EventBus.node_harvested.emit("tree", "wood_log", 1)
-	check("chop 2/3 — still on step 1", PlayerData.guide_step == 0 and PlayerData.guide_progress == 2)
 	EventBus.node_harvested.emit("tree", "wood_log", 1)
-	check("chop 3/3 advances to craft step", PlayerData.guide_step == 1)
+	check("chop 3/3 advances to craft step", PlayerData.guide_step == 3)
 	EventBus.item_crafted.emit("x", false)
-	check("failed craft doesn't advance", PlayerData.guide_step == 1)
+	check("failed craft doesn't advance", PlayerData.guide_step == 3)
 	EventBus.item_crafted.emit("plank", true)
-	check("craft advances to kill step", PlayerData.guide_step == 2)
-	EventBus.monster_killed.emit("grey_wolf", null)
-	EventBus.monster_killed.emit("grey_wolf", null)
-	check("kill 2 advances to tame step", PlayerData.guide_step == 3)
+	check("craft advances to tame step", PlayerData.guide_step == 4)
 	EventBus.pet_added.emit({})
-	check("tame advances to board step", PlayerData.guide_step == 4)
+	check("tame advances to board step", PlayerData.guide_step == 5)
 	EventBus.board_visited.emit()
-	check("visiting board completes the chain", PlayerData.guide_step == 5)
+	check("visiting board completes the chain", PlayerData.guide_step == 6)
 	EventBus.monster_killed.emit("grey_wolf", null)
-	check("events after completion are ignored", PlayerData.guide_step == 5)
+	check("events after completion are ignored", PlayerData.guide_step == 6)
 	# reset for a clean save state
 	PlayerData.guide_step = 0
 	PlayerData.guide_progress = 0

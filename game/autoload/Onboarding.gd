@@ -30,13 +30,21 @@ const TIPS := {
 		"text": "Kamu mem-prime DUA elemen sekaligus! Klik kiri untuk melepas paduannya. Resep yang benar menghasilkan sihir baru; yang salah... fizzle. Semua temuanmu tercatat di tab Grimoire (Esc). Tekan angka yang sama atau klik kanan untuk batal."},
 }
 
-# --- opening quest chain ----------------------------------------------------
+# --- opening quest chain (FF-2g) ---------------------------------------------
+# One system per step, one CLEAR reward per step — the first 30 minutes tour.
 const STEPS := [
-	{"desc": "Tebang 3 pohon (dekati, tekan E)", "kind": "gather_tree", "count": 3},
-	{"desc": "Ramu 1 barang di Bengkel (tekan E)", "kind": "craft", "count": 1},
-	{"desc": "Kalahkan 2 monster (klik kiri)", "kind": "kill", "count": 2},
-	{"desc": "Jinakkan 1 monster (lemahkan, tekan T)", "kind": "tame", "count": 1},
-	{"desc": "Kunjungi Papan Quest (tekan E)", "kind": "board", "count": 1},
+	{"desc": "COMBAT — Kalahkan 2 monster di luar gerbang (TAHAN klik kiri)", "kind": "kill", "count": 2,
+		"reward_gold": 40, "reward_item": "minor_potion", "reward_qty": 2},
+	{"desc": "SKILL CLASS-mu — Tekan 1 (prime) lalu TAHAN klik kiri ke musuh", "kind": "skill", "count": 1,
+		"reward_gold": 30},
+	{"desc": "GATHERING — Tebang 3 pohon pinus berjenjang (tekan E)", "kind": "gather_tree", "count": 3,
+		"reward_item": "copper_ore", "reward_qty": 3},
+	{"desc": "CRAFTING — Ramu 1 barang di Bengkel pandai besi (E)", "kind": "craft", "count": 1,
+		"reward_gold": 60},
+	{"desc": "TAMING — Lemahkan monster sampai sekarat, lalu tekan T", "kind": "tame", "count": 1,
+		"reward_item": "basic_orb", "reward_qty": 2},
+	{"desc": "QUEST — Kunjungi Papan Quest di balai kota (E)", "kind": "board", "count": 1,
+		"reward_gold": 100},
 ]
 
 var _panel: PanelContainer
@@ -60,6 +68,7 @@ func _ready() -> void:
 	EventBus.monster_killed.connect(func(_s, _m): _advance("kill"))
 	EventBus.pet_added.connect(func(_p): _advance("tame"))
 	EventBus.board_visited.connect(func(): _advance("board"))
+	EventBus.skill_cast.connect(func(_sid): _advance("skill"))
 	EventBus.game_loaded.connect(func(_s): _refresh_tracker())
 	call_deferred("_refresh_tracker")
 
@@ -123,6 +132,18 @@ func _advance(kind: String, _target := "") -> void:
 		_refresh_tracker()
 
 func _complete_step() -> void:
+	# grant this step's CLEAR reward (FF-2g)
+	var done: Dictionary = STEPS[PlayerData.guide_step]
+	var parts := []
+	if done.has("reward_gold"):
+		PlayerData.add_gold(int(done.reward_gold))
+		parts.append("+%dG" % int(done.reward_gold))
+	if done.has("reward_item"):
+		var q: int = int(done.get("reward_qty", 1))
+		PlayerData.add_item(done.reward_item, q)
+		parts.append("+%d %s" % [q, Db.item_name(done.reward_item)])
+	if not parts.is_empty():
+		EventBus.toast.emit("🎁 Hadiah langkah: %s" % " · ".join(parts))
 	PlayerData.guide_step += 1
 	PlayerData.guide_progress = 0
 	Audio.play_sfx("success")
