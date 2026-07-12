@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-11 (Session 1)
+**Last update:** 2026-07-12 (Ronde 4 — Power & Combat Calibration selesai)
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -217,15 +217,41 @@ ronde ini memperkaya yang sudah ada. Semua aset ORISINAL (PIL / prosedural).
   **264 test lulus**, commit+push per bagian, **tag v0.3-alpha**, export `export/Aetherion.exe` **85.2 MB**
   (boot standalone OK, `[Db] Loaded: 60 monsters, 87 items`, tanpa error).
 
-## ⏸️ STATUS: MENUNGGU HASIL PLAYTEST OWNER (RONDE 3)
-Ronde v0.3-alpha (character system + Frostpeak + Storm Island) selesai & di-tag. **Menunggu feedback playtest ronde 3.**
+## ⚔️ RONDE 4 — POWER & COMBAT CALIBRATION — SELESAI
+7 bagian + 6 revisi desain combat owner (A–F, keputusan FINAL, dicatat di DEVLOG):
+- **PC1 Stat:** 6 atribut STR/AGI/VIT/INT/DEX/LUK, +5 poin bebas/level, tab **Status** ([+] alokasi,
+  deskripsi 1 baris), wiring penuh ke CombatResolver (miss roll akurasi-vs-evasion), respec berbayar.
+- **PC2 Model combat:** (A) hold-to-attack di rate senjata×AGI; (B) **semua cooldown skill DIHAPUS** —
+  channel tahan-klik, mana_cost×cast_rate, mana habis = klik kosong, regen surge ×3 idle;
+  (D) hit-immunity per-SOURCE (0.2s/0.4s bos) anti-melt; (E) infusion mengubah reach/arc/dmg melee
+  per elemen (data `infusion_melee`), upkeep drain mana/dtk, toggle bebas. Kedua mode paritas feel penuh.
+- **PC3 Fusion bertingkat:** 2-elemen holdable tanpa CD (mana 2.5×); **3–4 elemen = recast 0.7/dtk**
+  (satu-satunya "cooldown"), 4 resep triple + 2 quad (Plasma Storm, Blizzard Lokal, Magma Wall,
+  Sanctuary, Genesis Tempest, Entropy Collapse); HUD prime-chain ("1+2+5") + recast bar.
+- **PC4 Akuisisi skill:** mulai 3 skill dasar; sisanya dari milestone level (gust Lv3, quake Lv8),
+  **kitab skill** (drop/toko, klik untuk belajar), **NPC Guru Skill** (gold+level), first-kill bos
+  (holy_ray ← King Slime; **Meteor ★ULTIMATE** ← Frost Titan). Tab Skill Book (dikuasai vs belum + hint).
+- **PC5 Equipment:** 3 slot berfungsi nyata (armor→DEF+HP, aksesori→MATK+MP), rantai craft F→E→D
+  (tunik/rompi/zirah, cincin tembaga/perak/emas, pedang besi), +27–36%/tier, tooltip banding hijau/merah,
+  gear awal tier F. Fix bug ATK senjata dihitung dobel.
+- **PC6 Kalibrasi total (rev F):** `BALANCE_TARGETS.md` (ditulis sebelum tuning) + **harness v2**
+  (`AETHER_BALANCE=2`; TTK dua-arah, 3 build × Lv1/5/10/15, kedua mode, sadar-mana). Temuan struktural
+  diperbaiki: HP monster kini mengejar pertumbuhan hero (TTK tak lagi kolaps), formula magic MDEF
+  dimitigasi seperti DEF, ofensif monster ditemper (pack membunuh 6–8.7s, bukan <2s), **mage kering
+  di 12.1s channel** (target 8–12). Bos proxy 50–107s (=2–4 mnt live). Hasil: `BALANCE_REPORT_v2.md`.
+  Chase open world di-cap (selalu escapable), **death penalty dungeon = respawn di pintu −10% gold**,
+  **F9 debug overlay** (dev only). **330 test lulus**, export `export/Aetherion.exe` **89.4 MB** boot OK.
 
-### Konten BEKU tersisa — setelah feedback
+## ⏸️ STATUS: MENUNGGU PLAYTEST POWER OWNER (RONDE 4)
+Ronde Power & Combat Calibration selesai (330 test, exe ter-export, semua bagian committed+pushed).
+**Menunggu hasil playtest power dari owner.**
+
+### Konten BEKU tersisa — setelah playtest lolos
 - **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).
-- **Roster monster lanjutan** — spesies tahap berikut untuk region baru + evolusi lanjutan.
-Saat diaktifkan: ikuti pola data-driven yang ada (regions = scene + safe_zone di `towns.json`, monster di
-`monsters.json`, dungeon via `DungeonBase`, sprite/SFX orisinal), dan pertahankan target *game ringan* (ukur FPS).
-- Rule: game ringan (measure FPS before/after), headless test per system, commit+push per part, **tag v0.2-alpha** at end.
+- **Roster monster lanjutan** — spesies tahap berikut + evolusi lanjutan.
+- **Celestia Kingdom** — ibukota semua ras (kanon baru), kota terbesar.
+Saat diaktifkan: pola data-driven yang ada (towns.json/monsters.json/DungeonBase, sprite orisinal),
+**monster baru WAJIB dikalibrasi harness v2 sejak lahir** (`AETHER_BALANCE=2`), target game ringan (ukur FPS).
 - **Definition of done:** a brand-new player with zero explanation understands how to play within 10 minutes.
 
 ## Next steps (exact) — for the next session, resume here
