@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	_test_daily_events()
 	_test_monster_depth()
 	_test_combo()
 	await _test_patterns()
@@ -686,6 +687,48 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_daily_events() -> void:
+	print("[Event harian & Blood Moon — v0.4.1]")
+	# Blood Moon: aggro x1.5 dicek via data jalur; drop x2 via grant_rewards passes
+	PlayerData.new_game()
+	WorldState.force_weather("blood_moon")
+	var inst := MonsterFactory.make("verdant_slime", 3, 3)
+	var got := 0
+	for i in range(60):
+		PlayerData.inventory.clear()
+		MonsterFactory.grant_rewards(inst)
+		got += PlayerData.item_count("slime_jelly")
+	WorldState.force_weather("sunny")
+	var got_normal := 0
+	for i in range(60):
+		PlayerData.inventory.clear()
+		MonsterFactory.grant_rewards(inst)
+		got_normal += PlayerData.item_count("slime_jelly")
+	check("Blood Moon drop ~x2 (60 kill)", got > int(got_normal * 1.4), "%d vs %d" % [got, got_normal])
+	# Blood Moon = gerbang evolusi kedua: wild_boar -> ironhide_boar
+	WorldState.force_weather("blood_moon")
+	var boar := {"species_id": "wild_boar", "name": "Uji Boar", "level": 5, "star": 3}
+	check("wild_boar BISA evolve saat Bulan Darah", EvolutionSystem.can_evolve(boar))
+	WorldState.force_weather("sunny")
+	check("wild_boar TIDAK evolve tanpa Bulan Darah", not EvolutionSystem.can_evolve(boar))
+	# nokturnal: gating spawn siang/malam
+	check("timberwing_owl bertanda nokturnal", Db.monster("timberwing_owl").get("nocturnal", false))
+	if GameClock.is_night():
+		check("nokturnal boleh spawn malam", MonsterFactory.spawnable_now("timberwing_owl"))
+	else:
+		check("nokturnal DILARANG spawn siang", not MonsterFactory.spawnable_now("timberwing_owl"))
+	check("spesies biasa selalu boleh spawn", MonsterFactory.spawnable_now("grey_wolf"))
+	# Golden Hour: EXP +10% nyata (dites via jalur gain_exp saat kondisi terpenuhi)
+	PlayerData.new_game()
+	PlayerData.level = 50   # exp_to_next besar -> tidak level-up, murni akumulasi
+	PlayerData.exp = 0
+	PlayerData.gain_exp(100)
+	if GameClock.is_golden_hour():
+		check("Golden Hour EXP +10%", PlayerData.exp >= 110 and PlayerData.exp <= 111, str(PlayerData.exp))
+	else:
+		check("EXP normal di luar Golden Hour", PlayerData.exp == 100, str(PlayerData.exp))
+	PlayerData.new_game()
 
 func _test_monster_depth() -> void:
 	print("[Kedalaman monster — v0.4.1]")

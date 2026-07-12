@@ -10,6 +10,7 @@ func _ready() -> void:
 	EventBus.weather_changed.connect(func(w): _discover("weathers", w))
 	EventBus.full_moon_began.connect(func(): EvolutionSystem.check_party())
 	EventBus.pet_added.connect(func(_p): EvolutionSystem.check_party())   # level-based evo (e.g. Dire Wolf)
+	EventBus.weather_changed.connect(func(w): if w == "blood_moon": EvolutionSystem.check_party())   # gerbang Bulan Darah (v0.4.1)
 
 # --- Achievements -----------------------------------------------------------
 

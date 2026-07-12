@@ -8,6 +8,7 @@ const CONDITIONS := {
 	"fluffbit": "full_moon",
 	"grey_wolf": "level",
 	"dire_wolf": "full_moon",   # Dire Wolf -> Alpha Wolf under the full moon (v0.3)
+	"wild_boar": "blood_moon",  # Wild Boar -> Ironhide Boar saat BULAN DARAH (v0.4.1, Decision Log #24)
 }
 # level threshold for "level"-conditioned evolutions
 const LEVEL_REQ := {
@@ -22,6 +23,7 @@ static func can_evolve(pet: Dictionary) -> bool:
 	var cond: String = CONDITIONS.get(sp, "")
 	match cond:
 		"full_moon": return GameClock.is_full_moon()
+		"blood_moon": return WorldState.weather == "blood_moon"
 		"level": return int(pet.get("level", 1)) >= int(LEVEL_REQ.get(sp, 999))
 		"": return false
 		_: return false

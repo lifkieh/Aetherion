@@ -177,6 +177,9 @@ func exp_to_next() -> int:
 func gain_exp(amount: int) -> void:
 	if amount <= 0:
 		return
+	# GOLDEN HOUR 17.00–18.30 WIB: EXP +10% NYATA (v0.2 §6.2, akhirnya berisi — v0.4.1)
+	if GameClock.is_golden_hour():
+		amount = int(ceil(amount * 1.1))
 	exp += amount
 	var leveled := false
 	while exp >= exp_to_next():

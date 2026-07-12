@@ -215,7 +215,7 @@ var _force_day := false
 
 func _process(delta: float) -> void:
 	if canvas_mod:
-		canvas_mod.color = Color(1, 1, 1) if _force_day else GameClock.ambient_color()
+		canvas_mod.color = Color(1, 1, 1) if _force_day else _ambient_now()
 	if star_layer:
 		star_layer.modulate.a = lerpf(star_layer.modulate.a, 1.0 if GameClock.is_night() else 0.0, delta * 2.0)
 	_tick_spawner(delta)
@@ -340,7 +340,7 @@ func _scatter_props() -> void:
 
 func _build_sky() -> void:
 	canvas_mod = CanvasModulate.new()
-	canvas_mod.color = GameClock.ambient_color()
+	canvas_mod.color = _ambient_now()
 	add_child(canvas_mod)
 	# Parallax star field (visible at night)
 	star_layer = Node2D.new()
@@ -500,6 +500,8 @@ func _tick_spawner(delta: float) -> void:
 
 func _spawn_one() -> void:
 	var species: String = SPAWN_TABLE[randi() % SPAWN_TABLE.size()]
+	if not MonsterFactory.spawnable_now(species):
+		return   # nokturnal hanya malam (v0.4.1)
 	var inst := MonsterFactory.make(species)
 	if inst.is_empty():
 		return
@@ -533,3 +535,10 @@ func _take_screenshot() -> void:
 	img.save_png(path)
 	print("[shot] saved ", ProjectSettings.globalize_path(path))
 	get_tree().quit()
+
+## Warna ambient + tint MERAH saat Blood Moon (v0.4.1).
+func _ambient_now() -> Color:
+	var c := GameClock.ambient_color()
+	if WorldState.weather == "blood_moon":
+		c = Color(c.r * 1.35, c.g * 0.55, c.b * 0.55)
+	return c

@@ -47,6 +47,13 @@ const RARITY_HP_MULT := {
 	"common": 1.5, "rare": 4.0, "epic": 8.0, "legendary": 12.0, "mythic": 16.0, "ancient": 22.0,
 }
 
+## Gating spawn waktu-hari (v0.4.1): spesies nokturnal hanya muncul malam.
+static func spawnable_now(species_id: String) -> bool:
+	var def := Db.monster(species_id)
+	if def.get("nocturnal", false) and not GameClock.is_night():
+		return false
+	return true
+
 static func roll_star(rng: RandomNumberGenerator = null) -> int:
 	var total := 0
 	for w in STAR_WEIGHTS:
@@ -161,13 +168,16 @@ static func grant_rewards(inst: Dictionary, source: Node2D = null) -> void:
 	var drop_chance_bonus: float = PlayerData.drop_bonus + float(inst.get("drop_add", 0.0)) \
 		+ (0.10 if inst.get("mutation", false) else 0.0)
 	var table := Db.loot_table(inst.get("loot_table", ""))
-	for d in table:
-		if randf() <= float(d.get("chance", 0)) + drop_chance_bonus:
-			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
-			if source != null and is_instance_valid(source) and source.is_inside_tree():
-				LootDrop.spawn(source.get_parent(), source.global_position, d.get("item", ""), qty)
-			else:
-				PlayerData.add_item(d.get("item", ""), qty)
+	# BLOOD MOON (v0.4.1): drop ×2 — tabel dirol dua kali
+	var passes := 2 if WorldState.weather == "blood_moon" else 1
+	for p in range(passes):
+		for d in table:
+			if randf() <= float(d.get("chance", 0)) + drop_chance_bonus:
+				var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
+				if source != null and is_instance_valid(source) and source.is_inside_tree():
+					LootDrop.spawn(source.get_parent(), source.global_position, d.get("item", ""), qty)
+				else:
+					PlayerData.add_item(d.get("item", ""), qty)
 	var lvl: int = int(inst.get("level", 1))
 	PlayerData.add_gold(randi_range(1, 4) * maxi(1, lvl))
 

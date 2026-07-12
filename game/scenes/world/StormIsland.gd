@@ -185,6 +185,8 @@ func _prime_monsters() -> void:
 
 func _spawn_one() -> void:
 	var species: String = SPAWN_TABLE[randi() % SPAWN_TABLE.size()]
+	if not MonsterFactory.spawnable_now(species):
+		return   # nokturnal hanya malam (v0.4.1)
 	var inst := MonsterFactory.make(species)
 	if inst.is_empty():
 		return

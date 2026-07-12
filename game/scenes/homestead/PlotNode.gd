@@ -78,6 +78,8 @@ func _harvest(st: Dictionary) -> void:
 	var p := _plot()
 	var crop: Dictionary = Db.crop(p.get("crop_id", ""))
 	var qty := randi_range(int(crop.get("yield_min", 1)), int(crop.get("yield_max", 2)))
+	if GameClock.is_morning_dew():
+		qty += 1   # MORNING DEW: panen pagi +1 (v0.4.1)
 	var product: String = crop.get("product", "")
 	PlayerData.add_item(product, qty)
 	EventBus.crop_harvested.emit(index, p.get("crop_id", ""), qty)

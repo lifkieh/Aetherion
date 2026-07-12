@@ -62,6 +62,12 @@ func _roll_weather(initial: bool) -> void:
 	var r := randf()
 	var w := "sunny"
 	if GameClock.is_night():
+		# BLOOD MOON acak jarang di malam biasa (v0.4.1): spawn agresif + drop x2 +
+		# langit merah + gerbang evolusi/scenario. ~6% per rol malam.
+		if not initial and r < 0.06:
+			set_weather("blood_moon")
+			EventBus.toast.emit("🌕 BULAN DARAH terbit... malam ini dunia haus.")
+			return
 		# nights lean clearer for star navigation
 		if r < 0.65: w = "sunny"
 		elif r < 0.85: w = "rain"

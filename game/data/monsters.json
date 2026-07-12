@@ -280,7 +280,8 @@
     "tame_base": 0.45,
     "evolution": "strix_sage",
     "aggro_radius": 150,
-    "lore": "Burung hantu malam; pemberi visi malam."
+    "lore": "Burung hantu malam; pemberi visi malam.",
+    "nocturnal": true
   },
   {
     "id": "cave_bat",
@@ -305,7 +306,8 @@
     "tame_base": 0.4,
     "evolution": "",
     "aggro_radius": 160,
-    "lore": "Kelelawar gua; terbang zig-zag."
+    "lore": "Kelelawar gua; terbang zig-zag.",
+    "nocturnal": true
   },
   {
     "id": "anubis_warden",
@@ -533,7 +535,8 @@
     "tame_base": 0.35,
     "evolution": "anubis_warden",
     "aggro_radius": 170,
-    "lore": "Serigala bayangan gurun; kuat di malam hari."
+    "lore": "Serigala bayangan gurun; kuat di malam hari.",
+    "nocturnal": true
   },
   {
     "id": "rock_golem",
@@ -1017,7 +1020,8 @@
     "tame_base": 0.6,
     "evolution": "",
     "aggro_radius": 190,
-    "lore": "Burung hantu salju yang tetap awas menembus badai."
+    "lore": "Burung hantu salju yang tetap awas menembus badai.",
+    "nocturnal": true
   },
   {
     "id": "yeti_cub",

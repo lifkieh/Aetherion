@@ -164,6 +164,8 @@ func _physics_process(delta: float) -> void:
 	if _player:
 		dist = global_position.distance_to(_player.global_position)
 	var aggro: float = inst.get("aggro_radius", 130)
+	if WorldState.weather == "blood_moon":
+		aggro *= 1.5   # BLOOD MOON: monster jauh lebih agresif (v0.4.1)
 
 	match _state:
 		State.WANDER, State.IDLE:

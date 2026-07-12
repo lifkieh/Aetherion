@@ -143,6 +143,8 @@ func _do_drop() -> void:
 	for d in table:
 		if randf() <= float(d.get("chance", 1.0)):
 			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1))) + bonus
+			if GameClock.is_morning_dew():
+				qty += 1   # MORNING DEW 05.00–07.00: panen +1 (v0.2 §6.2, v0.4.1)
 			PlayerData.add_item(d.get("item", ""), qty)
 			EventBus.node_harvested.emit(report_kind, d.get("item", ""), qty)
 	EventBus.toast.emit("Memanen %s" % ("kayu" if kind == "tree" else "tembaga"))
