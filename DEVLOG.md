@@ -9,6 +9,27 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
 5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
 
+## 2026-07-12 — FASE v0.4.1 "COMBAT DEPTH" — SELESAI (disetujui review owner+designer)
+
+Review plan DISETUJUI dengan 3 penyesuaian (Decision Log #22–25) — dicatat SEBELUM
+dikerjakan sesuai aturan permanen. Eksekusi penuh:
+- **Status effects** (GDD §6.4): Burn/Freeze/Paralyze/Poison/Blind + interaksi SAINS
+  (Thermal Shock ×1.5 pecahkan es, konduksi butuh basah, air memadamkan burn, poison
+  memotong heal 50%) + ikon di musuh & pemain, DoT menembus hit-immunity.
+- **Pola serangan** (0% jalan-nabrak): lunge/flank/burst per arketipe + telegraf
+  universal (kedua mode); shooter side-view kipas-3 tiap tembakan ke-3.
+- **Boss upgrade 5 bos**: 3+ pola/fase terkoreografi, arena hazard per bos (elemen),
+  intro bar+nama+stinger, perayaan kill slow-mo+jingle+hujan loot+banner.
+- **Combo Skill** 2 beda <2 dtk = +30% + **publikasi cap/formula** di tab Status.
+- **Kedalaman monster TAMPAK**: ★rank di atas HP bar+Pedia, trait individu berefek
+  (Kekar/Liat/Gesit/Beruntung/Berbisa), **affinity hidup** (+1/kill, +5 makan, tab Pet
+  baru), **MUTASI 1/500** (emas, +10%, ✦).
+- **Event harian berisi**: Golden Hour EXP+10%, Morning Dew +1 panen, nokturnal
+  gating, **Blood Moon penuh** (acak ~6%/rol malam + purnama; aggro ×1.5, drop ×2,
+  langit merah, **gerbang evolusi Wild Boar→Ironhide Boar** per Decision Log #24).
+- **Tarikan review (i)**: PauseMenu layak + slider Musik/SFX terpisah + fullscreen.
+405 test lulus. PLAN_LEDGER kedua bagian di-update (baris #26–27 keputusan agent).
+
 ## 2026-07-12 — ADDENDUM AUDIT (telaah designer) + PLAN_LEDGER dibuat
 
 Temuan telaah designer diverifikasi di kode & dimasukkan GAP_AUDIT (addendum) +

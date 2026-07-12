@@ -36,9 +36,9 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 | Sistem | Sumber | Status | Catatan |
 |---|---|---|---|
 | Model combat: hold-attack + channel mana (TANPA cooldown) + fusion bertingkat + anti-melt + infusion reach | Owner rev A–F (2026-07-12) | Ada | MENIMPA struktur cooldown GDD §6.2 — Decision Log #8. |
-| Struktur skill: 6 slot + Ultimate slot + Combo window | v0.1 §6.2 | Sebagian/MENYIMPANG | Hotbar 5 slot; Ultimate baru flag (meteor); **Combo Skill window belum ada**. |
-| Formula fisik/magic + miss ACC-vs-EVA | v0.1 §6.3 | Ada (dimodifikasi) | MDEF kini mitigasi-dalam-multiplier (Decision Log #11); hit-clamp beda dari GDD; PEN belum; publikasi cap di UI belum. |
-| Status effect (Burn/Freeze/Paralyze/Poison/Blind/Curse) | v0.1 §6.4 | **Belum** (kecuali Wet) | Prioritas v0.4.1. |
+| Struktur skill: 6 slot + Ultimate slot + Combo window | v0.1 §6.2 | Sebagian | Hotbar 5 slot; Ultimate baru flag (meteor); **Combo window ADA (v0.4.1): 2 skill beda <2 dtk = +30%**. |
+| Formula fisik/magic + miss ACC-vs-EVA | v0.1 §6.3 | Ada (dimodifikasi) | MDEF mitigasi-dalam-multiplier (#11); hit-clamp beda dari GDD; PEN belum; **cap & formula kini DIPUBLIKASIKAN di tab Status (v0.4.1)**. |
+| Status effect (Burn/Freeze/Paralyze/Poison/Blind/Curse) | v0.1 §6.4 | **Ada** (v0.4.1, kecuali Curse) | StatusFx: DoT/stun/lock/blind + interaksi sains (Thermal Shock, konduksi basah, pemadaman); ikon di musuh & pemain. Curse menyusul. |
 | 17 elemen 4 tier + matrix + aturan sains data-driven | v0.2 §7 | Ada | Termasuk Tier 2 (Poison/Metal/Wood/Spirit) ✓ terverifikasi. |
 | Fusion elemen + discovery + Grimoire | v0.1 §5.3 + owner rev C + owner 2g | Ada | 15 resep (target launch 35 — sisa = konten bertahap). |
 | Element Flow 4 jalur: Infusion / Coating / Enchant / Fusion-monster | v0.3 §7 | Sebagian | Hanya Infusion. Coating+Enchant = v0.4.2; fusion-monster ditunda-sengaja. |
@@ -51,8 +51,8 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 |---|---|---|---|
 | Waktu = jam WIB asli + fase bulan lunar asli | v0.2 §6 | Ada | Jantung Aetherion, sehat. |
 | **MUSIM 4 × 2 minggu** | v0.1 §4.2, Fase0 §3 | **Belum — NOL** | Luput dari laporan sebelumnya (addendum A4). v0.4.3. |
-| Cuaca per wilayah + efek gameplay | v0.1 §4.3 | Sebagian | 5 cuaca ada; **Blood Moon hanya nama** (tanpa spawn agresif/drop ×2/tint) — addendum A6. |
-| Event harian: Golden Hour / Morning Dew / nokturnal | v0.2 §6.2 | Sebagian | Jam & sinyal ada; **bonus gameplay-nya belum ada satu pun** — addendum A6. |
+| Cuaca per wilayah + efek gameplay | v0.1 §4.3 | Sebagian | 5 cuaca; **Blood Moon PENUH (v0.4.1)**: malam acak jarang + purnama, aggro ×1.5, drop ×2, langit merah, gerbang evolusi (boar). Per-wilayah masih global. |
+| Event harian: Golden Hour / Morning Dew / nokturnal | v0.2 §6.2 | **Ada** (v0.4.1) | Golden Hour EXP+10% nyata; Morning Dew panen +1; nokturnal gating spawn di 5 wilayah. |
 | sky_calendar tanggal astronomi nyata | Fase0 §3 | Ada | 11 event 2026–2027 (solstice/equinox/meteor). |
 | Ramalan Rasi (12 Rasi Agung + prophecy mingguan) | v0.3 §3 | Sebagian | **Aset 12 rasi SUDAH ADA & belum dipakai kode**; prophecy = teks belum terhubung konten; addendum A5. |
 | Prakiraan cuaca Astrologer 24 jam (80%) | v0.1 §4.3 | **Belum** | Addendum B. |
@@ -66,10 +66,10 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 | Sistem | Sumber | Status | Catatan |
 |---|---|---|---|
 | Roster BST × arketipe × rarity (60 spesies) | Roster §1–2 | Ada | Kalibrasi ulang growth (Decision Log #10). |
-| Rank bintang 1–5 saat spawn | v0.1 §7.2 | Sebagian | Dirol ±6% tapi **tak tampil di UI/Pedia** — addendum A7. |
-| Trait 1–2 per individu dengan efek | v0.1 §7.2 | Sebagian | Trait = data spesies; mayoritas tanpa efek; per-individu belum. |
-| **Affinity** pet (naik lewat interaksi, gerbang konten) | v0.1 §7.2, §8.3 | **Belum (beku di 0)** | addendum A7; gerbang Pact/fusion masa depan. |
-| **Mutation 1/500** | v0.1 §7.2 | **Belum** | addendum A7. |
+| Rank bintang 1–5 saat spawn | v0.1 §7.2 | **Ada** (v0.4.1) | Tampil ★ di atas HP bar (kedua mode) + Pedia + tab Pet. |
+| Trait 1–2 per individu dengan efek | v0.1 §7.2 | **Ada** (v0.4.1) | Pool individu (Kekar/Liat/Gesit/Beruntung/Berbisa) berefek stat/racun nyata + tampil di UI; trait spesies (Pack Hunter dll.) menyusul. |
+| **Affinity** pet (naik lewat interaksi, gerbang konten) | v0.1 §7.2, §8.3 | **Ada** (v0.4.1) | +1/kill dibantu, +5 diberi makan (cap 100); tampil di tab Pet (ranch UI). |
+| **Mutation 1/500** | v0.1 §7.2 | **Ada** (v0.4.1) | Recolor emas, +10% stat, nama ✦, drop +10%. |
 | Growth Type (Early/Balanced/Late) | v0.1 §7.2 | Belum | Prioritas rendah. |
 | Taming (rate, pity, enrage, orb) | v0.1 §8.1 + v0.2 §7.4 | Ada | |
 | Pet-mount Size Class + saddle | v0.3 §6 | Ada | |
@@ -98,13 +98,13 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 
 | Sistem | Sumber | Status | Catatan |
 |---|---|---|---|
-| Dungeon side-view Terraria + bos 2 fase | Owner 2026-07-11 | Ada | 5 dungeon. Chest/rahasia/trap/parallax: belum (v0.4.3). |
+| Dungeon side-view Terraria + bos 2 fase | Owner 2026-07-11 | Ada (bos di-upgrade v0.4.1) | 5 bos: 3+ pola/fase terkoreografi + telegraf, arena hazard per bos, intro bar+nama+stinger, perayaan kill slow-mo+loot shower. Chest/rahasia/trap: v0.4.3. |
 | Hidden Scenario engine + no-fail | v0.2 §8.2 | Ada | 3 skenario. **Perayaan first-clear belum** (A8). |
 | Quest: daily board + panduan pembuka | v0.1 §11.1 | Ada | Pembuka dirombak FF-2g (reward/langkah). Quest journal terpusat: belum. |
 | Intro/opening + cutscene dasar | Benchmark | Sebagian | Intro 4 layar ✓ (FF-2g); cutscene engine belum. |
 | Title screen + Continue + autosave + metadata | Benchmark/owner FF-2e | Ada | |
 | Aetherpedia, Photo Mode, Titles, Echo Vendor, Sky Report, music layering | v0.2 §10 | Ada | |
-| Settings lengkap (volume per channel/keybind/fullscreen) + gamepad | Benchmark | Belum | v0.4.4. |
+| Settings lengkap (volume per channel/keybind/fullscreen) + gamepad | Benchmark | Sebagian (v0.4.1) | Pause menu layak + volume Musik/SFX terpisah + fullscreen ADA (tarikan review i). Keybind remap + gamepad: v0.4.4. |
 | World map + fast travel | Benchmark | Belum | v0.4.3. |
 | PvP / guild / racing / world boss / co-op | v0.1 §11 | Ditunda-sengaja | Fase 2–4 online. |
 | Monetisasi kosmetik / battle pass | v0.1 §15 | Ditunda-sengaja | Pasca-launch. |
@@ -140,5 +140,8 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 | 23 | 2026-07-12 | Modern meta | Pause menu + volume per channel + fullscreen di v0.4.4 | **Ditarik maju ke v0.4.1** | Owner akan playtest berulang — butuh sekarang | Owner (review i) |
 | 24 | 2026-07-12 | Blood Moon | Event cuaca + drop ×2 (v0.1 §4.3) | v0.4.1 + **disambungkan sebagai syarat evolusi/scenario kedua** (pola Alpha Wolf purnama) | Event langit harus menggerakkan konten, bukan sekadar modifier | Owner (review ii) |
 | 25 | 2026-07-12 | Craft Transenden | Resep success 1% + pengumuman (v0.2 §2) | v0.4.2: dibuat sebagai **MOMEN** — animasi ritual + jeda dramatis + pengumuman, bukan sekadar resep | Chase item butuh dramaturgi | Owner (review iii) |
+
+| 26 | 2026-07-12 | Pola musuh | "minimal 3 arketipe perilaku per wilayah" (arahan) | Pola diturunkan dari ARKETIPE roster (lunge/flank/burst) + telegraf universal — semua 60 spesies otomatis kebagian, override per spesies via data `pattern` | Lebih skalabel daripada menulis pola per wilayah; memenuhi "0% jalan-nabrak" | Agent (eksekusi v0.4.1) |
+| 27 | 2026-07-12 | Nokturnal | (belum diatur teknis) | Flag data `nocturnal` + gating spawner; 4 spesies awal (owl/bat/jackal/snow_owl) | Minimal-invasif, konten data-driven | Agent (eksekusi v0.4.1) |
 
 > Baris berikutnya ditambahkan SEBELUM implementasi keputusan baru. Jangan hapus baris; koreksi = baris baru.

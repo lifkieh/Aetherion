@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-12 (Ronde 5 — Foundation First selesai: audit + v0.4.0 Identity & Juice)
+**Last update:** 2026-07-12 (Ronde 6 — v0.4.1 Combat Depth selesai)
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -261,9 +261,29 @@ Playtest owner: "game terasa HAMPA". Semua konten baru DIBEKUKAN. Dua tahap:
   ber-class, quest pembuka 6 langkah satu-sistem-satu-reward).
   **361 test lulus**, export `export/Aetherion.exe` **89.5 MB** boot standalone bersih.
 
-## ⏸️ STATUS: MENUNGGU REVIEW AUDIT & PLAYTEST v0.4.0 OWNER
-GAP_AUDIT.md + MASTER_IMPROVEMENT_PLAN.md siap direview owner+designer (menentukan fase
-v0.4.1+). Tahap 2 (v0.4.0) selesai & bisa langsung di-playtest.
+## ⚔️ RONDE 6 — FASE v0.4.1 "COMBAT DEPTH" — SELESAI
+Review owner+designer atas MASTER_IMPROVEMENT_PLAN: DISETUJUI + 3 penyesuaian
+(Decision Log #22–25, dicatat sebelum kerja). Eksekusi penuh:
+- **Status effects** Burn/Freeze/Paralyze/Poison/Blind + interaksi sains (Thermal Shock,
+  konduksi basah, air memadamkan burn, poison potong heal) + ikon musuh & pemain.
+- **Pola serangan musuh**: 0% jalan-nabrak — lunge/flank/burst per arketipe + telegraf
+  universal di kedua mode (audit roster 60 spesies lulus test).
+- **Boss upgrade 5 bos**: 3+ pola terkoreografi per fase, arena hazard per bos, intro
+  bar+nama+stinger, perayaan kill slow-mo + jingle + hujan loot + banner.
+- **Combo Skill** (2 skill beda <2 dtk = +30%) + publikasi cap/formula di tab Status.
+- **Kedalaman monster TAMPAK**: ★1–5 di atas HP bar + Pedia, trait individu berefek,
+  affinity pet hidup (tab Pet/ranch baru), MUTASI 1/500 emas.
+- **Event harian berisi**: Golden Hour EXP+10%, Morning Dew +1, monster nokturnal,
+  **Blood Moon penuh** (aggro ×1.5, drop ×2, langit merah, gerbang evolusi Ironhide Boar).
+- **Tarikan review (i)**: PauseMenu layak + slider Musik/SFX terpisah + fullscreen.
+**405 test lulus**, export `export/Aetherion.exe` **89.5 MB** boot bersih,
+PLAN_LEDGER kedua bagian ter-update.
+
+## ⏸️ STATUS: MENUNGGU PLAYTEST v0.4.1 OWNER
+Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
+di tengah tanpa menghentikan fase. Berikutnya sesuai plan: v0.4.2 "Gear & Economy Depth"
+(Transenden sebagai MOMEN per Decision Log #25, Enchant+Enchanter, Coating, Rune,
+quality roll + maker's mark).
 
 ### Konten BEKU tersisa — setelah playtest lolos
 - **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).
