@@ -9,6 +9,26 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
 5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
 
+## 2026-07-12 — ADDENDUM SKILL TREE TERIKAT LOKASI (Decision Log #30–32) — SELESAI
+
+Sistem BARU dari addendum owner (dicatat di ledger sebelum kerja): `skill_trees.json`
+(28 pohon) + `SkillTreeSystem` — pohon hanya bisa DIBUKA di `unlock_location`-nya;
+upgrade node bebas di mana pun setelah dimiliki (perjalanan untuk membuka, bukan
+bolak-balik). **Penjaga Pohon** terpasang di 5 lokasi hidup (Greenvale alun-alun,
+Pos Pendaki Frostpeak, altar istana Candyveil, altar Reruntuhan Gurun, penjaga menara
+Storm Island) + Homestead; pohon luar-lokasi tampil sebagai **RUMOR berarah** ("Kekuatan
+air sejati hanya diajarkan di kedalaman lautan..."); wilayah belum dibangun =
+`content_locked` (aktif otomatis saat wilayah dibuka; termasuk **Wildhearth** kota
+beastfolk baru — konten beku, #31). Pohon **CELESTIAL** (Sun/Moon/Star) hanya TERLIHAT
+di Menara Astrologer dan butuh clear Hidden Scenario (Lunar Warren / Star Whale) —
+sinkron desain elemen Tier 4. Bonus pohon nyata (ATK/DEF/MATK/ASPD/gather/EXP/tame)
+masuk recalculate_stats & TamingSystem. Tab "Pohon" untuk upgrade di mana pun.
+Penegasan #32: XP Tamer kini diberikan pada AKSI taming — sukses (8) maupun percobaan
+(3), main Tamer otomatis +50%. Pemetaan resmi penuh: PLAN_LEDGER Bagian 1 §7.
+421 test lulus (+16: rumor di lokasi salah, 6 lokasi hidup terbuka, upgrade tanpa
+lokasi, bonus nyata, terkunci-konten, Celestial tampil-terkunci→terbuka pasca skenario,
+XP percobaan taming).
+
 ## 2026-07-12 — FASE v0.4.1 "COMBAT DEPTH" — SELESAI (disetujui review owner+designer)
 
 Review plan DISETUJUI dengan 3 penyesuaian (Decision Log #22–25) — dicatat SEBELUM

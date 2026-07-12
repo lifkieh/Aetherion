@@ -113,6 +113,28 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 
 ---
 
+### 7. Skill Tree terikat lokasi (Decision Log #30) — pemetaan resmi
+
+| Lokasi | Status lokasi | Pohon |
+|---|---|---|
+| Greenvale (Penjaga Pohon pemula) | **Hidup** | Semua pohon common (Dasar Bertarung, Pertahanan), Senjata Tier Dasar, pohon kehidupan dasar (Menebang, Menambang, Bertani, Memancing, Meramu, Memasak, Menjinakkan Dasar) |
+| Pos Pendaki Frostpeak | **Hidup** | Es Tingkat Tinggi |
+| Storm Island (menara Zephyr) | **Hidup** | Petir Tingkat Tinggi |
+| Desert of Ruins (reruntuhan) | **Hidup** | Tanah & Logam Kuno |
+| Candyveil (istana Sugar Queen) | **Hidup** | Patiseri Agung (Memasak lanjut) |
+| Homestead | **Hidup** | Bertani/Beternak Menengah |
+| Menara Astrologer | **Hidup (tampil-terkunci)** | CELESTIAL Sun/Moon/Star — hanya terlihat di sini; buka butuh clear Hidden Scenario (Sun/Moon ← Lunar Warren, Star ← Star Whale) |
+| Celestia Kingdom | Terkunci-konten | Senjata Grandmaster (tukar buku advanced class), Cahaya Tingkat Tinggi |
+| Emberfall Volcano | Terkunci-konten | Api Tingkat Tinggi + Menempa Lanjut (kuil tempa) |
+| Ocean Kingdom | Terkunci-konten | Air Tingkat Tinggi |
+| Ancient Jungle | Terkunci-konten | Kayu & Racun Purba |
+| Skyveil | Terkunci-konten | Angin & Langit |
+| Abyss Realm | Terkunci-konten | Gelap & Hampa |
+| **Wildhearth (kota beastfolk — KONTEN BEKU, #31)** | Terkunci-konten | Pohon BEAST & TRANSFORMATION (menjinakkan lanjut, kebuasan, jalur transformasi/fusion-monster) + Beternak Lanjut |
+
+Aturan: buka HANYA di lokasi (rumor berarah di Penjaga Pohon); upgrade node di mana pun
+setelah dimiliki; `content_locked` dilepas otomatis saat wilayahnya dibangun.
+
 ## BAGIAN 2 — DECISION LOG (riwayat keputusan; retroaktif dari DEVLOG/STATUS)
 
 | # | Tanggal | Sistem | Keputusan awal (sumber) | Diubah menjadi | Alasan | Oleh |

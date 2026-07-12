@@ -168,6 +168,7 @@ func _add_ui() -> void:
 	spire.dungeon_label = "Zephyr Spire ▲ [E]"
 	spire.setup("dungeon")
 	spire.global_position = Vector2(MAP_W * TILE * 0.5 + 120, MAP_H * TILE - 140)
+	_keeper(Vector2(MAP_W * TILE * 0.5 - 100, MAP_H * TILE - 140), "storm_island")   # penjaga menara (#30)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -201,3 +202,7 @@ func _spawn_one() -> void:
 
 func on_monster_died(_m) -> void:
 	_monster_count = max(0, _monster_count - 1)
+
+func _keeper(pos: Vector2, loc: String) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos

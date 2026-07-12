@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	_test_skill_trees()
 	_test_daily_events()
 	_test_monster_depth()
 	_test_combo()
@@ -687,6 +688,47 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_skill_trees() -> void:
+	print("[Skill Tree terikat lokasi — Decision Log #30]")
+	PlayerData.new_game()
+	PlayerData.gold = 5000
+	check("pohon dimuat (28)", Db.skill_trees.size() >= 26, str(Db.skill_trees.size()))
+	# lokasi salah = DITOLAK dengan pesan RUMOR
+	var wrong := SkillTreeSystem.can_unlock("ice_high", "greenvale")
+	check("beli di lokasi salah DITOLAK", not wrong.ok)
+	check("pesan penolakan berisi RUMOR berarah", wrong.reason.begins_with("🗺 RUMOR:") and "beku" in wrong.reason, wrong.reason)
+	# pohon lokal terbuka di 5 lokasi hidup
+	for pair in [["arms_common", "greenvale"], ["ice_high", "frostpeak_village"],
+			["lightning_high", "storm_island"], ["earth_metal_high", "desert_ruins"],
+			["cooking_advanced", "candyveil_palace"], ["farming_mid", "homestead"]]:
+		var res := SkillTreeSystem.unlock(pair[0], pair[1])
+		check("pohon %s terbuka di %s" % [pair[0], pair[1]], res.ok, str(res.reason))
+	# upgrade BOLEH di mana pun setelah dimiliki
+	var up := SkillTreeSystem.upgrade("ice_high")
+	check("upgrade node bisa di mana pun (tanpa lokasi)", up.ok and SkillTreeSystem.level("ice_high") == 2)
+	# bonus benar-benar dihitung: atk naik setelah arms_common
+	var atk_before: int = PlayerData.atk
+	PlayerData.skill_trees.erase("arms_common")
+	PlayerData.recalculate_stats()
+	check("bonus pohon nyata (ATK turun saat pohon dilepas)", PlayerData.atk < atk_before, "%d vs %d" % [PlayerData.atk, atk_before])
+	# terkunci-konten: wilayah belum dibangun
+	var locked := SkillTreeSystem.can_unlock("fire_high", "emberfall")
+	check("pohon wilayah belum dibangun = terkunci-konten", not locked.ok and locked.reason.begins_with("🔒"))
+	# Celestial: tampil di astrologer_tower tapi TERKUNCI tanpa buku skenario
+	var cel := SkillTreeSystem.at_location("astrologer_tower")
+	check("3 pohon Celestial tampil di Menara Astrologer", cel.size() == 3)
+	var cchk := SkillTreeSystem.can_unlock("celestial_moon", "astrologer_tower")
+	check("Celestial terkunci tanpa buku Skenario Tersembunyi", not cchk.ok and "Skenario" in cchk.reason)
+	PlayerData.scenario_flags["moon_rabbit_warren"] = "cleared"
+	check("Celestial TERBUKA setelah skenario clear", SkillTreeSystem.can_unlock("celestial_moon", "astrologer_tower").ok)
+	# Penjinak: XP juga saat PERCOBAAN taming (Decision Log #32)
+	PlayerData.new_game()
+	ProfessionSystem.set_main("tamer")
+	var xp0: int = PlayerData.prof_xp.get("tamer", 0)
+	EventBus.tame_attempted.emit("fluffbit", false, 0.4)   # percobaan GAGAL tetap dapat XP
+	check("percobaan taming (gagal) tetap memberi XP Tamer", PlayerData.prof_xp.get("tamer", 0) > xp0)
+	PlayerData.new_game()
 
 func _test_daily_events() -> void:
 	print("[Event harian & Blood Moon — v0.4.1]")

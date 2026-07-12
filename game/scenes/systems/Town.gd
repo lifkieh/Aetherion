@@ -238,11 +238,13 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 		["guide", Vector2(-40, 96)],          # Pemandu by the plaza/well
 		["mirror", Vector2(198, -56)],        # Cermin Jiwa (re-customize) by the inn
 		["trainer", Vector2(-232, 96)],       # Guru Skill near the forge/plaza
+		["tree_keeper", Vector2(96, 96)],     # Penjaga Pohon (skill tree lokal, #30)
 	]
 	for n in npcs:
 		var node := preload("res://scenes/world/Interactable.tscn").instantiate()
 		host.add_child(node)
 		node.setup(n[0])
+		node.keeper_location = "greenvale"
 		node.global_position = center + n[1]
 
 # --- strolling villagers ----------------------------------------------------

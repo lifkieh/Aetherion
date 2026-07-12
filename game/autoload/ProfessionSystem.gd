@@ -21,7 +21,9 @@ func _ready() -> void:
 	EventBus.crop_harvested.connect(func(_i, _c, _q): award("herbalist", 5))
 	EventBus.item_crafted.connect(_on_craft)
 	EventBus.fish_caught.connect(func(_f): award("fisherman", 6))
-	EventBus.tame_attempted.connect(func(_s, ok, _c): if ok: award("tamer", 8))
+	# Decision Log #32: aksi taming itu sendiri memberi XP — sukses MAUPUN percobaan
+	# (main Tamer otomatis +50% via award()).
+	EventBus.tame_attempted.connect(func(_s, ok, _c): award("tamer", 8 if ok else 3))
 
 # --- roles ------------------------------------------------------------------
 

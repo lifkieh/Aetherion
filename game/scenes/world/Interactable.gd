@@ -5,6 +5,7 @@ var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon
 var dungeon_scene := "res://scenes/world/GreenvaleDepths.tscn"
 var dungeon_label := "Gua Greenvale ▼ [E]"
 var custom_label := ""              # override the door/sign label (R2 town buildings)
+var keeper_location := "greenvale"  # lokasi Penjaga Pohon (skill tree, Decision Log #30)
 var interior_variant := "house"     # which interior HouseInterior builds on entry
 var solid_landmark := false         # true = building can't be entered (just flavour)
 
@@ -80,6 +81,10 @@ func _build() -> void:
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "long", "hair_color": "#b0b0c0", "shirt": "#334a6b", "pants": "#2b2b3a"})
 		label.text = "Guru Skill [E]"
+	elif kind == "tree_keeper":
+		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
+			"hair": "bun", "hair_color": "#e8e2f4", "shirt": "#2e6b3f", "pants": "#6b4226"})
+		label.text = "Penjaga Pohon [E]"
 	elif kind == "shop":
 		_char_sprite({"head_race": "human2", "torso_race": "human2", "legs_race": "human2",
 			"hair": "short", "hair_color": "#241f36", "shirt": "#c9a227", "pants": "#453d5c"})
@@ -159,6 +164,10 @@ func interact() -> void:
 			"Kuajarkan jurus-jurus lanjutan — bila level & emasmu cukup.",
 			"Lihat daftar 'Belum dikuasai' di Skill Book."], "Guru Skill", sprite.texture)
 		menu.open("skill", self)
+	elif kind == "tree_keeper":
+		await Stage.say(["Setiap tanah menumbuhkan ilmunya sendiri, petualang.",
+			"Pohon di sini bisa kubukakan untukmu. Yang lain? Hanya rumor yang bisa kubisikkan."], "Penjaga Pohon", sprite.texture)
+		menu.open("trees", {"location": keeper_location})
 	else:
 		await Stage.say("Perlu meramu sesuatu? Bengkel ini siap membantu.", "Pandai Besi")
 		menu.open("crafting", self)

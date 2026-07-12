@@ -207,6 +207,7 @@ func _build_village() -> void:
 		add_child(door); door.global_position = VC + b[3] + Vector2(0, b[2] * 0.5 - 4)
 	# service NPC (human trader) + deco
 	_vnpc("shop", VC + Vector2(150, -10))
+	_keeper(VC + Vector2(-90, 40), "frostpeak_village")   # Penjaga Pohon Es (#30)
 	for d in [["crate", Vector2(-150, -20)], ["barrel", Vector2(-138, -12)], ["hay", Vector2(150, 60)], ["barrel", Vector2(90, -10)]]:
 		var s := Sprite2D.new(); s.texture = load("res://assets/game/sprites/props/%s.png" % d[0])
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST; s.global_position = VC + d[1]
@@ -238,3 +239,7 @@ func _build_village() -> void:
 func _vnpc(kind: String, pos: Vector2) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(n); n.setup(kind); n.global_position = pos
+
+func _keeper(pos: Vector2, loc: String) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos

@@ -148,6 +148,7 @@ func _add_ui() -> void:
 	barrow.dungeon_label = "Desert Barrow ▼ [E]"
 	barrow.setup("dungeon")
 	barrow.global_position = Vector2(MAP_W * TILE * 0.5 + 90, MAP_H * TILE - 90)
+	_keeper(Vector2(MAP_W * TILE * 0.5 - 90, MAP_H * TILE - 90), "desert_ruins")   # altar reruntuhan (#30)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -181,3 +182,7 @@ func _spawn_one() -> void:
 
 func on_monster_died(_m) -> void:
 	_monster_count = max(0, _monster_count - 1)
+
+func _keeper(pos: Vector2, loc: String) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos

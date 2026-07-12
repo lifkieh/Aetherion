@@ -23,6 +23,7 @@ var professions: Dictionary = {}   # id -> def
 var towns: Dictionary = {}         # town_id -> {center, safe_zone, gates} (UI/UX §4)
 var classes: Dictionary = {}       # class_id -> def (6 combat classes, FF-2a)
 var class_order: Array = []        # display order
+var skill_trees: Dictionary = {}   # tree_id -> def (pohon terikat lokasi, Decision Log #30)
 
 var _errors: Array[String] = []
 
@@ -50,6 +51,7 @@ func load_all() -> void:
 	towns = _load_object("towns.json")
 	classes = _load_indexed("classes.json", "id")
 	class_order = _load_array("classes.json").map(func(c): return c.get("id", ""))
+	skill_trees = _load_indexed("skill_trees.json", "id")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])

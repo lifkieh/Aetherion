@@ -75,11 +75,16 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
+	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["trees", "Pohon"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
-		b.pressed.connect(func(): Audio.play_sfx("menu"); mode = m[0]; _rebuild())
+		b.pressed.connect(func():
+			Audio.play_sfx("menu")
+			mode = m[0]
+			if m[0] == "trees":
+				_ctx = null   # tab = tampilan upgrade-di-mana-pun (tanpa lokasi keeper)
+			_rebuild())
 		tabs.add_child(b)
 	var close := Button.new()
 	close.text = "Tutup (Esc)"
@@ -160,6 +165,7 @@ func _rebuild() -> void:
 		"status": _build_status()
 		"grimoire": _build_grimoire()
 		"pet": _build_pet()
+		"trees": _build_trees()
 
 func _build_skill() -> void:
 	title.text = "Skill Book"
@@ -271,6 +277,9 @@ func _build_echo() -> void:
 
 func _build_sky() -> void:
 	title.text = "Menara Astrologer"
+	# pohon CELESTIAL hanya TERLIHAT di menara ini (Decision Log #30)
+	content.add_child(_btn("🌳 Pohon Celestial (Sun/Moon/Star) — lihat", func():
+		mode = "trees"; _ctx = {"location": "astrologer_tower"}; _rebuild()))
 	content.add_child(_mk_label("☾ Fase: %s   ·   %s %s WIB" % [GameClock.moon_name(), GameClock.date_string(), GameClock.time_string()], 16))
 	var tide := GameClock.tide_level()
 	var tide_txt := "Pasang tinggi" if tide > 0.3 else ("Surut ekstrem" if tide < -0.3 else "Normal")
@@ -641,6 +650,85 @@ func _combo_elems(c: Dictionary) -> Array:
 	if elems.is_empty():
 		elems = [c.get("a", ""), c.get("b", "")]
 	return elems
+
+## Skill Tree TERIKAT LOKASI (Decision Log #30). Dari Penjaga Pohon (_ctx.location):
+## pohon lokal bisa DIBUKA; pohon luar-lokasi tampil sebagai RUMOR berarah; Celestial
+## tampil-terkunci butuh buku skenario. Dari tab Pohon (tanpa lokasi): hanya upgrade
+## pohon yang sudah dimiliki — di mana pun, tanpa bolak-balik.
+const LOC_LABEL := {
+	"greenvale": "Greenvale", "frostpeak_village": "Pos Pendaki Frostpeak",
+	"candyveil_palace": "Istana Sugar Queen", "desert_ruins": "Reruntuhan Gurun",
+	"storm_island": "Menara Zephyr", "homestead": "Homestead",
+	"astrologer_tower": "Menara Astrologer", "celestia": "Celestia Kingdom",
+	"emberfall": "Emberfall", "ocean_kingdom": "Ocean Kingdom",
+	"ancient_jungle": "Ancient Jungle", "skyveil": "Skyveil", "abyss": "Abyss",
+	"wildhearth": "Wildhearth (kota beast)",
+}
+
+func _build_trees() -> void:
+	var loc := ""
+	if _ctx is Dictionary:
+		loc = _ctx.get("location", "")
+	if loc != "":
+		title.text = "Penjaga Pohon — %s" % LOC_LABEL.get(loc, loc)
+		content.add_child(_mk_label("Pohon hanya bisa DIBUKA di tanah asalnya. Setelah dimiliki, upgrade bisa di mana pun (tab Pohon).", 11, Color(0.75, 0.8, 0.95)))
+		content.add_child(_mk_label("— Pohon di sini —", 15, Color(0.6, 0.9, 0.6)))
+		var locals := SkillTreeSystem.at_location(loc)
+		if locals.is_empty():
+			content.add_child(_mk_label("(tidak ada pohon di lokasi ini)", 12, Color(0.7, 0.7, 0.72)))
+		for t in locals:
+			_tree_row(t, loc)
+		content.add_child(_mk_label("— Rumor dari penjuru dunia —", 15, Color(0.8, 0.7, 0.5)))
+		for t in SkillTreeSystem.all():
+			var tid: String = t.get("id", "")
+			if t.get("unlock_location", "") == loc or SkillTreeSystem.owned(tid):
+				continue
+			var lock := "🔒 " if t.get("content_locked", false) else ""
+			var r := _mk_label("🗺 %s%s — \"%s\"" % [lock, t.get("name", tid), t.get("rumor", "")], 11, Color(0.72, 0.72, 0.78))
+			r.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			r.custom_minimum_size = Vector2(500, 0)
+			content.add_child(r)
+	else:
+		title.text = "Pohon Skill"
+		content.add_child(_mk_label("Upgrade pohon yang KAU MILIKI — di mana pun. Membuka pohon baru: kunjungi Penjaga Pohon di lokasinya.", 11, Color(0.75, 0.8, 0.95)))
+		var any := false
+		for tid in PlayerData.skill_trees:
+			any = true
+			_tree_row(SkillTreeSystem.tree(tid), "")
+		if not any:
+			content.add_child(_mk_label("(belum ada pohon — temui Penjaga Pohon di alun-alun Greenvale)", 12, Color(0.7, 0.7, 0.72)))
+
+func _tree_row(t: Dictionary, loc: String) -> void:
+	var tid: String = t.get("id", "")
+	var lv := SkillTreeSystem.level(tid)
+	var h := _row()
+	var head := "%s  [%d/%d]" % [t.get("name", tid), lv, int(t.get("max_level", 3))]
+	var l := _mk_label(head, 14, Color(0.6, 0.9, 0.6) if lv > 0 else Color.WHITE)
+	l.custom_minimum_size = Vector2(230, 0)
+	h.add_child(l)
+	if lv == 0 and loc != "":
+		var chk := SkillTreeSystem.can_unlock(tid, loc)
+		var b := _btn("Buka %d G" % int(t.get("cost", 0)), func():
+			var res := SkillTreeSystem.unlock(tid, loc)
+			if not res.ok: EventBus.toast.emit(res.reason)
+			_rebuild())
+		if t.get("requires_scenario", "") != "" and not chk.ok:
+			b.disabled = true
+			h.add_child(b)
+			h.add_child(_mk_label("📖 terkunci — butuh buku Skenario Tersembunyi", 11, Color(0.85, 0.7, 0.5)))
+		else:
+			h.add_child(b)
+	elif lv > 0 and lv < int(t.get("max_level", 3)):
+		h.add_child(_btn("Upgrade %d G" % SkillTreeSystem.upgrade_cost(tid), func():
+			var res := SkillTreeSystem.upgrade(tid)
+			if not res.ok: EventBus.toast.emit(res.reason)
+			_rebuild()))
+	elif lv >= int(t.get("max_level", 3)):
+		h.add_child(_mk_label("MAX", 12, Color(1.0, 0.86, 0.42)))
+	var d := _mk_label("   " + t.get("desc", ""), 11, Color(0.72, 0.76, 0.9))
+	d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	d.custom_minimum_size = Vector2(500, 0)
+	content.add_child(d)
 
 ## Ranch/Pet UI (v0.4.1): roster pet dengan bintang, trait, MUTASI, AFFINITY hidup
 ## (naik saat ikut bertempur / diberi makan) + aktifkan + beri makan.

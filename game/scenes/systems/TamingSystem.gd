@@ -26,8 +26,8 @@ static func weather_mod() -> float:
 	return 1.0
 
 static func tamer_skill_mod() -> float:
-	# Placeholder for Tamer profession level (Fase 0: flat small bonus by player level).
-	return 1.0 + minf(0.25, PlayerData.level * 0.01)
+	# Tamer bonus + pohon skill Menjinakkan (tame_add, Decision Log #30).
+	return 1.0 + minf(0.25, PlayerData.level * 0.01) + SkillTreeSystem.bonus_total("tame_add")
 
 static func compute_chance(monster, orb: Dictionary) -> float:
 	var base: float = monster.inst.get("tame_base", 0.4)

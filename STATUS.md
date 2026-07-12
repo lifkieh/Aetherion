@@ -279,6 +279,12 @@ Review owner+designer atas MASTER_IMPROVEMENT_PLAN: DISETUJUI + 3 penyesuaian
 **405 test lulus**, export `export/Aetherion.exe` **89.5 MB** boot bersih,
 PLAN_LEDGER kedua bagian ter-update.
 
+### ➕ Addendum Skill Tree Terikat Lokasi (Decision Log #30–32) — SELESAI
+28 pohon di `skill_trees.json`; buka HANYA di lokasinya (rumor berarah di Penjaga Pohon),
+upgrade di mana pun; Penjaga terpasang di 5 lokasi hidup + Homestead; Celestial tampil-terkunci
+di Menara Astrologer (butuh buku Hidden Scenario); Wildhearth (kota beast) terdaftar konten beku;
+XP Tamer pada aksi taming (sukses+percobaan). Pemetaan penuh: PLAN_LEDGER §7. 421 test, exe 89.5 MB.
+
 ## ⏸️ STATUS: MENUNGGU PLAYTEST v0.4.1 OWNER
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
 di tengah tanpa menghentikan fase. Berikutnya sesuai plan: v0.4.2 "Gear & Economy Depth"

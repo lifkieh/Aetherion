@@ -57,6 +57,7 @@ var mastered_elements: Array = ["fire", "lightning"]
 var infusion: Dictionary = {}          # {element, source, expires_unix} or empty
 var buffs: Dictionary = {}             # key -> {mult/add, until_msec} (war_cry, smoke_bomb)
 var statuses: Dictionary = {}          # status effects pada PEMAIN (burn/poison/blind, v0.4.1)
+var skill_trees: Dictionary = {}       # tree_id -> level (pohon terikat lokasi, Decision Log #30)
 
 # --- Taming / pets ---
 var monsters: Array = []               # tamed monster instances (dicts)
@@ -139,6 +140,7 @@ func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
 	infusion = {}
 	buffs = {}
 	statuses = {}
+	skill_trees = {}
 	monsters = []
 	active_pet_index = -1
 	mounted = false
@@ -180,6 +182,9 @@ func gain_exp(amount: int) -> void:
 	# GOLDEN HOUR 17.00–18.30 WIB: EXP +10% NYATA (v0.2 §6.2, akhirnya berisi — v0.4.1)
 	if GameClock.is_golden_hour():
 		amount = int(ceil(amount * 1.1))
+	var tree_exp: float = SkillTreeSystem.bonus_total("exp_pct")   # pohon skill (#30)
+	if tree_exp > 0.0:
+		amount = int(ceil(amount * (1.0 + tree_exp)))
 	exp += amount
 	var leveled := false
 	while exp >= exp_to_next():
@@ -312,6 +317,13 @@ func recalculate_stats() -> void:
 		atk = int(atk * 1.08)
 		matk = int(matk * 1.08)
 		attack_speed *= 1.05
+	# bonus pohon skill (Decision Log #30): pasif dari pohon yang dimiliki
+	if not skill_trees.is_empty():
+		atk = int(atk * (1.0 + SkillTreeSystem.bonus_total("atk_pct")))
+		def = int(def * (1.0 + SkillTreeSystem.bonus_total("def_pct")))
+		matk = int(matk * (1.0 + SkillTreeSystem.bonus_total("matk_pct")))
+		attack_speed *= 1.0 + SkillTreeSystem.bonus_total("aspd_pct")
+		gather_bonus += SkillTreeSystem.bonus_total("gather_add")
 	hp = min(hp, max_hp)
 	mp = min(mp, max_mp)
 	stats_recalculated.emit()
@@ -557,6 +569,7 @@ func to_save() -> Dictionary:
 		"craft_insight": craft_insight, "daily_quests": daily_quests, "prof_xp": prof_xp,
 		"hotbar": hotbar, "discovered_fusions": discovered_fusions,
 		"fusion_fizzled_elements": fusion_fizzled_elements,
+		"skill_trees": skill_trees,
 		"onboarding_seen": onboarding_seen, "guide_step": guide_step, "guide_progress": guide_progress,
 		"char_config": char_config,
 	}
@@ -592,6 +605,7 @@ func from_save(d: Dictionary) -> void:
 	hotbar = d.get("hotbar", ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"])
 	discovered_fusions = d.get("discovered_fusions", [])
 	fusion_fizzled_elements = d.get("fusion_fizzled_elements", [])
+	skill_trees = d.get("skill_trees", {})
 	char_config = d.get("char_config", CharGen.default_config())
 	onboarding_seen = d.get("onboarding_seen", [])
 	guide_step = int(d.get("guide_step", 0))
