@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** [AKAN DIISI SETELAH EXPORT] *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-13 05:28 WIB — berisi hingga: v0.4.2 Gear & Economy lengkap (piramida Transenden A→SSS + ritual MOMEN, quality/maker's mark, Enchanter + enchant +1..+10, coating, RUMAH LELANG + tawanan-dibebaskan). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
