@@ -1,0 +1,137 @@
+# GAP_AUDIT — Aetherion "Foundation First" (2026-07-12)
+
+Audit menyeluruh atas perintah owner setelah playtest "game terasa HAMPA". Sumber:
+seluruh `docs/` (GDD v0.1, v0.2, v0.3, Fase0_Desain_Teknis, Monster_Roster_Launch)
+dibaca ulang penuh, dicocokkan dengan kode aktual (bukan dengan STATUS.md).
+
+Status: **Ada** (sesuai desain) / **Sebagian** (ada tapi dangkal/tidak lengkap) /
+**Belum** (tidak ada) / **MENYIMPANG** (ada tapi melanggar desain).
+
+---
+
+## 1. KEPATUHAN DOKUMEN (per sistem GDD)
+
+### 1.1 Scope catatan: apa yang WAJAR belum ada
+GDD v0.3 §4 menetapkan **Fase 0 = single-player offline**: marketplace pemain, PvP,
+guild, racing, breeding, fusion player-monster, world boss multiplayer, monetisasi —
+semua **DITUNDA BY DESIGN**. Item-item itu dicatat "Belum (by design)" dan TIDAK
+dihitung sebagai gap. Audit fokus pada apa yang seharusnya SUDAH ada di Fase 0 + apa
+yang ada tapi menyimpang.
+
+### 1.2 Tabel kepatuhan
+
+| # | Sistem (sumber) | Status | Catatan |
+|---|---|---|---|
+| 1 | **6 Combat Class — Warrior/Mage/Archer/Assassin/Paladin/Necromancer (v0.1 §3.3)** | **MENYIMPANG — GAP TERBESAR** | Tidak pernah diimplementasikan sebagai pilihan pemain. ProfessionSystem hanya berisi profesi gathering/produksi; kolom "combat" ada di enum tapi TIDAK ada class combat yang bisa dipilih. Pemain mulai tanpa identitas — akar langsung rasa "hampa & tidak RPG". |
+| 2 | Struktur serangan (v0.1 §6.2): normal + 6 slot skill + **Ultimate** + **Combo Skill** window | Sebagian / MENYIMPANG | Hotbar hanya 5 slot; Ultimate baru "flag ultimate" 1 skill (meteor) tanpa slot/aturan sendiri; **Combo Skill (rantai 2-3 skill dalam 2 dtk) tidak ada sama sekali**. Catatan: revisi owner ronde 4 (no-cooldown) menimpa kolom cooldown v0.1 — itu SAH (keputusan lebih baru). |
+| 3 | Stat dasar 6 attr + 5 poin/level + respec (v0.1 §3.5) | **Ada** | Ronde 4 (PC1). Wiring lengkap, Status tab, respec berbayar. |
+| 4 | Formula combat + **Hit Chance clamp 75%+(ACC−EVA)** + **PEN** + **publikasi cap ke pemain** (v0.1 §6.3) | Sebagian | Formula fisik/magic ada (magic direvisi PC6, dicatat DEVLOG). Hit chance memakai rumus sendiri (clamp 0.2–1.0, bukan 60–100%); **Penetration tidak ada**; **cap TIDAK dipublikasikan di UI mana pun**. |
+| 5 | **Status Effect: Burn/Freeze/Paralyze/Poison/Blind/Curse (v0.1 §6.4)** | **Belum (kecuali Wet)** | Hanya status **Wet** yang benar-benar berfungsi. `apply_status: "poison"` ada di data skill/monster tapi TIDAK ada sistem status yang membaca & men-tick-nya. Freeze/Burn/Paralyze/Blind/Curse tidak ada. Combat kehilangan seluruh lapisan taktis ini. |
+| 6 | Elemen 17 + matrix + aturan sains (v0.2 §7) | **Ada** | Matrix + rules ctx data-driven, teruji. Salah satu sistem paling sehat. |
+| 7 | Fusion elemen + discovery + first-discovery announce (v0.1 §5.3) | Ada (di-upgrade ronde 4) | 2-elem holdable, 3–4 elem recast, fizzle, discovery. Gap kecil: **tidak ada Grimoire/jurnal resep** — pemain tidak punya peta discovery (→ Tahap 2d). Resep baru 15 dari target 35 launch (wajar Fase 0). |
+| 8 | Element Flow 4 jalur: Infusion / **Coating (Alchemist)** / **Enchant (Enchanter)** / Fusion (v0.3 §7) | Sebagian | Hanya Infusion yang ada (bagus, direvisi ronde 4). **Coating & Enchant tidak ada** — dua sink ekonomi + kedalaman build hilang. Aturan anti double-dip belum relevan karena cuma 1 jalur. |
+| 9 | Monster roster & BST arketipe (Roster §1) | Ada | 60 spesies, arketipe, bintang 1–5, evolusi bertahap. Kalibrasi v2 (ronde 4) menyimpang dari growth %-kecil Roster §1.1 — SAH, dicatat sebagai keputusan kalibrasi di DEVLOG/BALANCE_REPORT_v2. |
+| 10 | Atribut monster: **Affinity, Trait aktif, Mutation, Growth Type** (v0.1 §7.2) | Sebagian | Trait = string data tanpa efek gameplay untuk sebagian besar (Pack Hunter dll. tidak dihitung); Affinity ada di data tame tapi tidak pernah naik/dipakai; Mutation & Growth Type tidak ada. Monster terasa "statistik", bukan individu. |
+| 11 | Taming + pity + enrage (v0.1 §8.1, rate v0.2 §7.4) | **Ada** | Teruji. |
+| 12 | Pet-mount Size Class (v0.3 §6) | Ada | Rideable + saddle + mount. Pasif pet 50% saat mounted belum dicek — minor. |
+| 13 | Evolution bertingkat + syarat dunia (v0.1 §8.4) | Ada | EvolutionSystem + kondisi purnama dll. |
+| 14 | Breeding (v0.1 §8.5) | Belum (by design — S2) | Sesuai MVP cut. |
+| 15 | Fusion player×monster (v0.1 §8.3) | Belum (by design — S2) | Sesuai MVP cut. |
+| 16 | **Rune System (v0.1 §8.6)** | **Belum** | Tidak ada sama sekali. GDD memasukkannya di MVP; kedalaman gear hilang. Boleh jadi fase v0.4+. |
+| 17 | Gathering + profesi XP + perks (v0.1 §9.1, v0.2 §3) | Ada | Miner/Lumberjack/Fisherman/Herbalist + XP + perk + main/sub. |
+| 18 | Crafting: success, **Insight**, **quality roll (Normal/Fine/Masterwork)**, **maker's mark** (v0.1 §9.2, v0.2 §2) | Sebagian | Success+Insight ada. **Quality roll & maker's mark tidak ada** — loot craft selalu identik = hambar. Tier F–B ada; A+ (transenden 1%) belum diuji ujung-ke-ujung (belum ada resep A+ nyata di data selain item unik skenario). |
+| 19 | **Enchant +1..+10 (v0.1 §9.3)** | **Belum** | Tidak ada. Progression gear mati setelah craft — tidak ada alasan kembali ke blacksmith. |
+| 20 | Ekonomi NPC supply-demand (Fase0 §7) | Ada | Economy.gd + log transaksi. |
+| 21 | Homestead + tanaman real-time WIB (v0.2 §5) | Ada | 4 plot + offline growth. Beternak/apiari/kolam belum (wajar bertahap). |
+| 22 | Waktu WIB + bulan asli + sky_calendar + event window (v0.2 §6) | **Ada** | GameClock + purnama + pasang + golden hour. Sistem paling khas Aetherion, sehat. |
+| 23 | Hidden Scenario engine + no-fail (v0.2 §8.2) | Ada | 3 skenario (Lunar Warren, Tea Party, Star Whale). |
+| 24 | Ramalan Rasi: weekly prophecy, birth sign, trial rasi (v0.3 §3) | Sebagian | Birth sign + weekly prophecy teks ada di Astrologer/Sky. **Bonus tematik birth sign & "Trial of the [Rasi]" tidak ada** — birth sign murni kosmetik teks. |
+| 25 | Dungeon per lokasi + gimmick (v0.2 §8.1) | Sebagian | 5 dungeon side-view + bos 2 fase. Tapi gimmick khas per dungeon (puzzle cahaya Barrow, updraft Spire yang menghukum jatuh) baru sebagian; **tidak ada chest, ruang rahasia, trap** (lihat benchmark). |
+| 26 | NPC penting: Trainer/Master, **Overpowered NPC (Kael)** (v0.1 §11.1) | Sebagian | Guru Skill baru ada (ronde 4). Master quest per profesi & NPC lore Lv999 belum. |
+| 27 | Aetherpedia, Photo Mode, Title+micro-buff, Echo Vendor, Sky Report, music layering (v0.2 §10) | Ada | Semua ada versi fungsional. |
+| 28 | Save: 3 slot + backup + schema_version (Fase0 §8) | Sebagian | Slot+backup+schema ada. **Autosave tidak ada; tidak ada Continue; metadata slot minim** (→ Tahap 2e). |
+| 29 | Performa game ringan (Fase0 §9) | Ada | Diaudit per ronde (372 node, 60 fps dungeon penuh). |
+| 30 | **Advanced Class Quest lvl 60 (v0.2 §3)** | Belum | Bergantung #1 — tidak ada class sama sekali. |
+
+**Kesimpulan kepatuhan:** fondasi *sistemik* (waktu, elemen, data-driven, ekonomi,
+taming) kuat dan sesuai desain. Yang bolong justru lapisan **identitas & kedalaman
+RPG yang menghadap pemain**: class (#1), status effect (#5), combo (#2), enchant/
+coating/quality/rune (#8/18/19/16), dan trait monster yang hidup (#10). Persis pola
+"100% sistem dengan kedalaman 40%" yang dilarang GDD Bagian 18.
+
+---
+
+## 2. BENCHMARK GENRE (skor 0 = tidak ada, 1 = ada tapi dangkal, 2 = layak)
+
+### 2.1 OVERWORLD vs Suikoden / FF klasik / Stardew — **7/18**
+
+| Item | Skor | Kurang di bagian apa |
+|---|---|---|
+| Title screen layak | **1** | Ada menu + Sky Report, tapi tanpa logo/keyart, tanpa **Continue**, tanpa Settings di title, tidak ada animasi/latar hidup. Kesan pertama = program, bukan game. |
+| Intro/opening konteks & motivasi | **0** | New Game → langsung spawn di rumput. Tidak ada satu layar pun yang menjawab "aku siapa, di mana, mau apa". |
+| Pemilihan class & identitas awal | **0** | Character creator hanya rupa. Tidak ada pilihan gaya main. (GDD #1 di atas.) |
+| Quest journal + penunjuk arah | **1** | Panduan (guide_step) + daily quest ada, tapi tidak ada jurnal terpusat dengan tujuan aktif + penanda arah/ikon di dunia; pemain mengandalkan teks toast. |
+| World map / fast travel | **0** | Tidak ada peta dunia; minimap saja. Antar-region jalan kaki/dermaga tanpa peta konteks. |
+| Cutscene dasar (NPC bergerak + dialog terarah) | **1** | Stage.say ada (dialog + potret), tapi tidak ada aktor yang digerakkan skrip, tidak ada kamera pan — semua peristiwa "diberitakan", tidak "terjadi". |
+| Transisi musik & stinger event | **1** | Layer combat ada. Tidak ada stinger (level-up/quest/discovery), tidak ada crossfade antar scene, boss tanpa track khusus. |
+| Kepadatan interaksi NPC (jadwal/dialog kontekstual) | **1** | Villager berjalan rute + dialog statis. Tidak ada jadwal harian, dialog tidak berubah dengan waktu/cuaca/progress. |
+| Reward loop 5–10 menit pertama | **1** | Panduan memberi arah, tapi reward pertama kecil & tak seremonial; tidak ada "wow" dalam 10 menit. |
+
+### 2.2 COMBAT vs Terraria / Hades / Dead Cells — **6/16**
+
+| Item | Skor | Kurang di bagian apa |
+|---|---|---|
+| Animasi serangan TERLIHAT | **0** | Ini akar "hampa" #1: swing = `Line2D` 3 titik yang memudar 0.22s. Tidak ada arc slash tersprite, tidak ada anticipation/follow-through, tidak beda per senjata. Player punya anim "attack_" tapi 3-frame walk-cycle reuse. |
+| Impact layering (hitstop+partikel+SFX+damage pop) | **1** | Hitstop/knockback/flash/number ADA (ronde 4) tapi tipis: partikel impact nyaris tak terlihat (2×2 px), SFX satu lapis, damage number kecil tanpa pop-scale. Komponennya ada, *rasa*-nya belum dirakit. |
+| Reaksi musuh kena hit (flash, stagger, death anim + loot burst) | **1** | Flash & knockback ada. Death = fade alpha 0.35s — tanpa death anim/dissolve/ledakan; **loot langsung masuk tas tanpa visual** — membunuh rasa reward. |
+| Dodge terasa | **1** | Dodge + i-frames ada, tanpa VFX/afterimage/SFX khas — tidak "terasa". |
+| Variasi attack pattern musuh | **0** | **32 dari 60 monster = "melee" (jalan-nabrak)**, 15 ranged, 11 skittish, 2 flyer/shooter. Tidak ada telegraf, lompatan pola, atau skill musuh yang terlihat (howl/charge cuma modifier damage). |
+| Boss: telegraf, multi-pola, fase drastis, arena, perayaan kill | **1** | 2 fase + adds ada. Telegraf minim (tint), pola serangan 1–2, fase = angka bukan koreografi; tidak ada intro bar/nama, tidak ada perayaan kill (slow-mo/jingle/loot shower). |
+| — Class fantasy saat bertarung (tambahan konteks) | **1** | Semua orang main identik: klik kiri + skill sama. |
+| — Feedback miss/crit dibedakan | **1** | "meleset" & angka crit ada; crit tanpa SFX/zoom khas. |
+
+### 2.3 DUNGEON vs Terraria — **3/12**
+
+| Item | Skor | Kurang |
+|---|---|---|
+| Variasi blok & bioma dalam dungeon | **1** | 2–3 jenis blok per dungeon, satu palet per dungeon; tidak ada sub-bioma/lapisan kedalaman. |
+| Chest / ruang rahasia / trap | **0** | Tidak ada satu pun. Eksplorasi tidak pernah dibayar. |
+| Background parallax & lighting berlapis | **1** | CanvasModulate gelap + torch point light; tidak ada parallax bg, tidak ada lapisan kabut/depth. |
+| Ambience audio | **1** | Ambience global ada; dungeon tanpa suara khas (tetes air, gemuruh, angin). |
+| Alasan eksplorasi (loot unik per dungeon) | **1** | Material bos unik ada; selain jalur bos tidak ada alasan menyimpang. |
+| Platforming variety | **1** | One-way + ladder + double-jump wind; tanpa moving platform/updraft nyata/bahaya lingkungan. |
+
+### 2.4 MODERN META — **4/14**
+
+| Item | Skor | Kurang |
+|---|---|---|
+| Settings: volume per channel | **1** | Hanya music_volume + mute master. Tidak ada SFX/ambience slider terpisah. |
+| Keybind remap | **0** | Tidak ada. |
+| Fullscreen/vsync | **0** | Tidak ada opsi tampilan sama sekali. |
+| Pause menu layak | **1** | Esc = MenuUI (bagus) tapi campur aduk inventory vs sistem; tidak ada layar pause khusus (Resume/Settings/Save/Quit). |
+| Save slots + autosave | **1** | 3 slot manual; **tanpa autosave** = kematian bisa menghapus 30 menit progres. |
+| Gamepad support | **0** | Nol binding joypad. |
+| UI tween/animasi transisi | **1** | UI muncul-hilang instan; tanpa fade/slide; scene change tanpa transisi (kecuali Stage fade dasar?). |
+| Feedback audio setiap interaksi UI | **1** | Sebagian tombol ber-SFX (menu), banyak yang senyap; tanpa hover state konsisten. |
+
+### 2.5 Skor total benchmark: **20/60** — dan distribusinya menjelaskan keluhan owner:
+komponen *sistem* dapat nilai, komponen *presentasi & identitas* hampir semuanya 0–1.
+
+---
+
+## 3. DIAGNOSIS AKAR "HAMPA" (ranking dampak)
+
+1. **Tidak ada identitas pemain.** Tanpa class, semua playthrough dimulai identik dan
+   berkembang identik. RPG tanpa "aku memilih menjadi apa" = hampa secara definisi.
+2. **Combat tidak punya bahasa visual.** Damage terjadi di angka, bukan di layar:
+   swing garis, death fade, loot teleport, dodge sunyi. Sistem ronde 4 (hold/channel/
+   fusion) sudah dalam — tapi *tak terlihat*.
+3. **Tidak ada dramaturgi.** Nol intro, nol cutscene, nol stinger, bos tanpa panggung,
+   discovery tanpa perayaan yang layak. Peristiwa besar dan kecil terasa sama.
+4. **Kedalaman RPG yang dijanjikan GDD dipangkas diam-diam.** Status effect, combo,
+   enchant, coating, quality roll, trait monster hidup — semua lapisan yang membuat
+   loot & build "berbicara" belum ada.
+5. **Meta modern minim.** Tanpa autosave/Continue/settings layak/gamepad, game terasa
+   prototipe walau kontennya banyak.
+
+Rencana perbaikan bertahap: lihat `MASTER_IMPROVEMENT_PLAN.md`.

@@ -1,0 +1,94 @@
+# MASTER_IMPROVEMENT_PLAN — Aetherion (2026-07-12)
+
+Semua gap dari `GAP_AUDIT.md`, diprioritaskan **dampak-ke-rasa ÷ biaya**, dikelompokkan
+jadi fase v0.4.x. Estimasi dalam "sesi kerja" (1 sesi ≈ satu ronde kerja agen penuh).
+Konten dunia baru tetap BEKU sampai owner membuka.
+
+**Legenda dampak:** 🔥 = membunuh rasa hampa secara langsung; ⚙ = kedalaman sistem;
+✨ = polish/meta.
+
+---
+
+## FASE v0.4.0 — "IDENTITY & JUICE" (= Tahap 2 direktif owner, DIKERJAKAN SEKARANG)
+
+| # | Item | Dampak | Biaya |
+|---|---|---|---|
+| 2a | Class selection 6 class (senjata khas ×2 varian, 3 skill awal beda, bonus stat, teaser advanced) | 🔥🔥🔥 | Besar |
+| 2b | Weapon moveset + arc slash VFX per tipe (8 tipe: sword/spear/bow/wand/dagger/hammer/staff/scythe) + afinitas class | 🔥🔥🔥 | Besar |
+| 2c | Prime toggle & cancel (angka sama = batal; klik kanan/ESC = batal semua) | 🔥 | Kecil |
+| 2d | Grimoire fusion (resep ditemukan + slot misteri + tutorial + perayaan discovery) | 🔥⚙ | Sedang |
+| 2e | Save modern: autosave berkala + transisi + Continue + metadata slot | ✨✨ | Sedang |
+| 2f | Juice pass combat: impact layering penuh, death dissolve + **loot burst fisik**, dodge VFX, damage pop | 🔥🔥🔥 | Sedang |
+| 2g | 30 menit pertama: intro 3–5 layar, quest pembuka per-sistem ber-reward, class terasa menit 1 | 🔥🔥 | Sedang |
+
+**Estimasi total: 1 sesi penuh (sesi ini).** Kriteria selesai: new game → pilih class
+→ intro → 10 menit pertama terasa beda per class, setiap pukulan terlihat & terdengar.
+
+---
+
+## FASE v0.4.1 — "COMBAT DEPTH" (kedalaman yang dijanjikan GDD §6)
+
+| # | Item | Sumber gap | Dampak | Biaya |
+|---|---|---|---|---|
+| 1 | **Status effect system**: Burn/Freeze/Poison/Paralyze/Blind + ikon di atas musuh + interaksi sains (Freeze+Fire=Thermal Shock benar-benar dari status) | Audit §1 #5 | 🔥⚙⚙ | Sedang |
+| 2 | **Variasi attack pattern musuh**: minimal 4 pola baru data-driven (lunge telegraf, proyektil arc, spin AoE, summon kecil); target: <40% musuh "jalan-nabrak"; telegraf visual universal (flash + wind-up) | Benchmark 2.2 | 🔥🔥 | Besar |
+| 3 | **Boss upgrade**: intro bar+nama+stinger, 3 pola per fase terkoreografi, arena mechanic per bos, perayaan kill (slow-mo + jingle + loot shower) | Benchmark 2.2 | 🔥🔥 | Besar |
+| 4 | **Combo Skill window** (2 skill berurutan <2 dtk = bonus efek, data-driven) | Audit §1 #2 | ⚙ | Sedang |
+| 5 | Publikasi cap & formula di UI (tab Status: "Crit 60% cap" dll.) | Audit §1 #4 | ⚙ | Kecil |
+
+**Estimasi: 1–1.5 sesi.**
+
+## FASE v0.4.2 — "GEAR & ECONOMY DEPTH" (alasan kembali ke kota)
+
+| # | Item | Sumber gap | Dampak | Biaya |
+|---|---|---|---|---|
+| 1 | **Enchant +1..+10** (Enchanter NPC; gagal turun 1 level mulai +7; Protection Scroll craft) | Audit §1 #19 | ⚙⚙ | Sedang |
+| 2 | **Coating consumable** (Venom Oil, Frost Coat — jalur Alchemist; aturan dominan+25% sekunder) | Audit §1 #8 | ⚙ | Kecil |
+| 3 | **Quality roll craft** (Normal/Fine/Masterwork ±10%) + **maker's mark** di tooltip | Audit §1 #18 | ⚙✨ | Kecil |
+| 4 | **Trait monster hidup**: Pack Hunter/Charge/Sting dll. benar-benar dihitung (data → efek) + tampil di Pedia/pet | Audit §1 #10 | ⚙⚙ | Sedang |
+| 5 | Rantai resep A pertama ujung-ke-ujung (material kunci bos → craft A 1% + Insight + pengumuman) | Audit §1 #18 | ⚙ | Kecil |
+| 6 | Affinity pet naik lewat interaksi + 1 skill loyalitas | Audit §1 #10 | ⚙ | Sedang |
+
+**Estimasi: 1 sesi.**
+
+## FASE v0.4.3 — "WORLD PRESENTATION" (dunia yang bercerita)
+
+| # | Item | Sumber gap | Dampak | Biaya |
+|---|---|---|---|---|
+| 1 | **Quest journal terpusat** + tujuan aktif + penanda arah di dunia/minimap | Benchmark 2.1 | 🔥✨ | Sedang |
+| 2 | **World map** (per region + antar region) + fast travel gerbang/dermaga yang sudah dikunjungi | Benchmark 2.1 | ✨✨ | Sedang |
+| 3 | **Cutscene mini engine**: Stage diperluas — gerakkan aktor, kamera pan, urutan skrip data-driven; dipakai untuk intro & event kunci | Benchmark 2.1 | 🔥 | Sedang |
+| 4 | NPC hidup: jadwal pagi/sore/malam sederhana + dialog kontekstual (cuaca/waktu/progress) | Benchmark 2.1 | ✨ | Besar |
+| 5 | Musik: stinger (level-up/quest/discovery/boss-kill), crossfade antar scene, track bos | Benchmark 2.1 | 🔥✨ | Kecil |
+| 6 | Dungeon layak Terraria: **chest + ruang rahasia + trap** per dungeon, parallax bg, ambience khas, loot unik non-bos | Benchmark 2.3 | 🔥⚙ | Besar |
+
+**Estimasi: 1.5–2 sesi.**
+
+## FASE v0.4.4 — "MODERN META"
+
+| # | Item | Dampak | Biaya |
+|---|---|---|---|
+| 1 | Settings lengkap: volume Music/SFX/Ambience terpisah, fullscreen/vsync, keybind remap | ✨✨ | Sedang |
+| 2 | Gamepad support penuh (binding + navigasi UI + glyph) | ✨✨ | Sedang |
+| 3 | Pause menu khusus (Resume/Settings/Save/Menu Utama) terpisah dari tas | ✨ | Kecil |
+| 4 | UI transition pass: fade/slide panel, scene transition, hover state + SFX konsisten | ✨ | Sedang |
+| 5 | Advanced Class Quest lvl 60 (janji teaser 2a dibayar) + Trial of the [Rasi] birth sign | ⚙✨ | Besar |
+| 6 | Rune System (4 slot pemain, grade I–V) — kandidat digabung ke fase konten berikutnya | ⚙ | Besar |
+
+**Estimasi: 1–1.5 sesi.**
+
+---
+
+## Urutan yang disarankan & alasan
+
+`v0.4.0 (sekarang) → v0.4.1 → v0.4.2 → v0.4.3 → v0.4.4`
+
+- v0.4.0+v0.4.1 menyerang langsung 3 akar hampa teratas (identitas, bahasa visual
+  combat, musuh membosankan). Sesudah dua fase ini game seharusnya *terasa* seperti
+  action RPG.
+- v0.4.2 memberi alasan ekonomi & loot untuk terus bermain (kedalaman janji GDD).
+- v0.4.3 membuat dunia bercerita (presentasi Suikoden/Stardew).
+- v0.4.4 merapikan standar modern; bisa dicicil paralel bila ada sisa kapasitas sesi.
+
+Total estimasi ke "fondasi layak": **±5–6 sesi kerja** dari titik ini.
+Review owner+designer menentukan pemotongan/penambahan per fase.
