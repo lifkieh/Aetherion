@@ -149,8 +149,22 @@ func _cast_single(actor: Node2D, aim: Vector2, sid: String) -> bool:
 			PlayerData.heal(int(sk.get("heal_amount", 30)))
 			Vfx.spark(actor.get_parent(), actor.global_position, "light")
 			Audio.play_sfx("levelup", 1.3)
+		"buff":
+			PlayerData.apply_buff(sid, sk.get("buff", {}))
+			Vfx.spark(actor.get_parent(), actor.global_position, sk.get("element", "none"))
+			EventBus.toast.emit("%s!" % sk.get("name", sid))
+			Audio.play_sfx("prime", 0.8)
 		"magic":
-			PlayerCombat.fire_pooled(actor, aim, sk.get("projectile_id", "spark"), sk.get("skill_mod", 1.0))
+			if sk.get("projectile", false):
+				var shots: int = int(sk.get("shots", 1))
+				var spread: float = deg_to_rad(float(sk.get("spread_deg", 14)))
+				for i in range(shots):
+					var a := aim
+					if shots > 1:
+						a = aim.rotated(spread * (float(i) - (shots - 1) * 0.5))
+					PlayerCombat.fire_pooled(actor, a, sk.get("projectile_id", "spark"), sk.get("skill_mod", 1.0))
+			else:
+				PlayerCombat.melee_arc(actor, aim, sk.get("range", 60), sk.get("aoe_arc", 120), sk)
 			Audio.play_sfx("attack", 1.05)
 		_:
 			PlayerCombat.melee_arc(actor, aim, sk.get("range", 48), sk.get("aoe_arc", 120), sk)

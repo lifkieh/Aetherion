@@ -44,6 +44,7 @@ func _ready() -> void:
 	_test_onboarding()
 	_test_skill_audit()
 	_test_skill_acquisition()
+	_test_classes()
 	_test_equipment()
 	_test_skycalendar()
 	await _test_bugfixes()
@@ -566,10 +567,10 @@ func _test_skill_acquisition() -> void:
 			player_skills += 1
 			if sk.get("ultimate", false):
 				ultimate += 1
-	check("16 player skills declared with unlock sources", player_skills == 16, str(player_skills))
+	check("player skills all declare unlock sources (29 w/ class kits)", player_skills == 29, str(player_skills))
 	check("exactly 1 Ultimate candidate", ultimate == 1, str(ultimate))
 	check("meteor is the ultimate", Db.skill("meteor").get("ultimate", false))
-	# --- start with only the 3 basics; flow gated by mastered elements ---
+	# --- start with only the class's 3 skills; flow gated by mastered elements ---
 	check("starts with 3 known active skills", PlayerData.known_skills.size() == 3)
 	check("can use starter flame_slash", PlayerData.can_use_skill("flame_slash"))
 	check("can use flow_fire (fire mastered)", PlayerData.can_use_skill("flow_fire"))
@@ -618,9 +619,64 @@ func func_learn_boss(boss: String, sid: String) -> bool:
 	PlayerData.on_boss_killed(boss)
 	return PlayerData.can_use_skill(sid)
 
+func _test_classes() -> void:
+	print("[Class Selection — FF-2a]")
+	check("6 classes loaded", Db.classes.size() == 6 and Db.class_order.size() == 6)
+	var all_ok := true
+	var kit_ids := {}
+	for cid in Db.class_order:
+		var c := Db.cls(cid)
+		if c.get("skills", []).size() != 3: all_ok = false
+		if c.get("weapons", []).size() != 2: all_ok = false
+		if c.get("attr", {}).is_empty() or c.get("advanced", "") == "": all_ok = false
+		for sid in c.get("skills", []):
+			if Db.skill(sid).is_empty(): all_ok = false
+		for wv in c.get("weapons", []):
+			if Db.item(wv.get("id", "")).is_empty(): all_ok = false
+		kit_ids[str(c.get("skills", []))] = true
+	check("every class: 3 real skills + 2 real weapons + attr + advanced teaser", all_ok)
+	check("all 6 skill kits are DIFFERENT", kit_ids.size() == 6, str(kit_ids.size()))
+	# new_game applies the class package
+	PlayerData.new_game("necromancer")
+	check("necromancer class set", PlayerData.char_class == "necromancer")
+	check("necro attr bonus applied (INT 9)", PlayerData.attributes.get("INT", 0) == 9)
+	check("necro knows shadow_bolt, NOT flame_slash", PlayerData.can_use_skill("shadow_bolt") and not PlayerData.can_use_skill("flame_slash"))
+	check("necro masters darkness (flow usable)", PlayerData.can_use_skill("flow_darkness"))
+	check("necro starting weapon = bone_staff", PlayerData.equipped_weapon == "bone_staff")
+	# weapon variant honored
+	PlayerData.new_game("warrior", "guard_blade")
+	check("weapon variant honored (guard_blade)", PlayerData.equipped_weapon == "guard_blade")
+	check("guard_blade def counts", PlayerData.def > 0 and PlayerData._gear_stat("def") >= int(Db.item("guard_blade").def) + int(Db.item("cloth_tunic").def))
+	# class affinity: warrior with sword = +8% atk vs same char without affinity
+	PlayerData.new_game("warrior", "wide_sword")
+	var atk_aff: int = PlayerData.atk
+	PlayerData.char_class = "mage"   # same stats, no sword affinity
+	PlayerData.recalculate_stats()
+	check("weapon affinity grants bonus ATK", atk_aff > PlayerData.atk)
+	# buff skills (war_cry) raise combat_stats atk temporarily
+	PlayerData.new_game("warrior")
+	var base_atk: int = PlayerData.combat_stats().atk
+	PlayerData.apply_buff("war_cry", {"atk_mult": 1.2, "duration": 5.0})
+	check("war_cry buff raises atk ~20%", PlayerData.combat_stats().atk == int(PlayerData.atk * 1.2), "%d vs %d" % [PlayerData.combat_stats().atk, base_atk])
+	# moveset table: every weapon_type in items has a moveset
+	var ms_ok := true
+	for iid in Db.items:
+		var it: Dictionary = Db.items[iid]
+		if it.get("type", "") == "weapon" and not PlayerCombat.WEAPON_MOVESET.has(it.get("weapon_type", "")):
+			ms_ok = false
+	check("every weapon type has a moveset (FF-2b)", ms_ok)
+	# movesets genuinely differ (dagger fast-weak vs hammer slow-heavy)
+	var dg: Dictionary = PlayerCombat.WEAPON_MOVESET["dagger"]
+	var hm: Dictionary = PlayerCombat.WEAPON_MOVESET["hammer"]
+	check("dagger faster than hammer, hammer hits harder", dg.rate > hm.rate * 2.0 and hm.mult > dg.mult * 2.0)
+	PlayerData.new_game()
+
 func _test_equipment() -> void:
 	print("[Equipment — PC5]")
 	PlayerData.new_game()
+	# neutralize class weapon affinity for additive-stat assertions (archer = bow only)
+	PlayerData.char_class = "archer"
+	PlayerData.recalculate_stats()
 	# --- slots & starting gear ---
 	check("3 equip slots resolve by type", PlayerData.slot_for_item("wooden_sword") == "equipped_weapon" \
 		and PlayerData.slot_for_item("cloth_tunic") == "equipped_armor" \
@@ -885,6 +941,8 @@ func _test_hotbar() -> void:
 	# ensure known hotbar layout: slots map to flow elements for deterministic fusion.
 	# master every element the test primes so can_use_skill gates don't block (PC4).
 	PlayerData.mastered_elements = ["fire", "lightning", "ice", "wind", "earth", "poison"]
+	if not ("spark_bolt" in PlayerData.known_skills):
+		PlayerData.known_skills.append("spark_bolt")   # default class (warrior) doesn't know it
 	PlayerData.hotbar = ["flow_fire", "flow_lightning", "flow_fire", "spark_bolt", "flow_ice"]
 	# --- rev B: no cooldowns, channelled cast ---
 	check("cooldown_frac always 0 (no CDs)", hb.cooldown_frac(0) == 0.0)

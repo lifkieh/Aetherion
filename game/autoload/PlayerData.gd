@@ -47,10 +47,14 @@ var equipped_weapon: String = ""       # item_id (affects ATK + weapon element b
 var equipped_armor: String = ""        # item_id (armor slot — DEF/HP)
 var equipped_accessory: String = ""    # item_id (accessory slot — varied)
 
-# --- Skills / element ---
+# --- Class / skills / element ---
+var char_class: String = "warrior"     # 1 of 6 combat classes (FF-2a) = profesi combat utama
+var pending_class: String = "warrior"  # New Game flow: ClassSelect -> CharacterCreator handoff
+var pending_weapon: String = ""
 var known_skills: Array = ["strike", "flame_slash", "spark_bolt"]
 var mastered_elements: Array = ["fire", "lightning"]
 var infusion: Dictionary = {}          # {element, source, expires_unix} or empty
+var buffs: Dictionary = {}             # key -> {mult/add, until_msec} (war_cry, smoke_bomb)
 
 # --- Taming / pets ---
 var monsters: Array = []               # tamed monster instances (dicts)
@@ -87,17 +91,31 @@ func _on_monster_killed(species_id: String, node) -> void:
 		on_boss_killed(species_id)
 
 ## Reset to a fresh character (New Game). birth_sign from creation date (v0.3 §3.3).
-func new_game() -> void:
+## class_id = 1 of 6 combat classes (FF-2a); weapon_id = chosen starting variant.
+func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
+	var cd := Db.cls(class_id)
+	if cd.is_empty():
+		class_id = "warrior"
+		cd = Db.cls(class_id)
+	char_class = class_id
 	level = 1; exp = 0; stat_points = 0
 	attributes = {"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5}
+	for k in cd.get("attr", {}):
+		attributes[k] = attributes.get(k, 5) + int(cd.attr[k])
 	gold = 200
-	inventory = {"minor_potion": 3, "basic_orb": 2, "wooden_sword": 1, "cloth_tunic": 1, "seed_mintleaf": 3}
-	equipped_weapon = "wooden_sword"
+	var variants: Array = cd.get("weapons", [])
+	var wid := weapon_id
+	if wid == "" or Db.item(wid).is_empty():
+		wid = variants[0].get("id", "wooden_sword") if not variants.is_empty() else "wooden_sword"
+	inventory = {"minor_potion": 3, "basic_orb": 2, "cloth_tunic": 1, "seed_mintleaf": 3}
+	inventory[wid] = 1
+	equipped_weapon = wid
 	equipped_armor = "cloth_tunic"     # starting gear is tier F (PC5)
 	equipped_accessory = ""
-	known_skills = ["strike", "flame_slash", "spark_bolt"]
-	mastered_elements = ["fire", "lightning"]
+	known_skills = cd.get("skills", ["strike", "flame_slash", "spark_bolt"]).duplicate()
+	mastered_elements = cd.get("masters", ["fire"]).duplicate()
 	infusion = {}
+	buffs = {}
 	monsters = []
 	active_pet_index = -1
 	mounted = false
@@ -111,7 +129,7 @@ func new_game() -> void:
 	craft_insight = {}
 	daily_quests = {}
 	prof_xp = {}
-	hotbar = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"]
+	hotbar = cd.get("hotbar", ["strike", "flame_slash", "flow_fire", "strike", "strike"]).duplicate()
 	discovered_fusions = []
 	char_config = CharGen.default_config()
 	onboarding_seen = []
@@ -261,6 +279,12 @@ func recalculate_stats() -> void:
 	crit_rate = clampf(0.05 + l * 0.004, 0.05, 0.60) # LUK -> crit
 	drop_bonus = l * 0.008                            # LUK -> drop chance
 	crit_dmg = 1.5
+	# class weapon affinity (FF-2b): using your class's weapon type = +8% ATK/MATK, +5% speed
+	var wtype: String = Db.item(equipped_weapon).get("weapon_type", "")
+	if equipped_weapon != "" and wtype in Db.cls(char_class).get("affinity", []):
+		atk = int(atk * 1.08)
+		matk = int(matk * 1.08)
+		attack_speed *= 1.05
 	hp = min(hp, max_hp)
 	mp = min(mp, max_mp)
 	stats_recalculated.emit()
@@ -320,11 +344,12 @@ func respec() -> void:
 ## Stat block consumed by CombatResolver.
 func combat_stats() -> Dictionary:
 	return {
-		"atk": atk, "def": def, "matk": matk, "mdef": mdef, "spd": spd,
+		"atk": int(atk * buff_mult("atk_mult")), "def": def,
+		"matk": int(matk * buff_mult("matk_mult")), "mdef": mdef, "spd": spd,
 		"crit_rate": crit_rate, "crit_dmg": crit_dmg,
 		"level": level, "hp": hp, "max_hp": max_hp,
 		"element": current_weapon_element(),
-		"accuracy": accuracy, "evasion": evasion,
+		"accuracy": accuracy, "evasion": clampf(evasion + buff_add("evasion_add"), 0.0, 0.75),
 		"resist": {},
 	}
 
@@ -356,6 +381,33 @@ func toggle_infusion(element: String) -> void:
 
 func clear_infusion() -> void:
 	infusion = {}
+
+# --- Temp buffs (class skills: war_cry, smoke_bomb — FF-2a) -------------------
+
+func apply_buff(key: String, buff: Dictionary) -> void:
+	buffs[key] = {"data": buff, "until": Time.get_ticks_msec() + int(float(buff.get("duration", 5.0)) * 1000.0)}
+
+func _prune_buffs() -> void:
+	var now := Time.get_ticks_msec()
+	for k in buffs.keys().duplicate():
+		if buffs[k].get("until", 0) < now:
+			buffs.erase(k)
+
+## Product of an active-buff multiplier field (e.g. "atk_mult"), 1.0 if none.
+func buff_mult(field: String) -> float:
+	_prune_buffs()
+	var m := 1.0
+	for k in buffs:
+		m *= float(buffs[k].get("data", {}).get(field, 1.0))
+	return m
+
+## Sum of an active-buff additive field (e.g. "evasion_add"), 0.0 if none.
+func buff_add(field: String) -> float:
+	_prune_buffs()
+	var s := 0.0
+	for k in buffs:
+		s += float(buffs[k].get("data", {}).get(field, 0.0))
+	return s
 
 # fractional mana accumulator (for per-second drain/regen)
 var _mp_frac: float = 0.0
@@ -460,6 +512,7 @@ func to_save() -> Dictionary:
 		"level": level, "exp": exp, "attributes": attributes, "stat_points": stat_points,
 		"hp": hp, "mp": mp, "gold": gold, "inventory": inventory,
 		"equipped_weapon": equipped_weapon, "equipped_armor": equipped_armor, "equipped_accessory": equipped_accessory,
+		"char_class": char_class,
 		"known_skills": known_skills,
 		"mastered_elements": mastered_elements, "monsters": monsters,
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
@@ -483,6 +536,7 @@ func from_save(d: Dictionary) -> void:
 	equipped_weapon = d.get("equipped_weapon", "")
 	equipped_armor = d.get("equipped_armor", "")
 	equipped_accessory = d.get("equipped_accessory", "")
+	char_class = d.get("char_class", "warrior")
 	known_skills = d.get("known_skills", known_skills)
 	mastered_elements = d.get("mastered_elements", mastered_elements)
 	monsters = d.get("monsters", [])

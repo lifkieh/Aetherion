@@ -1,0 +1,110 @@
+[
+  {
+    "id": "warrior",
+    "name": "Warrior",
+    "title": "Garda Depan",
+    "color": "#c0392b",
+    "icon_elem": "fire",
+    "desc": "Petarung garis depan yang jujur dan tahan pukul. Setiap ayunan pedangnya berat oleh tekad.",
+    "attr": {"STR": 4, "VIT": 3, "AGI": 1},
+    "masters": ["fire"],
+    "skills": ["strike", "flame_slash", "war_cry"],
+    "weapons": [
+      {"id": "wide_sword", "label": "Pedang Lebar", "hint": "Arc ayunan luas, damage mantap"},
+      {"id": "guard_blade", "label": "Pedang & Perisai", "hint": "+4 DEF, ayunan lebih sempit"}
+    ],
+    "affinity": ["sword", "hammer"],
+    "hotbar": ["strike", "flame_slash", "war_cry", "flow_fire", "strike"],
+    "advanced": "Jalur lanjutan (Lv60): Berserker — amuk tanpa henti · Sword Saint — seni pedang sempurna"
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "title": "Penenun Elemen",
+    "color": "#2980d9",
+    "icon_elem": "lightning",
+    "desc": "Penguasa elemen terbanyak. Rapuh, tapi badai ada di ujung jarinya — dan fusion adalah kanvasnya.",
+    "attr": {"INT": 5, "DEX": 2, "VIT": 1},
+    "masters": ["lightning", "ice", "wind"],
+    "skills": ["spark_bolt", "frost_bolt", "gust"],
+    "weapons": [
+      {"id": "apprentice_wand", "label": "Tongkat Magang", "hint": "Tembakan cepat, hemat mana"},
+      {"id": "oak_staff", "label": "Staf Ek", "hint": "Lebih lambat, MATK lebih besar"}
+    ],
+    "affinity": ["wand", "staff"],
+    "hotbar": ["spark_bolt", "frost_bolt", "gust", "flow_lightning", "flow_ice"],
+    "advanced": "Jalur lanjutan (Lv60): Archmage — fusion tanpa batas · Stormcaller — badai abadi"
+  },
+  {
+    "id": "archer",
+    "name": "Archer",
+    "title": "Mata Angin",
+    "color": "#27ae60",
+    "icon_elem": "wind",
+    "desc": "Pemburu berjarak dengan mata setajam elang. Jarak adalah temannya, angin adalah sekutunya.",
+    "attr": {"DEX": 4, "AGI": 3, "LUK": 1},
+    "masters": ["wind"],
+    "skills": ["power_shot", "multi_shot", "gust"],
+    "weapons": [
+      {"id": "short_bow", "label": "Busur Pendek", "hint": "Tembakan cepat"},
+      {"id": "hunter_bow", "label": "Busur Pemburu", "hint": "Lebih lambat, damage lebih besar"}
+    ],
+    "affinity": ["bow"],
+    "hotbar": ["power_shot", "multi_shot", "gust", "flow_wind", "strike"],
+    "advanced": "Jalur lanjutan (Lv60): Sniper — satu panah satu nyawa · Windrider — pemanah badai"
+  },
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "title": "Bisikan Bayang",
+    "color": "#8e44ad",
+    "icon_elem": "poison",
+    "desc": "Cepat, senyap, mematikan. Dua belati, satu racun, nol saksi.",
+    "attr": {"AGI": 4, "LUK": 2, "STR": 2},
+    "masters": ["poison"],
+    "skills": ["twin_fangs", "venom_strike", "smoke_bomb"],
+    "weapons": [
+      {"id": "twin_daggers", "label": "Belati Kembar", "hint": "Sangat cepat, jangkauan pendek"},
+      {"id": "curved_dagger", "label": "Belati Lengkung", "hint": "Sedikit lebih lambat, lebih dalam"}
+    ],
+    "affinity": ["dagger"],
+    "hotbar": ["twin_fangs", "venom_strike", "smoke_bomb", "flow_poison", "strike"],
+    "advanced": "Jalur lanjutan (Lv60): Phantom — melebur dengan bayangan · Vipermaster — raja segala racun"
+  },
+  {
+    "id": "paladin",
+    "name": "Paladin",
+    "title": "Cahaya Bersumpah",
+    "color": "#f1c40f",
+    "icon_elem": "light",
+    "desc": "Perisai bagi yang lemah, palu bagi kegelapan. Bertahan, memulihkan, menghakimi.",
+    "attr": {"VIT": 3, "INT": 3, "STR": 2},
+    "masters": ["light"],
+    "skills": ["judgment", "heal", "holy_ray"],
+    "weapons": [
+      {"id": "war_hammer", "label": "Palu Perang", "hint": "Lambat tapi menghancurkan"},
+      {"id": "blessed_sword", "label": "Pedang Terberkati", "hint": "Seimbang, berelemen Cahaya"}
+    ],
+    "affinity": ["hammer", "sword"],
+    "hotbar": ["judgment", "heal", "holy_ray", "flow_light", "strike"],
+    "advanced": "Jalur lanjutan (Lv60): Crusader — benteng berjalan · High Cleric — mukjizat hidup"
+  },
+  {
+    "id": "necromancer",
+    "name": "Necromancer",
+    "title": "Penutur Arwah",
+    "color": "#34495e",
+    "icon_elem": "darkness",
+    "desc": "Yang berbisik pada kematian dan dijawab. Menguras hidup lawan untuk memperpanjang miliknya.",
+    "attr": {"INT": 4, "VIT": 2, "LUK": 2},
+    "masters": ["darkness"],
+    "skills": ["shadow_bolt", "drain_life", "soul_burst"],
+    "weapons": [
+      {"id": "bone_staff", "label": "Staf Tulang", "hint": "Tembakan bayangan dari jauh"},
+      {"id": "ritual_scythe", "label": "Sabit Ritual", "hint": "Arc sangat luas, menuai dari dekat"}
+    ],
+    "affinity": ["staff", "scythe"],
+    "hotbar": ["shadow_bolt", "drain_life", "soul_burst", "flow_darkness", "strike"],
+    "advanced": "Jalur lanjutan (Lv60): Lich — melampaui kematian · Reaper — sabit takdir"
+  }
+]

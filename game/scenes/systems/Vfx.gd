@@ -16,38 +16,141 @@ static func elem_color(elem: String) -> Color:
 		"moon": return Color(0.8, 0.85, 1.0)
 		_: return Color(1, 1, 1)
 
-## Melee swing flourish in front of the attacker, tinted by element.
-static func swing(parent: Node, pos: Vector2, dir: Vector2, elem: String) -> void:
+## Melee swing flourish (FF-2b): every weapon type draws a DIFFERENT, visible
+## slash — a filled arc slice that sweeps with a bright leading edge and a
+## 3-step ghost trail. All procedural (Polygon2D/Line2D), no textures = cheap.
+static func swing(parent: Node, pos: Vector2, dir: Vector2, elem: String, wtype: String = "", reach: float = 46.0, arc_deg: float = 110.0) -> void:
 	if parent == null:
 		return
 	var col := elem_color(elem)
-	if elem == "fire" and ResourceLoader.exists("res://assets/game/vfx/fire_flow_strip.png"):
-		var s := AnimatedSprite2D.new()
-		s.sprite_frames = SheetUtil.build_strip(load("res://assets/game/vfx/fire_flow_strip.png"), 32, 8, "play", 24.0, false)
-		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		s.z_index = 30
-		parent.add_child(s)
-		s.global_position = pos + dir * 16.0
-		s.rotation = dir.angle()
-		s.play("play")
-		s.animation_finished.connect(s.queue_free)
-		return
-	# generic elemental slash arc
+	if col == Color(1, 1, 1):
+		col = Color(0.92, 0.95, 1.0)   # neutral steel-white
+	match wtype:
+		"spear":
+			_thrust_fx(parent, pos, dir, col, reach)
+			return
+		"dagger":
+			_slash_arc(parent, pos, dir, col, reach, arc_deg, 0.07, 2, 0.55)
+			return
+		"hammer":
+			_slash_arc(parent, pos, dir, col, reach, arc_deg, 0.16, 3, 1.0)
+			_ground_dust(parent, pos + dir * reach * 0.7, col)
+			return
+		"scythe":
+			_slash_arc(parent, pos, dir, col, reach, maxf(arc_deg, 160.0), 0.14, 3, 0.8)
+			return
+		"bow", "wand", "staff":
+			_muzzle_flash(parent, pos + dir * 10.0, col)
+			return
+		_:
+			_slash_arc(parent, pos, dir, col, reach, arc_deg, 0.11, 3, 0.8)
+
+## Filled arc slice that sweeps across the swing with ghost-trail fade.
+static func _slash_arc(parent: Node, pos: Vector2, dir: Vector2, col: Color, reach: float, arc_deg: float, dur: float, ghosts: int, edge_w: float) -> void:
+	var half := deg_to_rad(arc_deg) * 0.5
+	var base := dir.angle()
+	# ghost trail: N slices fading in sequence = "2-3 frame trail" feel
+	for g in range(ghosts):
+		var poly := Polygon2D.new()
+		var pts := PackedVector2Array()
+		var inner := reach * 0.30
+		var steps := 10
+		var g_half := half * (1.0 - 0.18 * g)
+		for i in range(steps + 1):
+			var a := base - g_half + (g_half * 2.0) * float(i) / steps
+			pts.append(pos + Vector2.from_angle(a) * reach)
+		for i in range(steps, -1, -1):
+			var a := base - g_half + (g_half * 2.0) * float(i) / steps
+			pts.append(pos + Vector2.from_angle(a) * inner)
+		poly.polygon = pts
+		poly.color = Color(col.r, col.g, col.b, 0.34 - 0.09 * g)
+		poly.z_index = 30
+		parent.add_child(poly)
+		var tw := poly.create_tween()
+		tw.tween_interval(dur * 0.25 * g)
+		tw.tween_property(poly, "color:a", 0.0, dur)
+		tw.tween_callback(poly.queue_free)
+	# bright leading edge sweeping across the arc
+	var edge := Line2D.new()
+	edge.width = 3.0 * edge_w + 1.0
+	edge.default_color = Color(minf(col.r * 1.4, 1), minf(col.g * 1.4, 1), minf(col.b * 1.4, 1), 0.95)
+	edge.z_index = 31
+	edge.points = PackedVector2Array([pos + Vector2.from_angle(base - half) * (reach * 0.30), pos + Vector2.from_angle(base - half) * reach])
+	parent.add_child(edge)
+	var sweep := func(t: float) -> void:
+		if not is_instance_valid(edge):
+			return
+		var a: float = base - half + half * 2.0 * t
+		edge.points = PackedVector2Array([pos + Vector2.from_angle(a) * (reach * 0.30), pos + Vector2.from_angle(a) * reach])
+		edge.modulate.a = 1.0 - t * 0.5
+	var et := edge.create_tween()
+	et.tween_method(sweep, 0.0, 1.0, dur)
+	et.tween_callback(edge.queue_free)
+
+## Spear: a long bright thrust quad stabbing forward then retracting.
+static func _thrust_fx(parent: Node, pos: Vector2, dir: Vector2, col: Color, reach: float) -> void:
 	var line := Line2D.new()
-	line.width = 3.0
-	line.default_color = col
-	line.z_index = 30
-	var perp := dir.orthogonal()
-	line.points = PackedVector2Array([
-		pos + dir * 10 - perp * 14,
-		pos + dir * 22,
-		pos + dir * 10 + perp * 14,
-	])
+	line.width = 5.0
+	line.default_color = Color(col.r, col.g, col.b, 0.9)
+	line.z_index = 31
+	line.points = PackedVector2Array([pos + dir * 8.0, pos + dir * 14.0])
 	parent.add_child(line)
-	line.global_position = Vector2.ZERO
+	var thrust := func(t: float) -> void:
+		if not is_instance_valid(line):
+			return
+		var tip: float = lerpf(14.0, reach + 6.0, minf(t * 1.6, 1.0))
+		line.points = PackedVector2Array([pos + dir * maxf(8.0, tip - 26.0), pos + dir * tip])
+		line.modulate.a = 1.0 - maxf(0.0, t - 0.55) * 2.2
 	var tw := line.create_tween()
-	tw.tween_property(line, "modulate:a", 0.0, 0.22)
+	tw.tween_method(thrust, 0.0, 1.0, 0.16)
 	tw.tween_callback(line.queue_free)
+
+## Ranged muzzle flash: quick expanding ring at the fire point.
+static func _muzzle_flash(parent: Node, pos: Vector2, col: Color) -> void:
+	var ring := Line2D.new()
+	ring.width = 2.0
+	ring.default_color = Color(col.r, col.g, col.b, 0.9)
+	ring.z_index = 31
+	ring.closed = true
+	parent.add_child(ring)
+	var grow := func(t: float) -> void:
+		if not is_instance_valid(ring):
+			return
+		var pts := PackedVector2Array()
+		var r: float = lerpf(2.0, 12.0, t)
+		for i in range(9):
+			pts.append(pos + Vector2.from_angle(TAU * i / 8.0) * r)
+		ring.points = pts
+		ring.modulate.a = 1.0 - t
+	var tw := ring.create_tween()
+	tw.tween_method(grow, 0.0, 1.0, 0.14)
+	tw.tween_callback(ring.queue_free)
+
+## Hammer impact dust at the strike zone.
+static func _ground_dust(parent: Node, pos: Vector2, col: Color) -> void:
+	var p := GPUParticles2D.new()
+	p.z_index = 29
+	p.one_shot = true
+	p.emitting = true
+	p.amount = 14
+	p.lifetime = 0.45
+	p.explosiveness = 1.0
+	var mat := ParticleProcessMaterial.new()
+	mat.direction = Vector3(0, -1, 0)
+	mat.spread = 70.0
+	mat.initial_velocity_min = 30.0
+	mat.initial_velocity_max = 80.0
+	mat.gravity = Vector3(0, 220, 0)
+	mat.scale_min = 0.8
+	mat.scale_max = 2.0
+	mat.color = Color(col.r, col.g, col.b, 0.7)
+	p.process_material = mat
+	var img := Image.create(2, 2, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0.85, 0.8, 0.7))
+	p.texture = ImageTexture.create_from_image(img)
+	parent.add_child(p)
+	p.global_position = pos
+	p.finished.connect(p.queue_free)
 
 ## Arc of light between two points (lightning chain).
 static func chain_arc(parent: Node, from: Vector2, to: Vector2, elem: String = "lightning") -> void:

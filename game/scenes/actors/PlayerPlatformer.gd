@@ -163,35 +163,14 @@ func _aim_dir() -> Vector2:
 		return _facing_vec()
 	return d.normalized()
 
-func _weapon_type() -> String:
-	var w: String = PlayerData.equipped_weapon
-	if w == "":
-		return "sword"
-	return Db.item(w).get("weapon_type", "sword")
-
-const WEAPON_RATE := {"bow": 3.3, "wand": 3.0, "spear": 2.4, "sword": 2.85}
-
 func _basic_attack_interval() -> float:
-	var w := Db.item(PlayerData.equipped_weapon)
-	var rate: float = w.get("attack_rate", WEAPON_RATE.get(_weapon_type(), 2.85))
-	return 1.0 / maxf(0.4, rate * PlayerData.attack_speed)
+	return PlayerCombat.basic_interval()
 
-## Hold-to-attack basic swing/shot at the weapon's rate (rev A). Infusion via melee_arc.
+## Hold-to-attack basic swing/shot at the weapon's rate (rev A). Moveset per weapon
+## type lives in PlayerCombat.WEAPON_MOVESET — shared with the top-down mode (FF-2b).
 func _basic_attack(aim: Vector2) -> void:
 	_combat_t = 0.0
-	match _weapon_type():
-		"bow":
-			PlayerCombat.fire_pooled(self, aim, "arrow")
-		"wand":
-			var w := Db.item(PlayerData.equipped_weapon)
-			if not PlayerData.spend_mp(w.get("mana_cost", 3)):
-				return
-			PlayerCombat.fire_pooled(self, aim, w.get("projectile", "fireball"))
-		"spear":
-			PlayerCombat.melee_arc(self, aim, 66.0, 34.0, Db.skill("strike"), 1.15)
-		_:
-			PlayerCombat.melee_arc(self, aim, 46.0, 110.0, Db.skill("strike"))
-	Audio.play_sfx("attack")
+	PlayerCombat.basic_attack(self, aim)
 	_try_mine()
 
 func _try_mine() -> void:

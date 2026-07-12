@@ -63,7 +63,10 @@
     "ice":       {"arc_mult": 1.0, "reach_mult": 1.0, "dmg_mult": 1.05, "slow": true},
     "wind":      {"arc_mult": 1.6, "reach_mult": 1.15, "dmg_mult": 0.9, "push": true},
     "earth":     {"arc_mult": 0.6, "reach_mult": 0.95, "dmg_mult": 1.45},
-    "water":     {"arc_mult": 1.1, "reach_mult": 1.0, "dmg_mult": 0.95, "wet": true}
+    "water":     {"arc_mult": 1.1, "reach_mult": 1.0, "dmg_mult": 0.95, "wet": true},
+    "poison":    {"arc_mult": 0.9, "reach_mult": 1.0, "dmg_mult": 1.0, "poison": true},
+    "light":     {"arc_mult": 1.2, "reach_mult": 1.1, "dmg_mult": 1.05},
+    "darkness":  {"arc_mult": 1.1, "reach_mult": 1.05, "dmg_mult": 1.15}
   },
   "platformer_rules": {
     "wind": {"double_jump": true, "desc": "Infus Wind memberi lompatan ganda singkat."},

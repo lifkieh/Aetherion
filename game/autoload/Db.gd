@@ -21,6 +21,8 @@ var projectiles: Dictionary = {}   # id -> def
 var combat_feel: Dictionary = {}
 var professions: Dictionary = {}   # id -> def
 var towns: Dictionary = {}         # town_id -> {center, safe_zone, gates} (UI/UX §4)
+var classes: Dictionary = {}       # class_id -> def (6 combat classes, FF-2a)
+var class_order: Array = []        # display order
 
 var _errors: Array[String] = []
 
@@ -46,6 +48,8 @@ func load_all() -> void:
 	combat_feel = _load_object("combat_feel.json")
 	professions = _load_indexed("professions.json", "id")
 	towns = _load_object("towns.json")
+	classes = _load_indexed("classes.json", "id")
+	class_order = _load_array("classes.json").map(func(c): return c.get("id", ""))
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])
@@ -102,6 +106,9 @@ func skill(id: String) -> Dictionary:
 
 func crop(id: String) -> Dictionary:
 	return crops.get(id, {})
+
+func cls(id: String) -> Dictionary:
+	return classes.get(id, {})
 
 func item_name(id: String) -> String:
 	return items.get(id, {}).get("name", id)

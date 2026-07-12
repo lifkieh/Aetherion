@@ -217,6 +217,8 @@ func _unlock_hint(u: Dictionary) -> String:
 
 func _build_prof() -> void:
 	title.text = "Profesi (1 Utama + 2 Sub)"
+	var _ccd := Db.cls(PlayerData.char_class)
+	content.add_child(_mk_label("Profesi Combat (class): %s — %s. Maks 1 combat per karakter (GDD §3.2)." % [_ccd.get("name", "-"), _ccd.get("title", "")], 13, Color(0.9, 0.75, 0.5)))
 	var main: String = ProfessionSystem.main()
 	var subs: Array = ProfessionSystem.subs()
 	content.add_child(_mk_label("Utama: %s (+50%% EXP, cap Lv%d) · Sub: %s (75%% efisiensi, cap Lv%d)" % [
@@ -584,7 +586,9 @@ func _build_panduan() -> void:
 
 func _build_status() -> void:
 	title.text = "Status Karakter"
-	content.add_child(_mk_label("%s  ·  Level %d" % [PlayerData.char_name, PlayerData.level], 18))
+	var cd := Db.cls(PlayerData.char_class)
+	content.add_child(_mk_label("%s  ·  %s (%s)  ·  Level %d" % [PlayerData.char_name, cd.get("name", "-"), cd.get("title", ""), PlayerData.level], 18))
+	content.add_child(_mk_label("Afinitas senjata: %s  ·  %s" % [", ".join(cd.get("affinity", [])), cd.get("advanced", "")], 11, Color(0.75, 0.8, 0.95)))
 	var pts := _mk_label("Poin bebas: %d  (+5 tiap naik level)" % PlayerData.stat_points, 15)
 	pts.add_theme_color_override("font_color", UiTheme.ACCENT)
 	content.add_child(pts)

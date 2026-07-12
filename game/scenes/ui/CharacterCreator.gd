@@ -228,7 +228,8 @@ func _confirm() -> void:
 		get_tree().paused = false
 		queue_free()
 	else:
-		PlayerData.new_game()
+		# class + weapon chosen at ClassSelect (FF-2a)
+		PlayerData.new_game(PlayerData.pending_class, PlayerData.pending_weapon)
 		WorldState.new_game()
 		PlayerData.char_config = cfg.duplicate(true)
 		Stage.go_to_scene("res://scenes/Main.tscn")

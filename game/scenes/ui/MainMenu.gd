@@ -124,8 +124,8 @@ func _spacer(h: int) -> Control:
 	return c
 
 func _new_game() -> void:
-	# Character Creator first (it runs new_game() + sets the look on confirm).
-	Stage.go_to_scene("res://scenes/ui/CharacterCreator.tscn")
+	# FF-2a flow: pilih class dulu -> Character Creator -> mulai.
+	Stage.go_to_scene("res://scenes/ui/ClassSelect.tscn")
 
 func _load(slot: int) -> void:
 	if SaveManager.load_game(slot):

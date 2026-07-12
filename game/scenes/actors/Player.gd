@@ -123,18 +123,8 @@ func _facing_vec() -> Vector2:
 
 # --- Attacks / skills -------------------------------------------------------
 
-func _weapon_type() -> String:
-	var w: String = PlayerData.equipped_weapon
-	return "sword" if w == "" else Db.item(w).get("weapon_type", "sword")
-
-# Base attacks/sec per weapon type (before AGI attack_speed). Weapons may override
-# via item "attack_rate". (rev A: hold-to-attack at the weapon's attack rate.)
-const WEAPON_RATE := {"bow": 3.3, "wand": 3.0, "spear": 2.4, "sword": 2.85}
-
 func _basic_attack_interval() -> float:
-	var w := Db.item(PlayerData.equipped_weapon)
-	var rate: float = w.get("attack_rate", WEAPON_RATE.get(_weapon_type(), 2.85))
-	return 1.0 / maxf(0.4, rate * PlayerData.attack_speed)
+	return PlayerCombat.basic_interval()
 
 func _do_attack() -> void:
 	var aim := (get_global_mouse_position() - global_position)
@@ -142,20 +132,8 @@ func _do_attack() -> void:
 	facing = SheetUtil.dir_from_vec(aim)
 	_attacking = ATTACK_TIME
 	sprite.play("attack_" + facing)
-	match _weapon_type():
-		"bow":
-			PlayerCombat.fire_pooled(self, aim, Db.item(PlayerData.equipped_weapon).get("projectile", "arrow"))
-		"wand":
-			var w := Db.item(PlayerData.equipped_weapon)
-			if not PlayerData.spend_mp(w.get("mana_cost", 3)):
-				_attacking = 0.0
-				return
-			PlayerCombat.fire_pooled(self, aim, w.get("projectile", "fireball"))
-		"spear":
-			PlayerCombat.melee_arc(self, aim, 60.0, 40.0, Db.skill("strike"), 1.15)
-		_:
-			PlayerCombat.melee_arc(self, aim, 46.0, 120.0, Db.skill("strike"))
-	Audio.play_sfx("attack")
+	if not PlayerCombat.basic_attack(self, aim):
+		_attacking = 0.0
 
 func _update_infusion_aura(delta: float) -> void:
 	sprite.modulate = PlayerCombat.infusion_tint()
