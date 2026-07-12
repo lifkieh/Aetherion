@@ -6,6 +6,15 @@ extends RefCounted
 ## nudges the same recipe's rate up slightly (cap +9%).
 
 const TIER_ORDER := ["F", "E", "D", "C", "B", "A", "S", "SS", "SSS"]
+const TRANSCENDENT_TIERS := ["A", "S", "SS", "SSS"]
+
+## Tier efektif resep: field "tier" eksplisit, atau tier item hasil.
+static func recipe_tier(recipe: Dictionary) -> String:
+	return recipe.get("tier", Db.item(recipe.get("result", "")).get("tier", "F"))
+
+## Resep A+ = crafting Transenden (MOMEN: ritual + pengumuman di UI).
+static func is_transcendent(recipe: Dictionary) -> bool:
+	return recipe_tier(recipe) in TRANSCENDENT_TIERS
 
 static func find_recipe(recipe_id: String) -> Dictionary:
 	for r in Db.recipes:
@@ -68,11 +77,17 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		out_qty += int(ProfessionSystem.perk_value(recipe.get("profession", ""), "bonus_yield"))
 		PlayerData.add_item(result, out_qty)
 		EventBus.item_crafted.emit(result, true)
-		EventBus.toast.emit("Berhasil membuat %s x%d!" % [Db.item_name(result), out_qty])
+		if is_transcendent(recipe):
+			EventBus.transcendent_crafted.emit(result, true)
+		else:
+			EventBus.toast.emit("Berhasil membuat %s x%d!" % [Db.item_name(result), out_qty])
 		return {"success": true, "result": recipe.get("result", ""), "reason": "ok"}
 	else:
 		var rid: String = recipe.get("id", "")
 		PlayerData.craft_insight[rid] = minf(0.09, PlayerData.craft_insight.get(rid, 0.0) + 0.002)
 		EventBus.item_crafted.emit(recipe.get("result", ""), false)
-		EventBus.toast.emit("Gagal membuat (bahan dasar aman). +Insight")
+		if is_transcendent(recipe):
+			EventBus.transcendent_crafted.emit(recipe.get("result", ""), false)
+		else:
+			EventBus.toast.emit("Gagal membuat (bahan dasar aman). +Insight")
 		return {"success": false, "result": "", "reason": "failed_roll"}

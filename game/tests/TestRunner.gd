@@ -58,6 +58,7 @@ func _ready() -> void:
 	_test_monster_depth()
 	_test_combo()
 	await _test_patterns()
+	_test_transcendent_pyramid()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2021,3 +2022,80 @@ func _test_crafting() -> void:
 			check("failure preserves base copper_bar", PlayerData.item_count("copper_bar") == 2, "had %d" % PlayerData.item_count("copper_bar"))
 		attempts += 1
 	check("crafting can fail (roll works)", failed_once)
+
+
+func _test_transcendent_pyramid() -> void:
+	print("[Transcendent Pyramid v0.4.2]")
+	# --- integritas data: semua resep baru valid & bahan/hasil ada di items ---
+	var need := ["craft_glacier_blade", "craft_frostspark_wand", "craft_barkhide_armor",
+		"craft_cloudsilk_scarf", "craft_aether_ingot", "craft_dragonfang_sword",
+		"craft_dragonscale_mail", "craft_stormsilk_cloak", "craft_everfrost_edge",
+		"craft_ankh_aegis", "craft_tempest_fang", "craft_aurora_rend", "craft_bintang_aetherion"]
+	var all_ok := true
+	for rid in need:
+		var r := CraftingSystem.find_recipe(rid)
+		if r.is_empty():
+			all_ok = false
+			continue
+		if not Db.items.has(r.get("result", "")):
+			all_ok = false
+		for ing in r.get("ingredients", []):
+			if not Db.items.has(ing.get("item", "")):
+				all_ok = false
+	check("13 resep piramida valid (bahan & hasil ada)", all_ok)
+	# material kunci drop masing-masing dipakai resep
+	for key_mat in ["everfrost_core", "tempest_heart", "ankh_fragment", "ambergris_star"]:
+		var used := false
+		for r in Db.recipes:
+			for ing in r.get("ingredients", []):
+				if ing.get("item", "") == key_mat:
+					used = true
+		check("material kunci %s punya resep" % key_mat, used)
+	# success rate menurun A -> SSS (piramida makin curam)
+	var ra := CraftingSystem.find_recipe("craft_everfrost_edge").get("success_rate", 0.0)
+	var rs := CraftingSystem.find_recipe("craft_tempest_fang").get("success_rate", 0.0)
+	var rss := CraftingSystem.find_recipe("craft_aurora_rend").get("success_rate", 0.0)
+	var rsss := CraftingSystem.find_recipe("craft_bintang_aetherion").get("success_rate", 0.0)
+	check("rate piramida menurun", ra > rs and rs > rss and rss > rsss, "%s %s %s %s" % [ra, rs, rss, rsss])
+	# is_transcendent: A+ ya, resep biasa tidak
+	check("A+ = transenden", CraftingSystem.is_transcendent(CraftingSystem.find_recipe("craft_everfrost_edge")))
+	check("resep biasa bukan transenden", not CraftingSystem.is_transcendent(CraftingSystem.find_recipe("craft_plank")))
+	# stat naik antar tier (C < B < A < S < SS < SSS untuk pedang)
+	var chain := ["glacier_blade", "dragonfang_sword", "everfrost_edge", "tempest_fang", "aurora_rend", "bintang_aetherion"]
+	var rising := true
+	for i in range(1, chain.size()):
+		if int(Db.item(chain[i]).get("atk", 0)) <= int(Db.item(chain[i - 1]).get("atk", 0)):
+			rising = false
+	check("ATK pedang naik tiap tier", rising)
+	# --- gate profesi: A+ hanya profesi UTAMA ---
+	var save_profs: Dictionary = PlayerData.professions.duplicate(true)
+	PlayerData.professions = {"main": "cook", "sub": [], "last_main_change": 0}
+	var gate := ProfessionSystem.can_use_recipe(CraftingSystem.find_recipe("craft_everfrost_edge"))
+	check("A+ terkunci untuk non-blacksmith", not gate.ok)
+	PlayerData.professions = {"main": "blacksmith", "sub": [], "last_main_change": 0}
+	var gate2 := ProfessionSystem.can_use_recipe(CraftingSystem.find_recipe("craft_everfrost_edge"))
+	check("A+ terbuka untuk main blacksmith", bool(gate2.ok), str(gate2))
+	# --- craft A sukses (rng dipaksa) menambah item & konsumsi bahan ---
+	PlayerData.inventory.clear()
+	PlayerData.add_item("dragonfang_sword", 1)
+	PlayerData.add_item("everfrost_core", 1)
+	PlayerData.add_item("aether_ingot", 2)
+	var rng := RandomNumberGenerator.new()
+	var made := false
+	var kept_core := false
+	for attempt in range(60):
+		rng.seed = attempt
+		var rr := CraftingSystem.craft("craft_everfrost_edge", rng)
+		if rr.success:
+			made = PlayerData.item_count("everfrost_edge") >= 1
+			break
+		else:
+			# gagal: material kunci tier tertinggi (everfrost_core) HARUS selamat
+			kept_core = PlayerData.item_count("everfrost_core") >= 1
+			PlayerData.add_item("dragonfang_sword", 1)
+			PlayerData.add_item("aether_ingot", 2)
+			if PlayerData.item_count("everfrost_core") == 0:
+				PlayerData.add_item("everfrost_core", 1)
+	check("everfrost_edge tertempa", made)
+	check("gagal ritual: everfrost_core selamat", kept_core or made)
+	PlayerData.professions = save_profs

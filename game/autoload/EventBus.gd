@@ -52,6 +52,7 @@ signal block_mined(cell: Vector2i, block_type: String)
 signal dungeon_entered(id: String)
 signal dungeon_exited(id: String)
 signal item_crafted(item_id: String, success: bool)
+signal transcendent_crafted(item_id: String, success: bool)   # crafting A+ sebagai MOMEN (v0.4.2)
 signal board_visited()                           # player opened the Quest Board (onboarding)
 
 # --- Homestead ---

@@ -553,16 +553,30 @@ func _build_crafting() -> void:
 		var can: bool = CraftingSystem.can_craft(r) and bool(access.ok)
 		var rate := int(round(CraftingSystem.success_rate(r) * 100))
 		var tier: String = Db.item(r.get("result", "")).get("tier", "F")
-		var l := _mk_label("%s [%s]  (%d%%)  ← %s" % [result_name, tier, rate, ", ".join(ing_txt)], 14)
+		var mark := "✦ " if CraftingSystem.is_transcendent(r) else ""
+		var l := _mk_label("%s%s [%s]  (%d%%)  ← %s" % [mark, result_name, tier, rate, ", ".join(ing_txt)], 14)
 		l.custom_minimum_size = Vector2(400, 0)
 		if not can: l.modulate = Color(0.6, 0.6, 0.6)
 		if not access.ok: l.tooltip_text = access.reason
 		h.add_child(l)
 		if not access.ok:
 			h.add_child(_mk_label("🔒", 14))
-		var b := _btn("Craft", func(): CraftingSystem.craft(r.get("id", "")); _rebuild())
+		var b := _btn("✦ Tempa" if CraftingSystem.is_transcendent(r) else "Craft", _do_craft.bind(r))
 		b.disabled = not can
 		h.add_child(b)
+
+func _do_craft(r: Dictionary) -> void:
+	# Tier A+ = crafting Transenden: MOMEN ritual dulu, roll dieksekusi di dalamnya (#25)
+	if CraftingSystem.is_transcendent(r):
+		var rit := TranscendentRitual.play(self, r.get("id", ""), CraftingSystem.recipe_tier(r))
+		rit.finished.connect(_after_ritual)
+	else:
+		CraftingSystem.craft(r.get("id", ""))
+		_rebuild()
+
+func _after_ritual(_res: Dictionary) -> void:
+	if is_instance_valid(self) and is_inside_tree():
+		_rebuild()
 
 func _build_shop() -> void:
 	title.text = "Toko Greenvale"
