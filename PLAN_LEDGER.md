@@ -54,7 +54,7 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | Profesi utama + 2 sub (cap/efisiensi/tier akses) | v0.2 §3 | Ada | ProfessionSystem + Reawakening cost. |
 | Profesi gathering (Miner/Lumberjack/Fisherman/Herbalist) | v0.1 §3.3 | Ada | + XP + perk milestone. |
 | Profesi produksi: Blacksmith/Alchemist/Cook | v0.1 §3.3 | Ada | +Carpenter (tambahan non-GDD, Decision Log #20). |
-| Profesi produksi: **Enchanter** | v0.1 §3.3 | **Belum** | Prasyarat sistem Enchant (addendum A3). |
+| Profesi produksi: **Enchanter** | v0.1 §3.3 | **Ada** (v0.4.2) | professions.json + NPC layanan di kota + perk enchant_bonus; sistem Enchant +1..+10 hidup (ledger #72). |
 | Profesi utility: Tamer | v0.1 §3.3 | Ada | |
 | Profesi utility: **Merchant, Treasure Hunter** | v0.1 §3.3 | Belum | Fase v0.4.2+. |
 | Character creator (rupa) | Owner (charsys v2) | Ada | CharGen modular 7 ras, per-bagian. |
@@ -71,7 +71,7 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | Status effect (Burn/Freeze/Paralyze/Poison/Blind/Curse) | v0.1 §6.4 | **Ada** (v0.4.1, kecuali Curse) | StatusFx: DoT/stun/lock/blind + interaksi sains (Thermal Shock, konduksi basah, pemadaman); ikon di musuh & pemain. Curse menyusul. |
 | 17 elemen 4 tier + matrix + aturan sains data-driven | v0.2 §7 | Ada | Termasuk Tier 2 (Poison/Metal/Wood/Spirit) ✓ terverifikasi. |
 | Fusion elemen + discovery + Grimoire | v0.1 §5.3 + owner rev C + owner 2g | Ada | 15 resep (target launch 35 — sisa = konten bertahap). |
-| Element Flow 4 jalur: Infusion / Coating / Enchant / Fusion-monster | v0.3 §7 | Sebagian | Hanya Infusion. Coating+Enchant = v0.4.2; fusion-monster ditunda-sengaja. |
+| Element Flow 4 jalur: Infusion / Coating / Enchant / Fusion-monster | v0.3 §7 | Sebagian | Infusion + **Coating (v0.4.2: Minyak Bisa/Salut Beku, +25% sekunder)** + **Enchant (v0.4.2: +1..+10, gagal ≥+7 turun 1, Gulungan Perlindungan)**; fusion-monster ditunda-sengaja. |
 | Weapon moveset per tipe + arc VFX + afinitas class | Owner FF-2b | Ada | 8 tipe. |
 | Kalibrasi TTK dua arah + ekonomi mana (harness v2) | Owner ronde 4 | Ada | BALANCE_TARGETS/REPORT_v2. |
 
@@ -277,5 +277,6 @@ akibat overhunt, kota berkembang karena sering diselamatkan.
 | 69 | 2026-07-13 | **K2** Level-tanpa-batas vs kalibrasi | Konflik REPORT-01 #1 | Kompresi Fase 0 = **"band level aktif"** — harness v2 valid di band itu; melewati band konten = **soft-cap EXP menanjak tajam** (pemain tak bisa lari jauh dari kurva konten); tiap wilayah baru memperluas band; **rebase kurva final + harness di v0.9 GENERATION** | Klarifikasi Direktur | Owner/Direktur |
 | 70 | 2026-07-13 | Blocker lunak v0.4.2 | REPORT-04 (a)/(b) | **DEFAULT DISETUJUI**: (a) tawanan-dibebaskan = NPC minor hasil CharGen dengan tag latar sederhana + sesekali kandidat bernama dari pool placeholder (kelak diganti tokoh Tier-B Companion Bible); (b) daftar item C/B pengisi piramida disusun agent dari data yang ada, review designer pasca-implementasi. **GAS v0.4.2** — mandat otonom penuh, gerbang playtest owner di ujung | Direktur | Owner/Direktur |
 | 71 | 2026-07-13 | Draft konten v0.4.2 oleh agent (per default #70b) | — | **8 item C/B**: Bilah Gletser, Tongkat Percik Beku, Zirah Kulit Kayu Hidup, Selendang Sutra Awan [C]; Batang Aether, Pedang Taring Naga, Zirah Sisik Naga, Jubah Sutra Badai [B] — semua dari material existing. **Piramida Transenden**: Mata Pedang Everfrost + Aegis Ankh [A] → Taring Badai [S] → Pembelah Aurora [SS] → Bintang Aetherion [SSS]; rate 0.5/0.35/0.2/0.1; material kunci selamat saat gagal; ritual MOMEN (TranscendentRitual overlay + pengumuman nama penempa). MENUNGGU review designer pasca-implementasi | Agent (mandat #70) | Agent |
+| 72 | 2026-07-13 | Keputusan desain agent — Gear Meta v0.4.2 (aturan b) | Spec REPORT-04 #2/#3/#4 | (i) **gear_meta per item_id** (bukan per-instance): kualitas/maker/enchant dibagi semua salinan item_id sama — kompromi sadar demi model inventory stack "game ringan"; wajar untuk gear yang biasanya dimiliki 1; (ii) kualitas = Normal 1.0 / Halus 1.05 / Adikarya 1.10 (roll 65/25/10%, kualitas terbaik dipertahankan); (iii) enchant **+3% stat/level**, biaya emas 6%×nilai×level tujuan (gold sink), layanan NPC Enchanter TERBUKA semua pemain — profesi Enchanter aktif = diskon 30% + perk peluang (agar profesi tetap bernilai tanpa mengunci sistem); (iv) coating 180 dtk, +25% damage elemen sekunder per pukulan + roll status | Agent (mandat #70) | Agent |
 
 > Baris berikutnya ditambahkan SEBELUM implementasi keputusan baru. Jangan hapus baris; koreksi = baris baru.

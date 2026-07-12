@@ -44,6 +44,27 @@ static func _lowest_tier_ingredient(recipe: Dictionary) -> String:
 			best = ing.get("item", "")
 	return best
 
+## Quality roll saat gear tertempa (v0.4.2): Adikarya 10% / Halus 25% / Normal.
+## Kualitas terbaik dipertahankan; maker's mark = nama penempa saat ini.
+static func _roll_gear_meta(item_id: String, rng: RandomNumberGenerator = null) -> void:
+	if not Db.item(item_id).get("type", "") in ["weapon", "armor", "accessory"]:
+		return
+	var roll := (rng.randf() if rng else randf())
+	var q := "normal"
+	if roll < 0.10:
+		q = "masterwork"
+	elif roll < 0.35:
+		q = "fine"
+	var order := ["normal", "fine", "masterwork"]
+	var cur: Dictionary = PlayerData.gear_meta.get(item_id, {})
+	if order.find(q) > order.find(cur.get("quality", "normal")):
+		cur["quality"] = q
+		if q != "normal":
+			EventBus.toast.emit("Kualitas %s!" % PlayerData.QUALITY_NAME.get(q, q))
+	cur["maker"] = PlayerData.char_name
+	PlayerData.gear_meta[item_id] = cur
+	PlayerData.recalculate_stats()
+
 ## Returns {success, result, reason}.
 static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dictionary:
 	var recipe := find_recipe(recipe_id)
@@ -76,6 +97,7 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		var out_qty: int = int(recipe.get("qty", 1))
 		out_qty += int(ProfessionSystem.perk_value(recipe.get("profession", ""), "bonus_yield"))
 		PlayerData.add_item(result, out_qty)
+		_roll_gear_meta(result, rng)   # quality roll + maker's mark (v0.4.2)
 		EventBus.item_crafted.emit(result, true)
 		if is_transcendent(recipe):
 			EventBus.transcendent_crafted.emit(result, true)

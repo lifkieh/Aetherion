@@ -429,6 +429,13 @@ func take_hit(result: Dictionary, from) -> void:
 	_flash()
 	Audio.play_sfx("hit", 1.25 if result.get("is_crit", false) else 1.0)
 	StatusFx.on_hit(self, result, is_wet)   # roll status (v0.4.1)
+	# Coating senjata (v0.4.2): elemen dominan tetap; +25% damage elemen sekunder
+	if is_instance_valid(from) and from.is_in_group("player") and PlayerData.coating_active():
+		var celem: String = PlayerData.coating_element()
+		if celem != result.get("element", "none") and dmg > 0:
+			var extra: int = maxi(1, int(dmg * 0.25))
+			take_status_damage(extra, celem)
+			StatusFx.on_hit(self, {"damage": extra, "element": celem}, is_wet)
 	# aggro on hit
 	if _state in [State.WANDER, State.IDLE]:
 		_state = State.CHASE

@@ -1285,5 +1285,36 @@
   "value": 60000,
   "stack": 1,
   "flavor": "Puncak piramida penempaan. Dunia akan mengingat siapa penempanya."
+ },
+ {
+  "id": "venom_oil",
+  "name": "Minyak Bisa",
+  "tier": "D",
+  "type": "coating",
+  "coat_element": "poison",
+  "coat_dur": 180,
+  "value": 140,
+  "stack": 20,
+  "flavor": "Oleskan ke senjata: tiap serangan meneteskan racun (elemen dominan tetap; +25% racun)."
+ },
+ {
+  "id": "frost_coat",
+  "name": "Salut Beku",
+  "tier": "D",
+  "type": "coating",
+  "coat_element": "ice",
+  "coat_dur": 180,
+  "value": 140,
+  "stack": 20,
+  "flavor": "Lapisan es tipis di bilah: tiap serangan menggigit dingin (+25% es)."
+ },
+ {
+  "id": "protection_scroll",
+  "name": "Gulungan Perlindungan",
+  "tier": "C",
+  "type": "material",
+  "value": 420,
+  "stack": 20,
+  "flavor": "Menjaga enchant dari kegagalan: level tidak turun saat ritual +7 ke atas gagal."
  }
 ]

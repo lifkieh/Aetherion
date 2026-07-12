@@ -47,6 +47,12 @@ var inventory: Dictionary = {}         # item_id -> qty
 var equipped_weapon: String = ""       # item_id (affects ATK + weapon element base)
 var equipped_armor: String = ""        # item_id (armor slot — DEF/HP)
 var equipped_accessory: String = ""    # item_id (accessory slot — varied)
+# Gear & Economy v0.4.2: kualitas/maker/enchant per item_id (model stack ringan —
+# semua salinan item_id yang sama berbagi meta; keputusan desain, ledger #72)
+var gear_meta: Dictionary = {}         # item_id -> {"quality","maker","enchant"}
+var coating: Dictionary = {}           # coating senjata aktif {"element","until"} (unix)
+const QUALITY_MULT := {"normal": 1.0, "fine": 1.05, "masterwork": 1.10}
+const QUALITY_NAME := {"normal": "Normal", "fine": "Halus", "masterwork": "Adikarya"}
 
 # --- Class / skills / element ---
 var char_class: String = "warrior"     # class terpilih (combat ATAU kehidupan, Decision Log #33)
@@ -140,6 +146,8 @@ func new_game(class_id: String = "warrior", weapon_id: String = "", sub_id: Stri
 	var wid := weapon_id
 	if wid == "" or Db.item(wid).is_empty():
 		wid = variants[0].get("id", "wooden_sword") if not variants.is_empty() else "wooden_sword"
+	gear_meta = {}
+	coating = {}
 	inventory = {"minor_potion": 3, "basic_orb": 2, "cloth_tunic": 1, "seed_mintleaf": 3}
 	inventory[wid] = 1
 	for kit_item in cd.get("kit", {}):
@@ -387,8 +395,34 @@ func _gear_stat(key: String) -> int:
 	for slot in ["equipped_weapon", "equipped_armor", "equipped_accessory"]:
 		var id: String = get(slot)
 		if id != "":
-			total += int(Db.item(id).get(key, 0))
+			# kualitas + enchant menskalakan stat gear (v0.4.2)
+			total += int(round(float(Db.item(id).get(key, 0)) * gear_mult(id)))
 	return total
+
+## Pengganda stat gear dari kualitas + enchant (v0.4.2): Adikarya +10%, +3%/enchant.
+func gear_mult(item_id: String) -> float:
+	var m: Dictionary = gear_meta.get(item_id, {})
+	var q: float = QUALITY_MULT.get(m.get("quality", "normal"), 1.0)
+	return q * (1.0 + 0.03 * int(m.get("enchant", 0)))
+
+func gear_enchant(item_id: String) -> int:
+	return int(gear_meta.get(item_id, {}).get("enchant", 0))
+
+# --- Coating senjata (v0.4.2): elemen dominan tetap, +25% elemen sekunder ---
+func apply_coating(elem: String, dur_sec: float) -> void:
+	coating = {"element": elem, "until": Time.get_unix_time_from_system() + dur_sec}
+	EventBus.toast.emit("Senjata dilapisi %s (%d dtk)." % [elem, int(dur_sec)])
+
+func coating_active() -> bool:
+	if coating.is_empty():
+		return false
+	if Time.get_unix_time_from_system() >= float(coating.get("until", 0.0)):
+		coating = {}
+		return false
+	return true
+
+func coating_element() -> String:
+	return coating.get("element", "none") if coating_active() else "none"
 
 ## Allocate one free point into an attribute. Returns true on success.
 func allocate_point(attr: String) -> bool:
@@ -597,7 +631,7 @@ func to_save() -> Dictionary:
 		"craft_insight": craft_insight, "daily_quests": daily_quests, "prof_xp": prof_xp,
 		"hotbar": hotbar, "discovered_fusions": discovered_fusions,
 		"fusion_fizzled_elements": fusion_fizzled_elements,
-		"skill_trees": skill_trees,
+		"skill_trees": skill_trees, "gear_meta": gear_meta,
 		"onboarding_seen": onboarding_seen, "guide_step": guide_step, "guide_progress": guide_progress,
 		"char_config": char_config,
 	}
@@ -635,6 +669,8 @@ func from_save(d: Dictionary) -> void:
 	discovered_fusions = d.get("discovered_fusions", [])
 	fusion_fizzled_elements = d.get("fusion_fizzled_elements", [])
 	skill_trees = d.get("skill_trees", {})
+	gear_meta = d.get("gear_meta", {})
+	coating = {}           # transient — coating tak dibawa lintas-save
 	char_config = d.get("char_config", CharGen.default_config())
 	onboarding_seen = d.get("onboarding_seen", [])
 	guide_step = int(d.get("guide_step", 0))

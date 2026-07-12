@@ -59,6 +59,7 @@ func _ready() -> void:
 	_test_combo()
 	await _test_patterns()
 	_test_transcendent_pyramid()
+	_test_gear_meta_enchant_coating()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2099,3 +2100,95 @@ func _test_transcendent_pyramid() -> void:
 	check("everfrost_edge tertempa", made)
 	check("gagal ritual: everfrost_core selamat", kept_core or made)
 	PlayerData.professions = save_profs
+
+
+func _test_gear_meta_enchant_coating() -> void:
+	print("[Gear Meta / Enchant / Coating v0.4.2]")
+	# --- quality roll + maker's mark saat crafting gear ---
+	PlayerData.char_name = "Penguji"
+	PlayerData.gear_meta.clear()
+	PlayerData.inventory.clear()
+	PlayerData.add_item("wood_log", 4)
+	CraftingSystem.craft("craft_plank")
+	CraftingSystem.craft("craft_plank")
+	var made_sword := false
+	for attempt in range(30):
+		PlayerData.add_item("plank", 2)
+		if CraftingSystem.craft("craft_wooden_sword").success:
+			made_sword = true
+			break
+	check("gear tertempa dapat maker's mark", made_sword and PlayerData.gear_meta.get("wooden_sword", {}).get("maker", "") == "Penguji")
+	var q: String = PlayerData.gear_meta.get("wooden_sword", {}).get("quality", "normal")
+	check("quality valid", q in ["normal", "fine", "masterwork"], q)
+	# material TIDAK dapat meta
+	check("material tanpa meta", not PlayerData.gear_meta.has("plank"))
+	# --- gear_mult: kualitas + enchant menskalakan stat ---
+	PlayerData.gear_meta["wooden_sword"] = {"quality": "masterwork", "maker": "Penguji", "enchant": 10}
+	var mult := PlayerData.gear_mult("wooden_sword")
+	check("gear_mult masterwork+10 = 1.43", absf(mult - 1.1 * 1.3) < 0.001, str(mult))
+	PlayerData.equipped_weapon = "wooden_sword"
+	PlayerData.recalculate_stats()
+	# --- enchant: sukses, gagal aman <=+6, gagal >=+7 turun 1, scroll menahan ---
+	PlayerData.gear_meta["wooden_sword"] = {"quality": "normal", "maker": "Penguji", "enchant": 0}
+	PlayerData.add_item("wooden_sword", 1)
+	PlayerData.gold = 999999
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 1
+	var r1 := EnchantSystem.enchant("wooden_sword", rng)   # target +1 rate 1.0 -> pasti sukses
+	check("enchant +1 pasti sukses", r1.success and PlayerData.gear_enchant("wooden_sword") == 1)
+	# paksa gagal di target rendah: level tetap
+	PlayerData.gear_meta["wooden_sword"]["enchant"] = 3
+	var failed_low := false
+	for attempt in range(200):
+		rng.seed = attempt
+		var rr := EnchantSystem.enchant("wooden_sword", rng)
+		if not rr.success:
+			failed_low = true
+			check("gagal <=+6: level tetap", PlayerData.gear_enchant("wooden_sword") == int(rr.level) and rr.level >= 3)
+			break
+		PlayerData.gear_meta["wooden_sword"]["enchant"] = 3
+	check("enchant bisa gagal", failed_low)
+	# gagal >=+7 tanpa scroll: turun 1
+	PlayerData.remove_item("protection_scroll", 99)
+	PlayerData.gear_meta["wooden_sword"]["enchant"] = 8
+	var dropped := false
+	for attempt in range(300):
+		rng.seed = attempt
+		var rr2 := EnchantSystem.enchant("wooden_sword", rng)
+		if not rr2.success:
+			dropped = PlayerData.gear_enchant("wooden_sword") == 7
+			break
+		PlayerData.gear_meta["wooden_sword"]["enchant"] = 8
+	check("gagal >=+7: turun 1 (tak hancur)", dropped and PlayerData.item_count("wooden_sword") >= 1)
+	# scroll menahan penurunan
+	PlayerData.gear_meta["wooden_sword"]["enchant"] = 8
+	PlayerData.add_item("protection_scroll", 5)
+	var protected := false
+	for attempt in range(300):
+		rng.seed = attempt
+		var rr3 := EnchantSystem.enchant("wooden_sword", rng)
+		if not rr3.success:
+			protected = PlayerData.gear_enchant("wooden_sword") == 8 and bool(rr3.get("protected", false))
+			break
+		PlayerData.gear_meta["wooden_sword"]["enchant"] = 8
+	check("Gulungan Perlindungan menahan level", protected)
+	# biaya: profesi enchanter aktif = diskon
+	var save_profs: Dictionary = PlayerData.professions.duplicate(true)
+	PlayerData.professions = {"main": "blacksmith", "sub": [], "last_main_change": 0}
+	var c0 := EnchantSystem.cost("wooden_sword")
+	PlayerData.professions = {"main": "enchanter", "sub": [], "last_main_change": 0}
+	var c1 := EnchantSystem.cost("wooden_sword")
+	check("diskon enchanter 30%", c1 < c0, "%d vs %d" % [c1, c0])
+	PlayerData.professions = save_profs
+	# --- coating: aktif, elemen benar, kedaluwarsa ---
+	PlayerData.apply_coating("poison", 60.0)
+	check("coating aktif + elemen", PlayerData.coating_active() and PlayerData.coating_element() == "poison")
+	PlayerData.coating = {"element": "poison", "until": Time.get_unix_time_from_system() - 1.0}
+	check("coating kedaluwarsa", not PlayerData.coating_active() and PlayerData.coating_element() == "none")
+	# resep coating + scroll ada dan valid
+	for rid in ["craft_venom_oil", "craft_frost_coat", "craft_protection_scroll"]:
+		check("resep %s ada" % rid, not CraftingSystem.find_recipe(rid).is_empty())
+	check("profesi enchanter terdaftar", Db.professions.has("enchanter"))
+	PlayerData.gear_meta.clear()
+	PlayerData.equipped_weapon = ""
+	PlayerData.recalculate_stats()

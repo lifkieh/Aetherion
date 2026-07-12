@@ -1,23 +1,112 @@
 [
-  {"id": "lumberjack", "name": "Penebang", "perks": [
-    {"level": 3, "type": "bonus_yield", "value": 1, "desc": "+1 kayu tiap menebang"},
-    {"level": 8, "type": "bonus_yield", "value": 1, "desc": "+1 kayu lagi"}
-  ]},
-  {"id": "miner", "name": "Penambang", "perks": [
-    {"level": 3, "type": "faster", "value": 1, "desc": "Menggali -1 pukulan"},
-    {"level": 6, "type": "bonus_yield", "value": 1, "desc": "+1 bijih tiap urat"}
-  ]},
-  {"id": "fisherman", "name": "Pemancing", "perks": [
-    {"level": 4, "type": "bite_window", "value": 0.3, "desc": "Jendela gigitan +30%"}
-  ]},
-  {"id": "herbalist", "name": "Herbalis", "perks": [
-    {"level": 4, "type": "bonus_yield", "value": 1, "desc": "+1 herbal saat panen"}
-  ]},
-  {"id": "cook", "name": "Koki", "perks": [
-    {"level": 4, "type": "bonus_yield", "value": 1, "desc": "+1 hasil masakan"}
-  ]},
-  {"id": "blacksmith", "name": "Pandai Besi", "perks": []},
-  {"id": "carpenter", "name": "Tukang Kayu", "perks": []},
-  {"id": "alchemist", "name": "Alkemis", "perks": []},
-  {"id": "tamer", "name": "Penjinak", "perks": []}
+ {
+  "id": "lumberjack",
+  "name": "Penebang",
+  "perks": [
+   {
+    "level": 3,
+    "type": "bonus_yield",
+    "value": 1,
+    "desc": "+1 kayu tiap menebang"
+   },
+   {
+    "level": 8,
+    "type": "bonus_yield",
+    "value": 1,
+    "desc": "+1 kayu lagi"
+   }
+  ]
+ },
+ {
+  "id": "miner",
+  "name": "Penambang",
+  "perks": [
+   {
+    "level": 3,
+    "type": "faster",
+    "value": 1,
+    "desc": "Menggali -1 pukulan"
+   },
+   {
+    "level": 6,
+    "type": "bonus_yield",
+    "value": 1,
+    "desc": "+1 bijih tiap urat"
+   }
+  ]
+ },
+ {
+  "id": "fisherman",
+  "name": "Pemancing",
+  "perks": [
+   {
+    "level": 4,
+    "type": "bite_window",
+    "value": 0.3,
+    "desc": "Jendela gigitan +30%"
+   }
+  ]
+ },
+ {
+  "id": "herbalist",
+  "name": "Herbalis",
+  "perks": [
+   {
+    "level": 4,
+    "type": "bonus_yield",
+    "value": 1,
+    "desc": "+1 herbal saat panen"
+   }
+  ]
+ },
+ {
+  "id": "cook",
+  "name": "Koki",
+  "perks": [
+   {
+    "level": 4,
+    "type": "bonus_yield",
+    "value": 1,
+    "desc": "+1 hasil masakan"
+   }
+  ]
+ },
+ {
+  "id": "blacksmith",
+  "name": "Pandai Besi",
+  "perks": []
+ },
+ {
+  "id": "carpenter",
+  "name": "Tukang Kayu",
+  "perks": []
+ },
+ {
+  "id": "alchemist",
+  "name": "Alkemis",
+  "perks": []
+ },
+ {
+  "id": "tamer",
+  "name": "Penjinak",
+  "perks": []
+ },
+ {
+  "id": "enchanter",
+  "name": "Enchanter",
+  "perks": [
+   {
+    "level": 3,
+    "type": "enchant_bonus",
+    "value": 0.05,
+    "desc": "Peluang enchant +5%"
+   },
+   {
+    "level": 8,
+    "type": "enchant_bonus",
+    "value": 0.05,
+    "desc": "Peluang enchant +5% lagi"
+   }
+  ]
+ }
 ]

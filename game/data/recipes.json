@@ -702,5 +702,66 @@
     "qty": 1
    }
   ]
+ },
+ {
+  "id": "craft_venom_oil",
+  "result": "venom_oil",
+  "qty": 2,
+  "station": "bench",
+  "profession": "alchemist",
+  "level": 3,
+  "success_rate": 0.85,
+  "ingredients": [
+   {
+    "item": "venom_gland",
+    "qty": 2
+   },
+   {
+    "item": "herb_mintleaf",
+    "qty": 1
+   }
+  ]
+ },
+ {
+  "id": "craft_frost_coat",
+  "result": "frost_coat",
+  "qty": 2,
+  "station": "bench",
+  "profession": "alchemist",
+  "level": 3,
+  "success_rate": 0.85,
+  "ingredients": [
+   {
+    "item": "frost_essence",
+    "qty": 1
+   },
+   {
+    "item": "slime_jelly",
+    "qty": 2
+   }
+  ]
+ },
+ {
+  "id": "craft_protection_scroll",
+  "result": "protection_scroll",
+  "qty": 1,
+  "station": "bench",
+  "profession": "enchanter",
+  "level": 3,
+  "success_rate": 0.75,
+  "ingredients": [
+   {
+    "item": "cloud_silk",
+    "qty": 1
+   },
+   {
+    "item": "premium_wool",
+    "qty": 1
+   },
+   {
+    "item": "glacier_gem",
+    "qty": 1
+   }
+  ]
  }
 ]

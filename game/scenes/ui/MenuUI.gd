@@ -158,6 +158,7 @@ func _rebuild() -> void:
 	match mode:
 		"inventory": _build_inventory()
 		"crafting": _build_crafting()
+		"enchant": _build_enchant()
 		"shop": _build_shop()
 		"system": _build_system()
 		"pedia": _build_pedia()
@@ -484,7 +485,19 @@ func _item_tooltip_bb(id: String, def: Dictionary) -> String:
 	var type_id: String = def.get("type", "")
 	t += "[i]%s[/i]" % {"weapon": "Senjata", "armor": "Zirah", "accessory": "Aksesori", "material": "Bahan",
 		"consumable": "Ramuan", "orb": "Orb", "seed": "Benih", "gear": "Perlengkapan", "bait": "Umpan",
-		"junk": "Rongsokan", "skillbook": "Kitab Skill"}.get(type_id, type_id)
+		"junk": "Rongsokan", "skillbook": "Kitab Skill", "coating": "Salut Senjata"}.get(type_id, type_id)
+	# meta gear v0.4.2: kualitas, enchant, maker's mark
+	if type_id in ["weapon", "armor", "accessory"] and PlayerData.gear_meta.has(id):
+		var gm: Dictionary = PlayerData.gear_meta[id]
+		var ench := int(gm.get("enchant", 0))
+		var qk: String = gm.get("quality", "normal")
+		var bits := []
+		if ench > 0: bits.append("[color=#ffd76b]+%d[/color]" % ench)
+		if qk != "normal": bits.append("[color=#8fd0ff]%s[/color]" % PlayerData.QUALITY_NAME.get(qk, qk))
+		if not bits.is_empty(): t += "  " + " ".join(bits)
+		if gm.get("maker", "") != "":
+			t += "
+[color=#b9b2c9][i]Tempaan %s[/i][/color]" % gm.get("maker", "")
 	var stats := []
 	for pair in _GEAR_STAT_LABELS:
 		if def.has(pair[0]): stats.append("%s %d" % [pair[1], int(def[pair[0]])])
@@ -522,6 +535,13 @@ func _use_item(id: String, def: Dictionary) -> void:
 			_rebuild()
 		"consumable":
 			_use_consumable(id, def)
+		"coating":
+			# lapisi senjata: elemen dominan tetap, +25% sekunder (v0.4.2)
+			if PlayerData.item_count(id) > 0:
+				PlayerData.remove_item(id, 1)
+				PlayerData.apply_coating(def.get("coat_element", "none"), float(def.get("coat_dur", 180)))
+				Audio.play_sfx("success")
+				_rebuild()
 		"skillbook":
 			if PlayerData.use_skillbook(id):
 				_rebuild()
@@ -577,6 +597,44 @@ func _do_craft(r: Dictionary) -> void:
 func _after_ritual(_res: Dictionary) -> void:
 	if is_instance_valid(self) and is_inside_tree():
 		_rebuild()
+
+func _build_enchant() -> void:
+	title.text = "Enchanter — Bisikan Mantra"
+	content.add_child(_mk_label("Enchant +1..+10: +3% stat per level. Gagal menuju +7 ke atas = turun 1 level (tak pernah hancur). Gulungan Perlindungan menahan penurunan (auto-terpakai).", 11, Color(0.75, 0.8, 0.95)))
+	if ProfessionSystem.is_active("enchanter"):
+		content.add_child(_mk_label("Profesi Enchanter aktif: diskon 30% + bonus peluang.", 11, Color(0.6, 0.9, 0.6)))
+	content.add_child(_mk_label("Gulungan Perlindungan dimiliki: %d" % PlayerData.item_count("protection_scroll"), 12, Color(0.9, 0.85, 0.6)))
+	var shown := 0
+	var listed: Array = []
+	for slot in ["equipped_weapon", "equipped_armor", "equipped_accessory"]:
+		var eq: String = PlayerData.get(slot)
+		if eq != "": listed.append(eq)
+	for id in PlayerData.inventory.keys():
+		if Db.item(id).get("type", "") in ["weapon", "armor", "accessory"] and not id in listed:
+			listed.append(id)
+	for id in listed:
+		var def := Db.item(id)
+		var ench := PlayerData.gear_enchant(id)
+		var h := _row()
+		_add_item_icon(h, id)
+		var rate := int(round(EnchantSystem.success_rate(id) * 100))
+		var cost := EnchantSystem.cost(id)
+		var suffix := " +%d" % ench if ench > 0 else ""
+		var l := _mk_label("%s%s [%s] → +%d  (%d%%, %dG)" % [def.get("name", id), suffix, def.get("tier", "F"), ench + 1, rate, cost], 13)
+		l.custom_minimum_size = Vector2(380, 0)
+		h.add_child(l)
+		var can := EnchantSystem.can_enchant(id)
+		var b := _btn("Enchant", _do_enchant.bind(id))
+		b.disabled = not bool(can.ok) or PlayerData.gold < cost
+		if not can.ok: l.tooltip_text = can.reason
+		h.add_child(b)
+		shown += 1
+	if shown == 0:
+		content.add_child(_mk_label("Tidak ada gear untuk di-enchant.", 12, Color(0.6, 0.6, 0.65)))
+
+func _do_enchant(id: String) -> void:
+	EnchantSystem.enchant(id)
+	_rebuild()
 
 func _build_shop() -> void:
 	title.text = "Toko Greenvale"

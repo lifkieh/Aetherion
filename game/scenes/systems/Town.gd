@@ -239,6 +239,7 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 		["mirror", Vector2(198, -56)],        # Cermin Jiwa (re-customize) by the inn
 		["trainer", Vector2(-232, 96)],       # Guru Skill near the forge/plaza
 		["tree_keeper", Vector2(96, 96)],     # Penjaga Pohon (skill tree lokal, #30)
+		["enchanter", Vector2(-170, -66)],    # Enchanter di samping bengkel (v0.4.2)
 		["world_gate", Vector2(-96, -20)],    # Gerbang Penjelajah (#43)
 	]
 	for n in npcs:

@@ -81,6 +81,10 @@ func _build() -> void:
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "long", "hair_color": "#b0b0c0", "shirt": "#334a6b", "pants": "#2b2b3a"})
 		label.text = "Guru Skill [E]"
+	elif kind == "enchanter":
+		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
+			"hair": "bun", "hair_color": "#c9a0e8", "shirt": "#5c2380", "pants": "#2b2b3a"})
+		label.text = "Enchanter [E]"
 	elif kind == "tree_keeper":
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "bun", "hair_color": "#e8e2f4", "shirt": "#2e6b3f", "pants": "#6b4226"})
@@ -171,6 +175,11 @@ func interact() -> void:
 			"Kuajarkan jurus-jurus lanjutan — bila level & emasmu cukup.",
 			"Lihat daftar 'Belum dikuasai' di Skill Book."], "Guru Skill", sprite.texture)
 		menu.open("skill", self)
+	elif kind == "enchanter":
+		await Stage.say(["Logam juga bisa bermimpi, petualang.",
+			"Bawa gear-mu — kubisikkan mantra agar ia lebih tajam dari takdirnya.",
+			"Di atas +6, mimpinya bisa buyar... siapkan Gulungan Perlindungan."], "Enchanter", sprite.texture)
+		menu.open("enchant", self)
 	elif kind == "tree_keeper":
 		await Stage.say(["Setiap tanah menumbuhkan ilmunya sendiri, petualang.",
 			"Pohon di sini bisa kubukakan untukmu. Yang lain? Hanya rumor yang bisa kubisikkan."], "Penjaga Pohon", sprite.texture)
