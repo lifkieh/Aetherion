@@ -136,5 +136,9 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 | 19 | ~2026-07-11 | Skala level Fase 0 | Wilayah level 1–99 (v0.1 §4.1) | Konten Fase 0 dikompresi ke ±L1–55 (Greenvale 1–15 … Storm 40–55) | Scope Fase 0; kurva penuh menunggu konten launch | Agent (retroaktif — implisit di roster) |
 | 20 | ~2026-07-11 | Profesi | Daftar GDD §3.3 tanpa Carpenter | +Carpenter (kayu→plank→furniture) | Kebutuhan rantai craft awal | Agent (retroaktif) |
 | 21 | 2026-07-12 | Dokumentasi | (tidak ada) | **PLAN_LEDGER = dokumen induk** + 5 aturan permanen (DEVLOG) | Sistem hilang senyap (musim, rune, enchant, affinity…) ketahuan di telaah designer | Owner (addendum) |
+| 22 | 2026-07-12 | Roadmap | MASTER_IMPROVEMENT_PLAN v0.4.1–v0.4.4 (draft agent) | **DISETUJUI** dengan 3 penyesuaian (baris 23–25); v0.4.1 dieksekusi penuh sekarang | Review owner + designer | Owner |
+| 23 | 2026-07-12 | Modern meta | Pause menu + volume per channel + fullscreen di v0.4.4 | **Ditarik maju ke v0.4.1** | Owner akan playtest berulang — butuh sekarang | Owner (review i) |
+| 24 | 2026-07-12 | Blood Moon | Event cuaca + drop ×2 (v0.1 §4.3) | v0.4.1 + **disambungkan sebagai syarat evolusi/scenario kedua** (pola Alpha Wolf purnama) | Event langit harus menggerakkan konten, bukan sekadar modifier | Owner (review ii) |
+| 25 | 2026-07-12 | Craft Transenden | Resep success 1% + pengumuman (v0.2 §2) | v0.4.2: dibuat sebagai **MOMEN** — animasi ritual + jeda dramatis + pengumuman, bukan sekadar resep | Chase item butuh dramaturgi | Owner (review iii) |
 
 > Baris berikutnya ditambahkan SEBELUM implementasi keputusan baru. Jangan hapus baris; koreksi = baris baru.
