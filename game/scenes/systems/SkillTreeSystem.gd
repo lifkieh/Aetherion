@@ -25,6 +25,14 @@ static func level(id: String) -> int:
 static func owned(id: String) -> bool:
 	return level(id) > 0
 
+## Pohon domain class kehidupan (Decision Log #33): diskon 50% + 1 node gratis.
+static func is_domain_tree(id: String) -> bool:
+	return id in Db.cls(PlayerData.char_class).get("tree_domain", [])
+
+static func unlock_cost(id: String) -> int:
+	var c := int(tree(id).get("cost", 0))
+	return int(c * 0.5) if is_domain_tree(id) else c
+
 ## Boleh dibuka? Mengembalikan {ok, reason} — reason berisi RUMOR saat lokasi salah.
 static func can_unlock(id: String, at_loc: String) -> Dictionary:
 	var t := tree(id)
@@ -39,20 +47,21 @@ static func can_unlock(id: String, at_loc: String) -> Dictionary:
 	var req: String = t.get("requires_scenario", "")
 	if req != "" and PlayerData.scenario_flags.get(req, "") != "cleared":
 		return {"ok": false, "reason": "📖 Butuh buku dari sebuah Skenario Tersembunyi... langit tahu yang mana."}
-	if PlayerData.gold < int(t.get("cost", 0)):
-		return {"ok": false, "reason": "Gold kurang (%d G)." % int(t.get("cost", 0))}
+	if PlayerData.gold < unlock_cost(id):
+		return {"ok": false, "reason": "Gold kurang (%d G)." % unlock_cost(id)}
 	return {"ok": true, "reason": ""}
 
-## Buka pohon DI lokasinya (level 1). Perjalanan untuk membuka.
+## Buka pohon DI lokasinya (level 1; pohon domain class kehidupan = level 2, #33).
 static func unlock(id: String, at_loc: String) -> Dictionary:
 	var chk := can_unlock(id, at_loc)
 	if not chk.ok:
 		return chk
 	var t := tree(id)
-	PlayerData.add_gold(-int(t.get("cost", 0)))
-	PlayerData.skill_trees[id] = 1
+	PlayerData.add_gold(-unlock_cost(id))
+	var domain := is_domain_tree(id)
+	PlayerData.skill_trees[id] = 2 if domain else 1   # domain: 1 node GRATIS
 	PlayerData.recalculate_stats()
-	EventBus.toast.emit("🌳 Pohon dibuka: %s!" % t.get("name", id))
+	EventBus.toast.emit("🌳 Pohon dibuka: %s!%s" % [t.get("name", id), " (domain jalurmu: diskon + node gratis)" if domain else ""])
 	Audio.play_sfx("levelup", 1.1)
 	return {"ok": true, "reason": ""}
 

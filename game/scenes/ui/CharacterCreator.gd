@@ -228,8 +228,8 @@ func _confirm() -> void:
 		get_tree().paused = false
 		queue_free()
 	else:
-		# class + weapon chosen at ClassSelect (FF-2a); intro lore first (FF-2g)
-		PlayerData.new_game(PlayerData.pending_class, PlayerData.pending_weapon)
+		# class + weapon (+ combat sub jalur kehidupan, #33) dari ClassSelect; intro dulu (FF-2g)
+		PlayerData.new_game(PlayerData.pending_class, PlayerData.pending_weapon, PlayerData.pending_sub)
 		WorldState.new_game()
 		PlayerData.char_config = cfg.duplicate(true)
 		Stage.go_to_scene("res://scenes/ui/Intro.tscn")

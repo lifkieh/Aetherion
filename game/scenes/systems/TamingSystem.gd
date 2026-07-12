@@ -26,8 +26,9 @@ static func weather_mod() -> float:
 	return 1.0
 
 static func tamer_skill_mod() -> float:
-	# Tamer bonus + pohon skill Menjinakkan (tame_add, Decision Log #30).
-	return 1.0 + minf(0.25, PlayerData.level * 0.01) + SkillTreeSystem.bonus_total("tame_add")
+	# Tamer bonus + pohon skill Menjinakkan (#30) + perk class Penjinak (#33).
+	var penjinak := 0.05 if PlayerData.char_class == "penjinak" else 0.0
+	return 1.0 + minf(0.25, PlayerData.level * 0.01) + SkillTreeSystem.bonus_total("tame_add") + penjinak
 
 static func compute_chance(monster, orb: Dictionary) -> float:
 	var base: float = monster.inst.get("tame_base", 0.4)

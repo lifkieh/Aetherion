@@ -1,6 +1,7 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-12 (Ronde 6 — v0.4.1 Combat Depth selesai)
+**Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
+**Exe terakhir:** 2026-07-12 19:18 WIB — berisi hingga: v0.4.1 Combat Depth + Skill Tree terikat lokasi + DUA JALUR ClassSelect (6 tempur + 4 kehidupan + combat sub). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -284,6 +285,14 @@ PLAN_LEDGER kedua bagian ter-update.
 upgrade di mana pun; Penjaga terpasang di 5 lokasi hidup + Homestead; Celestial tampil-terkunci
 di Menara Astrologer (butuh buku Hidden Scenario); Wildhearth (kota beast) terdaftar konten beku;
 XP Tamer pada aksi taming (sukses+percobaan). Pemetaan penuh: PLAN_LEDGER §7. 421 test, exe 89.5 MB.
+
+### ➕ BD-1 (bug desain): DUA JALUR ClassSelect — SELESAI
+Koreksi owner yang hilang sebelum masuk ledger (GAP_AUDIT BD-1, Decision Log #33) kini
+terimplementasi penuh: tab ⚔ JALUR TEMPUR (6 class) + 🌾 JALUR KEHIDUPAN (Perajin/Petani/
+Peramu/Penjinak — +50% EXP domain, kit awal, perk khas, pilih 1 combat sub = 1 senjata +
+2 skill aturan sub); quest pembuka bercabang (langkah 2 = aktivitas domain); intro layar 3
+bervariasi per jalur; Status & Profesi menampilkan jalur + sub; class kehidupan = diskon
+50% + 1 node GRATIS di pohon skill domainnya. 437 test (end-to-end kedua jalur + persist).
 
 ## ⏸️ STATUS: MENUNGGU PLAYTEST v0.4.1 OWNER
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi

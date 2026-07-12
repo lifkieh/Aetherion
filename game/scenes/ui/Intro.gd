@@ -18,10 +18,16 @@ func _pages() -> Array:
 		{"icon": "",
 			"text": "Namun belakangan, langit gelisah.\n\nBadai datang tak sesuai musim. Monster berkeliaran makin jauh dari sarang.\nPara Astrolog membaca satu pesan yang sama di semua rasi:\n\"Sesuatu telah bangun.\""},
 		{"icon": "res://assets/game/ui/icons/element_%s_32.png" % cd.get("icon_elem", "fire"),
-			"text": "Kamu — %s muda, %s — tiba di GREENVALE,\ndesa perbatasan tempat semua petualang memulai.\n\nBukan karena Greenvale istimewa. Tapi karena setiap legenda\nharus dimulai dari suatu tempat." % [cd.get("name", "petualang"), cd.get("title", "")]},
+			"text": _page3_text(cd)},
 		{"icon": "",
 			"text": "Pelajari dunia. Kuasai elemen. Jinakkan yang buas.\nDan saat langit memanggil... jawablah.\n\n— AETHERION —"},
 	]
+
+## Layar 3 bervariasi per JALUR (Decision Log #33): tempur vs kehidupan.
+func _page3_text(cd: Dictionary) -> String:
+	if cd.get("path", "combat") == "life":
+		return "Kamu — %s muda, %s — tiba di GREENVALE,\ndesa perbatasan tempat semua petualang memulai.\n\nBukan pedang yang kau bawa, tapi KEAHLIAN.\nDunia yang gelisah tetap butuh makan, alat, dan sahabat —\ndan yang menyediakannya juga menjadi legenda." % [cd.get("name", "perantau"), cd.get("title", "")]
+	return "Kamu — %s muda, %s — tiba di GREENVALE,\ndesa perbatasan tempat semua petualang memulai.\n\nBukan karena Greenvale istimewa. Tapi karena setiap legenda\nharus dimulai dari suatu tempat." % [cd.get("name", "petualang"), cd.get("title", "")]
 
 func _ready() -> void:
 	theme = UiTheme.theme

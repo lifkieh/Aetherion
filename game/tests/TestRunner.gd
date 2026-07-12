@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	_test_life_path()
 	_test_skill_trees()
 	_test_daily_events()
 	_test_monster_depth()
@@ -689,6 +690,52 @@ class _FakeEntity:
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
 
+func _test_life_path() -> void:
+	print("[Dua Jalur ClassSelect — BD-1 / Decision Log #33]")
+	check("10 class dimuat (6 tempur + 4 kehidupan)", Db.classes.size() == 10)
+	var life_ids := Db.class_order.filter(func(c): return Db.cls(c).get("path", "") == "life")
+	check("4 class kehidupan: perajin/petani/peramu/penjinak", life_ids == ["perajin", "petani", "peramu", "penjinak"], str(life_ids))
+	var life_ok := true
+	for lid in life_ids:
+		var c := Db.cls(lid)
+		if c.get("kit", {}).is_empty() or c.get("perk", "") == "" or c.get("tree_domain", []).is_empty() or c.get("attr", {}).is_empty():
+			life_ok = false
+	check("tiap class kehidupan: kit + perk + pohon domain + attr", life_ok)
+	# END-TO-END jalur kehidupan: Perajin dengan sub Mage
+	PlayerData.new_game("perajin", "", "mage")
+	check("class kehidupan terpasang", PlayerData.char_class == "perajin" and PlayerData.combat_sub == "mage")
+	check("SUB = 2 skill pertama combat sub (aturan sub)", PlayerData.known_skills == ["spark_bolt", "frost_bolt"])
+	check("SUB = 1 elemen master pertama", PlayerData.mastered_elements == ["lightning"])
+	check("senjata dari combat sub", PlayerData.equipped_weapon == "apprentice_wand")
+	check("kit awal masuk tas", PlayerData.item_count("copper_bar") >= 2 and PlayerData.item_count("plank") >= 3)
+	# +50% EXP domain (Perajin: blacksmith dst.)
+	ProfessionSystem.set_main("miner")   # main ≠ domain, isolasi bonus domain
+	PlayerData.prof_xp["blacksmith"] = 0
+	ProfessionSystem.toggle_sub("blacksmith")   # aktifkan agar award jalan
+	EventBus.item_crafted.emit("copper_bar", true)   # hook award blacksmith? uji langsung:
+	ProfessionSystem.award("blacksmith", 10)
+	check("+50% EXP domain Perajin (10 -> 15)", PlayerData.prof_xp.get("blacksmith", 0) >= 15, str(PlayerData.prof_xp.get("blacksmith", 0)))
+	# integrasi pohon: diskon 50% + node gratis di pohon domain
+	PlayerData.gold = 1000
+	check("diskon domain 50%: life_cooking 80 -> 40", SkillTreeSystem.unlock_cost("life_cooking") == 40)
+	var res := SkillTreeSystem.unlock("life_cooking", "greenvale")
+	check("buka pohon domain sukses", res.ok)
+	check("node GRATIS: pohon domain langsung level 2", SkillTreeSystem.level("life_cooking") == 2)
+	# quest pembuka bercabang: langkah 2 jalur kehidupan = domain, bukan skill class
+	check("langkah 2 bercabang ke domain (prof_xp)", Onboarding.step_at(1).get("kind", "") == "prof_xp")
+	# END-TO-END jalur tempur tetap utuh
+	PlayerData.new_game("necromancer")
+	check("jalur tempur tetap: 3 skill + tanpa sub", PlayerData.known_skills.size() == 3 and PlayerData.combat_sub == "")
+	check("langkah 2 jalur tempur = skill class", Onboarding.step_at(1).get("kind", "") == "skill")
+	# persist combat_sub
+	PlayerData.new_game("penjinak", "", "archer")
+	SaveManager.save_game(3, true)
+	PlayerData.new_game("warrior")
+	SaveManager.load_game(3)
+	check("combat_sub selamat save/load", PlayerData.char_class == "penjinak" and PlayerData.combat_sub == "archer")
+	SaveManager.delete_save(3)
+	PlayerData.new_game()
+
 func _test_skill_trees() -> void:
 	print("[Skill Tree terikat lokasi — Decision Log #30]")
 	PlayerData.new_game()
@@ -911,10 +958,11 @@ func _test_save_modern() -> void:
 
 func _test_classes() -> void:
 	print("[Class Selection — FF-2a]")
-	check("6 classes loaded", Db.classes.size() == 6 and Db.class_order.size() == 6)
+	var combat_ids := Db.class_order.filter(func(c): return Db.cls(c).get("path", "combat") == "combat")
+	check("6 combat classes loaded (+4 life = 10 total)", combat_ids.size() == 6 and Db.classes.size() == 10)
 	var all_ok := true
 	var kit_ids := {}
-	for cid in Db.class_order:
+	for cid in combat_ids:
 		var c := Db.cls(cid)
 		if c.get("skills", []).size() != 3: all_ok = false
 		if c.get("weapons", []).size() != 2: all_ok = false
@@ -924,8 +972,8 @@ func _test_classes() -> void:
 		for wv in c.get("weapons", []):
 			if Db.item(wv.get("id", "")).is_empty(): all_ok = false
 		kit_ids[str(c.get("skills", []))] = true
-	check("every class: 3 real skills + 2 real weapons + attr + advanced teaser", all_ok)
-	check("all 6 skill kits are DIFFERENT", kit_ids.size() == 6, str(kit_ids.size()))
+	check("every combat class: 3 real skills + 2 real weapons + attr + advanced teaser", all_ok)
+	check("all 6 combat skill kits are DIFFERENT", kit_ids.size() == 6, str(kit_ids.size()))
 	# new_game applies the class package
 	PlayerData.new_game("necromancer")
 	check("necromancer class set", PlayerData.char_class == "necromancer")

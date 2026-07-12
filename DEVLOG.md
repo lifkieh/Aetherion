@@ -9,6 +9,28 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
 5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
 
+## 2026-07-12 — BD-1: DUA JALUR ClassSelect (koreksi owner yang hilang) — SELESAI
+
+Verifikasi kepatuhan owner menemukan layar ClassSelect masih 6 class combat. Audit
+jujur: koreksi "dua tab jalur + 4 class kehidupan" TIDAK ADA di kode DAN TIDAK ADA
+baris Decision Log-nya — hilang sebelum masuk ledger (dicatat sebagai BUG DESAIN BD-1
+di GAP_AUDIT + Decision Log #33 retroaktif). Implementasi hari ini:
+- Tab ⚔ JALUR TEMPUR (6 class, seperti sebelumnya) + 🌾 JALUR KEHIDUPAN: **Perajin**
+  (produksi: blacksmith/carpenter/alchemist/cook), **Petani** (panen homestead +1),
+  **Peramu** (pengumpul 4 profesi, +5% hasil), **Penjinak** (tamer, +5% jinak) —
+  kartu deskripsi + bonus stat + **kit awal** + **perk khas** + **+50% EXP domain**
+  (ProfessionSystem.award).
+- Jalur kehidupan memilih **1 combat SUB**: 1 senjata + 2 skill pertama + 1 elemen
+  master (aturan sub); tersimpan (combat_sub) & tampil di Status/Profesi.
+- Quest pembuka bercabang ringan (langkah 2 = aktivitas domain via prof_xp_gained);
+  intro layar 3 bervariasi per jalur.
+- Integrasi skill tree (#30): class kehidupan = **diskon 50% + 1 node GRATIS** di
+  pohon domainnya (tree_domain per class).
+- **ATURAN PERMANEN BARU (owner)**: STATUS.md wajib memuat baris "Exe terakhir:
+  [tanggal jam] — berisi hingga fitur X" — diperbarui SETIAP export.
+437 test (end-to-end kedua jalur: Perajin+Mage sub, persist save/load, diskon+node
+gratis, cabang panduan, jalur tempur tetap utuh).
+
 ## 2026-07-12 — ADDENDUM SKILL TREE TERIKAT LOKASI (Decision Log #30–32) — SELESAI
 
 Sistem BARU dari addendum owner (dicatat di ledger sebelum kerja): `skill_trees.json`

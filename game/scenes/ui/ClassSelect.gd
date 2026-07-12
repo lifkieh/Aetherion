@@ -1,23 +1,27 @@
 extends Control
-## Class Selection (FF-2a) — first step of New Game. Pick 1 of 6 combat classes
-## (GDD v0.1 §3.3), then a starting weapon variant, then continue to the
-## Character Creator. The class = profesi combat utama (max 1 combat, GDD §3.2).
+## Class Selection — first step of New Game. DUA JALUR (Decision Log #33):
+## • JALUR TEMPUR: 6 class combat (GDD v0.1 §3.3) — 3 skill, 2 varian senjata.
+## • JALUR KEHIDUPAN: 4 class konsolidasi (Perajin/Petani/Peramu/Penjinak) —
+##   +50% EXP domain, starting kit, perk khas, dan memilih 1 COMBAT SUB
+##   (1 senjata + 2 skill; aturan sub berlaku).
 
 var _font: Font
+var _path := "combat"              # tab aktif: combat | life
 var _selected := ""
 var _weapon := ""
+var _sub := "warrior"              # combat sub untuk jalur kehidupan
 var _cards: Dictionary = {}        # class_id -> PanelContainer
 var _detail: VBoxContainer
 var _start_btn: Button
+var _grid: GridContainer
+var _tab_btns: Dictionary = {}
 
 func _ready() -> void:
 	theme = UiTheme.theme
 	if ResourceLoader.exists("res://assets/game/fonts/m5x7.ttf"):
 		_font = load("res://assets/game/fonts/m5x7.ttf")
 	_build()
-	# default selection so the flow is never stuck
-	if not Db.class_order.is_empty():
-		_select(Db.class_order[0])
+	_select_path("combat")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		get_tree().create_timer(1.0).timeout.connect(func():
 			if DisplayServer.get_name() != "headless":
@@ -42,25 +46,39 @@ func _build() -> void:
 	add_child(bg)
 
 	var title := _lbl("Pilih Jalanmu", 34, Color(1.0, 0.86, 0.42))
-	title.position = Vector2(40, 18)
+	title.position = Vector2(40, 14)
 	add_child(title)
-	var sub := _lbl("Class adalah profesi combat utamamu — identitasmu sejak langkah pertama. (Profesi hidup lain bisa diambil di dalam game.)", 13, Color(0.75, 0.8, 0.95))
-	sub.position = Vector2(42, 58)
-	add_child(sub)
+	var subt := _lbl("Dua jalur hidup di Aetherion: bertarung, atau berkarya. Keduanya sah, keduanya legenda.", 13, Color(0.75, 0.8, 0.95))
+	subt.position = Vector2(42, 52)
+	add_child(subt)
 
-	# 6 class cards (2 kolom kiri) + detail panel (kanan)
-	var grid := GridContainer.new()
-	grid.columns = 2
-	grid.position = Vector2(40, 88)
-	grid.add_theme_constant_override("h_separation", 10)
-	grid.add_theme_constant_override("v_separation", 10)
-	add_child(grid)
-	for cid in Db.class_order:
-		grid.add_child(_class_card(cid))
+	# dua TAB JALUR (Decision Log #33)
+	var tabs := HBoxContainer.new()
+	tabs.position = Vector2(40, 74)
+	tabs.add_theme_constant_override("separation", 8)
+	add_child(tabs)
+	for pd in [["combat", "⚔ JALUR TEMPUR"], ["life", "🌾 JALUR KEHIDUPAN"]]:
+		var tb := Button.new()
+		tb.text = pd[1]
+		if _font: tb.add_theme_font_override("font", _font)
+		tb.toggle_mode = true
+		tb.custom_minimum_size = Vector2(220, 34)
+		var pid: String = pd[0]
+		tb.pressed.connect(func(): Audio.play_sfx("menu"); _select_path(pid))
+		tabs.add_child(tb)
+		_tab_btns[pid] = tb
+
+	# kartu class (2 kolom kiri) + detail panel (kanan)
+	_grid = GridContainer.new()
+	_grid.columns = 2
+	_grid.position = Vector2(40, 118)
+	_grid.add_theme_constant_override("h_separation", 10)
+	_grid.add_theme_constant_override("v_separation", 10)
+	add_child(_grid)
 
 	var dp := PanelContainer.new()
-	dp.position = Vector2(560, 88)
-	dp.custom_minimum_size = Vector2(560, 500)
+	dp.position = Vector2(560, 118)
+	dp.custom_minimum_size = Vector2(560, 480)
 	add_child(dp)
 	_detail = VBoxContainer.new()
 	_detail.add_theme_constant_override("separation", 6)
@@ -72,6 +90,19 @@ func _build() -> void:
 	back.position = Vector2(40, 620)
 	back.pressed.connect(func(): Stage.go_to_scene("res://scenes/ui/MainMenu.tscn"))
 	add_child(back)
+
+func _select_path(p: String) -> void:
+	_path = p
+	for k in _tab_btns:
+		_tab_btns[k].button_pressed = (k == p)
+	for ch in _grid.get_children():
+		ch.queue_free()
+	_cards.clear()
+	var ids := Db.class_order.filter(func(cid): return Db.cls(cid).get("path", "combat") == p)
+	for cid in ids:
+		_grid.add_child(_class_card(cid))
+	if not ids.is_empty():
+		_select(ids[0])
 
 func _class_card(cid: String) -> PanelContainer:
 	var c := Db.cls(cid)
@@ -110,7 +141,10 @@ func _class_card(cid: String) -> PanelContainer:
 func _select(cid: String) -> void:
 	_selected = cid
 	var c := Db.cls(cid)
-	_weapon = c.get("weapons", [{}])[0].get("id", "")
+	if c.get("path", "combat") == "life":
+		_weapon = Db.cls(_sub).get("weapons", [{}])[0].get("id", "")
+	else:
+		_weapon = c.get("weapons", [{}])[0].get("id", "")
 	for k in _cards:
 		var sb: StyleBoxFlat = _cards[k].get_theme_stylebox("panel")
 		sb.set_border_width_all(4 if k == cid else 2)
@@ -133,6 +167,9 @@ func _refresh_detail() -> void:
 	for k in c.get("attr", {}):
 		attrs.append("%s +%d" % [k, int(c.attr[k])])
 	_detail.add_child(_lbl("Bonus stat awal: " + ", ".join(attrs), 14, Color(0.6, 0.9, 0.6)))
+	if c.get("path", "combat") == "life":
+		_refresh_life_detail(c)
+		return
 	# starting skills
 	_detail.add_child(_lbl("— 3 Skill Awal —", 15, Color(1.0, 0.86, 0.42)))
 	for sid in c.get("skills", []):
@@ -175,10 +212,55 @@ func _refresh_detail() -> void:
 	_start_btn.pressed.connect(_confirm)
 	_detail.add_child(_start_btn)
 
+## Detail JALUR KEHIDUPAN (Decision Log #33): perk + kit + pohon domain + combat sub.
+func _refresh_life_detail(c: Dictionary) -> void:
+	_detail.add_child(_lbl("— Perk Jalur —", 15, Color(1.0, 0.86, 0.42)))
+	var pk := _lbl("★ " + c.get("perk", ""), 12, Color(0.6, 0.9, 0.6))
+	pk.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	pk.custom_minimum_size = Vector2(520, 0)
+	_detail.add_child(pk)
+	# starting kit
+	var kit_parts := []
+	for kid in c.get("kit", {}):
+		kit_parts.append("%s x%d" % [Db.item_name(kid), int(c.kit[kid])])
+	_detail.add_child(_lbl("Kit awal: " + ", ".join(kit_parts), 12, Color(0.75, 0.8, 0.95)))
+	# domain trees teaser
+	var dt: Array = c.get("tree_domain", []).map(func(tid): return Db.skill_trees.get(tid, {}).get("name", tid))
+	_detail.add_child(_lbl("Pohon domain (diskon+gratis): %s" % ", ".join(dt), 11, Color(0.75, 0.8, 0.95)))
+	# combat SUB: 1 senjata + 2 skill (aturan sub)
+	_detail.add_child(_lbl("— Combat Sub (pilih 1: 1 senjata + 2 skill) —", 15, Color(1.0, 0.86, 0.42)))
+	var srow := GridContainer.new()
+	srow.columns = 3
+	srow.add_theme_constant_override("h_separation", 6)
+	srow.add_theme_constant_override("v_separation", 6)
+	_detail.add_child(srow)
+	for cid in Db.class_order:
+		var cc := Db.cls(cid)
+		if cc.get("path", "combat") != "combat":
+			continue
+		var b := Button.new()
+		b.text = cc.get("name", cid)
+		if _font: b.add_theme_font_override("font", _font)
+		b.toggle_mode = true
+		b.button_pressed = (cid == _sub)
+		b.custom_minimum_size = Vector2(160, 30)
+		var pick: String = cid
+		b.pressed.connect(func():
+			Audio.play_sfx("menu")
+			_sub = pick
+			_weapon = Db.cls(pick).get("weapons", [{}])[0].get("id", "")
+			_refresh_detail())
+		srow.add_child(b)
+	var sd := Db.cls(_sub)
+	var two: Array = sd.get("skills", []).slice(0, 2).map(func(sid): return Db.skill(sid).get("name", sid))
+	_detail.add_child(_lbl("Sub %s: senjata %s · skill: %s" % [sd.get("name", "-"),
+		Db.item_name(_weapon), ", ".join(two)], 12, Color(0.72, 0.76, 0.9)))
+
 func _confirm() -> void:
 	if _selected == "":
 		return
 	PlayerData.pending_class = _selected
 	PlayerData.pending_weapon = _weapon
+	PlayerData.pending_sub = _sub if Db.cls(_selected).get("path", "combat") == "life" else ""
 	Audio.play_sfx("success")
 	Stage.go_to_scene("res://scenes/ui/CharacterCreator.tscn")

@@ -67,6 +67,9 @@ func award(prof: String, base: int) -> void:
 		return   # at the Fase-0 cap
 	var old_lvl := effective_level(prof)
 	var xp := int(base * (MAIN_BONUS if prof == main() else 1.0))
+	# class KEHIDUPAN (Decision Log #33): +50% EXP pada profesi domain-nya
+	if prof in Db.cls(PlayerData.char_class).get("domains", []):
+		xp = int(xp * 1.5)
 	PlayerData.gain_prof_xp(prof, xp)
 	var new_lvl := effective_level(prof)
 	if new_lvl > old_lvl:

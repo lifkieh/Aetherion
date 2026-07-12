@@ -226,7 +226,10 @@ func _unlock_hint(u: Dictionary) -> String:
 func _build_prof() -> void:
 	title.text = "Profesi (1 Utama + 2 Sub)"
 	var _ccd := Db.cls(PlayerData.char_class)
-	content.add_child(_mk_label("Profesi Combat (class): %s — %s. Maks 1 combat per karakter (GDD §3.2)." % [_ccd.get("name", "-"), _ccd.get("title", "")], 13, Color(0.9, 0.75, 0.5)))
+	if _ccd.get("path", "combat") == "life":
+		content.add_child(_mk_label("Class: %s (Jalur Kehidupan) — +50%% EXP domain: %s · Combat Sub: %s" % [_ccd.get("name", "-"), ", ".join(_ccd.get("domains", ["—"])), Db.cls(PlayerData.combat_sub).get("name", "-")], 13, Color(0.9, 0.75, 0.5)))
+	else:
+		content.add_child(_mk_label("Profesi Combat (class): %s — %s. Maks 1 combat per karakter (GDD §3.2)." % [_ccd.get("name", "-"), _ccd.get("title", "")], 13, Color(0.9, 0.75, 0.5)))
 	var main: String = ProfessionSystem.main()
 	var subs: Array = ProfessionSystem.subs()
 	content.add_child(_mk_label("Utama: %s (+50%% EXP, cap Lv%d) · Sub: %s (75%% efisiensi, cap Lv%d)" % [
@@ -708,7 +711,8 @@ func _tree_row(t: Dictionary, loc: String) -> void:
 	h.add_child(l)
 	if lv == 0 and loc != "":
 		var chk := SkillTreeSystem.can_unlock(tid, loc)
-		var b := _btn("Buka %d G" % int(t.get("cost", 0)), func():
+		var domain_tag := " 🌿domain" if SkillTreeSystem.is_domain_tree(tid) else ""
+		var b := _btn("Buka %d G%s" % [SkillTreeSystem.unlock_cost(tid), domain_tag], func():
 			var res := SkillTreeSystem.unlock(tid, loc)
 			if not res.ok: EventBus.toast.emit(res.reason)
 			_rebuild())
@@ -783,8 +787,12 @@ func _build_pet() -> void:
 func _build_status() -> void:
 	title.text = "Status Karakter"
 	var cd := Db.cls(PlayerData.char_class)
-	content.add_child(_mk_label("%s  ·  %s (%s)  ·  Level %d" % [PlayerData.char_name, cd.get("name", "-"), cd.get("title", ""), PlayerData.level], 18))
-	content.add_child(_mk_label("Afinitas senjata: %s  ·  %s" % [", ".join(cd.get("affinity", [])), cd.get("advanced", "")], 11, Color(0.75, 0.8, 0.95)))
+	var jalur := "🌾 Jalur Kehidupan" if cd.get("path", "combat") == "life" else "⚔ Jalur Tempur"
+	content.add_child(_mk_label("%s  ·  %s (%s)  ·  %s  ·  Level %d" % [PlayerData.char_name, cd.get("name", "-"), cd.get("title", ""), jalur, PlayerData.level], 18))
+	if PlayerData.combat_sub != "":
+		content.add_child(_mk_label("Combat Sub: %s (1 senjata + 2 skill) · %s" % [Db.cls(PlayerData.combat_sub).get("name", "-"), cd.get("perk", "")], 11, Color(0.75, 0.8, 0.95)))
+	else:
+		content.add_child(_mk_label("Afinitas senjata: %s  ·  %s" % [", ".join(cd.get("affinity", [])), cd.get("advanced", "")], 11, Color(0.75, 0.8, 0.95)))
 	var pts := _mk_label("Poin bebas: %d  (+5 tiap naik level)" % PlayerData.stat_points, 15)
 	pts.add_theme_color_override("font_color", UiTheme.ACCENT)
 	content.add_child(pts)

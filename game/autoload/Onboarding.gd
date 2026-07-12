@@ -69,6 +69,7 @@ func _ready() -> void:
 	EventBus.pet_added.connect(func(_p): _advance("tame"))
 	EventBus.board_visited.connect(func(): _advance("board"))
 	EventBus.skill_cast.connect(func(_sid): _advance("skill"))
+	EventBus.prof_xp_gained.connect(func(_p, _t): _advance("prof_xp"))   # cabang jalur kehidupan (#33)
 	EventBus.game_loaded.connect(func(_s): _refresh_tracker())
 	call_deferred("_refresh_tracker")
 
@@ -119,10 +120,19 @@ func _next() -> void:
 
 # --- Opening quest chain ----------------------------------------------------
 
+
+## Quest pembuka BERCABANG ringan (Decision Log #33): jalur kehidupan mengganti
+## langkah "skill class" dengan langkah domain profesi.
+func step_at(i: int) -> Dictionary:
+	if i == 1 and Db.cls(PlayerData.char_class).get("path", "combat") == "life":
+		return {"desc": "JALUR KEHIDUPAN — lakukan aktivitas domainmu (tebang/tambang/masak/jinakkan...)",
+			"kind": "prof_xp", "count": 1, "reward_gold": 30}
+	return STEPS[i]
+
 func _advance(kind: String, _target := "") -> void:
 	if kind == "" or PlayerData.guide_step >= STEPS.size():
 		return
-	var step: Dictionary = STEPS[PlayerData.guide_step]
+	var step: Dictionary = step_at(PlayerData.guide_step)
 	if step.get("kind", "") != kind:
 		return
 	PlayerData.guide_progress += 1
@@ -133,7 +143,7 @@ func _advance(kind: String, _target := "") -> void:
 
 func _complete_step() -> void:
 	# grant this step's CLEAR reward (FF-2g)
-	var done: Dictionary = STEPS[PlayerData.guide_step]
+	var done: Dictionary = step_at(PlayerData.guide_step)
 	var parts := []
 	if done.has("reward_gold"):
 		PlayerData.add_gold(int(done.reward_gold))
@@ -153,7 +163,7 @@ func _complete_step() -> void:
 		PlayerData.add_item("basic_orb", 3)
 		EventBus.toast.emit("🎁 Hadiah lulus: 100G + 3 Orb Dasar")
 	else:
-		var nxt: Dictionary = STEPS[PlayerData.guide_step]
+		var nxt: Dictionary = step_at(PlayerData.guide_step)
 		EventBus.toast.emit("✅ Langkah selesai! Berikutnya: %s" % nxt.get("desc", ""))
 	_refresh_tracker()
 
@@ -163,7 +173,7 @@ func _refresh_tracker() -> void:
 	if PlayerData.guide_step >= STEPS.size():
 		_tracker.visible = false
 		return
-	var step: Dictionary = STEPS[PlayerData.guide_step]
+	var step: Dictionary = step_at(PlayerData.guide_step)
 	_tracker.visible = true
 	_tracker_label.text = "📜 Panduan %d/%d\n%s  (%d/%d)" % [
 		PlayerData.guide_step + 1, STEPS.size(), step.get("desc", ""),

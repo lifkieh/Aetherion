@@ -49,9 +49,11 @@ var equipped_armor: String = ""        # item_id (armor slot — DEF/HP)
 var equipped_accessory: String = ""    # item_id (accessory slot — varied)
 
 # --- Class / skills / element ---
-var char_class: String = "warrior"     # 1 of 6 combat classes (FF-2a) = profesi combat utama
+var char_class: String = "warrior"     # class terpilih (combat ATAU kehidupan, Decision Log #33)
+var combat_sub: String = ""            # jalur kehidupan: 1 combat SUB (1 senjata + 2 skill)
 var pending_class: String = "warrior"  # New Game flow: ClassSelect -> CharacterCreator handoff
 var pending_weapon: String = ""
+var pending_sub: String = ""
 var known_skills: Array = ["strike", "flame_slash", "spark_bolt"]
 var mastered_elements: Array = ["fire", "lightning"]
 var infusion: Dictionary = {}          # {element, source, expires_unix} or empty
@@ -114,29 +116,46 @@ func feed_pet(idx: int, food_id: String) -> bool:
 	return true
 
 ## Reset to a fresh character (New Game). birth_sign from creation date (v0.3 §3.3).
-## class_id = 1 of 6 combat classes (FF-2a); weapon_id = chosen starting variant.
-func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
+## class_id = class combat ATAU kehidupan (Decision Log #33); weapon_id = varian senjata;
+## sub_id = combat SUB untuk jalur kehidupan (1 senjata + 2 skill, aturan sub).
+func new_game(class_id: String = "warrior", weapon_id: String = "", sub_id: String = "") -> void:
 	var cd := Db.cls(class_id)
 	if cd.is_empty():
 		class_id = "warrior"
 		cd = Db.cls(class_id)
 	char_class = class_id
+	var is_life: bool = cd.get("path", "combat") == "life"
+	var sub := Db.cls(sub_id) if is_life else {}
+	if is_life and sub.is_empty():
+		sub = Db.cls("warrior")   # fallback combat sub
+	combat_sub = sub.get("id", "") if is_life else ""
 	level = 1; exp = 0; stat_points = 0; playtime_sec = 0.0
 	attributes = {"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5}
 	for k in cd.get("attr", {}):
 		attributes[k] = attributes.get(k, 5) + int(cd.attr[k])
 	gold = 200
-	var variants: Array = cd.get("weapons", [])
+	# senjata: jalur kehidupan memakai senjata pertama dari combat sub-nya
+	var wsrc: Dictionary = sub if is_life else cd
+	var variants: Array = wsrc.get("weapons", [])
 	var wid := weapon_id
 	if wid == "" or Db.item(wid).is_empty():
 		wid = variants[0].get("id", "wooden_sword") if not variants.is_empty() else "wooden_sword"
 	inventory = {"minor_potion": 3, "basic_orb": 2, "cloth_tunic": 1, "seed_mintleaf": 3}
 	inventory[wid] = 1
+	for kit_item in cd.get("kit", {}):
+		inventory[kit_item] = int(inventory.get(kit_item, 0)) + int(cd.kit[kit_item])
 	equipped_weapon = wid
 	equipped_armor = "cloth_tunic"     # starting gear is tier F (PC5)
 	equipped_accessory = ""
-	known_skills = cd.get("skills", ["strike", "flame_slash", "spark_bolt"]).duplicate()
-	mastered_elements = cd.get("masters", ["fire"]).duplicate()
+	if is_life:
+		# aturan SUB: hanya 2 skill pertama + 1 elemen master pertama dari combat sub
+		var sub_skills: Array = sub.get("skills", ["strike", "flame_slash"])
+		known_skills = sub_skills.slice(0, 2)
+		var sub_masters: Array = sub.get("masters", ["fire"])
+		mastered_elements = [sub_masters[0]] if not sub_masters.is_empty() else ["fire"]
+	else:
+		known_skills = cd.get("skills", ["strike", "flame_slash", "spark_bolt"]).duplicate()
+		mastered_elements = cd.get("masters", ["fire"]).duplicate()
 	infusion = {}
 	buffs = {}
 	statuses = {}
@@ -154,7 +173,13 @@ func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
 	craft_insight = {}
 	daily_quests = {}
 	prof_xp = {}
-	hotbar = cd.get("hotbar", ["strike", "flame_slash", "flow_fire", "strike", "strike"]).duplicate()
+	if is_life:
+		var ls: Array = known_skills.duplicate()
+		while ls.size() < 2:
+			ls.append("strike")
+		hotbar = [ls[0], ls[1], "flow_" + mastered_elements[0], "strike", "strike"]
+	else:
+		hotbar = cd.get("hotbar", ["strike", "flame_slash", "flow_fire", "strike", "strike"]).duplicate()
 	discovered_fusions = []
 	fusion_fizzled_elements = []
 	char_config = CharGen.default_config()
@@ -317,6 +342,9 @@ func recalculate_stats() -> void:
 		atk = int(atk * 1.08)
 		matk = int(matk * 1.08)
 		attack_speed *= 1.05
+	# perk class kehidupan (Decision Log #33)
+	if char_class == "peramu":
+		gather_bonus += 0.05
 	# bonus pohon skill (Decision Log #30): pasif dari pohon yang dimiliki
 	if not skill_trees.is_empty():
 		atk = int(atk * (1.0 + SkillTreeSystem.bonus_total("atk_pct")))
@@ -560,7 +588,7 @@ func to_save() -> Dictionary:
 		"level": level, "exp": exp, "attributes": attributes, "stat_points": stat_points,
 		"hp": hp, "mp": mp, "gold": gold, "inventory": inventory,
 		"equipped_weapon": equipped_weapon, "equipped_armor": equipped_armor, "equipped_accessory": equipped_accessory,
-		"char_class": char_class,
+		"char_class": char_class, "combat_sub": combat_sub,
 		"known_skills": known_skills,
 		"mastered_elements": mastered_elements, "monsters": monsters,
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
@@ -588,6 +616,7 @@ func from_save(d: Dictionary) -> void:
 	equipped_armor = d.get("equipped_armor", "")
 	equipped_accessory = d.get("equipped_accessory", "")
 	char_class = d.get("char_class", "warrior")
+	combat_sub = d.get("combat_sub", "")
 	known_skills = d.get("known_skills", known_skills)
 	mastered_elements = d.get("mastered_elements", mastered_elements)
 	monsters = d.get("monsters", [])
