@@ -335,6 +335,72 @@ func _connect() -> void:
 	EventBus.toast.connect(_on_toast)
 	EventBus.fusion_discovered.connect(_on_fusion_discovered)
 	EventBus.save_completed.connect(_on_save_completed)
+	EventBus.boss_engaged.connect(_on_boss_engaged)
+	EventBus.boss_hp_changed.connect(_on_boss_hp)
+	EventBus.boss_defeated.connect(_on_boss_defeated)
+
+# --- Boss bar (v0.4.1): intro bar + nama; banner kemenangan saat tumbang -----
+var _boss_panel: Control = null
+var _boss_bar: ProgressBar = null
+var _boss_name: Label = null
+
+func _on_boss_engaged(nm: String, _node) -> void:
+	if _boss_panel == null:
+		_boss_panel = Control.new()
+		_boss_panel.anchor_left = 0.5; _boss_panel.anchor_right = 0.5
+		_boss_panel.position = Vector2(-180, 36)
+		add_child(_boss_panel)
+		_boss_name = Label.new()
+		if _font: _boss_name.add_theme_font_override("font", _font)
+		_boss_name.add_theme_font_size_override("font_size", 20)
+		_boss_name.add_theme_color_override("font_color", Color(1.0, 0.5, 0.45))
+		_boss_name.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+		_boss_name.add_theme_constant_override("outline_size", 5)
+		_boss_name.position = Vector2(0, -24)
+		_boss_panel.add_child(_boss_name)
+		_boss_bar = ProgressBar.new()
+		_boss_bar.custom_minimum_size = Vector2(360, 14)
+		_boss_bar.show_percentage = false
+		var sb := StyleBoxFlat.new()
+		sb.bg_color = Color(0.75, 0.15, 0.2)
+		_boss_bar.add_theme_stylebox_override("fill", sb)
+		_boss_panel.add_child(_boss_bar)
+	_boss_name.text = "☠ " + nm
+	_boss_bar.max_value = 1.0
+	_boss_bar.value = 1.0
+	_boss_panel.visible = true
+	# intro: bar melebar dari tengah
+	_boss_panel.scale = Vector2(0.2, 1.0)
+	_boss_panel.pivot_offset = Vector2(180, 0)
+	var tw := _boss_panel.create_tween()
+	tw.tween_property(_boss_panel, "scale", Vector2(1, 1), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+func _on_boss_hp(cur: int, mx: int) -> void:
+	if _boss_bar:
+		_boss_bar.value = float(cur) / maxf(1.0, float(mx))
+
+func _on_boss_defeated(nm: String) -> void:
+	if _boss_panel:
+		_boss_panel.visible = false
+	var banner := Label.new()
+	banner.text = "⚔ %s DIKALAHKAN ⚔" % nm.to_upper()
+	banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	if _font: banner.add_theme_font_override("font", _font)
+	banner.add_theme_font_size_override("font_size", 32)
+	banner.add_theme_color_override("font_color", Color(1.0, 0.86, 0.42))
+	banner.add_theme_color_override("font_outline_color", Color(0.1, 0.02, 0.0, 0.95))
+	banner.add_theme_constant_override("outline_size", 8)
+	banner.anchor_left = 0.5; banner.anchor_right = 0.5
+	banner.anchor_top = 0.3; banner.anchor_bottom = 0.3
+	banner.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	add_child(banner)
+	banner.scale = Vector2(0.3, 0.3)
+	var tw := banner.create_tween()
+	tw.tween_property(banner, "scale", Vector2(1.1, 1.1), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_property(banner, "scale", Vector2(1, 1), 0.1)
+	tw.tween_interval(2.2)
+	tw.tween_property(banner, "modulate:a", 0.0, 0.6)
+	tw.tween_callback(banner.queue_free)
 
 ## Autosave/save indicator (FF-2e): a small 💾 fades in bottom-right.
 func _on_save_completed(_slot: int) -> void:

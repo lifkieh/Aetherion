@@ -6,6 +6,7 @@ extends Node2D
 
 var item_id := ""
 var qty := 1
+var gold := 0            # >0 = koin emas (boss loot shower, v0.4.1)
 var _player: Node2D = null
 var _magnet := false
 var _t := 0.0
@@ -19,8 +20,25 @@ static func spawn(parent: Node, pos: Vector2, id: String, amount: int) -> void:
 	parent.add_child(d)
 	d.global_position = pos
 
+static func spawn_gold(parent: Node, pos: Vector2, amount: int) -> void:
+	if parent == null:
+		return
+	var d: LootDrop = LootDrop.new()
+	d.gold = amount
+	parent.add_child(d)
+	d.global_position = pos
+
 func _ready() -> void:
 	z_index = 40
+	if gold > 0:
+		# koin emas kecil
+		var c := ColorRect.new()
+		c.color = Color(1.0, 0.84, 0.25)
+		c.size = Vector2(5, 5)
+		c.position = Vector2(-2.5, -2.5)
+		add_child(c)
+		_scatter()
+		return
 	# item icon (fallback: tier-colored square)
 	var icon_path := Db.item_icon(item_id)
 	if icon_path != "" and ResourceLoader.exists(icon_path):
@@ -35,6 +53,9 @@ func _ready() -> void:
 		sq.size = Vector2(6, 6)
 		sq.position = Vector2(-3, -3)
 		add_child(sq)
+	_scatter()
+
+func _scatter() -> void:
 	# scatter hop: out in a random direction with a little arc
 	var dir := Vector2.from_angle(randf() * TAU)
 	var target := global_position + dir * randf_range(10.0, 26.0)
@@ -64,7 +85,10 @@ func _process(delta: float) -> void:
 		_collect()
 
 func _collect() -> void:
-	if item_id != "":
+	if gold > 0:
+		PlayerData.add_gold(gold)
+		Audio.play_sfx("coin", randf_range(1.05, 1.3))
+	elif item_id != "":
 		PlayerData.add_item(item_id, qty)
 		Audio.play_sfx("coin", randf_range(0.95, 1.15))
 	queue_free()

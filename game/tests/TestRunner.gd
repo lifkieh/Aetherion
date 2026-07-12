@@ -1255,6 +1255,26 @@ func _test_dungeon_combat() -> void:
 	await get_tree().physics_frame
 	check("boss enters phase 2 under 40% HP", boss._phase == 2)
 	Engine.time_scale = 1.0
+	# --- boss upgrade (v0.4.1): pola terkoreografi + fase beda + perayaan ---
+	check("boss fase 1 punya >= 3 pola", boss.BOSS_P1.reduce(func(acc, v): return acc if v in acc else acc + [v], []).size() >= 3)
+	check("fase 2 punya pola BARU (dash/summon)", ("dash" in boss.BOSS_P2) and ("summon" in boss.BOSS_P2) and not ("dash" in boss.BOSS_P1))
+	boss._start_boss_pattern()
+	check("pola bos dimulai dengan telegraf", boss._bpatt != "" and boss._bpatt_phase == 0)
+	var engaged := [false]
+	var defeated := [false]
+	EventBus.boss_engaged.connect(func(_n, _b): engaged[0] = true)
+	EventBus.boss_defeated.connect(func(_n): defeated[0] = true)
+	var boss2 = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(boss2)
+	boss2.setup(MonsterFactory.make("frost_titan", 28, 3))
+	await get_tree().process_frame
+	check("boss intro memancarkan boss_engaged", engaged[0])
+	boss2._boss_celebration()
+	check("perayaan kill memancarkan boss_defeated + slow-mo", defeated[0] and Engine.time_scale < 1.0)
+	await get_tree().create_timer(0.3, true, false, true).timeout
+	check("time_scale pulih setelah perayaan", Engine.time_scale == 1.0)
+	Engine.time_scale = 1.0
+	boss2.queue_free()
 	# candy boss + configurable adds (Gummy Cavern content)
 	var gt := MonsterFactory.make("gummy_titan", 25, 4)
 	check("gummy titan is boss", gt.get("is_boss", false))

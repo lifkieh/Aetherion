@@ -66,6 +66,10 @@ func _apply() -> void:
 	if inst.get("is_boss", false):
 		sprite.scale = Vector2(2.4, 2.4)
 		_boss = true
+		# BOSS INTRO (v0.4.1): bar+nama di HUD + stinger + guncang
+		EventBus.boss_engaged.emit(inst.get("name", "Bos"), self)
+		Audio.play_sfx("secret", 0.6)
+		CombatFeel.shake(5.0, 0.4)
 	hpbar.max_value = max_hp
 	hpbar.value = hp
 	hpbar.visible = _boss
@@ -209,38 +213,215 @@ func _fly(delta: float, chasing: bool) -> void:
 	sprite.flip_h = velocity.x < 0
 
 ## King Slime — 2 telegraphed phases (owner req 6).
+# --- Boss pattern machine (v0.4.1): 3 pola terkoreografi per fase + arena hazard.
+# Berlaku untuk SEMUA 5 bos (satu mesin, rasa beda dari elemen + data override
+# monsters.json "boss_patterns": {"p1": [...], "p2": [...]}).
+const BOSS_P1 := ["leap", "leap", "slam", "burst"]
+const BOSS_P2 := ["dash", "burst", "slam", "leap", "summon"]
+
+var _bpatt := ""
+var _bpatt_phase := 0
+var _bpatt_t := 0.0
+var _bpatt_idx := 0
+var _arena_t := 5.0
+
+func _boss_patterns() -> Array:
+	var bp: Dictionary = inst.get("boss_patterns", {})
+	if _phase == 1:
+		return bp.get("p1", BOSS_P1)
+	return bp.get("p2", BOSS_P2)
+
 func _boss_ai(delta: float) -> void:
 	velocity.y = minf(velocity.y + GRAVITY * delta, 620.0)
 	var frac := float(hp) / float(max_hp)
-	# phase 2: <40% HP -> smaller, faster, higher jumps, gel drops
+	# phase 2: <40% HP -> lebih kecil, cepat, pola baru
 	if _phase == 1 and frac < 0.4:
 		_phase = 2
 		sprite.scale *= 0.6
-		EventBus.toast.emit("King Slime mengecil dan mengamuk! (Fase 2)")
-	# spawn 2 adds when crossing each 25% threshold
+		_bpatt_idx = 0
+		Audio.play_sfx("secret", 0.7)
+		CombatFeel.shake(6.0, 0.3)
+		EventBus.toast.emit("%s mengamuk! (Fase 2)" % inst.get("name", "Bos"))
+	# adds tiap melewati ambang 25% HP
 	if frac <= _next_add and _next_add > 0.0:
 		_next_add -= 0.25
 		_spawn_adds(2)
-	# jump-chase toward the player
-	if is_on_floor():
-		if _jump_cd <= 0.0 and _player:
-			_jump_cd = 1.4 if _phase == 1 else 1.0
-			_telegraph_landing()
-			velocity.x = signf(_player.global_position.x - global_position.x) * (70.0 if _phase == 1 else 100.0)
-			velocity.y = -300.0 if _phase == 1 else -400.0
-			_was_air = true
+	# arena hazard periodik (mekanik arena per bos, rasa dari elemen bos)
+	_arena_t -= delta
+	if _arena_t <= 0.0:
+		_arena_t = 6.0 if _phase == 1 else 3.8
+		_arena_hazard()
+	# pola terkoreografi
+	if _bpatt != "":
+		_run_boss_pattern(delta)
+		return
+	if is_on_floor() and _jump_cd <= 0.0 and _player:
+		_start_boss_pattern()
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, 40.0 * delta)
 	move_and_slide()
-	# landing: AoE thump + (phase 2) gel burst
+	_boss_landing_check()
+
+func _start_boss_pattern() -> void:
+	var seq := _boss_patterns()
+	_bpatt = seq[_bpatt_idx % seq.size()]
+	_bpatt_idx += 1
+	_bpatt_phase = 0
+	_bpatt_t = {"leap": 0.2, "slam": 0.6, "burst": 0.5, "dash": 0.4, "summon": 0.1}.get(_bpatt, 0.4)
+	# telegraf universal
+	var tw := create_tween().set_loops(3)
+	tw.tween_property(sprite, "modulate", Color(1.6, 0.5, 0.5), 0.07)
+	tw.tween_property(sprite, "modulate", Color.WHITE, 0.07)
+
+func _run_boss_pattern(delta: float) -> void:
+	_bpatt_t -= delta
+	velocity.y = minf(velocity.y + GRAVITY * delta, 620.0)
+	if _bpatt_phase == 0:
+		velocity.x = 0.0
+		move_and_slide()
+		if _bpatt_t <= 0.0:
+			_bpatt_phase = 1
+			_boss_execute()
+		return
+	# fase eksekusi per pola
+	match _bpatt:
+		"leap":
+			move_and_slide()
+			_boss_landing_check()
+			if is_on_floor() and not _was_air:
+				_end_boss_pattern(1.2 if _phase == 1 else 0.8)
+		"dash":
+			move_and_slide()
+			if _bpatt_t <= 0.0 or is_on_wall():
+				_end_boss_pattern(1.0)
+		_:
+			velocity.x = 0.0
+			move_and_slide()
+			if _bpatt_t <= 0.0:
+				_end_boss_pattern(1.4 if _phase == 1 else 1.0)
+
+func _boss_execute() -> void:
+	match _bpatt:
+		"leap":
+			_telegraph_landing()
+			velocity.x = signf(_player.global_position.x - global_position.x) * (70.0 if _phase == 1 else 100.0) if _player else 60.0
+			velocity.y = -300.0 if _phase == 1 else -400.0
+			_was_air = true
+			_bpatt_t = 3.0   # failsafe
+		"slam":
+			CombatFeel.shake(7.0, 0.25)
+			Audio.play_sfx("hit", 0.6)
+			_shockwave(-1)
+			_shockwave(1)
+			_bpatt_t = 0.4
+		"burst":
+			var proj: String = inst.get("projectile", "enemy_bolt")
+			if proj == "": proj = "enemy_bolt"
+			for i in range(8):
+				var a := Vector2.from_angle(TAU * i / 8.0)
+				ProjectilePool.spawn(global_position + a * 14.0, a, proj, MonsterFactory.combat_stats(inst), self, "player")
+			Audio.play_sfx("attack", 0.7)
+			_bpatt_t = 0.3
+		"dash":
+			velocity.x = (signf(_player.global_position.x - global_position.x) if _player else _dir) * 220.0
+			Audio.play_sfx("dodge", 0.7)
+			_bpatt_t = 0.55
+		"summon":
+			_spawn_adds(2)
+			Audio.play_sfx("secret", 0.8)
+			_bpatt_t = 0.2
+
+func _end_boss_pattern(cd: float) -> void:
+	_bpatt = ""
+	_jump_cd = cd
+	sprite.modulate = Color.WHITE
+
+## Gelombang kejut slam: garis tanah melebar dua arah; kena jika pemain dekat lantai.
+func _shockwave(dir: int) -> void:
+	if get_parent() == null:
+		return
+	var line := Line2D.new()
+	line.width = 6.0
+	line.default_color = Vfx.elem_color(inst.get("element", "earth"))
+	line.z_index = 32
+	var y := global_position.y + 12.0
+	line.points = PackedVector2Array([Vector2(global_position.x, y), Vector2(global_position.x, y)])
+	get_parent().add_child(line)
+	var grow := func(t: float) -> void:
+		if not is_instance_valid(line):
+			return
+		line.points = PackedVector2Array([
+			Vector2(global_position.x + dir * 12.0, y),
+			Vector2(global_position.x + dir * (12.0 + 110.0 * t), y)])
+		line.modulate.a = 1.0 - t * 0.6
+	var tw := line.create_tween()
+	tw.tween_method(grow, 0.0, 1.0, 0.35)
+	tw.tween_callback(line.queue_free)
+	# damage: pemain dekat lantai dalam jangkauan gelombang
+	if _player and _player.has_method("take_hit"):
+		var dx := (_player.global_position.x - global_position.x) * dir
+		if dx > 0.0 and dx < 130.0 and absf(_player.global_position.y - y) < 26.0:
+			var sk := {"skill_mod": 1.4, "kind": "physical", "element": inst.get("element", "earth")}
+			_player.take_hit(CombatResolver.resolve(MonsterFactory.combat_stats(inst), _player.combat_view(), sk, CombatResolver.build_ctx()), self)
+
+## Mekanik ARENA per bos: hazard telegraf jatuh di posisi pemain, rasa dari elemen
+## (ice=pecahan es, lightning=sambaran, earth/darkness=semburan pasir, water=hujan gel...).
+func _arena_hazard() -> void:
+	if _player == null or get_parent() == null:
+		return
+	var elem: String = inst.get("element", "earth")
+	var x := _player.global_position.x
+	var y := _player.global_position.y
+	var col := Vfx.elem_color(elem)
+	# telegraf kolom 0.8s
+	var warn := ColorRect.new()
+	warn.color = Color(col.r, col.g, col.b, 0.28)
+	warn.size = Vector2(30, 90)
+	warn.position = Vector2(x - 15, y - 70)
+	warn.z_index = 25
+	get_parent().add_child(warn)
+	var tw := warn.create_tween().set_loops(4)
+	tw.tween_property(warn, "color:a", 0.10, 0.1)
+	tw.tween_property(warn, "color:a", 0.34, 0.1)
+	get_tree().create_timer(0.8).timeout.connect(func():
+		if is_instance_valid(warn):
+			warn.queue_free()
+		if _dead or _player == null:
+			return
+		Vfx.impact(get_parent(), Vector2(x, y), elem, true)
+		CombatFeel.shake(3.0, 0.1)
+		Audio.play_sfx("hit", 0.8)
+		if absf(_player.global_position.x - x) < 18.0 and absf(_player.global_position.y - y) < 46.0 and _player.has_method("take_hit"):
+			var sk := {"skill_mod": 1.1, "kind": "magic", "element": elem}
+			_player.take_hit(CombatResolver.resolve(MonsterFactory.combat_stats(inst), _player.combat_view(), sk, CombatResolver.build_ctx()), self))
+
+func _boss_landing_check() -> void:
 	if _was_air and is_on_floor():
 		_was_air = false
 		CombatFeel.shake(4.0, 0.15)
 		if _player and global_position.distance_to(_player.global_position) < 40.0 and _player.has_method("take_hit"):
-			var sk := {"skill_mod": 1.2, "kind": "physical", "element": "water"}
+			var sk := {"skill_mod": 1.2, "kind": "physical", "element": inst.get("element", "water")}
 			_player.take_hit(CombatResolver.resolve(MonsterFactory.combat_stats(inst), _player.combat_view(), sk, CombatResolver.build_ctx()), self)
 		if _phase == 2:
 			_gel_burst()
+
+## Perayaan kill bos (v0.4.1): slow-mo + jingle + HUJAN LOOT + banner HUD.
+func _boss_celebration() -> void:
+	EventBus.boss_defeated.emit(inst.get("name", "Bos"))
+	Engine.time_scale = 0.25
+	var t := get_tree().create_timer(0.22, true, false, true)   # ignore time_scale
+	t.timeout.connect(func(): Engine.time_scale = 1.0)
+	Audio.play_sfx("fusion", 1.0)
+	Audio.play_sfx("levelup", 0.8)
+	CombatFeel.shake(8.0, 0.5)
+	# loot shower: rol tabel loot 2x lagi sebagai hujan drop + hujan koin
+	var table := Db.loot_table(inst.get("loot_table", ""))
+	for pass_i in range(2):
+		for d in table:
+			if randf() <= float(d.get("chance", 0)):
+				LootDrop.spawn(get_parent(), global_position + Vector2(randf_range(-14, 14), -10), d.get("item", ""), randi_range(int(d.get("min", 1)), int(d.get("max", 1))))
+	for i in range(6):
+		LootDrop.spawn_gold(get_parent(), global_position + Vector2(randf_range(-20, 20), -8), randi_range(4, 10) * maxi(1, int(inst.get("level", 1))))
 
 func _telegraph_landing() -> void:
 	if _player == null or get_parent() == null:
@@ -326,6 +507,8 @@ func take_hit(result: Dictionary, from) -> void:
 	_flash()
 	Audio.play_sfx("hit", 1.25 if result.get("is_crit", false) else 1.0)
 	StatusFx.on_hit(self, result, is_wet)   # roll status (v0.4.1)
+	if _boss:
+		EventBus.boss_hp_changed.emit(hp, max_hp)
 	if hp <= 0:
 		_die(from)
 
@@ -378,6 +561,8 @@ func _die(from) -> void:
 	EventBus.monster_killed.emit(inst.get("species_id", "?"), self)
 	if _spawner and is_instance_valid(_spawner) and _spawner.has_method("on_monster_died"):
 		_spawner.on_monster_died(self)
+	if _boss:
+		_boss_celebration()
 	# death dissolve (FF-2f)
 	Vfx.death_burst(get_parent(), global_position, inst.get("element", "none"))
 	var tw := create_tween()
