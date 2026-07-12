@@ -121,6 +121,7 @@ func _build() -> void:
 		bar.add_child(_btn("Simpan (%dG)" % EDIT_COST, _confirm))
 		bar.add_child(_btn("Batal", _cancel))
 	else:
+		bar.add_child(_btn("← Ganti Class", func(): Stage.go_to_scene("res://scenes/ui/ClassSelect.tscn")))
 		bar.add_child(_btn("Mulai Petualangan ▶", _confirm))
 
 func _btn(t: String, cb: Callable) -> Button:

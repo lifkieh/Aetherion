@@ -202,6 +202,11 @@ func _refresh_detail() -> void:
 	adv.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	adv.custom_minimum_size = Vector2(520, 0)
 	_detail.add_child(adv)
+	_add_start_button()
+
+## Tombol Lanjut untuk KEDUA jalur (BUG P0 #41: dulu hanya di builder tempur —
+## jalur kehidupan buntu). Sekarang satu helper dipanggil kedua panel.
+func _add_start_button() -> void:
 	var sp := Control.new()
 	sp.custom_minimum_size = Vector2(0, 8)
 	_detail.add_child(sp)
@@ -255,6 +260,7 @@ func _refresh_life_detail(c: Dictionary) -> void:
 	var two: Array = sd.get("skills", []).slice(0, 2).map(func(sid): return Db.skill(sid).get("name", sid))
 	_detail.add_child(_lbl("Sub %s: senjata %s · skill: %s" % [sd.get("name", "-"),
 		Db.item_name(_weapon), ", ".join(two)], 12, Color(0.72, 0.76, 0.9)))
+	_add_start_button()   # BUG P0 #41: jalur kehidupan juga harus bisa LANJUT
 
 func _confirm() -> void:
 	if _selected == "":

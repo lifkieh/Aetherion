@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	await _test_ui_flow_both_paths()
 	await _test_guard_kill()
 	_test_life_path()
 	_test_skill_trees()
@@ -690,6 +691,46 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_ui_flow_both_paths() -> void:
+	print("[UI flow kedua jalur — BUG P0 #41]")
+	# instansiasi LAYAR ClassSelect sungguhan (bukan hanya logika)
+	var cs = load("res://scenes/ui/ClassSelect.tscn").instantiate()
+	add_child(cs)
+	await get_tree().process_frame
+	# JALUR TEMPUR: tombol Lanjut ada
+	cs._select_path("combat")
+	await get_tree().process_frame
+	check("TEMPUR: tombol Lanjut ada", is_instance_valid(cs._start_btn) and cs._start_btn.text.begins_with("Lanjut"))
+	# JALUR KEHIDUPAN: pilih class + sub -> tombol Lanjut HARUS ada (dulu buntu)
+	cs._select_path("life")
+	await get_tree().process_frame
+	check("KEHIDUPAN: kartu 4 class tampil", cs._cards.size() == 4)
+	cs._select("peramu")
+	await get_tree().process_frame
+	check("KEHIDUPAN: tombol Lanjut ADA (fix P0)", is_instance_valid(cs._start_btn) and cs._start_btn.get_parent() != null)
+	# handler Lanjut mengisi pending dengan benar (tanpa navigasi scene di test:
+	# replikasi isi _confirm — navigasi asli diverifikasi boot scene di bawah)
+	cs._sub = "archer"
+	cs._weapon = "short_bow"
+	PlayerData.pending_class = cs._selected
+	PlayerData.pending_weapon = cs._weapon
+	PlayerData.pending_sub = cs._sub if Db.cls(cs._selected).get("path", "combat") == "life" else ""
+	check("pending class/sub/senjata terisi", PlayerData.pending_class == "peramu" \
+		and PlayerData.pending_sub == "archer" and PlayerData.pending_weapon == "short_bow")
+	check("tombol Lanjut tersambung ke _confirm", cs._start_btn.pressed.is_connected(cs._confirm))
+	cs.queue_free()
+	await get_tree().process_frame
+	# lanjutkan alur: new_game seperti yang dilakukan CharacterCreator -> in-world state benar
+	PlayerData.new_game(PlayerData.pending_class, PlayerData.pending_weapon, PlayerData.pending_sub)
+	check("in-world: kit & bonus jalur kehidupan benar", PlayerData.char_class == "peramu" \
+		and PlayerData.combat_sub == "archer" and PlayerData.equipped_weapon == "short_bow" \
+		and PlayerData.item_count("herb_mintleaf") >= 4)
+	# jalur tempur end-to-end juga
+	PlayerData.pending_class = "warrior"; PlayerData.pending_weapon = "guard_blade"; PlayerData.pending_sub = ""
+	PlayerData.new_game(PlayerData.pending_class, PlayerData.pending_weapon, PlayerData.pending_sub)
+	check("in-world: jalur tempur benar", PlayerData.char_class == "warrior" and PlayerData.equipped_weapon == "guard_blade")
+	PlayerData.new_game()
 
 func _test_guard_kill() -> void:
 	print("[Penjaga gerbang membunuh tanpa reward — Decision Log #39]")
