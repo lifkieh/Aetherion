@@ -48,10 +48,13 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 | 2 | **[ADDENDUM A1] Quality roll** (Normal/Fine/Masterwork ±10%) + **maker's mark** (nama crafter tertera di item) | Addendum A1 | ⚙✨ | Kecil |
 | 3 | **[ADDENDUM A3] Enchant crystal +1..+10** via **profesi Enchanter BARU** (gagal mulai +7 = turun 1, TIDAK hancur; Protection Scroll craft) | Addendum A3 | ⚙⚙ | Sedang |
 | 4 | **[ADDENDUM A3] Coating/minyak Alchemist** (Venom Oil, Frost Coat; 10 menit; aturan elemen dominan + 25% sekunder) — melengkapi 4 jalur Element Flow | Addendum A3 | ⚙ | Kecil |
-| 5 | **[ADDENDUM A2] Rune System**: slot pemain 4 + monster 2 (Epic+ = 3), grade I–V, merge 3 sama → naik grade; sumber: dungeon/craft/boss | Addendum A2 | ⚙⚙ | Besar |
-| 6 | Profesi yang hilang: **Enchanter** (untuk #3), lalu **Merchant** & **Treasure Hunter** (fase berikut bila ekonomi/dungeon sudah dalam) | Audit B | ⚙ | Sedang |
+| 5 | Profesi yang hilang: **Enchanter** (untuk #3), lalu **Merchant** & **Treasure Hunter** (fase berikut bila ekonomi/dungeon sudah dalam) | Audit B | ⚙ | Sedang |
 
-**Estimasi: 1.5–2 sesi.**
+> **Rune System DIHAPUS dari fase ini** (Decision Log #28): ditunda ke fase pembukaan
+> konten, dipasangkan dengan loot dungeon & slot monster Epic+. v0.4.2 fokus:
+> Transenden (sebagai MOMEN, #25) + Enchant + Coating + Quality/maker's mark + Enchanter.
+
+**Estimasi: 1.5 sesi.**
 
 ## FASE v0.4.3 — "WORLD PRESENTATION" (dunia yang bercerita)
 
@@ -73,12 +76,12 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 
 | # | Item | Dampak | Biaya |
 |---|---|---|---|
-| 1 | Settings lengkap: volume Music/SFX/Ambience terpisah, fullscreen/vsync, keybind remap | ✨✨ | Sedang |
+| 1 | ~~Volume per channel + fullscreen~~ **SELESAI di v0.4.1** (tarikan review iii / Decision Log #23); sisa: slider Ambience terpisah, vsync, **keybind remap** | ✨✨ | Sedang |
 | 2 | Gamepad support penuh (binding + navigasi UI + glyph) | ✨✨ | Sedang |
-| 3 | Pause menu khusus (Resume/Settings/Save/Menu Utama) terpisah dari tas | ✨ | Kecil |
+| 3 | ~~Pause menu khusus~~ **SELESAI di v0.4.1** (PauseMenu overlay) | — | — |
 | 4 | UI transition pass: fade/slide panel, scene transition, hover state + SFX konsisten | ✨ | Sedang |
 | 5 | Advanced Class Quest lvl 60 (janji teaser 2a dibayar) + Trial of the [Rasi] birth sign | ⚙✨ | Besar |
-| 6 | Rune System (4 slot pemain, grade I–V) — kandidat digabung ke fase konten berikutnya | ⚙ | Besar |
+| ~~6~~ | ~~Rune System~~ — **DIPINDAH ke fase pembukaan konten** (Decision Log #28, dedup review designer) | — | — |
 
 **Estimasi: 1–1.5 sesi.**
 

@@ -8,8 +8,10 @@ extends RefCounted
 
 const COMBO_WINDOW := 1.5
 const FUSION_BASE_MANA := 6   # min mana base for fusion (flow skills prime at 0 mana)
-const SKILL_COMBO_WINDOW := 2.0   # Combo Skill (GDD §6.2, v0.4.1): 2 skill BEDA <2 dtk
-const SKILL_COMBO_MULT := 1.3
+# Combo Skill (GDD §6.2, v0.4.1): 2 skill BEDA dalam window = bonus. DATA-DRIVEN
+# dari combat_feel.json "skill_combo" (designer bisa tuning tanpa kode).
+static func _combo_cfg() -> Dictionary:
+	return Db.combat_feel.get("skill_combo", {"window": 2.0, "mult": 1.3})
 
 var _last_cast_sid := ""
 var _last_cast_ms := -99999
@@ -166,16 +168,17 @@ func _cast_single(actor: Node2D, aim: Vector2, sid: String) -> bool:
 	if not PlayerData.spend_mp(sk.get("mana_cost", 0)):
 		_no_mana()
 		return false
-	# COMBO SKILL (v0.4.1): merangkai 2 skill BERBEDA dalam 2 dtk = +30% damage.
+	# COMBO SKILL (v0.4.1): merangkai 2 skill BERBEDA dalam window = bonus damage.
+	var ccfg := _combo_cfg()
 	var now_ms := Time.get_ticks_msec()
 	var is_combo := _last_cast_sid != "" and _last_cast_sid != sid \
-		and (now_ms - _last_cast_ms) < int(SKILL_COMBO_WINDOW * 1000.0)
+		and (now_ms - _last_cast_ms) < int(float(ccfg.get("window", 2.0)) * 1000.0)
 	if is_combo:
 		sk = sk.duplicate()
-		sk["skill_mod"] = float(sk.get("skill_mod", 1.0)) * SKILL_COMBO_MULT
+		sk["skill_mod"] = float(sk.get("skill_mod", 1.0)) * float(ccfg.get("mult", 1.3))
 		if not _combo_announced:
 			_combo_announced = true
-			EventBus.toast.emit("⚡ COMBO! %s → %s (+30%%)" % [Db.skill(_last_cast_sid).get("name", ""), sk.get("name", sid)])
+			EventBus.toast.emit("⚡ COMBO! %s → %s (+%d%%)" % [Db.skill(_last_cast_sid).get("name", ""), sk.get("name", sid), int((float(ccfg.get("mult", 1.3)) - 1.0) * 100)])
 			Audio.play_sfx("prime", 1.4)
 	else:
 		_combo_announced = false

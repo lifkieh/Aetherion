@@ -87,7 +87,9 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 | **Tier Transenden A/S/SS/SSS** (craft-only 1%, piramida, Insight, ritual+pengumuman) | v0.2 §2 | **Sebagian — dangkal** | Insight ✓, 1 resep S; piramida/maker's mark/quality/pengolah material [A][S] drop: belum — addendum A1. |
 | Maker's mark + quality roll | v0.1 §9.2 | Belum | v0.4.2. |
 | **Enchant +1..+10** (gagal turun 1, tak hancur) | v0.1 §9.3 | **Belum** | v0.4.2 + profesi Enchanter. |
-| **Rune System** (pemain 4 slot, monster 2, grade I–V merge 3) | v0.1 §8.6 | **Belum** | v0.4.2. |
+| **Rune System** (pemain 4 slot, monster 2, grade I–V merge 3) | v0.1 §8.6 | **Ditunda-sengaja** | Decision Log #28: ke fase pembukaan konten (dipasangkan loot dungeon & slot monster Epic+). |
+| **Durability & repair gear** | v0.1 §10.2 (sink "Repair gear") | Belum — prioritas rendah | Decision Log #29; relevan saat ekonomi sink diperdalam. Death penalty dungeon sementara −10% gold (tanpa durability, #12). |
+| Mode Hemat + target performa game ringan | v0.2 §1, Fase0 §9 | **Ada** | 30fps lock + VFX cuaca off; perf diaudit per ronde. **Dijaga saat juice pass** (partikel/VFX baru wajib murah & dimatikan di Mode Hemat bila berat). |
 | Equipment 3 slot + tooltip banding | Owner ronde 4 (PC5) | Ada | |
 | Ekonomi NPC supply-demand + log | Fase0 §7 | Ada | |
 | Skill book / trainer / boss-unlock skill | v0.1 §6.2, §11.1 | Ada | Ronde 4 (PC4). |
@@ -143,5 +145,8 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 
 | 26 | 2026-07-12 | Pola musuh | "minimal 3 arketipe perilaku per wilayah" (arahan) | Pola diturunkan dari ARKETIPE roster (lunge/flank/burst) + telegraf universal — semua 60 spesies otomatis kebagian, override per spesies via data `pattern` | Lebih skalabel daripada menulis pola per wilayah; memenuhi "0% jalan-nabrak" | Agent (eksekusi v0.4.1) |
 | 27 | 2026-07-12 | Nokturnal | (belum diatur teknis) | Flag data `nocturnal` + gating spawner; 4 spesies awal (owl/bat/jackal/snow_owl) | Minimal-invasif, konten data-driven | Agent (eksekusi v0.4.1) |
+
+| 28 | 2026-07-12 | Rune System | Direncanakan v0.4.2 #5 DAN v0.4.4 #6 (duplikasi di plan) | **DITUNDA ke fase pembukaan konten** — dipasangkan dengan loot dungeon & slot monster Epic+; v0.4.2 fokus Transenden+Enchant+Coating+Quality+Enchanter | Review designer (i): hapus duplikasi; rune butuh sumber loot yang belum ada | Owner/Designer |
+| 29 | 2026-07-12 | Ledger | (dua sistem tak terdaftar) | Baris baru Bagian 1: **durability & repair gear** (GDD §10.2, Belum — prioritas rendah) & **Mode Hemat/target performa** (v0.2 §1, Ada — dijaga saat juice pass) | Review designer (ii): kelengkapan ledger | Owner/Designer |
 
 > Baris berikutnya ditambahkan SEBELUM implementasi keputusan baru. Jangan hapus baris; koreksi = baris baru.
