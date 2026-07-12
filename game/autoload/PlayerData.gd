@@ -74,6 +74,7 @@ var daily_quests: Dictionary = {}      # {date, quests:[...]} — Daily Quest Bo
 var prof_xp: Dictionary = {}           # profession -> xp (miner, lumberjack, ...)
 var hotbar: Array = ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"]  # 5 slots
 var discovered_fusions: Array = []     # combo results the player has cast (first-discovery)
+var fusion_fizzled_elements: Array = []  # elements that appeared in a fizzle (Grimoire mystery rows, FF-2d)
 var char_config: Dictionary = {}       # Aetherion Character System v2 look (CharGen)
 var onboarding_seen: Array = []        # contextual tip ids already shown (UI/UX §5)
 var guide_step: int = 0                # opening quest chain: current step 0..5 (5 = done)
@@ -131,6 +132,7 @@ func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
 	prof_xp = {}
 	hotbar = cd.get("hotbar", ["strike", "flame_slash", "flow_fire", "strike", "strike"]).duplicate()
 	discovered_fusions = []
+	fusion_fizzled_elements = []
 	char_config = CharGen.default_config()
 	onboarding_seen = []
 	guide_step = 0
@@ -520,6 +522,7 @@ func to_save() -> Dictionary:
 		"achievements": achievements, "active_title": active_title, "discovered": discovered,
 		"craft_insight": craft_insight, "daily_quests": daily_quests, "prof_xp": prof_xp,
 		"hotbar": hotbar, "discovered_fusions": discovered_fusions,
+		"fusion_fizzled_elements": fusion_fizzled_elements,
 		"onboarding_seen": onboarding_seen, "guide_step": guide_step, "guide_progress": guide_progress,
 		"char_config": char_config,
 	}
@@ -553,6 +556,7 @@ func from_save(d: Dictionary) -> void:
 	prof_xp = d.get("prof_xp", {})
 	hotbar = d.get("hotbar", ["flame_slash", "spark_bolt", "flow_fire", "flow_lightning", "strike"])
 	discovered_fusions = d.get("discovered_fusions", [])
+	fusion_fizzled_elements = d.get("fusion_fizzled_elements", [])
 	char_config = d.get("char_config", CharGen.default_config())
 	onboarding_seen = d.get("onboarding_seen", [])
 	guide_step = int(d.get("guide_step", 0))

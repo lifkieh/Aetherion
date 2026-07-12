@@ -16,6 +16,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
 	if Input.is_action_just_pressed("pause_menu"):
+		# ESC cancels an active prime first (FF-2c); a second ESC opens the menu
+		if player and "hotbar" in player and player.hotbar.is_primed():
+			player.hotbar.cancel_all()
+			return
 		var menu := get_tree().get_first_node_in_group("inventory_ui")
 		if menu and menu.has_method("open"):
 			menu.open("system")

@@ -31,6 +31,7 @@ func _slot_skill(slot: int) -> String:
 	return ""
 
 ## Number key (slot 0..4). Chains into a fusion if pressed within the combo window.
+## Pressing the SAME slot again cancels the prime (FF-2c toggle).
 func press_slot(slot: int) -> void:
 	var sid := _slot_skill(slot)
 	if sid == "":
@@ -38,6 +39,10 @@ func press_slot(slot: int) -> void:
 	if not PlayerData.can_use_skill(sid):
 		EventBus.toast.emit("%s belum dipelajari." % Db.skill(sid).get("name", sid))
 		Audio.play_sfx("menu", 0.6)
+		return
+	# toggle off: same key on the primed slot (or a slot already in the fusion chain)
+	if (primed == slot and fusion_slots.is_empty()) or (slot in fusion_slots):
+		cancel_all()
 		return
 	if primed >= 0 and not (slot in fusion_slots) and _combo_t > 0.0:
 		if fusion_slots.is_empty():
@@ -48,6 +53,8 @@ func press_slot(slot: int) -> void:
 			_combo_t = COMBO_WINDOW
 			Audio.play_sfx("prime", 1.15 + 0.1 * fusion_slots.size())
 			EventBus.toast.emit("⚡ Prime %s — klik kiri untuk melepas!" % _chain_str())
+			if fusion_ready:
+				Onboarding.tip("fusion_prime")   # tutorial fusion pertama (FF-2d)
 	else:
 		primed = slot
 		fusion_ready = false
@@ -63,6 +70,15 @@ func _chain_str() -> String:
 
 func is_primed() -> bool:
 	return primed >= 0 or fusion_ready
+
+## Cancel every prime/fusion chain (FF-2c: same-key toggle, right-click, or ESC).
+func cancel_all() -> void:
+	if not is_primed():
+		return
+	_reset()
+	end_cast()
+	Audio.play_sfx("menu", 0.7)
+	EventBus.toast.emit("Prime dibatalkan.")
 
 # --- HUD helpers ---
 ## "1+2+3" while a fusion is chained, "2" for a single primed slot, "" otherwise.
@@ -186,9 +202,13 @@ func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:
 		PlayerData.spend_mp(int(mana * 0.3))
 		Vfx.spark(actor.get_parent(), actor.global_position + aim * 14.0, "wind")
 		Audio.play_sfx("fizzle")
+		# Grimoire (FF-2d): a fizzled element opens its mystery rows in the Grimoire
+		for e in elems:
+			if not (e in PlayerData.fusion_fizzled_elements):
+				PlayerData.fusion_fizzled_elements.append(e)
 		if not _fusion_announced:
 			_fusion_announced = true
-			EventBus.toast.emit("...paduan %s tak stabil (fizzle). Coba resep lain?" % "+".join(elems))
+			EventBus.toast.emit("...paduan %s tak stabil (fizzle). Petunjuk tercatat di Grimoire." % "+".join(elems))
 		return true
 	if not PlayerData.spend_mp(mana):
 		_no_mana()
@@ -207,7 +227,9 @@ func _cast_fusion(actor: Node2D, aim: Vector2) -> bool:
 		_fusion_announced = true
 		if not (nm in PlayerData.discovered_fusions):
 			PlayerData.discovered_fusions.append(nm)
-			EventBus.toast.emit("★ FUSION PERTAMA: %s! (%s)" % [nm, combo.get("desc", "")])
+			# first-discovery celebration: banner + Grimoire entry (FF-2d)
+			EventBus.fusion_discovered.emit(nm, combo.get("desc", ""))
+			Audio.play_sfx("levelup", 1.2)
 		else:
 			EventBus.toast.emit("✦ %s!" % nm)
 	return true

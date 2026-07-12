@@ -75,7 +75,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
+	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["grimoire", "Grimoire"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -158,6 +158,7 @@ func _rebuild() -> void:
 		"echo": _build_echo()
 		"panduan": _build_panduan()
 		"status": _build_status()
+		"grimoire": _build_grimoire()
 
 func _build_skill() -> void:
 	title.text = "Skill Book"
@@ -583,6 +584,61 @@ func _build_panduan() -> void:
 		body.custom_minimum_size = Vector2(480, 0)
 		content.add_child(body)
 		content.add_child(_mk_label(" ", 6))
+
+## Grimoire (FF-2d): fusion recipes the player has DISCOVERED (full detail) plus
+## mystery rows for recipes touched by a fizzled element ("Fire + ? = ???").
+## Untouched recipes stay hidden — discovery lives, but the player has a map.
+func _build_grimoire() -> void:
+	title.text = "Grimoire — Paduan Elemen"
+	var combos: Array = Db.elements.get("combos", [])
+	var found := 0
+	for c in combos:
+		if c.get("result", "") in PlayerData.discovered_fusions:
+			found += 1
+	content.add_child(_mk_label("Ditemukan: %d / %d resep" % [found, combos.size()], 15, Color(1.0, 0.86, 0.42)))
+	content.add_child(_mk_label("Prime 2 elemen (tekan 2 angka <1.5 dtk) lalu klik kiri. 3-4 elemen = paduan recast. Fizzle pun meninggalkan petunjuk di sini.", 11, Color(0.75, 0.8, 0.95)))
+	content.add_child(_mk_label("— Sudah ditemukan —", 15, Color(0.6, 0.9, 0.6)))
+	var none_found := true
+	for c in combos:
+		var nm: String = c.get("result", "")
+		if not (nm in PlayerData.discovered_fusions):
+			continue
+		none_found = false
+		var elems := _combo_elems(c)
+		var tier_txt := " · recast" if elems.size() >= 3 else ""
+		var l := _mk_label("%s  =  %s  『×%.1f%s』" % [" + ".join(elems.map(func(e): return e.capitalize())), nm, float(c.get("mult", 1.0)), tier_txt], 14)
+		content.add_child(l)
+		var d := _mk_label("   %s" % c.get("desc", ""), 11, Color(0.72, 0.76, 0.9))
+		content.add_child(d)
+	if none_found:
+		content.add_child(_mk_label("(belum ada — bereksperimenlah!)", 12, Color(0.7, 0.7, 0.72)))
+	content.add_child(_mk_label("— Misteri (petunjuk dari fizzle) —", 15, Color(0.8, 0.7, 0.5)))
+	var hidden := 0
+	var mystery := 0
+	for c in combos:
+		var nm: String = c.get("result", "")
+		if nm in PlayerData.discovered_fusions:
+			continue
+		var elems := _combo_elems(c)
+		var known := elems.filter(func(e): return e in PlayerData.fusion_fizzled_elements)
+		if known.is_empty():
+			hidden += 1
+			continue
+		mystery += 1
+		var parts := []
+		for e in elems:
+			parts.append(e.capitalize() if (e in PlayerData.fusion_fizzled_elements) else "?")
+		content.add_child(_mk_label("%s  =  ???" % " + ".join(parts), 14, Color(0.75, 0.75, 0.8)))
+	if mystery == 0:
+		content.add_child(_mk_label("(belum ada petunjuk)", 12, Color(0.7, 0.7, 0.72)))
+	if hidden > 0:
+		content.add_child(_mk_label("...dan %d resep lain yang belum tersentuh sama sekali." % hidden, 11, Color(0.6, 0.6, 0.65)))
+
+func _combo_elems(c: Dictionary) -> Array:
+	var elems: Array = c.get("elems", [])
+	if elems.is_empty():
+		elems = [c.get("a", ""), c.get("b", "")]
+	return elems
 
 func _build_status() -> void:
 	title.text = "Status Karakter"

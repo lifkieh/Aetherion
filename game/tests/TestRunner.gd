@@ -1010,6 +1010,22 @@ func _test_hotbar() -> void:
 	hb.tick(2.0)   # > COMBO_WINDOW (1.5)
 	hb.press_slot(1)
 	check("expired window = single prime, not fusion", hb.primed == 1 and not hb.fusion_ready)
+	# --- FF-2c: prime toggle & cancel ---
+	hb.press_slot(1)   # same slot again = cancel
+	check("same-key press cancels the prime (toggle)", hb.primed == -1 and not hb.is_primed())
+	hb.press_slot(0)
+	hb.press_slot(1)
+	check("fusion chain primed", hb.fusion_ready)
+	hb.cancel_all()
+	check("cancel_all clears prime + fusion", not hb.is_primed() and hb.fusion_slots.is_empty())
+	# --- FF-2d: Grimoire — fizzle records elements for mystery rows ---
+	PlayerData.fusion_fizzled_elements.clear()
+	PlayerData.mp = 999
+	hb.press_slot(0)   # fire
+	hb.press_slot(1)   # lightning (no 2-elem recipe = fizzle)
+	hb.begin_cast(actor, Vector2.RIGHT)
+	check("fizzle records elements for the Grimoire", "fire" in PlayerData.fusion_fizzled_elements and "lightning" in PlayerData.fusion_fizzled_elements)
+	hb.end_cast()
 	actor.queue_free()
 	PlayerData.new_game()
 

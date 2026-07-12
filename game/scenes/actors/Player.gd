@@ -74,6 +74,8 @@ func _physics_process(delta: float) -> void:
 	for i in range(5):
 		if Input.is_action_just_pressed("slot_%d" % (i + 1)):
 			hotbar.press_slot(i)
+	if Input.is_action_just_pressed("skill_primary"):   # klik kanan = batal prime (FF-2c)
+		hotbar.cancel_all()
 	# hold-to-attack (rev A) + hold-to-channel a primed skill (rev B)
 	var aim := (get_global_mouse_position() - global_position)
 	aim = aim.normalized() if aim.length() > 2.0 else _facing_vec()

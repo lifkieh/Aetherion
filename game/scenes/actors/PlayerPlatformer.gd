@@ -107,6 +107,8 @@ func _physics_process(delta: float) -> void:
 	for i in range(5):
 		if Input.is_action_just_pressed("slot_%d" % (i + 1)):
 			hotbar.press_slot(i)
+	if Input.is_action_just_pressed("skill_primary"):   # klik kanan = batal prime (FF-2c)
+		hotbar.cancel_all()
 	# left-click: cast primed skill/fusion toward cursor, else weapon attack
 	if Input.is_action_pressed("attack"):
 		if hotbar.is_primed():

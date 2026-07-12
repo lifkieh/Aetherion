@@ -333,6 +333,32 @@ func _connect() -> void:
 	EventBus.minute_passed.connect(func(_d): _refresh_clock())
 	EventBus.item_gained.connect(_on_item_gained)
 	EventBus.toast.connect(_on_toast)
+	EventBus.fusion_discovered.connect(_on_fusion_discovered)
+
+## First-discovery celebration banner (FF-2d): big center banner + pop tween.
+func _on_fusion_discovered(nm: String, desc: String) -> void:
+	var banner := Label.new()
+	banner.text = "★ FUSION BARU DITEMUKAN ★\n%s" % nm
+	banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	if _font: banner.add_theme_font_override("font", _font)
+	banner.add_theme_font_size_override("font_size", 30)
+	banner.add_theme_color_override("font_color", Color(1.0, 0.86, 0.42))
+	banner.add_theme_color_override("font_outline_color", Color(0.1, 0.05, 0.0, 0.9))
+	banner.add_theme_constant_override("outline_size", 8)
+	banner.anchor_left = 0.5; banner.anchor_right = 0.5
+	banner.anchor_top = 0.28; banner.anchor_bottom = 0.28
+	banner.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	banner.pivot_offset = Vector2(0, 0)
+	add_child(banner)
+	banner.scale = Vector2(0.4, 0.4)
+	var tw := banner.create_tween()
+	tw.tween_property(banner, "scale", Vector2(1.15, 1.15), 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_property(banner, "scale", Vector2(1.0, 1.0), 0.10)
+	tw.tween_interval(1.8)
+	tw.tween_property(banner, "modulate:a", 0.0, 0.5)
+	tw.tween_callback(banner.queue_free)
+	if desc != "":
+		EventBus.toast.emit("Grimoire: %s — %s" % [nm, desc])
 
 func _set_bar(bar: ProgressBar, val: Label, cur: float, mx: float) -> void:
 	if bar == null:

@@ -25,6 +25,9 @@ const TIPS := {
 	"dungeon_door": {
 		"title": "Pintu gua",
 		"text": "Tekan E untuk masuk. Di dalam gua, dunia jadi sisi-samping (ala Terraria): lompat dengan Space, gali blok, kalahkan bos di dasar."},
+	"fusion_prime": {
+		"title": "FUSION — paduan elemen!",
+		"text": "Kamu mem-prime DUA elemen sekaligus! Klik kiri untuk melepas paduannya. Resep yang benar menghasilkan sihir baru; yang salah... fizzle. Semua temuanmu tercatat di tab Grimoire (Esc). Tekan angka yang sama atau klik kanan untuk batal."},
 }
 
 # --- opening quest chain ----------------------------------------------------
