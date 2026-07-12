@@ -12,6 +12,33 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 
 ---
 
+## BAGIAN 0 — PIAGAM PENGALAMAN (amandemen identitas, Decision Log #34–37)
+
+**Identitas resmi: "THE WORLD REMEMBERS."**
+> "Aetherion bukan dunia yang menunggu pemain datang. Aetherion adalah dunia yang
+> terus berjalan, menyimpan rahasia, dan mengingat apa yang dilakukan pemain."
+
+**Living Sky = sistem gameplay TERBESAR** (Tahun Langit, eclipse, meteor shower,
+Celestial Alignment membuka pohon tersembunyi). Setiap fitur baru wajib bertanya:
+apakah ia berjalan sendiri, menyimpan rahasia, atau mengingat pemain?
+
+### 3 Pilar Pengalaman (di atas 3 pilar sistem GDD v0.1 §1.2)
+
+| Pilar | Isi | Status |
+|---|---|---|
+| **WONDER** | Rahasia bertingkat: **tier-remah** solo-findable via rumor Penjaga Pohon / ramalan Astrolog / gosip NPC yang SUDAH ada; **tier-legenda** nyaris tanpa petunjuk. Kandidat tercatat: **The Nameless Door** (03:33 WIB + bulan baru + musim dingin), **The Forgotten Musician** (lagu musiman, ikuti 3 musim berturut), **The Sleeping Giant** (gunung = boss hidup, raid-class) | Kandidat terdaftar; tier-legenda pertama = v0.5 |
+| **BELONGING** | Homestead berevolusi jadi **LIVING HEADQUARTERS → kerajaan**: buka lahan → bangunan → rekrut puluhan penduduk (syarat unik per orang) → markas tumbuh TERLIHAT. **= Evolusi resmi Pact System** (menggantikan #Pact sebagai konten beku terpisah) | Spec v0.6 "Hearth & Legacy" |
+| **LEGACY (dua-lapis)** | Offline: **Kitab Sejarah Dunia** (chronicle otomatis) + aula patung + maker's mark + first-personal terukir. Online nanti: sistem SAMA menyala jadi first-discovery/first-kill/first-craft global | Benih chronicle = v0.5; v1 = v0.6 |
+
+### Aturan boss masa depan (#36)
+Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh entourage
+2–4 rekrutan markas (multi-aktor). **Boss reguler tetap solo-able** — penyendiri tidak dihukum.
+
+### Roadmap resmi (#37) — detail di TRACKBACK.md
+`v0.4.2 Gear & Economy → v0.5 STORY & SOUL (terbesar; + Wonder tier-legenda pertama + benih chronicle) → v0.6 HEARTH & LEGACY (Living HQ + rekrutan + companion AI + World Remembers v1 + Rune) → v0.7 Emberfall/Ocean → v0.8 Celestia → v0.9 demo publik`. Racing/gambling/marketplace/MMO tetap beku.
+
+---
+
 ## BAGIAN 1 — STATUS SEMUA SISTEM
 
 ### 1. Identitas, karakter, profesi
@@ -135,6 +162,26 @@ Status: **Ada** / **Sebagian** / **Belum** / **Ditunda-sengaja** / **MENYIMPANG*
 Aturan: buka HANYA di lokasi (rumor berarah di Penjaga Pohon); upgrade node di mana pun
 setelah dimiliki; `content_locked` dilepas otomatis saat wilayahnya dibangun.
 
+### 8. SPEC v0.6 — "WORLD REMEMBERS v1" (Decision Log #38 — JANGAN dibangun sebelum v0.6)
+
+**(a) Memori NPC personal** — field memori per NPC:
+- Dipukul pemain → diingat: dialog dingin/takut, harga +20%, memanggil penjaga jika
+  diulang; pulih setelah waktu lama ATAU permintaan maaf berbiaya.
+- Ditolong (quest pribadi / diselamatkan dari monster) → diingat baik: sapaan hangat,
+  diskon kecil, **prioritas kandidat rekrutan markas** (terhubung pilar Belonging).
+- **Reputasi kota** = agregat memori-memori NPC-nya.
+
+**(b) Sistem RIVAL** — musuh Rare+ yang lolos dari combat aktif (HP<50% lalu leash/kabur):
+- Status Rival: respawn beberapa waktu kemudian, **pangkat +1★ (maks +2)**, nama julukan,
+  aura visual, baris isyarat saat bertemu ("Kamu menyesal membiarkanku kabur.").
+- Mengalahkan Rival = reward lebih + entri Kitab Sejarah. **Batas 2–3 Rival hidup**
+  bersamaan (yang terlama memudar). Kematian pemain oleh Rival menaikkan pangkatnya
+  (cap tetap). Desain sederhana & khas Aetherion — terikat counter/langit kita sendiri,
+  **bukan tiruan sistem berpaten game lain**.
+
+**(c) Reaksi dunia v1**: Forest Spirit (trigger trees_cut — gap A8), migrasi monster
+akibat overhunt, kota berkembang karena sering diselamatkan.
+
 ## BAGIAN 2 — DECISION LOG (riwayat keputusan; retroaktif dari DEVLOG/STATUS)
 
 | # | Tanggal | Sistem | Keputusan awal (sumber) | Diubah menjadi | Alasan | Oleh |
@@ -176,5 +223,12 @@ setelah dimiliki; `content_locked` dilepas otomatis saat wilayahnya dibangun.
 | 32 | 2026-07-12 | Class/profesi Penjinak | +50% EXP profesi utama pada "aktivitas intinya" (v0.2 §3) | Ditegaskan: bonus berlaku juga saat AKSI TAMING itu sendiri — sukses MAUPUN percobaan (XP percobaan lebih kecil), bukan hanya progres affinity | Addendum owner (3) | Owner |
 
 | 33 | 2026-07-12 | **ClassSelect: dua JALUR** | 6 class combat saja (FF-2a) | New Game = **tab JALUR TEMPUR** (6 class combat) + **tab JALUR KEHIDUPAN** (4 class konsolidasi: **Perajin/Petani/Peramu/Penjinak** — +50% EXP domain, starting kit, perk khas, **pilih 1 combat sub**: 1 senjata + 2 skill, aturan sub berlaku); quest pembuka bercabang ringan; intro variasi 1 layar; Status/Profesi menampilkan jalur; class kehidupan = **diskon 50% + 1 node gratis** di pohon skill domainnya | Koreksi owner yang HILANG sebelum masuk ledger (BUG DESAIN BD-1 di GAP_AUDIT) — dicatat retroaktif saat verifikasi kepatuhan, dikerjakan hari ini | Owner |
+
+| 34 | 2026-07-12 | **PIAGAM PENGALAMAN** (amandemen identitas) | 3 pilar sistem (GDD v0.1 §1.2) | + **3 Pilar Pengalaman** di atasnya: **WONDER** (rahasia bertingkat: tier-remah solo-findable via rumor/ramalan/gosip; tier-legenda nyaris tanpa petunjuk; kandidat: Nameless Door 03:33 WIB+bulan baru+musim dingin, Forgotten Musician 3 musim, Sleeping Giant gunung=boss hidup), **BELONGING** (Homestead → LIVING HEADQUARTERS → kerajaan; rekrut puluhan penduduk ber-syarat; = evolusi resmi Pact System), **LEGACY dua-lapis** (offline: Kitab Sejarah Dunia + aula patung + maker's mark + first-personal; online nanti: sistem sama jadi first-global) | Piagam owner — dokumen identitas, BUKAN perintah membangun | Owner |
+| 35 | 2026-07-12 | Identitas proyek | "Dunia bereaksi terhadap pemain" (v0.1 §1.1) | Resmi: **"THE WORLD REMEMBERS"** + slogan: "Aetherion bukan dunia yang menunggu pemain datang. Aetherion adalah dunia yang terus berjalan, menyimpan rahasia, dan mengingat apa yang dilakukan pemain." **Living Sky ditegaskan = sistem gameplay TERBESAR** (Tahun Langit, eclipse, meteor shower, Celestial Alignment membuka pohon tersembunyi) | Piagam owner | Owner |
+| 36 | 2026-07-12 | Desain boss masa depan | Boss = solo/party generik (v0.1 §11.2) | Boss **RAID-CLASS** (Sleeping Giant, world boss, boss cerita besar) didesain butuh **entourage 2–4 rekrutan markas** (mekanik multi-aktor); **boss reguler tetap solo-able** — jangan menghukum penyendiri | Piagam owner §3 | Owner |
+| 37 | 2026-07-12 | Roadmap | v0.4.x (MASTER_PLAN) tanpa v0.5+ terinci | **REVISI:** v0.5 STORY & SOUL (target terbesar + Wonder tier-legenda pertama + benih chronicle) → **v0.6 "HEARTH & LEGACY"** (Living HQ/kerajaan + rekrutan + companion AI + World Remembers v1 + Rune [selaras #28]) → v0.7 Emberfall/Ocean → v0.8 Celestia → v0.9 demo publik; racing/gambling/marketplace/MMO tetap beku. Dicatat di TRACKBACK.md (dibuat baru — belum ada di repo) + MASTER_IMPROVEMENT_PLAN | Piagam owner §4 | Owner |
+| 38 | 2026-07-12 | **World Remembers v1** (spec) | (belum ada) | Spec masuk ledger untuk **v0.6 — JANGAN dibangun sekarang**: (a) memori NPC personal (dipukul→dingin/harga+20%/panggil penjaga/pulih via waktu-maaf berbiaya; ditolong→hangat/diskon/prioritas rekrutan; reputasi kota agregat), (b) **Sistem RIVAL** (Rare+ lolos HP<50%→respawn +1★ maks +2, julukan, aura, baris isyarat; kalahkan=reward+chronicle; 2–3 hidup bersamaan, terlama memudar; mati oleh Rival→pangkat naik cap tetap; desain khas Aetherion terikat counter/langit, bukan tiruan sistem berpaten), (c) reaksi dunia v1 (Forest Spirit, migrasi overhunt, kota berkembang) | Arahan owner II | Owner |
+| 39 | 2026-07-12 | Penjaga gerbang | Penjaga MENDORONG monster keluar (UI/UX §4) | Penjaga **DATANG & MEMBUNUH SATU PUKULAN** monster yang mendekati batas kota (animasi serang + juice normal); **pemain nol reward** dari kill penjaga: nol EXP, nol drop, nol progres quest/counter (cegah exploit pancing-ke-gerbang); multi-monster ditangani satu per satu; penjaga tetap abadi | Arahan owner III — satu-satunya kerja kode sekarang | Owner |
 
 > Baris berikutnya ditambahkan SEBELUM implementasi keputusan baru. Jangan hapus baris; koreksi = baris baru.

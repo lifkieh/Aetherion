@@ -105,3 +105,15 @@ Review owner+designer menentukan pemotongan/penambahan per fase.
 > **Dokumen induk:** status seluruh sistem + riwayat keputusan kini dilacak di
 > `PLAN_LEDGER.md` (aturan permanen di DEVLOG). Plan ini adalah turunan prioritas
 > dari ledger; jika keduanya bertentangan, ledger yang benar.
+
+---
+
+## REVISI ROADMAP (Piagam owner, Decision Log #37 — detail di TRACKBACK.md)
+
+Setelah v0.4.x di atas: **v0.5 STORY & SOUL** tetap target terbesar (+ Wonder
+tier-legenda pertama + benih chronicle) → **v0.6 "HEARTH & LEGACY"** (Living HQ/
+kerajaan = evolusi Pact, sistem rekrutan, companion AI, **World Remembers v1**
+[spec di PLAN_LEDGER §8], Rune per #28) → **v0.7 Emberfall/Ocean** (bergeser) →
+**v0.8 Celestia** → **v0.9 demo publik**. Racing/gambling/marketplace/MMO tetap beku.
+Boss raid-class (mis. Sleeping Giant) butuh entourage 2–4 rekrutan; boss reguler
+tetap solo-able (#36).
