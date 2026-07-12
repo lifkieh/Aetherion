@@ -47,11 +47,11 @@ func _build() -> void:
 	var title := _lbl("⏸ JEDA" if _mode == "main" else "⚙ Pengaturan", 24, Color(1.0, 0.86, 0.42))
 	vb.add_child(title)
 	if _mode == "main":
-		vb.add_child(_btn("▶ Lanjutkan", _close))
-		vb.add_child(_btn("⚙ Pengaturan", func(): _mode = "settings"; _build()))
-		vb.add_child(_btn("💾 Simpan (slot %d)" % SaveManager.current_slot, func():
+		vb.add_child(_btn(Loc.t("ui.pause.resume"), _close))
+		vb.add_child(_btn(Loc.t("ui.pause.settings"), func(): _mode = "settings"; _build()))
+		vb.add_child(_btn(Loc.t("ui.pause.save") % SaveManager.current_slot, func():
 			SaveManager.save_game(SaveManager.current_slot)))
-		vb.add_child(_btn("🏠 Ke Menu Utama", func():
+		vb.add_child(_btn(Loc.t("ui.pause.to_title"), func():
 			get_tree().paused = false
 			queue_free()
 			Stage.go_to_scene("res://scenes/ui/MainMenu.tscn")))

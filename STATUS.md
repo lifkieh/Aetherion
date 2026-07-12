@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-12 20:38 WIB — berisi hingga: **v0.4.1c** (fix P0 jalur kehidupan, tangga modern, Gerbang Penjelajah 'Pilih Dunia', UI feel pass) + penjaga gerbang #39. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-12 23:53 WIB — berisi hingga: v0.4.1c + kanonisasi blueprint (B9 taming-semua, konvensi lokalisasi Loc). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -313,9 +313,21 @@ Penjelajah "Pilih Dunia"** di 5 pemukiman (kartu wilayah dikunjungi + siluet ter
 playful (UiFx + ui_feel.json: motion/hover/press/breathing/spring/celebration/microcopy,
 Mode Hemat aman). **467 test.**
 
-## ⏸️ STATUS: MENUNGGU KONFIRMASI OWNER v0.4.1c → LALU v0.4.2 GEAR & ECONOMY
-Build konfirmasi: 20:38 WIB. Setelah dikonfirmasi → v0.4.2 (Transenden sebagai
-MOMEN #25, Enchant+Enchanter, Coating, quality roll + maker's mark).
+### ➕ Kanonisasi MASTER BLUEPRINT v1.0.1 (Decision Log #45–66) — SELESAI (dengan catatan BD-2)
+⚠ **BD-2**: file `docs/MASTER_BLUEPRINT_AETHERION.md` TIDAK sampai ke workspace — TIDAK
+difabrikasi; semua keputusan B1–B19 dikanonisasi dari teks direktif (termasuk koreksi
+penomoran B19). Hierarki resmi tercatat: PLAN_LEDGER > MASTER_BLUEPRINT > MASTER_PLAN >
+STATUS. Sinkron: ledger Bagian 1, TRACKBACK (v0.4.2 += Rumah Lelang; v0.4.4 += lokalisasi;
+v0.5 gerbang B17+B18), MASTER_PLAN. Kode: B9 taming semua spesies (tame_base 0 dihapus) +
+konvensi lokalisasi (autoload Loc + translations/id|en.json + contoh PauseMenu; teks baru
+WAJIB ber-key). **4 LAPORAN AUDIT di reports/**: REPORT-01 Sinkronisasi (+peta cakupan
+fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Scope Risk
+(Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
+naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
+
+## ⏸️ STATUS: BLUEPRINT v1.0.1 TERKUNCI (file menunggu kiriman ulang — BD-2) + 4 LAPORAN SIAP DIREVIEW DIREKTUR — MENUNGGU: GAS v0.4.2
+v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
+quality roll + maker's mark, + Rumah Lelang NPC (B8).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
 di tengah tanpa menghentikan fase. Berikutnya sesuai plan: v0.4.2 "Gear & Economy Depth"
 (Transenden sebagai MOMEN per Decision Log #25, Enchant+Enchanter, Coating, Rune,

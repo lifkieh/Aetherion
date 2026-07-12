@@ -49,6 +49,7 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 | 3 | **[ADDENDUM A3] Enchant crystal +1..+10** via **profesi Enchanter BARU** (gagal mulai +7 = turun 1, TIDAK hancur; Protection Scroll craft) | Addendum A3 | ⚙⚙ | Sedang |
 | 4 | **[ADDENDUM A3] Coating/minyak Alchemist** (Venom Oil, Frost Coat; 10 menit; aturan elemen dominan + 25% sekunder) — melengkapi 4 jalur Element Flow | Addendum A3 | ⚙ | Kecil |
 | 5 | Profesi yang hilang: **Enchanter** (untuk #3), lalu **Merchant** & **Treasure Hunter** (fase berikut bila ekonomi/dungeon sudah dalam) | Audit B | ⚙ | Sedang |
+| 6 | **[B8 #53] RUMAH LELANG NPC** — offline, maks tier A, sumber tematik (termasuk tawanan-dibebaskan); sink & discovery ekonomi | Blueprint | 🔥⚙ | Sedang |
 
 > **Rune System DIHAPUS dari fase ini** (Decision Log #28): ditunda ke fase pembukaan
 > konten, dipasangkan dengan loot dungeon & slot monster Epic+. v0.4.2 fokus:
@@ -80,6 +81,7 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 | 2 | Gamepad support penuh (binding + navigasi UI + glyph) | ✨✨ | Sedang |
 | 3 | ~~Pause menu khusus~~ **SELESAI di v0.4.1** (PauseMenu overlay) | — | — |
 | 4 | UI transition pass: fade/slide panel, scene transition, hover state + SFX konsisten | ✨ | Sedang |
+| 4b | **[B15 #62] Infra LOKALISASI penuh**: retrofit string lama ke key, pilihan bahasa ID/EN di Settings, en.json lengkap | ✨⚙ | Besar |
 | 5 | Advanced Class Quest lvl 60 (janji teaser 2a dibayar) + Trial of the [Rasi] birth sign | ⚙✨ | Besar |
 | ~~6~~ | ~~Rune System~~ — **DIPINDAH ke fase pembukaan konten** (Decision Log #28, dedup review designer) | — | — |
 

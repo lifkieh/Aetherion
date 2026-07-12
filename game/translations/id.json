@@ -1,0 +1,7 @@
+{
+  "_meta": "Lokalisasi Aetherion (B15, Decision Log #62). KONVENSI: semua teks UI BARU wajib lewat Loc.t(\"key\") mulai commit setelah 2026-07-12. Retrofit teks lama = v0.4.4.",
+  "ui.pause.resume": "▶ Lanjutkan",
+  "ui.pause.settings": "⚙ Pengaturan",
+  "ui.pause.save": "💾 Simpan (slot %d)",
+  "ui.pause.to_title": "🏠 Ke Menu Utama"
+}

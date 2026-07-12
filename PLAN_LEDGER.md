@@ -1,6 +1,8 @@
 # PLAN_LEDGER — Dokumen Induk Proyek Aetherion
 **Dibuat:** 2026-07-12 atas perintah owner (obat sistemik: tidak ada lagi sistem yang hilang senyap).
 
+**Hierarki dokumen resmi (Decision Log #45): PLAN_LEDGER > MASTER_BLUEPRINT (file menunggu, BD-2) > MASTER_IMPROVEMENT_PLAN > STATUS.**
+
 **Aturan permanen (juga di DEVLOG):**
 (a) Setiap arahan owner baru = baris baru di Decision Log SEBELUM dikerjakan.
 (b) Setiap penyimpangan implementasi dari GDD yang diputuskan agent sendiri = baris baru + alasan.
@@ -86,7 +88,7 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | Wilayah: Greenvale, Candyveil, Desert, Frostpeak(+desa), Storm Island | v0.1 §4.1+v0.2 §4 | Ada | 5 dari 13; sisanya = konten (beku). |
 | Celestia Kingdom = ibukota SEMUA ras | Owner (kanon baru) | Ditunda-sengaja | Decision Log #7; dibangun saat konten dibuka. |
 | Homestead + tanam real-time WIB | v0.2 §5 | Ada | Ternak/apiari/kolam/breeding-pen belum (bertahap); cek musim belum (A4). |
-| Kompresi level Fase 0 (monster L1–55, bukan 1–99) | Keputusan implementasi | Ada | Decision Log #19. |
+| Kompresi level Fase 0 (monster L1–55) | Keputusan implementasi | Ada — **SEMENTARA** | #19; per **B10 (#55): level final TANPA batas**, target all-in-one ±500 jam. |
 
 ### 4. Monster, taming, pet
 
@@ -98,7 +100,7 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | **Affinity** pet (naik lewat interaksi, gerbang konten) | v0.1 §7.2, §8.3 | **Ada** (v0.4.1) | +1/kill dibantu, +5 diberi makan (cap 100); tampil di tab Pet (ranch UI). |
 | **Mutation 1/500** | v0.1 §7.2 | **Ada** (v0.4.1) | Recolor emas, +10% stat, nama ✦, drop +10%. |
 | Growth Type (Early/Balanced/Late) | v0.1 §7.2 | Belum | Prioritas rendah. |
-| Taming (rate, pity, enrage, orb) | v0.1 §8.1 + v0.2 §7.4 | Ada | |
+| Taming (rate, pity, enrage, orb) | v0.1 §8.1 + v0.2 §7.4 | Ada (B9 diberlakukan) | **SEMUA spesies tameable (#54)** — tame_base 0 dihapus (gummy_mimic, peppermint_fairy → rate ekstrem kecil); Star Whale belum ber-entitas dunia, wajib tameable saat dibuat. |
 | Pet-mount Size Class + saddle | v0.3 §6 | Ada | |
 | Evolution bertingkat + syarat dunia | v0.1 §8.4 | Ada | Purnama dll.; jalur bercabang belum. |
 | Secret monster + trigger dunia | v0.1 §7.3 | Sebagian | Thunder Dragon ✓, Star Whale ✓; **Forest Spirit belum** (counter jalan, trigger tidak — A8). |
@@ -120,7 +122,7 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | Equipment 3 slot + tooltip banding | Owner ronde 4 (PC5) | Ada | |
 | Ekonomi NPC supply-demand + log | Fase0 §7 | Ada | |
 | Skill book / trainer / boss-unlock skill | v0.1 §6.2, §11.1 | Ada | Ronde 4 (PC4). |
-| Marketplace pemain / auction / kios | v0.1 §10.3 | Ditunda-sengaja | Fase 2 online-lite. |
+| Marketplace pemain / auction / kios | v0.1 §10.3 | Ditunda-sengaja | Fase 2 online-lite. **B8 (#53): RUMAH LELANG NPC offline (maks tier A, tawanan-dibebaskan) masuk v0.4.2.** |
 | Gambling / racing betting | v0.1 §10.5, §11.5 | Ditunda-sengaja | S3+. |
 
 ### 6. Konten & presentasi
@@ -135,10 +137,17 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | Aetherpedia, Photo Mode, Titles, Echo Vendor, Sky Report, music layering | v0.2 §10 | Ada | |
 | Settings lengkap (volume per channel/keybind/fullscreen) + gamepad | Benchmark | Sebagian (v0.4.1) | Pause menu layak + volume Musik/SFX terpisah + fullscreen ADA (tarikan review i). Keybind remap + gamepad: v0.4.4. |
 | UI feel (motion/hover/press/breathing/celebration) | Benchmark / #44 | **Ada** (v0.4.1c) | UiFx + ui_feel.json tunable; semua layar utama; hormat Mode Hemat. |
+| Lokalisasi ID/EN (B15 #62) | Blueprint | **Sebagian** | Konvensi string-key + Loc helper + translations/ terpasang; retrofit teks lama & pilihan bahasa UI = v0.4.4. |
+| Active Loadout 20–30 skill (B10-A #56) | Amandemen Direktur | Belum — spec terkunci | Ganti di zona aman, preset bernama; dirancang bersama v0.5 (butuh skill pool membesar dulu). |
+| Life Events domain 5-tier (B1 #46) | Blueprint | Belum — spec | v0.5/v0.6 (lihat REPORT-02 risiko). |
+| Monster bekerja (B2 #47) · Legacy Family (B3 #48) · Dunia-maju (B4 #49) · Autonomous Kingdom (B11 #58) · Stability (B12 #59) · Expansion (B13 #60) | Blueprint | Belum — spec v0.6 Hearth & Legacy | Payung pilar BELONGING/LEGACY. |
+| Celestial Crisis = FF Moment (B5 #50) | Blueprint + GDD v0.3 §2.2 | Belum — spec v0.5+ | Disatukan dengan supernova live-event. |
+| Naratif Memori-vs-Pelupaan + Nirnama (B6 #51) · nada gelap (B16 #63) | Blueprint | Belum — GERBANG: Companion Bible (#64) & Nirnama Bible (#65) | v0.5 Story & Soul. |
+| World Personality: Enam Lingkup Budaya (B19 #66) | Blueprint §3.9 (file menunggu) | Belum — spec | Tabel penuh menunggu file blueprint. |
 | Tangga dungeon modern (gantung/lompat-lepas) | Owner #42 | **Ada** (v0.4.1c) | Menempel W-sekali, menggantung, SPACE lompat-lepas, anti-nyangkut puncak. |
 | World map + fast travel | Benchmark | **Sebagian** (v0.4.1c) | **Gerbang Penjelajah "Pilih Dunia"** di 5 pemukiman (#43): kartu wilayah dikunjungi + siluet terkunci + 25G (gratis 1×/hari). World map visual penuh: v0.4.3. |
 | PvP / guild / racing / world boss / co-op | v0.1 §11 | Ditunda-sengaja | Fase 2–4 online. |
-| Monetisasi kosmetik / battle pass | v0.1 §15 | Ditunda-sengaja | Pasca-launch. |
+| Monetisasi kosmetik / battle pass | v0.1 §15 | **DIBATALKAN (B14 #61)** | **GRATIS PENUH** — tanpa monetisasi. |
 
 ---
 

@@ -708,7 +708,7 @@
       "gust"
     ],
     "loot_table": "candy_sprite",
-    "tame_base": 0.0,
+    "tame_base": 0.01,
     "evolution": "",
     "aggro_radius": 120,
     "lore": "Peri permen dari jamuan Sugar Queen; healer pendamping."
@@ -907,7 +907,7 @@
       "bite"
     ],
     "loot_table": "candy_mimic",
-    "tame_base": 0.0,
+    "tame_base": 0.01,
     "evolution": "",
     "aggro_radius": 90,
     "lore": "Peti permen jebakan; menyamar lalu menerkam."

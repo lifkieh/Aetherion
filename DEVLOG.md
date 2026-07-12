@@ -9,6 +9,20 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
 5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
 
+## 2026-07-12 — KANONISASI MASTER BLUEPRINT v1.0.1 (Decision Log #45–66) + 4 LAPORAN
+
+**BD-2 (GAP_AUDIT):** file blueprint TIDAK sampai ke workspace — tidak difabrikasi;
+B1–B19 dikanonisasi dari teks direktif (termasuk koreksi penomoran B19; butir yang
+butuh teks penuh ditandai MENUNGGU FILE). Hierarki resmi: PLAN_LEDGER > MASTER_BLUEPRINT
+> MASTER_PLAN > STATUS. Sinkron ledger/TRACKBACK/MASTER_PLAN (Rumah Lelang → v0.4.2;
+lokalisasi → v0.4.4; v0.5 di-gerbang Companion & Nirnama Bible; monetisasi DIBATALKAN
+oleh B14 gratis penuh; kompresi level = sementara per B10). Kode: **B9** semua spesies
+tameable (gummy_mimic & peppermint_fairy 0→0.01; Star Whale belum ber-entitas — wajib
+tameable saat dibuat) + **B15** konvensi lokalisasi: autoload `Loc` + `translations/`
+id/en + contoh PauseMenu — **teks UI baru WAJIB Loc.t("key") mulai commit berikutnya**.
+4 laporan audit di `reports/` (sinkronisasi+peta cakupan, scope risk, story readiness,
+v0.4.2 readiness). 472 test.
+
 ## 2026-07-12 — GERBANG 0 LULUS + RONDE v0.4.1c (Decision Log #40–44) — SELESAI
 
 **Playtest owner: LULUS — "sudah tidak hampa" (#40).** Ronde perbaikan v0.4.1c:

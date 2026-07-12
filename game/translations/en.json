@@ -1,0 +1,7 @@
+{
+  "_meta": "Aetherion localization (B15, Decision Log #62). English pass happens in v0.4.4; keys without a translation fall back to id.json.",
+  "ui.pause.resume": "▶ Resume",
+  "ui.pause.settings": "⚙ Settings",
+  "ui.pause.save": "💾 Save (slot %d)",
+  "ui.pause.to_title": "🏠 To Title Screen"
+}

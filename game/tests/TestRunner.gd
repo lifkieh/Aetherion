@@ -49,6 +49,7 @@ func _ready() -> void:
 	await _test_ui_flow_both_paths()
 	_test_travel_hub()
 	_test_ui_feel()
+	_test_blueprint_code()
 	await _test_ladder_modern()
 	await _test_guard_kill()
 	_test_life_path()
@@ -694,6 +695,24 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_blueprint_code() -> void:
+	print("[Kanonisasi blueprint — kode B9 + B15]")
+	# B9 (#54): SEMUA spesies tameable — tak ada tame_base 0 tersisa
+	var banned := []
+	for sid in Db.monsters:
+		if float(Db.monsters[sid].get("tame_base", 1.0)) <= 0.0:
+			banned.append(sid)
+	check("B9: tak ada spesies terlarang tame", banned.is_empty(), str(banned))
+	# B15 (#62): Loc string-key + fallback berjenjang
+	check("Loc: key dikenal (id)", Loc.t("ui.pause.resume") != "ui.pause.resume")
+	var lang0: String = Loc.language
+	Loc.language = "en"
+	check("Loc: EN aktif menerjemahkan", Loc.t("ui.pause.resume") == "▶ Resume")
+	Loc.language = "id"
+	check("Loc: ID default", Loc.t("ui.pause.resume") == "▶ Lanjutkan")
+	check("Loc: key tak dikenal fallback ke key mentah", Loc.t("kunci.tak.ada") == "kunci.tak.ada")
+	Loc.language = lang0
 
 func _test_ui_feel() -> void:
 	print("[UI feel — Decision Log #44]")
