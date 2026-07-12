@@ -169,6 +169,17 @@ dan `PLAN_LEDGER.md` (dokumen induk baru — lihat aturan permanen di DEVLOG).
 
 # 🐞 BUG DESAIN (aturan ledger d) — dicatat 2026-07-12
 
+## BD-2: File MASTER_BLUEPRINT_AETHERION.md v1.0.1 TIDAK PERNAH SAMPAI ke workspace
+**Direktif kanonisasi** memerintahkan membaca `docs/MASTER_BLUEPRINT_AETHERION.md v1.0.1`
+dan commit ke repo. **Verifikasi jujur:** file tidak ada di docs/, seluruh repo, maupun
+folder unduhan user (pencarian rekursif; satu-satunya .md yang berubah hari ini adalah
+tulisan agent sendiri). Pola BD-1 terulang: artefak Direktur hilang sebelum sampai.
+**Tindakan:** agent TIDAK memfabrikasi dokumen kompas kanonik. Semua keputusan B1–B19
+yang termuat dalam TEKS DIREKTIF dicatat & dikanonisasi di Decision Log (#46–#66);
+pekerjaan yang membutuhkan TEKS PENUH blueprint (peta cakupan fitur per pasal, tabel
+§3.9 Enam Lingkup Budaya, 6 draft capstone) ditandai MENUNGGU FILE di REPORT-01.
+**Butuh dari owner:** kirim ulang file blueprint ke `docs/`.
+
 ## BD-1: Koreksi "dua tab jalur + 4 class kehidupan" HILANG sebelum masuk ledger
 **Temuan verifikasi owner:** layar ClassSelect masih versi 6 class combat saja.
 **Verifikasi kode (jujur):** `ClassSelect.gd` tidak punya tab/jalur sama sekali;
