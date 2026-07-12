@@ -162,14 +162,20 @@ func _physics_process(delta: float) -> void:
 			else:
 				_move_toward(global_position * 2 - _player.global_position, delta, 1.2)
 		State.ATTACK:
-			velocity = Vector2.ZERO
-			if _player == null or dist > _attack_range() * 1.4:
+			# attack PATTERNS (v0.4.1): tak ada lagi musuh yang cuma jalan-nabrak.
+			if _patt != "":
+				_run_pattern(delta)
+			elif _player == null or dist > _attack_range() * 1.6:
 				_state = State.CHASE
 			elif _attack_cd <= 0.0 and not StatusFx.is_attack_locked(self):
-				_attack_player()
+				_start_pattern()
+			else:
+				velocity = Vector2.ZERO
 
 func _attack_range() -> float:
-	return 90.0 if inst.get("ai", "melee") == "ranged" else 26.0
+	if inst.get("ai", "melee") == "ranged" or _pattern_for() == "burst":
+		return 100.0
+	return 26.0
 
 func _wander(delta: float) -> void:
 	if _state_timer <= 0.0:
@@ -233,6 +239,119 @@ func _anim(v: Vector2) -> void:
 		sprite.play("walk_" + SheetUtil.dir_from_vec(v))
 	else:
 		sprite.play("idle_" + SheetUtil.dir_from_vec(v))
+
+# --- Attack patterns (v0.4.1) -------------------------------------------------
+# Pola dipilih dari arketipe (semua 60 spesies otomatis kebagian; override via
+# monsters.json "pattern"): bruiser/tank=LUNGE (telegraf lalu seruduk), assassin/
+# swift=FLANK (sidestep + tusukan ganda cepat), caster/support/ranged=BURST
+# (kipas 3 proyektil). Telegraf universal: kedip merah + wind-up diam.
+
+var _patt := ""
+var _patt_phase := 0     # 0 = telegraph, 1 = execute
+var _patt_t := 0.0
+var _patt_dir := Vector2.ZERO
+var _patt_hits := 0
+
+func _pattern_for() -> String:
+	var p: String = inst.get("pattern", "")
+	if p != "":
+		return p
+	if inst.get("ai", "melee") == "ranged":
+		return "burst"
+	match inst.get("archetype", "bruiser"):
+		"assassin", "swift": return "flank"
+		"caster", "support": return "burst" if inst.get("projectile", "") != "" or inst.get("ai", "") == "ranged" else "lunge"
+		_: return "lunge"
+
+func _start_pattern() -> void:
+	_patt = _pattern_for()
+	_patt_phase = 0
+	_patt_t = {"lunge": 0.45, "flank": 0.3, "burst": 0.5}.get(_patt, 0.4)
+	_patt_hits = 0
+	if _player:
+		_patt_dir = (_player.global_position - global_position).normalized()
+	# telegraf universal: kedip merah selama wind-up
+	var tw := create_tween().set_loops(3)
+	tw.tween_property(sprite, "modulate", Color(1.6, 0.5, 0.5), 0.08)
+	tw.tween_property(sprite, "modulate", Color.WHITE, 0.08)
+
+func _run_pattern(delta: float) -> void:
+	_patt_t -= delta
+	if _patt_phase == 0:
+		velocity = Vector2.ZERO
+		if _patt_t <= 0.0:
+			_patt_phase = 1
+			match _patt:
+				"lunge":
+					_patt_t = 0.32
+					if _player:
+						_patt_dir = (_player.global_position - global_position).normalized()
+				"flank":
+					_patt_t = 0.5
+					_patt_dir = _patt_dir.orthogonal() * (1.0 if randf() < 0.5 else -1.0)
+				"burst":
+					_patt_t = 0.1
+					_fire_fan()
+		return
+	match _patt:
+		"lunge":
+			velocity = _patt_dir * (inst.get("spd", 100) * 1.05)
+			move_and_slide()
+			if _player and _patt_hits == 0 and global_position.distance_to(_player.global_position) < 26.0:
+				_patt_hits = 1
+				_strike(1.3)
+			if _patt_t <= 0.0:
+				_end_pattern(1.7)
+		"flank":
+			if _patt_t > 0.32:
+				velocity = _patt_dir * (inst.get("spd", 100) * 0.9)   # sidestep cepat
+				move_and_slide()
+			else:
+				velocity = Vector2.ZERO
+				# dua tusukan cepat di 0.28s & 0.12s tersisa
+				if _player and global_position.distance_to(_player.global_position) < 30.0:
+					if (_patt_hits == 0 and _patt_t <= 0.28) or (_patt_hits == 1 and _patt_t <= 0.12):
+						_patt_hits += 1
+						_strike(0.6)
+			if _patt_t <= 0.0:
+				_end_pattern(1.5)
+		"burst":
+			velocity = Vector2.ZERO
+			if _patt_t <= 0.0:
+				_end_pattern(2.0)
+
+func _end_pattern(cd: float) -> void:
+	_patt = ""
+	_attack_cd = cd
+	sprite.modulate = Color.WHITE
+
+## Satu pukulan pola ke pemain dengan pengali damage.
+func _strike(mult: float) -> void:
+	if _player == null or not _player.has_method("take_hit"):
+		return
+	var skills: Array = inst.get("skills", ["tackle"])
+	var sk := Db.skill(skills[0]) if skills.size() > 0 else Db.skill("tackle")
+	if sk.is_empty() or sk.get("kind", "physical") == "buff":
+		sk = Db.skill("tackle")
+	var mstats := MonsterFactory.combat_stats(inst)
+	mstats["atk"] = int(mstats.get("atk", 10) * mult)
+	mstats["accuracy"] = float(mstats.get("accuracy", 1.0)) * StatusFx.acc_mult(self)
+	var pstats: Dictionary = _player.combat_view() if _player.has_method("combat_view") else PlayerData.combat_stats()
+	var res := CombatResolver.resolve(mstats, pstats, sk, CombatResolver.build_ctx())
+	_player.take_hit(res, self)
+
+## Kipas 3 proyektil ke arah pemain (pola burst).
+func _fire_fan() -> void:
+	if _player == null:
+		return
+	var dir := (_player.global_position - global_position).normalized()
+	var proj: String = inst.get("projectile", "enemy_bolt")
+	if proj == "":
+		proj = "enemy_bolt"
+	for i in range(3):
+		var a := dir.rotated(deg_to_rad(-16.0 + 16.0 * i))
+		ProjectilePool.spawn(global_position + a * 12.0, a, proj, MonsterFactory.combat_stats(inst), self, "player")
+	Audio.play_sfx("attack", 0.8)
 
 func _attack_player() -> void:
 	_attack_cd = 1.3

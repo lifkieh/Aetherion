@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	await _test_patterns()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -683,6 +684,33 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_patterns() -> void:
+	print("[Attack Patterns — v0.4.1]")
+	# setiap arketipe punya pola (0% musuh jalan-nabrak murni)
+	var m: Monster = preload("res://scenes/actors/Monster.tscn").instantiate()
+	add_child(m)
+	var by_arch := {}
+	for sp in ["grey_wolf", "fluffbit", "verdant_slime", "timberwing_owl", "lollipop_sprite"]:
+		m.setup(MonsterFactory.make(sp, 5, 3))
+		by_arch[m.inst.get("archetype", "?")] = m._pattern_for()
+		check("%s (%s) punya pola: %s" % [sp, m.inst.get("archetype", "?"), m._pattern_for()], m._pattern_for() != "")
+	check("min 3 pola berbeda antar arketipe", by_arch.values().reduce(func(acc, v): return acc if v in acc else acc + [v], []).size() >= 3 if by_arch.size() >= 3 else false, str(by_arch))
+	# telegraf: memulai pola masuk fase 0 (wind-up), bukan langsung memukul
+	m.setup(MonsterFactory.make("grey_wolf", 5, 3))
+	await get_tree().process_frame
+	m._start_pattern()
+	check("pola lunge dimulai dengan telegraf (fase 0)", m._patt == "lunge" and m._patt_phase == 0 and m._patt_t > 0.0)
+	# audit roster: SEMUA spesies menghasilkan pola valid
+	var all_ok := true
+	for sid in Db.monsters:
+		m.inst = MonsterFactory.make(sid, 5, 3)
+		if m.inst.is_empty():
+			continue
+		if not (m._pattern_for() in ["lunge", "flank", "burst"]):
+			all_ok = false
+	check("semua 60 spesies punya pola valid (0% nabrak-polos)", all_ok)
+	m.queue_free()
 
 func _test_opening() -> void:
 	print("[30 menit pertama — FF-2g]")

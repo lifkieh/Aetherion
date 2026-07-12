@@ -20,6 +20,7 @@ var _dir := 1.0
 var _attack_cd := 0.0
 var _hop_cd := 0.0
 var _shoot_cd := 0.0
+var _shots := 0
 var _contact_cd := 0.0
 var _player: Node2D = null
 var _dead := false
@@ -145,8 +146,16 @@ func _shoot_ai(delta: float, chasing: bool, dx: float) -> void:
 			velocity.x = 0.0
 		if _shoot_cd <= 0.0:
 			_shoot_cd = 1.6
+			_shots += 1
 			var dir: Vector2 = (_player.global_position - global_position).normalized()
-			ProjectilePool.spawn(global_position + dir * 10.0, dir, inst.get("projectile", "enemy_bolt"), MonsterFactory.combat_stats(inst), self, "player")
+			var proj: String = inst.get("projectile", "enemy_bolt")
+			if _shots % 3 == 0:
+				# tembakan ke-3 = kipas 3 proyektil (pola burst, v0.4.1)
+				for i in range(3):
+					var a := dir.rotated(deg_to_rad(-14.0 + 14.0 * i))
+					ProjectilePool.spawn(global_position + a * 10.0, a, proj, MonsterFactory.combat_stats(inst), self, "player")
+			else:
+				ProjectilePool.spawn(global_position + dir * 10.0, dir, proj, MonsterFactory.combat_stats(inst), self, "player")
 	else:
 		velocity.x = _dir * PATROL_SPEED
 		wall_ray.target_position = Vector2(_dir * 10, 0)
@@ -268,14 +277,27 @@ func _gel_burst() -> void:
 		ProjectilePool.spawn(global_position, dir, "gel_glob", MonsterFactory.combat_stats(inst), self, "player")
 
 func _attack() -> void:
-	_attack_cd = 1.3
+	# telegraf universal (v0.4.1): kedip merah + wind-up 0.25s sebelum pukulan
+	_attack_cd = 1.5
+	var tw := create_tween().set_loops(2)
+	tw.tween_property(sprite, "modulate", Color(1.6, 0.5, 0.5), 0.06)
+	tw.tween_property(sprite, "modulate", Color.WHITE, 0.06)
+	get_tree().create_timer(0.25).timeout.connect(_strike_now)
+
+func _strike_now() -> void:
+	if _dead or StatusFx.is_attack_locked(self):
+		return
+	if _player == null or global_position.distance_to(_player.global_position) > 30.0:
+		return   # pemain sempat menghindar — telegraf ada gunanya
 	var skills: Array = inst.get("skills", ["tackle"])
 	var sk := Db.skill(skills[0]) if skills.size() > 0 else Db.skill("tackle")
 	if sk.get("kind", "physical") == "buff":
 		sk = Db.skill("tackle")
-	if _player and _player.has_method("take_hit"):
+	if _player.has_method("take_hit"):
 		var pstats: Dictionary = _player.combat_view() if _player.has_method("combat_view") else PlayerData.combat_stats()
-		var res := CombatResolver.resolve(MonsterFactory.combat_stats(inst), pstats, sk, CombatResolver.build_ctx())
+		var mstats := MonsterFactory.combat_stats(inst)
+		mstats["accuracy"] = float(mstats.get("accuracy", 1.0)) * StatusFx.acc_mult(self)
+		var res := CombatResolver.resolve(mstats, pstats, sk, CombatResolver.build_ctx())
 		_player.take_hit(res, self)
 
 var _hit_imm := {}
