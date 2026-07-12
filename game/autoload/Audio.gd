@@ -39,6 +39,17 @@ const COMBAT_MUSIC := "23 - Road.ogg"
 const MUSIC_DB := -8.0
 const QUIET_DB := -40.0
 var muted := false
+var sfx_scale := 1.0     # volume per channel (v0.4.1): 0..1
+var music_scale := 1.0
+
+## Volume per channel (owner review i): music & SFX terpisah.
+func set_channel_volumes(music_v: float, sfx_v: float) -> void:
+	music_scale = clampf(music_v, 0.0, 1.0)
+	sfx_scale = clampf(sfx_v, 0.0, 1.0)
+	if _music:
+		_music.volume_db = MUSIC_DB + linear_to_db(maxf(0.001, music_scale))
+	if _combat and _combat_on:
+		_combat.volume_db = MUSIC_DB + linear_to_db(maxf(0.001, music_scale))
 
 func _ready() -> void:
 	for i in range(POOL_SIZE):
@@ -77,6 +88,7 @@ func play_sfx(name: String, pitch: float = 1.0) -> void:
 	_next = (_next + 1) % _pool.size()
 	p.stream = s
 	p.pitch_scale = pitch
+	p.volume_db = linear_to_db(maxf(0.001, sfx_scale))   # channel SFX (v0.4.1)
 	p.play()
 
 func play_music(filename: String) -> void:
