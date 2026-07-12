@@ -6,6 +6,7 @@ var _font: Font
 var mode := "inventory"      # inventory | crafting | shop
 var _ctx = null              # bench/npc context
 var root: Control
+var _panel_main: PanelContainer
 var title: Label
 var content: VBoxContainer
 var gold_lbl: Label
@@ -53,7 +54,8 @@ func _build_frame() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.add_child(dim)
 
-	var panel := PanelContainer.new()
+	_panel_main = PanelContainer.new()
+	var panel := _panel_main
 	panel.set_anchors_preset(Control.PRESET_CENTER)
 	panel.custom_minimum_size = Vector2(560, 460)
 	panel.position = Vector2(-280, -230)
@@ -85,6 +87,7 @@ func _build_frame() -> void:
 			if m[0] == "trees":
 				_ctx = null   # tab = tampilan upgrade-di-mana-pun (tanpa lokasi keeper)
 			_rebuild())
+		UiFx.button(b)
 		tabs.add_child(b)
 	var close := Button.new()
 	close.text = "Tutup (Esc)"
@@ -118,6 +121,7 @@ func open(m: String, ctx = null) -> void:
 	_ctx = ctx
 	root.visible = true
 	get_tree().paused = true
+	UiFx.panel_in(_panel_main)   # panel muncul hidup (#44)
 	_rebuild()
 
 func close_menu() -> void:
@@ -145,6 +149,7 @@ func _btn(text: String, cb: Callable) -> Button:
 	if _font: b.add_theme_font_override("font", _font)
 	b.pressed.connect(func(): Audio.play_sfx("menu"))
 	b.pressed.connect(cb)
+	UiFx.button(b)   # hover/press feel (#44)
 	return b
 
 func _rebuild() -> void:
@@ -210,7 +215,11 @@ func _build_skill() -> void:
 		h.add_child(l)
 		if u.get("source", "") == "trainer":
 			var can_train: bool = PlayerData.level >= int(u.get("level", 1)) and PlayerData.gold >= int(u.get("cost", 0))
-			var b := _btn("Latih %d G" % int(u.get("cost", 0)), func(): if PlayerData.train_skill(sid): _rebuild())
+			var b := _btn("Latih %d G" % int(u.get("cost", 0)), func():
+				if PlayerData.train_skill(sid):
+					UiFx.celebrate(content, "✦")   # micro-celebration (#44)
+					Audio.play_sfx("levelup", 1.3)
+					_rebuild())
 			b.disabled = not can_train
 			h.add_child(b)
 
@@ -411,7 +420,7 @@ func _load_slot(slot: int) -> void:
 func _build_inventory() -> void:
 	title.text = "Tas"
 	if PlayerData.inventory.is_empty():
-		content.add_child(_mk_label("(kosong)", 14))
+		content.add_child(_mk_label("(tas-mu masih seringan bulu — ayo berpetualang!)", 14))
 	# slotted icon grid with hover tooltips (R2 Part 3)
 	var grid := GridContainer.new()
 	grid.columns = 8
@@ -625,7 +634,7 @@ func _build_grimoire() -> void:
 		var d := _mk_label("   %s" % c.get("desc", ""), 11, Color(0.72, 0.76, 0.9))
 		content.add_child(d)
 	if none_found:
-		content.add_child(_mk_label("(belum ada — bereksperimenlah!)", 12, Color(0.7, 0.7, 0.72)))
+		content.add_child(_mk_label("(belum ada — dunia menunggu percikan pertamamu!)", 12, Color(0.7, 0.7, 0.72)))
 	content.add_child(_mk_label("— Misteri (petunjuk dari fizzle) —", 15, Color(0.8, 0.7, 0.5)))
 	var hidden := 0
 	var mystery := 0
@@ -714,7 +723,10 @@ func _tree_row(t: Dictionary, loc: String) -> void:
 		var domain_tag := " 🌿domain" if SkillTreeSystem.is_domain_tree(tid) else ""
 		var b := _btn("Buka %d G%s" % [SkillTreeSystem.unlock_cost(tid), domain_tag], func():
 			var res := SkillTreeSystem.unlock(tid, loc)
-			if not res.ok: EventBus.toast.emit(res.reason)
+			if not res.ok:
+				EventBus.toast.emit(res.reason)
+			else:
+				UiFx.celebrate(content, "🌿")   # micro-celebration (#44)
 			_rebuild())
 		if t.get("requires_scenario", "") != "" and not chk.ok:
 			b.disabled = true

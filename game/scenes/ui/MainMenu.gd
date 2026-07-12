@@ -31,7 +31,9 @@ func _button(t: String, cb: Callable) -> Button:
 	if _font: b.add_theme_font_override("font", _font)
 	b.add_theme_font_size_override("font_size", 18)
 	b.custom_minimum_size = Vector2(320, 34)
+	b.pressed.connect(func(): Audio.play_sfx("menu"))
 	b.pressed.connect(cb)
+	UiFx.button(b)   # (#44)
 	return b
 
 func _build() -> void:
@@ -100,6 +102,7 @@ func _build() -> void:
 			lm.get("location", "?"), lm.get("playtime", "0:00")], _load.bind(last))
 		cont.add_theme_color_override("font_color", Color(1.0, 0.86, 0.42))
 		vb.add_child(cont)
+		UiFx.breathe(cont)   # tombol terpenting bernafas halus (#44)
 	vb.add_child(_button("Main Baru", _new_game))
 	if SaveManager.has_save(1) or SaveManager.has_save(2) or SaveManager.has_save(3):
 		for slot in [1, 2, 3]:

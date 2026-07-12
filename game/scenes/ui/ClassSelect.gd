@@ -149,6 +149,8 @@ func _select(cid: String) -> void:
 		var sb: StyleBoxFlat = _cards[k].get_theme_stylebox("panel")
 		sb.set_border_width_all(4 if k == cid else 2)
 		sb.bg_color = Color(0.14, 0.17, 0.30, 0.98) if k == cid else Color(0.09, 0.11, 0.22, 0.95)
+	if _cards.has(cid):
+		UiFx.select_bounce(_cards[cid])   # kartu bouncing saat dipilih (#44)
 	_refresh_detail()
 
 func _refresh_detail() -> void:
@@ -215,7 +217,9 @@ func _add_start_button() -> void:
 	if _font: _start_btn.add_theme_font_override("font", _font)
 	_start_btn.custom_minimum_size = Vector2(300, 40)
 	_start_btn.pressed.connect(_confirm)
+	UiFx.button(_start_btn)
 	_detail.add_child(_start_btn)
+	UiFx.breathe(_start_btn)   # tombol terpenting bernafas (#44)
 
 ## Detail JALUR KEHIDUPAN (Decision Log #33): perk + kit + pohon domain + combat sub.
 func _refresh_life_detail(c: Dictionary) -> void:

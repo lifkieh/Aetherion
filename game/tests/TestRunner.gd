@@ -48,6 +48,7 @@ func _ready() -> void:
 	_test_status_fx()
 	await _test_ui_flow_both_paths()
 	_test_travel_hub()
+	_test_ui_feel()
 	await _test_ladder_modern()
 	await _test_guard_kill()
 	_test_life_path()
@@ -693,6 +694,29 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_ui_feel() -> void:
+	print("[UI feel — Decision Log #44]")
+	check("ui_feel.json termuat & bisa dituning", not Db.ui_feel.is_empty() and Db.ui_feel.has("panel_in") and Db.ui_feel.has("hover"))
+	# smoke: apply ke tombol & panel tanpa crash + guard dobel
+	var b := Button.new()
+	add_child(b)
+	UiFx.button(b)
+	UiFx.button(b)   # idempotent (meta guard)
+	check("UiFx.button idempotent", b.has_meta("uifx"))
+	var p := PanelContainer.new()
+	p.custom_minimum_size = Vector2(100, 60)
+	add_child(p)
+	UiFx.panel_in(p)
+	UiFx.select_bounce(p)
+	UiFx.toast_spring(p)
+	check("UiFx panel/bounce/spring tidak crash", true)
+	# Mode Hemat mematikan motion
+	var eco0 := Settings.eco_mode
+	Settings.eco_mode = true
+	check("Mode Hemat menonaktifkan motion", not UiFx._on())
+	Settings.eco_mode = eco0
+	b.queue_free(); p.queue_free()
 
 func _test_travel_hub() -> void:
 	print("[Gerbang Penjelajah 'Pilih Dunia' — Decision Log #43]")

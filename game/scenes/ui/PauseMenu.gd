@@ -40,6 +40,7 @@ func _build() -> void:
 	panel.custom_minimum_size = Vector2(340, 0)
 	panel.position = Vector2(-170, -160)
 	root.add_child(panel)
+	UiFx.panel_in(panel)   # (#44)
 	var vb := VBoxContainer.new()
 	vb.add_theme_constant_override("separation", 8)
 	panel.add_child(vb)
@@ -77,6 +78,7 @@ func _btn(t: String, cb: Callable) -> Button:
 	b.custom_minimum_size = Vector2(300, 34)
 	b.pressed.connect(func(): Audio.play_sfx("menu"))
 	b.pressed.connect(cb)
+	UiFx.button(b)   # (#44)
 	return b
 
 func _slider(label: String, value: float, cb: Callable) -> Control:

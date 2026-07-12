@@ -551,6 +551,7 @@ func _toast_icon(icon_path: String, msg: String) -> void:
 		row.add_child(tr)
 	row.add_child(_mk_label(msg, 14))
 	toast_box.add_child(pc)
+	UiFx.toast_spring(pc)   # toast masuk dengan spring (#44)
 	var tw := create_tween()
 	tw.tween_interval(2.4)
 	tw.tween_property(pc, "modulate:a", 0.0, 0.6)
