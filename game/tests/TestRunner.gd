@@ -60,6 +60,7 @@ func _ready() -> void:
 	await _test_patterns()
 	_test_transcendent_pyramid()
 	_test_gear_meta_enchant_coating()
+	_test_auction_house()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2192,3 +2193,97 @@ func _test_gear_meta_enchant_coating() -> void:
 	PlayerData.gear_meta.clear()
 	PlayerData.equipped_weapon = ""
 	PlayerData.recalculate_stats()
+
+
+func _test_auction_house() -> void:
+	print("[Rumah Lelang v0.4.2 B8]")
+	var rng := RandomNumberGenerator.new()
+	# --- S+ TIDAK PERNAH muncul: 120 hari simulasi (60 biasa + 60 purnama) ---
+	var banned_seen := false
+	var captive_days := 0
+	var lot_total := 0
+	var value_sum := 0
+	for day in range(120):
+		rng.seed = day * 31 + 5
+		var fm := 1 if day >= 60 else 0
+		var a := AuctionHouse.generate("2026-%02d-%02d" % [1 + (day / 28), 1 + (day % 28)], rng, fm)
+		if fm == 1:
+			check("purnama hari %d: lot ekstra" % day, a.lots.size() >= AuctionHouse.DAILY_LOTS + AuctionHouse.FULLMOON_EXTRA) if day == 60 else null
+		for lot in a.lots:
+			lot_total += 1
+			if lot.get("kind", "item") == "captive":
+				captive_days += 1
+				continue
+			var tier: String = Db.item(lot.get("item", "")).get("tier", "F")
+			if tier in AuctionHouse.BANNED_TIERS:
+				banned_seen = true
+			value_sum += int(lot.get("min", 0))
+			if int(lot.get("min", 0)) <= 0 or int(lot.get("buyout", 0)) <= int(lot.get("min", 0)):
+				check("harga lot waras", false, str(lot))
+	check("S+ TIDAK PERNAH muncul (120 hari)", not banned_seen)
+	check("lot tawanan muncul (purnama pasti)", captive_days >= 60, str(captive_days))
+	print("  [harness gold-flow] %d lot / 120 hari, rata-rata bid awal %dG" % [lot_total, value_sum / maxi(1, lot_total - captive_days)])
+	# --- bidding: menang saat rival menyerah; emas berkurang; barang diterima ---
+	WorldState.auction = AuctionHouse.generate("2099-01-01", null, 0)
+	var a2 := AuctionHouse.state()
+	check("state pakai lot tanggal berbeda -> regenerasi", a2.get("date", "") != "2099-01-01")
+	WorldState.auction = AuctionHouse.generate(GameClock.date_string(), null, 0)
+	a2 = AuctionHouse.state()
+	var item_idx := -1
+	for i in a2.lots.size():
+		if a2.lots[i].get("kind", "item") == "item":
+			item_idx = i
+			break
+	check("ada lot item", item_idx >= 0)
+	PlayerData.gold = 9999999
+	var gold0 := PlayerData.gold
+	var inv_item: String = a2.lots[item_idx].get("item", "")
+	var had := PlayerData.item_count(inv_item)
+	var won := false
+	for round in range(200):
+		rng.seed = round
+		var r := AuctionHouse.player_bid(item_idx, rng)
+		if r.get("status", "") == "won":
+			won = true
+			check("menang: bayar > 0 & emas berkurang", int(r.get("paid", 0)) > 0 and PlayerData.gold == gold0 - int(r.get("paid", 0)))
+			break
+		elif r.get("status", "") == "outbid":
+			check("rival punya nama", r.get("by", "") != "")
+	check("lelang bisa dimenangkan", won)
+	check("barang diterima", PlayerData.item_count(inv_item) == had + 1)
+	check("lot terjual terkunci", AuctionHouse.player_bid(item_idx).get("status", "") == "sold")
+	# --- buyout ---
+	var idx2 := -1
+	for i in a2.lots.size():
+		if a2.lots[i].get("kind", "item") == "item" and not a2.lots[i].get("sold", false):
+			idx2 = i
+			break
+	if idx2 >= 0:
+		var r2 := AuctionHouse.player_buyout(idx2)
+		check("buyout langsung menang", r2.get("status", "") == "won")
+	# --- tawanan: menang = dibebaskan -> kandidat rekrut loyal ---
+	WorldState.freed_captives.clear()
+	WorldState.auction = AuctionHouse.generate(GameClock.date_string(), null, 1)   # purnama: tawanan pasti
+	var a3 := AuctionHouse.state()
+	var cap_idx := -1
+	for i in a3.lots.size():
+		if a3.lots[i].get("kind", "") == "captive":
+			cap_idx = i
+			break
+	check("lot tawanan ada saat purnama", cap_idx >= 0)
+	if cap_idx >= 0:
+		var r3 := AuctionHouse.player_buyout(cap_idx)
+		check("tawanan dibebaskan", r3.get("status", "") == "won" and WorldState.freed_captives.size() == 1)
+		if not WorldState.freed_captives.is_empty():
+			var c: Dictionary = WorldState.freed_captives[0]
+			check("tawanan loyal + punya tag latar", bool(c.get("loyal", false)) and c.get("tag", "") != "")
+	# save/load membawa lelang & tawanan
+	var ws := WorldState.to_save()
+	check("save membawa auction + captives", ws.has("auction") and ws.has("freed_captives"))
+	WorldState.auction = {}
+	WorldState.freed_captives = []
+	WorldState.from_save(ws)
+	check("load memulihkan captives", WorldState.freed_captives.size() == 1)
+	WorldState.auction = {}
+	WorldState.freed_captives = []
+	PlayerData.gold = 200

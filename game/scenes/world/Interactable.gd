@@ -85,6 +85,10 @@ func _build() -> void:
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "bun", "hair_color": "#c9a0e8", "shirt": "#5c2380", "pants": "#2b2b3a"})
 		label.text = "Enchanter [E]"
+	elif kind == "auctioneer":
+		_char_sprite({"head_race": "human2", "torso_race": "human2", "legs_race": "human2",
+			"hair": "short", "hair_color": "#d4c391", "shirt": "#8a2f2f", "pants": "#2b2b3a"})
+		label.text = "🔨 Rumah Lelang [E]"
 	elif kind == "tree_keeper":
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "bun", "hair_color": "#e8e2f4", "shirt": "#2e6b3f", "pants": "#6b4226"})
@@ -180,6 +184,11 @@ func interact() -> void:
 			"Bawa gear-mu — kubisikkan mantra agar ia lebih tajam dari takdirnya.",
 			"Di atas +6, mimpinya bisa buyar... siapkan Gulungan Perlindungan."], "Enchanter", sprite.texture)
 		menu.open("enchant", self)
+	elif kind == "auctioneer":
+		await Stage.say(["Selamat datang di Rumah Lelang, tuan-tuan dan nyonya-nyonya!",
+			"Lot berganti tiap hari — dan saat purnama, barang ISTIMEWA turun ke lantai.",
+			"Menangkan tawaranmu sebelum para saudagar itu merebutnya."], "Juru Lelang", sprite.texture)
+		menu.open("auction", self)
 	elif kind == "tree_keeper":
 		await Stage.say(["Setiap tanah menumbuhkan ilmunya sendiri, petualang.",
 			"Pohon di sini bisa kubukakan untukmu. Yang lain? Hanya rumor yang bisa kubisikkan."], "Penjaga Pohon", sprite.texture)

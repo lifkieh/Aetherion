@@ -10,6 +10,8 @@ var node_states: Dictionary = {}       # gathering node id -> {harvested_at:unix
 var visited_regions: Array = []        # wilayah yang pernah dikunjungi (Gerbang Penjelajah, #43)
 var current_region := "greenvale"
 var last_free_travel := ""             # tanggal WIB travel gratis harian terakhir dipakai
+var auction: Dictionary = {}           # Rumah Lelang: lot hari ini (v0.4.2, B8 #53)
+var freed_captives: Array = []         # tawanan yang dibebaskan -> kandidat rekrut loyal (v0.6)
 
 ## Tandai wilayah dikunjungi (dipanggil _ready tiap region scene). #43
 func mark_visited(region_id: String) -> void:
@@ -137,6 +139,8 @@ func to_save() -> Dictionary:
 		"node_states": node_states,
 		"visited_regions": visited_regions,
 		"last_free_travel": last_free_travel,
+		"auction": auction,
+		"freed_captives": freed_captives,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -145,10 +149,14 @@ func from_save(d: Dictionary) -> void:
 	node_states = d.get("node_states", {})
 	visited_regions = d.get("visited_regions", [])
 	last_free_travel = d.get("last_free_travel", "")
+	auction = d.get("auction", {})
+	freed_captives = d.get("freed_captives", [])
 
 func new_game() -> void:
 	counters = {}
 	node_states = {}
 	visited_regions = []
 	last_free_travel = ""
+	auction = {}
+	freed_captives = []
 	_roll_weather(true)

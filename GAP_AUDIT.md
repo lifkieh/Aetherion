@@ -179,6 +179,18 @@ yang termuat dalam TEKS DIREKTIF dicatat & dikanonisasi di Decision Log (#46–#
 pekerjaan yang membutuhkan TEKS PENUH blueprint (peta cakupan fitur per pasal, tabel
 §3.9 Enam Lingkup Budaya, 6 draft capstone) ditandai MENUNGGU FILE di REPORT-01.
 **Butuh dari owner:** kirim ulang file blueprint ke `docs/`.
+**✅ RESOLVED 2026-07-13:** file diterima di `docs/MASTER_BLUEPRINT_AETHERION.md`
+(+ `AETHERION_PROPOSAL_LENGKAP_FINAL.md` warisan), di-commit; semua butir
+[MENUNGGU FILE] dilengkapi (ledger #67, REPORT-01 addendum §5).
+
+## DEVIASI-B15 (v0.4.2): teks UI baru belum via Loc.t() — dicatat jujur (aturan d)
+**Temuan (self-report):** string UI baru v0.4.2 (ritual Transenden, panel Enchanter,
+Rumah Lelang, toast) ditulis Bahasa Indonesia langsung, TIDAK lewat `Loc.t("key")`
+— padahal konvensi B15 (#62) berlaku untuk teks baru. **Alasan teknis:** mayoritas
+string v0.4.2 adalah format dinamis ("%s kini +%d!") yang butuh dukungan parameter
+di Loc — infra itu dijadwalkan v0.4.4 (migrasi TranslationServer). **Tindakan:**
+seluruh string v0.4.2 masuk daftar retrofit v0.4.4 bersama teks lama; dicatat di
+Decision Log #74. Bukan fabrikasi kepatuhan — deviasi diakui terbuka.
 
 ## BD-1: Koreksi "dua tab jalur + 4 class kehidupan" HILANG sebelum masuk ledger
 **Temuan verifikasi owner:** layar ClassSelect masih versi 6 class combat saja.

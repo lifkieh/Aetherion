@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-12 23:53 WIB — berisi hingga: v0.4.1c + kanonisasi blueprint (B9 taming-semua, konvensi lokalisasi Loc). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** [AKAN DIISI SETELAH EXPORT] *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -325,7 +325,7 @@ fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Sco
 (Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
 naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
 
-## ⏸️ STATUS: BLUEPRINT v1.0.1 TERKUNCI (file menunggu kiriman ulang — BD-2) + 4 LAPORAN SIAP DIREVIEW DIREKTUR — MENUNGGU: GAS v0.4.2
+## ⏸️ STATUS: v0.4.2 GEAR & ECONOMY + RUMAH LELANG SELESAI (BD-2 resolved, blueprint di docs/) — MENUNGGU PLAYTEST OWNER v0.4.2
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
 quality roll + maker's mark, + Rumah Lelang NPC (B8).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi

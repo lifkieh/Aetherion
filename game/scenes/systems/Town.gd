@@ -240,6 +240,7 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 		["trainer", Vector2(-232, 96)],       # Guru Skill near the forge/plaza
 		["tree_keeper", Vector2(96, 96)],     # Penjaga Pohon (skill tree lokal, #30)
 		["enchanter", Vector2(-170, -66)],    # Enchanter di samping bengkel (v0.4.2)
+		["auctioneer", Vector2(180, 96)],     # Rumah Lelang di plaza (B8 v0.4.2)
 		["world_gate", Vector2(-96, -20)],    # Gerbang Penjelajah (#43)
 	]
 	for n in npcs:

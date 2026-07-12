@@ -159,6 +159,7 @@ func _rebuild() -> void:
 		"inventory": _build_inventory()
 		"crafting": _build_crafting()
 		"enchant": _build_enchant()
+		"auction": _build_auction()
 		"shop": _build_shop()
 		"system": _build_system()
 		"pedia": _build_pedia()
@@ -634,6 +635,56 @@ func _build_enchant() -> void:
 
 func _do_enchant(id: String) -> void:
 	EnchantSystem.enchant(id)
+	_rebuild()
+
+func _build_auction() -> void:
+	var a := AuctionHouse.state()
+	title.text = "Rumah Lelang — %s" % a.get("date", "")
+	if a.get("full_moon", false):
+		content.add_child(_mk_label("🌕 MALAM PURNAMA — lot istimewa turun ke lantai lelang!", 13, Color(1.0, 0.85, 0.4)))
+	content.add_child(_mk_label("Tawar → saudagar rival bisa membalas. Saat rival menyerah, palu jatuh & barang milikmu. Beli Langsung = tanpa perang tawar.", 11, Color(0.75, 0.8, 0.95)))
+	if not WorldState.freed_captives.is_empty():
+		content.add_child(_mk_label("Tawanan yang kau bebaskan: %d — mereka mengingat kebaikanmu." % WorldState.freed_captives.size(), 11, Color(0.6, 0.9, 0.6)))
+	var idx := -1
+	for lot in a.get("lots", []):
+		idx += 1
+		var h := _row()
+		var sold: bool = lot.get("sold", false)
+		var lead: String = lot.get("bidder", "")
+		var lead_txt := ""
+		if lead == "you": lead_txt = " — penawar: KAMU"
+		elif lead != "": lead_txt = " — penawar: %s" % lead
+		var l: Label = null
+		if lot.get("kind", "item") == "captive":
+			l = _mk_label("🔗 TAWANAN: %s (%s) — tawaran %dG%s" % [lot.get("name", "?"), lot.get("tag", ""), int(lot.bid), lead_txt], 13, Color(0.95, 0.7, 0.7))
+		else:
+			_add_item_icon(h, lot.get("item", ""))
+			var def := Db.item(lot.get("item", ""))
+			var star := "🌕 " if lot.get("special", false) else ""
+			l = _mk_label("%s%s [%s] — tawaran %dG%s" % [star, def.get("name", "?"), def.get("tier", "F"), int(lot.bid), lead_txt], 13)
+		l.custom_minimum_size = Vector2(370, 0)
+		if sold:
+			l.modulate = Color(0.55, 0.55, 0.6)
+			l.text += "  (TERJUAL%s)" % (" — milikmu" if lot.get("winner", "") == "you" else "")
+		h.add_child(l)
+		if not sold:
+			var need: int = int(lot.bid) + (0 if lead == "" else AuctionHouse.raise_step(lot))
+			var bb := _btn("Tawar %dG" % need, _do_bid.bind(idx))
+			bb.disabled = PlayerData.gold < need or lead == "you"
+			h.add_child(bb)
+			var bo := _btn("Beli %dG" % int(lot.buyout), _do_buyout.bind(idx))
+			bo.disabled = PlayerData.gold < int(lot.buyout)
+			h.add_child(bo)
+
+func _do_bid(idx: int) -> void:
+	var r := AuctionHouse.player_bid(idx)
+	if r.get("status", "") == "outbid":
+		Audio.play_sfx("blip")
+		EventBus.toast.emit("%s membalas: %dG! (%s)" % [r.get("by", "?"), int(r.get("bid", 0)), r.get("style", "")])
+	_rebuild()
+
+func _do_buyout(idx: int) -> void:
+	AuctionHouse.player_buyout(idx)
 	_rebuild()
 
 func _build_shop() -> void:
