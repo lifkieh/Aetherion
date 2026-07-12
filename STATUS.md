@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-12 (Ronde 4 — Power & Combat Calibration selesai)
+**Last update:** 2026-07-12 (Ronde 5 — Foundation First selesai: audit + v0.4.0 Identity & Juice)
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -242,9 +242,28 @@ ronde ini memperkaya yang sudah ada. Semua aset ORISINAL (PIL / prosedural).
   Chase open world di-cap (selalu escapable), **death penalty dungeon = respawn di pintu −10% gold**,
   **F9 debug overlay** (dev only). **330 test lulus**, export `export/Aetherion.exe` **89.4 MB** boot OK.
 
-## ⏸️ STATUS: MENUNGGU PLAYTEST POWER OWNER (RONDE 4)
-Ronde Power & Combat Calibration selesai (330 test, exe ter-export, semua bagian committed+pushed).
-**Menunggu hasil playtest power dari owner.**
+## 🏗️ RONDE 5 — FOUNDATION FIRST (direktif besar owner) — SELESAI
+Playtest owner: "game terasa HAMPA". Semua konten baru DIBEKUKAN. Dua tahap:
+- **Tahap 1 (audit)**: `GAP_AUDIT.md` — kepatuhan 30 sistem GDD (temuan terbesar: 6 combat
+  class GDD tak pernah jadi pilihan pemain = MENYIMPANG) + benchmark genre skor 0–2
+  (overworld 7/18, combat 6/16, dungeon 3/12, meta 4/14 = **20/60**) + 5 akar rasa hampa.
+  `MASTER_IMPROVEMENT_PLAN.md` — fase v0.4.0–v0.4.4 terprioritas + estimasi (±5–6 sesi).
+  **Menunggu review owner & designer untuk fase berikutnya.**
+- **Tahap 2 (langsung dikerjakan = v0.4.0 "Identity & Juice")**:
+  (2a) **6 class combat** dipilih di New Game — 3 skill awal beda/class (10 skill baru),
+  2 varian senjata awal, bonus stat, teaser advanced Lv60, `classes.json`, class = profesi
+  combat utama; (2b) **8 tipe senjata ber-moveset & arc-slash VFX berbeda nyata** di kedua
+  mode + afinitas class; (2c) prime toggle/klik-kanan/ESC batal; (2d) **Grimoire** fusion
+  (ditemukan + misteri dari fizzle + tutorial + perayaan banner); (2e) **save modern**
+  (autosave berkala+transisi, indikator, playtime, metadata slot, tombol Continue);
+  (2f) **juice pass** (impact particles, death burst+dissolve, **loot menyembur fisik &
+  magnet**, dodge afterimage, crit pitch); (2g) **30 menit pertama** (intro lore 4 layar
+  ber-class, quest pembuka 6 langkah satu-sistem-satu-reward).
+  **361 test lulus**, export `export/Aetherion.exe` **89.5 MB** boot standalone bersih.
+
+## ⏸️ STATUS: MENUNGGU REVIEW AUDIT & PLAYTEST v0.4.0 OWNER
+GAP_AUDIT.md + MASTER_IMPROVEMENT_PLAN.md siap direview owner+designer (menentukan fase
+v0.4.1+). Tahap 2 (v0.4.0) selesai & bisa langsung di-playtest.
 
 ### Konten BEKU tersisa — setelah playtest lolos
 - **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).

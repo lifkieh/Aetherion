@@ -2,6 +2,32 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## 2026-07-12 — FOUNDATION FIRST (direktif besar owner: "game terasa hampa")
+
+Semua konten baru BEKU. **Tahap 1 — audit**: `GAP_AUDIT.md` (kepatuhan 30 sistem GDD;
+benchmark genre 20/60; diagnosis 5 akar hampa — #1 tidak ada identitas class, #2 combat
+tanpa bahasa visual) + `MASTER_IMPROVEMENT_PLAN.md` (fase v0.4.0–v0.4.4 + estimasi;
+menunggu review owner/designer). **Tahap 2 — dikerjakan langsung (= v0.4.0):**
+- **2a Class Selection** (menambal penyimpangan GDD terbesar): 6 class combat
+  (Warrior/Mage/Archer/Assassin/Paladin/Necromancer) dipilih di New Game — deskripsi,
+  bonus stat, **3 skill awal berbeda per class** (10 skill baru + buff system), 2 varian
+  senjata awal, teaser advanced class Lv60; `classes.json`; class = profesi combat utama.
+- **2b Weapon Matters**: 8 tipe senjata ber-moveset nyata (`WEAPON_MOVESET`, dagger 4.2/s
+  ×0.72 vs hammer 1.7/s ×1.7 dst) + **arc slash VFX prosedural per tipe** (sweep + leading
+  edge + ghost trail; spear thrust, hammer wedge+debu, scythe crescent, ranged muzzle
+  flash) di kedua mode; afinitas senjata class +8%/+5%.
+- **2c** prime toggle (angka sama = batal), klik kanan/ESC = batal semua.
+- **2d Grimoire**: tab resep fusion — ditemukan tampil penuh; fizzle membuka baris misteri
+  "Fire + ? = ???"; tutorial popup fusion pertama; first-discovery = banner + jingle.
+- **2e Save modern**: autosave 180 dtk + transisi area (skip Hidden Scenario), indikator 💾,
+  playtime tracking, metadata slot (nama/class/level/playtime/lokasi), tombol **Continue**.
+- **2f Juice pass**: impact particle di titik kena (crit lebih besar), SFX pitch crit,
+  death = white-pop + burst + shrink (bukan fade), **loot menyembur fisik & magnet ke
+  pemain** (LootDrop, bunyi koin; drop_bonus LUK kini dihitung), dodge afterimage ×3.
+- **2g 30 menit pertama**: intro lore 4 layar (dipersonalisasi class), quest pembuka 6
+  langkah — satu sistem per langkah, reward jelas per langkah.
+361 test lulus. Konten dunia baru tetap beku menunggu review audit.
+
 ## 2026-07-12 — Power & Combat Calibration (PC1–PC2) + FINAL combat-model revisions
 
 Owner "Power & Combat Calibration" round. The 6 combat-design revisions below are **owner FINAL decisions**
