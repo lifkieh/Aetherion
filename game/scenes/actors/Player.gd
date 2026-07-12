@@ -114,6 +114,7 @@ func _start_dodge(input: Vector2) -> void:
 	_dodge_timer = DODGE_TIME
 	_dodge_cd = DODGE_CD
 	_iframes = DODGE_TIME + 0.05
+	Vfx.dodge_ghosts(self, sprite, DODGE_TIME)   # afterimage trail (FF-2f)
 	Audio.play_sfx("dodge")
 
 func _facing_vec() -> Vector2:

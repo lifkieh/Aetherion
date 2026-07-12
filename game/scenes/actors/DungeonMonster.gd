@@ -285,8 +285,9 @@ func take_hit(result: Dictionary, from) -> void:
 	hpbar.value = hp
 	EventBus.damage_dealt.emit(from, self, result.get("damage", 0), result.get("is_crit", false), result.get("element", "none"))
 	_spawn_damage_number(result.get("damage", 0), result.get("is_crit", false), result.get("effective", false))
+	Vfx.impact(get_parent(), global_position + Vector2(0, -6), result.get("element", "none"), result.get("is_crit", false))
 	_flash()
-	Audio.play_sfx("hit")
+	Audio.play_sfx("hit", 1.25 if result.get("is_crit", false) else 1.0)
 	if hp <= 0:
 		_die(from)
 
@@ -308,13 +309,18 @@ func _die(from) -> void:
 	Audio.play_sfx("death")
 	if "split" in inst.get("traits", []) and not inst.get("_no_split", false) and not _boss:
 		_split()   # boss uses phase adds instead of a death split
-	MonsterFactory.grant_rewards(inst)
+	MonsterFactory.grant_rewards(inst, self)   # physical loot burst (FF-2f)
 	EventBus.monster_killed.emit(inst.get("species_id", "?"), self)
 	if _spawner and is_instance_valid(_spawner) and _spawner.has_method("on_monster_died"):
 		_spawner.on_monster_died(self)
+	# death dissolve (FF-2f)
+	Vfx.death_burst(get_parent(), global_position, inst.get("element", "none"))
 	var tw := create_tween()
-	tw.tween_property(sprite, "modulate:a", 0.0, 0.35)
-	tw.tween_callback(queue_free)
+	tw.set_parallel(true)
+	tw.tween_property(sprite, "modulate", Color(3, 3, 3, 1), 0.06)
+	tw.chain().tween_property(sprite, "scale", sprite.scale * 1.25, 0.10)
+	tw.parallel().tween_property(sprite, "modulate:a", 0.0, 0.16)
+	tw.chain().tween_callback(queue_free)
 
 func _split() -> void:
 	if get_parent() == null:

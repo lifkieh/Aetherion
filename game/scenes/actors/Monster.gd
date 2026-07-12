@@ -256,8 +256,9 @@ func take_hit(result: Dictionary, from) -> void:
 	hpbar.value = hp
 	EventBus.damage_dealt.emit(from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
 	_spawn_damage_number(dmg, result.get("is_crit", false), result.get("effective", false))
+	Vfx.impact(get_parent(), global_position + Vector2(0, -6), result.get("element", "none"), result.get("is_crit", false))
 	_flash()
-	Audio.play_sfx("hit")
+	Audio.play_sfx("hit", 1.25 if result.get("is_crit", false) else 1.0)
 	# aggro on hit
 	if _state in [State.WANDER, State.IDLE]:
 		_state = State.CHASE
@@ -275,9 +276,14 @@ func _die(from) -> void:
 	EventBus.monster_killed.emit(inst.get("species_id", "?"), self)
 	if _spawner and is_instance_valid(_spawner) and _spawner.has_method("on_monster_died"):
 		_spawner.on_monster_died(self)
+	# death dissolve (FF-2f): white pop + particle burst + shrink-out, not a mere fade
+	Vfx.death_burst(get_parent(), global_position, inst.get("element", "none"))
 	var tw := create_tween()
-	tw.tween_property(sprite, "modulate:a", 0.0, 0.35)
-	tw.tween_callback(queue_free)
+	tw.set_parallel(true)
+	tw.tween_property(sprite, "modulate", Color(3, 3, 3, 1), 0.06)
+	tw.chain().tween_property(sprite, "scale", sprite.scale * 1.25, 0.10)
+	tw.parallel().tween_property(sprite, "modulate:a", 0.0, 0.16)
+	tw.chain().tween_callback(queue_free)
 
 func _split() -> void:
 	for i in range(2):
@@ -293,7 +299,7 @@ func _split() -> void:
 		m.global_position = global_position + Vector2(randf_range(-16, 16), randf_range(-16, 16))
 
 func _grant_rewards(_from) -> void:
-	MonsterFactory.grant_rewards(inst)   # shared with side-view DungeonMonster
+	MonsterFactory.grant_rewards(inst, self)   # physical loot burst (FF-2f)
 
 # --- Taming (M4 core; input handled by nearby Player) -----------------------
 

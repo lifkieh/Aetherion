@@ -174,6 +174,92 @@ static func chain_arc(parent: Node, from: Vector2, to: Vector2, elem: String = "
 	tw.tween_property(line, "modulate:a", 0.0, 0.25)
 	tw.tween_callback(line.queue_free)
 
+## Hit impact burst (FF-2f): visible elemental particles + flash ring at the
+## point of damage. Crits burst bigger and brighter.
+static func impact(parent: Node, pos: Vector2, elem: String, crit: bool = false) -> void:
+	if parent == null:
+		return
+	var col := elem_color(elem)
+	if col == Color(1, 1, 1):
+		col = Color(1.0, 0.9, 0.6)
+	var p := GPUParticles2D.new()
+	p.z_index = 33
+	p.one_shot = true
+	p.emitting = true
+	p.amount = 18 if crit else 10
+	p.lifetime = 0.35
+	p.explosiveness = 1.0
+	var mat := ParticleProcessMaterial.new()
+	mat.direction = Vector3(0, 0, 0)
+	mat.spread = 180.0
+	mat.initial_velocity_min = 60.0 if crit else 40.0
+	mat.initial_velocity_max = 140.0 if crit else 90.0
+	mat.gravity = Vector3(0, 60, 0)
+	mat.scale_min = 1.0
+	mat.scale_max = 2.6 if crit else 1.8
+	mat.color = col
+	p.process_material = mat
+	var img := Image.create(3, 3, false, Image.FORMAT_RGBA8)
+	img.fill(Color(minf(col.r * 1.3, 1), minf(col.g * 1.3, 1), minf(col.b * 1.3, 1)))
+	p.texture = ImageTexture.create_from_image(img)
+	parent.add_child(p)
+	p.global_position = pos
+	p.finished.connect(p.queue_free)
+
+## Death burst (FF-2f): white flash pop + particle explosion where a monster dies.
+static func death_burst(parent: Node, pos: Vector2, elem: String) -> void:
+	if parent == null:
+		return
+	impact(parent, pos, elem, true)
+	var flash := ColorRect.new()
+	flash.color = Color(1, 1, 1, 0.85)
+	flash.size = Vector2(18, 18)
+	flash.position = Vector2(-9, -9)
+	flash.z_index = 34
+	var holder := Node2D.new()
+	holder.z_index = 34
+	holder.add_child(flash)
+	parent.add_child(holder)
+	holder.global_position = pos
+	var tw := holder.create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(holder, "scale", Vector2(2.2, 2.2), 0.16).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(holder, "modulate:a", 0.0, 0.2)
+	tw.chain().tween_callback(holder.queue_free)
+
+## Dodge afterimages (FF-2f): 3 fading ghost snapshots trail the dash.
+static func dodge_ghosts(actor: Node2D, spr: AnimatedSprite2D, duration: float = 0.22) -> void:
+	if actor == null or spr == null or spr.sprite_frames == null:
+		return
+	var parent := actor.get_parent()
+	if parent == null:
+		return
+	for i in range(3):
+		var t := Timer.new()
+		t.wait_time = maxf(0.01, duration * float(i) / 3.0)
+		t.one_shot = true
+		actor.add_child(t)
+		t.timeout.connect(func():
+			t.queue_free()
+			if not is_instance_valid(actor) or not is_instance_valid(spr):
+				return
+			var tex := spr.sprite_frames.get_frame_texture(spr.animation, spr.frame)
+			if tex == null:
+				return
+			var g := Sprite2D.new()
+			g.texture = tex
+			g.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			g.offset = spr.offset
+			g.flip_h = spr.flip_h
+			g.z_index = 18
+			g.modulate = Color(0.7, 0.85, 1.0, 0.5)
+			parent.add_child(g)
+			g.global_position = actor.global_position
+			var tw := g.create_tween()
+			tw.tween_property(g, "modulate:a", 0.0, 0.28)
+			tw.tween_callback(g.queue_free))
+		t.start()
+
 ## Small radial spark burst.
 static func spark(parent: Node, pos: Vector2, elem: String) -> void:
 	if parent == null:

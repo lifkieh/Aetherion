@@ -115,13 +115,19 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 
 ## Grant kill rewards (EXP + loot + gold) for an instance. Shared by the top-down
 ## Monster and the side-view DungeonMonster — no duplication.
-static func grant_rewards(inst: Dictionary) -> void:
+## With `source` (the dying monster node): drops burst out PHYSICALLY (FF-2f)
+## and magnet to the player; without it (tests/sim) items go straight to the bag.
+static func grant_rewards(inst: Dictionary, source: Node2D = null) -> void:
 	PlayerData.gain_exp(inst.get("exp_reward", 5))
+	var drop_chance_bonus: float = PlayerData.drop_bonus
 	var table := Db.loot_table(inst.get("loot_table", ""))
 	for d in table:
-		if randf() <= float(d.get("chance", 0)):
+		if randf() <= float(d.get("chance", 0)) + drop_chance_bonus:
 			var qty := randi_range(int(d.get("min", 1)), int(d.get("max", 1)))
-			PlayerData.add_item(d.get("item", ""), qty)
+			if source != null and is_instance_valid(source) and source.is_inside_tree():
+				LootDrop.spawn(source.get_parent(), source.global_position, d.get("item", ""), qty)
+			else:
+				PlayerData.add_item(d.get("item", ""), qty)
 	var lvl: int = int(inst.get("level", 1))
 	PlayerData.add_gold(randi_range(1, 4) * maxi(1, lvl))
 
