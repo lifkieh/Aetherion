@@ -2,6 +2,25 @@
 
 Format: newest first. Decisions not dictated by docs are recorded here with rationale.
 
+## ⚖️ ATURAN PERMANEN — PLAN_LEDGER (owner, 2026-07-12; berlaku selamanya)
+1. **Setiap arahan owner baru = baris baru di `PLAN_LEDGER.md` Bagian 2 (Decision Log) SEBELUM dikerjakan.**
+2. **Setiap penyimpangan implementasi dari GDD yang diputuskan agent sendiri = baris baru + alasan.**
+3. **Awal setiap sesi: baca `PLAN_LEDGER.md`. Akhir setiap ronde: update kedua bagiannya.** Item baru dari owner langsung masuk ledger.
+4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
+5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
+
+## 2026-07-12 — ADDENDUM AUDIT (telaah designer) + PLAN_LEDGER dibuat
+
+Temuan telaah designer diverifikasi di kode & dimasukkan GAP_AUDIT (addendum) +
+MASTER_IMPROVEMENT_PLAN (prioritas tinggi): crafting Transenden dangkal (material [A]/[S]
+drop tak bisa diolah!), Rune nol, Enchant+Coating nol, **MUSIM nol** (luput dari audit awal),
+aset 12 rasi sudah ada tapi tak pernah dipakai kode, Blood Moon hanya nama cuaca, rank
+bintang dirol tapi tak pernah tampil, affinity pet beku, mutation nol, Forest Spirit belum
+ter-trigger, first-clear tanpa perayaan. Verifikasi B: Tier 2 elemen ✓ ada; profesi belum:
+Enchanter/Merchant/Treasure Hunter; prakiraan cuaca 24 jam belum; rotasi daily quest ✓ ada.
+**`PLAN_LEDGER.md` dibuat sebagai dokumen induk** (status semua sistem + Decision Log
+retroaktif 21 baris) dengan 5 aturan permanen di atas.
+
 ## 2026-07-12 — FOUNDATION FIRST (direktif besar owner: "game terasa hampa")
 
 Semua konten baru BEKU. **Tahap 1 — audit**: `GAP_AUDIT.md` (kepatuhan 30 sistem GDD;

@@ -35,21 +35,23 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 | 3 | **Boss upgrade**: intro bar+nama+stinger, 3 pola per fase terkoreografi, arena mechanic per bos, perayaan kill (slow-mo + jingle + loot shower) | Benchmark 2.2 | 🔥🔥 | Besar |
 | 4 | **Combo Skill window** (2 skill berurutan <2 dtk = bonus efek, data-driven) | Audit §1 #2 | ⚙ | Sedang |
 | 5 | Publikasi cap & formula di UI (tab Status: "Crit 60% cap" dll.) | Audit §1 #4 | ⚙ | Kecil |
+| 6 | **[ADDENDUM A7] Kedalaman monster TAMPAK**: rank bintang di UI target + Pedia, trait 1–2 per individu dengan efek nyata, **affinity pet hidup** (naik saat dipakai/diberi makan, tampil di ranch UI), **mutation 1/500** (recolor + bonus + nilai jual) | Addendum A7 | 🔥⚙⚙ | Sedang |
+| 7 | **[ADDENDUM A6] Event harian BERISI**: Golden Hour EXP+10% nyata, Morning Dew herb+1 pagi, monster nokturnal (spawn gating malam), **Blood Moon penuh** (malam acak jarang → spawn agresif + drop ×2 + tint merah + gerbang evolusi/scenario) | Addendum A6 | 🔥⚙ | Sedang |
 
-**Estimasi: 1–1.5 sesi.**
+**Estimasi: 1.5–2 sesi.**
 
 ## FASE v0.4.2 — "GEAR & ECONOMY DEPTH" (alasan kembali ke kota)
 
 | # | Item | Sumber gap | Dampak | Biaya |
 |---|---|---|---|---|
-| 1 | **Enchant +1..+10** (Enchanter NPC; gagal turun 1 level mulai +7; Protection Scroll craft) | Audit §1 #19 | ⚙⚙ | Sedang |
-| 2 | **Coating consumable** (Venom Oil, Frost Coat — jalur Alchemist; aturan dominan+25% sekunder) | Audit §1 #8 | ⚙ | Kecil |
-| 3 | **Quality roll craft** (Normal/Fine/Masterwork ±10%) + **maker's mark** di tooltip | Audit §1 #18 | ⚙✨ | Kecil |
-| 4 | **Trait monster hidup**: Pack Hunter/Charge/Sting dll. benar-benar dihitung (data → efek) + tampil di Pedia/pet | Audit §1 #10 | ⚙⚙ | Sedang |
-| 5 | Rantai resep A pertama ujung-ke-ujung (material kunci bos → craft A 1% + Insight + pengumuman) | Audit §1 #18 | ⚙ | Kecil |
-| 6 | Affinity pet naik lewat interaksi + 1 skill loyalitas | Audit §1 #10 | ⚙ | Sedang |
+| 1 | **[ADDENDUM A1] Crafting Transenden ujung-ke-ujung**: piramida A→S→SS→SSS (craft A butuh item B + material kunci; S butuh A; dst), success 1% + Insight +0.2%/gagal cap +9% (sudah ada), **resep pengolah untuk SEMUA material kunci [A]/[S] yang sudah drop** (Everfrost Core, Tempest Heart, Ankh Fragment), animasi ritual + pengumuman sukses | Addendum A1 | 🔥⚙⚙ | Besar |
+| 2 | **[ADDENDUM A1] Quality roll** (Normal/Fine/Masterwork ±10%) + **maker's mark** (nama crafter tertera di item) | Addendum A1 | ⚙✨ | Kecil |
+| 3 | **[ADDENDUM A3] Enchant crystal +1..+10** via **profesi Enchanter BARU** (gagal mulai +7 = turun 1, TIDAK hancur; Protection Scroll craft) | Addendum A3 | ⚙⚙ | Sedang |
+| 4 | **[ADDENDUM A3] Coating/minyak Alchemist** (Venom Oil, Frost Coat; 10 menit; aturan elemen dominan + 25% sekunder) — melengkapi 4 jalur Element Flow | Addendum A3 | ⚙ | Kecil |
+| 5 | **[ADDENDUM A2] Rune System**: slot pemain 4 + monster 2 (Epic+ = 3), grade I–V, merge 3 sama → naik grade; sumber: dungeon/craft/boss | Addendum A2 | ⚙⚙ | Besar |
+| 6 | Profesi yang hilang: **Enchanter** (untuk #3), lalu **Merchant** & **Treasure Hunter** (fase berikut bila ekonomi/dungeon sudah dalam) | Audit B | ⚙ | Sedang |
 
-**Estimasi: 1 sesi.**
+**Estimasi: 1.5–2 sesi.**
 
 ## FASE v0.4.3 — "WORLD PRESENTATION" (dunia yang bercerita)
 
@@ -61,8 +63,11 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 | 4 | NPC hidup: jadwal pagi/sore/malam sederhana + dialog kontekstual (cuaca/waktu/progress) | Benchmark 2.1 | ✨ | Besar |
 | 5 | Musik: stinger (level-up/quest/discovery/boss-kill), crossfade antar scene, track bos | Benchmark 2.1 | 🔥✨ | Kecil |
 | 6 | Dungeon layak Terraria: **chest + ruang rahasia + trap** per dungeon, parallax bg, ambience khas, loot unik non-bos | Benchmark 2.3 | 🔥⚙ | Besar |
+| 7 | **[ADDENDUM A4] MUSIM v1**: 4 musim × 2 minggu nyata di GameClock; efek minimal: tanaman homestead per musim (+greenhouse jalan keluar), varian spawn, drop modifier, tint dunia per musim | Addendum A4 | 🔥⚙ | Sedang |
+| 8 | **[ADDENDUM A5] Ramalan Rasi penuh**: **pakai 12 aset rasi_*.png yang sudah ada** (langit malam + UI Sky), ramalan mingguan = teka-teki yang terhubung konten aktif minggu itu, bonus tematik birth sign (+2% kecil), prakiraan cuaca Astrologer 24 jam akurasi 80% | Addendum A5 + Audit B | 🔥✨ | Sedang |
+| 9 | **[ADDENDUM A8] Forest Spirit** (trigger trees_cut, skenario penebusan v0.2 §8.2) + **perayaan first-clear scenario** (banner + patung/piagam + entri permanen) | Addendum A8 | ⚙✨ | Sedang |
 
-**Estimasi: 1.5–2 sesi.**
+**Estimasi: 2–2.5 sesi.**
 
 ## FASE v0.4.4 — "MODERN META"
 
@@ -90,5 +95,10 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 - v0.4.3 membuat dunia bercerita (presentasi Suikoden/Stardew).
 - v0.4.4 merapikan standar modern; bisa dicicil paralel bila ada sisa kapasitas sesi.
 
-Total estimasi ke "fondasi layak": **±5–6 sesi kerja** dari titik ini.
+Total estimasi ke "fondasi layak": **±6–8 sesi kerja** dari titik ini (naik dari 5–6
+setelah addendum telaah designer memasukkan A1–A8).
 Review owner+designer menentukan pemotongan/penambahan per fase.
+
+> **Dokumen induk:** status seluruh sistem + riwayat keputusan kini dilacak di
+> `PLAN_LEDGER.md` (aturan permanen di DEVLOG). Plan ini adalah turunan prioritas
+> dari ledger; jika keduanya bertentangan, ledger yang benar.

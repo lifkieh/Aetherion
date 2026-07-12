@@ -135,3 +135,32 @@ komponen *sistem* dapat nilai, komponen *presentasi & identitas* hampir semuanya
    prototipe walau kontennya banyak.
 
 Rencana perbaikan bertahap: lihat `MASTER_IMPROVEMENT_PLAN.md`.
+
+---
+
+# ADDENDUM (2026-07-12) — telaah designer & keputusan owner, DIVERIFIKASI di kode
+
+## A. Sistem yang direncanakan & disetujui tapi tidak pernah dilaporkan ada
+
+| # | Sistem | Status verifikasi | Bukti di kode |
+|---|---|---|---|
+| A1 | **Crafting Transenden A/S/SS/SSS** (v0.2 §2) | **Sebagian — dangkal** | Insight ✓ (CraftingSystem, +stack per gagal). Hanya 1 resep S (`cook_royal_cake` 1%). TIDAK ada: piramida A→S→SS→SSS, **maker's mark**, **quality roll**, animasi ritual + pengumuman, dan — paling parah — **material kunci [A]/[S] yang SUDAH drop (Everfrost Core [A], Tempest Heart [S], Ankh Fragment [A]) tidak punya resep pengolah apa pun** = loot bos berakhir jadi pajangan tas. |
+| A2 | **Rune System** (v0.1 §8.6) | **Belum — nol** | Tidak ada satu baris kode/data pun. |
+| A3 | **Enchant +1..+10 & Coating** (v0.1 §9.3, v0.3 §7) | **Belum — nol** | Element Flow baru 1 dari 4 jalur (Infusion). Enchanter tidak ada, coating Alchemist tidak ada. |
+| A4 | **MUSIM 4×2 minggu** (v0.1 §4.2, Fase0 §3) | **Belum — NOL, gap yang luput dari audit awal** | `grep season` di GameClock/WorldState = kosong. Padahal Fase0 §3 eksplisit menyebut GameClock memuat musim. Tanaman homestead pun tidak dicek musim. |
+| A5 | **Ramalan Rasi** (v0.3 §3) | **Sebagian** | **ASET 12 RASI SUDAH ADA** (`assets/game/sky/constellations/rasi_*.png`, 12 file) tapi **TIDAK PERNAH direferensikan satu kali pun oleh kode** — aset orisinal owner terbuang sia-sia. Weekly prophecy = teks teka-teki di tab Sky ✓ tapi tidak terhubung konten aktif minggu itu. Birth sign ✓ tercatat tapi **tanpa bonus tematik**. `sky_calendar.json` ✓ 11 event astronomi nyata 2026–2027 (solstice/equinox/meteor — melebihi minimal 2). |
+| A6 | **Event waktu harian** (v0.2 §6.2) | **Sebagian — kulit tanpa isi** | Golden Hour ✓ ada (sinyal + warna langit) tapi **EXP+10% tidak diimplementasikan**. Morning Dew ✓ fungsi jam ada, efek herb+1 tidak ada. **Blood Moon ada hanya sebagai NAMA cuaca** — tanpa spawn agresif, tanpa drop ×2, tanpa gerbang evolusi/scenario. Monster nokturnal: tidak ada gating spawn siang/malam. |
+| A7 | **Kedalaman monster** (v0.1 §7.2) | **Sebagian** | Rank bintang 1–5 ✓ dirol saat spawn (±6% stat) tapi **tidak pernah ditampilkan di UI target/Pedia** — pemain tak mungkin tahu sistem ini ada. Trait = properti spesies statis (bukan 1–2 per individu) dan mayoritas tanpa efek. **Affinity pet beku** (tidak pernah naik; `affinity_mod` taming di-hardcode 1.0). **Mutation 1/500: nol.** |
+| A8 | **Forest Spirit + first-clear** | **Sebagian** | Counter `trees_cut` ✓ berjalan (dipakai unlock woodcutter) tapi **trigger Forest Spirit tidak ada** di scenarios.json. **Perayaan first-clear scenario tidak ada** (clear cuma toast biasa). |
+
+## B. Verifikasi status yang diminta
+
+| Item | Status | Detail |
+|---|---|---|
+| Elemen Tier 2 (Poison/Metal/Wood/Spirit) | **Ada** | Lengkap di matrix + list elements.json (bahkan Tier 3–4 ikut terdaftar); skill poison/wood aktif dipakai. |
+| Pemetaan profesi vs GDD | **Sebagian** | Ada 9: miner, lumberjack, fisherman, herbalist, blacksmith, alchemist, cook, tamer, +carpenter (tambahan non-GDD, wajar). **BELUM: Enchanter, Merchant, Treasure Hunter.** Enchanter paling mendesak (prasyarat A3). |
+| Prakiraan cuaca Astrologer 24 jam (akurasi 80%) | **Belum** | Tab Sky hanya menampilkan kondisi SEKARANG + prophecy; tidak ada prakiraan. Padahal GDD menyebutnya "kunci retention/planning". |
+| Rotasi daily quest | **Ada** | 3 quest/hari, seed dari tanggal WIB, gated cuaca/bulan. |
+
+Semua temuan A/B sudah dimasukkan `MASTER_IMPROVEMENT_PLAN.md` (prioritas tinggi)
+dan `PLAN_LEDGER.md` (dokumen induk baru — lihat aturan permanen di DEVLOG).
