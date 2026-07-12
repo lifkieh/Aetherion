@@ -97,6 +97,17 @@ func _physics_process(delta: float) -> void:
 	is_wet = WorldState.is_wet_weather()
 	if _player == null or not is_instance_valid(_player):
 		_player = get_tree().get_first_node_in_group("player")
+	# status effects (v0.4.1)
+	StatusFx.tick(self, delta)
+	_refresh_status_icons()
+	if StatusFx.is_stunned(self):
+		velocity.x = 0.0
+		velocity.y = minf(velocity.y + GRAVITY * delta, 560.0)
+		move_and_slide()
+		sprite.modulate = Color(0.6, 0.85, 1.0)
+		return
+	elif not statuses.has("freeze") and sprite.modulate == Color(0.6, 0.85, 1.0):
+		sprite.modulate = Color.WHITE
 
 	if _boss:
 		_boss_ai(delta)
@@ -116,8 +127,9 @@ func _physics_process(delta: float) -> void:
 		_: _walk(delta, chasing, dx, false)
 
 	_contact_damage()
-	# melee when adjacent (walker/jumper)
-	if _player and _behavior() != "shooter" and global_position.distance_to(_player.global_position) < 22.0 and _attack_cd <= 0.0:
+	# melee when adjacent (walker/jumper); Paralyze mengunci serangan (v0.4.1)
+	if _player and _behavior() != "shooter" and global_position.distance_to(_player.global_position) < 22.0 \
+			and _attack_cd <= 0.0 and not StatusFx.is_attack_locked(self):
 		_attack()
 
 func _shoot_ai(delta: float, chasing: bool, dx: float) -> void:
@@ -267,6 +279,8 @@ func _attack() -> void:
 		_player.take_hit(res, self)
 
 var _hit_imm := {}
+var statuses := {}     # status effects (v0.4.1)
+var _status_lbl: Label = null
 
 func take_hit(result: Dictionary, from) -> void:
 	if _dead:
@@ -280,6 +294,7 @@ func take_hit(result: Dictionary, from) -> void:
 	if _hit_imm.get(key, 0.0) > now:
 		return
 	_hit_imm[key] = now + CombatFeel.hit_immunity(inst.get("is_boss", false))
+	result = StatusFx.pre_hit(self, result)   # Thermal Shock dll. (v0.4.1)
 	hp = max(0, hp - int(result.get("damage", 0)))
 	hpbar.visible = true
 	hpbar.value = hp
@@ -288,8 +303,36 @@ func take_hit(result: Dictionary, from) -> void:
 	Vfx.impact(get_parent(), global_position + Vector2(0, -6), result.get("element", "none"), result.get("is_crit", false))
 	_flash()
 	Audio.play_sfx("hit", 1.25 if result.get("is_crit", false) else 1.0)
+	StatusFx.on_hit(self, result, is_wet)   # roll status (v0.4.1)
 	if hp <= 0:
 		_die(from)
+
+## Small DoT tick (burn/poison) — bypasses per-source immunity (v0.4.1).
+func take_status_damage(dmg: int, elem: String) -> void:
+	if _dead:
+		return
+	hp = max(0, hp - dmg)
+	hpbar.visible = true
+	hpbar.value = hp
+	var dn := preload("res://scenes/ui/DamageNumber.tscn").instantiate()
+	get_parent().add_child(dn)
+	dn.global_position = global_position + Vector2(randf_range(-6, 6), -14)
+	dn.show_number(dmg, false, false)
+	dn.modulate = Vfx.elem_color(elem)
+	if hp <= 0:
+		_die(null)
+
+func _refresh_status_icons() -> void:
+	var txt := StatusFx.icons_text(self)
+	if txt == "" and _status_lbl == null:
+		return
+	if _status_lbl == null:
+		_status_lbl = Label.new()
+		_status_lbl.add_theme_font_size_override("font_size", 10)
+		_status_lbl.position = Vector2(-14, -30)
+		add_child(_status_lbl)
+	if _status_lbl.text != txt:
+		_status_lbl.text = txt
 
 func can_be_tamed() -> bool:
 	return not _dead and hp <= int(max_hp * 0.05)

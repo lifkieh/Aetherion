@@ -53,6 +53,7 @@ func _physics_process(delta: float) -> void:
 	_tick_timers(delta)
 	_regen_mp(delta)
 	_update_infusion_aura(delta)
+	StatusFx.tick(PlayerData, delta)   # status pemain: burn/poison DoT (v0.4.1)
 
 	if _dodge_timer > 0.0:
 		velocity = _dodge_dir * DODGE_SPEED
@@ -153,6 +154,7 @@ func take_hit(result: Dictionary, _from) -> void:
 		return
 	var dmg: int = result.get("damage", 0)
 	PlayerData.take_damage(dmg)
+	StatusFx.on_hit(PlayerData, result, WorldState.is_wet_weather())   # status pemain (v0.4.1)
 	EventBus.damage_dealt.emit(_from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
 	_iframes = CombatFeel.iframes()   # tuned i-frames (combat feel parity, PC6)
 	_combat_t = 0.0

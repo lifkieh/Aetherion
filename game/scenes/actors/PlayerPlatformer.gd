@@ -122,6 +122,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_released("attack"):
 		hotbar.end_cast()
 	_combat_t += delta
+	StatusFx.tick(PlayerData, delta)   # status pemain (v0.4.1)
 	PlayerData.regen_mana(PlayerData.mana_regen * (3.0 if _combat_t > 3.0 else 1.0) * delta)
 	if PlayerData.has_active_infusion():
 		PlayerData.drain_mana(PlayerData.infusion.get("drain", 2.0) * delta)
@@ -189,6 +190,7 @@ func take_hit(result: Dictionary, from) -> void:
 		return
 	var dmg: int = result.get("damage", 0)
 	PlayerData.take_damage(dmg)
+	StatusFx.on_hit(PlayerData, result, WorldState.is_wet_weather())   # status pemain (v0.4.1)
 	EventBus.damage_dealt.emit(from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
 	_iframes = CombatFeel.iframes()
 	# knockback on the player too (two-directional feel)

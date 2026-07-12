@@ -85,6 +85,7 @@ static func resolve(attacker: Dictionary, defender: Dictionary, skill: Dictionar
 		"chain": elem_chains(atk_elem, ctx),
 		"effective": em > 1.0,
 		"resisted": em < 1.0,
+		"apply_status": skill.get("apply_status", ""),   # status system v0.4.1
 	}
 
 ## Build the world/science ctx for an attack against `target_wet` etc.

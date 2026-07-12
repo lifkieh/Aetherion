@@ -107,6 +107,18 @@ func _physics_process(delta: float) -> void:
 	if _wet_marker:
 		_wet_marker.visible = is_wet
 	_update_tame_hint()
+	# status effects (v0.4.1): DoT + durasi + ikon; Freeze membekukan di tempat
+	StatusFx.tick(self, delta)
+	_refresh_status_icons()
+	if StatusFx.is_stunned(self):
+		velocity = _knock
+		move_and_slide()
+		_knock = _knock.move_toward(Vector2.ZERO, 900.0 * delta)
+		sprite.modulate = Color(0.6, 0.85, 1.0)
+		return
+	elif not statuses.has("freeze"):
+		if sprite.modulate == Color(0.6, 0.85, 1.0):
+			sprite.modulate = Color.WHITE
 
 	if _player == null or not is_instance_valid(_player):
 		_player = get_tree().get_first_node_in_group("player")
@@ -153,7 +165,7 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			if _player == null or dist > _attack_range() * 1.4:
 				_state = State.CHASE
-			elif _attack_cd <= 0.0:
+			elif _attack_cd <= 0.0 and not StatusFx.is_attack_locked(self):
 				_attack_player()
 
 func _attack_range() -> float:
@@ -231,12 +243,16 @@ func _attack_player() -> void:
 	var ctx := CombatResolver.build_ctx()
 	if _player and _player.has_method("take_hit"):
 		var pstats: Dictionary = _player.combat_view() if _player.has_method("combat_view") else PlayerData.combat_stats()
-		var res := CombatResolver.resolve(MonsterFactory.combat_stats(inst), pstats, sk, ctx)
+		var mstats := MonsterFactory.combat_stats(inst)
+		mstats["accuracy"] = float(mstats.get("accuracy", 1.0)) * StatusFx.acc_mult(self)   # Blind (v0.4.1)
+		var res := CombatResolver.resolve(mstats, pstats, sk, ctx)
 		_player.take_hit(res, self)
 
 # --- Damage / death ---------------------------------------------------------
 
 var _hit_imm := {}     # damage-source instance_id -> next-allowed time (anti-melt, rev D)
+var statuses := {}     # status effects (v0.4.1): burn/freeze/paralyze/poison/blind
+var _status_lbl: Label = null
 
 func take_hit(result: Dictionary, from) -> void:
 	if _state == State.DEAD:
@@ -244,6 +260,7 @@ func take_hit(result: Dictionary, from) -> void:
 	if result.get("miss", false):
 		_spawn_miss()
 		return
+	result = StatusFx.pre_hit(self, result)   # Thermal Shock dll. (v0.4.1)
 	# per-source hit-immunity so hold-spam is legit but can't stunlock/melt
 	var now := _now()
 	var key: int = from.get_instance_id() if is_instance_valid(from) else 0
@@ -259,11 +276,39 @@ func take_hit(result: Dictionary, from) -> void:
 	Vfx.impact(get_parent(), global_position + Vector2(0, -6), result.get("element", "none"), result.get("is_crit", false))
 	_flash()
 	Audio.play_sfx("hit", 1.25 if result.get("is_crit", false) else 1.0)
+	StatusFx.on_hit(self, result, is_wet)   # roll status (v0.4.1)
 	# aggro on hit
 	if _state in [State.WANDER, State.IDLE]:
 		_state = State.CHASE
 	if hp <= 0:
 		_die(from)
+
+## Small DoT tick damage (burn/poison) — bypasses hit-immunity, shows a tiny number.
+func take_status_damage(dmg: int, elem: String) -> void:
+	if _state == State.DEAD:
+		return
+	hp = max(0, hp - dmg)
+	hpbar.visible = true
+	hpbar.value = hp
+	var dn := preload("res://scenes/ui/DamageNumber.tscn").instantiate()
+	get_parent().add_child(dn)
+	dn.global_position = global_position + Vector2(randf_range(-6, 6), -14)
+	dn.show_number(dmg, false, false)
+	dn.modulate = Vfx.elem_color(elem)
+	if hp <= 0:
+		_die(null)
+
+func _refresh_status_icons() -> void:
+	var txt := StatusFx.icons_text(self)
+	if txt == "" and _status_lbl == null:
+		return
+	if _status_lbl == null:
+		_status_lbl = Label.new()
+		_status_lbl.add_theme_font_size_override("font_size", 10)
+		_status_lbl.position = Vector2(-14, -30)
+		add_child(_status_lbl)
+	if _status_lbl.text != txt:
+		_status_lbl.text = txt
 
 func _die(from) -> void:
 	_state = State.DEAD

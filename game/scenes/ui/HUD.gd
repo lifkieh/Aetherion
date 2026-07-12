@@ -412,8 +412,19 @@ func _refresh_elements() -> void:
 			elements_row.add_child(tr)
 	_last_elem_count = PlayerData.mastered_elements.size()
 
+var _pstatus_lbl: Label = null
+
 func _process(_delta: float) -> void:
 	_refresh_hotbar()
+	# player status icons near the HP bar (v0.4.1)
+	var ptxt := StatusFx.icons_text(PlayerData)
+	if _pstatus_lbl == null and ptxt != "":
+		_pstatus_lbl = Label.new()
+		_pstatus_lbl.add_theme_font_size_override("font_size", 14)
+		_pstatus_lbl.position = Vector2(198, 8)
+		add_child(_pstatus_lbl)
+	if _pstatus_lbl and _pstatus_lbl.text != ptxt:
+		_pstatus_lbl.text = ptxt
 	if PlayerData.mastered_elements.size() != _last_elem_count:
 		_refresh_elements()
 	if infusion_label == null:

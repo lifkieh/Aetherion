@@ -56,6 +56,7 @@ var known_skills: Array = ["strike", "flame_slash", "spark_bolt"]
 var mastered_elements: Array = ["fire", "lightning"]
 var infusion: Dictionary = {}          # {element, source, expires_unix} or empty
 var buffs: Dictionary = {}             # key -> {mult/add, until_msec} (war_cry, smoke_bomb)
+var statuses: Dictionary = {}          # status effects pada PEMAIN (burn/poison/blind, v0.4.1)
 
 # --- Taming / pets ---
 var monsters: Array = []               # tamed monster instances (dicts)
@@ -118,6 +119,7 @@ func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
 	mastered_elements = cd.get("masters", ["fire"]).duplicate()
 	infusion = {}
 	buffs = {}
+	statuses = {}
 	monsters = []
 	active_pet_index = -1
 	mounted = false
@@ -352,7 +354,8 @@ func combat_stats() -> Dictionary:
 		"crit_rate": crit_rate, "crit_dmg": crit_dmg,
 		"level": level, "hp": hp, "max_hp": max_hp,
 		"element": current_weapon_element(),
-		"accuracy": accuracy, "evasion": clampf(evasion + buff_add("evasion_add"), 0.0, 0.75),
+		"accuracy": accuracy * StatusFx.acc_mult(self),   # Blind memotong akurasi (v0.4.1)
+		"evasion": clampf(evasion + buff_add("evasion_add"), 0.0, 0.75),
 		"resist": {},
 	}
 
@@ -445,8 +448,16 @@ func take_damage(amount: int) -> void:
 	EventBus.player_hp_changed.emit(hp, max_hp)
 
 func heal(amount: int) -> void:
+	# Poison memotong heal 50% (sains dosis, v0.4.1)
+	amount = int(amount * StatusFx.heal_mult(self))
 	hp = min(max_hp, hp + amount)
 	EventBus.player_hp_changed.emit(hp, max_hp)
+
+## DoT tick pada pemain (burn/poison) — dipanggil StatusFx.tick.
+func take_status_damage(dmg: int, _elem: String) -> void:
+	take_damage(dmg)
+	if is_dead():
+		EventBus.player_died.emit()
 
 func spend_mp(amount: int) -> bool:
 	if mp < amount:

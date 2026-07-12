@@ -45,6 +45,7 @@ func _ready() -> void:
 	_test_skill_audit()
 	_test_skill_acquisition()
 	_test_classes()
+	_test_status_fx()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -620,6 +621,68 @@ func _test_skill_acquisition() -> void:
 func func_learn_boss(boss: String, sid: String) -> bool:
 	PlayerData.on_boss_killed(boss)
 	return PlayerData.can_use_skill(sid)
+
+func _test_status_fx() -> void:
+	print("[Status Effects — v0.4.1]")
+	# fake entity duck-typed: statuses + max_hp + take_status_damage
+	var e := _FakeEntity.new()
+	# explicit apply_status = pasti kena
+	StatusFx.on_hit(e, {"damage": 10, "element": "none", "apply_status": "poison"}, false)
+	check("apply_status poison selalu kena", StatusFx.has(e, "poison"))
+	# poison DoT ticks damage over time
+	var hp0: int = e.fake_hp
+	StatusFx.tick(e, 3.0)
+	check("poison DoT mengurangi HP", e.fake_hp < hp0)
+	# heal cut while poisoned
+	check("heal dipotong 50% saat poison", StatusFx.heal_mult(e) == 0.5)
+	# expiry
+	StatusFx.tick(e, 10.0)
+	check("status kedaluwarsa setelah durasi", not StatusFx.has(e, "poison"))
+	# sains: burn tidak menempel saat basah
+	e.statuses.clear()
+	var burned := false
+	for i in range(200):
+		StatusFx.on_hit(e, {"damage": 5, "element": "fire"}, true)
+		if StatusFx.has(e, "burn"): burned = true
+	check("basah = tak bisa terbakar (200 percobaan)", not burned)
+	# sains: lightning hanya melumpuhkan target BASAH
+	e.statuses.clear()
+	var para_dry := false
+	for i in range(200):
+		StatusFx.on_hit(e, {"damage": 5, "element": "lightning"}, false)
+		if StatusFx.has(e, "paralyze"): para_dry = true
+	check("lightning kering = tak melumpuhkan", not para_dry)
+	var para_wet := false
+	for i in range(200):
+		StatusFx.on_hit(e, {"damage": 5, "element": "lightning"}, true)
+		if StatusFx.has(e, "paralyze"): para_wet = true
+	check("lightning + basah = bisa paralyze (konduksi)", para_wet)
+	# Thermal Shock: fire pada target beku = x1.5 + es pecah
+	e.statuses.clear()
+	StatusFx.apply(e, "freeze")
+	check("freeze = stunned & attack locked", StatusFx.is_stunned(e) and StatusFx.is_attack_locked(e))
+	var res := StatusFx.pre_hit(e, {"damage": 100, "element": "fire"})
+	check("Thermal Shock: fire vs frozen = 150 dmg", res.get("damage", 0) == 150 and res.get("thermal_shock", false))
+	check("es pecah setelah thermal shock", not StatusFx.has(e, "freeze"))
+	# sains: air memadamkan burn
+	StatusFx.apply(e, "burn")
+	StatusFx.on_hit(e, {"damage": 5, "element": "water"}, false)
+	check("air memadamkan burn", not StatusFx.has(e, "burn"))
+	# blind memotong akurasi
+	StatusFx.apply(e, "blind")
+	check("blind acc x0.7", absf(StatusFx.acc_mult(e) - 0.7) < 0.001)
+	check("ikon status tampil", StatusFx.icons_text(e) != "")
+	# CombatResolver meneruskan apply_status
+	var rng := RandomNumberGenerator.new(); rng.seed = 7
+	var rr := CombatResolver.resolve({"atk": 50, "accuracy": 2.0}, {"def": 0}, Db.skill("venom_strike"), {}, rng)
+	check("resolve meneruskan apply_status dari skill", rr.get("apply_status", "") == "poison")
+
+class _FakeEntity:
+	var statuses := {}
+	var max_hp := 100
+	var fake_hp := 100
+	func take_status_damage(d: int, _e: String) -> void:
+		fake_hp -= d
 
 func _test_opening() -> void:
 	print("[30 menit pertama — FF-2g]")
