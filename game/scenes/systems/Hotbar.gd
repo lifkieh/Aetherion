@@ -8,6 +8,12 @@ extends RefCounted
 
 const COMBO_WINDOW := 1.5
 const FUSION_BASE_MANA := 6   # min mana base for fusion (flow skills prime at 0 mana)
+const SKILL_COMBO_WINDOW := 2.0   # Combo Skill (GDD §6.2, v0.4.1): 2 skill BEDA <2 dtk
+const SKILL_COMBO_MULT := 1.3
+
+var _last_cast_sid := ""
+var _last_cast_ms := -99999
+var _combo_announced := false
 
 var primed := -1                  # slot armed for a channelled cast
 var fusion_slots: Array = []      # ordered primed slots for a fusion (2-4)
@@ -160,6 +166,21 @@ func _cast_single(actor: Node2D, aim: Vector2, sid: String) -> bool:
 	if not PlayerData.spend_mp(sk.get("mana_cost", 0)):
 		_no_mana()
 		return false
+	# COMBO SKILL (v0.4.1): merangkai 2 skill BERBEDA dalam 2 dtk = +30% damage.
+	var now_ms := Time.get_ticks_msec()
+	var is_combo := _last_cast_sid != "" and _last_cast_sid != sid \
+		and (now_ms - _last_cast_ms) < int(SKILL_COMBO_WINDOW * 1000.0)
+	if is_combo:
+		sk = sk.duplicate()
+		sk["skill_mod"] = float(sk.get("skill_mod", 1.0)) * SKILL_COMBO_MULT
+		if not _combo_announced:
+			_combo_announced = true
+			EventBus.toast.emit("⚡ COMBO! %s → %s (+30%%)" % [Db.skill(_last_cast_sid).get("name", ""), sk.get("name", sid)])
+			Audio.play_sfx("prime", 1.4)
+	else:
+		_combo_announced = false
+	_last_cast_sid = sid
+	_last_cast_ms = now_ms
 	match sk.get("kind", "physical"):
 		"heal":
 			PlayerData.heal(int(sk.get("heal_amount", 30)))

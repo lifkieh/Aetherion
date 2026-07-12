@@ -648,6 +648,17 @@ func _build_status() -> void:
 	var pts := _mk_label("Poin bebas: %d  (+5 tiap naik level)" % PlayerData.stat_points, 15)
 	pts.add_theme_color_override("font_color", UiTheme.ACCENT)
 	content.add_child(pts)
+	# publikasi cap & formula (GDD §6.3 "semua cap dipublikasikan", v0.4.1)
+	content.add_child(_mk_label("— Formula & Cap (transparan untuk semua pemain) —", 14, Color(0.7, 0.85, 1.0)))
+	for line in [
+		"Crit: %d%%–%d%% · Crit Dmg 150%% (cap 250%%)" % [int(CombatResolver.CRIT_MIN * 100), int(CombatResolver.CRIT_MAX * 100)],
+		"Evasion: cap 40%% dari AGI (+buff maks 75%%) · Accuracy: 60%%–99%% dari DEX",
+		"Peluang kena = Accuracy − Evasion (minimal 20%%)",
+		"DEF & MDEF memitigasi %d%% nilainya dari damage" % int(CombatResolver.DEF_FACTOR * 100),
+		"Elemen: kuat ×1.3 · lemah ×0.7 · Combo 2 skill beda <2 dtk = +30%%",
+		"Mana: regen surge ×3 setelah 3 dtk tidak bertarung · channel dibatasi kolam mana",
+	]:
+		content.add_child(_mk_label("• " + line, 11, Color(0.72, 0.76, 0.9)))
 	content.add_child(_mk_label(" ", 4))
 	for attr in PlayerData.ATTR_ORDER:
 		var h := _row()

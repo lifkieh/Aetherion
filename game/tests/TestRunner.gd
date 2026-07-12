@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	_test_combo()
 	await _test_patterns()
 	_test_opening()
 	_test_save_modern()
@@ -684,6 +685,24 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_combo() -> void:
+	print("[Combo Skill — v0.4.1]")
+	PlayerData.new_game("mage")
+	PlayerData.mp = 999
+	var actor := Node2D.new()
+	add_child(actor)
+	var hb := Hotbar.new()
+	# dua skill BEDA cepat = combo (skill_mod naik dicek via kondisi internal)
+	hb._cast_single(actor, Vector2.RIGHT, "spark_bolt")
+	var was := hb._last_cast_sid
+	hb._cast_single(actor, Vector2.RIGHT, "frost_bolt")
+	check("kombo terdeteksi (2 skill beda <2s)", was == "spark_bolt" and hb._combo_announced)
+	# skill sama berulang = bukan combo
+	hb._cast_single(actor, Vector2.RIGHT, "frost_bolt")
+	check("skill sama = bukan combo", not hb._combo_announced)
+	actor.queue_free()
+	PlayerData.new_game()
 
 func _test_patterns() -> void:
 	print("[Attack Patterns — v0.4.1]")
