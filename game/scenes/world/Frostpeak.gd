@@ -17,6 +17,7 @@ var _spawn_timer := 0.0
 var _shot_at := -1.0
 
 func _ready() -> void:
+	WorldState.mark_visited("frostpeak")   # Gerbang Penjelajah (#43)
 	randomize()
 	_build_ground()
 	_build_boundaries()
@@ -208,6 +209,7 @@ func _build_village() -> void:
 	# service NPC (human trader) + deco
 	_vnpc("shop", VC + Vector2(150, -10))
 	_keeper(VC + Vector2(-90, 40), "frostpeak_village")   # Penjaga Pohon Es (#30)
+	_world_gate(VC + Vector2(90, 40))   # Gerbang Penjelajah (#43)
 	for d in [["crate", Vector2(-150, -20)], ["barrel", Vector2(-138, -12)], ["hay", Vector2(150, 60)], ["barrel", Vector2(90, -10)]]:
 		var s := Sprite2D.new(); s.texture = load("res://assets/game/sprites/props/%s.png" % d[0])
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST; s.global_position = VC + d[1]
@@ -243,3 +245,7 @@ func _vnpc(kind: String, pos: Vector2) -> void:
 func _keeper(pos: Vector2, loc: String) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos
+
+func _world_gate(pos: Vector2) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n); n.setup("world_gate"); n.global_position = pos

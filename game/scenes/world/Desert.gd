@@ -17,6 +17,7 @@ var _spawn_timer := 0.0
 var _shot_at := -1.0
 
 func _ready() -> void:
+	WorldState.mark_visited("desert")   # Gerbang Penjelajah (#43)
 	randomize()
 	_build_ground()
 	_build_boundaries()
@@ -149,6 +150,7 @@ func _add_ui() -> void:
 	barrow.setup("dungeon")
 	barrow.global_position = Vector2(MAP_W * TILE * 0.5 + 90, MAP_H * TILE - 90)
 	_keeper(Vector2(MAP_W * TILE * 0.5 - 90, MAP_H * TILE - 90), "desert_ruins")   # altar reruntuhan (#30)
+	_world_gate(Vector2(MAP_W * TILE * 0.5 - 160, MAP_H * TILE - 60))   # Gerbang Penjelajah (#43)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -186,3 +188,7 @@ func on_monster_died(_m) -> void:
 func _keeper(pos: Vector2, loc: String) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos
+
+func _world_gate(pos: Vector2) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n); n.setup("world_gate"); n.global_position = pos

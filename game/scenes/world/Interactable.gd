@@ -85,6 +85,13 @@ func _build() -> void:
 		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
 			"hair": "bun", "hair_color": "#e8e2f4", "shirt": "#2e6b3f", "pants": "#6b4226"})
 		label.text = "Penjaga Pohon [E]"
+	elif kind == "world_gate":
+		sprite.texture = load("res://assets/game/sprites/props/stone_gate.png")
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.scale = Vector2(1.4, 1.4)
+		sprite.modulate = Color(0.55, 0.75, 1.0)   # biru penjelajah
+		sprite.offset = Vector2(0, -14)
+		label.text = "🌍 Gerbang Penjelajah [E]"
 	elif kind == "shop":
 		_char_sprite({"head_race": "human2", "torso_race": "human2", "legs_race": "human2",
 			"hair": "short", "hair_color": "#241f36", "shirt": "#c9a227", "pants": "#453d5c"})
@@ -168,6 +175,8 @@ func interact() -> void:
 		await Stage.say(["Setiap tanah menumbuhkan ilmunya sendiri, petualang.",
 			"Pohon di sini bisa kubukakan untukmu. Yang lain? Hanya rumor yang bisa kubisikkan."], "Penjaga Pohon", sprite.texture)
 		menu.open("trees", {"location": keeper_location})
+	elif kind == "world_gate":
+		load("res://scenes/ui/TravelUI.gd").open_over(get_tree())
 	else:
 		await Stage.say("Perlu meramu sesuatu? Bengkel ini siap membantu.", "Pandai Besi")
 		menu.open("crafting", self)

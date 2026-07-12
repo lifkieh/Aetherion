@@ -20,6 +20,7 @@ var _dragon_spawned := false
 var _dragon_check := 6.0
 
 func _ready() -> void:
+	WorldState.mark_visited("storm_island")   # Gerbang Penjelajah (#43)
 	randomize()
 	_build_ground()
 	_build_boundaries()
@@ -169,6 +170,7 @@ func _add_ui() -> void:
 	spire.setup("dungeon")
 	spire.global_position = Vector2(MAP_W * TILE * 0.5 + 120, MAP_H * TILE - 140)
 	_keeper(Vector2(MAP_W * TILE * 0.5 - 100, MAP_H * TILE - 140), "storm_island")   # penjaga menara (#30)
+	_world_gate(Vector2(MAP_W * TILE * 0.5 - 60, MAP_H * TILE - 60))   # Gerbang Penjelajah di dermaga (#43)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -206,3 +208,7 @@ func on_monster_died(_m) -> void:
 func _keeper(pos: Vector2, loc: String) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos
+
+func _world_gate(pos: Vector2) -> void:
+	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(n); n.setup("world_gate"); n.global_position = pos

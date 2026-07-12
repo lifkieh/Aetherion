@@ -47,6 +47,7 @@ func _ready() -> void:
 	_test_classes()
 	_test_status_fx()
 	await _test_ui_flow_both_paths()
+	_test_travel_hub()
 	await _test_ladder_modern()
 	await _test_guard_kill()
 	_test_life_path()
@@ -692,6 +693,39 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_travel_hub() -> void:
+	print("[Gerbang Penjelajah 'Pilih Dunia' — Decision Log #43]")
+	var TravelUI = load("res://scenes/ui/TravelUI.gd")
+	PlayerData.new_game()
+	WorldState.new_game()
+	# visited tracking
+	check("mulai: belum ada wilayah tercatat", WorldState.visited_regions.is_empty())
+	WorldState.mark_visited("greenvale")
+	WorldState.mark_visited("frostpeak")
+	WorldState.mark_visited("frostpeak")   # idempotent
+	check("visited tercatat & idempotent", WorldState.visited_regions == ["greenvale", "frostpeak"])
+	check("current_region terpasang", WorldState.current_region == "frostpeak")
+	# 5 wilayah terdaftar dengan scene valid
+	var ok := true
+	for r in TravelUI.REGIONS:
+		if not ResourceLoader.exists(r.scene):
+			ok = false
+	check("5 wilayah terdaftar + scene valid", TravelUI.REGIONS.size() == 5 and ok)
+	# travel pertama hari ini GRATIS, berikutnya berbiaya
+	WorldState.last_free_travel = ""
+	check("travel pertama hari ini gratis", TravelUI.travel_cost_today() == 0)
+	WorldState.last_free_travel = GameClock.date_string()
+	check("travel berikutnya berbiaya %dG" % TravelUI.TRAVEL_COST, TravelUI.travel_cost_today() == TravelUI.TRAVEL_COST)
+	# persist visited + jatah gratis
+	SaveManager.save_game(3, true)
+	WorldState.new_game()
+	SaveManager.load_game(3)
+	check("visited & jatah gratis selamat save/load", WorldState.visited_regions == ["greenvale", "frostpeak"] \
+		and WorldState.last_free_travel == GameClock.date_string())
+	SaveManager.delete_save(3)
+	PlayerData.new_game()
+	WorldState.new_game()
 
 class _FakeLadderTerrain:
 	extends Node2D

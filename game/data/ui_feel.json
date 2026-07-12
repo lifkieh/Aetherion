@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "panel_in": {"dur": 0.15, "scale_from": 0.95},
+  "hover": {"rise": 2.0, "glow": 1.12, "dur": 0.08},
+  "press": {"squash": 0.94, "dur": 0.06},
+  "tab_slide": {"dur": 0.12, "offset": 14.0},
+  "breathe": {"amount": 0.015, "period": 2.4},
+  "toast_spring": {"dur": 0.22, "overshoot": 1.08},
+  "select_bounce": {"scale": 1.12, "dur": 0.14},
+  "celebrate": {"sparks": 7, "dur": 0.6}
+}

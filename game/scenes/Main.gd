@@ -24,6 +24,7 @@ var _screenshot_at := -1.0
 func _ready() -> void:
 	randomize()
 	SafeZone.set_region("greenvale")   # town = monster-free safe zone (UI/UX §4)
+	WorldState.mark_visited("greenvale")   # Gerbang Penjelajah (#43)
 	_build_ground()
 	_build_boundaries()
 	_dress_wild()                      # R2 Part 2: dense forest outside the town

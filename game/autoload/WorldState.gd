@@ -7,6 +7,17 @@ var pending_return_pos = null           # Vector2 set by a dungeon door; consume
 var pending_interior := "house"         # interior variant to build on HouseInterior entry (R2 town)
 var counters: Dictionary = {}          # key -> int
 var node_states: Dictionary = {}       # gathering node id -> {harvested_at:unix}
+var visited_regions: Array = []        # wilayah yang pernah dikunjungi (Gerbang Penjelajah, #43)
+var current_region := "greenvale"
+var last_free_travel := ""             # tanggal WIB travel gratis harian terakhir dipakai
+
+## Tandai wilayah dikunjungi (dipanggil _ready tiap region scene). #43
+func mark_visited(region_id: String) -> void:
+	current_region = region_id
+	if not (region_id in visited_regions):
+		visited_regions.append(region_id)
+		if visited_regions.size() > 1:
+			EventBus.toast.emit("🗺 Wilayah baru tercatat: gerbang penjelajah kini mengenalnya.")
 var _weather_timer := 0.0
 var _weather_interval := 90.0          # seconds between weather rolls (demo-friendly)
 
@@ -124,14 +135,20 @@ func to_save() -> Dictionary:
 		"weather": weather,
 		"counters": counters,
 		"node_states": node_states,
+		"visited_regions": visited_regions,
+		"last_free_travel": last_free_travel,
 	}
 
 func from_save(d: Dictionary) -> void:
 	weather = d.get("weather", "sunny")
 	counters = d.get("counters", {})
 	node_states = d.get("node_states", {})
+	visited_regions = d.get("visited_regions", [])
+	last_free_travel = d.get("last_free_travel", "")
 
 func new_game() -> void:
 	counters = {}
 	node_states = {}
+	visited_regions = []
+	last_free_travel = ""
 	_roll_weather(true)
