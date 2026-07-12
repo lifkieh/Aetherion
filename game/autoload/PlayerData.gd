@@ -92,6 +92,25 @@ func _ready() -> void:
 func _on_monster_killed(species_id: String, node) -> void:
 	if is_instance_valid(node) and ("inst" in node) and node.inst.get("is_boss", false):
 		on_boss_killed(species_id)
+	# AFFINITY hidup (v0.4.1): pet aktif ikut bertempur -> +1 affinity per kill (cap 100)
+	if active_pet_index >= 0 and active_pet_index < monsters.size():
+		var pet: Dictionary = monsters[active_pet_index]
+		var aff := int(pet.get("affinity", 0))
+		if aff < 100:
+			pet["affinity"] = aff + 1
+			monsters[active_pet_index] = pet
+
+## Beri makan pet (v0.4.1): konsumsi 1 item makanan -> +5 affinity (cap 100).
+func feed_pet(idx: int, food_id: String) -> bool:
+	if idx < 0 or idx >= monsters.size() or item_count(food_id) <= 0:
+		return false
+	var pet: Dictionary = monsters[idx]
+	remove_item(food_id, 1)
+	pet["affinity"] = mini(100, int(pet.get("affinity", 0)) + 5)
+	monsters[idx] = pet
+	EventBus.toast.emit("%s senang! Affinity %d/100" % [pet.get("name", "Pet"), pet["affinity"]])
+	Audio.play_sfx("success")
+	return true
 
 ## Reset to a fresh character (New Game). birth_sign from creation date (v0.3 §3.3).
 ## class_id = 1 of 6 combat classes (FF-2a); weapon_id = chosen starting variant.

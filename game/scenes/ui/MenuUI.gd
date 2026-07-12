@@ -75,7 +75,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["grimoire", "Grimoire"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
+	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -159,6 +159,7 @@ func _rebuild() -> void:
 		"panduan": _build_panduan()
 		"status": _build_status()
 		"grimoire": _build_grimoire()
+		"pet": _build_pet()
 
 func _build_skill() -> void:
 	title.text = "Skill Book"
@@ -325,6 +326,7 @@ func _build_quests() -> void:
 
 func _build_pedia() -> void:
 	title.text = "Aetherpedia"
+	content.add_child(_mk_label("Tiap ekor monster dirol RANK BINTANG ★1–★5 (±6% stat, tampil di atas HP bar), 0–2 TRAIT individu (Kekar/Liat/Gesit/Beruntung/Berbisa), dan 1/500 lahir ✦MUTASI (emas, +10% stat, drop lebih royal).", 11, Color(0.75, 0.8, 0.95)))
 	# --- Dunia / lore (Celestia canon) ---
 	var lore := _mk_label("🌍 Dunia Aetherion", 18)
 	lore.add_theme_color_override("font_color", UiTheme.ACCENT)
@@ -639,6 +641,56 @@ func _combo_elems(c: Dictionary) -> Array:
 	if elems.is_empty():
 		elems = [c.get("a", ""), c.get("b", "")]
 	return elems
+
+## Ranch/Pet UI (v0.4.1): roster pet dengan bintang, trait, MUTASI, AFFINITY hidup
+## (naik saat ikut bertempur / diberi makan) + aktifkan + beri makan.
+func _build_pet() -> void:
+	title.text = "Pet & Ranch"
+	if PlayerData.monsters.is_empty():
+		content.add_child(_mk_label("Belum ada pet. Lemahkan monster (HP<5%) lalu tekan T dengan Orb.", 14))
+		return
+	content.add_child(_mk_label("Affinity naik saat pet ikut bertempur & diberi makan — gerbang konten masa depan (Fusion/Pact).", 11, Color(0.75, 0.8, 0.95)))
+	var food := ""
+	for fid in ["grilled_fish", "meat_jerky", "fish_sushi", "minor_potion"]:
+		if PlayerData.item_count(fid) > 0:
+			food = fid
+			break
+	for i in range(PlayerData.monsters.size()):
+		var pet: Dictionary = PlayerData.monsters[i]
+		var h := _row()
+		var active := i == PlayerData.active_pet_index
+		var stars := "★".repeat(int(pet.get("star", 3)))
+		var traits: Array = pet.get("ind_traits", [])
+		var line := "%s%s Lv%d %s" % [("▶ " if active else ""), pet.get("name", "?"), int(pet.get("level", 1)), stars]
+		if not traits.is_empty():
+			line += " · " + ", ".join(traits)
+		if pet.get("mutation", false):
+			line += " ✦MUTASI"
+		var l := _mk_label(line, 13, Color(1.0, 0.9, 0.6) if active else Color.WHITE)
+		l.custom_minimum_size = Vector2(250, 0)
+		h.add_child(l)
+		var aff := int(pet.get("affinity", 0))
+		var ab := ProgressBar.new()
+		ab.custom_minimum_size = Vector2(80, 12)
+		ab.max_value = 100
+		ab.value = aff
+		ab.show_percentage = false
+		ab.tooltip_text = "Affinity %d/100" % aff
+		h.add_child(ab)
+		h.add_child(_mk_label("%d" % aff, 11))
+		if not active:
+			var idx := i
+			h.add_child(_btn("Aktifkan", func():
+				PlayerData.active_pet_index = idx
+				EventBus.pet_added.emit(PlayerData.monsters[idx])
+				_rebuild()))
+		if food != "":
+			var idx2 := i
+			var f2 := food
+			h.add_child(_btn("🍖 %s" % Db.item_name(f2), func():
+				if PlayerData.feed_pet(idx2, f2): _rebuild()))
+	if food == "":
+		content.add_child(_mk_label("(tidak ada makanan di tas — masak/beli untuk memberi makan)", 11, Color(0.7, 0.7, 0.72)))
 
 func _build_status() -> void:
 	title.text = "Status Karakter"

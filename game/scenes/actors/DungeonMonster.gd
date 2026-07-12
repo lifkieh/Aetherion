@@ -63,6 +63,9 @@ func _apply() -> void:
 	var tint: String = inst.get("tint", "")
 	if tint != "":
 		sprite.modulate = Color(tint)
+	if inst.get("mutation", false):
+		sprite.modulate = sprite.modulate.lerp(Color(1.0, 0.75, 0.25), 0.45)   # MUTASI (v0.4.1)
+	_build_rank_label()
 	if inst.get("is_boss", false):
 		sprite.scale = Vector2(2.4, 2.4)
 		_boss = true
@@ -474,6 +477,8 @@ func _strike_now() -> void:
 	var sk := Db.skill(skills[0]) if skills.size() > 0 else Db.skill("tackle")
 	if sk.get("kind", "physical") == "buff":
 		sk = Db.skill("tackle")
+	if inst.get("attack_status", "") != "":
+		sk = sk.duplicate(); sk["apply_status"] = inst.attack_status   # trait Berbisa (v0.4.1)
 	if _player.has_method("take_hit"):
 		var pstats: Dictionary = _player.combat_view() if _player.has_method("combat_view") else PlayerData.combat_stats()
 		var mstats := MonsterFactory.combat_stats(inst)
@@ -484,6 +489,27 @@ func _strike_now() -> void:
 var _hit_imm := {}
 var statuses := {}     # status effects (v0.4.1)
 var _status_lbl: Label = null
+var _rank_lbl: Label = null
+
+## Rank bintang + trait individu TAMPIL di target (v0.4.1).
+func _build_rank_label() -> void:
+	if _rank_lbl:
+		_rank_lbl.queue_free()
+	_rank_lbl = Label.new()
+	_rank_lbl.add_theme_font_size_override("font_size", 9)
+	_rank_lbl.add_theme_color_override("font_color", Color(1.0, 0.9, 0.5))
+	_rank_lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+	_rank_lbl.add_theme_constant_override("outline_size", 3)
+	var txt := "★".repeat(int(inst.get("star", 3)))
+	var traits: Array = inst.get("ind_traits", [])
+	if not traits.is_empty():
+		txt += " · " + " · ".join(traits)
+	if inst.get("mutation", false):
+		txt = "✦MUTASI✦ " + txt
+	_rank_lbl.text = txt
+	_rank_lbl.position = Vector2(-22, -36)
+	_rank_lbl.visible = false
+	add_child(_rank_lbl)
 
 func take_hit(result: Dictionary, from) -> void:
 	if _dead:
@@ -500,6 +526,7 @@ func take_hit(result: Dictionary, from) -> void:
 	result = StatusFx.pre_hit(self, result)   # Thermal Shock dll. (v0.4.1)
 	hp = max(0, hp - int(result.get("damage", 0)))
 	hpbar.visible = true
+	if _rank_lbl: _rank_lbl.visible = true
 	hpbar.value = hp
 	EventBus.damage_dealt.emit(from, self, result.get("damage", 0), result.get("is_crit", false), result.get("element", "none"))
 	_spawn_damage_number(result.get("damage", 0), result.get("is_crit", false), result.get("effective", false))

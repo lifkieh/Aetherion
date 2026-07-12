@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	_test_monster_depth()
 	_test_combo()
 	await _test_patterns()
 	_test_opening()
@@ -685,6 +686,54 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_monster_depth() -> void:
+	print("[Kedalaman monster — v0.4.1]")
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 5
+	# trait individu: dari 200 rol, muncul dengan efek nyata
+	var with_traits := 0
+	var berbisa_found := false
+	for i in range(200):
+		var m := MonsterFactory.make("grey_wolf", 5, 3, rng)
+		if m.get("ind_traits", []).size() > 0:
+			with_traits += 1
+		if m.get("attack_status", "") == "poison":
+			berbisa_found = true
+	check("trait individu muncul (~75% dari rol)", with_traits > 100 and with_traits < 190, str(with_traits))
+	check("trait Berbisa memberi attack_status poison", berbisa_found)
+	# trait Kekar menaikkan ATK nyata
+	rng.seed = 1
+	var base_atk := -1
+	var kekar_atk := -1
+	for i in range(400):
+		var m := MonsterFactory.make("grey_wolf", 5, 3, rng)
+		if m.ind_traits.is_empty() and base_atk < 0:
+			base_atk = m.atk
+		elif m.ind_traits == ["Kekar"] and kekar_atk < 0:
+			kekar_atk = m.atk
+	check("Kekar ATK > tanpa trait", kekar_atk > base_atk and base_atk > 0, "%d vs %d" % [kekar_atk, base_atk])
+	# mutation 1/500: dari 6000 rol ada beberapa, bonus stat & nama ✦
+	rng.seed = 42
+	var mutants := 0
+	var mut_named := false
+	for i in range(6000):
+		var m := MonsterFactory.make("fluffbit", 3, 3, rng)
+		if m.get("mutation", false):
+			mutants += 1
+			mut_named = m.get("name", "").begins_with("✦")
+	check("mutation ~1/500 (6000 rol: 4-30)", mutants >= 4 and mutants <= 30, str(mutants))
+	check("mutan bernama ✦ (tampak)", mut_named)
+	# affinity hidup: pet aktif +1 per kill, feed +5
+	PlayerData.new_game()
+	PlayerData.monsters = [{"name": "Uji", "species_id": "fluffbit", "affinity": 0, "star": 3, "level": 1}]
+	PlayerData.active_pet_index = 0
+	EventBus.monster_killed.emit("grey_wolf", null)
+	check("pet aktif +1 affinity per kill", int(PlayerData.monsters[0].get("affinity", 0)) == 1)
+	var pot0: int = PlayerData.item_count("minor_potion")
+	check("feed_pet +5 affinity & konsumsi item", PlayerData.feed_pet(0, "minor_potion") \
+		and int(PlayerData.monsters[0].affinity) == 6 and PlayerData.item_count("minor_potion") == pot0 - 1)
+	PlayerData.new_game()
 
 func _test_combo() -> void:
 	print("[Combo Skill — v0.4.1]")

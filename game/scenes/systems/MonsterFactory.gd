@@ -23,6 +23,15 @@ const RARITY := {
 	"ancient":   {"bst": 800, "growth": 0.040, "exp": 12.0, "tame": 0.0001},
 }
 const STAR_MULT := [0.94, 0.97, 1.00, 1.03, 1.06]   # 1..5 star
+# Trait INDIVIDU (v0.4.1, GDD §7.2): 0-2 per ekor, efek nyata. name -> efek.
+const IND_TRAITS := {
+	"Kekar":     {"atk_mult": 1.10},
+	"Liat":      {"def_mult": 1.20},
+	"Gesit":     {"spd_mult": 1.15},
+	"Beruntung": {"drop_add": 0.05},
+	"Berbisa":   {"attack_status": "poison"},
+}
+const MUTATION_CHANCE := 1.0 / 500.0   # v0.1 §7.2: varian langka, +10% stat, tint beda
 # v2 same-level calibration (PC6): HP tracks hero offense growth; offense is gentler.
 const HP_LVL_GROWTH := 0.85
 const OFF_LVL_GROWTH := 0.09
@@ -77,12 +86,42 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 	var mdef := int(round(bst * dist[4] * off_scale))
 	var spd := int(round(bst * dist[5] * off_scale)) + 60
 
+	# trait individu (v0.4.1): 0-2 per ekor dari pool, efek stat/perilaku nyata
+	var ind_traits: Array = []
+	var t_roll := (rng.randf() if rng else randf())
+	var t_count := 0 if t_roll < 0.25 else (1 if t_roll < 0.80 else 2)
+	var t_keys := IND_TRAITS.keys()
+	for i in range(t_count):
+		var pick: String = t_keys[(rng.randi() if rng else randi()) % t_keys.size()]
+		if not (pick in ind_traits):
+			ind_traits.append(pick)
+	var attack_status := ""
+	var drop_add := 0.0
+	for tn in ind_traits:
+		var fx: Dictionary = IND_TRAITS[tn]
+		atk = int(atk * fx.get("atk_mult", 1.0))
+		dfn = int(dfn * fx.get("def_mult", 1.0))
+		spd = int(spd * fx.get("spd_mult", 1.0))
+		drop_add += fx.get("drop_add", 0.0)
+		if fx.has("attack_status"):
+			attack_status = fx.attack_status
+
+	# MUTATION 1/500 (v0.4.1): recolor + 10% stat + bernilai tinggi
+	var mutated := (rng.randf() if rng else randf()) < MUTATION_CHANCE
+	if mutated:
+		hp = int(hp * 1.10); atk = int(atk * 1.10); dfn = int(dfn * 1.10)
+		matk = int(matk * 1.10); mdef = int(mdef * 1.10)
+
 	var eff_bst := bst * hp_scale
 	var exp_reward := int(round(eff_bst * 0.2 * float(rinfo["exp"])))
 
 	return {
 		"species_id": species_id,
-		"name": def.get("name", species_id),
+		"name": ("✦ " + def.get("name", species_id)) if mutated else def.get("name", species_id),
+		"ind_traits": ind_traits,
+		"attack_status": attack_status,
+		"drop_add": drop_add,
+		"mutation": mutated,
 		"rarity": rarity,
 		"element": def.get("element", "none"),
 		"archetype": arche,
@@ -119,7 +158,8 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 ## and magnet to the player; without it (tests/sim) items go straight to the bag.
 static func grant_rewards(inst: Dictionary, source: Node2D = null) -> void:
 	PlayerData.gain_exp(inst.get("exp_reward", 5))
-	var drop_chance_bonus: float = PlayerData.drop_bonus
+	var drop_chance_bonus: float = PlayerData.drop_bonus + float(inst.get("drop_add", 0.0)) \
+		+ (0.10 if inst.get("mutation", false) else 0.0)
 	var table := Db.loot_table(inst.get("loot_table", ""))
 	for d in table:
 		if randf() <= float(d.get("chance", 0)) + drop_chance_bonus:

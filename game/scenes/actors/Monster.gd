@@ -61,8 +61,34 @@ func _build_sprite() -> void:
 	var tint: String = inst.get("tint", "")
 	if tint != "":
 		_base_color = Color(tint)
+	if inst.get("mutation", false):
+		# MUTATION recolor (v0.4.1): pergeseran warna keemasan yang langsung terlihat
+		_base_color = _base_color.lerp(Color(1.0, 0.75, 0.25), 0.45)
 	sprite.modulate = _base_color
 	_build_wet_marker()
+	_build_rank_label()
+
+## Rank bintang + trait individu TAMPIL di target (v0.4.1). Muncul bersama HP bar.
+var _rank_lbl: Label = null
+
+func _build_rank_label() -> void:
+	if _rank_lbl:
+		_rank_lbl.queue_free()
+	_rank_lbl = Label.new()
+	_rank_lbl.add_theme_font_size_override("font_size", 9)
+	_rank_lbl.add_theme_color_override("font_color", Color(1.0, 0.9, 0.5))
+	_rank_lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+	_rank_lbl.add_theme_constant_override("outline_size", 3)
+	var txt := "★".repeat(int(inst.get("star", 3)))
+	var traits: Array = inst.get("ind_traits", [])
+	if not traits.is_empty():
+		txt += " · " + " · ".join(traits)
+	if inst.get("mutation", false):
+		txt = "✦MUTASI✦ " + txt
+	_rank_lbl.text = txt
+	_rank_lbl.position = Vector2(-22, -38)
+	_rank_lbl.visible = false
+	add_child(_rank_lbl)
 
 func _build_wet_marker() -> void:
 	# Science demo: a Wet target shows dripping cyan dots (rain/thunderstorm).
@@ -333,6 +359,8 @@ func _strike(mult: float) -> void:
 	var sk := Db.skill(skills[0]) if skills.size() > 0 else Db.skill("tackle")
 	if sk.is_empty() or sk.get("kind", "physical") == "buff":
 		sk = Db.skill("tackle")
+	if inst.get("attack_status", "") != "":
+		sk = sk.duplicate(); sk["apply_status"] = inst.attack_status   # trait Berbisa (v0.4.1)
 	var mstats := MonsterFactory.combat_stats(inst)
 	mstats["atk"] = int(mstats.get("atk", 10) * mult)
 	mstats["accuracy"] = float(mstats.get("accuracy", 1.0)) * StatusFx.acc_mult(self)
@@ -359,6 +387,8 @@ func _attack_player() -> void:
 	var sk := Db.skill(skills[0]) if skills.size() > 0 else Db.skill("tackle")
 	if sk.get("kind", "physical") == "buff":
 		sk = Db.skill("tackle")
+	if inst.get("attack_status", "") != "":
+		sk = sk.duplicate(); sk["apply_status"] = inst.attack_status   # trait Berbisa (v0.4.1)
 	var ctx := CombatResolver.build_ctx()
 	if _player and _player.has_method("take_hit"):
 		var pstats: Dictionary = _player.combat_view() if _player.has_method("combat_view") else PlayerData.combat_stats()
@@ -389,6 +419,7 @@ func take_hit(result: Dictionary, from) -> void:
 	var dmg: int = result.get("damage", 0)
 	hp = max(0, hp - dmg)
 	hpbar.visible = true
+	if _rank_lbl: _rank_lbl.visible = true
 	hpbar.value = hp
 	EventBus.damage_dealt.emit(from, self, dmg, result.get("is_crit", false), result.get("element", "none"))
 	_spawn_damage_number(dmg, result.get("is_crit", false), result.get("effective", false))
@@ -408,6 +439,7 @@ func take_status_damage(dmg: int, elem: String) -> void:
 		return
 	hp = max(0, hp - dmg)
 	hpbar.visible = true
+	if _rank_lbl: _rank_lbl.visible = true
 	hpbar.value = hp
 	var dn := preload("res://scenes/ui/DamageNumber.tscn").instantiate()
 	get_parent().add_child(dn)
