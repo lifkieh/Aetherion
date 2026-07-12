@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-12 19:56 WIB — berisi hingga: v0.4.1 + Skill Tree lokasi + Dua Jalur ClassSelect + **koreksi Penjaga Gerbang #39 (bunuh 1 pukulan, nol reward pemain)**. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-12 20:38 WIB — berisi hingga: **v0.4.1c** (fix P0 jalur kehidupan, tangga modern, Gerbang Penjelajah 'Pilih Dunia', UI feel pass) + penjaga gerbang #39. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -304,10 +304,18 @@ Kode (satu-satunya): **penjaga gerbang kini mendatangi & membunuh monster SATU P
 `guard_kill()` tanpa `monster_killed`); multi-monster satu per satu; penjaga tetap abadi.
 444 test (kill penjaga nol reward + AI datang-dan-bunuh end-to-end).
 
-## ⏸️ STATUS: ANTREAN — GERBANG 0: PLAYTEST OWNER → v0.4.2 GEAR & ECONOMY
-Pembangunan DIHENTIKAN sesuai direktif. Menunggu playtest owner (build 19:56 WIB);
-setelah lolos → v0.4.2 (Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
-quality roll + maker's mark). Tidak ada pembangunan lain dari Piagam sekarang.
+### ✅ GERBANG 0: LULUS ("sudah tidak hampa", Decision Log #40)
+### ➕ Ronde v0.4.1c (Decision Log #41–44) — SELESAI
+BUG P0 jalur kehidupan buntu diperbaiki (tombol Lanjut di kedua panel + audit navigasi);
+tangga dungeon modern (menempel/menggantung/lompat-lepas/anti-nyangkut); **Gerbang
+Penjelajah "Pilih Dunia"** di 5 pemukiman (kartu wilayah dikunjungi + siluet terkunci,
+25G, gratis 1×/hari — jalan pulang dari Frost/Storm beres); UI feel pass modern &
+playful (UiFx + ui_feel.json: motion/hover/press/breathing/spring/celebration/microcopy,
+Mode Hemat aman). **467 test.**
+
+## ⏸️ STATUS: MENUNGGU KONFIRMASI OWNER v0.4.1c → LALU v0.4.2 GEAR & ECONOMY
+Build konfirmasi: 20:38 WIB. Setelah dikonfirmasi → v0.4.2 (Transenden sebagai
+MOMEN #25, Enchant+Enchanter, Coating, quality roll + maker's mark).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
 di tengah tanpa menghentikan fase. Berikutnya sesuai plan: v0.4.2 "Gear & Economy Depth"
 (Transenden sebagai MOMEN per Decision Log #25, Enchant+Enchanter, Coating, Rune,

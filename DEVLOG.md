@@ -9,6 +9,24 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
 5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
 
+## 2026-07-12 — GERBANG 0 LULUS + RONDE v0.4.1c (Decision Log #40–44) — SELESAI
+
+**Playtest owner: LULUS — "sudah tidak hampa" (#40).** Ronde perbaikan v0.4.1c:
+- **BUG P0 (#41)**: jalur kehidupan BUNTU — tombol Lanjut hanya ada di builder panel
+  tempur. Fix `_add_start_button()` di kedua panel + "← Ganti Class" di Creator
+  (audit navigasi). Test UI flow layar sungguhan kedua jalur.
+- **Tangga modern (#42)**: W-sekali menempel, lepas tombol = MENGGANTUNG, SPACE =
+  lompat-lepas berarah, lepas otomatis saat mendarat/menjauh/lewat puncak (+dorongan
+  anti-nyangkut). Prime skill/regen/status tetap jalan saat memanjat.
+- **Gerbang Penjelajah "Pilih Dunia" (#43)**: 5 gerbang (Greenvale/Frostpeak/dermaga
+  Storm/Candyveil/Desert); kartu wilayah dikunjungi (nama+level+cuaca live) vs siluet
+  terkunci "belum dijelajahi"; 25G per travel, pertama tiap hari gratis; visited
+  persist. Menyelesaikan "tidak ada jalan pulang".
+- **UI feel pass (#44)**: UiFx + ui_feel.json — panel_in, hover naik+glow, press
+  squash, breathing tombol utama, toast spring, select bounce, micro-celebration
+  (skill/pohon/travel), microcopy berkepribadian; Mode Hemat mematikan motion.
+467 test lulus. STATUS: menunggu konfirmasi owner v0.4.1c → v0.4.2 Gear & Economy.
+
 ## 2026-07-12 — PIAGAM PENGALAMAN + KOREKSI PENJAGA GERBANG (Decision Log #34–39)
 
 Piagam owner (dokumen, bukan pembangunan): PLAN_LEDGER Bagian 0 — identitas **THE WORLD

@@ -134,7 +134,9 @@ Boss **raid-class** (Sleeping Giant, world boss, boss cerita besar) = butuh ento
 | Title screen + Continue + autosave + metadata | Benchmark/owner FF-2e | Ada | |
 | Aetherpedia, Photo Mode, Titles, Echo Vendor, Sky Report, music layering | v0.2 §10 | Ada | |
 | Settings lengkap (volume per channel/keybind/fullscreen) + gamepad | Benchmark | Sebagian (v0.4.1) | Pause menu layak + volume Musik/SFX terpisah + fullscreen ADA (tarikan review i). Keybind remap + gamepad: v0.4.4. |
-| World map + fast travel | Benchmark | Belum | v0.4.3. |
+| UI feel (motion/hover/press/breathing/celebration) | Benchmark / #44 | **Ada** (v0.4.1c) | UiFx + ui_feel.json tunable; semua layar utama; hormat Mode Hemat. |
+| Tangga dungeon modern (gantung/lompat-lepas) | Owner #42 | **Ada** (v0.4.1c) | Menempel W-sekali, menggantung, SPACE lompat-lepas, anti-nyangkut puncak. |
+| World map + fast travel | Benchmark | **Sebagian** (v0.4.1c) | **Gerbang Penjelajah "Pilih Dunia"** di 5 pemukiman (#43): kartu wilayah dikunjungi + siluet terkunci + 25G (gratis 1×/hari). World map visual penuh: v0.4.3. |
 | PvP / guild / racing / world boss / co-op | v0.1 §11 | Ditunda-sengaja | Fase 2–4 online. |
 | Monetisasi kosmetik / battle pass | v0.1 §15 | Ditunda-sengaja | Pasca-launch. |
 
