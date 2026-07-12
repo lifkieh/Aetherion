@@ -91,12 +91,23 @@ func _build() -> void:
 	vb.add_child(rl)
 
 	vb.add_child(_spacer(10))
+	# Continue = slot terakhir yang dimainkan (FF-2e), paling atas
+	var last := SaveManager.last_slot()
+	if last > 0 and SaveManager.has_save(last):
+		var lm := SaveManager.save_meta(last)
+		var cont := _button("▶ Lanjutkan — %s · %s Lv%d · %s · %s" % [
+			lm.get("name", "?"), lm.get("class", "?"), lm.get("level", 1),
+			lm.get("location", "?"), lm.get("playtime", "0:00")], _load.bind(last))
+		cont.add_theme_color_override("font_color", Color(1.0, 0.86, 0.42))
+		vb.add_child(cont)
 	vb.add_child(_button("Main Baru", _new_game))
 	if SaveManager.has_save(1) or SaveManager.has_save(2) or SaveManager.has_save(3):
 		for slot in [1, 2, 3]:
 			if SaveManager.has_save(slot):
 				var meta := SaveManager.save_meta(slot)
-				vb.add_child(_button("Muat Slot %d — %s Lv%d (%s)" % [slot, meta.get("name", "?"), meta.get("level", 1), meta.get("saved_at_str", "?")], _load.bind(slot)))
+				vb.add_child(_button("Muat Slot %d — %s · %s Lv%d · %s · %s" % [slot,
+					meta.get("name", "?"), meta.get("class", "?"), meta.get("level", 1),
+					meta.get("location", "?"), meta.get("playtime", "0:00")], _load.bind(slot)))
 	# Options
 	var eco := CheckButton.new()
 	eco.text = "Mode Hemat (30fps, tanpa VFX cuaca)"

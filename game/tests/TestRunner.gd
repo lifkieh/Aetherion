@@ -45,6 +45,7 @@ func _ready() -> void:
 	_test_skill_audit()
 	_test_skill_acquisition()
 	_test_classes()
+	_test_save_modern()
 	_test_equipment()
 	_test_skycalendar()
 	await _test_bugfixes()
@@ -618,6 +619,26 @@ func _test_skill_acquisition() -> void:
 func func_learn_boss(boss: String, sid: String) -> bool:
 	PlayerData.on_boss_killed(boss)
 	return PlayerData.can_use_skill(sid)
+
+func _test_save_modern() -> void:
+	print("[Save modern — FF-2e]")
+	# metadata slot kaya: name/class/level/playtime/location
+	PlayerData.new_game("paladin")
+	PlayerData.playtime_sec = 3725.0   # 1:02
+	SaveManager.save_game(3, true)
+	var meta := SaveManager.save_meta(3)
+	check("meta has class name", meta.get("class", "") == "Paladin")
+	check("meta has playtime h:mm", meta.get("playtime", "") == "1:02", str(meta))
+	check("meta has location", meta.get("location", "?") != "?")
+	check("last_slot remembered for Continue", SaveManager.last_slot() == 3)
+	# playtime + char_class survive the roundtrip
+	PlayerData.new_game("warrior")
+	check("state reset before load", PlayerData.char_class == "warrior" and PlayerData.playtime_sec == 0.0)
+	SaveManager.load_game(3)
+	check("class survives save/load", PlayerData.char_class == "paladin")
+	check("playtime survives save/load", absf(PlayerData.playtime_sec - 3725.0) < 1.0)
+	SaveManager.delete_save(3)
+	PlayerData.new_game()
 
 func _test_classes() -> void:
 	print("[Class Selection — FF-2a]")

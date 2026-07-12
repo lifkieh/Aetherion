@@ -5,13 +5,54 @@ extends Node
 const SCHEMA_VERSION := 1
 const SAVE_DIR := "user://save/"
 const MAX_BACKUPS := 3
+const AUTOSAVE_INTERVAL := 180.0   # autosave berkala (FF-2e)
 
 ## The slot the player is currently playing (set on save/load); used by
 ## quick-save (F5) and scenario auto-save so results land in the right slot.
 var current_slot := 1
+var _auto_t := AUTOSAVE_INTERVAL
+var _world_check := 0.0
+var _in_world := false
 
 func _ready() -> void:
 	_ensure_dir()
+
+## Playtime accumulation + periodic autosave — only while actually in the world.
+func _process(delta: float) -> void:
+	if get_tree().paused:
+		return
+	_world_check -= delta
+	if _world_check <= 0.0:
+		_world_check = 1.0
+		_in_world = get_tree().get_first_node_in_group("player") != null
+	if not _in_world:
+		return
+	PlayerData.playtime_sec += delta
+	_auto_t -= delta
+	if _auto_t <= 0.0:
+		_auto_t = AUTOSAVE_INTERVAL
+		autosave()
+
+## Quiet save to the active slot (periodic + area transitions). FF-2e.
+func autosave() -> void:
+	if get_tree().get_first_node_in_group("player") == null:
+		return
+	if ScenarioManager.active_scenario != "":
+		return   # never autosave mid Hidden-Scenario (no-fail integrity)
+	save_game(current_slot, true)
+
+## Slot terakhir yang dipakai (untuk tombol Continue di title). Disimpan di Settings cfg.
+func last_slot() -> int:
+	var cfg := ConfigFile.new()
+	if cfg.load("user://settings.cfg") == OK:
+		return int(cfg.get_value("save", "last_slot", 0))
+	return 0
+
+func _remember_slot(slot: int) -> void:
+	var cfg := ConfigFile.new()
+	cfg.load("user://settings.cfg")
+	cfg.set_value("save", "last_slot", slot)
+	cfg.save("user://settings.cfg")
 
 func _ensure_dir() -> void:
 	if not DirAccess.dir_exists_absolute(SAVE_DIR):
@@ -27,17 +68,20 @@ func has_save(slot: int) -> bool:
 	return FileAccess.file_exists(slot_path(slot))
 
 func build_payload() -> Dictionary:
+	var scn := get_tree().current_scene
 	return {
 		"schema_version": SCHEMA_VERSION,
 		"saved_at": GameClock.unix_now(),
 		"saved_at_str": GameClock.date_string() + " " + GameClock.time_string(),
+		"location": scn.name if scn else "?",
 		"player": PlayerData.to_save(),
 		"world": WorldState.to_save(),
 		"economy": Economy.to_save(),
 	}
 
-func save_game(slot: int) -> bool:
+func save_game(slot: int, quiet: bool = false) -> bool:
 	current_slot = slot
+	_remember_slot(slot)
 	_ensure_dir()
 	_rotate_backups(slot)
 	var payload := build_payload()
@@ -59,7 +103,8 @@ func save_game(slot: int) -> bool:
 			push_error("[SaveManager] rename failed (%d)" % err)
 			return false
 	EventBus.save_completed.emit(slot)
-	EventBus.toast.emit("Game tersimpan (slot %d)" % slot)
+	if not quiet:
+		EventBus.toast.emit("Game tersimpan (slot %d)" % slot)
 	return true
 
 func _rotate_backups(slot: int) -> void:
@@ -134,9 +179,14 @@ func save_meta(slot: int) -> Dictionary:
 	var txt := FileAccess.get_file_as_string(slot_path(slot))
 	var data = JSON.parse_string(txt)
 	if data is Dictionary:
+		var p: Dictionary = data.get("player", {})
+		var pt := int(p.get("playtime_sec", 0))
 		return {
 			"saved_at_str": data.get("saved_at_str", "?"),
-			"level": data.get("player", {}).get("level", 1),
-			"name": data.get("player", {}).get("char_name", "?"),
+			"level": p.get("level", 1),
+			"name": p.get("char_name", "?"),
+			"class": Db.cls(p.get("char_class", "")).get("name", "?"),
+			"playtime": "%d:%02d" % [pt / 3600, (pt % 3600) / 60],
+			"location": data.get("location", "?"),
 		}
 	return {}

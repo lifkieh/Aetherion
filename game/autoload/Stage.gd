@@ -63,7 +63,12 @@ func fade_in(secs := 0.45) -> void:
 
 ## Fade to black, swap scene, fade back in. Safe to call from anywhere.
 func go_to_scene(path: String) -> void:
+	# autosave on area transition (FF-2e): leaving one gameplay scene for another
+	var leaving_world := get_tree().get_first_node_in_group("player") != null
+	var to_menu := path.contains("/ui/")
 	await fade_out(0.35)
+	if leaving_world and not to_menu:
+		SaveManager.autosave()
 	get_tree().change_scene_to_file(path)
 	await get_tree().process_frame
 	await get_tree().process_frame

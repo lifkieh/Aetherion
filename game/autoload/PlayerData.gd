@@ -9,6 +9,7 @@ var char_name: String = "Wanderer"
 var birth_sign: String = ""            # set from creation date (v0.3 §3.3)
 var level: int = 1
 var exp: int = 0
+var playtime_sec: float = 0.0          # akumulasi waktu main (metadata slot, FF-2e)
 
 # --- Primary attributes (GDD §3.5): STR/AGI/VIT/INT/DEX/LUK ---
 var attributes: Dictionary = {
@@ -99,7 +100,7 @@ func new_game(class_id: String = "warrior", weapon_id: String = "") -> void:
 		class_id = "warrior"
 		cd = Db.cls(class_id)
 	char_class = class_id
-	level = 1; exp = 0; stat_points = 0
+	level = 1; exp = 0; stat_points = 0; playtime_sec = 0.0
 	attributes = {"STR": 5, "AGI": 5, "VIT": 5, "INT": 5, "DEX": 5, "LUK": 5}
 	for k in cd.get("attr", {}):
 		attributes[k] = attributes.get(k, 5) + int(cd.attr[k])
@@ -510,7 +511,7 @@ func spend_gold(amount: int) -> bool:
 
 func to_save() -> Dictionary:
 	return {
-		"char_name": char_name, "birth_sign": birth_sign,
+		"char_name": char_name, "birth_sign": birth_sign, "playtime_sec": playtime_sec,
 		"level": level, "exp": exp, "attributes": attributes, "stat_points": stat_points,
 		"hp": hp, "mp": mp, "gold": gold, "inventory": inventory,
 		"equipped_weapon": equipped_weapon, "equipped_armor": equipped_armor, "equipped_accessory": equipped_accessory,
@@ -529,6 +530,7 @@ func to_save() -> Dictionary:
 
 func from_save(d: Dictionary) -> void:
 	char_name = d.get("char_name", "Wanderer")
+	playtime_sec = float(d.get("playtime_sec", 0.0))
 	birth_sign = d.get("birth_sign", "")
 	level = d.get("level", 1)
 	exp = d.get("exp", 0)

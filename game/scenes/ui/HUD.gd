@@ -334,6 +334,27 @@ func _connect() -> void:
 	EventBus.item_gained.connect(_on_item_gained)
 	EventBus.toast.connect(_on_toast)
 	EventBus.fusion_discovered.connect(_on_fusion_discovered)
+	EventBus.save_completed.connect(_on_save_completed)
+
+## Autosave/save indicator (FF-2e): a small 💾 fades in bottom-right.
+func _on_save_completed(_slot: int) -> void:
+	var l := Label.new()
+	l.text = "💾 tersimpan"
+	if _font: l.add_theme_font_override("font", _font)
+	l.add_theme_font_size_override("font_size", 13)
+	l.add_theme_color_override("font_color", Color(0.7, 0.9, 0.7, 0.9))
+	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+	l.add_theme_constant_override("outline_size", 3)
+	l.anchor_left = 1.0; l.anchor_right = 1.0
+	l.anchor_top = 1.0; l.anchor_bottom = 1.0
+	l.position = Vector2(-110, -26)
+	add_child(l)
+	l.modulate.a = 0.0
+	var tw := l.create_tween()
+	tw.tween_property(l, "modulate:a", 1.0, 0.2)
+	tw.tween_interval(1.2)
+	tw.tween_property(l, "modulate:a", 0.0, 0.5)
+	tw.tween_callback(l.queue_free)
 
 ## First-discovery celebration banner (FF-2d): big center banner + pop tween.
 func _on_fusion_discovered(nm: String, desc: String) -> void:
