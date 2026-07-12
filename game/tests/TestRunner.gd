@@ -47,6 +47,7 @@ func _ready() -> void:
 	_test_classes()
 	_test_status_fx()
 	await _test_ui_flow_both_paths()
+	await _test_ladder_modern()
 	await _test_guard_kill()
 	_test_life_path()
 	_test_skill_trees()
@@ -691,6 +692,61 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+class _FakeLadderTerrain:
+	extends Node2D
+	var ladder_top_y := -8000.0   # tangga hanya ada di bawah y ini... (y turun = besar)
+	func is_ladder(pos: Vector2) -> bool:
+		return pos.y >= ladder_top_y and pos.x > 4900.0 and pos.x < 5100.0
+
+func _test_ladder_modern() -> void:
+	print("[Tangga modern — Decision Log #42]")
+	var terr := _FakeLadderTerrain.new()
+	terr.add_to_group("terrain")
+	add_child(terr)
+	var pl = load("res://scenes/actors/PlayerPlatformer.tscn").instantiate()
+	add_child(pl)
+	pl.global_position = Vector2(5000, -7000)   # di area tangga, melayang
+	pl.terrain = terr
+	await get_tree().physics_frame
+	# 1) tekan W sekali = MENEMPEL
+	Input.action_press("move_up")
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	Input.action_release("move_up")
+	check("W sekali = menempel di tangga", pl.climbing)
+	# 2) lepas tombol = MENGGANTUNG diam (tidak jatuh)
+	var y0: float = pl.global_position.y
+	for i in range(20):
+		await get_tree().physics_frame
+	check("menggantung tanpa input (tidak jatuh)", pl.climbing and absf(pl.global_position.y - y0) < 2.0, str(pl.global_position.y - y0))
+	# 3) naik dengan W
+	Input.action_press("move_up")
+	for i in range(10):
+		await get_tree().physics_frame
+	Input.action_release("move_up")
+	check("W = naik", pl.global_position.y < y0 - 4.0)
+	# 4) SPACE = lompat lepas dari tangga
+	Input.action_press("dodge")
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	Input.action_release("dodge")
+	check("SPACE = lompat lepas (tidak lagi menempel, meluncur ke atas)", not pl.climbing and pl.velocity.y < 0.0)
+	# 5) ujung atas: memanjat melewati puncak = lepas otomatis + tidak nyangkut
+	pl.global_position = Vector2(5000, -7995)
+	pl.velocity = Vector2.ZERO
+	Input.action_press("move_up")
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	var t := 0.0
+	while t < 1.0 and pl.climbing:
+		await get_tree().physics_frame
+		t += get_physics_process_delta_time()
+	Input.action_release("move_up")
+	check("melewati puncak = lepas otomatis (<1 dtk, tidak nyangkut)", not pl.climbing)
+	pl.queue_free()
+	terr.queue_free()
+	await get_tree().process_frame
 
 func _test_ui_flow_both_paths() -> void:
 	print("[UI flow kedua jalur — BUG P0 #41]")

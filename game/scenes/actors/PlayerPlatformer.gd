@@ -26,6 +26,7 @@ var _iframes := 0.0
 var _double_jumped := false
 var _drop_timer := 0.0
 var _mp_acc := 0.0
+var climbing := false      # tangga modern (#42): menempel & menggantung
 var hotbar := Hotbar.new()
 var terrain: Node = null
 
@@ -62,12 +63,36 @@ func _physics_process(delta: float) -> void:
 
 	var on_ladder: bool = terrain != null and terrain.has_method("is_ladder") and terrain.is_ladder(global_position)
 
+	# --- TANGGA MODERN (Decision Log #42): sentuh + W/S = MENEMPEL; lepas tombol =
+	# MENGGANTUNG diam; SPACE = LOMPAT lepas (boleh berarah); menjauh/mendarat = lepas.
+	if not climbing and on_ladder and (Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down")):
+		climbing = true
+		velocity = Vector2.ZERO
+	if climbing:
+		if not on_ladder:
+			climbing = false
+			if iy < 0.0:
+				velocity.y = -140.0   # dorongan kecil di ujung atas agar tidak nyangkut di bibir
+		elif Input.is_action_just_pressed("dodge"):
+			climbing = false          # SPACE = lompat lepas dari tangga
+			velocity.y = JUMP_VELOCITY * 0.85
+			_double_jumped = false
+			Audio.play_sfx("dodge")
+		else:
+			velocity.y = iy * CLIMB_SPEED   # W/S naik-turun; tanpa input = menggantung (0)
+			velocity.x = ix * MOVE_SPEED * 0.6
+			_double_jumped = false
+			if is_on_floor() and iy >= 0.0:
+				climbing = false      # mendarat = lepas otomatis
+			move_and_slide()
+			hotbar.tick(delta)
+			_climb_actions(delta)
+			_animate(ix, true)
+			sprite.modulate = PlayerCombat.infusion_tint()
+			return
+
 	# --- vertical ---
-	if on_ladder and (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")):
-		velocity.y = iy * CLIMB_SPEED
-		_double_jumped = false
-	else:
-		velocity.y = minf(velocity.y + GRAVITY * delta, MAX_FALL)
+	velocity.y = minf(velocity.y + GRAVITY * delta, MAX_FALL)
 
 	if is_on_floor():
 		_coyote = COYOTE
@@ -132,6 +157,19 @@ func _physics_process(delta: float) -> void:
 	sprite.modulate = PlayerCombat.infusion_tint()
 	if _flow_rule("freeze_puddle"):
 		_freeze_nearby_puddles()
+
+## Aksi minimum saat memanjat tangga (#42): prime/cancel skill + regen + status.
+func _climb_actions(delta: float) -> void:
+	for i in range(5):
+		if Input.is_action_just_pressed("slot_%d" % (i + 1)):
+			hotbar.press_slot(i)
+	if Input.is_action_just_pressed("skill_primary"):
+		hotbar.cancel_all()
+	_combat_t += delta
+	StatusFx.tick(PlayerData, delta)
+	PlayerData.regen_mana(PlayerData.mana_regen * (3.0 if _combat_t > 3.0 else 1.0) * delta)
+	if PlayerData.has_active_infusion():
+		PlayerData.drain_mana(PlayerData.infusion.get("drain", 2.0) * delta)
 
 ## Read an element-flow platformer rule from data (elements.json).
 func _flow_rule(key: String) -> bool:
