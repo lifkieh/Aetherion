@@ -1,12 +1,19 @@
 extends Node2D
-## Immortal town gate-guard (owner UI/UX §4). Stands at a safe-zone gate and shoves
-## any monster that strays too close back out of town. Cannot be harmed or die —
-## it is pure defense so newcomers always feel safe inside the walls.
+## Immortal town gate-guard — Decision Log #39: penjaga tidak lagi mendorong.
+## Monster yang mendekati pagar/batas kota DIDATANGI dan DIBUNUH SATU PUKULAN
+## (animasi serang + juice normal). Pemain TIDAK mendapat apa pun dari kill ini
+## (guard_kill: nol EXP/drop/counter). Multi-monster ditangani satu per satu.
+## Penjaga tetap abadi.
 
-const GUARD_RADIUS := 66.0
-const REPEL_CD := 0.5
+const ALERT_RADIUS := 96.0    # monster sedekat ini dari pos = ancaman
+const MOVE_SPEED := 150.0
+const STRIKE_RANGE := 20.0
+const STRIKE_WINDUP := 0.18   # jeda kecil biar ayunannya terlihat
+const STRIKE_CD := 0.5
 
 var _cd := 0.0
+var _striking := false
+var _home := Vector2.ZERO
 var _sprite: Sprite2D
 var _label: Label
 
@@ -14,6 +21,7 @@ func _ready() -> void:
 	add_to_group("interactable")
 	add_to_group("guards")
 	_build()
+	_home = global_position
 
 func _build() -> void:
 	_sprite = Sprite2D.new()
@@ -42,21 +50,49 @@ func _process(delta: float) -> void:
 	if p and _label:
 		_label.visible = global_position.distance_to(p.global_position) < 72.0
 	_cd -= delta
-	if _cd > 0.0:
+	if _striking or _cd > 0.0:
 		return
+	# ancaman terdekat dari POS penjaga (satu per satu; yang lain menunggu giliran)
+	var target: Node2D = null
+	var best := ALERT_RADIUS
 	for m in get_tree().get_nodes_in_group("monsters"):
-		if not is_instance_valid(m):
+		if not is_instance_valid(m) or not m.has_method("guard_kill"):
 			continue
-		if global_position.distance_to(m.global_position) < GUARD_RADIUS and m.has_method("knockback"):
-			# Always shove OUTWARD (away from town), never toward the center — a guard
-			# standing on the inner edge must not knock an escaping monster back in.
-			var outward: Vector2 = SafeZone.escape_vector(m.global_position) if SafeZone.is_active() \
-				else (m.global_position - global_position).normalized()
-			m.knockback(m.global_position - outward * 10.0, 360.0)
-			_cd = REPEL_CD
-			Audio.play_sfx("dodge")
-			Vfx.spark(get_parent(), m.global_position, "wind")
-			break   # one decisive shove per cooldown
+		if ("inst" in m) and m.inst.get("is_boss", false):
+			continue   # bos bukan urusan penjaga gerbang
+		var d: float = _home.distance_to(m.global_position)
+		if d < best:
+			best = d
+			target = m
+	if target == null:
+		# kembali ke pos jaga
+		if global_position.distance_to(_home) > 3.0:
+			global_position = global_position.move_toward(_home, MOVE_SPEED * 0.7 * delta)
+		return
+	# datangi ancaman, lalu bunuh SATU PUKULAN dengan telegraf ayunan singkat
+	if global_position.distance_to(target.global_position) > STRIKE_RANGE:
+		global_position = global_position.move_toward(target.global_position, MOVE_SPEED * delta)
+		return
+	_strike(target)
+
+func _strike(target: Node2D) -> void:
+	_striking = true
+	_cd = STRIKE_CD
+	# wind-up kecil supaya ayunan terbaca, lalu eksekusi
+	var tw := create_tween()
+	tw.tween_property(_sprite, "rotation", -0.35, STRIKE_WINDUP * 0.6)
+	tw.tween_property(_sprite, "rotation", 0.25, STRIKE_WINDUP * 0.4)
+	tw.tween_callback(func():
+		_sprite.rotation = 0.0
+		_striking = false
+		if not is_instance_valid(target):
+			return
+		var aim := (target.global_position - global_position)
+		aim = aim.normalized() if aim.length() > 1.0 else Vector2.RIGHT
+		Vfx.swing(get_parent(), global_position, aim, "none", "sword", 26.0, 100.0)
+		Vfx.impact(get_parent(), target.global_position, "none", true)
+		Audio.play_sfx("hit", 0.9)
+		target.guard_kill())   # SATU PUKULAN — pemain nol reward (Decision Log #39)
 
 func interact() -> void:
 	if Stage.is_busy():

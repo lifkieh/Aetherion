@@ -9,6 +9,21 @@ Format: newest first. Decisions not dictated by docs are recorded here with rati
 4. **Implementasi yang bertentangan dengan ledger tanpa baris keputusan yang membenarkan = BUG DESAIN → laporkan di GAP_AUDIT.**
 5. **PLAN_LEDGER di-commit dan di-push seperti kode.**
 
+## 2026-07-12 — PIAGAM PENGALAMAN + KOREKSI PENJAGA GERBANG (Decision Log #34–39)
+
+Piagam owner (dokumen, bukan pembangunan): PLAN_LEDGER Bagian 0 — identitas **THE WORLD
+REMEMBERS** + 3 Pilar Pengalaman (Wonder/Belonging/Legacy), Living Sky = sistem gameplay
+terbesar, aturan boss raid-class (entourage 2–4) vs reguler solo-able; spec **World
+Remembers v1** terkunci utuh untuk v0.6 (memori NPC personal, sistem Rival khas Aetherion,
+reaksi dunia); roadmap resmi direvisi di **TRACKBACK.md baru** + MASTER_PLAN (v0.5 Story &
+Soul → v0.6 Hearth & Legacy → v0.7 Ember/Ocean → v0.8 Celestia → v0.9 demo).
+Kode satu-satunya (#39): **penjaga gerbang** tidak lagi mendorong — mendatangi ancaman di
+sekitar posnya lalu membunuh SATU PUKULAN (wind-up ayunan + swing/impact/sfx). `guard_kill()`
+di Monster: mati ber-juice penuh TANPA grant_rewards dan TANPA emit `monster_killed` → nol
+EXP/drop/progres quest/counter/affinity (anti-exploit pancing-ke-gerbang); spawner tetap
+diberi tahu agar density pulih; bos dikecualikan; penjaga abadi & kembali ke pos.
+444 test. STATUS kembali ke antrean: Gerbang 0 playtest owner → v0.4.2.
+
 ## 2026-07-12 — BD-1: DUA JALUR ClassSelect (koreksi owner yang hilang) — SELESAI
 
 Verifikasi kepatuhan owner menemukan layar ClassSelect masih 6 class combat. Audit

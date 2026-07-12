@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-12 19:18 WIB — berisi hingga: v0.4.1 Combat Depth + Skill Tree terikat lokasi + DUA JALUR ClassSelect (6 tempur + 4 kehidupan + combat sub). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-12 19:56 WIB — berisi hingga: v0.4.1 + Skill Tree lokasi + Dua Jalur ClassSelect + **koreksi Penjaga Gerbang #39 (bunuh 1 pukulan, nol reward pemain)**. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -294,7 +294,20 @@ Peramu/Penjinak — +50% EXP domain, kit awal, perk khas, pilih 1 combat sub = 1
 bervariasi per jalur; Status & Profesi menampilkan jalur + sub; class kehidupan = diskon
 50% + 1 node GRATIS di pohon skill domainnya. 437 test (end-to-end kedua jalur + persist).
 
-## ⏸️ STATUS: MENUNGGU PLAYTEST v0.4.1 OWNER
+### ➕ Piagam Pengalaman + Koreksi Penjaga Gerbang (Decision Log #34–39) — SELESAI
+Dokumen: PLAN_LEDGER **Bagian 0 PIAGAM PENGALAMAN** (THE WORLD REMEMBERS; Wonder/Belonging/
+Legacy; Living Sky = sistem terbesar; boss raid-class vs solo-able) + **spec World Remembers
+v1 terkunci untuk v0.6** (§8: memori NPC, Rival, reaksi dunia — TIDAK dibangun sekarang) +
+**TRACKBACK.md** (roadmap resmi v0.4.2→v0.9; Emberfall/Ocean→v0.7, Celestia→v0.8).
+Kode (satu-satunya): **penjaga gerbang kini mendatangi & membunuh monster SATU PUKULAN**
+(telegraf ayunan + juice) — pemain **nol EXP/drop/counter** dari kill penjaga (anti-exploit,
+`guard_kill()` tanpa `monster_killed`); multi-monster satu per satu; penjaga tetap abadi.
+444 test (kill penjaga nol reward + AI datang-dan-bunuh end-to-end).
+
+## ⏸️ STATUS: ANTREAN — GERBANG 0: PLAYTEST OWNER → v0.4.2 GEAR & ECONOMY
+Pembangunan DIHENTIKAN sesuai direktif. Menunggu playtest owner (build 19:56 WIB);
+setelah lolos → v0.4.2 (Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
+quality roll + maker's mark). Tidak ada pembangunan lain dari Piagam sekarang.
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
 di tengah tanpa menghentikan fase. Berikutnya sesuai plan: v0.4.2 "Gear & Economy Depth"
 (Transenden sebagai MOMEN per Decision Log #25, Enchant+Enchanter, Coating, Rune,

@@ -499,6 +499,25 @@ func _split() -> void:
 func _grant_rewards(_from) -> void:
 	MonsterFactory.grant_rewards(inst, self)   # physical loot burst (FF-2f)
 
+## Dibunuh PENJAGA GERBANG (Decision Log #39): mati dengan juice normal tapi pemain
+## TIDAK mendapat apa pun — nol EXP, nol drop, nol monster_killed (quest/counter/
+## affinity/boss-unlock tidak tersentuh). Cegah exploit memancing monster ke gerbang.
+func guard_kill() -> void:
+	if _state == State.DEAD:
+		return
+	_state = State.DEAD
+	velocity = Vector2.ZERO
+	Audio.play_sfx("death")
+	if _spawner and is_instance_valid(_spawner) and _spawner.has_method("on_monster_died"):
+		_spawner.on_monster_died(self)   # spawner tetap tahu (density pulih)
+	Vfx.death_burst(get_parent(), global_position, inst.get("element", "none"))
+	var tw := create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(sprite, "modulate", Color(3, 3, 3, 1), 0.06)
+	tw.chain().tween_property(sprite, "scale", sprite.scale * 1.25, 0.10)
+	tw.parallel().tween_property(sprite, "modulate:a", 0.0, 0.16)
+	tw.chain().tween_callback(queue_free)
+
 # --- Taming (M4 core; input handled by nearby Player) -----------------------
 
 func can_be_tamed() -> bool:

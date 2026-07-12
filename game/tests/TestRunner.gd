@@ -46,6 +46,7 @@ func _ready() -> void:
 	_test_skill_acquisition()
 	_test_classes()
 	_test_status_fx()
+	await _test_guard_kill()
 	_test_life_path()
 	_test_skill_trees()
 	_test_daily_events()
@@ -689,6 +690,49 @@ class _FakeEntity:
 	var fake_hp := 100
 	func take_status_damage(d: int, _e: String) -> void:
 		fake_hp -= d
+
+func _test_guard_kill() -> void:
+	print("[Penjaga gerbang membunuh tanpa reward — Decision Log #39]")
+	PlayerData.new_game()
+	PlayerData.guide_step = 0   # langkah 1 = kill 2 (counter pemain)
+	PlayerData.guide_progress = 0
+	var killed_flag := [false]
+	var cb := func(_s, _m): killed_flag[0] = true
+	EventBus.monster_killed.connect(cb)
+	var exp0: int = PlayerData.exp
+	var gold0: int = PlayerData.gold
+	var inv0: int = PlayerData.inventory.size()
+	# monster mati di tangan penjaga
+	var m: Monster = preload("res://scenes/actors/Monster.tscn").instantiate()
+	add_child(m)
+	m.setup(MonsterFactory.make("grey_wolf", 3, 3))
+	await get_tree().process_frame
+	m.guard_kill()
+	await get_tree().process_frame
+	check("monster mati oleh penjaga", m._state == Monster.State.DEAD)
+	check("NOL EXP dari kill penjaga", PlayerData.exp == exp0)
+	check("NOL gold & NOL drop", PlayerData.gold == gold0 and PlayerData.inventory.size() == inv0)
+	check("monster_killed TIDAK dipancarkan (quest/counter aman)", not killed_flag[0])
+	check("progres panduan pemain TIDAK naik", PlayerData.guide_step == 0 and PlayerData.guide_progress == 0)
+	EventBus.monster_killed.disconnect(cb)
+	# penjaga benar-benar DATANG & membunuh satu pukulan (AI end-to-end)
+	var g := Node2D.new()
+	g.set_script(load("res://scenes/actors/Guard.gd"))
+	g.position = Vector2(2000, 2000)   # pos sebelum add_child agar _home terekam benar
+	add_child(g)
+	var m2: Monster = preload("res://scenes/actors/Monster.tscn").instantiate()
+	add_child(m2)
+	m2.setup(MonsterFactory.make("verdant_slime", 3, 3))
+	await get_tree().process_frame
+	m2.global_position = Vector2(2040, 2000)   # dalam ALERT_RADIUS dari pos penjaga
+	var t := 0.0
+	while t < 3.0 and is_instance_valid(m2) and m2._state != Monster.State.DEAD:
+		await get_tree().process_frame
+		t += get_process_delta_time()
+	check("penjaga mendatangi & membunuh SATU PUKULAN (<3 dtk)", not is_instance_valid(m2) or m2._state == Monster.State.DEAD)
+	check("kill AI penjaga juga nol reward", PlayerData.exp == exp0 and PlayerData.gold == gold0)
+	g.queue_free()
+	PlayerData.new_game()
 
 func _test_life_path() -> void:
 	print("[Dua Jalur ClassSelect — BD-1 / Decision Log #33]")
