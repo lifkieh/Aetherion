@@ -164,3 +164,20 @@ Rencana perbaikan bertahap: lihat `MASTER_IMPROVEMENT_PLAN.md`.
 
 Semua temuan A/B sudah dimasukkan `MASTER_IMPROVEMENT_PLAN.md` (prioritas tinggi)
 dan `PLAN_LEDGER.md` (dokumen induk baru — lihat aturan permanen di DEVLOG).
+
+---
+
+# 🐞 BUG DESAIN (aturan ledger d) — dicatat 2026-07-12
+
+## BD-1: Koreksi "dua tab jalur + 4 class kehidupan" HILANG sebelum masuk ledger
+**Temuan verifikasi owner:** layar ClassSelect masih versi 6 class combat saja.
+**Verifikasi kode (jujur):** `ClassSelect.gd` tidak punya tab/jalur sama sekali;
+`classes.json` hanya 6 class combat; **Decision Log tidak memiliki baris** untuk
+koreksi tersebut. Kesimpulan: koreksi owner tidak pernah sampai ke sesi agent —
+hilang SEBELUM tercatat (kegagalan proses yang persis ingin dicegah PLAN_LEDGER;
+ledger baru dibuat SETELAH koreksi itu diberikan, jadi tak sempat menangkapnya).
+**Tindakan:** dicatat retroaktif sebagai Decision Log #33 lalu diimplementasikan
+penuh hari ini (tab Jalur Tempur + Jalur Kehidupan, 4 class kehidupan, combat sub,
+integrasi skill tree). **Pelajaran proses:** mulai sekarang STATUS.md mencantumkan
+"Exe terakhir: [waktu] — berisi hingga fitur X" agar owner selalu tahu build yang
+diuji, dan mismatch build-vs-arahan ketahuan lebih cepat.
