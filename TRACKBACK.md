@@ -4,7 +4,7 @@ sebelumnya — dicatat di Decision Log #37). Sumber kebenaran roadmap; MASTER_IM
 adalah rincian taktis fase aktif. Jika bertentangan: PLAN_LEDGER > TRACKBACK > MASTER_PLAN.
 
 ## Hierarki dokumen (Decision Log #45)
-PLAN_LEDGER > MASTER_BLUEPRINT v1.0.1 (file MENUNGGU — BD-2) > MASTER_IMPROVEMENT_PLAN > STATUS.
+PLAN_LEDGER > MASTER_BLUEPRINT v1.0.1 (✅ docs/MASTER_BLUEPRINT_AETHERION.md, #67) > MASTER_IMPROVEMENT_PLAN > STATUS.
 
 ## Identitas: THE WORLD REMEMBERS
 Lihat PLAN_LEDGER Bagian 0 (Piagam Pengalaman: Wonder · Belonging · Legacy;
@@ -22,7 +22,8 @@ Living Sky = sistem gameplay terbesar).
 | v0.4.4 | Modern Meta (sisa) | Keybind remap, gamepad, UI transitions, vsync/ambience, **+ infra LOKALISASI ID/EN penuh (B15 #62)** | Antre |
 | **v0.5** | **STORY & SOUL** | Target TERBESAR: cerita utama (Memori-vs-Pelupaan, Sang Nirnama, tanpa Chosen One — B6) + **Wonder tier-legenda pertama** + benih chronicle + **GERBANG WAJIB: Companion Bible (B17 #64) + Nirnama Bible (B18 #65) sebelum penuh/Act 1** | Direncanakan |
 | **v0.6** | **HEARTH & LEGACY** | **Living HQ/kerajaan** (evolusi Pact, pilar Belonging) + sistem rekrutan + companion AI + **World Remembers v1** (spec ledger §8: memori NPC, Rival, reaksi dunia) + **Rune** (#28) + boss raid-class pertama (entourage 2–4) | Spec terkunci |
-| v0.7 | Ember & Ocean | Emberfall Volcano + Ocean Kingdom (bergeser dari rencana awal) | Digeser |
-| v0.8 | Celestia | Ibukota semua ras, advanced class, pohon grandmaster | Digeser |
-| v0.9 | Demo Publik | Polish + demo | Direncanakan |
+| v0.7 | **HORIZON** | Emberfall Volcano + Ocean Kingdom + **Wildhearth** (blueprint §14) | Digeser |
+| v0.8 | **CELESTIA & CRISIS** | Ibukota semua ras + **Celestial Crisis (B5)** + Expansion (B13) | Digeser |
+| v0.9 | **GENERATION** | Legacy Family (B3) + kurva tanpa-batas penuh + capstone lengkap + **Active Loadout penuh (K1 #68)** + rebase harness (K2 #69) | Direncanakan |
+| v1.0 | Rilis | 10 checklist experience hijau → demo publik | Target |
 | Beku | — | Racing, gambling, marketplace pemain, MMO penuh | ❄ Tetap beku |

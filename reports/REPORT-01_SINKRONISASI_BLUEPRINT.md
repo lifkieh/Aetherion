@@ -1,10 +1,9 @@
 # REPORT-01 — Sinkronisasi Blueprint v1.0.1 (2026-07-12)
 
-> ⚠ **CATATAN INTEGRITAS (BD-2):** file `docs/MASTER_BLUEPRINT_AETHERION.md v1.0.1`
-> TIDAK pernah sampai ke workspace (diverifikasi: tidak ada di docs/, repo, unduhan).
-> Laporan ini disusun dari **teks direktif kanonisasi** yang memuat substansi B1–B19.
-> Bagian yang membutuhkan teks penuh blueprint ditandai **[MENUNGGU FILE]**.
-> Agent menolak memfabrikasi dokumen kanonik.
+> ✅ **BD-2 RESOLVED (2026-07-13, Decision Log #67):** file blueprint v1.0.1 DITERIMA
+> & di-commit ke `docs/`. Semua butir yang sebelumnya [MENUNGGU FILE] telah dilengkapi
+> di bagian 5 (addendum) di bawah. Konflik #1 & #2 diklarifikasi Direktur (K1/K2,
+> Decision Log #68/#69).
 
 ## 1. Ringkasan B1–B19 (semua tercatat di Decision Log #46–#66)
 
@@ -91,3 +90,33 @@
 **Kesimpulan:** tidak ada fitur blueprint yang tak terpetakan; 6 fitur berstatus
 KOSONG membutuhkan spec sebelum implementasi — 2 di antaranya memang gerbang resmi
 (B17/B18), 4 lainnya masuk antrean spec v0.5/v0.6.
+
+
+---
+
+## 5. ADDENDUM 2026-07-13 — pelengkapan pasca-file diterima (#67)
+
+**B10-B — 10 capstone lengkap (blueprint §4):** Warrior WORLDBREAKER (avatar perang,
+super-armor, momentum) · Mage ASTRAL GENESIS (ledakan semua elemen dikuasai) · Archer
+Panah Cakrawala (bullet-time bidik, panah tembus layar) · Assassin Seribu Bayang
+(eksekusi teleport berantai) · Paladin Sumpah Fajar (zona suci, ally & WARGA tak jatuh
+<1 HP — sinergi Domain) · Necromancer THRONE OF SOULS (bayangan semua yang pernah
+dibunuh — DITENAGAI Chronicle) · Perajin Karya Agung Sejati · Petani Panen Raya Abadi ·
+Peramu Ramuan Sang Filsuf · Penjinak ANCIENT BEAST PACT. Aturan eksklusivitas: class
+lain bisa buka seluruh pohon KECUALI capstone.
+
+**B19 — tabel §3.9 lengkap:** Aetheria / Wildhearth / Celestia / Undersea / Underground
+/ Sky Realm (filosofi per lingkup — lihat ledger #66).
+
+**Temuan baru dari teks penuh:** (1) **4 Pilar** — STEWARDSHIP resmi jadi pilar ke-4;
+(2) roadmap bernama: v0.7 HORIZON (Emberfall/Ocean/**Wildhearth**), v0.8 CELESTIA &
+CRISIS, v0.9 GENERATION (Legacy Family + kurva tanpa-batas + capstone + **Loadout
+penuh** per K1); (3) Rumah Lelang terinci: lot acak harian + lot istimewa purnama/event,
+bidding lawan NPC BERKEPRIBADIAN, S+ tidak pernah muncul; (4) B15 menunjuk Godot
+TranslationServer untuk v0.4.4 — `Loc.gd` (shim JSON) tetap sah sebagai konvensi key;
+migrasi backend ke TranslationServer dicatat sebagai tugas v0.4.4; (5) syarat kaskade
+stat di node pohon skill (§4) = spec baru untuk pass pohon berikutnya.
+
+**Resolusi konflik:** K1 (#68) tiga lapis DIPELAJARI→LOADOUT→HOTBAR, hotbar tak
+berubah, implementasi v0.9. K2 (#69) band level aktif + soft-cap EXP di tepi konten,
+rebase v0.9. Konflik #3–#6 tetap sebagaimana dilaporkan (monetisasi gugur dsb.).
