@@ -7,6 +7,8 @@ var theme := "forest"
 var _day: GPUParticles2D
 var _night: GPUParticles2D
 var _cd := 0.0
+var _rasi_layer: CanvasLayer = null      # RASI NAIK di langit malam (A5 #91)
+var _rasi_art: TextureRect = null
 
 func setup(t: String) -> void:
 	theme = t
@@ -25,7 +27,30 @@ func _ready() -> void:
 		_:
 			_day = _make(_butterfly(), 12, Vector2(10, -4), Color(1, 1, 1), 4.0)      # butterflies
 			_night = _make(_dot(Color(1.0, 0.95, 0.5, 1.0), 3), 14, Vector2(4, -4), Color(1.0, 0.9, 0.4), 4.5)
+	_build_night_sky()
 	_refresh()
+
+## LANGIT MALAM: rasi yang sedang NAIK minggu ini tergambar samar di langit —
+## di semua wilayah, untuk semua pemain, tanpa satu pun teks (A5 #91).
+## Kalau kau tak mendongak, kau tak melihatnya. Itu memang intinya.
+func _build_night_sky() -> void:
+	var asc: Dictionary = RasiSystem.ascendant()
+	var path: String = asc.get("asset", "")
+	if path == "" or not ResourceLoader.exists(path):
+		return
+	_rasi_layer = CanvasLayer.new()
+	_rasi_layer.layer = -5          # di belakang aktor & HUD; hanya latar langit
+	add_child(_rasi_layer)
+	_rasi_art = TextureRect.new()
+	_rasi_art.texture = load(path)
+	_rasi_art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_rasi_art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_rasi_art.custom_minimum_size = Vector2(180, 180)
+	_rasi_art.size = Vector2(180, 180)
+	_rasi_art.position = Vector2(660, 26)
+	_rasi_art.modulate = Color(0.75, 0.82, 1.0, 0.0)
+	_rasi_art.tooltip_text = asc.get("name", "")
+	_rasi_layer.add_child(_rasi_art)
 
 func _make(tex: Texture2D, amount: int, drift: Vector2, col: Color, life: float) -> GPUParticles2D:
 	var p := GPUParticles2D.new()
@@ -65,6 +90,12 @@ func _process(delta: float) -> void:
 	_refresh()
 
 func _refresh() -> void:
+	# rasi menyala pelan saat malam, padam saat fajar (bukan popup — cuma langit)
+	if _rasi_art:
+		var want: float = 0.28 if GameClock.is_night() else 0.0
+		if absf(_rasi_art.modulate.a - want) > 0.01:
+			var tw := create_tween()
+			tw.tween_property(_rasi_art, "modulate:a", want, 3.0)
 	if Settings.eco_mode:
 		if _day: _day.emitting = false
 		if _night: _night.emitting = false

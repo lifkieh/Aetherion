@@ -68,7 +68,7 @@ func _ready() -> void:
 	_test_seasons()
 	_test_journal_and_stingers()
 	await _test_dungeon_chests_traps()
-	_test_rasi_and_forecast()
+	await _test_rasi_and_forecast()
 	_test_new_assets()
 	_test_opening()
 	_test_save_modern()
@@ -2587,6 +2587,20 @@ func _test_rasi_and_forecast() -> void:
 	check("rasi naik valid", asc.has("id") and asc.get("id", "") != "")
 	check("rasi naik deterministik (minggu WIB)", RasiSystem.ascendant().get("id", "") == asc.get("id", ""))
 	check("ramalan mingguan tak kosong", RasiSystem.weekly_prophecy().length() > 10)
+	# langit malam: rasi naik benar-benar dipasang di dunia (tanpa teks)
+	var amb := Node2D.new()
+	amb.set_script(load("res://scenes/systems/Ambience.gd"))
+	amb.set("theme", "forest")
+	add_child(amb)
+	await get_tree().process_frame
+	var sky_found := false
+	for c in amb.get_children():
+		if c is CanvasLayer:
+			for cc in c.get_children():
+				if cc is TextureRect and cc.texture != null:
+					sky_found = true
+	check("rasi naik tergambar di langit malam", sky_found)
+	amb.queue_free()
 	# rasi kelahiran: bonus benar-benar masuk stat
 	var save_sign: String = PlayerData.birth_sign
 	PlayerData.birth_sign = "Paus"          # +2% HP
