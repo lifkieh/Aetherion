@@ -61,6 +61,21 @@ Tiap kota/desa wajib punya **minimal 5 NPC berkepribadian**: 1 Aneh, 1 Misterius
 mereka membuatnya terasa dihuni. ~10% adalah **Oddwalker**: menyimpan sesuatu yang
 **tidak pernah dibayar tuntas**. Itu bukan utang desain; itu benih.
 
+## HUKUM RAS (P1, #86)
+
+**"Races Are Cultures, Not Stats"** — ras TIDAK PERNAH memberi bonus stat. Ia memberi
+budaya, sejarah, hukum, prasangka, dan cara dunia memperlakukanmu.
+**"No Race Is Monolithic"** — tiap ras punya perpecahan internal; tak ada ras yang
+bersuara satu. Delapan Ras Besar: Human · Elf · Dryad · Dwarf · Beastfolk · Astralborn ·
+Tidekin · Shadeborn.
+
+## HUKUM SIMULASI DUNIA (P4, #89)
+
+Dunia **tidak** di-tick real-time. Setiap sistem "dunia berjalan tanpa pemain" wajib
+dirancang sebagai **hitung-saat-login**: simpan timestamp, lalu turunkan kejadian dari
+**selisih waktu WIB nyata** saat load (panen, life events, kerajaan, quest yang selesai/
+gagal sendiri, surat). Desain yang menuntut proses terus-menerus = ditolak, rancang ulang.
+
 ## LAW OF ERAS (E2, #75b)
 
 Tidak ada ending dunia — hanya ending **karakter / keluarga / dinasti / era**.

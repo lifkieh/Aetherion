@@ -875,7 +875,7 @@ const LOC_LABEL := {
 	"candyveil_palace": "Istana Sugar Queen", "desert_ruins": "Reruntuhan Gurun",
 	"storm_island": "Menara Zephyr", "homestead": "Homestead",
 	"astrologer_tower": "Menara Astrologer", "celestia": "Celestia Kingdom",
-	"emberfall": "Emberfall", "ocean_kingdom": "Ocean Kingdom",
+	"emberfall": "Emberfall", "ocean_kingdom": "Kerajaan Thalassar",
 	"ancient_jungle": "Ancient Jungle", "skyveil": "Skyveil", "abyss": "Abyss",
 	"wildhearth": "Wildhearth (kota beast)",
 }

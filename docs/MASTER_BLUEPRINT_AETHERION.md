@@ -37,7 +37,7 @@ Berpindah wilayah = berpindah BUDAYA, bukan sekadar map. Tiap lingkup punya filo
 | **Aetheria** (daratan inti) | Greenvale, Candyveil, Frostpeak, Storm | Peradaban · Kerajaan · Rumah |
 | **Wildhearth** | kota beastfolk + Ancient Jungle | Kebebasan · Naluri · Monster |
 | **Celestia** | ibukota semua ras + Menara Astrologer | Pengetahuan · Langit · Takdir |
-| **Undersea** | Ocean Kingdom | Adaptasi · Eksplorasi · Peradaban Hilang |
+| **Undersea** | **Kerajaan Thalassar** (eks "Ocean Kingdom" — amandemen #90) | Adaptasi · Eksplorasi · Peradaban Hilang |
 | **Underground** | Desert Ruins, tambang dalam, Abyss | Keserakahan · Ambisi · Rahasia |
 | **Sky Realm** | Skyveil | Harapan · Transendensi · Keabadian |
 
@@ -113,3 +113,24 @@ v0.4.2 Gear & Economy + Lelang → v0.4.3 World Presentation (musim, rasi, journ
 4. Veto/revisi 10 capstone §4 (default: diterima apa adanya bila tak diveto sebelum v0.5).
 5. Nama sejati Sang Nirnama & 50 tokoh — dikerjakan di **Nirnama Bible (B18) + Companion Bible (B17)**, gerbang wajib v0.5.
 6. Empat laporan audit (REPORT-01..04) diminta Direktur dari agent sebelum implementasi besar berikutnya — lihat direktif.
+
+---
+
+## AMANDEMEN OWNER 2026-07-13 (Decision Log #86–#90 — semuanya SPEC-ONLY)
+
+1. **#86 (P1) — 8 RAS BESAR kanon:** Human *The Builders* · Elf *The Long Remembering* ·
+   Dryad *Children of the Living Forest* · Dwarf *Keepers of Stone* · Beastfolk *Children of
+   Instinct* · Astralborn *The Sky Watchers* · Tidekin *People of the Endless Sea* · Shadeborn
+   *The Forgotten Ones*. Dua hukum mengikat: **"Races Are Cultures, Not Stats"** (ras tidak
+   memberi bonus stat — ia memberi budaya, hukum, prasangka) & **"No Race Is Monolithic"**.
+   Ras CharGen = garis keturunan (wolfkin/lizardkin ⊂ Beastfolk; frostkin = manusia utara
+   berdarah Astralborn; undead ↔ kasus khusus Shadeborn; candyfolk = ras minor Candyveil).
+   Ras playable bertambah bertahap mengikuti wilayah yang lahir.
+2. **#87 (P2) — Revive:** kematian pertama bisa dibatalkan maks 1×/NPC, selalu kondisional,
+   mustahil bila tubuh hancur/hilang; kematian kedua (dilupakan) hanya lewat Chronicle.
+3. **#88 (P3) — Pewarisan dinasti dua jalur:** pernikahan pemain (lahir dari hubungan; anak =
+   individu) **atau** murid/anak angkat. Sistem pernikahan = spec v0.9 GENERATION.
+4. **#89 (P4) — Simulasi dunia = SAAT-LOGIN:** hitung selisih waktu WIB saat load, bukan tick
+   real-time. Prinsip arsitektur permanen bagi semua sistem "dunia berjalan tanpa pemain".
+5. **#90 (P5) — THALASSAR** = nama resmi lautan dunia; Tidekin = penghuninya. Negeri Elf,
+   Negeri Dwarf, Fairy Realm = wilayah masa-depan pasca-v1.0.
