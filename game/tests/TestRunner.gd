@@ -67,6 +67,7 @@ func _ready() -> void:
 	_test_quest_taxonomy()
 	_test_seasons()
 	_test_journal_and_stingers()
+	await _test_dungeon_chests_traps()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2507,3 +2508,54 @@ func _test_journal_and_stingers() -> void:
 				check("stinger %s memakai sfx terdaftar (%s)" % [kind, step[0]], false)
 	check("stinger tidak crash saat dipanggil", true)
 	Audio.play_stinger("quest")
+
+
+func _test_dungeon_chests_traps() -> void:
+	print("[Dungeon: peti + rahasia + jebakan v0.4.3 #6]")
+	check("loot table peti ada", not Db.loot_table("chest_common").is_empty() and not Db.loot_table("chest_secret").is_empty())
+	var secret_rich := 0.0
+	for d in Db.loot_table("chest_secret"):
+		secret_rich += float(Db.item(d.get("item", "")).get("value", 0)) * float(d.get("chance", 0))
+	var common_rich := 0.0
+	for d in Db.loot_table("chest_common"):
+		common_rich += float(Db.item(d.get("item", "")).get("value", 0)) * float(d.get("chance", 0))
+	check("peti rahasia jauh lebih berharga daripada peti biasa", secret_rich > common_rich * 2.0,
+		"%.0f vs %.0f" % [secret_rich, common_rich])
+	# peti: buka sekali per hari WIB; rahasia tercatat permanen
+	WorldState.chests_opened.clear()
+	WorldState.secrets_found.clear()
+	PlayerData.inventory.clear()
+	var host := Node2D.new()
+	add_child(host)
+	var chest := DungeonChest.spawn(host, Vector2(100, 100), "test_secret", "chest_secret", true)
+	await get_tree().process_frame
+	check("peti rahasia belum terbuka", not WorldState.chests_opened.has("test_secret"))
+	chest.interact()
+	check("peti tercatat dibuka hari ini", WorldState.chests_opened.get("test_secret", "") == GameClock.date_string())
+	check("penemuan rahasia dicatat permanen", "test_secret" in WorldState.secrets_found and WorldState.get_counter("secrets_found") >= 1)
+	var before: int = host.get_child_count()
+	chest.interact()   # buka lagi hari yang sama = tak ada apa-apa
+	check("peti tak bisa dipanen dua kali sehari", host.get_child_count() == before)
+	# jebakan: paku merusak tapi TIDAK PERNAH >25% max HP, dan pemain tak mati dari full HP
+	var trap := DungeonTrap.spawn(host, Vector2(200, 100), "spike")
+	await get_tree().process_frame
+	check("jebakan punya jenis sah", trap.kind in ["spike", "dart"])
+	check("cap damage jebakan 25% max HP", DungeonTrap.CAP <= 0.25)
+	check("paku < cap; panah < cap", DungeonTrap.SPIKE_DMG < DungeonTrap.CAP and DungeonTrap.DART_DMG < DungeonTrap.CAP)
+	var hp0: int = PlayerData.max_hp
+	PlayerData.hp = hp0
+	trap._hit(_FakeTrapTarget.new(), DungeonTrap.SPIKE_DMG)
+	check("jebakan tak crash pada target tanpa take_hit", true)
+	# save/load membawa peti & rahasia
+	var ws := WorldState.to_save()
+	check("save membawa chests_opened + secrets_found", ws.has("chests_opened") and ws.has("secrets_found"))
+	WorldState.chests_opened = {}
+	WorldState.secrets_found = []
+	WorldState.from_save(ws)
+	check("load memulihkan rahasia yang ditemukan", "test_secret" in WorldState.secrets_found)
+	WorldState.chests_opened.clear()
+	WorldState.secrets_found.clear()
+	host.queue_free()
+
+class _FakeTrapTarget extends Node:
+	pass

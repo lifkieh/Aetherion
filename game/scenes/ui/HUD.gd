@@ -516,7 +516,7 @@ func _refresh_tracker(delta: float) -> void:
 func _target_hint(t: Dictionary) -> String:
 	if t.is_empty():
 		return ""
-	var player := get_tree().get_first_node_in_group("player")
+	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return ""
 	var group: String = "monsters" if t.get("kind", "") == "monster" else "gather"
@@ -540,7 +540,7 @@ func _target_hint(t: Dictionary) -> String:
 			best = n
 	if best == null:
 		return "(sasaran tak ada di wilayah ini)"
-	var dir := (best.global_position - player.global_position).normalized()
+	var dir: Vector2 = (best.global_position - player.global_position).normalized()
 	return "%s %dm" % [_arrow(dir), int(best_d / 8.0)]
 
 const _ARROWS := ["→", "↘", "↓", "↙", "←", "↖", "↑", "↗"]

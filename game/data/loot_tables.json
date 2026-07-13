@@ -1,828 +1,904 @@
 [
-  {
-    "id": "greenvale_fluffbit",
-    "drops": [
-      {
-        "item": "fluff",
-        "chance": 0.9,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "rabbit_foot",
-        "chance": 0.08,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "greenvale_wolf",
-    "drops": [
-      {
-        "item": "wolf_pelt",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "wolf_fang",
-        "chance": 0.25,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "beast_essence",
-        "chance": 0.05,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "greenvale_slime",
-    "drops": [
-      {
-        "item": "slime_jelly",
-        "chance": 1.0,
-        "min": 1,
-        "max": 3
-      }
-    ]
-  },
-  {
-    "id": "greenvale_boar",
-    "drops": [
-      {
-        "item": "boar_meat",
-        "chance": 0.85,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "beast_essence",
-        "chance": 0.05,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "greenvale_bee",
-    "drops": [
-      {
-        "item": "honey",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "greenvale_spore",
-    "drops": [
-      {
-        "item": "spore_cap",
-        "chance": 0.85,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "book_spore_cloud",
-        "chance": 0.03,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "greenvale_fox",
-    "drops": [
-      {
-        "item": "fox_tail",
-        "chance": 0.6,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "beast_essence",
-        "chance": 0.08,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "greenvale_deer",
-    "drops": [
-      {
-        "item": "deer_antler",
-        "chance": 0.6,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "greenvale_treant",
-    "drops": [
-      {
-        "item": "living_bark",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "wood_log",
-        "chance": 0.9,
-        "min": 1,
-        "max": 3
-      }
-    ]
-  },
-  {
-    "id": "greenvale_owl",
-    "drops": [
-      {
-        "item": "owl_feather",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "tree_node",
-    "drops": [
-      {
-        "item": "wood_log",
-        "chance": 1.0,
-        "min": 2,
-        "max": 4
-      }
-    ]
-  },
-  {
-    "id": "copper_node",
-    "drops": [
-      {
-        "item": "copper_ore",
-        "chance": 1.0,
-        "min": 1,
-        "max": 3
-      }
-    ]
-  },
-  {
-    "id": "candy_gummy_slime",
-    "drops": [
-      {
-        "item": "gummy_jelly",
-        "chance": 1.0,
-        "min": 1,
-        "max": 3
-      },
-      {
-        "item": "sugar_crystal",
-        "chance": 0.15,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "candy_sheep",
-    "drops": [
-      {
-        "item": "candy_wool",
-        "chance": 0.85,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "candy_bunny",
-    "drops": [
-      {
-        "item": "jellybean",
-        "chance": 0.9,
-        "min": 1,
-        "max": 3
-      }
-    ]
-  },
-  {
-    "id": "candy_bear",
-    "drops": [
-      {
-        "item": "choco_chunk",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "beast_essence",
-        "chance": 0.06,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "candy_sprite",
-    "drops": [
-      {
-        "item": "pixie_dust",
-        "chance": 0.6,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "sugar_crystal",
-        "chance": 0.2,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "candy_golem",
-    "drops": [
-      {
-        "item": "caramel_ore",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "candy_mimic",
-    "drops": [
-      {
-        "item": "sugar_crystal",
-        "chance": 0.7,
-        "min": 1,
-        "max": 3
-      },
-      {
-        "item": "pixie_dust",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "candy_serpent",
-    "drops": [
-      {
-        "item": "soda_syrup",
-        "chance": 0.85,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "lollipop_node",
-    "drops": [
-      {
-        "item": "choco_wood",
-        "chance": 1.0,
-        "min": 2,
-        "max": 4
-      },
-      {
-        "item": "sugar_crystal",
-        "chance": 0.25,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "desert_scarab",
-    "drops": [
-      {
-        "item": "chitin",
-        "chance": 0.9,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "desert_viper",
-    "drops": [
-      {
-        "item": "venom_gland",
-        "chance": 0.7,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "desert_vulture",
-    "drops": [
-      {
-        "item": "feather_dusty",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "desert_jackal",
-    "drops": [
-      {
-        "item": "shadow_pelt",
-        "chance": 0.6,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "beast_essence",
-        "chance": 0.07,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "desert_golem",
-    "drops": [
-      {
-        "item": "sandstone",
-        "chance": 0.9,
-        "min": 1,
-        "max": 3
-      },
-      {
-        "item": "copper_ore",
-        "chance": 0.3,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "desert_serpent",
-    "drops": [
-      {
-        "item": "serpent_scale",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "desert_cactus",
-    "drops": [
-      {
-        "item": "cactus_water",
-        "chance": 0.85,
-        "min": 1,
-        "max": 2
-      }
-    ]
-  },
-  {
-    "id": "sandstone_node",
-    "drops": [
-      {
-        "item": "sandstone",
-        "chance": 1.0,
-        "min": 2,
-        "max": 4
-      }
-    ]
-  },
-  {
-    "id": "cave_bat",
-    "drops": [
-      {
-        "item": "fluff",
-        "chance": 0.5,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "king_slime",
-    "drops": [
-      {
-        "item": "slime_jelly",
-        "chance": 1.0,
-        "min": 5,
-        "max": 10
-      },
-      {
-        "item": "gel_core",
-        "chance": 1.0,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "greater_orb",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "gummy_titan",
-    "drops": [
-      {
-        "item": "gummy_jelly",
-        "chance": 1.0,
-        "min": 6,
-        "max": 12
-      },
-      {
-        "item": "sugar_crystal",
-        "chance": 1.0,
-        "min": 3,
-        "max": 5
-      },
-      {
-        "item": "gel_core",
-        "chance": 0.5,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "anubis_warden",
-    "drops": [
-      {
-        "item": "shadow_pelt",
-        "chance": 1.0,
-        "min": 3,
-        "max": 6
-      },
-      {
-        "item": "beast_essence",
-        "chance": 1.0,
-        "min": 2,
-        "max": 4
-      },
-      {
-        "item": "ankh_fragment",
-        "chance": 1.0,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "frost_fox",
-    "drops": [
-      {
-        "item": "frost_pelt",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "ice_shard",
-        "chance": 0.2,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "ice_wolf",
-    "drops": [
-      {
-        "item": "frost_pelt",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "wolf_fang",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "ice_shard",
-        "chance": 0.15,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "snow_owl",
-    "drops": [
-      {
-        "item": "snow_feather",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "ice_shard",
-        "chance": 0.1,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "yeti_cub",
-    "drops": [
-      {
-        "item": "thick_fur",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "ice_shard",
-        "chance": 0.4,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "frost_essence",
-        "chance": 0.12,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "frost_elemental",
-    "drops": [
-      {
-        "item": "glacier_gem",
-        "chance": 0.5,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "ice_shard",
-        "chance": 0.6,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "book_frost_bolt",
-        "chance": 0.05,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "woolly_calf",
-    "drops": [
-      {
-        "item": "premium_wool",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "thick_fur",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "frost_wyvern",
-    "drops": [
-      {
-        "item": "frost_scale",
-        "chance": 0.8,
-        "min": 1,
-        "max": 3
-      },
-      {
-        "item": "glacier_gem",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "dragon_scale",
-        "chance": 0.1,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "frost_titan",
-    "drops": [
-      {
-        "item": "everfrost_core",
-        "chance": 1.0,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "glacier_gem",
-        "chance": 1.0,
-        "min": 2,
-        "max": 4
-      },
-      {
-        "item": "thick_fur",
-        "chance": 1.0,
-        "min": 2,
-        "max": 3
-      }
-    ]
-  },
-  {
-    "id": "alpha_wolf",
-    "drops": [
-      {
-        "item": "wolf_pelt",
-        "chance": 0.9,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "wolf_fang",
-        "chance": 0.6,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "beast_essence",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "volt_weasel",
-    "drops": [
-      {
-        "item": "static_charge",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "volt_gland",
-        "chance": 0.2,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "storm_crab",
-    "drops": [
-      {
-        "item": "storm_shell",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "static_charge",
-        "chance": 0.2,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "thunder_hawk",
-    "drops": [
-      {
-        "item": "volt_gland",
-        "chance": 0.6,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "static_charge",
-        "chance": 0.4,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "owl_feather",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "cloud_ray",
-    "drops": [
-      {
-        "item": "cloud_silk",
-        "chance": 0.8,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "static_charge",
-        "chance": 0.15,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "volt_eel",
-    "drops": [
-      {
-        "item": "volt_gland",
-        "chance": 0.7,
-        "min": 1,
-        "max": 2
-      },
-      {
-        "item": "static_charge",
-        "chance": 0.3,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "storm_elemental",
-    "drops": [
-      {
-        "item": "static_charge",
-        "chance": 1.0,
-        "min": 2,
-        "max": 3
-      },
-      {
-        "item": "volt_gland",
-        "chance": 0.5,
-        "min": 1,
-        "max": 1
-      }
-    ]
-  },
-  {
-    "id": "thunder_dragon",
-    "drops": [
-      {
-        "item": "tempest_heart",
-        "chance": 1.0,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "dragon_scale",
-        "chance": 1.0,
-        "min": 3,
-        "max": 5
-      },
-      {
-        "item": "static_charge",
-        "chance": 1.0,
-        "min": 3,
-        "max": 6
-      }
-    ]
-  },
-  {
-    "id": "storm_sovereign",
-    "drops": [
-      {
-        "item": "tempest_heart",
-        "chance": 1.0,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "item": "dragon_scale",
-        "chance": 1.0,
-        "min": 4,
-        "max": 6
-      },
-      {
-        "item": "volt_gland",
-        "chance": 1.0,
-        "min": 3,
-        "max": 5
-      }
-    ]
-  }
+ {
+  "id": "greenvale_fluffbit",
+  "drops": [
+   {
+    "item": "fluff",
+    "chance": 0.9,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "rabbit_foot",
+    "chance": 0.08,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "greenvale_wolf",
+  "drops": [
+   {
+    "item": "wolf_pelt",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "wolf_fang",
+    "chance": 0.25,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "beast_essence",
+    "chance": 0.05,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "greenvale_slime",
+  "drops": [
+   {
+    "item": "slime_jelly",
+    "chance": 1.0,
+    "min": 1,
+    "max": 3
+   }
+  ]
+ },
+ {
+  "id": "greenvale_boar",
+  "drops": [
+   {
+    "item": "boar_meat",
+    "chance": 0.85,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "beast_essence",
+    "chance": 0.05,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "greenvale_bee",
+  "drops": [
+   {
+    "item": "honey",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "greenvale_spore",
+  "drops": [
+   {
+    "item": "spore_cap",
+    "chance": 0.85,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "book_spore_cloud",
+    "chance": 0.03,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "greenvale_fox",
+  "drops": [
+   {
+    "item": "fox_tail",
+    "chance": 0.6,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "beast_essence",
+    "chance": 0.08,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "greenvale_deer",
+  "drops": [
+   {
+    "item": "deer_antler",
+    "chance": 0.6,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "greenvale_treant",
+  "drops": [
+   {
+    "item": "living_bark",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "wood_log",
+    "chance": 0.9,
+    "min": 1,
+    "max": 3
+   }
+  ]
+ },
+ {
+  "id": "greenvale_owl",
+  "drops": [
+   {
+    "item": "owl_feather",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "tree_node",
+  "drops": [
+   {
+    "item": "wood_log",
+    "chance": 1.0,
+    "min": 2,
+    "max": 4
+   }
+  ]
+ },
+ {
+  "id": "copper_node",
+  "drops": [
+   {
+    "item": "copper_ore",
+    "chance": 1.0,
+    "min": 1,
+    "max": 3
+   }
+  ]
+ },
+ {
+  "id": "candy_gummy_slime",
+  "drops": [
+   {
+    "item": "gummy_jelly",
+    "chance": 1.0,
+    "min": 1,
+    "max": 3
+   },
+   {
+    "item": "sugar_crystal",
+    "chance": 0.15,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "candy_sheep",
+  "drops": [
+   {
+    "item": "candy_wool",
+    "chance": 0.85,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "candy_bunny",
+  "drops": [
+   {
+    "item": "jellybean",
+    "chance": 0.9,
+    "min": 1,
+    "max": 3
+   }
+  ]
+ },
+ {
+  "id": "candy_bear",
+  "drops": [
+   {
+    "item": "choco_chunk",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "beast_essence",
+    "chance": 0.06,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "candy_sprite",
+  "drops": [
+   {
+    "item": "pixie_dust",
+    "chance": 0.6,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "sugar_crystal",
+    "chance": 0.2,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "candy_golem",
+  "drops": [
+   {
+    "item": "caramel_ore",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "candy_mimic",
+  "drops": [
+   {
+    "item": "sugar_crystal",
+    "chance": 0.7,
+    "min": 1,
+    "max": 3
+   },
+   {
+    "item": "pixie_dust",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "candy_serpent",
+  "drops": [
+   {
+    "item": "soda_syrup",
+    "chance": 0.85,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "lollipop_node",
+  "drops": [
+   {
+    "item": "choco_wood",
+    "chance": 1.0,
+    "min": 2,
+    "max": 4
+   },
+   {
+    "item": "sugar_crystal",
+    "chance": 0.25,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "desert_scarab",
+  "drops": [
+   {
+    "item": "chitin",
+    "chance": 0.9,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "desert_viper",
+  "drops": [
+   {
+    "item": "venom_gland",
+    "chance": 0.7,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "desert_vulture",
+  "drops": [
+   {
+    "item": "feather_dusty",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "desert_jackal",
+  "drops": [
+   {
+    "item": "shadow_pelt",
+    "chance": 0.6,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "beast_essence",
+    "chance": 0.07,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "desert_golem",
+  "drops": [
+   {
+    "item": "sandstone",
+    "chance": 0.9,
+    "min": 1,
+    "max": 3
+   },
+   {
+    "item": "copper_ore",
+    "chance": 0.3,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "desert_serpent",
+  "drops": [
+   {
+    "item": "serpent_scale",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "desert_cactus",
+  "drops": [
+   {
+    "item": "cactus_water",
+    "chance": 0.85,
+    "min": 1,
+    "max": 2
+   }
+  ]
+ },
+ {
+  "id": "sandstone_node",
+  "drops": [
+   {
+    "item": "sandstone",
+    "chance": 1.0,
+    "min": 2,
+    "max": 4
+   }
+  ]
+ },
+ {
+  "id": "cave_bat",
+  "drops": [
+   {
+    "item": "fluff",
+    "chance": 0.5,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "king_slime",
+  "drops": [
+   {
+    "item": "slime_jelly",
+    "chance": 1.0,
+    "min": 5,
+    "max": 10
+   },
+   {
+    "item": "gel_core",
+    "chance": 1.0,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "greater_orb",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "gummy_titan",
+  "drops": [
+   {
+    "item": "gummy_jelly",
+    "chance": 1.0,
+    "min": 6,
+    "max": 12
+   },
+   {
+    "item": "sugar_crystal",
+    "chance": 1.0,
+    "min": 3,
+    "max": 5
+   },
+   {
+    "item": "gel_core",
+    "chance": 0.5,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "anubis_warden",
+  "drops": [
+   {
+    "item": "shadow_pelt",
+    "chance": 1.0,
+    "min": 3,
+    "max": 6
+   },
+   {
+    "item": "beast_essence",
+    "chance": 1.0,
+    "min": 2,
+    "max": 4
+   },
+   {
+    "item": "ankh_fragment",
+    "chance": 1.0,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "frost_fox",
+  "drops": [
+   {
+    "item": "frost_pelt",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "ice_shard",
+    "chance": 0.2,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "ice_wolf",
+  "drops": [
+   {
+    "item": "frost_pelt",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "wolf_fang",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "ice_shard",
+    "chance": 0.15,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "snow_owl",
+  "drops": [
+   {
+    "item": "snow_feather",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "ice_shard",
+    "chance": 0.1,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "yeti_cub",
+  "drops": [
+   {
+    "item": "thick_fur",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "ice_shard",
+    "chance": 0.4,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "frost_essence",
+    "chance": 0.12,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "frost_elemental",
+  "drops": [
+   {
+    "item": "glacier_gem",
+    "chance": 0.5,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "ice_shard",
+    "chance": 0.6,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "book_frost_bolt",
+    "chance": 0.05,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "woolly_calf",
+  "drops": [
+   {
+    "item": "premium_wool",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "thick_fur",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "frost_wyvern",
+  "drops": [
+   {
+    "item": "frost_scale",
+    "chance": 0.8,
+    "min": 1,
+    "max": 3
+   },
+   {
+    "item": "glacier_gem",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "dragon_scale",
+    "chance": 0.1,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "frost_titan",
+  "drops": [
+   {
+    "item": "everfrost_core",
+    "chance": 1.0,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "glacier_gem",
+    "chance": 1.0,
+    "min": 2,
+    "max": 4
+   },
+   {
+    "item": "thick_fur",
+    "chance": 1.0,
+    "min": 2,
+    "max": 3
+   }
+  ]
+ },
+ {
+  "id": "alpha_wolf",
+  "drops": [
+   {
+    "item": "wolf_pelt",
+    "chance": 0.9,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "wolf_fang",
+    "chance": 0.6,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "beast_essence",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "volt_weasel",
+  "drops": [
+   {
+    "item": "static_charge",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "volt_gland",
+    "chance": 0.2,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "storm_crab",
+  "drops": [
+   {
+    "item": "storm_shell",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "static_charge",
+    "chance": 0.2,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "thunder_hawk",
+  "drops": [
+   {
+    "item": "volt_gland",
+    "chance": 0.6,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "static_charge",
+    "chance": 0.4,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "owl_feather",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "cloud_ray",
+  "drops": [
+   {
+    "item": "cloud_silk",
+    "chance": 0.8,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "static_charge",
+    "chance": 0.15,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "volt_eel",
+  "drops": [
+   {
+    "item": "volt_gland",
+    "chance": 0.7,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "static_charge",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "storm_elemental",
+  "drops": [
+   {
+    "item": "static_charge",
+    "chance": 1.0,
+    "min": 2,
+    "max": 3
+   },
+   {
+    "item": "volt_gland",
+    "chance": 0.5,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "thunder_dragon",
+  "drops": [
+   {
+    "item": "tempest_heart",
+    "chance": 1.0,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "dragon_scale",
+    "chance": 1.0,
+    "min": 3,
+    "max": 5
+   },
+   {
+    "item": "static_charge",
+    "chance": 1.0,
+    "min": 3,
+    "max": 6
+   }
+  ]
+ },
+ {
+  "id": "storm_sovereign",
+  "drops": [
+   {
+    "item": "tempest_heart",
+    "chance": 1.0,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "dragon_scale",
+    "chance": 1.0,
+    "min": 4,
+    "max": 6
+   },
+   {
+    "item": "volt_gland",
+    "chance": 1.0,
+    "min": 3,
+    "max": 5
+   }
+  ]
+ },
+ {
+  "id": "chest_common",
+  "drops": [
+   {
+    "item": "minor_potion",
+    "chance": 0.6,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "copper_bar",
+    "chance": 0.4,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "mana_draught",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "glacier_gem",
+    "chance": 0.12,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "protection_scroll",
+    "chance": 0.08,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ },
+ {
+  "id": "chest_secret",
+  "drops": [
+   {
+    "item": "aether_ingot",
+    "chance": 0.55,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "dragon_scale",
+    "chance": 0.35,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "protection_scroll",
+    "chance": 0.4,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "greater_orb",
+    "chance": 0.3,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "everfrost_core",
+    "chance": 0.08,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "ankh_fragment",
+    "chance": 0.08,
+    "min": 1,
+    "max": 1
+   }
+  ]
+ }
 ]

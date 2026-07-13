@@ -10,6 +10,7 @@ var H := 46
 var _light_tex: Texture2D
 var _boss_alive := true
 var _shot_at := -1.0
+var _secret_rect := Rect2i()   # rongga rahasia (v0.4.3 #6)
 var player: Node
 
 ## Override this in each dungeon.
@@ -40,6 +41,8 @@ func _ready() -> void:
 	_spawn_player()
 	_place_torches(c.get("torch_color", Color(1.0, 0.7, 0.4)))
 	_spawn_monsters(c.get("spawn_kinds", []))
+	_place_chests()      # peti + peti rahasia (v0.4.3 #6)
+	_place_traps()       # paku & panah (telegraf, tak pernah membunuh dari full HP)
 	_spawn_boss(c.get("boss", ""))
 	_place_exit(c.get("return_scene", "res://scenes/Main.tscn"), c.get("exit_label", "Keluar [E]"))
 	_add_ui(c.get("hint", ""))
@@ -104,10 +107,57 @@ func _layout(c: Dictionary) -> Array:
 			g[oy][ox] = "O"
 	for x in range(1, W - 1):
 		g[H - 3][x] = "B"
+	# RUANG RAHASIA (v0.4.3 #6): rongga tertutup penuh oleh blok yang bisa digali —
+	# tak ada pintu, tak ada petunjuk. Hanya yang menggali yang menemukannya.
+	_secret_rect = _carve_secret(g)
 	var out: Array = []
 	for row in g:
 		out.append("".join(row))
 	return out
+
+## Rongga 5x3 di dinding samping, ditutup rapat blok "#" (bisa digali).
+## Mengembalikan Rect2i sel rongga (kosong bila gagal).
+func _carve_secret(g: Array) -> Rect2i:
+	var candidates := [Vector2i(W - 9, 15), Vector2i(3, 25), Vector2i(W - 9, 35)]
+	var pick: Vector2i = candidates[randi() % candidates.size()]
+	if pick.x < 2 or pick.x + 5 >= W - 1 or pick.y + 3 >= H - 3:
+		return Rect2i()
+	for y in range(pick.y - 1, pick.y + 4):
+		for x in range(pick.x - 1, pick.x + 6):
+			if y < 1 or y >= H - 3 or x < 1 or x >= W - 1:
+				continue
+			g[y][x] = "#"          # cangkang: blok biasa yang bisa digali
+	for y in range(pick.y, pick.y + 3):
+		for x in range(pick.x, pick.x + 5):
+			g[y][x] = " "          # rongga di dalamnya
+	return Rect2i(pick.x, pick.y, 5, 3)
+
+# --- Peti & jebakan (v0.4.3 #6) ---------------------------------------------
+
+## Peti biasa di tiap lantai + peti rahasia di dalam rongga tersembunyi.
+func _place_chests() -> void:
+	var c := cfg()
+	var did: String = c.get("id", "dungeon")
+	var spots := [Vector2(W - 8, 10), Vector2(6, 20), Vector2(W - 12, 30)]
+	var i := 0
+	for sp in spots:
+		DungeonChest.spawn(self, Vector2(sp.x * TILE, sp.y * TILE - 4),
+			"%s_c%d" % [did, i], c.get("chest_table", "chest_common"), false)
+		i += 1
+	if _secret_rect.size.x > 0:
+		var center := Vector2(
+			(_secret_rect.position.x + 2) * TILE + TILE * 0.5,
+			(_secret_rect.position.y + 2) * TILE - 4)
+		DungeonChest.spawn(self, center, "%s_secret" % did, c.get("secret_table", "chest_secret"), true)
+
+## Jebakan: paku di lantai (terlihat) + panah dinding (telegraf sebelum menembak).
+func _place_traps() -> void:
+	for fy in [11, 21, 31]:
+		for k in 3:
+			var x := randi_range(4, W - 6)
+			DungeonTrap.spawn(self, Vector2(x * TILE + TILE * 0.5, fy * TILE - 5), "spike")
+	for fy in [16, 26, 36]:
+		DungeonTrap.spawn(self, Vector2(randi_range(8, W - 10) * TILE, fy * TILE), "dart")
 
 # --- Build helpers (shared) -------------------------------------------------
 
