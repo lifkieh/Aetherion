@@ -101,3 +101,32 @@ laporan ini datang dari sana.
 **🟠 Sebelum v0.6:** C2, C4, C5, C7, C8, C12, C17, C18, C19, C21, C22.
 
 **🟢 Bisa jalan tanpa menunggu:** C6, C9, C11, C13, C14, C15, C23, C24, C25.
+
+---
+
+## F. TAMBAHAN — dua berkas META baru (`Aetherion_pelengkap.txt`, `Game_Design_System.txt`)
+
+Keduanya **bukan konten dunia**. Yang pertama mengatur **cara menulis dokumen**
+(taksonomi Tier A/A+/B/B+/C/D + fase penulisan); yang kedua menetapkan **standar
+produksi konten** — dan standar itulah yang **mengikat data kita hari ini**.
+
+| # | Konflik / temuan | Opsi | Rekomendasi | Urgensi |
+|---|---|---|---|---|
+| **C26** | **STANDAR PRODUKSI MONSTER belum dipenuhi.** *"Setiap monster harus punya **habitat, diet, perilaku, peran ekologi, asal-usul**"*; *"monster bukan resource berjalan"*. `monsters.json` (60 entri) punya `ai`, `archetype`, `rarity`, `element` — **tidak punya** habitat/diet/peran-ekologi/asal-usul. | (a) Tambah field (`habitat`, `diet`, `role`, `origin`) ke 60 monster — **murah**, data-only, dan langsung menyalakan Ecology (C3) nanti; (b) tunda | **(a)**. Ini pekerjaan data satu sesi, dan ia **prasyarat diam-diam** untuk Ecology & rantai makanan v0.6. | 🟠 sedang |
+| **C27** | **STANDAR LOKASI**: *"setiap lokasi wajib punya **alasan dibangun · alasan masih ada · alasan pemain datang**"*. Kita sudah memenuhinya untuk **dungeon** (`DUNGEON_ORIGINS.md`, #120) — **tapi belum untuk 5 wilayah** (Greenvale, Candyveil, Desert, Frostpeak, Storm Island). | (a) Pass teks `REGION_ORIGINS.md` (kembaran DUNGEON_ORIGINS untuk wilayah); (b) tunda | **(a)** — murah, teks saja, dan ia langsung memberi bahan untuk quest & rumor. | 🟢 rendah |
+| **C28** | **STANDAR SKILL: wajib punya `counterplay`.** `skills.json` (35 skill) tak punya konsep counterplay sama sekali. | (a) Tambah field `counterplay` (mis. "bisa di-dodge", "dibatalkan saat basah", "lambat saat channel") + dipakai di tooltip; (b) tunda | **(a) saat combat pass berikutnya.** Ini juga bahan bagus untuk tooltip pemain. | 🟢 rendah |
+| **C29** | **"SKILL TREE HORIZONTAL DULU, VERTIKAL KEMUDIAN"** (*lebih banyak pilihan daripada angka*) vs **level TANPA BATAS** + pohon yang mayoritas menaikkan angka. | (a) Pohon berikutnya wajib **mayoritas node = pilihan/cara baru**, bukan +% stat; (b) biarkan | **(a)** sebagai **hukum pohon berikutnya** — tidak perlu membongkar 28 pohon yang ada, cukup mengikat yang akan datang. | 🟠 sedang |
+| **C30** | **MULTIPLAYER = Tier A (prioritas tinggi)** di `pelengkap` (Co-op/Guild/Trade/Shared World/PvP) — sedangkan **MMO/marketplace ada di DAFTAR TAHAN** kita (#37, "3 P") dan B14 (gratis penuh, offline dulu). | (a) Multiplayer tetap **beku** (kanon kita menang); (b) tulis **Multiplayer Bible** sekarang sebagai spec pasca-v1.0 tanpa membangun | **(b)**. Dokumen boleh ditulis; **implementasi tetap beku**. Yang penting: *"multiplayer tanpa harus saling membunuh"* dicatat sebagai hukum sejak awal. | 🟢 rendah |
+| **C31** | **KLAIM "PHASE 0 = 100% SELESAI"** (`pelengkap`: Nirnama Bible ✅ + World Bible ✅) **vs sumber sendiri**: part 3 menutup Nirnama Bible di **≈45%**, part 4 di **≈92%**. Dan **urutan penulisan barunya sama sekali tidak menyebut Companion Bible** — padahal **B17 (10/50) adalah satu-satunya gerbang v0.5 kita**. | (a) **Gerbang B17 tetap** (perintah Direktur sebelumnya) dan urutan `pelengkap` dipakai untuk dokumen **setelah** Companion; (b) ratifikasi urutan baru → v0.5 mundur menunggu Ancient History + Divine Bible | **(a)**. Kalau (b), **v0.5 tertunda** dan itu harus diputuskan sadar, bukan lewat dokumen meta. | 🔴 tinggi (menyentuh gerbang v0.5) |
+
+### Bible baru yang diminta (belum ada) — masuk antrean penulisan
+**Tier S/A:** Ancient History · **Divine Bible** (🔴 memblokir Religion — nama 5 dewa masih kosong) · Mythology · Language · **Emotion** · **Mystery** · Creature · Character Progression · Combat · Kingdom · NPC · Economy · Exploration · Quest · **Multiplayer** (spec beku).
+**Tier A+ (meta, belum pernah kita bahas):** Player Motivation · Retention · **Endgame** · Content Longevity · Emotional Design.
+
+### Pertanyaan tambahan
+31. **Gerbang v0.5 (C31):** B17 Companion **tetap** menahan v0.5, atau kita ratifikasi urutan `pelengkap` (Ancient History + Divine dulu) — yang berarti **v0.5 mundur**?
+32. **Phase 0 "100% selesai"** bertentangan dengan status Nirnama Bible ≈92% di part 4. Mana yang benar — dan apakah masih ada FILE 73–75?
+33. **Standar produksi (C26–C28):** setuju kami menambahkan field `habitat/diet/role/origin` ke 60 monster, `counterplay` ke 35 skill, dan menulis `REGION_ORIGINS.md`? (Semuanya data/teks, **tanpa mengubah gameplay**.)
+34. **Hukum pohon berikutnya (C29):** "horizontal dulu — pilihan, bukan angka" — disetujui sebagai hukum untuk pohon yang akan datang?
+35. **Multiplayer (C30):** tetap beku (implementasi), tapi **Multiplayer Bible boleh ditulis** sebagai spec pasca-v1.0?
+36. **Tier A+ (Endgame/Retention/Emotional Design):** ini lapisan yang belum pernah kita sentuh sama sekali. Mau ditulis kapan — sebelum v0.5, atau bersamaan v0.6?

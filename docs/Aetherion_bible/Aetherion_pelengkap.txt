@@ -1,0 +1,1134 @@
+TIER A
+CORE GAME SYSTEM BIBLES
+
+Status:
+
+PRIORITY HIGH
+
+Jumlah:
+
+8–12 dokumen
+
+Tujuan:
+
+Menjelaskan sistem inti game.
+FILE A01
+Character Progression Bible
+
+Isi:
+
+Level
+Attributes
+Growth
+Class
+Subclass
+Skill Tree
+Ultimate
+Mastery
+Build Diversity
+
+Pertanyaan:
+
+Bagaimana karakter berkembang?
+FILE A02
+Combat Bible
+
+Isi:
+
+Combat Philosophy
+Targeting
+Hit Detection
+Weapon Types
+Damage Formula
+Status Effect
+Boss Design
+PvE
+PvP
+
+Pertanyaan:
+
+Bagaimana pemain bertarung?
+FILE A03
+Creature Bible
+
+Isi:
+
+Monster Categories
+Intelligence
+Taming
+Companion
+Mount
+Fusion
+Evolution
+Transformation
+Creature Society
+
+Pertanyaan:
+
+Bagaimana monster hidup?
+FILE A04
+Kingdom Bible
+
+Isi:
+
+Settlement Growth
+Politics
+Prosperity
+Security
+Stability
+Loyalty
+Taxes
+Diplomacy
+Territory
+
+Pertanyaan:
+
+Bagaimana peradaban berkembang?
+FILE A05
+Economy Bible
+
+Isi:
+
+Currencies
+Trading
+Supply
+Demand
+Market
+Merchant
+Resource Flow
+Inflation Control
+
+Pertanyaan:
+
+Bagaimana dunia menghasilkan nilai?
+FILE A06
+Exploration Bible
+
+Isi:
+
+Regions
+Points of Interest
+Discovery
+World Events
+Landmarks
+Travel
+Fast Travel
+Secret Design
+
+Pertanyaan:
+
+Bagaimana pemain menemukan dunia?
+FILE A07
+Dungeon Bible
+
+Isi:
+
+Dungeon Types
+Procedural Elements
+Boss Structure
+Rewards
+Ancient Ruins
+World Dungeons
+Hidden Dungeons
+
+Pertanyaan:
+
+Bagaimana tantangan PvE dibuat?
+FILE A08
+Quest Bible
+
+Isi:
+
+Quest Philosophy
+Dynamic Quest
+World Quest
+Faction Quest
+Companion Quest
+Kingdom Quest
+Legend Quest
+
+Pertanyaan:
+
+Bagaimana cerita disampaikan?
+FILE A09
+NPC Bible
+
+Isi:
+
+Behavior
+Schedules
+Needs
+Aging
+Families
+Careers
+Marriage
+Death
+Relationships
+
+Pertanyaan:
+
+Bagaimana NPC menjadi hidup?
+FILE A10
+Multiplayer Bible
+
+Isi:
+
+Co-op
+Trading
+Guild
+Player Economy
+Shared World
+PvP Rules
+Server Structure
+
+Pertanyaan:
+
+Bagaimana pemain berinteraksi?
+TIER B
+CONTENT FRAMEWORK
+
+Status:
+
+PRIORITY MEDIUM
+
+Jumlah:
+
+15–30 dokumen
+
+Tujuan:
+
+Mendukung Tier A.
+FILE B01
+
+Profession Bible
+
+Blacksmith
+Cooking
+Fishing
+Alchemy
+Enchanting
+Tailoring
+Engineering
+FILE B02
+
+Housing Bible
+
+House
+Furniture
+Decoration
+Storage
+Visitors
+Expansion
+FILE B03
+
+Faction Bible
+
+Guilds
+Organizations
+Secret Societies
+Kingdom Orders
+FILE B04
+
+Religion Bible
+
+Faith
+Churches
+God Worship
+Religious Politics
+FILE B05
+
+Mount Bible
+
+Mount Species
+Travel
+Combat Mount
+Flying Mount
+FILE B06
+
+Crafting Bible
+
+Materials
+Recipes
+Quality
+Rarity
+Production Chain
+FILE B07
+
+World Event Bible
+
+Natural Disaster
+Migration
+War
+Festival
+Invasion
+FILE B08
+
+Relationship Bible
+
+Friendship
+Romance
+Trust
+Loyalty
+Companion Bond
+FILE B09
+
+Artifact Bible
+
+Legendary Items
+Relics
+World Artifacts
+Ancient Technology
+FILE B10
+
+Biome Bible
+
+Forest
+Desert
+Ocean
+Volcanic
+Floating Isles
+Ancient Zones
+TIER C
+IMPLEMENTATION REFERENCE
+
+Status:
+
+PRIORITY LOW
+
+Jumlah:
+
+30–100 dokumen
+
+Tujuan:
+
+Referensi produksi.
+FILE C01
+
+Weapon List
+
+FILE C02
+
+Armor List
+
+FILE C03
+
+Consumable List
+
+FILE C04
+
+Monster Species List
+
+FILE C05
+
+Companion List
+
+FILE C06
+
+Boss List
+
+FILE C07
+
+Settlement List
+
+FILE C08
+
+Dungeon List
+
+FILE C09
+
+NPC Archetype List
+
+FILE C10
+
+Quest Template List
+
+TIER D
+PRODUCTION DATABASE
+
+Status:
+
+CONTINUOUS
+
+Jumlah:
+
+Ratusan hingga ribuan file/data
+
+Tujuan:
+
+Konten mentah yang digunakan tim.
+FILE D01
+
+Items
+
+Iron Sword
+Steel Sword
+...
+FILE D02
+
+Skills
+
+Fireball
+Beast Bond
+Shadow Dash
+...
+FILE D03
+
+Monsters
+
+Wolf
+Dire Wolf
+Crystal Wolf
+...
+FILE D04
+
+NPC Names
+
+Aldric
+Seraphine
+Kael
+...
+FILE D05
+
+Dialogues
+
+NPC Dialogue Database
+GAMBARAN BESAR ROADMAP
+TIER S
+↓
+Mengapa dunia ini ada?
+
+TIER A
+↓
+Bagaimana dunia ini bekerja?
+
+TIER B
+↓
+Apa saja sistem pendukungnya?
+
+TIER C
+↓
+Apa saja kontennya?
+
+TIER D
+↓
+Data mentah yang mengisi dunia.
+
+Jika saya menjadi creative director proyek ini, urutan pengerjaan setelah World Bible dan Nirmana Bible adalah:
+
+1. Ancient History Bible (Tier S)
+2. Divine Bible (Tier S)
+3. Character Progression Bible (A01)
+4. Creature Bible (A03)
+5. Kingdom Bible (A04)
+6. Combat Bible (A02)
+7. NPC Bible (A09)
+8. Economy Bible (A05)
+9. Exploration Bible (A06)
+10. Main Story Bible (Tier S)
+
+Karena 10 dokumen itu saja sudah cukup untuk mendefinisikan sekitar 80–90% identitas Aetherion sebelum masuk ke detail konten.
+
+Kalau lanjut dari roadmap tadi, menurut saya masih ada satu layer yang belum kita definisikan, yaitu:
+
+TIER A+
+META SYSTEM BIBLES
+
+Status:
+
+HIGH PRIORITY
+
+Ini bukan Tier S karena bukan fondasi filosofi dunia.
+
+Tapi juga terlalu penting untuk dimasukkan Tier B.
+
+FILE A+01
+Player Motivation Bible
+
+Menjawab:
+
+Kenapa pemain tetap bermain setelah 10 jam?
+50 jam?
+500 jam?
+5000 jam?
+
+Isi:
+
+Wonder Loop
+Collection Loop
+Progression Loop
+Kingdom Loop
+Social Loop
+Legacy Loop
+FILE A+02
+Retention Bible
+
+Menjawab:
+
+Bagaimana membuat pemain selalu punya tujuan?
+
+Isi:
+
+Short Term Goal
+Mid Term Goal
+Long Term Goal
+Lifetime Goal
+FILE A+03
+Endgame Bible
+
+Menjawab:
+
+Apa yang dilakukan pemain ketika semuanya sudah selesai?
+
+Karena ini masalah terbesar MMORPG dan sandbox game.
+
+Isi:
+
+Kingdom Expansion
+World Projects
+Legendary Hunts
+Ancient Discoveries
+Mythic Creatures
+Player Legacy
+FILE A+04
+Content Longevity Bible
+
+Menjawab:
+
+Bagaimana dunia tetap relevan selama bertahun-tahun?
+
+Isi:
+
+Dynamic World
+Seasonal Events
+Civilization Evolution
+Historical Changes
+FILE A+05
+Emotional Design Bible
+
+Menurut saya ini sangat penting untuk Aetherion.
+
+Karena sejauh ini tema utamanya bukan combat.
+
+Melainkan:
+
+Emotion.
+
+Isi:
+
+Wonder
+Curiosity
+Belonging
+Loss
+Pride
+Legacy
+TIER B+
+LIVE WORLD SYSTEMS
+
+Ini biasanya terlupakan.
+
+Padahal justru yang membuat dunia terasa hidup.
+
+FILE B+01
+
+World Simulation Bible
+
+Isi:
+
+Population
+Migration
+Birth
+Death
+Economy Flow
+Ecology Flow
+FILE B+02
+
+Historical Event Bible
+
+Isi:
+
+World Wars
+Kingdom Collapse
+Great Discoveries
+Legendary Figures
+FILE B+03
+
+Cultural Bible
+
+Isi:
+
+Languages
+Traditions
+Clothing
+Architecture
+Festivals
+FILE B+04
+
+Knowledge Bible
+
+Isi:
+
+Books
+Archives
+Libraries
+Lost Knowledge
+Ancient Languages
+FILE B+05
+
+Rumor Bible
+
+Isi:
+
+Rumors
+Myths
+Urban Legends
+False Information
+
+Karena Exploration Philosophy sudah menetapkan:
+
+Tidak semua informasi harus benar.
+TIER "OMEGA"
+
+Ini bukan tier resmi.
+
+Tapi biasanya muncul ketika proyek sudah sangat matang.
+
+MASTER INDEX
+
+Satu dokumen besar.
+
+Yang menghubungkan semuanya.
+
+Contoh:
+
+Nirmana
+↓
+Ancient History Bible
+↓
+Age of Silence
+↓
+Dragon Companion
+↓
+Main Story Chapter 12
+↓
+Mythic Dungeon 03
+
+Semuanya saling terhubung.
+
+ROADMAP TOTAL
+
+Jika dihitung kasar:
+
+Tier S
+≈ 5–10 dokumen
+
+Tier A
+≈ 10–15 dokumen
+
+Tier A+
+≈ 5 dokumen
+
+Tier B
+≈ 20–40 dokumen
+
+Tier B+
+≈ 5–10 dokumen
+
+Tier C
+≈ 50–100 dokumen
+
+Tier D
+≈ Ribuan entri data
+
+Kalau proyek ini benar-benar dikembangkan seperti game komersial besar, maka setelah:
+
+✓ Nirmana Bible
+✓ World Bible
+
+urutan paling aman adalah:
+
+PHASE 1
+Ancient History Bible
+Divine Bible
+
+PHASE 2
+Creature Bible
+Character Progression Bible
+Combat Bible
+
+PHASE 3
+Kingdom Bible
+NPC Bible
+Economy Bible
+
+PHASE 4
+Main Story Bible
+
+PHASE 5
+Semua dokumen Tier B dan C
+
+Karena begitu Ancient History + Divine + Creature + Progression + Kingdom selesai, hampir seluruh identitas Aetherion sudah terkunci dan sisanya tinggal mengisi detail dunia.
+
+Kalau diteruskan lebih jauh, menurut saya Aetherion sebenarnya bisa dibagi menjadi 4 fase pembangunan besar, bukan hanya berdasarkan tier dokumen.
+
+PHASE 0
+THE SOUL
+
+Tujuan:
+
+Mengapa Aetherion ada?
+
+Output:
+
+Nirmana Bible
+World Bible
+
+Status:
+
+100% selesai
+PHASE 1
+THE PAST
+
+Tujuan:
+
+Bagaimana dunia ini menjadi seperti sekarang?
+
+Output:
+
+Ancient History Bible
+Divine Bible
+Dragon Bible
+Cosmic Bible
+
+Fokus:
+
+Masa lalu
+
+Pertanyaan:
+
+Siapa dewa pertama?
+
+Siapa Nirmana?
+
+Mengapa naga ada?
+
+Bagaimana dunia terbentuk?
+
+Apa yang terjadi sebelum pemain lahir?
+
+Menurut saya ini fase terpenting setelah World Bible.
+
+Karena seluruh misteri dunia berasal dari sini.
+
+PHASE 2
+THE PRESENT
+
+Tujuan:
+
+Bagaimana dunia bekerja hari ini?
+
+Output:
+
+Kingdom Bible
+Creature Bible
+NPC Bible
+Economy Bible
+Combat Bible
+Progression Bible
+
+Fokus:
+
+Current World
+
+Pertanyaan:
+
+Bagaimana kerajaan bertahan?
+
+Bagaimana monster hidup?
+
+Bagaimana orang mencari uang?
+
+Bagaimana pemain berkembang?
+PHASE 3
+THE FUTURE
+
+Tujuan:
+
+Bagaimana dunia berubah?
+
+Output:
+
+Main Story Bible
+World Event Bible
+Endgame Bible
+Legacy Bible
+Historical Simulation Bible
+
+Fokus:
+
+World Evolution
+
+Pertanyaan:
+
+Apa yang terjadi jika pemain menang?
+
+Apa yang terjadi jika pemain gagal?
+
+Bagaimana sejarah berubah?
+THE THREE PILLARS OF CONTENT
+
+Setelah Phase 1–3 selesai.
+
+Konten dunia bisa dibagi menjadi tiga kategori besar.
+
+PILLAR 1
+Living World
+
+Isi:
+
+NPC
+Kingdom
+Economy
+Politics
+Culture
+Religion
+
+Tujuan:
+
+Membuat dunia hidup.
+PILLAR 2
+Adventure
+
+Isi:
+
+Exploration
+Dungeon
+Quest
+Discovery
+Artifacts
+
+Tujuan:
+
+Membuat dunia menarik.
+PILLAR 3
+Personal Journey
+
+Isi:
+
+Progression
+Companion
+Taming
+Kingdom Building
+Legacy
+
+Tujuan:
+
+Membuat dunia bermakna.
+CONTENT PYRAMID
+
+Menurut saya semua konten Aetherion harus mengikuti struktur ini:
+
+Lore
+↓
+Systems
+↓
+Content
+↓
+Data
+
+Contoh:
+
+World Bible
+↓
+Creature Bible
+↓
+Dragon Species
+↓
+Red Flame Dragon
+
+Atau:
+
+World Bible
+↓
+Kingdom Bible
+↓
+Northern Kingdom
+↓
+Mayor NPC #203
+WHAT I THINK IS STILL MISSING
+
+Walaupun roadmap sudah besar, ada beberapa dokumen yang menurut saya wajib ada dan sering terlupakan.
+
+Mythology Bible
+
+Berisi:
+
+Legenda
+Dongeng
+Cerita rakyat
+Mitos
+Ramalan
+
+Karena dunia hidup tidak hanya dibangun oleh fakta.
+
+Tetapi juga cerita yang dipercaya masyarakat.
+
+Language Bible
+
+Berisi:
+
+Bahasa kuno
+Bahasa naga
+Bahasa kerajaan
+Simbol
+Tulisan
+Emotion Bible
+
+Berisi:
+
+Apa yang harus dirasakan pemain?
+
+Misalnya:
+
+Wonder
+↓
+Belonging
+↓
+Responsibility
+↓
+Loss
+↓
+Legacy
+Mystery Bible
+
+Ini menurut saya sangat cocok untuk Aetherion.
+
+Berisi:
+
+Rahasia terbesar dunia
+Misteri yang belum terpecahkan
+Konspirasi
+Fenomena aneh
+Lokasi terlarang
+
+Karena Exploration Philosophy sudah menetapkan:
+
+Sebagian rahasia mungkin tidak pernah ditemukan mayoritas pemain.
+FINAL ROADMAP
+
+Jika disederhanakan menjadi urutan pengerjaan paling efisien:
+
+PHASE 0
+✓ Nirmana Bible
+✓ World Bible
+
+PHASE 1
+Ancient History Bible
+Divine Bible
+Mythology Bible
+
+PHASE 2
+Creature Bible
+Kingdom Bible
+Progression Bible
+Combat Bible
+
+PHASE 3
+NPC Bible
+Economy Bible
+Exploration Bible
+Quest Bible
+
+PHASE 4
+Main Story Bible
+
+PHASE 5
+Content Expansion
+(Tier B, C, D)
+
+Pada titik itu, fondasi Aetherion sudah cukup kuat sehingga hampir semua ide baru yang muncul bisa langsung ditempatkan ke dokumen yang tepat tanpa merusak konsistensi dunia.
+
+
+# AETHERION DESIGN ROADMAP
+
+## TIER A
+
+### SYSTEMS BIBLE
+
+Status:
+CORE DESIGN
+
+Purpose:
+
+Menjelaskan seluruh sistem utama yang membentuk gameplay.
+
+---
+
+# CHARACTER SYSTEM
+
+Menjelaskan:
+
+* Level
+* Attribute
+* Class
+* Ultimate
+* Skill Tree
+* Mastery
+* Progression
+
+Tujuan:
+
+Bagaimana pemain berkembang.
+
+---
+
+# COMBAT SYSTEM
+
+Menjelaskan:
+
+* Combat Philosophy
+* Weapon Types
+* Damage
+* Status Effects
+* PvE
+* PvP
+* Boss Design
+
+Tujuan:
+
+Bagaimana pemain menghadapi tantangan.
+
+---
+
+# CREATURE SYSTEM
+
+Menjelaskan:
+
+* Monster Ecology
+* Taming
+* Companion
+* Mount
+* Fusion
+* Evolution
+
+Tujuan:
+
+Bagaimana makhluk hidup menjadi bagian dunia.
+
+---
+
+# KINGDOM SYSTEM
+
+Menjelaskan:
+
+* Settlement
+* Territory
+* Diplomacy
+* Politics
+* Governance
+* Expansion
+
+Tujuan:
+
+Bagaimana peradaban tumbuh.
+
+---
+
+# ECONOMY SYSTEM
+
+Menjelaskan:
+
+* Resources
+* Production
+* Trade
+* Market
+* Wealth Flow
+
+Tujuan:
+
+Bagaimana nilai bergerak di dunia.
+
+---
+
+# EXPLORATION SYSTEM
+
+Menjelaskan:
+
+* Discovery
+* Travel
+* Regions
+* Secrets
+* Landmarks
+
+Tujuan:
+
+Bagaimana pemain menemukan dunia.
+
+---
+
+# QUEST SYSTEM
+
+Menjelaskan:
+
+* Dynamic Quest
+* Story Quest
+* Companion Quest
+* Kingdom Quest
+
+Tujuan:
+
+Bagaimana pengalaman pemain diarahkan.
+
+---
+
+# NPC SYSTEM
+
+Menjelaskan:
+
+* Behavior
+* Needs
+* Relationships
+* Aging
+* Death
+* Careers
+
+Tujuan:
+
+Bagaimana dunia terasa hidup.
+
+---
+
+# MULTIPLAYER SYSTEM
+
+Menjelaskan:
+
+* Co-op
+* Guild
+* Trade
+* Shared World
+* Player Interaction
+
+Tujuan:
+
+Bagaimana pemain berinteraksi.
+
+---
+
+# TIER A SUMMARY
+
+Pertanyaan yang dijawab:
+
+```text
+Bagaimana dunia bekerja?
+```
+
+
+
+
+
+
+
+
+
+
+
+

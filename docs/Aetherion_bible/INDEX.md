@@ -1,6 +1,6 @@
 # INDEX — ARSIP BIBLE AETHERION
 
-**Status:** arsip sumber (**tidak diedit**). 7 berkas · **48.559 baris**. Dibaca sebagai
+**Status:** arsip sumber (**tidak diedit**). **9 berkas · 50.435 baris**. Dibaca sebagai
 satu korpus 2026-07-13 (Direktif Bible Folder Ingestion).
 
 > ⚠ **CATATAN EJAAN (WAJIB DIBACA):** sumber-sumber ini menulis **"Nirmana"**.
@@ -25,6 +25,8 @@ satu korpus 2026-07-13 (Direktif Bible Folder Ingestion).
 | **…part 4.txt** | 3.889 | **Nirmana Bible Part 07–11** (FILE 68–72): The Final Answer, Children of the Void, **The Last Dragon**, The Return of the End, **5 ENDING** | **Konflik dengan NIRNAMA_BIBLE.md kita** (sumbu konflik, sejarah, nasib naga) | Story v0.5+, ending, Chronicle-as-judge |
 | **…part 5.txt** | 6.884 | **WORLD BIBLE v1.0 (TIER S #02, LOCKED)** — 10 bab filosofi: Core, Civilization, Exploration, Life & Death, Conflict, Progression, Freedom, Legacy, Time, Synthesis | **Konstitusi.** Nol konten baru, **19 hukum mengikat** — menabrak 8 keputusan kita | Permadeath, Ecology, 5 atribut kerajaan, 7 tahap permukiman, fusion, penjaga abadi |
 | **Menurutku Aetherion Harus Punya 3 P.txt** | 904 | **3 Pilar** (Wonder/Belonging/Legacy), Living Sky, The World Remembers, **daftar tahan** (Racing/Gambling/Marketplace/MMO), urutan produksi Bible, target = **v0.5 STORY & SOUL** | **Sebagian sudah jadi kanon** (#34–#37, #67 menambah STEWARDSHIP jadi 4 pilar) | Piagam, roadmap |
+| **Aetherion_pelengkap.txt** | 1.135 | **META — taksonomi dokumen**: Tier A (10 System Bible) · **Tier A+ META** (Player Motivation, Retention, **Endgame**, Content Longevity, **Emotional Design**) · Tier B/B+/C/D · **5 fase penulisan** (Phase 0 THE SOUL ✅ → THE PAST → THE PRESENT → THE FUTURE) · **Content Pyramid** (Lore → Systems → Content → Data) · **4 Bible yang "masih hilang"**: Mythology · Language · Emotion · Mystery | **Bukan konten dunia** — ia mengatur *cara menulis*. Berbenturan dengan urutan gerbang kita (B17) | Perencanaan dokumen |
+| **Game_Design_System.txt** | 741 | **META — STANDAR PRODUKSI (Tier A–D)**: aturan mengikat per jenis konten — *monster wajib punya habitat/diet/perilaku/peran ekologi/asal-usul* · *boss = **peristiwa**, bukan HP besar* · *dungeon wajib menceritakan sesuatu* · *quest wajib menjawab "kenapa pemain peduli?"* · *lokasi wajib punya alasan dibangun / alasan masih ada / alasan pemain datang* · *item wajib punya fungsi+sumber+nilai* · *skill wajib punya identitas+kegunaan+**counterplay*** · **skill tree HORIZONTAL dulu, vertikal kemudian** · *tidak boleh ada ekonomi palsu* · *multiplayer tanpa saling membunuh* | **Sebagian sudah kita patuhi** (DUNGEON_ORIGINS, Hukum Quest); sebagian **belum** (monster tanpa habitat/diet; skill tanpa counterplay) | monsters.json, skills.json, items.json, wilayah |
 | **game design roadmap.txt** | 451 | Audit Tier S–E + **MASTER DESIGN ROADMAP** (roadmap **kelengkapan DOKUMEN**, bukan rilis): prioritas Faction → Companion → Nirmana → World Map → Main Story; total dokumen 150–250 file | **Beda jenis** dari roadmap rilis kita (v0.5→v1.0) — 5 titik beda, lihat REPORT-05 | Perencanaan |
 
 ---

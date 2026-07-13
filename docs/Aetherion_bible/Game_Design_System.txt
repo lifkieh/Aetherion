@@ -1,0 +1,741 @@
+# AETHERION DESIGN ROADMAP
+
+## TIER A
+
+### SYSTEMS BIBLE
+
+Status:
+CORE DESIGN
+
+Purpose:
+
+Menjelaskan seluruh sistem utama yang membentuk gameplay.
+
+---
+
+# CHARACTER SYSTEM
+
+Menjelaskan:
+
+* Level
+* Attribute
+* Class
+* Ultimate
+* Skill Tree
+* Mastery
+* Progression
+
+Tujuan:
+
+Bagaimana pemain berkembang.
+
+---
+
+# COMBAT SYSTEM
+
+Menjelaskan:
+
+* Combat Philosophy
+* Weapon Types
+* Damage
+* Status Effects
+* PvE
+* PvP
+* Boss Design
+
+Tujuan:
+
+Bagaimana pemain menghadapi tantangan.
+
+---
+
+# CREATURE SYSTEM
+
+Menjelaskan:
+
+* Monster Ecology
+* Taming
+* Companion
+* Mount
+* Fusion
+* Evolution
+
+Tujuan:
+
+Bagaimana makhluk hidup menjadi bagian dunia.
+
+---
+
+# KINGDOM SYSTEM
+
+Menjelaskan:
+
+* Settlement
+* Territory
+* Diplomacy
+* Politics
+* Governance
+* Expansion
+
+Tujuan:
+
+Bagaimana peradaban tumbuh.
+
+---
+
+# ECONOMY SYSTEM
+
+Menjelaskan:
+
+* Resources
+* Production
+* Trade
+* Market
+* Wealth Flow
+
+Tujuan:
+
+Bagaimana nilai bergerak di dunia.
+
+---
+
+# EXPLORATION SYSTEM
+
+Menjelaskan:
+
+* Discovery
+* Travel
+* Regions
+* Secrets
+* Landmarks
+
+Tujuan:
+
+Bagaimana pemain menemukan dunia.
+
+---
+
+# QUEST SYSTEM
+
+Menjelaskan:
+
+* Dynamic Quest
+* Story Quest
+* Companion Quest
+* Kingdom Quest
+
+Tujuan:
+
+Bagaimana pengalaman pemain diarahkan.
+
+---
+
+# NPC SYSTEM
+
+Menjelaskan:
+
+* Behavior
+* Needs
+* Relationships
+* Aging
+* Death
+* Careers
+
+Tujuan:
+
+Bagaimana dunia terasa hidup.
+
+---
+
+# MULTIPLAYER SYSTEM
+
+Menjelaskan:
+
+* Co-op
+* Guild
+* Trade
+* Shared World
+* Player Interaction
+
+Tujuan:
+
+Bagaimana pemain berinteraksi.
+
+---
+
+# TIER A SUMMARY
+
+Pertanyaan yang dijawab:
+
+```text
+Bagaimana dunia bekerja?
+```
+# AETHERION DESIGN ROADMAP
+
+## TIER B
+
+### LIVING WORLD BIBLE
+
+Status:
+WORLD EXPANSION
+
+Purpose:
+
+Menjelaskan sistem yang membuat dunia memiliki budaya, identitas, dan kehidupan.
+
+---
+
+# CULTURE
+
+Menjelaskan:
+
+* Tradisi
+* Festival
+* Arsitektur
+* Kebiasaan
+* Nilai sosial
+
+---
+
+# RELIGION
+
+Menjelaskan:
+
+* Kepercayaan
+* Ritual
+* Gereja
+* Kultus
+* Hubungan dengan para dewa
+
+---
+
+# PROFESSION
+
+Menjelaskan:
+
+* Crafting
+* Gathering
+* Produksi
+* Spesialisasi pekerjaan
+
+---
+
+# HOUSING
+
+Menjelaskan:
+
+* Rumah pemain
+* Dekorasi
+* Penyimpanan
+* Ekspansi properti
+
+---
+
+# FACTIONS
+
+Menjelaskan:
+
+* Guild
+* Organisasi
+* Secret Society
+* Military Orders
+
+---
+
+# WORLD EVENTS
+
+Menjelaskan:
+
+* Festival
+* Perang
+* Bencana
+* Migrasi
+* Krisis dunia
+
+---
+
+# RELATIONSHIPS
+
+Menjelaskan:
+
+* Friendship
+* Loyalty
+* Rivalry
+* Romance
+
+---
+
+# KNOWLEDGE
+
+Menjelaskan:
+
+* Books
+* Libraries
+* Lost Knowledge
+* Ancient Languages
+
+---
+
+# MYTHS & RUMORS
+
+Menjelaskan:
+
+* Legenda
+* Cerita rakyat
+* Desas-desus
+* Informasi salah
+
+---
+
+# TIER B SUMMARY
+
+Pertanyaan yang dijawab:
+
+```text
+Bagaimana dunia terasa hidup?
+```
+# AETHERION DESIGN ROADMAP
+
+## TIER C & D
+
+### CONTENT & PRODUCTION BIBLE
+
+Status:
+CONTENT CREATION
+
+Purpose:
+
+Menjelaskan bagaimana seluruh isi dunia diproduksi.
+
+---
+
+# TIER C
+
+## CONTENT FRAMEWORK
+
+Menjelaskan kategori konten yang akan mengisi dunia.
+
+---
+
+Kategori:
+
+* Monsters
+* Bosses
+* Dungeons
+* Quests
+* Companions
+* Kingdoms
+* Regions
+* Artifacts
+* Items
+* NPCs
+
+---
+
+Tujuan:
+
+Memberikan struktur konten.
+
+---
+
+# CONTENT RULE
+
+Setiap konten harus berasal dari:
+
+```text
+World Bible
+↓
+Lore
+↓
+System
+↓
+Content
+```
+
+---
+
+Tidak boleh ada konten.
+
+---
+
+Yang bertentangan dengan filosofi dunia.
+
+---
+
+# TIER D
+
+## PRODUCTION DATABASE
+
+Merupakan database mentah.
+
+---
+
+Berisi:
+
+* Semua item
+* Semua skill
+* Semua monster
+* Semua NPC
+* Semua quest
+* Semua dialogue
+* Semua building
+* Semua region
+* Semua recipe
+* Semua event
+
+---
+
+Jumlah:
+
+Ribuan hingga puluhan ribu entri.
+
+---
+
+# PRODUCTION PIPELINE
+
+```text
+World Bible
+↓
+Tier A Systems
+↓
+Tier B Living World
+↓
+Tier C Content
+↓
+Tier D Database
+```
+
+---
+
+# COMPLETE HIERARCHY
+
+```text
+Tier S
+Mengapa dunia ini ada?
+
+Tier A
+Bagaimana dunia ini bekerja?
+
+Tier B
+Bagaimana dunia ini terasa hidup?
+
+Tier C
+Apa saja isi dunia ini?
+
+Tier D
+Data apa yang mengisi dunia?
+```
+
+---
+
+# FINAL PROJECT STRUCTURE
+
+```text
+TIER S
+Foundation
+
+TIER A
+Systems
+
+TIER B
+Living World
+
+TIER C
+Content
+
+TIER D
+Production
+```
+
+Dengan struktur ini, seluruh proyek Aetherion dapat dikelola hanya dengan 5 lapisan besar tanpa harus memecah roadmap awal menjadi ratusan dokumen sejak awal pengembangan.
+SKILL DESIGN
+
+Skill Tree bersifat:
+
+Horizontal First
+Vertical Second
+
+Artinya:
+
+lebih banyak pilihan
+
+daripada angka.
+
+COMBAT DESIGN
+
+Combat harus:
+
+mudah dipahami
+sulit dikuasai
+mendukung kreativitas
+
+Combat bukan:
+
+Spam skill terbesar.
+CREATURE DESIGN
+
+Semua monster adalah:
+
+Makhluk hidup.
+
+Bukan resource berjalan.
+
+Monster harus memiliki:
+
+habitat
+perilaku
+kebutuhan
+hubungan ekologis
+KINGDOM DESIGN
+
+Kerajaan bukan dekorasi.
+
+Kerajaan adalah:
+
+aktor politik
+aktor ekonomi
+aktor militer
+aktor budaya
+NPC DESIGN
+
+NPC bukan quest giver.
+
+NPC adalah:
+
+Penduduk dunia.
+ECONOMY DESIGN
+
+Ekonomi harus:
+
+menghasilkan sesuatu
+mengonsumsi sesuatu
+memindahkan sesuatu
+
+Tidak boleh ada ekonomi palsu.
+
+EXPLORATION DESIGN
+
+Exploration harus memberi:
+
+pengetahuan
+peluang
+cerita
+kejutan
+
+Bukan hanya loot.
+
+MULTIPLAYER DESIGN
+
+Pemain harus:
+
+bisa bekerja sama
+bisa bersaing
+bisa hidup berdampingan
+
+Tanpa harus saling membunuh.
+
+TIER B
+LIVING WORLD BIBLE
+Tujuan
+
+Menentukan bagaimana dunia terasa hidup.
+
+CULTURE DESIGN
+
+Setiap budaya harus memiliki:
+
+makanan
+pakaian
+arsitektur
+kebiasaan
+nilai
+RELIGION DESIGN
+
+Agama harus:
+
+mempengaruhi masyarakat
+mempengaruhi politik
+mempengaruhi budaya
+
+Bukan sekadar lore.
+
+FACTION DESIGN
+
+Setiap faksi harus memiliki:
+
+Goal
+Method
+Resources
+Weakness
+RELATIONSHIP DESIGN
+
+Hubungan harus berkembang.
+
+Tidak statis.
+
+Termasuk:
+
+persahabatan
+rivalitas
+cinta
+mentor
+keluarga
+WORLD EVENT DESIGN
+
+Event harus mengubah dunia.
+
+Minimal sementara.
+
+KNOWLEDGE DESIGN
+
+Pengetahuan adalah progression.
+
+Karena:
+
+Mengetahui sesuatu
+juga bentuk kekuatan.
+MYTH DESIGN
+
+Tidak semua cerita benar.
+
+Tidak semua legenda palsu.
+
+HISTORY DESIGN
+
+Masyarakat harus memiliki:
+
+Ingatan kolektif.
+TIER C
+CONTENT BIBLE
+Tujuan
+
+Menentukan aturan pembuatan konten.
+
+MONSTER CONTENT
+
+Setiap monster harus memiliki:
+
+peran ekologi
+asal-usul
+perilaku
+alasan keberadaan
+BOSS CONTENT
+
+Boss harus menjadi:
+
+Peristiwa.
+
+Bukan hanya HP besar.
+
+DUNGEON CONTENT
+
+Dungeon harus menceritakan sesuatu.
+
+Minimal salah satu:
+
+sejarah
+budaya
+tragedi
+misteri
+QUEST CONTENT
+
+Quest harus menjawab:
+
+Kenapa pemain peduli?
+REGION CONTENT
+
+Setiap wilayah harus memiliki:
+
+identitas visual
+identitas budaya
+identitas gameplay
+COMPANION CONTENT
+
+Companion harus memiliki:
+
+tujuan
+konflik
+perkembangan
+ARTIFACT CONTENT
+
+Artifact harus memiliki cerita.
+
+Karena artefak adalah:
+
+Warisan masa lalu.
+TIER D
+PRODUCTION BIBLE
+Tujuan
+
+Menentukan standar produksi.
+
+ITEM RULE
+
+Setiap item harus memiliki:
+
+fungsi
+sumber
+nilai
+SKILL RULE
+
+Setiap skill harus memiliki:
+
+identitas
+kegunaan
+counterplay
+NPC RULE
+
+Setiap NPC penting harus memiliki:
+
+nama
+tujuan
+hubungan
+sejarah singkat
+MONSTER RULE
+
+Setiap monster harus memiliki:
+
+habitat
+diet
+perilaku
+QUEST RULE
+
+Setiap quest harus memiliki:
+
+motivasi
+konflik
+konsekuensi
+LOCATION RULE
+
+Setiap lokasi harus memiliki:
+
+alasan dibangun
+alasan masih ada
+alasan pemain datang
+DATABASE PHILOSOPHY
+
+Database bukan tempat menyimpan data.
+
+Database adalah:
+
+Representasi dunia.
+HASIL AKHIR
+
+Kalau diringkas, maka:
+
+Tier S
+Mengapa dunia ini ada?
+
+Tier A
+Bagaimana dunia ini bekerja?
+
+Tier B
+Bagaimana dunia ini hidup?
+
+Tier C
+Bagaimana dunia ini diisi?
+
+Tier D
+Bagaimana dunia ini diproduksi?
+
+Dan menurut saya, setelah ini kamu sebenarnya sudah punya kerangka yang cukup matang untuk mulai mengisi Ancient History Bible, Divine Bible, Creature Bible, Kingdom Bible, dan Main Story Bible tanpa perlu kembali mengubah fondasi besar proyek.
