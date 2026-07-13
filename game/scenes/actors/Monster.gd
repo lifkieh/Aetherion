@@ -534,11 +534,18 @@ func attempt_tame() -> void:
 	var res := TamingSystem.attempt(self)
 	if res.get("success", false):
 		_tamed()
-	else:
-		# enrage: cannot tame for 10 min, ATK up
-		enraged_until = _now() + 600.0
-		tame_pity += 0.0005
-		EventBus.toast.emit("Taming gagal! " + inst.get("name", "") + " mengamuk.")
+		return
+	# BUG-6 (REPORT-06): `enraged_until` sebenarnya gerbang ANTI-AGRESI — _process()
+	# hanya mengejar bila _now() > enraged_until. Memasangnya saat gagal-tame membuat
+	# monster justru PASIF 10 menit: kebalikan total dari maksud desain (dan pemain bisa
+	# spam orb ke target yang tak melawan). Juga: gagal karena "tak punya orb" atau
+	# "hanya lewat Pact" (#130) dulu ikut menghukum — itu keliru.
+	if res.get("reason", "") != "failed_roll":
+		return   # no_orb / pact_only / hp_too_high: tak ada hukuman, tak ada pesan palsu
+	tame_pity += 0.0005
+	_state = State.CHASE          # gagal jujur: ia justru MENYERANG
+	enraged_until = 0.0
+	EventBus.toast.emit("Taming gagal! " + inst.get("name", "") + " mengamuk.")
 
 func _tamed() -> void:
 	_state = State.DEAD

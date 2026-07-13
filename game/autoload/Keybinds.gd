@@ -15,8 +15,8 @@ const REMAPPABLE := [
 	["dodge", "ui.key.dodge"], ["toggle_inventory", "ui.key.inventory"],
 	["world_map", "ui.key.map"], ["plant_sapling", "ui.key.plant"],
 	["pause_menu", "ui.key.pause"],
-	["skill_1", "ui.key.skill1"], ["skill_2", "ui.key.skill2"],
-	["skill_3", "ui.key.skill3"], ["skill_4", "ui.key.skill4"], ["skill_5", "ui.key.skill5"],
+	["slot_1", "ui.key.skill1"], ["slot_2", "ui.key.skill2"],
+	["slot_3", "ui.key.skill3"], ["slot_4", "ui.key.skill4"], ["slot_5", "ui.key.skill5"],
 ]
 
 ## Binding gamepad bawaan (Xbox layout; SDL mapping menangani sisanya).
@@ -32,11 +32,13 @@ const PAD_DEFAULTS := {
 	"world_map": {"button": JOY_BUTTON_BACK},
 	"pause_menu": {"button": JOY_BUTTON_START},
 	"plant_sapling": {"button": JOY_BUTTON_LEFT_SHOULDER},
-	"skill_1": {"button": JOY_BUTTON_DPAD_UP},
-	"skill_2": {"button": JOY_BUTTON_DPAD_RIGHT},
-	"skill_3": {"button": JOY_BUTTON_DPAD_DOWN},
-	"skill_4": {"button": JOY_BUTTON_DPAD_LEFT},
-	"skill_5": {"button": JOY_BUTTON_RIGHT_SHOULDER},
+	# BUG-3: Player mem-poll "slot_N", BUKAN "skill_N". Sebelum ini, D-Pad terpasang
+	# ke aksi yang tak pernah dibaca → pemain gamepad TIDAK BISA memakai skill sama sekali.
+	"slot_1": {"button": JOY_BUTTON_DPAD_UP},
+	"slot_2": {"button": JOY_BUTTON_DPAD_RIGHT},
+	"slot_3": {"button": JOY_BUTTON_DPAD_DOWN},
+	"slot_4": {"button": JOY_BUTTON_DPAD_LEFT},
+	"slot_5": {"button": JOY_BUTTON_RIGHT_SHOULDER},
 	"ui_accept": {"button": JOY_BUTTON_A},
 	"ui_cancel": {"button": JOY_BUTTON_B},
 }

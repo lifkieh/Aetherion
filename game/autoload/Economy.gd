@@ -78,6 +78,24 @@ func sell(item_id: String, qty: int = 1) -> bool:
 	_log("sell", item_id, qty, unit)
 	return true
 
+## HUKUM SIMULASI DUNIA (#89): dunia berjalan tanpa pemain. Saat load, kejadian
+## diturunkan dari SELISIH WAKTU WIB nyata — bukan dari tick saat game berjalan.
+## BUG-10 (REPORT-06): dulu restock hanya dipicu event jam saat game hidup, jadi
+## save berumur 30 hari punya stok seolah baru semalam.
+func catch_up(last_day: String) -> void:
+	if last_day == "":
+		return
+	var a := last_day.split("-")
+	var b := GameClock.date_string().split("-")
+	if a.size() != 3 or b.size() != 3:
+		return
+	var d0 := Time.get_unix_time_from_datetime_dict({"year": int(a[0]), "month": int(a[1]), "day": int(a[2])})
+	var d1 := Time.get_unix_time_from_datetime_dict({"year": int(b[0]), "month": int(b[1]), "day": int(b[2])})
+	var days := int(floor(float(d1 - d0) / 86400.0))
+	for i in mini(maxi(0, days), 30):     # cap 30 hari: cukup untuk konvergen
+		_daily_restock()
+	_last_restock_day = GameClock.date_string()
+
 func _daily_restock() -> void:
 	for id in stock.keys():
 		var base_supply: int = Db.item(id).get("shop_stock", DEFAULT_STOCK)
@@ -98,4 +116,9 @@ func to_save() -> Dictionary:
 func from_save(d: Dictionary) -> void:
 	stock = d.get("stock", {})
 	demand = d.get("demand", {})
-	_last_restock_day = d.get("last_restock_day", GameClock.date_string())
+	var saved_day: String = d.get("last_restock_day", GameClock.date_string())
+	_last_restock_day = saved_day
+	# BUG-10 (REPORT-06): HUKUM SIMULASI DUNIA (#89) — dunia berjalan tanpa pemain.
+	# Dulu restock hanya dipicu tick saat game hidup: save berumur 30 hari punya stok
+	# seolah baru semalam. Sekarang: kejar ketertinggalan dari selisih hari WIB nyata.
+	catch_up(saved_day)

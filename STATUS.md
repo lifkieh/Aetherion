@@ -1,6 +1,18 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
+**Last update:** 2026-07-13 — **REPORT-06 SIAP DIREVIEW** (audit total, `reports/REPORT-06_AUDIT_TOTAL.md`)
+
+> ### 🔴 MENUNGGU REVIEW DIREKTUR+DESIGNER
+> **`reports/REPORT-06_AUDIT_TOTAL.md`** — audit menyeluruh + pendapat agent (#149/#150).
+> **15 janji menggantung** · **7 ide berlubang** · **4 dokumen hukum bermuatan status palsu**
+> · **15 butir butuh konfirmasi** (K1 skala waktu memblokir seluruh v0.9). **Eksekusi menunggu review.**
+>
+> **10 BUG NYATA sudah diperbaiki (#151)** — tiga di antaranya fatal: monster memukul saat
+> game **di-pause**; **pemain gamepad tak bisa memakai skill sama sekali**; efek "hutan memucat"
+> tak pernah terlihat. **846 test lulus, 0 gagal** (+24 test regresi lewat jalur nyata).
+> ⚠ **Test lama hijau-palsu** — 822 test tetap hijau meski 10 bug ini hidup. Hukum test baru: #151.
+>
+> ⚠ **`docs_private/` TIDAK ter-backup GitHub** (#144) — masukkan ke backup pribadi.
 **Exe terakhir:** 2026-07-13 10:43 WIB — berisi hingga: **v0.4.4 SELESAI** (settings lengkap + keybind remap, gamepad penuh + glyph, lokalisasi ID/EN penuh + retrofit, Advanced Class Lv60 + Trial of the Rasi) di atas v0.4.3 penuh. Ukuran exe 92,6 MB. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)

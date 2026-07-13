@@ -138,7 +138,12 @@ func _fall() -> void:
 func _do_drop() -> void:
 	var prof := "miner" if kind in ["ore", "sandstone"] else "lumberjack"
 	var bonus := int(ProfessionSystem.perk_value(prof, "bonus_yield"))
-	var report_kind := "ore" if kind in ["ore", "sandstone"] else "tree"
+	# BUG-5: dulu SEMUA node non-ore dilaporkan sebagai "tree" → quest q_candy
+	# (target "lollipop") mustahil selesai, DAN memanen permen di Candyveil
+	# membuat Roh Hutan Greenvale murka. Sekarang: laporkan jenis node yang benar.
+	var report_kind := kind
+	if kind == "sandstone":
+		report_kind = "ore"
 	var table := Db.loot_table(LOOT.get(kind, "")).duplicate()
 	if kind == "tree":
 		table.append_array(Db.loot_table("tree_extra"))   # bibit pohon bisa ikut jatuh (#95)
@@ -152,7 +157,7 @@ func _do_drop() -> void:
 				qty += 1
 			PlayerData.add_item(d.get("item", ""), qty)
 			EventBus.node_harvested.emit(report_kind, d.get("item", ""), qty)
-	EventBus.toast.emit("Memanen %s" % ("kayu" if kind == "tree" else "tembaga"))
+	EventBus.toast.emit("Memanen %s" % {"tree": "kayu", "ore": "tembaga", "sandstone": "batu pasir", "lollipop": "permen"}.get(kind, kind))
 
 func _set_depleted(v: bool) -> void:
 	_depleted = v

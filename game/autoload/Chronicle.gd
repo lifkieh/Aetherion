@@ -43,11 +43,21 @@ func _celebrate(entry: Dictionary) -> void:
 	if Cutscene.def("first_clear").size() > 0 and not Cutscene.playing:
 		Cutscene.play("first_clear")
 	# warga akan membicarakannya beberapa hari (boleh keliru — E5 #77)
-	WorldState.town_talk = {"text": entry.title, "until": GameClock.date_string(), "days": TALK_DAYS}
+	# BUG-8 (REPORT-06): dulu "until" diisi tanggal HARI INI dan tak pernah dibaca —
+	# warga membicarakan first-clear yang sama selamanya. Sekarang: simpan hari mulai.
+	WorldState.town_talk = {
+		"text": entry.title,
+		"start_day": int(floor(float(Time.get_unix_time_from_system() + GameClock.WIB_OFFSET) / 86400.0)),
+		"days": TALK_DAYS,
+	}
 
 ## Bahan gosip warga: apa yang sedang dibicarakan kota hari-hari ini ("" bila tak ada).
 func town_talk() -> String:
 	var t: Dictionary = WorldState.town_talk
 	if t.is_empty():
+		return ""
+	var now := int(floor(float(Time.get_unix_time_from_system() + GameClock.WIB_OFFSET) / 86400.0))
+	if now - int(t.get("start_day", now)) >= int(t.get("days", TALK_DAYS)):
+		WorldState.town_talk = {}      # kota berhenti membicarakannya — dunia bergerak
 		return ""
 	return t.get("text", "")

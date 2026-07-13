@@ -725,6 +725,10 @@ func from_save(d: Dictionary) -> void:
 	onboarding_seen = d.get("onboarding_seen", [])
 	guide_step = int(d.get("guide_step", 0))
 	guide_progress = int(d.get("guide_progress", 0))
+	# BUG-9 (REPORT-06): buff & status TIDAK pernah disimpan, tapi dulu juga tak
+	# direset saat load → war_cry/burn/poison dari sesi sebelumnya menempel jadi hantu.
+	buffs = {}
+	statuses = {}
 	infusion = {}          # transient — never carry over a save
 	mounted = false        # never load mounted (pet may not exist)
 	recalculate_stats()

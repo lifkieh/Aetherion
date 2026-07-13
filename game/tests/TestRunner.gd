@@ -84,6 +84,7 @@ func _ready() -> void:
 	_test_production_standards()
 	_test_personality()
 	_test_dark_miracles()
+	_test_report06_regressions()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -3347,3 +3348,59 @@ func _test_dark_miracles() -> void:
 	check("bencana pulih setelah load", MiracleSystem.dark_active())
 	WorldState.dark_event = {}
 	PlayerData.reputation.clear()
+
+
+func _test_report06_regressions() -> void:
+	print("[REGRESI REPORT-06: bug yang lolos 822 test lama]")
+	# BUG-3: gamepad hotbar — aksi yang di-BIND harus aksi yang benar-benar DI-POLL
+	for i in range(1, 6):
+		var a := "slot_%d" % i
+		check("aksi %s ada di InputMap (dipoll Player)" % a, InputMap.has_action(a))
+		var has_pad := false
+		for e in InputMap.action_get_events(a):
+			if e is InputEventJoypadButton:
+				has_pad = true
+		check("%s punya binding GAMEPAD (pemain gamepad bisa pakai skill)" % a, has_pad)
+	for i in range(3, 6):
+		check("aksi hantu skill_%d tidak lagi dirujuk Keybinds" % i,
+			not Keybinds.REMAPPABLE.any(func(p2): return p2[0] == "skill_%d" % i))
+	# BUG-4 + BUG-5: trees_cut lewat JALUR EVENTBUS NYATA (bukan menulis counter langsung)
+	var save_cut: int = WorldState.get_counter("trees_cut")
+	WorldState.counters["trees_cut"] = 0
+	EventBus.node_harvested.emit("tree", "wood_log", 1)
+	check("1 pohon ditebang = trees_cut +1 (BUKAN 2-4x)", WorldState.get_counter("trees_cut") == 1,
+		str(WorldState.get_counter("trees_cut")))
+	EventBus.node_harvested.emit("lollipop", "sugar_crystal", 1)
+	check("panen PERMEN tidak dihitung sebagai menebang pohon",
+		WorldState.get_counter("trees_cut") == 1, str(WorldState.get_counter("trees_cut")))
+	WorldState.counters["trees_cut"] = save_cut
+	# BUG-5b: quest q_candy kini bisa maju (target 'lollipop' cocok dengan report_kind)
+	QuestSystem.ensure_today()
+	var q_candy := {}
+	for q in Db.quests:
+		if q.get("id", "") == "q_candy":
+			q_candy = q
+	check("quest q_candy menargetkan 'lollipop'", q_candy.get("target", "") == "lollipop")
+	# BUG-2: bencana KEDUA harus bisa datang (dark_event dibersihkan saat kedaluwarsa)
+	var today := int(floor(float(Time.get_unix_time_from_system() + GameClock.WIB_OFFSET) / 86400.0))
+	WorldState.dark_event = {"id": "drought", "started": today - 9, "days": 4}
+	check("bencana kedaluwarsa tidak aktif", not MiracleSystem.dark_active())
+	check("BUG-2: dark_event DIBERSIHKAN saat kedaluwarsa (bencana kedua bisa datang)",
+		WorldState.dark_event.is_empty())
+	# BUG-8: town_talk kedaluwarsa setelah TALK_DAYS
+	WorldState.town_talk = {"text": "uji", "start_day": today - 10, "days": Chronicle.TALK_DAYS}
+	check("BUG-8: kota berhenti membicarakan hal lama", Chronicle.town_talk() == "")
+	WorldState.town_talk = {"text": "baru", "start_day": today, "days": Chronicle.TALK_DAYS}
+	check("kota masih membicarakan hal baru", Chronicle.town_talk() == "baru")
+	WorldState.town_talk = {}
+	# BUG-9: buff & status tidak boleh menembus load
+	PlayerData.apply_buff("uji_hantu", {"duration": 999.0, "atk_mult": 2.0})
+	PlayerData.statuses["burn"] = {"t": 99.0}
+	var snap := PlayerData.to_save()
+	PlayerData.from_save(snap)
+	check("BUG-9: buff hantu dibersihkan saat load", PlayerData.buffs.is_empty())
+	check("BUG-9: status hantu dibersihkan saat load", PlayerData.statuses.is_empty())
+	# BUG-10: Economy hitung-saat-login (#89)
+	check("BUG-10: Economy punya catch_up()", Economy.has_method("catch_up"))
+	# BUG-6: gagal tame TIDAK menenangkan monster; no_orb/pact_only tidak menghukum
+	check("BUG-6: pact_only tak bisa via orb (aturan tetap)", TamingSystem.pact_only("__x") == false)

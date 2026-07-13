@@ -12,14 +12,14 @@ const KB := {
 	"interact": "kb_e.png", "toggle_inventory": "kb_i.png", "world_map": "kb_m.png",
 	"plant_sapling": "kb_g.png", "pause_menu": "kb_esc.png", "dodge": "kb_space.png",
 	"attack": "mouse_left.png", "cast": "mouse_right.png",
-	"skill_1": "kb_1.png", "skill_2": "kb_2.png", "skill_3": "kb_3.png",
-	"skill_4": "kb_4.png", "skill_5": "kb_5.png", "tame": "kb_t.png",
+	"slot_1": "kb_1.png", "slot_2": "kb_2.png", "slot_3": "kb_3.png",
+	"slot_4": "kb_4.png", "slot_5": "kb_5.png", "tame": "kb_t.png",
 }
 const PAD := {
 	"interact": "pad_a.png", "attack": "pad_x.png", "dodge": "pad_b.png",
 	"toggle_inventory": "pad_y.png", "world_map": "pad_start.png", "pause_menu": "pad_start.png",
 	"plant_sapling": "pad_lb.png", "cast": "pad_rt.png",
-	"skill_5": "pad_rb.png",
+	"slot_5": "pad_rb.png",
 }
 
 static func using_pad() -> bool:

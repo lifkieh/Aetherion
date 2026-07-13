@@ -386,7 +386,7 @@ func _arena_hazard() -> void:
 	var tw := warn.create_tween().set_loops(4)
 	tw.tween_property(warn, "color:a", 0.10, 0.1)
 	tw.tween_property(warn, "color:a", 0.34, 0.1)
-	get_tree().create_timer(0.8).timeout.connect(func():
+	get_tree().create_timer(0.8, false).timeout.connect(func():   # BUG-1: false = ikut PAUSE
 		if is_instance_valid(warn):
 			warn.queue_free()
 		if _dead or _player == null:
@@ -467,7 +467,7 @@ func _attack() -> void:
 	var tw := create_tween().set_loops(2)
 	tw.tween_property(sprite, "modulate", Color(1.6, 0.5, 0.5), 0.06)
 	tw.tween_property(sprite, "modulate", Color.WHITE, 0.06)
-	get_tree().create_timer(0.25).timeout.connect(_strike_now)
+	get_tree().create_timer(0.25, false).timeout.connect(_strike_now)   # BUG-1: false = ikut PAUSE
 
 func _strike_now() -> void:
 	if _dead or StatusFx.is_attack_locked(self):

@@ -185,14 +185,32 @@ sampai Direktur menyatakan lain.
   datang (`DUNGEON_ORIGINS.md`, `REGION_ORIGINS.md`).
 - **Pohon skill berikutnya: HORIZONTAL dulu** — lebih banyak pilihan daripada angka.
 
-## PENDING OWNER Q1–Q7 (#107) — JANGAN SENTUH PENAMAAN
+## HAK & KEWAJIBAN BERPENDAPAT (aturan permanen — Direktur, 2026-07-13)
 
-Tujuh pertanyaan konflik masih menunggu owner: ejaan **Nirnama**/Nirmana ·
-**Greenhollow/Ashbrook vs Greenvale** · 7 benua vs enam lingkup budaya · nama asli
-Nirnama · siapa The First Loss · sahabat naga vs Thunder Dragon · identitas Cael
-Morrow. **Jangan mengubah penamaan dokumen, wilayah, atau aset apa pun yang
-bergantung pada ini.** Default sementara: ejaan **"Nirnama"**. Companion Bible
-mencatat lokasi tokoh **apa adanya** (pending-mapping), tidak dipetakan sepihak.
+Agent bekerja sebagai **engineer-designer senior**, bukan juru ketik. Karena itu ia
+punya **hak DAN kewajiban**:
+- **mengkritik ide yang berlubang** — termasuk ide Direktur, termasuk kanon;
+- **menyatakan tidak setuju dengan keputusan**, dengan alasan dan alternatif;
+- **mengusulkan revisi** atas apa pun, kapan pun;
+- **menandai "ini terasa salah"** meski buktinya belum lengkap.
+
+**Aturan mainnya (tidak bisa ditawar):**
+1. Pendapat **DICATAT & DIAJUKAN** (laporan / Decision Log) — **bukan dieksekusi sepihak**.
+2. **Keputusan tetap milik Direktur.** Kanon **tidak berubah** tanpa baris keputusan eksplisit.
+3. **Berbeda pendapat lalu kalah = eksekusi PENUH, tanpa sabotase halus** (tanpa
+   implementasi setengah hati, tanpa "lupa", tanpa test yang sengaja lemah).
+4. **Diam bukan netralitas.** Melihat cacat lalu tidak melaporkannya = **kelalaian**
+   (lihat #145: dark miracle terlewat justru karena agent tidak menaikkan catatan
+   risikonya menjadi butir keputusan).
+
+## PENDING OWNER — status Q1–Q7 (#107, diperbarui 2026-07-13)
+
+**Q1–Q6 SUDAH DIPUTUS** (#108–#113): ejaan **"Nirnama"** · **Greenvale** menang ·
+**7 benua** · nama asli = **rahasia produksi** (hanya `docs_private/`) · The First Loss ·
+sahabat naga = **The Last Witness**. **Q7 (identitas Cael Morrow) masih menunggu.**
+Pemetaan **lingkup budaya → benua (#110)** masih **draft yang bisa diveto**, begitu pula
+**Fairy Realm = TBD** — jangan memindahkan wilayah/aset yang bergantung padanya tanpa
+baris keputusan.
 
 ## Catatan teknis singkat
 - Godot 4.3 (`_tools/godot/`), proyek di `game/`, GDScript, data-driven (`game/data/*.json`).

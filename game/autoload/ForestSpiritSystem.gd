@@ -41,9 +41,11 @@ func _ready() -> void:
 	EventBus.node_harvested.connect(_on_harvest)
 
 func _on_harvest(kind: String, _item: String, _qty: int) -> void:
+	# BUG-4: WorldState._on_node_harvested SUDAH menaikkan "trees_cut".
+	# Dulu sistem ini menaikkannya LAGI → hitungannya 2× lipat (dan GatherNode
+	# meng-emit sekali per BARIS loot, jadi bisa 4×). Sekarang: hanya MEMBACA.
 	if kind != "tree":
 		return
-	WorldState.add_counter("trees_cut")
 	if WorldState.spirit_state == "none" and trees_cut() >= threshold():
 		_wake()
 

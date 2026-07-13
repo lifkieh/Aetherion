@@ -551,7 +551,7 @@ func _ambient_now() -> Color:
 	var c := GameClock.ambient_color()
 	if WorldState.weather == "blood_moon":
 		c = Color(c.r * 1.35, c.g * 0.55, c.b * 0.55)
-	return c
+	return ForestSpiritSystem.world_tint() * c
 
 ## HUTAN MEMUCAT saat Roh Hutan murka (#95): warna dunia meredup dan hutan jadi
 ## lebih sepi — bukan lebih berbahaya. Konsekuensi yang terlihat, tanpa soft-lock.
@@ -561,7 +561,9 @@ func _apply_spirit_mood() -> void:
 		for c in get_children():
 			if c is CanvasModulate:
 				cm = c
+	# BUG-7: tint kini dihitung di _ambient_now() (dipakai tiap frame) — di sini
+	# cukup memaksa refresh sekali agar perubahan terasa langsung.
 	if cm:
-		cm.color = cm.color * ForestSpiritSystem.world_tint()
+		cm.color = _ambient_now()
 	if ForestSpiritSystem.is_angry():
 		EventBus.toast.emit(Loc.t("spirit.pale"))

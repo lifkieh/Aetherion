@@ -112,6 +112,10 @@ func yesterday() -> Dictionary:
 	return _yesterday
 
 func _refresh() -> void:
+	# BUG-2: bencana yang sudah lewat harus DIBERSIHKAN — kalau tidak, syarat
+	# `dark_event.is_empty()` selamanya false dan bencana KEDUA tak pernah datang.
+	if not WorldState.dark_event.is_empty() and _days_left() <= 0:
+		WorldState.dark_event = {}
 	var date := GameClock.date_string()
 	if WorldState.miracle_log.get("date", "") == date:
 		_today = WorldState.miracle_log.get("today", {})
