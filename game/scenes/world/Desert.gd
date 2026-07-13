@@ -150,6 +150,8 @@ func _add_ui() -> void:
 	barrow.setup("dungeon")
 	barrow.global_position = Vector2(MAP_W * TILE * 0.5 + 90, MAP_H * TILE - 90)
 	_keeper(Vector2(MAP_W * TILE * 0.5 - 90, MAP_H * TILE - 90), "desert_ruins")   # altar reruntuhan (#30)
+	TownFolk.place(self, "desert_ruins", Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120))      # Hukum NPC Aneh (E6 #78)
+	MiracleSystem.manifest(self, Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120), 240.0)   # keajaiban hari ini (E7 #79)
 	_world_gate(Vector2(MAP_W * TILE * 0.5 - 160, MAP_H * TILE - 60))   # Gerbang Penjelajah (#43)
 
 func _spawn_gathering() -> void:

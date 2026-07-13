@@ -227,6 +227,8 @@ func _build_village() -> void:
 		var wps: Array = []
 		for w in r[2]: wps.append(VC + w)
 		add_child(v); v.setup(r[0], r[1], wps); v.global_position = wps[0]
+	TownFolk.place(self, "frostpeak_village", VC)       # Hukum NPC Aneh (E6 #78)
+	MiracleSystem.manifest(self, VC, 220.0)             # keajaiban hari ini (E7 #79)
 	# gate guards + the Foothill Barrow dungeon entrance
 	for g in SafeZone.gates():
 		var guard := Node2D.new(); guard.set_script(load("res://scenes/actors/Guard.gd"))

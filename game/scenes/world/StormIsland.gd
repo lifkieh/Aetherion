@@ -170,6 +170,8 @@ func _add_ui() -> void:
 	spire.setup("dungeon")
 	spire.global_position = Vector2(MAP_W * TILE * 0.5 + 120, MAP_H * TILE - 140)
 	_keeper(Vector2(MAP_W * TILE * 0.5 - 100, MAP_H * TILE - 140), "storm_island")   # penjaga menara (#30)
+	TownFolk.place(self, "storm_island", Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 170))      # Hukum NPC Aneh (E6 #78)
+	MiracleSystem.manifest(self, Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 170), 240.0)   # keajaiban hari ini (E7 #79)
 	_world_gate(Vector2(MAP_W * TILE * 0.5 - 60, MAP_H * TILE - 60))   # Gerbang Penjelajah di dermaga (#43)
 
 func _spawn_gathering() -> void:

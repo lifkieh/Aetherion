@@ -61,6 +61,10 @@ func _ready() -> void:
 	_test_transcendent_pyramid()
 	_test_gear_meta_enchant_coating()
 	_test_auction_house()
+	_test_rumors()
+	_test_town_folk()
+	_test_miracles()
+	_test_quest_taxonomy()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2287,3 +2291,128 @@ func _test_auction_house() -> void:
 	WorldState.auction = {}
 	WorldState.freed_captives = []
 	PlayerData.gold = 200
+
+
+func _test_rumors() -> void:
+	print("[Rumor tidak akurat E5]")
+	check("rumors.json termuat", Db.rumors.size() >= 8)
+	var ok := true
+	for r in Db.rumors:
+		if r.get("truth", "") == "" or r.get("distortions", []).is_empty():
+			ok = false
+		var acc: float = float(r.get("accuracy", -1.0))
+		if acc < 0.0 or acc > 1.0:
+			ok = false
+	check("tiap rumor punya truth + distorsi + accuracy 0..1", ok)
+	# distribusi: dengan banyak roll, versi menyimpang PASTI muncul (dunia tak sempurna)
+	var rng := RandomNumberGenerator.new()
+	var inaccurate := 0
+	var accurate := 0
+	WorldState.miracle_log = {"date": GameClock.date_string(), "today": {}, "yesterday": {}}
+	for i in 400:
+		rng.seed = i
+		var r := RumorSystem.speak(rng)
+		if r.get("text", "") == "":
+			check("rumor tak pernah kosong", false)
+			break
+		if bool(r.get("accurate", true)):
+			accurate += 1
+		else:
+			inaccurate += 1
+	check("gosip warga bisa MELENCENG", inaccurate > 30, "%d menyimpang / %d akurat" % [inaccurate, accurate])
+	check("gosip warga tetap sering benar", accurate > inaccurate, "%d vs %d" % [accurate, inaccurate])
+	# rumor fungsional (Penjaga Pohon) TIDAK boleh disentuh sistem distorsi
+	var tree_rumor: String = ""
+	for t in Db.skill_trees.values():
+		if t.get("rumor", "") != "":
+			tree_rumor = t.get("rumor", "")
+			break
+	check("rumor Penjaga Pohon tetap akurat (dari skill_trees.json, bukan RumorSystem)", tree_rumor != "")
+	check("truth() mengembalikan versi benar", RumorSystem.truth("r_guards").contains("Penjaga"))
+
+func _test_town_folk() -> void:
+	print("[Hukum NPC Aneh E6]")
+	var towns := ["greenvale", "frostpeak_village", "candyveil_palace", "desert_ruins", "storm_island"]
+	var total := 0
+	var oddwalkers := 0
+	for t in towns:
+		var list := TownFolk.personas(t)
+		check("%s punya >=5 NPC berkepribadian" % t, list.size() >= 5, "%d" % list.size())
+		check("%s memenuhi Hukum NPC Aneh (5 arketipe)" % t, TownFolk.satisfies_law(t))
+		for p in list:
+			total += 1
+			if p.get("lines", []).size() < 3:
+				check("%s: %s punya >=3 baris dialog" % [t, p.get("name", "?")], false)
+			if p.get("config", {}).is_empty():
+				check("%s: %s punya config CharGen" % [t, p.get("name", "?")], false)
+			if bool(p.get("oddwalker", false)):
+				oddwalkers += 1
+	check("25 NPC berkepribadian total", total == 25, str(total))
+	check("Oddwalker ~10% (1-4 dari 25)", oddwalkers >= 1 and oddwalkers <= 4, str(oddwalkers))
+	# persona hidup: dialog bergilir (bukan acak murni)
+	var v = preload("res://scenes/actors/Villager.tscn").instantiate()
+	add_child(v)
+	var persona: Dictionary = TownFolk.personas("greenvale")[0]
+	v.setup(persona.get("name", "x"), persona.get("config", {}), [Vector2.ZERO, Vector2(10, 0)])
+	v.set_persona(persona)
+	var seen := {}
+	for i in 40:
+		seen[v.persona_line()] = true
+	check("dialog persona bergilir (>=3 baris berbeda terlihat)", seen.size() >= 3, str(seen.size()))
+	check("NPC persona masuk grup town_folk", v.is_in_group("town_folk"))
+	v.queue_free()
+
+func _test_miracles() -> void:
+	print("[Miracle System v1 E7]")
+	check("miracles.json termuat (4 keajaiban)", Db.miracles.size() == 4)
+	for m in Db.miracles:
+		check("keajaiban %s punya gosip benar + versi keliru" % m.get("id", "?"),
+			m.get("gossip_true", "") != "" and not m.get("gossip_false", []).is_empty())
+	check("item keajaiban ada", Db.items.has("ancient_bloom") and Db.items.has("star_fragment"))
+	# roll deterministik: tanggal sama -> hasil sama
+	var a := MiracleSystem.roll("2026-08-01")
+	var b := MiracleSystem.roll("2026-08-01")
+	check("roll deterministik per tanggal", a == b)
+	# frekuensi: langka tapi nyata (sekitar DAILY_CHANCE dalam 400 hari)
+	var hit := 0
+	var kinds := {}
+	for d in range(400):
+		var r := MiracleSystem.roll("2027-%02d-%02d" % [1 + (d / 28), 1 + (d % 28)])
+		if not r.is_empty():
+			hit += 1
+			kinds[r.get("id", "")] = true
+	check("keajaiban langka tapi terjadi (5%-50% hari)", hit > 20 and hit < 200, "%d/400" % hit)
+	check("keempat jenis keajaiban bisa muncul", kinds.size() == 4, str(kinds.keys()))
+	# gosip esok hari: keajaiban kemarin yang diumumkan, TIDAK ada popup
+	WorldState.miracle_log = {"date": GameClock.date_string(), "today": {},
+		"yesterday": {"id": "falling_star", "date": "kemarin"}}
+	var rng := RandomNumberGenerator.new()
+	var mentioned := false
+	for i in 60:
+		rng.seed = i
+		var line: String = RumorSystem.speak(rng).get("text", "")
+		if line.to_lower().contains("bintang"):
+			mentioned = true
+			break
+	check("keajaiban semalam digosipkan warga esok hari", mentioned)
+	WorldState.miracle_log = {}
+
+func _test_quest_taxonomy() -> void:
+	print("[Quest Taxonomy + Hukum Quest E8]")
+	var valid := ["Need", "Dream", "Fear", "Ambition", "Memory", "Legacy", "Hidden", "Chronicle", "Myth", "World", "Era"]
+	var all_tagged := true
+	var all_human := true
+	for q in Db.quests:
+		var qt: String = q.get("quest_type", "")
+		if not qt in valid:
+			all_tagged = false
+			print("  [!] quest tanpa taksonomi sah: %s" % q.get("id", "?"))
+		# HUKUM QUEST: kill/collect tanpa konteks manusia dilarang jadi inti quest —
+		# deskripsi wajib menyebut seseorang/alasan manusia, bukan cuma "kalahkan N".
+		var d: String = q.get("desc", "")
+		if d.length() < 40:
+			all_human = false
+			print("  [!] quest tanpa konteks manusia: %s" % q.get("id", "?"))
+	check("semua quest punya quest_type sah", all_tagged)
+	check("semua quest punya konteks manusia (Hukum Quest)", all_human)
+	check("mekanik quest tetap utuh (field type)", Db.quests[0].get("type", "") != "")

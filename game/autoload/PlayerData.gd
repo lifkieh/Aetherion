@@ -216,6 +216,7 @@ func gain_exp(amount: int) -> void:
 	if GameClock.is_golden_hour():
 		amount = int(ceil(amount * 1.1))
 	var tree_exp: float = SkillTreeSystem.bonus_total("exp_pct")   # pohon skill (#30)
+	tree_exp += buff_add("exp_pct")   # buff sementara (mis. pelangi ganda, E7)
 	if tree_exp > 0.0:
 		amount = int(ceil(amount * (1.0 + tree_exp)))
 	exp += amount

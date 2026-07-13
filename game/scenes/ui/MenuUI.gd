@@ -323,6 +323,21 @@ func _weekly_prophecy() -> String:
 	var pick: Dictionary = scs[GameClock.week_index() % scs.size()]
 	return "\"%s\"" % pick.get("hint", "")
 
+## Taksonomi quest (E8 #80, blueprint "Quest Taxonomy"). Hukum: setiap quest harus
+## MENGUBAH sesuatu; kill/collect tanpa konteks manusia dilarang jadi inti quest.
+const QUEST_TYPE_LABEL := {
+	"Need": "· Kebutuhan", "Dream": "· Impian", "Fear": "· Ketakutan",
+	"Ambition": "· Ambisi", "Memory": "· Kenangan", "Legacy": "· Warisan",
+	"Hidden": "· Tersembunyi", "Chronicle": "· Kronik", "Myth": "· Mitos",
+	"World": "· Dunia", "Era": "· Era",
+}
+const QUEST_TYPE_COLOR := {
+	"Need": Color(0.75, 0.8, 0.7), "Dream": Color(0.75, 0.85, 1.0), "Fear": Color(0.9, 0.65, 0.65),
+	"Ambition": Color(0.95, 0.85, 0.55), "Memory": Color(0.8, 0.75, 0.95), "Legacy": Color(1.0, 0.85, 0.4),
+	"Hidden": Color(0.6, 0.6, 0.7), "Chronicle": Color(0.85, 0.8, 0.6), "Myth": Color(0.8, 0.6, 0.95),
+	"World": Color(0.6, 0.85, 0.8), "Era": Color(1.0, 0.7, 0.5),
+}
+
 func _build_quests() -> void:
 	title.text = "Papan Quest Harian"
 	QuestSystem.ensure_today()
@@ -339,9 +354,16 @@ func _build_quests() -> void:
 		var reward := "%dG" % q.reward_gold
 		if q.reward_item != "": reward += " + %s x%d" % [Db.item_name(q.reward_item), q.reward_qty]
 		var l := _mk_label("%s%s  [%s]  → %s" % [q.name, cond, status, reward], 14)
-		l.custom_minimum_size = Vector2(400, 0)
+		l.custom_minimum_size = Vector2(360, 0)
+		l.tooltip_text = q.get("desc", "")
 		if q.claimed: l.modulate = Color(0.5, 0.5, 0.5)
 		h.add_child(l)
+		# TAKSONOMI QUEST (E8 #80): label kecil — quest ini menyentuh apa dari manusia?
+		var qt: String = q.get("quest_type", "")
+		if qt != "":
+			var tag := _mk_label(QUEST_TYPE_LABEL.get(qt, qt), 11, QUEST_TYPE_COLOR.get(qt, Color(0.7, 0.75, 0.85)))
+			tag.tooltip_text = "Taksonomi quest: %s" % qt
+			h.add_child(tag)
 		if q.done and not q.claimed:
 			h.add_child(_btn("Klaim", func(): QuestSystem.claim(q.id); _rebuild()))
 		elif q.claimed:

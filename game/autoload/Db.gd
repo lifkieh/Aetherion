@@ -25,6 +25,9 @@ var classes: Dictionary = {}       # class_id -> def (6 combat classes, FF-2a)
 var class_order: Array = []        # display order
 var skill_trees: Dictionary = {}   # tree_id -> def (pohon terikat lokasi, Decision Log #30)
 var ui_feel: Dictionary = {}       # tuning motion/feel UI (Decision Log #44)
+var rumors: Array = []             # rumor + variasi menyimpang (E5, #77)
+var town_npcs: Dictionary = {}     # town_id -> 5 persona NPC (Hukum NPC Aneh, E6 #78)
+var miracles: Array = []           # keajaiban langka tak-dipicu-pemain (E7, #79)
 
 var _errors: Array[String] = []
 
@@ -54,6 +57,9 @@ func load_all() -> void:
 	class_order = _load_array("classes.json").map(func(c): return c.get("id", ""))
 	skill_trees = _load_indexed("skill_trees.json", "id")
 	ui_feel = _load_object("ui_feel.json")
+	rumors = _load_array("rumors.json")
+	town_npcs = _load_object("town_npcs.json")
+	miracles = _load_array("miracles.json")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])

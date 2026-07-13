@@ -1,0 +1,25 @@
+[
+  {"id": "ancient_bloom", "name": "Mekarnya Bunga Purba", "weight": 3,
+   "item": "ancient_bloom",
+   "gossip_true": "Kudengar semalam ada bunga tua mekar di padang. Bunga yang katanya sudah punah.",
+   "gossip_false": [
+     "Kudengar semalam padang berubah jadi taman. Semalaman saja. Paginya hilang lagi.",
+     "Katanya ada bunga mekar semalam — siapa yang memetiknya jadi bisa bicara pada tanaman."]},
+  {"id": "migration", "name": "Migrasi Kawanan", "weight": 3,
+   "gossip_true": "Kudengar semalam kawanan burung lewat di atas desa. Ribuan. Tak ada yang tahu ke mana.",
+   "gossip_false": [
+     "Kudengar semalam langit penuh kunang-kunang. Kunang-kunang tak terbang setinggi itu. Itu bukan kunang-kunang.",
+     "Burung-burung itu terbang ke arah yang salah. Melawan musim. Sesuatu mengusir mereka."]},
+  {"id": "double_rainbow", "name": "Pelangi Ganda", "weight": 2, "needs": "after_rain",
+   "buff": {"key": "miracle_rainbow", "duration": 600.0, "exp_pct": 0.05, "luck": 1},
+   "gossip_true": "Kudengar kemarin muncul pelangi ganda seusai hujan. Yang melihatnya bilang harinya jadi ringan.",
+   "gossip_false": [
+     "Pelangi ganda itu pintu, katanya. Kalau kau berjalan ke ujungnya, kau tak akan kembali sama.",
+     "Dua pelangi berarti dua doa dikabulkan. Aku sudah pakai keduanya. Untuk hal bodoh."]},
+  {"id": "falling_star", "name": "Bintang Jatuh", "weight": 2, "needs": "clear_night",
+   "item": "star_fragment",
+   "gossip_true": "Kudengar semalam ada bintang jatuh di kejauhan. Ada yang bilang serpihannya masih di tanah.",
+   "gossip_false": [
+     "Bintang jatuh itu bukan bintang. Aku lihat sendiri: ia melambat sebelum menyentuh tanah.",
+     "Yang menemukan serpihan bintang akan diikuti sesuatu. Bukan hal jahat. Cuma... diikuti."]}
+]

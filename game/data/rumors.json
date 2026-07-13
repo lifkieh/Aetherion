@@ -1,0 +1,50 @@
+[
+  {"id": "r_cave_south", "topic": "dungeon", "accuracy": 0.7,
+   "truth": "Ada gua tua di selatan. Monsternya galak — bawa ramuan.",
+   "distortions": [
+     "Gua selatan itu? Isinya naga emas. Naga. Emas. Kudengar dari sepupuku.",
+     "Jangan ke gua selatan — siapa pun yang masuk keluar jadi tua sepuluh tahun."]},
+  {"id": "r_bloodmoon", "topic": "sky", "accuracy": 0.6,
+   "truth": "Saat bulan berubah merah, monster lebih ganas dan menjatuhkan lebih banyak.",
+   "distortions": [
+     "Bulan merah itu darah dewa yang bocor. Sungguh. Tutup jendelamu.",
+     "Kata orang, kalau kau menikah di bawah bulan merah, pernikahanmu abadi."]},
+  {"id": "r_auction", "topic": "economy", "accuracy": 0.75,
+   "truth": "Rumah Lelang mengganti lot tiap hari. Saat purnama, barang istimewa turun ke lantai.",
+   "distortions": [
+     "Juru lelang itu menjual pedang para dewa. Cuma tak mau ke orang sepertimu.",
+     "Kudengar semua yang kau tawar di sana sudah diatur sejak semalam."]},
+  {"id": "r_enchanter", "topic": "craft", "accuracy": 0.65,
+   "truth": "Enchanter bisa menguatkan gear sampai +10. Di atas +6, kegagalan menurunkannya satu tingkat.",
+   "distortions": [
+     "Enchanter itu bisa MELEDAKKAN pedangmu. Sudah tiga orang kehilangan alis.",
+     "Konon di +10 senjatanya bicara padamu. Menyebut namamu. Tiap malam."]},
+  {"id": "r_transcendent", "topic": "craft", "accuracy": 0.55,
+   "truth": "Penempaan tingkat tertinggi butuh material dari monster kuat — dan ritual panjang.",
+   "distortions": [
+     "Pandai besi tua itu pernah menempa bintang. Bintang beneran, jatuh dari langit.",
+     "Yang menempa senjata puncak harus memberikan satu ingatan sebagai bayaran."]},
+  {"id": "r_pegasus", "topic": "myth", "accuracy": 0.3,
+   "truth": "Ada yang bilang pernah melihat kuda bersayap di langit — sekali, lalu hilang.",
+   "distortions": [
+     "Kuda bersayap itu mencari seseorang. Menurutku dia mencarimu. Entahlah.",
+     "Kakekku bersumpah kuda bersayap itu berbicara. Katanya cuma dua kata. Ia lupa yang mana."]},
+  {"id": "r_nameless_door", "topic": "myth", "accuracy": 0.25,
+   "truth": "Konon ada pintu tanpa nama yang hanya terbuka pada malam tertentu.",
+   "distortions": [
+     "Pintu itu terbuka kalau kau mengetuk tiga kali sambil menahan napas. Sudah kucoba. Nyaris mati.",
+     "Di balik pintu itu ada rumah persis rumahmu. Dengan kau di dalamnya. Sudah menunggu."]},
+  {"id": "r_guards", "topic": "town", "accuracy": 0.85,
+   "truth": "Penjaga gerbang membunuh monster yang mendekat. Berkat mereka kota ini aman.",
+   "distortions": [
+     "Penjaga itu tak pernah tidur karena mereka sudah mati. Sopanlah pada mereka."]},
+  {"id": "r_frostpeak", "topic": "world", "accuracy": 0.7,
+   "truth": "Di Frostpeak ada makhluk es yang jantungnya tak pernah mencair.",
+   "distortions": [
+     "Puncak Frostpeak itu bukan gunung. Itu sesuatu yang sedang tidur. Jangan berisik di sana."]},
+  {"id": "r_candyveil", "topic": "world", "accuracy": 0.6,
+   "truth": "Sugar Queen mengadakan pesta teh bagi yang cukup manis untuk diundang.",
+   "distortions": [
+     "Undangan pesta teh itu tak bisa ditolak. Yang menolak... ya, tak ada yang menolak.",
+     "Semua permen di Candyveil dulunya orang. Makanlah pelan-pelan, hormati mereka."]}
+]

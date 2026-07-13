@@ -1,0 +1,5788 @@
+# AETHERION MASTER CHECKPOINT
+# FILE 01 — VISION AND PHILOSOPHY
+
+Version:
+Checkpoint v1
+
+Status:
+LOCKED
+
+---
+
+# NORTH STAR
+
+Kamu bukan pahlawan dari sebuah kisah.
+
+Kamu adalah pendiri dari sebuah sejarah.
+
+---
+
+# TAGLINE
+
+Be and build yourself in another world.
+
+---
+
+# IDENTITAS GAME
+
+Genre:
+
+Fantasy Legacy Adventure RPG 2D
+
+---
+
+Aetherion bukan game tentang menyelamatkan dunia.
+
+Aetherion adalah game tentang hidup di dunia.
+
+Dunia tidak membutuhkan pemain untuk tetap berjalan.
+
+Namun dunia dapat berubah karena keberadaan pemain.
+
+---
+
+# EMPAT PILAR RESMI
+
+## WONDER
+
+Dunia menyimpan rahasia.
+
+Pemain terus menemukan hal-hal yang tidak diketahui.
+
+Target emosi:
+
+"Apa itu?"
+
+---
+
+## BELONGING
+
+Dunia menjadi rumah kedua.
+
+Target emosi:
+
+"Aku pulang."
+
+---
+
+## STEWARDSHIP
+
+Pilihan memiliki konsekuensi.
+
+Tidak ada keputusan yang sepenuhnya benar.
+
+Target emosi:
+
+"Aku bertanggung jawab atas dunia ini."
+
+---
+
+## LEGACY
+
+Dunia mengingat.
+
+Target emosi:
+
+"Jejakku masih ada di sini."
+
+---
+
+# FILOSOFI UTAMA
+
+The World Remembers.
+
+Dunia mengingat bukan karena sihir.
+
+Dunia mengingat karena tindakan meninggalkan jejak.
+
+Setiap kehidupan meninggalkan gema.
+
+(Echo Principle)
+
+---
+
+# PERTANYAAN SENTRAL GAME
+
+Apakah sesuatu tetap layak dibangun walaupun suatu hari akan hilang?
+
+---
+
+# JAWABAN DUNIA
+
+Ya.
+
+Karena nilai sesuatu tidak ditentukan oleh lamanya ia bertahan.
+
+Tetapi oleh kehidupan yang tumbuh darinya.
+
+---
+
+# LAW OF ERAS
+
+Tidak ada akhir dunia.
+
+Yang ada hanyalah akhir sebuah era.
+
+Setelah satu era berakhir.
+
+Era baru lahir.
+
+---
+
+# HUKUM DIREKTUR #1
+
+Setiap fitur baru wajib memperkuat minimal satu dari:
+
+- Wonder
+- Belonging
+- Stewardship
+- Legacy
+
+Jika tidak.
+
+Fitur ditolak.
+
+---
+
+# TUJUAN AKHIR PEMAIN
+
+Bukan menjadi yang terkuat.
+
+Bukan menjadi penyelamat dunia.
+
+Tetapi:
+
+Datang sebagai orang asing.
+
+Hidup sebagai bagian dari dunia.
+
+Pergi sebagai sebuah cerita.
+
+
+
+# AETHERION MASTER CHECKPOINT
+# FILE 02 — WORLD FOUNDATION
+
+Status:
+LOCKED
+
+---
+
+# KONSEP DUNIA
+
+Aetherion adalah dunia hidup.
+
+Dunia akan tetap berkembang meskipun pemain tidak berada di sana.
+
+---
+
+# FILOSOFI DUNIA
+
+The World Does Not Need You.
+
+Namun.
+
+The World Can Be Changed By You.
+
+---
+
+# ENAM EMOSI BESAR
+
+1. Wonder
+2. Belonging
+3. Stewardship
+4. Legacy
+5. Loss
+6. Continuation
+
+---
+
+# CONTINUATION
+
+Saat pemain logout.
+
+Dunia tetap berjalan.
+
+NPC tetap hidup.
+
+Kerajaan tetap berkembang.
+
+Hubungan tetap berubah.
+
+---
+
+# DUNIA TIDAK MENUNGGU PEMAIN
+
+Quest dapat selesai tanpa pemain.
+
+NPC dapat berkembang tanpa pemain.
+
+Companion dapat berubah tanpa pemain.
+
+Kerajaan dapat berkembang tanpa pemain.
+
+---
+
+# KEAJAIBAN DUNIA (MIRACLE SYSTEM)
+
+Peristiwa langka yang tidak dipicu pemain.
+
+Contoh:
+
+- Star Whale muncul
+- bunga kuno mekar
+- fenomena langit
+- migrasi monster
+- pertemuan langka antar companion
+
+Tujuan:
+
+Menumbuhkan Wonder.
+
+---
+
+# GREAT UNKNOWN
+
+10% dunia tidak pernah dijelaskan.
+
+Selamanya.
+
+Misteri harus tetap ada.
+
+Karena misteri yang selesai dijelaskan akan membunuh Wonder.
+
+---
+
+# WORLD REMEMBERS
+
+Dunia mengingat:
+
+- kebaikan
+- pengorbanan
+- kegagalan
+- kejahatan
+
+Namun tidak sempurna.
+
+Sejarah dapat salah.
+
+Rumor dapat menyimpang.
+
+Ingatan dapat memudar.
+
+Karena dunia hidup.
+
+
+# AETHERION MASTER CHECKPOINT
+# FILE 03 — STORY FOUNDATION
+
+Status:
+LOCKED
+
+---
+
+# FILOSOFI CERITA
+
+Aetherion bukan cerita tentang menyelamatkan dunia.
+
+Aetherion adalah cerita tentang menjalani kehidupan di dunia.
+
+---
+
+Pemain bukan Chosen One.
+
+Pemain bukan Reinkarnasi Dewa.
+
+Pemain bukan Sang Penyelamat.
+
+---
+
+Pemain adalah seseorang yang:
+
+Secara sukarela meninggalkan dunia lamanya.
+
+Dan memilih memulai kehidupan baru di Aetherion.
+
+---
+
+# AWAL CERITA
+
+Seorang manusia dari dunia lain menerima tawaran berpindah dunia.
+
+Tidak ada paksaan.
+
+Tidak ada ramalan.
+
+Tidak ada takdir.
+
+---
+
+Ia setuju.
+
+---
+
+Ketika kesadarannya kembali.
+
+Ia jatuh dari langit.
+
+---
+
+Seekor Pegasus menyelamatkannya.
+
+Mengantarnya ke hutan dekat desa kecil.
+
+---
+
+Sebelum pergi.
+
+Pegasus hanya berkata:
+
+"Carilah aku."
+
+---
+
+Lalu menghilang.
+
+---
+
+Tidak ada penjelasan.
+
+Tidak ada tutorial kosmik.
+
+Tidak ada jawaban.
+
+---
+
+# PERTANYAAN PERTAMA
+
+Pemain tidak bertanya:
+
+"Aku harus menyelamatkan siapa?"
+
+---
+
+Pemain bertanya:
+
+"Aku berada di mana?"
+
+---
+
+# TEMA BESAR
+
+Memory vs Oblivion
+
+Ingatan melawan Pelupaan.
+
+---
+
+Pertanyaan utama dunia:
+
+Apakah sesuatu tetap layak dibangun jika suatu hari akan hilang?
+
+---
+
+# JAWABAN DUNIA
+
+Ya.
+
+Karena nilai kehidupan tidak ditentukan oleh keabadian.
+
+Tetapi oleh dampak yang ditinggalkan.
+
+---
+
+# STRUKTUR CERITA
+
+Cerita dibagi menjadi ERA.
+
+Bukan bab linear.
+
+---
+
+Setiap era memiliki:
+
+- konflik
+- tema
+- tokoh sentral
+- perubahan dunia
+
+---
+
+Era dapat berakhir.
+
+Dunia tidak.
+
+---
+
+# ERA PERTAMA
+
+THE AGE OF MEMORY
+
+---
+
+Tema:
+
+Ingatan.
+
+Sejarah.
+
+Warisan.
+
+---
+
+Tokoh sentral:
+
+Sang Nirnama.
+
+---
+
+Konflik utama:
+
+Apakah dunia layak dipertahankan?
+
+---
+
+# FILOSOFI CERITA TERBUKA
+
+Pemain tidak wajib:
+
+- menjadi raja
+- menjadi petualang
+- menikah
+- membangun kerajaan
+- mengalahkan Nirnama
+
+---
+
+Pemain bebas menentukan hidupnya.
+
+---
+
+Cerita utama akan terus bergerak.
+
+Tetapi pemain boleh memilih keterlibatannya.
+
+---
+
+# ENDING FILOSOFI
+
+Tidak ada ending dunia.
+
+Yang ada:
+
+- ending karakter
+- ending keluarga
+- ending dinasti
+- ending era
+
+---
+
+Dunia tetap hidup.
+
+---
+
+# KALIMAT PONDASI CERITA
+
+Aetherion bukan kisah tentang mengalahkan musuh.
+
+Aetherion adalah kisah tentang membuktikan bahwa kehidupan masih layak dijalani.
+
+
+# AETHERION MASTER CHECKPOINT
+# FILE 04 — NIRNAMA BIBLE
+
+Status:
+DRAFT LOCKED
+
+Catatan:
+Masih membutuhkan NIRNAMA BIBLE lengkap pada fase berikutnya.
+
+---
+
+# IDENTITAS
+
+Nama:
+
+Sang Nirnama
+
+---
+
+Status:
+
+Antagonis Era Pertama
+
+---
+
+# FILOSOFI
+
+Nirnama bukan monster.
+
+Nirnama bukan iblis.
+
+Nirnama bukan dewa jahat.
+
+---
+
+Nirnama adalah seseorang yang berhenti percaya.
+
+---
+
+# KESALAHAN BESAR
+
+Nirnama tidak salah ketika berkata:
+
+"Semua akan hilang."
+
+---
+
+Ia benar.
+
+---
+
+Kesalahannya adalah kesimpulannya.
+
+---
+
+Ia percaya:
+
+Jika semua akan hilang.
+
+Maka tidak ada yang layak dibangun.
+
+---
+
+# POSISI DALAM CERITA
+
+Nirnama bukan musuh terakhir dunia.
+
+---
+
+Nirnama adalah gejala.
+
+---
+
+Luka.
+
+---
+
+Akibat dari ribuan tahun kehilangan.
+
+---
+
+# KETAKUTAN TERBESAR
+
+Bukan kematian.
+
+---
+
+Pelupaan.
+
+---
+
+Second Death.
+
+---
+
+Tubuh mati.
+
+Lalu nama ikut mati.
+
+---
+
+Itulah yang ditakuti Nirnama.
+
+---
+
+# HUBUNGAN DENGAN CHRONICLE
+
+Chronicle adalah lawan alami Nirnama.
+
+---
+
+Setiap nama yang dicatat.
+
+Mengalahkan pelupaan.
+
+---
+
+Setiap sejarah yang disimpan.
+
+Mengalahkan kehampaan.
+
+---
+
+# HUBUNGAN DENGAN PEMAIN
+
+Pemain dan Nirnama sebenarnya memiliki awal yang mirip.
+
+---
+
+Keduanya:
+
+- datang dengan harapan
+- membangun sesuatu
+- mencintai dunia
+
+---
+
+Perbedaannya:
+
+Pemain masih percaya.
+
+Nirnama sudah menyerah.
+
+---
+
+# HUBUNGAN DENGAN PEGASUS
+
+Belum diungkap.
+
+---
+
+Namun terdapat indikasi:
+
+Pegasus mengetahui masa lalu Nirnama.
+
+---
+
+Kemungkinan:
+
+Keduanya pernah hidup dalam era yang sama.
+
+---
+
+# KELEMAHAN TERBESAR
+
+Nirnama tidak dapat menjawab satu pertanyaan:
+
+Jika semua akan hilang.
+
+Mengapa masih ada orang yang tetap membangun?
+
+---
+
+# JAWABAN PEMAIN
+
+Jawaban tidak diberikan melalui dialog.
+
+---
+
+Jawaban diberikan melalui kehidupan pemain.
+
+---
+
+Kerajaan.
+
+Keluarga.
+
+Companion.
+
+Murid.
+
+Kota.
+
+Warisan.
+
+---
+
+Seluruh save file pemain menjadi jawaban atas pertanyaan Nirnama.
+
+---
+
+# STATUS BIBLE
+
+Masih belum ditulis:
+
+- nama asli
+- kerajaan asal
+- sejarah lengkap
+- tragedi utama
+- hubungan dengan Chronicle
+- hubungan dengan Crisis lama
+- alasan memilih pelupaan
+
+---
+
+Wajib selesai sebelum Act 1 final.
+
+
+# AETHERION MASTER CHECKPOINT
+# FILE 05 — COMPANION PHILOSOPHY
+
+Status:
+LOCKED
+
+---
+
+# FILOSOFI DASAR
+
+Companion bukan follower.
+
+Companion bukan pet.
+
+Companion bukan alat combat.
+
+Companion adalah manusia (atau makhluk hidup lain) yang memiliki kehidupannya sendiri.
+
+---
+
+# HUKUM UTAMA
+
+Setiap Companion adalah protagonis dari hidupnya sendiri.
+
+Pemain hanyalah salah satu bagian dari hidup mereka.
+
+---
+
+# TUJUAN DESAIN
+
+Ketika pemain bertemu Companion.
+
+Target emosi bukan:
+
+"Aku mendapatkan unit baru."
+
+Melainkan:
+
+"Aku bertemu seseorang."
+
+---
+
+# SISTEM TIER
+
+Tier-S :
+15 karakter utama dunia.
+
+Mampu mempengaruhi sejarah.
+
+---
+
+Tier-A :
+15 tokoh penting dunia.
+
+Berpengaruh terhadap wilayah atau faksi.
+
+---
+
+Tier-B :
+20 tokoh rekrutan utama.
+
+Dapat berkembang menjadi figur besar.
+
+---
+
+Total awal:
+
+50 Companion Utama.
+
+---
+
+# PENYEBARAN
+
+Companion tidak boleh terkumpul.
+
+---
+
+Mereka harus tersebar di:
+
+- kerajaan manusia
+- negeri elf
+- negeri dwarf
+- beastfolk
+- undersea
+- underground
+- sky realm
+- fairy realm
+- gurun
+- salju
+- hutan kuno
+- pulau terpencil
+- kota kriminal
+
+---
+
+Tujuan:
+
+Dunia terasa luas.
+
+---
+
+# IDENTITAS
+
+Setiap Companion wajib memiliki:
+
+- nama
+- usia
+- ras
+- pekerjaan
+- tujuan hidup
+- ketakutan
+- konflik
+- hubungan keluarga
+- hubungan sosial
+- sejarah pribadi
+
+---
+
+# RELASI
+
+Companion dapat:
+
+- menikah
+- pacaran
+- memiliki anak
+- bercerai
+- kehilangan pasangan
+- memiliki murid
+- memiliki rival
+
+---
+
+Tanpa keterlibatan pemain.
+
+---
+
+# LIFE EVENT SYSTEM
+
+Companion mengalami kehidupan.
+
+---
+
+Contoh:
+
+- ulang tahun
+- pernikahan
+- kelahiran anak
+- kehilangan keluarga
+- perubahan pekerjaan
+- pindah rumah
+- pensiun
+- kematian
+
+---
+
+# PERUBAHAN
+
+Companion dapat berubah.
+
+---
+
+Orang baik bisa menjadi buruk.
+
+Orang buruk bisa menjadi baik.
+
+---
+
+Tidak ada karakter yang statis.
+
+---
+
+# COMPANION BUKAN HADIAH
+
+Companion tidak boleh direkrut hanya karena:
+
+- quest selesai
+- level cukup
+
+---
+
+Harus ada alasan naratif.
+
+---
+
+# PERSAHABATAN
+
+Tidak semua Companion harus menyukai pemain.
+
+---
+
+Kemungkinan:
+
+- sahabat
+- netral
+- hormat
+- takut
+- membenci
+
+---
+
+Semua valid.
+
+---
+
+# PERTUMBUHAN
+
+Kekuatan Companion tidak ditentukan kelangkaannya.
+
+---
+
+Kekuatan ditentukan oleh:
+
+- pengalaman
+- kehidupan
+- pilihan
+- pelatihan
+- sifat
+
+---
+
+Companion legendaris dapat menjadi lemah.
+
+Companion biasa dapat menjadi legenda.
+
+---
+
+# RANDOM PERSONALITY
+
+Tidak ada template tetap.
+
+---
+
+Kepribadian dibentuk oleh kombinasi:
+
+Temperament:
+
+- Sanguinis
+- Koleris
+- Melankolis
+- Plegmatis
+
+---
+
+Big Five:
+
+- Openness
+- Conscientiousness
+- Extraversion
+- Agreeableness
+- Neuroticism
+
+---
+
+Ditambah:
+
+- trauma
+- pengalaman hidup
+- budaya
+- keluarga
+- pendidikan
+
+---
+
+Setiap Companion harus terasa unik.
+
+---
+
+# TUJUAN AKHIR
+
+Ketika Companion mati.
+
+Pemain harus merasa:
+
+"Aku kehilangan seseorang."
+
+Bukan:
+
+"Aku kehilangan statistik."
+
+
+# AETHERION MASTER CHECKPOINT
+# FILE 06 — QUEST PHILOSOPHY
+
+Status:
+LOCKED
+
+---
+
+# FILOSOFI DASAR
+
+Quest bukan tugas.
+
+Quest adalah kehidupan seseorang yang bersinggungan dengan kehidupan pemain.
+
+---
+
+# HUKUM UTAMA
+
+Setiap quest harus mengubah sesuatu.
+
+---
+
+Jika tidak ada yang berubah.
+
+Maka quest gagal.
+
+---
+
+# YANG BOLEH BERUBAH
+
+- NPC
+- Companion
+- Kota
+- Faksi
+- Kerajaan
+- Dunia
+- Pemain
+
+---
+
+# JENIS QUEST
+
+## NEED QUEST
+
+Kebutuhan.
+
+---
+
+Contoh:
+
+- obat
+- makanan
+- bantuan
+
+---
+
+Fokus:
+
+Empati.
+
+---
+
+## DREAM QUEST
+
+Impian.
+
+---
+
+Contoh:
+
+- menjadi penyihir
+- melihat laut
+- membangun toko
+
+---
+
+Fokus:
+
+Harapan.
+
+---
+
+## FEAR QUEST
+
+Ketakutan.
+
+---
+
+Contoh:
+
+- monster
+- perang
+- kehilangan
+
+---
+
+Fokus:
+
+Keberanian.
+
+---
+
+## AMBITION QUEST
+
+Ambisi.
+
+---
+
+Contoh:
+
+- politik
+- kekuasaan
+- kekayaan
+
+---
+
+Fokus:
+
+Konsekuensi.
+
+---
+
+## MEMORY QUEST
+
+Sejarah.
+
+---
+
+Contoh:
+
+- Chronicle
+- reruntuhan
+- legenda
+
+---
+
+Fokus:
+
+Pengetahuan.
+
+---
+
+## LEGACY QUEST
+
+Dampak jangka panjang.
+
+---
+
+Contoh:
+
+Membantu seorang anak.
+
+200 jam kemudian.
+
+Anak tersebut menjadi tokoh besar.
+
+---
+
+# QUEST TIDAK MENUNGGU PEMAIN
+
+Quest dapat:
+
+- selesai
+- gagal
+- berubah
+
+Tanpa keterlibatan pemain.
+
+---
+
+# GAGAL BUKAN GAME OVER
+
+Filosofi:
+
+Failure Changes Story.
+
+---
+
+Bukan:
+
+Failure Ends Story.
+
+---
+
+# HIDDEN QUEST
+
+Quest tidak selalu terlihat.
+
+---
+
+Pemain dapat menjalani quest tanpa sadar.
+
+---
+
+Contoh:
+
+Memberi makan pengemis.
+
+100 jam kemudian.
+
+Konsekuensinya muncul.
+
+---
+
+# CHRONICLE QUEST
+
+Quest paling langka.
+
+---
+
+Hadiah utama:
+
+Pengetahuan.
+
+---
+
+Bukan:
+
+- emas
+- EXP
+- gear
+
+---
+
+# MYTH QUEST
+
+Quest yang keberadaannya tidak diketahui semua pemain.
+
+---
+
+Dibangun dari:
+
+- rumor
+- legenda
+- cerita rakyat
+
+---
+
+# WORLD QUEST
+
+Quest yang mempengaruhi wilayah.
+
+---
+
+Contoh:
+
+- migrasi monster
+- perang
+- wabah
+- ekonomi
+
+---
+
+# ERA QUEST
+
+Quest yang mempengaruhi sejarah dunia.
+
+---
+
+Jumlah sangat sedikit.
+
+---
+
+Biasanya terhubung dengan:
+
+- Nirnama
+- Celestial Crisis
+- Chronicle
+
+---
+
+# PILIHAN SULIT
+
+Aetherion mengizinkan:
+
+- kehilangan
+- pengorbanan
+- konsekuensi permanen
+
+---
+
+Karena harga nyawa mahal.
+
+---
+
+# QUEST TERLARANG
+
+Tidak boleh menjadi inti quest:
+
+- bunuh 10 tikus
+- kumpulkan 15 batu
+- ambil 7 bunga
+
+---
+
+Aktivitas tersebut boleh ada.
+
+---
+
+Tetapi harus memiliki konteks manusia.
+
+---
+
+# TUJUAN AKHIR
+
+Ketika quest selesai.
+
+Pemain harus merasa:
+
+"Aku baru saja ikut campur dalam kehidupan seseorang."
+
+Bukan:
+
+"Aku baru saja menyelesaikan checklist."
+
+# AETHERION MASTER CHECKPOINT
+# FILE 07 — DEATH AND LEGACY BIBLE
+
+Status:
+LOCKED
+
+---
+
+# FILOSOFI KEMATIAN
+
+Kematian bukan kehilangan karakter.
+
+Kematian adalah kehilangan masa depan yang mungkin terjadi.
+
+---
+
+Ketika seseorang mati.
+
+Yang hilang bukan hanya dirinya.
+
+Yang hilang adalah:
+
+- impiannya
+- kemungkinan masa depannya
+- hubungannya
+- warisan yang belum sempat dibangun
+
+---
+
+# HARGA NYAWA
+
+Harga nyawa sangat mahal.
+
+---
+
+Nyawa tidak boleh menjadi resource murah.
+
+---
+
+Setiap kematian harus memiliki:
+
+- konsekuensi
+- dampak
+- sejarah
+
+---
+
+# SECOND DEATH
+
+Terdapat dua kematian.
+
+---
+
+## Kematian Pertama
+
+Tubuh mati. dapat dihidupkan dengan berbagai cara khusus dan sulit (maks 1x dalam 1 npc) dan kondisional. jika kondisi tubuh hancur atau hilang, maka gabisa.
+
+---
+
+## Kematian Kedua
+
+Tidak ada lagi yang mengingat, depresi, stress, kegilaan, sakit mental, penakut, kehilangan motivasi, menjadi pemabuk dan sampah.
+
+---
+
+Kematian kedua lebih mengerikan.
+
+---
+
+# CHRONICLE VS OBLIVION
+
+Chronicle adalah perlawanan terhadap kematian kedua.
+
+---
+
+Setiap nama yang dicatat.
+
+Memenangkan pertarungan melawan pelupaan.
+
+---
+
+Setiap sejarah yang disimpan.
+
+Menunda kehampaan.
+
+---
+
+# KUBURAN
+
+Kuburan bukan dekorasi.
+
+---
+
+Kuburan adalah arsip kehidupan.
+
+---
+
+Setiap makam dapat menyimpan:
+
+- nama
+- tanggal lahir
+- tanggal wafat
+- profesi
+- hubungan keluarga
+- pencapaian hidup
+
+---
+
+Companion penting dapat memiliki halaman Chronicle sendiri.
+
+---
+
+# KEMATIAN NPC
+
+NPC tidak boleh dianggap disposable.
+
+---
+
+NPC memiliki:
+
+- identitas
+- sejarah
+- keluarga
+- hubungan sosial
+
+---
+
+Jika NPC mati.
+
+Dunia harus bereaksi.
+
+---
+
+# CONTOH
+
+High Priest dibunuh.
+
+---
+
+Dampak:
+
+- gereja menunjuk pengganti
+- investigasi dimulai
+- reputasi berubah
+- beberapa quest berubah
+- beberapa faksi bereaksi
+
+---
+
+Dunia tidak boleh diam.
+
+---
+
+# KEMATIAN COMPANION
+
+Companion dapat mati.
+
+---
+
+Kematian Companion harus menjadi peristiwa besar.
+
+---
+
+Yang hilang:
+
+- hubungan
+- quest
+- kemungkinan masa depan
+- garis keturunan potensial
+
+---
+
+# WARISAN
+
+Legacy bukan benda.
+
+Legacy adalah dampak.
+
+---
+
+Contoh Legacy:
+
+- murid
+- anak
+- kerajaan
+- sekolah
+- karya tulis
+- hukum
+- budaya
+- cerita rakyat
+
+---
+
+# PERSONAL LEGACY
+
+Setiap pemain memiliki Legacy pribadi.
+
+---
+
+Bukan statistik.
+
+---
+
+Melainkan:
+
+Apa yang dunia ingat tentang dirinya.
+
+---
+
+Contoh:
+
+- Pendiri Perdamaian Utara
+- Raja Laut Selatan
+- Penjinak Ancient Pertama
+- Pembunuh High Priest
+- Pengelana Tanpa Rumah
+
+---
+
+Ini bukan title.
+
+---
+
+Ini adalah identitas sejarah.
+
+---
+
+# LEGACY FAMILY
+
+Legacy Family adalah salah satu sistem inti dunia.
+
+---
+
+Keluarga tidak memakan slot Companion.
+
+---
+
+Anak adalah individu hidup.
+
+---
+
+Anak dapat:
+
+- tumbuh
+- belajar
+- memiliki tujuan
+- memiliki keluarga sendiri
+
+---
+
+# PENSIUN
+
+Pemain dapat memilih pensiun.
+
+---
+
+Tidak ada Game Over.
+
+---
+
+Dunia tetap berjalan.
+
+---
+
+Dinasti berlanjut.
+
+---
+
+# TUJUAN AKHIR
+
+Saat pemain meninggalkan dunia.
+
+Yang tersisa bukan level.
+
+Bukan equipment.
+
+---
+
+Yang tersisa adalah cerita.
+
+
+# HUKUM DUNIA #11A
+
+Monster dapat berevolusi.
+
+---
+
+Monster tidak bersifat statis.
+
+---
+
+Perubahan dapat terjadi karena:
+
+- usia
+- lingkungan
+- makanan
+- habitat
+- energi dunia
+- paparan Celestial Phenomenon
+- paparan Abyss
+- paparan Ancient Ruins
+- peristiwa langka
+
+---
+
+Contoh:
+
+Forest Wolf
+↓
+Elder Wolf
+↓
+Moonfang Wolf
+↓
+Astral Moonfang
+
+---
+
+Tidak semua evolusi diketahui pemain.
+
+Sebagian harus ditemukan melalui eksplorasi.
+
+---
+
+# HUKUM DUNIA #11B
+
+Monster dapat mengalami mutasi.
+
+---
+
+Mutasi berbeda dari evolusi.
+
+---
+
+Evolusi:
+jalur alami.
+
+---
+
+Mutasi:
+anomali.
+
+---
+
+Contoh:
+
+Fire Slime
+↓
+Mutated Crystal Fire Slime
+
+---
+
+Sea Serpent
+↓
+Void Sea Serpent
+
+---
+
+Mutasi dapat:
+
+- mengubah bentuk
+- mengubah elemen
+- mengubah perilaku
+- mengubah ukuran
+- mengubah kemampuan
+
+---
+
+Sebagian mutasi sangat langka.
+
+---
+
+Beberapa mutasi hanya muncul sekali dalam satu era.
+
+---
+
+# HUKUM DUNIA #11C
+
+Monster dapat memiliki lebih dari satu elemen.
+
+---
+
+Tidak ada batasan satu elemen.
+
+---
+
+Contoh:
+
+Fire + Wind
+
+Water + Ice
+
+Nature + Earth
+
+Light + Fire
+
+Dark + Poison
+
+Astral + Void
+
+---
+
+Semakin banyak elemen:
+
+- semakin langka
+- semakin sulit dipahami
+- semakin sulit ditaming
+
+---
+
+# HUKUM DUNIA #11D
+
+Monster unik dapat menciptakan spesies baru.
+
+---
+
+Jika kondisi tertentu terpenuhi.
+
+---
+
+Mutasi dapat diwariskan.
+
+---
+
+Dalam kasus tertentu.
+
+Sebuah mutasi dapat berkembang menjadi spesies baru.
+
+---
+
+Contoh:
+
+Void Sea Serpent
+
+↓
+
+Generasi baru
+
+↓
+
+Void Serpent Species
+
+---
+
+Dunia dapat melahirkan spesies baru seiring waktu.
+
+---
+
+Bestiary tidak pernah benar-benar selesai.
+
+
+
+
+
+FILE 09
+DESIGN_REASONING_BIBLE_PART_01.md
+# AETHERION
+# DESIGN REASONING BIBLE
+# PART 01
+
+Status:
+LOCKED
+
+Purpose:
+
+Dokumen ini menjelaskan alasan di balik keputusan desain.
+
+Jika terjadi konflik antara implementasi dan filosofi desain.
+
+Filosofi desain menang.
+
+---
+---
+DECISION 001
+PLAYER IS NOT A CHOSEN ONE
+REASONING
+
+Mayoritas RPG fantasy menggunakan struktur:
+
+Player
+↓
+Chosen One
+↓
+Save The World
+
+Struktur ini memiliki kelemahan besar.
+
+Dunia berhenti menjadi karakter.
+
+Dunia hanya menjadi panggung untuk pemain.
+
+Dalam Aetherion.
+
+Tujuan utama adalah:
+
+Membuat dunia terasa hidup.
+
+Dunia harus memiliki sejarah sebelum pemain datang.
+
+Dunia harus tetap memiliki masa depan setelah pemain pergi.
+
+Karena itu pemain tidak boleh menjadi pusat eksistensi dunia.
+
+Pemain penting.
+
+Namun bukan pusat gravitasi dunia.
+
+REJECTED ALTERNATIVES
+Chosen One
+
+Ditolak.
+
+Karena membuat seluruh dunia bergantung pada pemain.
+
+Reincarnated Hero
+
+Ditolak.
+
+Karena mengurangi kebebasan identitas pemain.
+
+Secret God
+
+Ditolak.
+
+Karena bertentangan dengan tema kehidupan biasa yang menjadi luar biasa.
+
+CONSEQUENCES
+
+Story harus mampu berjalan tanpa pemain.
+
+NPC harus memiliki agenda sendiri.
+
+Faction harus memiliki tujuan sendiri.
+
+Companion harus memiliki kehidupan sendiri.
+
+EMOTIONAL TARGET
+
+Pemain merasa:
+
+"Dunia ini nyata."
+
+Bukan:
+
+"Dunia ini dibuat khusus untukku."
+
+FUTURE EXPANSION NOTES
+
+Tetap memungkinkan pemain menjadi figur legendaris.
+
+Namun legenda tersebut harus diperoleh.
+
+Bukan diberikan sejak awal.
+
+DECISION 002
+PLAYER ARRIVES VOLUNTARILY
+REASONING
+
+Banyak isekai menggunakan:
+
+dipanggil
+ditabrak truk
+diculik dewa
+dipaksa
+
+Aetherion memilih arah berbeda.
+
+Pemain memilih datang.
+
+Hal ini sangat penting.
+
+Karena seluruh tema Aetherion adalah:
+
+Life Choice.
+
+Pemain tidak menjadi korban takdir.
+
+Pemain menjadi pemilik keputusan.
+
+REJECTED ALTERNATIVES
+Summoned Hero
+
+Ditolak.
+
+Forced Reincarnation
+
+Ditolak.
+
+Divine Mission
+
+Ditolak.
+
+Karena seluruhnya mengurangi agency pemain.
+
+CONSEQUENCES
+
+Pemain memiliki alasan pribadi.
+
+Alasan tersebut tidak ditentukan game.
+
+Bisa:
+
+mencari petualangan
+mencari keluarga
+mencari kebebasan
+melupakan masa lalu
+memulai hidup baru
+EMOTIONAL TARGET
+
+"Aku memilih berada di sini."
+
+FUTURE EXPANSION NOTES
+
+Masa lalu pemain boleh tetap misterius.
+
+Tidak perlu dipaksakan menjadi lore utama.
+
+DECISION 003
+PEGASUS GIVES NO EXPLANATION
+REASONING
+
+Wonder lahir dari ketidaktahuan.
+
+Semakin banyak dunia menjelaskan dirinya di awal.
+
+Semakin cepat rasa penasaran mati.
+
+Pegasus sengaja hanya memberi:
+
+sedikit arah.
+
+Tidak memberi:
+
+sejarah dunia
+peta dunia
+takdir pemain
+tujuan utama
+
+Karena dunia harus ditemukan.
+
+Bukan dijelaskan.
+
+REJECTED ALTERNATIVES
+Tutorial God
+
+Ditolak.
+
+Long Intro Cutscene
+
+Ditolak.
+
+Encyclopedia Dump
+
+Ditolak.
+
+CONSEQUENCES
+
+Pemain memulai dengan kebingungan.
+
+Namun kebingungan tersebut disengaja.
+
+EMOTIONAL TARGET
+
+"Aku ingin tahu lebih banyak."
+
+FUTURE EXPANSION NOTES
+
+Misteri Pegasus harus dipertahankan bertahun-tahun.
+
+Tidak boleh dijawab terlalu cepat.
+
+
+---
+
+Ini baru **Part 01**.
+
+Masih ada puluhan keputusan besar yang belum ditulis:
+
+```text
+DECISION 004
+The World Remembers
+
+DECISION 005
+Companion Are People
+
+DECISION 006
+Legacy Family
+
+DECISION 007
+Life Events
+
+DECISION 008
+World Continues Without Player
+
+DECISION 009
+No Perfect Ending
+
+DECISION 010
+Quest Can Fail
+
+DECISION 011
+Chronicle System
+
+DECISION 012
+Nirnama Philosophy
+
+DECISION 013
+Death Has Weight
+
+DECISION 014
+All Species Can Be Tamed
+
+DECISION 015
+Monster Evolution & Mutation
+
+DECISION 016
+Unlimited Level Philosophy
+
+DECISION 017
+Active Loadout
+
+DECISION 018
+Capstone Class
+
+DECISION 019
+World Personality
+
+DECISION 020
+Autonomous Kingdom
+
+DESIGN_REASONING_BIBLE_PART_02.md
+# AETHERION
+# DESIGN REASONING BIBLE
+# PART 02
+
+Status:
+LOCKED
+
+Scope:
+
+- The World Remembers
+- World Continuation
+- Companion Philosophy
+- Quest Failure
+- No Perfect Ending
+- Legacy Family
+- Life Events
+
+---
+---
+DECISION 004
+THE WORLD REMEMBERS
+REASONING
+
+Ini adalah fondasi terbesar Aetherion.
+
+Bahkan lebih besar daripada combat.
+
+Lebih besar daripada kingdom.
+
+Lebih besar daripada progression.
+
+Mayoritas RPG memiliki masalah:
+
+Pemain melakukan sesuatu.
+
+↓
+
+Dunia lupa.
+
+Kota diselamatkan.
+
+Seminggu kemudian.
+
+Tidak ada yang peduli.
+
+Raja ditolong.
+
+Dua quest kemudian.
+
+Tidak ada yang mengingat.
+
+Dunia terasa palsu.
+
+Aetherion mengambil arah berbeda.
+
+Setiap tindakan harus meninggalkan bekas.
+
+Bukan berarti seluruh dunia mengingat semuanya.
+
+Tetapi dunia harus berubah.
+
+Karena kehidupan meninggalkan jejak.
+
+REJECTED ALTERNATIVES
+Theme Park World
+
+Dunia hanya reset.
+
+Ditolak.
+
+Quest Bubble
+
+Quest hanya mempengaruhi area kecil.
+
+Ditolak.
+
+Infinite Amnesia NPC
+
+NPC selalu lupa.
+
+Ditolak.
+
+CONSEQUENCES
+
+Dunia harus menyimpan:
+
+reputasi
+sejarah
+rumor
+hubungan
+tragedi
+kemenangan
+
+Chronicle lahir dari keputusan ini.
+
+Legacy lahir dari keputusan ini.
+
+Nirnama lahir dari keputusan ini.
+
+EMOTIONAL TARGET
+
+"Aku meninggalkan sesuatu di dunia ini."
+
+FUTURE EXPANSION NOTES
+
+Suatu hari.
+
+NPC bisa mengenali pemain berdasarkan cerita.
+
+Bukan berdasarkan level.
+
+Contoh:
+
+"Aku pernah mendengar tentangmu."
+
+lebih berharga daripada:
+
+"Aku melihat levelmu."
+
+DECISION 005
+THE WORLD CONTINUES WITHOUT PLAYER
+REASONING
+
+Kehidupan tidak berhenti ketika seseorang tidur.
+
+Dunia yang berhenti menunggu pemain terasa seperti panggung teater kosong.
+
+Aetherion harus terasa seperti kehidupan.
+
+Jika pemain tidak hadir.
+
+Maka dunia tetap berjalan.
+
+Karena dunia memiliki jutaan kehidupan lain.
+
+REJECTED ALTERNATIVES
+Frozen World
+
+Dunia berhenti saat pemain tidak terlibat.
+
+Ditolak.
+
+Eternal Waiting Quest
+
+NPC menunggu selamanya.
+
+Ditolak.
+
+CONSEQUENCES
+
+Quest dapat berubah.
+
+NPC dapat berkembang.
+
+Kerajaan dapat berubah.
+
+Companion dapat berubah.
+
+Pemain dapat kehilangan kesempatan.
+
+Namun juga dapat menemukan kesempatan baru.
+
+EMOTIONAL TARGET
+
+"Dunia ini tidak berputar di sekitarku."
+
+FUTURE EXPANSION NOTES
+
+Peristiwa besar regional dapat terjadi tanpa campur tangan pemain.
+
+Hal ini meningkatkan rasa realisme.
+
+DECISION 006
+COMPANION ARE PEOPLE
+REASONING
+
+Banyak RPG memperlakukan companion seperti equipment hidup.
+
+Statistik.
+
+Build.
+
+Skill.
+
+Gear.
+
+Lalu selesai.
+
+Masalahnya:
+
+Pemain tidak mencintai statistik.
+
+Pemain mencintai manusia.
+
+Karena itu Companion harus memiliki kehidupan.
+
+Bahkan jika mereka tidak pernah bergabung dengan pemain.
+
+Mereka tetap harus terasa hidup.
+
+REJECTED ALTERNATIVES
+Party Slot Character
+
+Ditolak.
+
+Static Companion
+
+Ditolak.
+
+Loyalty Forever
+
+Ditolak.
+
+CONSEQUENCES
+
+Companion dapat:
+
+berubah
+menikah
+kehilangan seseorang
+berpindah tujuan hidup
+membenci pemain
+mencintai pemain
+menghilang
+EMOTIONAL TARGET
+
+"Aku mengenal seseorang."
+
+Bukan:
+
+"Aku mendapatkan unit baru."
+
+FUTURE EXPANSION NOTES
+
+AI Personality System dapat memperdalam sistem ini.
+
+Namun filosofi inti tidak boleh berubah.
+
+DECISION 007
+LIFE EVENT SYSTEM
+REASONING
+
+Kehidupan tidak dibangun dari pertempuran.
+
+Kehidupan dibangun dari peristiwa.
+
+Ulang tahun.
+
+Pernikahan.
+
+Perpisahan.
+
+Kelahiran.
+
+Kematian.
+
+Jika Companion hanya bertarung.
+
+Maka mereka tidak hidup.
+
+Mereka hanya bertempur.
+
+REJECTED ALTERNATIVES
+Combat-Only Growth
+
+Ditolak.
+
+Relationship Through Gifts Only
+
+Ditolak.
+
+CONSEQUENCES
+
+Companion harus memiliki kalender hidup.
+
+Perubahan dapat terjadi bahkan tanpa quest.
+
+EMOTIONAL TARGET
+
+"Aku melihat hidup seseorang berkembang."
+
+FUTURE EXPANSION NOTES
+
+Festival keluarga.
+
+Pernikahan NPC.
+
+Anak Companion.
+
+Dinasti Companion.
+
+DECISION 008
+QUEST CAN FAIL
+REASONING
+
+Kehidupan tidak menjamin keberhasilan.
+
+Jika seluruh quest selalu berhasil.
+
+Pilihan menjadi ilusi.
+
+Tidak ada risiko.
+
+Tidak ada ketegangan.
+
+Tidak ada kehilangan.
+
+Karena itu.
+
+Quest boleh gagal.
+
+Tetapi kegagalan tidak boleh mengakhiri permainan.
+
+REJECTED ALTERNATIVES
+Perfect Completion Design
+
+Ditolak.
+
+Save Everyone Design
+
+Ditolak.
+
+No Consequence Design
+
+Ditolak.
+
+CONSEQUENCES
+
+Quest gagal dapat menghasilkan:
+
+cerita baru
+konflik baru
+tragedi baru
+peluang baru
+EMOTIONAL TARGET
+
+"Aku gagal."
+
+Namun bukan:
+
+"Game menghukumku."
+
+FUTURE EXPANSION NOTES
+
+Beberapa quest terbaik justru lahir dari kegagalan.
+
+DECISION 009
+NO PERFECT ENDING
+REASONING
+
+Kesempurnaan membunuh cerita.
+
+Dunia yang sempurna tidak memiliki masa depan.
+
+Tidak ada konflik.
+
+Tidak ada perubahan.
+
+Tidak ada harapan.
+
+Karena itu.
+
+Aetherion menolak ending sempurna.
+
+Selalu ada sesuatu yang belum selesai.
+
+REJECTED ALTERNATIVES
+Golden Ending
+
+Ditolak.
+
+Everyone Is Happy Ending
+
+Ditolak.
+
+True Ending
+
+Ditolak.
+
+CONSEQUENCES
+
+Tidak ada save file sempurna.
+
+Setiap dunia memiliki:
+
+luka
+kemenangan
+penyesalan
+kebanggaan
+EMOTIONAL TARGET
+
+"Itu tidak sempurna."
+
+"Tapi itu milikku."
+
+FUTURE EXPANSION NOTES
+
+Era baru dapat muncul dari masalah yang belum terselesaikan.
+
+DECISION 010
+LEGACY FAMILY
+REASONING
+
+Legacy tidak cukup jika hanya berupa patung.
+
+Legacy paling kuat adalah kehidupan.
+
+Anak.
+
+Murid.
+
+Keturunan.
+
+Penerus.
+
+Karena itu keluarga menjadi salah satu pilar terbesar Aetherion.
+
+Namun keluarga tidak boleh menjadi mesin bonus statistik.
+
+Keluarga harus menjadi hubungan.
+
+REJECTED ALTERNATIVES
+Heir = Stat Upgrade
+
+Ditolak.
+
+Child As Item
+
+Ditolak.
+
+Dynasty Score Only
+
+Ditolak.
+
+CONSEQUENCES
+
+Anak adalah individu.
+
+Mereka memiliki:
+
+kepribadian
+tujuan
+hubungan
+impian
+
+Mereka dapat berbeda dari orang tuanya.
+
+EMOTIONAL TARGET
+
+"Aku meninggalkan seseorang."
+
+Bukan:
+
+"Aku meninggalkan bonus."
+
+FUTURE EXPANSION NOTES
+
+Dinasti besar.
+
+Perpecahan keluarga.
+
+Perebutan warisan.
+
+Penerus kerajaan.
+
+Keturunan Companion.
+
+
+---
+
+# CATATAN DIREKTUR
+
+Sampai titik ini, kita mulai melihat sesuatu yang menarik.
+
+Aetherion ternyata bukan game tentang:
+
+- combat
+- grinding
+- progression
+
+melainkan tentang:
+
+```text
+Kehidupan yang terus bergerak.
+
+Dan hampir semua keputusan besar yang sudah kita ambil ternyata mengarah ke satu tujuan yang sama:
+
+Membuat dunia terasa hidup, bahkan ketika pemain tidak melihatnya.
+
+Part berikutnya akan masuk ke wilayah yang lebih dalam:
+
+DECISION 011
+Chronicle System
+
+DECISION 012
+Nirnama Philosophy
+
+DECISION 013
+Death Has Weight
+
+DECISION 014
+All Species Can Be Tamed
+
+DECISION 015
+Monster Evolution & Mutation
+
+DECISION 016
+Monster Ecology
+
+DECISION 017
+World Personality System
+
+DECISION 018
+Random Personality Generation
+
+FILE 09
+DESIGN_REASONING_BIBLE_PART_03.md
+# AETHERION
+# DESIGN REASONING BIBLE
+# PART 03
+
+Status:
+LOCKED
+
+Scope:
+
+- Chronicle System
+- Nirnama Philosophy
+- Death Has Weight
+- All Species Can Be Tamed
+- Monster Evolution & Mutation
+- Monster Ecology
+- World Personality
+
+---
+---
+DECISION 011
+CHRONICLE SYSTEM
+DECISION
+
+Aetherion memiliki Chronicle.
+
+Chronicle adalah arsip hidup dunia.
+
+REASONING
+
+Masalah terbesar dari game RPG modern adalah:
+
+Dunia tidak memiliki ingatan.
+
+Pemain membangun kerajaan.
+
+Dunia lupa.
+
+Pemain menyelamatkan kota.
+
+Dunia lupa.
+
+Pemain kehilangan sahabat.
+
+Dunia lupa.
+
+Padahal tema terbesar Aetherion adalah:
+
+The World Remembers
+
+Karena itu dibutuhkan sebuah institusi.
+
+Sebuah sistem.
+
+Sebuah simbol.
+
+Maka lahirlah Chronicle.
+
+Namun Chronicle bukan Wikipedia.
+
+Chronicle adalah kumpulan usaha dunia untuk mengingat.
+
+Dan sama seperti sejarah nyata.
+
+Chronicle tidak selalu benar.
+
+REJECTED ALTERNATIVES
+Perfect History
+
+Ditolak.
+
+Karena sejarah nyata tidak sempurna.
+
+Omniscient Record
+
+Ditolak.
+
+Karena tidak ada yang mengetahui segalanya.
+
+Player Journal Only
+
+Ditolak.
+
+Karena tema game adalah dunia mengingat.
+
+Bukan pemain mengingat.
+
+CONSEQUENCES
+
+Sejarah dapat:
+
+benar
+salah
+bias
+tidak lengkap
+
+Tokoh besar bisa terlupakan.
+
+Tokoh kecil bisa menjadi legenda.
+
+Rumor dapat mengubah persepsi sejarah.
+
+EMOTIONAL TARGET
+
+"Bahkan setelah aku pergi, jejakku masih ada."
+
+FUTURE EXPANSION NOTES
+
+Chronicle dapat memiliki:
+
+volume regional
+volume kerajaan
+volume keluarga
+volume companion
+volume era
+
+Suatu hari.
+
+Pemain bahkan dapat membaca kisah save file lama.
+
+DECISION 012
+NIRNAMA IS NOT EVIL
+DECISION
+
+Nirnama bukan penjahat.
+
+Nirnama adalah seseorang yang menyerah.
+
+REASONING
+
+Villain yang paling menarik bukanlah monster.
+
+Melainkan seseorang yang:
+
+memiliki kesimpulan yang salah dari pengalaman yang benar.
+
+Nirnama benar tentang satu hal.
+
+Semua akan hilang.
+
+Kerajaan runtuh.
+
+Teman meninggal.
+
+Peradaban hancur.
+
+Nama terlupakan.
+
+Dia tidak salah.
+
+Yang salah adalah kesimpulannya.
+
+Dia percaya:
+
+Jika semuanya akan hilang.
+
+Maka tidak ada yang layak dibangun.
+
+Seluruh Aetherion berdiri untuk membantah kalimat itu.
+
+REJECTED ALTERNATIVES
+Dark Lord
+
+Ditolak.
+
+Demon King
+
+Ditolak.
+
+Corrupted God
+
+Ditolak.
+
+Karena terlalu sederhana.
+
+CONSEQUENCES
+
+Pemain tidak melawan kejahatan.
+
+Pemain melawan keputusasaan.
+
+EMOTIONAL TARGET
+
+"Aku mengerti kenapa dia menjadi seperti ini."
+
+Bukan:
+
+"Aku ingin membunuhnya."
+
+FUTURE EXPANSION NOTES
+
+Bisa saja suatu hari ditemukan bahwa:
+
+Nirnama dulunya adalah salah satu pembangun terbesar dunia.
+
+Dan justru karena itulah kejatuhannya begitu tragis.
+
+DECISION 013
+DEATH HAS WEIGHT
+DECISION
+
+Kematian harus memiliki bobot.
+
+REASONING
+
+Jika kematian murah.
+
+Maka kehidupan murah.
+
+Jika Companion bisa mati dan diganti begitu saja.
+
+Maka Companion hanyalah item.
+
+Jika NPC mati dan dunia tidak peduli.
+
+Maka NPC hanyalah dekorasi.
+
+Karena itu.
+
+Kematian harus meninggalkan lubang.
+
+Dan lubang itu tidak selalu bisa ditutup.
+
+REJECTED ALTERNATIVES
+Infinite Resurrection
+
+Ditolak.
+
+Disposable NPC
+
+Ditolak.
+
+No Permanent Consequences
+
+Ditolak.
+
+CONSEQUENCES
+
+Kematian dapat:
+
+mengubah politik
+mengubah ekonomi
+mengubah keluarga
+mengubah quest
+
+Dunia harus bereaksi.
+
+EMOTIONAL TARGET
+
+"Aku kehilangan seseorang."
+
+FUTURE EXPANSION NOTES
+
+Kuburan.
+
+Monumen.
+
+Hari peringatan.
+
+Festival mengenang.
+
+Semuanya dapat berkembang dari sistem ini.
+
+DECISION 014
+ALL SPECIES CAN BE TAMED
+DECISION
+
+Semua spesies dapat ditaming.
+
+Tanpa pengecualian.
+
+REASONING
+
+Wonder lebih penting daripada larangan.
+
+Ketika pemain melihat makhluk raksasa.
+
+Pikiran pertama harus:
+
+Mungkinkah?
+
+Bukan:
+
+Itu pasti tidak bisa.
+
+Larangan menciptakan batas.
+
+Kemungkinan menciptakan mimpi.
+
+REJECTED ALTERNATIVES
+Boss Cannot Be Tamed
+
+Ditolak.
+
+Legendary Cannot Be Tamed
+
+Ditolak.
+
+Ancient Cannot Be Tamed
+
+Ditolak.
+
+CONSEQUENCES
+
+Star Whale dapat ditaming.
+
+Ancient dapat ditaming.
+
+Makhluk legenda dapat ditaming.
+
+Sulit?
+
+Ya.
+
+Mustahil?
+
+Tidak.
+
+EMOTIONAL TARGET
+
+"Aku tidak percaya ini berhasil."
+
+FUTURE EXPANSION NOTES
+
+Beberapa spesies mungkin membutuhkan perjalanan ratusan jam untuk mendapatkan kepercayaan mereka.
+
+DECISION 015
+MONSTER EVOLUTION & MUTATION
+DECISION
+
+Monster dapat:
+
+berevolusi
+bermutasi
+membentuk spesies baru
+REASONING
+
+Jika monster selalu sama.
+
+Dunia berhenti berkembang.
+
+Padahal Aetherion adalah dunia hidup.
+
+Kehidupan berubah.
+
+Maka monster juga harus berubah.
+
+REJECTED ALTERNATIVES
+Static Species
+
+Ditolak.
+
+Fixed Evolution Tree
+
+Ditolak.
+
+Karena terlalu membatasi kemungkinan.
+
+CONSEQUENCES
+
+Seekor Wolf dapat memiliki perjalanan hidup.
+
+Contoh:
+
+Wolf
+↓
+Dire Wolf
+↓
+Moonfang
+↓
+Astral Moonfang
+
+Mutasi dapat menciptakan cabang unik.
+
+Contoh:
+
+Moonfang
+↓
+Void Moonfang
+
+Moonfang
+↓
+Solar Moonfang
+
+Moonfang
+↓
+Crystal Moonfang
+
+EMOTIONAL TARGET
+
+"Dunia ini terus berevolusi."
+
+FUTURE EXPANSION NOTES
+
+Mutasi dapat menjadi sumber penemuan Chronicle.
+
+DECISION 016
+MONSTER ECOLOGY MATTERS
+DECISION
+
+Monster adalah bagian ekosistem.
+
+REASONING
+
+Mayoritas game memperlakukan monster sebagai:
+
+EXP berjalan.
+
+Aetherion menolak konsep tersebut.
+
+Seekor predator memiliki fungsi.
+
+Seekor herbivora memiliki fungsi.
+
+Seekor scavenger memiliki fungsi.
+
+Jika satu spesies hilang.
+
+Ekosistem berubah.
+
+REJECTED ALTERNATIVES
+Infinite Respawn Mob
+
+Ditolak.
+
+Pure Combat Creature
+
+Ditolak.
+
+CONSEQUENCES
+
+Perburuan berlebihan dapat mempengaruhi wilayah.
+
+Migrasi dapat terjadi.
+
+Keseimbangan dunia dapat berubah.
+
+EMOTIONAL TARGET
+
+"Aku hidup di alam."
+
+Bukan:
+
+"Aku hidup di arena farming."
+
+FUTURE EXPANSION NOTES
+
+Perubahan iklim regional.
+
+Bencana ekologis.
+
+Invasi spesies asing.
+
+Semua dapat muncul dari sistem ini.
+
+DECISION 017
+WORLD PERSONALITY
+DECISION
+
+Dunia harus memiliki kepribadian.
+
+REASONING
+
+Banyak game memiliki lore.
+
+Namun tidak memiliki karakter.
+
+Aetherion harus terasa seperti seseorang.
+
+Kadang indah.
+
+Kadang kejam.
+
+Kadang misterius.
+
+Kadang lucu.
+
+REJECTED ALTERNATIVES
+Generic Fantasy World
+
+Ditolak.
+
+Pure Dark Fantasy
+
+Ditolak.
+
+Pure Happy Fantasy
+
+Ditolak.
+
+CONSEQUENCES
+
+Dunia harus memiliki:
+
+humor
+tragedi
+absurditas
+keajaiban
+EMOTIONAL TARGET
+
+"Aku mengenal dunia ini."
+
+FUTURE EXPANSION NOTES
+
+Setiap wilayah harus memiliki identitas emosional sendiri.
+
+CATATAN DIREKTUR
+
+Sampai titik ini.
+
+Aetherion mulai menunjukkan identitas uniknya.
+
+Ia bukan MMORPG.
+
+Ia bukan Life Sim.
+
+Ia bukan Kingdom Builder.
+
+Ia bukan Monster Tamer.
+
+Ia bukan JRPG.
+
+Ia mengambil bagian terbaik dari semuanya.
+
+Dan mengikatnya pada satu tema:
+
+Kehidupan meninggalkan jejak.
+
+Dan seluruh sistem besar yang telah dibuat sejauh ini.
+
+Companion.
+
+Chronicle.
+
+Legacy.
+
+Kingdom.
+
+Monster.
+
+Quest.
+
+Faction.
+
+Family.
+
+Death.
+
+Sebenarnya hanyalah cara berbeda untuk menjawab satu pertanyaan:
+
+Jika suatu hari semuanya akan hilang,
+
+apakah tetap layak untuk membangun sesuatu?
+
+Jawaban Aetherion sejauh ini adalah:
+
+Ya.
+
+Justru karena akan hilang.
+
+---
+
+**Part 04** nanti akan masuk ke area yang lebih besar lagi:
+
+- Random Personality Generation Philosophy
+- Trauma System Philosophy
+- Companion Growth Philosophy
+- Kingdom Autonomy Philosophy
+- Faction Philosophy
+- Underground Philosophy
+- Crime & Consequence Philosophy
+- Rumor System Philosophy
+- Festival & Culture Philosophy
+- The 50 Great Companions Philosophy
+
+Dan menurut saya di situlah Aetherion benar-benar mulai berubah dari "dunia fantasy" menjadi "simulasi sejarah hidup".
+
+
+DESIGN_REASONING_BIBLE_PART_04.md
+# AETHERION
+# DESIGN REASONING BIBLE
+# PART 04
+
+Status:
+LOCKED
+
+Scope:
+
+- Random Personality Generation
+- Trauma System
+- Companion Growth
+- Kingdom Autonomy
+- Faction Philosophy
+- Underground Philosophy
+- Crime & Consequence
+- Rumor System
+
+---
+---
+DECISION 018
+RANDOM PERSONALITY GENERATION
+DECISION
+
+Tidak ada NPC template.
+
+Tidak ada NPC yang dibuat menggunakan preset kepribadian sederhana.
+
+Setiap NPC dibangun dari kombinasi berbagai sifat.
+
+REASONING
+
+Masalah terbesar NPC dalam RPG:
+
+Mereka terasa seperti robot.
+
+Mereka hanya memiliki:
+
+1 sifat
+1 tujuan
+1 fungsi
+
+Contoh:
+
+Pedagang.
+Murah senyum.
+Selesai.
+
+Atau:
+
+Ksatria.
+Berani.
+Selesai.
+
+Manusia tidak seperti itu.
+
+Manusia adalah kontradiksi.
+
+Seseorang bisa:
+
+berani saat perang
+takut kehilangan anak
+
+Seseorang bisa:
+
+baik kepada keluarga
+kejam kepada musuh
+
+Seseorang bisa:
+
+pintar
+sangat naif
+
+secara bersamaan.
+
+Karena itu NPC harus menjadi campuran.
+
+REJECTED ALTERNATIVES
+Archetype Only
+
+Ditolak.
+
+Fixed Personality
+
+Ditolak.
+
+One-Trait NPC
+
+Ditolak.
+
+CONSEQUENCES
+
+Setiap NPC memiliki kombinasi:
+
+Temperament:
+
+Sanguinis
+Koleris
+Melankolis
+Plegmatis
+
+Big Five:
+
+Openness
+Conscientiousness
+Extraversion
+Agreeableness
+Neuroticism
+
+Ditambah:
+
+trauma
+pendidikan
+budaya
+pengalaman hidup
+EMOTIONAL TARGET
+
+"Orang ini terasa nyata."
+
+FUTURE EXPANSION NOTES
+
+AI Personality Engine dapat digunakan di masa depan.
+
+Namun fondasi sistem harus tetap dapat berjalan tanpa AI.
+
+DECISION 019
+TRAUMA MATTERS
+DECISION
+
+Masa lalu mempengaruhi perilaku.
+
+REASONING
+
+Banyak RPG membuat karakter hanya berdasarkan sifat.
+
+Padahal manusia dibentuk oleh pengalaman.
+
+Dua orang yang sama-sama ramah.
+
+Belum tentu ramah karena alasan yang sama.
+
+Contoh:
+
+NPC A:
+
+Ramah karena dibesarkan dalam keluarga penuh kasih.
+
+NPC B:
+
+Ramah karena takut ditinggalkan.
+
+Perilakunya mirip.
+
+Akar emosinya berbeda.
+
+Dan perbedaan itu penting.
+
+REJECTED ALTERNATIVES
+Trait Only System
+
+Ditolak.
+
+Random Dialogue Generator
+
+Ditolak.
+
+CONSEQUENCES
+
+Trauma dapat mempengaruhi:
+
+hubungan
+pekerjaan
+keberanian
+kepercayaan
+ambisi
+EMOTIONAL TARGET
+
+"Aku mengerti kenapa dia seperti ini."
+
+FUTURE EXPANSION NOTES
+
+AI Memory Layer dapat memperdalam sistem ini suatu hari nanti.
+
+DECISION 020
+COMPANION GROWTH IS NOT LEVEL GROWTH
+DECISION
+
+Pertumbuhan Companion tidak hanya berupa statistik.
+
+REASONING
+
+Banyak game menyamakan:
+
+Growth = Damage
+
+Padahal kehidupan tidak bekerja seperti itu.
+
+Seseorang bisa tumbuh menjadi:
+
+lebih bijak
+lebih sabar
+lebih percaya diri
+lebih terbuka
+
+tanpa menjadi lebih kuat.
+
+Companion harus memiliki pertumbuhan emosional.
+
+REJECTED ALTERNATIVES
+Stat Growth Only
+
+Ditolak.
+
+Equipment Growth Only
+
+Ditolak.
+
+CONSEQUENCES
+
+Companion dapat berubah:
+
+tujuan hidup
+pandangan dunia
+hubungan sosial
+ambisi
+EMOTIONAL TARGET
+
+"Aku melihat dia berkembang."
+
+FUTURE EXPANSION NOTES
+
+Beberapa Companion bahkan dapat berubah class karena perjalanan hidupnya.
+
+DECISION 021
+KINGDOM AUTONOMY
+DECISION
+
+Kerajaan dapat berjalan sendiri.
+
+REASONING
+
+Banyak game kingdom builder memiliki masalah:
+
+Saat pemain pergi.
+
+Kerajaan berhenti berpikir.
+
+Aetherion menolak konsep tersebut.
+
+Kerajaan harus memiliki:
+
+pemimpin
+penasihat
+ekonomi
+budaya
+
+yang mampu bergerak sendiri.
+
+REJECTED ALTERNATIVES
+Player-Centric Kingdom
+
+Ditolak.
+
+Frozen Kingdom
+
+Ditolak.
+
+CONSEQUENCES
+
+Kerajaan dapat:
+
+berkembang
+gagal
+korup
+bangkrut
+makmur
+
+tanpa campur tangan pemain.
+
+EMOTIONAL TARGET
+
+"Aku memimpin sesuatu yang hidup."
+
+FUTURE EXPANSION NOTES
+
+Dinasti kerajaan.
+
+Perang saudara.
+
+Perebutan takhta.
+
+Kudeta.
+
+Semua dapat berkembang dari sistem ini.
+
+DECISION 022
+FACTIONS ARE INTEREST GROUPS
+DECISION
+
+Faksi bukan alignment.
+
+REASONING
+
+Banyak game menggunakan:
+
+Good Faction
+Bad Faction
+
+Terlalu sederhana.
+
+Aetherion menggunakan:
+
+Interest
+
+Karena organisasi tidak bergerak berdasarkan moral.
+
+Mereka bergerak berdasarkan kepentingan.
+
+REJECTED ALTERNATIVES
+Good vs Evil
+
+Ditolak.
+
+Black White Politics
+
+Ditolak.
+
+CONSEQUENCES
+
+Gereja dapat membantu rakyat.
+
+Dan sekaligus melakukan kesalahan.
+
+Guild dapat melindungi kota.
+
+Dan sekaligus mengejar keuntungan.
+
+EMOTIONAL TARGET
+
+"Dunia ini rumit."
+
+FUTURE EXPANSION NOTES
+
+Konflik antar faksi dapat berkembang selama puluhan tahun.
+
+DECISION 023
+UNDERGROUND EXISTS FOR A REASON
+DECISION
+
+Netherdeep bukan area rahasia.
+
+Netherdeep adalah konsekuensi sosial.
+
+REASONING
+
+Jika ada hukum.
+
+Akan ada pelanggaran hukum.
+
+Jika ada kerajaan.
+
+Akan ada kriminal.
+
+Jika ada gereja.
+
+Akan ada bidah.
+
+Underground lahir dari dunia atas.
+
+Bukan kebetulan.
+
+REJECTED ALTERNATIVES
+Evil City
+
+Ditolak.
+
+Criminal Theme Park
+
+Ditolak.
+
+CONSEQUENCES
+
+Underground memiliki:
+
+ekonomi
+budaya
+aturan
+hierarki
+
+sendiri.
+
+EMOTIONAL TARGET
+
+"Aku melihat sisi lain dunia."
+
+FUTURE EXPANSION NOTES
+
+Pemain dapat hidup sepenuhnya sebagai kriminal jika menginginkannya.
+
+DECISION 024
+CRIME HAS CONSEQUENCES
+DECISION
+
+Kejahatan diperbolehkan.
+
+Namun dunia akan bereaksi.
+
+REASONING
+
+Kebebasan tanpa konsekuensi bukan kebebasan.
+
+Itu sandbox kosong.
+
+Jika pemain membunuh High Priest.
+
+Maka gereja harus bereaksi.
+
+Jika pemain membunuh penjaga quest.
+
+Maka masyarakat harus bereaksi.
+
+REJECTED ALTERNATIVES
+Invincible NPC
+
+Ditolak.
+
+No Consequence Crime
+
+Ditolak.
+
+CONSEQUENCES
+
+Dunia akan:
+
+memburu
+menyelidiki
+menghukum
+mengingat
+EMOTIONAL TARGET
+
+"Tindakanku memiliki bobot."
+
+FUTURE EXPANSION NOTES
+
+Bounty System.
+
+Manhunt System.
+
+Political Consequence System.
+
+DECISION 025
+RUMOR IS MORE INTERESTING THAN FACT
+DECISION
+
+Informasi dunia tidak selalu akurat.
+
+REASONING
+
+Manusia hidup melalui cerita.
+
+Bukan data.
+
+Mayoritas penduduk dunia tidak membaca Chronicle.
+
+Mereka mendengar rumor.
+
+Dan rumor sering salah.
+
+REJECTED ALTERNATIVES
+Perfect Information World
+
+Ditolak.
+
+Omniscient NPC
+
+Ditolak.
+
+CONSEQUENCES
+
+Pemain dapat mendengar:
+
+legenda palsu
+kisah dibesar-besarkan
+teori konspirasi
+informasi setengah benar
+EMOTIONAL TARGET
+
+"Aku ingin mencari tahu sendiri."
+
+FUTURE EXPANSION NOTES
+
+Rumor dapat menjadi sumber quest.
+
+Rumor dapat menciptakan Myth Quest.
+
+
+---
+
+# CATATAN DIREKTUR
+
+Pada titik ini kita mulai melihat sesuatu yang unik.
+
+---
+
+Sebagian besar RPG membangun dunia dari:
+
+```text
+Combat
+↓
+Quest
+↓
+Story
+
+Aetherion dibangun dari:
+
+Life
+↓
+People
+↓
+History
+↓
+Story
+
+Combat hanyalah salah satu cara dunia bergerak.
+
+Bukan pusat dunia.
+
+Dan karena itu.
+
+NPC.
+
+Companion.
+
+Kerajaan.
+
+Faksi.
+
+Monster.
+
+Rumor.
+
+Festival.
+
+Sejarah.
+
+Keluarga.
+
+lebih penting daripada damage calculator.
+
+Part berikutnya akan mulai masuk ke:
+
+DECISION 026
+Festival Philosophy
+
+DECISION 027
+Culture Philosophy
+
+DECISION 028
+Family Philosophy
+
+DECISION 029
+Marriage Philosophy
+
+DECISION 030
+Children Philosophy
+
+DECISION 031
+The 50 Great Companions
+
+DECISION 032
+The Great Unknown
+
+DECISION 033
+Pegasus Philosophy
+
+DECISION 034
+Wonder Preservation Law
+
+DECISION 035
+Why Mystery Must Survive
+
+DESIGN_REASONING_BIBLE_PART_05.md
+# AETHERION
+# DESIGN REASONING BIBLE
+# PART 05
+
+Status:
+LOCKED
+
+Scope:
+
+- Festival Philosophy
+- Culture Philosophy
+- Family Philosophy
+- Marriage Philosophy
+- Children Philosophy
+- The Great Unknown
+- Pegasus Philosophy
+- Wonder Preservation Law
+
+---
+---
+DECISION 026
+FESTIVALS MATTER
+DECISION
+
+Festival bukan dekorasi.
+
+Festival adalah memori kolektif sebuah masyarakat.
+
+REASONING
+
+Mayoritas game membuat kota terasa mati.
+
+NPC hanya berdiri.
+
+Pedagang hanya berdagang.
+
+Penjaga hanya berjaga.
+
+Tidak ada momen spesial.
+
+Padahal dunia nyata dipenuhi oleh:
+
+perayaan
+hari berkabung
+upacara
+tradisi
+
+Festival adalah bukti bahwa masyarakat hidup.
+
+REJECTED ALTERNATIVES
+Permanent Static Town
+
+Ditolak.
+
+Cosmetic Festival
+
+Ditolak.
+
+CONSEQUENCES
+
+Setiap wilayah harus memiliki:
+
+hari besar
+perayaan unik
+budaya unik
+
+Festival dapat berubah seiring sejarah.
+
+Jika perang besar terjadi.
+
+Festival baru dapat lahir.
+
+Jika kerajaan runtuh.
+
+Festival lama dapat menghilang.
+
+EMOTIONAL TARGET
+
+"Dunia ini memiliki kehidupan sendiri."
+
+FUTURE EXPANSION NOTES
+
+Festival dapat menghasilkan:
+
+quest unik
+companion event
+rare merchant
+rare creature migration
+DECISION 027
+CULTURE IS STRONGER THAN POLITICS
+DECISION
+
+Budaya lebih penting daripada pemerintahan.
+
+REASONING
+
+Kerajaan dapat runtuh.
+
+Budaya sering bertahan.
+
+Banyak dunia fantasy terlalu fokus pada:
+
+raja
+perang
+politik
+
+Namun melupakan:
+
+makanan
+musik
+pakaian
+cerita rakyat
+
+Padahal itulah yang membuat suatu bangsa terasa berbeda.
+
+REJECTED ALTERNATIVES
+Kingdom-Centric Worldbuilding
+
+Ditolak.
+
+Politics Only Worldbuilding
+
+Ditolak.
+
+CONSEQUENCES
+
+Setiap ras dan wilayah wajib memiliki:
+
+makanan khas
+arsitektur khas
+kebiasaan sosial
+cerita rakyat
+takhayul
+lagu rakyat
+EMOTIONAL TARGET
+
+"Aku sedang mengunjungi budaya lain."
+
+FUTURE EXPANSION NOTES
+
+Perkawinan antar budaya.
+
+Konflik budaya.
+
+Asimilasi budaya.
+
+Budaya yang punah.
+
+DECISION 028
+FAMILY IS A STORY ENGINE
+DECISION
+
+Keluarga bukan fitur sampingan.
+
+Keluarga adalah mesin cerita.
+
+REASONING
+
+Jika Legacy adalah tema besar Aetherion.
+
+Maka keluarga adalah bentuk Legacy yang paling alami.
+
+Kebanyakan manusia tidak meninggalkan kerajaan.
+
+Mereka meninggalkan keluarga.
+
+Karena itu keluarga harus memiliki bobot besar.
+
+REJECTED ALTERNATIVES
+Marriage As Buff
+
+Ditolak.
+
+Family As Cosmetic Feature
+
+Ditolak.
+
+CONSEQUENCES
+
+Keluarga dapat menghasilkan:
+
+konflik
+kebahagiaan
+tragedi
+harapan
+EMOTIONAL TARGET
+
+"Aku memiliki sesuatu untuk diperjuangkan."
+
+FUTURE EXPANSION NOTES
+
+Dinasti keluarga.
+
+Pecah keluarga.
+
+Warisan keluarga.
+
+Tradisi keluarga.
+
+DECISION 029
+MARRIAGE IS A RELATIONSHIP
+DECISION
+
+Pernikahan bukan hadiah.
+
+REASONING
+
+Banyak game memperlakukan romance sebagai checklist.
+
+Berikan hadiah.
+
+Naikkan affinity.
+
+Menikah.
+
+Selesai.
+
+Hubungan manusia jauh lebih kompleks.
+
+Karena itu.
+
+Pernikahan harus lahir dari hubungan.
+
+Bukan angka.
+
+REJECTED ALTERNATIVES
+Affinity Bar Marriage
+
+Ditolak sebagai fondasi utama.
+
+Instant Marriage
+
+Ditolak.
+
+CONSEQUENCES
+
+Hubungan dapat:
+
+berkembang
+stagnan
+membaik
+memburuk
+
+Pernikahan tidak menjamin kebahagiaan.
+
+EMOTIONAL TARGET
+
+"Aku membangun hubungan."
+
+FUTURE EXPANSION NOTES
+
+Krisis pernikahan.
+
+Perbedaan tujuan hidup.
+
+Pengorbanan pasangan.
+
+DECISION 030
+CHILDREN ARE PEOPLE
+DECISION
+
+Anak bukan item.
+
+Anak bukan bonus statistik.
+
+Anak adalah individu.
+
+REASONING
+
+Masalah banyak sistem dynasty:
+
+Anak hanyalah angka.
+
+Padahal inti Legacy adalah kehidupan yang berlanjut.
+
+Jika anak hanya menjadi bonus.
+
+Maka tema Legacy gagal.
+
+REJECTED ALTERNATIVES
+Heir Token
+
+Ditolak.
+
+Stat Successor
+
+Ditolak.
+
+CONSEQUENCES
+
+Anak memiliki:
+
+sifat
+impian
+ketakutan
+bakat
+hubungan
+
+sendiri.
+
+Mereka bisa berbeda dari orang tuanya.
+
+EMOTIONAL TARGET
+
+"Aku tidak mengendalikan mereka."
+
+"Aku membesarkan mereka."
+
+FUTURE EXPANSION NOTES
+
+Anak dapat:
+
+menjadi pahlawan
+menjadi kriminal
+menjadi raja
+menjadi petani
+
+tanpa campur tangan pemain.
+
+DECISION 031
+THE GREAT UNKNOWN
+DECISION
+
+Sebagian dunia harus tetap tidak diketahui.
+
+REASONING
+
+Mystery yang dijelaskan sepenuhnya akan mati.
+
+Wonder membutuhkan ruang kosong.
+
+Jika seluruh dunia dijelaskan.
+
+Maka eksplorasi berubah menjadi checklist.
+
+REJECTED ALTERNATIVES
+Explain Everything
+
+Ditolak.
+
+Complete Encyclopedia
+
+Ditolak.
+
+CONSEQUENCES
+
+Akan selalu ada:
+
+wilayah misterius
+spesies misterius
+sejarah misterius
+fenomena misterius
+EMOTIONAL TARGET
+
+"Aku tidak tahu."
+
+Dan itu menarik.
+
+FUTURE EXPANSION NOTES
+
+10% dunia harus tetap menjadi misteri bahkan setelah bertahun-tahun update.
+
+DECISION 032
+PEGASUS IS A SYMBOL
+DECISION
+
+Pegasus bukan sekadar makhluk.
+
+Pegasus adalah simbol.
+
+REASONING
+
+Pemain pertama kali bertemu Pegasus sebelum memahami dunia.
+
+Artinya.
+
+Pegasus menjadi representasi pertama Aetherion.
+
+Pegasus mewakili:
+
+harapan
+perjalanan
+kesempatan kedua
+arah
+
+Bukan jawaban.
+
+REJECTED ALTERNATIVES
+Pegasus As Mount Only
+
+Ditolak.
+
+Pegasus As Tutorial NPC
+
+Ditolak.
+
+CONSEQUENCES
+
+Setiap kemunculan Pegasus harus memiliki makna.
+
+Pegasus tidak boleh muncul terlalu sering.
+
+EMOTIONAL TARGET
+
+"Ada sesuatu yang lebih besar dari yang aku pahami."
+
+FUTURE EXPANSION NOTES
+
+Hubungan Pegasus dengan Nirnama harus menjadi salah satu misteri besar dunia.
+
+DECISION 033
+WONDER PRESERVATION LAW
+DECISION
+
+Wonder harus dilindungi secara aktif.
+
+REASONING
+
+Wonder adalah sumber kehidupan Aetherion.
+
+Namun Wonder mudah mati.
+
+Biasanya dibunuh oleh:
+
+overexplanation
+min-max culture
+wiki mentality
+complete optimization
+REJECTED ALTERNATIVES
+Reveal Everything
+
+Ditolak.
+
+Data-First Design
+
+Ditolak.
+
+CONSEQUENCES
+
+Sebagian informasi harus ditemukan.
+
+Sebagian informasi harus diperdebatkan.
+
+Sebagian informasi harus tetap misterius.
+
+EMOTIONAL TARGET
+
+"Mungkin ada sesuatu yang belum ditemukan."
+
+FUTURE EXPANSION NOTES
+
+Developer harus berhati-hati terhadap update yang menjelaskan terlalu banyak hal.
+
+DECISION 034
+MYSTERY MUST SURVIVE
+DECISION
+
+Tidak semua pertanyaan membutuhkan jawaban.
+
+REASONING
+
+Beberapa misteri menjadi lebih kuat ketika tidak dijawab.
+
+Contoh:
+
+asal usul tertentu
+makhluk tertentu
+fenomena tertentu
+
+Jawaban yang salah dapat merusak Wonder.
+
+Kadang misteri lebih berharga daripada jawaban.
+
+REJECTED ALTERNATIVES
+Every Mystery Has Answer
+
+Ditolak.
+
+CONSEQUENCES
+
+Aetherion akan memiliki:
+
+misteri abadi
+teori komunitas
+legenda yang diperdebatkan
+EMOTIONAL TARGET
+
+"Aku akan terus memikirkannya."
+
+FUTURE EXPANSION NOTES
+
+Harus ada daftar resmi misteri yang tidak boleh dijawab bahkan oleh tim penulis.
+
+
+---
+
+# CATATAN DIREKTUR
+
+Pada titik ini kita mulai menemukan sesuatu yang sangat penting.
+
+Aetherion bukan sekadar dunia yang hidup.
+
+Aetherion adalah dunia yang **layak dirindukan**.
+
+Itulah tujuan sebenarnya.
+
+Bukan membuat pemain berkata:
+
+> "Game ini seru."
+
+Tetapi membuat pemain berkata:
+
+> "Aku kangen dunia itu."
+
+---
+
+Part 06 akan masuk ke area yang mungkin paling penting untuk produksi jangka panjang:
+
+```text
+DECISION 035
+The 50 Great Companions Philosophy
+
+DECISION 036
+Why Only 50 Great Companions
+
+DECISION 037
+Companion Distribution Across The World
+
+DECISION 038
+The Unremembered People
+
+DECISION 039
+Book of Fools
+
+DECISION 040
+Human Conflict Over Monster Conflict
+
+DECISION 041
+Why Hope Must Win
+
+DECISION 042
+The Core Message of Aetherion
+
+
+
+
+DESIGN_REASONING_BIBLE_PART_06.md
+# AETHERION
+# DESIGN REASONING BIBLE
+# PART 06
+
+Status:
+LOCKED
+
+Scope:
+
+- The 50 Great Companions
+- Why Only 50
+- World Distribution
+- The Unremembered People
+- Book of Fools
+- Human Conflict
+- Hope Philosophy
+- Core Message
+
+---
+---
+DECISION 035
+THE 50 GREAT COMPANIONS
+DECISION
+
+Aetherion memiliki 50 Great Companions.
+
+Mereka bukan 50 Companion terbaik.
+
+Mereka bukan 50 Companion terkuat.
+
+Mereka adalah 50 kehidupan yang berpotensi mengubah dunia.
+
+REASONING
+
+Dunia membutuhkan tokoh-tokoh jangkar.
+
+Jika seluruh NPC dibuat setara.
+
+Maka sejarah menjadi kabur.
+
+Jika terlalu sedikit tokoh penting.
+
+Dunia terasa kecil.
+
+50 dipilih karena cukup besar untuk terasa luas.
+
+Namun cukup kecil untuk diingat.
+
+REJECTED ALTERNATIVES
+Everyone Is Special
+
+Ditolak.
+
+Jika semua spesial.
+
+Tidak ada yang spesial.
+
+Only 5 Legendary Companions
+
+Ditolak.
+
+Dunia menjadi terlalu sempit.
+
+CONSEQUENCES
+
+Great Companion dapat:
+
+memimpin perang
+mendirikan kota
+menciptakan sihir baru
+menjadi kriminal legendaris
+memulai agama baru
+menghancurkan kerajaan
+
+Namun semua itu tetap bergantung pada kehidupan yang mereka jalani.
+
+EMOTIONAL TARGET
+
+"Aku bertemu seseorang yang penting."
+
+FUTURE EXPANSION NOTES
+
+Jumlah dapat bertambah melalui Era baru.
+
+Namun harus sangat hati-hati.
+
+DECISION 036
+WHY ONLY 50?
+DECISION
+
+Jumlah inti dibatasi.
+
+REASONING
+
+Masalah dunia fantasy besar adalah:
+
+Terlalu banyak tokoh penting.
+
+Akibatnya:
+
+Tidak ada yang diingat.
+
+50 Companion dipilih karena:
+
+cukup banyak untuk eksplorasi
+cukup sedikit untuk dikenali
+
+Pemain tidak harus menemukan semuanya.
+
+Dan itu disengaja.
+
+REJECTED ALTERNATIVES
+Infinite Important Characters
+
+Ditolak.
+
+Procedural Legendary Characters
+
+Ditolak sebagai fondasi utama.
+
+CONSEQUENCES
+
+Menemukan Great Companion menjadi pengalaman spesial.
+
+EMOTIONAL TARGET
+
+"Aku baru saja bertemu seseorang yang akan dikenang sejarah."
+
+FUTURE EXPANSION NOTES
+
+Great Companion harus memiliki Chronicle sendiri.
+
+DECISION 037
+GREAT COMPANIONS MUST BE SCATTERED
+DECISION
+
+Mereka tidak boleh berkumpul.
+
+REASONING
+
+Jika semua tokoh penting berada di satu kota.
+
+Maka dunia terasa kecil.
+
+Aetherion harus terasa luas.
+
+Karena itu Great Companion harus tersebar:
+
+benua berbeda
+ras berbeda
+budaya berbeda
+kelas sosial berbeda
+REJECTED ALTERNATIVES
+Companion Hub
+
+Ditolak.
+
+All Important NPC In Capital
+
+Ditolak.
+
+CONSEQUENCES
+
+Pemain harus menjelajah.
+
+Beberapa Companion mungkin ditemukan sangat terlambat.
+
+Beberapa mungkin tidak pernah ditemukan.
+
+EMOTIONAL TARGET
+
+"Dunia ini lebih besar dari yang kupikir."
+
+FUTURE EXPANSION NOTES
+
+Setiap benua minimal memiliki beberapa Great Companion.
+
+DECISION 038
+THE UNREMEMBERED PEOPLE
+DECISION
+
+Tidak semua orang menjadi legenda.
+
+REASONING
+
+Jika semua karakter berakhir luar biasa.
+
+Maka kehilangan makna.
+
+Dunia nyata dibangun oleh jutaan orang biasa.
+
+Petani.
+
+Nelayan.
+
+Guru.
+
+Tukang roti.
+
+Mereka jarang masuk sejarah.
+
+Namun mereka membangun dunia.
+
+REJECTED ALTERNATIVES
+Everyone Becomes Hero
+
+Ditolak.
+
+CONSEQUENCES
+
+Sebagian besar NPC akan hidup biasa.
+
+Dan itu baik.
+
+Karena kehidupan biasa juga berharga.
+
+EMOTIONAL TARGET
+
+"Hidup sederhana juga memiliki makna."
+
+FUTURE EXPANSION NOTES
+
+Chronicle harus memiliki bagian yang menghormati orang-orang biasa.
+
+DECISION 039
+BOOK OF FOOLS
+DECISION
+
+Dunia harus mengingat kegagalan.
+
+REASONING
+
+Sejarah sering hanya mencatat pemenang.
+
+Padahal kegagalan juga membentuk dunia.
+
+Book of Fools adalah kumpulan:
+
+kesalahan
+eksperimen gagal
+keputusan bodoh
+tragedi lucu
+REJECTED ALTERNATIVES
+Only Heroic History
+
+Ditolak.
+
+CONSEQUENCES
+
+Dunia memiliki humor.
+
+Dunia memiliki ironi.
+
+Dunia terasa manusiawi.
+
+EMOTIONAL TARGET
+
+"Orang-orang hebat juga bisa salah."
+
+FUTURE EXPANSION NOTES
+
+Pemain dapat masuk ke Book of Fools.
+
+Dan itu tidak selalu buruk.
+
+DECISION 040
+HUMAN CONFLICT IS MORE IMPORTANT THAN MONSTER CONFLICT
+DECISION
+
+Konflik manusia lebih penting daripada monster.
+
+REASONING
+
+Monster menciptakan tantangan.
+
+Manusia menciptakan cerita.
+
+Seekor naga dapat menghancurkan kota.
+
+Namun keputusan walikota untuk mengorbankan satu distrik demi menyelamatkan kota.
+
+Itulah cerita.
+
+REJECTED ALTERNATIVES
+Monster Is Main Problem
+
+Ditolak.
+
+Endless Monster Invasion
+
+Ditolak.
+
+CONSEQUENCES
+
+Mayoritas konflik besar berasal dari:
+
+ambisi
+cinta
+ketakutan
+keserakahan
+harapan
+EMOTIONAL TARGET
+
+"Masalah terbesar dunia ternyata adalah manusia."
+
+FUTURE EXPANSION NOTES
+
+Era berikutnya harus tetap berfokus pada konflik nilai.
+
+Bukan hanya ancaman fisik.
+
+DECISION 041
+HOPE MUST WIN
+DECISION
+
+Harapan harus menang.
+
+Namun tidak selalu menang dengan mudah.
+
+REASONING
+
+Nirnama mewakili keputusasaan.
+
+Jika dunia hanya gelap.
+
+Maka Nirnama benar.
+
+Jika dunia hanya bahagia.
+
+Maka cerita kehilangan bobot.
+
+Karena itu Aetherion memilih jalan tengah.
+
+Dunia boleh kejam.
+
+Tetapi harapan harus tetap mungkin.
+
+REJECTED ALTERNATIVES
+Grimdark World
+
+Ditolak.
+
+Perfect Fantasy
+
+Ditolak.
+
+CONSEQUENCES
+
+Pemain akan menemukan:
+
+tragedi
+kehilangan
+pengkhianatan
+
+Namun juga:
+
+persahabatan
+cinta
+keluarga
+keberanian
+EMOTIONAL TARGET
+
+"Masih ada alasan untuk terus berjalan."
+
+FUTURE EXPANSION NOTES
+
+Seluruh Era harus menjaga keseimbangan ini.
+
+DECISION 042
+THE CORE MESSAGE OF AETHERION
+DECISION
+
+Seluruh Aetherion dibangun untuk menyampaikan satu pesan.
+
+REASONING
+
+Setiap dunia besar membutuhkan inti.
+
+Jika tidak.
+
+Semua sistem akan bergerak ke arah berbeda.
+
+Inti Aetherion adalah:
+
+Segala sesuatu akan berakhir.
+
+Namun itu bukan alasan untuk berhenti membangun.
+
+Itulah jawaban terhadap Nirnama.
+
+Itulah jawaban terhadap kematian.
+
+Itulah jawaban terhadap pelupaan.
+
+REJECTED ALTERNATIVES
+Power Fantasy
+
+Ditolak.
+
+Save The World Fantasy
+
+Ditolak.
+
+Become God Fantasy
+
+Ditolak.
+
+CONSEQUENCES
+
+Seluruh sistem harus mendukung tema ini:
+
+Companion
+Chronicle
+Legacy
+Family
+Kingdom
+Death
+Quest
+
+Jika suatu sistem bertentangan.
+
+Sistem harus diubah.
+
+EMOTIONAL TARGET
+
+Ketika pemain menutup game setelah bertahun-tahun.
+
+Ia berkata:
+
+"Aku senang pernah hidup di dunia itu."
+
+FUTURE EXPANSION NOTES
+
+Semua ekspansi masa depan wajib mematuhi pesan inti ini.
+
+
+---
+
+# CATATAN DIREKTUR BESAR
+
+Sampai Part 06, kita sebenarnya baru menyelesaikan **Filosofi Dunia**.
+
+Yang mengejutkan adalah kita belum benar-benar masuk ke:
+
+```text
+WORLD BIBLE
+
+
+FILE 10
+AETHERION_WORLD_BIBLE_PART_02
+# AETHERION
+# WORLD BIBLE
+# PART 02
+
+Status:
+LOCKED
+
+Scope:
+
+- Intelligent Races
+- Civilization Philosophy
+- Cultural Design Rules
+- Race Distribution
+
+---
+---
+WORLD DESIGN LAW
+RACES ARE CULTURES, NOT STATS
+DECISION
+
+Ras tidak boleh dibedakan hanya oleh statistik.
+
+REASONING
+
+Banyak MMORPG membuat ras seperti:
+
+Human = +2 Diplomacy
+
+Elf = +2 Magic
+
+Dwarf = +2 Strength
+
+Ini membosankan.
+
+Karena setelah 10 jam.
+
+Pemain tidak mengingat bonus statistik.
+
+Tetapi pemain mengingat:
+
+Cara hidup.
+Budaya.
+Makanan.
+Tradisi.
+Cara berpikir.
+
+Karena itu.
+
+Ras harus terasa seperti peradaban.
+
+Bukan template karakter.
+
+CONSEQUENCES
+
+Setiap ras wajib memiliki:
+
+sejarah
+budaya
+makanan
+filosofi
+tradisi
+konflik internal
+kelompok ekstrem
+kelompok moderat
+EMOTIONAL TARGET
+
+"Aku sedang bertemu bangsa lain."
+
+THE GREAT RACES
+
+Pada Era Awal Aetherion.
+
+Terdapat 8 Ras Besar.
+
+RACE 01
+HUMAN
+Julukan
+
+The Builders
+
+Persepsi Dunia
+
+Manusia terlalu cepat berkembang.
+
+Kelebihan
+
+Adaptasi.
+
+Kelemahan
+
+Tidak sabaran.
+
+Filosofi Ras
+Jika dunia tidak sesuai.
+
+Bangun dunia baru.
+Budaya Umum
+
+Manusia adalah ras paling beragam.
+
+Tidak ada budaya manusia tunggal.
+
+Mereka ditemukan di hampir seluruh benua.
+
+Hubungan Dengan Dunia
+
+Manusia paling sering:
+
+mendirikan kerajaan
+memulai perang
+menciptakan teknologi
+melakukan eksplorasi
+Design Reasoning
+
+Manusia harus menjadi ras paling tidak spesial.
+
+Karena justru itulah kekuatan mereka.
+
+RACE 02
+ELF
+Julukan
+
+The Long Remembering
+
+Persepsi Dunia
+
+Manusia hidup terlalu cepat.
+
+Filosofi Ras
+Apa yang terburu-buru biasanya rusak.
+Budaya
+
+Elf menghargai:
+
+kesabaran
+seni
+sejarah
+pengetahuan
+Konflik Internal
+
+Elf sering gagal beradaptasi terhadap perubahan.
+
+Design Reasoning
+
+Elf bukan ras superior.
+
+Elf adalah ras yang terlalu lama mengingat.
+
+Kadang itu menjadi kekuatan.
+
+Kadang menjadi beban.
+
+RACE 03
+DRYAD
+Julukan
+
+Children of the Living Forest
+
+Persepsi Dunia
+
+Alam adalah keluarga.
+
+Filosofi
+Tidak semua yang tumbuh harus dipercepat.
+Budaya
+
+Dryad hidup mengikuti siklus alam.
+
+Mereka tidak membangun kerajaan besar.
+
+Mereka membangun komunitas.
+
+Konflik Internal
+
+Beberapa Dryad mulai mempertanyakan:
+
+Apakah alam selalu benar?
+
+Design Reasoning
+
+Dryad bukan "tree elf".
+
+Mereka harus menjadi ras dengan cara berpikir yang benar-benar berbeda.
+
+RACE 04
+DWARF
+Julukan
+
+Keepers of Stone
+
+Persepsi Dunia
+
+Apa yang dibangun dengan benar akan bertahan.
+
+Filosofi
+Jika sesuatu layak dibangun.
+
+Maka bangunlah untuk seribu tahun.
+Budaya
+
+Dwarf menghormati:
+
+pengrajin
+insinyur
+arsitek
+penambang
+Konflik Internal
+
+Tradisi yang terlalu kuat dapat menghambat perubahan.
+
+Design Reasoning
+
+Dwarf bukan pemabuk lucu.
+
+Mereka adalah simbol ketekunan.
+
+RACE 05
+BEASTFOLK
+Julukan
+
+Children of Instinct
+
+Persepsi Dunia
+
+Perasaan juga merupakan kebijaksanaan.
+
+Filosofi
+Tubuh mengetahui banyak hal
+yang pikiran lupa.
+Budaya
+
+Sangat beragam.
+
+Karena Beastfolk terdiri dari banyak garis keturunan.
+
+Konflik Internal
+
+Perdebatan antara:
+
+Insting
+
+vs
+
+Peradaban
+
+Design Reasoning
+
+Beastfolk tidak boleh menjadi ras komedi.
+
+Mereka harus terasa manusiawi.
+
+RACE 06
+ASTRALBORN
+Julukan
+
+The Sky Watchers
+
+Asal
+
+Keturunan kelompok astronom kuno.
+
+Filosofi
+Langit selalu lebih besar
+daripada ambisi kita.
+Budaya
+
+Mempelajari:
+
+bintang
+ramalan
+fenomena langit
+Design Reasoning
+
+Menggabungkan tema:
+
+astronom
+peramal
+pencari makna
+
+yang sebelumnya muncul dalam diskusi kita.
+
+RACE 07
+TIDEKIN
+Julukan
+
+People of the Endless Sea
+
+Filosofi
+Tidak ada pelaut yang menguasai laut.
+Kita hanya belajar hidup bersamanya.
+Budaya
+
+Pelaut.
+
+Navigator.
+
+Penjelajah.
+
+Design Reasoning
+
+Mendukung eksplorasi Thalassar.
+
+RACE 08
+SHADEBORN
+Julukan
+
+The Forgotten Ones
+
+Persepsi Dunia
+
+Dunia terlalu cepat melupakan.
+
+Filosofi
+Yang tidak dicatat tetap pernah hidup.
+Budaya
+
+Banyak tinggal di wilayah pinggiran.
+
+Mereka memiliki hubungan kuat dengan tema:
+
+kenangan
+sejarah
+kehilangan
+Design Reasoning
+
+Ras ini menjadi cerminan tema utama Aetherion.
+
+CULTURAL LAW
+NO RACE IS MONOLITHIC
+DECISION
+
+Tidak ada ras yang berpikir sama.
+
+REASONING
+
+Kesalahan besar fantasy:
+
+Semua Elf sama.
+
+Semua Dwarf sama.
+
+Semua Beastfolk sama.
+
+Padahal dunia nyata tidak seperti itu.
+
+CONSEQUENCES
+
+Setiap ras wajib memiliki:
+
+konservatif
+progresif
+religius
+sekuler
+idealis
+pragmatis
+EMOTIONAL TARGET
+
+Ras terasa seperti bangsa.
+
+Bukan stereotype.
+
+FUTURE WORK
+
+Part berikutnya akan mulai masuk ke:
+
+Gereja
+Kerajaan
+Guild Petualang
+Akademi Sihir
+Merchant League
+Netherdeep Syndicate
+
+Karena setelah ras dikunci.
+
+Yang membentuk dunia berikutnya adalah:
+
+Institusi
+
+dan institusilah yang nantinya akan menghasilkan sebagian besar konflik, quest, politik, dan sejarah selama 50+ jam pertama permainan.
+
+jangan lupa sampah2 dunia juga masukkin biar kerasa hidup, peramal, penjudi, orang aneh, orang kuat asing, penantang maut, pencari kebenaran, pembaca masa depan, penipu, kita juga ada geng kriminal kan
+
+Justru ini salah satu hal yang menurut saya belum cukup kita bahas, dan sangat penting untuk identitas Aetherion.
+
+Karena saat ini dunia kita masih terlalu fokus pada:
+
+Raja
+Kerajaan
+Companion
+Faksi
+Sejarah
+
+Padahal kehidupan nyata tidak dibangun oleh orang-orang besar.
+
+Kehidupan nyata dibangun oleh:
+
+Orang aneh
+
+Orang gagal
+
+Penipu
+
+Pemabuk
+
+Penjudi
+
+Peramal
+
+Pengembara
+
+Seniman gila
+
+Ilmuwan sesat
+
+Pemburu monster
+
+Pencari harta
+
+Orang yang yakin dunia akan kiamat
+
+Orang yang mencari naga
+
+Orang yang berburu dewa
+
+Orang yang hanya ingin hidup tenang
+
+Dan jujur.
+
+Kalau kita ingin dunia terasa hidup.
+
+Justru kelompok-kelompok inilah yang harus jumlahnya jauh lebih banyak daripada pahlawan.
+
+FILE 10
+WORLD_BIBLE_PART_03
+THE PEOPLE BETWEEN HISTORY
+# AETHERION
+# WORLD BIBLE
+# PART 03
+
+Status:
+LOCKED
+
+Scope:
+
+People Between History
+
+---
+WORLD LAW
+MOST PEOPLE ARE NOT HEROES
+DECISION
+
+Mayoritas penduduk dunia bukan tokoh penting.
+
+REASONING
+
+Jika semua orang penting.
+
+Maka tidak ada yang penting.
+
+Dunia harus dipenuhi oleh orang biasa.
+
+Orang aneh.
+
+Orang gagal.
+
+Orang yang bahkan tidak tahu mereka hidup di era bersejarah.
+
+CONSEQUENCES
+
+Untuk setiap:
+
+1 Great Companion
+
+harus ada:
+
+1000+ NPC biasa.
+
+EMOTIONAL TARGET
+
+"Dunia ini tidak dibuat untukku."
+
+SOCIAL ARCHETYPE
+THE FORTUNE SEEKERS
+Julukan
+
+Gold Chasers
+
+Orang-orang yang mengejar kekayaan.
+
+Jenis:
+
+pemburu harta
+pedagang oportunis
+investor gila
+pemburu artefak
+
+Beberapa sukses.
+
+Sebagian besar bangkrut.
+
+SOCIAL ARCHETYPE
+THE DEATH CHALLENGERS
+Julukan
+
+Deathwalkers
+
+Orang-orang yang secara aktif mencari bahaya.
+
+Contoh:
+
+pemburu naga
+penjelajah reruntuhan
+pemburu Ancient
+
+Filosofi:
+
+Jika suatu hari aku akan mati.
+
+Aku ingin kematian itu layak dikenang.
+SOCIAL ARCHETYPE
+THE SEEKERS OF TRUTH
+Julukan
+
+Truthseekers
+
+Orang-orang yang percaya.
+
+Bahwa dunia menyimpan rahasia besar.
+
+Mereka menghabiskan hidup untuk:
+
+sejarah hilang
+bahasa kuno
+asal usul ras
+misteri Pegasus
+
+Sebagian menemukan kebenaran.
+
+Sebagian menjadi gila.
+
+SOCIAL ARCHETYPE
+THE STAR READERS
+Julukan
+
+Sky Readers
+
+Peramal.
+
+Astrolog.
+
+Penafsir mimpi.
+
+Tidak semuanya penipu.
+
+Tidak semuanya benar.
+
+Dan tidak ada yang benar-benar tahu.
+
+Ini penting.
+
+Karena Wonder harus tetap hidup.
+
+SOCIAL ARCHETYPE
+THE GAMBLERS
+Julukan
+
+Coin Burners
+
+Penjudi profesional.
+
+Mereka percaya:
+
+Nasib adalah bahasa dunia.
+
+Beberapa menjadi kaya.
+
+Sebagian besar kehilangan segalanya.
+
+SOCIAL ARCHETYPE
+THE FRAUDS
+Julukan
+
+Mask Merchants
+
+Penipu.
+
+Manipulator.
+
+Pemalsu.
+
+Mereka menjual:
+
+artefak palsu
+ramalan palsu
+sejarah palsu
+
+Kadang lucu.
+
+Kadang berbahaya.
+
+SOCIAL ARCHETYPE
+THE STRANGE ONES
+Julukan
+
+Oddwalkers
+
+Orang-orang yang bahkan dunia tidak mengerti.
+
+Contoh:
+
+Seorang pria yang berbicara dengan batu.
+
+Seorang wanita yang menolak tidur selama 20 tahun.
+
+Seorang pengembara yang hanya berjalan mundur.
+
+Seorang kolektor sendok dari seluruh dunia.
+
+90% tidak penting.
+
+10% ternyata menyimpan misteri besar.
+
+Pemain tidak pernah tahu yang mana.
+
+SOCIAL ARCHETYPE
+THE WANDERING MASTERS
+Julukan
+
+Hidden Legends
+
+Orang kuat yang tidak terkenal.
+
+Mungkin:
+
+petani
+nelayan
+pustakawan
+
+Tetapi sebenarnya:
+
+Level ekstrem.
+
+Kemampuan luar biasa.
+
+Mereka tidak mencari ketenaran.
+
+Karena itu jarang ditemukan.
+
+SOCIAL ARCHETYPE
+THE WORLD PROPHETS
+Julukan
+
+Doomsayers
+
+Kelompok yang selalu meramalkan akhir dunia.
+
+Masalahnya:
+
+Kadang mereka salah.
+
+Kadang mereka benar.
+
+Dan tidak ada yang tahu.
+
+SOCIAL ARCHETYPE
+THE MEMORY KEEPERS
+Julukan
+
+Keepers of Names
+
+Orang-orang yang mengabdikan hidup untuk mengingat.
+
+Mereka menyimpan:
+
+nama yang terlupakan
+makam tanpa keluarga
+kisah orang biasa
+
+Mereka adalah lawan filosofis Nirnama.
+
+Karena mereka percaya:
+
+Selama seseorang masih diingat.
+
+Ia belum benar-benar hilang.
+ORGANIZED CRIME
+NETHERDEEP SYNDICATE
+STATUS
+
+MAJOR FACTION
+
+FILOSOFI
+Semua kerajaan memiliki harga.
+
+Kami hanya lebih jujur mengenainya.
+
+Ini bukan guild kriminal biasa.
+
+Mereka memiliki:
+
+ekonomi
+politik
+mata-mata
+penyelundup
+pembunuh bayaran
+pemalsu dokumen
+
+Mereka harus terasa seperti:
+
+Negara bayangan.
+
+Bukan sekumpulan preman.
+
+DESIGN REASONING
+
+Salah satu kesalahan fantasy modern adalah:
+
+Terlalu fokus pada pahlawan.
+
+Padahal pemain akan mengingat:
+
+pria gila di pinggir jalan
+penjudi yang selalu menang
+peramal yang ternyata benar
+pengemis misterius
+pemalsu artefak
+petani yang ternyata legenda
+
+jauh lebih lama daripada NPC quest nomor 347.
+
+
+---
+
+Dan menurut saya ada satu hukum baru yang harus ditambahkan ke Aetherion:
+
+# HUKUM DUNIA
+
+```text
+Jika suatu NPC cukup menarik,
+
+maka pemain harus bisa percaya bahwa NPC itu memiliki cerita.
+
+Bahkan jika cerita itu tidak pernah dijelaskan.
+
+Karena dunia hidup bukan ketika semua hal dijelaskan.
+
+Dunia hidup ketika pemain merasa:
+
+"Orang itu pasti punya kisahnya sendiri."
+
+WORLD_BIBLE_PART_04
+SUBCULTURES OF AETHERION
+# AETHERION
+# WORLD BIBLE
+# PART 04
+
+Status:
+LOCKED
+
+Scope:
+
+Subcultures
+Wandering Groups
+Hidden Communities
+Living World Design
+
+---
+SUBCULTURE 001
+THE LAST MAPMAKERS
+Julukan
+
+World Sketchers
+
+Mereka percaya.
+
+Tidak ada peta yang pernah selesai.
+
+Karena dunia selalu berubah.
+
+Mereka menghabiskan hidup:
+
+memetakan pulau baru
+mencatat migrasi monster
+memperbaiki peta lama
+
+Filosofi:
+
+Jika peta selesai.
+
+Berarti dunia sudah mati.
+
+Beberapa Companion berasal dari kelompok ini.
+
+SUBCULTURE 002
+THE COLLECTORS OF IMPOSSIBLE THINGS
+Julukan
+
+The Impossible Museum
+
+Kelompok eksentrik.
+
+Tujuan mereka:
+
+Mengumpulkan benda yang tidak masuk akal.
+
+Contoh:
+
+air dari mimpi
+sisik naga yang belum lahir
+bayangan dalam botol
+surat yang belum ditulis
+
+90% koleksinya penipuan.
+
+10% benar-benar nyata.
+
+Tidak ada yang tahu yang mana.
+
+SUBCULTURE 003
+THE SILENT TABLE
+
+Kelompok penjudi elit.
+
+Mereka tidak berjudi dengan uang.
+
+Mereka berjudi menggunakan:
+
+kenangan
+rahasia
+nama
+hutang
+
+Seorang anggota pernah kalah taruhan.
+
+Lalu menyerahkan nama keluarganya.
+
+Sejak itu.
+
+Tidak ada seorang pun yang mengingat nama aslinya.
+
+Apakah benar?
+
+Tidak ada yang tahu.
+
+SUBCULTURE 004
+THE THOUSANDTH DOOR
+
+Kelompok penjelajah misteri.
+
+Mereka percaya:
+
+Dunia memiliki pintu yang tidak terlihat.
+
+Pintu tersebut muncul.
+
+Lalu menghilang.
+
+Beberapa mengarah ke:
+
+reruntuhan
+dimensi kecil
+tempat yang tidak tercatat
+
+Mayoritas orang menganggap mereka gila.
+
+Masalahnya:
+
+Kadang mereka membawa pulang sesuatu.
+
+SUBCULTURE 005
+THE LAUGHING FUNERAL SOCIETY
+
+Kelompok yang menghadiri pemakaman.
+
+Dan tertawa.
+
+Bukan karena menghina.
+
+Mereka percaya:
+
+Jika hidup layak dirayakan.
+
+Maka kematian juga layak dirayakan.
+
+Mereka sering dianggap aneh.
+
+Namun banyak keluarga justru meminta mereka hadir.
+
+SUBCULTURE 006
+THE HUNTERS OF LEGENDS
+
+Mereka tidak berburu monster.
+
+Mereka berburu cerita.
+
+Jika sebuah legenda muncul.
+
+Mereka akan pergi ke sana.
+
+Bukan untuk membuktikan benar.
+
+Melainkan untuk melihat sendiri.
+
+Mereka adalah kelompok yang paling sering menemukan:
+
+Companion
+Ancient Beast
+Lost City
+
+Dan paling sering mati.
+
+SUBCULTURE 007
+THE FALSE HEROES
+
+Kelompok penipu profesional.
+
+Mereka menjual:
+
+Pedang Pahlawan
+
+Jubah Raja
+
+Taring Naga
+
+Artefak Kuno
+
+Yang sebenarnya palsu.
+
+Anehnya.
+
+Kadang barang palsu mereka menjadi terkenal.
+
+Dan akhirnya masuk sejarah.
+
+SUBCULTURE 008
+THE WAITERS
+
+Kelompok paling misterius.
+
+Mereka tidak mencari apa pun.
+
+Mereka hanya menunggu.
+
+Ketika ditanya.
+
+Jawaban mereka selalu:
+
+Belum waktunya.
+
+Tidak ada yang tahu:
+
+siapa mereka
+apa tujuan mereka
+
+Mereka muncul di banyak era.
+
+Selalu dengan jawaban yang sama.
+
+SUBCULTURE 009
+THE MONSTER SHEPHERDS
+
+Kebalikan pemburu monster.
+
+Mereka menggembalakan monster.
+
+Membantu migrasi.
+
+Menjaga keseimbangan alam.
+
+Mereka sering bertentangan dengan kerajaan.
+
+Karena kerajaan ingin membasmi monster.
+
+Sementara mereka percaya:
+
+Monster bukan musuh.
+
+Monster adalah tetangga.
+SUBCULTURE 010
+THE NAMELESS KINGS
+
+Orang-orang yang pernah memiliki kekuasaan besar.
+
+Lalu meninggalkannya.
+
+Mantan:
+
+raja
+jenderal
+pemimpin guild
+
+Mereka hidup sebagai rakyat biasa.
+
+Sebagian ditemukan menjadi:
+
+nelayan
+petani
+penjaga toko
+
+Dunia tidak tahu siapa mereka.
+
+Dan mereka menyukai itu.
+
+WORLD DESIGN LAW
+EVERY TOWN NEEDS WEIRD PEOPLE
+REASONING
+
+Kesalahan terbesar open world:
+
+Semua NPC masuk akal.
+
+Dunia nyata tidak seperti itu.
+
+Selalu ada:
+
+pria yang bicara pada burung
+wanita yang yakin bulan sedang marah
+kolektor sendal
+pemburu suara hantu
+penjual obat ajaib
+penyair mabuk
+pembaca garis tangan
+
+Mereka membuat dunia terasa hidup.
+
+IMPLEMENTATION LAW
+
+Setiap kota.
+
+Setiap desa.
+
+Setiap pelabuhan.
+
+Minimal memiliki:
+
+1 NPC Aneh
+
+1 NPC Misterius
+
+1 NPC Lucu
+
+1 NPC Tragis
+
+1 NPC yang tidak masuk akal
+
+Karena pemain mungkin lupa siapa rajanya.
+
+Tapi mereka akan ingat:
+
+"Ada kakek yang menghabiskan 30 tahun mencari ikan yang bisa berbicara."
+
+Dan itulah yang membuat dunia terasa nyata.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

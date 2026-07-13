@@ -34,6 +34,8 @@ static func build(host: Node2D, center: Vector2) -> void:
 	_place_npcs(host, center)
 	_place_villagers(host, center)
 	_place_animals(host, center)
+	TownFolk.place(host, "greenvale", center)          # Hukum NPC Aneh (E6 #78)
+	MiracleSystem.manifest(host, center, 260.0)        # keajaiban hari ini (E7 #79)
 
 # --- cobbled ground ---------------------------------------------------------
 

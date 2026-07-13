@@ -12,6 +12,8 @@ var _wp := 0
 var _pause := 0.0
 var _sprite: AnimatedSprite2D
 var _label: Label
+var _persona: Dictionary = {}    # NPC berkepribadian (Hukum NPC Aneh, E6 #78)
+var _line_idx := 0               # dialog persona bergilir, bukan acak
 
 func setup(nm: String, config: Dictionary, waypoints: Array) -> void:
 	_name = nm
@@ -20,9 +22,18 @@ func setup(nm: String, config: Dictionary, waypoints: Array) -> void:
 	if is_inside_tree():
 		global_position = waypoints[0]
 
+## Jadikan warga ini NPC berkepribadian (data: town_npcs.json). Aman dipanggil
+## sebelum maupun sesudah node masuk tree (penempatan memanggilnya setelah add_child).
+func set_persona(p: Dictionary) -> void:
+	_persona = p
+	if not _persona.is_empty() and is_inside_tree():
+		add_to_group("town_folk")
+
 func _ready() -> void:
 	add_to_group("interactable")
 	add_to_group("villagers")
+	if not _persona.is_empty():
+		add_to_group("town_folk")
 	collision_layer = 0
 	collision_mask = 0
 	_build()
@@ -76,8 +87,28 @@ func interact() -> void:
 	if Stage.is_busy():
 		return
 	velocity = Vector2.ZERO
+	if not _persona.is_empty():
+		await Stage.say(persona_line(), _name)
+		return
 	var lines: Array = ambient_lines()
 	await Stage.say(lines[randi() % lines.size()], _name)
+
+## Dialog NPC berkepribadian: bergilir (agar terasa seperti orang yang sama, bukan
+## generator), sesekali diselingi GOSIP yang boleh saja tidak akurat (E5 #77).
+func persona_line() -> String:
+	var lines: Array = _persona.get("lines", [])
+	if lines.is_empty():
+		return "..."
+	# 1 dari 4 giliran: warga ini menggosipkan sesuatu — mungkin keliru
+	if randf() < 0.25:
+		var r := RumorSystem.speak()
+		return r.get("text", "")
+	var l: String = lines[_line_idx % lines.size()]
+	_line_idx += 1
+	return l
+
+func persona() -> Dictionary:
+	return _persona
 
 ## Ambient dialogue — references the CURRENT sky + town so the world feels alive
 ## and time-aware. Returns 2-3 rotating lines; interact() picks one at random.
@@ -101,14 +132,7 @@ func ambient_lines() -> Array:
 	# moon / omen gossip
 	if GameClock.is_full_moon():
 		lines.append("Bulan purnama... kata Pak Astrolog, monster jadi lebih ganas malam ini.")
-	# rotating town gossip
-	var gossip := [
-		"Pandai besi di Bengkel baru menempa pedang tembaga, katanya.",
-		"Pedagang bilang stok Orb sedang banyak. Mumpung murah!",
-		"Dengar-dengar ada gua tua di sebelah selatan. Hati-hati di sana.",
-		"Kalau lelah, menginaplah di Penginapan Rusa Emas — kasurnya empuk.",
-		"Penjaga gerbang tak pernah tidur; berkat mereka kota ini aman.",
-		"Ada yang bilang melihat rubah perak di hutan saat fajar.",
-	]
-	lines.append(gossip[randi() % gossip.size()])
+	# gosip kota — LEWAT RumorSystem: warga bisa saja salah/membesar-besarkan (E5 #77),
+	# dan keajaiban semalam hanya diumumkan lewat mulut mereka (E7 #79)
+	lines.append(RumorSystem.speak().get("text", ""))
 	return lines

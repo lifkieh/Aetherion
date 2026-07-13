@@ -12,6 +12,7 @@ var current_region := "greenvale"
 var last_free_travel := ""             # tanggal WIB travel gratis harian terakhir dipakai
 var auction: Dictionary = {}           # Rumah Lelang: lot hari ini (v0.4.2, B8 #53)
 var freed_captives: Array = []         # tawanan yang dibebaskan -> kandidat rekrut loyal (v0.6)
+var miracle_log: Dictionary = {}       # {date, today, yesterday} — keajaiban (E7 #79)
 
 ## Tandai wilayah dikunjungi (dipanggil _ready tiap region scene). #43
 func mark_visited(region_id: String) -> void:
@@ -141,6 +142,7 @@ func to_save() -> Dictionary:
 		"last_free_travel": last_free_travel,
 		"auction": auction,
 		"freed_captives": freed_captives,
+		"miracle_log": miracle_log,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -151,6 +153,7 @@ func from_save(d: Dictionary) -> void:
 	last_free_travel = d.get("last_free_travel", "")
 	auction = d.get("auction", {})
 	freed_captives = d.get("freed_captives", [])
+	miracle_log = d.get("miracle_log", {})
 
 func new_game() -> void:
 	counters = {}
@@ -159,4 +162,5 @@ func new_game() -> void:
 	last_free_travel = ""
 	auction = {}
 	freed_captives = []
+	miracle_log = {}
 	_roll_weather(true)

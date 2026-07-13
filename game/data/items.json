@@ -1316,5 +1316,25 @@
   "value": 420,
   "stack": 20,
   "flavor": "Menjaga enchant dari kegagalan: level tidak turun saat ritual +7 ke atas gagal."
+ },
+ {
+  "id": "ancient_bloom",
+  "name": "Bunga Purba",
+  "tier": "C",
+  "type": "material",
+  "value": 600,
+  "stack": 99,
+  "desc": "Mekar semalam di tempat yang tak seorang pun menanamnya.",
+  "flavor": "Kelopaknya masih hangat. Seolah baru saja ditinggalkan."
+ },
+ {
+  "id": "star_fragment",
+  "name": "Serpihan Bintang",
+  "tier": "B",
+  "type": "material",
+  "value": 900,
+  "stack": 99,
+  "desc": "Jatuh dari langit malam. Masih berdenyut pelan, seperti sesuatu yang belum selesai.",
+  "flavor": "Kalau kau genggam cukup lama, kau merasa diikuti. Bukan hal jahat. Cuma... diikuti."
  }
 ]
