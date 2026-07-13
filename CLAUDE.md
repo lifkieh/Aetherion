@@ -212,6 +212,32 @@ Pemetaan **lingkup budaya → benua (#110)** masih **draft yang bisa diveto**, b
 **Fairy Realm = TBD** — jangan memindahkan wilayah/aset yang bergantung padanya tanpa
 baris keputusan.
 
+## HUKUM AI & NPC (#161–#163)
+
+> **Kedalaman NPC Aetherion lahir dari PENULISAN YANG DIPERBANYAK MESIN,
+> bukan dari MESIN YANG MENULIS SENDIRI DI RUMAH PEMAIN.**
+
+**1. RUNTIME LLM DI DALAM GAME = DITOLAK untuk v1.0 (#161).** Tidak ada model bahasa yang
+berjalan di komputer pemain / lewat API saat game dimainkan. Alasannya bukan selera — ia
+bertabrakan dengan **enam** hal yang sudah kanon: **offline-first** · **gratis penuh** (API =
+biaya per pemain) · **game ringan** · **lokalisasi berbasis key** · **testability (#151)** —
+teks yang lahir saat runtime **tidak bisa dites** — dan **perlindungan rahasia kanon**:
+halusinasi bisa membocorkan `MISTERI_ABADI` atau merakit nama rahasia produksi, dan
+`_test_nirnama_secret` **tidak bisa menyisir kalimat yang belum ada saat build**.
+*Boleh ditinjau ulang HANYA di fase online pasca-v1.0, sebagai fitur opsional terpisah, lewat
+keputusan Direktur baru.*
+
+**2. DESIGN-TIME AI PIPELINE = RESMI (#162).** Agent men-generate kedalaman **saat
+pengembangan** menjadi **data yang dipanggang & di-commit** (`docs/NPC_DEPTH_PIPELINE.md`):
+pool dialog kontekstual · draft Life Event chain (**draft, bukan kanon**) · reaksi
+bencana/keajaiban & gosip.
+**Tiga gerbang wajib sebelum commit — tanpa pengecualian:** (a) **konsistensi kanon**
+(ledger/bible; **dilarang mengonfirmasi MISTERI_ABADI**), (b) **test rahasia produksi HIJAU**,
+(c) **review manusia**.
+
+**Konsekuensi praktis:** apa pun yang keluar dari pipeline harus **bisa dibaca, direview,
+di-diff, dites, dan DIHAPUS bila salah.** Kalau tidak keempatnya — belum siap di-commit.
+
 ## HUKUM TEST (#151, diperluas Designer #158)
 
 > **Test wajib masuk lewat PINTU YANG DIPAKAI PEMAIN.**

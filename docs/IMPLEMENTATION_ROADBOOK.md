@@ -32,6 +32,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **Chronicle: entri fragmen/rusak** + sembunyikan % penyelesaian | Mystery (51) b.1508/1664 | Chronicle ✅ | 0,3 sesi | **C7** |
 | **Hidden Dungeon** pertama (dungeon utuh yang tersembunyi) + asal-usul 5 dungeon masuk ke dalam game (jurnal, artefak bercerita) | Dungeon (40) + `DUNGEON_ORIGINS.md` | — | 1 sesi | — |
 | **Dual Class** (spec → implementasi) | Class & Skill Tree (45) + #117 | — | 1 sesi | Sudah diputus (#117) |
+| **NPC DEPTH PIPELINE** (#162) — pool dialog kontekstual **8–12 varian/NPC/konteks, dwibahasa sejak lahir** (8 tag konteks, **bukan** perkalian silang); draft Life Event chain (**draft, bukan kanon**); reaksi bencana/keajaiban & gosip lebih kaya | `docs/NPC_DEPTH_PIPELINE.md` | ⚠ **#164 harus diputus dulu** (inline dwibahasa vs Loc) | 2–3 sesi | Resmi (#162); **3 gerbang wajib: kanon · test rahasia · review** |
 | **LOKALISASI GELOMBANG 2** (#146): **nama item · nama monster · lore/Pedia → EN**; teks cerita v0.5 **ditulis dwibahasa sejak lahir** | B15 (#62/#100) | Loc ✅ | 1 sesi | Sudah diputus (#146) |
 | **Rename**: fusi elemen tetap *Fusion*; penyatuan pemain–monster = **Sinkronisasi** | World Bible b.3798 | — | 0,1 sesi | **C4 / Q6** |
 
