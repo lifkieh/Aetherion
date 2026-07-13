@@ -115,6 +115,28 @@ ada?", dunia harus punya jawabannya (`docs/DUNGEON_ORIGINS.md`). Anti-pola
 **7. ⏳ SKALA WAKTU (#123) — PENDING OWNER.** Penuaan/generasi/suksesi vs jam WIB asli
 belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
 
+## RAHASIA PRODUKSI — **hanya hidup di `docs_private/`** (#144)
+
+**`docs_private/` TIDAK PERNAH ter-commit** (ada di `.gitignore`). Yang tinggal di sana:
+- **nama asli Sang Nirnama** (#108),
+- **twist reveal Act 2** (kelak),
+- **identitas The Last Witness** (bila kelak diputuskan, Q7).
+
+**Aturan mengikat:**
+1. Rahasia produksi **tidak boleh** ditulis di: commit message · `PLAN_LEDGER.md` ·
+   dokumen `docs/` mana pun · data · kode · terjemahan · test.
+2. **Test rahasia produksi tetap berlaku** dan tetap merakit nama dari potongan —
+   ia menyisir `data/`, `translations/`, `scenes/`, `autoload/` dan **gagal bila bocor**.
+3. Versi publik kitab Nirnama = **`docs/NIRNAMA_BIBLE_PUBLIC.md`** — **utuh** kecuali tiga
+   redaksi (nama asli · etimologi ganda §I · pasangan kata rumor Voss). Kontributor mana
+   pun bisa bekerja penuh dari versi ini.
+4. Butuh nama itu untuk menulis konten reveal Act 2? **Minta ke Direktur.** Jangan menebak;
+   jangan menuliskannya ke repo.
+5. Isi `docs_private/` **tidak pernah didaftar isinya** di ledger — **judul saja**
+   ("arsip privat: 1 berkas Nirnama"), supaya keberadaannya terlacak tanpa isinya bocor.
+
+⚠ **`docs_private/` TIDAK ter-backup GitHub.** Backup adalah tanggung jawab owner.
+
 ## HUKUM PERTUMBUHAN NPC (L14–L18, #137)
 
 - **L14 — OPPORTUNITY SHAPES DESTINY.** Dua orang berbakat sama bisa bernasib jauh

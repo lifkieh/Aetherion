@@ -214,3 +214,19 @@ Bible lain), **mohon kirim ulang** — pola BD-1/BD-2 mengajarkan: artefak yang 
 sampai tidak boleh difabrikasi.
 
 **✅ DITUTUP 2026-07-13 (#135):** part 2 kemudian dikirim lengkap (6.931 baris), disusul part 3–5 + dua berkas meta. Verifikasi owner: **tidak ada FILE 73–75** — sisa 8% Nirnama Bible sumber sudah termuat di `docs/NIRNAMA_BIBLE.md` v1.0. **B18 SELESAI.**
+
+## RISIKO DITERIMA (2026-07-13): jejak rahasia produksi di riwayat git
+**Fakta:** nama asli Sang Nirnama sempat tertulis di beberapa commit sebelum
+Decision Log #143/#144 (di `PLAN_LEDGER.md`, `MISTERI_ABADI.md` M8, dan commit message
+lama). Isi **working tree** sudah bersih — nama itu kini **hanya** ada di
+`docs_private/NIRNAMA_BIBLE.md`, yang **tidak pernah ter-commit**.
+
+**Yang TIDAK dilakukan & alasannya (keputusan Direktur #144):** **tidak ada rewrite
+history**. Menulis ulang riwayat repo publik berisiko merusak referensi, tag, dan salinan
+lokal — dan **risiko operasional itu dinilai melebihi risiko kebocorannya**: repo ini minim
+pengunjung, dan menemukan jejak lama menuntut **arkeologi git yang disengaja**, bukan
+sekadar membuka halaman GitHub.
+
+**Status:** **RISIKO DITERIMA, bertanggal.** Bila repo kelak dibuka luas **sebelum reveal
+Act 2**, keputusan ini **wajib ditinjau ulang** — dan peninjauan itu adalah keputusan
+Direktur, bukan agent.

@@ -28,3 +28,9 @@ Desktop.ini
 # Our ORIGINAL assets live in game/assets/ and are versioned.
 assets_raw/
 # The root asset .zip/.rar archives are ignored (already extracted to assets_raw/).
+
+# === RAHASIA PRODUKSI (Decision Log #144) ===
+# docs_private/ TIDAK PERNAH ter-commit. Isinya: nama asli Sang Nirnama, twist reveal
+# Act 2, dan identitas The Last Witness bila kelak diputuskan.
+# ⚠ TIDAK ter-backup GitHub — owner wajib mem-backup-nya sendiri (drive/copy manual).
+docs_private/
