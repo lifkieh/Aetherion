@@ -299,15 +299,47 @@ func _build_sky() -> void:
 	var tide := GameClock.tide_level()
 	var tide_txt := "Pasang tinggi" if tide > 0.3 else ("Surut ekstrem" if tide < -0.3 else "Normal")
 	content.add_child(_mk_label("Pasang-surut: %s   ·   Cuaca: %s" % [tide_txt, WorldState.weather.capitalize()], 14))
-	var rasi: String = PlayerData.birth_sign if PlayerData.birth_sign != "" else "-"
-	content.add_child(_mk_label("Rasi Kelahiranmu: %s" % rasi, 14))
+	# --- RASI (A5 #91): aset 12 rasi dipakai; rasi naik berganti tiap minggu nyata ---
+	var asc: Dictionary = RasiSystem.ascendant()
+	var brt: Dictionary = RasiSystem.birth()
+	var rrow := _row()
+	_add_rasi_art(rrow, asc)
+	var atxt := _mk_label("RASI NAIK MINGGU INI: %s\n%s" % [asc.get("name", "-"), asc.get("philosophy", "")], 14, Color(0.85, 0.88, 1.0))
+	atxt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	atxt.custom_minimum_size = Vector2(380, 0)
+	rrow.add_child(atxt)
+	var brow := _row()
+	_add_rasi_art(brow, brt)
+	var bonus_txt := "-"
+	var bd: Dictionary = brt.get("bonus", {})
+	if bd.get("value", 0.0) > 0.0:
+		bonus_txt = "%s +%d%%" % [RASI_BONUS_LABEL.get(bd.get("field", ""), bd.get("field", "")), int(round(float(bd.value) * 100))]
+	var btxt := _mk_label("Rasi Kelahiranmu: %s   (%s)\n%s" % [
+		PlayerData.birth_sign if PlayerData.birth_sign != "" else "-", bonus_txt, brt.get("philosophy", "")], 13, Color(1.0, 0.9, 0.6))
+	btxt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	btxt.custom_minimum_size = Vector2(380, 0)
+	brow.add_child(btxt)
 	content.add_child(_mk_label("— Ramalan Mingguan —", 16))
-	var prophecy := _weekly_prophecy()
+	var prophecy := RasiSystem.weekly_prophecy()
 	var pl := _mk_label(prophecy, 14)
 	pl.autowrap_mode = TextServer.AUTOWRAP_WORD
 	pl.custom_minimum_size = Vector2(500, 0)
 	pl.add_theme_color_override("font_color", Color(0.8, 0.85, 1.0))
 	content.add_child(pl)
+	# --- PRAKIRAAN 24 JAM (Audit B): benar ~80%; sisanya langit berubah pikiran ---
+	content.add_child(_mk_label("— Prakiraan Langit 24 Jam (akurasi ~80%) —", 16))
+	var fc: Array = WorldState.forecast(24)
+	var frow := _row()
+	var i := 0
+	for f in fc:
+		if i % 8 == 0 and i > 0:
+			frow = _row()
+		var icon: String = {"sunny": "☀", "rain": "☔", "thunderstorm": "⚡", "blizzard": "❄", "blood_moon": "🌕"}.get(f.weather, "·")
+		var fl := _mk_label("%02d:00 %s" % [f.hour, icon], 12, Color(0.78, 0.82, 0.95))
+		fl.tooltip_text = f.label
+		fl.custom_minimum_size = Vector2(60, 0)
+		frow.add_child(fl)
+		i += 1
 	content.add_child(_mk_label("— Langit Mendatang (kalender nyata) —", 16))
 	var events: Array = GameClock.upcoming_events(6)
 	if events.is_empty():
@@ -315,6 +347,23 @@ func _build_sky() -> void:
 	for e in events:
 		var when := "hari ini" if e.days == 0 else ("besok" if e.days == 1 else "%d hari lagi" % e.days)
 		content.add_child(_mk_label("✦ %s — %s (%s)" % [e.name, e.date, when], 14))
+
+const RASI_BONUS_LABEL := {
+	"hp_pct": "HP", "mp_pct": "MP", "atk_pct": "ATK", "matk_pct": "MATK", "def_pct": "DEF",
+	"crit_pct": "Krit", "evasion_add": "Evasion", "drop_add": "Drop", "harvest_pct": "Panen",
+	"exp_pct": "EXP", "gold_pct": "Emas",
+}
+
+## Gambar rasi 96px (aset yang sudah ada, akhirnya dipakai — A5 #91).
+func _add_rasi_art(row: HBoxContainer, r: Dictionary) -> void:
+	var tr := TextureRect.new()
+	tr.custom_minimum_size = Vector2(72, 72)
+	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	var path: String = r.get("asset", "")
+	if path != "" and ResourceLoader.exists(path):
+		tr.texture = load(path)
+	row.add_child(tr)
 
 func _weekly_prophecy() -> String:
 	# Rotating riddle that hints at an active/eligible Hidden Scenario (v0.3 §3.2).

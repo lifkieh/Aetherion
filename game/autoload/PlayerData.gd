@@ -362,6 +362,17 @@ func recalculate_stats() -> void:
 		matk = int(matk * (1.0 + SkillTreeSystem.bonus_total("matk_pct")))
 		attack_speed *= 1.0 + SkillTreeSystem.bonus_total("aspd_pct")
 		gather_bonus += SkillTreeSystem.bonus_total("gather_add")
+	# RASI KELAHIRAN (A5 #91): bonus tematik KECIL (2-3%) — identitas, bukan power spike
+	if not Db.rasi.is_empty() and birth_sign != "":
+		max_hp = int(max_hp * (1.0 + RasiSystem.birth_bonus("hp_pct")))
+		max_mp = int(max_mp * (1.0 + RasiSystem.birth_bonus("mp_pct")))
+		atk = int(atk * (1.0 + RasiSystem.birth_bonus("atk_pct")))
+		matk = int(matk * (1.0 + RasiSystem.birth_bonus("matk_pct")))
+		def = int(def * (1.0 + RasiSystem.birth_bonus("def_pct")))
+		crit_rate = clampf(crit_rate + RasiSystem.birth_bonus("crit_pct"), 0.0, 0.60)
+		evasion = clampf(evasion + RasiSystem.birth_bonus("evasion_add"), 0.0, 0.45)
+		drop_bonus += RasiSystem.birth_bonus("drop_add")
+		gather_bonus += RasiSystem.birth_bonus("harvest_pct")
 	hp = min(hp, max_hp)
 	mp = min(mp, max_mp)
 	stats_recalculated.emit()

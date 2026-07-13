@@ -68,6 +68,7 @@ func _ready() -> void:
 	_test_seasons()
 	_test_journal_and_stingers()
 	await _test_dungeon_chests_traps()
+	_test_rasi_and_forecast()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2559,3 +2560,52 @@ func _test_dungeon_chests_traps() -> void:
 
 class _FakeTrapTarget extends Node:
 	pass
+
+
+func _test_rasi_and_forecast() -> void:
+	print("[12 Rasi + Prakiraan Astrolog A5/Audit B #91]")
+	check("rasi.json termuat (12 rasi)", Db.rasi.size() == 12)
+	var missing_art := 0
+	var fields := {}
+	for r in Db.rasi:
+		if not ResourceLoader.exists(r.get("asset", "")):
+			missing_art += 1
+		if r.get("riddle", "") == "" or r.get("philosophy", "") == "":
+			check("rasi %s punya teka-teki + filosofi" % r.get("id", "?"), false)
+		fields[r.get("bonus", {}).get("field", "")] = true
+	check("12 aset rasi benar-benar ada & terpakai", missing_art == 0, "%d hilang" % missing_art)
+	check("bonus rasi beragam (bukan satu stat saja)", fields.size() >= 8, str(fields.size()))
+	# bonus KECIL: tak ada rasi yang memberi lebih dari 3%
+	var too_big := false
+	for r in Db.rasi:
+		if float(r.get("bonus", {}).get("value", 0.0)) > 0.03:
+			too_big = true
+	check("bonus rasi kecil (<=3%) — identitas, bukan power spike", not too_big)
+	# rasi naik: fungsi minggu nyata, sama untuk semua
+	var asc := RasiSystem.ascendant()
+	check("rasi naik valid", asc.has("id") and asc.get("id", "") != "")
+	check("rasi naik deterministik (minggu WIB)", RasiSystem.ascendant().get("id", "") == asc.get("id", ""))
+	check("ramalan mingguan tak kosong", RasiSystem.weekly_prophecy().length() > 10)
+	# rasi kelahiran: bonus benar-benar masuk stat
+	var save_sign: String = PlayerData.birth_sign
+	PlayerData.birth_sign = "Paus"          # +2% HP
+	PlayerData.recalculate_stats()
+	var hp_paus: int = PlayerData.max_hp
+	PlayerData.birth_sign = "Gerbang"       # bonus 0
+	PlayerData.recalculate_stats()
+	var hp_base: int = PlayerData.max_hp
+	check("bonus rasi kelahiran masuk ke stat", hp_paus > hp_base, "%d vs %d" % [hp_paus, hp_base])
+	check("bonus rasi kecil di praktik (<5%)", float(hp_paus - hp_base) / float(maxi(1, hp_base)) < 0.05)
+	PlayerData.birth_sign = save_sign
+	PlayerData.recalculate_stats()
+	# prakiraan: deterministik & 24 entri; rol cuaca mengikuti rencana ~80%
+	var fc: Array = WorldState.forecast(24)
+	check("prakiraan 24 jam", fc.size() == 24)
+	var valid := true
+	for f in fc:
+		if not f.get("weather", "") in ["sunny", "rain", "thunderstorm", "blizzard", "blood_moon"]:
+			valid = false
+	check("semua entri prakiraan cuaca sah", valid)
+	var d := GameClock.date_string()
+	check("rencana langit deterministik", WorldState.planned_weather(d, 9) == WorldState.planned_weather(d, 9))
+	check("akurasi prakiraan = 80% (janji GDD)", absf(WorldState.FORECAST_ACCURACY - 0.8) < 0.001)

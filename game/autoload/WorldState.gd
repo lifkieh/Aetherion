@@ -71,10 +71,50 @@ func force_weather(w: String) -> void:
 	_weather_timer = 0.0
 	set_weather(w)
 
+# --- Prakiraan cuaca Astrolog (Audit B / v0.4.3 #91) -------------------------
+# Langit punya RENCANA harian yang deterministik (seed = tanggal WIB + jam). Rol
+# cuaca sungguhan mengikuti rencana itu 80% waktu — jadi prakiraan Astrolog benar
+# ~80%, persis seperti yang dijanjikan GDD. 20% sisanya: langit berubah pikiran.
+const FORECAST_ACCURACY := 0.8
+
+func planned_weather(date: String, hour: int) -> String:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = hash("weather:" + date + ":" + str(hour / 3))   # blok 3 jam
+	var night: bool = hour >= 19 or hour < 6
+	var r := rng.randf()
+	if night:
+		if r < 0.65: return "sunny"
+		elif r < 0.85: return "rain"
+		return "thunderstorm"
+	if r < 0.60: return "sunny"
+	elif r < 0.85: return "rain"
+	return "thunderstorm"
+
+## Prakiraan N jam ke depan: [{hour, weather, label}] — dipakai Astrolog.
+func forecast(hours: int = 24) -> Array:
+	var out: Array = []
+	var now := GameClock.now_wib()
+	var h: int = now.hour
+	for i in range(hours):
+		var hh: int = (h + i) % 24
+		var date: String = GameClock.date_string()
+		var w: String = planned_weather(date, hh)
+		out.append({"hour": hh, "weather": w, "label": _weather_label(w)})
+	return out
+
 func _roll_weather(initial: bool) -> void:
 	# Blood Moon during real full-moon night; else weighted normal weather.
 	if GameClock.is_full_moon() and GameClock.is_night():
 		set_weather("blood_moon")
+		return
+	# 80% ikuti RENCANA langit (yang dibaca Astrolog); 20% langit berubah pikiran
+	if randf() < FORECAST_ACCURACY:
+		var planned := planned_weather(GameClock.date_string(), GameClock.wib_hour())
+		if initial:
+			weather = planned
+			EventBus.weather_changed.emit(planned)
+		else:
+			set_weather(planned)
 		return
 	var r := randf()
 	var w := "sunny"
