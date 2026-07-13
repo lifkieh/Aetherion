@@ -63,6 +63,39 @@ func _q_hash(q: Dictionary, seed: int) -> int:
 func quests() -> Array:
 	return PlayerData.daily_quests.get("quests", [])
 
+# --- Pelacakan (Jurnal, v0.4.3 #84) -----------------------------------------
+
+## Quest yang sedang dilacak ({} bila tak ada / sudah diklaim).
+func tracked() -> Dictionary:
+	var id: String = PlayerData.daily_quests.get("tracked", "")
+	if id == "":
+		return {}
+	for q in quests():
+		if q.id == id and not q.claimed:
+			return q
+	return {}
+
+func track(quest_id: String) -> void:
+	if PlayerData.daily_quests.get("tracked", "") == quest_id:
+		PlayerData.daily_quests["tracked"] = ""      # klik lagi = berhenti melacak
+		return
+	PlayerData.daily_quests["tracked"] = quest_id
+	for q in quests():
+		if q.id == quest_id:
+			EventBus.toast.emit("🎯 Melacak: %s" % q.name)
+			return
+
+## Petunjuk sasaran quest yang dilacak untuk penanda arah HUD:
+## {kind: "monster"/"gather"/"", target: id}
+func tracked_target() -> Dictionary:
+	var q := tracked()
+	if q.is_empty() or q.get("done", false):
+		return {}
+	match q.get("type", ""):
+		"kill": return {"kind": "monster", "target": q.get("target", "any")}
+		"gather": return {"kind": "gather", "target": q.get("target", "any")}
+		_: return {}
+
 # --- Progress ---------------------------------------------------------------
 
 func _cond_ok(q: Dictionary) -> bool:
@@ -85,7 +118,7 @@ func _advance(type: String, target: String) -> void:
 			q.progress = q.count
 			q.done = true
 			EventBus.toast.emit("✅ Quest selesai: %s — klaim di Papan!" % q.name)
-			Audio.play_sfx("success")
+			Audio.play_stinger("quest")
 		changed = true
 	if changed:
 		EventBus.counter_changed.emit("quest_progress", 0)  # nudge UI refresh

@@ -77,7 +77,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["quest", "Quest"], ["skill", "Skill"], ["trees", "Pohon"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
+	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["jurnal", "Jurnal"], ["quest", "Quest"], ["skill", "Skill"], ["trees", "Pohon"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -160,6 +160,7 @@ func _rebuild() -> void:
 		"crafting": _build_crafting()
 		"enchant": _build_enchant()
 		"auction": _build_auction()
+		"jurnal": _build_journal()
 		"shop": _build_shop()
 		"system": _build_system()
 		"pedia": _build_pedia()
@@ -338,6 +339,50 @@ const QUEST_TYPE_COLOR := {
 	"World": Color(0.6, 0.85, 0.8), "Era": Color(1.0, 0.7, 0.5),
 }
 
+## JURNAL QUEST TERPUSAT (v0.4.3 #1 / #84): tujuan aktif + taksonomi + pelacakan.
+## Papan Quest = tempat MENGAMBIL & MENGKLAIM; Jurnal = tempat MENGINGAT.
+func _build_journal() -> void:
+	title.text = "Jurnal"
+	QuestSystem.ensure_today()
+	var tracked: Dictionary = QuestSystem.tracked()
+	content.add_child(_mk_label("Klik 'Lacak' untuk menampilkan tujuan + arah sasaran di layar. Klik lagi untuk berhenti.", 11, Color(0.75, 0.8, 0.95)))
+	var active: Array = []
+	var done: Array = []
+	for q in QuestSystem.quests():
+		if q.get("claimed", false):
+			done.append(q)
+		else:
+			active.append(q)
+	content.add_child(_mk_label("— Sedang berjalan (%d) —" % active.size(), 15, Color(0.6, 0.9, 0.6)))
+	if active.is_empty():
+		content.add_child(_mk_label("(tidak ada tujuan aktif — ambil dari Papan Quest)", 12, Color(0.6, 0.6, 0.65)))
+	for q in active:
+		var h := _row()
+		var is_tracked: bool = not tracked.is_empty() and tracked.get("id", "") == q.get("id", "")
+		var mark := "🎯 " if is_tracked else ""
+		var status := "SELESAI — klaim di Papan" if q.get("done", false) else "%d/%d" % [q.progress, q.count]
+		var l := _mk_label("%s%s  [%s]" % [mark, q.name, status], 14, Color(1.0, 0.9, 0.5) if is_tracked else Color.WHITE)
+		l.custom_minimum_size = Vector2(300, 0)
+		h.add_child(l)
+		var qt: String = q.get("quest_type", "")
+		if qt != "":
+			h.add_child(_mk_label(QUEST_TYPE_LABEL.get(qt, qt), 11, QUEST_TYPE_COLOR.get(qt, Color(0.7, 0.75, 0.85))))
+		h.add_child(_btn("Berhenti" if is_tracked else "Lacak", _do_track.bind(q.get("id", ""))))
+		# alasan manusia di balik quest (Hukum Quest E8): ditampilkan, bukan disembunyikan
+		var d := _mk_label("   %s" % q.get("desc", ""), 11, Color(0.72, 0.76, 0.86))
+		d.custom_minimum_size = Vector2(480, 0)
+		d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		content.add_child(d)
+	if not done.is_empty():
+		content.add_child(_mk_label("— Selesai hari ini (%d) —" % done.size(), 15, Color(0.7, 0.7, 0.75)))
+		for q in done:
+			var dl := _mk_label("✔ %s" % q.name, 13, Color(0.55, 0.55, 0.6))
+			content.add_child(dl)
+
+func _do_track(quest_id: String) -> void:
+	QuestSystem.track(quest_id)
+	_rebuild()
+
 func _build_quests() -> void:
 	title.text = "Papan Quest Harian"
 	QuestSystem.ensure_today()
@@ -368,6 +413,8 @@ func _build_quests() -> void:
 			h.add_child(_btn("Klaim", func(): QuestSystem.claim(q.id); _rebuild()))
 		elif q.claimed:
 			h.add_child(_mk_label("diklaim", 12))
+		else:
+			h.add_child(_btn("Lacak", _do_track.bind(q.get("id", ""))))
 
 func _build_pedia() -> void:
 	title.text = "Aetherpedia"

@@ -231,6 +231,7 @@ func gain_exp(amount: int) -> void:
 		hp = max_hp
 		mp = max_mp
 		EventBus.player_leveled_up.emit(level)
+		Audio.play_stinger("levelup")
 		EventBus.toast.emit("Level Up! Lv %d" % level)
 		_learn_level_milestones()
 	EventBus.player_exp_changed.emit(exp, exp_to_next())

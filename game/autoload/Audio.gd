@@ -91,6 +91,32 @@ func play_sfx(name: String, pitch: float = 1.0) -> void:
 	p.volume_db = linear_to_db(maxf(0.001, sfx_scale))   # channel SFX (v0.4.1)
 	p.play()
 
+## STINGER (v0.4.3 #84) — penanda momen: bukan lagu baru, melainkan urutan pendek
+## dari sampel yang SUDAH ada (nada naik/turun via pitch). Momen besar wajib
+## terdengar, bukan cuma tampak.
+const STINGERS := {
+	"levelup":   [["levelup", 1.0]],
+	"quest":     [["success", 1.0], ["blip", 1.35]],
+	"discovery": [["secret", 1.0], ["blip", 1.6]],
+	"boss_kill": [["levelup", 0.85], ["fusion", 0.9], ["coin", 1.2]],
+	"transcend": [["fusion", 0.8], ["levelup", 1.15]],
+}
+
+func play_stinger(kind: String) -> void:
+	if muted:
+		return
+	var seq: Array = STINGERS.get(kind, [])
+	if seq.is_empty():
+		return
+	var delay := 0.0
+	for step in seq:
+		if delay <= 0.0:
+			play_sfx(step[0], float(step[1]))
+		else:
+			var t := get_tree().create_timer(delay, true)
+			t.timeout.connect(play_sfx.bind(step[0], float(step[1])))
+		delay += 0.22
+
 func play_music(filename: String) -> void:
 	if muted or filename == _current_music:
 		return

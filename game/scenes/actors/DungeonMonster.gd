@@ -411,6 +411,7 @@ func _boss_landing_check() -> void:
 ## Perayaan kill bos (v0.4.1): slow-mo + jingle + HUJAN LOOT + banner HUD.
 func _boss_celebration() -> void:
 	EventBus.boss_defeated.emit(inst.get("name", "Bos"))
+	Audio.play_stinger("boss_kill")
 	Engine.time_scale = 0.25
 	var t := get_tree().create_timer(0.22, true, false, true)   # ignore time_scale
 	t.timeout.connect(func(): Engine.time_scale = 1.0)

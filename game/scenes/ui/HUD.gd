@@ -480,7 +480,78 @@ func _refresh_elements() -> void:
 
 var _pstatus_lbl: Label = null
 
+var _track_lbl: Label = null
+var _track_cd := 0.0
+
+## PENANDA TUJUAN (v0.4.3 #1 / #84): quest yang dilacak tampil permanen di layar,
+## lengkap dengan arah & jarak ke sasaran terdekat — pemain tak perlu membuka menu
+## untuk tahu ia sedang mengejar apa.
+func _refresh_tracker(delta: float) -> void:
+	_track_cd -= delta
+	if _track_cd > 0.0:
+		return
+	_track_cd = 0.25
+	var q := QuestSystem.tracked()
+	if q.is_empty():
+		if _track_lbl:
+			_track_lbl.visible = false
+		return
+	if _track_lbl == null:
+		_track_lbl = _mk_label("", 13, Color(1.0, 0.9, 0.5))
+		_track_lbl.anchor_left = 0.5
+		_track_lbl.anchor_right = 0.5
+		_track_lbl.position = Vector2(-180, 44)
+		_track_lbl.custom_minimum_size = Vector2(360, 0)
+		_track_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		add_child(_track_lbl)
+	_track_lbl.visible = true
+	var status: String = "SELESAI — klaim di Papan Quest" if q.get("done", false) else "%d/%d" % [q.progress, q.count]
+	var txt := "🎯 %s  [%s]" % [q.name, status]
+	var hint := _target_hint(QuestSystem.tracked_target())
+	if hint != "" and not q.get("done", false):
+		txt += "   %s" % hint
+	_track_lbl.text = txt
+
+## Arah + jarak ke sasaran quest terdekat di scene ("" bila tak ada di sini).
+func _target_hint(t: Dictionary) -> String:
+	if t.is_empty():
+		return ""
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return ""
+	var group: String = "monsters" if t.get("kind", "") == "monster" else "gather"
+	var best: Node2D = null
+	var best_d := 1e9
+	for n in get_tree().get_nodes_in_group(group):
+		if not n is Node2D:
+			continue
+		if t.get("target", "any") != "any":
+			var nid := ""
+			if t.get("kind", "") == "monster":
+				var inst = n.get("inst")
+				nid = str(inst.get("species_id", "")) if inst is Dictionary else ""
+			else:
+				nid = str(n.get("kind"))
+			if nid != t.get("target", ""):
+				continue
+		var d: float = player.global_position.distance_to(n.global_position)
+		if d < best_d:
+			best_d = d
+			best = n
+	if best == null:
+		return "(sasaran tak ada di wilayah ini)"
+	var dir := (best.global_position - player.global_position).normalized()
+	return "%s %dm" % [_arrow(dir), int(best_d / 8.0)]
+
+const _ARROWS := ["→", "↘", "↓", "↙", "←", "↖", "↑", "↗"]
+
+func _arrow(dir: Vector2) -> String:
+	var a := fposmod(dir.angle(), TAU)
+	var idx := int(round(a / (TAU / 8.0))) % 8
+	return _ARROWS[idx]
+
 func _process(_delta: float) -> void:
+	_refresh_tracker(_delta)
 	_refresh_hotbar()
 	# player status icons near the HP bar (v0.4.1)
 	var ptxt := StatusFx.icons_text(PlayerData)

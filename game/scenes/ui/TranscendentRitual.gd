@@ -81,7 +81,7 @@ func _resolve() -> void:
 	var res := CraftingSystem.craft(_recipe_id)
 	var vp := get_viewport().get_visible_rect().size
 	if res.get("success", false):
-		Audio.play_sfx("levelup")
+		Audio.play_stinger("transcend")
 		var flash := ColorRect.new()
 		flash.color = Color(1, 1, 0.9, 0.9)
 		flash.size = vp

@@ -66,6 +66,7 @@ func _ready() -> void:
 	_test_miracles()
 	_test_quest_taxonomy()
 	_test_seasons()
+	_test_journal_and_stingers()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2469,3 +2470,40 @@ func _test_seasons() -> void:
 	for k in counts:
 		total += int(counts[k])
 	check("pick_species mengembalikan 600 hasil", total == 600, str(total))
+
+
+func _test_journal_and_stingers() -> void:
+	print("[Jurnal + Stinger v0.4.3]")
+	QuestSystem.ensure_today()
+	var qs: Array = QuestSystem.quests()
+	check("ada quest harian", not qs.is_empty())
+	if qs.is_empty():
+		return
+	var qid: String = qs[0].get("id", "")
+	PlayerData.daily_quests["tracked"] = ""
+	check("awalnya tak melacak apa pun", QuestSystem.tracked().is_empty())
+	QuestSystem.track(qid)
+	check("melacak quest", QuestSystem.tracked().get("id", "") == qid)
+	var t := QuestSystem.tracked_target()
+	check("sasaran lacak punya kind + target", t.has("kind") and t.has("target"), str(t))
+	check("kind sasaran sesuai mekanik quest",
+		t.get("kind", "") in ["monster", "gather", ""], str(t))
+	QuestSystem.track(qid)
+	check("klik lagi = berhenti melacak", QuestSystem.tracked().is_empty())
+	# quest yang sudah diklaim tak bisa jadi target pelacakan
+	QuestSystem.track(qid)
+	for q in QuestSystem.quests():
+		if q.id == qid:
+			q.done = true
+			q.claimed = true
+	check("quest diklaim otomatis lepas dari pelacakan", QuestSystem.tracked().is_empty())
+	PlayerData.daily_quests["tracked"] = ""
+	# stinger: definisi momen besar ada & memakai sampel yang benar-benar terdaftar
+	for kind in ["levelup", "quest", "discovery", "boss_kill", "transcend"]:
+		var seq: Array = Audio.STINGERS.get(kind, [])
+		check("stinger %s terdefinisi" % kind, not seq.is_empty())
+		for step in seq:
+			if not Audio.SFX_MAP.has(step[0]):
+				check("stinger %s memakai sfx terdaftar (%s)" % [kind, step[0]], false)
+	check("stinger tidak crash saat dipanggil", true)
+	Audio.play_stinger("quest")
