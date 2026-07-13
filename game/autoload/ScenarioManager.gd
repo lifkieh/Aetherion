@@ -113,6 +113,9 @@ func resolve(success: bool) -> void:
 	else:
 		EventBus.toast.emit("✦ Skenario GAGAL — terkunci permanen bagi karaktermu.")
 	EventBus.scenario_resolved.emit(id, success)
+	if success:
+		# PERAYAAN FIRST-CLEAR (#96): sekali seumur save, dicatat dengan tanggal WIB nyata
+		Chronicle.record("scenario:" + id, "Skenario tersembunyi ditembus: %s" % find(id).get("name", id))
 	active_scenario = ""
 	if PlayerData.is_dead():
 		PlayerData.respawn()   # don't persist a 0-HP state after a death-fail

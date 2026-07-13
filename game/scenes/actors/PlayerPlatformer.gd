@@ -51,7 +51,13 @@ func _build_sprite() -> void:
 func _facing_vec() -> Vector2:
 	return Vector2.LEFT if facing == "left" else Vector2.RIGHT
 
+var cutscene_lock := false     # input dikunci selama cutscene (v0.4.3 #94)
+
 func _physics_process(delta: float) -> void:
+	if cutscene_lock:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	_tick(delta)
 	if terrain == null or not is_instance_valid(terrain):
 		terrain = get_tree().get_first_node_in_group("terrain")

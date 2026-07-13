@@ -1348,5 +1348,17 @@
   "shop_demand": 6,
   "desc": "Pasang di Homestead: musim tak lagi membatasi apa yang boleh kau tanam.",
   "flavor": "Kaca tak melawan musim. Ia hanya menawar sedikit waktu."
+ },
+ {
+  "id": "tree_sapling",
+  "name": "Bibit Pohon",
+  "tier": "F",
+  "type": "seed",
+  "value": 40,
+  "stack": 99,
+  "shop_stock": 5,
+  "shop_demand": 8,
+  "desc": "Tanam di alam liar (bukan di petak Homestead). Tanah mengingat siapa yang menanam.",
+  "flavor": "Ia tak akan tumbuh besar semasa hidupmu. Tanam saja."
  }
 ]

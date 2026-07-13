@@ -27,6 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		SaveManager.save_game(SaveManager.current_slot)
 	elif Input.is_action_just_pressed("tame"):
 		_try_tame()
+	elif Input.is_action_just_pressed("plant_sapling"):
+		_plant_sapling()
 	elif Input.is_action_just_pressed("world_map"):
 		load("res://scenes/ui/WorldMapUI.gd").open_over(get_tree())
 	elif Input.is_action_just_pressed("interact"):
@@ -98,3 +100,24 @@ func _toggle_mount() -> void:
 		return
 	PlayerData.mounted = not PlayerData.mounted
 	EventBus.toast.emit(("Menunggangi " if PlayerData.mounted else "Turun dari ") + pet.get("name", "pet"))
+
+## Tanam bibit pohon di alam liar (penebusan Roh Hutan, #95). Tak bisa di dalam kota:
+## hutan yang butuh ditanami, bukan alun-alun.
+func _plant_sapling() -> void:
+	var p := get_tree().get_first_node_in_group("player")
+	if p == null:
+		return
+	if PlayerData.item_count("tree_sapling") <= 0:
+		EventBus.toast.emit("Tak punya Bibit Pohon. Beli di toko atau tebang lebih hati-hati.")
+		return
+	if SafeZone.is_active() and SafeZone.contains(p.global_position):
+		EventBus.toast.emit("Bukan di sini — tanamlah di luar kota, di tanah yang kau lukai.")
+		return
+	PlayerData.remove_item("tree_sapling", 1)
+	Audio.play_sfx("dodge")
+	var sap := preload("res://scenes/world/GatherNode.tscn").instantiate()
+	get_tree().current_scene.add_child(sap)
+	sap.setup("tree", "sapling_%d_%d" % [int(p.global_position.x), int(p.global_position.y)])
+	sap.global_position = p.global_position + Vector2(0, -4)
+	sap.scale = Vector2(0.55, 0.55)          # tunas: kecil dulu
+	ForestSpiritSystem.plant_tree()

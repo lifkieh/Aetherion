@@ -476,6 +476,24 @@ func _build_quests() -> void:
 
 func _build_pedia() -> void:
 	title.text = "Aetherpedia"
+	# --- PENCAPAIAN TERCATAT (benih Chronicle, #96): tanggal WIB NYATA ---
+	var ch := _mk_label("✦ Pencapaian Tercatat (Kitab Sejarah — benih)", 18)
+	ch.add_theme_color_override("font_color", Color(1.0, 0.86, 0.42))
+	content.add_child(ch)
+	var entries: Array = Chronicle.entries()
+	if entries.is_empty():
+		content.add_child(_mk_label("Belum ada yang tercatat. Dunia masih menunggu kau melakukan sesuatu yang layak diingat.", 12, Color(0.7, 0.72, 0.8)))
+	for e in entries:
+		var l := _mk_label("• %s — %s %s WIB (%s, Lv %d, oleh %s)" % [
+			e.get("title", "?"), e.get("date", ""), e.get("time", ""),
+			e.get("season", ""), int(e.get("level", 1)), e.get("by", "")], 12, Color(0.88, 0.9, 1.0))
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		l.custom_minimum_size = Vector2(500, 0)
+		content.add_child(l)
+	# Roh Hutan: keadaan hutan (Stewardship terlihat)
+	if WorldState.spirit_state != "none":
+		var st := "MURKA — hutan memucat; tanam %d bibit lagi (tombol G di luar kota)" % ForestSpiritSystem.debt() if ForestSpiritSystem.is_angry() else "BERKAH — hasil kayu & herbal lebih murah hati"
+		content.add_child(_mk_label("🌳 Roh Hutan: %s" % st, 12, Color(0.95, 0.6, 0.4) if ForestSpiritSystem.is_angry() else Color(0.6, 0.95, 0.6)))
 	content.add_child(_mk_label("Tiap ekor monster dirol RANK BINTANG ★1–★5 (±6% stat, tampil di atas HP bar), 0–2 TRAIT individu (Kekar/Liat/Gesit/Beruntung/Berbisa), dan 1/500 lahir ✦MUTASI (emas, +10% stat, drop lebih royal).", 11, Color(0.75, 0.8, 0.95)))
 	# --- Dunia / lore (Celestia canon) ---
 	var lore := _mk_label("🌍 Dunia Aetherion", 18)
@@ -828,7 +846,7 @@ func _do_buyout(idx: int) -> void:
 func _build_shop() -> void:
 	title.text = "Toko Greenvale"
 	content.add_child(_mk_label("— Beli —", 16))
-	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "fishing_rod", "star_bait", "saddle", "copper_sword", "greenhouse_kit"]:
+	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "fishing_rod", "star_bait", "saddle", "copper_sword", "greenhouse_kit", "tree_sapling"]:
 		if not Db.items.has(id): continue
 		var h := _row()
 		_add_item_icon(h, id)

@@ -30,6 +30,7 @@ var town_npcs: Dictionary = {}     # town_id -> 5 persona NPC (Hukum NPC Aneh, E
 var miracles: Array = []           # keajaiban langka tak-dipicu-pemain (E7, #79)
 var seasons: Array = []            # 4 musim x 2 minggu nyata (A4, v0.4.3 #83)
 var rasi: Array = []               # 12 Rasi Agung (A5, v0.4.3 #91)
+var cutscenes: Array = []          # skrip cutscene data-driven (v0.4.3 #94)
 
 var _errors: Array[String] = []
 
@@ -64,6 +65,7 @@ func load_all() -> void:
 	miracles = _load_array("miracles.json")
 	seasons = _load_array("seasons.json")
 	rasi = _load_array("rasi.json")
+	cutscenes = _load_array("cutscenes.json")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])

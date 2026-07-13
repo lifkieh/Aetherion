@@ -16,6 +16,9 @@ var miracle_log: Dictionary = {}       # {date, today, yesterday} — keajaiban 
 var greenhouse := false                # Rumah Kaca dibeli: musim tak membatasi tanam (A4 #83)
 var chests_opened: Dictionary = {}     # chest_id -> tanggal WIB terakhir dibuka (v0.4.3 #85)
 var secrets_found: Array = []          # peti rahasia yang PERNAH ditemukan (permanen)
+var spirit_state := "none"             # none | angry | blessed (Roh Hutan, #95)
+var chronicle: Array = []              # Pencapaian Tercatat (benih Chronicle, #96)
+var town_talk: Dictionary = {}         # apa yang sedang dibicarakan warga
 
 ## Tandai wilayah dikunjungi (dipanggil _ready tiap region scene). #43
 func mark_visited(region_id: String) -> void:
@@ -189,6 +192,9 @@ func to_save() -> Dictionary:
 		"greenhouse": greenhouse,
 		"chests_opened": chests_opened,
 		"secrets_found": secrets_found,
+		"spirit_state": spirit_state,
+		"chronicle": chronicle,
+		"town_talk": town_talk,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -203,6 +209,9 @@ func from_save(d: Dictionary) -> void:
 	greenhouse = bool(d.get("greenhouse", false))
 	chests_opened = d.get("chests_opened", {})
 	secrets_found = d.get("secrets_found", [])
+	spirit_state = d.get("spirit_state", "none")
+	chronicle = d.get("chronicle", [])
+	town_talk = d.get("town_talk", {})
 
 func new_game() -> void:
 	counters = {}
@@ -215,4 +224,7 @@ func new_game() -> void:
 	greenhouse = false
 	chests_opened = {}
 	secrets_found = []
+	spirit_state = "none"
+	chronicle = []
+	town_talk = {}
 	_roll_weather(true)

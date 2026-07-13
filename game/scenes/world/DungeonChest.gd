@@ -120,6 +120,7 @@ func interact() -> void:
 		Audio.play_sfx("secret_door")          # Minifantasy: pintu batu terbuka
 		Audio.play_stinger("discovery")
 		EventBus.toast.emit("✦ RUANG RAHASIA DITEMUKAN — dunia mencatatnya.")
+		Chronicle.record("secret:" + chest_id, "Ruang rahasia ditemukan", false)
 	else:
 		Audio.play_sfx("chest")                # Minifantasy: tutup peti terangkat
 		EventBus.toast.emit("Peti terbuka: %d barang + %dG." % [got, gold])

@@ -48,8 +48,13 @@ func _build_sprite() -> void:
 func refresh_look() -> void:
 	_build_sprite()
 
+var cutscene_lock := false     # input dikunci selama cutscene (v0.4.3 #94)
+
 func _physics_process(delta: float) -> void:
 	z_index = int(global_position.y)   # y-sort with town buildings/props (R2)
+	if cutscene_lock:
+		velocity = Vector2.ZERO
+		return
 	_tick_timers(delta)
 	_regen_mp(delta)
 	_update_infusion_aura(delta)

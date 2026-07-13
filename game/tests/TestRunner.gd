@@ -71,6 +71,9 @@ func _ready() -> void:
 	await _test_rasi_and_forecast()
 	_test_new_assets()
 	await _test_world_map()
+	await _test_cutscene_engine()
+	_test_forest_spirit()
+	_test_chronicle()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2705,3 +2708,90 @@ func _test_world_map() -> void:
 	check("peta dunia bisa dibuka", map._canvas.get_child_count() > 0)
 	get_tree().paused = false
 	map.queue_free()
+
+
+func _test_cutscene_engine() -> void:
+	print("[Cutscene engine v0.4.3 #2]")
+	check("cutscenes.json termuat", Db.cutscenes.size() >= 4)
+	for cid in ["intro_arrival", "forest_spirit_wrath", "forest_spirit_forgiven", "first_clear"]:
+		var c := Cutscene.def(cid)
+		check("cutscene %s ada & punya langkah" % cid, not c.is_empty() and not c.get("steps", []).is_empty())
+	# semua perintah yang dipakai data = perintah yang dikenali engine
+	var known := ["wait", "dialog", "banner", "fade", "play_music", "play_stinger", "sfx",
+		"shake", "move_actor", "face", "camera_pan", "camera_zoom", "spawn", "despawn"]
+	var unknown: Array = []
+	for c in Db.cutscenes:
+		for st in c.get("steps", []):
+			if not st.get("cmd", "") in known:
+				unknown.append(st.get("cmd", "?"))
+	check("tak ada perintah cutscene tak dikenal", unknown.is_empty(), str(unknown))
+	# aktor cutscene yang di-spawn benar-benar ada scriptnya
+	for c in Db.cutscenes:
+		for st in c.get("steps", []):
+			if st.get("cmd", "") == "spawn":
+				check("aktor spawn %s ada" % st.get("id", "?"),
+					ResourceLoader.exists(st.get("script", st.get("scene", ""))))
+	# jalankan cutscene pendek sungguhan (headless): engine harus selesai & tak nyangkut
+	# cutscene lain mungkin sedang berjalan dari test sebelumnya (mis. first-clear bos):
+	# tunggu sampai idle — engine tak boleh menggantung selamanya
+	var guard := 0
+	while Cutscene.playing and guard < 600:
+		await get_tree().process_frame
+		guard += 1
+	check("engine tak pernah menggantung (idle < 600 frame)", not Cutscene.playing, "guard=%d" % guard)
+	await Cutscene.play("first_clear")
+	check("engine selesai & tak nyangkut", not Cutscene.playing)
+	check("cutscene tercatat pernah diputar", WorldState.get_counter("cutscene:first_clear") >= 1)
+	check("hold-ESC untuk skip terdefinisi", Cutscene.SKIP_HOLD > 0.0)
+
+func _test_forest_spirit() -> void:
+	print("[Forest Spirit + penebusan v0.4.3 #4]")
+	var save_state: String = WorldState.spirit_state
+	var save_cut: int = WorldState.get_counter("trees_cut")
+	var save_plant: int = WorldState.get_counter("trees_planted")
+	WorldState.spirit_state = "none"
+	WorldState.counters["trees_cut"] = 0
+	WorldState.counters["trees_planted"] = 0
+	check("bibit pohon ada (drop + toko)", Db.items.has("tree_sapling"))
+	check("bibit bisa jatuh saat menebang", not Db.loot_table("tree_extra").is_empty())
+	check("ambang murka = 200 (Fase 0)", ForestSpiritSystem.WRATH_THRESHOLD == 200)
+	check("awalnya roh tidur", not ForestSpiritSystem.is_angry() and not ForestSpiritSystem.is_blessed())
+	check("hutan normal: tint putih & spawn penuh",
+		ForestSpiritSystem.world_tint() == Color.WHITE and ForestSpiritSystem.spawn_mult() == 1.0)
+	# murka: hutan memucat & lebih sepi (BUKAN lebih berbahaya)
+	WorldState.spirit_state = "angry"
+	WorldState.counters["trees_cut"] = 260
+	check("murka: hutan memucat", ForestSpiritSystem.world_tint() != Color.WHITE)
+	check("murka: hutan lebih SEPI, bukan lebih ganas", ForestSpiritSystem.spawn_mult() < 1.0)
+	check("utang tanam dihitung", ForestSpiritSystem.debt() == 260 - 100, str(ForestSpiritSystem.debt()))
+	check("node rahasia pohon Kehidupan masih terkunci", not ForestSpiritSystem.life_tree_node_unlocked())
+	# penebusan: menanam sampai lunas -> berkah (tak pernah soft-lock)
+	WorldState.counters["trees_planted"] = 160
+	check("utang lunas", ForestSpiritSystem.debt() == 0)
+	WorldState.spirit_state = "blessed"
+	check("berkah: bonus hasil kayu/herbal", ForestSpiritSystem.gather_bonus() > 0.0)
+	check("berkah: hutan pulih", ForestSpiritSystem.world_tint() == Color.WHITE and ForestSpiritSystem.spawn_mult() == 1.0)
+	check("berkah: node rahasia pohon Kehidupan terbuka", ForestSpiritSystem.life_tree_node_unlocked())
+	WorldState.spirit_state = save_state
+	WorldState.counters["trees_cut"] = save_cut
+	WorldState.counters["trees_planted"] = save_plant
+
+func _test_chronicle() -> void:
+	print("[Chronicle: Pencapaian Tercatat v0.4.3 #4]")
+	var save: Array = WorldState.chronicle.duplicate(true)
+	WorldState.chronicle.clear()
+	check("chronicle kosong di awal", Chronicle.entries().is_empty())
+	var first: bool = Chronicle.record("boss:king_slime", "Bos ditaklukkan: King Slime", false)
+	check("first-clear tercatat", first and Chronicle.has("boss:king_slime"))
+	var again: bool = Chronicle.record("boss:king_slime", "Bos ditaklukkan: King Slime", false)
+	check("clear kedua TIDAK dirayakan dua kali", not again and Chronicle.entries().size() == 1)
+	var e: Dictionary = Chronicle.entries()[0]
+	check("entri memakai TANGGAL WIB NYATA", e.get("date", "") == GameClock.date_string() and e.get("time", "") != "")
+	check("entri menyimpan siapa & level", e.get("by", "") != "" and int(e.get("level", 0)) >= 1)
+	# ikut save/load — pencapaian bersifat permanen
+	var ws := WorldState.to_save()
+	check("chronicle ikut save", ws.has("chronicle"))
+	WorldState.chronicle = []
+	WorldState.from_save(ws)
+	check("chronicle pulih setelah load", Chronicle.has("boss:king_slime"))
+	WorldState.chronicle = save

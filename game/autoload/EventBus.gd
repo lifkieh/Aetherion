@@ -55,6 +55,8 @@ signal dungeon_exited(id: String)
 signal item_crafted(item_id: String, success: bool)
 signal transcendent_crafted(item_id: String, success: bool)   # crafting A+ sebagai MOMEN (v0.4.2)
 signal captive_freed(name: String, tag: String)                # Rumah Lelang: tawanan dibebaskan (v0.4.2)
+signal spirit_state_changed(state: String)                     # Roh Hutan: none/angry/blessed (#95)
+signal chronicle_recorded(id: String, title: String)           # Pencapaian Tercatat (#96)
 signal board_visited()                           # player opened the Quest Board (onboarding)
 
 # --- Homestead ---

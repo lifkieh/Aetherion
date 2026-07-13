@@ -38,6 +38,13 @@ func _ready() -> void:
 	Settings.changed.connect(func(): _on_weather_changed(WorldState.weather))
 	_on_weather_changed(WorldState.weather)
 	Stage.enter_region("Hutan Greenvale", "Wilayah awal — aman di siang hari", "greenvale.ogg")
+	EventBus.spirit_state_changed.connect(func(_st): _apply_spirit_mood())
+	_apply_spirit_mood()
+	# Opening: sekali per karakter baru, cutscene "kedatangan" (engine #94).
+	# Masih PLACEHOLDER pra-v0.5 — opening kanon (Pegasus, #76) menyusul.
+	if PlayerData.level == 1 and WorldState.get_counter("cutscene:intro_arrival") == 0 \
+			and OS.get_environment("AETHER_SHOT") != "1":
+		Cutscene.play("intro_arrival")
 	get_tree().create_timer(2.6).timeout.connect(func(): Onboarding.tip("town"))
 	# Optional automated screenshot for verification (--screenshot arg or env)
 	if "--shot" in OS.get_cmdline_user_args() or OS.get_environment("AETHER_SHOT") == "1":
@@ -496,11 +503,13 @@ func _tick_spawner(delta: float) -> void:
 	_spawn_timer -= delta
 	if _spawn_timer <= 0.0:
 		_spawn_timer = 3.0
-		if _monster_count < MAX_MONSTERS:
+		# hutan yang memucat lebih SEPI (Roh Hutan murka, #95) — bukan lebih berbahaya
+		var cap := int(MAX_MONSTERS * ForestSpiritSystem.spawn_mult())
+		if _monster_count < cap:
 			_spawn_one()
 
 func _spawn_one() -> void:
-	var species: String = SPAWN_TABLE[randi() % SPAWN_TABLE.size()]
+	var species: String = Seasons.pick_species(SPAWN_TABLE)   # bias musim (#83)
 	if not MonsterFactory.spawnable_now(species):
 		return   # nokturnal hanya malam (v0.4.1)
 	var inst := MonsterFactory.make(species)
@@ -543,3 +552,16 @@ func _ambient_now() -> Color:
 	if WorldState.weather == "blood_moon":
 		c = Color(c.r * 1.35, c.g * 0.55, c.b * 0.55)
 	return c
+
+## HUTAN MEMUCAT saat Roh Hutan murka (#95): warna dunia meredup dan hutan jadi
+## lebih sepi — bukan lebih berbahaya. Konsekuensi yang terlihat, tanpa soft-lock.
+func _apply_spirit_mood() -> void:
+	var cm := get_node_or_null("CanvasModulate")
+	if cm == null:
+		for c in get_children():
+			if c is CanvasModulate:
+				cm = c
+	if cm:
+		cm.color = cm.color * ForestSpiritSystem.world_tint()
+	if ForestSpiritSystem.is_angry():
+		EventBus.toast.emit("Hutan terasa sunyi. Warnanya memudar.")

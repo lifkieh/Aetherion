@@ -273,6 +273,7 @@ func _learn_level_milestones() -> void:
 
 ## Boss first-kill unlocks: learn any skill gated behind this boss species.
 func on_boss_killed(species_id: String) -> void:
+	Chronicle.record("boss:" + species_id, "Bos ditaklukkan pertama kali: %s" % Db.monster(species_id).get("name", species_id))
 	for sk in Db.skills.values():
 		var u: Dictionary = sk.get("unlock", {})
 		if u.get("source", "") == "boss" and u.get("boss", "") == species_id:
