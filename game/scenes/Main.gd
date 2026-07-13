@@ -504,7 +504,7 @@ func _tick_spawner(delta: float) -> void:
 	if _spawn_timer <= 0.0:
 		_spawn_timer = 3.0
 		# hutan yang memucat lebih SEPI (Roh Hutan murka, #95) — bukan lebih berbahaya
-		var cap := int(MAX_MONSTERS * ForestSpiritSystem.spawn_mult())
+		var cap := int(MAX_MONSTERS * ForestSpiritSystem.spawn_mult() * MiracleSystem.spawn_mult())
 		if _monster_count < cap:
 			_spawn_one()
 

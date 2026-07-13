@@ -1,25 +1,101 @@
 [
-  {"id": "ancient_bloom", "name": "Mekarnya Bunga Purba", "weight": 3,
-   "item": "ancient_bloom",
-   "gossip_true": "Kudengar semalam ada bunga tua mekar di padang. Bunga yang katanya sudah punah.",
-   "gossip_false": [
-     "Kudengar semalam padang berubah jadi taman. Semalaman saja. Paginya hilang lagi.",
-     "Katanya ada bunga mekar semalam — siapa yang memetiknya jadi bisa bicara pada tanaman."]},
-  {"id": "migration", "name": "Migrasi Kawanan", "weight": 3,
-   "gossip_true": "Kudengar semalam kawanan burung lewat di atas desa. Ribuan. Tak ada yang tahu ke mana.",
-   "gossip_false": [
-     "Kudengar semalam langit penuh kunang-kunang. Kunang-kunang tak terbang setinggi itu. Itu bukan kunang-kunang.",
-     "Burung-burung itu terbang ke arah yang salah. Melawan musim. Sesuatu mengusir mereka."]},
-  {"id": "double_rainbow", "name": "Pelangi Ganda", "weight": 2, "needs": "after_rain",
-   "buff": {"key": "miracle_rainbow", "duration": 600.0, "exp_pct": 0.05, "luck": 1},
-   "gossip_true": "Kudengar kemarin muncul pelangi ganda seusai hujan. Yang melihatnya bilang harinya jadi ringan.",
-   "gossip_false": [
-     "Pelangi ganda itu pintu, katanya. Kalau kau berjalan ke ujungnya, kau tak akan kembali sama.",
-     "Dua pelangi berarti dua doa dikabulkan. Aku sudah pakai keduanya. Untuk hal bodoh."]},
-  {"id": "falling_star", "name": "Bintang Jatuh", "weight": 2, "needs": "clear_night",
-   "item": "star_fragment",
-   "gossip_true": "Kudengar semalam ada bintang jatuh di kejauhan. Ada yang bilang serpihannya masih di tanah.",
-   "gossip_false": [
-     "Bintang jatuh itu bukan bintang. Aku lihat sendiri: ia melambat sebelum menyentuh tanah.",
-     "Yang menemukan serpihan bintang akan diikuti sesuatu. Bukan hal jahat. Cuma... diikuti."]}
+ {
+  "id": "ancient_bloom",
+  "name": "Mekarnya Bunga Purba",
+  "weight": 3,
+  "item": "ancient_bloom",
+  "gossip_true": "Kudengar semalam ada bunga tua mekar di padang. Bunga yang katanya sudah punah.",
+  "gossip_false": [
+   "Kudengar semalam padang berubah jadi taman. Semalaman saja. Paginya hilang lagi.",
+   "Katanya ada bunga mekar semalam — siapa yang memetiknya jadi bisa bicara pada tanaman."
+  ],
+  "dark": false
+ },
+ {
+  "id": "migration",
+  "name": "Migrasi Kawanan",
+  "weight": 3,
+  "gossip_true": "Kudengar semalam kawanan burung lewat di atas desa. Ribuan. Tak ada yang tahu ke mana.",
+  "gossip_false": [
+   "Kudengar semalam langit penuh kunang-kunang. Kunang-kunang tak terbang setinggi itu. Itu bukan kunang-kunang.",
+   "Burung-burung itu terbang ke arah yang salah. Melawan musim. Sesuatu mengusir mereka."
+  ],
+  "dark": false
+ },
+ {
+  "id": "double_rainbow",
+  "name": "Pelangi Ganda",
+  "weight": 2,
+  "needs": "after_rain",
+  "buff": {
+   "key": "miracle_rainbow",
+   "duration": 600.0,
+   "exp_pct": 0.05,
+   "luck": 1
+  },
+  "gossip_true": "Kudengar kemarin muncul pelangi ganda seusai hujan. Yang melihatnya bilang harinya jadi ringan.",
+  "gossip_false": [
+   "Pelangi ganda itu pintu, katanya. Kalau kau berjalan ke ujungnya, kau tak akan kembali sama.",
+   "Dua pelangi berarti dua doa dikabulkan. Aku sudah pakai keduanya. Untuk hal bodoh."
+  ],
+  "dark": false
+ },
+ {
+  "id": "falling_star",
+  "name": "Bintang Jatuh",
+  "weight": 2,
+  "needs": "clear_night",
+  "item": "star_fragment",
+  "gossip_true": "Kudengar semalam ada bintang jatuh di kejauhan. Ada yang bilang serpihannya masih di tanah.",
+  "gossip_false": [
+   "Bintang jatuh itu bukan bintang. Aku lihat sendiri: ia melambat sebelum menyentuh tanah.",
+   "Yang menemukan serpihan bintang akan diikuti sesuatu. Bukan hal jahat. Cuma... diikuti."
+  ],
+  "dark": false
+ },
+ {
+  "id": "village_plague",
+  "name": "Wabah Kecil",
+  "weight": 2,
+  "dark": true,
+  "days": 3,
+  "price_mult": 1.35,
+  "spawn_mult": 0.85,
+  "effect_note": "Ramuan langka & mahal; warga murung; sedikit yang berani keluar.",
+  "gossip_true": "Ada yang demam di rumah sebelah. Lalu rumah sebelahnya lagi. Jangan minum dari sumur utara dulu.",
+  "gossip_false": [
+   "Kudengar wabah ini kutukan karena ada yang menebang pohon keramat. Aku tidak menuduh siapa-siapa.",
+   "Katanya yang sakit itu melihat sesuatu di kabut sebelum jatuh sakit. Aku tak percaya. Tapi aku tetap di dalam."
+  ]
+ },
+ {
+  "id": "drought",
+  "name": "Kekeringan",
+  "weight": 2,
+  "dark": true,
+  "days": 4,
+  "price_mult": 1.45,
+  "spawn_mult": 0.8,
+  "effect_note": "Panen mengecil; makanan mahal; monster turun mencari air.",
+  "gossip_true": "Sumur mengering. Ladang retak. Kalau hujan tak datang minggu ini, harga akan menggila.",
+  "gossip_false": [
+   "Air tidak hilang — ada yang MENGAMBILNYA. Aku tahu bagaimana kedengarannya. Tapi coba jelaskan sendiri.",
+   "Ini karena kita terlalu banyak menuai. Tanah sedang membalas. Itu saja."
+  ]
+ },
+ {
+  "id": "distant_war",
+  "name": "Kabar Perang Jauh",
+  "weight": 2,
+  "dark": true,
+  "days": 5,
+  "price_mult": 1.3,
+  "spawn_mult": 1.15,
+  "effect_note": "Logam & senjata mahal (perang membeli semuanya); jalur dagang tak aman.",
+  "gossip_true": "Ada perang di timur. Jauh, katanya. Tapi pedagang besi sudah tak mau menjual murah — dan itu selalu pertanda.",
+  "gossip_false": [
+   "Perangnya sudah dekat. Sudah dekat! Aku dengar dari orang yang dengar dari orang.",
+   "Tak ada perang. Itu cuma alasan pedagang menaikkan harga. Selalu begitu."
+  ]
+ }
 ]

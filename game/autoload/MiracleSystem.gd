@@ -23,6 +23,84 @@ func def(id: String) -> Dictionary:
 			return m
 	return {}
 
+# --- KEAJAIBAN GELAP (#145) -------------------------------------------------
+# Living World Bible: daftar world event kanon justru KERAS — kekeringan, wabah,
+# perang kecil. Dunia yang hanya menghasilkan keajaiban indah adalah **taman hiburan
+# untuk pemain** — dan itu ditolak eksplisit. Maka: dunia juga boleh melukai.
+#
+# Sama seperti keajaiban terang: **TIDAK ADA POPUP.** Kau hanya tahu lewat gosip warga
+# keesokan harinya — dan gosip itu boleh keliru (E5 #77).
+# Efeknya kecil tapi NYATA (harga naik, warga murung, spawn berubah), **mereda sendiri**
+# setelah beberapa hari, dan **bisa diakhiri lebih cepat kalau pemain menolong**.
+
+## Apakah ada bencana kecil yang sedang berlangsung?
+func dark_active() -> bool:
+	_refresh()
+	if WorldState.dark_event.is_empty():
+		return false
+	return _days_left() > 0
+
+func dark_def() -> Dictionary:
+	return def(WorldState.dark_event.get("id", "")) if dark_active() else {}
+
+func _days_left() -> int:
+	var ev: Dictionary = WorldState.dark_event
+	if ev.is_empty():
+		return 0
+	var started := int(ev.get("started", 0))
+	var days := int(ev.get("days", 3))
+	var now := int(floor(float(Time.get_unix_time_from_system() + GameClock.WIB_OFFSET) / 86400.0))
+	return maxi(0, days - (now - started))
+
+func days_left() -> int:
+	return _days_left() if dark_active() else 0
+
+## Harga naik saat bencana (dibaca Economy).
+func price_mult() -> float:
+	return float(dark_def().get("price_mult", 1.0)) if dark_active() else 1.0
+
+## Spawn berubah (wabah/kekeringan = lebih sepi; perang = monster terusir mendekat).
+func spawn_mult() -> float:
+	return float(dark_def().get("spawn_mult", 1.0)) if dark_active() else 1.0
+
+## Biaya menolong desa: pemain BISA memendekkan penderitaan — Stewardship.
+func aid_cost() -> Dictionary:
+	var d := dark_def()
+	match d.get("id", ""):
+		"village_plague": return {"item": "minor_potion", "qty": 5, "gold": 0}
+		"drought": return {"item": "", "qty": 0, "gold": 400}
+		"distant_war": return {"item": "copper_bar", "qty": 4, "gold": 0}
+	return {}
+
+## Menolong: mengakhiri bencana lebih cepat. Returns true bila berhasil.
+func aid() -> bool:
+	if not dark_active():
+		return false
+	var c := aid_cost()
+	var item: String = c.get("item", "")
+	var qty: int = int(c.get("qty", 0))
+	var gold: int = int(c.get("gold", 0))
+	if item != "" and PlayerData.item_count(item) < qty:
+		EventBus.toast.emit(Loc.t("dark.need", [qty, Db.item_name(item)]))
+		return false
+	if gold > 0 and PlayerData.gold < gold:
+		EventBus.toast.emit(Loc.t("dark.need_gold", [gold]))
+		return false
+	if item != "":
+		PlayerData.remove_item(item, qty)
+	if gold > 0:
+		PlayerData.spend_gold(gold)
+	var name: String = dark_def().get("name", "")
+	WorldState.dark_event = {}
+	# dunia mengingat siapa yang menolong (slot reputasi #130 akhirnya terpakai)
+	var reg: String = WorldState.current_region
+	PlayerData.reputation[reg] = clampi(PlayerData.reputation_at(reg) + 1, 0, 5)
+	Audio.play_stinger("quest")
+	EventBus.toast.emit(Loc.t("dark.aided", [name]))
+	Chronicle.record("aid:" + name + ":" + GameClock.date_string(),
+		Loc.t("dark.chronicle", [name]), false)
+	return true
+
 ## Keajaiban hari ini ({} = tidak ada). Auto-roll saat tanggal WIB berganti.
 func today() -> Dictionary:
 	_refresh()
@@ -44,6 +122,15 @@ func _refresh() -> void:
 	_yesterday = prev
 	_today = roll(date)
 	WorldState.miracle_log = {"date": date, "today": _today, "yesterday": _yesterday}
+	# keajaiban GELAP = bencana kecil yang berlangsung beberapa hari (#145)
+	var d := def(_today.get("id", ""))
+	if not _today.is_empty() and bool(d.get("dark", false)) and WorldState.dark_event.is_empty():
+		var wib := int(Time.get_unix_time_from_system()) + GameClock.WIB_OFFSET
+		WorldState.dark_event = {
+			"id": _today.get("id", ""),
+			"started": int(floor(float(wib) / 86400.0)),
+			"days": int(d.get("days", 3)),
+		}
 
 ## Roll deterministik untuk satu tanggal. Dipakai test/harness juga.
 func roll(date: String) -> Dictionary:
@@ -86,6 +173,8 @@ func manifest(host: Node2D, area_center: Vector2, area_radius: float = 220.0) ->
 		"double_rainbow":
 			_rainbow(host, area_center)
 			PlayerData.apply_buff("miracle_rainbow", d.get("buff", {"duration": 600.0}))
+		_:
+			pass   # keajaiban GELAP tak punya visual meriah — dunia hanya jadi lebih muram
 
 func _off(rng: RandomNumberGenerator, r: float) -> Vector2:
 	return Vector2(rng.randf_range(-r, r), rng.randf_range(-r, r))

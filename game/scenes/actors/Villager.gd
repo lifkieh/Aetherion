@@ -160,6 +160,11 @@ func persona() -> Dictionary:
 ## and time-aware. Returns 2-3 rotating lines; interact() picks one at random.
 func ambient_lines() -> Array:
 	var lines: Array = []
+	# BENCANA (#145): saat dunia terluka, warga tidak berbasa-basi soal cuaca.
+	if MiracleSystem.dark_active():
+		var d := MiracleSystem.dark_def()
+		lines.append(Loc.t("dark.mood_%s" % d.get("id", "")))
+		lines.append(Loc.t("dark.mood_generic"))
 	var weather: String = WorldState.weather
 	var moon: String = GameClock.moon_name()
 	var hour: int = GameClock.wib_hour()

@@ -41,7 +41,9 @@ func price_multiplier(item_id: String) -> float:
 	return clampf(d / s, CLAMP_LO, CLAMP_HI)
 
 func buy_price(item_id: String) -> int:
-	return int(round(base_price(item_id) * price_multiplier(item_id)))
+	# BENCANA (#145): wabah/kekeringan/perang menaikkan harga — dunia yang terluka
+	# terasa di kantong, bukan cuma di dialog.
+	return int(round(base_price(item_id) * price_multiplier(item_id) * MiracleSystem.price_mult()))
 
 func sell_price(item_id: String) -> int:
 	# shops buy from player at 60% of current buy price

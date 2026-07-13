@@ -451,12 +451,36 @@ func _build_journal() -> void:
 			var dl := _mk_label("✔ %s" % q.name, 13, Color(0.55, 0.55, 0.6))
 			content.add_child(dl)
 
+## BENCANA (#145): desa sedang menderita — pemain BOLEH menolong (Stewardship).
+## Kalau tidak ditolong, ia tetap mereda sendiri. Dunia tidak menyandera pemain.
+func _build_dark_aid() -> void:
+	if not MiracleSystem.dark_active():
+		return
+	var d := MiracleSystem.dark_def()
+	var head := _mk_label("⚠ %s — %s" % [d.get("name", ""), d.get("effect_note", "")], 14, Color(0.95, 0.6, 0.5))
+	head.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	head.custom_minimum_size = Vector2(500, 0)
+	content.add_child(head)
+	content.add_child(_mk_label(Loc.t("dark.days_left", [MiracleSystem.days_left()]), 11, Color(0.8, 0.75, 0.7)))
+	var c := MiracleSystem.aid_cost()
+	var h := _row()
+	var cost_txt := ""
+	if c.get("item", "") != "":
+		cost_txt = "%d %s" % [int(c.qty), Db.item_name(c.item)]
+	elif int(c.get("gold", 0)) > 0:
+		cost_txt = "%d G" % int(c.gold)
+	h.add_child(_mk_label(Loc.t("dark.aid_offer", [cost_txt]), 12, Color(0.85, 0.88, 0.95)))
+	h.add_child(_btn(Loc.t("dark.aid_button"), func():
+		MiracleSystem.aid()
+		_rebuild()))
+
 func _do_track(quest_id: String) -> void:
 	QuestSystem.track(quest_id)
 	_rebuild()
 
 func _build_quests() -> void:
 	title.text = "Papan Quest Harian"
+	_build_dark_aid()
 	QuestSystem.ensure_today()
 	content.add_child(_mk_label("Tanggal: %s (reset tiap hari WIB)" % PlayerData.daily_quests.get("date", "?"), 13))
 	var qs: Array = QuestSystem.quests()

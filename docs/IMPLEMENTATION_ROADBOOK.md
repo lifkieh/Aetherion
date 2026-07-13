@@ -25,6 +25,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **Chronicle: entri fragmen/rusak** + sembunyikan % penyelesaian | Mystery (51) b.1508/1664 | Chronicle ✅ | 0,3 sesi | **C7** |
 | **Hidden Dungeon** pertama (dungeon utuh yang tersembunyi) + asal-usul 5 dungeon masuk ke dalam game (jurnal, artefak bercerita) | Dungeon (40) + `DUNGEON_ORIGINS.md` | — | 1 sesi | — |
 | **Dual Class** (spec → implementasi) | Class & Skill Tree (45) + #117 | — | 1 sesi | Sudah diputus (#117) |
+| **LOKALISASI GELOMBANG 2** (#146): **nama item · nama monster · lore/Pedia → EN**; teks cerita v0.5 **ditulis dwibahasa sejak lahir** | B15 (#62/#100) | Loc ✅ | 1 sesi | Sudah diputus (#146) |
 | **Rename**: fusi elemen tetap *Fusion*; penyatuan pemain–monster = **Sinkronisasi** | World Bible b.3798 | — | 0,1 sesi | **C4 / Q6** |
 
 ---
@@ -53,6 +54,8 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
 | **Benua & budaya baru**: Azhur (Thalassar/Tidekin), Nethrak (Wildhearth/Beastfolk), Sylvara (Elf/Ancient Jungle) | World Bible, Ras (#86), #110 | Aset (lihat MANIFEST) | 3–4 sesi | Fairy Realm → benua mana? |
+| **CUACA PER-WILAYAH** (#147): cuaca global dipecah per wilayah/benua — badai di laut ≠ badai di gurun | v0.1 §4.3 | Wilayah baru | 0,5 sesi | Sudah diputus (#147) |
+| **REQUIREMENT DESAIN DUNGEON** (#148): dungeon BARU **wajib mengisi tipe kanon yang masih kosong lebih dulu** — **Raid (III)** · **Companion (VI)** · **Kingdom (VII)** — sebelum menambah Ancient Ruins ke-4 | Dungeon Bible (40), `DUNGEON_ORIGINS.md` | Companion v1 (VI), Domain (VII), entourage (III) | — | Sudah diputus (#148) |
 | **Ras playable bertambah** (Elf ← Sylvara, Tidekin ← Azhur) — **ras = budaya, bukan stat** | RAS_KANON (#86) | CharGen | 1 sesi | — |
 | **Monster multi-elemen** (1–3 elemen; 4+ langka) | Monster (32), Taming (44) + #122 | — | 1 sesi | — |
 | **Monster cerdas** (tier 4–5): tidak masuk tabel loot; taming lewat **persetujuan**; membunuhnya berkonsekuensi | Faction 06, Taming (44) | Reputasi | 1,5 sesi | **C18/C19 / Q23/Q24** |

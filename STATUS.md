@@ -325,7 +325,7 @@ fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Sco
 (Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
 naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
 
-## ⏸️ STATUS: **KANON BERSIH** — konflik Bible resolved/terjadwal (#115–#144); panteon terkunci (5 Dewa + Caevael). Gerbang v0.5 tinggal **B17 Companion Bible (10/50)**. Menunggu: **sesi Companion Bible** + **playtest owner v0.4.3–v0.4.4**.
+## ⏸️ STATUS: **KANON BERSIH** — konflik Bible resolved/terjadwal (#115–#148); panteon terkunci (5 Dewa + Caevael); **audit Direktur: keajaiban GELAP dibangun** (wabah/kekeringan/perang — dunia juga boleh melukai), lokalisasi gel.2 → v0.5, cuaca per-wilayah → v0.7, 3 tipe dungeon kosong = requirement v0.7+. Gerbang v0.5 tinggal **B17 Companion Bible (10/50)**. Menunggu: **sesi Companion Bible** + **playtest owner v0.4.3–v0.4.4**.
 
 > ⚠ **PENGINGAT OWNER — BACKUP MANUAL:** `docs_private/` (berisi **Nirnama Bible lengkap**) **TIDAK ter-commit dan TIDAK ter-backup GitHub** (#144). **Masukkan folder itu ke rutinitas backup pribadi Anda** (salin ke drive/cloud pribadi). Kalau mesin ini hilang, kitab itu hilang — dan hanya itu satu-satunya salinan nama aslinya.
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,

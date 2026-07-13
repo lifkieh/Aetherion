@@ -83,6 +83,7 @@ func _ready() -> void:
 	_test_bible_alignment()
 	_test_production_standards()
 	_test_personality()
+	_test_dark_miracles()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2382,7 +2383,12 @@ func _test_town_folk() -> void:
 
 func _test_miracles() -> void:
 	print("[Miracle System v1 E7]")
-	check("miracles.json termuat (4 keajaiban)", Db.miracles.size() == 4)
+	check("miracles.json termuat (4 terang + 3 gelap)", Db.miracles.size() == 7, str(Db.miracles.size()))
+	var terang := 0
+	for m2 in Db.miracles:
+		if not bool(m2.get("dark", false)):
+			terang += 1
+	check("4 keajaiban TERANG", terang == 4, str(terang))
 	for m in Db.miracles:
 		check("keajaiban %s punya gosip benar + versi keliru" % m.get("id", "?"),
 			m.get("gossip_true", "") != "" and not m.get("gossip_false", []).is_empty())
@@ -2400,7 +2406,7 @@ func _test_miracles() -> void:
 			hit += 1
 			kinds[r.get("id", "")] = true
 	check("keajaiban langka tapi terjadi (5%-50% hari)", hit > 20 and hit < 200, "%d/400" % hit)
-	check("keempat jenis keajaiban bisa muncul", kinds.size() == 4, str(kinds.keys()))
+	check("semua 7 jenis keajaiban (terang & gelap) bisa muncul", kinds.size() == 7, str(kinds.keys()))
 	# gosip esok hari: keajaiban kemarin yang diumumkan, TIDAK ada popup
 	WorldState.miracle_log = {"date": GameClock.date_string(), "today": {},
 		"yesterday": {"id": "falling_star", "date": "kemarin"}}
@@ -3280,3 +3286,64 @@ func _test_personality() -> void:
 	check("watak tak berubah semalaman (profil identik setelah load)",
 		Personality.of("Nyai Tuminah").big5 == snapshot.big5)
 	WorldState.npc_profiles.clear()
+
+
+func _test_dark_miracles() -> void:
+	print("[Keajaiban GELAP (#145): dunia juga boleh melukai]")
+	var dark_ids: Array = []
+	for m in Db.miracles:
+		if bool(m.get("dark", false)):
+			dark_ids.append(m.get("id", ""))
+	check("ada 3 keajaiban gelap", dark_ids.size() == 3, str(dark_ids))
+	check("wabah/kekeringan/perang terdaftar",
+		"village_plague" in dark_ids and "drought" in dark_ids and "distant_war" in dark_ids)
+	# tiap bencana punya gosip benar + versi keliru (diumumkan lewat mulut warga, TANPA popup)
+	for m in Db.miracles:
+		if bool(m.get("dark", false)):
+			check("bencana %s punya gosip benar + keliru" % m.id,
+				m.get("gossip_true", "") != "" and not m.get("gossip_false", []).is_empty())
+			check("bencana %s punya efek nyata" % m.id,
+				float(m.get("price_mult", 1.0)) != 1.0 or float(m.get("spawn_mult", 1.0)) != 1.0)
+	# tak ada bencana -> dunia normal
+	WorldState.dark_event = {}
+	check("tanpa bencana: harga & spawn normal",
+		absf(MiracleSystem.price_mult() - 1.0) < 0.001 and absf(MiracleSystem.spawn_mult() - 1.0) < 0.001)
+	# pasang bencana -> EFEK NYATA: harga naik, spawn berubah
+	var today := int(floor(float(Time.get_unix_time_from_system() + GameClock.WIB_OFFSET) / 86400.0))
+	WorldState.dark_event = {"id": "drought", "started": today, "days": 4}
+	check("bencana aktif", MiracleSystem.dark_active() and MiracleSystem.days_left() == 4)
+	check("harga NAIK saat kekeringan", MiracleSystem.price_mult() > 1.3, str(MiracleSystem.price_mult()))
+	check("spawn berubah saat kekeringan", MiracleSystem.spawn_mult() < 1.0)
+	var harga_bencana: int = Economy.buy_price("minor_potion")
+	WorldState.dark_event = {}
+	var harga_normal: int = Economy.buy_price("minor_potion")
+	check("harga toko benar-benar naik saat bencana", harga_bencana > harga_normal,
+		"%d vs %d" % [harga_bencana, harga_normal])
+	# MEREDA SENDIRI setelah beberapa hari (dunia tak menyandera pemain)
+	WorldState.dark_event = {"id": "village_plague", "started": today - 5, "days": 3}
+	check("bencana mereda sendiri setelah harinya lewat", not MiracleSystem.dark_active())
+	# PEMAIN BISA MENOLONG -> berakhir lebih cepat + dunia mengingat (reputasi)
+	WorldState.dark_event = {"id": "village_plague", "started": today, "days": 3}
+	var save_rep: int = PlayerData.reputation_at(WorldState.current_region)
+	PlayerData.inventory.clear()
+	check("menolong TANPA sumbangan ditolak", not MiracleSystem.aid() and MiracleSystem.dark_active())
+	PlayerData.add_item("minor_potion", 5)
+	check("menolong dengan sumbangan BERHASIL", MiracleSystem.aid())
+	check("bencana berakhir setelah ditolong", not MiracleSystem.dark_active())
+	check("sumbangan benar-benar diambil", PlayerData.item_count("minor_potion") == 0)
+	check("dunia mengingat yang menolong (reputasi naik)",
+		PlayerData.reputation_at(WorldState.current_region) == save_rep + 1)
+	check("pertolongan tercatat di Chronicle", Chronicle.entries().any(
+		func(e): return str(e.get("id", "")).begins_with("aid:")))
+	# terjemahan bencana lengkap dua bahasa
+	for k in ["dark.aided", "dark.aid_button", "dark.days_left", "dark.mood_drought"]:
+		check("terjemahan '%s' ada di ID & EN" % k, Loc.has(k, "id") and Loc.has(k, "en"))
+	# save/load
+	WorldState.dark_event = {"id": "distant_war", "started": today, "days": 5}
+	var ws := WorldState.to_save()
+	check("bencana ikut save", ws.has("dark_event") and not ws.dark_event.is_empty())
+	WorldState.dark_event = {}
+	WorldState.from_save(ws)
+	check("bencana pulih setelah load", MiracleSystem.dark_active())
+	WorldState.dark_event = {}
+	PlayerData.reputation.clear()
