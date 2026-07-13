@@ -115,6 +115,32 @@ ada?", dunia harus punya jawabannya (`docs/DUNGEON_ORIGINS.md`). Anti-pola
 **7. ⏳ SKALA WAKTU (#123) — PENDING OWNER.** Penuaan/generasi/suksesi vs jam WIB asli
 belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
 
+## HUKUM PERTUMBUHAN NPC (L14–L18, #137)
+
+- **L14 — OPPORTUNITY SHAPES DESTINY.** Dua orang berbakat sama bisa bernasib jauh
+  berbeda karena **kesempatan**. Banyak kehidupan gagal berkembang bukan karena kurang
+  bakat, melainkan karena **tidak pernah mendapat kesempatan** — dan **PEMAIN adalah
+  sumber kesempatan terbesar di dunia** (merekrut, mementor, menempatkan seseorang =
+  **mengubah takdirnya**). *Inilah Belonging.*
+- **L15 — PEOPLE CAN BREAK.** Trauma, duka, depresi, dan kelelahan **menurunkan
+  performa** dan memperlambat/menghentikan pertumbuhan. **Kekuatan mental adalah bagian
+  dari kekuatan.**
+- **L16 — TRAINING CREATES STRENGTH, tapi Stronger ≠ Exceptional.** Latihan menjamin
+  kemajuan; ia **tidak** menjamin kehebatan.
+- **L17 — GENIUS IS RARE.** Talent + Effort **>** Talent. Talent + Effort + Opportunity
+  + Luck = **pengubah sejarah**.
+- **L18 — MOST PEOPLE ARE ORDINARY.** Mayoritas NPC bekerja, berkeluarga, menua, dan
+  meninggal **tanpa menjadi legenda — DAN ITU BUKAN KEGAGALAN.** Dunia dibangun oleh
+  jutaan orang biasa. Chronicle menghormati yang biasa.
+- **HUKUM PENUTUP:** masa depan setiap NPC adalah **"???"**. Tidak ada yang dijamin
+  sukses. **Dunia menarik karena kemungkinannya, bukan karena kepastiannya.**
+
+**Aturan dinamis (#138):** temperamen **tetap seumur hidup**; Big Five, trauma, moral,
+dan growth **hanya bergerak lewat PERISTIWA** (Life Events, kehilangan, kemenangan,
+kesempatan, perlakuan pemain) — **TIDAK PERNAH lewat timer kosong**.
+**Pembagian:** Great Companion & tokoh bernama = **tulis tangan**; NPC generik =
+**generate unik per individu**, deterministik & dipersist.
+
 ## HUKUM ROADMAP (#128)
 
 **Roadmap rilis (v0.5 → v1.0) hanya berubah lewat KEPUTUSAN EKSPLISIT Direktur.**

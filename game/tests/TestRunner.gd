@@ -82,6 +82,7 @@ func _ready() -> void:
 	_test_nirnama_secret()
 	_test_bible_alignment()
 	_test_production_standards()
+	_test_personality()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -3157,3 +3158,125 @@ func _test_production_standards() -> void:
 	check("label tangga reputasi", PlayerData.reputation_label("greenvale") == "Respected",
 		PlayerData.reputation_label("greenvale"))
 	PlayerData.reputation.clear()
+
+
+func _test_personality() -> void:
+	print("[Model kepribadian 5 lapis + hukum pertumbuhan (#136-#138)]")
+	WorldState.npc_profiles.clear()
+	# (a) SEMUA NPC bernama punya profil — 25 tulis-tangan + generik terpanggil
+	var hand := 0
+	for town in Db.town_npcs.keys():
+		for np in Db.town_npcs[town]:
+			var prof := Personality.of(np.get("name", ""))
+			if not bool(prof.get("handwritten", false)):
+				check("NPC '%s' harus TULIS TANGAN, bukan generate" % np.get("name", "?"), false)
+			else:
+				hand += 1
+			# lima lapis lengkap
+			for f in ["temperament", "temperament_sub", "big5", "moral", "trauma",
+					"talent", "effort", "opportunity", "luck", "mental_state"]:
+				if not prof.has(f):
+					check("profil %s punya lapis '%s'" % [np.get("name", "?"), f], false)
+	check("25 NPC berkepribadian = profil tulis tangan (tak digenerate)", hand == 25, str(hand))
+	# NPC lain (juru lelang, penawar, tawanan) digenerate & dipersist
+	var havel := Personality.of("Saudagar Havel")
+	check("NPC generik dapat profil generate", not bool(havel.get("handwritten", false)) and havel.has("big5"))
+	check("profil deterministik (id sama -> profil sama)",
+		Personality.generate("Saudagar Havel") == Personality.generate("Saudagar Havel"))
+	# (b) TIDAK ADA dua profil identik dalam 100 rol
+	var seen := {}
+	var dup := 0
+	for i in 100:
+		var pr := Personality.generate("npc_uji_%d" % i)
+		var key := "%s|%s|%d|%d|%d|%d|%d|%d|%d" % [pr.temperament, pr.temperament_sub,
+			pr.big5.openness, pr.big5.conscientiousness, pr.big5.extraversion,
+			pr.big5.agreeableness, pr.big5.neuroticism, pr.talent, pr.luck]
+		if seen.has(key):
+			dup += 1
+		seen[key] = true
+	check("tak ada dua profil identik dalam 100 rol", dup == 0, "%d duplikat" % dup)
+	# LAPIS 1: temperamen primer != sekunder, dan STABIL
+	var bad_temp := 0
+	for i in 60:
+		var pr := Personality.generate("t_%d" % i)
+		if pr.temperament == pr.temperament_sub:
+			bad_temp += 1
+		if not pr.temperament in Personality.TEMPERAMENTS:
+			bad_temp += 1
+	check("temperamen primer != sekunder & sah", bad_temp == 0)
+	# LAPIS 4 SUMBU MENCIUS: moral default condong BAIK
+	var moral_sum := 0
+	for i in 60:
+		moral_sum += int(Personality.generate("m_%d" % i).moral)
+	check("moral default condong BAIK (rata-rata > 55)", moral_sum / 60 > 55, str(moral_sum / 60))
+	# LAPIS 5 — GENIUS IS RARE (L17): bakat tinggi harus LANGKA
+	var genius := 0
+	for i in 300:
+		if int(Personality.generate("g_%d" % i).talent) >= 85:
+			genius += 1
+	check("bakat >=85 langka (<10% dari 300)", genius < 30, "%d/300" % genius)
+	# L14 — OPPORTUNITY: tak seorang pun lahir dengan kesempatan; ia datang dari PERISTIWA
+	var opp := 0
+	for i in 50:
+		opp += int(Personality.generate("o_%d" % i).opportunity)
+	check("opportunity awal SELALU 0 (datang dari peristiwa, bukan lahir)", opp == 0)
+	# L16/L17 — potensi: usaha mengalahkan bakat telanjang
+	var rajin := {"talent": 40, "effort": 95, "opportunity": 0, "luck": 50, "mental_state": 100}
+	var berbakat := {"talent": 95, "effort": 20, "opportunity": 0, "luck": 50, "mental_state": 100}
+	check("Talent+Effort > Talent telanjang (L17)",
+		Personality.potential(rajin) > Personality.potential(berbakat),
+		"%.1f vs %.1f" % [Personality.potential(rajin), Personality.potential(berbakat)])
+	# L14: kesempatan mengubah takdir
+	var tanpa := {"talent": 80, "effort": 80, "opportunity": 0, "luck": 50, "mental_state": 100}
+	var dengan := tanpa.duplicate()
+	dengan["opportunity"] = 90
+	check("kesempatan menaikkan potensi (L14)", Personality.potential(dengan) > Personality.potential(tanpa))
+	# L15 — PEOPLE CAN BREAK: trauma menurunkan mental_state & potensi
+	var before := Personality.potential(Personality.of("Saudagar Havel"))
+	Personality.add_trauma("Saudagar Havel", "Kehilangan seluruh kapalnya dalam badai", 40)
+	var after_p := Personality.of("Saudagar Havel")
+	check("trauma tercatat & menurunkan mental_state (L15)",
+		after_p.trauma.size() == 1 and int(after_p.mental_state) < 100)
+	check("orang bisa patah: potensi turun", Personality.potential(after_p) < before)
+	# NPC tulis-tangan: trauma yang memang bagian ceritanya
+	var tuminah := Personality.of("Nyai Tuminah")
+	check("Nyai Tuminah membawa trauma anaknya (tulis tangan)",
+		tuminah.trauma.size() >= 1 and int(tuminah.mental_state) < 100)
+	check("Pembuat Kue: effort tinggi, luck rendah (L14 telanjang)",
+		int(Personality.of("Pembuat Kue Tanpa Nama").effort) >= 90
+		and int(Personality.of("Pembuat Kue Tanpa Nama").luck) <= 10)
+	# (c) GAYA GOSIP berubah sesuai profil
+	var rng := RandomNumberGenerator.new()
+	var pedas := 0     # Agreeableness rendah -> lebih sering menyimpang
+	var ramah := 0
+	for i in 120:
+		rng.seed = i
+		if not bool(RumorSystem.speak(rng, "Penghitung Bayangan").get("accurate", true)):
+			pedas += 1
+		rng.seed = i
+		if not bool(RumorSystem.speak(rng, "Pelaut Tuli").get("accurate", true)):
+			ramah += 1
+	check("Agreeableness rendah -> gosip lebih sering menyimpang (#138)", pedas > ramah,
+		"pedas=%d ramah=%d" % [pedas, ramah])
+	var semangat := 0
+	for i in 60:
+		rng.seed = i
+		if RumorSystem.speak(rng, "Si Penantang Petir").get("text", "").begins_with("Dengar ini!"):
+			semangat += 1
+	check("Extraversion tinggi -> bercerita lebih bersemangat", semangat > 0)
+	var cemas := 0
+	for i in 60:
+		rng.seed = i
+		if RumorSystem.speak(rng, "Nenek Es").get("text", "").contains("Suaranya menurun"):
+			cemas += 1
+	check("Neuroticism tinggi -> nada cemas", cemas > 0)
+	# (d) SAVE/LOAD utuh
+	var ws := WorldState.to_save()
+	check("profil ikut save", ws.has("npc_profiles") and not ws.npc_profiles.is_empty())
+	var snapshot: Dictionary = Personality.of("Nyai Tuminah").duplicate(true)
+	WorldState.npc_profiles = {}
+	WorldState.from_save(ws)
+	check("profil pulih setelah load", WorldState.npc_profiles.has("Nyai Tuminah"))
+	check("watak tak berubah semalaman (profil identik setelah load)",
+		Personality.of("Nyai Tuminah").big5 == snapshot.big5)
+	WorldState.npc_profiles.clear()

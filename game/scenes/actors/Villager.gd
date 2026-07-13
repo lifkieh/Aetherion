@@ -144,9 +144,10 @@ func persona_line() -> String:
 		if doing != "":
 			return "%s (Ia sedang %s.)" % [NpcSchedule.greeting(), doing]
 		return NpcSchedule.greeting()
-	# 1 dari 4 giliran: warga ini menggosipkan sesuatu — mungkin keliru
+	# 1 dari 4 giliran: warga ini menggosipkan sesuatu — mungkin keliru, dan CARANYA
+	# bercerita mengikuti wataknya (#138)
 	if randf() < 0.25:
-		var r := RumorSystem.speak()
+		var r := RumorSystem.speak(null, _name)
 		return r.get("text", "")
 	var l: String = lines[_line_idx % lines.size()]
 	_line_idx += 1
@@ -178,6 +179,14 @@ func ambient_lines() -> Array:
 	if GameClock.is_full_moon():
 		lines.append("Bulan purnama... kata Pak Astrolog, monster jadi lebih ganas malam ini.")
 	# gosip kota — LEWAT RumorSystem: warga bisa saja salah/membesar-besarkan (E5 #77),
-	# dan keajaiban semalam hanya diumumkan lewat mulut mereka (E7 #79)
-	lines.append(RumorSystem.speak().get("text", ""))
+	# keajaiban semalam hanya diumumkan lewat mulut mereka (E7 #79), dan WATAK mereka
+	# mewarnai cara menceritakannya (#138)
+	lines.append(RumorSystem.speak(null, _name).get("text", ""))
+	# NEUROTICISM tinggi: cuaca & Blood Moon terdengar lebih mengancam
+	var prof := Personality.of(_name)
+	if Personality.trait_of(prof, "neuroticism") > 70:
+		if WorldState.weather == "blood_moon":
+			lines.append("Bulan merah itu... aku tak bisa tidur. Kau juga tidak, kan? Katakan kau juga tidak.")
+		elif weather == "thunderstorm":
+			lines.append("Petir sedekat itu bukan pertanda baik. Aku sudah lama merasa ada yang salah.")
 	return lines

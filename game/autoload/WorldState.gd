@@ -19,6 +19,7 @@ var secrets_found: Array = []          # peti rahasia yang PERNAH ditemukan (per
 var spirit_state := "none"             # none | angry | blessed (Roh Hutan, #95)
 var chronicle: Array = []              # Pencapaian Tercatat (benih Chronicle, #96)
 var town_talk: Dictionary = {}         # apa yang sedang dibicarakan warga
+var npc_profiles: Dictionary = {}      # npc_id -> profil kepribadian 5 lapis (#136-#138)
 
 ## Tandai wilayah dikunjungi (dipanggil _ready tiap region scene). #43
 func mark_visited(region_id: String) -> void:
@@ -195,6 +196,7 @@ func to_save() -> Dictionary:
 		"spirit_state": spirit_state,
 		"chronicle": chronicle,
 		"town_talk": town_talk,
+		"npc_profiles": npc_profiles,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -212,6 +214,7 @@ func from_save(d: Dictionary) -> void:
 	spirit_state = d.get("spirit_state", "none")
 	chronicle = d.get("chronicle", [])
 	town_talk = d.get("town_talk", {})
+	npc_profiles = d.get("npc_profiles", {})
 
 func new_game() -> void:
 	counters = {}
@@ -227,4 +230,5 @@ func new_game() -> void:
 	spirit_state = "none"
 	chronicle = []
 	town_talk = {}
+	npc_profiles = {}
 	_roll_weather(true)

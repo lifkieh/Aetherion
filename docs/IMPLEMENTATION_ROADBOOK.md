@@ -42,6 +42,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **Chronicle menerima entri NPC/dunia** (bukan hanya pemain) | World Bible b.1097 | Reputasi | 0,5 sesi | **C8** |
 | **BLACK MARKET** (barang > tier A, artefak ilegal, informasi) — terhubung Netherdeep | Faction 03 (56) + #121 | Reputasi | 1 sesi | Sudah diputus (#121) |
 | **Companion Dungeon** (tipe VI) + **Raid Dungeon** (tipe III, butuh entourage) | Dungeon (40) | Companion v1, rekrutan | 1,5 sesi | — |
+| **LIFE EVENTS + GROWTH ENGINE** (mesin kepribadian penuh, #139): opportunity events (**pemain memberi kesempatan → takdir berubah**, L14), growth tick lewat PERISTIWA, moral drift (kejatuhan & penebusan), mental_state memengaruhi keputusan hidup NPC | Personality (#136–#138), Recruitment (35) | Profil ✅ (sudah ditanam) | 2 sesi | Sudah diputus (#139) |
 | **Rune / Runesmith**, profesi bible (Hunter, Tailor, Farmer, Rancher, Merchant, Scholar, Explorer) | Profession (46) + #122 | — | 1,5 sesi | Cook tetap (#122) |
 | ⏳ **World history ledger** (peristiwa ireversibel offline) | World Bible b.5704 | **K1** | — | ⏳ **K1 #123** |
 

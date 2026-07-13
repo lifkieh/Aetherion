@@ -41,6 +41,30 @@
      ],
      "do": "duduk di bawah lampu, bicara sendiri"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 88,
+     "conscientiousness": 35,
+     "extraversion": 30,
+     "agreeableness": 70,
+     "neuroticism": 45
+    },
+    "moral": 80,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Air pernah menjawabnya sekali. Tak pernah lagi.",
+      "weight": 10
+     }
+    ],
+    "talent": 25,
+    "effort": 90,
+    "opportunity": 0,
+    "luck": 20,
+    "mental_state": 100
    }
   },
   {
@@ -84,6 +108,25 @@
      ],
      "do": "menatap langit, tak berkedip"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 95,
+     "conscientiousness": 80,
+     "extraversion": 25,
+     "agreeableness": 45,
+     "neuroticism": 30
+    },
+    "moral": 75,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 85,
+    "effort": 70,
+    "opportunity": 0,
+    "luck": 60,
+    "mental_state": 100
    }
   },
   {
@@ -127,6 +170,25 @@
      ],
      "do": "pulang sambil bernyanyi fals"
     }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 55,
+     "conscientiousness": 20,
+     "extraversion": 95,
+     "agreeableness": 75,
+     "neuroticism": 35
+    },
+    "moral": 60,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 15,
+    "effort": 15,
+    "opportunity": 0,
+    "luck": 70,
+    "mental_state": 100
    }
   },
   {
@@ -170,6 +232,30 @@
      ],
      "do": "menyalakan lentera untuk yang tak pulang"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 40,
+     "conscientiousness": 75,
+     "extraversion": 20,
+     "agreeableness": 80,
+     "neuroticism": 85
+    },
+    "moral": 85,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Anaknya, Ardi, tak pernah kembali dari gua.",
+      "weight": 55
+     }
+    ],
+    "talent": 30,
+    "effort": 60,
+    "opportunity": 0,
+    "luck": 10,
+    "mental_state": 45
    }
   },
   {
@@ -213,6 +299,25 @@
      ],
      "do": "berdebat dengan bulan"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "sanguinis",
+    "big5": {
+     "openness": 98,
+     "conscientiousness": 45,
+     "extraversion": 50,
+     "agreeableness": 55,
+     "neuroticism": 55
+    },
+    "moral": 70,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 60,
+    "effort": 85,
+    "opportunity": 0,
+    "luck": 35,
+    "mental_state": 100
    }
   }
  ],
@@ -257,6 +362,25 @@
      ],
      "do": "duduk di bawah lampu, bicara sendiri"
     }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 80,
+     "conscientiousness": 50,
+     "extraversion": 25,
+     "agreeableness": 75,
+     "neuroticism": 40
+    },
+    "moral": 80,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 35,
+    "effort": 55,
+    "opportunity": 0,
+    "luck": 45,
+    "mental_state": 100
    }
   },
   {
@@ -299,6 +423,30 @@
      ],
      "do": "menatap langit, tak berkedip"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 90,
+     "conscientiousness": 70,
+     "extraversion": 15,
+     "agreeableness": 35,
+     "neuroticism": 25
+    },
+    "moral": 65,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Sesuatu di dalamnya padam. Ia tak menyebutkan apa.",
+      "weight": 45
+     }
+    ],
+    "talent": 90,
+    "effort": 80,
+    "opportunity": 0,
+    "luck": 30,
+    "mental_state": 55
    }
   },
   {
@@ -341,6 +489,25 @@
      ],
      "do": "pulang sambil bernyanyi fals"
     }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 50,
+     "conscientiousness": 30,
+     "extraversion": 85,
+     "agreeableness": 65,
+     "neuroticism": 30
+    },
+    "moral": 70,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 40,
+    "effort": 25,
+    "opportunity": 0,
+    "luck": 55,
+    "mental_state": 100
    }
   },
   {
@@ -383,6 +550,30 @@
      ],
      "do": "menyalakan lentera untuk yang tak pulang"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 45,
+     "conscientiousness": 85,
+     "extraversion": 30,
+     "agreeableness": 70,
+     "neuroticism": 75
+    },
+    "moral": 90,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Empat naik, satu turun. Ia yang turun.",
+      "weight": 60
+     }
+    ],
+    "talent": 55,
+    "effort": 90,
+    "opportunity": 0,
+    "luck": 15,
+    "mental_state": 40
    }
   },
   {
@@ -425,6 +616,25 @@
      ],
      "do": "berdebat dengan bulan"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "sanguinis",
+    "big5": {
+     "openness": 75,
+     "conscientiousness": 40,
+     "extraversion": 60,
+     "agreeableness": 60,
+     "neuroticism": 90
+    },
+    "moral": 75,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 20,
+    "effort": 45,
+    "opportunity": 0,
+    "luck": 25,
+    "mental_state": 100
    }
   }
  ],
@@ -469,6 +679,25 @@
      ],
      "do": "duduk di bawah lampu, bicara sendiri"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 70,
+     "conscientiousness": 80,
+     "extraversion": 35,
+     "agreeableness": 65,
+     "neuroticism": 60
+    },
+    "moral": 75,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 45,
+    "effort": 85,
+    "opportunity": 0,
+    "luck": 40,
+    "mental_state": 100
    }
   },
   {
@@ -511,6 +740,25 @@
      ],
      "do": "menatap langit, tak berkedip"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 85,
+     "conscientiousness": 65,
+     "extraversion": 40,
+     "agreeableness": 40,
+     "neuroticism": 50
+    },
+    "moral": 60,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 70,
+    "effort": 60,
+    "opportunity": 0,
+    "luck": 50,
+    "mental_state": 100
    }
   },
   {
@@ -553,6 +801,25 @@
      ],
      "do": "pulang sambil bernyanyi fals"
     }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 75,
+     "conscientiousness": 25,
+     "extraversion": 90,
+     "agreeableness": 80,
+     "neuroticism": 45
+    },
+    "moral": 70,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 30,
+    "effort": 20,
+    "opportunity": 0,
+    "luck": 80,
+    "mental_state": 100
    }
   },
   {
@@ -595,6 +862,30 @@
      ],
      "do": "menyalakan lentera untuk yang tak pulang"
     }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 45,
+     "conscientiousness": 90,
+     "extraversion": 20,
+     "agreeableness": 85,
+     "neuroticism": 80
+    },
+    "moral": 85,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Ia membuat kue untuk tamu yang tak pernah pulang.",
+      "weight": 60
+     }
+    ],
+    "talent": 65,
+    "effort": 95,
+    "opportunity": 0,
+    "luck": 5,
+    "mental_state": 35
    }
   },
   {
@@ -637,6 +928,25 @@
      ],
      "do": "berdebat dengan bulan"
     }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 99,
+     "conscientiousness": 30,
+     "extraversion": 55,
+     "agreeableness": 60,
+     "neuroticism": 50
+    },
+    "moral": 70,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 50,
+    "effort": 40,
+    "opportunity": 0,
+    "luck": 60,
+    "mental_state": 100
    }
   }
  ],
@@ -681,6 +991,25 @@
      ],
      "do": "duduk di bawah lampu, bicara sendiri"
     }
+   },
+   "profile": {
+    "temperament": "koleris",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 85,
+     "conscientiousness": 75,
+     "extraversion": 35,
+     "agreeableness": 45,
+     "neuroticism": 45
+    },
+    "moral": 65,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 60,
+    "effort": 80,
+    "opportunity": 0,
+    "luck": 30,
+    "mental_state": 100
    }
   },
   {
@@ -723,6 +1052,25 @@
      ],
      "do": "menatap langit, tak berkedip"
     }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 90,
+     "conscientiousness": 60,
+     "extraversion": 10,
+     "agreeableness": 30,
+     "neuroticism": 20
+    },
+    "moral": 50,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 75,
+    "effort": 50,
+    "opportunity": 0,
+    "luck": 40,
+    "mental_state": 70
    }
   },
   {
@@ -765,6 +1113,25 @@
      ],
      "do": "pulang sambil bernyanyi fals"
     }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 50,
+     "conscientiousness": 35,
+     "extraversion": 88,
+     "agreeableness": 80,
+     "neuroticism": 40
+    },
+    "moral": 75,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 20,
+    "effort": 55,
+    "opportunity": 0,
+    "luck": 8,
+    "mental_state": 100
    }
   },
   {
@@ -807,6 +1174,30 @@
      ],
      "do": "menyalakan lentera untuk yang tak pulang"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 40,
+     "conscientiousness": 70,
+     "extraversion": 25,
+     "agreeableness": 85,
+     "neuroticism": 80
+    },
+    "moral": 88,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Suaminya belajar berenang untuknya. Sungainya pergi duluan.",
+      "weight": 50
+     }
+    ],
+    "talent": 35,
+    "effort": 65,
+    "opportunity": 0,
+    "luck": 15,
+    "mental_state": 50
    }
   },
   {
@@ -849,6 +1240,25 @@
      ],
      "do": "berdebat dengan bulan"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 92,
+     "conscientiousness": 85,
+     "extraversion": 20,
+     "agreeableness": 35,
+     "neuroticism": 65
+    },
+    "moral": 60,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 70,
+    "effort": 75,
+    "opportunity": 0,
+    "luck": 35,
+    "mental_state": 100
    }
   }
  ],
@@ -893,6 +1303,30 @@
      ],
      "do": "duduk di bawah lampu, bicara sendiri"
     }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "sanguinis",
+    "big5": {
+     "openness": 80,
+     "conscientiousness": 60,
+     "extraversion": 50,
+     "agreeableness": 75,
+     "neuroticism": 30
+    },
+    "moral": 80,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Petir merenggut pendengarannya. Ia menyebutnya pertukaran.",
+      "weight": 25
+     }
+    ],
+    "talent": 55,
+    "effort": 70,
+    "opportunity": 0,
+    "luck": 45,
+    "mental_state": 75
    }
   },
   {
@@ -935,6 +1369,25 @@
      ],
      "do": "menatap langit, tak berkedip"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 88,
+     "conscientiousness": 75,
+     "extraversion": 25,
+     "agreeableness": 55,
+     "neuroticism": 35
+    },
+    "moral": 70,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 80,
+    "effort": 70,
+    "opportunity": 0,
+    "luck": 40,
+    "mental_state": 100
    }
   },
   {
@@ -977,6 +1430,25 @@
      ],
      "do": "pulang sambil bernyanyi fals"
     }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 70,
+     "conscientiousness": 20,
+     "extraversion": 92,
+     "agreeableness": 75,
+     "neuroticism": 35
+    },
+    "moral": 75,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 45,
+    "effort": 25,
+    "opportunity": 0,
+    "luck": 90,
+    "mental_state": 100
    }
   },
   {
@@ -1019,6 +1491,30 @@
      ],
      "do": "menyalakan lentera untuk yang tak pulang"
     }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 35,
+     "conscientiousness": 80,
+     "extraversion": 25,
+     "agreeableness": 85,
+     "neuroticism": 85
+    },
+    "moral": 90,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
+      "weight": 60
+     }
+    ],
+    "talent": 25,
+    "effort": 80,
+    "opportunity": 0,
+    "luck": 10,
+    "mental_state": 40
    }
   },
   {
@@ -1061,6 +1557,25 @@
      ],
      "do": "berdebat dengan bulan"
     }
+   },
+   "profile": {
+    "temperament": "koleris",
+    "temperament_sub": "sanguinis",
+    "big5": {
+     "openness": 65,
+     "conscientiousness": 25,
+     "extraversion": 90,
+     "agreeableness": 45,
+     "neuroticism": 25
+    },
+    "moral": 65,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 35,
+    "effort": 30,
+    "opportunity": 0,
+    "luck": 95,
+    "mental_state": 100
    }
   }
  ]

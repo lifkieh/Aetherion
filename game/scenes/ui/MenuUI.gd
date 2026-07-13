@@ -527,6 +527,18 @@ func _build_pedia() -> void:
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		l.custom_minimum_size = Vector2(500, 0)
 		content.add_child(l)
+	# Hukum pertumbuhan NPC (#137) — dunia yang jujur tentang dirinya sendiri
+	content.add_child(_mk_label("— Tentang orang-orang di dunia ini —", 15, Color(0.8, 0.85, 1.0)))
+	for line in [
+		"Kebanyakan orang di Aetherion bekerja, berkeluarga, menua, dan meninggal tanpa menjadi legenda. Itu BUKAN kegagalan — dunia ini dibangun oleh jutaan orang biasa.",
+		"Bakat besar itu langka, dan bakat saja tidak cukup. Yang mengubah sejarah adalah bakat + usaha + KESEMPATAN + sedikit keberuntungan.",
+		"Banyak kehidupan gagal berkembang bukan karena kurang bakat — melainkan karena tak pernah mendapat kesempatan. Dan kau, petualang, adalah sumber kesempatan terbesar di dunia ini.",
+		"Orang bisa patah. Duka, trauma, dan kelelahan menurunkan mereka. Kekuatan mental adalah bagian dari kekuatan.",
+	]:
+		var l2 := _mk_label("• %s" % line, 11, Color(0.75, 0.78, 0.88))
+		l2.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		l2.custom_minimum_size = Vector2(500, 0)
+		content.add_child(l2)
 	# Roh Hutan: keadaan hutan (Stewardship terlihat)
 	if WorldState.spirit_state != "none":
 		var st := "MURKA — hutan memucat; tanam %d bibit lagi (tombol G di luar kota)" % ForestSpiritSystem.debt() if ForestSpiritSystem.is_angry() else "BERKAH — hasil kayu & herbal lebih murah hati"
