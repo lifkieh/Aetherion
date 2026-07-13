@@ -1,3 +1,4 @@
+class_name TravelUI
 extends CanvasLayer
 ## "PILIH DUNIA" — Gerbang Penjelajah (Decision Log #43, tarikan maju fast-travel).
 ## Kartu wilayah yang PERNAH dikunjungi (nama + level range + cuaca live); klik =
@@ -129,22 +130,36 @@ func _region_card(r: Dictionary) -> Control:
 		vb.add_child(go)
 	return card
 
-func _travel(r: Dictionary) -> void:
+## SATU-SATUNYA jalur fast travel (Decision Log #93). Gerbang di dunia DAN Peta
+## sama-sama memanggil ini: syarat, biaya, dan jatah gratis harian identik.
+## Returns true bila perjalanan benar-benar berangkat.
+static func do_travel(r: Dictionary, ui: CanvasLayer = null) -> bool:
+	if not r.get("id", "") in WorldState.visited_regions:
+		EventBus.toast.emit("Wilayah itu belum pernah kau datangi — gerbang menolak.")
+		return false
+	if r.get("id", "") == WorldState.current_region:
+		EventBus.toast.emit("Kamu sudah berada di sana.")
+		return false
 	var cost := travel_cost_today()
 	if cost > 0 and PlayerData.gold < cost:
 		EventBus.toast.emit("Kantongmu menolak berangkat — kurang %d G." % (cost - PlayerData.gold))
 		Audio.play_sfx("menu", 0.6)
-		return
+		return false
 	if cost > 0:
 		PlayerData.add_gold(-cost)
 	else:
 		WorldState.last_free_travel = GameClock.date_string()
-	UiFx.celebrate(root, "✨")
 	Audio.play_sfx("success")
-	EventBus.toast.emit("Gerbang bergetar... selamat jalan, penjelajah. → %s" % r.name)
-	get_tree().paused = false
-	queue_free()
-	Stage.go_to_scene(r.scene)
+	EventBus.toast.emit("Gerbang bergetar... selamat jalan, penjelajah. → %s" % r.get("name", ""))
+	if ui and ui.is_inside_tree():
+		ui.get_tree().paused = false
+	Stage.go_to_scene(r.get("scene", ""))
+	return true
+
+func _travel(r: Dictionary) -> void:
+	if do_travel(r, self):
+		UiFx.celebrate(root, "✨")
+		queue_free()
 
 func _lbl(t: String, s: int, col := Color(0.94, 0.96, 1.0)) -> Label:
 	var l := Label.new()

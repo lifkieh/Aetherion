@@ -154,6 +154,11 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","physical_keycode":69,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+world_map={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","physical_keycode":77,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 toggle_inventory={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","physical_keycode":73,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)

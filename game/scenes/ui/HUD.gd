@@ -208,7 +208,7 @@ func _build_minimap() -> void:
 # --- Controls hint ----------------------------------------------------------
 
 func _build_hint() -> void:
-	hint_label = _mk_label("WASD gerak · 1-5 prime skill · klik-kiri: cast/serang ke kursor · 2 angka = FUSION · Space dodge · T tame · E interaksi · I tas", 11)
+	hint_label = _mk_label("WASD gerak · 1-5 prime skill · klik-kiri: cast/serang ke kursor · 2 angka = FUSION · Space dodge · T tame · E interaksi · I tas · M peta", 11)
 	hint_label.anchor_top = 1.0; hint_label.anchor_bottom = 1.0
 	hint_label.anchor_left = 0.0; hint_label.anchor_right = 1.0
 	hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT

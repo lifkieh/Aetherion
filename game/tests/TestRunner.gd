@@ -70,6 +70,7 @@ func _ready() -> void:
 	await _test_dungeon_chests_traps()
 	await _test_rasi_and_forecast()
 	_test_new_assets()
+	await _test_world_map()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2661,3 +2662,46 @@ func _test_new_assets() -> void:
 	host.queue_free()
 	# crossfade
 	check("crossfade musik aktif (FADE_TIME > 0)", Audio.FADE_TIME > 0.0)
+
+
+func _test_world_map() -> void:
+	print("[World Map + fast travel v0.4.3 #1]")
+	check("aksi 'world_map' (M) terdaftar", InputMap.has_action("world_map"))
+	# SATU sistem travel: gerbang & peta memanggil TravelUI.do_travel yang sama
+	var greenvale := TravelUI.region_def("greenvale")
+	var frost := TravelUI.region_def("frostpeak")
+	check("region_def bekerja", greenvale.get("id", "") == "greenvale" and frost.has("scene"))
+	var save_visited: Array = WorldState.visited_regions.duplicate()
+	var save_region: String = WorldState.current_region
+	var save_free: String = WorldState.last_free_travel
+	var save_gold: int = PlayerData.gold
+	# wilayah belum dikunjungi = ditolak (aturan yang sama seperti gerbang)
+	WorldState.visited_regions = ["greenvale"]
+	WorldState.current_region = "greenvale"
+	check("travel ke wilayah belum dikunjungi DITOLAK", not TravelUI.do_travel(frost, null))
+	check("travel ke wilayah sendiri DITOLAK", not TravelUI.do_travel(greenvale, null))
+	# biaya: gratis sekali sehari, lalu 25G — identik dari peta maupun gerbang
+	WorldState.last_free_travel = ""
+	check("perjalanan pertama hari ini gratis", TravelUI.travel_cost_today() == 0)
+	WorldState.last_free_travel = GameClock.date_string()
+	check("perjalanan berikutnya 25G", TravelUI.travel_cost_today() == TravelUI.TRAVEL_COST)
+	PlayerData.gold = 5
+	WorldState.visited_regions = ["greenvale", "frostpeak"]
+	check("emas kurang -> travel gagal (tak berangkat)", not TravelUI.do_travel(frost, null))
+	check("emas tak terpotong saat gagal", PlayerData.gold == 5)
+	WorldState.visited_regions = save_visited
+	WorldState.current_region = save_region
+	WorldState.last_free_travel = save_free
+	PlayerData.gold = save_gold
+	# UI peta terbuka & punya dua tingkat
+	var map = load("res://scenes/ui/WorldMapUI.gd").new()
+	add_child(map)
+	await get_tree().process_frame
+	check("peta terbuka", map.root != null and is_instance_valid(map._canvas))
+	check("tingkat awal = peta wilayah", map._tab == "region")
+	map._tab = "world"
+	map._refresh()
+	await get_tree().process_frame
+	check("peta dunia bisa dibuka", map._canvas.get_child_count() > 0)
+	get_tree().paused = false
+	map.queue_free()

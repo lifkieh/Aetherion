@@ -89,6 +89,15 @@ func _build_frame() -> void:
 			_rebuild())
 		UiFx.button(b)
 		tabs.add_child(b)
+	var mapb := Button.new()
+	mapb.text = "🗺 Peta (M)"
+	if _font: mapb.add_theme_font_override("font", _font)
+	mapb.pressed.connect(func():
+		Audio.play_sfx("menu")
+		close_menu()
+		load("res://scenes/ui/WorldMapUI.gd").open_over(get_tree()))
+	UiFx.button(mapb)
+	tabs.add_child(mapb)
 	var close := Button.new()
 	close.text = "Tutup (Esc)"
 	if _font: close.add_theme_font_override("font", _font)

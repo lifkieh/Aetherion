@@ -27,6 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		SaveManager.save_game(SaveManager.current_slot)
 	elif Input.is_action_just_pressed("tame"):
 		_try_tame()
+	elif Input.is_action_just_pressed("world_map"):
+		load("res://scenes/ui/WorldMapUI.gd").open_over(get_tree())
 	elif Input.is_action_just_pressed("interact"):
 		_try_interact()
 	elif Input.is_action_just_pressed("toggle_inventory"):
