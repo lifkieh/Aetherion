@@ -325,7 +325,7 @@ fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Sco
 (Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
 naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
 
-## ⏸️ STATUS: **v0.4.4 SELESAI (Fase 0 tuntas)** — menunggu playtest owner v0.4.3–v0.4.4. Kanon naratif: **B18 Nirnama Bible ✅ SELESAI** (gerbang v0.5 #1 terbuka); **B17 Companion Bible 10/50** = satu-satunya gerbang v0.5 yang masih tertutup. Q1–Q7 diputus (#108–#114); part 2 file konsepsi: belum saatnya (owner)
+## ⏸️ STATUS: **Bible tercerna** (48.559 baris, 7 berkas → INDEX + REPORT-05 + ROADBOOK + ASSET_MANIFEST + DUNGEON_ORIGINS) — menunggu: **jawaban K1 (skala waktu, #123)** + **review REPORT-05** (25 konflik, 30 pertanyaan) + **playtest owner v0.4.3–v0.4.4**. Keputusan K1–K9 tercatat (#115–#123). Gerbang v0.5: B18 ✅ · **B17 Companion 10/50 ❌**
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
 quality roll + maker's mark, + Rumah Lelang NPC (B8).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
