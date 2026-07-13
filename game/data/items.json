@@ -1336,5 +1336,17 @@
   "stack": 99,
   "desc": "Jatuh dari langit malam. Masih berdenyut pelan, seperti sesuatu yang belum selesai.",
   "flavor": "Kalau kau genggam cukup lama, kau merasa diikuti. Bukan hal jahat. Cuma... diikuti."
+ },
+ {
+  "id": "greenhouse_kit",
+  "name": "Rangka Rumah Kaca",
+  "tier": "C",
+  "type": "gear",
+  "value": 3500,
+  "stack": 1,
+  "shop_stock": 1,
+  "shop_demand": 6,
+  "desc": "Pasang di Homestead: musim tak lagi membatasi apa yang boleh kau tanam.",
+  "flavor": "Kaca tak melawan musim. Ia hanya menawar sedikit waktu."
  }
 ]

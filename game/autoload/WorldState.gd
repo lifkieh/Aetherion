@@ -13,6 +13,7 @@ var last_free_travel := ""             # tanggal WIB travel gratis harian terakh
 var auction: Dictionary = {}           # Rumah Lelang: lot hari ini (v0.4.2, B8 #53)
 var freed_captives: Array = []         # tawanan yang dibebaskan -> kandidat rekrut loyal (v0.6)
 var miracle_log: Dictionary = {}       # {date, today, yesterday} — keajaiban (E7 #79)
+var greenhouse := false                # Rumah Kaca dibeli: musim tak membatasi tanam (A4 #83)
 
 ## Tandai wilayah dikunjungi (dipanggil _ready tiap region scene). #43
 func mark_visited(region_id: String) -> void:
@@ -143,6 +144,7 @@ func to_save() -> Dictionary:
 		"auction": auction,
 		"freed_captives": freed_captives,
 		"miracle_log": miracle_log,
+		"greenhouse": greenhouse,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -154,6 +156,7 @@ func from_save(d: Dictionary) -> void:
 	auction = d.get("auction", {})
 	freed_captives = d.get("freed_captives", [])
 	miracle_log = d.get("miracle_log", {})
+	greenhouse = bool(d.get("greenhouse", false))
 
 func new_game() -> void:
 	counters = {}
@@ -163,4 +166,5 @@ func new_game() -> void:
 	auction = {}
 	freed_captives = []
 	miracle_log = {}
+	greenhouse = false
 	_roll_weather(true)

@@ -17,7 +17,9 @@ static func plot_status(plot: Dictionary) -> Dictionary:
 	var crop := Db.crop(plot.get("crop_id", ""))
 	if crop.is_empty():
 		return {"stage": 0, "ready": false, "stages": 4}
-	var grow: int = crop.get("grow_seconds", 600)
+	# MUSIM (A4 #83): waktu tumbuh dikali pengali musim; di luar musimnya 2.5x lebih
+	# lambat kecuali punya Rumah Kaca.
+	var grow: float = float(crop.get("grow_seconds", 600)) * Seasons.growth_mult(crop.get("id", ""))
 	var stages: int = crop.get("stages", 4)
 	var elapsed: float = float(GameClock.unix_now() - int(plot.get("planted_at_unix", GameClock.unix_now())))
 	# Sun-dependent crops don't advance while raining (science: photosynthesis).

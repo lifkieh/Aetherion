@@ -59,9 +59,20 @@ func _plant() -> void:
 	# prefer mintleaf seed, else sunbud
 	var seed_id := ""
 	var crop_id := ""
+	var off_season := ""
 	for pair in [["seed_mintleaf", "mintleaf"], ["seed_sunbud", "sunbud"]]:
 		if PlayerData.item_count(pair[0]) > 0:
-			seed_id = pair[0]; crop_id = pair[1]; break
+			# MUSIM (A4 #83): utamakan benih yang SEDANG musimnya
+			if Seasons.crop_in_season(pair[1]) or Seasons.has_greenhouse():
+				seed_id = pair[0]; crop_id = pair[1]; break
+			elif off_season == "":
+				off_season = pair[0]
+	if seed_id == "" and off_season != "":
+		# tetap boleh ditanam, tapi jujur: pertumbuhannya merambat
+		seed_id = off_season
+		crop_id = "mintleaf" if off_season == "seed_mintleaf" else "sunbud"
+		EventBus.toast.emit("%s bukan musimnya (%s) — tumbuhnya akan lambat." % [
+			Db.crop(crop_id).get("name", crop_id), GameClock.season_name()])
 	if seed_id == "":
 		EventBus.toast.emit("Tidak punya benih. Beli di toko!")
 		return

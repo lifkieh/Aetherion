@@ -65,6 +65,7 @@ func _ready() -> void:
 	_test_town_folk()
 	_test_miracles()
 	_test_quest_taxonomy()
+	_test_seasons()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2416,3 +2417,55 @@ func _test_quest_taxonomy() -> void:
 	check("semua quest punya quest_type sah", all_tagged)
 	check("semua quest punya konteks manusia (Hukum Quest)", all_human)
 	check("mekanik quest tetap utuh (field type)", Db.quests[0].get("type", "") != "")
+
+
+func _test_seasons() -> void:
+	print("[MUSIM v1 A4 / #83]")
+	check("seasons.json termuat (4 musim)", Db.seasons.size() == 4)
+	var ids := []
+	for sd in Db.seasons:
+		ids.append(sd.get("id", ""))
+	check("urutan musim semi->panas->gugur->dingin", ids == ["semi", "panas", "gugur", "dingin"], str(ids))
+	# siklus: 4 musim x 14 hari = 56 hari; tiap 14 hari WIB berganti musim
+	check("SEASON_DAYS = 14 (dua minggu nyata)", GameClock.SEASON_DAYS == 14)
+	var s_now := GameClock.season()
+	check("musim sekarang valid", s_now in ids, s_now)
+	check("hari musim 1..14", GameClock.season_day() >= 1 and GameClock.season_day() <= 14, str(GameClock.season_day()))
+	check("musim = fungsi tanggal WIB (bukan acak)", GameClock.season() == s_now)
+	check("tint musim mewarnai ambient dunia", GameClock.season_def().has("tint"))
+	# tanam: tanaman di luar musimnya tumbuh jauh lebih lambat; Rumah Kaca menetralkan
+	var was_gh: bool = WorldState.greenhouse
+	WorldState.greenhouse = false
+	var in_season := Seasons.crop_in_season("mintleaf")
+	var mult := Seasons.growth_mult("mintleaf")
+	if in_season:
+		check("dalam musim: pengali tumbuh <= 1.5", mult <= 1.5, str(mult))
+	else:
+		check("luar musim: tumbuh jauh lebih lambat (>=2x)", mult >= 2.0, str(mult))
+	WorldState.greenhouse = true
+	check("Rumah Kaca menetralkan musim", Seasons.growth_mult("mintleaf") <= 1.0, str(Seasons.growth_mult("mintleaf")))
+	check("Rumah Kaca: semua tanaman boleh ditanam", Seasons.can_plant("sunbud") and Seasons.can_plant("mintleaf"))
+	WorldState.greenhouse = was_gh
+	check("item Rumah Kaca ada di toko", Db.items.has("greenhouse_kit"))
+	# plot_status ikut pengali musim (waktu tumbuh nyata berubah)
+	var plot := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - 605}
+	var st := HomesteadSystem.plot_status(plot)
+	var expect_ready: bool = 605.0 >= 600.0 * Seasons.growth_mult("mintleaf")
+	check("plot_status menghormati musim", bool(st.ready) == expect_ready, "ready=%s mult=%s" % [st.ready, Seasons.growth_mult("mintleaf")])
+	# drop & spawn bias
+	check("drop_mult musim masuk akal (1.0-1.3)", Seasons.drop_mult() >= 1.0 and Seasons.drop_mult() <= 1.3, str(Seasons.drop_mult()))
+	var fav: Array = GameClock.season_def().get("favored_elements", [])
+	check("musim punya elemen favorit", not fav.is_empty())
+	# pick_species: elemen favorit lebih sering keluar daripada bobot rata
+	var table := ["snow_hare", "flame_imp", "gummy_slime", "cave_bat"]
+	var rng := RandomNumberGenerator.new()
+	var counts := {}
+	for i in 600:
+		rng.seed = i
+		var sp := Seasons.pick_species(table, rng)
+		counts[sp] = int(counts.get(sp, 0)) + 1
+	check("pick_species selalu mengembalikan spesies dari tabel", counts.size() >= 1 and counts.size() <= table.size())
+	var total := 0
+	for k in counts:
+		total += int(counts[k])
+	check("pick_species mengembalikan 600 hasil", total == 600, str(total))

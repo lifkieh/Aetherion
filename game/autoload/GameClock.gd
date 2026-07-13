@@ -13,10 +13,16 @@ const GOLDEN_START := 17          # 17:00
 const NIGHT_HOUR := 19
 const DAWN_END := 6
 
+# --- MUSIM (Addendum A4 / v0.4.3 #83): 4 musim x 2 MINGGU NYATA = siklus 56 hari ---
+# Diikat ke tanggal WIB asli (seperti bulan & jam) — dunia berjalan walau game ditutup.
+const SEASON_DAYS := 14
+const SEASON_EPOCH := 1767225600   # 2026-01-01 00:00 WIB (Semi mulai di sini)
+
 var _last_minute := -1
 var _last_hour := -1
 var _last_is_night := false
 var _last_moon_index := -1
+var _last_season_index := -1
 var _sky_calendar: Array = []
 
 func _ready() -> void:
@@ -46,6 +52,38 @@ func time_string() -> String:
 func date_string() -> String:
 	var d := now_wib()
 	return "%04d-%02d-%02d" % [d.year, d.month, d.day]
+
+# --- Musim ------------------------------------------------------------------
+
+## Hari ke-berapa sejak epoch musim (WIB).
+func _season_day_index() -> int:
+	var wib := int(Time.get_unix_time_from_system()) + WIB_OFFSET
+	return int(floor(float(wib - SEASON_EPOCH) / 86400.0))
+
+func season_index() -> int:
+	var d := _season_day_index()
+	return int(floor(float(d) / float(SEASON_DAYS))) % 4 if d >= 0 else 0
+
+func season() -> String:
+	if Db.seasons.is_empty():
+		return "semi"
+	return Db.seasons[season_index() % Db.seasons.size()].get("id", "semi")
+
+func season_def() -> Dictionary:
+	if Db.seasons.is_empty():
+		return {}
+	return Db.seasons[season_index() % Db.seasons.size()]
+
+func season_name() -> String:
+	return season_def().get("name", "Semi")
+
+## Hari ke-berapa di dalam musim ini (1..SEASON_DAYS).
+func season_day() -> int:
+	var d := _season_day_index()
+	return (d % SEASON_DAYS) + 1 if d >= 0 else 1
+
+func days_to_next_season() -> int:
+	return SEASON_DAYS - season_day() + 1
 
 # --- Lunar phase ------------------------------------------------------------
 
@@ -96,7 +134,18 @@ func day_fraction() -> float:
 	return (d.hour * 3600.0 + d.minute * 60.0 + d.second) / 86400.0
 
 ## Ambient light color for the current time (warm day -> deep blue night).
+## Warna ambient dunia: waktu-hari, lalu DIWARNAI MUSIM (A4) — semua scene dunia
+## memanggil ini, jadi musim langsung terasa di mana pun.
 func ambient_color() -> Color:
+	var c := _time_color()
+	var sd := season_def()
+	var t: Array = sd.get("tint", [])
+	if t.size() == 3:
+		var st := Color(float(t[0]), float(t[1]), float(t[2]))
+		c = c.lerp(c * st, float(sd.get("tint_weight", 0.15)))
+	return c
+
+func _time_color() -> Color:
 	var f := day_fraction()
 	# Keyframes across the day (hour -> color)
 	var keys := [
@@ -182,6 +231,10 @@ func _tick(force: bool) -> void:
 			EventBus.day_started.emit()
 	if is_golden_hour():
 		EventBus.golden_hour.emit()
+	var si := season_index()
+	if si != _last_season_index or force:
+		_last_season_index = si
+		EventBus.season_changed.emit(season())
 	var mi := moon_index()
 	if mi != _last_moon_index or force:
 		_last_moon_index = mi

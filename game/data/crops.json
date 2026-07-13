@@ -1,8 +1,33 @@
 [
-  {"id": "mintleaf", "name": "Mint", "seed": "seed_mintleaf", "product": "herb_mintleaf",
-   "grow_seconds": 600, "season_any": true, "yield_min": 2, "yield_max": 3,
-   "needs_sun": false, "stages": 4},
-  {"id": "sunbud", "name": "Kuncup Surya", "seed": "seed_sunbud", "product": "herb_sunbud",
-   "grow_seconds": 900, "season_any": true, "yield_min": 1, "yield_max": 3,
-   "needs_sun": true, "stages": 4}
+ {
+  "id": "mintleaf",
+  "name": "Mint",
+  "seed": "seed_mintleaf",
+  "product": "herb_mintleaf",
+  "grow_seconds": 600,
+  "yield_min": 2,
+  "yield_max": 3,
+  "needs_sun": false,
+  "stages": 4,
+  "seasons": [
+   "semi",
+   "panas",
+   "gugur"
+  ]
+ },
+ {
+  "id": "sunbud",
+  "name": "Kuncup Surya",
+  "seed": "seed_sunbud",
+  "product": "herb_sunbud",
+  "grow_seconds": 900,
+  "yield_min": 1,
+  "yield_max": 3,
+  "needs_sun": true,
+  "stages": 4,
+  "seasons": [
+   "panas",
+   "semi"
+  ]
+ }
 ]

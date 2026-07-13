@@ -558,6 +558,17 @@ func _use_item(id: String, def: Dictionary) -> void:
 			_rebuild()
 		"consumable":
 			_use_consumable(id, def)
+		"gear":
+			# Rumah Kaca: dipasang sekali, musim tak lagi membatasi tanam (A4 #83)
+			if id == "greenhouse_kit":
+				if WorldState.greenhouse:
+					EventBus.toast.emit("Rumah Kaca sudah berdiri di Homestead-mu.")
+				elif PlayerData.item_count(id) > 0:
+					PlayerData.remove_item(id, 1)
+					WorldState.greenhouse = true
+					Audio.play_sfx("success")
+					EventBus.toast.emit("🏠 Rumah Kaca berdiri. Musim tak lagi membatasi tanammu.")
+					_rebuild()
 		"coating":
 			# lapisi senjata: elemen dominan tetap, +25% sekunder (v0.4.2)
 			if PlayerData.item_count(id) > 0:
@@ -712,7 +723,7 @@ func _do_buyout(idx: int) -> void:
 func _build_shop() -> void:
 	title.text = "Toko Greenvale"
 	content.add_child(_mk_label("— Beli —", 16))
-	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "fishing_rod", "star_bait", "saddle", "copper_sword"]:
+	for id in ["minor_potion", "mana_draught", "basic_orb", "seed_mintleaf", "seed_sunbud", "fishing_rod", "star_bait", "saddle", "copper_sword", "greenhouse_kit"]:
 		if not Db.items.has(id): continue
 		var h := _row()
 		_add_item_icon(h, id)

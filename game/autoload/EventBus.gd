@@ -11,6 +11,7 @@ signal golden_hour()
 signal full_moon_began()
 signal new_moon_began()
 signal moon_phase_changed(phase_index: int)     # 0..7 sprite frame
+signal season_changed(season_id: String)        # 4 musim x 2 minggu nyata (A4, #83)
 signal sky_event(name: String)                  # from sky_calendar.json
 
 # --- Weather ---

@@ -523,7 +523,10 @@ func _refresh_sky() -> void:
 	moon_label.text = GameClock.moon_name()
 	weather_label.text = "Cuaca: " + WEATHER_ID.get(WorldState.weather, WorldState.weather)
 	if date_label:
-		date_label.text = GameClock.date_string()
+		# MUSIM (A4 #83): tanggal + musim + hari ke-berapa dari 14
+		var sd := GameClock.season_def()
+		date_label.text = "%s  %s %s (h.%d/%d)" % [GameClock.date_string(),
+			sd.get("icon", ""), GameClock.season_name(), GameClock.season_day(), GameClock.SEASON_DAYS]
 
 # --- Toasts (icon-aware) ----------------------------------------------------
 

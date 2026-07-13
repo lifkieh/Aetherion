@@ -217,7 +217,7 @@ func _prime_monsters() -> void:
 		_spawn_one()
 
 func _spawn_one() -> void:
-	var species: String = SPAWN_TABLE[randi() % SPAWN_TABLE.size()]
+	var species: String = Seasons.pick_species(SPAWN_TABLE)   # bias elemen favorit musim (A4 #83)
 	if not MonsterFactory.spawnable_now(species):
 		return   # nokturnal hanya malam (v0.4.1)
 	var inst := MonsterFactory.make(species)

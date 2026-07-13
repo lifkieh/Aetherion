@@ -166,7 +166,8 @@ static func make(species_id: String, level_override: int = -1, star_override: in
 static func grant_rewards(inst: Dictionary, source: Node2D = null) -> void:
 	PlayerData.gain_exp(inst.get("exp_reward", 5))
 	var drop_chance_bonus: float = PlayerData.drop_bonus + float(inst.get("drop_add", 0.0)) \
-		+ (0.10 if inst.get("mutation", false) else 0.0)
+		+ (0.10 if inst.get("mutation", false) else 0.0) \
+		+ (Seasons.drop_mult() - 1.0)   # MUSIM (A4 #83): Gugur = musim panen, drop lebih royal
 	var table := Db.loot_table(inst.get("loot_table", ""))
 	# BLOOD MOON (v0.4.1): drop ×2 — tabel dirol dua kali
 	var passes := 2 if WorldState.weather == "blood_moon" else 1

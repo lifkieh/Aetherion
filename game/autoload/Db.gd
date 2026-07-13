@@ -28,6 +28,7 @@ var ui_feel: Dictionary = {}       # tuning motion/feel UI (Decision Log #44)
 var rumors: Array = []             # rumor + variasi menyimpang (E5, #77)
 var town_npcs: Dictionary = {}     # town_id -> 5 persona NPC (Hukum NPC Aneh, E6 #78)
 var miracles: Array = []           # keajaiban langka tak-dipicu-pemain (E7, #79)
+var seasons: Array = []            # 4 musim x 2 minggu nyata (A4, v0.4.3 #83)
 
 var _errors: Array[String] = []
 
@@ -60,6 +61,7 @@ func load_all() -> void:
 	rumors = _load_array("rumors.json")
 	town_npcs = _load_object("town_npcs.json")
 	miracles = _load_array("miracles.json")
+	seasons = _load_array("seasons.json")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])
