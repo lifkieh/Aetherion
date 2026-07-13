@@ -564,4 +564,4 @@ func _apply_spirit_mood() -> void:
 	if cm:
 		cm.color = cm.color * ForestSpiritSystem.world_tint()
 	if ForestSpiritSystem.is_angry():
-		EventBus.toast.emit("Hutan terasa sunyi. Warnanya memudar.")
+		EventBus.toast.emit(Loc.t("spirit.pale"))

@@ -13,9 +13,9 @@ const RATES := [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.25, 0.2]   # target +1
 static func can_enchant(item_id: String) -> Dictionary:
 	var def := Db.item(item_id)
 	if not def.get("type", "") in ["weapon", "armor", "accessory"]:
-		return {"ok": false, "reason": "Hanya senjata/zirah/aksesori."}
+		return {"ok": false, "reason": Loc.t("enchant.gear_only")}
 	if PlayerData.gear_enchant(item_id) >= MAX_LEVEL:
-		return {"ok": false, "reason": "Sudah +%d (maksimum)." % MAX_LEVEL}
+		return {"ok": false, "reason": Loc.t("enchant.max", [MAX_LEVEL])}
 	return {"ok": true, "reason": ""}
 
 ## Biaya emas: berbasis nilai item, naik per level tujuan. Diskon Enchanter aktif.
@@ -41,11 +41,11 @@ static func enchant(item_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		EventBus.toast.emit(gate.reason)
 		return {"success": false, "level": PlayerData.gear_enchant(item_id), "reason": "gate"}
 	if PlayerData.item_count(item_id) <= 0 and not _is_equipped(item_id):
-		EventBus.toast.emit("Item tidak dimiliki.")
+		EventBus.toast.emit(Loc.t("enchant.not_owned"))
 		return {"success": false, "level": 0, "reason": "not_owned"}
 	var c := cost(item_id)
 	if not PlayerData.spend_gold(c):
-		EventBus.toast.emit("Emas tidak cukup (%dG)." % c)
+		EventBus.toast.emit(Loc.t("enchant.no_gold", [c]))
 		return {"success": false, "level": PlayerData.gear_enchant(item_id), "reason": "gold"}
 
 	var cur := PlayerData.gear_enchant(item_id)
@@ -57,7 +57,7 @@ static func enchant(item_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		PlayerData.gear_meta[item_id] = meta
 		PlayerData.recalculate_stats()
 		Audio.play_sfx("levelup" if target >= 7 else "success")
-		EventBus.toast.emit("✦ %s kini +%d!" % [Db.item_name(item_id), target])
+		EventBus.toast.emit(Loc.t("enchant.success", [Db.item_name(item_id), target]))
 		return {"success": true, "level": target, "reason": "ok"}
 	# GAGAL — tak pernah hancur (spec kunci). ≥+7 turun 1 kecuali gulungan menahan.
 	var protected := false
@@ -65,14 +65,14 @@ static func enchant(item_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		if PlayerData.item_count("protection_scroll") > 0:
 			PlayerData.remove_item("protection_scroll", 1)
 			protected = true
-			EventBus.toast.emit("Gagal... Gulungan Perlindungan menahan level +%d." % cur)
+			EventBus.toast.emit(Loc.t("enchant.protected", [cur]))
 		else:
 			meta["enchant"] = maxi(0, cur - 1)
 			PlayerData.gear_meta[item_id] = meta
 			PlayerData.recalculate_stats()
-			EventBus.toast.emit("Gagal... %s turun ke +%d." % [Db.item_name(item_id), meta["enchant"]])
+			EventBus.toast.emit(Loc.t("enchant.fail_drop", [Db.item_name(item_id), meta["enchant"]]))
 	else:
-		EventBus.toast.emit("Gagal... level tetap +%d." % cur)
+		EventBus.toast.emit(Loc.t("enchant.fail_safe", [cur]))
 	Audio.play_sfx("fizzle")
 	return {"success": false, "level": PlayerData.gear_enchant(item_id), "reason": "failed_roll", "protected": protected}
 

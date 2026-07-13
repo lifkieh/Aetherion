@@ -71,8 +71,7 @@ func _plant() -> void:
 		# tetap boleh ditanam, tapi jujur: pertumbuhannya merambat
 		seed_id = off_season
 		crop_id = "mintleaf" if off_season == "seed_mintleaf" else "sunbud"
-		EventBus.toast.emit("%s bukan musimnya (%s) — tumbuhnya akan lambat." % [
-			Db.crop(crop_id).get("name", crop_id), GameClock.season_name()])
+		EventBus.toast.emit(Loc.t("season.off", [Db.crop(crop_id).get("name", crop_id), GameClock.season_name()]))
 	if seed_id == "":
 		EventBus.toast.emit("Tidak punya benih. Beli di toko!")
 		return

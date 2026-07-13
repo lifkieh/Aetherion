@@ -98,7 +98,7 @@ func _is_opened_today() -> bool:
 
 func interact() -> void:
 	if _opened:
-		EventBus.toast.emit("Peti ini sudah kau buka hari ini.")
+		EventBus.toast.emit(Loc.t("chest.already"))
 		return
 	_opened = true
 	WorldState.chests_opened[chest_id] = GameClock.date_string()
@@ -119,9 +119,9 @@ func interact() -> void:
 	if first_secret:
 		Audio.play_sfx("secret_door")          # Minifantasy: pintu batu terbuka
 		Audio.play_stinger("discovery")
-		EventBus.toast.emit("✦ RUANG RAHASIA DITEMUKAN — dunia mencatatnya.")
+		EventBus.toast.emit(Loc.t("secret.found"))
 		Chronicle.record("secret:" + chest_id, "Ruang rahasia ditemukan", false)
 	else:
 		Audio.play_sfx("chest")                # Minifantasy: tutup peti terangkat
-		EventBus.toast.emit("Peti terbuka: %d barang + %dG." % [got, gold])
+		EventBus.toast.emit(Loc.t("chest.looted", [got, gold]))
 	_refresh_art()

@@ -108,10 +108,10 @@ func _plant_sapling() -> void:
 	if p == null:
 		return
 	if PlayerData.item_count("tree_sapling") <= 0:
-		EventBus.toast.emit("Tak punya Bibit Pohon. Beli di toko atau tebang lebih hati-hati.")
+		EventBus.toast.emit(Loc.t("spirit.no_sapling"))
 		return
 	if SafeZone.is_active() and SafeZone.contains(p.global_position):
-		EventBus.toast.emit("Bukan di sini — tanamlah di luar kota, di tanah yang kau lukai.")
+		EventBus.toast.emit(Loc.t("spirit.not_here"))
 		return
 	PlayerData.remove_item("tree_sapling", 1)
 	Audio.play_sfx("dodge")

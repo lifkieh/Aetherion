@@ -55,7 +55,8 @@ const QUALITY_MULT := {"normal": 1.0, "fine": 1.05, "masterwork": 1.10}
 const QUALITY_NAME := {"normal": "Normal", "fine": "Halus", "masterwork": "Adikarya"}
 
 # --- Class / skills / element ---
-var char_class: String = "warrior"     # class terpilih (combat ATAU kehidupan, Decision Log #33)
+var char_class: String = "warrior"
+var advanced_class: String = ""     # jalur lanjutan Lv60 (v0.4.4 #101)     # class terpilih (combat ATAU kehidupan, Decision Log #33)
 var combat_sub: String = ""            # jalur kehidupan: 1 combat SUB (1 senjata + 2 skill)
 var pending_class: String = "warrior"  # New Game flow: ClassSelect -> CharacterCreator handoff
 var pending_weapon: String = ""
@@ -146,6 +147,7 @@ func new_game(class_id: String = "warrior", weapon_id: String = "", sub_id: Stri
 	var wid := weapon_id
 	if wid == "" or Db.item(wid).is_empty():
 		wid = variants[0].get("id", "wooden_sword") if not variants.is_empty() else "wooden_sword"
+	advanced_class = ""
 	gear_meta = {}
 	coating = {}
 	inventory = {"minor_potion": 3, "basic_orb": 2, "cloth_tunic": 1, "seed_mintleaf": 3}
@@ -425,7 +427,7 @@ func gear_enchant(item_id: String) -> int:
 # --- Coating senjata (v0.4.2): elemen dominan tetap, +25% elemen sekunder ---
 func apply_coating(elem: String, dur_sec: float) -> void:
 	coating = {"element": elem, "until": Time.get_unix_time_from_system() + dur_sec}
-	EventBus.toast.emit("Senjata dilapisi %s (%d dtk)." % [elem, int(dur_sec)])
+	EventBus.toast.emit(Loc.t("coating.applied", [elem, int(dur_sec)]))
 
 func coating_active() -> bool:
 	if coating.is_empty():
@@ -636,7 +638,7 @@ func to_save() -> Dictionary:
 		"level": level, "exp": exp, "attributes": attributes, "stat_points": stat_points,
 		"hp": hp, "mp": mp, "gold": gold, "inventory": inventory,
 		"equipped_weapon": equipped_weapon, "equipped_armor": equipped_armor, "equipped_accessory": equipped_accessory,
-		"char_class": char_class, "combat_sub": combat_sub,
+		"char_class": char_class, "combat_sub": combat_sub, "advanced_class": advanced_class,
 		"known_skills": known_skills,
 		"mastered_elements": mastered_elements, "monsters": monsters,
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
@@ -664,6 +666,7 @@ func from_save(d: Dictionary) -> void:
 	equipped_armor = d.get("equipped_armor", "")
 	equipped_accessory = d.get("equipped_accessory", "")
 	char_class = d.get("char_class", "warrior")
+	advanced_class = d.get("advanced_class", "")
 	combat_sub = d.get("combat_sub", "")
 	known_skills = d.get("known_skills", known_skills)
 	mastered_elements = d.get("mastered_elements", mastered_elements)

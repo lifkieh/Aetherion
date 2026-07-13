@@ -135,14 +135,14 @@ func _region_card(r: Dictionary) -> Control:
 ## Returns true bila perjalanan benar-benar berangkat.
 static func do_travel(r: Dictionary, ui: CanvasLayer = null) -> bool:
 	if not r.get("id", "") in WorldState.visited_regions:
-		EventBus.toast.emit("Wilayah itu belum pernah kau datangi — gerbang menolak.")
+		EventBus.toast.emit(Loc.t("travel.locked"))
 		return false
 	if r.get("id", "") == WorldState.current_region:
-		EventBus.toast.emit("Kamu sudah berada di sana.")
+		EventBus.toast.emit(Loc.t("travel.here"))
 		return false
 	var cost := travel_cost_today()
 	if cost > 0 and PlayerData.gold < cost:
-		EventBus.toast.emit("Kantongmu menolak berangkat — kurang %d G." % (cost - PlayerData.gold))
+		EventBus.toast.emit(Loc.t("travel.no_gold", [cost - PlayerData.gold]))
 		Audio.play_sfx("menu", 0.6)
 		return false
 	if cost > 0:
@@ -150,7 +150,7 @@ static func do_travel(r: Dictionary, ui: CanvasLayer = null) -> bool:
 	else:
 		WorldState.last_free_travel = GameClock.date_string()
 	Audio.play_sfx("success")
-	EventBus.toast.emit("Gerbang bergetar... selamat jalan, penjelajah. → %s" % r.get("name", ""))
+	EventBus.toast.emit(Loc.t("travel.depart", [r.get("name", "")]))
 	if ui and ui.is_inside_tree():
 		ui.get_tree().paused = false
 	Stage.go_to_scene(r.get("scene", ""))

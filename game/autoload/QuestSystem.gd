@@ -82,7 +82,7 @@ func track(quest_id: String) -> void:
 	PlayerData.daily_quests["tracked"] = quest_id
 	for q in quests():
 		if q.id == quest_id:
-			EventBus.toast.emit("🎯 Melacak: %s" % q.name)
+			EventBus.toast.emit(Loc.t("quest.tracking", [q.name]))
 			return
 
 ## Petunjuk sasaran quest yang dilacak untuk penanda arah HUD:
@@ -117,7 +117,7 @@ func _advance(type: String, target: String) -> void:
 		if q.progress >= q.count:
 			q.progress = q.count
 			q.done = true
-			EventBus.toast.emit("✅ Quest selesai: %s — klaim di Papan!" % q.name)
+			EventBus.toast.emit(Loc.t("quest.done", [q.name]))
 			Audio.play_stinger("quest")
 		changed = true
 	if changed:

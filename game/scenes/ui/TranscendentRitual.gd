@@ -46,7 +46,7 @@ func _ready() -> void:
 	add_child(_circle)
 
 	_label = Label.new()
-	_label.text = "Ritual Penempaan [%s]..." % _tier
+	_label.text = Loc.t("ritual.title", [_tier])
 	_label.add_theme_font_size_override("font_size", 22)
 	_label.add_theme_color_override("font_color", TIER_COLOR.get(_tier, Color.WHITE))
 	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -88,15 +88,14 @@ func _resolve() -> void:
 		add_child(flash)
 		create_tween().tween_property(flash, "color:a", 0.0, 0.6)
 		var item_id: String = res.get("result", "")
-		_label.text = "✦ TRANSENDEN [%s] ✦\n%s menempa %s!" % [
-			_tier, PlayerData.char_name, Db.item_name(item_id)]
+		_label.text = Loc.t("ritual.success", [_tier, PlayerData.char_name, Db.item_name(item_id)])
 		_label.position.y = vp.y * 0.5 - 24.0
 		_label.add_theme_font_size_override("font_size", 26)
 		if not Settings.eco_mode:
 			UiFx.celebrate(_label)
 	else:
 		Audio.play_sfx("fizzle")
-		_label.text = "Ritual gagal... bahan kunci selamat. (+Insight)"
+		_label.text = Loc.t("ritual.fail")
 		_label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.75))
 		if is_instance_valid(_circle):
 			_circle.queue_free()

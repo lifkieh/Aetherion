@@ -186,6 +186,7 @@ func _rebuild() -> void:
 
 func _build_skill() -> void:
 	title.text = "Skill Book"
+	_build_advanced_block()
 	content.add_child(_mk_label("Slot hotbar saat ini:", 15))
 	var row := _row()
 	for i in range(5):
@@ -328,6 +329,15 @@ func _build_sky() -> void:
 	btxt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	btxt.custom_minimum_size = Vector2(380, 0)
 	brow.add_child(btxt)
+	# TRIAL OF THE RASI (#101): hanya saat rasi KELAHIRANMU naik
+	var trow := _row()
+	var tb := _btn(Loc.t("trial.button"), func():
+		AdvancedClass.run_trial()
+		_rebuild())
+	tb.disabled = not AdvancedClass.trial_available()
+	trow.add_child(tb)
+	trow.add_child(_mk_label(AdvancedClass.trial_reason() if not AdvancedClass.trial_available() else "✧ Langit membuka jalanmu — sekarang.", 11,
+		Color(0.75, 0.8, 0.95) if not AdvancedClass.trial_available() else Color(1.0, 0.9, 0.5)))
 	content.add_child(_mk_label("— Ramalan Mingguan —", 16))
 	var prophecy := RasiSystem.weekly_prophecy()
 	var pl := _mk_label(prophecy, 14)
@@ -473,6 +483,29 @@ func _build_quests() -> void:
 			h.add_child(_mk_label("diklaim", 12))
 		else:
 			h.add_child(_btn("Lacak", _do_track.bind(q.get("id", ""))))
+
+## JALUR LANJUTAN Lv60 (#101) — janji teaser ClassSelect akhirnya dibayar.
+func _build_advanced_block() -> void:
+	var head := _mk_label(Loc.t("adv.title"), 16, Color(1.0, 0.86, 0.42))
+	content.add_child(head)
+	if PlayerData.advanced_class != "":
+		content.add_child(_mk_label("✦ %s" % PlayerData.advanced_class, 14, Color(0.8, 1.0, 0.8)))
+	elif PlayerData.level < AdvancedClass.ADV_LEVEL:
+		content.add_child(_mk_label(Loc.t("adv.locked_lv", [AdvancedClass.ADV_LEVEL]), 12, Color(0.7, 0.72, 0.8)))
+	else:
+		content.add_child(_mk_label(Loc.t("adv.progress",
+			[AdvancedClass.adv_progress(), AdvancedClass.ADV_KILLS]), 12, Color(0.9, 0.85, 0.6)))
+		if AdvancedClass.adv_ready():
+			for path in AdvancedClass.paths(PlayerData.char_class):
+				var h := _row()
+				var l := _mk_label("%s — %s" % [path.name, path.desc], 13)
+				l.custom_minimum_size = Vector2(360, 0)
+				l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				h.add_child(l)
+				var pn: String = path.name
+				h.add_child(_btn("Pilih", func():
+					AdvancedClass.choose(pn)
+					_rebuild()))
 
 func _build_pedia() -> void:
 	title.text = "Aetherpedia"
@@ -685,12 +718,12 @@ func _use_item(id: String, def: Dictionary) -> void:
 			# Rumah Kaca: dipasang sekali, musim tak lagi membatasi tanam (A4 #83)
 			if id == "greenhouse_kit":
 				if WorldState.greenhouse:
-					EventBus.toast.emit("Rumah Kaca sudah berdiri di Homestead-mu.")
+					EventBus.toast.emit(Loc.t("greenhouse.exists"))
 				elif PlayerData.item_count(id) > 0:
 					PlayerData.remove_item(id, 1)
 					WorldState.greenhouse = true
 					Audio.play_sfx("success")
-					EventBus.toast.emit("🏠 Rumah Kaca berdiri. Musim tak lagi membatasi tanammu.")
+					EventBus.toast.emit(Loc.t("greenhouse.built"))
 					_rebuild()
 		"coating":
 			# lapisi senjata: elemen dominan tetap, +25% sekunder (v0.4.2)
@@ -836,7 +869,7 @@ func _do_bid(idx: int) -> void:
 	var r := AuctionHouse.player_bid(idx)
 	if r.get("status", "") == "outbid":
 		Audio.play_sfx("blip")
-		EventBus.toast.emit("%s membalas: %dG! (%s)" % [r.get("by", "?"), int(r.get("bid", 0)), r.get("style", "")])
+		EventBus.toast.emit(Loc.t("auction.outbid", [r.get("by", "?"), int(r.get("bid", 0)), r.get("style", "")]))
 	_rebuild()
 
 func _do_buyout(idx: int) -> void:

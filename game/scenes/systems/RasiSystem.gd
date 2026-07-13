@@ -34,7 +34,8 @@ static func ascendant() -> Dictionary:
 static func birth_bonus(field: String) -> float:
 	var b: Dictionary = birth().get("bonus", {})
 	if b.get("field", "") == field:
-		return float(b.get("value", 0.0))
+		# Trial of the Rasi (#101) menggandakan bonus rasi kelahiran
+		return float(b.get("value", 0.0)) * AdvancedClass.rasi_multiplier()
 	return 0.0
 
 ## Ramalan mingguan: teka-teki rasi naik + kaitan ke konten yang AKTIF minggu ini

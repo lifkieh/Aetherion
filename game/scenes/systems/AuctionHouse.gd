@@ -139,7 +139,7 @@ static func player_bid(lot_index: int, rng: RandomNumberGenerator = null) -> Dic
 		return {"status": "sold"}
 	var my_bid: int = int(lot.bid) + (0 if lot.get("bidder", "") == "" else raise_step(lot))
 	if PlayerData.gold < my_bid:
-		EventBus.toast.emit("Emas tidak cukup untuk menawar (%dG)." % my_bid)
+		EventBus.toast.emit(Loc.t("auction.poor", [my_bid]))
 		return {"status": "poor", "need": my_bid}
 	if rng == null:
 		rng = RandomNumberGenerator.new()
@@ -174,7 +174,7 @@ static func player_buyout(lot_index: int) -> Dictionary:
 		return {"status": "sold"}
 	var price: int = int(lot.buyout)
 	if not PlayerData.spend_gold(price):
-		EventBus.toast.emit("Emas tidak cukup (%dG)." % price)
+		EventBus.toast.emit(Loc.t("enchant.no_gold", [price]))
 		return {"status": "poor", "need": price}
 	lot["sold"] = true
 	lot["winner"] = "you"
@@ -194,9 +194,9 @@ static func _deliver(lot: Dictionary) -> void:
 			"date": GameClock.date_string(), "loyal": true,
 		})
 		Audio.play_sfx("secret")
-		EventBus.toast.emit("🔗 %s DIBEBASKAN — ia takkan melupakan ini." % lot.name)
+		EventBus.toast.emit(Loc.t("auction.freed", [lot.name]))
 		EventBus.captive_freed.emit(lot.name, lot.tag)
 	else:
 		PlayerData.add_item(lot.item, 1)
 		Audio.play_sfx("coin")
-		EventBus.toast.emit("🔨 TERJUAL! %s milikmu." % Db.item_name(lot.item))
+		EventBus.toast.emit(Loc.t("auction.sold", [Db.item_name(lot.item)]))

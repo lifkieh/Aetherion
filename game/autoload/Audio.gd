@@ -97,6 +97,17 @@ func _get_stream(path: String) -> AudioStream:
 	_cache[path] = s
 	return s
 
+const UI_SFX := ["menu", "blip", "click", "prime"]
+const AMB_SFX := ["stone_step", "crate", "chest", "secret_door"]
+
+## Skala volume per KANAL (v0.4.4): UI, ambience, dan SFX aksi terpisah.
+func _channel_scale(name: String) -> float:
+	if name in UI_SFX:
+		return Settings.ui_volume
+	if name in AMB_SFX:
+		return Settings.ambience_volume
+	return sfx_scale
+
 func play_sfx(name: String, pitch: float = 1.0) -> void:
 	if muted:
 		return
@@ -110,7 +121,7 @@ func play_sfx(name: String, pitch: float = 1.0) -> void:
 	_next = (_next + 1) % _pool.size()
 	p.stream = s
 	p.pitch_scale = pitch
-	p.volume_db = linear_to_db(maxf(0.001, sfx_scale))   # channel SFX (v0.4.1)
+	p.volume_db = linear_to_db(maxf(0.001, _channel_scale(name)))   # channel per jenis (v0.4.4)
 	p.play()
 
 ## STINGER (v0.4.3 #84) — penanda momen: bukan lagu baru, melainkan urutan pendek

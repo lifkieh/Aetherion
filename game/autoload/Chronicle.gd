@@ -38,7 +38,7 @@ func record(id: String, title: String, celebrate: bool = true) -> bool:
 	return true
 
 func _celebrate(entry: Dictionary) -> void:
-	Stage.banner("✦ PENCAPAIAN TERCATAT ✦", "%s — %s WIB" % [entry.title, entry.date])
+	Stage.banner(Loc.t("chronicle.recorded"), "%s — %s WIB" % [entry.title, entry.date])
 	Audio.play_stinger("boss_kill")
 	if Cutscene.def("first_clear").size() > 0 and not Cutscene.playing:
 		Cutscene.play("first_clear")

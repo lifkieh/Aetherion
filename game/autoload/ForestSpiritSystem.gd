@@ -55,8 +55,8 @@ func _wake() -> void:
 ## Dipanggil saat pemain menanam bibit pohon di alam liar.
 func plant_tree() -> void:
 	WorldState.add_counter("trees_planted")
-	EventBus.toast.emit("🌱 Bibit ditanam. %s" % (
-		"Tanah masih menghitung: %d lagi." % debt() if is_angry() and debt() > 0 else "Tanah menerimanya."))
+	var tail := Loc.t("spirit.debt", [debt()]) if is_angry() and debt() > 0 else Loc.t("spirit.accepted")
+	EventBus.toast.emit(Loc.t("spirit.planted", [tail]))
 	if is_angry() and debt() <= 0:
 		_forgive()
 

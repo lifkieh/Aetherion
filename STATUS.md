@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-13 10:22 WIB — berisi hingga: **v0.4.3 SELESAI PENUH** (peta + fast travel, cutscene engine, jadwal NPC, Forest Spirit + Chronicle first-clear, parallax/ambience dungeon, MUSIM v1, 12 Rasi + prakiraan Astrolog, Jurnal quest, bank musik & SFX baru) di atas v0.4.2 + E1–E10 + P1–P5. Ukuran exe 92,5 MB. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-13 10:43 WIB — berisi hingga: **v0.4.4 SELESAI** (settings lengkap + keybind remap, gamepad penuh + glyph, lokalisasi ID/EN penuh + retrofit, Advanced Class Lv60 + Trial of the Rasi) di atas v0.4.3 penuh. Ukuran exe 92,6 MB. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -325,7 +325,7 @@ fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Sco
 (Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
 naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
 
-## ⏸️ STATUS: **v0.4.3 SELESAI** — menunggu playtest owner; antrean: v0.4.4 Modern Meta (settings/gamepad/keybind + INFRA LOKALISASI ID-EN + retrofit string v0.4.2–0.4.3)
+## ⏸️ STATUS: **v0.4.4 MODERN META SELESAI** — menunggu playtest owner. Fase 0 (v0.4.x) TUNTAS; antrean berikutnya: **v0.5 STORY & SOUL** (gerbang B17 Companion Bible + B18 Nirnama Bible — butuh sesi penulisan bersama Direktur)
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
 quality roll + maker's mark, + Rumah Lelang NPC (B8).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi

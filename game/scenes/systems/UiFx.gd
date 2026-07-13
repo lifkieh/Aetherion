@@ -29,6 +29,7 @@ static func button(b: BaseButton, click_sfx: bool = false) -> void:
 	if b == null or b.has_meta("uifx"):
 		return
 	b.set_meta("uifx", true)
+	focusable(b)   # navigasi gamepad/keyboard (v0.4.4 #99)
 	b.mouse_entered.connect(func():
 		if not _on(): return
 		var h := _cfg("hover")
@@ -113,3 +114,24 @@ static func toast_spring(ctrl: Control) -> void:
 	var tw := ctrl.create_tween()
 	tw.tween_property(ctrl, "scale", Vector2.ONE * float(c.get("overshoot", 1.08)), float(c.get("dur", 0.22)) * 0.6).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tw.tween_property(ctrl, "scale", Vector2.ONE, float(c.get("dur", 0.22)) * 0.4)
+
+## NAVIGASI UI DENGAN GAMEPAD/KEYBOARD (v0.4.4 #99): tombol yang sedang difokus
+## membesar sedikit + berbunyi — tanpa ini, pemain gamepad tak tahu ia sedang di mana.
+static func focusable(btn: Control) -> void:
+	if btn == null or btn.has_meta("uifx_focus"):
+		return
+	btn.set_meta("uifx_focus", true)
+	btn.focus_mode = Control.FOCUS_ALL
+	var cfg := _cfg("focus")
+	var t: float = float(cfg.get("time", 0.08))
+	var sc: float = float(cfg.get("scale", 1.04))
+	btn.focus_entered.connect(func():
+		if not _on():
+			return
+		Audio.play_sfx("blip", 1.2)
+		btn.pivot_offset = btn.size * 0.5
+		btn.create_tween().tween_property(btn, "scale", Vector2.ONE * sc, t))
+	btn.focus_exited.connect(func():
+		if not _on():
+			return
+		btn.create_tween().tween_property(btn, "scale", Vector2.ONE, t))

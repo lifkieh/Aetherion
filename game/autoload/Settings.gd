@@ -10,6 +10,9 @@ var muted := false
 var music_volume := 0.8
 var sfx_volume := 1.0        # channel terpisah (v0.4.1, owner review i)
 var fullscreen := false
+var vsync := true                    # v0.4.4
+var ambience_volume := 0.7           # channel Ambience terpisah (v0.4.4)
+var ui_volume := 0.9                 # channel UI/SFX antarmuka (v0.4.4)
 
 func _ready() -> void:
 	load_cfg()
@@ -22,7 +25,24 @@ func apply() -> void:
 	if DisplayServer.get_name() != "headless":
 		DisplayServer.window_set_mode(
 			DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_vsync_mode(
+			DisplayServer.VSYNC_ENABLED if vsync else DisplayServer.VSYNC_DISABLED)
 	changed.emit()
+
+func set_vsync(v: bool) -> void:
+	vsync = v
+	apply()
+	save_cfg()
+
+func set_ambience_volume(v: float) -> void:
+	ambience_volume = clampf(v, 0.0, 1.0)
+	apply()
+	save_cfg()
+
+func set_ui_volume(v: float) -> void:
+	ui_volume = clampf(v, 0.0, 1.0)
+	apply()
+	save_cfg()
 
 func set_eco(v: bool) -> void:
 	eco_mode = v
@@ -57,6 +77,9 @@ func save_cfg() -> void:
 	cfg.set_value("audio", "muted", muted)
 	cfg.set_value("audio", "music_volume", music_volume)
 	cfg.set_value("audio", "sfx_volume", sfx_volume)
+	cfg.set_value("audio", "ambience_volume", ambience_volume)
+	cfg.set_value("audio", "ui_volume", ui_volume)
+	cfg.set_value("video", "vsync", vsync)
 	cfg.save(PATH)
 
 func load_cfg() -> void:
@@ -68,3 +91,6 @@ func load_cfg() -> void:
 	muted = cfg.get_value("audio", "muted", false)
 	music_volume = cfg.get_value("audio", "music_volume", 0.8)
 	sfx_volume = cfg.get_value("audio", "sfx_volume", 1.0)
+	ambience_volume = cfg.get_value("audio", "ambience_volume", 0.7)
+	ui_volume = cfg.get_value("audio", "ui_volume", 0.9)
+	vsync = cfg.get_value("video", "vsync", true)

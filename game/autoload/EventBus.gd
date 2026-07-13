@@ -57,6 +57,8 @@ signal transcendent_crafted(item_id: String, success: bool)   # crafting A+ seba
 signal captive_freed(name: String, tag: String)                # Rumah Lelang: tawanan dibebaskan (v0.4.2)
 signal spirit_state_changed(state: String)                     # Roh Hutan: none/angry/blessed (#95)
 signal chronicle_recorded(id: String, title: String)           # Pencapaian Tercatat (#96)
+signal input_device_changed(device: String)                    # keyboard | gamepad (#99)
+signal language_changed(lang: String)                          # ID/EN (#100)
 signal board_visited()                           # player opened the Quest Board (onboarding)
 
 # --- Homestead ---

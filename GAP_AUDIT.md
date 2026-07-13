@@ -183,7 +183,7 @@ pekerjaan yang membutuhkan TEKS PENUH blueprint (peta cakupan fitur per pasal, t
 (+ `AETHERION_PROPOSAL_LENGKAP_FINAL.md` warisan), di-commit; semua butir
 [MENUNGGU FILE] dilengkapi (ledger #67, REPORT-01 addendum §5).
 
-## DEVIASI-B15 (v0.4.2): teks UI baru belum via Loc.t() — dicatat jujur (aturan d)
+## DEVIASI-B15 (v0.4.2): teks UI baru belum via Loc.t() — ✅ **DITUTUP 2026-07-13 (Decision Log #100, v0.4.4)**: infra TranslationServer + parameter selesai; 39 string v0.4.2–0.4.3 di-retrofit ke key; test menjaga paritas ID/EN. Sisa (nama item/monster/lore) = gelombang terjemahan berikutnya.
 **Temuan (self-report):** string UI baru v0.4.2 (ritual Transenden, panel Enchanter,
 Rumah Lelang, toast) ditulis Bahasa Indonesia langsung, TIDAK lewat `Loc.t("key")`
 — padahal konvensi B15 (#62) berlaku untuk teks baru. **Alasan teknis:** mayoritas

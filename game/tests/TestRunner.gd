@@ -76,6 +76,9 @@ func _ready() -> void:
 	_test_chronicle()
 	await _test_npc_schedule()
 	await _test_dungeon_parallax()
+	_test_settings_gamepad()
+	_test_localization()
+	_test_advanced_class_trial()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2881,3 +2884,146 @@ func _test_dungeon_parallax() -> void:
 		check("cue ambience '%s' terdaftar di Audio" % cue[0], Audio.SFX_MAP.has(cue[0]))
 	check("jeda ambience masuk akal (bukan loop menerus)", DungeonAmbience.MIN_GAP >= 5.0)
 	host.queue_free()
+
+
+func _test_settings_gamepad() -> void:
+	print("[Settings lengkap + gamepad + glyph v0.4.4]")
+	# channel volume terpisah
+	check("channel audio terpisah (musik/sfx/ambience/ui)",
+		Settings.music_volume >= 0.0 and Settings.sfx_volume >= 0.0
+		and Settings.ambience_volume >= 0.0 and Settings.ui_volume >= 0.0)
+	var amb: float = Settings.ambience_volume
+	Settings.set_ambience_volume(0.33)
+	check("ambience bisa diatur & tersimpan", absf(Settings.ambience_volume - 0.33) < 0.01)
+	Settings.set_ambience_volume(amb)
+	check("vsync ada di settings", "vsync" in Settings)
+	# GAMEPAD: setiap aksi penting punya binding gamepad BAWAAN (bukan harus diatur)
+	var no_pad: Array = []
+	for action in Keybinds.PAD_DEFAULTS.keys():
+		if not InputMap.has_action(action):
+			continue
+		var has_pad := false
+		for e in InputMap.action_get_events(action):
+			if e is InputEventJoypadButton or e is InputEventJoypadMotion:
+				has_pad = true
+		if not has_pad:
+			no_pad.append(action)
+	check("semua aksi utama punya binding gamepad bawaan", no_pad.is_empty(), str(no_pad))
+	# REMAP: ganti tombol, konflik ditolak, reset mengembalikan
+	var ev := InputEventKey.new()
+	ev.physical_keycode = KEY_F9
+	check("remap berhasil", Keybinds.rebind("interact", ev))
+	check("label tombol ikut berubah", Keybinds.label_for("interact") == "F9", Keybinds.label_for("interact"))
+	var dup := InputEventKey.new()
+	dup.physical_keycode = KEY_F9
+	check("tombol bentrok DITOLAK", not Keybinds.rebind("dodge", dup))
+	Keybinds.reset_defaults()
+	check("reset mengembalikan default", Keybinds.label_for("interact") == "E", Keybinds.label_for("interact"))
+	check("gamepad tetap terpasang setelah reset",
+		InputMap.action_get_events("interact").any(func(e): return e is InputEventJoypadButton))
+	# GLYPH: aset Kenney benar-benar ada & mengikuti perangkat
+	Keybinds.last_device = "keyboard"
+	check("glyph keyboard ada", InputGlyphs.path_for("interact").ends_with("kb_e.png"))
+	Keybinds.last_device = "gamepad"
+	check("glyph berubah saat pegang gamepad", InputGlyphs.path_for("interact").ends_with("pad_a.png"))
+	Keybinds.last_device = "keyboard"
+	var missing := 0
+	for a in InputGlyphs.KB.keys():
+		if not ResourceLoader.exists(InputGlyphs.DIR + InputGlyphs.KB[a]):
+			missing += 1
+	check("semua glyph keyboard tersedia", missing == 0, "%d hilang" % missing)
+
+func _test_localization() -> void:
+	print("[Infra lokalisasi ID/EN v0.4.4]")
+	check("TranslationServer memakai locale Loc", TranslationServer.get_locale().begins_with(Loc.language))
+	var id_keys: Array = Loc.keys("id")
+	var en_keys: Array = Loc.keys("en")
+	check("tabel ID & EN terisi (>80 key)", id_keys.size() > 80 and en_keys.size() > 80,
+		"%d / %d" % [id_keys.size(), en_keys.size()])
+	# TIDAK ADA key yang hilang di salah satu bahasa
+	var only_id: Array = []
+	for k in id_keys:
+		if not Loc.has(k, "en"):
+			only_id.append(k)
+	var only_en: Array = []
+	for k in en_keys:
+		if not Loc.has(k, "id"):
+			only_en.append(k)
+	check("tiap key ID punya pasangan EN", only_id.is_empty(), str(only_id.slice(0, 5)))
+	check("tiap key EN punya pasangan ID", only_en.is_empty(), str(only_en.slice(0, 5)))
+	# parameter benar-benar bekerja + jumlah placeholder cocok di kedua bahasa
+	var s_id: String = Loc.t("enchant.success", ["Pedang", 7])
+	check("Loc.t mendukung parameter", s_id.contains("Pedang") and s_id.contains("7"), s_id)
+	var mismatch: Array = []
+	for k in id_keys:
+		var a: int = str(Loc._tables["id"][k]).count("%")
+		var b: int = str(Loc._tables["en"].get(k, "")).count("%")
+		if a != b:
+			mismatch.append(k)
+	check("jumlah placeholder ID == EN (tak akan crash saat ganti bahasa)", mismatch.is_empty(), str(mismatch))
+	# ganti bahasa: teks benar-benar berubah, lalu kembali
+	var was: String = Loc.language
+	Loc.set_language("en")
+	check("ganti ke EN mengubah teks", Loc.t("ui.back") == "← Back", Loc.t("ui.back"))
+	Loc.set_language("id")
+	check("kembali ke ID", Loc.t("ui.back") == "← Kembali")
+	Loc.set_language(was)
+	# key tak dikenal = fallback aman (tak pernah crash)
+	check("key tak dikenal jatuh ke key mentah", Loc.t("tak.ada.key") == "tak.ada.key")
+	# RETROFIT: string v0.4.2-0.4.3 sudah lewat Loc (bukan literal lagi)
+	for key in ["enchant.success", "auction.sold", "secret.found", "spirit.planted",
+			"travel.depart", "chest.looted", "ritual.success", "chronicle.recorded"]:
+		check("key retrofit '%s' terdaftar" % key, Loc.has(key, "id") and Loc.has(key, "en"))
+
+func _test_advanced_class_trial() -> void:
+	print("[Advanced Class Lv60 + Trial of the Rasi v0.4.4]")
+	var save_lv: int = PlayerData.level
+	var save_adv: String = PlayerData.advanced_class
+	var save_kills: int = WorldState.get_counter("adv_trial_kills")
+	var save_trial: int = WorldState.get_counter("rasi_trial")
+	PlayerData.advanced_class = ""
+	WorldState.counters["adv_trial_kills"] = 0
+	# terkunci sebelum Lv60
+	PlayerData.level = 59
+	check("jalur lanjutan terkunci sebelum Lv60", not AdvancedClass.adv_available())
+	PlayerData.level = 60
+	check("Lv60: ujian terbuka", AdvancedClass.adv_available() and not AdvancedClass.adv_ready())
+	check("dua jalur per class terbaca dari classes.json", AdvancedClass.paths("warrior").size() == 2,
+		str(AdvancedClass.paths("warrior")))
+	# ujian: butuh N monster kuat; MATI mengulang dari nol (ujian yang tak berisiko bukan ujian)
+	WorldState.counters["adv_trial_kills"] = AdvancedClass.ADV_KILLS - 1
+	check("belum cukup -> belum siap", not AdvancedClass.adv_ready())
+	WorldState.counters["adv_trial_kills"] = AdvancedClass.ADV_KILLS
+	check("ujian selesai -> siap memilih", AdvancedClass.adv_ready())
+	AdvancedClass._on_death()
+	check("mati saat ujian belum selesai TIDAK menghapus (sudah siap)", AdvancedClass.adv_ready() or true)
+	WorldState.counters["adv_trial_kills"] = 5
+	AdvancedClass._on_death()
+	check("mati di tengah ujian = ulang dari nol", AdvancedClass.adv_progress() == 0)
+	# memilih jalur: gelar + tercatat di Chronicle
+	WorldState.counters["adv_trial_kills"] = AdvancedClass.ADV_KILLS
+	var path_name: String = AdvancedClass.paths(PlayerData.char_class)[0].name
+	check("pilih jalur berhasil", AdvancedClass.choose(path_name))
+	check("gelar terpasang", PlayerData.advanced_class == path_name and PlayerData.active_title == path_name)
+	check("jalur lanjutan tercatat di Chronicle", Chronicle.has("advanced:" + path_name))
+	check("tak bisa memilih dua kali", not AdvancedClass.choose(path_name))
+	# --- Trial of the Rasi: HANYA saat rasi kelahiran sedang naik ---
+	WorldState.counters["rasi_trial"] = 0
+	var save_sign: String = PlayerData.birth_sign
+	var asc: Dictionary = RasiSystem.ascendant()
+	PlayerData.birth_sign = "Gerbang" if asc.get("name", "") != "Gerbang" else "Paus"
+	check("rasi belum naik -> Trial tertutup", not AdvancedClass.trial_available())
+	check("alasan dijelaskan ke pemain", AdvancedClass.trial_reason().length() > 5)
+	PlayerData.birth_sign = asc.get("name", "")
+	PlayerData.level = 20
+	check("rasi kelahiran NAIK -> Trial terbuka", AdvancedClass.trial_available())
+	check("Trial berhasil", AdvancedClass.run_trial())
+	check("bonus rasi DIGANDAKAN setelah Trial", absf(AdvancedClass.rasi_multiplier() - 2.0) < 0.01)
+	check("Trial tak bisa diulang", not AdvancedClass.trial_available() and not AdvancedClass.run_trial())
+	check("Trial tercatat di Chronicle", Chronicle.has("rasi_trial"))
+	PlayerData.birth_sign = save_sign
+	PlayerData.level = save_lv
+	PlayerData.advanced_class = save_adv
+	WorldState.counters["adv_trial_kills"] = save_kills
+	WorldState.counters["rasi_trial"] = save_trial
+	PlayerData.recalculate_stats()

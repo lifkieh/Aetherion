@@ -40,6 +40,8 @@ MiracleSystem="*res://autoload/MiracleSystem.gd"
 Cutscene="*res://autoload/Cutscene.gd"
 Chronicle="*res://autoload/Chronicle.gd"
 ForestSpiritSystem="*res://autoload/ForestSpiritSystem.gd"
+Keybinds="*res://autoload/Keybinds.gd"
+AdvancedClass="*res://autoload/AdvancedClass.gd"
 DebugOverlay="*res://autoload/DebugOverlay.gd"
 Loc="*res://autoload/Loc.gd"
 

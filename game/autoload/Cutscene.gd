@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 		_skip_held += delta
 		if _skip_held >= SKIP_HOLD and not _skipping:
 			_skipping = true
-			EventBus.toast.emit("Cutscene dilewati.")
+			EventBus.toast.emit(Loc.t("cutscene.skipped"))
 	else:
 		_skip_held = 0.0
 

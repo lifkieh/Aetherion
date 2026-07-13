@@ -60,7 +60,7 @@ static func _roll_gear_meta(item_id: String, rng: RandomNumberGenerator = null) 
 	if order.find(q) > order.find(cur.get("quality", "normal")):
 		cur["quality"] = q
 		if q != "normal":
-			EventBus.toast.emit("Kualitas %s!" % PlayerData.QUALITY_NAME.get(q, q))
+			EventBus.toast.emit(Loc.t("craft.quality", [PlayerData.QUALITY_NAME.get(q, q)]))
 	cur["maker"] = PlayerData.char_name
 	PlayerData.gear_meta[item_id] = cur
 	PlayerData.recalculate_stats()
@@ -76,7 +76,7 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		EventBus.toast.emit(access.reason)
 		return {"success": false, "reason": "profession_gate"}
 	if not can_craft(recipe):
-		EventBus.toast.emit("Bahan tidak cukup.")
+		EventBus.toast.emit(Loc.t("craft.no_mats"))
 		return {"success": false, "reason": "missing_ingredients"}
 
 	var rate := success_rate(recipe)
@@ -102,7 +102,7 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		if is_transcendent(recipe):
 			EventBus.transcendent_crafted.emit(result, true)
 		else:
-			EventBus.toast.emit("Berhasil membuat %s x%d!" % [Db.item_name(result), out_qty])
+			EventBus.toast.emit(Loc.t("craft.success", [Db.item_name(result), out_qty]))
 		return {"success": true, "result": recipe.get("result", ""), "reason": "ok"}
 	else:
 		var rid: String = recipe.get("id", "")
@@ -111,5 +111,5 @@ static func craft(recipe_id: String, rng: RandomNumberGenerator = null) -> Dicti
 		if is_transcendent(recipe):
 			EventBus.transcendent_crafted.emit(recipe.get("result", ""), false)
 		else:
-			EventBus.toast.emit("Gagal membuat (bahan dasar aman). +Insight")
+			EventBus.toast.emit(Loc.t("craft.fail"))
 		return {"success": false, "result": "", "reason": "failed_roll"}
