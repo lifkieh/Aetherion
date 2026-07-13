@@ -90,6 +90,7 @@ var mastered_elements: Array = ["fire", "lightning"]
 var infusion: Dictionary = {}          # {element, source, expires_unix} or empty
 var buffs: Dictionary = {}             # key -> {mult/add, until_msec} (war_cry, smoke_bomb)
 var statuses: Dictionary = {}          # status effects pada PEMAIN (burn/poison/blind, v0.4.1)
+var _softcap_told: int = -1             # level terakhir yang sudah diberi tahu soal soft-cap (#152) — jangan spam
 var skill_trees: Dictionary = {}       # tree_id -> level (pohon terikat lokasi, Decision Log #30)
 
 # --- Taming / pets ---
@@ -195,6 +196,7 @@ func new_game(class_id: String = "warrior", weapon_id: String = "", sub_id: Stri
 		mastered_elements = cd.get("masters", ["fire"]).duplicate()
 	infusion = {}
 	buffs = {}
+	_softcap_told = -1
 	statuses = {}
 	skill_trees = {}
 	monsters = []
@@ -238,6 +240,30 @@ func _birth_sign_from_today() -> String:
 func exp_to_next() -> int:
 	return int(round(50.0 * pow(level, 1.5)))
 
+# --- SOFT-CAP EXP (Decision Log #69 / K2, akhirnya dikodekan — #152) ---------
+## Level TIDAK dibatasi (B10 tetap sah). Yang dibatasi adalah KECEPATAN lari dari
+## konten: di luar band wilayah tertinggi yang sudah kau buka, EXP menanjak brutal.
+## Pemain tetap maju (poin & pohon tetap mengalir pelan) — ia hanya tidak bisa
+## meninggalkan dunia di belakangnya. Rebase kurva penuh = v0.9.
+##
+## Jujur, bukan diam-diam: pemain diberi tahu KENAPA EXP-nya menciut, dan apa
+## yang harus dilakukan — "jelajahi lebih DALAM, bukan lebih TINGGI".
+
+## Atap band = lv_max wilayah tertinggi yang PERNAH dikunjungi (Greenvale bila kosong).
+func band_ceiling() -> int:
+	var top := Db.band_ceiling(WorldState.visited_regions)
+	if top <= 0:
+		top = int(Db.region("greenvale").get("lv_max", 15))
+	return top
+
+## Pengali EXP di level sekarang (1.0 = penuh). Menanjak tajam di luar band.
+## +1 lv di atas atap → 50% · +2 → 20% · +3 → 10% · +5 → ~4% · lantai 2%.
+func exp_softcap_mult() -> float:
+	var over := level - band_ceiling()
+	if over <= 0:
+		return 1.0
+	return maxf(0.02, 1.0 / (1.0 + float(over * over)))
+
 func gain_exp(amount: int) -> void:
 	if amount <= 0:
 		return
@@ -248,6 +274,13 @@ func gain_exp(amount: int) -> void:
 	tree_exp += buff_add("exp_pct")   # buff sementara (mis. pelangi ganda, E7)
 	if tree_exp > 0.0:
 		amount = int(ceil(amount * (1.0 + tree_exp)))
+	var cap := exp_softcap_mult()
+	if cap < 1.0:
+		amount = max(1, int(floor(amount * cap)))   # tak pernah nol: kemajuan melambat, tidak mati
+		EventBus.exp_softcapped.emit(level, band_ceiling(), cap)
+		if level != _softcap_told:
+			_softcap_told = level
+			EventBus.toast.emit(Loc.t("exp.softcap"))
 	exp += amount
 	var leveled := false
 	while exp >= exp_to_next():
@@ -728,6 +761,7 @@ func from_save(d: Dictionary) -> void:
 	# BUG-9 (REPORT-06): buff & status TIDAK pernah disimpan, tapi dulu juga tak
 	# direset saat load → war_cry/burn/poison dari sesi sebelumnya menempel jadi hantu.
 	buffs = {}
+	_softcap_told = -1
 	statuses = {}
 	infusion = {}          # transient — never carry over a save
 	mounted = false        # never load mounted (pet may not exist)

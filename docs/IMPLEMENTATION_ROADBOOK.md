@@ -19,7 +19,14 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 |---|---|---|---|---|
 | **Companion Bible 50/50** (dokumen) | Companion Philosophy (05), Companion Bible (13, 41) | — | 2–3 sesi penulisan **bersama Direktur** | Kategori/kuota sudah ada; butuh 40 tokoh |
 | **Opening kanon** (rework intro): pemain jatuh → **anak serigala terluka** (First Monster) → **Pegasus = First Mystery** | Early Game (42) + #118 | Cutscene engine ✅ | 0,5 sesi | — |
-| **First Mystery lokal** ("lonceng tengah malam yang tak punya lonceng") + **First Legend** ("Bukit Kabut") | Early Game (42), Mystery (51) | Rumor system ✅ | 0,5 sesi | — |
+| 🔴 **WONDER TIER-LEGENDA (Piagam, DIKEMBALIKAN — #155)**: **The Nameless Door** · **The Forgotten Musician** · **The Sleeping Giant** | **PIAGAM Bag.0** (tier-legenda pertama = v0.5) | Rumor ✅, Cutscene ✅ | 1,5 sesi | **Isi Piagam — bukan pilihan agent** |
+| **First Mystery lokal** ("lonceng tengah malam yang tak punya lonceng") + **First Legend** ("Bukit Kabut") | Early Game (42), Mystery (51) | Rumor system ✅ | 0,5 sesi | **TAMBAHAN, bukan pengganti** (#155): sempat menggantikan tiga Wonder Piagam secara diam-diam — pelanggaran aturan-B, dicatat di GAP_AUDIT |
+| **SOFT-CAP EXP (#69/#152)** — ✅ **SUDAH DIBANGUN** (band wilayah = data kanon; EXP menciut brutal di luar band; UI jujur) | K2 (#69) | — | ✅ selesai | Dieksekusi #152 |
+| **CURSE (status ke-6) + PEN (penetration)** | GDD §6.3/§6.4 | StatusFx ✅ | 0,7 sesi | Ditugaskan Designer (#156) |
+| **20 RESEP FUSION SISA** (15/35 → 35/35) | GDD §5.3 | Fusion ✅ | 0,5 sesi | Ditugaskan Designer (#156) — Grimoire butuh amunisi |
+| **STAR WHALE ENTITY** (tubuhnya, bukan cuma perutnya) — **wajib tameable** (B9/#54) | B9 (#54), Skenario "Belly of the Star Whale" | Taming ✅ | 0,7 sesi | Ditugaskan Designer (#156) |
+| **GUARD ARTEFAK (#115)** — kode + test yang MENOLAK `enchant_level`/grade pada artefak | K2 (#115) | gear_meta ✅ | 0,3 sesi | Utang murah: kunci **sebelum** artefak pertama lahir |
+| **PROGRESSION NON-LEVEL YANG TERLIHAT (#152b)** — reputasi tampil · milestone profesi dirayakan · hitungan Chronicle di HUD-lite | World Bible ("level bukan sumbu kekuatan") | reputasi slot ✅ | 1 sesi | Requirement Designer (#152): kalau level bukan sumbunya, sumbunya harus **punya angka yang terlihat naik** |
 | **Companion v1**: 3–5 tokoh Tier-S hidup di dunia; **rekrutmen BUKAN menu** (diyakinkan lewat perbuatan); Life Quest; **Argument System** (boleh tak setuju, boleh pergi) | Companion (41), Recruitment (35) | **B17 50/50** | 1,5–2 sesi | Siapa **First Companion** (wajib **bukan** yang terkuat) |
 | **Act 1 Nirnama**: gejala penghapusan — wilayah memutih (mesin Forest Spirit dibalik), NPC tergagap, **The Erased** (musuh baru), satu pertemuan tanpa nama | NIRNAMA_BIBLE §VI, §IX | Cutscene ✅, StatusFx ✅ | 1,5 sesi | Sumbu konflik final (**Q18**) |
 | **Chronicle: entri fragmen/rusak** + sembunyikan % penyelesaian | Mystery (51) b.1508/1664 | Chronicle ✅ | 0,3 sesi | **C7** |
@@ -127,6 +134,20 @@ Berlaku sejak sistem companion lahir (v0.5+):
 2. **Reserve format entri Chronicle** untuk entri NPC/dunia & fragmen (C7/C8).
 3. **Rename istilah Sinkronisasi** (C4) sebelum kata "fusion" makin tertanam.
 4. **Whitelist non-orb** untuk Naga Kuno/Great Monster (C5/C18) — belum ada satu pun di game, jadi **gratis** dikunci sekarang.
+5. **Guard artefak (#115)** — kunci **sekarang**, selagi belum ada satu artefak pun. Setelah artefak pertama lahir sebagai `type: "weapon"` biasa, kanon sudah bocor diam-diam.
+
+---
+
+## YANG SEMPAT HILANG DARI ROADBOOK — dikembalikan (#156)
+
+Tiga janji ini hidup di TRACKBACK/ledger tetapi **tidak punya satu baris pun di dokumen
+eksekusi**. Itulah cara sebuah janji mati tanpa ada yang memutuskan membunuhnya.
+
+| Janji | Sumber | Fase | Catatan |
+|---|---|---|---|
+| **10 CAPSTONE per class** (Worldbreaker, Astral Genesis, Throne of Souls, …) | #57 / #116 | **v0.9** (bersama rebase kurva) | Kode hari ini hanya punya test yang **MELARANG** capstone menempel di pohon — tak ada yang **membuatnya**. 6 capstone sisa belum bernama (butuh Direktur, D-butir 3). |
+| **Sistem Rival** | #38b | **v0.6** (World Remembers v1) | Rival = memori dunia yang berjalan; tempatnya di sana. |
+| **B7 Perayaan Legacy & festival** | #52 / #81 | **v0.6** | Chronicle hari ini **mencatat** tanpa pernah **merayakan**. Legacy yang tak dirayakan cuma basis data. |
 
 ---
 

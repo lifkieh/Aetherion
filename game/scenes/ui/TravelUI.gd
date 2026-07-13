@@ -8,27 +8,21 @@ extends CanvasLayer
 
 const TRAVEL_COST := 25
 
-const REGIONS := [
-	{"id": "greenvale", "name": "Greenvale", "lv": "Lv 1–15", "scene": "res://scenes/Main.tscn",
-		"color": "#2e6b3f", "icon": "wood", "flavor": "Desa perbatasan, rumah pertama semua petualang."},
-	{"id": "candyveil", "name": "Candyveil Meadows", "lv": "Lv 18–32", "scene": "res://scenes/world/Candyveil.tscn",
-		"color": "#d95fa4", "icon": "light", "flavor": "Padang gula kapas & istana Sugar Queen."},
-	{"id": "desert", "name": "Desert of Ruins", "lv": "Lv 12–25", "scene": "res://scenes/world/Desert.tscn",
-		"color": "#b8860b", "icon": "earth", "flavor": "Reruntuhan kuno di lautan pasir."},
-	{"id": "frostpeak", "name": "Frostpeak Mountain", "lv": "Lv 22–38", "scene": "res://scenes/world/Frostpeak.tscn",
-		"color": "#6fb4d9", "icon": "ice", "flavor": "Puncak beku & pos para pendaki."},
-	{"id": "storm_island", "name": "Storm Island", "lv": "Lv 40–55", "scene": "res://scenes/world/StormIsland.tscn",
-		"color": "#8a7fd6", "icon": "lightning", "flavor": "Pulau badai abadi & menara Zephyr."},
-]
+## Wilayah kini DATA (`data/regions.json`) — band level (lv_min/lv_max) adalah kanon
+## yang dipakai soft-cap EXP (#69), bukan sekadar teks di kartu travel.
 
 var _font: Font
 var root: Control
 
+static func regions() -> Array:
+	return Db.regions
+
 static func region_def(id: String) -> Dictionary:
-	for r in REGIONS:
-		if r.id == id:
-			return r
-	return {}
+	return Db.region(id)
+
+## Label band untuk kartu ("Lv 1–15").
+static func band_label(r: Dictionary) -> String:
+	return "Lv %d–%d" % [int(r.get("lv_min", 1)), int(r.get("lv_max", 1))]
 
 ## Biaya travel hari ini (0 = jatah gratis harian masih ada). #43
 static func travel_cost_today() -> int:
@@ -77,7 +71,7 @@ func _build() -> void:
 	grid.add_theme_constant_override("h_separation", 10)
 	grid.add_theme_constant_override("v_separation", 10)
 	vb.add_child(grid)
-	for r in REGIONS:
+	for r in regions():
 		grid.add_child(_region_card(r))
 	var close := Button.new()
 	close.text = "Tutup (Esc)"
@@ -117,7 +111,7 @@ func _region_card(r: Dictionary) -> Control:
 		icon.texture = load(ip)
 	head.add_child(icon)
 	head.add_child(_lbl(r.name, 17, Color(r.get("color", "#ffffff")).lightened(0.4)))
-	vb.add_child(_lbl("%s · Cuaca: %s" % [r.lv, WorldState._weather_label(WorldState.weather)], 11, Color(0.75, 0.8, 0.95)))
+	vb.add_child(_lbl("%s · Cuaca: %s" % [band_label(r), WorldState._weather_label(WorldState.weather)], 11, Color(0.75, 0.8, 0.95)))
 	if here:
 		vb.add_child(_lbl("📍 Kamu sedang di sini.", 11, Color(1.0, 0.86, 0.42)))
 	else:

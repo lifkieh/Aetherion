@@ -1,0 +1,52 @@
+[
+ {
+  "id": "greenvale",
+  "name": "Greenvale",
+  "lv_min": 1,
+  "lv_max": 15,
+  "scene": "res://scenes/Main.tscn",
+  "color": "#2e6b3f",
+  "icon": "wood",
+  "flavor": "Desa perbatasan, rumah pertama semua petualang."
+ },
+ {
+  "id": "desert",
+  "name": "Desert of Ruins",
+  "lv_min": 12,
+  "lv_max": 25,
+  "scene": "res://scenes/world/Desert.tscn",
+  "color": "#b8860b",
+  "icon": "earth",
+  "flavor": "Reruntuhan kuno di lautan pasir."
+ },
+ {
+  "id": "candyveil",
+  "name": "Candyveil Meadows",
+  "lv_min": 18,
+  "lv_max": 32,
+  "scene": "res://scenes/world/Candyveil.tscn",
+  "color": "#d95fa4",
+  "icon": "light",
+  "flavor": "Padang gula kapas & istana Sugar Queen."
+ },
+ {
+  "id": "frostpeak",
+  "name": "Frostpeak Mountain",
+  "lv_min": 22,
+  "lv_max": 38,
+  "scene": "res://scenes/world/Frostpeak.tscn",
+  "color": "#6fb4d9",
+  "icon": "ice",
+  "flavor": "Puncak beku & pos para pendaki."
+ },
+ {
+  "id": "storm_island",
+  "name": "Storm Island",
+  "lv_min": 40,
+  "lv_max": 55,
+  "scene": "res://scenes/world/StormIsland.tscn",
+  "color": "#8a7fd6",
+  "icon": "lightning",
+  "flavor": "Pulau badai abadi & menara Zephyr."
+ }
+]

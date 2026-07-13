@@ -85,6 +85,8 @@ func _ready() -> void:
 	_test_personality()
 	_test_dark_miracles()
 	_test_report06_regressions()
+	_test_softcap_exp()
+	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -778,10 +780,10 @@ func _test_travel_hub() -> void:
 	check("current_region terpasang", WorldState.current_region == "frostpeak")
 	# 5 wilayah terdaftar dengan scene valid
 	var ok := true
-	for r in TravelUI.REGIONS:
+	for r in TravelUI.regions():
 		if not ResourceLoader.exists(r.scene):
 			ok = false
-	check("5 wilayah terdaftar + scene valid", TravelUI.REGIONS.size() == 5 and ok)
+	check("5 wilayah terdaftar + scene valid", TravelUI.regions().size() == 5 and ok)
 	# travel pertama hari ini GRATIS, berikutnya berbiaya
 	WorldState.last_free_travel = ""
 	check("travel pertama hari ini gratis", TravelUI.travel_cost_today() == 0)
@@ -1055,7 +1057,7 @@ func _test_daily_events() -> void:
 	check("spesies biasa selalu boleh spawn", MonsterFactory.spawnable_now("grey_wolf"))
 	# Golden Hour: EXP +10% nyata (dites via jalur gain_exp saat kondisi terpenuhi)
 	PlayerData.new_game()
-	PlayerData.level = 50   # exp_to_next besar -> tidak level-up, murni akumulasi
+	PlayerData.level = 10   # di DALAM band Greenvale (soft-cap #152 tak ikut campur); exp_to_next besar -> tak level-up
 	PlayerData.exp = 0
 	PlayerData.gain_exp(100)
 	if GameClock.is_golden_hour():
@@ -2760,6 +2762,7 @@ func _test_cutscene_engine() -> void:
 	check("cutscene tercatat pernah diputar", WorldState.get_counter("cutscene:first_clear") >= 1)
 	check("hold-ESC untuk skip terdefinisi", Cutscene.SKIP_HOLD > 0.0)
 
+## [LEGACY-SHALLOW] (#158) — menulis WorldState.counters langsung → tak pernah melewati EventBus.node_harvested (inilah yang meloloskan BUG-4). Regresi jalur-pemain: _test_report06_regressions().
 func _test_forest_spirit() -> void:
 	print("[Forest Spirit + penebusan v0.4.3 #4]")
 	var save_state: String = WorldState.spirit_state
@@ -2897,6 +2900,7 @@ func _test_dungeon_parallax() -> void:
 	host.queue_free()
 
 
+## [LEGACY-SHALLOW] (#158) — memakai `continue` saat aksi tak ada → test MELOMPAT alih-alih GAGAL (meloloskan BUG-3). Pengganti jalur-pemain: _test_input_simulation().
 func _test_settings_gamepad() -> void:
 	print("[Settings lengkap + gamepad + glyph v0.4.4]")
 	# channel volume terpisah
@@ -2994,11 +2998,11 @@ func _test_advanced_class_trial() -> void:
 	var save_trial: int = WorldState.get_counter("rasi_trial")
 	PlayerData.advanced_class = ""
 	WorldState.counters["adv_trial_kills"] = 0
-	# terkunci sebelum Lv60
-	PlayerData.level = 59
-	check("jalur lanjutan terkunci sebelum Lv60", not AdvancedClass.adv_available())
-	PlayerData.level = 60
-	check("Lv60: ujian terbuka", AdvancedClass.adv_available() and not AdvancedClass.adv_ready())
+	# terkunci sebelum GERBANG (kini mengikuti band konten — #153, bukan angka mati 60)
+	PlayerData.level = AdvancedClass.gate_level() - 1
+	check("jalur lanjutan terkunci di bawah gerbang", not AdvancedClass.adv_available())
+	PlayerData.level = AdvancedClass.gate_level()
+	check("di gerbang: ujian terbuka", AdvancedClass.adv_available() and not AdvancedClass.adv_ready())
 	check("dua jalur per class terbaca dari classes.json", AdvancedClass.paths("warrior").size() == 2,
 		str(AdvancedClass.paths("warrior")))
 	# ujian: butuh N monster kuat; MATI mengulang dari nol (ujian yang tak berisiko bukan ujian)
@@ -3289,6 +3293,7 @@ func _test_personality() -> void:
 	WorldState.npc_profiles.clear()
 
 
+## [LEGACY-SHALLOW] (#158) — menyetel WorldState.dark_event langsung → tak pernah melewati MiracleSystem._refresh() (meloloskan BUG-2).
 func _test_dark_miracles() -> void:
 	print("[Keajaiban GELAP (#145): dunia juga boleh melukai]")
 	var dark_ids: Array = []
@@ -3404,3 +3409,94 @@ func _test_report06_regressions() -> void:
 	check("BUG-10: Economy punya catch_up()", Economy.has_method("catch_up"))
 	# BUG-6: gagal tame TIDAK menenangkan monster; no_orb/pact_only tidak menghukum
 	check("BUG-6: pact_only tak bisa via orb (aturan tetap)", TamingSystem.pact_only("__x") == false)
+
+func _test_softcap_exp() -> void:
+	print("[SOFT-CAP EXP #69 — jalur pemain: gain_exp() sungguhan]")
+	# BAND adalah data kanon, bukan teks kartu travel
+	check("data/regions.json termuat", Db.regions.size() >= 5)
+	var bands_ok := true
+	for r in Db.regions:
+		if int(r.get("lv_min", 0)) <= 0 or int(r.get("lv_max", 0)) < int(r.get("lv_min", 0)):
+			bands_ok = false
+	check("setiap wilayah punya band lv_min..lv_max yang sah", bands_ok)
+	check("atap band global = 55 (Storm Island)", Db.band_ceiling_global() == 55)
+	var s_lv: int = PlayerData.level
+	var s_exp: int = PlayerData.exp
+	var s_reg: Array = WorldState.visited_regions.duplicate()
+	var s_told: int = PlayerData._softcap_told
+	# Hanya Greenvale (band 1–15) yang terbuka → atap 15
+	WorldState.visited_regions = ["greenvale"]
+	check("atap band = 15 saat hanya Greenvale terbuka", PlayerData.band_ceiling() == 15)
+	PlayerData.level = 10
+	check("di DALAM band: EXP penuh", is_equal_approx(PlayerData.exp_softcap_mult(), 1.0))
+	PlayerData.level = 16
+	check("+1 di atas band: EXP tinggal 50%", is_equal_approx(PlayerData.exp_softcap_mult(), 0.5))
+	PlayerData.level = 18
+	check("+3 di atas band: EXP tinggal 10%", is_equal_approx(PlayerData.exp_softcap_mult(), 0.1))
+	PlayerData.level = 40
+	check("jauh di atas band: EXP mentok di lantai 2% (tak pernah NOL)",
+		is_equal_approx(PlayerData.exp_softcap_mult(), 0.02))
+	# JALUR PEMAIN: gain_exp() sungguhan — EXP yang MASUK harus tercekik
+	PlayerData.level = 30
+	PlayerData.exp = 0
+	PlayerData._softcap_told = -1
+	PlayerData.gain_exp(1000)
+	var got := PlayerData.exp
+	check("gain_exp() di luar band: EXP masuk TERCEKIK (<10% dari 1000)", got > 0 and got < 100,
+		"exp masuk = %d" % got)
+	# Membuka wilayah lebih tinggi = atap naik → dunia kembali memberi EXP penuh
+	WorldState.visited_regions = ["greenvale", "storm_island"]
+	check("membuka Storm Island menaikkan atap band ke 55", PlayerData.band_ceiling() == 55)
+	PlayerData.exp = 0
+	PlayerData.gain_exp(1000)
+	check("di dalam band baru: EXP penuh lagi (>=1000)", PlayerData.exp >= 1000,
+		"exp masuk = %d" % PlayerData.exp)
+	# Gerbang Advanced Class mengikuti band (#153), bukan angka mati 60
+	check("gerbang Advanced Class = 55 (ekuivalen band, bukan 60 mati)",
+		AdvancedClass.gate_level() == 55)
+	check("skala final tetap tercatat 60", AdvancedClass.ADV_LEVEL_FINAL == 60)
+	PlayerData.level = s_lv
+	PlayerData.exp = s_exp
+	PlayerData._softcap_told = s_told
+	WorldState.visited_regions = s_reg
+
+## HUKUM TEST #151: fitur ber-INPUT wajib punya test INPUT-SIMULASI.
+## Test inilah yang akan menangkap bug seperti BUG-3 (D-Pad terpasang ke aksi yang
+## tak pernah dipoll) — memeriksa InputMap saja tidak cukup; tekan tombolnya.
+func _test_input_simulation() -> void:
+	print("[INPUT-SIMULASI: tombol ditekan sungguhan (hukum #151)]")
+	var pad_of := {
+		JOY_BUTTON_DPAD_UP: "slot_1", JOY_BUTTON_DPAD_RIGHT: "slot_2",
+		JOY_BUTTON_DPAD_DOWN: "slot_3", JOY_BUTTON_DPAD_LEFT: "slot_4",
+		JOY_BUTTON_RIGHT_SHOULDER: "slot_5", JOY_BUTTON_A: "interact",
+		JOY_BUTTON_X: "attack", JOY_BUTTON_B: "dodge",
+	}
+	for btn in pad_of.keys():
+		var action: String = pad_of[btn]
+		var ev := InputEventJoypadButton.new()
+		ev.button_index = btn
+		ev.pressed = true
+		Input.parse_input_event(ev)
+		Input.flush_buffered_events()
+		check("gamepad: menekan tombol %d MEMICU '%s'" % [btn, action],
+			Input.is_action_pressed(action))
+		var up := InputEventJoypadButton.new()
+		up.button_index = btn
+		up.pressed = false
+		Input.parse_input_event(up)
+		Input.flush_buffered_events()
+	# keyboard: 1..5 = hotbar (aksi yang benar-benar dipoll Player)
+	var keys := [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5]
+	for i in keys.size():
+		var k := InputEventKey.new()
+		k.physical_keycode = keys[i]
+		k.pressed = true
+		Input.parse_input_event(k)
+		Input.flush_buffered_events()
+		check("keyboard: menekan '%d' MEMICU 'slot_%d'" % [i + 1, i + 1],
+			Input.is_action_pressed("slot_%d" % (i + 1)))
+		var ku := InputEventKey.new()
+		ku.physical_keycode = keys[i]
+		ku.pressed = false
+		Input.parse_input_event(ku)
+		Input.flush_buffered_events()

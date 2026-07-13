@@ -31,6 +31,7 @@ var miracles: Array = []           # keajaiban langka tak-dipicu-pemain (E7, #79
 var seasons: Array = []            # 4 musim x 2 minggu nyata (A4, v0.4.3 #83)
 var rasi: Array = []               # 12 Rasi Agung (A5, v0.4.3 #91)
 var cutscenes: Array = []          # skrip cutscene data-driven (v0.4.3 #94)
+var regions: Array = []            # wilayah + BAND level (lv_min/lv_max) — sumber kanon soft-cap EXP (#69)
 
 var _errors: Array[String] = []
 
@@ -66,12 +67,40 @@ func load_all() -> void:
 	seasons = _load_array("seasons.json")
 	rasi = _load_array("rasi.json")
 	cutscenes = _load_array("cutscenes.json")
+	regions = _load_array("regions.json")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])
 	else:
 		for e in _errors:
 			push_error("[Db] " + e)
+
+# --- Wilayah & BAND level (#69) ---------------------------------------------
+## Band adalah KANON, bukan hiasan kartu travel: ia menentukan sampai level berapa
+## dunia masih menyediakan lawan. Di luar band tertinggi yang TERBUKA, EXP dicekik
+## (soft-cap #69) — pemain tak bisa lari dari konten dengan menaikkan angka.
+
+func region(id: String) -> Dictionary:
+	for r in regions:
+		if r.get("id", "") == id:
+			return r
+	return {}
+
+## Atap band dari daftar wilayah yang sudah dibuka pemain (0 bila tak satu pun dikenal).
+func band_ceiling(open_ids: Array) -> int:
+	var top := 0
+	for id in open_ids:
+		var r := region(String(id))
+		if not r.is_empty():
+			top = max(top, int(r.get("lv_max", 0)))
+	return top
+
+## Atap band SELURUH konten yang ada di game (skala era sekarang; kini 55).
+func band_ceiling_global() -> int:
+	var top := 0
+	for r in regions:
+		top = max(top, int(r.get("lv_max", 0)))
+	return top
 
 # --- JSON helpers -----------------------------------------------------------
 

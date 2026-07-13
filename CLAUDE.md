@@ -212,6 +212,41 @@ Pemetaan **lingkup budaya → benua (#110)** masih **draft yang bisa diveto**, b
 **Fairy Realm = TBD** — jangan memindahkan wilayah/aset yang bergantung padanya tanpa
 baris keputusan.
 
+## HUKUM TEST (#151, diperluas Designer #158)
+
+> **Test wajib masuk lewat PINTU YANG DIPAKAI PEMAIN.**
+
+Sebabnya bukan teori: **822 test hijau sementara 10 bug nyata hidup** — termasuk pemain
+gamepad yang **tidak bisa memakai skill sama sekali**. Test yang menulis state langsung
+(`WorldState.counters["trees_cut"] = 260`) menguji *getter*, bukan *game*.
+
+1. **Jalur pemain, bukan state langsung.** Masuk lewat **EventBus** (emit sinyal aslinya) ·
+   **InputMap/Input** (tekan tombolnya) · **save/load round-trip** · **scene nyata**.
+2. **Fitur ber-UI / ber-INPUT wajib punya ≥1 test INPUT-SIMULASI** (`Input.parse_input_event`
+   + `Input.flush_buffered_events`, lalu periksa aksi yang **benar-benar dipoll** kode).
+   Memeriksa InputMap saja **tidak cukup** — itulah yang meloloskan BUG-3.
+3. **Test lama yang menulis state langsung ditandai `[LEGACY-SHALLOW]`** dan dimigrasi
+   bertahap. **Aturan minimum: setiap sistem yang disentuh ronde apa pun WAJIB sekalian
+   mendapat ≥1 test jalur-pemain.** Tidak ada sistem yang boleh disentuh lalu ditinggalkan
+   dengan test dangkalnya.
+4. **Test yang "hijau" tapi melewati `continue` diam-diam = test palsu.** Bila prasyaratnya
+   tak ada, test harus **GAGAL**, bukan melompat.
+
+## DAFTAR DILINDUNGI (#159) — ubah hanya lewat keputusan Direktur eksplisit + alasan tertulis
+
+Lima hal ini adalah **kelebihan proyek**, bukan kebetulan. Mengubahnya butuh baris keputusan;
+"disederhanakan agar sistem X lebih mudah" **bukan** alasan yang sah.
+
+1. **Jam WIB nyata + fase bulan nyata + musim 2 minggu nyata.** Purnama di jendela pemain =
+   purnama di Aetherion. Jangan pernah ditukar demi kenyamanan sistem lain.
+2. **Rumor yang boleh SALAH + gosip berwarna watak.** Jangan pernah "diperbaiki" jadi akurat.
+3. **Chronicle bertanggal WIB sungguhan.** *"Tahun 842"* tak menyentuh siapa pun;
+   *"12 Juli 2026, 23:41"* menyentuh.
+4. **Roh Hutan** — konsekuensi yang **terlihat** tanpa game-over. Pola inilah (bukan HP bar)
+   yang dipakai untuk Ecology, penghapusan Nirnama, dan bencana.
+5. **Kanon tidak berubah tanpa baris keputusan.** 148+ keputusan yang bisa ditelusuri adalah
+   alasan audit bisa menemukan janji yang hilang. Jangan pernah dilonggarkan.
+
 ## Catatan teknis singkat
 - Godot 4.3 (`_tools/godot/`), proyek di `game/`, GDScript, data-driven (`game/data/*.json`).
 - Test: `_tools/godot/Godot_v4.3-stable_win64.exe --headless --path game res://tests/TestRunner.tscn` — **harus 0 failed** sebelum commit.

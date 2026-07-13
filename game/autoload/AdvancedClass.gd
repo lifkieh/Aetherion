@@ -11,17 +11,27 @@ extends Node
 ## Trial of the Rasi: syarat rasi kelahiran sedang NAIK (RasiSystem.ascendant) +
 ## Lv20 → hadiah: bonus rasi kelahiran DIGANDAKAN + gelar.
 
-const ADV_LEVEL := 60
+## PATCH KONSISTENSI (#153): 60 adalah angka SKALA-FINAL. Selama kurva masih
+## terkompresi (Fase 0, konten berhenti di band 55), gerbang mengikuti BAND —
+## kalau tidak, fitur ini melompat antara "mustahil" dan "trivial" tergantung era
+## kurva, bukan tergantung kesiapan pemain. Ujian (Trial) TIDAK berubah.
+## Ketidaksetujuan agent atas gerbang-angka itu sendiri (#101) menunggu Direktur.
+const ADV_LEVEL_FINAL := 60          # skala final (v0.9 rebase kurva)
 const ADV_KILLS := 30                # ujian: monster kuat, tanpa mati
 const ADV_MIN_MONSTER_LV := 40
 const TRIAL_LEVEL := 20
+
+## Gerbang efektif hari ini = atap band konten yang ADA (kini 55), maks skala final.
+func gate_level() -> int:
+	var band := Db.band_ceiling_global()
+	return ADV_LEVEL_FINAL if band <= 0 else mini(ADV_LEVEL_FINAL, band)
 
 ## Progres ujian advanced disimpan di WorldState.counters agar ikut save.
 func adv_progress() -> int:
 	return WorldState.get_counter("adv_trial_kills")
 
 func adv_available() -> bool:
-	return PlayerData.level >= ADV_LEVEL and PlayerData.advanced_class == ""
+	return PlayerData.level >= gate_level() and PlayerData.advanced_class == ""
 
 func adv_ready() -> bool:
 	return adv_available() and adv_progress() >= ADV_KILLS

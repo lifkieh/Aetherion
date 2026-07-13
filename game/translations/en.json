@@ -104,5 +104,6 @@
  "ui.settings.sfx": "Sound Effects",
  "ui.settings.ui_sfx": "Interface Sounds",
  "ui.settings.video": "— Video —",
- "ui.settings.vsync": "VSync"
+ "ui.settings.vsync": "VSync",
+ "exp.softcap": "The world has no higher foe to offer you. EXP shrinks — go DEEPER, not HIGHER."
 }

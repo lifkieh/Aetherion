@@ -198,7 +198,7 @@ func _build_world_map() -> void:
 	grid.position = Vector2(12, 30)
 	grid.custom_minimum_size = Vector2(616, 320)
 	_canvas.add_child(grid)
-	for r in TravelUI.REGIONS:
+	for r in TravelUI.regions():
 		grid.add_child(_world_card(r))
 
 func _world_card(r: Dictionary) -> Control:
@@ -220,7 +220,7 @@ func _world_card(r: Dictionary) -> Control:
 		vb.add_child(_lbl("Belum dijelajahi — datanglah dengan kakimu sendiri.", 10, Color(0.38, 0.36, 0.32)))
 		return card
 	vb.add_child(_lbl(r.name, 15, INK))
-	vb.add_child(_lbl(r.lv, 11, INK))
+	vb.add_child(_lbl(TravelUI.band_label(r), 11, INK))
 	if here:
 		vb.add_child(_lbl("📍 Kamu di sini.", 11, Color(0.72, 0.12, 0.12)))
 	else:

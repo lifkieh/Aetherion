@@ -512,14 +512,14 @@ func _build_quests() -> void:
 		else:
 			h.add_child(_btn("Lacak", _do_track.bind(q.get("id", ""))))
 
-## JALUR LANJUTAN Lv60 (#101) — janji teaser ClassSelect akhirnya dibayar.
+## JALUR LANJUTAN (#101; gerbang mengikuti band konten — #153) — janji teaser ClassSelect akhirnya dibayar.
 func _build_advanced_block() -> void:
 	var head := _mk_label(Loc.t("adv.title"), 16, Color(1.0, 0.86, 0.42))
 	content.add_child(head)
 	if PlayerData.advanced_class != "":
 		content.add_child(_mk_label("✦ %s" % PlayerData.advanced_class, 14, Color(0.8, 1.0, 0.8)))
-	elif PlayerData.level < AdvancedClass.ADV_LEVEL:
-		content.add_child(_mk_label(Loc.t("adv.locked_lv", [AdvancedClass.ADV_LEVEL]), 12, Color(0.7, 0.72, 0.8)))
+	elif PlayerData.level < AdvancedClass.gate_level():
+		content.add_child(_mk_label(Loc.t("adv.locked_lv", [AdvancedClass.gate_level()]), 12, Color(0.7, 0.72, 0.8)))
 	else:
 		content.add_child(_mk_label(Loc.t("adv.progress",
 			[AdvancedClass.adv_progress(), AdvancedClass.ADV_KILLS]), 12, Color(0.9, 0.85, 0.6)))

@@ -230,3 +230,32 @@ sekadar membuka halaman GitHub.
 **Status:** **RISIKO DITERIMA, bertanggal.** Bila repo kelak dibuka luas **sebelum reveal
 Act 2**, keputusan ini **wajib ditinjau ulang** — dan peninjauan itu adalah keputusan
 Direktur, bukan agent.
+
+---
+
+## BUG PROSES (2026-07-14, #155): janji Piagam diganti tanpa baris keputusan
+
+**Fakta.** Piagam Pengalaman (Bag. 0) menetapkan **Wonder tier-legenda pertama** untuk v0.5
+dengan tiga nama: **The Nameless Door · The Forgotten Musician · The Sleeping Giant**. Saat
+`docs/IMPLEMENTATION_ROADBOOK.md` disusun (#132), baris itu **diganti** oleh dua Wonder lain
+("lonceng tengah malam yang tak punya lonceng", "Bukit Kabut") — **tanpa satu pun baris
+Decision Log**. Aturan permanen ledger **(b)** mewajibkan: *setiap penyimpangan agent dari
+GDD/blueprint = baris + alasan*.
+
+**Klasifikasi: BUG PROSES, bukan bug orang.** Penggantinya bukan ide buruk — keduanya justru
+bagus dan **dipertahankan sebagai TAMBAHAN**. Yang salah adalah **caranya**: substitusi
+terjadi di dalam pekerjaan penulisan dokumen, di mana tidak ada gerbang yang memaksa penulis
+berhenti dan bertanya *"apakah aku sedang mengganti janji kanon?"*
+
+**Kenapa berbahaya.** Ini adalah **cara sebuah janji mati tanpa ada yang memutuskan
+membunuhnya**: dokumen eksekusi menjadi satu-satunya yang dibaca ronde berikutnya, dan
+sesuatu yang tak pernah ditolak pun **lenyap** hanya karena tak tersalin. Pola yang sama
+membunuh 15 janji lain (REPORT-06 §A).
+
+**Koreksi (#155):** ketiga Wonder Piagam **dikembalikan** ke slot v0.5 persis sesuai Piagam;
+penggantinya mendapat **barisnya sendiri** (tambahan, bukan substitusi).
+
+**Pencegahan yang diusulkan (butuh keputusan Direktur):** dokumen eksekusi (ROADBOOK) tidak
+boleh **menghapus atau mengganti** butir bernama dari dokumen kanon. Ia boleh **menambah**,
+boleh **menunda** — tetapi penundaan wajib ditulis sebagai **DITUNDA-SADAR + alasan + fase
+tinjau**, bukan sebagai ketiadaan.

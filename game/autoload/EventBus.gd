@@ -32,6 +32,8 @@ signal boss_defeated(display_name: String)
 signal player_hp_changed(cur: int, max: int)
 signal player_mp_changed(cur: int, max: int)
 signal player_exp_changed(cur: int, needed: int)
+## EXP dicekik soft-cap #69/#152 (level di atas band wilayah terbuka). mult: 1.0 = penuh.
+signal exp_softcapped(level: int, band_ceiling: int, mult: float)
 
 # --- World counters / progression ---
 signal counter_changed(key: String, value: int)

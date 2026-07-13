@@ -1,16 +1,24 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-13 — **REPORT-06 SIAP DIREVIEW** (audit total, `reports/REPORT-06_AUDIT_TOTAL.md`)
+**Last update:** 2026-07-14 — **REPORT-06 DIEKSEKUSI SEBAGIAN — menunggu review C/D oleh Direktur + playtest gamepad owner**
 
-> ### 🔴 MENUNGGU REVIEW DIREKTUR+DESIGNER
-> **`reports/REPORT-06_AUDIT_TOTAL.md`** — audit menyeluruh + pendapat agent (#149/#150).
-> **15 janji menggantung** · **7 ide berlubang** · **4 dokumen hukum bermuatan status palsu**
-> · **15 butir butuh konfirmasi** (K1 skala waktu memblokir seluruh v0.9). **Eksekusi menunggu review.**
+> ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
+> - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
+>   **data kanon** (`data/regions.json`); di atas band, EXP menciut brutal (+1 lv = 50%, +3 = 10%,
+>   lantai 2% — **tak pernah nol**), dan UI **mengatakannya terus terang**: *"jelajahi lebih DALAM,
+>   bukan lebih TINGGI."* Level tetap tanpa batas.
+> - **Gerbang Advanced Class mengikuti BAND** (#153), bukan angka mati 60.
+> - **K1 DIPUTUS = dua jam + lompatan** (#154) → draf **`docs/TIME_LEGACY_SPEC.md`** siap direview.
+> - **Wonder Piagam dikembalikan** ke v0.5 (#155); pelanggaran proses dicatat di GAP_AUDIT.
+> - **NOL YATIM** (#156): 15 janji menggantung kini punya fase / status ditunda-sadar.
+> - **Hukum test diperluas** (#158): jalur pemain + **wajib test input-simulasi**; test dangkal
+>   ditandai `[LEGACY-SHALLOW]`. **872 test lulus, 0 gagal.**
+> - **DAFTAR DILINDUNGI** (#159) masuk CLAUDE.md.
 >
-> **10 BUG NYATA sudah diperbaiki (#151)** — tiga di antaranya fatal: monster memukul saat
-> game **di-pause**; **pemain gamepad tak bisa memakai skill sama sekali**; efek "hutan memucat"
-> tak pernah terlihat. **846 test lulus, 0 gagal** (+24 test regresi lewat jalur nyata).
-> ⚠ **Test lama hijau-palsu** — 822 test tetap hijau meski 10 bug ini hidup. Hukum test baru: #151.
+> ### 🔴 MENUNGGU DIREKTUR (jangan dieksekusi)
+> **REPORT-06 §C1** (gating lokasi pohon skill #116) · **§C2** (keberatan gerbang Lv60 #101) ·
+> **15 butir §D**. Dan: **playtest gamepad oleh owner** — tiga bug fatal lolos 822 test; hanya
+> tangan manusia yang menemukan hal seperti itu.
 >
 > ⚠ **`docs_private/` TIDAK ter-backup GitHub** (#144) — masukkan ke backup pribadi.
 **Exe terakhir:** 2026-07-13 10:43 WIB — berisi hingga: **v0.4.4 SELESAI** (settings lengkap + keybind remap, gamepad penuh + glyph, lokalisasi ID/EN penuh + retrofit, Advanced Class Lv60 + Trial of the Rasi) di atas v0.4.3 penuh. Ukuran exe 92,6 MB. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
@@ -63,8 +71,10 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**153/153 tests**, 0 headless errors, **zero known bugs**. 18 autoloads. **3 overworld regions + 3 side-view
-dungeons, 31 monsters (incl. 3 dungeon bosses), 2 Hidden Scenarios.** Terraria-style dungeon combat +
+**872/872 tests, 0 failed** (per 2026-07-14), 0 headless errors. **30 autoloads. 5 wilayah overworld + dungeon
+side-view, 60 monster, 3 Hidden Scenario.** Versi terakhir selesai: **v0.4.4**.
+*(Angka lama "153/153 tests · 18 autoloads · 31 monsters" adalah status FASE 0 — dikoreksi #158: tidak boleh
+ada baris status yang tak bisa dibuktikan kode/test.)* Terraria-style dungeon combat +
 **Profession XP/perks** (harvest/mine/fish/craft/tame → XP, +50% main, milestone perks, Profesi menu tab).
 
 Session 2 round 3 added: **Star Whale hidden scenario**, **6 Cook recipes**, **dynamic music layering**,
@@ -342,10 +352,8 @@ naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker luna
 > ⚠ **PENGINGAT OWNER — BACKUP MANUAL:** `docs_private/` (berisi **Nirnama Bible lengkap**) **TIDAK ter-commit dan TIDAK ter-backup GitHub** (#144). **Masukkan folder itu ke rutinitas backup pribadi Anda** (salin ke drive/cloud pribadi). Kalau mesin ini hilang, kitab itu hilang — dan hanya itu satu-satunya salinan nama aslinya.
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
 quality roll + maker's mark, + Rumah Lelang NPC (B8).
-Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
-di tengah tanpa menghentikan fase. Berikutnya sesuai plan: v0.4.2 "Gear & Economy Depth"
-(Transenden sebagai MOMEN per Decision Log #25, Enchant+Enchanter, Coating, Rune,
-quality roll + maker's mark).
+Fase v0.4.1 tuntas. *(ARSIP: baris "berikutnya v0.4.2" sudah usang — **v0.4.2, v0.4.3, v0.4.4 SEMUANYA
+SELESAI & di-tag**. Antrean aktif ada di `TRACKBACK.md` + `docs/IMPLEMENTATION_ROADBOOK.md`.)*
 
 ### Konten BEKU tersisa — setelah playtest lolos
 - **Pact System** — mekanik pakta/kontrak entitas (buff besar + biaya/risiko).
@@ -355,7 +363,9 @@ Saat diaktifkan: pola data-driven yang ada (towns.json/monsters.json/DungeonBase
 **monster baru WAJIB dikalibrasi harness v2 sejak lahir** (`AETHER_BALANCE=2`), target game ringan (ukur FPS).
 - **Definition of done:** a brand-new player with zero explanation understands how to play within 10 minutes.
 
-## Next steps (exact) — for the next session, resume here
+## ⚠ ARSIP — "Next steps" lama Fase 0 (SEMUANYA SUDAH SELESAI — JANGAN dikerjakan lagi)
+Frostpeak, Sugar Queen, Profession XP, Storm Island: **sudah dibangun**. Blok ini disimpan sebagai
+riwayat, bukan perintah. **Antrean aktif: `TRACKBACK.md` + `docs/IMPLEMENTATION_ROADBOOK.md`.**
 0. **Profession polish**: profession-gated recipe access (main-only A+ tier), reawaken/change-main quest,
    profession-level EXP display in HUD. (Core XP+perks already done.)
 1. ✅ **Sugar Queen Tea Party** — DONE (eat 100 candies [debug 5] → 3-round etiquette quiz → 3 wrong = expelled
