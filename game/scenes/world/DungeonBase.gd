@@ -37,6 +37,9 @@ func _ready() -> void:
 	add_child(terrain)
 	terrain.build_from(_layout(c), c.get("tile_tint", Color.WHITE))
 	_build_background(c.get("bg", Color(0.1, 0.09, 0.13)))
+	# PARALLAX + AMBIENCE (v0.4.3 #98) — Mode Hemat mematikan keduanya
+	DungeonParallax.attach(self, c.get("parallax_tint", c.get("torch_color", Color(0.5, 0.55, 0.7))), c.get("id", "dungeon"))
+	DungeonAmbience.attach(self)
 	_build_lighting(c.get("ambient", Color(0.16, 0.15, 0.22)))
 	_spawn_player()
 	_place_torches(c.get("torch_color", Color(1.0, 0.7, 0.4)))

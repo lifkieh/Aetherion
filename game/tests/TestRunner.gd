@@ -75,6 +75,7 @@ func _ready() -> void:
 	_test_forest_spirit()
 	_test_chronicle()
 	await _test_npc_schedule()
+	await _test_dungeon_parallax()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2844,3 +2845,39 @@ func _test_npc_schedule() -> void:
 	check("NPC menempati pos jadwal slot ini", moved.distance_to(NpcSchedule.post_for(persona, home).pos) < 40.0,
 		"%s vs %s" % [moved, NpcSchedule.post_for(persona, home).pos])
 	v.queue_free()
+
+
+func _test_dungeon_parallax() -> void:
+	print("[Parallax + ambience dungeon v0.4.3 #5]")
+	var host := Node2D.new()
+	add_child(host)
+	var eco: bool = Settings.eco_mode
+	# normal: 3 lapis parallax terpasang
+	Settings.eco_mode = false
+	var px := DungeonParallax.attach(host, Color(0.6, 0.7, 0.9), "test_dungeon")
+	await get_tree().process_frame
+	check("parallax terpasang", px != null and is_instance_valid(px))
+	if px:
+		var layers := 0
+		for c in px.get_children():
+			if c is ParallaxLayer:
+				layers += 1
+		check("3 lapis parallax (jauh/tengah/dekat)", layers == 3, str(layers))
+		var scales: Array = []
+		for c in px.get_children():
+			if c is ParallaxLayer:
+				scales.append(c.motion_scale.x)
+		check("lapis punya kecepatan berbeda (parallax nyata)", scales.size() == 3 and scales[0] < scales[2])
+	# MODE HEMAT: parallax dimatikan sepenuhnya (perintah owner)
+	Settings.eco_mode = true
+	var px2 := DungeonParallax.attach(host, Color.WHITE, "eco")
+	check("Mode Hemat mematikan parallax", px2 == null)
+	Settings.eco_mode = eco
+	# ambience: cue memakai SFX yang benar-benar terdaftar
+	var amb := DungeonAmbience.attach(host)
+	await get_tree().process_frame
+	check("ambience dungeon terpasang", is_instance_valid(amb))
+	for cue in DungeonAmbience.CUES:
+		check("cue ambience '%s' terdaftar di Audio" % cue[0], Audio.SFX_MAP.has(cue[0]))
+	check("jeda ambience masuk akal (bukan loop menerus)", DungeonAmbience.MIN_GAP >= 5.0)
+	host.queue_free()

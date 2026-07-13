@@ -57,7 +57,7 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 
 **Estimasi: 1.5 sesi.**
 
-## FASE v0.4.3 — "WORLD PRESENTATION" (dunia yang bercerita)
+## FASE v0.4.3 — "WORLD PRESENTATION" (dunia yang bercerita) — ✅ **SELESAI 2026-07-13** (9/9 butir; Decision Log #83–#98)
 
 | # | Item | Sumber gap | Dampak | Biaya |
 |---|---|---|---|---|
@@ -71,9 +71,9 @@ Konten dunia baru tetap BEKU sampai owner membuka.
 | 8 | **[ADDENDUM A5] Ramalan Rasi penuh**: **pakai 12 aset rasi_*.png yang sudah ada** (langit malam + UI Sky), ramalan mingguan = teka-teki yang terhubung konten aktif minggu itu, bonus tematik birth sign (+2% kecil), prakiraan cuaca Astrologer 24 jam akurasi 80% | Addendum A5 + Audit B | 🔥✨ | Sedang |
 | 9 | **[ADDENDUM A8] Forest Spirit** (trigger trees_cut, skenario penebusan v0.2 §8.2) + **perayaan first-clear scenario** (banner + patung/piagam + entri permanen) | Addendum A8 | ⚙✨ | Sedang |
 
-**Estimasi: 2–2.5 sesi.**
+**Estimasi: 2–2.5 sesi.** → **Aktual: selesai. Semua 9 butir terbangun + diuji (699 test, 0 gagal).**
 
-## FASE v0.4.4 — "MODERN META"
+## FASE v0.4.4 — "MODERN META" ← **ANTREAN BERIKUTNYA**
 
 | # | Item | Dampak | Biaya |
 |---|---|---|---|
