@@ -86,10 +86,34 @@ penuaan/generasi/suksesi **tidak akan pernah terpicu** (Tahun 120 = ~18,5 tahun 
 ---
 
 ## v1.0 — RILIS
-- **Endgame Nirnama**: 🔴 **dikunci sebagai NON-KOMBAT** bila Q25 disetujui — ia *final judge*, bukan final boss; pemain menjawab **dengan hidupnya** (kerajaan, warisan, orang yang diselamatkan).
+
+### ENDGAME: **HYBRID FINAL JUDGE** — dikunci (#134, D2)
+
+**Hukum bible dipertahankan penuh: Sang Nirnama TIDAK mati di tangan pemain.**
+Tapi klimaksnya **tetap pertarungan gameplay besar** — hanya saja objektifnya dibalik:
+
+| Fase | Isi | Objektif |
+|---|---|---|
+| **1. Badai Penghapusan** | *Expedition encounter*: gelombang **Yang Terhapus** + wilayah yang mulai memutih | **BERTAHAN** |
+| **2. Melindungi** | Domain-mu, companion-mu, halaman Chronicle-mu **dijadikan objektif hidup** — merekalah yang bisa hilang, bukan HP musuh | **LINDUNGI apa yang kau bangun** |
+| **3. PENGHAKIMAN** | Dunia menjawab pertanyaannya **lewat bukti**: Chronicle yang pulih, orang-orang yang masih mengingatmu, **save file-mu sebagai argumen** | **JAWAB** |
+
+**Kemenangan bukan membunuh.** Level tanpa batas tak pernah jadi jawaban — karena
+pertanyaannya bukan pertanyaan tempur. **Nasib akhir Nirnama (pergi / tinggal / berubah
+/ menunggu era berikutnya) SENGAJA TIDAK DIKUNCI** — itu keputusan penulisan Act 2.
+
 - **5 ENDING** (Dawn / Final Silence / Last Sky / Broken Answer / **The World Remembers**) + **hukum: tidak ada ending sempurna**.
-- Butuh **sistem penilaian warisan** (metrik apa? — **Q16**).
+- Butuh **sistem penilaian warisan** (metrik: Chronicle, Domain, companion yang hidup, orang yang mengingat).
 - 10 checklist experience hijau → demo publik.
+
+### KEMATIAN & REVIVE — dikunci (#133, D1)
+Berlaku sejak sistem companion lahir (v0.5+):
+- **1× seumur hidup**, per NPC/companion bernama (termasuk 50 Great Companion).
+- **Tubuh harus utuh/ditemukan** — hancur/hilang/dilupakan = **mustahil selamanya**.
+- **Mati wajar karena usia = TIDAK BISA direvive** (*kematian karena waktu adalah hukum
+  dunia, bukan luka*). Mati tragis/dibunuh/kecelakaan = jalur **per-kasus, ditulis
+  tangan, selalu sulit**.
+- **Harga = INGATAN**, tanpa kecuali. **Kematian kedua = final mutlak.**
 
 ---
 

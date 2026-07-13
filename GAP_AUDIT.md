@@ -212,3 +212,5 @@ ukuran **0 byte (kosong)**. Agent **tidak** menebak isinya dan **tidak** memasuk
 ke docs/. Bila part 2 memang berisi materi lanjutan (misalnya jawaban Q1–Q7 atau
 Bible lain), **mohon kirim ulang** — pola BD-1/BD-2 mengajarkan: artefak yang tak
 sampai tidak boleh difabrikasi.
+
+**✅ DITUTUP 2026-07-13 (#135):** part 2 kemudian dikirim lengkap (6.931 baris), disusul part 3–5 + dua berkas meta. Verifikasi owner: **tidak ada FILE 73–75** — sisa 8% Nirnama Bible sumber sudah termuat di `docs/NIRNAMA_BIBLE.md` v1.0. **B18 SELESAI.**

@@ -15,6 +15,14 @@ satu korpus 2026-07-13 (Direktif Bible Folder Ingestion).
 > **Kebohongan Sejarah Terbesar** dunia. Pelakunya = **MISTERI_ABADI M8** (tak boleh
 > dijawab). **Sumber sengaja tidak diedit** — kontradiksi itu justru artefaknya.
 
+> ⚖ **AMANDEMEN RESMI ATAS WORLD BIBLE v1.0 (#133).** Pasal *"companion mati tidak
+> respawn, tidak revive, tidak muncul lagi"* (part 5, b.288–358 & 2141–2197) **KALAH**
+> oleh keputusan Direktur **#87 / #119 / #133**: revive **1× seumur hidup**, bersyarat
+> (tubuh utuh · **mati wajar karena usia tidak bisa direvive** · harga = **ingatan** ·
+> kematian kedua = final mutlak). **Sumber tidak diedit** — amandemen hidup di ledger.
+> Alasannya dicatat: bobot *Belonging* dijaga oleh **kelangkaan, kesulitan, dan harga**,
+> bukan oleh kemutlakan.
+
 > ⚠ **DUA "WORLD BIBLE PART 02" BERBEDA** (risiko kanon ganda — pertanyaan Q19 di
 > REPORT-05): (a) berkas utama FILE 10 (scope: Intelligent Races + Civilization —
 > inilah rujukan `docs/RAS_KANON.md`); (b) part 5 Part 02 (scope: Civilization

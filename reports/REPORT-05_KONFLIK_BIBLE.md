@@ -1,5 +1,57 @@
 # REPORT-05 — KONFLIK BIBLE (di luar K1–K9)
 
+> ## ✅ STATUS: **TUNTAS — semua konflik resolved atau terjadwal** (2026-07-13)
+> Keputusan Direktur **#115–#135** menutup seluruh daftar di bawah. Rincian per butir
+> ada di **tabel resolusi** tepat di bawah banner ini. Laporan aslinya **tidak dihapus**
+> — ia tetap jadi jejak bagaimana setiap keputusan diambil.
+>
+> **Yang masih boleh berubah:** butir bertanda *(rekomendasi agent — terjadwal, belum
+> diveto)* bukan keputusan Direktur; ia dijadwalkan di `IMPLEMENTATION_ROADBOOK.md`
+> dan **masih bisa diveto** kapan pun.
+
+## TABEL RESOLUSI — 31 konflik
+
+| # | Konflik | Status akhir |
+|---|---|---|
+| **C1** | Permadeath vs revive | ✅ **#133 (D1)** — revive 1× seumur hidup, bersyarat: tubuh utuh · **mati wajar karena usia TIDAK bisa direvive** · harga = ingatan · kematian kedua final. Pasal World Bible **diamandemen** |
+| **C2** | Penjaga gerbang abadi + one-shot | ⏳ **terjadwal v0.6** (World Remembers v1 + Replacement Rule) — *rekomendasi: penjaga bisa mati, kota mengangkat pengganti* |
+| **C3** | Ecology & 5 atribut kerajaan | ✅ **#127** — 5 atribut = kanon target **v0.8**; Stability 3-metrik tetap; **Ecology v0.7** ditenagai field ekologi monster (#130) |
+| **C4** | Tabrakan istilah "Fusion" | ⏳ **terjadwal v0.5** — fusi elemen tetap *Fusion*; penyatuan pemain–monster = **Sinkronisasi** *(rekomendasi agent)* |
+| **C5** | Naga vs pipeline taming | ✅ **#130 — SUDAH DIKUNCI DI KODE**: Naga Kuno & Great Monster **pact-only**, orb ditolak; drake tetap boleh |
+| **C6** | "Miracle" bertabrakan nama | ⏳ **terjadwal v0.8** — rename → **Wonder/Omen**; Divine Miracle terpisah & ultra-langka *(rekomendasi agent)* |
+| **C7** | Chronicle bisa 100% | ⏳ **terjadwal v0.5** — entri **fragmen/rusak** + sembunyikan % penyelesaian |
+| **C8** | Chronicle hanya mencatat pemain | ⏳ **terjadwal v0.6** — Chronicle menerima entri NPC/dunia |
+| **C9** | Paladin & Divine Magic | ⏳ **terjadwal v0.8** — class tetap bebas; **skill ilahi puncak** butuh pengabdian *(rekomendasi agent)* |
+| **C10** | Kontradiksi dua Bible LOCKED (perang manusia–monster) | ✅ **#126 — DIUBAH JADI KONTEN**: perangnya terjadi **dan** sejarah menghapusnya = Kebohongan Sejarah Terbesar → **MISTERI_ABADI M8** |
+| **C11** | "Seven Great Powers" | ✅ **#124** — koreksi administratif (sumber = 10 Great Powers + >7 organisasi) |
+| **C12** | Roadmap owner vs roadmap rilis | ✅ **#128** — dokumen meta = panduan menulis, **bukan** amandemen roadmap; **gerbang B17 tetap** |
+| **C13** | Era | ✅ **#75b tetap** (Era 1 = *The Age of Memory*); daftar 6 era World Bible = ilustratif |
+| **C14** | Dua "World Bible Part 02" | ⏳ penomoran ulang — administratif, dicatat di INDEX |
+| **C15** | 7 tahap permukiman vs Domain 5-tier | ⏳ **terjadwal v0.6** — 5-tier + **Kingdom Capital & Great Civilization** di ujung |
+| **C16** | Simulasi harus ireversibel | ⏳ **terkunci K1 (#123)** — world history ledger, v0.6 |
+| **C17** | Reputasi/faksi = gap total | ✅ **#130 — SLOT SAVE SUDAH DI-RESERVE** (SAVE_SCHEMA 2); implementasi v0.6 |
+| **C18** | Taming vs martabat monster cerdas | ✅ **#130 (pact-only)** + ⏳ penalti reputasi v0.7 |
+| **C19** | "Monster bukan loot" | ⏳ **terjadwal v0.7** — monster **cerdas** keluar dari tabel drop/EXP |
+| **C20** | Nirnama tak bisa dibunuh vs level tanpa batas | ✅ **#134 (D2)** — **HYBRID FINAL JUDGE**: pertarungan besar tetap ada (**melindungi**, bukan membunuh); kemenangan = **PENGHAKIMAN**, bukan HP |
+| **C21** | Jumlah dewa ambigu | ⏳ **memblokir Religion pass** — menunggu **Divine Bible** (backlog #132) |
+| **C22** | Naga Nirnama: bagian dari 50 atau ke-51? | ⏳ keputusan penulisan **Act 2** (#134: nasib akhir jangan dikunci sekarang) |
+| **C23** | Hidden Masters vs pohon terikat lokasi | ⏳ **terjadwal v0.6** — Hidden Master = pintu masuk **kedua** (tanah **atau** orang) |
+| **C24** | Monster berbentuk manusia | ⏳ **terjadwal** — kosmetik dulu, mekanik penuh saat Companion pass |
+| **C25** | Monster Kingdom non-arsitektural | ⏳ **terjadwal v0.7** — tipe lokasi "wilayah", bukan bangunan (**lebih murah** dari kota) |
+| **C26** | Monster tanpa habitat/diet/ekologi | ✅ **#130 — SELESAI**: 60 monster kini punya 4 field (dijaga test) |
+| **C27** | Wilayah tanpa asal-usul | ✅ **#130 — SELESAI**: `docs/REGION_ORIGINS.md` |
+| **C28** | Skill tanpa counterplay | ✅ **#130 — SELESAI**: 35 skill + tooltip (dijaga test) |
+| **C29** | "Skill tree horizontal dulu" | ✅ **#130** — hukum untuk pohon **berikutnya** (CLAUDE.md); 28 pohon existing tidak dibongkar |
+| **C30** | Multiplayer = Tier A vs daftar tahan | ✅ **#132** — Bible boleh **ditulis**; implementasi **tetap beku** (B14) |
+| **C31** | Gerbang v0.5 terancam bergeser | ✅ **#128** — **B17 tetap menahan v0.5**; roadmap hanya berubah lewat keputusan eksplisit Direktur |
+
+**Pertanyaan Q1–Q36:** semuanya terjawab, terserap ke keputusan #115–#135, atau
+terjadwal di ROADBOOK. Tiga yang tersisa sebagai **kekosongan Bible** (bukan konflik):
+**Divine Bible** (nama 5 dewa — memblokir Religion), **3 spesies naga** yang belum
+dinamai, dan **Naval Bible** (laut & Leviathan). Ketiganya ada di backlog #132.
+
+---
+
 **Tanggal:** 2026-07-13 · **Sumber:** `docs/Aetherion_bible/` (48.559 baris, dibaca
 sebagai satu korpus) · **Sudah diputus Direktur:** K1–K9 = Decision Log **#115–#123**
 (gear/artefak, domain pohon, dual class, Pegasus, harga kebangkitan, asal-usul dungeon,
