@@ -325,7 +325,7 @@ fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Sco
 (Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
 naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
 
-## ⏸️ STATUS: **v0.4.4 MODERN META SELESAI** — menunggu playtest owner. Fase 0 (v0.4.x) TUNTAS; antrean berikutnya: **v0.5 STORY & SOUL** (gerbang B17 Companion Bible + B18 Nirnama Bible — butuh sesi penulisan bersama Direktur)
+## ⏸️ STATUS: **v0.4.4 SELESAI (Fase 0 tuntas)** — menunggu playtest owner v0.4.3–v0.4.4. Kanon naratif: **B18 Nirnama Bible ✅ SELESAI** (gerbang v0.5 #1 terbuka); **B17 Companion Bible 10/50** = satu-satunya gerbang v0.5 yang masih tertutup. Q1–Q7 diputus (#108–#114); part 2 file konsepsi: belum saatnya (owner)
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
 quality roll + maker's mark, + Rumah Lelang NPC (B8).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi

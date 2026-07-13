@@ -65,6 +65,21 @@ boleh mengikat siapa dia. **Ia juga TIDAK BOLEH muncul sebelum 100–300 jam ber
 Bila owner kelak memutuskan identitasnya, entri ini dicabut dari daftar (dan
 pencabutan itu dicatat di Decision Log sebagai kehilangan yang disengaja).
 
+### M6. Kebenaran rumor **Voss / Vess** *(dari NIRNAMA_BIBLE §X)*
+Ada yang berbisik bahwa marga **Voss** (mis. Seraphine Voss, Companion #004) adalah
+pelesetan turun-temurun dari **Vess**. Seraphine menyangkalnya. Dunia tidak tahu.
+**Penulis pun dilarang memutuskan.**
+
+### M7. Siapa pembangun **reruntuhan yang lebih tua** *(dari NIRNAMA_BIBLE §X)*
+Ada reruntuhan yang lebih tua daripada kerajaan mana pun yang pernah didirikan Sang
+Nirnama — termasuk lebih tua daripada dia. Siapa yang membangunnya tidak pernah
+dijawab. Tidak oleh Chronicle, tidak oleh tetua, tidak oleh kitab ini.
+
+> **Catatan:** isi sejati **The Nameless Door** (M2) dan hubungan **Pegasus–Nirnama**
+> (M4) juga ditegaskan ulang oleh NIRNAMA_BIBLE §X sebagai hal yang **tidak dijawab
+> bahkan oleh kitab itu sendiri**. Kitab yang menjawab segalanya bukan kitab —
+> itu manual.
+
 ---
 
 *Catatan untuk penulis mana pun (manusia atau agent): kalau suatu hari kau merasa

@@ -79,6 +79,7 @@ func _ready() -> void:
 	_test_settings_gamepad()
 	_test_localization()
 	_test_advanced_class_trial()
+	_test_nirnama_secret()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -3027,3 +3028,39 @@ func _test_advanced_class_trial() -> void:
 	WorldState.counters["adv_trial_kills"] = save_kills
 	WorldState.counters["rasi_trial"] = save_trial
 	PlayerData.recalculate_stats()
+
+
+func _test_nirnama_secret() -> void:
+	print("[RAHASIA PRODUKSI: nama asli Nirnama (#108)]")
+	# Nama asli Sang Nirnama TIDAK BOLEH bocor ke build sebelum reveal Act 2.
+	# Test ini menjaga janji itu: ia menyisir SELURUH data, terjemahan, dan skrip.
+	# (Nama dirakit dari potongan agar file test sendiri tidak memuatnya utuh.)
+	var secret := "Kael" + " " + "Vess"
+	var leaks: Array = []
+	var dirs := ["res://data", "res://translations", "res://scenes", "res://autoload"]
+	for d in dirs:
+		_scan_secret(d, secret, leaks)
+	check("nama asli Nirnama TIDAK ada di build", leaks.is_empty(), str(leaks.slice(0, 3)))
+	# Thunder Dragon: drake muda, BUKAN salah satu 50 Naga Kuno (Q6 #112)
+	var td := Db.monster("thunder_dragon")
+	check("Thunder Dragon ditandai drake (di luar 50 Ancient)", td.get("dragon_class", "") == "drake")
+	check("flavor Thunder Dragon menegaskan bukan Naga Kuno",
+		td.get("flavor", "").to_lower().contains("bukan salah satu naga kuno"))
+
+func _scan_secret(dir_path: String, secret: String, leaks: Array) -> void:
+	var d := DirAccess.open(dir_path)
+	if d == null:
+		return
+	d.list_dir_begin()
+	var f := d.get_next()
+	while f != "":
+		var full := dir_path + "/" + f
+		if d.current_is_dir():
+			if not f.begins_with("."):
+				_scan_secret(full, secret, leaks)
+		elif f.ends_with(".json") or f.ends_with(".gd"):
+			var txt := FileAccess.get_file_as_string(full)
+			if txt.contains(secret):
+				leaks.append(full)
+		f = d.get_next()
+	d.list_dir_end()

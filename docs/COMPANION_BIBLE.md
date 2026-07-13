@@ -45,14 +45,16 @@ karena buku, lagu, atau seseorang yang menolak pergi."*
 
 ## THE FIRST 10 GREAT COMPANIONS (Tier-S seed — LOCKED)
 
-> **Catatan penting:** semua **lokasi** di bawah berstatus **PENDING-MAPPING**
-> sampai owner menjawab **Q2–Q3** (Greenhollow/Ashbrook vs Greenvale; 7 benua vs
-> enam lingkup budaya). Nama tempat dicatat **apa adanya dari file** — tidak
-> diterjemahkan, tidak dipetakan sepihak ke wilayah yang sudah ada di game.
+> **✅ LOKASI TERPETAKAN (keputusan owner Q2/Q3, Decision Log #109/#110):**
+> lembah = **Greenhollow Valley** (nama geografis), kota utama tetap **Greenvale**,
+> **Ashbrook** = desa kecil baru di dekat Greenvale (rumah Arlen Vale — **konten beku**,
+> lahir bersama Companion pass v0.5/0.6). **Sylvara** & **Thalassar** kini punya alamat
+> makro: Sylvara = **benua Sylvara**; Thalassar (laut resmi, #90) ⊂ **benua Azhur**.
+> Semua wilayah yang sudah dibangun berada di benua **Eldoria**.
 
 ### #001 — ARLEN VALE · *The Boy Who Wanted The Horizon*
 - **Ras:** Human · **Umur awal:** 19 · **Profesi:** Kurir
-- **Lokasi:** Ashbrook, Greenhollow Valley *(pending-mapping — Q2)*
+- **Lokasi:** **Ashbrook**, Greenhollow Valley (Eldoria) — desa kecil dekat Greenvale; **konten beku sampai Companion pass v0.5/0.6** (#109)
 - **Kepribadian:** Sanguinis-Koleris · **Big Five:** O 85 · C 45 · E 90 · A 70 · N 35
 - **Impian:** melihat seluruh dunia. **Ketakutan:** mati tanpa pernah meninggalkan kampung halaman.
 - **Potensi sejarah:** penjelajah legendaris · kartografer dunia · kapten armada · **atau orang biasa**.
@@ -60,7 +62,7 @@ karena buku, lagu, atau seseorang yang menolak pergi."*
 
 ### #002 — ELYN THORNEWOOD · *The Keeper of Forgotten Books*
 - **Ras:** Elf · **Umur:** 134 · **Profesi:** Penjaga Arsip
-- **Lokasi:** perpustakaan tua **Sylvara** *(pending-mapping)*
+- **Lokasi:** perpustakaan tua **Sylvara** (benua Sylvara, #110)
 - **Kepribadian:** Melankolis-Plegmatis
 - **Trauma:** kehilangan sebagian besar koleksi sejarah akibat kebakaran.
 - **Impian:** mengumpulkan kembali sejarah yang hilang.
@@ -84,7 +86,7 @@ karena buku, lagu, atau seseorang yang menolak pergi."*
 
 ### #005 — KAIN BLACKTIDE · *The Smiling Smuggler*
 - **Ras:** Human · **Profesi:** Penyelundup
-- **Lokasi:** **Thalassar** *(pending-mapping — laut resmi #90)*
+- **Lokasi:** **Thalassar** (laut resmi #90; benua **Azhur**, #110)
 - **Kepribadian:** Sanguinis · **Kelebihan:** sangat karismatik · **Kekurangan:** tidak bisa dipercaya.
 - **Potensi sejarah:** raja kriminal · pahlawan rakyat · korban pengkhianatan.
 - **Kategori:** Outsiders · **Alasan desain:** *Companion tidak harus baik.*
@@ -117,7 +119,7 @@ karena buku, lagu, atau seseorang yang menolak pergi."*
 - **Misteri:** tidak ada yang tahu nama aslinya. **Bahkan dirinya sendiri.**
 - **Potensi sejarah:** terhubung dengan salah satu misteri terbesar Aetherion.
 - **Kategori:** Warriors / Mystics · **Alasan desain:** Mystery Character.
-- ⚠ **IDENTITAS PENDING (Q7)** — jangan tulis apa pun yang mengikat siapa dia sebenarnya.
+- ⚠ **KANDIDAT The Last Witness (Q7, #113) — BUKAN jawaban.** Owner sengaja menahan keputusan; dilindungi MISTERI_ABADI M5. Jangan tulis apa pun yang mengikat siapa dia.
 
 ### #010 — LUNA VESPER · *The Child Who Remembered Tomorrow*
 - **Ras:** Shadeborn · **Umur:** 14 · **Profesi:** tidak ada.

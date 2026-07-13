@@ -535,6 +535,7 @@ func _build_pedia() -> void:
 	for line in [
 		"Celestia Kingdom — ibukota agung tempat SEMUA ras hidup berdampingan. Multi-ras adalah jati dirinya; kota terbesar di Aetherion.",
 		"Ras: Manusia, Serigala (Wolfkin), Kadal (Lizardkin), Permen (Candyfolk), Es (Frostkin), dan Mayat Hidup (Undead).",
+		"Naga: yang kau temui di Storm Island adalah DRAKE muda — bukan Naga Kuno. Naga Kuno memilih siapa yang berjalan bersamanya, dan tidak muncul hanya karena badai.",
 		"Tiap pemukiman punya warna rasnya: Greenvale kaum manusia; Frostpeak dihuni Frostkin & Wolfkin berbulu tebal.",
 	]:
 		var b := _mk_label(line, 13)

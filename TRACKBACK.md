@@ -38,3 +38,20 @@ Living Sky = sistem gameplay terbesar).
 
 **Ras playable bertambah BERTAHAP mengikuti wilayah yang lahir** (#86): Elf ← Ancient Jungle,
 Dwarf ← Underground, Tidekin ← Thalassar (v0.7 HORIZON). Tidak ada rework CharGen sekarang.
+
+## Peta konten makro — TUJUH BENUA (Q3, Decision Log #110)
+
+Geografi (benua) adalah lapisan di bawah **Enam Lingkup Budaya** (B19 #66); keduanya berlaku bersama.
+
+| Benua | Isi | Status |
+|---|---|---|
+| **ELDORIA** | **SEMUA wilayah yang sudah/sedang dibangun**: Greenvale (+ Greenhollow Valley, Ashbrook beku), Candyveil, Desert Ruins, Frostpeak, Storm Island, Celestia, Emberfall | Aktif |
+| **Sylvara** | Ancient Jungle · negeri Elf | Beku (v0.7+) |
+| **Valkaris** | negeri Dwarf | Beku (pasca-v1.0) |
+| **Azhur** | **Kerajaan Thalassar** (laut resmi, #90; ras Tidekin) | Beku (v0.7 HORIZON) |
+| **Nethrak** | Wildhearth (beastfolk) | Beku (v0.7 HORIZON) |
+| **Vorum** | kandidat **Abyss** — benua terlarang; terhubung Nirnama | Beku (v0.8+) |
+| **Astrael** | Skyveil / Sky Realm — **benua hilang di langit** | Beku (v0.8+) |
+| *Fairy Realm* | **TBD** — belum dipetakan ke benua mana pun | Beku |
+
+*Pemetaan di atas = draft designer (#110) yang **dapat diveto owner**; keputusan owner hanya menetapkan bahwa 7 benua adalah kanon dan semua wilayah existing = Eldoria.*
