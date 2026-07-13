@@ -1,92 +1,408 @@
 [
-  {"id": "arms_common", "name": "Dasar Bertarung", "cat": "common", "unlock_location": "greenvale", "cost": 120,
-   "bonus": {"atk_pct": 0.02}, "max_level": 3, "desc": "Kuda-kuda, ayunan, napas. +2% ATK per tingkat.",
-   "rumor": "Para penjaga Greenvale mengajarkan dasar bertarung pada siapa pun yang mau belajar."},
-  {"id": "guard_common", "name": "Pertahanan Dasar", "cat": "common", "unlock_location": "greenvale", "cost": 120,
-   "bonus": {"def_pct": 0.03}, "max_level": 3, "desc": "Cara menerima pukulan. +3% DEF per tingkat.",
-   "rumor": "Perisai pertama selalu diajarkan di desa perbatasan."},
-  {"id": "weapon_basics", "name": "Senjata Tier Dasar", "cat": "weapon", "unlock_location": "greenvale", "cost": 150,
-   "bonus": {"aspd_pct": 0.02}, "max_level": 3, "desc": "Keakraban dengan semua senjata dasar. +2% kecepatan serang per tingkat.",
-   "rumor": "Pandai besi Greenvale tahu genggaman yang benar untuk setiap tangan."},
-  {"id": "life_lumber", "name": "Menebang", "cat": "life", "unlock_location": "greenvale", "cost": 80,
-   "bonus": {"gather_add": 0.04}, "max_level": 3, "desc": "Mata kapak yang tahu urat kayu. +4% hasil kumpul per tingkat.",
-   "rumor": "Penebang tua Greenvale hafal urat setiap batang."},
-  {"id": "life_mining", "name": "Menambang", "cat": "life", "unlock_location": "greenvale", "cost": 80,
-   "bonus": {"gather_add": 0.04}, "max_level": 3, "desc": "Membaca retakan batu. +4% hasil kumpul per tingkat.",
-   "rumor": "Urat tembaga pertama semua penambang ada di Greenvale."},
-  {"id": "life_farming", "name": "Bertani Dasar", "cat": "life", "unlock_location": "greenvale", "cost": 80,
-   "bonus": {"gather_add": 0.04}, "max_level": 3, "desc": "Tanah, air, sabar. +4% hasil per tingkat.",
-   "rumor": "Petani Greenvale menanam sebelum kerajaan berdiri."},
-  {"id": "life_fishing", "name": "Memancing", "cat": "life", "unlock_location": "greenvale", "cost": 80,
-   "bonus": {"gather_add": 0.04}, "max_level": 3, "desc": "Membaca air dan pasang. +4% hasil per tingkat.",
-   "rumor": "Kolam Greenvale adalah guru pertama semua pemancing."},
-  {"id": "life_herbalism", "name": "Meramu", "cat": "life", "unlock_location": "greenvale", "cost": 80,
-   "bonus": {"gather_add": 0.04}, "max_level": 3, "desc": "Daun yang menyembuhkan dan yang membunuh. +4% hasil per tingkat.",
-   "rumor": "Herbalis desa mengenal setiap daun di hutan perbatasan."},
-  {"id": "life_cooking", "name": "Memasak Dasar", "cat": "life", "unlock_location": "greenvale", "cost": 80,
-   "bonus": {"exp_pct": 0.01}, "max_level": 3, "desc": "Api kecil, rasa besar. +1% EXP per tingkat (badan terawat).",
-   "rumor": "Dapur penginapan Greenvale terbuka bagi yang ingin belajar."},
-  {"id": "life_taming_basic", "name": "Menjinakkan Dasar", "cat": "life", "unlock_location": "greenvale", "cost": 100,
-   "bonus": {"tame_add": 0.02}, "max_level": 3, "desc": "Tangan terbuka, suara rendah. +2% peluang jinak per tingkat.",
-   "rumor": "Penjinak pertama belajar dari kelinci Greenvale."},
-
-  {"id": "ice_high", "name": "Es Tingkat Tinggi", "cat": "element", "unlock_location": "frostpeak_village", "cost": 600,
-   "bonus": {"matk_pct": 0.03}, "max_level": 3, "desc": "Dingin yang mengawetkan dan membunuh. +3% MATK per tingkat.",
-   "rumor": "Kata para pendaki, es sejati hanya diajarkan di pos di kaki puncak beku..."},
-  {"id": "lightning_high", "name": "Petir Tingkat Tinggi", "cat": "element", "unlock_location": "storm_island", "cost": 600,
-   "bonus": {"matk_pct": 0.03}, "max_level": 3, "desc": "Cahaya yang menyambar dua kali. +3% MATK per tingkat.",
-   "rumor": "Menara di pulau badai bernyanyi saat petir turun — di sanalah gurunya."},
-  {"id": "earth_metal_high", "name": "Tanah & Logam Kuno", "cat": "element", "unlock_location": "desert_ruins", "cost": 600,
-   "bonus": {"def_pct": 0.03, "atk_pct": 0.02}, "max_level": 3, "desc": "Ilmu para pembangun reruntuhan. +DEF/+ATK per tingkat.",
-   "rumor": "Reruntuhan gurun masih menyimpan pahatan ilmu tanah dan logam."},
-  {"id": "cooking_advanced", "name": "Patiseri Agung", "cat": "life", "unlock_location": "candyveil_palace", "cost": 500,
-   "bonus": {"exp_pct": 0.02}, "max_level": 3, "desc": "Rahasia manis istana. +2% EXP per tingkat (hidangan sempurna).",
-   "rumor": "Hanya istana Sugar Queen yang mengajarkan patiseri sejati — jika kau diundang."},
-  {"id": "farming_mid", "name": "Bertani & Beternak Menengah", "cat": "life", "unlock_location": "homestead", "cost": 300,
-   "bonus": {"gather_add": 0.05}, "max_level": 3, "desc": "Lahan sendiri adalah guru terbaik. +5% hasil per tingkat.",
-   "rumor": "Ilmu ini tumbuh dari lahanmu sendiri — bukalah di Homestead."},
-
-  {"id": "light_high", "name": "Cahaya Tingkat Tinggi", "cat": "element", "unlock_location": "celestia", "content_locked": true, "cost": 800,
-   "bonus": {"matk_pct": 0.04}, "max_level": 3, "desc": "Cahaya yang menghakimi.",
-   "rumor": "Cahaya tertinggi diajarkan di ibukota tempat semua ras bersatu — Celestia."},
-  {"id": "weapon_grandmaster", "name": "Senjata Grandmaster", "cat": "weapon", "unlock_location": "celestia", "content_locked": true, "cost": 1000,
-   "bonus": {"atk_pct": 0.04}, "max_level": 3, "desc": "Puncak seni senjata. Buku advanced class ditukarkan di sini.",
-   "rumor": "Para grandmaster berkumpul di Celestia — bawa bukumu ke sana kelak."},
-  {"id": "water_high", "name": "Air Tingkat Tinggi", "cat": "element", "unlock_location": "ocean_kingdom", "content_locked": true, "cost": 800,
-   "bonus": {"matk_pct": 0.04}, "max_level": 3, "desc": "Arus yang tak terbendung.",
-   "rumor": "Kekuatan air sejati hanya diajarkan di kedalaman lautan..."},
-  {"id": "fire_high", "name": "Api Tingkat Tinggi", "cat": "element", "unlock_location": "emberfall", "content_locked": true, "cost": 800,
-   "bonus": {"matk_pct": 0.04}, "max_level": 3, "desc": "Nyala yang tak padam.",
-   "rumor": "Kuil tempa di kaki gunung berapi — api sejati dan tempa lanjut menunggu di sana."},
-  {"id": "smithing_advanced", "name": "Menempa Lanjut", "cat": "life", "unlock_location": "emberfall", "content_locked": true, "cost": 700,
-   "bonus": {"atk_pct": 0.02}, "max_level": 3, "desc": "Baja yang ditempa panas surgawi.",
-   "rumor": "Pandai besi agung menempa di panas gunung berapi Emberfall."},
-  {"id": "wood_poison_high", "name": "Kayu & Racun Purba", "cat": "element", "unlock_location": "ancient_jungle", "content_locked": true, "cost": 800,
-   "bonus": {"matk_pct": 0.04}, "max_level": 3, "desc": "Hidup yang tumbuh dan membusukkan.",
-   "rumor": "Rimba purba menumbuhkan ilmu kayu dan racun tertua."},
-  {"id": "wind_sky_high", "name": "Angin & Langit", "cat": "element", "unlock_location": "skyveil", "content_locked": true, "cost": 800,
-   "bonus": {"matk_pct": 0.04}, "max_level": 3, "desc": "Ilmu di atas awan.",
-   "rumor": "Di lautan awan Skyveil, angin sendiri yang mengajar."},
-  {"id": "darkness_void_high", "name": "Gelap & Hampa", "cat": "element", "unlock_location": "abyss", "content_locked": true, "cost": 900,
-   "bonus": {"matk_pct": 0.05}, "max_level": 3, "desc": "Ilmu dari tempat cahaya menyerah.",
-   "rumor": "Hanya Abyss yang mengajarkan kegelapan sejati — jika kau kembali."},
-  {"id": "beast_transformation", "name": "Beast & Transformasi", "cat": "beast", "unlock_location": "wildhearth", "content_locked": true, "cost": 900,
-   "bonus": {"tame_add": 0.04}, "max_level": 3, "desc": "Menjinakkan lanjut, kebuasan, jalur transformasi.",
-   "rumor": "Kaum beastfolk di Wildhearth memanggil sesamanya — kota itu belum menerima tamu."},
-  {"id": "ranching_advanced", "name": "Beternak Lanjut", "cat": "life", "unlock_location": "wildhearth", "content_locked": true, "cost": 600,
-   "bonus": {"gather_add": 0.05}, "max_level": 3, "desc": "Ternak yang dipahami, bukan dikurung.",
-   "rumor": "Peternak terbaik dunia adalah beastfolk Wildhearth."},
-
-  {"id": "celestial_sun", "name": "Celestial: Matahari", "cat": "celestial", "unlock_location": "astrologer_tower", "cost": 1200,
-   "requires_scenario": "moon_rabbit_warren", "bonus": {"matk_pct": 0.05}, "max_level": 3,
-   "desc": "Energi radiasi bintang terdekat. Butuh buku dari Skenario Tersembunyi.",
-   "rumor": "Astrolog menyimpan peta menuju ilmu Matahari — tapi kuncinya tersembunyi dalam skenario dunia."},
-  {"id": "celestial_moon", "name": "Celestial: Bulan", "cat": "celestial", "unlock_location": "astrologer_tower", "cost": 1200,
-   "requires_scenario": "moon_rabbit_warren", "bonus": {"matk_pct": 0.05}, "max_level": 3,
-   "desc": "Gravitasi dan pasang. Butuh buku dari Skenario Tersembunyi.",
-   "rumor": "Bulan hanya berbicara pada yang pernah ditariknya. Tanyakan pada Astrolog."},
-  {"id": "celestial_star", "name": "Celestial: Bintang", "cat": "celestial", "unlock_location": "astrologer_tower", "cost": 1200,
-   "requires_scenario": "star_whale_belly", "bonus": {"matk_pct": 0.05}, "max_level": 3,
-   "desc": "Cahaya masa lalu. Butuh buku dari Skenario Tersembunyi.",
-   "rumor": "Yang pernah ditelan paus bintang membawa pulang lebih dari nyawanya."}
+ {
+  "id": "arms_common",
+  "name": "Dasar Bertarung",
+  "cat": "common",
+  "unlock_location": "greenvale",
+  "cost": 120,
+  "bonus": {
+   "atk_pct": 0.02
+  },
+  "max_level": 3,
+  "desc": "Kuda-kuda, ayunan, napas. +2% ATK per tingkat.",
+  "rumor": "Para penjaga Greenvale mengajarkan dasar bertarung pada siapa pun yang mau belajar.",
+  "domain": "combat"
+ },
+ {
+  "id": "guard_common",
+  "name": "Pertahanan Dasar",
+  "cat": "common",
+  "unlock_location": "greenvale",
+  "cost": 120,
+  "bonus": {
+   "def_pct": 0.03
+  },
+  "max_level": 3,
+  "desc": "Cara menerima pukulan. +3% DEF per tingkat.",
+  "rumor": "Perisai pertama selalu diajarkan di desa perbatasan.",
+  "domain": "combat"
+ },
+ {
+  "id": "weapon_basics",
+  "name": "Senjata Tier Dasar",
+  "cat": "weapon",
+  "unlock_location": "greenvale",
+  "cost": 150,
+  "bonus": {
+   "aspd_pct": 0.02
+  },
+  "max_level": 3,
+  "desc": "Keakraban dengan semua senjata dasar. +2% kecepatan serang per tingkat.",
+  "rumor": "Pandai besi Greenvale tahu genggaman yang benar untuk setiap tangan.",
+  "domain": "combat"
+ },
+ {
+  "id": "life_lumber",
+  "name": "Menebang",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 80,
+  "bonus": {
+   "gather_add": 0.04
+  },
+  "max_level": 3,
+  "desc": "Mata kapak yang tahu urat kayu. +4% hasil kumpul per tingkat.",
+  "rumor": "Penebang tua Greenvale hafal urat setiap batang.",
+  "domain": "survival"
+ },
+ {
+  "id": "life_mining",
+  "name": "Menambang",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 80,
+  "bonus": {
+   "gather_add": 0.04
+  },
+  "max_level": 3,
+  "desc": "Membaca retakan batu. +4% hasil kumpul per tingkat.",
+  "rumor": "Urat tembaga pertama semua penambang ada di Greenvale.",
+  "domain": "survival"
+ },
+ {
+  "id": "life_farming",
+  "name": "Bertani Dasar",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 80,
+  "bonus": {
+   "gather_add": 0.04
+  },
+  "max_level": 3,
+  "desc": "Tanah, air, sabar. +4% hasil per tingkat.",
+  "rumor": "Petani Greenvale menanam sebelum kerajaan berdiri.",
+  "domain": "survival"
+ },
+ {
+  "id": "life_fishing",
+  "name": "Memancing",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 80,
+  "bonus": {
+   "gather_add": 0.04
+  },
+  "max_level": 3,
+  "desc": "Membaca air dan pasang. +4% hasil per tingkat.",
+  "rumor": "Kolam Greenvale adalah guru pertama semua pemancing.",
+  "domain": "survival"
+ },
+ {
+  "id": "life_herbalism",
+  "name": "Meramu",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 80,
+  "bonus": {
+   "gather_add": 0.04
+  },
+  "max_level": 3,
+  "desc": "Daun yang menyembuhkan dan yang membunuh. +4% hasil per tingkat.",
+  "rumor": "Herbalis desa mengenal setiap daun di hutan perbatasan.",
+  "domain": "survival"
+ },
+ {
+  "id": "life_cooking",
+  "name": "Memasak Dasar",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 80,
+  "bonus": {
+   "exp_pct": 0.01
+  },
+  "max_level": 3,
+  "desc": "Api kecil, rasa besar. +1% EXP per tingkat (badan terawat).",
+  "rumor": "Dapur penginapan Greenvale terbuka bagi yang ingin belajar.",
+  "domain": "craft"
+ },
+ {
+  "id": "life_taming_basic",
+  "name": "Menjinakkan Dasar",
+  "cat": "life",
+  "unlock_location": "greenvale",
+  "cost": 100,
+  "bonus": {
+   "tame_add": 0.02
+  },
+  "max_level": 3,
+  "desc": "Tangan terbuka, suara rendah. +2% peluang jinak per tingkat.",
+  "rumor": "Penjinak pertama belajar dari kelinci Greenvale.",
+  "domain": "taming"
+ },
+ {
+  "id": "ice_high",
+  "name": "Es Tingkat Tinggi",
+  "cat": "element",
+  "unlock_location": "frostpeak_village",
+  "cost": 600,
+  "bonus": {
+   "matk_pct": 0.03
+  },
+  "max_level": 3,
+  "desc": "Dingin yang mengawetkan dan membunuh. +3% MATK per tingkat.",
+  "rumor": "Kata para pendaki, es sejati hanya diajarkan di pos di kaki puncak beku...",
+  "domain": "magic"
+ },
+ {
+  "id": "lightning_high",
+  "name": "Petir Tingkat Tinggi",
+  "cat": "element",
+  "unlock_location": "storm_island",
+  "cost": 600,
+  "bonus": {
+   "matk_pct": 0.03
+  },
+  "max_level": 3,
+  "desc": "Cahaya yang menyambar dua kali. +3% MATK per tingkat.",
+  "rumor": "Menara di pulau badai bernyanyi saat petir turun — di sanalah gurunya.",
+  "domain": "magic"
+ },
+ {
+  "id": "earth_metal_high",
+  "name": "Tanah & Logam Kuno",
+  "cat": "element",
+  "unlock_location": "desert_ruins",
+  "cost": 600,
+  "bonus": {
+   "def_pct": 0.03,
+   "atk_pct": 0.02
+  },
+  "max_level": 3,
+  "desc": "Ilmu para pembangun reruntuhan. +DEF/+ATK per tingkat.",
+  "rumor": "Reruntuhan gurun masih menyimpan pahatan ilmu tanah dan logam.",
+  "domain": "magic"
+ },
+ {
+  "id": "cooking_advanced",
+  "name": "Patiseri Agung",
+  "cat": "life",
+  "unlock_location": "candyveil_palace",
+  "cost": 500,
+  "bonus": {
+   "exp_pct": 0.02
+  },
+  "max_level": 3,
+  "desc": "Rahasia manis istana. +2% EXP per tingkat (hidangan sempurna).",
+  "rumor": "Hanya istana Sugar Queen yang mengajarkan patiseri sejati — jika kau diundang.",
+  "domain": "craft"
+ },
+ {
+  "id": "farming_mid",
+  "name": "Bertani & Beternak Menengah",
+  "cat": "life",
+  "unlock_location": "homestead",
+  "cost": 300,
+  "bonus": {
+   "gather_add": 0.05
+  },
+  "max_level": 3,
+  "desc": "Lahan sendiri adalah guru terbaik. +5% hasil per tingkat.",
+  "rumor": "Ilmu ini tumbuh dari lahanmu sendiri — bukalah di Homestead.",
+  "domain": "survival"
+ },
+ {
+  "id": "light_high",
+  "name": "Cahaya Tingkat Tinggi",
+  "cat": "element",
+  "unlock_location": "celestia",
+  "content_locked": true,
+  "cost": 800,
+  "bonus": {
+   "matk_pct": 0.04
+  },
+  "max_level": 3,
+  "desc": "Cahaya yang menghakimi.",
+  "rumor": "Cahaya tertinggi diajarkan di ibukota tempat semua ras bersatu — Celestia.",
+  "domain": "magic"
+ },
+ {
+  "id": "weapon_grandmaster",
+  "name": "Senjata Grandmaster",
+  "cat": "weapon",
+  "unlock_location": "celestia",
+  "content_locked": true,
+  "cost": 1000,
+  "bonus": {
+   "atk_pct": 0.04
+  },
+  "max_level": 3,
+  "desc": "Puncak seni senjata. Buku advanced class ditukarkan di sini.",
+  "rumor": "Para grandmaster berkumpul di Celestia — bawa bukumu ke sana kelak.",
+  "domain": "combat"
+ },
+ {
+  "id": "water_high",
+  "name": "Air Tingkat Tinggi",
+  "cat": "element",
+  "unlock_location": "ocean_kingdom",
+  "content_locked": true,
+  "cost": 800,
+  "bonus": {
+   "matk_pct": 0.04
+  },
+  "max_level": 3,
+  "desc": "Arus yang tak terbendung.",
+  "rumor": "Kekuatan air sejati hanya diajarkan di kedalaman lautan...",
+  "domain": "magic"
+ },
+ {
+  "id": "fire_high",
+  "name": "Api Tingkat Tinggi",
+  "cat": "element",
+  "unlock_location": "emberfall",
+  "content_locked": true,
+  "cost": 800,
+  "bonus": {
+   "matk_pct": 0.04
+  },
+  "max_level": 3,
+  "desc": "Nyala yang tak padam.",
+  "rumor": "Kuil tempa di kaki gunung berapi — api sejati dan tempa lanjut menunggu di sana.",
+  "domain": "magic"
+ },
+ {
+  "id": "smithing_advanced",
+  "name": "Menempa Lanjut",
+  "cat": "life",
+  "unlock_location": "emberfall",
+  "content_locked": true,
+  "cost": 700,
+  "bonus": {
+   "atk_pct": 0.02
+  },
+  "max_level": 3,
+  "desc": "Baja yang ditempa panas surgawi.",
+  "rumor": "Pandai besi agung menempa di panas gunung berapi Emberfall.",
+  "domain": "craft"
+ },
+ {
+  "id": "wood_poison_high",
+  "name": "Kayu & Racun Purba",
+  "cat": "element",
+  "unlock_location": "ancient_jungle",
+  "content_locked": true,
+  "cost": 800,
+  "bonus": {
+   "matk_pct": 0.04
+  },
+  "max_level": 3,
+  "desc": "Hidup yang tumbuh dan membusukkan.",
+  "rumor": "Rimba purba menumbuhkan ilmu kayu dan racun tertua.",
+  "domain": "magic"
+ },
+ {
+  "id": "wind_sky_high",
+  "name": "Angin & Langit",
+  "cat": "element",
+  "unlock_location": "skyveil",
+  "content_locked": true,
+  "cost": 800,
+  "bonus": {
+   "matk_pct": 0.04
+  },
+  "max_level": 3,
+  "desc": "Ilmu di atas awan.",
+  "rumor": "Di lautan awan Skyveil, angin sendiri yang mengajar.",
+  "domain": "magic"
+ },
+ {
+  "id": "darkness_void_high",
+  "name": "Gelap & Hampa",
+  "cat": "element",
+  "unlock_location": "abyss",
+  "content_locked": true,
+  "cost": 900,
+  "bonus": {
+   "matk_pct": 0.05
+  },
+  "max_level": 3,
+  "desc": "Ilmu dari tempat cahaya menyerah.",
+  "rumor": "Hanya Abyss yang mengajarkan kegelapan sejati — jika kau kembali.",
+  "domain": "magic"
+ },
+ {
+  "id": "beast_transformation",
+  "name": "Beast & Transformasi",
+  "cat": "beast",
+  "unlock_location": "wildhearth",
+  "content_locked": true,
+  "cost": 900,
+  "bonus": {
+   "tame_add": 0.04
+  },
+  "max_level": 3,
+  "desc": "Menjinakkan lanjut, kebuasan, jalur transformasi.",
+  "rumor": "Kaum beastfolk di Wildhearth memanggil sesamanya — kota itu belum menerima tamu.",
+  "domain": "taming"
+ },
+ {
+  "id": "ranching_advanced",
+  "name": "Beternak Lanjut",
+  "cat": "life",
+  "unlock_location": "wildhearth",
+  "content_locked": true,
+  "cost": 600,
+  "bonus": {
+   "gather_add": 0.05
+  },
+  "max_level": 3,
+  "desc": "Ternak yang dipahami, bukan dikurung.",
+  "rumor": "Peternak terbaik dunia adalah beastfolk Wildhearth.",
+  "domain": "taming"
+ },
+ {
+  "id": "celestial_sun",
+  "name": "Celestial: Matahari",
+  "cat": "celestial",
+  "unlock_location": "astrologer_tower",
+  "cost": 1200,
+  "requires_scenario": "moon_rabbit_warren",
+  "bonus": {
+   "matk_pct": 0.05
+  },
+  "max_level": 3,
+  "desc": "Energi radiasi bintang terdekat. Butuh buku dari Skenario Tersembunyi.",
+  "rumor": "Astrolog menyimpan peta menuju ilmu Matahari — tapi kuncinya tersembunyi dalam skenario dunia.",
+  "domain": "magic"
+ },
+ {
+  "id": "celestial_moon",
+  "name": "Celestial: Bulan",
+  "cat": "celestial",
+  "unlock_location": "astrologer_tower",
+  "cost": 1200,
+  "requires_scenario": "moon_rabbit_warren",
+  "bonus": {
+   "matk_pct": 0.05
+  },
+  "max_level": 3,
+  "desc": "Gravitasi dan pasang. Butuh buku dari Skenario Tersembunyi.",
+  "rumor": "Bulan hanya berbicara pada yang pernah ditariknya. Tanyakan pada Astrolog.",
+  "domain": "magic"
+ },
+ {
+  "id": "celestial_star",
+  "name": "Celestial: Bintang",
+  "cat": "celestial",
+  "unlock_location": "astrologer_tower",
+  "cost": 1200,
+  "requires_scenario": "star_whale_belly",
+  "bonus": {
+   "matk_pct": 0.05
+  },
+  "max_level": 3,
+  "desc": "Cahaya masa lalu. Butuh buku dari Skenario Tersembunyi.",
+  "rumor": "Yang pernah ditelan paus bintang membawa pulang lebih dari nyawanya.",
+  "domain": "magic"
+ }
 ]

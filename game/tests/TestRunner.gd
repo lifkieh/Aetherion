@@ -80,6 +80,7 @@ func _ready() -> void:
 	_test_localization()
 	_test_advanced_class_trial()
 	_test_nirnama_secret()
+	_test_bible_alignment()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -3064,3 +3065,28 @@ func _scan_secret(dir_path: String, secret: String, leaks: Array) -> void:
 				leaks.append(full)
 		f = d.get_next()
 	d.list_dir_end()
+
+
+func _test_bible_alignment() -> void:
+	print("[Penyelarasan Bible: domain pohon & capstone (#116)]")
+	# 28 pohon = sub-pohon dari 6 Knowledge Domain kanon (Class & Skill Tree Bible)
+	var domains := ["combat", "magic", "survival", "craft", "leadership", "taming"]
+	var bad: Array = []
+	var seen := {}
+	for t in Db.skill_trees.values():
+		var d: String = t.get("domain", "")
+		if not d in domains:
+			bad.append(t.get("id", "?"))
+		else:
+			seen[d] = int(seen.get(d, 0)) + 1
+	check("semua pohon punya domain kanon", bad.is_empty(), str(bad))
+	check("minimal 4 domain terisi (leadership menyusul v0.6)", seen.size() >= 4, str(seen))
+	check("gating lokasi TETAP (identitas Aetherion, #116)",
+		Db.skill_trees.values().any(func(t): return t.get("unlock_location", "") != ""))
+	# capstone = milik CLASS (Ultimate Class), BUKAN milik pohon
+	var tree_capstone: Array = []
+	for t in Db.skill_trees.values():
+		for n in t.get("nodes", []):
+			if n.get("capstone", false):
+				tree_capstone.append(t.get("id", "?"))
+	check("tak ada capstone yang menempel di pohon (#116)", tree_capstone.is_empty(), str(tree_capstone))

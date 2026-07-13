@@ -83,6 +83,38 @@ Struktur cerita = **ERA**. Era 1 = **"The Age of Memory"**. Emosi resmi bertamba
 **Loss** & **Continuation** (di samping Echo Principle). Pesan inti dunia:
 *"segala sesuatu akan berakhir, namun itu bukan alasan untuk berhenti membangun."*
 
+## HUKUM BIBLE (keputusan Direktur atas konflik part 2, #115–#123)
+
+**1. ARTEFAK TERLINDUNG (#115).** Dua kelas benda yang tidak saling bicara:
+**gear pemain** boleh berangka (enchant +1..+10, grade A→SSS — v0.4.2 sah), tetapi
+**ARTEFAK** unik & ber-sejarah **TIDAK BOLEH di-enchant, di-grade, atau dibuat ulang**.
+Artefak lahir dari peristiwa, punya pemilik & sebab hilang yang bisa ditelusuri.
+PR yang menambahkan `enchant_level` ke sebuah artefak melanggar kanon — tolak.
+
+**2. REKRUTMEN BUKAN MENU (#122).** **DILARANG** ada UI `Rekrut? [Y/N]`.
+Companion **diyakinkan**, bukan diklik: ia ikut karena menghormati, membutuhkan,
+sepaham, penasaran, atau merasa berutang. Tidak semua bisa direkrut. Tidak semua mau.
+
+**3. PEGASUS = FIRST MYSTERY (#118), bukan First Monster.** Ia terlihat sekilas,
+tidak menjelaskan, **tidak menandai pemain sebagai terpilih** (NO DESTINY dikunci
+Early Game Bible), dan boleh diabaikan selamanya. Monster pertama gameplay =
+**anak serigala terluka** (boleh dibantu / diabaikan / dibunuh — semuanya sah).
+
+**4. KEBANGKITAN SELALU BERHARGA — HARGANYA INGATAN (#119).** Tidak ada pengecualian.
+Setiap revive menuntut **sesuatu dilupakan** (oleh yang bangkit atau yang membangkitkan).
+
+**5. POHON SKILL = SUB-POHON dari 6 DOMAIN (#116):** Combat · Magic · Survival ·
+Craft · Leadership · Taming (field `domain` di `skill_trees.json`). **Capstone milik
+CLASS** (Ultimate Class), bukan milik pohon — semua orang boleh membuka semua pohon.
+**Gating lokasi tetap** (identitas Aetherion; deviasi sadar dari bible, dicatat).
+
+**6. DUNGEON WAJIB PUNYA ALASAN (#120).** Kalau pemain bertanya "kenapa tempat ini
+ada?", dunia harus punya jawabannya (`docs/DUNGEON_ORIGINS.md`). Anti-pola
+"masuk → bunuh → loot → keluar" dilarang jadi *alasan* sebuah dungeon ada.
+
+**7. ⏳ SKALA WAKTU (#123) — PENDING OWNER.** Penuaan/generasi/suksesi vs jam WIB asli
+belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
+
 ## PENDING OWNER Q1–Q7 (#107) — JANGAN SENTUH PENAMAAN
 
 Tujuh pertanyaan konflik masih menunggu owner: ejaan **Nirnama**/Nirmana ·
