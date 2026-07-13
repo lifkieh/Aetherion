@@ -115,6 +115,28 @@ ada?", dunia harus punya jawabannya (`docs/DUNGEON_ORIGINS.md`). Anti-pola
 **7. ⏳ SKALA WAKTU (#123) — PENDING OWNER.** Penuaan/generasi/suksesi vs jam WIB asli
 belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
 
+## HUKUM ROADMAP (#128)
+
+**Roadmap rilis (v0.5 → v1.0) hanya berubah lewat KEPUTUSAN EKSPLISIT Direktur.**
+Bukan lewat dokumen meta, bukan lewat urutan penulisan Bible, bukan lewat agent yang
+merasa tahu lebih baik. Dokumen seperti `Aetherion_pelengkap.txt` adalah **panduan
+menulis Bible**, bukan amandemen roadmap. **Gerbang v0.5 = B17 Companion Bible (10/50)**
+sampai Direktur menyatakan lain.
+
+## HUKUM MAKHLUK & PRODUKSI (#130)
+
+- **Naga Kuno & Great Monster TIDAK BISA ditangkap dengan orb** (LOCK #024: *"Naga
+  MEMILIH. Bukan ditangkap."*). Jalurnya = **Pact** — mereka yang memilih pemain.
+  B9 (*semua spesies bisa dijinakkan*) tidak dilanggar: yang berubah adalah **caranya**.
+  Drake/wyvern (Thunder Dragon) bukan Naga Kuno — orb tetap sah.
+- **Setiap monster wajib punya** `habitat`, `diet`, `peran_ekologi`, `asal_usul`.
+  Monster bukan resource berjalan.
+- **Setiap skill wajib punya `counterplay`** — cara lawan menghindarinya atau
+  menghukumnya. Skill tanpa counterplay adalah skill yang belum selesai dirancang.
+- **Setiap lokasi wajib punya** alasan dibangun · alasan masih ada · alasan pemain
+  datang (`DUNGEON_ORIGINS.md`, `REGION_ORIGINS.md`).
+- **Pohon skill berikutnya: HORIZONTAL dulu** — lebih banyak pilihan daripada angka.
+
 ## PENDING OWNER Q1–Q7 (#107) — JANGAN SENTUH PENAMAAN
 
 Tujuh pertanyaan konflik masih menunggu owner: ejaan **Nirnama**/Nirmana ·

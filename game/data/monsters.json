@@ -25,7 +25,12 @@
   "tame_base": 0.85,
   "evolution": "moonbit",
   "aggro_radius": 90,
-  "lore": "Kelinci mungil pembawa hoki; kunci rahasia Lunar Warren."
+  "lore": "Kelinci mungil pembawa hoki; kunci rahasia Lunar Warren.",
+  "habitat": "Padang rumput & semak tepi hutan Greenvale",
+  "diet": "herbivora (rumput, tunas, umbi)",
+  "peran_ekologi": "mangsa dasar — populasinya menopang serigala, rubah, dan burung hantu",
+  "asal_usul": "Hewan asli lembah Greenhollow; sudah ada jauh sebelum desa pertama berdiri.",
+  "pact_only": false
  },
  {
   "id": "grey_wolf",
@@ -54,7 +59,12 @@
   "tame_base": 0.8,
   "evolution": "dire_wolf",
   "aggro_radius": 160,
-  "lore": "Pemburu berkelompok; tunggangan darat pertama."
+  "lore": "Pemburu berkelompok; tunggangan darat pertama.",
+  "habitat": "Hutan Greenvale, sarang di rongga akar",
+  "diet": "karnivora (fluffbit, cervel, bangkai)",
+  "peran_ekologi": "predator menengah — menjaga populasi herbivora tetap sehat",
+  "asal_usul": "Kawanan turun ke lembah saat musim dingin pertama; sebagian tak pernah kembali ke gunung.",
+  "pact_only": false
  },
  {
   "id": "verdant_slime",
@@ -82,7 +92,12 @@
   "tame_base": 0.7,
   "evolution": "king_slime",
   "aggro_radius": 120,
-  "lore": "Gumpalan jeli hijau; pecah dua saat mati."
+  "lore": "Gumpalan jeli hijau; pecah dua saat mati.",
+  "habitat": "Rawa & genangan hutan",
+  "diet": "detritivora (daun busuk, bangkai kecil)",
+  "peran_ekologi": "PEMBERSIH — memakan sisa organik; tanpanya hutan membusuk",
+  "asal_usul": "Bukan makhluk purba: slime muncul di tempat manusia membuang sisa. Ia lahir dari kelalaian.",
+  "pact_only": false
  },
  {
   "id": "wild_boar",
@@ -111,7 +126,12 @@
   "tame_base": 0.55,
   "evolution": "ironhide_boar",
   "aggro_radius": 140,
-  "lore": "Babi hutan galak; ternak daging homestead."
+  "lore": "Babi hutan galak; ternak daging homestead.",
+  "habitat": "Semak lebat & ladang pinggiran",
+  "diet": "omnivora (akar, jamur, telur)",
+  "peran_ekologi": "PEMBAJAK TANAH — mengaduk tanah saat mencari akar, menyuburkan hutan",
+  "asal_usul": "Sering merusak ladang; petani membencinya tanpa tahu hutan membutuhkannya.",
+  "pact_only": false
  },
  {
   "id": "honeybuzz",
@@ -139,7 +159,12 @@
   "tame_base": 0.5,
   "evolution": "queen_buzz",
   "aggro_radius": 100,
-  "lore": "Lebah penyengat; apiari madu homestead."
+  "lore": "Lebah penyengat; apiari madu homestead.",
+  "habitat": "Sarang di pohon tua",
+  "diet": "nektar & serbuk sari",
+  "peran_ekologi": "PENYERBUK — separuh tanaman Greenvale bergantung padanya",
+  "asal_usul": "Sarang tertua di lembah konon sudah ada sebelum manusia datang; madunya dipakai dalam ramuan.",
+  "pact_only": false
  },
  {
   "id": "sporeling",
@@ -167,7 +192,12 @@
   "tame_base": 0.5,
   "evolution": "myconid_sage",
   "aggro_radius": 130,
-  "lore": "Jamur berjalan; menyembur spora racun."
+  "lore": "Jamur berjalan; menyembur spora racun.",
+  "habitat": "Gua lembap & bawah tumbangan kayu",
+  "diet": "jamur & bahan membusuk",
+  "peran_ekologi": "PENGURAI — mengubah kayu mati jadi tanah",
+  "asal_usul": "Bagian dari jaring jamur yang menghubungkan seluruh hutan; sebagian meyakini ia satu makhluk.",
+  "pact_only": false
  },
  {
   "id": "forest_fox",
@@ -196,7 +226,12 @@
   "tame_base": 0.45,
   "evolution": "ninetail_kit",
   "aggro_radius": 150,
-  "lore": "Rubah hutan pelacak herbal."
+  "lore": "Rubah hutan pelacak herbal.",
+  "habitat": "Hutan terbuka, liang di lereng",
+  "diet": "karnivora kecil (fluffbit, telur, serangga)",
+  "peran_ekologi": "predator kecil — pengendali populasi hama",
+  "asal_usul": "Rubah perak yang dilihat orang saat fajar; sebagian rumor tentangnya benar.",
+  "pact_only": false
  },
  {
   "id": "cervel",
@@ -224,7 +259,12 @@
   "tame_base": 0.45,
   "evolution": "sylvan_stag",
   "aggro_radius": 140,
-  "lore": "Rusa anggun; tunggangan & pelari darat."
+  "lore": "Rusa anggun; tunggangan & pelari darat.",
+  "habitat": "Padang & tepi sungai",
+  "diet": "herbivora (daun muda, lumut)",
+  "peran_ekologi": "mangsa besar — menopang serigala & serigala kelabu besar",
+  "asal_usul": "Rusa lembah; jejaknya dipakai pemburu sebagai penanda musim.",
+  "pact_only": false
  },
  {
   "id": "treant_sapling",
@@ -252,7 +292,12 @@
   "tame_base": 0.35,
   "evolution": "elder_treant",
   "aggro_radius": 110,
-  "lore": "Tunas pohon berjiwa; tank pendamping."
+  "lore": "Tunas pohon berjiwa; tank pendamping.",
+  "habitat": "Jantung hutan tua",
+  "diet": "fotosintesis + mineral tanah",
+  "peran_ekologi": "PENJAGA HUTAN — pertumbuhannya menandai hutan yang sehat",
+  "asal_usul": "Tunas dari pohon yang lebih tua daripada Greenvale; bangkit saat hutan terancam (bertaut Roh Hutan).",
+  "pact_only": false
  },
  {
   "id": "timberwing_owl",
@@ -281,7 +326,12 @@
   "evolution": "strix_sage",
   "aggro_radius": 150,
   "lore": "Burung hantu malam; pemberi visi malam.",
-  "nocturnal": true
+  "nocturnal": true,
+  "habitat": "Rongga pohon tua; berburu malam",
+  "diet": "karnivora (fluffbit, kelelawar, serangga)",
+  "peran_ekologi": "predator nokturnal — penyeimbang malam",
+  "asal_usul": "Warga percaya ia menghitung yang lewat di bawahnya. Warga sering keliru.",
+  "pact_only": false
  },
  {
   "id": "cave_bat",
@@ -307,7 +357,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Kelelawar gua; terbang zig-zag.",
-  "nocturnal": true
+  "nocturnal": true,
+  "habitat": "Gua & tambang tua",
+  "diet": "serangga & buah",
+  "peran_ekologi": "PENYERBUK GUA + pengendali serangga",
+  "asal_usul": "Menempati tambang tembaga pertama yang ditinggalkan penggali (lihat DUNGEON_ORIGINS).",
+  "pact_only": false
  },
  {
   "id": "anubis_warden",
@@ -336,7 +391,12 @@
   "is_boss": true,
   "add_species": "jackal_shade",
   "aggro_radius": 420,
-  "lore": "Penjaga makam gurun berkepala serigala; bos Desert Barrow."
+  "lore": "Penjaga makam gurun berkepala serigala; bos Desert Barrow.",
+  "habitat": "Bilik dalam Desert Barrow",
+  "diet": "tidak makan",
+  "peran_ekologi": "penjaga makam — mempertahankan pintu yang di baliknya tak ada siapa-siapa",
+  "asal_usul": "Ia tidak tahu bahwa tugasnya sudah tak berarti. Ia akan berdiri di sana seribu tahun lagi.",
+  "pact_only": false
  },
  {
   "id": "gummy_titan",
@@ -366,7 +426,12 @@
   "is_boss": true,
   "add_species": "gummy_slime",
   "aggro_radius": 400,
-  "lore": "Titan gummy raksasa yang memantul; bos Gummy Cavern."
+  "lore": "Titan gummy raksasa yang memantul; bos Gummy Cavern.",
+  "habitat": "Jantung Gummy Cavern",
+  "diet": "bagian dari gua itu sendiri",
+  "peran_ekologi": "ORGAN GUA — kematiannya melukai gua; gua menyembuhkan diri dengan bentuk berbeda",
+  "asal_usul": "Ia bukan penghuni gua. Ia bagian gua yang memisahkan diri (lihat DUNGEON_ORIGINS).",
+  "pact_only": false
  },
  {
   "id": "cave_spitter",
@@ -394,7 +459,12 @@
   "tame_base": 0.4,
   "evolution": "",
   "aggro_radius": 220,
-  "lore": "Jamur gua penyembur bisa dari jauh."
+  "lore": "Jamur gua penyembur bisa dari jauh.",
+  "habitat": "Gua lembap, dinding berjamur",
+  "diet": "jamur & spora",
+  "peran_ekologi": "pengurai gua — menjaga gua tak tersumbat pertumbuhan jamur",
+  "asal_usul": "Sporeling yang beradaptasi pada gelap total; matanya menghilang beberapa generasi lalu.",
+  "pact_only": false
  },
  {
   "id": "king_slime",
@@ -423,7 +493,12 @@
   "evolution": "",
   "aggro_radius": 400,
   "is_boss": true,
-  "lore": "Raja slime bengkak; membelah dan memantul. Bos dungeon Greenvale."
+  "lore": "Raja slime bengkak; membelah dan memantul. Bos dungeon Greenvale.",
+  "habitat": "Dasar tambang Greenvale Depths",
+  "diet": "segala sisa organik",
+  "peran_ekologi": "PEMULUNG PUNCAK — membersihkan sisa tambang; tanpanya sisa menumpuk & spesies lain masuk",
+  "asal_usul": "Ia tumbuh besar karena tambang ditinggalkan berisi perbekalan. Ia menempati rumah yang ditinggalkan manusia.",
+  "pact_only": false
  },
  {
   "id": "sand_scarab",
@@ -451,7 +526,12 @@
   "tame_base": 0.6,
   "evolution": "khepri_guard",
   "aggro_radius": 120,
-  "lore": "Kumbang pasir bercangkang keras; panen chitin."
+  "lore": "Kumbang pasir bercangkang keras; panen chitin.",
+  "habitat": "Pasir dangkal Reruntuhan Gurun",
+  "diet": "detritivora (bangkai, sisa kering)",
+  "peran_ekologi": "PEMBERSIH GURUN — mencegah wabah di padang bangkai",
+  "asal_usul": "Kumbang makam; dulu dipelihara para penjaga kubur sebagai pembersih ritual.",
+  "pact_only": false
  },
  {
   "id": "dune_viper",
@@ -479,7 +559,12 @@
   "tame_base": 0.4,
   "evolution": "sidewinder_lord",
   "aggro_radius": 150,
-  "lore": "Ular gurun berbisa; sengatan meracuni."
+  "lore": "Ular gurun berbisa; sengatan meracuni.",
+  "habitat": "Bawah pasir panas, dekat batu",
+  "diet": "karnivora (kumbang, tikus pasir)",
+  "peran_ekologi": "predator penyergap — pengendali populasi hama gurun",
+  "asal_usul": "Bisa-nya dipakai peramu; sebagian resep tertua ditulis di dinding makam.",
+  "pact_only": false
  },
  {
   "id": "vulture",
@@ -507,7 +592,12 @@
   "tame_base": 0.45,
   "evolution": "",
   "aggro_radius": 160,
-  "lore": "Bangkai burung pemakan; pet auto-loot."
+  "lore": "Bangkai burung pemakan; pet auto-loot.",
+  "habitat": "Langit gurun & tebing",
+  "diet": "pemakan bangkai",
+  "peran_ekologi": "PEMBERSIH UDARA — menemukan mati sebelum membusuk",
+  "asal_usul": "Ia mengikuti karavan. Karavan yang bijak tidak menganggap itu pertanda baik.",
+  "pact_only": false
  },
  {
   "id": "jackal_shade",
@@ -536,7 +626,12 @@
   "evolution": "anubis_warden",
   "aggro_radius": 170,
   "lore": "Serigala bayangan gurun; kuat di malam hari.",
-  "nocturnal": true
+  "nocturnal": true,
+  "habitat": "Reruntuhan, aktif malam",
+  "diet": "karnivora & bangkai",
+  "peran_ekologi": "predator nokturnal reruntuhan",
+  "asal_usul": "Anjing penjaga makam yang tuannya sudah tak bernama. Ia masih berjaga.",
+  "pact_only": false
  },
  {
   "id": "rock_golem",
@@ -567,7 +662,12 @@
   "tame_base": 0.25,
   "evolution": "obsidian_golem",
   "aggro_radius": 120,
-  "lore": "Golem batu ter-ground: hampir kebal petir (sains grounding). Tank tambang."
+  "lore": "Golem batu ter-ground: hampir kebal petir (sains grounding). Tank tambang.",
+  "habitat": "Reruntuhan & kuari batu",
+  "diet": "mineral (tidak makan)",
+  "peran_ekologi": "penjaga wilayah — menstabilkan reruntuhan agar tak runtuh",
+  "asal_usul": "Bukan makhluk hidup: konstruksi penjaga yang lupa siapa yang harus dijaganya.",
+  "pact_only": false
  },
  {
   "id": "dune_serpent",
@@ -596,7 +696,12 @@
   "tame_base": 0.15,
   "evolution": "desert_wyrm",
   "aggro_radius": 160,
-  "lore": "Ular pasir raksasa; tunggangan gurun."
+  "lore": "Ular pasir raksasa; tunggangan gurun.",
+  "habitat": "Lautan pasir dalam",
+  "diet": "karnivora besar (kumbang raksasa, unta liar)",
+  "peran_ekologi": "predator puncak gurun",
+  "asal_usul": "Ular yang cukup tua untuk mengingat sungai yang dulu mengalir di sini.",
+  "pact_only": false
  },
  {
   "id": "cactus_fiend",
@@ -624,7 +729,12 @@
   "tame_base": 0.4,
   "evolution": "",
   "aggro_radius": 130,
-  "lore": "Iblis kaktus; berduri, farm air/duri."
+  "lore": "Iblis kaktus; berduri, farm air/duri.",
+  "habitat": "Padang kaktus",
+  "diet": "fotosintesis + air tanah",
+  "peran_ekologi": "SUMBER AIR — tubuhnya menyimpan air; makhluk lain bertahan hidup darinya",
+  "asal_usul": "Ia menyerang bukan karena lapar, melainkan karena semua makhluk mencoba meminumnya.",
+  "pact_only": false
  },
  {
   "id": "dire_wolf",
@@ -653,7 +763,12 @@
   "tame_base": 0.3,
   "evolution": "alpha_wolf",
   "aggro_radius": 180,
-  "lore": "Serigala buas evolusi Grey Wolf; tunggangan darat besar."
+  "lore": "Serigala buas evolusi Grey Wolf; tunggangan darat besar.",
+  "habitat": "Hutan dalam & lereng",
+  "diet": "karnivora besar (cervel, babi hutan)",
+  "peran_ekologi": "predator puncak lokal — pemimpin kawanan",
+  "asal_usul": "Serigala yang bertahan hidup terlalu lama dan tumbuh terlalu besar.",
+  "pact_only": false
  },
  {
   "id": "moonbit",
@@ -683,7 +798,12 @@
   "tame_base": 0.4,
   "evolution": "",
   "aggro_radius": 110,
-  "lore": "Fluffbit yang menyerap cahaya bulan; wujud Moon Rabbit kecil."
+  "lore": "Fluffbit yang menyerap cahaya bulan; wujud Moon Rabbit kecil.",
+  "habitat": "Padang Greenvale saat malam purnama",
+  "diet": "herbivora (rumput yang tersinari bulan)",
+  "peran_ekologi": "makhluk pertanda — kemunculannya menandai malam berbulan",
+  "asal_usul": "Fluffbit yang lahir di bawah purnama; para tetua melarang memburunya.",
+  "pact_only": false
  },
  {
   "id": "peppermint_fairy",
@@ -711,7 +831,12 @@
   "tame_base": 0.01,
   "evolution": "",
   "aggro_radius": 120,
-  "lore": "Peri permen dari jamuan Sugar Queen; healer pendamping."
+  "lore": "Peri permen dari jamuan Sugar Queen; healer pendamping.",
+  "habitat": "Istana Sugar Queen & kebun mint",
+  "diet": "nektar mint",
+  "peran_ekologi": "penyerbuk langka + penjaga kebun istana",
+  "asal_usul": "Pelayan tertua istana. Sebagian mengaku pernah menjadi manusia. Tak ada yang menanyainya lebih lanjut.",
+  "pact_only": false
  },
  {
   "id": "gummy_slime",
@@ -739,7 +864,12 @@
   "tame_base": 0.7,
   "evolution": "gummy_titan",
   "aggro_radius": 120,
-  "lore": "Jeli permen kenyal; panen gummy untuk Cook."
+  "lore": "Jeli permen kenyal; panen gummy untuk Cook.",
+  "habitat": "Padang gula Candyveil",
+  "diet": "gula & getah tanaman permen",
+  "peran_ekologi": "pengurai manis — memakan gula berlebih yang meracuni tanah",
+  "asal_usul": "Ia terbentuk saat Candyveil pertama kali 'tumbuh'. Tak ada yang tahu apa artinya itu.",
+  "pact_only": false
  },
  {
   "id": "candyfloss_sheep",
@@ -767,7 +897,12 @@
   "tame_base": 0.6,
   "evolution": "nimbus_sheep",
   "aggro_radius": 110,
-  "lore": "Domba wol gula kapas; ternak wol premium homestead."
+  "lore": "Domba wol gula kapas; ternak wol premium homestead.",
+  "habitat": "Padang kapas gula",
+  "diet": "herbivora (kapas gula, rumput manis)",
+  "peran_ekologi": "ternak liar — bulunya dipanen tanpa dilukai; menopang ekonomi Candyveil",
+  "asal_usul": "Domba yang bulunya menjadi gula kapas. Sugar Queen mengklaim ialah yang menciptakannya.",
+  "pact_only": false
  },
  {
   "id": "jellybean_bunny",
@@ -796,7 +931,12 @@
   "tame_base": 0.75,
   "evolution": "",
   "aggro_radius": 100,
-  "lore": "Kelinci jellybean lincah; ikut menghitung dosa kelinci."
+  "lore": "Kelinci jellybean lincah; ikut menghitung dosa kelinci.",
+  "habitat": "Semak permen",
+  "diet": "herbivora (buah gula)",
+  "peran_ekologi": "mangsa dasar Candyveil + penyebar biji",
+  "asal_usul": "Kelinci yang warnanya berubah mengikuti apa yang ia makan.",
+  "pact_only": false
  },
  {
   "id": "choco_bear",
@@ -825,7 +965,12 @@
   "tame_base": 0.4,
   "evolution": "dark_choco_bear",
   "aggro_radius": 150,
-  "lore": "Beruang cokelat; pendamping tangguh."
+  "lore": "Beruang cokelat; pendamping tangguh.",
+  "habitat": "Hutan cokelat",
+  "diet": "omnivora (madu, buah, ikan)",
+  "peran_ekologi": "predator menengah — pengendali kelinci & domba",
+  "asal_usul": "Beruang yang bulunya mengeras seperti cokelat saat dingin. Tidak bisa dimakan; sudah ada yang mencoba.",
+  "pact_only": false
  },
  {
   "id": "lollipop_sprite",
@@ -853,7 +998,12 @@
   "tame_base": 0.4,
   "evolution": "peppermint_fairy",
   "aggro_radius": 140,
-  "lore": "Peri lolipop; healer kecil bercahaya."
+  "lore": "Peri lolipop; healer kecil bercahaya.",
+  "habitat": "Kanopi permen",
+  "diet": "nektar gula",
+  "peran_ekologi": "PENYERBUK Candyveil",
+  "asal_usul": "Peri yang muncul hanya di wilayah tempat gula tumbuh — atau gula tumbuh karena mereka ada.",
+  "pact_only": false
  },
  {
   "id": "caramel_golem",
@@ -882,7 +1032,12 @@
   "tame_base": 0.15,
   "evolution": "",
   "aggro_radius": 130,
-  "lore": "Golem karamel; melambat saat panas."
+  "lore": "Golem karamel; melambat saat panas.",
+  "habitat": "Halaman istana",
+  "diet": "tidak makan (karamel mengeras)",
+  "peran_ekologi": "penjaga istana",
+  "asal_usul": "Dibuat dari karamel yang tak pernah dingin. Ia bergerak lebih lambat saat musim panas.",
+  "pact_only": false
  },
  {
   "id": "gummy_mimic",
@@ -910,7 +1065,12 @@
   "tame_base": 0.01,
   "evolution": "",
   "aggro_radius": 90,
-  "lore": "Peti permen jebakan; menyamar lalu menerkam."
+  "lore": "Peti permen jebakan; menyamar lalu menerkam.",
+  "habitat": "Gua Gummy Cavern & ruang istana",
+  "diet": "apa pun yang mendekat",
+  "peran_ekologi": "predator penyergap — menjaga gua tetap 'lapar'",
+  "asal_usul": "Ia meniru peti karena manusia mengajarinya bahwa peti selalu didekati.",
+  "pact_only": false
  },
  {
   "id": "soda_serpent",
@@ -938,7 +1098,12 @@
   "tame_base": 0.4,
   "evolution": "",
   "aggro_radius": 150,
-  "lore": "Ular soda berbuih; semburan AoE menyegarkan."
+  "lore": "Ular soda berbuih; semburan AoE menyegarkan.",
+  "habitat": "Sungai soda",
+  "diet": "ikan gula & buih",
+  "peran_ekologi": "predator sungai",
+  "asal_usul": "Ular yang bergerak dengan menyemburkan gas; suaranya seperti botol dibuka.",
+  "pact_only": false
  },
  {
   "id": "frost_fox",
@@ -965,7 +1130,12 @@
   "tame_base": 0.7,
   "evolution": "aurora_fox",
   "aggro_radius": 150,
-  "lore": "Rubah salju gesit; kakinya tak terperosok di salju tebal."
+  "lore": "Rubah salju gesit; kakinya tak terperosok di salju tebal.",
+  "habitat": "Lereng bersalju",
+  "diet": "karnivora kecil (kelinci salju, burung)",
+  "peran_ekologi": "predator kecil — pengendali hama salju",
+  "asal_usul": "Rubah yang bulunya memutih tiap musim dingin — dan tak lagi berubah balik setelah Frostpeak membeku permanen.",
+  "pact_only": false
  },
  {
   "id": "ice_wolf",
@@ -993,7 +1163,12 @@
   "tame_base": 0.7,
   "evolution": "frost_dire_wolf",
   "aggro_radius": 170,
-  "lore": "Serigala es pemburu kelompok; tunggangan tangguh di lereng bersalju."
+  "lore": "Serigala es pemburu kelompok; tunggangan tangguh di lereng bersalju.",
+  "habitat": "Hutan pinus beku",
+  "diet": "karnivora (rusa salju, anak yeti)",
+  "peran_ekologi": "predator menengah",
+  "asal_usul": "Keturunan serigala kelabu yang mengikuti pendaki ke atas dan tak pernah turun.",
+  "pact_only": false
  },
  {
   "id": "snow_owl",
@@ -1021,7 +1196,12 @@
   "evolution": "",
   "aggro_radius": 190,
   "lore": "Burung hantu salju yang tetap awas menembus badai.",
-  "nocturnal": true
+  "nocturnal": true,
+  "habitat": "Tebing & pohon pinus; berburu malam",
+  "diet": "karnivora (tikus salju, kelelawar)",
+  "peran_ekologi": "predator nokturnal pegunungan",
+  "asal_usul": "Pendaki menganggap lolongannya sebagai peringatan longsor. Kadang mereka benar.",
+  "pact_only": false
  },
  {
   "id": "yeti_cub",
@@ -1048,7 +1228,12 @@
   "tame_base": 0.4,
   "evolution": "yeti",
   "aggro_radius": 150,
-  "lore": "Anak Yeti berbulu tebal; kecil-kecil sudah kuat mendorong."
+  "lore": "Anak Yeti berbulu tebal; kecil-kecil sudah kuat mendorong.",
+  "habitat": "Gua tinggi",
+  "diet": "omnivora (akar beku, ikan)",
+  "peran_ekologi": "mangsa besar & pemulung",
+  "asal_usul": "Anak dari sesuatu yang lebih besar. Tak ada yang pernah melihat induknya dan kembali.",
+  "pact_only": false
  },
  {
   "id": "frost_elemental",
@@ -1073,7 +1258,12 @@
   "tame_base": 0.35,
   "evolution": "glacier_core",
   "aggro_radius": 160,
-  "lore": "Roh es yang membekukan sentuhan."
+  "lore": "Roh es yang membekukan sentuhan.",
+  "habitat": "Ngarai es",
+  "diet": "menyerap dingin (tidak makan)",
+  "peran_ekologi": "PENGATUR SUHU — kehadirannya menjaga gletser tak mencair",
+  "asal_usul": "Bukan makhluk: dingin yang cukup lama berada di satu tempat sampai punya bentuk.",
+  "pact_only": false
  },
  {
   "id": "woolly_calf",
@@ -1098,7 +1288,12 @@
   "tame_base": 0.5,
   "evolution": "mammoth",
   "aggro_radius": 160,
-  "lore": "Anak mamut berbulu tebal; ternak wol premium."
+  "lore": "Anak mamut berbulu tebal; ternak wol premium.",
+  "habitat": "Padang beku",
+  "diet": "herbivora (lumut beku)",
+  "peran_ekologi": "mangsa dasar Frostpeak",
+  "asal_usul": "Anak mammoth; kawanannya berjalan rute yang sama sejak sebelum ada manusia.",
+  "pact_only": false
  },
  {
   "id": "frost_wyvern",
@@ -1124,7 +1319,13 @@
   "tame_base": 0.12,
   "evolution": "blizzard_wyvern",
   "aggro_radius": 160,
-  "lore": "Wyvern es bernapas badai salju; tunggangan terbang awal."
+  "lore": "Wyvern es bernapas badai salju; tunggangan terbang awal.",
+  "habitat": "Sarang di tebing tinggi",
+  "diet": "karnivora besar (mammoth muda, yeti)",
+  "peran_ekologi": "predator puncak udara — **DRAKE, bukan Naga Kuno**",
+  "asal_usul": "Wyvern es. Para tetua menegaskan: ia bukan naga. Naga memilih; wyvern hanya lapar.",
+  "dragon_class": "drake",
+  "pact_only": false
  },
  {
   "id": "glacier_core",
@@ -1150,7 +1351,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Elemental es purba berinti gletser.",
-  "tint": "4a80c0"
+  "tint": "4a80c0",
+  "habitat": "Jantung gletser",
+  "diet": "energi es",
+  "peran_ekologi": "INTI GLETSER — kematiannya mempercepat pencairan (konsekuensi ekologis nyata)",
+  "asal_usul": "Ia adalah gletser yang sadar. Menambangnya menghangatkan gunung.",
+  "pact_only": false
  },
  {
   "id": "mammoth",
@@ -1176,7 +1382,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Mamut raksasa; benteng berjalan di salju.",
-  "tint": "9a8468"
+  "tint": "9a8468",
+  "habitat": "Padang beku & lembah",
+  "diet": "herbivora besar",
+  "peran_ekologi": "PEMBUKA JALUR — jejaknya membuka jalur salju yang dipakai makhluk lain & pendaki",
+  "asal_usul": "Kawanan terakhir. Mereka tahu itu; mereka berjalan lebih lambat sekarang.",
+  "pact_only": false
  },
  {
   "id": "blizzard_wyvern",
@@ -1203,7 +1414,13 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Wyvern badai salju; sang penguasa langit beku.",
-  "tint": "e8f4ff"
+  "tint": "e8f4ff",
+  "habitat": "Puncak Frostpeak, di dalam badai",
+  "diet": "karnivora besar",
+  "peran_ekologi": "predator puncak — **DRAKE, bukan Naga Kuno**",
+  "asal_usul": "Wyvern yang bersarang di dalam badai itu sendiri. Badainya sudah ada lebih dulu.",
+  "dragon_class": "drake",
+  "pact_only": false
  },
  {
   "id": "aurora_fox",
@@ -1229,7 +1446,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Rubah aurora yang berpendar warna-warni malam kutub.",
-  "tint": "a0e0c0"
+  "tint": "a0e0c0",
+  "habitat": "Puncak saat aurora",
+  "diet": "karnivora kecil",
+  "peran_ekologi": "makhluk pertanda — muncul saat langit menyala",
+  "asal_usul": "Rubah yang hanya terlihat saat aurora. Ada yang bilang ia bukan hewan.",
+  "pact_only": false
  },
  {
   "id": "frost_dire_wolf",
@@ -1256,7 +1478,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Serigala es raksasa pemimpin kawanan salju.",
-  "tint": "3a6faa"
+  "tint": "3a6faa",
+  "habitat": "Lereng tinggi",
+  "diet": "karnivora besar",
+  "peran_ekologi": "predator puncak lereng",
+  "asal_usul": "Ice wolf yang bertahan melewati tiga badai. Bulunya tak pernah lagi rata.",
+  "pact_only": false
  },
  {
   "id": "frost_titan",
@@ -1285,7 +1512,12 @@
   "lore": "Titan es Foothill Barrow; lantai membeku, hancurkan pilarnya.",
   "tint": "cfe6ff",
   "is_boss": true,
-  "add_species": "yeti_cub"
+  "add_species": "yeti_cub",
+  "habitat": "Foothill Barrow (kuburan pendaki)",
+  "diet": "tidak makan",
+  "peran_ekologi": "bukan predator — ia adalah AKIBAT",
+  "asal_usul": "Dingin yang mengeras: apa yang terjadi bila cukup banyak kematian menumpuk di satu tempat yang tak pernah mencair.",
+  "pact_only": false
  },
  {
   "id": "alpha_wolf",
@@ -1311,7 +1543,12 @@
   "tame_base": 0.25,
   "evolution": "",
   "aggro_radius": 160,
-  "lore": "Serigala alfa hitam bermata merah; menguat saat purnama."
+  "lore": "Serigala alfa hitam bermata merah; menguat saat purnama.",
+  "habitat": "Wilayah kawanan (hutan dalam)",
+  "diet": "karnivora (buruan kawanan)",
+  "peran_ekologi": "PEMIMPIN kawanan — kematiannya memecah kawanan menjadi serigala liar tak terkoordinasi",
+  "asal_usul": "Ia bukan spesies berbeda — ia hanya serigala yang menolak menyerah lebih lama daripada yang lain.",
+  "pact_only": false
  },
  {
   "id": "volt_weasel",
@@ -1336,7 +1573,12 @@
   "tame_base": 0.6,
   "evolution": "raiju",
   "aggro_radius": 160,
-  "lore": "Musang listrik gesit; bulunya bermuatan statis."
+  "lore": "Musang listrik gesit; bulunya bermuatan statis.",
+  "habitat": "Semak pulau, dekat batu bermuatan",
+  "diet": "karnivora kecil (serangga, telur)",
+  "peran_ekologi": "predator kecil — pengendali serangga",
+  "asal_usul": "Cerpelai yang bulunya menyimpan muatan. Menyentuhnya menyakitkan; ia tahu itu.",
+  "pact_only": false
  },
  {
   "id": "storm_crab",
@@ -1361,7 +1603,12 @@
   "tame_base": 0.5,
   "evolution": "tempest_crab",
   "aggro_radius": 160,
-  "lore": "Kepiting badai; cangkangnya menghantarkan chain lightning (sains!)."
+  "lore": "Kepiting badai; cangkangnya menghantarkan chain lightning (sains!).",
+  "habitat": "Pantai berbatu",
+  "diet": "detritivora & bangkai laut",
+  "peran_ekologi": "PEMBERSIH PANTAI",
+  "asal_usul": "Kepiting yang cangkangnya menghantar petir; nelayan memakainya sebagai penangkal.",
+  "pact_only": false
  },
  {
   "id": "thunder_hawk",
@@ -1386,7 +1633,12 @@
   "tame_base": 0.35,
   "evolution": "storm_roc",
   "aggro_radius": 160,
-  "lore": "Elang petir; makin cepat saat badai. Inti racing udara."
+  "lore": "Elang petir; makin cepat saat badai. Inti racing udara.",
+  "habitat": "Tebing tinggi & mata badai",
+  "diet": "karnivora (weasel, ikan)",
+  "peran_ekologi": "predator udara",
+  "asal_usul": "Elang yang terbang MENUJU badai, bukan menghindarinya. Tak ada yang tahu mengapa.",
+  "pact_only": false
  },
  {
   "id": "cloud_ray",
@@ -1411,7 +1663,12 @@
   "tame_base": 0.35,
   "evolution": "nimbus_ray",
   "aggro_radius": 160,
-  "lore": "Pari awan yang melayang; tunggangan layang."
+  "lore": "Pari awan yang melayang; tunggangan layang.",
+  "habitat": "Langit rendah pulau",
+  "diet": "plankton udara & serangga",
+  "peran_ekologi": "PENYARING UDARA — memakan spora & debu badai",
+  "asal_usul": "Pari yang berenang di udara lembap. Ia turun hanya saat langit tenang.",
+  "pact_only": false
  },
  {
   "id": "volt_eel",
@@ -1436,7 +1693,12 @@
   "tame_base": 0.3,
   "evolution": "levia_eel",
   "aggro_radius": 160,
-  "lore": "Belut listrik; sengatan berantai di air."
+  "lore": "Belut listrik; sengatan berantai di air.",
+  "habitat": "Perairan dangkal berlistrik",
+  "diet": "karnivora (ikan kecil)",
+  "peran_ekologi": "predator perairan",
+  "asal_usul": "Belut yang melumpuhkan mangsa dengan kejut. Menara Zephyr konon dulu memanennya.",
+  "pact_only": false
  },
  {
   "id": "storm_elemental",
@@ -1461,7 +1723,12 @@
   "tame_base": 0.15,
   "evolution": "",
   "aggro_radius": 160,
-  "lore": "Elemental badai; overcharge menyambar bertubi."
+  "lore": "Elemental badai; overcharge menyambar bertubi.",
+  "habitat": "Mata badai abadi",
+  "diet": "energi badai",
+  "peran_ekologi": "PENGATUR BADAI — kematiannya menenangkan pulau (dan membunuh ekosistemnya)",
+  "asal_usul": "Badai yang cukup lama berada di satu tempat sampai punya kehendak.",
+  "pact_only": false
  },
  {
   "id": "thunder_dragon",
@@ -1489,7 +1756,12 @@
   "aggro_radius": 160,
   "lore": "Naga petir legendaris; muncul RAHASIA saat badai petir malam hari.",
   "flavor": "Drake muda dari garis petir — bukan salah satu Naga Kuno. Para tetua tertawa bila kau menyebutnya 'naga': yang sejati tidak muncul hanya karena badai, dan tidak pernah menampakkan diri kepada yang mencarinya.",
-  "dragon_class": "drake"
+  "dragon_class": "drake",
+  "habitat": "Puncak Storm Island saat badai malam",
+  "diet": "karnivora besar",
+  "peran_ekologi": "predator puncak pulau — **DRAKE MUDA, di luar 50 Naga Kuno** (#112)",
+  "asal_usul": "Para tetua tertawa bila kau menyebutnya 'naga'. Yang sejati tidak muncul hanya karena badai, dan tidak pernah menampakkan diri kepada yang mencarinya.",
+  "pact_only": false
  },
  {
   "id": "raiju",
@@ -1515,7 +1787,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Raiju — roh petir dalam wujud musang, secepat kilat.",
-  "tint": "fff0a0"
+  "tint": "fff0a0",
+  "habitat": "Bergerak mengikuti petir",
+  "diet": "energi petir & mangsa kecil",
+  "peran_ekologi": "makhluk pertanda — muncul saat badai hebat",
+  "asal_usul": "Ia bukan hewan biasa: ia lahir saat petir menyambar tempat yang sama tiga kali.",
+  "pact_only": false
  },
  {
   "id": "tempest_crab",
@@ -1541,7 +1818,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Kepiting badai raksasa; benteng hidup di pantai.",
-  "tint": "4a6a9a"
+  "tint": "4a6a9a",
+  "habitat": "Pantai badai",
+  "diet": "bangkai & ikan",
+  "peran_ekologi": "pembersih pantai besar",
+  "asal_usul": "Storm crab yang tumbuh terlalu lama. Cangkangnya penuh bekas sambaran.",
+  "pact_only": false
  },
  {
   "id": "storm_roc",
@@ -1567,7 +1849,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Roc badai; membelah langit dalam sekejap.",
-  "tint": "8a7a3a"
+  "tint": "8a7a3a",
+  "habitat": "Puncak Zephyr Spire",
+  "diet": "karnivora besar",
+  "peran_ekologi": "predator puncak udara",
+  "asal_usul": "Burung yang bersarang di menara. Menara sudah ada lebih dulu — jauh lebih dulu.",
+  "pact_only": false
  },
  {
   "id": "nimbus_ray",
@@ -1593,7 +1880,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Pari nimbus; menari di antara awan badai.",
-  "tint": "9ac0e0"
+  "tint": "9ac0e0",
+  "habitat": "Awan tinggi",
+  "diet": "plankton udara",
+  "peran_ekologi": "penyaring udara tingkat tinggi",
+  "asal_usul": "Cloud ray yang tak pernah turun. Ada yang bilang ia sudah lupa caranya.",
+  "pact_only": false
  },
  {
   "id": "levia_eel",
@@ -1619,7 +1911,12 @@
   "evolution": "",
   "aggro_radius": 160,
   "lore": "Leviathan belut; badai listrik di lautan.",
-  "tint": "6ac0e0"
+  "tint": "6ac0e0",
+  "habitat": "Palung dekat pulau",
+  "diet": "karnivora besar",
+  "peran_ekologi": "predator perairan dalam",
+  "asal_usul": "Belut sepanjang perahu. Nelayan menyebutnya 'sepupu kecil' sesuatu yang jauh lebih besar di laut.",
+  "pact_only": false
  },
  {
   "id": "storm_sovereign",
@@ -1648,6 +1945,11 @@
   "lore": "Penguasa Badai di Zephyr Spire; petir mengejar, gunakan Earth untuk grounding.",
   "tint": "6a4a9a",
   "is_boss": true,
-  "add_species": "volt_weasel"
+  "add_species": "volt_weasel",
+  "habitat": "Puncak Zephyr Spire",
+  "diet": "energi petir terkurung",
+  "peran_ekologi": "ia bukan penjaga — ia AKIBAT: petir yang terlalu lama terkurung dalam satu bentuk",
+  "asal_usul": "Ia tidak menjaga apa pun. Ia hanya tidak bisa pergi (lihat DUNGEON_ORIGINS).",
+  "pact_only": false
  }
 ]

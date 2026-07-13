@@ -8,6 +8,13 @@ satu korpus 2026-07-13 (Direktif Bible Folder Ingestion).
 > ejaan sumber ke kode, data, dialog, atau dokumen turunan. Arsip sengaja **tidak
 > diperbaiki** agar tetap otentik sebagai sumber.
 
+> ✅ **KONTRADIKSI "PERANG PERADABAN" — SUDAH DIRESOLUSI SEBAGAI KONTEN (#126).**
+> Kingdom War Bible (part 3, b.220) menyatakan perang peradaban-vs-monster **ADA**;
+> World History (b.1188) & Faction 06 (b.6499) menyatakan **tak pernah ada**.
+> **Keduanya benar:** perangnya terjadi, **dan** sejarah resmi menghapusnya — salah satu
+> **Kebohongan Sejarah Terbesar** dunia. Pelakunya = **MISTERI_ABADI M8** (tak boleh
+> dijawab). **Sumber sengaja tidak diedit** — kontradiksi itu justru artefaknya.
+
 > ⚠ **DUA "WORLD BIBLE PART 02" BERBEDA** (risiko kanon ganda — pertanyaan Q19 di
 > REPORT-05): (a) berkas utama FILE 10 (scope: Intelligent Races + Civilization —
 > inilah rujukan `docs/RAS_KANON.md`); (b) part 5 Part 02 (scope: Civilization

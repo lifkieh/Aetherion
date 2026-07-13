@@ -81,6 +81,7 @@ func _ready() -> void:
 	_test_advanced_class_trial()
 	_test_nirnama_secret()
 	_test_bible_alignment()
+	_test_production_standards()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -3090,3 +3091,69 @@ func _test_bible_alignment() -> void:
 			if n.get("capstone", false):
 				tree_capstone.append(t.get("id", "?"))
 	check("tak ada capstone yang menempel di pohon (#116)", tree_capstone.is_empty(), str(tree_capstone))
+
+
+func _test_production_standards() -> void:
+	print("[Standar produksi Bible (#130): ekologi, counterplay, pact-only, schema]")
+	# (i) SEMUA monster wajib punya habitat / diet / peran ekologi / asal-usul
+	var lack: Array = []
+	for id in Db.monsters.keys():
+		var m: Dictionary = Db.monsters[id]
+		for f in ["habitat", "diet", "peran_ekologi", "asal_usul"]:
+			if str(m.get(f, "")).strip_edges() == "":
+				lack.append("%s:%s" % [id, f])
+	check("60 monster punya habitat/diet/peran_ekologi/asal_usul", lack.is_empty(),
+		"%d kosong: %s" % [lack.size(), str(lack.slice(0, 4))])
+	check("jumlah monster tetap 60", Db.monsters.size() == 60, str(Db.monsters.size()))
+	# peran ekologi bukan sekadar "predator" untuk semua — dunia butuh pengurai & mangsa
+	var roles := ""
+	for id in Db.monsters.keys():
+		roles += str(Db.monsters[id].get("peran_ekologi", "")).to_lower() + " "
+	check("ekologi punya pengurai/pembersih", roles.contains("urai") or roles.contains("bersih"))
+	check("ekologi punya mangsa dasar", roles.contains("mangsa"))
+	check("ekologi punya penyerbuk", roles.contains("penyerbuk"))
+	# (ii) SEMUA skill wajib punya counterplay
+	var no_cp: Array = []
+	for sid in Db.skills.keys():
+		if str(Db.skills[sid].get("counterplay", "")).strip_edges() == "":
+			no_cp.append(sid)
+	check("35 skill punya counterplay", no_cp.is_empty(), str(no_cp))
+	check("jumlah skill tetap 35", Db.skills.size() == 35, str(Db.skills.size()))
+	# (iii) WHITELIST NAGA KUNO: tak bisa ditangkap orb — hanya jalur Pact (LOCK #024)
+	check("Thunder Dragon = DRAKE, orb tetap sah (#112)",
+		Db.monster("thunder_dragon").get("dragon_class", "") == "drake"
+		and not TamingSystem.pact_only("thunder_dragon"))
+	check("wyvern = drake, bukan Naga Kuno",
+		not TamingSystem.pact_only("frost_wyvern") and not TamingSystem.pact_only("blizzard_wyvern"))
+	# simulasi Naga Kuno (belum ada di roster) — aturan HARUS sudah berlaku sekarang
+	Db.monsters["__ancient_test"] = {"id": "__ancient_test", "name": "Uji Naga Kuno", "dragon_class": "ancient"}
+	check("Naga Kuno TIDAK bisa ditangkap orb (LOCK #024)", TamingSystem.pact_only("__ancient_test"))
+	Db.monsters["__great_test"] = {"id": "__great_test", "name": "Uji Great Monster", "great_monster": true}
+	check("Great Monster TIDAK bisa ditangkap orb", TamingSystem.pact_only("__great_test"))
+	Db.monsters.erase("__ancient_test")
+	Db.monsters.erase("__great_test")
+	check("pesan Pact terdaftar di dua bahasa",
+		Loc.has("tame.pact_only", "id") and Loc.has("tame.pact_only", "en"))
+	# (iv) RESERVE SLOT SAVE: reputasi/faksi/influence + migrasi kosong
+	check("schema save = 2", PlayerData.SAVE_SCHEMA == 2)
+	check("tangga reputasi 6 tingkat (Unknown..Legendary)",
+		PlayerData.REP_LADDER.size() == 6 and PlayerData.REP_LADDER[5] == "Legendary")
+	check("influence 6 sumbu", PlayerData.INFLUENCE_AXES.size() == 6)
+	var save := PlayerData.to_save()
+	check("save membawa reputation/faction_standing/influence",
+		save.has("reputation") and save.has("faction_standing") and save.has("influence"))
+	# save LAMA (tanpa field baru) tetap bisa dimuat -> migrasi kosong
+	var old_save: Dictionary = save.duplicate(true)
+	old_save.erase("reputation")
+	old_save.erase("faction_standing")
+	old_save.erase("influence")
+	old_save.erase("save_schema")
+	PlayerData.from_save(old_save)
+	check("save lama tetap termuat (migrasi kosong)", PlayerData.reputation.is_empty()
+		and PlayerData.faction_standing.is_empty() and PlayerData.influence.is_empty())
+	PlayerData.reputation["greenvale"] = 3
+	check("reputasi LOKAL per wilayah (bukan global)",
+		PlayerData.reputation_at("greenvale") == 3 and PlayerData.reputation_at("frostpeak") == 0)
+	check("label tangga reputasi", PlayerData.reputation_label("greenvale") == "Respected",
+		PlayerData.reputation_label("greenvale"))
+	PlayerData.reputation.clear()

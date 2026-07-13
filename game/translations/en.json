@@ -43,6 +43,7 @@
  "spirit.not_here": "Not here — plant it outside town, in the ground you wounded.",
  "spirit.pale": "The forest feels quiet. Its colour is fading.",
  "spirit.planted": "🌱 Sapling planted. %s",
+ "tame.pact_only": "Your orb bounces off. A creature like this is not captured — it CHOOSES. Return when the world knows who you are.",
  "travel.depart": "The gate trembles... safe travels, wanderer. → %s",
  "travel.here": "You are already there.",
  "travel.locked": "You have never been there — the gate refuses.",

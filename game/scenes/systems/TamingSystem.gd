@@ -37,10 +37,24 @@ static func compute_chance(monster, orb: Dictionary) -> float:
 	chance += monster.tame_pity
 	return clampf(chance, 0.0, 0.99)
 
+## NAGA KUNO & GREAT MONSTER TIDAK BISA DITANGKAP DENGAN ORB (Decision Log #130,
+## DECISION LOCK #024: *"Naga MEMILIH. Bukan ditangkap. Bukan dipaksa."*).
+## B9 (semua spesies bisa dijinakkan) TIDAK dilanggar — yang berubah adalah CARANYA:
+## jalur mereka adalah **PACT** (mereka yang memilih pemain, lewat perbuatan).
+## Drake/wyvern (mis. Thunder Dragon #112) BUKAN Naga Kuno — orb tetap sah.
+static func pact_only(species_id: String) -> bool:
+	var def := Db.monster(species_id)
+	if bool(def.get("pact_only", false)):
+		return true
+	return def.get("dragon_class", "") == "ancient" or bool(def.get("great_monster", false))
+
 ## Returns {success, chance, reason}.
 static func attempt(monster, rng: RandomNumberGenerator = null) -> Dictionary:
 	if not monster.can_be_tamed():
 		return {"success": false, "chance": 0.0, "reason": "hp_too_high"}
+	if pact_only(monster.inst.get("species_id", "")):
+		EventBus.toast.emit(Loc.t("tame.pact_only"))
+		return {"success": false, "chance": 0.0, "reason": "pact_only"}
 	var orb := best_orb()
 	if orb.is_empty():
 		EventBus.toast.emit("Butuh Orb untuk menjinakkan!")

@@ -99,3 +99,20 @@ penuaan/generasi/suksesi **tidak akan pernah terpicu** (Tahun 120 = ~18,5 tahun 
 2. **Reserve format entri Chronicle** untuk entri NPC/dunia & fragmen (C7/C8).
 3. **Rename istilah Sinkronisasi** (C4) sebelum kata "fusion" makin tertanam.
 4. **Whitelist non-orb** untuk Naga Kuno/Great Monster (C5/C18) — belum ada satu pun di game, jadi **gratis** dikunci sekarang.
+
+---
+
+## BACKLOG PENULISAN BIBLE — meja Direktur + Designer (#132)
+
+**Jadwal: PASCA-B17** — agar tidak menggeser gerbang v0.5 (#128).
+
+| Dokumen | Lapisan | Kenapa dibutuhkan |
+|---|---|---|
+| **Mythology Bible** | Tier S/A | Legenda, dongeng, ramalan — *"dunia hidup tidak hanya dibangun oleh fakta, tapi oleh cerita yang dipercaya"* |
+| **Language Bible** | Tier A | Bahasa kuno, bahasa naga, simbol — dibutuhkan **Knowledge Gates** (pintu yang dibuka pemahaman, bukan kunci) |
+| **Emotion Bible** | Tier A+ | Apa yang harus **dirasakan** pemain: Wonder → Belonging → Responsibility → Loss → Legacy |
+| **Mystery Bible** | Tier A | Daftar rahasia terbesar dunia — melengkapi `MISTERI_ABADI.md` |
+| **Divine Bible** | Tier S | 🔴 **memblokir Religion pass** — nama & domain 5 Tahta Ilahi masih kosong (Q22) |
+| **Ancient History Bible** | Tier S | Bertaut **M8** (#126) — Kebohongan Sejarah Terbesar |
+| **Player Motivation / Retention / Endgame / Content Longevity / Emotional Design** | **Tier A+** | Lapisan meta yang **belum pernah kita sentuh**: kenapa pemain masih main di jam ke-500? Apa yang dilakukan setelah semuanya selesai? |
+| **Multiplayer Bible** | Tier A | Boleh **ditulis** sebagai spec pasca-v1.0; **implementasi tetap beku** (B14 gratis-penuh, daftar tahan MMO) |

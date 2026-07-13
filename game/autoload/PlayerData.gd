@@ -1,5 +1,9 @@
 extends Node
 ## PlayerData — active character: stats, inventory, professions, gold, pets.
+## SAVE_SCHEMA 2 (v0.4.4+): menambah slot reputasi/faksi/influence (#130). Save schema 1
+## tetap bisa dimuat — field baru default kosong (migrasi kosong).
+
+const SAVE_SCHEMA := 2
 ## Combat-relevant derived stats feed CombatResolver (Fase0 §4).
 
 signal stats_recalculated()
@@ -56,7 +60,27 @@ const QUALITY_NAME := {"normal": "Normal", "fine": "Halus", "masterwork": "Adika
 
 # --- Class / skills / element ---
 var char_class: String = "warrior"
-var advanced_class: String = ""     # jalur lanjutan Lv60 (v0.4.4 #101)     # class terpilih (combat ATAU kehidupan, Decision Log #33)
+var advanced_class: String = ""     # jalur lanjutan Lv60 (v0.4.4 #101)
+
+# --- RESERVE (Decision Log #130): slot data reputasi & faksi ---------------
+# Faction Bible mengunci: reputasi BUKAN angka global — ia LOKAL lalu menyebar,
+# dengan tangga 6 tingkat (Unknown → Recognized → Trusted → Respected →
+# Influential → Legendary) dan Influence 6 sumbu. Sistemnya dibangun v0.6,
+# TETAPI slotnya di-reserve SEKARANG: menambah field setelah ratusan save beredar
+# jauh lebih mahal daripada menyiapkan tempat kosong hari ini.
+var reputation: Dictionary = {}     # region_id -> int (0..5 = tangga 6 tingkat)
+var faction_standing: Dictionary = {}   # faction_id -> int (-100..100)
+var influence: Dictionary = {}      # 6 sumbu: wealth/knowledge/military/reputation/territory/legacy
+
+const REP_LADDER := ["Unknown", "Recognized", "Trusted", "Respected", "Influential", "Legendary"]
+const INFLUENCE_AXES := ["wealth", "knowledge", "military", "reputation", "territory", "legacy"]
+
+## Tingkat reputasi di sebuah wilayah (0..5). Reputasi TIDAK universal (#130).
+func reputation_at(region_id: String) -> int:
+	return clampi(int(reputation.get(region_id, 0)), 0, 5)
+
+func reputation_label(region_id: String) -> String:
+	return REP_LADDER[reputation_at(region_id)]     # class terpilih (combat ATAU kehidupan, Decision Log #33)
 var combat_sub: String = ""            # jalur kehidupan: 1 combat SUB (1 senjata + 2 skill)
 var pending_class: String = "warrior"  # New Game flow: ClassSelect -> CharacterCreator handoff
 var pending_weapon: String = ""
@@ -148,6 +172,9 @@ func new_game(class_id: String = "warrior", weapon_id: String = "", sub_id: Stri
 	if wid == "" or Db.item(wid).is_empty():
 		wid = variants[0].get("id", "wooden_sword") if not variants.is_empty() else "wooden_sword"
 	advanced_class = ""
+	reputation = {}
+	faction_standing = {}
+	influence = {}
 	gear_meta = {}
 	coating = {}
 	inventory = {"minor_potion": 3, "basic_orb": 2, "cloth_tunic": 1, "seed_mintleaf": 3}
@@ -639,6 +666,8 @@ func to_save() -> Dictionary:
 		"hp": hp, "mp": mp, "gold": gold, "inventory": inventory,
 		"equipped_weapon": equipped_weapon, "equipped_armor": equipped_armor, "equipped_accessory": equipped_accessory,
 		"char_class": char_class, "combat_sub": combat_sub, "advanced_class": advanced_class,
+		"reputation": reputation, "faction_standing": faction_standing, "influence": influence,
+		"save_schema": SAVE_SCHEMA,
 		"known_skills": known_skills,
 		"mastered_elements": mastered_elements, "monsters": monsters,
 		"active_pet_index": active_pet_index, "homestead_plots": homestead_plots,
@@ -667,6 +696,10 @@ func from_save(d: Dictionary) -> void:
 	equipped_accessory = d.get("equipped_accessory", "")
 	char_class = d.get("char_class", "warrior")
 	advanced_class = d.get("advanced_class", "")
+	# migrasi kosong: save lama (schema < 2) tidak punya field ini — default {}
+	reputation = d.get("reputation", {})
+	faction_standing = d.get("faction_standing", {})
+	influence = d.get("influence", {})
 	combat_sub = d.get("combat_sub", "")
 	known_skills = d.get("known_skills", known_skills)
 	mastered_elements = d.get("mastered_elements", mastered_elements)

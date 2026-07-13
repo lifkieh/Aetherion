@@ -80,6 +80,24 @@ dijawab. Tidak oleh Chronicle, tidak oleh tetua, tidak oleh kitab ini.
 > bahkan oleh kitab itu sendiri**. Kitab yang menjawab segalanya bukan kitab —
 > itu manual.
 
+### M8. Siapa yang menghapus **Perang Peradaban** dari sejarah *(Decision Log #126)*
+Perang antara peradaban manusia dan peradaban monster **benar-benar terjadi** di masa
+purba. Sejarah resmi dunia menyatakan **perang itu tidak pernah ada** — dan hampir
+semua orang, termasuk para sarjana, mempercayainya.
+
+Itu bukan kesalahan pencatatan. Itu **penghapusan yang disengaja** — salah satu
+**Kebohongan Sejarah Terbesar** dunia.
+
+**Yang TIDAK boleh dijawab:** *siapa* yang melakukannya, dan *mengapa*. Kandidat yang
+boleh dibisikkan tapi tak pernah dikonfirmasi: pemenang perang · **Kael Vess muda**
+(saat ia masih pejuang ingatan) · pihak ketiga yang tak seorang pun curigai · atau —
+kemungkinan yang paling menakutkan — **kedua belah pihak, bersama-sama, atas kesepakatan**.
+
+*Boleh:* bekas, kesaksian yang bertentangan, arsip yang berhenti mendadak, Truth Seeker
+dan Memory Keeper yang mengejarnya (benang quest v0.6+).
+*Tidak boleh:* jawaban. Bahkan Chronicle tidak menyimpannya — dan **fakta bahwa
+Chronicle pun tidak menyimpannya adalah petunjuk paling mengganggu di seluruh dunia.**
+
 ---
 
 *Catatan untuk penulis mana pun (manusia atau agent): kalau suatu hari kau merasa

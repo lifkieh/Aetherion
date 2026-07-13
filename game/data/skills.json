@@ -1,41 +1,589 @@
 [
-  {"id": "strike", "name": "Tebas", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "mana_cost": 0, "cast_rate": 3.0, "range": 34, "aoe": false, "unlock": {"source": "start"}, "desc": "Serangan dasar."},
-
-  {"id": "flame_slash", "name": "Tebasan Api", "type": "active", "kind": "physical", "element": "fire", "skill_mod": 1.8, "mana_cost": 8, "cast_rate": 2.2, "range": 46, "aoe": true, "aoe_radius": 40, "unlock": {"source": "start"}, "desc": "Ayunan berapi mengenai area; tahan klik untuk ayun beruntun."},
-  {"id": "spark_bolt", "name": "Panah Petir", "type": "active", "kind": "magic", "element": "lightning", "skill_mod": 1.25, "mana_cost": 5, "cast_rate": 4.5, "range": 170, "projectile": true, "projectile_id": "spark", "projectile_speed": 320, "unlock": {"source": "start"}, "desc": "Rentetan petir cepat; menyambar target basah (chain)."},
-  {"id": "gust", "name": "Embusan", "type": "active", "kind": "magic", "element": "wind", "skill_mod": 1.0, "mana_cost": 5, "cast_rate": 3.8, "range": 120, "aoe": true, "unlock": {"source": "level", "level": 3}, "masters": "wind", "desc": "Embusan angin mendorong. Menguasai elemen Angin (Wind Flow)."},
-  {"id": "frost_bolt", "name": "Panah Es", "type": "active", "kind": "magic", "element": "ice", "skill_mod": 1.15, "mana_cost": 8, "cast_rate": 3.6, "range": 150, "projectile": true, "projectile_id": "frost_shard", "unlock": {"source": "book", "book": "book_frost_bolt"}, "masters": "ice", "desc": "Pecahan es yang memperlambat. Menguasai elemen Es (Ice Flow)."},
-  {"id": "spore_cloud", "name": "Awan Spora", "type": "active", "kind": "magic", "element": "poison", "skill_mod": 1.15, "mana_cost": 8, "cast_rate": 2.0, "range": 90, "aoe": true, "apply_status": "poison", "unlock": {"source": "book", "book": "book_spore_cloud"}, "masters": "poison", "desc": "Awan racun beracun."},
-  {"id": "stone_lance", "name": "Tombak Batu", "type": "active", "kind": "magic", "element": "earth", "skill_mod": 1.7, "mana_cost": 11, "cast_rate": 1.6, "range": 130, "projectile": true, "projectile_id": "arrow", "unlock": {"source": "trainer", "level": 6, "cost": 450}, "masters": "earth", "desc": "Tombak batu berat, lambat tapi menyakitkan. Menguasai elemen Tanah (Earth Flow)."},
-  {"id": "holy_ray", "name": "Sinar Suci", "type": "active", "kind": "magic", "element": "light", "skill_mod": 1.5, "mana_cost": 10, "cast_rate": 2.4, "range": 160, "projectile": true, "projectile_id": "spark", "unlock": {"source": "boss", "boss": "king_slime"}, "masters": "light", "desc": "Berkas cahaya; kuat di siang hari. Jatuh dari Raja Slime pertama kali."},
-  {"id": "heal", "name": "Penyembuhan", "type": "active", "kind": "heal", "element": "light", "skill_mod": 1.0, "heal_amount": 40, "mana_cost": 12, "cast_rate": 1.4, "range": 0, "unlock": {"source": "trainer", "level": 4, "cost": 300}, "desc": "Pulihkan HP diri. Menguras mana; tahan klik untuk terus menyembuhkan."},
-  {"id": "quake", "name": "Gempa", "type": "active", "kind": "magic", "element": "earth", "skill_mod": 1.5, "mana_cost": 10, "cast_rate": 1.8, "range": 70, "aoe": true, "aoe_radius": 70, "unlock": {"source": "level", "level": 8}, "desc": "Guncangan tanah melukai semua musuh di sekitar."},
-  {"id": "meteor", "name": "Meteor", "type": "active", "kind": "magic", "element": "fire", "skill_mod": 3.2, "mana_cost": 30, "cast_rate": 0.9, "range": 200, "aoe": true, "aoe_radius": 90, "projectile": true, "projectile_id": "fusion_bolt", "ultimate": true, "unlock": {"source": "boss", "boss": "frost_titan"}, "desc": "★ ULTIMATE — meteor api raksasa. Mahal mana, cast lambat, area luas. Jatuh dari Frost Titan."},
-
-  {"id": "war_cry", "name": "Pekik Perang", "type": "active", "kind": "buff", "element": "none", "buff": {"atk_mult": 1.2, "duration": 8.0}, "mana_cost": 10, "cast_rate": 0.5, "range": 0, "unlock": {"source": "class", "class": "warrior"}, "desc": "Raungan membakar semangat: ATK +20% selama 8 detik."},
-  {"id": "power_shot", "name": "Bidikan Penuh", "type": "active", "kind": "magic", "element": "none", "skill_mod": 1.9, "mana_cost": 6, "cast_rate": 1.5, "range": 200, "projectile": true, "projectile_id": "arrow", "unlock": {"source": "class", "class": "archer"}, "desc": "Tarikan penuh — satu panah berat menembus jauh."},
-  {"id": "multi_shot", "name": "Panah Sebar", "type": "active", "kind": "magic", "element": "none", "skill_mod": 0.75, "shots": 3, "spread_deg": 18, "mana_cost": 7, "cast_rate": 1.8, "range": 160, "projectile": true, "projectile_id": "arrow", "unlock": {"source": "class", "class": "archer"}, "desc": "Tiga panah mengipas sekaligus — raja jarak dekat-menengah."},
-  {"id": "twin_fangs", "name": "Taring Kembar", "type": "active", "kind": "physical", "element": "none", "skill_mod": 0.85, "mana_cost": 3, "cast_rate": 4.2, "range": 30, "aoe_arc": 70, "unlock": {"source": "class", "class": "assassin"}, "desc": "Rentetan tusukan kilat — mesin jahit maut."},
-  {"id": "venom_strike", "name": "Tusukan Bisa", "type": "active", "kind": "physical", "element": "poison", "skill_mod": 1.4, "mana_cost": 6, "cast_rate": 2.2, "range": 34, "aoe_arc": 70, "apply_status": "poison", "unlock": {"source": "class", "class": "assassin"}, "desc": "Bilah berlumur racun — luka kecil, akibat panjang."},
-  {"id": "smoke_bomb", "name": "Bom Asap", "type": "active", "kind": "buff", "element": "wind", "buff": {"evasion_add": 0.25, "duration": 6.0}, "mana_cost": 9, "cast_rate": 0.5, "range": 0, "unlock": {"source": "class", "class": "assassin"}, "desc": "Lenyap dalam asap: Evasion +25% selama 6 detik."},
-  {"id": "judgment", "name": "Penghakiman", "type": "active", "kind": "physical", "element": "light", "skill_mod": 1.5, "mana_cost": 6, "cast_rate": 2.0, "range": 44, "aoe": true, "aoe_arc": 120, "unlock": {"source": "class", "class": "paladin"}, "desc": "Hantaman bercahaya — kegelapan tak punya tempat bersembunyi."},
-  {"id": "shadow_bolt", "name": "Panah Bayang", "type": "active", "kind": "magic", "element": "darkness", "skill_mod": 1.4, "mana_cost": 6, "cast_rate": 2.8, "range": 170, "projectile": true, "projectile_id": "spark", "unlock": {"source": "class", "class": "necromancer"}, "desc": "Kegelapan yang dipadatkan — dingin dan lapar."},
-  {"id": "drain_life", "name": "Sedot Nyawa", "type": "active", "kind": "magic", "element": "darkness", "skill_mod": 1.1, "drain_heal": 0.35, "mana_cost": 8, "cast_rate": 1.6, "range": 60, "aoe_arc": 90, "unlock": {"source": "class", "class": "necromancer"}, "desc": "Mencuri hidup lawan — 35% damage kembali sebagai HP."},
-  {"id": "soul_burst", "name": "Ledakan Arwah", "type": "active", "kind": "magic", "element": "darkness", "skill_mod": 1.6, "mana_cost": 9, "cast_rate": 1.4, "range": 70, "aoe": true, "aoe_arc": 360, "unlock": {"source": "class", "class": "necromancer"}, "desc": "Arwah-arwah pecah keluar melukai segala di sekitar."},
-
-  {"id": "flow_fire", "name": "Fire Flow", "type": "active", "kind": "flow", "element": "fire", "mana_cost": 0, "drain": 2.2, "unlock": {"source": "element", "element": "fire"}, "desc": "Aliri senjata dengan Api (arc lebih besar, jejak bakar). Menguras mana per detik."},
-  {"id": "flow_lightning", "name": "Lightning Flow", "type": "active", "kind": "flow", "element": "lightning", "mana_cost": 0, "drain": 2.4, "unlock": {"source": "element", "element": "lightning"}, "desc": "Aliri senjata dengan Petir (sengat lurus 1.5x jangkauan, chain saat basah)."},
-  {"id": "flow_ice", "name": "Ice Flow", "type": "active", "kind": "flow", "element": "ice", "mana_cost": 0, "drain": 2.0, "unlock": {"source": "element", "element": "ice"}, "desc": "Aliri senjata dengan Es (perlambat, bekukan genangan). Kuasai lewat Panah Es."},
-  {"id": "flow_wind", "name": "Wind Flow", "type": "active", "kind": "flow", "element": "wind", "mana_cost": 0, "drain": 2.0, "unlock": {"source": "element", "element": "wind"}, "desc": "Aliri senjata dengan Angin (arc luas mendorong, lompatan ganda). Kuasai lewat Embusan."},
-  {"id": "flow_earth", "name": "Earth Flow", "type": "active", "kind": "flow", "element": "earth", "mana_cost": 0, "drain": 2.2, "unlock": {"source": "element", "element": "earth"}, "desc": "Aliri senjata dengan Tanah (arc sempit, damage berat, grounding). Kuasai lewat Tombak Batu."},
-  {"id": "flow_poison", "name": "Poison Flow", "type": "active", "kind": "flow", "element": "poison", "mana_cost": 0, "drain": 2.0, "unlock": {"source": "element", "element": "poison"}, "desc": "Aliri senjata dengan Racun (meninggalkan bisa di setiap luka)."},
-  {"id": "flow_light", "name": "Light Flow", "type": "active", "kind": "flow", "element": "light", "mana_cost": 0, "drain": 2.2, "unlock": {"source": "element", "element": "light"}, "desc": "Aliri senjata dengan Cahaya (menghukum kegelapan)."},
-  {"id": "flow_darkness", "name": "Darkness Flow", "type": "active", "kind": "flow", "element": "darkness", "mana_cost": 0, "drain": 2.2, "unlock": {"source": "element", "element": "darkness"}, "desc": "Aliri senjata dengan Kegelapan (kuat di malam dan gua)."},
-
-  {"id": "bite", "name": "Gigit", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.1, "range": 26},
-  {"id": "tackle", "name": "Seruduk", "type": "active", "kind": "physical", "element": "none", "skill_mod": 1.0, "range": 24},
-  {"id": "howl", "name": "Lolongan", "type": "active", "kind": "buff", "element": "none", "duration": 6, "atk_buff": 0.1, "range": 0},
-  {"id": "split", "name": "Membelah", "type": "passive", "kind": "special", "element": "water"},
-  {"id": "sting", "name": "Sengat", "type": "active", "kind": "physical", "element": "poison", "skill_mod": 0.9, "range": 22, "apply_status": "poison"},
-  {"id": "charge", "name": "Terjang", "type": "active", "kind": "physical", "element": "earth", "skill_mod": 1.3, "range": 80}
+ {
+  "id": "strike",
+  "name": "Tebas",
+  "type": "active",
+  "kind": "physical",
+  "element": "none",
+  "skill_mod": 1.0,
+  "mana_cost": 0,
+  "cast_rate": 3.0,
+  "range": 34,
+  "aoe": false,
+  "unlock": {
+   "source": "start"
+  },
+  "desc": "Serangan dasar.",
+  "counterplay": "Jangkauan pendek — mundur satu langkah membuatnya meleset; tak bisa dipakai sambil berlari."
+ },
+ {
+  "id": "flame_slash",
+  "name": "Tebasan Api",
+  "type": "active",
+  "kind": "physical",
+  "element": "fire",
+  "skill_mod": 1.8,
+  "mana_cost": 8,
+  "cast_rate": 2.2,
+  "range": 46,
+  "aoe": true,
+  "aoe_radius": 40,
+  "unlock": {
+   "source": "start"
+  },
+  "desc": "Ayunan berapi mengenai area; tahan klik untuk ayun beruntun.",
+  "counterplay": "Arc pendek di depan; menyamping menghindarinya. Target BASAH memadamkan bara (damage bakar hilang)."
+ },
+ {
+  "id": "spark_bolt",
+  "name": "Panah Petir",
+  "type": "active",
+  "kind": "magic",
+  "element": "lightning",
+  "skill_mod": 1.25,
+  "mana_cost": 5,
+  "cast_rate": 4.5,
+  "range": 170,
+  "projectile": true,
+  "projectile_id": "spark",
+  "projectile_speed": 320,
+  "unlock": {
+   "source": "start"
+  },
+  "desc": "Rentetan petir cepat; menyambar target basah (chain).",
+  "counterplay": "Proyektil lurus — berlindung di balik batu/pohon memblokirnya. Target KERING tak bisa dilumpuhkan."
+ },
+ {
+  "id": "gust",
+  "name": "Embusan",
+  "type": "active",
+  "kind": "magic",
+  "element": "wind",
+  "skill_mod": 1.0,
+  "mana_cost": 5,
+  "cast_rate": 3.8,
+  "range": 120,
+  "aoe": true,
+  "unlock": {
+   "source": "level",
+   "level": 3
+  },
+  "masters": "wind",
+  "desc": "Embusan angin mendorong. Menguasai elemen Angin (Wind Flow).",
+  "counterplay": "Dorongan angin; musuh berat (tank) nyaris tak terdorong."
+ },
+ {
+  "id": "frost_bolt",
+  "name": "Panah Es",
+  "type": "active",
+  "kind": "magic",
+  "element": "ice",
+  "skill_mod": 1.15,
+  "mana_cost": 8,
+  "cast_rate": 3.6,
+  "range": 150,
+  "projectile": true,
+  "projectile_id": "frost_shard",
+  "unlock": {
+   "source": "book",
+   "book": "book_frost_bolt"
+  },
+  "masters": "ice",
+  "desc": "Pecahan es yang memperlambat. Menguasai elemen Es (Ice Flow).",
+  "counterplay": "Lambat di udara — bisa dihindari dengan bergerak menyamping. Target yang TERBAKAR mencair lebih cepat."
+ },
+ {
+  "id": "spore_cloud",
+  "name": "Awan Spora",
+  "type": "active",
+  "kind": "magic",
+  "element": "poison",
+  "skill_mod": 1.15,
+  "mana_cost": 8,
+  "cast_rate": 2.0,
+  "range": 90,
+  "aoe": true,
+  "apply_status": "poison",
+  "unlock": {
+   "source": "book",
+   "book": "book_spore_cloud"
+  },
+  "masters": "poison",
+  "desc": "Awan racun beracun.",
+  "counterplay": "Awan diam di tempat — cukup keluar dari radiusnya. Angin kencang membubarkannya."
+ },
+ {
+  "id": "stone_lance",
+  "name": "Tombak Batu",
+  "type": "active",
+  "kind": "magic",
+  "element": "earth",
+  "skill_mod": 1.7,
+  "mana_cost": 11,
+  "cast_rate": 1.6,
+  "range": 130,
+  "projectile": true,
+  "projectile_id": "arrow",
+  "unlock": {
+   "source": "trainer",
+   "level": 6,
+   "cost": 450
+  },
+  "masters": "earth",
+  "desc": "Tombak batu berat, lambat tapi menyakitkan. Menguasai elemen Tanah (Earth Flow).",
+  "counterplay": "Telegraf jelas dari tanah — melompat/berpindah petak menghindarinya."
+ },
+ {
+  "id": "holy_ray",
+  "name": "Sinar Suci",
+  "type": "active",
+  "kind": "magic",
+  "element": "light",
+  "skill_mod": 1.5,
+  "mana_cost": 10,
+  "cast_rate": 2.4,
+  "range": 160,
+  "projectile": true,
+  "projectile_id": "spark",
+  "unlock": {
+   "source": "boss",
+   "boss": "king_slime"
+  },
+  "masters": "light",
+  "desc": "Berkas cahaya; kuat di siang hari. Jatuh dari Raja Slime pertama kali.",
+  "counterplay": "Garis lurus panjang; menyamping aman. Kurang efektif pada makhluk yang bukan gelap/undead."
+ },
+ {
+  "id": "heal",
+  "name": "Penyembuhan",
+  "type": "active",
+  "kind": "heal",
+  "element": "light",
+  "skill_mod": 1.0,
+  "heal_amount": 40,
+  "mana_cost": 12,
+  "cast_rate": 1.4,
+  "range": 0,
+  "unlock": {
+   "source": "trainer",
+   "level": 4,
+   "cost": 300
+  },
+  "desc": "Pulihkan HP diri. Menguras mana; tahan klik untuk terus menyembuhkan.",
+  "counterplay": "Channel — terputus bila kau dipukul; POISON pada target memotong penyembuhan setengah."
+ },
+ {
+  "id": "quake",
+  "name": "Gempa",
+  "type": "active",
+  "kind": "magic",
+  "element": "earth",
+  "skill_mod": 1.5,
+  "mana_cost": 10,
+  "cast_rate": 1.8,
+  "range": 70,
+  "aoe": true,
+  "aoe_radius": 70,
+  "unlock": {
+   "source": "level",
+   "level": 8
+  },
+  "desc": "Guncangan tanah melukai semua musuh di sekitar.",
+  "counterplay": "Radius di tanah — musuh TERBANG (flyer) kebal sepenuhnya."
+ },
+ {
+  "id": "meteor",
+  "name": "Meteor",
+  "type": "active",
+  "kind": "magic",
+  "element": "fire",
+  "skill_mod": 3.2,
+  "mana_cost": 30,
+  "cast_rate": 0.9,
+  "range": 200,
+  "aoe": true,
+  "aoe_radius": 90,
+  "projectile": true,
+  "projectile_id": "fusion_bolt",
+  "ultimate": true,
+  "unlock": {
+   "source": "boss",
+   "boss": "frost_titan"
+  },
+  "desc": "★ ULTIMATE — meteor api raksasa. Mahal mana, cast lambat, area luas. Jatuh dari Frost Titan.",
+  "counterplay": "Jeda jatuh yang panjang & bayangan penanda — sasaran cerdas menyingkir sebelum mendarat."
+ },
+ {
+  "id": "war_cry",
+  "name": "Pekik Perang",
+  "type": "active",
+  "kind": "buff",
+  "element": "none",
+  "buff": {
+   "atk_mult": 1.2,
+   "duration": 8.0
+  },
+  "mana_cost": 10,
+  "cast_rate": 0.5,
+  "range": 0,
+  "unlock": {
+   "source": "class",
+   "class": "warrior"
+  },
+  "desc": "Raungan membakar semangat: ATK +20% selama 8 detik.",
+  "counterplay": "Buff sementara, bukan damage — musuh cukup menunggu durasinya habis, lalu menyerang."
+ },
+ {
+  "id": "power_shot",
+  "name": "Bidikan Penuh",
+  "type": "active",
+  "kind": "magic",
+  "element": "none",
+  "skill_mod": 1.9,
+  "mana_cost": 6,
+  "cast_rate": 1.5,
+  "range": 200,
+  "projectile": true,
+  "projectile_id": "arrow",
+  "unlock": {
+   "source": "class",
+   "class": "archer"
+  },
+  "desc": "Tarikan penuh — satu panah berat menembus jauh.",
+  "counterplay": "Waktu bidik panjang; menutup jarak membatalkan keunggulannya."
+ },
+ {
+  "id": "multi_shot",
+  "name": "Panah Sebar",
+  "type": "active",
+  "kind": "magic",
+  "element": "none",
+  "skill_mod": 0.75,
+  "shots": 3,
+  "spread_deg": 18,
+  "mana_cost": 7,
+  "cast_rate": 1.8,
+  "range": 160,
+  "projectile": true,
+  "projectile_id": "arrow",
+  "unlock": {
+   "source": "class",
+   "class": "archer"
+  },
+  "desc": "Tiga panah mengipas sekaligus — raja jarak dekat-menengah.",
+  "counterplay": "Sebaran — tiap panah lemah; musuh tank menyerapnya. Efektif hanya pada kerumunan."
+ },
+ {
+  "id": "twin_fangs",
+  "name": "Taring Kembar",
+  "type": "active",
+  "kind": "physical",
+  "element": "none",
+  "skill_mod": 0.85,
+  "mana_cost": 3,
+  "cast_rate": 4.2,
+  "range": 30,
+  "aoe_arc": 70,
+  "unlock": {
+   "source": "class",
+   "class": "assassin"
+  },
+  "desc": "Rentetan tusukan kilat — mesin jahit maut.",
+  "counterplay": "Dua tusukan cepat jarak dekat; menjaga jarak membuatnya tak berguna."
+ },
+ {
+  "id": "venom_strike",
+  "name": "Tusukan Bisa",
+  "type": "active",
+  "kind": "physical",
+  "element": "poison",
+  "skill_mod": 1.4,
+  "mana_cost": 6,
+  "cast_rate": 2.2,
+  "range": 34,
+  "aoe_arc": 70,
+  "apply_status": "poison",
+  "unlock": {
+   "source": "class",
+   "class": "assassin"
+  },
+  "desc": "Bilah berlumur racun — luka kecil, akibat panjang.",
+  "counterplay": "Racun butuh waktu; membunuh cepat atau menyembuhkan diri mengalahkannya."
+ },
+ {
+  "id": "smoke_bomb",
+  "name": "Bom Asap",
+  "type": "active",
+  "kind": "buff",
+  "element": "wind",
+  "buff": {
+   "evasion_add": 0.25,
+   "duration": 6.0
+  },
+  "mana_cost": 9,
+  "cast_rate": 0.5,
+  "range": 0,
+  "unlock": {
+   "source": "class",
+   "class": "assassin"
+  },
+  "desc": "Lenyap dalam asap: Evasion +25% selama 6 detik.",
+  "counterplay": "Menghilang sementara — musuh yang menyerang area (AoE) tetap mengenaimu."
+ },
+ {
+  "id": "judgment",
+  "name": "Penghakiman",
+  "type": "active",
+  "kind": "physical",
+  "element": "light",
+  "skill_mod": 1.5,
+  "mana_cost": 6,
+  "cast_rate": 2.0,
+  "range": 44,
+  "aoe": true,
+  "aoe_arc": 120,
+  "unlock": {
+   "source": "class",
+   "class": "paladin"
+  },
+  "desc": "Hantaman bercahaya — kegelapan tak punya tempat bersembunyi.",
+  "counterplay": "Ayunan lambat dengan telegraf; bisa di-dodge. Lemah terhadap yang tidak punya dosa (bukan gelap)."
+ },
+ {
+  "id": "shadow_bolt",
+  "name": "Panah Bayang",
+  "type": "active",
+  "kind": "magic",
+  "element": "darkness",
+  "skill_mod": 1.4,
+  "mana_cost": 6,
+  "cast_rate": 2.8,
+  "range": 170,
+  "projectile": true,
+  "projectile_id": "spark",
+  "unlock": {
+   "source": "class",
+   "class": "necromancer"
+  },
+  "desc": "Kegelapan yang dipadatkan — dingin dan lapar.",
+  "counterplay": "Proyektil lurus; cahaya terang (Light Flow / Holy Ray) menghapus sebagian efeknya."
+ },
+ {
+  "id": "drain_life",
+  "name": "Sedot Nyawa",
+  "type": "active",
+  "kind": "magic",
+  "element": "darkness",
+  "skill_mod": 1.1,
+  "drain_heal": 0.35,
+  "mana_cost": 8,
+  "cast_rate": 1.6,
+  "range": 60,
+  "aoe_arc": 90,
+  "unlock": {
+   "source": "class",
+   "class": "necromancer"
+  },
+  "desc": "Mencuri hidup lawan — 35% damage kembali sebagai HP.",
+  "counterplay": "Butuh kontak dekat & channel; memutus jarak membatalkannya."
+ },
+ {
+  "id": "soul_burst",
+  "name": "Ledakan Arwah",
+  "type": "active",
+  "kind": "magic",
+  "element": "darkness",
+  "skill_mod": 1.6,
+  "mana_cost": 9,
+  "cast_rate": 1.4,
+  "range": 70,
+  "aoe": true,
+  "aoe_arc": 360,
+  "unlock": {
+   "source": "class",
+   "class": "necromancer"
+  },
+  "desc": "Arwah-arwah pecah keluar melukai segala di sekitar.",
+  "counterplay": "Radius kecil di sekeliling; menjauh 2 langkah aman."
+ },
+ {
+  "id": "flow_fire",
+  "name": "Fire Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "fire",
+  "mana_cost": 0,
+  "drain": 2.2,
+  "unlock": {
+   "source": "element",
+   "element": "fire"
+  },
+  "desc": "Aliri senjata dengan Api (arc lebih besar, jejak bakar). Menguras mana per detik.",
+  "counterplay": "Menguras mana terus-menerus — musuh cukup bertahan sampai mana-mu habis. Hujan melemahkannya."
+ },
+ {
+  "id": "flow_lightning",
+  "name": "Lightning Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "lightning",
+  "mana_cost": 0,
+  "drain": 2.4,
+  "unlock": {
+   "source": "element",
+   "element": "lightning"
+  },
+  "desc": "Aliri senjata dengan Petir (sengat lurus 1.5x jangkauan, chain saat basah).",
+  "counterplay": "Menguras mana; hanya melumpuhkan target BASAH — musuh kering mengabaikan efeknya."
+ },
+ {
+  "id": "flow_ice",
+  "name": "Ice Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "ice",
+  "mana_cost": 0,
+  "drain": 2.0,
+  "unlock": {
+   "source": "element",
+   "element": "ice"
+  },
+  "desc": "Aliri senjata dengan Es (perlambat, bekukan genangan). Kuasai lewat Panah Es.",
+  "counterplay": "Menguras mana; target yang TERBAKAR menahan pembekuan."
+ },
+ {
+  "id": "flow_wind",
+  "name": "Wind Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "wind",
+  "mana_cost": 0,
+  "drain": 2.0,
+  "unlock": {
+   "source": "element",
+   "element": "wind"
+  },
+  "desc": "Aliri senjata dengan Angin (arc luas mendorong, lompatan ganda). Kuasai lewat Embusan.",
+  "counterplay": "Menguras mana; musuh berat tak terdorong."
+ },
+ {
+  "id": "flow_earth",
+  "name": "Earth Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "earth",
+  "mana_cost": 0,
+  "drain": 2.2,
+  "unlock": {
+   "source": "element",
+   "element": "earth"
+  },
+  "desc": "Aliri senjata dengan Tanah (arc sempit, damage berat, grounding). Kuasai lewat Tombak Batu.",
+  "counterplay": "Menguras mana; musuh terbang kebal."
+ },
+ {
+  "id": "flow_poison",
+  "name": "Poison Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "poison",
+  "mana_cost": 0,
+  "drain": 2.0,
+  "unlock": {
+   "source": "element",
+   "element": "poison"
+  },
+  "desc": "Aliri senjata dengan Racun (meninggalkan bisa di setiap luka).",
+  "counterplay": "Menguras mana; racun lambat — musuh berumur pendek mati sebelum efeknya terasa."
+ },
+ {
+  "id": "flow_light",
+  "name": "Light Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "light",
+  "mana_cost": 0,
+  "drain": 2.2,
+  "unlock": {
+   "source": "element",
+   "element": "light"
+  },
+  "desc": "Aliri senjata dengan Cahaya (menghukum kegelapan).",
+  "counterplay": "Menguras mana; boros terhadap musuh non-gelap."
+ },
+ {
+  "id": "flow_darkness",
+  "name": "Darkness Flow",
+  "type": "active",
+  "kind": "flow",
+  "element": "darkness",
+  "mana_cost": 0,
+  "drain": 2.2,
+  "unlock": {
+   "source": "element",
+   "element": "darkness"
+  },
+  "desc": "Aliri senjata dengan Kegelapan (kuat di malam dan gua).",
+  "counterplay": "Menguras mana; melemah di bawah cahaya terang & siang bolong."
+ },
+ {
+  "id": "bite",
+  "name": "Gigit",
+  "type": "active",
+  "kind": "physical",
+  "element": "none",
+  "skill_mod": 1.1,
+  "range": 26,
+  "counterplay": "Jarak sangat dekat — menjaga jarak mengalahkannya sepenuhnya."
+ },
+ {
+  "id": "tackle",
+  "name": "Seruduk",
+  "type": "active",
+  "kind": "physical",
+  "element": "none",
+  "skill_mod": 1.0,
+  "range": 24,
+  "counterplay": "Terjangan lurus dengan ancang-ancang; menyamping membuatnya menabrak kosong."
+ },
+ {
+  "id": "howl",
+  "name": "Lolongan",
+  "type": "active",
+  "kind": "buff",
+  "element": "none",
+  "duration": 6,
+  "atk_buff": 0.1,
+  "range": 0,
+  "counterplay": "Buff kawanan — membunuh sang ALPHA membubarkan buff (dan kawanannya)."
+ },
+ {
+  "id": "split",
+  "name": "Membelah",
+  "type": "passive",
+  "kind": "special",
+  "element": "water",
+  "counterplay": "Membelah diri saat terluka — damage AREA membunuh semua pecahan sekaligus sebelum tumbuh."
+ },
+ {
+  "id": "sting",
+  "name": "Sengat",
+  "type": "active",
+  "kind": "physical",
+  "element": "poison",
+  "skill_mod": 0.9,
+  "range": 22,
+  "apply_status": "poison",
+  "counterplay": "Sengat tunggal jarak dekat; zirah tinggi (DEF) menahannya."
+ },
+ {
+  "id": "charge",
+  "name": "Terjang",
+  "type": "active",
+  "kind": "physical",
+  "element": "earth",
+  "skill_mod": 1.3,
+  "range": 80,
+  "counterplay": "Ancang-ancang panjang & lurus — menyingkir membuatnya menabrak dinding dan tertegun."
+ }
 ]

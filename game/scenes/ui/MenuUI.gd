@@ -209,6 +209,10 @@ func _build_skill() -> void:
 		var star: String = "★ " if sk.get("ultimate", false) else ""
 		var l := _mk_label("%s%s [%s] · %s" % [star, sk.get("name", sid), sk.get("element", "-"), cost_txt], 13)
 		l.custom_minimum_size = Vector2(230, 0)
+		# COUNTERPLAY (#130): setiap skill punya cara dihindari/dihukum — pemain berhak tahu
+		var cp: String = sk.get("counterplay", "")
+		if cp != "":
+			l.tooltip_text = "Counterplay: " + cp
 		h.add_child(l)
 		for slot in range(5):
 			var s2 := sid
