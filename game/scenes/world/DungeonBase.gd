@@ -20,7 +20,7 @@ func cfg() -> Dictionary:
 		"bg": Color(0.10, 0.09, 0.13), "ambient": Color(0.16, 0.15, 0.22),
 		"tile_tint": Color(1, 1, 1),
 		"spawn_kinds": ["cave_bat", "verdant_slime", "cave_spitter"],
-		"boss": "king_slime", "music": "23 - Road.ogg",
+		"boss": "king_slime", "music": "dungeon.ogg",
 		"torch_color": Color(1.0, 0.7, 0.4),
 		"return_scene": "res://scenes/Main.tscn", "exit_label": "Keluar [E]",
 		"hint": "Klik-kiri: serang (arah kursor) · Klik-kanan: skill · WASD gerak · Space lompat · gali blok · E keluar",
@@ -47,7 +47,7 @@ func _ready() -> void:
 	_place_exit(c.get("return_scene", "res://scenes/Main.tscn"), c.get("exit_label", "Keluar [E]"))
 	_add_ui(c.get("hint", ""))
 	SafeZone.clear()   # dungeons are never safe zones (UI/UX §4)
-	Stage.enter_region(c.get("name", "Dungeon"), c.get("intro", ""), c.get("music", "23 - Road.ogg"))
+	Stage.enter_region(c.get("name", "Dungeon"), c.get("intro", ""), c.get("music", "dungeon.ogg"))
 	EventBus.dungeon_entered.emit(c.get("id", "dungeon"))
 	if OS.get_environment("AETHER_ARENA") == "1" and player:
 		player.global_position = Vector2(W * TILE * 0.5, (H - 5) * TILE)
@@ -138,11 +138,13 @@ func _carve_secret(g: Array) -> Rect2i:
 func _place_chests() -> void:
 	var c := cfg()
 	var did: String = c.get("id", "dungeon")
-	var spots := [Vector2(W - 8, 10), Vector2(6, 20), Vector2(W - 12, 30)]
+	# umum, LANGKA (lantai tengah — lebih jauh, lebih berisi), umum
+	var spots := [[Vector2(W - 8, 10), "chest_common"], [Vector2(6, 20), "chest_rare"],
+		[Vector2(W - 12, 30), "chest_common"]]
 	var i := 0
 	for sp in spots:
-		DungeonChest.spawn(self, Vector2(sp.x * TILE, sp.y * TILE - 4),
-			"%s_c%d" % [did, i], c.get("chest_table", "chest_common"), false)
+		DungeonChest.spawn(self, Vector2(sp[0].x * TILE, sp[0].y * TILE - 4),
+			"%s_c%d" % [did, i], sp[1], false)
 		i += 1
 	if _secret_rect.size.x > 0:
 		var center := Vector2(

@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-13 07:33 WIB — berisi hingga: v0.4.2 penuh + kanonisasi E1–E10 (rumor tak akurat, 25 NPC berkepribadian, Miracle System, taksonomi quest) + v0.4.3 sebagian (MUSIM v1, Jurnal Quest + pelacakan, stinger, dungeon peti/ruang rahasia/jebakan). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-13 07:57 WIB — berisi hingga: v0.4.2 penuh + E1–E10 + P1–P5 + v0.4.3 (MUSIM v1, Jurnal+pelacakan, dungeon peti/rahasia/jebakan, 12 RASI + prakiraan Astrolog, **bank musik & SFX baru**). Ukuran exe 92,5 MB. *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 

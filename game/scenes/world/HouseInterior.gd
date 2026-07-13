@@ -32,7 +32,7 @@ func _ready() -> void:
 	_spawn_player()
 	_add_ui()
 	var v: Dictionary = VARIANTS[variant]
-	Stage.enter_region(v.title, v.sub, "26 - Lost Village.ogg")
+	Stage.enter_region(v.title, v.sub, "town.ogg")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		get_tree().create_timer(1.4).timeout.connect(func():
 			if DisplayServer.get_name() != "headless":

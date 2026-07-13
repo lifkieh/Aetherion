@@ -26,8 +26,27 @@ const SFX_MAP := {
 	"fizzle": "ui_fizzle.wav",
 	"menu": "ui_menu.wav",
 	"blip": "ui_blip.wav",
+	# Minifantasy Dungeon SFX (Leohpaz) — v0.4.3 #92
+	"chest": "chest_open.ogg",
+	"crate": "crate_open.ogg",
+	"secret_door": "secret_open.ogg",
+	"trap_spike": "trap_spike.ogg",
+	"trap_dart": "trap_dart.ogg",
+	"stone_step": "dungeon_step.ogg",
 }
 
+## STINGER dari POTONGAN MUSIK ASLI (AlkaKrab Fantasy RPG Vol.2) — menggantikan
+## stinger v1 yang dirakit dari sampel SFX (v0.4.3 #92).
+const STINGER_DIR := "res://assets/game/audio/stingers/"
+const STINGER_FILES := {
+	"levelup": "levelup.ogg",
+	"quest": "quest.ogg",
+	"discovery": "discovery.ogg",
+	"boss_kill": "boss_kill.ogg",
+	"transcend": "transcend.ogg",
+}
+
+var _stinger: AudioStreamPlayer
 var _pool: Array[AudioStreamPlayer] = []
 var _next := 0
 var _cache := {}
@@ -35,7 +54,7 @@ var _music: AudioStreamPlayer
 var _combat: AudioStreamPlayer          # combat-intensity layer (crossfaded)
 var _current_music := ""
 var _combat_on := false
-const COMBAT_MUSIC := "23 - Road.ogg"
+const COMBAT_MUSIC := "boss.ogg"
 const MUSIC_DB := -8.0
 const QUIET_DB := -40.0
 var muted := false
@@ -65,6 +84,9 @@ func _ready() -> void:
 	_combat.bus = "Master"
 	_combat.volume_db = QUIET_DB
 	add_child(_combat)
+	_stinger = AudioStreamPlayer.new()
+	_stinger.bus = "Master"
+	add_child(_stinger)
 
 func _get_stream(path: String) -> AudioStream:
 	if _cache.has(path):
@@ -105,6 +127,18 @@ const STINGERS := {
 func play_stinger(kind: String) -> void:
 	if muted:
 		return
+	# 1) stinger asli (potongan musik) bila ada
+	var f: String = STINGER_FILES.get(kind, "")
+	if f != "":
+		var st := _get_stream(STINGER_DIR + f)
+		if st != null:
+			if st is AudioStreamOggVorbis:
+				st.loop = false
+			_stinger.stream = st
+			_stinger.volume_db = linear_to_db(maxf(0.001, sfx_scale))
+			_stinger.play()
+			return
+	# 2) fallback: stinger v1 dari sampel SFX (tetap ada bila aset hilang)
 	var seq: Array = STINGERS.get(kind, [])
 	if seq.is_empty():
 		return
@@ -117,6 +151,10 @@ func play_stinger(kind: String) -> void:
 			t.timeout.connect(play_sfx.bind(step[0], float(step[1])))
 		delay += 0.22
 
+## Ganti track dengan CROSSFADE (v0.4.3 #5/#92): musik lama meredup sementara
+## musik baru menyala — perpindahan scene tak lagi memutus lagu di tengah nada.
+const FADE_TIME := 1.2
+
 func play_music(filename: String) -> void:
 	if muted or filename == _current_music:
 		return
@@ -126,8 +164,21 @@ func play_music(filename: String) -> void:
 	if s is AudioStreamOggVorbis:
 		s.loop = true
 	_current_music = filename
-	_music.stream = s
-	_music.play()
+	if _music.playing:
+		_crossfade_to(s)
+	else:
+		_music.stream = s
+		_music.volume_db = MUSIC_DB
+		_music.play()
+
+func _crossfade_to(s: AudioStream) -> void:
+	# fade-out track lama, tukar, fade-in track baru (satu player: cukup & ringan)
+	var tw := create_tween()
+	tw.tween_property(_music, "volume_db", QUIET_DB - 20.0, FADE_TIME * 0.5)
+	tw.tween_callback(func():
+		_music.stream = s
+		_music.play())
+	tw.tween_property(_music, "volume_db", MUSIC_DB, FADE_TIME * 0.5)
 
 func stop_music() -> void:
 	_music.stop()

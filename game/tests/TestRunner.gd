@@ -69,6 +69,7 @@ func _ready() -> void:
 	_test_journal_and_stingers()
 	await _test_dungeon_chests_traps()
 	_test_rasi_and_forecast()
+	_test_new_assets()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2609,3 +2610,40 @@ func _test_rasi_and_forecast() -> void:
 	var d := GameClock.date_string()
 	check("rencana langit deterministik", WorldState.planned_weather(d, 9) == WorldState.planned_weather(d, 9))
 	check("akurasi prakiraan = 80% (janji GDD)", absf(WorldState.FORECAST_ACCURACY - 0.8) < 0.001)
+
+
+func _test_new_assets() -> void:
+	print("[Aset baru: musik, stinger, peti, SFX v0.4.3 #92]")
+	# musik wilayah: semua track terwire benar-benar ada di build
+	var tracks := ["menu.ogg", "greenvale.ogg", "town.ogg", "candyveil.ogg", "desert.ogg",
+		"frostpeak.ogg", "storm.ogg", "dungeon.ogg", "boss.ogg"]
+	for t in tracks:
+		check("musik %s ada" % t, ResourceLoader.exists("res://assets/game/audio/music/" + t))
+	# tak ada lagi referensi track lama yang sudah dihapus
+	check("track lama tak dipakai lagi", not ResourceLoader.exists("res://assets/game/audio/music/23 - Road.ogg"))
+	check("musik combat = boss.ogg", Audio.COMBAT_MUSIC == "boss.ogg")
+	# stinger dari potongan musik asli
+	for kind in ["levelup", "quest", "discovery", "boss_kill", "transcend"]:
+		var f: String = Audio.STINGER_FILES.get(kind, "")
+		check("stinger asli %s ada" % kind, f != "" and ResourceLoader.exists(Audio.STINGER_DIR + f))
+	check("fallback stinger sampel tetap ada", not Audio.STINGERS.is_empty())
+	# SFX Minifantasy
+	for sfx in ["chest", "secret_door", "trap_spike", "trap_dart", "crate", "stone_step"]:
+		var fn: String = Audio.SFX_MAP.get(sfx, "")
+		check("sfx %s terdaftar & ada" % sfx, fn != "" and ResourceLoader.exists(Audio.SFX_DIR + fn))
+	# sprite peti (Pixel Chest Pack) — 3 varian x 2 keadaan
+	for v in ["common", "rare", "secret"]:
+		var pair: Array = DungeonChest.ART.get(v, [])
+		check("sprite peti %s (tutup+buka) ada" % v,
+			pair.size() == 2 and ResourceLoader.exists(pair[0]) and ResourceLoader.exists(pair[1]))
+	# varian peti dipilih dari tabel loot
+	check("loot table chest_rare ada", not Db.loot_table("chest_rare").is_empty())
+	var host := Node2D.new()
+	add_child(host)
+	var c1 := DungeonChest.spawn(host, Vector2.ZERO, "t_c1", "chest_common", false)
+	var c2 := DungeonChest.spawn(host, Vector2.ZERO, "t_c2", "chest_rare", false)
+	var c3 := DungeonChest.spawn(host, Vector2.ZERO, "t_c3", "chest_secret", true)
+	check("varian peti dipetakan benar", c1.variant() == "common" and c2.variant() == "rare" and c3.variant() == "secret")
+	host.queue_free()
+	# crossfade
+	check("crossfade musik aktif (FADE_TIME > 0)", Audio.FADE_TIME > 0.0)

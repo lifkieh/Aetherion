@@ -19,7 +19,7 @@ func _ready() -> void:
 	_build_portal()
 	_spawn_player()
 	_add_ui()
-	Audio.play_music("26 - Lost Village.ogg")
+	Audio.play_music("town.ogg")
 	EventBus.toast.emit("Homestead — tanaman tumbuh dengan waktu nyata (termasuk offline).")
 	if OS.get_environment("AETHER_HOME") == "1":
 		_demo()

@@ -5,6 +5,7 @@ extends Control
 var _font: Font
 
 func _ready() -> void:
+	Audio.play_music("menu.ogg")
 	if ResourceLoader.exists("res://assets/game/fonts/m5x7.ttf"):
 		_font = load("res://assets/game/fonts/m5x7.ttf")
 	theme = UiTheme.theme    # unified UI kit

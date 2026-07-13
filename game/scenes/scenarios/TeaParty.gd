@@ -29,7 +29,7 @@ func _ready() -> void:
 		_font = load("res://assets/game/fonts/m5x7.ttf")
 	_build_bg()
 	_build_ui()
-	Audio.play_music("26 - Lost Village.ogg")
+	Audio.play_music("town.ogg")
 	EventBus.toast.emit("Jamuan Teh Sang Ratu Gula — jawab dengan sopan. Salah 3× = diusir selamanya!")
 	_show_question()
 	if OS.get_environment("AETHER_SHOT") == "1":

@@ -7,7 +7,7 @@ func cfg() -> Dictionary:
 		"bg": Color(0.14, 0.11, 0.08), "ambient": Color(0.28, 0.24, 0.18),  # sandy tomb dark
 		"tile_tint": Color(1.0, 0.92, 0.72), "ore_freq": 0.09,              # sandstone tint
 		"spawn_kinds": ["sand_scarab", "cactus_fiend", "dune_viper"],       # walker / shooter / jumper
-		"boss": "anubis_warden", "music": "23 - Road.ogg",
+		"boss": "anubis_warden", "music": "dungeon.ogg",
 		"torch_color": Color(1.0, 0.8, 0.45),
 		"return_scene": "res://scenes/world/Desert.tscn",
 		"exit_label": "Keluar ke Desert [E]",

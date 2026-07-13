@@ -31,7 +31,7 @@ func _ready() -> void:
 	_add_ui()
 	_prime_monsters()
 	SafeZone.clear()
-	Stage.enter_region("Storm Island", "Pulau badai abadi — petir & angin tak henti", "23 - Road.ogg")
+	Stage.enter_region("Storm Island", "Pulau badai abadi — petir & angin tak henti", "storm.ogg")
 	EventBus.toast.emit("Storm Island — awas petir! Konon Thunder Dragon muncul saat badai malam.")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6

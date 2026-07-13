@@ -8,7 +8,7 @@ func cfg() -> Dictionary:
 		"bg": Color(0.10, 0.12, 0.20), "ambient": Color(0.34, 0.38, 0.52),
 		"tile_tint": Color(0.80, 0.86, 1.05), "ore_freq": 0.08,
 		"spawn_kinds": ["volt_weasel", "thunder_hawk", "storm_elemental"],
-		"boss": "storm_sovereign", "music": "23 - Road.ogg",
+		"boss": "storm_sovereign", "music": "dungeon.ogg",
 		"torch_color": Color(0.7, 0.85, 1.0),
 		"return_scene": "res://scenes/world/StormIsland.tscn",
 		"exit_label": "Keluar ke Storm Island [E]",

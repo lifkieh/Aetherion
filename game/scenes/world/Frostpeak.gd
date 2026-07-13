@@ -29,7 +29,7 @@ func _ready() -> void:
 	_add_ui()
 	_build_village()
 	_prime_monsters()
-	Stage.enter_region("Frostpeak", "Puncak beku — salju abadi & angin menggigit", "26 - Lost Village.ogg")
+	Stage.enter_region("Frostpeak", "Puncak beku — salju abadi & angin menggigit", "frostpeak.ogg")
 	EventBus.toast.emit("Frostpeak Mountain — awas Yeti! Es abadi tak pernah mencair.")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6

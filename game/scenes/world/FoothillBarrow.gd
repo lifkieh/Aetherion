@@ -7,7 +7,7 @@ func cfg() -> Dictionary:
 		"bg": Color(0.10, 0.13, 0.20), "ambient": Color(0.30, 0.36, 0.48),   # icy tomb
 		"tile_tint": Color(0.82, 0.90, 1.05), "ore_freq": 0.08,
 		"spawn_kinds": ["ice_wolf", "frost_elemental", "yeti_cub"],
-		"boss": "frost_titan", "music": "26 - Lost Village.ogg",
+		"boss": "frost_titan", "music": "town.ogg",
 		"torch_color": Color(0.6, 0.8, 1.0),
 		"return_scene": "res://scenes/world/Frostpeak.tscn",
 		"exit_label": "Keluar ke Frostpeak [E]",

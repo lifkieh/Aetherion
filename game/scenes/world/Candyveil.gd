@@ -34,7 +34,7 @@ func _ready() -> void:
 	Settings.changed.connect(func(): _on_weather(WorldState.weather))
 	_on_weather(WorldState.weather)
 	SafeZone.clear()   # no town safe zone in the wilds (UI/UX §4)
-	Stage.enter_region("Padang Candyveil", "Ladang permen pastel — manis tapi menipu", "26 - Lost Village.ogg")
+	Stage.enter_region("Padang Candyveil", "Ladang permen pastel — manis tapi menipu", "candyveil.ogg")
 	EventBus.toast.emit("Candyveil Meadows — padang gula kapas. Awas Gummy Mimic!")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6

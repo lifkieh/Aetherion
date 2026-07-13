@@ -7,6 +7,7 @@ const COMBAT_HOLD := 5.0
 var _cd := 0.0
 
 func _ready() -> void:
+	EventBus.boss_engaged.connect(func(_n, _node): Audio.play_music("boss.ogg"))
 	EventBus.damage_dealt.connect(_on_damage)
 	EventBus.game_loaded.connect(func(_s): _reset())
 

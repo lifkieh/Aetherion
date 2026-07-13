@@ -25,7 +25,7 @@ func _ready() -> void:
 	_build_hud()
 	EventBus.monster_killed.connect(_on_monster_killed)
 	EventBus.player_died.connect(_on_player_died)
-	Audio.play_music("23 - Road.ogg")
+	Audio.play_music("dungeon.ogg")
 	EventBus.toast.emit("LUNAR WARREN — Bertahan 60 dtk. JANGAN bunuh kelinci!")
 	if OS.get_environment("AETHER_WARREN_SHOT") == "1":
 		_shot_at = 1.4

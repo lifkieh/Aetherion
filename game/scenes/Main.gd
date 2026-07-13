@@ -37,7 +37,7 @@ func _ready() -> void:
 	EventBus.weather_changed.connect(_on_weather_changed)
 	Settings.changed.connect(func(): _on_weather_changed(WorldState.weather))
 	_on_weather_changed(WorldState.weather)
-	Stage.enter_region("Hutan Greenvale", "Wilayah awal — aman di siang hari", "11 - Clearing.ogg")
+	Stage.enter_region("Hutan Greenvale", "Wilayah awal — aman di siang hari", "greenvale.ogg")
 	get_tree().create_timer(2.6).timeout.connect(func(): Onboarding.tip("town"))
 	# Optional automated screenshot for verification (--screenshot arg or env)
 	if "--shot" in OS.get_cmdline_user_args() or OS.get_environment("AETHER_SHOT") == "1":

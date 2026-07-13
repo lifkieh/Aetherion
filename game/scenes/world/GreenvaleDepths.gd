@@ -7,7 +7,7 @@ func cfg() -> Dictionary:
 		"bg": Color(0.10, 0.09, 0.13), "ambient": Color(0.16, 0.15, 0.22),
 		"tile_tint": Color(1, 1, 1), "ore_freq": 0.10,
 		"spawn_kinds": ["cave_bat", "verdant_slime", "cave_spitter"],
-		"boss": "king_slime", "music": "23 - Road.ogg",
+		"boss": "king_slime", "music": "dungeon.ogg",
 		"torch_color": Color(1.0, 0.7, 0.4),
 		"return_scene": "res://scenes/Main.tscn",
 		"exit_label": "Keluar ke Greenvale [E]",

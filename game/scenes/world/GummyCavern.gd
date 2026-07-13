@@ -7,7 +7,7 @@ func cfg() -> Dictionary:
 		"bg": Color(0.16, 0.08, 0.14), "ambient": Color(0.30, 0.18, 0.26),  # warm candy dark
 		"tile_tint": Color(1.0, 0.75, 0.9), "ore_freq": 0.08,               # pink-tinted rock
 		"spawn_kinds": ["gummy_slime", "lollipop_sprite", "gummy_mimic"],
-		"boss": "gummy_titan", "music": "26 - Lost Village.ogg",
+		"boss": "gummy_titan", "music": "town.ogg",
 		"torch_color": Color(1.0, 0.6, 0.85),                               # pink torchlight
 		"return_scene": "res://scenes/world/Candyveil.tscn",
 		"exit_label": "Keluar ke Candyveil [E]",

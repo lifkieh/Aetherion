@@ -900,5 +900,40 @@
     "max": 1
    }
   ]
+ },
+ {
+  "id": "chest_rare",
+  "drops": [
+   {
+    "item": "aether_ingot",
+    "chance": 0.4,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "glacier_gem",
+    "chance": 0.35,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "protection_scroll",
+    "chance": 0.25,
+    "min": 1,
+    "max": 1
+   },
+   {
+    "item": "mana_draught",
+    "chance": 0.5,
+    "min": 1,
+    "max": 2
+   },
+   {
+    "item": "dragon_scale",
+    "chance": 0.12,
+    "min": 1,
+    "max": 1
+   }
+  ]
  }
 ]

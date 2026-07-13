@@ -11,8 +11,7 @@ var table := "chest_common"
 var secret := false
 var _opened := false
 var _lbl: Label
-var _body: ColorRect
-var _lid: ColorRect
+var _sprite: Sprite2D
 
 static func spawn(host: Node2D, pos: Vector2, id: String, loot_table: String, is_secret: bool = false) -> DungeonChest:
 	var c: DungeonChest = DungeonChest.new()
@@ -30,27 +29,36 @@ func _ready() -> void:
 	_opened = _is_opened_today()
 	_build()
 
+## Sprite peti: Pixel Chest Pack (karsiori) — tiga varian.
+##   umum = Retro Chest · langka = Metal Chest · istimewa/rahasia = Golden Chest
+const ART := {
+	"common": ["res://assets/game/sprites/props/chests/chest_common_closed.png",
+		"res://assets/game/sprites/props/chests/chest_common_open.png"],
+	"rare": ["res://assets/game/sprites/props/chests/chest_rare_closed.png",
+		"res://assets/game/sprites/props/chests/chest_rare_open.png"],
+	"secret": ["res://assets/game/sprites/props/chests/chest_secret_closed.png",
+		"res://assets/game/sprites/props/chests/chest_secret_open.png"],
+}
+
+func variant() -> String:
+	if secret:
+		return "secret"
+	return "rare" if table == "chest_rare" else "common"
+
 func _build() -> void:
-	var base := Color(0.75, 0.55, 0.25) if not secret else Color(0.85, 0.75, 0.35)
-	_body = ColorRect.new()
-	_body.color = base if not _opened else base.darkened(0.55)
-	_body.size = Vector2(18, 12)
-	_body.position = Vector2(-9, -12)
-	add_child(_body)
-	_lid = ColorRect.new()
-	_lid.color = base.lightened(0.15) if not _opened else base.darkened(0.4)
-	_lid.size = Vector2(18, 5)
-	_lid.position = Vector2(-9, -17 if not _opened else -20)
-	if _opened:
-		_lid.rotation = -0.5
-	add_child(_lid)
+	_sprite = Sprite2D.new()
+	_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_sprite.offset = Vector2(0, -10)
+	_sprite.scale = Vector2(0.9, 0.9) if variant() != "rare" else Vector2(0.55, 0.55)
+	add_child(_sprite)
+	_refresh_art()
 	_lbl = Label.new()
 	if ResourceLoader.exists("res://assets/game/fonts/m5x7.ttf"):
 		_lbl.add_theme_font_override("font", load("res://assets/game/fonts/m5x7.ttf"))
 	_lbl.add_theme_font_size_override("font_size", 12)
 	_lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 	_lbl.add_theme_constant_override("outline_size", 4)
-	_lbl.position = Vector2(-30, -36)
+	_lbl.position = Vector2(-30, -40)
 	_lbl.visible = false
 	add_child(_lbl)
 	if secret and not _opened:
@@ -59,6 +67,15 @@ func _build() -> void:
 		glow.energy = 0.6
 		glow.texture = _dot()
 		add_child(glow)
+
+func _refresh_art() -> void:
+	if _sprite == null:
+		return
+	var pair: Array = ART.get(variant(), ART["common"])
+	var path: String = pair[1] if _opened else pair[0]
+	if ResourceLoader.exists(path):
+		_sprite.texture = load(path)
+	_sprite.modulate = Color(0.75, 0.75, 0.8) if _opened else Color.WHITE
 
 func _dot() -> Texture2D:
 	var img := Image.create(64, 64, false, Image.FORMAT_RGBA8)
@@ -100,12 +117,10 @@ func interact() -> void:
 	var gold := randi_range(40, 120) * (3 if secret else 1)
 	LootDrop.spawn_gold(get_parent(), global_position + Vector2(0, -10), gold)
 	if first_secret:
+		Audio.play_sfx("secret_door")          # Minifantasy: pintu batu terbuka
 		Audio.play_stinger("discovery")
 		EventBus.toast.emit("✦ RUANG RAHASIA DITEMUKAN — dunia mencatatnya.")
 	else:
-		Audio.play_sfx("secret" if secret else "coin")
+		Audio.play_sfx("chest")                # Minifantasy: tutup peti terangkat
 		EventBus.toast.emit("Peti terbuka: %d barang + %dG." % [got, gold])
-	_body.color = _body.color.darkened(0.55)
-	_lid.color = _lid.color.darkened(0.4)
-	_lid.position.y = -20
-	_lid.rotation = -0.5
+	_refresh_art()

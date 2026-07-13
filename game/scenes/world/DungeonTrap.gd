@@ -71,7 +71,7 @@ func _dart_logic(delta: float) -> void:
 	for b in get_overlapping_bodies():
 		if b.is_in_group("player"):
 			_telegraph = 0.5          # peringatan: bunyi + warna sebelum menembak
-			Audio.play_sfx("click", 1.4)
+			Audio.play_sfx("trap_dart", 1.0)   # kokang: peringatan sebelum tembak
 			queue_redraw()
 			return
 
@@ -88,4 +88,4 @@ func _hit(body: Node, frac: float) -> void:
 		return
 	var dmg := int(clampf(frac, 0.0, CAP) * float(PlayerData.max_hp))
 	body.take_hit({"damage": maxi(1, dmg), "element": "none", "is_crit": false}, self)
-	Audio.play_sfx("hurt")
+	Audio.play_sfx("trap_spike" if kind == "spike" else "trap_dart")

@@ -24,7 +24,7 @@ func _ready() -> void:
 	_spawn_parasites()
 	_build_hud()
 	EventBus.player_died.connect(_on_player_died)
-	Audio.play_music("26 - Lost Village.ogg")
+	Audio.play_music("town.ogg")
 	EventBus.toast.emit("PERUT STAR WHALE — bertahan 60 dtk, hindari asam lambung!")
 	if OS.get_environment("AETHER_WHALE_SHOT") == "1":
 		_shot_at = 1.4
