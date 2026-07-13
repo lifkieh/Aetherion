@@ -68,7 +68,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **Celestial Crisis** (bulan retak / supernova) — B5 | Nirnama Bible, GDD v0.3 | Act 1 | 2 sesi | — |
 | **World Dungeon** (tipe IV: *The Hollow Sky* — sudah terlihat dari Zephyr Spire) | Dungeon (40), DUNGEON_ORIGINS | Raid | 2 sesi | — |
 | **Great Monsters** (Leviathan/Titan/Phoenix/World Beast/Ancient Predator/Void Colossus) — **peristiwa dunia, bukan boss** | Great Monster (53) | Ekologi | 2–3 sesi | — |
-| **Religion v1** (Gereja, Holy Order, Inquisitor, mukjizat ULTRA-langka) + rename `MiracleSystem` → **Wonder/Omen** | Religion (49) | — | 1,5 sesi | 🔴 **Q21/Q22** (nama dewa belum dikunci!) |
+| **Religion v1** (Gereja, Holy Order, Inquisitor, mukjizat ULTRA-langka) + rename `MiracleSystem` → **Wonder/Omen** | Religion (49) + **DIVINE_BIBLE (#140–#143)** | ✅ nama dewa **sudah dikunci** | 1,5 sesi | Butuh sesi penulisan: kepribadian/agenda/gereja tiap dewa |
 | **Heirs of Nothingness** (5 kelompok pewaris kehampaan) | Nirnama Bible part 4 (69) | Act 1 | 1,5 sesi | — |
 
 ---
@@ -137,7 +137,7 @@ Berlaku sejak sistem companion lahir (v0.5+):
 | **Language Bible** | Tier A | Bahasa kuno, bahasa naga, simbol — dibutuhkan **Knowledge Gates** (pintu yang dibuka pemahaman, bukan kunci) |
 | **Emotion Bible** | Tier A+ | Apa yang harus **dirasakan** pemain: Wonder → Belonging → Responsibility → Loss → Legacy |
 | **Mystery Bible** | Tier A | Daftar rahasia terbesar dunia — melengkapi `MISTERI_ABADI.md` |
-| **Divine Bible** | Tier S | 🔴 **memblokir Religion pass** — nama & domain 5 Tahta Ilahi masih kosong (Q22) |
+| **Divine Bible** — *lanjutan* | Tier S | ✅ **seed selesai** (#143: nama, domain, hukum gema). Sisa: **kepribadian · agenda · gereja** tiap dewa + apakah ada dewa bawahan + relasi Lima dengan 17 elemen |
 | **Ancient History Bible** | Tier S | Bertaut **M8** (#126) — Kebohongan Sejarah Terbesar |
 | **Player Motivation / Retention / Endgame / Content Longevity / Emotional Design** | **Tier A+** | Lapisan meta yang **belum pernah kita sentuh**: kenapa pemain masih main di jam ke-500? Apa yang dilakukan setelah semuanya selesai? |
 | **Multiplayer Bible** | Tier A | Boleh **ditulis** sebagai spec pasca-v1.0; **implementasi tetap beku** (B14 gratis-penuh, daftar tahan MMO) |

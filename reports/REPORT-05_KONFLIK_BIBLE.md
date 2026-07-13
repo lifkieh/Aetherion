@@ -33,7 +33,7 @@
 | **C18** | Taming vs martabat monster cerdas | ✅ **#130 (pact-only)** + ⏳ penalti reputasi v0.7 |
 | **C19** | "Monster bukan loot" | ⏳ **terjadwal v0.7** — monster **cerdas** keluar dari tabel drop/EXP |
 | **C20** | Nirnama tak bisa dibunuh vs level tanpa batas | ✅ **#134 (D2)** — **HYBRID FINAL JUDGE**: pertarungan besar tetap ada (**melindungi**, bukan membunuh); kemenangan = **PENGHAKIMAN**, bukan HP |
-| **C21** | Jumlah dewa ambigu | ⏳ **memblokir Religion pass** — menunggu **Divine Bible** (backlog #132) |
+| **C21** | Jumlah dewa ambigu | ✅ **#140–#143** — **5 Dewa Besar** (Valkar/Astrael/Thalor/Vorun/Sevrin) + **CAEVAEL Sang Absolut** (keenam, tersembunyi → MISTERI_ABADI M9). `docs/DIVINE_BIBLE.md` seed. **Religion pass TIDAK LAGI TERBLOKIR** |
 | **C22** | Naga Nirnama: bagian dari 50 atau ke-51? | ⏳ keputusan penulisan **Act 2** (#134: nasib akhir jangan dikunci sekarang) |
 | **C23** | Hidden Masters vs pohon terikat lokasi | ⏳ **terjadwal v0.6** — Hidden Master = pintu masuk **kedua** (tanah **atau** orang) |
 | **C24** | Monster berbentuk manusia | ⏳ **terjadwal** — kosmetik dulu, mekanik penuh saat Companion pass |
@@ -45,10 +45,10 @@
 | **C30** | Multiplayer = Tier A vs daftar tahan | ✅ **#132** — Bible boleh **ditulis**; implementasi **tetap beku** (B14) |
 | **C31** | Gerbang v0.5 terancam bergeser | ✅ **#128** — **B17 tetap menahan v0.5**; roadmap hanya berubah lewat keputusan eksplisit Direktur |
 
-**Pertanyaan Q1–Q36:** semuanya terjawab, terserap ke keputusan #115–#135, atau
-terjadwal di ROADBOOK. Tiga yang tersisa sebagai **kekosongan Bible** (bukan konflik):
-**Divine Bible** (nama 5 dewa — memblokir Religion), **3 spesies naga** yang belum
-dinamai, dan **Naval Bible** (laut & Leviathan). Ketiganya ada di backlog #132.
+**Pertanyaan Q1–Q36:** semuanya terjawab, terserap ke keputusan #115–#143, atau
+terjadwal di ROADBOOK. **Divine Bible seed SELESAI (#140–#143)** — Q21/Q22 tertutup,
+Religion pass tidak lagi terblokir. Dua kekosongan Bible tersisa (bukan konflik):
+**3 spesies naga** yang belum dinamai dan **Naval Bible** (laut & Leviathan) — backlog #132.
 
 ---
 

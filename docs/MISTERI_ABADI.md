@@ -89,14 +89,45 @@ Itu bukan kesalahan pencatatan. Itu **penghapusan yang disengaja** — salah sat
 **Kebohongan Sejarah Terbesar** dunia.
 
 **Yang TIDAK boleh dijawab:** *siapa* yang melakukannya, dan *mengapa*. Kandidat yang
-boleh dibisikkan tapi tak pernah dikonfirmasi: pemenang perang · **Kael Vess muda**
-(saat ia masih pejuang ingatan) · pihak ketiga yang tak seorang pun curigai · atau —
+boleh dibisikkan tapi tak pernah dikonfirmasi: pemenang perang · **Sang Nirnama di masa
+mudanya** (saat ia masih pejuang ingatan; nama aslinya = rahasia produksi #108, tersimpan
+**hanya** di `NIRNAMA_BIBLE.md`) · pihak ketiga yang tak seorang pun curigai · atau —
 kemungkinan yang paling menakutkan — **kedua belah pihak, bersama-sama, atas kesepakatan**.
 
 *Boleh:* bekas, kesaksian yang bertentangan, arsip yang berhenti mendadak, Truth Seeker
 dan Memory Keeper yang mengejarnya (benang quest v0.6+).
 *Tidak boleh:* jawaban. Bahkan Chronicle tidak menyimpannya — dan **fakta bahwa
 Chronicle pun tidak menyimpannya adalah petunjuk paling mengganggu di seluruh dunia.**
+
+### M9. **CAEVAEL — Sang Absolut** *(Decision Log #140)*
+Ada entitas keenam **di atas Lima Dewa Besar**. Mayoritas peradaban tidak tahu Ia ada.
+
+**Yang tidak boleh dijawab — selamanya:**
+- **Sifat-Nya.** Apa Ia sebenarnya.
+- **Kehendak-Nya.** Apa yang Ia inginkan, jika Ia menginginkan sesuatu.
+- **Mengapa Ia membiarkan dunia hanya mengenal Lima.**
+- **Apakah Ia bisa membunuh Sang Nirnama.** Kanon menyatakan Lima tidak bisa. Tentang
+  Yang Keenam: **tidak dijawab.** Dan justru karena tidak dijawab, endgame tetap bukan
+  soal kekuatan (#134).
+
+**Boleh:** teolog yang berbisik, arsip yang berhenti mendadak, satu-dua orang yang
+berhenti bicara setelah menemukan-Nya.
+**Tidak boleh:** doktrin, konfirmasi, penampakan, jawaban.
+
+*Catatan hukum gema (#141): Valkar bergema jadi Valkaris, Thalor jadi Thalassar, Sevrin
+jadi kata "sumpah". **Caevael tidak bergema di mana pun.** Yang Absolut tidak
+meninggalkan jejak — dan ketiadaan jejak itulah yang paling mengganggu.*
+
+### M10. Rumor **Caevael** dan sebuah nama yang tak boleh ditulis *(#142)*
+Segelintir sarjana memperdebatkan **kemiripan bunyi** nama Caevael dengan sebuah nama
+lain — nama yang **rahasia produksi** (#108) dan **tidak boleh ditulis di entri mana pun**,
+termasuk entri ini.
+
+Perdebatan itu **tidak pernah selesai**, dan **tidak akan pernah diselesaikan**.
+
+**Boleh:** menulis *bahwa perdebatan itu ada*, dan bahwa ia membuat sebagian orang gelisah.
+**Tidak boleh:** menulis nama yang diperdebatkan. **Tidak boleh:** menyimpulkan apa pun —
+tidak "ya", tidak "tidak", tidak "hanya kebetulan". *Terutama tidak "hanya kebetulan".*
 
 ---
 
