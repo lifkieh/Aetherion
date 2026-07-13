@@ -1,8 +1,9 @@
 # TIME & LEGACY SPEC — turunan K1=c ("dua jam + lompatan")
 
-> # ⚠ DRAF — BUKAN KANON. MENUNGGU REVIEW DIREKTUR + DESIGNER.
-> Tidak ada baris di sini yang boleh dijadikan dasar implementasi sebelum ada baris
-> keputusan di `PLAN_LEDGER.md`. Disusun atas perintah Designer (#154).
+> # ⚠ SEBAGIAN KANON, SEBAGIAN DRAF.
+> **SUDAH DIPUTUS (#165):** laju **56 hari WIB = 1 tahun kronik** ✅ · **pemain menua HANYA
+> lewat lompatan** ✅ (P-AGE=a) · tabel penuaan 8 ras & posisi Elyn **dipertahankan**.
+> **Sisanya masih DRAF** — 5 pertanyaan §7 belum diputus. Disusun atas perintah Designer (#154).
 
 ## 0. DUA KOREKSI FAKTA sebelum spec dibaca (kewajiban lapor, #149)
 
@@ -30,7 +31,7 @@ Aturannya satu kalimat: **jam nyata memerintah HARI; jam kronik memerintah HIDUP
 | **Satuan** | detik/jam/hari/musim WIB asli | **tahun in-world** |
 | **Sumber** | jam sistem pemain (WIB) | **turunan** dari hari WIB + akumulasi lompatan |
 | **Memerintah** | siang-malam · fase bulan · musim (4×2 minggu) · cuaca · harga & restock · panen · gosip · bencana (#145) · Golden Hour · rasi | **penuaan** · **generasi** · **suksesi** · sejarah · tahun di Chronicle · pewarisan (P3) |
-| **Laju** | 1:1 dengan hidup pemain | **1 tahun kronik = 56 hari WIB** (satu siklus musim penuh) |
+| **Laju** | 1:1 dengan hidup pemain | ✅ **DIPUTUS (#165): 1 tahun kronik = 56 hari WIB** (satu siklus musim penuh) |
 | **Bisa melompat?** | **TIDAK PERNAH** — memalsukan jam nyata membunuh jiwa game ini | **YA** — lewat lompatan naratif (§4) |
 
 **Kenapa 56 hari (bukan 14, bukan 365):** satu siklus musim penuh = satu tahun yang
@@ -167,12 +168,43 @@ boleh dipicu **usia & peristiwa**, bukan kudeta.
 
 ---
 
-## 7. PERTANYAAN TERBUKA — butuh Direktur
+## 6b. PENUAAN PEMAIN — ✅ DIPUTUS (#165, P-AGE=a)
 
-1. **Laju 56 hari = 1 tahun kronik** — setuju? *(Alternatif: 28 hari = 2 musim → penuaan 2× lebih cepat, generasi tercapai tanpa lompatan tapi NPC menua di depan mata dalam hitungan bulan main.)* **Rekomendasi saya: 56.**
-2. **Tahun awal dunia** (`TAHUN_AWAL`) berapa? Ancient History menyebut era; angka tahun Era 1 belum pernah dikunci. **Rekomendasi: Era 1, Tahun 1 = saat pemain pertama membuat karakter** — dunia bertahun sejak **kau** hadir; itu Belonging.
-3. **Pemain ikut menua?** Kalau ya, karier pemain punya batas biologis (dan itu **bahan bakar** Legacy/pewarisan). Kalau tidak, pemain jadi satu-satunya makhluk abadi — **bertabrakan dengan LAW OF ERAS**. **Rekomendasi: YA, pemain menua** — tapi **hanya lewat lompatan**, tidak lewat drift 56-hari (supaya pemain kasual tak dihukum karena bermain lama).
-4. **Companion menua & mati?** D1 sudah memutuskan kematian companion **sebagai peristiwa**. Apakah **usia** boleh jadi salah satu sebab? **Rekomendasi: ya — tapi hanya di lompatan, dan selalu dengan adegan, tak pernah lewat notifikasi.**
-5. **Elf & lompatan generasi:** pemain elf praktis tak pernah menua melewati satu lompatan. Apakah pemain elf **kehilangan** akses konten pewarisan? **Rekomendasi: tidak — ia mewariskan lewat MURID, bukan anak.** *(Ini justru memperkuat L14: kesempatan, bukan darah.)*
-6. **Ras yang tak mewariskan lewat darah** (#86: "no race is monolithic") — mana saja? Butuh keputusan sebelum suksesi dikodekan.
-7. **Tabel §2 = kanon atau tuning?** Saya sarankan **data JSON** (bisa disetel) dengan ambang **kanon** (dewasa/prima/menua/sepuh) yang **tidak** boleh diubah diam-diam.
+> **Jam kronik menuakan NPC, kerajaan, dan dunia. Karakter PEMAIN hanya menua saat pemain
+> MEMILIH.**
+
+| | Aturan |
+|---|---|
+| **Pemicu penuaan pemain** | **HANYA**: lompatan peristiwa · pensiun (B3) · time-skip naratif |
+| **Drift 56-hari** | **TIDAK** berlaku pada pemain. Pemain 1.000 jam **tidak dihukum usia** |
+| **Sifatnya** | **keputusan naratif, bukan hukuman waktu** |
+| **Dunia?** | tetap menua di sekitarnya — **itulah harga yang terasa**: bukan tubuhmu yang menua, melainkan **orang-orang yang kau kenal** |
+
+*Catatan desain: konsekuensi emosional aturan ini justru lebih tajam daripada penuaan paksa.
+Pemain yang menolak melompat akan melihat dunia berjalan tanpanya — dan **itu** Loss & Continuation
+(LAW OF ERAS), bukan angka usia di lembar karakter.*
+
+---
+
+## 7. PERTANYAAN TERBUKA — sisa (butuh Direktur)
+
+*(Q1 laju 56 hari & Q3 penuaan pemain: **SUDAH DIPUTUS** #165 — dicoret dari daftar.)*
+
+1. **Tahun awal dunia** (`TAHUN_AWAL`) berapa? Angka tahun Era 1 belum pernah dikunci.
+   **Rekomendasi: Era 1 Tahun 1 = saat pemain membuat karakter** — dunia bertahun sejak **kau**
+   hadir. Itu Belonging.
+2. **Companion menua & mati?** D1 sudah mengunci kematian companion **sebagai peristiwa**.
+   Bolehkah **usia** jadi salah satu sebab? **Rekomendasi: ya — tapi HANYA di lompatan, dan
+   selalu dengan adegan, tak pernah lewat notifikasi.**
+3. **Elf & pewarisan:** pemain elf praktis tak pernah menua melewati satu lompatan. Apakah ia
+   kehilangan akses konten pewarisan? **Rekomendasi: tidak — ia mewariskan lewat MURID, bukan
+   anak.** Itu justru memperkuat L14 (kesempatan, bukan darah).
+4. **Ras yang tak mewariskan lewat darah** (#86 *"no race is monolithic"*) — mana saja? Harus
+   diputus **sebelum** suksesi dikodekan.
+5. **Tabel §2 = kanon atau tuning?** **Rekomendasi: data JSON (bisa disetel)**, dengan **ambang**
+   (dewasa/prima/menua/sepuh) yang **kanon** dan tak boleh diubah diam-diam.
+6. **BARU — lahir dari #165:** kalau pemain tak menua tapi **companion menua**, maka companion
+   bisa **menjadi tua di samping pemain yang tetap muda**. Apa yang terjadi pada companion yang
+   melampaui usia prima? **Rekomendasi: ia TIDAK dibuang — ia berpindah peran** (dari
+   bertarung → **mentor**, memberi *kesempatan* pada yang lebih muda, L14). *Companion yang
+   dipensiunkan diam-diam karena statnya turun = pengkhianatan terhadap L18.*

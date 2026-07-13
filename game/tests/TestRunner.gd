@@ -86,6 +86,7 @@ func _ready() -> void:
 	_test_dark_miracles()
 	_test_report06_regressions()
 	_test_softcap_exp()
+	_test_bilingual_content()
 	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
@@ -3500,3 +3501,40 @@ func _test_input_simulation() -> void:
 		ku.pressed = false
 		Input.parse_input_event(ku)
 		Input.flush_buffered_events()
+
+## LOKALISASI DUA JALUR (#166): UI lewat Loc.t(), KONTEN inline dwibahasa di data.
+func _test_bilingual_content() -> void:
+	print("[LOKALISASI DUA JALUR #166 — konten inline dwibahasa]")
+	var save_lang: String = Loc.language
+	# 1) string polos (konten lama) tetap jalan — migrasi boleh bertahap
+	check("string polos lama tetap terbaca", Loc.c("Kalimat lama") == "Kalimat lama")
+	# 2) dwibahasa penuh: mengikuti bahasa aktif
+	var entry := {"id": "Hujan lagi.", "en": "Rain again."}
+	Loc.language = "id"
+	check("bahasa ID → kalimat ID", Loc.c(entry) == "Hujan lagi.")
+	Loc.language = "en"
+	check("bahasa EN → kalimat EN", Loc.c(entry) == "Rain again.")
+	# 3) EN belum ditulis → FALLBACK ke ID (baris konten tak pernah hilang)
+	check("EN null → fallback ID (bukan layar kosong)",
+		Loc.c({"id": "Belum diterjemahkan.", "en": null}) == "Belum diterjemahkan.")
+	check("EN string kosong → fallback ID juga",
+		Loc.c({"id": "Belum diterjemahkan.", "en": ""}) == "Belum diterjemahkan.")
+	# 4) parameter tetap didukung seperti Loc.t()
+	check("konten berparameter", Loc.c({"id": "Kau berutang %d G.", "en": "You owe %d G."}, [50])
+		== "You owe 50 G.")
+	Loc.language = save_lang
+	check("daftar konten → daftar string bahasa aktif",
+		Loc.c_all(["A", {"id": "B", "en": "B2"}]).size() == 2)
+	# 5) gerbang pipeline (#162): teks BARU wajib lahir lengkap dua bahasa
+	check("c_bilingual: entri lengkap = lolos", Loc.c_bilingual(entry))
+	check("c_bilingual: EN kosong = DITOLAK", not Loc.c_bilingual({"id": "x", "en": null}))
+	check("c_bilingual: string polos = DITOLAK (bukan teks baru yang sah)",
+		not Loc.c_bilingual("cuma ID"))
+	# 6) konten lama masih utuh & terbaca lewat jalur ini (tak ada NPC bisu)
+	var lines_ok := true
+	for town in Db.town_npcs.keys():
+		for npc in Db.town_npcs[town]:
+			for l in npc.get("lines", []):
+				if Loc.c(l).strip_edges() == "":
+					lines_ok = false
+	check("semua baris NPC lama tetap punya teks lewat Loc.c()", lines_ok)

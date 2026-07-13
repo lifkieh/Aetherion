@@ -238,6 +238,23 @@ bencana/keajaiban & gosip.
 **Konsekuensi praktis:** apa pun yang keluar dari pipeline harus **bisa dibaca, direview,
 di-diff, dites, dan DIHAPUS bila salah.** Kalau tidak keempatnya — belum siap di-commit.
 
+## LOKALISASI DUA JALUR (#166 — amandemen sadar atas aturan lama)
+
+Aturan lama *"semua teks baru lewat `Loc.t()`"* **tidak pernah berlaku untuk teks konten** —
+dialog NPC, rumor, dan gosip **selalu** inline di `data/*.json`. Deviasi itu kini **diakui &
+dijadikan arsitektur resmi**, bukan dibiarkan jadi kebiasaan tak tertulis:
+
+| Jenis teks | Tempat | Pintu |
+|---|---|---|
+| **UI / SISTEM** (tombol, toast, label, pesan) | `translations/id.json` + `en.json` | **`Loc.t("key")`** |
+| **KONTEN** (dialog NPC, rumor, gosip, flavor, teks quest) | **inline dwibahasa di `data/*.json`** | **`Loc.c(entry)`** |
+
+Bentuk konten: `{"id": "...", "en": "..."}`. **Teks BARU wajib lahir lengkap dua bahasa.**
+Konten lama boleh menyusul (`"en": null` → **fallback ke ID**; sebuah baris tak pernah hilang
+hanya karena terjemahannya belum ada). Migrasi konten lama = bagian pipeline v0.5.
+**Alasannya:** ~4.000 baris pipeline (#162) hanya bisa **benar-benar direview** kalau penulis
+melihat kedua bahasa **bersebelahan** dan diff-nya terbaca.
+
 ## HUKUM TEST (#151, diperluas Designer #158)
 
 > **Test wajib masuk lewat PINTU YANG DIPAKAI PEMAIN.**

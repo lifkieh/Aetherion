@@ -66,6 +66,51 @@ func t(key: String, args: Array = []) -> String:
 		return v
 	return v % args
 
+# --- LOKALISASI DUA JALUR (Decision Log #166) -------------------------------
+## **UI/SISTEM** → `Loc.t("key")` (translations/*.json).
+## **KONTEN** (dialog NPC, rumor, gosip, flavor, teks quest) → **inline dwibahasa
+## di `data/*.json`** — penulis & reviewer melihat kedua bahasa BERSEBELAHAN, dan
+## diff-nya terbaca. Itu satu-satunya cara ~4.000 baris pipeline (#162) bisa
+## benar-benar direview manusia.
+##
+## Bentuk yang diterima `c()` — ketiganya sah, supaya migrasi bertahap:
+##     "Kalimat lama"                            → string polos (konten lama, ID)
+##     {"id": "Halo.", "en": "Hello."}           → dwibahasa penuh (WAJIB untuk teks BARU)
+##     {"id": "Halo.", "en": null}               → EN belum ditulis → fallback ke ID
+##
+## Fallback SELALU ke ID. Sebuah baris konten tak pernah boleh hilang hanya karena
+## terjemahannya belum ada — pemain EN melihat kalimat Indonesia, bukan layar kosong.
+func c(entry, args: Array = []) -> String:
+	var v := ""
+	if entry is Dictionary:
+		var raw = entry.get(language, null)
+		if raw == null or str(raw) == "":
+			raw = entry.get("id", "")
+		v = str(raw)
+	elif entry != null:
+		v = str(entry)
+	if v == "" or args.is_empty():
+		return v
+	return v % args
+
+## Daftar konten dwibahasa → daftar string bahasa aktif (mis. `lines` sebuah NPC).
+func c_all(entries: Array) -> Array:
+	var out: Array = []
+	for e in entries:
+		out.append(c(e))
+	return out
+
+## Apakah entri konten sudah lengkap dua bahasa? (dipakai test pipeline #162:
+## teks BARU wajib lahir lengkap keduanya; konten lama boleh menyusul.)
+func c_bilingual(entry) -> bool:
+	if not (entry is Dictionary):
+		return false
+	for l in LANGS:
+		var v = entry.get(l, null)
+		if v == null or str(v).strip_edges() == "":
+			return false
+	return true
+
 ## Apakah key ada (dipakai test kelengkapan terjemahan).
 func has(key: String, lang: String = "") -> bool:
 	var l := lang if lang != "" else language

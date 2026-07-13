@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **REPORT-06 DIEKSEKUSI SEBAGIAN — menunggu review C/D oleh Direktur + playtest gamepad owner**
+**Last update:** 2026-07-14 — **MENUNGGU SIDANG C/D + PLAYTEST GAMEPAD OWNER**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -15,7 +15,14 @@
 >   ditandai `[LEGACY-SHALLOW]`. **872 test lulus, 0 gagal.**
 > - **DAFTAR DILINDUNGI** (#159) masuk CLAUDE.md.
 >
-> ### 🔴 MENUNGGU DIREKTUR (jangan dieksekusi)
+> ### 🟢 PUTUSAN TERBARU (#161–#167)
+> **Runtime LLM di dalam game = DITOLAK** untuk v1.0 (#161); **design-time NPC Depth Pipeline
+> = RESMI** (#162, 8 tag konteks, gerbang: kanon → test rahasia → review → commit).
+> **P-AGE=a** (#165): jam kronik **56 hari = 1 tahun**; **pemain menua HANYA lewat lompatan** —
+> pemain 1.000 jam tidak dihukum usia. **Lokalisasi dua jalur** (#166): konten = inline
+> dwibahasa di data (`Loc.c()`), UI = tetap `Loc.t()`. **883 test lulus, 0 gagal.**
+>
+> ### 🔴 MENUNGGU SIDANG DIREKTUR + DESIGNER (jangan dieksekusi)
 > **REPORT-06 §C1** (gating lokasi pohon skill #116) · **§C2** (keberatan gerbang Lv60 #101) ·
 > **15 butir §D**. Dan: **playtest gamepad oleh owner** — tiga bug fatal lolos 822 test; hanya
 > tangan manusia yang menemukan hal seperti itu.
@@ -71,7 +78,7 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**872/872 tests, 0 failed** (per 2026-07-14), 0 headless errors. **30 autoloads. 5 wilayah overworld + dungeon
+**883/883 tests, 0 failed** (per 2026-07-14), 0 headless errors. **30 autoloads. 5 wilayah overworld + dungeon
 side-view, 60 monster, 3 Hidden Scenario.** Versi terakhir selesai: **v0.4.4**.
 *(Angka lama "153/153 tests · 18 autoloads · 31 monsters" adalah status FASE 0 — dikoreksi #158: tidak boleh
 ada baris status yang tak bisa dibuktikan kode/test.)* Terraria-style dungeon combat +
