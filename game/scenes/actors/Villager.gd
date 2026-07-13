@@ -14,6 +14,9 @@ var _sprite: AnimatedSprite2D
 var _label: Label
 var _persona: Dictionary = {}    # NPC berkepribadian (Hukum NPC Aneh, E6 #78)
 var _line_idx := 0               # dialog persona bergilir, bukan acak
+var _home := Vector2.ZERO        # jangkar jadwal (JADWAL NPC, #97)
+var _slot := ""                  # slot waktu terakhir yang diterapkan
+var _sched_cd := 0.0
 
 func setup(nm: String, config: Dictionary, waypoints: Array) -> void:
 	_name = nm
@@ -34,6 +37,9 @@ func _ready() -> void:
 	add_to_group("villagers")
 	if not _persona.is_empty():
 		add_to_group("town_folk")
+	if _home == Vector2.ZERO and not _waypoints.is_empty():
+		_home = _waypoints[0]
+	_apply_schedule(true)
 	collision_layer = 0
 	collision_mask = 0
 	_build()
@@ -60,6 +66,11 @@ func _build() -> void:
 
 func _physics_process(delta: float) -> void:
 	z_index = int(global_position.y)
+	# JADWAL (#97): cek slot waktu tiap 2 detik — murah
+	_sched_cd -= delta
+	if _sched_cd <= 0.0:
+		_sched_cd = 2.0
+		_apply_schedule(false)
 	var p := get_tree().get_first_node_in_group("player")
 	if p and _label:
 		_label.visible = global_position.distance_to(p.global_position) < 60.0
@@ -83,6 +94,29 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_sprite.play("walk_" + SheetUtil.dir_from_vec(velocity))
 
+## Pindah ke pos jadwal slot ini. Kalau pemain MELIHAT → berjalan (waypoint baru);
+## kalau tidak → teleport (murah; dunia tak perlu membuktikan diri saat tak ditonton).
+func _apply_schedule(force: bool) -> void:
+	if _persona.is_empty():
+		return
+	var slot := NpcSchedule.slot()
+	if slot == _slot and not force:
+		return
+	_slot = slot
+	var post := NpcSchedule.post_for(_persona, _home)
+	if post.is_empty():
+		return
+	var target: Vector2 = post.pos
+	var p := get_tree().get_first_node_in_group("player")
+	var seen: bool = p != null and global_position.distance_to(p.global_position) < NpcSchedule.SEE_RADIUS
+	if seen and is_inside_tree():
+		_waypoints = [target, target + Vector2(24, 12)]   # berjalan ke pos barunya
+		_wp = 0
+	else:
+		global_position = target                          # tak dilihat: pindah saja
+		_waypoints = [target, target + Vector2(24, 12)]
+		_wp = 0
+
 func interact() -> void:
 	if Stage.is_busy():
 		return
@@ -99,6 +133,17 @@ func persona_line() -> String:
 	var lines: Array = _persona.get("lines", [])
 	if lines.is_empty():
 		return "..."
+	# kota sedang membicarakan sebuah pencapaian? itu lebih hangat daripada gosip biasa
+	var talk := Chronicle.town_talk()
+	if talk != "" and randf() < 0.2:
+		return "Semua orang membicarakannya: %s. Kau dengar juga, kan?" % talk
+	# 1 dari 5: sapaan sesuai SLOT WAKTU + apa yang sedang ia kerjakan (#97)
+	if randf() < 0.2:
+		var post := NpcSchedule.post_for(_persona, _home)
+		var doing: String = post.get("activity", "")
+		if doing != "":
+			return "%s (Ia sedang %s.)" % [NpcSchedule.greeting(), doing]
+		return NpcSchedule.greeting()
 	# 1 dari 4 giliran: warga ini menggosipkan sesuatu — mungkin keliru
 	if randf() < 0.25:
 		var r := RumorSystem.speak()

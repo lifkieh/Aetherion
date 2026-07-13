@@ -74,6 +74,7 @@ func _ready() -> void:
 	await _test_cutscene_engine()
 	_test_forest_spirit()
 	_test_chronicle()
+	await _test_npc_schedule()
 	_test_opening()
 	_test_save_modern()
 	_test_equipment()
@@ -2795,3 +2796,51 @@ func _test_chronicle() -> void:
 	WorldState.from_save(ws)
 	check("chronicle pulih setelah load", Chronicle.has("boss:king_slime"))
 	WorldState.chronicle = save
+
+
+func _test_npc_schedule() -> void:
+	print("[Jadwal NPC v0.4.3 #3]")
+	check("tiga slot waktu", NpcSchedule.SLOTS == ["pagi", "sore", "malam"])
+	var sl := NpcSchedule.slot()
+	check("slot sekarang sah", sl in NpcSchedule.SLOTS, sl)
+	check("sapaan kontekstual per slot tak kosong", NpcSchedule.greeting().length() > 5)
+	# semua 25 NPC punya jadwal 3 slot lengkap dengan posisi & aktivitas
+	var missing := 0
+	var no_activity := 0
+	for town in Db.town_npcs.keys():
+		for p in Db.town_npcs[town]:
+			var sch: Dictionary = p.get("schedule", {})
+			for s2 in NpcSchedule.SLOTS:
+				if not sch.has(s2):
+					missing += 1
+				elif str(sch[s2].get("do", "")) == "":
+					no_activity += 1
+	check("semua NPC punya 3 slot jadwal", missing == 0, "%d slot hilang" % missing)
+	check("tiap slot punya aktivitas (bukan cuma posisi)", no_activity == 0)
+	# posisi berbeda antar slot (NPC benar-benar berpindah)
+	var persona: Dictionary = TownFolk.personas("greenvale")[0]
+	var home := Vector2(500, 500)
+	var posts := {}
+	for s3 in NpcSchedule.SLOTS:
+		var sd: Dictionary = persona.get("schedule", {}).get(s3, {})
+		var at: Array = sd.get("at", [0, 0])
+		posts[s3] = Vector2(float(at[0]), float(at[1]))
+	check("posisi tiap slot berbeda", posts["pagi"] != posts["sore"] and posts["sore"] != posts["malam"])
+	var post := NpcSchedule.post_for(persona, home)
+	check("post_for menghitung dari jangkar rumah", post.has("pos") and post.pos != home)
+	# pintu rumah terkunci larut malam
+	var h := GameClock.wib_hour()
+	check("aturan kunci pintu = 22:00-05:00", NpcSchedule.doors_locked() == (h >= 22 or h < 5))
+	# villager benar-benar pindah saat slot berganti (tak dilihat = teleport murah)
+	var v = preload("res://scenes/actors/Villager.tscn").instantiate()
+	add_child(v)
+	v.setup(persona.get("name", "x"), persona.get("config", {}), [home, home + Vector2(10, 0)])
+	v.set("_home", home)
+	v.set_persona(persona)
+	await get_tree().process_frame
+	v.set("_slot", "")
+	v._apply_schedule(false)
+	var moved: Vector2 = v.global_position
+	check("NPC menempati pos jadwal slot ini", moved.distance_to(NpcSchedule.post_for(persona, home).pos) < 40.0,
+		"%s vs %s" % [moved, NpcSchedule.post_for(persona, home).pos])
+	v.queue_free()

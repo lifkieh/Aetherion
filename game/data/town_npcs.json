@@ -1,167 +1,1067 @@
 {
-  "greenvale": [
-    {"name": "Kakek Warno", "archetype": "aneh", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "short", "hair_color": "#e8e2f4", "shirt": "#5c4a3a", "pants": "#3a2a1a"},
-     "lines": [
-       "Tiga puluh tahun aku memancing ikan yang bisa bicara. Belum ketemu.",
-       "Sekali ia menjawabku. Aku bertanya 'kau ada?' dan air berkata 'ya'. Cuma sekali.",
-       "Orang bilang aku gila. Orang juga bilang laut tak punya dasar. Dua-duanya belum dibuktikan.",
-       "Kalau kau lihat ikan yang menatapmu terlalu lama — jangan makan. Ajak bicara."]},
-    {"name": "Ibu Larasati", "archetype": "misterius", "oddwalker": true,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "long", "hair_color": "#241f36", "shirt": "#5c2380", "pants": "#453d5c"},
-     "lines": [
-       "Kau datang dari langit, bukan? Jangan kaget. Punggungmu masih berdebu bintang.",
-       "Aku menghitung orang yang lewat desa ini. Kau nomor seribu. Angka bagus. Angka menakutkan.",
-       "Suatu hari kau akan menanyakan sesuatu padaku dan aku akan menjawabnya. Bukan hari ini.",
-       "Tidurlah nyenyak. Yang menunggu tak keberatan menunggu sedikit lagi."]},
-    {"name": "Pak Sukro", "archetype": "lucu", "oddwalker": false,
-     "config": {"head_race": "human2", "torso_race": "human2", "legs_race": "human2", "hair": "short", "hair_color": "#3a2a1a", "shirt": "#c9a227", "pants": "#2b2b3a"},
-     "lines": [
-       "Aku jual pedang. Tidak punya pedang. Tapi aku jual. Ini soal semangat.",
-       "Istriku bilang aku tak berguna. Aku bilang aku hiasan. Kami berdua benar.",
-       "Kau kelihatan kuat! Mau kupinjam sepuluh gold? Bukan pinjam. Kado. Untukku.",
-       "Kalau kau mati, boleh kuambil sepatumu? Bercanda. Setengah bercanda."]},
-    {"name": "Nyai Tuminah", "archetype": "tragis", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "long", "hair_color": "#b0b0c0", "shirt": "#3a3a4a", "pants": "#2b2b3a"},
-     "lines": [
-       "Anakku pergi ke gua itu. Lima musim lalu. Aku masih masak dua porsi.",
-       "Jangan bilang 'ia pasti kembali'. Semua bilang begitu. Tak satu pun benar.",
-       "Kalau kau turun ke bawah sana... namanya Ardi. Dia takut gelap.",
-       "Aku tak ingin kau berjanji. Janji itu berat. Cukup ingat namanya."]},
-    {"name": "Si Gondrong", "archetype": "tak_masuk_akal", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "long", "hair_color": "#8f2611", "shirt": "#2e6b3f", "pants": "#6b4226"},
-     "lines": [
-       "Aku mengumpulkan sendok. Dua ratus empat puluh satu. Tak satu pun kupakai makan.",
-       "Sendok itu ingatan yang dipipihkan. Kau tak paham. Tak apa. Aku juga tidak.",
-       "Kalau kau menemukan sendok berukir bulan, itu milikku. Sudah milikku. Sejak sebelum dibuat.",
-       "Jangan beri aku garpu. Garpu itu sendok yang marah."]}
-  ],
-  "frostpeak_village": [
-    {"name": "Bibi Anka", "archetype": "aneh", "oddwalker": false,
-     "config": {"head_race": "frostkin", "torso_race": "frostkin", "legs_race": "frostkin", "hair": "long", "hair_color": "#b8e4f2", "shirt": "#3a6fa0", "pants": "#1e3a5c"},
-     "lines": [
-       "Aku bicara pada salju. Salju menjawab dengan diam. Itu jawaban yang jujur.",
-       "Setiap kepingan salju punya nama. Aku hafal empat. Sisanya menolak berkenalan.",
-       "Kalau kau mendengar salju berderak dua kali, jangan menoleh. Itu bukan salju."]},
-    {"name": "Orang Tanpa Mantel", "archetype": "misterius", "oddwalker": true,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "none", "hair_color": "#e8e2f4", "shirt": "#2b2b3a", "pants": "#2b2b3a"},
-     "lines": [
-       "Dingin? Aku tak merasa dingin sejak lama. Sejak sesuatu di dalamku padam.",
-       "Kau sedang mencari sesuatu. Semua yang naik ke sini mencari sesuatu. Sedikit yang tahu apa.",
-       "Puncak itu bukan tujuan. Puncak itu pertanyaan. Naiklah kalau kau siap ditanyai."]},
-    {"name": "Grim si Wolfkin", "archetype": "lucu", "oddwalker": false,
-     "config": {"head_race": "wolfkin", "torso_race": "wolfkin", "legs_race": "wolfkin", "hair": "none", "hair_color": "#241f36", "shirt": "#8f2611", "pants": "#453d5c"},
-     "lines": [
-       "Aku melolong tiap purnama. Bukan naluri. Tetangga sebelah benci itu. Itu alasannya.",
-       "Kata orang wolfkin pelacak ulung. Aku tersesat di rumahku sendiri kemarin.",
-       "Mau kutunjukkan jalan ke puncak? Jangan. Sungguh, jangan mau."]},
-    {"name": "Pendaki Tua Baruk", "archetype": "tragis", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "short", "hair_color": "#b0b0c0", "shirt": "#453d5c", "pants": "#2b2b3a"},
-     "lines": [
-       "Empat orang naik. Satu turun. Aku yang turun. Itu bukan keberuntungan, itu hukuman.",
-       "Aku masih menyimpan tali mereka. Tak sanggup kubuang. Tak sanggup kupakai.",
-       "Kalau kau naik, jangan tinggalkan siapa pun. Bahkan yang menyuruhmu pergi."]},
-    {"name": "Nenek Es", "archetype": "tak_masuk_akal", "oddwalker": false,
-     "config": {"head_race": "frostkin", "torso_race": "frostkin", "legs_race": "frostkin", "hair": "bun", "hair_color": "#eefaff", "shirt": "#1e3a5c", "pants": "#3a6fa0"},
-     "lines": [
-       "Bulan marah padaku. Sudah dua puluh tahun. Aku tak tahu salahku apa.",
-       "Tiap purnama ia menatap tepat ke jendelaku. Ke JENDELAKU. Coba lihat sendiri.",
-       "Aku sudah minta maaf. Ke langit. Keras-keras. Tetangga yang marah sekarang."]}
-  ],
-  "candyveil_palace": [
-    {"name": "Tuan Karamel", "archetype": "aneh", "oddwalker": false,
-     "config": {"head_race": "candyfolk", "torso_race": "candyfolk", "legs_race": "candyfolk", "hair": "short", "hair_color": "#f7c6d9", "shirt": "#8a3a6b", "pants": "#5c2380"},
-     "lines": [
-       "Aku menjilat tembok istana tiap pagi. Untuk memastikan rasanya belum berubah.",
-       "Hari ini rasanya sedikit... asin. Itu tak pernah terjadi sebelumnya.",
-       "Kalau tembok mulai asin, sesuatu di dalam istana sedang menangis."]},
-    {"name": "Gadis Bergula", "archetype": "misterius", "oddwalker": false,
-     "config": {"head_race": "candyfolk", "torso_race": "candyfolk", "legs_race": "candyfolk", "hair": "long", "hair_color": "#ffd9ec", "shirt": "#c9a227", "pants": "#8a3a6b"},
-     "lines": [
-       "Ratu tersenyum pada semua orang. Ia tersenyum juga saat sendirian. Di kegelapan.",
-       "Undangan pesta teh datang sendiri. Kau tak mencarinya. Ia yang mencium bau manis dirimu.",
-       "Jangan habiskan cangkirmu sampai dasar. Di dasar ada namamu."]},
-    {"name": "Bocah Lolipop", "archetype": "lucu", "oddwalker": false,
-     "config": {"head_race": "candyfolk", "torso_race": "candyfolk", "legs_race": "candyfolk", "hair": "spiky", "hair_color": "#7de0d0", "shirt": "#2e6b3f", "pants": "#453d5c"},
-     "lines": [
-       "Aku makan diriku sendiri waktu kecil. Jari kelingking. Enak. Tak kusesali.",
-       "Kau mau gigit lenganku? Semua orang mau. Jawabannya tetap tidak.",
-       "Ayahku sirup. Ibuku sirup. Aku... aku sedang mencari tahu."]},
-    {"name": "Pembuat Kue Tanpa Nama", "archetype": "tragis", "oddwalker": false,
-     "config": {"head_race": "candyfolk", "torso_race": "human", "legs_race": "candyfolk", "hair": "short", "hair_color": "#b0b0c0", "shirt": "#5c4a3a", "pants": "#3a2a1a"},
-     "lines": [
-       "Aku membuat kue untuk pesta teh setiap tahun. Tamunya tak pernah pulang.",
-       "Aku tak boleh berhenti membuatnya. Kalau berhenti... aku yang jadi hidangan.",
-       "Cicipi kueku. Tolong. Biar ada satu orang yang memilih memakannya."]},
-    {"name": "Si Terbalik", "archetype": "tak_masuk_akal", "oddwalker": false,
-     "config": {"head_race": "candyfolk", "torso_race": "candyfolk", "legs_race": "candyfolk", "hair": "long", "hair_color": "#ff9db8", "shirt": "#3a6fa0", "pants": "#c9a227"},
-     "lines": [
-       "Aku hanya berjalan mundur. Ke depan sudah pernah. Membosankan.",
-       "Mundur itu jujur: kau melihat apa yang kau tinggalkan, bukan yang kau bayangkan.",
-       "Suatu hari aku akan mundur cukup jauh sampai bertemu diriku yang dulu. Kami tak akan saling sapa."]}
-  ],
-  "desert_ruins": [
-    {"name": "Penggali Rahim", "archetype": "aneh", "oddwalker": false,
-     "config": {"head_race": "lizardkin", "torso_race": "lizardkin", "legs_race": "lizardkin", "hair": "none", "hair_color": "#6b8f3a", "shirt": "#c9a227", "pants": "#5c4a3a"},
-     "lines": [
-       "Aku menggali bukan untuk emas. Aku menggali untuk mendengar pasir berhenti bicara.",
-       "Di bawah sana ada ruangan yang lebih tua dari kata 'tua'.",
-       "Jangan sebut namamu keras-keras di reruntuhan. Ada yang mengoleksi nama."]},
-    {"name": "Yang Menunggu", "archetype": "misterius", "oddwalker": true,
-     "config": {"head_race": "undead", "torso_race": "undead", "legs_race": "undead", "hair": "none", "hair_color": "#b0b0c0", "shirt": "#3a3a4a", "pants": "#2b2b3a"},
-     "lines": [
-       "Aku menunggu. Sudah lama. Kau bukan yang kutunggu — tapi kau mendekati bentuknya.",
-       "Kami banyak. Kami tersebar. Kami tidak berkumpul. Belum.",
-       "Kalau ia bertanya siapa yang memberitahumu, katakan: tak ada siapa-siapa."]},
-    {"name": "Saudagar Kehausan", "archetype": "lucu", "oddwalker": false,
-     "config": {"head_race": "human2", "torso_race": "human2", "legs_race": "human2", "hair": "short", "hair_color": "#241f36", "shirt": "#8f2611", "pants": "#5c4a3a"},
-     "lines": [
-       "Kujual pasir. Di gurun. Ya, aku tahu. Modalnya nol, untungnya juga.",
-       "Pelangganku satu: dia beli karena kasihan. Dia sekarang kaya. Aku tetap begini.",
-       "Mau beli pasir? Kubungkus rapi. Ada pitanya."]},
-    {"name": "Janda Sungai Kering", "archetype": "tragis", "oddwalker": false,
-     "config": {"head_race": "human2", "torso_race": "human2", "legs_race": "human2", "hair": "long", "hair_color": "#3a2a1a", "shirt": "#5c4a3a", "pants": "#453d5c"},
-     "lines": [
-       "Dulu ada sungai di sini. Suamiku belajar berenang untukku. Sungainya pergi duluan.",
-       "Aku masih menjemur baju menghadap arah air. Kebiasaan itu lebih keras kepala dari aku.",
-       "Kalau kau menemukan air di bawah reruntuhan — jangan minum semua. Sisakan untuk yang pulang."]},
-    {"name": "Penghitung Bayangan", "archetype": "tak_masuk_akal", "oddwalker": false,
-     "config": {"head_race": "lizardkin", "torso_race": "human", "legs_race": "lizardkin", "hair": "spiky", "hair_color": "#6b8f3a", "shirt": "#453d5c", "pants": "#2b2b3a"},
-     "lines": [
-       "Aku menghitung bayangan, bukan orang. Bayangan lebih jujur soal jumlahnya.",
-       "Hari ini ada satu bayangan lebih banyak daripada orang di alun-alun. Sudah tiga hari begitu.",
-       "Bayanganmu... berdiri sedikit terlalu tegak. Tak apa. Aku tak akan bilang siapa-siapa."]}
-  ],
-  "storm_island": [
-    {"name": "Pelaut Tuli", "archetype": "aneh", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "short", "hair_color": "#b0b0c0", "shirt": "#1e3a5c", "pants": "#2b2b3a"},
-     "lines": [
-       "Petir merenggut pendengaranku. Sebagai gantinya aku bisa MERASAKAN guruh.",
-       "Guruh hari ini bilang: ada yang datang dari jauh. Itu kau, ya?",
-       "Langit tak pernah berbohong. Ia cuma sering tak diajak bicara."]},
-    {"name": "Penjaga Menara Tanpa Kunci", "archetype": "misterius", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "long", "hair_color": "#3a6fa0", "shirt": "#5c2380", "pants": "#453d5c"},
-     "lines": [
-       "Menara ini tak pernah kukunci. Yang pantas masuk akan masuk. Sisanya tersesat di tangga.",
-       "Ada yang naik dan tak pernah turun. Aku tak menghitung mereka sebagai hilang.",
-       "Petir bukan hukuman. Petir itu jawaban atas pertanyaan yang tak sempat kau ucapkan."]},
-    {"name": "Bocah Layangan", "archetype": "lucu", "oddwalker": false,
-     "config": {"head_race": "human2", "torso_race": "human2", "legs_race": "human2", "hair": "spiky", "hair_color": "#241f36", "shirt": "#2e6b3f", "pants": "#6b4226"},
-     "lines": [
-       "Aku main layangan saat badai. Sekali. Rambutku masih begini sampai sekarang.",
-       "Kata ibu, aku tak boleh menyentuh logam waktu hujan. Aku tak sengaja jadi logam.",
-       "Kalau kau lihat layangan tanpa benang di langit — itu punyaku. Sampaikan salamku."]},
-    {"name": "Ibu Karam", "archetype": "tragis", "oddwalker": false,
-     "config": {"head_race": "human", "torso_race": "human", "legs_race": "human", "hair": "bun", "hair_color": "#3a2a1a", "shirt": "#3a3a4a", "pants": "#453d5c"},
-     "lines": [
-       "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
-       "Aku menyalakan lentera tiap malam. Bukan agar mereka pulang. Agar aku punya alasan bangun.",
-       "Kau pelaut? Bukan? Bagus. Tetaplah begitu."]},
-    {"name": "Si Penantang Petir", "archetype": "tak_masuk_akal", "oddwalker": false,
-     "config": {"head_race": "human2", "torso_race": "human2", "legs_race": "human2", "hair": "long", "hair_color": "#8f2611", "shirt": "#c9a227", "pants": "#2b2b3a"},
-     "lines": [
-       "Aku menantang petir berkelahi. Setiap badai. Sejauh ini seri: nol-nol.",
-       "Ia belum berani menyambarku. Itu artinya ia takut. Jelas sekali.",
-       "Kalau suatu hari aku tak ada di sini — berarti pertandingannya sudah selesai. Jangan tanya siapa menang."]}
-  ]
+ "greenvale": [
+  {
+   "name": "Kakek Warno",
+   "archetype": "aneh",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#e8e2f4",
+    "shirt": "#5c4a3a",
+    "pants": "#3a2a1a"
+   },
+   "lines": [
+    "Tiga puluh tahun aku memancing ikan yang bisa bicara. Belum ketemu.",
+    "Sekali ia menjawabku. Aku bertanya 'kau ada?' dan air berkata 'ya'. Cuma sekali.",
+    "Orang bilang aku gila. Orang juga bilang laut tak punya dasar. Dua-duanya belum dibuktikan.",
+    "Kalau kau lihat ikan yang menatapmu terlalu lama — jangan makan. Ajak bicara."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -40,
+      -30
+     ],
+     "do": "berdiri di tepi air, menunggu ikan menjawab"
+    },
+    "sore": {
+     "at": [
+      30,
+      20
+     ],
+     "do": "mengamati sesuatu yang tak terlihat"
+    },
+    "malam": {
+     "at": [
+      -10,
+      60
+     ],
+     "do": "duduk di bawah lampu, bicara sendiri"
+    }
+   }
+  },
+  {
+   "name": "Ibu Larasati",
+   "archetype": "misterius",
+   "oddwalker": true,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "long",
+    "hair_color": "#241f36",
+    "shirt": "#5c2380",
+    "pants": "#453d5c"
+   },
+   "lines": [
+    "Kau datang dari langit, bukan? Jangan kaget. Punggungmu masih berdebu bintang.",
+    "Aku menghitung orang yang lewat desa ini. Kau nomor seribu. Angka bagus. Angka menakutkan.",
+    "Suatu hari kau akan menanyakan sesuatu padaku dan aku akan menjawabnya. Bukan hari ini.",
+    "Tidurlah nyenyak. Yang menunggu tak keberatan menunggu sedikit lagi."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      60,
+      10
+     ],
+     "do": "menghitung orang yang lewat"
+    },
+    "sore": {
+     "at": [
+      -50,
+      40
+     ],
+     "do": "berdiri diam terlalu lama"
+    },
+    "malam": {
+     "at": [
+      0,
+      -50
+     ],
+     "do": "menatap langit, tak berkedip"
+    }
+   }
+  },
+  {
+   "name": "Pak Sukro",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human2",
+    "torso_race": "human2",
+    "legs_race": "human2",
+    "hair": "short",
+    "hair_color": "#3a2a1a",
+    "shirt": "#c9a227",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Aku jual pedang. Tidak punya pedang. Tapi aku jual. Ini soal semangat.",
+    "Istriku bilang aku tak berguna. Aku bilang aku hiasan. Kami berdua benar.",
+    "Kau kelihatan kuat! Mau kupinjam sepuluh gold? Bukan pinjam. Kado. Untukku.",
+    "Kalau kau mati, boleh kuambil sepatumu? Bercanda. Setengah bercanda."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      20,
+      40
+     ],
+     "do": "menawarkan barang yang tak ia miliki"
+    },
+    "sore": {
+     "at": [
+      -60,
+      0
+     ],
+     "do": "mengganggu pedagang"
+    },
+    "malam": {
+     "at": [
+      40,
+      50
+     ],
+     "do": "pulang sambil bernyanyi fals"
+    }
+   }
+  },
+  {
+   "name": "Nyai Tuminah",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "long",
+    "hair_color": "#b0b0c0",
+    "shirt": "#3a3a4a",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Anakku pergi ke gua itu. Lima musim lalu. Aku masih masak dua porsi.",
+    "Jangan bilang 'ia pasti kembali'. Semua bilang begitu. Tak satu pun benar.",
+    "Kalau kau turun ke bawah sana... namanya Ardi. Dia takut gelap.",
+    "Aku tak ingin kau berjanji. Janji itu berat. Cukup ingat namanya."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -30,
+      50
+     ],
+     "do": "menjemur dua porsi pakaian"
+    },
+    "sore": {
+     "at": [
+      -70,
+      -20
+     ],
+     "do": "menatap arah gua/gunung"
+    },
+    "malam": {
+     "at": [
+      -20,
+      30
+     ],
+     "do": "menyalakan lentera untuk yang tak pulang"
+    }
+   }
+  },
+  {
+   "name": "Si Gondrong",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "long",
+    "hair_color": "#8f2611",
+    "shirt": "#2e6b3f",
+    "pants": "#6b4226"
+   },
+   "lines": [
+    "Aku mengumpulkan sendok. Dua ratus empat puluh satu. Tak satu pun kupakai makan.",
+    "Sendok itu ingatan yang dipipihkan. Kau tak paham. Tak apa. Aku juga tidak.",
+    "Kalau kau menemukan sendok berukir bulan, itu milikku. Sudah milikku. Sejak sebelum dibuat.",
+    "Jangan beri aku garpu. Garpu itu sendok yang marah."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      50,
+      -40
+     ],
+     "do": "menyusun benda dengan urutan rahasia"
+    },
+    "sore": {
+     "at": [
+      10,
+      10
+     ],
+     "do": "berjalan mundur mengelilingi alun-alun"
+    },
+    "malam": {
+     "at": [
+      -45,
+      -35
+     ],
+     "do": "berdebat dengan bulan"
+    }
+   }
+  }
+ ],
+ "frostpeak_village": [
+  {
+   "name": "Bibi Anka",
+   "archetype": "aneh",
+   "oddwalker": false,
+   "config": {
+    "head_race": "frostkin",
+    "torso_race": "frostkin",
+    "legs_race": "frostkin",
+    "hair": "long",
+    "hair_color": "#b8e4f2",
+    "shirt": "#3a6fa0",
+    "pants": "#1e3a5c"
+   },
+   "lines": [
+    "Aku bicara pada salju. Salju menjawab dengan diam. Itu jawaban yang jujur.",
+    "Setiap kepingan salju punya nama. Aku hafal empat. Sisanya menolak berkenalan.",
+    "Kalau kau mendengar salju berderak dua kali, jangan menoleh. Itu bukan salju."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -40,
+      -30
+     ],
+     "do": "berdiri di tepi air, menunggu ikan menjawab"
+    },
+    "sore": {
+     "at": [
+      30,
+      20
+     ],
+     "do": "mengamati sesuatu yang tak terlihat"
+    },
+    "malam": {
+     "at": [
+      -10,
+      60
+     ],
+     "do": "duduk di bawah lampu, bicara sendiri"
+    }
+   }
+  },
+  {
+   "name": "Orang Tanpa Mantel",
+   "archetype": "misterius",
+   "oddwalker": true,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "none",
+    "hair_color": "#e8e2f4",
+    "shirt": "#2b2b3a",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Dingin? Aku tak merasa dingin sejak lama. Sejak sesuatu di dalamku padam.",
+    "Kau sedang mencari sesuatu. Semua yang naik ke sini mencari sesuatu. Sedikit yang tahu apa.",
+    "Puncak itu bukan tujuan. Puncak itu pertanyaan. Naiklah kalau kau siap ditanyai."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      60,
+      10
+     ],
+     "do": "menghitung orang yang lewat"
+    },
+    "sore": {
+     "at": [
+      -50,
+      40
+     ],
+     "do": "berdiri diam terlalu lama"
+    },
+    "malam": {
+     "at": [
+      0,
+      -50
+     ],
+     "do": "menatap langit, tak berkedip"
+    }
+   }
+  },
+  {
+   "name": "Grim si Wolfkin",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "wolfkin",
+    "torso_race": "wolfkin",
+    "legs_race": "wolfkin",
+    "hair": "none",
+    "hair_color": "#241f36",
+    "shirt": "#8f2611",
+    "pants": "#453d5c"
+   },
+   "lines": [
+    "Aku melolong tiap purnama. Bukan naluri. Tetangga sebelah benci itu. Itu alasannya.",
+    "Kata orang wolfkin pelacak ulung. Aku tersesat di rumahku sendiri kemarin.",
+    "Mau kutunjukkan jalan ke puncak? Jangan. Sungguh, jangan mau."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      20,
+      40
+     ],
+     "do": "menawarkan barang yang tak ia miliki"
+    },
+    "sore": {
+     "at": [
+      -60,
+      0
+     ],
+     "do": "mengganggu pedagang"
+    },
+    "malam": {
+     "at": [
+      40,
+      50
+     ],
+     "do": "pulang sambil bernyanyi fals"
+    }
+   }
+  },
+  {
+   "name": "Pendaki Tua Baruk",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#b0b0c0",
+    "shirt": "#453d5c",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Empat orang naik. Satu turun. Aku yang turun. Itu bukan keberuntungan, itu hukuman.",
+    "Aku masih menyimpan tali mereka. Tak sanggup kubuang. Tak sanggup kupakai.",
+    "Kalau kau naik, jangan tinggalkan siapa pun. Bahkan yang menyuruhmu pergi."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -30,
+      50
+     ],
+     "do": "menjemur dua porsi pakaian"
+    },
+    "sore": {
+     "at": [
+      -70,
+      -20
+     ],
+     "do": "menatap arah gua/gunung"
+    },
+    "malam": {
+     "at": [
+      -20,
+      30
+     ],
+     "do": "menyalakan lentera untuk yang tak pulang"
+    }
+   }
+  },
+  {
+   "name": "Nenek Es",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "frostkin",
+    "torso_race": "frostkin",
+    "legs_race": "frostkin",
+    "hair": "bun",
+    "hair_color": "#eefaff",
+    "shirt": "#1e3a5c",
+    "pants": "#3a6fa0"
+   },
+   "lines": [
+    "Bulan marah padaku. Sudah dua puluh tahun. Aku tak tahu salahku apa.",
+    "Tiap purnama ia menatap tepat ke jendelaku. Ke JENDELAKU. Coba lihat sendiri.",
+    "Aku sudah minta maaf. Ke langit. Keras-keras. Tetangga yang marah sekarang."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      50,
+      -40
+     ],
+     "do": "menyusun benda dengan urutan rahasia"
+    },
+    "sore": {
+     "at": [
+      10,
+      10
+     ],
+     "do": "berjalan mundur mengelilingi alun-alun"
+    },
+    "malam": {
+     "at": [
+      -45,
+      -35
+     ],
+     "do": "berdebat dengan bulan"
+    }
+   }
+  }
+ ],
+ "candyveil_palace": [
+  {
+   "name": "Tuan Karamel",
+   "archetype": "aneh",
+   "oddwalker": false,
+   "config": {
+    "head_race": "candyfolk",
+    "torso_race": "candyfolk",
+    "legs_race": "candyfolk",
+    "hair": "short",
+    "hair_color": "#f7c6d9",
+    "shirt": "#8a3a6b",
+    "pants": "#5c2380"
+   },
+   "lines": [
+    "Aku menjilat tembok istana tiap pagi. Untuk memastikan rasanya belum berubah.",
+    "Hari ini rasanya sedikit... asin. Itu tak pernah terjadi sebelumnya.",
+    "Kalau tembok mulai asin, sesuatu di dalam istana sedang menangis."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -40,
+      -30
+     ],
+     "do": "berdiri di tepi air, menunggu ikan menjawab"
+    },
+    "sore": {
+     "at": [
+      30,
+      20
+     ],
+     "do": "mengamati sesuatu yang tak terlihat"
+    },
+    "malam": {
+     "at": [
+      -10,
+      60
+     ],
+     "do": "duduk di bawah lampu, bicara sendiri"
+    }
+   }
+  },
+  {
+   "name": "Gadis Bergula",
+   "archetype": "misterius",
+   "oddwalker": false,
+   "config": {
+    "head_race": "candyfolk",
+    "torso_race": "candyfolk",
+    "legs_race": "candyfolk",
+    "hair": "long",
+    "hair_color": "#ffd9ec",
+    "shirt": "#c9a227",
+    "pants": "#8a3a6b"
+   },
+   "lines": [
+    "Ratu tersenyum pada semua orang. Ia tersenyum juga saat sendirian. Di kegelapan.",
+    "Undangan pesta teh datang sendiri. Kau tak mencarinya. Ia yang mencium bau manis dirimu.",
+    "Jangan habiskan cangkirmu sampai dasar. Di dasar ada namamu."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      60,
+      10
+     ],
+     "do": "menghitung orang yang lewat"
+    },
+    "sore": {
+     "at": [
+      -50,
+      40
+     ],
+     "do": "berdiri diam terlalu lama"
+    },
+    "malam": {
+     "at": [
+      0,
+      -50
+     ],
+     "do": "menatap langit, tak berkedip"
+    }
+   }
+  },
+  {
+   "name": "Bocah Lolipop",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "candyfolk",
+    "torso_race": "candyfolk",
+    "legs_race": "candyfolk",
+    "hair": "spiky",
+    "hair_color": "#7de0d0",
+    "shirt": "#2e6b3f",
+    "pants": "#453d5c"
+   },
+   "lines": [
+    "Aku makan diriku sendiri waktu kecil. Jari kelingking. Enak. Tak kusesali.",
+    "Kau mau gigit lenganku? Semua orang mau. Jawabannya tetap tidak.",
+    "Ayahku sirup. Ibuku sirup. Aku... aku sedang mencari tahu."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      20,
+      40
+     ],
+     "do": "menawarkan barang yang tak ia miliki"
+    },
+    "sore": {
+     "at": [
+      -60,
+      0
+     ],
+     "do": "mengganggu pedagang"
+    },
+    "malam": {
+     "at": [
+      40,
+      50
+     ],
+     "do": "pulang sambil bernyanyi fals"
+    }
+   }
+  },
+  {
+   "name": "Pembuat Kue Tanpa Nama",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "candyfolk",
+    "torso_race": "human",
+    "legs_race": "candyfolk",
+    "hair": "short",
+    "hair_color": "#b0b0c0",
+    "shirt": "#5c4a3a",
+    "pants": "#3a2a1a"
+   },
+   "lines": [
+    "Aku membuat kue untuk pesta teh setiap tahun. Tamunya tak pernah pulang.",
+    "Aku tak boleh berhenti membuatnya. Kalau berhenti... aku yang jadi hidangan.",
+    "Cicipi kueku. Tolong. Biar ada satu orang yang memilih memakannya."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -30,
+      50
+     ],
+     "do": "menjemur dua porsi pakaian"
+    },
+    "sore": {
+     "at": [
+      -70,
+      -20
+     ],
+     "do": "menatap arah gua/gunung"
+    },
+    "malam": {
+     "at": [
+      -20,
+      30
+     ],
+     "do": "menyalakan lentera untuk yang tak pulang"
+    }
+   }
+  },
+  {
+   "name": "Si Terbalik",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "candyfolk",
+    "torso_race": "candyfolk",
+    "legs_race": "candyfolk",
+    "hair": "long",
+    "hair_color": "#ff9db8",
+    "shirt": "#3a6fa0",
+    "pants": "#c9a227"
+   },
+   "lines": [
+    "Aku hanya berjalan mundur. Ke depan sudah pernah. Membosankan.",
+    "Mundur itu jujur: kau melihat apa yang kau tinggalkan, bukan yang kau bayangkan.",
+    "Suatu hari aku akan mundur cukup jauh sampai bertemu diriku yang dulu. Kami tak akan saling sapa."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      50,
+      -40
+     ],
+     "do": "menyusun benda dengan urutan rahasia"
+    },
+    "sore": {
+     "at": [
+      10,
+      10
+     ],
+     "do": "berjalan mundur mengelilingi alun-alun"
+    },
+    "malam": {
+     "at": [
+      -45,
+      -35
+     ],
+     "do": "berdebat dengan bulan"
+    }
+   }
+  }
+ ],
+ "desert_ruins": [
+  {
+   "name": "Penggali Rahim",
+   "archetype": "aneh",
+   "oddwalker": false,
+   "config": {
+    "head_race": "lizardkin",
+    "torso_race": "lizardkin",
+    "legs_race": "lizardkin",
+    "hair": "none",
+    "hair_color": "#6b8f3a",
+    "shirt": "#c9a227",
+    "pants": "#5c4a3a"
+   },
+   "lines": [
+    "Aku menggali bukan untuk emas. Aku menggali untuk mendengar pasir berhenti bicara.",
+    "Di bawah sana ada ruangan yang lebih tua dari kata 'tua'.",
+    "Jangan sebut namamu keras-keras di reruntuhan. Ada yang mengoleksi nama."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -40,
+      -30
+     ],
+     "do": "berdiri di tepi air, menunggu ikan menjawab"
+    },
+    "sore": {
+     "at": [
+      30,
+      20
+     ],
+     "do": "mengamati sesuatu yang tak terlihat"
+    },
+    "malam": {
+     "at": [
+      -10,
+      60
+     ],
+     "do": "duduk di bawah lampu, bicara sendiri"
+    }
+   }
+  },
+  {
+   "name": "Yang Menunggu",
+   "archetype": "misterius",
+   "oddwalker": true,
+   "config": {
+    "head_race": "undead",
+    "torso_race": "undead",
+    "legs_race": "undead",
+    "hair": "none",
+    "hair_color": "#b0b0c0",
+    "shirt": "#3a3a4a",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Aku menunggu. Sudah lama. Kau bukan yang kutunggu — tapi kau mendekati bentuknya.",
+    "Kami banyak. Kami tersebar. Kami tidak berkumpul. Belum.",
+    "Kalau ia bertanya siapa yang memberitahumu, katakan: tak ada siapa-siapa."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      60,
+      10
+     ],
+     "do": "menghitung orang yang lewat"
+    },
+    "sore": {
+     "at": [
+      -50,
+      40
+     ],
+     "do": "berdiri diam terlalu lama"
+    },
+    "malam": {
+     "at": [
+      0,
+      -50
+     ],
+     "do": "menatap langit, tak berkedip"
+    }
+   }
+  },
+  {
+   "name": "Saudagar Kehausan",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human2",
+    "torso_race": "human2",
+    "legs_race": "human2",
+    "hair": "short",
+    "hair_color": "#241f36",
+    "shirt": "#8f2611",
+    "pants": "#5c4a3a"
+   },
+   "lines": [
+    "Kujual pasir. Di gurun. Ya, aku tahu. Modalnya nol, untungnya juga.",
+    "Pelangganku satu: dia beli karena kasihan. Dia sekarang kaya. Aku tetap begini.",
+    "Mau beli pasir? Kubungkus rapi. Ada pitanya."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      20,
+      40
+     ],
+     "do": "menawarkan barang yang tak ia miliki"
+    },
+    "sore": {
+     "at": [
+      -60,
+      0
+     ],
+     "do": "mengganggu pedagang"
+    },
+    "malam": {
+     "at": [
+      40,
+      50
+     ],
+     "do": "pulang sambil bernyanyi fals"
+    }
+   }
+  },
+  {
+   "name": "Janda Sungai Kering",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human2",
+    "torso_race": "human2",
+    "legs_race": "human2",
+    "hair": "long",
+    "hair_color": "#3a2a1a",
+    "shirt": "#5c4a3a",
+    "pants": "#453d5c"
+   },
+   "lines": [
+    "Dulu ada sungai di sini. Suamiku belajar berenang untukku. Sungainya pergi duluan.",
+    "Aku masih menjemur baju menghadap arah air. Kebiasaan itu lebih keras kepala dari aku.",
+    "Kalau kau menemukan air di bawah reruntuhan — jangan minum semua. Sisakan untuk yang pulang."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -30,
+      50
+     ],
+     "do": "menjemur dua porsi pakaian"
+    },
+    "sore": {
+     "at": [
+      -70,
+      -20
+     ],
+     "do": "menatap arah gua/gunung"
+    },
+    "malam": {
+     "at": [
+      -20,
+      30
+     ],
+     "do": "menyalakan lentera untuk yang tak pulang"
+    }
+   }
+  },
+  {
+   "name": "Penghitung Bayangan",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "lizardkin",
+    "torso_race": "human",
+    "legs_race": "lizardkin",
+    "hair": "spiky",
+    "hair_color": "#6b8f3a",
+    "shirt": "#453d5c",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Aku menghitung bayangan, bukan orang. Bayangan lebih jujur soal jumlahnya.",
+    "Hari ini ada satu bayangan lebih banyak daripada orang di alun-alun. Sudah tiga hari begitu.",
+    "Bayanganmu... berdiri sedikit terlalu tegak. Tak apa. Aku tak akan bilang siapa-siapa."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      50,
+      -40
+     ],
+     "do": "menyusun benda dengan urutan rahasia"
+    },
+    "sore": {
+     "at": [
+      10,
+      10
+     ],
+     "do": "berjalan mundur mengelilingi alun-alun"
+    },
+    "malam": {
+     "at": [
+      -45,
+      -35
+     ],
+     "do": "berdebat dengan bulan"
+    }
+   }
+  }
+ ],
+ "storm_island": [
+  {
+   "name": "Pelaut Tuli",
+   "archetype": "aneh",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#b0b0c0",
+    "shirt": "#1e3a5c",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Petir merenggut pendengaranku. Sebagai gantinya aku bisa MERASAKAN guruh.",
+    "Guruh hari ini bilang: ada yang datang dari jauh. Itu kau, ya?",
+    "Langit tak pernah berbohong. Ia cuma sering tak diajak bicara."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -40,
+      -30
+     ],
+     "do": "berdiri di tepi air, menunggu ikan menjawab"
+    },
+    "sore": {
+     "at": [
+      30,
+      20
+     ],
+     "do": "mengamati sesuatu yang tak terlihat"
+    },
+    "malam": {
+     "at": [
+      -10,
+      60
+     ],
+     "do": "duduk di bawah lampu, bicara sendiri"
+    }
+   }
+  },
+  {
+   "name": "Penjaga Menara Tanpa Kunci",
+   "archetype": "misterius",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "long",
+    "hair_color": "#3a6fa0",
+    "shirt": "#5c2380",
+    "pants": "#453d5c"
+   },
+   "lines": [
+    "Menara ini tak pernah kukunci. Yang pantas masuk akan masuk. Sisanya tersesat di tangga.",
+    "Ada yang naik dan tak pernah turun. Aku tak menghitung mereka sebagai hilang.",
+    "Petir bukan hukuman. Petir itu jawaban atas pertanyaan yang tak sempat kau ucapkan."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      60,
+      10
+     ],
+     "do": "menghitung orang yang lewat"
+    },
+    "sore": {
+     "at": [
+      -50,
+      40
+     ],
+     "do": "berdiri diam terlalu lama"
+    },
+    "malam": {
+     "at": [
+      0,
+      -50
+     ],
+     "do": "menatap langit, tak berkedip"
+    }
+   }
+  },
+  {
+   "name": "Bocah Layangan",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human2",
+    "torso_race": "human2",
+    "legs_race": "human2",
+    "hair": "spiky",
+    "hair_color": "#241f36",
+    "shirt": "#2e6b3f",
+    "pants": "#6b4226"
+   },
+   "lines": [
+    "Aku main layangan saat badai. Sekali. Rambutku masih begini sampai sekarang.",
+    "Kata ibu, aku tak boleh menyentuh logam waktu hujan. Aku tak sengaja jadi logam.",
+    "Kalau kau lihat layangan tanpa benang di langit — itu punyaku. Sampaikan salamku."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      20,
+      40
+     ],
+     "do": "menawarkan barang yang tak ia miliki"
+    },
+    "sore": {
+     "at": [
+      -60,
+      0
+     ],
+     "do": "mengganggu pedagang"
+    },
+    "malam": {
+     "at": [
+      40,
+      50
+     ],
+     "do": "pulang sambil bernyanyi fals"
+    }
+   }
+  },
+  {
+   "name": "Ibu Karam",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "bun",
+    "hair_color": "#3a2a1a",
+    "shirt": "#3a3a4a",
+    "pants": "#453d5c"
+   },
+   "lines": [
+    "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
+    "Aku menyalakan lentera tiap malam. Bukan agar mereka pulang. Agar aku punya alasan bangun.",
+    "Kau pelaut? Bukan? Bagus. Tetaplah begitu."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -30,
+      50
+     ],
+     "do": "menjemur dua porsi pakaian"
+    },
+    "sore": {
+     "at": [
+      -70,
+      -20
+     ],
+     "do": "menatap arah gua/gunung"
+    },
+    "malam": {
+     "at": [
+      -20,
+      30
+     ],
+     "do": "menyalakan lentera untuk yang tak pulang"
+    }
+   }
+  },
+  {
+   "name": "Si Penantang Petir",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human2",
+    "torso_race": "human2",
+    "legs_race": "human2",
+    "hair": "long",
+    "hair_color": "#8f2611",
+    "shirt": "#c9a227",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Aku menantang petir berkelahi. Setiap badai. Sejauh ini seri: nol-nol.",
+    "Ia belum berani menyambarku. Itu artinya ia takut. Jelas sekali.",
+    "Kalau suatu hari aku tak ada di sini — berarti pertandingannya sudah selesai. Jangan tanya siapa menang."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      50,
+      -40
+     ],
+     "do": "menyusun benda dengan urutan rahasia"
+    },
+    "sore": {
+     "at": [
+      10,
+      10
+     ],
+     "do": "berjalan mundur mengelilingi alun-alun"
+    },
+    "malam": {
+     "at": [
+      -45,
+      -35
+     ],
+     "do": "berdebat dengan bulan"
+    }
+   }
+  }
+ ]
 }

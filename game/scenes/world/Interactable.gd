@@ -18,12 +18,22 @@ func setup(k: String) -> void:
 		_build()
 
 var _lbl_cd := 0.0
+var _home_pos := Vector2.ZERO      # pos kerja (JADWAL NPC, #97)
+var _sched_cd := 0.0
+
+## NPC fungsional yang punya jam kerja: malam hari mereka pindah ke penginapan.
+const WORKERS := ["bench", "shop", "enchanter", "auctioneer", "trainer"]
 
 func _ready() -> void:
 	add_to_group("interactable")
+	_home_pos = global_position
 	_build()
 
 func _process(delta: float) -> void:
+	_sched_cd -= delta
+	if _sched_cd <= 0.0:
+		_sched_cd = 3.0
+		_apply_schedule()
 	_lbl_cd -= delta
 	if _lbl_cd > 0.0:
 		return
@@ -147,6 +157,12 @@ func interact() -> void:
 		get_tree().current_scene.add_child(cc)
 		return
 	if kind == "house_door":
+		# JADWAL (#97): warga mengunci pintunya larut malam. Kota yang menutup pintu
+		# terasa punya penghuni — bukan sekadar bangunan yang bisa dimasuki.
+		if NpcSchedule.doors_locked() and not solid_landmark:
+			await Stage.say("Pintunya terkunci dari dalam. Lampu di jendela padam.",
+				custom_label.trim_suffix(" [E]") if custom_label != "" else "Rumah Warga")
+			return
 		if solid_landmark:
 			await Stage.say("Pintunya terkunci. Mungkin penghuninya sedang keluar.", custom_label.trim_suffix(" [E]"))
 			return
@@ -214,3 +230,31 @@ func _sleep() -> void:
 	PlayerData.respawn()
 	EventBus.toast.emit("Kamu tidur nyenyak. HP & MP pulih.")
 	Audio.play_sfx("success")
+
+## JADWAL (#97): pandai besi, pedagang, enchanter, juru lelang & guru skill bekerja
+## siang; malam hari mereka berkumpul di penginapan. Layanan mereka tetap bisa
+## diakses di sana — dunia yang hidup tidak boleh berarti dunia yang menyusahkan.
+func _apply_schedule() -> void:
+	if not kind in WORKERS or _home_pos == Vector2.ZERO:
+		return
+	var target := _home_pos
+	if GameClock.is_night():
+		var inn := _find_inn()
+		if inn != Vector2.ZERO:
+			# berkumpul di sekitar penginapan (sedikit berjarak agar tak menumpuk)
+			target = inn + Vector2(float(hash(kind) % 60) - 30.0, 26.0)
+	if global_position.distance_to(target) < 4.0:
+		return
+	var p := get_tree().get_first_node_in_group("player")
+	var seen: bool = p != null and global_position.distance_to(p.global_position) < 400.0
+	if seen:
+		var tw := create_tween()
+		tw.tween_property(self, "global_position", target, 2.2)
+	else:
+		global_position = target      # tak dilihat: pindah saja (murah)
+
+func _find_inn() -> Vector2:
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if n is Node2D and str(n.get("kind")) == "inn":
+			return n.global_position
+	return Vector2.ZERO

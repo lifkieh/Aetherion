@@ -36,6 +36,7 @@ static func place(host: Node2D, town_id: String, center: Vector2) -> int:
 		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
 		host.add_child(v)
 		v.setup(p.get("name", "Warga"), p.get("config", {}), wps)
+		v.set("_home", anchor)        # jangkar jadwal (#97)
 		v.set_persona(p)
 		v.global_position = wps[0]
 		n += 1
