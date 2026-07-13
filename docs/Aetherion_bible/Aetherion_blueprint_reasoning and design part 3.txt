@@ -1,0 +1,12990 @@
+FILE 48
+KINGDOM_WAR_BIBLE_PART_01
+WAR IS THE FAILURE OF PEACE
+# AETHERION
+# KINGDOM WAR BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Armies
+- Generals
+- Logistics
+- Sieges
+- Monster Armies
+- Military Politics
+- World Wars
+
+---
+---
+DESIGN PHILOSOPHY
+
+Sebagian besar RPG memiliki perang palsu.
+
+Contohnya:
+
+Dua kerajaan berperang.
+
+Yang bertarung:
+5 NPC dan pemain.
+
+Padahal perang mengubah dunia.
+
+Mengubah ekonomi.
+
+Mengubah sejarah.
+
+Mengubah generasi.
+
+Maka perang dalam Aetherion harus menjadi:
+
+Peristiwa yang meninggalkan bekas.
+THE FIRST LAW
+WAR HAS A COST
+
+Tidak ada perang gratis.
+
+Tidak ada perang tanpa korban.
+
+Tidak ada perang tanpa konsekuensi.
+
+EXAMPLE
+
+Kerajaan menang perang.
+
+Tetapi:
+
+ekonomi runtuh
+rakyat lapar
+loyalitas turun
+
+Kemenangan tidak selalu berarti keberhasilan.
+
+THE ARMY SYSTEM
+
+Pasukan terdiri dari:
+
+Soldiers
+
+Pasukan reguler.
+
+Specialists
+
+Unit khusus.
+
+Monsters
+
+Unit monster.
+
+Officers
+
+Pemimpin lapangan.
+
+Generals
+
+Pengatur strategi.
+
+IMPORTANT
+
+Pasukan bukan angka.
+
+Pasukan adalah orang.
+
+THE RECRUITMENT PROBLEM
+
+Tentara tidak muncul dari udara.
+
+Mereka berasal dari:
+
+desa
+kota
+keluarga
+IMPORTANT
+
+Perang besar dapat menyebabkan:
+
+kekurangan tenaga kerja
+penurunan produksi
+penurunan populasi
+LOGISTICS
+
+Ini salah satu sistem terpenting.
+
+Karena sejarah membuktikan:
+
+Banyak perang kalah karena logistik.
+
+Bukan karena kekuatan.
+
+AN ARMY NEEDS
+makanan
+air
+perlengkapan
+obat
+jalur suplai
+
+Jika logistik gagal.
+
+Pasukan melemah.
+
+IMPORTANT
+
+Pemain tidak bisa mengirim:
+
+100.000 pasukan
+
+Ke ujung dunia.
+
+Tanpa persiapan.
+
+THE GENERALS
+
+Jenderal sangat penting.
+
+Karena pasukan besar tidak bisa dikendalikan langsung.
+
+EXAMPLE
+
+General A
+
+Agresif.
+
+Cepat menyerang.
+
+Risiko tinggi.
+
+EXAMPLE
+
+General B
+
+Defensif.
+
+Lambat.
+
+Tetapi efisien.
+
+IMPORTANT
+
+Dua jenderal dengan pasukan sama.
+
+Dapat menghasilkan hasil berbeda.
+
+THE OFFICER SYSTEM
+
+Perwira mempengaruhi unit kecil.
+
+Mereka berkembang.
+
+Mendapat pengalaman.
+
+Dapat menjadi legenda.
+
+IMPORTANT
+
+Seorang perwira biasa.
+
+Dapat menjadi jenderal besar puluhan tahun kemudian.
+
+THE MONSTER ARMIES
+
+Sudah dikunci oleh Anda.
+
+Karena:
+
+Monster juga membangun masyarakat.
+
+Maka monster juga dapat berperang.
+
+EXAMPLE
+
+Goblin Kingdom.
+
+Memiliki:
+
+pemimpin
+pasukan
+strategi
+
+Bukan sekadar monster liar.
+
+EXAMPLE
+
+Ancient Beast Lord.
+
+Memimpin ribuan monster.
+
+Menjadi ancaman regional.
+
+IMPORTANT
+
+Sebagian perang terbesar dunia.
+
+Bukan manusia vs manusia.
+
+Melainkan:
+
+Peradaban vs Peradaban.
+
+Walaupun salah satunya monster.
+
+THE MONSTER INVASIONS
+
+Kadang bukan perang.
+
+Melainkan migrasi.
+
+EXAMPLE
+
+Bencana alam.
+
+↓
+
+Monster berpindah.
+
+↓
+
+Wilayah manusia terganggu.
+
+↓
+
+Konflik muncul.
+
+SIEGE WARFARE
+
+Pengepungan sangat penting.
+
+Karena kerajaan memiliki:
+
+kota
+benteng
+tembok
+IMPORTANT
+
+Pengepungan bukan:
+
+Pukul Gerbang
+↓
+Menang
+
+Melainkan:
+
+logistik
+moral
+penyakit
+waktu
+THE NAVAL QUESTION
+
+Banyak kerajaan bergantung pada laut.
+
+Maka perang laut ada.
+
+Namun akan dibahas pada Naval Bible.
+
+THE POLITICS OF WAR
+
+Tidak semua perang terjadi karena kebencian.
+
+Sebagian karena:
+
+ekonomi
+sumber daya
+agama
+sejarah
+ketakutan
+IMPORTANT
+
+Musuh tidak selalu jahat.
+
+Mereka hanya memiliki kepentingan berbeda.
+
+THE WAR CRIMES QUESTION
+
+Karena Anda menginginkan dunia:
+
+Sedekat mungkin dengan dunia nyata.
+
+Maka kekejaman perang ada.
+
+Tetapi tidak dinormalisasi.
+
+Karena perang memang buruk.
+
+THE REFUGEE SYSTEM
+
+Perang menghasilkan pengungsi.
+
+Pengungsi mengubah:
+
+ekonomi
+politik
+budaya
+IMPORTANT
+
+Satu perang dapat mempengaruhi benua selama puluhan tahun.
+
+WORLD WARS
+
+Kategori sangat langka.
+
+Namun pernah terjadi.
+
+Perang yang mengubah sejarah dunia.
+
+Sebagian besar terjadi jauh sebelum era pemain.
+
+THE NIRMANA WARS
+
+Kategori khusus.
+
+Karena Nirmana bukan kerajaan.
+
+Bukan dewa.
+
+Bukan negara.
+
+Tetapi:
+
+Peristiwa.
+
+Ketika Nirmana bergerak.
+
+Seluruh dunia bereaksi.
+
+THE PLAYER'S ROLE
+
+Pemain dapat menjadi:
+
+tentara
+kapten
+jenderal
+raja
+pendamai
+penonton
+
+Semuanya valid.
+
+Karena Aetherion bukan game yang memaksa satu jalan.
+
+THE FINAL LAW
+
+Perang bukan tentang kemenangan.
+
+Perang adalah tentang:
+
+Apa yang tersisa setelahnya.
+
+# DESIGN REASONING BESAR
+
+Sekarang saya menemukan salah satu fondasi lore terbesar yang masih kosong.
+
+Kita sudah memiliki:
+
+✓ Dewa Absolut
+
+✓ Lima Dewa Besar
+
+✓ Nirmana
+
+✓ Sihir
+
+✓ Jiwa
+
+✓ Kematian
+
+✓ Legacy
+
+---
+
+Tetapi kita belum mendesain:
+
+# RELIGION
+
+Dan ini sangat penting.
+
+Karena dalam dunia yang:
+
+- dewa benar-benar nyata
+- mukjizat benar-benar terjadi
+- divine magic benar-benar ada
+
+agama tidak akan berkembang seperti dunia modern.
+
+---
+
+Namun pada saat yang sama.
+
+Anda juga menginginkan dunia yang:
+
+```text
+Gelap.
+Rumit.
+Abu-abu.
+Mirip dunia nyata.
+
+Artinya agama tidak boleh sesederhana:
+
+Agama Baik
+vs
+Agama Jahat
+TEMUAN DIREKTUR #048
+
+Dokumen berikutnya harus:
+
+RELIGION_AND_FAITH_BIBLE_PART_01
+
+Isi:
+
+The Absolute God
+Five Divine Thrones
+Churches
+Heresies
+Cults
+Divine Miracles
+Faith Conflicts
+Religious Politics
+Holy Orders
+Nirmana and Faith
+
+Karena agama akan menjadi salah satu kekuatan terbesar yang membentuk budaya, politik, perang, dan kehidupan sehari-hari di seluruh Aetherion.
+
+FILE 49
+RELIGION_AND_FAITH_BIBLE_PART_01
+THE GODS ARE REAL, FAITH IS NOT SIMPLE
+# AETHERION
+# RELIGION & FAITH BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- The Absolute God
+- The Five Thrones
+- Faith
+- Churches
+- Cults
+- Heresies
+- Miracles
+- Religious Politics
+
+---
+---
+DESIGN PHILOSOPHY
+
+Dunia nyata memiliki banyak agama.
+
+Karena keberadaan dewa tidak bisa dibuktikan.
+
+Namun Aetherion berbeda.
+
+Karena:
+
+Dewa benar-benar ada.
+
+Mukjizat benar-benar terjadi.
+
+Divine Magic benar-benar ada.
+
+Makhluk surgawi benar-benar ada.
+
+Tetapi.
+
+Ini tidak membuat dunia menjadi sederhana.
+
+Karena:
+
+Mengetahui dewa ada
+tidak berarti semua orang setuju
+tentang arti keberadaan mereka.
+THE ABSOLUTE GOD
+
+Sudah dikunci sebelumnya.
+
+Hanya ada:
+
+Satu Dewa Absolut.
+
+Pencipta eksistensi.
+
+Pencipta hukum dunia.
+
+Pencipta jiwa.
+
+Pencipta waktu.
+
+Pencipta kehidupan.
+
+IMPORTANT
+
+Dewa Absolut:
+
+tidak memiliki gereja resmi
+tidak memiliki negara
+tidak memiliki pasukan
+
+Karena keberadaannya terlalu besar.
+
+Terlalu jauh.
+
+Terlalu agung.
+
+THE FIVE DIVINE THRONES
+
+Di bawah Dewa Absolut.
+
+Terdapat:
+
+Lima Tahta Ilahi.
+
+Mereka bukan Dewa Absolut.
+
+Tetapi makhluk paling dekat dengannya.
+
+IMPORTANT
+
+Nama dan domain masing-masing belum dikunci.
+
+Kita masih akan mendesainnya nanti.
+
+Karena ini membutuhkan Bible tersendiri.
+
+THE FIRST LAW
+FAITH IS INTERPRETATION
+
+Ini sangat penting.
+
+Karena semua orang tahu para dewa ada.
+
+Tetapi tidak semua orang setuju:
+
+apa yang mereka inginkan
+apa tujuan mereka
+bagaimana cara menyembah mereka
+
+Di sinilah agama lahir.
+
+THE CHURCHES
+
+Gereja bukan organisasi tunggal.
+
+Melainkan:
+
+Interpretasi.
+EXAMPLE
+
+Dua gereja menyembah dewa yang sama.
+
+Tetapi:
+
+ritual berbeda
+ajaran berbeda
+tujuan berbeda
+IMPORTANT
+
+Keduanya bisa merasa benar.
+
+THE HOLY ORDERS
+
+Kelompok religius militan.
+
+Sebagian:
+
+ksatria
+penyembuh
+penjaga kuil
+
+Sebagian:
+
+pemburu bidah
+pelindung artefak
+penjaga reruntuhan
+IMPORTANT
+
+Tidak semuanya fanatik.
+
+Tidak semuanya baik.
+
+DIVINE MAGIC
+
+Divine Magic nyata.
+
+Namun bukan hadiah gratis.
+
+REQUIREMENTS
+
+Biasanya membutuhkan:
+
+iman
+pemahaman
+pengabdian
+IMPORTANT
+
+Orang baik tidak otomatis mendapat Divine Magic.
+
+Orang jahat juga tidak otomatis kehilangan Divine Magic.
+
+Karena dunia lebih rumit dari itu.
+
+MIRACLES
+
+Mukjizat benar-benar terjadi.
+
+Namun sangat langka.
+
+Karena jika terlalu sering.
+
+Mukjizat menjadi hal biasa.
+
+EXAMPLE
+
+Penyakit yang tak tersembuhkan.
+
+↓
+
+Sembuh.
+
+Laut terbelah.
+
+Artefak ilahi bangkit.
+
+IMPORTANT
+
+Sebagian mukjizat bahkan masih diperdebatkan.
+
+HERESIES
+
+Bid'ah.
+
+Penafsiran berbeda.
+
+Kelompok pecahan.
+
+Aliran baru.
+
+IMPORTANT
+
+Tidak semua bid'ah salah.
+
+Dan tidak semua gereja utama benar.
+
+THE CULTS
+
+Sudah pernah kita masukkan pada Living World.
+
+Tetapi di sini kita definisikan lebih jelas.
+
+Cult ≠ Evil.
+
+Cult hanyalah:
+
+Kelompok kepercayaan kecil.
+
+Sebagian berbahaya.
+
+Sebagian tidak.
+
+EXAMPLE
+
+Kelompok yang percaya dunia harus kembali menyatu dengan alam.
+
+Tidak jahat.
+
+Hanya ekstrem.
+
+EXAMPLE
+
+Kelompok yang menyembah kehampaan.
+
+Berpotensi sangat berbahaya.
+
+THE POLITICS OF FAITH
+
+Agama memiliki pengaruh.
+
+Karena manusia memiliki keyakinan.
+
+EXAMPLE
+
+Kerajaan mendukung gereja tertentu.
+
+↓
+
+Pengaruh meningkat.
+
+↓
+
+Politik berubah.
+
+IMPORTANT
+
+Agama dan politik sering bertabrakan.
+
+Seperti dunia nyata.
+
+THE COMMON PEOPLE
+
+Mayoritas rakyat bukan teolog.
+
+Mereka hanya ingin:
+
+hidup aman
+panen berhasil
+keluarga sehat
+
+Dan agama menjadi bagian dari kehidupan sehari-hari.
+
+EXAMPLE
+
+Doa sebelum panen.
+
+Festival musim semi.
+
+Hari penghormatan leluhur.
+
+THE MONSTER QUESTION
+
+Sangat penting.
+
+Karena kita memiliki:
+
+monster cerdas
+kerajaan monster
+monster berkepribadian
+
+Maka muncul pertanyaan:
+
+Apakah monster memiliki agama?
+
+Jawabannya:
+
+Ya.
+
+Sebagian memiliki bentuk kepercayaan sendiri.
+
+Sebagian bahkan memiliki filsafat yang lebih tua daripada manusia.
+
+THE DRAGON QUESTION
+
+Naga sangat tua.
+
+Sebagian naga hidup cukup lama untuk:
+
+melihat kerajaan lahir
+melihat kerajaan runtuh
+
+Akibatnya.
+
+Banyak naga tidak beragama seperti manusia.
+
+Namun memiliki pandangan spiritual sendiri.
+
+NIRMANA AND FAITH
+
+Ini bagian paling menarik.
+
+Karena Nirmana bukan dewa.
+
+Tetapi keberadaannya mempengaruhi iman dunia.
+
+SOME PEOPLE BELIEVE
+
+Nirmana adalah:
+
+ujian
+hukuman
+pertanda akhir zaman
+korban dunia
+orang yang benar
+IMPORTANT
+
+Tidak ada konsensus.
+
+Karena bahkan agama-agama besar berbeda pendapat.
+
+THE FINAL LAW
+
+Dalam Aetherion:
+
+Dewa itu nyata.
+
+Makna keberadaan mereka tidak.
+
+Dan dari ketidakpastian itulah lahir iman.
+
+
+# DESIGN REASONING BESAR
+
+Sekarang saya menemukan sesuatu yang jauh lebih besar.
+
+Kita sudah memiliki:
+
+✓ Dewa Absolut
+
+✓ Agama
+
+✓ Nirmana
+
+✓ Monster
+
+✓ Kingdom
+
+✓ Chronicle
+
+✓ Legacy
+
+---
+
+Tetapi kita belum menjawab:
+
+```text
+Bagaimana dunia ini sampai menjadi seperti sekarang?
+
+Karena sejarah dunia masih berupa fragmen.
+
+Kita tahu:
+
+Nirmana sangat tua
+Naga sangat langka
+Dewa ada
+Perang besar pernah terjadi
+Monster dan manusia pernah berselisih kecil
+Dunia telah melewati banyak era
+
+Namun kita belum memiliki:
+
+WORLD HISTORY
+
+Dan menurut saya ini mungkin salah satu Bible paling penting dari seluruh proyek.
+
+Karena semua dungeon, artefak, kerajaan, agama, dan misteri pada akhirnya berasal dari sejarah.
+
+TEMUAN DIREKTUR #049
+
+Dokumen berikutnya harus:
+
+WORLD_HISTORY_BIBLE_PART_01
+
+Isi:
+
+Creation Era
+Age of Dawn
+First Civilizations
+Dragon Age
+Age of Kingdoms
+The First Great War
+Rise of Nirmana
+Ancient Catastrophes
+Lost Eras
+Current Age
+
+Karena sejarah dunia adalah fondasi yang menjelaskan mengapa seluruh Aetherion ada dalam bentuknya sekarang.
+
+FILE 50
+WORLD_HISTORY_BIBLE_PART_01
+BEFORE THE PLAYER, BEFORE THE KINGDOMS, BEFORE MEMORY
+# AETHERION
+# WORLD HISTORY BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Creation
+- Ancient Ages
+- Dragon Era
+- First Civilizations
+- Nirmana
+- Lost History
+- Current Age
+
+---
+---
+DESIGN PHILOSOPHY
+
+Banyak dunia fantasy memiliki sejarah.
+
+Namun sejarah mereka biasanya hanya:
+
+Daftar Tahun.
+
+Tahun ini perang.
+
+Tahun itu kerajaan lahir.
+
+Tahun berikutnya kerajaan hancur.
+
+Selesai.
+
+Aetherion tidak boleh seperti itu.
+
+Karena sejarah harus terasa seperti:
+
+Lapisan-lapisan dunia.
+
+Semakin dalam menggali.
+
+Semakin banyak pertanyaan muncul.
+
+THE FIRST TRUTH
+
+Mayoritas sejarah dunia:
+
+Sudah hilang.
+
+Dan itu disengaja.
+
+Karena dunia yang hidup ribuan tahun.
+
+Tidak mungkin mengingat semuanya.
+
+THE CREATION ERA
+AGE ZERO
+
+Era paling tua.
+
+Era sebelum sejarah.
+
+Era sebelum waktu dicatat.
+
+Era ketika:
+
+Dewa Absolut menciptakan eksistensi.
+
+Tidak ada manusia.
+
+Tidak ada monster.
+
+Tidak ada naga.
+
+Belum ada dunia seperti yang dikenal sekarang.
+
+IMPORTANT
+
+Hampir tidak ada catatan.
+
+Hanya mitos.
+
+Bahkan para dewa lebih rendah tidak membicarakannya.
+
+THE AGE OF DAWN
+
+Era Fajar.
+
+Ketika kehidupan pertama muncul.
+
+Belum ada kerajaan.
+
+Belum ada bangsa.
+
+Belum ada sejarah.
+
+Hanya dunia yang masih muda.
+
+IMPORTANT
+
+Sebagian besar makhluk pada era ini telah punah.
+
+Atau berevolusi menjadi sesuatu yang berbeda.
+
+THE FIRST CHILDREN
+
+Pertanyaan yang akan diperdebatkan dunia selama ribuan tahun:
+
+Siapa yang datang lebih dulu?
+
+Manusia?
+
+Monster?
+
+Naga?
+
+Tidak ada jawaban pasti.
+
+Karena bukti saling bertentangan.
+
+THE DRAGON AGE
+
+Salah satu era terpenting.
+
+Karena sebelum kerajaan manusia besar.
+
+Dunia mengenal:
+
+Age of Dragons.
+IMPORTANT
+
+Ini tidak berarti naga menguasai dunia.
+
+Karena jumlah naga selalu sedikit.
+
+Sudah dikunci sebelumnya.
+
+APPROXIMATION
+
+Jika terdapat:
+
+10 jenis naga
+
+Maka:
+
+50 naga total di dunia.
+
+Sangat langka.
+
+WHY IMPORTANT
+
+Karena setiap naga adalah:
+
+tokoh sejarah
+saksi sejarah
+penyimpan rahasia
+
+Bukan monster biasa.
+
+THE FIRST CIVILIZATIONS
+
+Peradaban mulai muncul.
+
+Kota pertama.
+
+Tulisan pertama.
+
+Artefak pertama.
+
+Sihir mulai berkembang.
+
+IMPORTANT
+
+Sebagian besar peradaban pertama telah hilang.
+
+Tetapi bekasnya masih ada.
+
+Dalam:
+
+dungeon
+artefak
+reruntuhan
+THE AGE OF DISCOVERY
+
+Peradaban mulai berkembang.
+
+Eksplorasi meningkat.
+
+Monster dipelajari.
+
+Benua ditemukan.
+
+Jalur perdagangan muncul.
+
+IMPORTANT
+
+Banyak misteri dunia berasal dari era ini.
+
+THE FIRST GREAT WAR
+
+Perang besar pertama yang tercatat.
+
+Namun penyebabnya masih diperdebatkan.
+
+Beberapa sumber mengatakan:
+
+sumber daya
+
+Yang lain mengatakan:
+
+ideologi
+
+Yang lain mengatakan:
+
+sesuatu yang telah dihapus dari sejarah
+IMPORTANT
+
+Banyak arsip era ini hilang.
+
+Secara sengaja.
+
+THE LOST ERAS
+
+Kategori khusus.
+
+Ada periode sejarah yang:
+
+Hampir tidak memiliki catatan.
+
+Tidak normal.
+
+Karena biasanya sejarah meninggalkan jejak.
+
+Namun era tertentu.
+
+Seolah sengaja dihapus.
+
+IMPORTANT
+
+Ini salah satu misteri terbesar dunia.
+
+THE AGE OF KINGDOMS
+
+Kerajaan modern mulai terbentuk.
+
+Dinasti muncul.
+
+Agama berkembang.
+
+Perdagangan meluas.
+
+Peradaban berkembang pesat.
+
+IMPORTANT
+
+Mayoritas kerajaan saat ini berasal dari era ini.
+
+THE NIRMANA QUESTION
+
+Salah satu misteri terbesar.
+
+Karena Nirmana bukan:
+
+dewa
+raja
+naga
+
+Tetapi:
+
+Legenda hidup.
+KNOWN FACTS
+
+Nirmana sangat tua.
+
+Sangat kuat.
+
+Masih hidup.
+
+Memiliki seekor naga sebagai teman.
+
+Telah melihat banyak era berlalu.
+
+UNKNOWN FACTS
+
+Asal-usulnya.
+
+Sebagian besar tidak diketahui.
+
+IMPORTANT
+
+Bahkan para sarjana terbaik dunia.
+
+Tidak sepakat tentang siapa Nirmana sebenarnya.
+
+THE AGE OF FRACTURES
+
+Era berbagai konflik kecil.
+
+Sudah dikunci sebelumnya.
+
+Tidak pernah terjadi perang besar antara:
+
+manusia
+monster
+
+Namun pernah terjadi:
+
+konflik lokal
+ketegangan wilayah
+diskriminasi
+perselisihan budaya
+
+Mirip dunia nyata.
+
+THE CURRENT AGE
+
+Era pemain hidup.
+
+Era yang tampak stabil.
+
+Tetapi sebenarnya tidak.
+
+Karena banyak kekuatan mulai bergerak.
+
+SIGNS
+
+Artefak kuno muncul.
+
+Reruntuhan terbuka.
+
+Monster berubah.
+
+Ramalan bermunculan.
+
+Naga mulai terlihat lagi.
+
+Kelompok rahasia bergerak.
+
+IMPORTANT
+
+Mayoritas penduduk tidak sadar.
+
+Tetapi sejarah sedang bergerak menuju sesuatu.
+
+THE FINAL LAW
+
+Sejarah bukan masa lalu.
+
+Sejarah adalah:
+
+Bayangan yang masih mempengaruhi masa kini.
+
+Dan pemain akan berjalan di antara bayangan itu.
+
+
+# DESIGN REASONING BESAR
+
+Sekarang saya menemukan sesuatu yang sangat penting.
+
+Kita sudah memiliki:
+
+✓ Sejarah Dunia
+
+✓ Agama
+
+✓ Kerajaan
+
+✓ Monster
+
+✓ Companion
+
+✓ Dungeon
+
+✓ Nirmana
+
+---
+
+Tetapi kita belum menjelaskan:
+
+```text
+Mengapa pemain ingin menjelajah?
+
+Karena eksplorasi tidak bisa hanya mengandalkan loot.
+
+Dalam visi awal Anda:
+
+dunia penuh rahasia dan kejutan
+
+memilih jalan berbeda membuka skenario unik
+
+ada hal yang hanya diketahui jika melakukan sesuatu yang spesifik
+
+Ini sebenarnya adalah salah satu identitas terbesar Aetherion.
+
+TEMUAN DIREKTUR #050
+
+Dokumen berikutnya harus:
+
+MYSTERY_AND_DISCOVERY_BIBLE_PART_01
+
+Isi:
+
+Hidden Scenarios
+Secret Questlines
+World Mysteries
+Lost Civilizations
+Rare Encounters
+Secret Bosses
+Chronicle Mysteries
+Multi-Layer Exploration
+Knowledge-Based Progression
+The Wonders of Aetherion
+
+Karena pada akhirnya, pemain akan menghabiskan ratusan jam bukan hanya untuk menjadi kuat.
+
+Melainkan untuk menjawab satu pertanyaan:
+
+"Apa lagi yang belum aku temukan?"
+CATATAN DIREKTUR
+
+Setelah FILE 50, saya mulai melihat bahwa fondasi utama dunia sudah hampir lengkap.
+
+Progress revisi:
+
+World Foundation : 95%
+Gameplay Foundation : 85%
+Kingdom Foundation : 85%
+Monster Foundation : 90%
+Lore Foundation : 85%
+Civilization Foundation : 80%
+Main Story Foundation : 55%
+Progress Total
+≈ 82% - 85%
+
+Artinya kita sudah melewati fase "membangun fondasi dunia".
+
+Fase berikutnya adalah yang paling menarik:
+
+Mystery Bible
+Dragon Bible
+Great Monster Bible
+Faction Bible
+Main Story Bible
+Nirmana Bible
+
+Karena di situlah identitas unik Aetherion benar-benar akan terbentuk.
+
+FILE 51
+MYSTERY_AND_DISCOVERY_BIBLE_PART_01
+THE WORLD SHOULD NEVER BE FULLY UNDERSTOOD
+# AETHERION
+# MYSTERY & DISCOVERY BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Hidden Scenarios
+- World Mysteries
+- Secret Encounters
+- Discovery Systems
+- Knowledge Progression
+- Wonder
+
+---
+---
+DESIGN PHILOSOPHY
+
+Salah satu kalimat pertama yang pernah Anda katakan:
+
+Dunia penuh rahasia dan kejutan.
+
+Jika aku memilih jalan berbeda.
+
+Aku menemukan skenario berbeda.
+
+Menurut saya.
+
+Ini bukan fitur.
+
+Ini identitas Aetherion.
+
+Karena mayoritas game open world sebenarnya tidak misterius.
+
+Mereka hanya:
+
+Konten yang belum ditemukan.
+
+Dan itu berbeda.
+
+Karena setelah membuka Wiki.
+
+Semua misteri hilang.
+
+Aetherion tidak boleh seperti itu.
+
+THE FIRST LAW
+NOT EVERYTHING SHOULD BE FOUND
+
+Sangat penting.
+
+Karena banyak game mencoba memastikan:
+
+Semua pemain melihat semua konten.
+
+Saya tidak setuju.
+
+Karena misteri membutuhkan kehilangan.
+
+EXAMPLE
+
+Ada dungeon.
+
+Hanya muncul:
+
+saat hujan tertentu
+musim tertentu
+membawa Companion tertentu
+setelah keputusan tertentu
+
+Mayoritas pemain tidak akan pernah melihatnya.
+
+Dan itu tidak masalah.
+
+THE SECOND LAW
+KNOWLEDGE IS A REWARD
+
+Loot bukan satu-satunya hadiah.
+
+Kadang hadiah terbesar adalah:
+
+Pemahaman.
+EXAMPLE
+
+Pemain menemukan:
+
+sejarah yang hilang.
+
+Tidak mendapat item.
+
+Tidak mendapat exp.
+
+Tetapi memahami dunia.
+
+IMPORTANT
+
+Di Aetherion.
+
+Pengetahuan adalah progres.
+
+THE HIDDEN SCENARIO SYSTEM
+
+Salah satu sistem terpenting.
+
+Karena berasal langsung dari visi Anda.
+
+EXAMPLE
+
+Pemain A.
+
+Pergi ke utara.
+
+Menemukan:
+
+Scenario Alpha.
+
+Pemain B.
+
+Pergi ke selatan.
+
+Menemukan:
+
+Scenario Omega.
+
+Keduanya tidak sadar skenario lain ada.
+
+IMPORTANT
+
+Pilihan jalur menciptakan pengalaman unik.
+
+THE BUTTERFLY RULE
+
+Keputusan kecil dapat menghasilkan misteri besar.
+
+EXAMPLE
+
+Jam ke-2.
+
+Pemain membantu pengemis.
+
+Jam ke-300.
+
+Ternyata pengemis itu bagian dari rantai peristiwa besar.
+
+IMPORTANT
+
+Dunia harus terasa saling terhubung.
+
+THE FALSE MYSTERIES
+
+Sangat penting.
+
+Karena dunia nyata penuh rumor.
+
+EXAMPLE
+
+Orang berkata:
+
+Ada naga emas di gunung utara.
+
+Bisa jadi:
+
+benar
+salah
+setengah benar
+IMPORTANT
+
+Tidak semua misteri memiliki jawaban.
+
+THE CHRONICLE MYSTERIES
+
+Chronicle tidak selalu lengkap.
+
+Karena sejarah juga tidak lengkap.
+
+EXAMPLE
+
+Catatan berbunyi:
+
+Pada malam itu,
+sesuatu datang dari langit.
+
+Lalu berhenti.
+
+Tidak ada penjelasan.
+
+THE LOST KNOWLEDGE SYSTEM
+
+Pengetahuan dapat hilang.
+
+EXAMPLE
+
+Sihir kuno.
+
+Teknologi kuno.
+
+Bahasa kuno.
+
+Filsafat kuno.
+
+Sebagian besar dunia melupakannya.
+
+IMPORTANT
+
+Pemain dapat menjadi orang yang menemukannya kembali.
+
+THE WONDERS
+
+Ini kategori khusus.
+
+Bukan dungeon.
+
+Bukan kota.
+
+Bukan boss.
+
+Melainkan:
+
+Keajaiban dunia.
+EXAMPLE
+
+Air terjun terbalik.
+
+Pulau yang berpindah.
+
+Pohon yang lebih tua dari kerajaan.
+
+Gunung yang bernyanyi.
+
+Laut yang bermimpi.
+
+IMPORTANT
+
+Sebagian Wonder tidak memiliki fungsi gameplay.
+
+Mereka ada karena dunia harus indah.
+
+THE SECRET BOSSES
+
+Boss tersembunyi.
+
+Namun bukan hanya kuat.
+
+Mereka harus misterius.
+
+EXAMPLE
+
+Makhluk yang hanya muncul:
+
+setiap 200 tahun.
+
+Mayoritas NPC bahkan tidak tahu ia ada.
+
+THE KNOWLEDGE GATES
+
+Beberapa area tidak dikunci oleh level.
+
+Tetapi oleh pengetahuan.
+
+EXAMPLE
+
+Pintu kuno.
+
+Tidak membutuhkan kunci.
+
+Membutuhkan pemahaman.
+
+IMPORTANT
+
+Pemain tidak bisa brute force semuanya.
+
+THE DISCOVERY CHAIN
+
+Penemuan memicu penemuan lain.
+
+EXAMPLE
+
+Artefak kecil.
+
+↓
+
+Peta tersembunyi.
+
+↓
+
+Reruntuhan.
+
+↓
+
+Sejarah hilang.
+
+↓
+
+Dungeon.
+
+↓
+
+Faksi rahasia.
+
+↓
+
+Ancient Truth.
+
+THE WORLD QUESTIONS
+
+Dunia harus memiliki pertanyaan besar.
+
+Pertanyaan yang bahkan pemain veteran belum tentu bisa jawab.
+
+EXAMPLES
+
+Siapa sebenarnya Nirmana?
+
+Apa yang dihapus dari sejarah?
+
+Mengapa beberapa naga menghilang?
+
+Apa yang terjadi pada Lost Era?
+
+Apakah Dewa Absolut pernah berbicara kepada manusia?
+
+IMPORTANT
+
+Sebagian jawaban mungkin tidak pernah diberikan secara penuh.
+
+THE FINAL LAW
+
+Jika suatu hari pemain berkata:
+
+Aku sudah mengetahui semuanya.
+
+Maka Aetherion telah gagal.
+
+Karena dunia ini harus selalu menyisakan misteri.
+
+
+# DESIGN REASONING BESAR
+
+Sekarang saya melihat sesuatu yang bahkan lebih penting.
+
+Karena dari seluruh percakapan kita.
+
+Ada satu makhluk yang terus muncul:
+
+- sangat langka
+- sangat tua
+- saksi sejarah
+- partner Nirmana
+- hanya sekitar 50 ekor di dunia
+
+Yaitu:
+
+# DRAGONS
+
+Dan semakin saya membaca ulang seluruh dokumen.
+
+Semakin jelas bahwa naga bukan monster.
+
+Naga adalah:
+
+```text
+Tokoh Dunia.
+
+Sama seperti raja.
+
+Sama seperti dewa kecil.
+
+Sama seperti legenda.
+
+TEMUAN DIREKTUR #051
+
+Dokumen berikutnya harus:
+
+DRAGON_BIBLE_PART_01
+
+Isi:
+
+Dragon Philosophy
+Dragon Society
+Dragon Intelligence
+Dragon Politics
+Dragon Types
+Ancient Dragons
+Nirmana's Dragon
+Dragon Riders
+Dragon Partnerships
+Dragon Legacy
+
+Karena naga tampaknya merupakan salah satu pilar terbesar seluruh sejarah Aetherion.
+
+FILE 52
+DRAGON_BIBLE_PART_01
+THEY ARE NOT BOSSES. THEY ARE HISTORY.
+# AETHERION
+# DRAGON BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Dragon Philosophy
+- Dragon Society
+- Dragon Intelligence
+- Dragon Legacy
+- Dragon Politics
+- Ancient Dragons
+
+---
+---
+DESIGN PHILOSOPHY
+
+Salah satu keputusan paling penting yang sudah dikunci:
+
+Naga sangat langka.
+
+Misalnya:
+
+10 spesies naga.
+
+Maka total dunia:
+
+sekitar 50 naga.
+
+Artinya:
+
+Seekor naga bukan monster.
+
+Seekor naga adalah:
+
+tokoh sejarah
+tokoh politik
+tokoh budaya
+tokoh legenda
+THE FIRST LAW
+EVERY DRAGON MATTERS
+
+Mayoritas RPG:
+
+Dragon #183
+
+Aetherion:
+
+Dragon = Individual
+
+Setiap naga:
+
+memiliki nama
+sejarah
+kepribadian
+tujuan
+IMPORTANT
+
+Tidak ada naga generik.
+
+DRAGON INTELLIGENCE
+
+Sudah dikunci secara tidak langsung.
+
+Karena naga hidup sangat lama.
+
+Maka mayoritas naga:
+
+Lebih cerdas daripada manusia biasa.
+IMPORTANT
+
+Bukan berarti mereka selalu benar.
+
+Tetapi perspektif mereka jauh lebih luas.
+
+EXAMPLE
+
+Manusia berpikir:
+
+10 tahun
+
+Raja berpikir:
+
+50 tahun
+
+Naga berpikir:
+
+500 tahun
+THE DRAGON PARADOX
+
+Semakin tua naga.
+
+Biasanya semakin sulit memahami manusia.
+
+Karena kehidupan manusia terlalu singkat.
+
+EXAMPLE
+
+Manusia:
+
+marah hari ini.
+
+Besok memaafkan.
+
+Naga berusia 2000 tahun melihatnya sebagai:
+
+Kedipan mata.
+DRAGON SOCIETY
+
+Naga tidak memiliki kerajaan besar.
+
+Karena jumlah mereka terlalu sedikit.
+
+Sebaliknya.
+
+Mereka memiliki:
+
+Jaringan hubungan.
+IMPORTANT
+
+Sebagian naga saling mengenal.
+
+Sebagian saling membenci.
+
+Sebagian tidak pernah bertemu.
+
+DRAGON TERRITORIES
+
+Mayoritas naga memiliki wilayah.
+
+Bukan untuk memerintah.
+
+Tetapi untuk hidup.
+
+EXAMPLE
+
+Gunung.
+
+Pulau.
+
+Lembah.
+
+Laut.
+
+Langit.
+
+IMPORTANT
+
+Sebagian wilayah naga lebih tua daripada kerajaan manusia.
+
+THE DRAGON TYPES
+
+Masih akan diperluas nanti.
+
+Namun fondasi awal:
+
+Flame Dragons
+
+Api.
+
+Storm Dragons
+
+Petir.
+
+Ocean Dragons
+
+Laut.
+
+Earth Dragons
+
+Bumi.
+
+Celestial Dragons
+
+Langit.
+
+Spirit Dragons
+
+Jiwa.
+
+Void Dragons
+
+Sangat langka.
+
+IMPORTANT
+
+Elemen tidak hanya mempengaruhi kekuatan.
+
+Tetapi budaya naga.
+
+THE ANCIENT DRAGONS
+
+Kategori tertinggi.
+
+Makhluk yang telah hidup melewati banyak era.
+
+IMPORTANT
+
+Sebagian Ancient Dragon:
+
+lebih tua daripada kerajaan modern.
+
+Sebagian:
+
+lebih tua daripada agama tertentu.
+
+THE DRAGON MEMORY
+
+Karena umur panjang.
+
+Naga menjadi arsip hidup.
+
+EXAMPLE
+
+Reruntuhan hilang.
+
+Catatan hancur.
+
+Kerajaan runtuh.
+
+Tetapi seekor naga masih mengingat.
+
+IMPORTANT
+
+Beberapa misteri dunia hanya dapat dijawab oleh naga tertentu.
+
+DRAGONS AND HUMANS
+
+Hubungan kompleks.
+
+Tidak selalu baik.
+
+Tidak selalu buruk.
+
+Karena naga melihat manusia sebagai individu.
+
+Bukan spesies.
+
+EXAMPLE
+
+Seekor naga dapat:
+
+membenci seorang raja
+menghormati seorang petani
+
+Secara bersamaan.
+
+THE DRAGON PARTNERS
+
+Sudah dikunci sebelumnya.
+
+Naga dapat menjadi partner.
+
+Tetapi:
+
+Naga memilih.
+
+Bukan ditangkap.
+
+Bukan dipaksa.
+
+IMPORTANT
+
+Mayoritas manusia tidak akan pernah memiliki partner naga.
+
+DRAGON RIDERS
+
+Ada.
+
+Tetapi sangat langka.
+
+Karena mendapatkan naga jauh lebih sulit daripada belajar menungganginya.
+
+THE DRAGON LEGACY
+
+Ketika naga mati.
+
+Dunia merasakannya.
+
+Karena:
+
+Satu naga
+=
+satu bagian sejarah dunia.
+THE NIRMANA EXCEPTION
+
+Sudah dikunci sebelumnya.
+
+Nirmana memiliki:
+
+Seekor naga sebagai sahabat.
+
+Bukan tunggangan.
+
+Bukan peliharaan.
+
+Sahabat.
+
+IMPORTANT
+
+Hubungan mereka telah berlangsung sangat lama.
+
+Begitu lama.
+
+Hingga sebagian orang menganggap keduanya legenda yang tidak bisa dipisahkan.
+
+THE FINAL LAW
+
+Seekor naga tidak seharusnya membuat pemain berkata:
+
+Aku ingin membunuhnya.
+
+Seekor naga seharusnya membuat pemain berkata:
+
+Aku ingin mengetahui kisahnya.
+
+# DESIGN REASONING BESAR
+
+Sekarang saya menemukan sesuatu yang sangat menarik.
+
+Karena kita sudah memiliki:
+
+✓ Naga
+
+✓ Monster
+
+✓ Companion
+
+✓ Kingdom
+
+✓ Dunia Hidup
+
+✓ Agama
+
+✓ Sejarah
+
+---
+
+Tetapi kita belum mendesain:
+
+# GREAT MONSTERS
+
+Karena tidak semua legenda dunia adalah naga.
+
+---
+
+Kita membutuhkan:
+
+- Leviathan Laut
+- Raja Serigala Purba
+- Phoenix
+- World Tree Beasts
+- Ancient Titans
+- Mythological Creatures
+
+---
+
+Dan yang paling penting:
+
+Beberapa dari mereka bukan boss.
+
+Mereka adalah:
+
+```text
+Kekuatan Alam.
+TEMUAN DIREKTUR #052
+
+Dokumen berikutnya harus:
+
+GREAT_MONSTER_BIBLE_PART_01
+
+Isi:
+
+Mythological Creatures
+World Beasts
+Leviathans
+Titans
+Phoenixes
+Ancient Predators
+Living Disasters
+Monster Legends
+World Ecology Giants
+
+Karena jika naga adalah tokoh sejarah, maka Great Monsters adalah kekuatan alam yang membantu membentuk dunia itu sendiri.
+
+FILE 53
+GREAT_MONSTER_BIBLE_PART_01
+NOT EVERY LEGEND HAS A NAME
+# AETHERION
+# GREAT MONSTER BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Great Monsters
+- Mythological Creatures
+- Leviathans
+- Titans
+- Phoenixes
+- Living Disasters
+- Ancient Predators
+
+---
+---
+DESIGN PHILOSOPHY
+
+Kesalahan umum banyak game fantasy:
+
+Boss = Monster Besar
+
+Lalu dibunuh.
+
+Selesai.
+
+Tetapi dunia yang hidup tidak bekerja seperti itu.
+
+Karena sebagian makhluk:
+
+Lebih mirip bencana alam
+daripada musuh.
+THE FIRST LAW
+GREAT MONSTERS ARE WORLD EVENTS
+
+Great Monster bukan monster kuat.
+
+Karena monster kuat banyak.
+
+Great Monster adalah:
+
+Makhluk yang keberadaannya
+mempengaruhi dunia.
+EXAMPLE
+
+Jika seekor Great Monster berpindah wilayah.
+
+Maka:
+
+kerajaan panik
+perdagangan berubah
+migrasi terjadi
+agama bereaksi
+IMPORTANT
+
+Mereka tidak harus jahat.
+
+CLASSIFICATION
+
+Great Monsters dibagi menjadi beberapa kategori.
+
+CATEGORY I
+LEVIATHANS
+
+Penguasa lautan.
+
+Makhluk yang sangat besar.
+
+Sebagian besar manusia:
+
+Tidak pernah melihatnya.
+
+Karena terlalu dalam.
+
+Terlalu jauh.
+
+Terlalu tua.
+
+IMPORTANT
+
+Leviathan bukan boss laut.
+
+Leviathan adalah bagian dari laut.
+
+EXAMPLE
+
+Beberapa jalur pelayaran berubah.
+
+Karena Leviathan sedang bermigrasi.
+
+CATEGORY II
+TITANS
+
+Makhluk daratan raksasa.
+
+Bukan spesies umum.
+
+Fenomena hidup.
+
+EXAMPLE
+
+Titan berjalan.
+
+Lembah berubah.
+
+Sungai berubah arah.
+
+Hutan hancur.
+
+IMPORTANT
+
+Sebagian Titan bahkan tidak sadar manusia ada.
+
+CATEGORY III
+PHOENIX
+
+Sangat langka.
+
+Sangat misterius.
+
+IMPORTANT
+
+Phoenix bukan burung api.
+
+Phoenix adalah simbol siklus.
+
+Kehidupan.
+
+Kematian.
+
+Kelahiran kembali.
+
+IMPORTANT
+
+Mayoritas orang hanya mengetahui legenda.
+
+CATEGORY IV
+WORLD BEASTS
+
+Makhluk yang terkait langsung dengan ekologi dunia.
+
+EXAMPLE
+
+Ancient Tree Beast.
+
+Jika mati.
+
+Seluruh wilayah berubah.
+
+EXAMPLE
+
+Spirit Whale.
+
+Migrasinya mempengaruhi mana dunia.
+
+CATEGORY V
+ANCIENT PREDATORS
+
+Pemburu tertua dunia.
+
+Masih hidup.
+
+Masih berburu.
+
+Setelah ribuan tahun.
+
+IMPORTANT
+
+Mereka tidak memburu manusia.
+
+Mereka memburu hal yang lebih besar.
+
+CATEGORY VI
+LIVING DISASTERS
+
+Kategori paling berbahaya.
+
+Makhluk yang keberadaannya:
+
+Adalah bencana.
+EXAMPLE
+
+Void Colossus.
+
+Berjalan.
+
+↓
+
+Ekosistem mati.
+
+Mana rusak.
+
+Monster bermutasi.
+
+IMPORTANT
+
+Sebagian Living Disaster tidak memiliki niat jahat.
+
+Mereka hanya eksis.
+
+THE MYTH PROBLEM
+
+Mayoritas Great Monster menjadi legenda.
+
+Karena sangat sedikit saksi hidup.
+
+EXAMPLE
+
+Seseorang melihat makhluk.
+
+Menceritakannya.
+
+Cerita berubah.
+
+100 tahun kemudian.
+
+Menjadi mitos.
+
+IMPORTANT
+
+Sebagian legenda benar.
+
+Sebagian tidak.
+
+THE HUNTERS
+
+Ada kelompok yang memburu Great Monsters.
+
+Namun sangat sedikit yang berhasil.
+
+IMPORTANT
+
+Sebagian Great Monster tidak pernah dibunuh.
+
+Sepanjang sejarah.
+
+THE TAMING QUESTION
+
+Ini pertanyaan penting.
+
+Karena sebelumnya sudah dikunci:
+
+Semua monster bisa dijinakkan.
+
+Jawabannya:
+
+Ya.
+
+Secara teori.
+
+IMPORTANT
+
+Secara praktik:
+
+hampir mustahil.
+
+Karena menjinakkan Great Monster sering kali membutuhkan:
+
+puluhan tahun
+hubungan mendalam
+kondisi unik
+skenario khusus
+EXAMPLE
+
+Phoenix mungkin memilih pemain.
+
+Tetapi tidak pernah menjadi peliharaan biasa.
+
+THE DEATH OF A GREAT MONSTER
+
+Ketika Great Monster mati.
+
+Dunia berubah.
+
+EXAMPLE
+
+Leviathan mati.
+
+↓
+
+Ekosistem laut berubah.
+
+↓
+
+Spesies tertentu punah.
+
+↓
+
+Ekonomi pelabuhan berubah.
+
+IMPORTANT
+
+Kematian Great Monster adalah peristiwa sejarah.
+
+THE CHRONICLE
+
+Great Monster hampir selalu masuk Chronicle.
+
+Karena pengaruh mereka terlalu besar.
+
+EXAMPLE
+Tahun 842
+
+Titan Ashkar jatuh
+setelah berjalan selama
+tiga abad.
+
+Peristiwa seperti itu akan dipelajari selama ratusan tahun.
+
+THE FINAL LAW
+
+Great Monster bukan tujuan.
+
+Mereka adalah bagian dari dunia.
+
+Dan dunia akan terasa lebih kecil jika mereka hilang.
+
+
+# DESIGN REASONING BESAR
+
+Sekarang saya mulai melihat lubang terbesar yang tersisa dalam fondasi dunia.
+
+Kita sudah memiliki:
+
+✓ Kingdom
+
+✓ Religion
+
+✓ Economy
+
+✓ Dragons
+
+✓ Great Monsters
+
+✓ Living World
+
+✓ History
+
+✓ Mystery
+
+---
+
+Tetapi kita belum memiliki:
+
+# FACTIONS
+
+Padahal dunia nyata dibentuk oleh organisasi.
+
+---
+
+Kita sudah memiliki fragmennya:
+
+- Gereja
+- Merchant Guild
+- Criminal Syndicates
+- Truth Seekers
+- Underground Elites
+- Holy Orders
+
+Namun belum pernah disatukan.
+
+---
+
+Dan menurut saya.
+
+Faksi akan menjadi tulang punggung politik dunia.
+
+Karena pemain nantinya akan berinteraksi dengan:
+
+- kerajaan
+- guild
+- kultus
+- akademi
+- organisasi rahasia
+- pemburu naga
+- pencari sejarah
+- kriminal
+
+selama ratusan jam permainan.
+
+---
+
+# TEMUAN DIREKTUR #053
+
+Dokumen berikutnya harus:
+
+## FACTION_BIBLE_PART_01
+
+Isi:
+
+- Major Factions
+- Minor Factions
+- Guilds
+- Secret Societies
+- Academies
+- Criminal Syndicates
+- Religious Orders
+- Monster Organizations
+- Reputation
+- Faction Politics
+
+Karena pada akhirnya dunia tidak hanya terdiri dari individu.
+
+Dunia juga terdiri dari kelompok-kelompok yang memiliki tujuan masing-masing.
+
+FILE 53 ======= GREAT\_M --------
+
+Start writing
+
+Berikut versi dalam writing block agar konsisten dengan dokumentasi sebelumnya.
+
+FILE 53
+GREAT_MONSTER_BIBLE_PART_01
+NOT EVERY LEGEND HAS A NAME
+AETHERION
+GREAT MONSTER BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+Great Monsters
+Mythological Creatures
+Leviathans
+Titans
+Phoenixes
+Living Disasters
+Ancient Predators
+DESIGN PHILOSOPHY
+
+Kesalahan umum banyak game fantasy:
+
+Boss = Monster Besar
+
+Lalu dibunuh.
+
+Selesai.
+
+Tetapi dunia yang hidup tidak bekerja seperti itu.
+
+Karena sebagian makhluk:
+
+Lebih mirip bencana alam daripada musuh.
+
+THE FIRST LAW
+GREAT MONSTERS ARE WORLD EVENTS
+
+Great Monster bukan monster kuat.
+
+Karena monster kuat banyak.
+
+Great Monster adalah:
+
+Makhluk yang keberadaannya mempengaruhi dunia.
+
+EXAMPLE
+
+Jika seekor Great Monster berpindah wilayah.
+
+Maka:
+
+kerajaan panik
+perdagangan berubah
+migrasi terjadi
+agama bereaksi
+IMPORTANT
+
+Mereka tidak harus jahat.
+
+CLASSIFICATION
+
+Great Monsters dibagi menjadi beberapa kategori.
+
+CATEGORY I
+LEVIATHANS
+
+Penguasa lautan.
+
+Makhluk yang sangat besar.
+
+Sebagian besar manusia:
+
+Tidak pernah melihatnya.
+
+Karena terlalu dalam.
+
+Terlalu jauh.
+
+Terlalu tua.
+
+IMPORTANT
+
+Leviathan bukan boss laut.
+
+Leviathan adalah bagian dari laut.
+
+EXAMPLE
+
+Beberapa jalur pelayaran berubah.
+
+Karena Leviathan sedang bermigrasi.
+
+CATEGORY II
+TITANS
+
+Makhluk daratan raksasa.
+
+Bukan spesies umum.
+
+Fenomena hidup.
+
+EXAMPLE
+
+Titan berjalan.
+
+Lembah berubah.
+
+Sungai berubah arah.
+
+Hutan hancur.
+
+IMPORTANT
+
+Sebagian Titan bahkan tidak sadar manusia ada.
+
+CATEGORY III
+PHOENIX
+
+Sangat langka.
+
+Sangat misterius.
+
+IMPORTANT
+
+Phoenix bukan burung api.
+
+Phoenix adalah simbol siklus.
+
+Kehidupan
+Kematian
+Kelahiran kembali
+
+Mayoritas orang hanya mengetahui legenda.
+
+CATEGORY IV
+WORLD BEASTS
+
+Makhluk yang terkait langsung dengan ekologi dunia.
+
+EXAMPLE
+
+Ancient Tree Beast.
+
+Jika mati.
+
+Seluruh wilayah berubah.
+
+EXAMPLE
+
+Spirit Whale.
+
+Migrasinya mempengaruhi mana dunia.
+
+CATEGORY V
+ANCIENT PREDATORS
+
+Pemburu tertua dunia.
+
+Masih hidup.
+
+Masih berburu.
+
+Setelah ribuan tahun.
+
+IMPORTANT
+
+Mereka tidak memburu manusia.
+
+Mereka memburu hal yang lebih besar.
+
+CATEGORY VI
+LIVING DISASTERS
+
+Kategori paling berbahaya.
+
+Makhluk yang keberadaannya:
+
+Adalah bencana.
+
+EXAMPLE
+
+Void Colossus.
+
+Berjalan.
+
+↓
+
+Ekosistem mati.
+
+↓
+
+Mana rusak.
+
+↓
+
+Monster bermutasi.
+
+IMPORTANT
+
+Sebagian Living Disaster tidak memiliki niat jahat.
+
+Mereka hanya eksis.
+
+THE MYTH PROBLEM
+
+Mayoritas Great Monster menjadi legenda.
+
+Karena sangat sedikit saksi hidup.
+
+EXAMPLE
+
+Seseorang melihat makhluk.
+
+↓
+
+Menceritakannya.
+
+↓
+
+Cerita berubah.
+
+↓
+
+100 tahun kemudian.
+
+↓
+
+Menjadi mitos.
+
+IMPORTANT
+
+Sebagian legenda benar.
+
+Sebagian tidak.
+
+THE HUNTERS
+
+Ada kelompok yang memburu Great Monsters.
+
+Namun sangat sedikit yang berhasil.
+
+IMPORTANT
+
+Sebagian Great Monster tidak pernah dibunuh.
+
+Sepanjang sejarah.
+
+THE TAMING QUESTION
+
+Ini pertanyaan penting.
+
+Karena sebelumnya sudah dikunci:
+
+Semua monster bisa dijinakkan.
+
+Jawabannya:
+
+Ya.
+
+Secara teori.
+
+IMPORTANT
+
+Secara praktik:
+
+Hampir mustahil.
+
+Karena menjinakkan Great Monster sering kali membutuhkan:
+
+puluhan tahun
+hubungan mendalam
+kondisi unik
+skenario khusus
+EXAMPLE
+
+Phoenix mungkin memilih pemain.
+
+Tetapi tidak pernah menjadi peliharaan biasa.
+
+THE DEATH OF A GREAT MONSTER
+
+Ketika Great Monster mati.
+
+Dunia berubah.
+
+EXAMPLE
+
+Leviathan mati.
+
+↓
+
+Ekosistem laut berubah.
+
+↓
+
+Spesies tertentu punah.
+
+↓
+
+Ekonomi pelabuhan berubah.
+
+IMPORTANT
+
+Kematian Great Monster adalah peristiwa sejarah.
+
+THE CHRONICLE
+
+Great Monster hampir selalu masuk Chronicle.
+
+Karena pengaruh mereka terlalu besar.
+
+EXAMPLE
+
+Tahun 842
+
+Titan Ashkar jatuh setelah berjalan selama tiga abad.
+
+Peristiwa seperti itu akan dipelajari selama ratusan tahun.
+
+THE FINAL LAW
+
+Great Monster bukan tujuan.
+
+Mereka adalah bagian dari dunia.
+
+Dan dunia akan terasa lebih kecil jika mereka hilang.
+
+DESIGN REASONING BESAR
+
+Sekarang saya mulai melihat lubang terbesar yang tersisa dalam fondasi dunia.
+
+Kita sudah memiliki:
+
+✓ Kingdom
+
+✓ Religion
+
+✓ Economy
+
+✓ Dragons
+
+✓ Great Monsters
+
+✓ Living World
+
+✓ History
+
+✓ Mystery
+
+Tetapi kita belum memiliki:
+
+FACTIONS
+
+Padahal dunia nyata dibentuk oleh organisasi.
+
+Kita sudah memiliki fragmennya:
+
+Gereja
+Merchant Guild
+Criminal Syndicates
+Truth Seekers
+Underground Elites
+Holy Orders
+
+Namun belum pernah disatukan.
+
+Dan menurut saya.
+
+Faksi akan menjadi tulang punggung politik dunia.
+
+Karena pemain nantinya akan berinteraksi dengan:
+
+kerajaan
+guild
+kultus
+akademi
+organisasi rahasia
+pemburu naga
+pencari sejarah
+kriminal
+
+selama ratusan jam permainan.
+
+TEMUAN DIREKTUR #053
+
+Dokumen berikutnya harus:
+
+FACTION_BIBLE_PART_01
+
+Isi:
+
+Major Factions
+Minor Factions
+Guilds
+Secret Societies
+Academies
+Criminal Syndicates
+Religious Orders
+Monster Organizations
+Reputation
+Faction Politics
+
+Karena pada akhirnya dunia tidak hanya terdiri dari individu.
+
+Dunia juga terdiri dari kelompok-kelompok yang memiliki tujuan masing-masing.
+
+Saya bisa mengubah FILE 42–53 yang sudah dibuat menjadi format writing block yang seragam jika ingin dijadikan master document.
+
+# FILE 54
+
+## FACTION_BIBLE_PART_01
+
+### THE WORLD IS MOVED BY GROUPS, NOT INDIVIDUALS
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Major Factions
+* Minor Factions
+* Reputation
+* Politics
+* Organizations
+* Influence
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Banyak RPG memiliki faksi.
+
+---
+
+Tetapi faksi mereka biasanya hanya:
+
+* toko quest
+* pemberi hadiah
+* pemberi reputasi
+
+---
+
+Padahal dalam dunia nyata:
+
+```text
+Organisasi mengubah sejarah.
+```
+
+---
+
+Kerajaan lahir karena organisasi.
+
+---
+
+Perang terjadi karena organisasi.
+
+---
+
+Ilmu berkembang karena organisasi.
+
+---
+
+Agama berkembang karena organisasi.
+
+---
+
+Bahkan kejahatan berkembang karena organisasi.
+
+---
+
+Maka Aetherion membutuhkan sistem faksi yang jauh lebih dalam.
+
+---
+
+# THE FIRST LAW
+
+## EVERY FACTION WANTS SOMETHING
+
+---
+
+Ini hukum paling penting.
+
+---
+
+Tidak boleh ada:
+
+```text
+Faction Baik
+
+Faction Jahat
+```
+
+---
+
+Terlalu sederhana.
+
+---
+
+Sebaliknya:
+
+```text
+Setiap faksi memiliki tujuan.
+```
+
+---
+
+Dan tujuan itu bisa berbenturan.
+
+---
+
+# EXAMPLE
+
+---
+
+Faksi Peneliti.
+
+---
+
+Ingin membuka reruntuhan kuno.
+
+---
+
+Faksi Pelindung.
+
+---
+
+Ingin menyegel reruntuhan kuno.
+
+---
+
+Keduanya tidak jahat.
+
+---
+
+Tetapi konflik tetap terjadi.
+
+---
+
+# THE SECOND LAW
+
+## FACTIONS EXIST WITHOUT THE PLAYER
+
+---
+
+Sangat penting.
+
+---
+
+Karena Living World sudah dikunci.
+
+---
+
+Maka organisasi juga harus hidup.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain tidak pernah membantu Merchant Guild.
+
+---
+
+Mereka tetap berdagang.
+
+---
+
+Tetap berkembang.
+
+---
+
+Tetap berpolitik.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia tidak menunggu pemain.
+
+---
+
+# THE FACTION SCALE
+
+---
+
+Organisasi dibagi berdasarkan pengaruh.
+
+---
+
+# LOCAL FACTIONS
+
+---
+
+Pengaruh:
+
+Desa hingga kota.
+
+---
+
+Contoh:
+
+* kelompok pemburu
+* asosiasi petani
+* penjaga lokal
+
+---
+
+# REGIONAL FACTIONS
+
+---
+
+Pengaruh:
+
+Satu wilayah.
+
+---
+
+Contoh:
+
+* guild dagang wilayah
+* akademi regional
+
+---
+
+# NATIONAL FACTIONS
+
+---
+
+Pengaruh:
+
+Satu kerajaan.
+
+---
+
+Contoh:
+
+* militer kerajaan
+* gereja nasional
+
+---
+
+# CONTINENTAL FACTIONS
+
+---
+
+Pengaruh:
+
+Banyak kerajaan.
+
+---
+
+Contoh:
+
+* merchant consortium
+* holy order besar
+
+---
+
+# GLOBAL FACTIONS
+
+---
+
+Pengaruh:
+
+Seluruh dunia.
+
+---
+
+Jumlahnya sangat sedikit.
+
+---
+
+# IMPORTANT
+
+---
+
+Semakin besar faksi.
+
+---
+
+Semakin lambat bergerak.
+
+---
+
+Tetapi semakin besar dampaknya.
+
+---
+
+# MAJOR FACTIONS
+
+---
+
+Ini organisasi yang dikenal luas.
+
+---
+
+Mayoritas pemain akan mendengar tentang mereka.
+
+---
+
+Contohnya:
+
+* Merchant Guild
+* Explorer Guild
+* Holy Orders
+* Academic Circles
+
+---
+
+# MINOR FACTIONS
+
+---
+
+Jumlahnya sangat banyak.
+
+---
+
+Sebagian hanya ada di satu kota.
+
+---
+
+Sebagian hanya ada di satu gunung.
+
+---
+
+Sebagian hanya terdiri dari puluhan anggota.
+
+---
+
+# IMPORTANT
+
+---
+
+Minor Faction dapat berkembang.
+
+---
+
+Atau hancur.
+
+---
+
+Sepanjang permainan.
+
+---
+
+# HIDDEN FACTIONS
+
+---
+
+Kelompok yang keberadaannya tidak diketahui publik.
+
+---
+
+Contoh:
+
+* pemuja kehampaan
+* penjaga rahasia kuno
+* organisasi bawah tanah
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian pemain mungkin tidak pernah menemukan mereka.
+
+---
+
+# THE REPUTATION SYSTEM
+
+---
+
+Reputasi tidak universal.
+
+---
+
+Ini penting.
+
+---
+
+Karena dunia nyata tidak bekerja seperti itu.
+
+---
+
+# EXAMPLE
+
+---
+
+Membantu Merchant Guild.
+
+---
+
+Merchant Guild menyukai pemain.
+
+---
+
+Tetapi:
+
+Criminal Syndicate membenci pemain.
+
+---
+
+Karena kepentingan mereka bertentangan.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak mungkin disukai semua pihak.
+
+---
+
+# THE INFLUENCE SYSTEM
+
+---
+
+Faksi memiliki:
+
+### Wealth
+
+Kekayaan.
+
+---
+
+### Members
+
+Jumlah anggota.
+
+---
+
+### Territory
+
+Wilayah pengaruh.
+
+---
+
+### Knowledge
+
+Pengetahuan.
+
+---
+
+### Military Power
+
+Kekuatan tempur.
+
+---
+
+### Legitimacy
+
+Kepercayaan publik.
+
+---
+
+# IMPORTANT
+
+---
+
+Dua faksi dengan kekuatan sama.
+
+---
+
+Belum tentu memiliki pengaruh sama.
+
+---
+
+# EXAMPLE
+
+---
+
+Faksi kecil.
+
+---
+
+Tetapi memiliki pengetahuan rahasia.
+
+---
+
+Bisa lebih berbahaya daripada tentara besar.
+
+---
+
+# FACTION GROWTH
+
+---
+
+Faksi dapat berkembang.
+
+---
+
+Faksi dapat pecah.
+
+---
+
+Faksi dapat berubah.
+
+---
+
+# EXAMPLE
+
+---
+
+Kelompok peneliti kecil.
+
+↓
+
+Menemukan artefak besar.
+
+↓
+
+Mendapat dukungan.
+
+↓
+
+Menjadi organisasi internasional.
+
+---
+
+# IMPORTANT
+
+---
+
+Sejarah organisasi terus bergerak.
+
+---
+
+# THE PLAYER QUESTION
+
+---
+
+Bisakah pemain menjadi pemimpin faksi?
+
+---
+
+Jawabannya:
+
+Kadang.
+
+---
+
+Tetapi tidak selalu.
+
+---
+
+Karena sebagian organisasi:
+
+lebih tua dari kerajaan.
+
+---
+
+Lebih tua dari dinasti.
+
+---
+
+Mereka tidak menyerahkan kepemimpinan begitu saja.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Faksi bukan fitur.
+
+---
+
+Faksi adalah:
+
+```text
+Mesin yang menggerakkan dunia.
+```
+
+---
+
+Dan ketika pemain tidak melihat.
+
+Mereka tetap bergerak.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang kita mulai masuk ke wilayah yang sangat penting.
+
+Karena Anda sebelumnya sudah meminta:
+
+* penjudi
+* peramal
+* pencari kebenaran
+* penipu
+* orang kuat misterius
+* elite underground
+* kriminal
+
+Dan saya menyadari sesuatu.
+
+Sebagian besar dari mereka bukan individu.
+
+Mereka berasal dari organisasi.
+
+---
+
+Contoh:
+
+Truth Seekers.
+
+---
+
+Tidak mungkin hanya satu orang.
+
+---
+
+Underground Elites.
+
+---
+
+Tidak mungkin hanya lima orang tua kuat.
+
+---
+
+Mereka membutuhkan jaringan.
+
+---
+
+Mereka membutuhkan struktur.
+
+---
+
+Artinya.
+
+Dokumen berikutnya harus mulai mengisi organisasi-organisasi besar yang membentuk dunia.
+
+---
+
+# TEMUAN DIREKTUR #054
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_02
+
+Isi:
+
+* Merchant Guild
+* Explorer Guild
+* Scholar Consortium
+* Adventurer Guild
+* Monster Research Society
+* Reputation Framework
+* Influence Wars
+
+Karena kita harus mulai mengubah konsep faksi menjadi organisasi nyata yang bisa ditemui pemain.
+
+# FILE 55
+
+## FACTION_BIBLE_PART_02
+
+### THE GREAT ORGANIZATIONS OF AETHERION
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Merchant Guild
+* Explorer Guild
+* Scholar Consortium
+* Adventurer Guild
+* Monster Research Society
+* Influence Wars
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Dunia tidak berubah karena kerajaan saja.
+
+---
+
+Sebagian perubahan terbesar sejarah justru lahir dari:
+
+* guild
+* akademi
+* organisasi
+* kelompok peneliti
+* jaringan perdagangan
+
+---
+
+Karena kerajaan datang dan pergi.
+
+---
+
+Tetapi organisasi dapat bertahan selama berabad-abad.
+
+---
+
+# THE GREAT ORGANIZATIONS
+
+---
+
+Organisasi besar dunia.
+
+---
+
+Tidak menguasai dunia.
+
+---
+
+Tetapi mempengaruhinya.
+
+---
+
+# THE MERCHANT GUILD
+
+## KEEPERS OF COMMERCE
+
+---
+
+Mayoritas orang menganggap pedagang:
+
+hanya penjual.
+
+---
+
+Kesalahan besar.
+
+---
+
+Karena Merchant Guild mengendalikan:
+
+* perdagangan
+* distribusi
+* informasi ekonomi
+* jalur logistik
+
+---
+
+# IMPORTANT
+
+---
+
+Sering kali:
+
+```text
+Pedagang mengetahui perang
+lebih cepat daripada raja.
+```
+
+---
+
+Karena mereka mendengar rumor dari seluruh dunia.
+
+---
+
+# INTERNAL STRUCTURE
+
+---
+
+Apprentice Merchant
+
+↓
+
+Trader
+
+↓
+
+Senior Merchant
+
+↓
+
+Trade Master
+
+↓
+
+Guild Director
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak semua anggota kaya.
+
+---
+
+Tetapi semua anggota memiliki akses jaringan.
+
+---
+
+# THE REAL POWER
+
+---
+
+Merchant Guild tidak memerintah kerajaan.
+
+---
+
+Tetapi dapat:
+
+* membuat harga naik
+* membuat harga turun
+* memindahkan sumber daya
+
+---
+
+Yang kadang lebih berbahaya.
+
+---
+
+# EXPLORER GUILD
+
+## THE PEOPLE WHO GO FIRST
+
+---
+
+Salah satu organisasi paling penting.
+
+---
+
+Karena dunia Aetherion masih penuh misteri.
+
+---
+
+# DUTIES
+
+---
+
+* memetakan wilayah
+* menemukan dungeon
+* mencatat reruntuhan
+* membuat laporan
+
+---
+
+# IMPORTANT
+
+---
+
+Banyak kerajaan bergantung pada Explorer Guild.
+
+---
+
+Karena mereka tidak mampu menjelajahi semuanya sendiri.
+
+---
+
+# RANKS
+
+---
+
+Novice Explorer
+
+↓
+
+Scout
+
+↓
+
+Pathfinder
+
+↓
+
+Senior Explorer
+
+↓
+
+Master Explorer
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian Master Explorer menjadi legenda.
+
+---
+
+Karena menemukan sesuatu yang mengubah dunia.
+
+---
+
+# SCHOLAR CONSORTIUM
+
+## SEEKERS OF KNOWLEDGE
+
+---
+
+Salah satu organisasi tertua.
+
+---
+
+Motto mereka:
+
+```text
+Knowledge Survives.
+```
+
+---
+
+# PURPOSE
+
+---
+
+Melindungi pengetahuan.
+
+---
+
+Mempelajari sejarah.
+
+---
+
+Mencatat dunia.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka tidak memihak kerajaan.
+
+---
+
+Setidaknya secara resmi.
+
+---
+
+# THE PROBLEM
+
+---
+
+Pengetahuan adalah kekuatan.
+
+---
+
+Dan kekuatan selalu menarik konflik.
+
+---
+
+# EXAMPLE
+
+---
+
+Kerajaan ingin artefak.
+
+---
+
+Scholar ingin mempelajari artefak.
+
+---
+
+Konflik muncul.
+
+---
+
+# THE ARCHIVISTS
+
+---
+
+Subkelompok paling dihormati.
+
+---
+
+Tugas mereka:
+
+* menjaga arsip
+* menjaga catatan Chronicle
+* menjaga sejarah
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian arsip mereka lebih tua daripada kerajaan modern.
+
+---
+
+# ADVENTURER GUILD
+
+## THE NECESSARY CHAOS
+
+---
+
+Banyak orang salah paham.
+
+---
+
+Adventurer Guild bukan organisasi pahlawan.
+
+---
+
+Mereka adalah:
+
+```text
+Problem Solvers.
+```
+
+---
+
+# DUTIES
+
+---
+
+* memburu monster
+* mengawal karavan
+* menyelidiki kejadian aneh
+* membantu wilayah terpencil
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian anggota mulia.
+
+---
+
+Sebagian anggota hanya mencari uang.
+
+---
+
+Keduanya diterima.
+
+---
+
+# RANKING
+
+---
+
+Guild menggunakan ranking.
+
+---
+
+Bukan untuk status.
+
+---
+
+Tetapi untuk:
+
+* keamanan
+* kepercayaan
+* evaluasi risiko
+
+---
+
+# IMPORTANT
+
+---
+
+Ranking tinggi bukan berarti orang baik.
+
+---
+
+Hanya berarti kompeten.
+
+---
+
+# MONSTER RESEARCH SOCIETY
+
+## THOSE WHO STUDY THE UNKNOWN
+
+---
+
+Organisasi yang lahir karena satu fakta.
+
+---
+
+Monster terlalu penting untuk diabaikan.
+
+---
+
+# PURPOSE
+
+---
+
+* penelitian monster
+* mutasi
+* evolusi
+* taming
+* ekologi monster
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian anggota sangat dihormati.
+
+---
+
+Sebagian dianggap gila.
+
+---
+
+Karena penelitian mereka.
+
+---
+
+# THE GREAT DEBATE
+
+---
+
+Monster adalah:
+
+* hewan?
+* manusia lain?
+* peradaban lain?
+
+---
+
+Belum ada jawaban tunggal.
+
+---
+
+# IMPORTANT
+
+---
+
+Konflik akademik ini berlangsung selama berabad-abad.
+
+---
+
+# INFLUENCE WARS
+
+## THE SILENT CONFLICTS
+
+---
+
+Tidak semua perang menggunakan pedang.
+
+---
+
+Sebagian menggunakan:
+
+* informasi
+* perdagangan
+* penelitian
+* propaganda
+
+---
+
+# EXAMPLE
+
+---
+
+Scholar Consortium menemukan reruntuhan.
+
+---
+
+Merchant Guild ingin membukanya.
+
+---
+
+Holy Order ingin menyegelnya.
+
+---
+
+Explorer Guild ingin memetakannya.
+
+---
+
+Tidak ada yang jahat.
+
+---
+
+Tetapi konflik tetap terjadi.
+
+---
+
+# THE ALLIANCE QUESTION
+
+---
+
+Faksi dapat bekerja sama.
+
+---
+
+Faksi dapat saling membantu.
+
+---
+
+Faksi dapat saling menghancurkan.
+
+---
+
+# IMPORTANT
+
+---
+
+Hubungan antar faksi selalu berubah.
+
+---
+
+Karena kepentingan berubah.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Semakin besar dunia.
+
+---
+
+Semakin mustahil satu organisasi memahami semuanya.
+
+---
+
+Karena itu Aetherion membutuhkan banyak organisasi.
+
+---
+
+Dan masing-masing hanya melihat sebagian kebenaran.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang kita telah membuat organisasi resmi.
+
+Tetapi ada satu kelompok yang jauh lebih menarik.
+
+Karena mereka sudah muncul berkali-kali dalam percakapan kita:
+
+* kriminal
+* elite underground
+* penipu
+* pemburu informasi
+* orang-orang yang hidup di luar hukum
+
+---
+
+Dan dunia yang terlalu bersih akan terasa palsu.
+
+---
+
+Karena dunia nyata memiliki:
+
+* pasar gelap
+* jaringan rahasia
+* kelompok kriminal
+* penyelundup
+* pembunuh bayaran
+* kolektor ilegal
+
+---
+
+Yang berarti.
+
+Faksi berikutnya bukan organisasi resmi.
+
+Melainkan:
+
+```text
+Dunia bawah tanah.
+```
+
+---
+
+# TEMUAN DIREKTUR #055
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_03
+
+Isi:
+
+* Criminal Syndicates
+* Black Markets
+* Information Brokers
+* Underground Elites
+* Smugglers
+* Assassins
+* Hidden Economies
+* Shadow Influence
+
+Karena sebagian sejarah dunia tidak ditulis oleh raja.
+
+Sebagian ditulis oleh orang-orang yang bekerja dalam bayangan.
+
+# FILE 56
+
+## FACTION_BIBLE_PART_03
+
+### THE WORLD BENEATH THE WORLD
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Criminal Syndicates
+* Black Markets
+* Information Brokers
+* Underground Elites
+* Smugglers
+* Assassins
+* Hidden Economies
+* Shadow Influence
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Salah satu kesalahan terbesar dunia fantasy:
+
+```text
+Kriminal = Bandit
+```
+
+---
+
+Bandit muncul.
+
+Bandit dibunuh.
+
+Selesai.
+
+---
+
+Padahal dunia nyata jauh lebih rumit.
+
+---
+
+Karena selama ada:
+
+* kekuasaan
+* uang
+* rahasia
+
+---
+
+Maka selalu akan ada:
+
+```text
+Bayangan.
+```
+
+---
+
+# THE FIRST LAW
+
+## CRIME IS PART OF CIVILIZATION
+
+---
+
+Semakin besar kota.
+
+---
+
+Biasanya semakin besar kriminalitas.
+
+---
+
+Karena:
+
+* perdagangan meningkat
+* populasi meningkat
+* kekayaan meningkat
+
+---
+
+# IMPORTANT
+
+---
+
+Kriminalitas bukan bug.
+
+---
+
+Kriminalitas adalah konsekuensi.
+
+---
+
+# THE CRIMINAL SYNDICATES
+
+## ORGANIZED SHADOWS
+
+---
+
+Kelompok kriminal terbesar.
+
+---
+
+Bukan gerombolan.
+
+---
+
+Melainkan organisasi.
+
+---
+
+# ACTIVITIES
+
+---
+
+* penyelundupan
+* pemerasan
+* perjudian ilegal
+* perdagangan artefak
+* perdagangan informasi
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian Syndicate lebih kaya dari kerajaan kecil.
+
+---
+
+# INTERNAL STRUCTURE
+
+---
+
+Runner
+
+↓
+
+Courier
+
+↓
+
+Operator
+
+↓
+
+Lieutenant
+
+↓
+
+Syndicate Lord
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian anggota bahkan tidak tahu siapa pemimpin mereka.
+
+---
+
+# THE BLACK MARKETS
+
+## EVERYTHING HAS A PRICE
+
+---
+
+Pasar gelap bukan tempat jahat.
+
+---
+
+Pasar gelap adalah:
+
+```text
+Tempat transaksi yang tidak diakui hukum.
+```
+
+---
+
+# EXAMPLES
+
+---
+
+Artefak terlarang.
+
+---
+
+Peta reruntuhan rahasia.
+
+---
+
+Monster langka.
+
+---
+
+Informasi sensitif.
+
+---
+
+Barang curian.
+
+---
+
+# IMPORTANT
+
+---
+
+Kadang pemain hanya bisa memperoleh sesuatu melalui pasar gelap.
+
+---
+
+# THE INFORMATION BROKERS
+
+## MERCHANTS OF SECRETS
+
+---
+
+Kelompok yang menjual informasi.
+
+---
+
+Tidak memihak siapa pun.
+
+---
+
+Karena pelanggan mereka adalah:
+
+semua pihak.
+
+---
+
+# EXAMPLES
+
+---
+
+Kerajaan.
+
+---
+
+Guild.
+
+---
+
+Kriminal.
+
+---
+
+Akademi.
+
+---
+
+Petualang.
+
+---
+
+# IMPORTANT
+
+---
+
+Dalam beberapa kasus:
+
+```text
+Informasi lebih berharga daripada emas.
+```
+
+---
+
+# THE MEMORY MERCHANTS
+
+---
+
+Subkategori yang sangat langka.
+
+---
+
+Mereka mengumpulkan:
+
+* catatan
+* surat
+* arsip
+* rahasia keluarga
+
+---
+
+Selama puluhan tahun.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian mengetahui sejarah yang tidak diketahui publik.
+
+---
+
+# THE UNDERGROUND ELITES
+
+## THOSE WHO RULE WITHOUT CROWNS
+
+---
+
+Kelompok yang sudah muncul sebelumnya.
+
+---
+
+Mereka bukan organisasi formal.
+
+---
+
+Mereka adalah jaringan.
+
+---
+
+# MEMBERS
+
+---
+
+* tetua tua yang sangat kuat
+* bangsawan bayangan
+* pedagang legendaris
+* mantan jenderal
+* tokoh misterius
+
+---
+
+# IMPORTANT
+
+---
+
+Mayoritas rakyat tidak tahu mereka ada.
+
+---
+
+Tetapi sebagian keputusan dunia dipengaruhi mereka.
+
+---
+
+# THE STRANGE TRUTH
+
+---
+
+Sebagian anggota Underground Elites:
+
+lebih tua daripada kerajaan tertentu.
+
+---
+
+Sebagian telah melihat beberapa dinasti jatuh.
+
+---
+
+# SMUGGLERS
+
+## THE PEOPLE BETWEEN BORDERS
+
+---
+
+Penyelundup bukan selalu kriminal kejam.
+
+---
+
+Sering kali mereka hanya:
+
+```text
+Orang yang menjual apa yang dilarang.
+```
+
+---
+
+# EXAMPLES
+
+---
+
+Obat.
+
+---
+
+Buku terlarang.
+
+---
+
+Artefak.
+
+---
+
+Monster.
+
+---
+
+# IMPORTANT
+
+---
+
+Dalam beberapa wilayah.
+
+---
+
+Penyelundup bahkan dianggap pahlawan.
+
+---
+
+# ASSASSIN NETWORKS
+
+## THE KNIVES IN THE DARK
+
+---
+
+Pembunuh bayaran ada.
+
+---
+
+Tetapi sangat langka.
+
+---
+
+Karena pekerjaan mereka sulit.
+
+---
+
+Dan berbahaya.
+
+---
+
+# IMPORTANT
+
+---
+
+Mayoritas pembunuh terkenal:
+
+mati muda.
+
+---
+
+# EXCEPTION
+
+---
+
+Kecuali legenda.
+
+---
+
+Yang berhasil hidup cukup lama.
+
+---
+
+Untuk menjadi mitos.
+
+---
+
+# SHADOW ECONOMY
+
+---
+
+Ekonomi bawah tanah berjalan paralel.
+
+---
+
+Dengan ekonomi resmi.
+
+---
+
+# EXAMPLE
+
+---
+
+Kerajaan melarang artefak tertentu.
+
+---
+
+Pasar gelap menjualnya.
+
+---
+
+Permintaan tetap ada.
+
+---
+
+Pasokan tetap muncul.
+
+---
+
+# IMPORTANT
+
+---
+
+Larangan tidak menghapus kebutuhan.
+
+---
+
+# SHADOW POLITICS
+
+---
+
+Beberapa perang.
+
+---
+
+Tidak dimulai oleh raja.
+
+---
+
+Tetapi oleh orang-orang yang tidak pernah muncul dalam buku sejarah.
+
+---
+
+# EXAMPLE
+
+---
+
+Manipulasi harga.
+
+↓
+
+Kelaparan.
+
+↓
+
+Kerusuhan.
+
+↓
+
+Konflik.
+
+---
+
+# IMPORTANT
+
+---
+
+Bayangan dapat mengubah dunia.
+
+---
+
+Tanpa terlihat.
+
+---
+
+# THE PLAYER QUESTION
+
+---
+
+Bisakah pemain bergabung?
+
+---
+
+Ya.
+
+---
+
+Bisakah pemain memimpin?
+
+---
+
+Kadang.
+
+---
+
+Tetapi dunia bawah tanah memiliki aturan sendiri.
+
+---
+
+# IMPORTANT
+
+---
+
+Kepercayaan jauh lebih berharga daripada kekuatan.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Jika kerajaan adalah wajah dunia.
+
+---
+
+Maka dunia bawah tanah adalah:
+
+```text
+Tulang belakang tersembunyinya.
+```
+
+---
+
+Dan keduanya tidak bisa dipisahkan.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang kita telah memiliki:
+
+✓ Kerajaan
+
+✓ Guild
+
+✓ Akademisi
+
+✓ Pedagang
+
+✓ Kriminal
+
+✓ Elite Underground
+
+---
+
+Tetapi ada kelompok yang jauh lebih menarik.
+
+---
+
+Karena mereka sudah muncul berkali-kali dalam visi awal Anda:
+
+* peramal
+* pencari kebenaran
+* pembaca masa depan
+* pengembara misterius
+* orang-orang yang mengejar rahasia dunia
+
+---
+
+Mereka tidak cocok menjadi guild biasa.
+
+---
+
+Mereka lebih dekat dengan:
+
+```text
+Masyarakat Rahasia.
+```
+
+---
+
+Kelompok yang mengejar sesuatu yang lebih besar daripada uang.
+
+---
+
+# TEMUAN DIREKTUR #056
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_04
+
+Isi:
+
+* Truth Seekers
+* Star Readers
+* Future Readers
+* Ancient Keepers
+* Secret Societies
+* Cults of Knowledge
+* Hidden Libraries
+* The Search for Truth
+
+Karena beberapa orang tidak mengejar kekuasaan.
+
+Mereka mengejar jawaban.
+
+# FILE 57
+
+## FACTION_BIBLE_PART_04
+
+### THOSE WHO SEEK WHAT SHOULD NOT BE FOUND
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Truth Seekers
+* Star Readers
+* Future Readers
+* Ancient Keepers
+* Secret Societies
+* Hidden Libraries
+* Cults of Knowledge
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Tidak semua orang mengejar:
+
+* uang
+* kekuasaan
+* wilayah
+
+---
+
+Sebagian orang mengejar sesuatu yang jauh lebih berbahaya.
+
+---
+
+Yaitu:
+
+```text id="wq91jp"
+Kebenaran.
+```
+
+---
+
+Dan sepanjang sejarah.
+
+---
+
+Banyak perang.
+
+Banyak agama.
+
+Banyak kerajaan.
+
+---
+
+Lahir karena seseorang menemukan kebenaran yang tidak seharusnya ditemukan.
+
+---
+
+# THE FIRST LAW
+
+## KNOWLEDGE CHANGES PEOPLE
+
+---
+
+Semakin dalam seseorang memahami dunia.
+
+---
+
+Semakin sulit ia melihat dunia seperti sebelumnya.
+
+---
+
+# EXAMPLE
+
+---
+
+Petani mengetahui musim.
+
+---
+
+Pedagang mengetahui pasar.
+
+---
+
+Raja mengetahui politik.
+
+---
+
+Tetapi seseorang yang memahami sejarah dunia.
+
+---
+
+Mulai mempertanyakan segalanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Pengetahuan bukan selalu berkah.
+
+---
+
+# THE TRUTH SEEKERS
+
+## THOSE WHO REFUSE EASY ANSWERS
+
+---
+
+Salah satu organisasi paling misterius.
+
+---
+
+Mereka tidak memiliki ibu kota.
+
+---
+
+Tidak memiliki kerajaan.
+
+---
+
+Tidak memiliki wilayah resmi.
+
+---
+
+Tetapi memiliki anggota di seluruh dunia.
+
+---
+
+# PURPOSE
+
+---
+
+Menemukan:
+
+* kebenaran sejarah
+* rahasia dunia
+* misteri kuno
+* kontradiksi besar
+
+---
+
+# IMPORTANT
+
+---
+
+Truth Seekers tidak mencari artefak.
+
+---
+
+Mereka mencari jawaban.
+
+---
+
+# THE BELIEF
+
+---
+
+Motto tidak resmi mereka:
+
+```text id="0v7cqa"
+The Truth Exists.
+
+Whether We Like It Or Not.
+```
+
+---
+
+# THE PROBLEM
+
+---
+
+Kebenaran sering berbahaya.
+
+---
+
+Karena:
+
+* kerajaan memiliki rahasia
+* gereja memiliki rahasia
+* organisasi memiliki rahasia
+
+---
+
+Dan Truth Seekers terus menggali.
+
+---
+
+# STAR READERS
+
+## THOSE WHO LISTEN TO THE SKY
+
+---
+
+Kelompok astronom.
+
+---
+
+Tetapi tidak sesederhana itu.
+
+---
+
+Karena mereka percaya:
+
+```text id="s6l1eo"
+Langit meninggalkan pola.
+```
+
+---
+
+# STUDIES
+
+---
+
+* bintang
+* pergerakan langit
+* fenomena kosmik
+* siklus dunia
+
+---
+
+# IMPORTANT
+
+---
+
+Mayoritas ramalan besar dunia.
+
+---
+
+Berasal dari mereka.
+
+---
+
+# FUTURE READERS
+
+## THE ONES WHO INTERPRET POSSIBILITY
+
+---
+
+Kelompok yang sering disebut:
+
+* peramal
+* pembaca masa depan
+* visionaries
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka tidak melihat masa depan secara pasti.
+
+---
+
+Karena masa depan belum terjadi.
+
+---
+
+Sebaliknya.
+
+---
+
+Mereka melihat:
+
+```text id="f0rx35"
+Kemungkinan.
+```
+
+---
+
+# EXAMPLE
+
+---
+
+Mereka tidak berkata:
+
+```text
+Ini akan terjadi.
+```
+
+---
+
+Tetapi:
+
+```text
+Kemungkinan ini sedang tumbuh.
+```
+
+---
+
+# IMPORTANT
+
+---
+
+Karena itu.
+
+---
+
+Sebagian ramalan benar.
+
+---
+
+Sebagian salah.
+
+---
+
+# THE ANCIENT KEEPERS
+
+## GUARDIANS OF MEMORY
+
+---
+
+Kelompok yang sangat tua.
+
+---
+
+Bahkan sebagian Scholar Consortium.
+
+---
+
+Tidak mengetahui keberadaan mereka.
+
+---
+
+# PURPOSE
+
+---
+
+Menjaga:
+
+* catatan kuno
+* bahasa hilang
+* sejarah yang hampir punah
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka percaya:
+
+```text id="s8f57z"
+Apa yang dilupakan dunia
+akan mengulang tragedinya.
+```
+
+---
+
+# THE HIDDEN LIBRARIES
+
+---
+
+Ada perpustakaan yang tidak tercatat.
+
+---
+
+Tidak muncul pada peta.
+
+---
+
+Tidak muncul pada arsip kerajaan.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian berisi:
+
+* sejarah terlarang
+* penelitian terlarang
+* pengetahuan yang hilang
+
+---
+
+# THE LIBRARY PARADOX
+
+---
+
+Semakin penting suatu pengetahuan.
+
+---
+
+Semakin besar kemungkinan pengetahuan itu disembunyikan.
+
+---
+
+# CULTS OF KNOWLEDGE
+
+---
+
+Tidak semua kultus menyembah dewa.
+
+---
+
+Sebagian menyembah:
+
+* pengetahuan
+* kebenaran
+* sejarah
+
+---
+
+# EXAMPLE
+
+---
+
+Kelompok yang menghabiskan hidupnya.
+
+---
+
+Untuk mencari satu jawaban.
+
+---
+
+Dan tidak pernah menemukannya.
+
+---
+
+# THE SEEKERS OF NIRMANA
+
+---
+
+Subkelompok yang mulai muncul beberapa abad terakhir.
+
+---
+
+Mereka terobsesi pada satu figur.
+
+---
+
+Yaitu:
+
+```text id="az4xw7"
+Nirmana.
+```
+
+---
+
+# BELIEFS
+
+---
+
+Sebagian menganggapnya:
+
+* penyelamat gagal
+* korban dunia
+* ancaman terbesar
+* kunci sejarah
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada kesepakatan.
+
+---
+
+Karena semakin banyak yang dipelajari.
+
+---
+
+Semakin membingungkan.
+
+---
+
+# THE STRANGE PEOPLE
+
+---
+
+Kelompok ini melahirkan banyak individu yang pernah Anda minta sebelumnya:
+
+---
+
+* peramal
+* pembaca bintang
+* pengembara misterius
+* pencari kebenaran
+* kolektor rahasia
+* penjaga reruntuhan
+* orang tua yang mengetahui terlalu banyak
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian tampak gila.
+
+---
+
+Sebagian benar-benar gila.
+
+---
+
+Dan sebagian mengetahui sesuatu yang tidak diketahui orang lain.
+
+---
+
+# THE DANGER OF TRUTH
+
+---
+
+Semakin dekat seseorang pada kebenaran.
+
+---
+
+Semakin banyak musuh yang muncul.
+
+---
+
+Karena banyak kekuatan dunia:
+
+lebih nyaman dengan kebohongan.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Tidak semua orang mencari kekuasaan.
+
+---
+
+Sebagian orang mencari jawaban.
+
+---
+
+Dan sering kali.
+
+---
+
+Jawaban jauh lebih berbahaya.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang mulai terlihat pola yang menarik.
+
+---
+
+Kita memiliki:
+
+✓ Organisasi Resmi
+
+✓ Organisasi Kriminal
+
+✓ Organisasi Pengetahuan
+
+---
+
+Tetapi masih ada satu kekuatan besar yang belum dibahas.
+
+---
+
+Padahal mereka mempengaruhi dunia setiap hari.
+
+---
+
+Yaitu:
+
+```text id="wzx9g2"
+Agama yang Terorganisir.
+```
+
+---
+
+Karena sebelumnya kita sudah membuat Religion Bible.
+
+---
+
+Tetapi belum pernah mendesain:
+
+* gereja besar
+* holy orders
+* inquisitors
+* penjaga relik
+* politik agama
+
+---
+
+Dan dalam dunia dimana dewa benar-benar nyata.
+
+---
+
+Organisasi agama akan menjadi salah satu kekuatan terbesar di seluruh Aetherion.
+
+---
+
+# TEMUAN DIREKTUR #057
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_05
+
+Isi:
+
+* Great Churches
+* Holy Orders
+* Relic Guardians
+* Pilgrimage Networks
+* Inquisitors
+* Religious Politics
+* Divine Conflicts
+* Faith Organizations
+
+Karena sebagian perang terjadi demi tanah.
+
+Tetapi sebagian lainnya terjadi demi keyakinan.
+
+# FILE 58
+
+## FACTION_BIBLE_PART_05
+
+### FAITH NEEDS ORGANIZATION
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Great Churches
+* Holy Orders
+* Relic Guardians
+* Pilgrimage Networks
+* Inquisitors
+* Religious Politics
+* Divine Conflicts
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Kita sudah mengunci satu fakta penting:
+
+```text id="kq5zmu"
+Dewa itu nyata.
+```
+
+---
+
+Mukjizat nyata.
+
+---
+
+Divine Magic nyata.
+
+---
+
+Makhluk surgawi nyata.
+
+---
+
+Namun.
+
+---
+
+Keberadaan dewa tidak otomatis menciptakan kesatuan.
+
+---
+
+Karena:
+
+```text id="c4m8ar"
+Orang dapat menyembah dewa yang sama
+dan tetap berbeda pendapat.
+```
+
+---
+
+Maka lahirlah organisasi keagamaan.
+
+---
+
+# THE GREAT CHURCHES
+
+## KEEPERS OF FAITH
+
+---
+
+Gereja besar adalah organisasi religius paling berpengaruh.
+
+---
+
+Mereka mengelola:
+
+* kuil
+* sekolah agama
+* arsip suci
+* tempat ziarah
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak semua gereja kaya.
+
+---
+
+Tidak semua gereja kuat.
+
+---
+
+Tetapi semua gereja memiliki pengaruh.
+
+---
+
+# THE SECOND LAW
+
+## FAITH SPREADS THROUGH PEOPLE
+
+---
+
+Agama bertahan bukan karena bangunan.
+
+---
+
+Melainkan karena umat.
+
+---
+
+Karena itu gereja sangat memperhatikan:
+
+* pendidikan
+* budaya
+* tradisi
+
+---
+
+# HOLY ORDERS
+
+## THE SHIELDS OF FAITH
+
+---
+
+Kelompok militan religius.
+
+---
+
+Namun tidak semuanya tentara.
+
+---
+
+# TYPES
+
+---
+
+### Knight Orders
+
+Melindungi umat.
+
+---
+
+### Pilgrim Orders
+
+Mengawal peziarah.
+
+---
+
+### Relic Orders
+
+Menjaga artefak suci.
+
+---
+
+### Guardian Orders
+
+Menjaga lokasi suci.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian Holy Order lebih tua daripada kerajaan.
+
+---
+
+# RELIC GUARDIANS
+
+## THOSE WHO PROTECT SACRED THINGS
+
+---
+
+Artefak ilahi sangat langka.
+
+---
+
+Sangat berbahaya.
+
+---
+
+Sangat berharga.
+
+---
+
+Karena itu muncul organisasi khusus.
+
+---
+
+Tugas mereka:
+
+* menjaga relik
+* menyegel relik
+* mempelajari relik
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian Relic Guardian menghabiskan hidupnya.
+
+---
+
+Untuk menjaga satu benda.
+
+---
+
+# THE PILGRIMAGE NETWORK
+
+## ROADS OF FAITH
+
+---
+
+Peziarah ada di seluruh dunia.
+
+---
+
+Karena sebagian tempat dianggap:
+
+* suci
+* diberkati
+* bersejarah
+
+---
+
+# EXAMPLES
+
+---
+
+Gunung.
+
+---
+
+Mata air.
+
+---
+
+Reruntuhan.
+
+---
+
+Pohon kuno.
+
+---
+
+# IMPORTANT
+
+---
+
+Jalur ziarah menciptakan:
+
+* perdagangan
+* budaya
+* hubungan antar wilayah
+
+---
+
+# INQUISITORS
+
+## THE MOST FEARED BRANCH
+
+---
+
+Tidak semua gereja memiliki Inquisitor.
+
+---
+
+Tetapi sebagian memilikinya.
+
+---
+
+Tugas mereka:
+
+* investigasi
+* verifikasi mukjizat
+* penyelidikan bid'ah
+* pengawasan relik berbahaya
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka bukan pemburu sembarangan.
+
+---
+
+Karena penyalahgunaan kekuasaan.
+
+---
+
+Dapat menghancurkan kepercayaan publik.
+
+---
+
+# THE HERESY PROBLEM
+
+---
+
+Siapa yang menentukan bid'ah?
+
+---
+
+Pertanyaan ini tidak pernah memiliki jawaban sempurna.
+
+---
+
+Karena:
+
+* agama berkembang
+* interpretasi berubah
+* pengetahuan bertambah
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian ajaran yang dahulu dianggap bid'ah.
+
+---
+
+Kini diterima.
+
+---
+
+# RELIGIOUS POLITICS
+
+## THE INVISIBLE STRUGGLE
+
+---
+
+Agama dan politik selalu berinteraksi.
+
+---
+
+Bahkan ketika keduanya berusaha terpisah.
+
+---
+
+# EXAMPLE
+
+---
+
+Kerajaan mendukung gereja tertentu.
+
+↓
+
+Pengaruh meningkat.
+
+↓
+
+Lawan politik bereaksi.
+
+---
+
+# IMPORTANT
+
+---
+
+Konflik agama tidak selalu soal iman.
+
+---
+
+Kadang soal kekuasaan.
+
+---
+
+# DIVINE CONFLICTS
+
+## WHEN BELIEFS COLLIDE
+
+---
+
+Sebagian konflik lahir karena:
+
+* perbedaan tafsir
+* perebutan relik
+* sejarah lama
+* ramalan berbeda
+
+---
+
+# IMPORTANT
+
+---
+
+Mayoritas konflik besar tidak dimulai oleh dewa.
+
+---
+
+Melainkan oleh pengikutnya.
+
+---
+
+# THE SAINTS
+
+## THOSE WHO INSPIRED GENERATIONS
+
+---
+
+Sebagian individu meninggalkan pengaruh besar.
+
+---
+
+Mereka dikenang sebagai:
+
+* orang suci
+* pahlawan iman
+* penjaga umat
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak semua Saint memiliki mukjizat.
+
+---
+
+Sebagian hanya memiliki keberanian luar biasa.
+
+---
+
+# THE MONSTER QUESTION
+
+---
+
+Karena monster cerdas ada.
+
+---
+
+Muncul pertanyaan:
+
+```text id="j6w2tb"
+Apakah monster bisa beriman?
+```
+
+---
+
+Jawabannya:
+
+Ya.
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan beberapa komunitas monster.
+
+---
+
+Memiliki tradisi spiritual sendiri.
+
+---
+
+# THE NIRMANA PROBLEM
+
+---
+
+Tidak ada figur yang lebih memecah dunia religius.
+
+---
+
+Daripada:
+
+```text id="p8n4vx"
+Nirmana.
+```
+
+---
+
+Sebagian menganggapnya ancaman.
+
+---
+
+Sebagian menganggapnya tragedi.
+
+---
+
+Sebagian menganggapnya tanda akhir zaman.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada konsensus.
+
+---
+
+Dan mungkin tidak akan pernah ada.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Iman menyatukan manusia.
+
+---
+
+Iman juga memisahkan manusia.
+
+---
+
+Dan keduanya adalah bagian dari sejarah.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang kita sudah memiliki:
+
+✓ Guild
+
+✓ Akademi
+
+✓ Pedagang
+
+✓ Kriminal
+
+✓ Organisasi Rahasia
+
+✓ Organisasi Agama
+
+---
+
+Tetapi ada satu kelompok yang belum pernah benar-benar dibahas.
+
+---
+
+Padahal mereka adalah tulang punggung banyak cerita fantasy:
+
+```text id="m7k2qp"
+Monster Organizations.
+```
+
+---
+
+Karena dunia Aetherion berbeda.
+
+---
+
+Monster bukan hanya musuh.
+
+---
+
+Monster dapat:
+
+* berpikir
+* memiliki budaya
+* memiliki kerajaan
+* memiliki sejarah
+
+---
+
+Artinya mereka juga harus memiliki:
+
+* organisasi
+* diplomasi
+* kepentingan
+
+---
+
+# TEMUAN DIREKTUR #058
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_06
+
+Isi:
+
+* Monster Kingdoms
+* Beast Tribes
+* Monster Alliances
+* Intelligent Monster Societies
+* Monster Politics
+* Human-Monster Relations
+* Monster Diplomacy
+* Ancient Beast Councils
+
+Karena jika monster adalah peradaban.
+
+Maka mereka juga memiliki dunia politiknya sendiri.
+
+# FILE 59
+
+## FACTION_BIBLE_PART_06
+
+### THE CIVILIZATIONS BEYOND HUMANITY
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Monster Kingdoms
+* Beast Tribes
+* Monster Alliances
+* Intelligent Monster Societies
+* Human-Monster Relations
+* Monster Diplomacy
+* Ancient Beast Councils
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Salah satu keputusan terbesar yang sudah dikunci sebelumnya:
+
+```text id="mt4v8p"
+Monster bukan sekadar musuh.
+```
+
+---
+
+Karena di Aetherion:
+
+* monster dapat berpikir
+* monster dapat belajar
+* monster dapat memiliki kepribadian
+* monster dapat dijinakkan
+* monster dapat menjadi sahabat
+* monster dapat menjadi pemimpin
+
+---
+
+Maka monster tidak boleh diperlakukan seperti sumber EXP berjalan.
+
+---
+
+# THE FIRST LAW
+
+## MONSTERS ARE PEOPLE TOO
+
+---
+
+Tidak semua monster.
+
+---
+
+Tetapi sebagian.
+
+---
+
+Dan jumlahnya jauh lebih banyak daripada yang dipercaya manusia.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini berbeda dari Beastfolk.
+
+---
+
+Karena sebelumnya sudah dikunci:
+
+### Beastfolk
+
+Ras humanoid.
+
+---
+
+Memiliki peradaban seperti manusia.
+
+---
+
+### Intelligent Monsters
+
+Tetap monster.
+
+---
+
+Tetap spesies monster.
+
+---
+
+Tetapi memiliki kecerdasan tinggi.
+
+---
+
+# EXAMPLE
+
+---
+
+Naga.
+
+---
+
+Phoenix tertentu.
+
+---
+
+Ancient Wolves.
+
+---
+
+Forest Sovereigns.
+
+---
+
+Leviathans tertentu.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka bukan manusia berkostum monster.
+
+---
+
+Mereka tetap monster.
+
+---
+
+Dengan cara berpikir monster.
+
+---
+
+# THE SECOND LAW
+
+## INTELLIGENCE DOES NOT CREATE UNITY
+
+---
+
+Kesalahan besar manusia.
+
+---
+
+Menganggap bahwa makhluk cerdas akan selalu bekerja sama.
+
+---
+
+Tidak.
+
+---
+
+Monster sama seperti manusia.
+
+---
+
+Memiliki:
+
+* kepentingan
+* budaya
+* konflik
+* ambisi
+
+---
+
+# BEAST TRIBES
+
+## THE OLDEST COMMUNITIES
+
+---
+
+Kelompok monster tertua.
+
+---
+
+Biasanya terbentuk secara alami.
+
+---
+
+Bukan karena politik.
+
+---
+
+Melainkan karena:
+
+* wilayah
+* keluarga
+* naluri
+* sejarah
+
+---
+
+# EXAMPLES
+
+---
+
+Wolf Clans.
+
+---
+
+Sky Roc Flocks.
+
+---
+
+Ancient Serpent Nests.
+
+---
+
+Titan Herds.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian Beast Tribe lebih tua daripada kerajaan manusia.
+
+---
+
+# MONSTER KINGDOMS
+
+## THE IMPOSSIBLE CIVILIZATIONS
+
+---
+
+Mayoritas manusia menganggap mereka legenda.
+
+---
+
+Karena sangat sedikit yang pernah melihatnya.
+
+---
+
+# DEFINITION
+
+---
+
+Wilayah besar.
+
+---
+
+Dikuasai monster cerdas.
+
+---
+
+Memiliki:
+
+* hukum
+* struktur sosial
+* budaya
+
+---
+
+Tetapi tidak selalu menyerupai manusia.
+
+---
+
+# IMPORTANT
+
+---
+
+Monster Kingdom tidak berarti kota batu.
+
+---
+
+Sebagian bahkan tidak memiliki bangunan.
+
+---
+
+# EXAMPLE
+
+---
+
+Kerajaan naga.
+
+---
+
+Bisa berupa jaringan wilayah terbang.
+
+---
+
+Tanpa ibu kota permanen.
+
+---
+
+# THE THIRD LAW
+
+## MONSTERS VALUE DIFFERENT THINGS
+
+---
+
+Manusia menghargai:
+
+* emas
+* tanah
+* kekuasaan
+
+---
+
+Monster mungkin menghargai:
+
+* kekuatan
+* usia
+* kebijaksanaan
+* ikatan
+* wilayah
+
+---
+
+# IMPORTANT
+
+---
+
+Karena itu diplomasi menjadi sulit.
+
+---
+
+# HUMAN-MONSTER RELATIONS
+
+## A HISTORY OF CAUTION
+
+---
+
+Kita sudah mengunci satu fakta.
+
+---
+
+Tidak pernah ada perang besar global.
+
+---
+
+Antara manusia dan monster.
+
+---
+
+# IMPORTANT
+
+---
+
+Pernah ada konflik.
+
+---
+
+Tetapi lebih mirip:
+
+* konflik wilayah
+* konflik budaya
+* konflik sumber daya
+
+---
+
+Seperti sejarah dunia nyata.
+
+---
+
+# THE MONSTER ALLIANCES
+
+---
+
+Kadang monster bekerja sama.
+
+---
+
+Kadang tidak.
+
+---
+
+# EXAMPLE
+
+---
+
+Ancient Forest Pact.
+
+---
+
+Aliansi berbagai spesies.
+
+---
+
+Untuk melindungi hutan tertentu.
+
+---
+
+# IMPORTANT
+
+---
+
+Aliansi monster biasanya lahir karena ancaman besar.
+
+---
+
+# MONSTER DIPLOMACY
+
+## THE HARD LANGUAGE
+
+---
+
+Diplomasi monster tidak selalu menggunakan kata.
+
+---
+
+Sebagian menggunakan:
+
+* ritual
+* pertarungan
+* hadiah
+* wilayah
+
+---
+
+# EXAMPLE
+
+---
+
+Seekor naga tua.
+
+---
+
+Tidak meminta perjanjian.
+
+---
+
+Ia memberikan akses sarang.
+
+---
+
+Dan itu dianggap pernyataan persahabatan.
+
+---
+
+# THE PET PARADOX
+
+---
+
+Ini bagian yang sangat penting.
+
+---
+
+Karena sebelumnya sudah dikunci:
+
+```text id="b7s0rx"
+Semua monster bisa dijinakkan.
+```
+
+---
+
+Pertanyaannya:
+
+Bagaimana monster cerdas melihat hal itu?
+
+---
+
+Jawabannya:
+
+Beragam.
+
+---
+
+# EXAMPLE
+
+---
+
+Sebagian melihatnya sebagai:
+
+* persahabatan
+* kontrak
+* keluarga
+
+---
+
+Sebagian melihatnya sebagai:
+
+* penghinaan
+* perbudakan
+* dominasi
+
+---
+
+# IMPORTANT
+
+---
+
+Karena itu hubungan manusia dan monster sangat kompleks.
+
+---
+
+# THE HUMAN FORM
+
+---
+
+Kita juga sudah mengunci:
+
+Sebagian monster dapat mengambil bentuk manusia.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini bukan evolusi.
+
+---
+
+Bukan perubahan ras.
+
+---
+
+Melainkan kemampuan tertentu.
+
+---
+
+# PURPOSE
+
+---
+
+Mempermudah komunikasi.
+
+---
+
+Mempermudah interaksi.
+
+---
+
+Atau sekadar kenyamanan.
+
+---
+
+# THE ANCIENT BEAST COUNCILS
+
+## THOSE WHO REMEMBER
+
+---
+
+Kelompok paling tua.
+
+---
+
+Sangat sedikit jumlahnya.
+
+---
+
+Sangat jarang bertemu.
+
+---
+
+# MEMBERS
+
+---
+
+Biasanya:
+
+* naga kuno
+* leviathan tua
+* phoenix tua
+* monster legenda
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka bukan pemerintah monster.
+
+---
+
+Karena tidak ada pemerintah global monster.
+
+---
+
+Mereka hanyalah makhluk yang cukup tua.
+
+---
+
+Untuk mengingat sejarah yang sudah dilupakan dunia.
+
+---
+
+# THE NIRMANA CONNECTION
+
+---
+
+Sebagian anggota Ancient Beast Council:
+
+masih mengingat Nirmana.
+
+---
+
+Secara langsung.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena mereka hidup cukup lama.
+
+---
+
+Untuk menyaksikan perjalanannya.
+
+---
+
+# THE STRANGE TRUTH
+
+---
+
+Mayoritas manusia mengetahui Nirmana dari legenda.
+
+---
+
+Sebagian monster tua.
+
+---
+
+Mengingatnya sebagai seseorang yang pernah mereka temui.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Monster bukan konten.
+
+---
+
+Monster bukan sumber loot.
+
+---
+
+Monster adalah penghuni dunia.
+
+---
+
+Sama seperti manusia.
+
+---
+
+Dan dunia tidak pernah benar-benar milik satu spesies.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang kita telah memiliki:
+
+✓ Organisasi Manusia
+
+✓ Organisasi Kriminal
+
+✓ Organisasi Rahasia
+
+✓ Organisasi Agama
+
+✓ Organisasi Monster
+
+---
+
+Tetapi masih ada satu kelompok yang belum memiliki tempat jelas.
+
+---
+
+Padahal mereka akan menjadi bagian besar dari eksplorasi dunia.
+
+---
+
+Yaitu:
+
+```text id="n5j4qw"
+Independent Powers.
+```
+
+---
+
+Orang-orang yang tidak mewakili kerajaan.
+
+Tidak mewakili guild.
+
+Tidak mewakili agama.
+
+Tidak mewakili monster.
+
+---
+
+Tetapi memiliki pengaruh luar biasa.
+
+---
+
+Contohnya:
+
+* pertapa legendaris
+* pendekar tua
+* penyihir pengembara
+* naga yang hidup sendirian
+* penjaga reruntuhan
+* pembaca bintang
+* penguasa pulau terpencil
+
+---
+
+Karena dalam dunia yang hidup.
+
+Tidak semua kekuatan terorganisir.
+
+---
+
+# TEMUAN DIREKTUR #059
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_07
+
+Isi:
+
+* Independent Powers
+* Legendary Individuals
+* Hidden Masters
+* Wandering Sages
+* Hermits
+* Isolated Strongholds
+* Personal Domains
+* Unaffiliated Powers
+
+Karena sebagian kekuatan terbesar dunia.
+
+Tidak pernah bergabung dengan organisasi mana pun.
+
+# FILE 60
+
+## FACTION_BIBLE_PART_07
+
+### THOSE WHO STAND ALONE
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Independent Powers
+* Legendary Individuals
+* Hidden Masters
+* Wandering Sages
+* Hermits
+* Isolated Strongholds
+* Personal Domains
+* Unaffiliated Powers
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Salah satu kesalahan dunia fantasy.
+
+---
+
+Semua kekuatan besar selalu berada dalam organisasi.
+
+---
+
+Padahal dunia nyata tidak seperti itu.
+
+---
+
+Karena terkadang.
+
+---
+
+Satu individu.
+
+---
+
+Lebih berpengaruh daripada seluruh kerajaan.
+
+---
+
+# THE FIRST LAW
+
+## POWER DOES NOT REQUIRE AN ORGANIZATION
+
+---
+
+Sebagian makhluk.
+
+---
+
+Tidak memiliki pasukan.
+
+---
+
+Tidak memiliki wilayah.
+
+---
+
+Tidak memiliki kerajaan.
+
+---
+
+Tetapi seluruh dunia mengetahui namanya.
+
+---
+
+# EXAMPLE
+
+---
+
+Pendekar tua.
+
+---
+
+Membunuh naga sendirian.
+
+---
+
+Menolak semua jabatan.
+
+---
+
+Tetap menjadi legenda.
+
+---
+
+# IMPORTANT
+
+---
+
+Kekuatan pribadi dapat mengubah sejarah.
+
+---
+
+# INDEPENDENT POWERS
+
+## THOSE WHO BELONG TO NO ONE
+
+---
+
+Kelompok ini tidak memiliki kesetiaan permanen.
+
+---
+
+Mereka dapat:
+
+* membantu kerajaan
+* membantu guild
+* membantu rakyat
+
+---
+
+Atau menolak semuanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka sulit diprediksi.
+
+---
+
+Karena tidak memiliki agenda kolektif.
+
+---
+
+# THE LEGENDARY INDIVIDUALS
+
+## NAMES THAT OUTLIVE GENERATIONS
+
+---
+
+Beberapa individu mencapai status legenda.
+
+---
+
+Bukan karena jabatan.
+
+---
+
+Melainkan karena pencapaian.
+
+---
+
+# EXAMPLES
+
+---
+
+Pemburu Leviathan.
+
+---
+
+Penyihir yang menghentikan wabah.
+
+---
+
+Penjelajah yang menemukan benua.
+
+---
+
+Penjinak naga.
+
+---
+
+# IMPORTANT
+
+---
+
+Legenda tidak selalu baik.
+
+---
+
+Sebagian ditakuti.
+
+---
+
+# HIDDEN MASTERS
+
+## THE ONES WHO DISAPPEARED
+
+---
+
+Sangat umum dalam sejarah dunia.
+
+---
+
+Orang kuat.
+
+↓
+
+Menghilang.
+
+↓
+
+Menjadi rumor.
+
+↓
+
+Menjadi mitos.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian benar-benar pensiun.
+
+---
+
+Sebagian hanya mengawasi dunia dari jauh.
+
+---
+
+# THE WANDERING SAGES
+
+## THOSE WHO CHOOSE THE ROAD
+
+---
+
+Mereka tidak membangun kerajaan.
+
+---
+
+Mereka tidak mencari kekuasaan.
+
+---
+
+Mereka berjalan.
+
+---
+
+Mengajar.
+
+---
+
+Mengamati.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian pengetahuan dunia.
+
+---
+
+Bertahan karena mereka.
+
+---
+
+# THE HERMITS
+
+## THOSE WHO LEFT SOCIETY
+
+---
+
+Pertapa bukan selalu orang bijak.
+
+---
+
+Sebagian:
+
+* kecewa pada dunia
+* lelah pada politik
+* mencari ketenangan
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian pertapa menjadi sangat kuat.
+
+---
+
+Karena puluhan tahun fokus pada satu hal.
+
+---
+
+# ISOLATED STRONGHOLDS
+
+## PLACES OUTSIDE THE WORLD
+
+---
+
+Beberapa individu membangun wilayah sendiri.
+
+---
+
+Tidak tunduk pada kerajaan.
+
+---
+
+Tidak tunduk pada guild.
+
+---
+
+# EXAMPLES
+
+---
+
+Menara penyihir.
+
+---
+
+Pulau terpencil.
+
+---
+
+Lembah tersembunyi.
+
+---
+
+Benteng kuno.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian tempat ini lebih tua daripada negara modern.
+
+---
+
+# PERSONAL DOMAINS
+
+## A KINGDOM OF ONE
+
+---
+
+Sebagian makhluk memiliki wilayah pribadi.
+
+---
+
+Tidak besar.
+
+---
+
+Tetapi mutlak.
+
+---
+
+# EXAMPLES
+
+---
+
+Naga tua dengan pegunungannya.
+
+---
+
+Spirit kuno dengan hutannya.
+
+---
+
+Pertapa dengan lembahnya.
+
+---
+
+# IMPORTANT
+
+---
+
+Masuk ke wilayah mereka.
+
+---
+
+Sering dianggap tindakan diplomatik.
+
+---
+
+# THE OLD MONSTERS
+
+---
+
+Kita sudah mengunci:
+
+Monster tua sangat kuat ada.
+
+---
+
+Dan sebagian tidak bergabung dengan siapa pun.
+
+---
+
+# EXAMPLES
+
+---
+
+Naga tua.
+
+---
+
+Phoenix tua.
+
+---
+
+Leviathan tua.
+
+---
+
+Forest Sovereign.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian bahkan tidak peduli pada politik dunia.
+
+---
+
+# THE ELDERS
+
+## THOSE WHO REMEMBER
+
+---
+
+Kelompok yang sudah pernah kita singgung.
+
+---
+
+Orang-orang tua yang sangat kuat.
+
+---
+
+Yang hidup cukup lama.
+
+---
+
+Untuk menyaksikan banyak era.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka tidak membentuk organisasi.
+
+---
+
+Karena tujuan mereka berbeda-beda.
+
+---
+
+# THE OBSERVERS
+
+---
+
+Subkategori yang menarik.
+
+---
+
+Mereka tidak ikut campur.
+
+---
+
+Mereka hanya mengamati.
+
+---
+
+Terkadang selama ratusan tahun.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian mengetahui ancaman besar.
+
+---
+
+Tetapi tetap diam.
+
+---
+
+Karena percaya dunia harus memilih jalannya sendiri.
+
+---
+
+# THE PLAYER QUESTION
+
+---
+
+Bisakah pemain menjadi Independent Power?
+
+---
+
+Ya.
+
+---
+
+Bahkan sangat mungkin.
+
+---
+
+Karena pemain tidak harus:
+
+* menjadi raja
+* menjadi pemimpin guild
+* menjadi tokoh agama
+
+---
+
+Pemain dapat menjadi legenda bebas.
+
+---
+
+# THE NIRMANA EXCEPTION
+
+## THE MAN WHO STANDS ABOVE CATEGORIES
+
+---
+
+Sebagian orang mencoba mengklasifikasikan Nirmana.
+
+---
+
+Sebagai:
+
+* penyihir
+* penguasa
+* legenda
+* ancaman
+
+---
+
+Tetapi semuanya gagal.
+
+---
+
+Karena Nirmana bukan organisasi.
+
+---
+
+Bukan kerajaan.
+
+---
+
+Bukan agama.
+
+---
+
+Bukan monster.
+
+---
+
+Dan bukan dewa.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia adalah sesuatu yang lain.
+
+---
+
+Sesuatu yang bahkan sejarah kesulitan menjelaskan.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Tidak semua kekuatan ingin memimpin.
+
+---
+
+Tidak semua legenda ingin dikenang.
+
+---
+
+Dan tidak semua individu hebat ingin mengubah dunia.
+
+---
+
+Tetapi dunia tetap berubah karena keberadaan mereka.
+
+---
+
+---
+
+# DESIGN REASONING BESAR
+
+Sekarang struktur besar dunia mulai lengkap.
+
+---
+
+Kita memiliki:
+
+✓ Kerajaan
+
+✓ Guild
+
+✓ Agama
+
+✓ Kriminal
+
+✓ Monster
+
+✓ Organisasi Rahasia
+
+✓ Independent Powers
+
+---
+
+Tetapi kita masih belum menjawab pertanyaan paling penting:
+
+```text id="l2a8xf"
+Bagaimana semua kelompok ini saling berinteraksi?
+```
+
+---
+
+Karena dunia tidak hidup hanya karena ada faksi.
+
+---
+
+Dunia hidup karena:
+
+* aliansi
+* konflik
+* pengkhianatan
+* kepentingan
+* perubahan
+
+---
+
+Dan itu membutuhkan dokumen terakhir.
+
+---
+
+# TEMUAN DIREKTUR #060
+
+Dokumen berikutnya:
+
+## FACTION_BIBLE_PART_08
+
+Isi:
+
+* Reputation System
+* Influence System
+* Alliance System
+* Political Conflicts
+* Faction Wars
+* Dynamic Relationships
+* Faction Evolution
+* World Influence Simulation
+
+Karena organisasi tidak hidup hanya karena mereka ada.
+
+Mereka hidup karena mereka saling mempengaruhi.
+
+# FILE 61
+
+## FACTION_BIBLE_PART_08
+
+### THE WORLD IN MOTION
+
+# AETHERION
+
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Reputation System
+* Influence System
+* Alliance System
+* Political Conflicts
+* Faction Wars
+* Dynamic Relationships
+* Faction Evolution
+* World Influence Simulation
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Faksi yang diam.
+
+---
+
+Bukan faksi.
+
+---
+
+Hanya dekorasi.
+
+---
+
+Karena dunia hidup bukan saat organisasi berdiri.
+
+---
+
+Dunia hidup saat organisasi:
+
+* bekerja sama
+* bersaing
+* bertabrakan
+* berubah
+
+---
+
+# THE FIRST LAW
+
+## NOTHING STAYS THE SAME
+
+---
+
+Tidak ada hubungan permanen.
+
+---
+
+Tidak ada musuh permanen.
+
+---
+
+Tidak ada sekutu permanen.
+
+---
+
+Yang ada hanyalah:
+
+```text id="t7aqr9"
+Kepentingan.
+```
+
+---
+
+# EXAMPLE
+
+---
+
+Merchant Guild.
+
+↓
+
+Bekerja sama dengan kerajaan.
+
+↓
+
+Perang terjadi.
+
+↓
+
+Rute dagang hancur.
+
+↓
+
+Hubungan memburuk.
+
+---
+
+# IMPORTANT
+
+---
+
+Hubungan selalu bergerak.
+
+---
+
+# REPUTATION SYSTEM
+
+## HOW THE WORLD SEES YOU
+
+---
+
+Reputasi bukan angka global.
+
+---
+
+Karena dunia tidak berpikir secara global.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain membantu desa.
+
+---
+
+Desa menyukai pemain.
+
+---
+
+Kerajaan bahkan belum pernah mendengar namanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Reputasi bersifat lokal terlebih dahulu.
+
+---
+
+Baru kemudian menyebar.
+
+---
+
+# REPUTATION LEVELS
+
+---
+
+Unknown
+
+↓
+
+Recognized
+
+↓
+
+Trusted
+
+↓
+
+Respected
+
+↓
+
+Influential
+
+↓
+
+Legendary
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian pemain.
+
+---
+
+Tidak akan pernah menjadi legenda.
+
+---
+
+Dan itu tidak masalah.
+
+---
+
+# THE SECOND LAW
+
+## REPUTATION IS MEMORY
+
+---
+
+Reputasi bukan skor.
+
+---
+
+Reputasi adalah:
+
+```text id="3dknwp"
+Apa yang dunia ingat tentangmu.
+```
+
+---
+
+# EXAMPLE
+
+---
+
+Membunuh monster.
+
+↓
+
+Desa mengingat.
+
+↓
+
+Rumor menyebar.
+
+↓
+
+Wilayah mengetahui.
+
+↓
+
+Sejarah mencatat.
+
+---
+
+# INFLUENCE SYSTEM
+
+## POWER WITHOUT OWNERSHIP
+
+---
+
+Pengaruh berbeda dengan kekuasaan.
+
+---
+
+# EXAMPLE
+
+---
+
+Raja memiliki kekuasaan.
+
+---
+
+Tetapi seorang legenda.
+
+---
+
+Dapat memiliki pengaruh lebih besar.
+
+---
+
+# INFLUENCE SOURCES
+
+---
+
+Wealth
+
+---
+
+Knowledge
+
+---
+
+Military Strength
+
+---
+
+Reputation
+
+---
+
+Territory
+
+---
+
+Legacy
+
+---
+
+# IMPORTANT
+
+---
+
+Pengaruh bisa naik.
+
+---
+
+Pengaruh bisa hilang.
+
+---
+
+# ALLIANCE SYSTEM
+
+## COOPERATION OF INTERESTS
+
+---
+
+Aliansi terbentuk karena kebutuhan.
+
+---
+
+Bukan persahabatan.
+
+---
+
+# EXAMPLE
+
+---
+
+Kerajaan.
+
+*
+
+Explorer Guild.
+
+↓
+
+Aliansi eksplorasi.
+
+---
+
+Ancaman hilang.
+
+↓
+
+Aliansi bubar.
+
+---
+
+# IMPORTANT
+
+---
+
+Aliansi tidak selalu permanen.
+
+---
+
+# FACTION CONFLICTS
+
+## WHEN INTERESTS COLLIDE
+
+---
+
+Konflik tidak selalu perang.
+
+---
+
+# TYPES
+
+---
+
+Economic Conflict
+
+---
+
+Political Conflict
+
+---
+
+Religious Conflict
+
+---
+
+Territorial Conflict
+
+---
+
+Knowledge Conflict
+
+---
+
+Cultural Conflict
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian konflik tidak pernah menjadi perang.
+
+---
+
+# FACTION WARS
+
+## ORGANIZED COLLISION
+
+---
+
+Perang muncul saat konflik gagal diselesaikan.
+
+---
+
+# IMPORTANT
+
+---
+
+Perang sangat mahal.
+
+---
+
+Karena itu sebagian besar pihak menghindarinya.
+
+---
+
+# EXAMPLE
+
+---
+
+Merchant Guild.
+
+---
+
+Lebih suka embargo.
+
+---
+
+Daripada perang.
+
+---
+
+# DYNAMIC RELATIONSHIPS
+
+## A LIVING NETWORK
+
+---
+
+Setiap faksi memiliki hubungan.
+
+---
+
+Dengan banyak pihak.
+
+---
+
+# EXAMPLE
+
+---
+
+Explorer Guild.
+
+---
+
+Hubungan baik dengan Scholar Consortium.
+
+---
+
+Hubungan netral dengan Merchant Guild.
+
+---
+
+Hubungan buruk dengan kelompok penyegel reruntuhan.
+
+---
+
+# IMPORTANT
+
+---
+
+Satu tindakan.
+
+---
+
+Dapat mempengaruhi banyak hubungan sekaligus.
+
+---
+
+# THE THIRD LAW
+
+## EVERY ACTION CREATES RIPPLE
+
+---
+
+Ini salah satu fondasi Aetherion.
+
+---
+
+Karena:
+
+```text id="j8e9qv"
+Dunia Mengingat.
+```
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain membantu satu faksi.
+
+---
+
+Faksi rival bereaksi.
+
+---
+
+Aliansi berubah.
+
+---
+
+Rumor menyebar.
+
+---
+
+Dampak muncul.
+
+---
+
+# FACTION EVOLUTION
+
+## ORGANIZATIONS CHANGE
+
+---
+
+Faksi tidak statis.
+
+---
+
+# POSSIBILITIES
+
+---
+
+Tumbuh.
+
+---
+
+Pecah.
+
+---
+
+Menyatu.
+
+---
+
+Runtuh.
+
+---
+
+Berevolusi.
+
+---
+
+# EXAMPLE
+
+---
+
+Guild kecil.
+
+↓
+
+Menemukan wilayah baru.
+
+↓
+
+Kaya.
+
+↓
+
+Menjadi kekuatan besar.
+
+---
+
+# IMPORTANT
+
+---
+
+Sejarah terus berjalan.
+
+---
+
+Bahkan tanpa pemain.
+
+---
+
+# SUCCESSION
+
+## LEADERS DIE
+
+---
+
+Bagian yang sering dilupakan game.
+
+---
+
+Pemimpin tua mati.
+
+---
+
+Pemimpin baru muncul.
+
+---
+
+Kebijakan berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena dunia hidup.
+
+---
+
+Maka generasi berganti.
+
+---
+
+# WORLD INFLUENCE SIMULATION
+
+## THE INVISIBLE ENGINE
+
+---
+
+Di balik layar.
+
+---
+
+Dunia terus menghitung:
+
+* perdagangan
+* konflik
+* hubungan
+* stabilitas
+* pengaruh
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak harus disimulasikan secara ekstrem.
+
+---
+
+Tetapi hasilnya harus terasa nyata.
+
+---
+
+# EXAMPLE
+
+---
+
+Wilayah kehilangan keamanan.
+
+↓
+
+Bandit meningkat.
+
+↓
+
+Perdagangan turun.
+
+↓
+
+Kemakmuran turun.
+
+↓
+
+Kriminal meningkat.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia harus terasa masuk akal.
+
+---
+
+# THE PLAYER EFFECT
+
+## CAN ONE PERSON CHANGE THE WORLD?
+
+---
+
+Ya.
+
+---
+
+Tetapi tidak secara instan.
+
+---
+
+Karena dunia besar.
+
+---
+
+Dan dunia memiliki momentum.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain adalah katalis.
+
+---
+
+Bukan tombol ajaib.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Organisasi hidup.
+
+---
+
+Organisasi berubah.
+
+---
+
+Organisasi mengingat.
+
+---
+
+Dan ketika semuanya bergerak bersama.
+
+---
+
+Maka dunia menjadi hidup.
+
+---
+
+---
+
+# CONCLUSION OF FACTION BIBLE
+
+Kita sekarang memiliki:
+
+✓ Guild
+
+✓ Akademi
+
+✓ Organisasi Rahasia
+
+✓ Agama
+
+✓ Kriminal
+
+✓ Monster
+
+✓ Independent Powers
+
+✓ Influence Network
+
+✓ Dynamic Politics
+
+✓ Reputation Framework
+
+---
+
+Artinya:
+
+```text id="4uw8ld"
+Faction Bible Tier S
+COMPLETE
+```
+
+---
+
+Status:
+
+95% Complete
+
+---
+
+5% sisanya nanti akan otomatis terisi ketika:
+
+* Companion Bible
+* Nirmana Bible
+* Main Story Bible
+
+mulai dibangun.
+
+---
+
+# TEMUAN DIREKTUR #061
+
+Kita sekarang berada di persimpangan besar.
+
+Dokumen Tier S berikutnya:
+
+### OPTION A
+
+COMPANION BIBLE
+
+Membahas:
+
+* rekrutmen
+* persahabatan
+* pengkhianatan
+* kematian
+* pensiun
+* keluarga
+* warisan companion
+
+---
+
+### OPTION B
+
+NIRMANA BIBLE
+
+Membahas:
+
+* sejarah lengkap Nirmana
+* naga miliknya
+* kejatuhannya
+* filosofi kehampaan
+* hubungan dengan dunia
+* alasan ingin mengakhiri segalanya
+
+---
+
+Secara struktur desain AAA.
+
+Saya akan memilih:
+
+```text id="nrmchoice"
+NIRMANA BIBLE terlebih dahulu.
+```
+
+Karena hampir seluruh sejarah modern Aetherion tampaknya berputar di sekeliling bayangan Nirmana.
+
+# FILE 62
+
+## NIRMANA_BIBLE_PART_01
+
+### THE MAN WHO REFUSED ETERNITY
+
+# AETHERION
+
+# NIRMANA BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Origin
+* Identity
+* Historical Position
+* Myth vs Reality
+* Early Life
+* The First Question
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Salah satu kesalahan terbesar dalam membuat antagonis.
+
+---
+
+Antagonis muncul.
+
+---
+
+Antagonis jahat.
+
+---
+
+Antagonis ingin menghancurkan dunia.
+
+---
+
+Selesai.
+
+---
+
+Tetapi Nirmana tidak boleh seperti itu.
+
+---
+
+Karena:
+
+```text id="o8l9q1"
+Nirmana bukan penjahat.
+```
+
+---
+
+Dan juga bukan pahlawan.
+
+---
+
+Ia adalah hasil dari perjalanan yang terlalu panjang.
+
+---
+
+# THE FIRST LAW
+
+## NIRMANA WAS NOT BORN AS THE END
+
+---
+
+Tidak ada bayi yang lahir.
+
+---
+
+Lalu berkata:
+
+```text id="d5s2tp"
+Aku akan menghancurkan dunia.
+```
+
+---
+
+Nirmana juga tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia pernah memiliki harapan.
+
+---
+
+Ia pernah memiliki impian.
+
+---
+
+Ia pernah memiliki tujuan.
+
+---
+
+# THE GREAT MISUNDERSTANDING
+
+---
+
+Mayoritas dunia modern.
+
+---
+
+Salah memahami Nirmana.
+
+---
+
+Karena mereka hanya mengenal:
+
+```text id="t4nq8z"
+Nirmana Akhir.
+```
+
+---
+
+Bukan:
+
+```text id="u0r4pw"
+Nirmana Awal.
+```
+
+---
+
+# HISTORY'S PROBLEM
+
+---
+
+Sejarah menyukai kesederhanaan.
+
+---
+
+Karena lebih mudah.
+
+---
+
+Maka banyak catatan menyebut:
+
+---
+
+Monster.
+
+---
+
+Penghancur.
+
+---
+
+Ancaman.
+
+---
+
+Legenda Gelap.
+
+---
+
+# IMPORTANT
+
+---
+
+Tetapi kenyataan lebih rumit.
+
+---
+
+# THE SECOND LAW
+
+## THE WORLD SHAPED NIRMANA
+
+---
+
+Ini sangat penting.
+
+---
+
+Karena sebelumnya sudah dikunci:
+
+```text id="m7x1na"
+Dunia terlalu besar
+untuk diubah oleh satu orang.
+```
+
+---
+
+Artinya.
+
+---
+
+Nirmana tidak menciptakan dunia.
+
+---
+
+Dunia menciptakan Nirmana.
+
+---
+
+# THE QUESTION
+
+---
+
+Suatu hari.
+
+---
+
+Seseorang bertanya:
+
+```text id="q2a7nm"
+Apa yang terjadi
+jika seseorang hidup terlalu lama?
+```
+
+---
+
+Mayoritas fantasy.
+
+---
+
+Tidak pernah menjawab.
+
+---
+
+Aetherion harus menjawab.
+
+---
+
+# THE IMMORTALITY PARADOX
+
+---
+
+Pada awalnya.
+
+---
+
+Keabadian terlihat seperti hadiah.
+
+---
+
+Karena:
+
+* teman tidak mati
+* kekuatan terus tumbuh
+* pengetahuan terus bertambah
+
+---
+
+Tetapi setelah ratusan tahun.
+
+---
+
+Mulai muncul sesuatu.
+
+---
+
+# LOSS
+
+---
+
+Satu teman pergi.
+
+---
+
+Lalu dua.
+
+---
+
+Lalu seratus.
+
+---
+
+Lalu ribuan.
+
+---
+
+# IMPORTANT
+
+---
+
+Keabadian tidak menghapus kesedihan.
+
+---
+
+Keabadian memperpanjangnya.
+
+---
+
+# THE FIRST QUESTION
+
+---
+
+Nirmana tidak bertanya:
+
+```text id="b9k2lf"
+Bagaimana aku menjadi kuat?
+```
+
+---
+
+Ia bertanya:
+
+```text id="f3s6vr"
+Mengapa semuanya harus berakhir?
+```
+
+---
+
+Dan pertanyaan itu.
+
+---
+
+Tidak pernah meninggalkannya.
+
+---
+
+# MYTH VS REALITY
+
+---
+
+# MYTH
+
+---
+
+Nirmana selalu jahat.
+
+---
+
+# REALITY
+
+---
+
+Salah.
+
+---
+
+# MYTH
+
+---
+
+Nirmana membenci kehidupan.
+
+---
+
+# REALITY
+
+---
+
+Salah.
+
+---
+
+# MYTH
+
+---
+
+Nirmana ingin kekuasaan.
+
+---
+
+# REALITY
+
+---
+
+Sangat salah.
+
+---
+
+# IMPORTANT
+
+---
+
+Jika Nirmana menginginkan kekuasaan.
+
+---
+
+Ia sudah bisa memilikinya sejak lama.
+
+---
+
+# THE THIRD LAW
+
+## NIHILISM IS NOT BORN OVERNIGHT
+
+---
+
+Seseorang tidak bangun tidur.
+
+---
+
+Lalu memutuskan:
+
+```text id="x8e5zw"
+Segalanya harus lenyap.
+```
+
+---
+
+Itu membutuhkan perjalanan panjang.
+
+---
+
+Sangat panjang.
+
+---
+
+# THE SILENT CENTURIES
+
+---
+
+Ada periode sejarah.
+
+---
+
+Yang hampir tidak diketahui siapa pun.
+
+---
+
+Karena Nirmana menghilang.
+
+---
+
+Selama waktu yang sangat lama.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian ahli sejarah.
+
+---
+
+Bahkan tidak yakin ia benar-benar ada.
+
+---
+
+Pada masa itu.
+
+---
+
+# THE FEW WHO REMEMBER
+
+---
+
+Kita sudah mengunci sebelumnya:
+
+Ada individu yang masih mengingat Nirmana.
+
+---
+
+Contohnya:
+
+* tetua tua
+* elite underground tertentu
+* monster kuno
+* naga kuno
+
+---
+
+# IMPORTANT
+
+---
+
+Karena mereka hidup cukup lama.
+
+---
+
+Untuk melihat perubahan itu.
+
+---
+
+# THE DRAGON
+
+---
+
+Satu fakta telah dikunci.
+
+---
+
+Nirmana tidak sendirian.
+
+---
+
+Ia memiliki sahabat.
+
+---
+
+Seekor naga.
+
+---
+
+# IMPORTANT
+
+---
+
+Bukan tunggangan.
+
+---
+
+Bukan peliharaan.
+
+---
+
+Bukan senjata.
+
+---
+
+Sahabat.
+
+---
+
+# THE STRANGE TRUTH
+
+---
+
+Banyak kerajaan runtuh.
+
+---
+
+Banyak pahlawan mati.
+
+---
+
+Banyak agama berubah.
+
+---
+
+Tetapi naga itu tetap berada di sisinya.
+
+---
+
+# THE OBSERVATION
+
+---
+
+Mereka yang pernah melihat Nirmana.
+
+---
+
+Biasanya mengatakan hal yang sama.
+
+---
+
+Bukan tentang kekuatannya.
+
+---
+
+Bukan tentang sihirnya.
+
+---
+
+Tetapi tentang matanya.
+
+---
+
+Karena mereka melihat:
+
+```text id="g6j9ra"
+Seseorang yang telah kehilangan terlalu banyak hal.
+```
+
+---
+
+# THE FINAL QUESTION
+
+---
+
+Jika semua yang kau cintai hilang.
+
+---
+
+Jika semua kerajaan runtuh.
+
+---
+
+Jika semua peradaban berakhir.
+
+---
+
+Jika semua sejarah terlupakan.
+
+---
+
+Maka apakah masih ada makna?
+
+---
+
+Mayoritas orang.
+
+---
+
+Tidak pernah hidup cukup lama.
+
+---
+
+Untuk menjawab pertanyaan itu.
+
+---
+
+Nirmana hidup cukup lama.
+
+---
+
+Dan jawabannya mengubah dunia.
+
+---
+
+---
+
+# TEMUAN DIREKTUR #062
+
+Kita sekarang sampai pada titik paling penting.
+
+Karena dokumen berikutnya harus menjelaskan:
+
+```text id="k0v8ny"
+Apa yang sebenarnya terjadi
+hingga Nirmana menyerah pada dunia?
+```
+
+---
+
+Karena kehilangan saja tidak cukup.
+
+---
+
+Kesedihan saja tidak cukup.
+
+---
+
+Harus ada sesuatu yang lebih besar.
+
+---
+
+Sesuatu yang membuat seorang legenda.
+
+---
+
+Berubah menjadi ancaman terbesar sepanjang sejarah.
+
+---
+
+Dokumen berikutnya:
+
+## NIRMANA_BIBLE_PART_02
+
+### THE LONG FALL
+
+Isi:
+
+* Era Kepahlawanan
+* Orang-orang yang Pernah Dicintainya
+* Kehilangan Besar Pertama
+* Kehilangan Besar Kedua
+* Awal Keraguan
+* Retaknya Harapan
+* Lahirnya Filosofi Kehampaan
+
+
+
+
+# FILE 63
+
+## NIRMANA_BIBLE_PART_02
+
+### THE LONG FALL
+
+# AETHERION
+
+# NIRMANA BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Era Kepahlawanan
+* The Age of Hope
+* The First Loss
+* The Second Loss
+* Cracks in Eternity
+* The Weight of Time
+* Birth of Doubt
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Kesalahan terbesar saat menulis kejatuhan karakter.
+
+---
+
+Satu tragedi.
+
+↓
+
+Menjadi jahat.
+
+---
+
+Selesai.
+
+---
+
+Itu tidak cocok untuk Nirmana.
+
+---
+
+Karena:
+
+```text id="nrm01"
+Nirmana hidup terlalu lama.
+```
+
+---
+
+Dan seseorang yang hidup terlalu lama.
+
+---
+
+Tidak dihancurkan oleh satu tragedi.
+
+---
+
+Melainkan ribuan.
+
+---
+
+# THE AGE OF HOPE
+
+## BEFORE THE FALL
+
+---
+
+Ada masa.
+
+---
+
+Ketika Nirmana berbeda.
+
+---
+
+Sangat berbeda.
+
+---
+
+Pada masa itu.
+
+---
+
+Ia masih percaya.
+
+---
+
+Bahwa dunia bisa menjadi lebih baik.
+
+---
+
+# IMPORTANT
+
+---
+
+Banyak sejarah telah hilang.
+
+---
+
+Tetapi beberapa fragmen masih bertahan.
+
+---
+
+Dan semuanya menggambarkan orang yang sama.
+
+---
+
+Seseorang yang selalu bergerak maju.
+
+---
+
+# THE WANDERER
+
+---
+
+Pada masa mudanya.
+
+---
+
+Nirmana bukan raja.
+
+---
+
+Bukan penguasa.
+
+---
+
+Bukan dewa.
+
+---
+
+Ia hanyalah pengembara.
+
+---
+
+Seseorang yang berjalan.
+
+---
+
+Dan melihat dunia.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia yang ia lihat saat itu.
+
+---
+
+Masih muda.
+
+---
+
+Masih liar.
+
+---
+
+Masih penuh kemungkinan.
+
+---
+
+# THE PEOPLE
+
+---
+
+Selama perjalanannya.
+
+---
+
+Ia bertemu ribuan orang.
+
+---
+
+Sebagian menjadi teman.
+
+---
+
+Sebagian menjadi murid.
+
+---
+
+Sebagian menjadi legenda.
+
+---
+
+Sebagian menjadi debu.
+
+---
+
+# IMPORTANT
+
+---
+
+Pada awalnya.
+
+---
+
+Kematian masih terasa wajar.
+
+---
+
+Karena semua orang menerima bahwa hidup memiliki akhir.
+
+---
+
+Bahkan dirinya.
+
+---
+
+# THE FIRST LOSS
+
+## THE THING THAT NEVER HEALED
+
+---
+
+Ada kehilangan pertama.
+
+---
+
+Bukan yang terbesar.
+
+---
+
+Tetapi yang paling penting.
+
+---
+
+Karena untuk pertama kalinya.
+
+---
+
+Nirmana menyadari sesuatu.
+
+---
+
+# REALIZATION
+
+---
+
+Kekuatan tidak cukup.
+
+---
+
+Pengetahuan tidak cukup.
+
+---
+
+Keberanian tidak cukup.
+
+---
+
+Karena ada hal yang tidak bisa diselamatkan.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan pemahaman itu.
+
+---
+
+Tidak pernah meninggalkannya.
+
+---
+
+# THE SECOND LOSS
+
+## HISTORY REPEATS
+
+---
+
+Tahun berlalu.
+
+---
+
+Puluhan tahun.
+
+---
+
+Ratusan tahun.
+
+---
+
+Dan hal yang sama terjadi lagi.
+
+---
+
+Dan lagi.
+
+---
+
+Dan lagi.
+
+---
+
+# IMPORTANT
+
+---
+
+Bukan tragedinya yang menghancurkan.
+
+---
+
+Tetapi pengulangannya.
+
+---
+
+# THE PATTERN
+
+---
+
+Teman datang.
+
+↓
+
+Teman pergi.
+
+↓
+
+Kerajaan lahir.
+
+↓
+
+Kerajaan runtuh.
+
+↓
+
+Peradaban berkembang.
+
+↓
+
+Peradaban menghilang.
+
+---
+
+# IMPORTANT
+
+---
+
+Awalnya sedih.
+
+---
+
+Lalu melelahkan.
+
+---
+
+Kemudian menakutkan.
+
+---
+
+# CRACKS IN ETERNITY
+
+## THE FIRST DOUBTS
+
+---
+
+Pada titik tertentu.
+
+---
+
+Nirmana mulai bertanya:
+
+```text id="nrm02"
+Apakah semua ini memiliki tujuan?
+```
+
+---
+
+Bukan karena kebencian.
+
+---
+
+Bukan karena kemarahan.
+
+---
+
+Tetapi karena kelelahan.
+
+---
+
+# IMPORTANT
+
+---
+
+Kelelahan spiritual.
+
+---
+
+Jauh lebih berbahaya daripada kelelahan fisik.
+
+---
+
+# THE WEIGHT OF MEMORY
+
+---
+
+Orang biasa.
+
+---
+
+Melupakan banyak hal.
+
+---
+
+Karena hidup mereka pendek.
+
+---
+
+Tetapi Nirmana tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia mengingat.
+
+---
+
+Terlalu banyak.
+
+---
+
+# EXAMPLES
+
+---
+
+Nama yang sudah dilupakan sejarah.
+
+---
+
+Wajah yang tidak lagi hidup.
+
+---
+
+Kerajaan yang tidak lagi ada.
+
+---
+
+Bahasa yang telah punah.
+
+---
+
+Lagu yang tidak lagi dinyanyikan.
+
+---
+
+# IMPORTANT
+
+---
+
+Setiap abad.
+
+---
+
+Beban itu bertambah.
+
+---
+
+Tidak pernah berkurang.
+
+---
+
+# THE DRAGON
+
+## THE LAST CONSTANT
+
+---
+
+Satu hal tidak berubah.
+
+---
+
+Naganya.
+
+---
+
+Sahabatnya.
+
+---
+
+Teman seperjalanan yang tetap bertahan.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena naga itu juga hidup sangat lama.
+
+---
+
+Dan menyaksikan hal yang sama.
+
+---
+
+# THE DIFFERENCE
+
+---
+
+Namun ada perbedaan.
+
+---
+
+Yang sangat penting.
+
+---
+
+Naga melihat perubahan.
+
+---
+
+Sebagai bagian dari kehidupan.
+
+---
+
+Nirmana mulai melihat perubahan.
+
+---
+
+Sebagai bukti ketidakbermaknaan.
+
+---
+
+# IMPORTANT
+
+---
+
+Di sinilah jalan mereka mulai berbeda.
+
+---
+
+# THE QUESTION NO ONE COULD ANSWER
+
+---
+
+Nirmana bertanya kepada:
+
+* raja
+* cendekiawan
+* petapa
+* monster tua
+* pemuka agama
+
+---
+
+Pertanyaan yang sama.
+
+---
+
+```text id="nrm03"
+Jika semuanya akan hilang.
+
+Maka apa gunanya?
+```
+
+---
+
+Dan tidak ada jawaban.
+
+---
+
+Atau setidaknya.
+
+---
+
+Tidak ada jawaban yang memuaskannya.
+
+---
+
+# THE BIRTH OF DOUBT
+
+---
+
+Keraguan tidak muncul sebagai badai.
+
+---
+
+Ia muncul seperti retakan kecil.
+
+---
+
+Hampir tidak terlihat.
+
+---
+
+Tetapi terus membesar.
+
+---
+
+Selama berabad-abad.
+
+---
+
+# IMPORTANT
+
+---
+
+Pada titik ini.
+
+---
+
+Nirmana masih belum membenci dunia.
+
+---
+
+Ia masih melindunginya.
+
+---
+
+Masih membantu orang.
+
+---
+
+Masih menghentikan ancaman.
+
+---
+
+Masih menyelamatkan kehidupan.
+
+---
+
+# THE TRAGEDY
+
+---
+
+Karena justru saat itulah.
+
+---
+
+Ia paling berbahaya.
+
+---
+
+Sebab tidak ada seorang pun.
+
+---
+
+Yang menyadari.
+
+---
+
+Bahwa legenda terbesar dunia.
+
+---
+
+Mulai kehilangan alasan untuk percaya.
+
+---
+
+# THE FINAL OBSERVATION
+
+---
+
+Mayoritas kejahatan.
+
+---
+
+Lahir dari kebencian.
+
+---
+
+Tetapi Nirmana berbeda.
+
+---
+
+Yang lahir di dalam dirinya bukan kebencian.
+
+---
+
+Melainkan sesuatu yang jauh lebih dingin.
+
+---
+
+Sebuah pertanyaan.
+
+---
+
+Yang tidak pernah berhasil dijawab dunia.
+
+---
+
+Dan pertanyaan itu.
+
+---
+
+Akan tumbuh.
+
+---
+
+Sampai suatu hari.
+
+---
+
+Mengancam seluruh keberadaan.
+
+---
+
+---
+
+# TEMUAN DIREKTUR #063
+
+Kita telah menemukan:
+
+✓ Nirmana tidak jatuh karena satu tragedi
+
+✓ Nirmana tidak termotivasi oleh kekuasaan
+
+✓ Nirmana tidak termotivasi oleh balas dendam
+
+✓ Nirmana mulai kehilangan makna
+
+---
+
+Tetapi masih ada masalah.
+
+---
+
+Masalah terbesar.
+
+---
+
+Karena banyak makhluk hidup lama di dunia.
+
+---
+
+Tetua.
+
+---
+
+Naga.
+
+---
+
+Phoenix.
+
+---
+
+Monster kuno.
+
+---
+
+Bahkan sebagian dewa bawahan.
+
+---
+
+Namun mereka tidak menjadi seperti Nirmana.
+
+---
+
+Pertanyaannya:
+
+```text id="nrm04"
+Mengapa hanya Nirmana
+yang akhirnya menyerah?
+```
+
+---
+
+Dan jawaban itulah yang akan membentuk inti filosofinya.
+
+---
+
+Dokumen berikutnya:
+
+## NIRMANA_BIBLE_PART_03
+
+### THE PHILOSOPHY OF NOTHINGNESS
+
+Isi:
+
+* Mengapa Dunia Salah
+* Mengapa Harapan Gagal
+* Mengapa Keabadian Menjadi Kutukan
+* Mengapa Nirmana Berbeda
+* Lahirnya Kehampaan
+* Titik Tidak Bisa Kembali
+
+
+# FILE 64
+
+## NIRMANA_BIBLE_PART_03
+
+### THE PHILOSOPHY OF NOTHINGNESS
+
+# AETHERION
+
+# NIRMANA BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* Why Nirmana Is Different
+* The Failure of Hope
+* The Weight of Eternity
+* The Philosophy of Nothingness
+* The Point of No Return
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Kita sudah mengunci satu fakta penting.
+
+---
+
+Nirmana tidak jatuh karena tragedi.
+
+---
+
+Karena tragedi terjadi pada semua orang.
+
+---
+
+Nirmana juga tidak jatuh karena kehilangan.
+
+---
+
+Karena kehilangan dialami semua makhluk hidup.
+
+---
+
+Maka harus ada alasan lain.
+
+---
+
+Alasan yang jauh lebih dalam.
+
+---
+
+# THE FIRST LAW
+
+## NIRMANA DID NOT LOSE HOPE
+
+---
+
+Ini terdengar aneh.
+
+---
+
+Karena mayoritas orang menganggap:
+
+```text id="nrm05"
+Nirmana kehilangan harapan.
+```
+
+---
+
+Tetapi itu tidak benar.
+
+---
+
+# IMPORTANT
+
+---
+
+Seseorang yang kehilangan harapan.
+
+---
+
+Masih berharap harapan itu kembali.
+
+---
+
+Nirmana sudah melewati tahap itu.
+
+---
+
+# THE REAL PROBLEM
+
+---
+
+Nirmana kehilangan keyakinan.
+
+---
+
+Bukan pada dirinya.
+
+---
+
+Bukan pada orang lain.
+
+---
+
+Tetapi pada:
+
+```text id="nrm06"
+Keberadaan itu sendiri.
+```
+
+---
+
+# WHY NIRMANA IS DIFFERENT
+
+---
+
+Inilah pertanyaan besar.
+
+---
+
+Mengapa naga kuno tidak jatuh?
+
+---
+
+Mengapa tetua dunia tidak jatuh?
+
+---
+
+Mengapa para pertapa besar tidak jatuh?
+
+---
+
+# ANSWER
+
+---
+
+Karena mereka menerima akhir.
+
+---
+
+Nirmana tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia tidak bisa menerima.
+
+---
+
+Dan ia tidak bisa melupakan.
+
+---
+
+Kedua hal itu menjadi racun.
+
+---
+
+# THE SECOND LAW
+
+## MEMORY CAN BECOME A CURSE
+
+---
+
+Orang biasa melupakan.
+
+---
+
+Karena otaknya terbatas.
+
+---
+
+Karena hidupnya pendek.
+
+---
+
+Karena waktunya habis.
+
+---
+
+Tetapi Nirmana.
+
+---
+
+Mengingat hampir segalanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan setiap ingatan memiliki berat.
+
+---
+
+# EXAMPLE
+
+---
+
+Bayangkan mengingat:
+
+---
+
+Setiap sahabat.
+
+---
+
+Setiap kematian.
+
+---
+
+Setiap kegagalan.
+
+---
+
+Setiap janji yang tidak terpenuhi.
+
+---
+
+Selama ribuan tahun.
+
+---
+
+# IMPORTANT
+
+---
+
+Beban itu tidak hilang.
+
+---
+
+Ia menumpuk.
+
+---
+
+# THE FAILURE OF HOPE
+
+---
+
+Awalnya.
+
+---
+
+Nirmana percaya.
+
+---
+
+Bahwa dunia sedang menuju sesuatu.
+
+---
+
+Bahwa penderitaan memiliki makna.
+
+---
+
+Bahwa kehilangan memiliki tujuan.
+
+---
+
+Bahwa sejarah bergerak maju.
+
+---
+
+# THEN HE WATCHED
+
+---
+
+Kerajaan baik runtuh.
+
+---
+
+Kerajaan jahat runtuh.
+
+---
+
+Pahlawan mati.
+
+---
+
+Penjahat mati.
+
+---
+
+Peradaban berkembang.
+
+---
+
+Peradaban menghilang.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan pola itu terus berulang.
+
+---
+
+# THE QUESTION
+
+---
+
+Jika semuanya berakhir sama.
+
+---
+
+Apa bedanya?
+
+---
+
+# THE THIRD LAW
+
+## TIME DESTROYS ALL THINGS
+
+---
+
+Nirmana mulai mempelajari sejarah.
+
+---
+
+Lalu semakin jauh.
+
+---
+
+Lalu semakin dalam.
+
+---
+
+Sampai ia menemukan satu pola.
+
+---
+
+Pola yang tidak pernah gagal.
+
+---
+
+```text id="nrm07"
+Segala sesuatu berakhir.
+```
+
+---
+
+Tidak ada pengecualian.
+
+---
+
+Tidak ada kemenangan permanen.
+
+---
+
+Tidak ada kerajaan abadi.
+
+---
+
+Tidak ada peradaban abadi.
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan legenda.
+
+---
+
+Menjadi cerita.
+
+---
+
+Lalu menjadi debu.
+
+---
+
+# THE MOMENT OF HORROR
+
+---
+
+Sebagian orang melihat fakta itu.
+
+---
+
+Lalu menerima.
+
+---
+
+Nirmana melihat fakta itu.
+
+---
+
+Lalu mempertanyakannya.
+
+---
+
+# QUESTION
+
+---
+
+Jika akhir selalu sama.
+
+---
+
+Mengapa perjalanan itu ada?
+
+---
+
+# THE BIRTH OF NOTHINGNESS
+
+---
+
+Dan di sinilah.
+
+---
+
+Kehampaan lahir.
+
+---
+
+Bukan sebagai emosi.
+
+---
+
+Bukan sebagai sihir.
+
+---
+
+Tetapi sebagai filosofi.
+
+---
+
+# THE PHILOSOPHY
+
+---
+
+Nirmana sampai pada kesimpulan:
+
+---
+
+```text id="nrm08"
+Penderitaan lahir karena keberadaan.
+```
+
+---
+
+Jika tidak ada kehidupan.
+
+---
+
+Tidak ada kehilangan.
+
+---
+
+Jika tidak ada sejarah.
+
+---
+
+Tidak ada tragedi.
+
+---
+
+Jika tidak ada harapan.
+
+---
+
+Tidak ada kekecewaan.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini bukan kebencian.
+
+---
+
+Ini logika.
+
+---
+
+Logika yang salah.
+
+---
+
+Tetapi sangat sulit dibantah.
+
+---
+
+# THE DRAGON'S OPPOSITION
+
+---
+
+Di sinilah naga mulai menentangnya.
+
+---
+
+Karena naga melihat pola yang sama.
+
+---
+
+Tetapi mencapai kesimpulan berbeda.
+
+---
+
+# THE DRAGON'S ANSWER
+
+---
+
+Naga berkata:
+
+---
+
+```text id="nrm09"
+Justru karena semuanya berakhir.
+
+Maka semuanya berharga.
+```
+
+---
+
+Nirmana tidak setuju.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini menjadi perdebatan yang berlangsung sangat lama.
+
+---
+
+Mungkin yang terpanjang dalam sejarah dunia.
+
+---
+
+# THE POINT OF NO RETURN
+
+---
+
+Ada titik tertentu.
+
+---
+
+Ketika Nirmana berhenti mencari jawaban.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini adalah momen paling berbahaya.
+
+---
+
+Karena selama seseorang masih mencari.
+
+---
+
+Ia masih bisa berubah.
+
+---
+
+Tetapi ketika seseorang yakin.
+
+---
+
+Ia berhenti mendengarkan.
+
+---
+
+# THE FINAL CONCLUSION
+
+---
+
+Pada akhirnya.
+
+---
+
+Nirmana sampai pada keyakinan:
+
+---
+
+```text id="nrm10"
+Keberadaan adalah luka.
+
+Ketiadaan adalah obatnya.
+```
+
+---
+
+Dan sejak hari itu.
+
+---
+
+Tujuannya berubah.
+
+---
+
+Bukan lagi menyelamatkan dunia.
+
+---
+
+Bukan lagi memperbaiki dunia.
+
+---
+
+Tetapi mengakhiri dunia.
+
+---
+
+Agar tidak ada lagi yang harus menderita.
+
+---
+
+# THE TRAGEDY
+
+---
+
+Yang membuat Nirmana menakutkan.
+
+---
+
+Bukan kekuatannya.
+
+---
+
+Bukan keabadiannya.
+
+---
+
+Bukan naganya.
+
+---
+
+Tetapi fakta bahwa:
+
+---
+
+Ia benar-benar percaya.
+
+---
+
+Bahwa ia sedang melakukan hal yang benar.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Monster dapat dihentikan.
+
+---
+
+Tiran dapat dijatuhkan.
+
+---
+
+Dewa dapat ditentang.
+
+---
+
+Tetapi seseorang.
+
+---
+
+Yang percaya dirinya sedang menyelamatkan semua orang.
+
+---
+
+Adalah musuh yang jauh lebih sulit dikalahkan.
+
+---
+
+---
+
+# TEMUAN DIREKTUR #064
+
+Sekarang kita telah menemukan:
+
+✓ Mengapa Nirmana jatuh
+
+✓ Filosofi Kehampaan
+
+✓ Perbedaan pandangan Nirmana dan Naga
+
+✓ Titik Tidak Bisa Kembali
+
+---
+
+Tetapi ada masalah besar.
+
+---
+
+Masalah yang belum pernah dijawab.
+
+---
+
+Jika Nirmana sudah seperti ini.
+
+---
+
+Mengapa dunia masih ada?
+
+---
+
+Mengapa ia belum menang?
+
+---
+
+Karena jika Nirmana benar-benar legenda terkuat dalam sejarah.
+
+---
+
+Maka seharusnya dunia sudah berakhir sejak lama.
+
+---
+
+Yang berarti:
+
+```text id="nrm11"
+Seseorang menghentikannya.
+```
+
+---
+
+Atau lebih tepatnya.
+
+---
+
+Beberapa orang.
+
+---
+
+Dokumen berikutnya:
+
+## NIRMANA_BIBLE_PART_04
+
+### THE WAR AGAINST THE END
+
+Isi:
+
+* Perang Pertama Melawan Nirmana
+* Siapa yang Berdiri Melawannya
+* Peran 5 Dewa Besar
+* Pengkhianatan dan Kehilangan
+* Naga Nirmana dalam Perang
+* Mengapa Nirmana Tidak Bisa Dibunuh
+* Awal Era Modern
+
+# FILE 65
+
+## NIRMANA_BIBLE_PART_04
+
+### THE WAR AGAINST THE END
+
+# AETHERION
+
+# NIRMANA BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* The First War Against Nirmana
+* The Six Divine Powers
+* The Dragon in the War
+* The First Alliance
+* Why Nirmana Was Not Killed
+* The Birth of the Modern Era
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Sebagian perang.
+
+---
+
+Terjadi demi kekuasaan.
+
+---
+
+Sebagian perang.
+
+---
+
+Terjadi demi wilayah.
+
+---
+
+Tetapi perang melawan Nirmana berbeda.
+
+---
+
+Karena untuk pertama kalinya.
+
+---
+
+Dunia berperang demi:
+
+```text id="nrm12"
+Hak untuk tetap ada.
+```
+
+---
+
+# THE FIRST LAW
+
+## THE WORLD DID NOT NOTICE AT FIRST
+
+---
+
+Perubahan Nirmana.
+
+---
+
+Terjadi sangat lambat.
+
+---
+
+Terlalu lambat.
+
+---
+
+Sehingga hampir tidak ada yang menyadarinya.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena dari luar.
+
+---
+
+Ia masih terlihat sama.
+
+---
+
+Masih membantu.
+
+---
+
+Masih menghilang selama bertahun-tahun.
+
+---
+
+Masih menjadi legenda.
+
+---
+
+# THE WARNING
+
+---
+
+Beberapa individu tua.
+
+---
+
+Mulai melihat tanda-tanda.
+
+---
+
+Para tetua.
+
+---
+
+Monster kuno.
+
+---
+
+Pembaca bintang.
+
+---
+
+Dan sahabat naganya.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka melihat sesuatu.
+
+---
+
+Yang tidak dilihat dunia.
+
+---
+
+Nirmana telah berhenti mencintai masa depan.
+
+---
+
+# THE FIRST DECLARATION
+
+---
+
+Tidak ada yang tahu pasti.
+
+---
+
+Kapan Nirmana pertama kali menyatakan tujuannya.
+
+---
+
+Karena catatan berbeda-beda.
+
+---
+
+Namun seluruh sumber.
+
+---
+
+Setuju pada satu hal.
+
+---
+
+Ia tidak mengancam dunia.
+
+---
+
+Ia tidak meminta dunia menyerah.
+
+---
+
+Ia hanya mengatakan:
+
+---
+
+```text id="nrm13"
+Suatu hari.
+
+Aku akan mengakhiri penderitaan ini.
+```
+
+---
+
+Dan tidak seorang pun memahami.
+
+---
+
+Apa maksudnya.
+
+---
+
+# THE FIRST DISASTER
+
+---
+
+Kemudian sesuatu terjadi.
+
+---
+
+Sesuatu yang mengubah segalanya.
+
+---
+
+Sebuah wilayah.
+
+---
+
+Lenyap.
+
+---
+
+# IMPORTANT
+
+---
+
+Bukan dihancurkan.
+
+---
+
+Bukan dibakar.
+
+---
+
+Lenyap.
+
+---
+
+Seolah tidak pernah ada.
+
+---
+
+# THE HORROR
+
+---
+
+Untuk pertama kalinya.
+
+---
+
+Dunia menyadari.
+
+---
+
+Nirmana bukan lagi sekadar legenda.
+
+---
+
+Ia telah menjadi ancaman.
+
+---
+
+# THE GREAT ALLIANCE
+
+## THE IMPOSSIBLE COALITION
+
+---
+
+Hal yang biasanya mustahil.
+
+---
+
+Akhirnya terjadi.
+
+---
+
+Kerajaan.
+
+---
+
+Guild.
+
+---
+
+Monster.
+
+---
+
+Agama.
+
+---
+
+Akademi.
+
+---
+
+Bahkan musuh lama.
+
+---
+
+Bekerja sama.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena mereka memiliki musuh yang sama.
+
+---
+
+# THE SIX DIVINE POWERS
+
+---
+
+Kita telah mengunci:
+
+---
+
+1 Dewa Absolut
+
+---
+
+5 Dewa Besar
+
+---
+
+Di bawah-Nya.
+
+---
+
+# IMPORTANT
+
+---
+
+Dewa Absolut tidak turun tangan secara langsung.
+
+---
+
+Seperti biasanya.
+
+---
+
+Karena keseimbangan kosmik.
+
+---
+
+Tetap harus dijaga.
+
+---
+
+Namun Lima Dewa Besar.
+
+---
+
+Mulai bergerak.
+
+---
+
+# THE SHOCK
+
+---
+
+Untuk pertama kalinya dalam sejarah.
+
+---
+
+Kehadiran mereka terlihat jelas.
+
+---
+
+Bukan sebagai mitos.
+
+---
+
+Bukan sebagai mukjizat.
+
+---
+
+Tetapi sebagai kekuatan nyata.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan bahkan mereka.
+
+---
+
+Tidak dapat menghentikan Nirmana sendirian.
+
+---
+
+# THE DRAGON
+
+## THE LAST COMPANION
+
+---
+
+Selama perang.
+
+---
+
+Satu pertanyaan terus muncul.
+
+---
+
+Di pihak siapa naga itu berdiri?
+
+---
+
+# ANSWER
+
+---
+
+Pada awal perang.
+
+---
+
+Di sisi Nirmana.
+
+---
+
+Bukan karena setuju.
+
+---
+
+Tetapi karena persahabatan.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini adalah tragedi terbesar naga tersebut.
+
+---
+
+Karena ia melihat kesalahan sahabatnya.
+
+---
+
+Tetapi tidak sanggup meninggalkannya.
+
+---
+
+# THE LONG ARGUMENT
+
+---
+
+Di tengah perang.
+
+---
+
+Mereka terus berdebat.
+
+---
+
+Bukan sehari.
+
+---
+
+Bukan setahun.
+
+---
+
+Tetapi bertahun-tahun.
+
+---
+
+# THE DRAGON'S BELIEF
+
+---
+
+```text id="nrm14"
+Kehidupan berharga
+karena ia tidak abadi.
+```
+
+---
+
+# NIRMANA'S BELIEF
+
+---
+
+```text id="nrm15"
+Kehidupan menderita
+karena ia tidak abadi.
+```
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada yang berhasil meyakinkan yang lain.
+
+---
+
+# THE FIRST WAR
+
+## THE WAR OF EXISTENCE
+
+---
+
+Perang itu berbeda.
+
+---
+
+Karena tidak ada wilayah yang diperebutkan.
+
+---
+
+Tidak ada tahta yang diperebutkan.
+
+---
+
+Tidak ada emas yang diperebutkan.
+
+---
+
+Yang dipertaruhkan adalah:
+
+---
+
+Segala sesuatu.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian besar pahlawan terbesar dunia.
+
+---
+
+Muncul pada era ini.
+
+---
+
+Dan sebagian besar.
+
+---
+
+Tidak pernah kembali.
+
+---
+
+# WHY NIRMANA COULD NOT BE KILLED
+
+---
+
+Inilah pertanyaan yang muncul selama berabad-abad.
+
+---
+
+Mengapa tidak dibunuh saja?
+
+---
+
+# ANSWER
+
+---
+
+Karena Nirmana bukan ancaman biasa.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia telah hidup terlalu lama.
+
+---
+
+Belajar terlalu banyak.
+
+---
+
+Berkembang terlalu jauh.
+
+---
+
+# THE TRUTH
+
+---
+
+Tidak ada satu makhluk pun.
+
+---
+
+Yang cukup kuat untuk membunuhnya.
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan jika seluruh dunia bersatu.
+
+---
+
+Kemenangan tetap tidak pasti.
+
+---
+
+# THE COST
+
+---
+
+Pada akhirnya.
+
+---
+
+Dunia tidak menang.
+
+---
+
+Dan Nirmana juga tidak menang.
+
+---
+
+# IMPORTANT
+
+---
+
+Yang terjadi adalah sesuatu yang lebih buruk.
+
+---
+
+Dan lebih tragis.
+
+---
+
+# THE FRACTURE
+
+---
+
+Perang berakhir.
+
+---
+
+Tetapi tanpa penyelesaian.
+
+---
+
+Nirmana tidak mati.
+
+---
+
+Dunia tidak hancur.
+
+---
+
+# RESULT
+
+---
+
+Sebuah keseimbangan rapuh tercipta.
+
+---
+
+Sebuah jeda.
+
+---
+
+Bukan kemenangan.
+
+---
+
+# THE MODERN ERA
+
+---
+
+Mayoritas sejarah modern.
+
+---
+
+Lahir dari perang ini.
+
+---
+
+Karena semua organisasi besar.
+
+---
+
+Berubah setelahnya.
+
+---
+
+# EXAMPLES
+
+---
+
+Holy Orders berkembang.
+
+---
+
+Guild menjadi lebih kuat.
+
+---
+
+Penjaga reruntuhan muncul.
+
+---
+
+Aliansi monster terbentuk.
+
+---
+
+Banyak sistem dunia modern lahir.
+
+---
+
+Karena ketakutan.
+
+---
+
+Bahwa suatu hari.
+
+---
+
+Nirmana akan kembali bergerak.
+
+---
+
+# THE FEW WHO KNOW
+
+---
+
+Mayoritas rakyat.
+
+---
+
+Hanya mengetahui legenda.
+
+---
+
+Tetapi sebagian individu tua.
+
+---
+
+Masih mengetahui kenyataan.
+
+---
+
+Dan mereka semua memiliki ketakutan yang sama.
+
+---
+
+```text id="nrm16"
+Perang pertama hanyalah awal.
+```
+
+---
+
+# THE FINAL LAW
+
+---
+
+Dunia tidak diselamatkan.
+
+---
+
+Dunia hanya diberi waktu.
+
+---
+
+Dan waktu.
+
+---
+
+Adalah sesuatu yang Nirmana miliki lebih banyak daripada siapa pun.
+
+---
+
+---
+
+# TEMUAN DIREKTUR #065
+
+Sekarang muncul misteri terbesar dalam seluruh Aetherion.
+
+---
+
+Jika perang sebesar itu terjadi.
+
+---
+
+Jika Lima Dewa Besar turun tangan.
+
+---
+
+Jika seluruh dunia bersatu.
+
+---
+
+Mengapa Nirmana berhenti?
+
+---
+
+Karena sejauh ini.
+
+---
+
+Tidak ada alasan yang cukup kuat.
+
+---
+
+Yang dapat menjelaskan mengapa seseorang yang yakin.
+
+---
+
+Bahwa dirinya menyelamatkan dunia.
+
+---
+
+Tiba-tiba berhenti.
+
+---
+
+Dokumen berikutnya:
+
+## NIRMANA_BIBLE_PART_05
+
+### THE THING THAT EVEN NIRMANA FEARED
+
+Isi:
+
+* Mengapa Perang Berakhir
+* Rahasia yang Tidak Diketahui Dunia
+* Perpecahan Dengan Naga
+* Peristiwa Terbesar Dalam Sejarah
+* Alasan Nirmana Menghilang
+* Awal Masa Penantian
+
+---
+
+**Pertanyaan Direktur #065**
+
+Menurut saya ada dua kemungkinan kuat:
+
+**A.** Nirmana menemukan sesuatu yang bahkan lebih mengerikan daripada keberadaan itu sendiri.
+
+**B.** Ada sesuatu/seseorang yang berhasil membuat Nirmana ragu untuk pertama kalinya setelah ratusan tahun.
+
+Sebelum lanjut, mana yang lebih dekat dengan visi Anda? Karena ini akan menjadi titik balik terbesar dalam seluruh lore Aetherion.
+
+
+# FILE 66
+
+## NIRMANA_BIBLE_PART_05
+
+### THE THING THAT EVEN NIRMANA FEARED
+
+# AETHERION
+
+# NIRMANA BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* The End of the First War
+* The Hidden Truth
+* The Great Silence
+* The Dragon's Decision
+* The Waiting Era
+* The First Doubt
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Sebagian perang berakhir.
+
+---
+
+Karena satu pihak menang.
+
+---
+
+Sebagian perang berakhir.
+
+---
+
+Karena satu pihak kalah.
+
+---
+
+Tetapi perang melawan Nirmana.
+
+---
+
+Tidak berakhir dengan keduanya.
+
+---
+
+# THE FIRST LAW
+
+## NIRMANA NEVER SURRENDERED
+
+---
+
+Ini harus dikunci.
+
+---
+
+Karena sejarah sering salah.
+
+---
+
+Nirmana tidak menyerah.
+
+---
+
+Tidak kalah.
+
+---
+
+Tidak melarikan diri.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia berhenti.
+
+---
+
+Dan itu sangat berbeda.
+
+---
+
+# THE MOMENT
+
+---
+
+Pada akhir perang.
+
+---
+
+Seluruh dunia berada di ambang kehancuran.
+
+---
+
+Kerajaan runtuh.
+
+---
+
+Laut berubah.
+
+---
+
+Gunung pecah.
+
+---
+
+Peradaban hilang.
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan Lima Dewa Besar.
+
+---
+
+Mulai kehabisan cara.
+
+---
+
+# THE IMPOSSIBLE EVENT
+
+---
+
+Lalu sesuatu terjadi.
+
+---
+
+Sesuatu yang tidak pernah tercatat secara lengkap.
+
+---
+
+Sesuatu yang bahkan para dewa.
+
+---
+
+Jarang membicarakannya.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena apa yang ditemukan hari itu.
+
+---
+
+Mengubah segalanya.
+
+---
+
+# THE HIDDEN TRUTH
+
+---
+
+Selama ribuan tahun.
+
+---
+
+Nirmana percaya:
+
+---
+
+```text id="nrm17"
+Penderitaan berasal dari keberadaan.
+```
+
+---
+
+Tetapi pada akhir perang.
+
+---
+
+Ia menemukan sesuatu.
+
+---
+
+Yang mengguncang keyakinannya.
+
+---
+
+# THE HORROR
+
+---
+
+Ternyata.
+
+---
+
+Keberadaan bukanlah masalah terbesar.
+
+---
+
+# IMPORTANT
+
+---
+
+Ada sesuatu yang lebih tua.
+
+---
+
+Lebih besar.
+
+---
+
+Dan lebih mengerikan.
+
+---
+
+Daripada seluruh sejarah dunia.
+
+---
+
+# THE ABYSS BEYOND MEMORY
+
+---
+
+Bahkan para dewa.
+
+---
+
+Tidak menciptakan segalanya.
+
+---
+
+Mereka hanya menjaga.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan jauh sebelum sejarah.
+
+---
+
+Jauh sebelum kerajaan pertama.
+
+---
+
+Jauh sebelum naga pertama.
+
+---
+
+Ada sesuatu.
+
+---
+
+Yang bahkan dunia tidak ingin mengingatnya.
+
+---
+
+# THE FIRST DOUBT
+
+---
+
+Untuk pertama kalinya setelah berabad-abad.
+
+---
+
+Nirmana ragu.
+
+---
+
+# IMPORTANT
+
+---
+
+Bukan ragu pada dunia.
+
+---
+
+Tetapi ragu pada dirinya sendiri.
+
+---
+
+# QUESTION
+
+---
+
+Jika dunia dihancurkan.
+
+---
+
+Apa yang akan tersisa?
+
+---
+
+Dan jawaban yang ia temukan.
+
+---
+
+Membuatnya berhenti.
+
+---
+
+# THE DRAGON
+
+## THE FINAL ARGUMENT
+
+---
+
+Di akhir perang.
+
+---
+
+Naga dan Nirmana berbicara.
+
+---
+
+Berdua.
+
+---
+
+Tanpa saksi.
+
+---
+
+Tanpa sejarah.
+
+---
+
+Tanpa dewa.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada yang mengetahui isi percakapan itu.
+
+---
+
+# THE RESULT
+
+---
+
+Setelah percakapan tersebut.
+
+---
+
+Sesuatu berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak cukup untuk menyelamatkan Nirmana.
+
+---
+
+Tetapi cukup untuk menghentikannya.
+
+---
+
+Untuk sementara.
+
+---
+
+# THE GREAT SILENCE
+
+---
+
+Kemudian.
+
+---
+
+Nirmana menghilang.
+
+---
+
+# IMPORTANT
+
+---
+
+Bukan selama bertahun-tahun.
+
+---
+
+Bukan selama puluhan tahun.
+
+---
+
+Tetapi sangat lama.
+
+---
+
+Sangat lama.
+
+---
+
+Sampai sebagian dunia mulai berpikir.
+
+---
+
+Bahwa semuanya telah berakhir.
+
+---
+
+# THE WAITING ERA
+
+---
+
+Inilah era modern.
+
+---
+
+Era yang sedang dijalani pemain.
+
+---
+
+# IMPORTANT
+
+---
+
+Mayoritas orang tidak sadar.
+
+---
+
+Bahwa mereka hidup.
+
+---
+
+Di dalam masa jeda.
+
+---
+
+# THE FALSE PEACE
+
+---
+
+Dunia menganggap dirinya aman.
+
+---
+
+Tetapi sebagian tetua.
+
+---
+
+Mengetahui kenyataan.
+
+---
+
+# REALITY
+
+---
+
+Nirmana belum berubah pikiran.
+
+---
+
+Ia belum bertobat.
+
+---
+
+Ia belum menyerah.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia hanya berhenti bergerak.
+
+---
+
+# THE OBSERVERS
+
+---
+
+Kelompok kecil mulai mengawasi.
+
+---
+
+Termasuk:
+
+* naga kuno
+* tetua dunia
+* penjaga rahasia
+* sebagian dewa bawahan
+* beberapa pembaca bintang
+
+---
+
+Karena mereka semua menyadari satu hal.
+
+---
+
+```text id="nrm18"
+Suatu hari nanti.
+Ia akan mengambil keputusan.
+```
+
+---
+
+# THE SECOND LAW
+
+## THE MOST DANGEROUS MAN IS A THINKING MAN
+
+---
+
+Pada masa perang.
+
+---
+
+Nirmana bergerak.
+
+---
+
+Dan dunia bisa melawannya.
+
+---
+
+Sekarang.
+
+---
+
+Ia diam.
+
+---
+
+Dan tidak ada yang tahu.
+
+---
+
+Apa yang sedang ia pikirkan.
+
+---
+
+# THE LEGEND OF THE LAST CHANCE
+
+---
+
+Ada legenda tua.
+
+---
+
+Yang hampir terlupakan.
+
+---
+
+Legenda yang hanya diketahui.
+
+---
+
+Oleh sebagian makhluk paling tua.
+
+---
+
+# LEGEND
+
+---
+
+Selama Nirmana masih berpikir.
+
+---
+
+Dunia masih memiliki harapan.
+
+---
+
+Karena keputusan terakhirnya.
+
+---
+
+Belum dibuat.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Perang pertama berakhir.
+
+---
+
+Bukan karena kemenangan.
+
+---
+
+Bukan karena kekalahan.
+
+---
+
+Tetapi karena keraguan.
+
+---
+
+Dan terkadang.
+
+---
+
+Satu keraguan kecil.
+
+---
+
+Dapat menghentikan kehancuran seluruh dunia.
+
+---
+
+---
+
+# TEMUAN DIREKTUR #066
+
+Sekarang muncul pertanyaan yang bahkan lebih besar.
+
+---
+
+Apa sebenarnya yang dilakukan Nirmana selama masa menghilangnya?
+
+---
+
+Karena seseorang seperti dirinya.
+
+---
+
+Tidak mungkin hanya duduk diam.
+
+---
+
+Selama ratusan atau ribuan tahun.
+
+---
+
+Kemungkinan besar.
+
+---
+
+Ia sedang mencari jawaban terakhir.
+
+---
+
+Jawaban yang akan menentukan:
+
+---
+
+```text id="nrm19"
+Apakah dunia akan hidup.
+
+Atau berakhir.
+```
+
+---
+
+Dokumen berikutnya:
+
+## NIRMANA_BIBLE_PART_06
+
+### THE MAN WHO SEARCHED FOR THE FINAL ANSWER
+
+Isi:
+
+* Pengasingan Nirmana
+* Tempat Ia Menghilang
+* Apa yang Ia Cari
+* Hubungannya Dengan Naga Saat Ini
+* Kelompok yang Masih Mengikutinya
+* Para Pewaris Kehampaan
+* Ancaman Era Modern
+
+---
+
+Status Nirmana Bible saat ini:
+
+```text id="progress66"
+≈ 45% COMPLETE
+```
+
+Karena setelah ini kita masih harus membahas:
+
+* naga sahabat Nirmana secara penuh
+* para pengikut Nirmana
+* filosofi pewaris kehampaan
+* ancaman era modern
+* final objective Nirmana
+* kemungkinan ending dunia
+* hubungan Nirmana dengan player
+
+yang kemungkinan akan memakan 6–10 file lagi sebelum mencapai Tier S Complete.
+
+# FILE 67
+
+## NIRMANA_BIBLE_PART_06
+
+### THE MAN WHO SEARCHED FOR THE FINAL ANSWER
+
+# AETHERION
+
+# NIRMANA BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+* The Exile of Nirmana
+* The Silent Era
+* The Search
+* The Dragon Today
+* Heirs of Nothingness
+* Modern Threats
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Sebagian orang bersembunyi.
+
+---
+
+Karena takut.
+
+---
+
+Sebagian orang menghilang.
+
+---
+
+Karena kalah.
+
+---
+
+Tetapi Nirmana tidak melakukan keduanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia mengasingkan dirinya.
+
+---
+
+Untuk mencari jawaban.
+
+---
+
+# THE FIRST LAW
+
+## NIRMANA IS STILL SEARCHING
+
+---
+
+Banyak orang percaya.
+
+---
+
+Bahwa keputusan Nirmana sudah dibuat.
+
+---
+
+Bahwa dunia hanya menunggu eksekusi.
+
+---
+
+Tetapi itu salah.
+
+---
+
+# IMPORTANT
+
+---
+
+Keputusan terakhir.
+
+---
+
+Belum dibuat.
+
+---
+
+Dan itulah alasan dunia masih ada.
+
+---
+
+# THE GREAT DISAPPEARANCE
+
+---
+
+Setelah perang pertama.
+
+---
+
+Nirmana menghilang.
+
+---
+
+Bukan ke kerajaan.
+
+---
+
+Bukan ke reruntuhan.
+
+---
+
+Bukan ke dunia para dewa.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada yang tahu pasti.
+
+---
+
+Ke mana ia pergi.
+
+---
+
+# THEORIES
+
+---
+
+Sebagian percaya:
+
+Ia berjalan ke ujung dunia.
+
+---
+
+Sebagian percaya:
+
+Ia memasuki reruntuhan tertua.
+
+---
+
+Sebagian percaya:
+
+Ia meninggalkan realitas.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada bukti.
+
+---
+
+# THE STRANGE REPORTS
+
+---
+
+Sepanjang sejarah.
+
+---
+
+Kadang muncul laporan.
+
+---
+
+Tentang seseorang.
+
+---
+
+Yang sangat mirip dengannya.
+
+---
+
+Di tempat-tempat yang mustahil.
+
+---
+
+# EXAMPLES
+
+---
+
+Puncak gunung yang tidak terpetakan.
+
+---
+
+Laut yang tidak memiliki nama.
+
+---
+
+Reruntuhan yang bahkan tidak muncul di peta.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada yang berhasil memverifikasi.
+
+---
+
+# THE SEARCH
+
+## WHAT IS HE LOOKING FOR?
+
+---
+
+Inilah pertanyaan terbesar.
+
+---
+
+Karena setelah perang.
+
+---
+
+Nirmana berhenti mencoba menghancurkan dunia.
+
+---
+
+Dan mulai mencoba memahami sesuatu.
+
+---
+
+# IMPORTANT
+
+---
+
+Sesuatu yang lebih besar.
+
+---
+
+Daripada dunia itu sendiri.
+
+---
+
+# THE QUESTION
+
+---
+
+Selama ribuan tahun.
+
+---
+
+Pertanyaan Nirmana berubah.
+
+---
+
+Awalnya:
+
+```text id="nrm20"
+Mengapa semuanya berakhir?
+```
+
+---
+
+Kemudian:
+
+```text id="nrm21"
+Mengapa keberadaan ada?
+```
+
+---
+
+Dan sekarang:
+
+```text id="nrm22"
+Apa yang seharusnya terjadi?
+```
+
+---
+
+# IMPORTANT
+
+---
+
+Perbedaan itu sangat besar.
+
+---
+
+Karena untuk pertama kalinya.
+
+---
+
+Nirmana mulai mencari alternatif.
+
+---
+
+# THE DRAGON TODAY
+
+## THE LAST FRIENDSHIP
+
+---
+
+Hubungan mereka berubah.
+
+---
+
+Tetapi tidak putus.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini harus dikunci.
+
+---
+
+Karena banyak orang mengira.
+
+---
+
+Mereka menjadi musuh.
+
+---
+
+Mereka tidak.
+
+---
+
+# REALITY
+
+---
+
+Mereka masih sahabat.
+
+---
+
+Meskipun tidak lagi sepakat.
+
+---
+
+# THE SADDEST TRUTH
+
+---
+
+Naga masih percaya.
+
+---
+
+Bahwa Nirmana dapat berubah.
+
+---
+
+Dan Nirmana masih menghormatinya.
+
+---
+
+Lebih daripada siapa pun.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena naga adalah satu-satunya makhluk.
+
+---
+
+Yang tidak pernah menyerah terhadapnya.
+
+---
+
+# THE SECOND LAW
+
+## NOT ALL FOLLOWERS WORSHIP
+
+---
+
+Ini bagian penting.
+
+---
+
+Karena setelah perang.
+
+---
+
+Beberapa individu mulai mengikuti filosofi Nirmana.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka bukan kultus biasa.
+
+---
+
+Mereka bukan fanatik.
+
+---
+
+Sebagian bahkan tidak pernah bertemu Nirmana.
+
+---
+
+# THE HEIRS OF NOTHINGNESS
+
+---
+
+Nama tidak resmi.
+
+---
+
+Yang diberikan oleh para sarjana.
+
+---
+
+Untuk kelompok-kelompok yang terpengaruh.
+
+---
+
+Oleh filosofi kehampaan.
+
+---
+
+# BELIEFS
+
+---
+
+Sebagian percaya:
+
+Dunia harus diakhiri.
+
+---
+
+Sebagian percaya:
+
+Dunia harus diperbaiki.
+
+---
+
+Sebagian percaya:
+
+Dunia harus diuji.
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan para pengikutnya.
+
+---
+
+Tidak sepakat satu sama lain.
+
+---
+
+# THE DANGEROUS ONES
+
+---
+
+Yang paling berbahaya.
+
+---
+
+Bukan mereka yang ingin menghancurkan dunia.
+
+---
+
+# IMPORTANT
+
+---
+
+Tetapi mereka yang yakin.
+
+---
+
+Bahwa penderitaan memberi mereka hak.
+
+---
+
+Untuk menentukan nasib dunia.
+
+---
+
+# THE THIRD LAW
+
+## IDEAS OUTLIVE PEOPLE
+
+---
+
+Ini adalah salah satu ketakutan terbesar para tetua.
+
+---
+
+Karena seseorang bisa mati.
+
+---
+
+Tetapi ide.
+
+---
+
+Tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan ide Nirmana.
+
+---
+
+Sudah menyebar.
+
+---
+
+# MODERN THREATS
+
+---
+
+Ancaman era modern.
+
+---
+
+Tidak selalu berasal dari Nirmana.
+
+---
+
+# EXAMPLES
+
+---
+
+Pengikut yang salah memahami dirinya.
+
+---
+
+Kelompok ekstremis.
+
+---
+
+Pencari kekuatan kuno.
+
+---
+
+Orang-orang yang ingin menjadi Nirmana berikutnya.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian dari mereka.
+
+---
+
+Jauh lebih berbahaya.
+
+---
+
+Daripada yang mereka sadari.
+
+---
+
+# THE OBSERVERS
+
+---
+
+Para tetua dunia.
+
+---
+
+Masih mengawasi.
+
+---
+
+Karena mereka mengetahui sesuatu.
+
+---
+
+# IMPORTANT
+
+---
+
+Pola sedang bergerak lagi.
+
+---
+
+Tanda-tanda lama mulai muncul.
+
+---
+
+Ramalan berubah.
+
+---
+
+Fenomena langit berubah.
+
+---
+
+Reruntuhan mulai aktif.
+
+---
+
+# THE FEAR
+
+---
+
+Bukan bahwa Nirmana akan kembali.
+
+---
+
+Karena suatu hari.
+
+---
+
+Ia pasti kembali.
+
+---
+
+# FEAR
+
+---
+
+Pertanyaan sebenarnya adalah:
+
+---
+
+```text id="nrm23"
+Sebagai siapa?
+```
+
+---
+
+# THE FINAL LAW
+
+---
+
+Musuh paling berbahaya.
+
+---
+
+Bukanlah seseorang yang telah memutuskan.
+
+---
+
+Melainkan seseorang.
+
+---
+
+Yang masih mencari jawaban.
+
+---
+
+Karena jawaban berikutnya.
+
+---
+
+Dapat menyelamatkan dunia.
+
+---
+
+Atau mengakhirinya.
+
+---
+
+---
+
+# TEMUAN DIREKTUR #067
+
+Sekarang kita mulai memasuki inti terdalam karakter Nirmana.
+
+---
+
+Karena sejauh ini.
+
+---
+
+Kita baru membahas:
+
+✓ masa lalu
+
+✓ filosofi
+
+✓ perang
+
+✓ pengasingan
+
+---
+
+Tetapi belum membahas:
+
+```text id="nrm24"
+Apa sebenarnya tujuan akhirnya?
+```
+
+---
+
+Karena "mengakhiri dunia".
+
+---
+
+Masih terlalu sederhana.
+
+---
+
+Terlalu dangkal.
+
+---
+
+Untuk karakter sebesar Nirmana.
+
+---
+
+Dokumen berikutnya:
+
+## NIRMANA_BIBLE_PART_07
+
+### THE FINAL ANSWER
+
+Isi:
+
+* Tujuan Akhir Nirmana
+* Bentuk Dunia Ideal Menurutnya
+* Mengapa Ia Belum Bergerak
+* Mengapa Ia Masih Mencari
+* Apa Yang Akan Membuatnya Berhenti Selamanya
+* Satu Hal Yang Masih Tidak Ia Mengerti
+
+---
+
+Karena kemungkinan besar.
+
+---
+
+Nirmana tidak mencari cara menghancurkan dunia.
+
+---
+
+Ia sudah bisa melakukannya.
+
+---
+
+Yang ia cari.
+
+---
+
+Adalah alasan untuk **tidak** melakukannya.
+
+
+
+
+
+
+
+
+
+
+

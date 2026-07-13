@@ -1,0 +1,452 @@
+Menurutku Aetherion Harus Punya 3 Pilar
+Pilar 1 - Wonder
+
+"Masih ada rahasia apa?"
+
+Contoh:
+
+Star Whale
+Thunder Dragon
+Blood Moon
+
+Bagus.
+
+Tapi harus ditambah jauh lebih banyak.
+
+Misalnya:
+
+The Nameless Door
+
+Pintu yang muncul:
+
+Jam 03:33 WIB
++
+Bulan Baru
++
+Musim Dingin
+
+Tidak ada petunjuk.
+
+Selama bertahun-tahun pemain mencari jawabannya.
+
+The Forgotten Musician
+
+NPC memainkan lagu berbeda tiap musim.
+
+Kalau pemain mengikutinya:
+
+3 musim berturut-turut
+
+muncul quest rahasia.
+
+The Sleeping Giant
+
+Gunung ternyata boss hidup.
+
+Tidak ada yang tahu.
+
+Terraria punya eksplorasi.
+
+Aetherion harus punya:
+
+Eksplorasi + Misteri
+Pilar 2 - Belonging
+
+Ini bagian Suikoden.
+
+Menurutku ini yang paling penting.
+
+Jangan bikin Homestead cuma kebun.
+
+Bikin jadi:
+
+Living Headquarters
+
+Awalnya:
+
+Rumah reyot
+
+Lalu:
+
+Pandai besi pindah
+
+Lalu:
+
+Beast Master tinggal
+
+Lalu:
+
+Penyihir tua tinggal
+
+Lalu:
+
+100 NPC tinggal
+
+Markas berkembang.
+
+Pemain merasa:
+
+Ini rumahku.
+
+Kalau pemain login setelah 6 bulan:
+
+dia ingin melihat markasnya.
+
+Bukan levelnya.
+
+Pilar 3 - Legacy
+
+Ini yang hampir tidak dimiliki MMORPG modern.
+
+Misalnya:
+
+First Discovery
+
+Kalau pemain pertama menemukan evolusi:
+
+Phoenix → Solar Phoenix
+
+maka:
+
+"Ditemukan oleh Liffyy"
+
+selamanya.
+
+First Kill
+
+Boss dunia.
+
+Pertama dibunuh oleh Guild XYZ
+
+tercatat.
+
+First Craft
+
+Senjata unik.
+
+Pemain meninggalkan jejak.
+
+Ini sangat kuat.
+
+Sistem yang Menurutku Akan Meledak
+Living Sky
+
+Karena kamu sudah punya:
+
+WIB asli
+bulan asli
+rasi
+
+Maka manfaatkan habis-habisan.
+
+Contoh:
+
+Tahun Langit
+
+Setiap bulan nyata:
+
+langit berubah.
+
+Eclipse
+
+Hanya terjadi beberapa kali setahun.
+
+Meteor Shower
+
+Drop material langka.
+
+Celestial Alignment
+
+Membuka skill tree tersembunyi.
+
+Jangan jadikan langit sekadar dekorasi.
+
+Jadikan:
+
+Langit = sistem gameplay terbesar.
+Sistem yang Akan Jadi Pembeda Utama
+
+Kalau aku jadi creative director:
+
+Aku akan menjadikan ini identitas resmi.
+
+The World Remembers
+
+Dunia mengingat tindakan pemain.
+
+Contoh:
+
+Forest Spirit.
+
+Kalau terlalu banyak pohon ditebang:
+
+Spirit marah.
+
+Kalau terlalu banyak monster diburu:
+
+Migrasi monster terjadi.
+
+Kalau kota sering diselamatkan:
+
+Kota berkembang.
+
+Kalau boss tertentu dibiarkan hidup:
+
+Biome berubah.
+
+Tidak perlu MMO.
+
+Offline pun bisa.
+
+Yang Menurutku Harus Ditahan Dulu
+
+Aku justru tidak akan buru-buru membuka:
+
+Racing
+Gambling
+Marketplace
+MMO
+
+Karena itu fitur.
+
+Yang belum ada sekarang adalah:
+
+Alasan emosional untuk bermain.
+
+Kalau aku melihat roadmap ini, target terbesar bukan v0.6 atau v0.7.
+
+Target terbesar adalah:
+
+v0.5 STORY & SOUL
+
+Karena saat pemain berkata:
+
+"Aku penasaran kelanjutan cerita."
+
+dan
+
+"Aku ingin melihat markasku berkembang."
+
+serta
+
+"Aku ingin menemukan rahasia berikutnya."
+
+maka Aetherion mulai berubah dari kumpulan sistem keren menjadi dunia yang benar-benar ingin dihuni pemain.
+
+Kalau aku boleh menambahkan satu slogan desain untuk seluruh proyek, itu adalah:
+
+"Aetherion bukan dunia yang menunggu pemain datang. Aetherion adalah dunia yang terus berjalan, menyimpan rahasia, dan mengingat apa yang dilakukan pemain."
+
+Itu menurutku lebih kuat dan lebih unik dibanding sekadar menjadi "Toram + Terraria + Suikoden dalam bentuk 2D."
+
+Kalau saya menjadi Lead Designer proyek ini.
+
+Maka urutan pengerjaan selanjutnya:
+
+TIER S COMPLETION
+PHASE 1
+FILE 54-60
+
+FACTION BIBLE
+
+Karena seluruh dunia bergerak melalui organisasi.
+
+Kemungkinan:
+
+Part 1
+Part 2
+Part 3
+Part 4
+Part 5
+Reputation
+Political Dynamics
+PHASE 2
+FILE 61-67
+
+COMPANION BIBLE
+
+Karena Companion adalah pilar utama fantasy yang Anda inginkan.
+
+Kita masih belum membahas:
+
+persahabatan
+pengkhianatan
+kematian companion
+companion tua
+companion pensiun
+companion menjadi raja
+companion membangun keluarga
+PHASE 3
+FILE 68-75
+
+NIRMANA BIBLE
+
+Menurut saya ini akan menjadi Bible terbesar kedua setelah Main Story.
+
+Karena kita harus menjawab:
+
+siapa Nirmana
+kenapa menyerah
+bagaimana menjadi sangat kuat
+kenapa ingin menghapus dunia
+hubungan dengan naga
+hubungan dengan dewa
+hubungan dengan pemain
+PHASE 4
+FILE 76-82
+
+WORLD MAP BIBLE
+
+Karena saat ini kita belum tahu:
+
+jumlah benua
+jumlah kerajaan besar
+wilayah monster
+wilayah naga
+wilayah dewa
+wilayah terlarang
+
+Padahal semua quest bergantung padanya.
+
+PHASE 5
+FILE 83-95+
+
+MAIN STORY BIBLE
+
+Ini kemungkinan Bible terbesar seluruh proyek.
+
+Karena akan mencakup:
+
+Act 1
+Act 2
+Act 3
+Midgame
+Endgame
+Nirmana Arc
+Multiple Endings
+New Age
+Setelah Tier S Selesai
+
+Barulah kita masuk:
+
+TIER A COMPLETION
+
+Yang isinya:
+
+Monster Nations
+Crime & Underground
+Dragon Society
+Great Monster Expansion
+Dungeon Bible
+Artifact Bible
+Academy Bible
+Setelah Tier A
+
+Baru:
+
+TIER B
+
+Yang membuat dunia terasa seperti dunia nyata.
+
+Contoh:
+
+Agriculture
+Marriage
+Family
+Banking
+Housing
+Education
+Medical
+Justice
+Transportation
+Setelah Tier B
+
+Baru:
+
+TIER C
+
+Generator cerita tanpa batas.
+
+Contoh:
+
+Festival
+Rumor
+Cult Activity
+Monster Migration
+Political Crisis
+Assassination
+Merchant Wars
+Setelah Tier C
+
+Baru:
+
+TIER D
+
+Imersi.
+
+Yang sebenarnya sangat penting untuk game yang Anda bayangkan.
+
+Karena Anda berkali-kali mengatakan:
+
+dunia harus terasa hidup
+
+Maka:
+
+penjudi
+peramal
+penipu
+pengembara misterius
+orang kuat tersembunyi
+penantang maut
+kolektor aneh
+penyair gila
+pembaca bintang
+
+semua nanti akan mendapat Bible sendiri.
+
+Kalau mengikuti roadmap ini.
+
+Saya memperkirakan:
+
+Tier S
+≈ 40-60 file
+
+Tier A
+≈ 30-40 file
+
+Tier B
+≈ 30-50 file
+
+Tier C
+≈ 20-30 file
+
+Tier D
+≈ 20-30 file
+
+Total akhirnya kemungkinan:
+
+150-250 file Bible
+
+Dan itu justru normal untuk proyek RPG besar.
+
+Jadi jawabannya:
+
+Ya.
+
+Saya bisa generate seluruh Tier S sampai selesai.
+
+Dan saya setuju dengan metode:
+
+Saya tulis lengkap.
+
+Kalau kepanjangan.
+
+Saya berhenti di akhir file.
+
+Anda bilang:
+
+"lanjutkan"
+
+Lalu saya lanjut ke file berikutnya.
+
+Karena itu akan menghasilkan dokumentasi yang jauh lebih kuat daripada mencoba memadatkan semuanya menjadi beberapa dokumen besar.

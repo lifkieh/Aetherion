@@ -1,0 +1,6884 @@
+TIER S #02
+WORLD BIBLE
+AETHERION
+Core World Philosophy
+
+Status:
+FOUNDATION DOCUMENT
+
+PURPOSE
+
+Dokumen ini mendefinisikan:
+
+Jiwa dunia
+Nilai inti dunia
+Pengalaman yang ingin dirasakan pemain
+Mengapa Aetherion ada
+THE CENTRAL QUESTION
+
+Setiap dunia besar.
+
+Biasanya memiliki satu pertanyaan.
+
+Contoh:
+
+Lord of the Rings
+
+Can good overcome evil?
+
+Attack on Titan
+
+What is freedom?
+
+Dark Souls
+
+Should the flame continue?
+
+Aetherion
+
+What makes existence worth continuing?
+
+Seluruh dunia.
+
+Seluruh sistem.
+
+Seluruh cerita.
+
+Pada akhirnya kembali ke pertanyaan ini.
+
+THE FOUR PILLARS
+
+Aetherion berdiri di atas empat pilar utama.
+
+1. WONDER
+Dunia harus membuat pemain penasaran.
+
+Pemain tidak boleh merasa:
+
+Aku sudah melihat semuanya.
+
+Pemain harus merasa:
+
+Apa yang ada di balik gunung itu?
+
+Apa yang ada di reruntuhan itu?
+
+Apa yang terjadi jika aku memilih jalan lain?
+
+Wonder berasal dari:
+
+Misteri
+Rahasia
+Penemuan
+Konsekuensi tersembunyi
+Skenario unik
+RULE
+
+Tidak boleh ada pemain.
+
+Yang bisa melihat seluruh isi dunia.
+
+Dalam satu playthrough.
+
+2. BELONGING
+Dunia harus memberi rumah.
+
+Banyak game memberi petualangan.
+
+Sedikit game memberi tempat pulang.
+
+Aetherion harus memiliki:
+
+rumah
+companion
+monster peliharaan
+kerajaan
+rakyat
+
+Sehingga pemain dapat berkata:
+
+Ini tempatku.
+RULE
+
+Pemain tidak hanya menjelajah dunia.
+
+Pemain menjadi bagian dunia.
+
+3. STEWARDSHIP
+Dunia harus bisa dirawat.
+
+Pemain tidak hanya mengonsumsi konten.
+
+Pemain harus bisa:
+
+membangun
+memimpin
+melindungi
+memperbaiki
+IMPORTANT
+
+Dunia berubah karena pemain.
+
+Tetapi tidak bergantung pada pemain.
+
+Karena NPC mampu berkembang sendiri.
+
+Ini membuat dunia terasa hidup.
+
+4. LEGACY
+Dunia harus mengingat.
+
+Ini adalah pilar terpenting.
+
+Sebagian besar game berakhir ketika pemain selesai bermain.
+
+Aetherion tidak.
+
+Dunia harus menyimpan:
+
+sejarah
+keputusan
+perang
+kerajaan
+tokoh
+GOAL
+
+Pemain meninggalkan jejak.
+
+Bukan hanya progress.
+
+THE PLAYER FANTASY
+
+Pertanyaan penting:
+
+Apa fantasi utama pemain?
+
+Jawaban Aetherion:
+
+Be Yourself in Another World.
+
+Bukan:
+
+Become The Chosen One.
+
+Bukan:
+
+Become The Strongest Hero.
+
+Tetapi:
+
+Jika aku hidup di dunia lain.
+
+Apa yang akan aku lakukan?
+
+Karena itu pemain bisa:
+
+Raja
+Penjinak Monster
+Petualang
+Pemburu
+Peternak
+Peneliti
+Panglima
+Penjelajah
+
+Atau kombinasi semuanya.
+
+WORLD DESIGN LAW
+
+Aetherion bukan Theme Park.
+
+Aetherion adalah Ecosystem.
+
+Theme Park:
+
+Konten menunggu pemain.
+
+Ecosystem:
+
+Dunia tetap berjalan.
+
+NPC menikah.
+
+NPC pindah.
+
+NPC mati.
+
+NPC membangun.
+
+NPC memperluas wilayah.
+
+NPC membuat sejarah.
+
+Bahkan tanpa pemain.
+
+THE MEANING OF POWER
+
+Di banyak RPG:
+
+Power = Damage
+
+Di Aetherion:
+
+Power = Influence
+
+Karena seseorang bisa:
+
+lemah dalam pertarungan
+
+tetapi
+
+mengendalikan kerajaan
+
+Seseorang bisa:
+
+tidak memiliki pasukan
+
+tetapi
+
+memiliki pengetahuan yang mengubah dunia
+THE FINAL WORLD PHILOSOPHY
+
+Aetherion tidak mencoba menjawab:
+
+Apakah hidup selalu indah?
+
+Karena tidak.
+
+Aetherion juga tidak berkata:
+
+Tidak ada makna.
+
+Karena itu juga tidak benar.
+
+Aetherion berkata:
+
+Makna diciptakan.
+Bukan ditemukan.
+
+Dan seluruh dunia.
+
+Mulai dari monster.
+
+Kerajaan.
+
+Companion.
+
+Hingga Nirmana.
+
+Adalah eksperimen besar.
+
+Untuk menguji pernyataan tersebut.
+
+WORLD BIBLE STATUS
+World Bible
+≈ 15% Complete
+
+Yang masih perlu dibuat:
+
+Geography Philosophy
+Exploration Philosophy
+Civilization Philosophy
+Conflict Philosophy
+Life & Death Philosophy
+Progression Philosophy
+Legacy Philosophy (detail)
+Player Freedom Philosophy
+
+Rule
+
+NPC dapat mati permanen.
+
+Companion dapat mati permanen.
+
+Tokoh penting dapat mati permanen.
+
+Pemimpin kerajaan dapat mati permanen.
+
+Jenderal dapat mati permanen.
+
+Mentor dapat mati permanen.
+
+Exception
+
+Dewa.
+
+Entitas tertentu yang memang secara lore tidak bisa mati.
+
+Makhluk kosmik tertentu.
+
+Replacement Rule
+
+Dunia tidak berhenti ketika seseorang mati.
+
+Contoh:
+
+Kapten Penjaga Kota meninggal.
+
+Maka:
+
+wakil kapten naik jabatan
+NPC baru direkrut
+struktur pemerintahan berubah
+
+Atau:
+
+Master Blacksmith meninggal.
+
+Maka:
+
+muridnya mengambil alih
+kualitas produksi berubah
+hubungan politik berubah
+
+Jadi yang hilang adalah:
+
+orangnya
+
+bukan
+
+fungsinya
+Companion
+
+Ini juga sudah pernah kita bahas.
+
+Kalau companion mati:
+
+Mati permanen.
+
+Tidak respawn.
+
+Tidak revive.
+
+Tidak muncul lagi.
+
+Karena jika companion bisa kembali:
+
+Belonging kehilangan makna.
+Legacy kehilangan makna.
+Kingdom Philosophy
+
+Ini bahkan sangat cocok dengan:
+
+NPC can expand without player approval.
+
+Karena dunia tidak boleh bergantung pada satu individu.
+
+Jika seorang raja mati:
+
+Kerajaan tetap hidup.
+
+Jika seorang jenderal mati:
+
+Pasukan tetap hidup.
+
+Jika companion mati:
+
+Petualangan tetap berjalan.
+
+Dunia terus bergerak.
+
+Implikasi Besar
+
+Ini berarti salah satu tema utama World Bible nanti adalah:
+
+Continuity Beyond Individuals
+
+atau:
+
+Dunia lebih besar daripada siapa pun.
+
+Termasuk:
+
+pemain
+Nirmana
+naga
+dewa
+kerajaan
+
+Dan menariknya, ini sangat sinkron dengan tema yang sudah kita bangun sejak awal:
+
+The World Remembers
+
+karena dunia mengingat mereka yang telah pergi,
+
+tetapi dunia tidak berhenti ketika mereka pergi.
+
+Karena jawaban ini sudah terkunci sebelumnya, saya tidak akan menanyakan ulang di World Bible.
+
+Sebagai gantinya, pada bagian berikutnya saya akan langsung melanjutkan:
+
+WORLD BIBLE PART 02
+CIVILIZATION PHILOSOPHY
+
+yang membahas:
+
+mengapa kota lahir
+bagaimana kerajaan berkembang
+autonomous settlement growth
+stability
+prosperity
+loyalty
+ecology
+kingdom identity
+
+dan akan saya gabungkan dalam satu bab besar, bukan dipecah menjadi banyak file kecil
+
+# WORLD BIBLE
+
+## PART 02
+
+### CIVILIZATION PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Civilization
+* Settlements
+* Kingdoms
+* Stability
+* Prosperity
+* Ecology
+* Loyalty
+* Autonomous Growth
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Banyak game memiliki kota.
+
+---
+
+Tetapi kota hanya berfungsi sebagai:
+
+* tempat quest
+* tempat berdagang
+* tempat crafting
+
+---
+
+Aetherion tidak boleh seperti itu.
+
+---
+
+# IMPORTANT
+
+---
+
+Kota bukan fitur.
+
+---
+
+Kota adalah organisme hidup.
+
+---
+
+# THE FIRST LAW
+
+## CIVILIZATION IS ALIVE
+
+---
+
+Sebuah kota.
+
+---
+
+Bukan kumpulan bangunan.
+
+---
+
+Sebuah kota adalah:
+
+* manusia
+* monster
+* budaya
+* ekonomi
+* sejarah
+* konflik
+
+---
+
+# IMPORTANT
+
+---
+
+Ketika pemain datang.
+
+---
+
+Kota sudah hidup.
+
+---
+
+Dan ketika pemain pergi.
+
+---
+
+Kota tetap hidup.
+
+---
+
+# SETTLEMENT EVOLUTION
+
+## EVERY CIVILIZATION GROWS
+
+---
+
+Seluruh permukiman di Aetherion.
+
+---
+
+Mengikuti siklus alami.
+
+---
+
+### Stage 1
+
+Camp
+
+---
+
+Puluhan penduduk.
+
+---
+
+Bertahan hidup.
+
+---
+
+### Stage 2
+
+Homestead
+
+---
+
+Mulai memiliki identitas.
+
+---
+
+Produksi makanan muncul.
+
+---
+
+### Stage 3
+
+Village
+
+---
+
+Ekonomi sederhana terbentuk.
+
+---
+
+Profesi mulai muncul.
+
+---
+
+### Stage 4
+
+Town
+
+---
+
+Perdagangan berkembang.
+
+---
+
+Spesialisasi muncul.
+
+---
+
+### Stage 5
+
+City
+
+---
+
+Menjadi pusat regional.
+
+---
+
+### Stage 6
+
+Kingdom Capital
+
+---
+
+Mempengaruhi wilayah sekitar.
+
+---
+
+### Stage 7
+
+Great Civilization
+
+---
+
+Mempengaruhi dunia.
+
+---
+
+# IMPORTANT
+
+---
+
+Pertumbuhan ini tidak selalu membutuhkan pemain.
+
+---
+
+# THE SECOND LAW
+
+## PEOPLE WANT THINGS
+
+---
+
+Mayoritas game:
+
+---
+
+NPC menunggu.
+
+---
+
+Aetherion:
+
+---
+
+NPC menginginkan sesuatu.
+
+---
+
+Contoh:
+
+---
+
+Petani ingin gudang.
+
+---
+
+Pedagang ingin pasar.
+
+---
+
+Penjaga ingin benteng.
+
+---
+
+Peneliti ingin perpustakaan.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia menghasilkan kebutuhan.
+
+---
+
+Kebutuhan menghasilkan pembangunan.
+
+---
+
+# AUTONOMOUS GROWTH
+
+---
+
+Ini adalah sistem inti Aetherion.
+
+---
+
+### Example
+
+Desa Timur:
+
+* populasi naik
+* makanan cukup
+* keamanan stabil
+
+---
+
+Maka NPC dapat memutuskan:
+
+```text id="civ001"
+Membangun distrik baru.
+```
+
+---
+
+Tanpa perintah pemain.
+
+---
+
+### Example
+
+Lahan pertanian penuh.
+
+---
+
+Penduduk mendirikan pemukiman baru.
+
+---
+
+Tanpa persetujuan pemain.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain memimpin.
+
+---
+
+Bukan mengendalikan setiap batu bata.
+
+---
+
+# THE THIRD LAW
+
+## CONTROL HAS LIMITS
+
+---
+
+Raja bukan dewa.
+
+---
+
+Bahkan pemain.
+
+---
+
+Tidak bisa mengatur segalanya.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain menaikkan pajak.
+
+---
+
+Penduduk tidak suka.
+
+---
+
+Loyalitas turun.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain terlalu fokus perang.
+
+---
+
+Ekonomi melemah.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain mengabaikan monster.
+
+---
+
+Keamanan turun.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia bereaksi.
+
+---
+
+# THE FIVE KINGDOM ATTRIBUTES
+
+---
+
+Seluruh wilayah memiliki:
+
+---
+
+### Prosperity
+
+Kemakmuran.
+
+---
+
+Mengukur:
+
+* ekonomi
+* perdagangan
+* produksi
+
+---
+
+### Stability
+
+Stabilitas.
+
+---
+
+Mengukur:
+
+* ketertiban
+* konflik internal
+* pemerintahan
+
+---
+
+### Loyalty
+
+Kesetiaan.
+
+---
+
+Mengukur:
+
+* dukungan rakyat
+* hubungan dengan pemimpin
+
+---
+
+### Security
+
+Keamanan.
+
+---
+
+Mengukur:
+
+* ancaman
+* kriminalitas
+* monster
+
+---
+
+### Ecology
+
+Keseimbangan alam.
+
+---
+
+Mengukur:
+
+* kesehatan lingkungan
+* keberlanjutan
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada atribut yang boleh diabaikan.
+
+---
+
+# EXAMPLE
+
+Prosperity tinggi.
+
+Security tinggi.
+
+Stability rendah.
+
+---
+
+Hasil:
+
+* korupsi
+* pemberontakan
+* konflik politik
+
+---
+
+# EXAMPLE
+
+Prosperity sedang.
+
+Stability tinggi.
+
+Ecology tinggi.
+
+---
+
+Hasil:
+
+* pertumbuhan lambat
+* tetapi berkelanjutan
+
+---
+
+# THE FOURTH LAW
+
+## ECOLOGY IS NOT DECORATION
+
+---
+
+Sebagian besar game.
+
+---
+
+Menggunakan alam sebagai latar belakang.
+
+---
+
+Aetherion tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Alam adalah sistem.
+
+---
+
+### Example
+
+Terlalu banyak berburu rusa.
+
+↓
+
+Populasi rusa turun.
+
+↓
+
+Predator kehilangan mangsa.
+
+↓
+
+Predator menyerang desa.
+
+---
+
+### Example
+
+Hutan ditebang berlebihan.
+
+↓
+
+Ekologi terganggu.
+
+↓
+
+Monster tertentu bermigrasi.
+
+↓
+
+Bencana lokal muncul.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia memiliki konsekuensi.
+
+---
+
+# KINGDOM PERSONALITY
+
+## EVERY KINGDOM IS DIFFERENT
+
+---
+
+Kerajaan tidak hanya berbeda warna.
+
+---
+
+Mereka memiliki karakter.
+
+---
+
+# Example
+
+Pemain:
+
+* menjaga alam
+* membantu rakyat
+* menghindari perang
+
+---
+
+Kerajaan berkembang menjadi:
+
+```text id="civ002"
+Benevolent Realm
+```
+
+---
+
+# Example
+
+Pemain:
+
+* ekspansi agresif
+* militer kuat
+* perang terus-menerus
+
+---
+
+Kerajaan berkembang menjadi:
+
+```text id="civ003"
+Iron Dominion
+```
+
+---
+
+# Example
+
+Pemain:
+
+* fokus penelitian
+* reruntuhan
+* astronomi
+
+---
+
+Kerajaan berkembang menjadi:
+
+```text id="civ004"
+Celestial Kingdom
+```
+
+---
+
+# IMPORTANT
+
+---
+
+Dua pemain.
+
+---
+
+Tidak boleh menghasilkan kerajaan identik.
+
+---
+
+# THE FIFTH LAW
+
+## CIVILIZATION CREATES HISTORY
+
+---
+
+Sejarah tidak hanya dibuat pemain.
+
+---
+
+NPC juga membuat sejarah.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang jenderal NPC.
+
+---
+
+Memenangkan perang besar.
+
+---
+
+Namanya masuk catatan sejarah.
+
+---
+
+### Example
+
+Seorang peneliti NPC.
+
+---
+
+Menemukan teknologi baru.
+
+---
+
+Mengubah ekonomi dunia.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain bukan satu-satunya tokoh penting.
+
+---
+
+# THE CIVILIZATION GOAL
+
+---
+
+Tujuan akhir kerajaan bukan:
+
+---
+
+Menjadi terbesar.
+
+---
+
+Bukan menjadi terkaya.
+
+---
+
+Bukan menjadi terkuat.
+
+---
+
+# GOAL
+
+---
+
+Menciptakan peradaban.
+
+---
+
+Yang mampu bertahan.
+
+---
+
+Bahkan tanpa pendirinya.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Kerajaan yang hebat.
+
+---
+
+Bukan kerajaan yang bergantung pada raja.
+
+---
+
+Melainkan kerajaan.
+
+---
+
+Yang tetap hidup.
+
+---
+
+Setelah rajanya tiada.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog02"
+World Bible
+≈ 28% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+---
+
+Belum selesai:
+
+* Exploration Philosophy
+* Life & Death Philosophy
+* Conflict Philosophy
+* Progression Philosophy
+* Legacy Philosophy
+* Freedom Philosophy
+* Time Philosophy
+
+---
+
+Catatan Direktur:
+
+Dari semua yang telah dikunci sejauh ini, saya mulai melihat bahwa Aetherion bukan fantasy RPG biasa.
+
+Secara desain, ia lebih dekat ke simulasi peradaban hidup daripada RPG tradisional.
+
+Karena kemenangan terbesar pemain bukan menjadi kuat.
+
+Melainkan menciptakan sesuatu yang mampu hidup tanpa dirinya.
+
+# WORLD BIBLE
+
+## PART 03
+
+### EXPLORATION PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Exploration
+* Discovery
+* Mystery
+* Secrets
+* World Knowledge
+* Hidden Content
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Banyak game open world.
+
+---
+
+Memberikan peta.
+
+---
+
+Lalu menunjukkan semuanya.
+
+---
+
+# PROBLEM
+
+---
+
+Pemain tidak menemukan dunia.
+
+---
+
+Pemain mengikuti marker.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion harus mengembalikan rasa penasaran.
+
+---
+
+# THE FIRST LAW
+
+## THE WORLD MUST HAVE SECRETS
+
+---
+
+Ini adalah hukum paling penting.
+
+---
+
+# RULE
+
+Tidak boleh ada pemain.
+
+---
+
+Yang mengetahui seluruh isi dunia.
+
+---
+
+Dalam satu playthrough.
+
+---
+
+# IMPORTANT
+
+---
+
+Selalu harus ada:
+
+* misteri
+* legenda
+* rumor
+* tempat tersembunyi
+* sejarah yang belum terpecahkan
+
+---
+
+# THE UNKNOWN
+
+---
+
+Dunia harus terasa lebih besar.
+
+---
+
+Daripada pengetahuan pemain.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain level tinggi.
+
+---
+
+Sudah bermain 500 jam.
+
+---
+
+Namun masih menemukan:
+
+---
+
+* reruntuhan baru
+* spesies baru
+* cerita baru
+* lokasi baru
+
+---
+
+# IMPORTANT
+
+---
+
+Wonder tidak boleh habis.
+
+---
+
+# THE SECOND LAW
+
+## INFORMATION IS A REWARD
+
+---
+
+Di banyak game:
+
+---
+
+Reward:
+
+* gold
+* exp
+* item
+
+---
+
+Di Aetherion:
+
+---
+
+Pengetahuan juga reward.
+
+---
+
+# EXAMPLE
+
+---
+
+Menemukan jurnal kuno.
+
+↓
+
+Membuka lokasi rahasia.
+
+---
+
+Menemukan legenda.
+
+↓
+
+Membuka quest tersembunyi.
+
+---
+
+Mempelajari monster.
+
+↓
+
+Membuka metode penjinakan baru.
+
+---
+
+# IMPORTANT
+
+---
+
+Mengetahui sesuatu.
+
+---
+
+Harus memiliki nilai.
+
+---
+
+# DISCOVERY TIERS
+
+---
+
+Seluruh penemuan.
+
+---
+
+Memiliki tingkatan.
+
+---
+
+### Common Discovery
+
+Desa baru.
+
+---
+
+Monster umum.
+
+---
+
+Profesi baru.
+
+---
+
+### Rare Discovery
+
+Dungeon tersembunyi.
+
+---
+
+Quest unik.
+
+---
+
+Spesies langka.
+
+---
+
+### Legendary Discovery
+
+Peradaban hilang.
+
+---
+
+Artefak dunia.
+
+---
+
+Makhluk mitologi.
+
+---
+
+### Mythic Discovery
+
+Informasi yang hanya ditemukan.
+
+---
+
+Oleh sebagian kecil pemain.
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian rahasia.
+
+---
+
+Mungkin tidak pernah ditemukan.
+
+---
+
+Oleh mayoritas pemain.
+
+---
+
+# THE THIRD LAW
+
+## CHOICE CREATES KNOWLEDGE
+
+---
+
+Pemain tidak boleh melihat semua skenario.
+
+---
+
+# WHY?
+
+---
+
+Karena pilihan.
+
+---
+
+Harus memiliki konsekuensi.
+
+---
+
+# EXAMPLE
+
+---
+
+Membantu Kerajaan Utara.
+
+↓
+
+Membuka quest A.
+
+---
+
+Menolak Kerajaan Utara.
+
+↓
+
+Quest A hilang.
+
+↓
+
+Quest B muncul.
+
+---
+
+# IMPORTANT
+
+---
+
+Satu pilihan.
+
+---
+
+Menciptakan pengetahuan berbeda.
+
+---
+
+# THE SECRET PATH PRINCIPLE
+
+---
+
+Dunia harus memiliki jalur tersembunyi.
+
+---
+
+Bukan hanya secara fisik.
+
+---
+
+Tetapi secara naratif.
+
+---
+
+# EXAMPLES
+
+---
+
+Monster tertentu.
+
+---
+
+Hanya muncul.
+
+---
+
+Jika pemain menyelamatkan seseorang.
+
+---
+
+100 jam sebelumnya.
+
+---
+
+Reruntuhan tertentu.
+
+---
+
+Hanya terbuka.
+
+---
+
+Jika pemain memahami bahasa kuno.
+
+---
+
+# IMPORTANT
+
+---
+
+Pengetahuan membuka dunia.
+
+---
+
+# THE FOURTH LAW
+
+## LEGENDS MUST BE UNCERTAIN
+
+---
+
+Tidak semua informasi.
+
+---
+
+Harus benar.
+
+---
+
+# EXAMPLE
+
+---
+
+Penduduk berkata:
+
+```text id="exp001"
+Di timur ada naga emas.
+```
+
+---
+
+Mungkin benar.
+
+---
+
+Mungkin salah.
+
+---
+
+Mungkin hanya sebagian benar.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia tidak boleh menjadi database.
+
+---
+
+Dunia harus terasa hidup.
+
+---
+
+# MAP PHILOSOPHY
+
+---
+
+Peta bukan kebenaran mutlak.
+
+---
+
+Peta adalah pemahaman.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Beberapa area:
+
+* tidak dipetakan
+* salah dipetakan
+* berubah seiring waktu
+
+---
+
+# IMPORTANT
+
+---
+
+Masih ada tempat.
+
+---
+
+Yang belum diketahui.
+
+---
+
+# THE FIFTH LAW
+
+## EXPLORATION CHANGES THE WORLD
+
+---
+
+Penjelajahan bukan aktivitas pasif.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain menemukan lembah baru.
+
+↓
+
+Rute dagang terbuka.
+
+↓
+
+Pemukiman berkembang.
+
+↓
+
+Wilayah berubah.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain menemukan sarang monster.
+
+↓
+
+Kerajaan mengirim ekspedisi.
+
+↓
+
+Sejarah baru tercipta.
+
+---
+
+# IMPORTANT
+
+---
+
+Menemukan sesuatu.
+
+---
+
+Harus memiliki dampak.
+
+---
+
+# THE EXPLORER FANTASY
+
+---
+
+Fantasi penjelajah Aetherion bukan:
+
+---
+
+```text id="exp002"
+Aku membersihkan ikon di peta.
+```
+
+---
+
+Tetapi:
+
+---
+
+```text id="exp003"
+Aku menemukan sesuatu
+yang mungkin belum pernah dilihat siapa pun.
+```
+
+---
+
+# THE SIXTH LAW
+
+## EVERY HORIZON MUST INVITE A QUESTION
+
+---
+
+Ketika pemain melihat:
+
+* gunung
+* pulau
+* reruntuhan
+* hutan
+* bintang aneh
+
+---
+
+Reaksi idealnya adalah:
+
+---
+
+```text id="exp004"
+Apa itu?
+```
+
+---
+
+Bukan:
+
+---
+
+```text id="exp005"
+Aku tahu itu.
+```
+
+---
+
+# THE FINAL LAW
+
+---
+
+Dunia yang baik.
+
+---
+
+Memberikan jawaban.
+
+---
+
+Dunia yang hebat.
+
+---
+
+Memberikan pertanyaan.
+
+---
+
+Dan Aetherion.
+
+---
+
+Harus selalu memiliki lebih banyak pertanyaan.
+
+---
+
+Daripada jawaban.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog03"
+World Bible
+≈ 40% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+---
+
+Belum selesai:
+
+* Life & Death Philosophy
+* Conflict Philosophy
+* Progression Philosophy
+* Legacy Philosophy
+* Freedom Philosophy
+* Time Philosophy
+
+---
+
+Catatan Direktur:
+
+Saya mulai melihat bahwa seluruh desain Aetherion sebenarnya berputar pada satu emosi utama:
+
+```text id="exp006"
+Rasa penasaran.
+```
+
+Karena bahkan Nirmana, antagonis terbesar dunia, pada dasarnya adalah seseorang yang masih mencari jawaban.
+
+# WORLD BIBLE
+
+## PART 04
+
+### LIFE & DEATH PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Life
+* Death
+* Loss
+* Permanence
+* Consequences
+* Continuity
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Banyak game menggunakan kematian.
+
+---
+
+Sebagai hukuman sementara.
+
+---
+
+Pemain mati.
+
+---
+
+Respawn.
+
+---
+
+NPC mati.
+
+---
+
+Respawn.
+
+---
+
+Companion mati.
+
+---
+
+Respawn.
+
+---
+
+# RESULT
+
+---
+
+Kematian kehilangan makna.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion tidak boleh seperti itu.
+
+---
+
+# THE FIRST LAW
+
+## LIFE MUST HAVE VALUE
+
+---
+
+Nilai kehidupan.
+
+---
+
+Tidak berasal dari kekuatan.
+
+---
+
+Tidak berasal dari level.
+
+---
+
+Tidak berasal dari status.
+
+---
+
+# IMPORTANT
+
+---
+
+Nilai kehidupan berasal.
+
+---
+
+Dari kenyataan bahwa ia bisa hilang.
+
+---
+
+# PERMANENT DEATH
+
+---
+
+Sudah dikunci.
+
+---
+
+NPC dapat mati permanen.
+
+---
+
+Companion dapat mati permanen.
+
+---
+
+Tokoh penting dapat mati permanen.
+
+---
+
+Pemimpin dapat mati permanen.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia mengingat mereka.
+
+---
+
+Tetapi tidak mengembalikan mereka.
+
+---
+
+# THE SECOND LAW
+
+## THE WORLD CONTINUES
+
+---
+
+Kematian bukan akhir dunia.
+
+---
+
+Kematian adalah akhir seseorang.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang jenderal gugur.
+
+---
+
+Pasukan tetap ada.
+
+---
+
+Komandan baru muncul.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang walikota meninggal.
+
+---
+
+Kota tetap berjalan.
+
+---
+
+Pemimpin baru dipilih.
+
+---
+
+# IMPORTANT
+
+---
+
+Yang hilang adalah individu.
+
+---
+
+Bukan fungsi dunia.
+
+---
+
+# CONTINUITY PRINCIPLE
+
+---
+
+Dunia lebih besar.
+
+---
+
+Daripada siapa pun.
+
+---
+
+# IMPORTANT
+
+---
+
+Termasuk:
+
+* pemain
+* raja
+* naga
+* Nirmana
+
+---
+
+# THE THIRD LAW
+
+## LOSS MUST BE REAL
+
+---
+
+Kehilangan tidak boleh palsu.
+
+---
+
+# EXAMPLE
+
+---
+
+Companion yang mati.
+
+---
+
+Tidak bisa dipanggil kembali.
+
+---
+
+Tidak bisa di-reset.
+
+---
+
+Tidak bisa muncul kembali.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena jika semua kembali.
+
+---
+
+Tidak ada yang benar-benar hilang.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Pemain harus belajar.
+
+---
+
+Menghargai hubungan.
+
+---
+
+Bukan mengoleksi karakter.
+
+---
+
+# MEMORY SYSTEM
+
+---
+
+Mati bukan berarti hilang.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia mengingat.
+
+---
+
+### Example
+
+Seorang pahlawan gugur.
+
+---
+
+Namanya masuk sejarah.
+
+---
+
+Patung dibangun.
+
+---
+
+Lagu dibuat.
+
+---
+
+Rakyat mengenangnya.
+
+---
+
+# IMPORTANT
+
+---
+
+Warisan lebih penting.
+
+---
+
+Daripada keberadaan fisik.
+
+---
+
+# THE FOURTH LAW
+
+## IMMORTALITY IS NOT PERFECTION
+
+---
+
+Keabadian ada.
+
+---
+
+Tetapi bukan hadiah otomatis.
+
+---
+
+# EXAMPLES
+
+---
+
+Dewa.
+
+---
+
+Makhluk kosmik tertentu.
+
+---
+
+Entitas kuno tertentu.
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan mereka.
+
+---
+
+Tidak bebas dari kehilangan.
+
+---
+
+# OBSERVATION
+
+---
+
+Nirmana hidup sangat lama.
+
+---
+
+Dan justru itu.
+
+---
+
+Menjadi sumber tragedinya.
+
+---
+
+# THE PARADOX
+
+---
+
+Sebagian manusia takut mati.
+
+---
+
+Sebagian makhluk abadi.
+
+---
+
+Takut hidup terlalu lama.
+
+---
+
+# IMPORTANT
+
+---
+
+Keabadian bukan solusi.
+
+---
+
+# THE FIFTH LAW
+
+## DEATH CREATES MEANING
+
+---
+
+Ini salah satu fondasi utama Aetherion.
+
+---
+
+# IMPORTANT
+
+---
+
+Sesuatu tidak berharga.
+
+---
+
+Karena berlangsung selamanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Sesuatu berharga.
+
+---
+
+Karena waktunya terbatas.
+
+---
+
+# EXAMPLE
+
+---
+
+Persahabatan.
+
+---
+
+Keluarga.
+
+---
+
+Kerajaan.
+
+---
+
+Perjalanan.
+
+---
+
+Semuanya berharga.
+
+---
+
+Karena suatu hari akan berakhir.
+
+---
+
+# THE PLAYER
+
+---
+
+Pemain tidak bertarung.
+
+---
+
+Melawan kematian.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain hidup.
+
+---
+
+Meskipun kematian ada.
+
+---
+
+# RELATION TO NIRMANA
+
+---
+
+Inilah titik konflik terbesar.
+
+---
+
+Nirmana melihat:
+
+```text id="life001"
+Semua akan berakhir.
+```
+
+---
+
+Dunia menjawab:
+
+```text id="life002"
+Tetapi tetap layak dijalani.
+```
+
+---
+
+# THE SIXTH LAW
+
+## LEGACY OUTLIVES LIFE
+
+---
+
+Ini adalah hukum terpenting.
+
+---
+
+Karena tema utama Aetherion.
+
+---
+
+Bukan kehidupan.
+
+---
+
+Dan bukan kematian.
+
+---
+
+# IMPORTANT
+
+---
+
+Tetapi warisan.
+
+---
+
+# EXAMPLE
+
+---
+
+Pemain pertama pensiun.
+
+---
+
+Kerajaan tetap hidup.
+
+---
+
+Companion dikenang.
+
+---
+
+Sejarah tetap berjalan.
+
+---
+
+# IMPORTANT
+
+---
+
+Kehidupan berakhir.
+
+---
+
+Warisan berlanjut.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Kematian bukan lawan kehidupan.
+
+---
+
+Kematian adalah alasan.
+
+---
+
+Mengapa kehidupan memiliki nilai.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog04"
+World Bible
+≈ 52% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+---
+
+Belum selesai:
+
+* Conflict Philosophy
+* Progression Philosophy
+* Legacy Philosophy
+* Freedom Philosophy
+* Time Philosophy
+
+---
+
+Catatan Direktur:
+
+Sekarang mulai terlihat jelas bahwa Aetherion memiliki tiga tema utama yang saling terhubung:
+
+```text id="life003"
+Wonder
+↓
+Belonging
+↓
+Legacy
+```
+
+Pemain penasaran pada dunia.
+
+↓
+
+Pemain menjadi bagian dunia.
+
+↓
+
+Pemain meninggalkan jejak di dunia.
+
+Dan seluruh konflik Nirmana sebenarnya menyerang ketiga hal tersebut sekaligus.
+
+# WORLD BIBLE
+
+## PART 05
+
+### CONFLICT PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Conflict
+* War
+* Monsters
+* Competition
+* Power
+* Consequences
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Sebagian dunia fantasi.
+
+---
+
+Menggunakan konflik.
+
+---
+
+Sebagai alasan untuk bertarung.
+
+---
+
+Aetherion harus melakukan kebalikannya.
+
+---
+
+# IMPORTANT
+
+---
+
+Konflik tidak ada.
+
+---
+
+Agar pemain memiliki musuh.
+
+---
+
+Konflik ada.
+
+---
+
+Karena dunia hidup.
+
+---
+
+# THE FIRST LAW
+
+## CONFLICT IS NATURAL
+
+---
+
+Selama ada kehidupan.
+
+---
+
+Akan ada perbedaan.
+
+---
+
+Selama ada perbedaan.
+
+---
+
+Akan ada konflik.
+
+---
+
+# IMPORTANT
+
+---
+
+Konflik bukan kegagalan dunia.
+
+---
+
+Konflik adalah konsekuensi kehidupan.
+
+---
+
+# EXAMPLES
+
+---
+
+Kerajaan ingin ekspansi.
+
+---
+
+Kerajaan lain menolak.
+
+---
+
+Konflik.
+
+---
+
+Penduduk ingin perubahan.
+
+---
+
+Pemerintah menolak.
+
+---
+
+Konflik.
+
+---
+
+Monster kehilangan habitat.
+
+---
+
+Mendekati pemukiman.
+
+---
+
+Konflik.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak semua konflik berasal dari kejahatan.
+
+---
+
+# THE SECOND LAW
+
+## THERE ARE FEW TRUE VILLAINS
+
+---
+
+Sebagian besar pihak.
+
+---
+
+Adalah protagonis bagi dirinya sendiri.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion tidak dibangun.
+
+---
+
+Di atas hitam dan putih.
+
+---
+
+# EXAMPLE
+
+---
+
+Kerajaan Utara menyerang.
+
+---
+
+Bukan karena jahat.
+
+---
+
+Tetapi karena musim dingin.
+
+---
+
+Menghancurkan sumber pangan mereka.
+
+---
+
+# EXAMPLE
+
+---
+
+Monster menyerang desa.
+
+---
+
+Bukan karena membenci manusia.
+
+---
+
+Tetapi karena wilayahnya dihancurkan.
+
+---
+
+# IMPORTANT
+
+---
+
+Memahami musuh.
+
+---
+
+Harus sama pentingnya.
+
+---
+
+Dengan mengalahkannya.
+
+---
+
+# THE THIRD LAW
+
+## WAR IS FAILURE
+
+---
+
+Ini harus dikunci.
+
+---
+
+Karena banyak game.
+
+---
+
+Menganggap perang.
+
+---
+
+Sebagai solusi utama.
+
+---
+
+# IMPORTANT
+
+---
+
+Dalam Aetherion.
+
+---
+
+Perang adalah kegagalan diplomasi.
+
+---
+
+Kegagalan kompromi.
+
+---
+
+Kegagalan pemahaman.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Perang mungkin diperlukan.
+
+---
+
+Tetapi tidak pernah ideal.
+
+---
+
+# WAR CONSEQUENCES
+
+---
+
+Perang menciptakan:
+
+---
+
+* korban
+* pengungsi
+* kehancuran
+* trauma
+* ketidakstabilan
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan pemenang.
+
+---
+
+Tetap membayar harga.
+
+---
+
+# THE FOURTH LAW
+
+## MONSTERS ARE NOT ENEMIES
+
+---
+
+Ini adalah fondasi Creature Bible.
+
+---
+
+# IMPORTANT
+
+---
+
+Monster adalah kehidupan.
+
+---
+
+Bukan konten.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Monster dapat:
+
+* bersahabat
+* netral
+* agresif
+* cerdas
+* memiliki budaya
+
+---
+
+# IMPORTANT
+
+---
+
+Sebagian monster.
+
+---
+
+Lebih bijaksana.
+
+---
+
+Daripada manusia.
+
+---
+
+# EXAMPLE
+
+---
+
+Seekor naga.
+
+---
+
+Bukan boss.
+
+---
+
+Ia adalah individu.
+
+---
+
+# EXAMPLE
+
+---
+
+Seekor serigala.
+
+---
+
+Bukan exp berjalan.
+
+---
+
+Ia bagian ekosistem.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena seluruh monster.
+
+---
+
+Dapat dijinakkan.
+
+---
+
+Maka dunia tidak boleh memperlakukan mereka.
+
+---
+
+Sebagai objek sekali pakai.
+
+---
+
+# THE FIFTH LAW
+
+## POWER CREATES RESPONSIBILITY
+
+---
+
+Semakin besar kekuatan.
+
+---
+
+Semakin besar dampaknya.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion tidak melihat kekuatan.
+
+---
+
+Sebagai hadiah.
+
+---
+
+Tetapi sebagai beban.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang raja.
+
+---
+
+Dapat memulai perang.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Ribuan orang mati.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang pemain kuat.
+
+---
+
+Dapat membantai spesies langka.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Ekologi berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada tindakan besar.
+
+---
+
+Tanpa konsekuensi besar.
+
+---
+
+# THE SIXTH LAW
+
+## PEACE IS ACTIVE
+
+---
+
+Kedamaian bukan kondisi default.
+
+---
+
+# IMPORTANT
+
+---
+
+Kedamaian harus dipelihara.
+
+---
+
+# REQUIREMENTS
+
+---
+
+* diplomasi
+* kepercayaan
+* stabilitas
+* kemakmuran
+* keamanan
+
+---
+
+# CONSEQUENCE
+
+---
+
+Kerajaan damai.
+
+---
+
+Belum tentu kerajaan kuat.
+
+---
+
+Tetapi kerajaan kuat.
+
+---
+
+Belum tentu kerajaan damai.
+
+---
+
+# THE PLAYER'S ROLE
+
+---
+
+Pemain tidak dipaksa.
+
+---
+
+Menjadi pahlawan.
+
+---
+
+Tidak dipaksa.
+
+---
+
+Menjadi penakluk.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain memilih sendiri.
+
+---
+
+Bagaimana menghadapi konflik.
+
+---
+
+# POSSIBILITIES
+
+---
+
+* diplomasi
+* perang
+* intimidasi
+* perdagangan
+* aliansi
+* manipulasi
+* mediasi
+
+---
+
+# IMPORTANT
+
+---
+
+Berbagai solusi.
+
+---
+
+Harus dapat menghasilkan dunia berbeda.
+
+---
+
+# RELATION TO NIRMANA
+
+---
+
+Nirmana melihat konflik.
+
+---
+
+Sebagai bukti kegagalan dunia.
+
+---
+
+# EXAMPLE
+
+---
+
+Perang.
+
+---
+
+Keserakahan.
+
+---
+
+Pengkhianatan.
+
+---
+
+Penderitaan.
+
+---
+
+# IMPORTANT
+
+---
+
+Baginya.
+
+---
+
+Semua itu menunjukkan.
+
+---
+
+Bahwa keberadaan cacat.
+
+---
+
+# WORLD RESPONSE
+
+---
+
+Dunia menjawab:
+
+---
+
+Konflik bukan bukti.
+
+---
+
+Bahwa kehidupan gagal.
+
+---
+
+Konflik adalah harga.
+
+---
+
+Dari kebebasan.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Dunia tanpa konflik.
+
+---
+
+Mungkin damai.
+
+---
+
+Tetapi belum tentu hidup.
+
+---
+
+Karena selama ada pilihan.
+
+---
+
+Akan selalu ada perbedaan.
+
+---
+
+Dan selama ada perbedaan.
+
+---
+
+Akan selalu ada konflik.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog05"
+World Bible
+≈ 64% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+✓ Conflict Philosophy
+
+---
+
+Belum selesai:
+
+* Progression Philosophy
+* Legacy Philosophy
+* Freedom Philosophy
+* Time Philosophy
+
+---
+
+Catatan Direktur:
+
+Menariknya, semakin banyak fondasi dunia yang kita kunci, semakin terlihat bahwa musuh terbesar Aetherion bukan monster.
+
+Bukan naga.
+
+Bukan dewa.
+
+Bahkan bukan Nirmana.
+
+Melainkan pertanyaan yang selalu muncul ketika makhluk hidup diberi kebebasan:
+
+```text id="conflict001"
+Apa yang akan mereka lakukan dengan kebebasan itu?
+```
+# WORLD BIBLE
+
+## PART 06
+
+### PROGRESSION PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Progression
+* Classes
+* Skills
+* Mastery
+* Growth
+* Power
+* Identity
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Mayoritas RPG.
+
+---
+
+Memiliki tujuan sederhana.
+
+---
+
+Naik level.
+
+---
+
+Menjadi lebih kuat.
+
+---
+
+Mengalahkan musuh lebih besar.
+
+---
+
+# PROBLEM
+
+---
+
+Ketika level maksimum tercapai.
+
+---
+
+Progression berhenti.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion tidak boleh seperti itu.
+
+---
+
+# THE FIRST LAW
+
+## LEVEL IS NOT THE GOAL
+
+---
+
+Level ada.
+
+---
+
+Tetapi level bukan tujuan akhir.
+
+---
+
+# WHY?
+
+---
+
+Karena tujuan pemain berbeda-beda.
+
+---
+
+# EXAMPLES
+
+---
+
+Seorang raja.
+
+---
+
+Tidak harus menjadi petarung terbaik.
+
+---
+
+Seorang peneliti.
+
+---
+
+Tidak harus membunuh boss terkuat.
+
+---
+
+Seorang peternak.
+
+---
+
+Tidak harus memiliki level tertinggi.
+
+---
+
+# IMPORTANT
+
+---
+
+Progression bukan hanya angka.
+
+---
+
+# THE SECOND LAW
+
+## IDENTITY IS PROGRESSION
+
+---
+
+Di Aetherion.
+
+---
+
+Karakter berkembang.
+
+---
+
+Melalui pilihan.
+
+---
+
+Bukan hanya statistik.
+
+---
+
+# EXAMPLES
+
+---
+
+Pemain dikenal sebagai:
+
+---
+
+Dragon Tamer.
+
+---
+
+Monster Scholar.
+
+---
+
+Founder King.
+
+---
+
+Beast Commander.
+
+---
+
+Relic Hunter.
+
+---
+
+# IMPORTANT
+
+---
+
+Identitas.
+
+---
+
+Adalah bentuk progression.
+
+---
+
+# CLASS PHILOSOPHY
+
+---
+
+Class menentukan awal.
+
+---
+
+Bukan akhir.
+
+---
+
+# LOCKED DESIGN
+
+---
+
+Seluruh skill.
+
+---
+
+Dapat dipelajari.
+
+---
+
+Oleh class apa pun.
+
+---
+
+# EXCEPTION
+
+---
+
+Ultimate Class Skill.
+
+---
+
+Class Exclusive Skill.
+
+---
+
+Tetap eksklusif.
+
+---
+
+# EXAMPLE
+
+---
+
+Tamer.
+
+↓
+
+Dapat belajar swordsmanship.
+
+↓
+
+Dapat belajar necromancy.
+
+↓
+
+Dapat belajar survival.
+
+↓
+
+Dapat belajar leadership.
+
+---
+
+Tetapi tidak dapat mengambil:
+
+---
+
+Ultimate Warrior.
+
+---
+
+Ultimate Necromancer.
+
+---
+
+# IMPORTANT
+
+---
+
+Class memberi arah.
+
+---
+
+Bukan penjara.
+
+---
+
+# THE THIRD LAW
+
+## BUILDS MUST BE DISCOVERED
+
+---
+
+Build tidak boleh dipaksakan.
+
+---
+
+# GOAL
+
+---
+
+Pemain bereksperimen.
+
+---
+
+Dan menemukan gaya bermainnya sendiri.
+
+---
+
+# EXAMPLES
+
+---
+
+Battle Tamer
+
+---
+
+Necro Tamer
+
+---
+
+Royal Commander
+
+---
+
+Beast Knight
+
+---
+
+Arcane Hunter
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia tidak mengatakan:
+
+---
+
+"Ini build yang benar."
+
+---
+
+# SKILL TREE PHILOSOPHY
+
+---
+
+Skill Tree bukan tangga.
+
+---
+
+Skill Tree adalah jaringan.
+
+---
+
+# IMPORTANT
+
+---
+
+Banyak jalur.
+
+---
+
+Banyak kombinasi.
+
+---
+
+Banyak kemungkinan.
+
+---
+
+# GOAL
+
+---
+
+Dua pemain level sama.
+
+---
+
+Tetapi memiliki gameplay berbeda.
+
+---
+
+# THE FOURTH LAW
+
+## KNOWLEDGE IS POWER
+
+---
+
+Power tidak selalu berasal.
+
+---
+
+Dari damage.
+
+---
+
+# EXAMPLES
+
+---
+
+Mengetahui kelemahan boss.
+
+---
+
+Mengetahui lokasi artefak.
+
+---
+
+Mengetahui bahasa kuno.
+
+---
+
+Mengetahui jalur perdagangan.
+
+---
+
+# IMPORTANT
+
+---
+
+Pengetahuan.
+
+---
+
+Adalah progression.
+
+---
+
+# MONSTER PROGRESSION
+
+---
+
+Monster bukan equipment.
+
+---
+
+# IMPORTANT
+
+---
+
+Monster tumbuh.
+
+---
+
+Berkembang.
+
+---
+
+Belajar.
+
+---
+
+Berubah.
+
+---
+
+# EXAMPLES
+
+---
+
+Pet baru.
+
+↓
+
+Companion.
+
+↓
+
+Partner.
+
+↓
+
+Legend.
+
+---
+
+# FUSION
+
+---
+
+Beberapa monster.
+
+---
+
+Dapat bersatu dengan pemiliknya.
+
+---
+
+# LOCKED DESIGN
+
+---
+
+Fusion adalah hubungan.
+
+---
+
+Bukan sekadar skill.
+
+---
+
+# IMPORTANT
+
+---
+
+Semakin kuat ikatan.
+
+---
+
+Semakin besar potensinya.
+
+---
+
+# THE FIFTH LAW
+
+## HORIZONTAL GROWTH MATTERS
+
+---
+
+Banyak game hanya memiliki:
+
+---
+
+Vertical Progression.
+
+---
+
+Lebih kuat.
+
+---
+
+Lebih tinggi.
+
+---
+
+Lebih besar.
+
+---
+
+# AETHERION
+
+---
+
+Juga memiliki:
+
+---
+
+Horizontal Progression.
+
+---
+
+# EXAMPLES
+
+---
+
+Kerajaan baru.
+
+---
+
+Companion baru.
+
+---
+
+Profesi baru.
+
+---
+
+Pengetahuan baru.
+
+---
+
+Wilayah baru.
+
+---
+
+Monster baru.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena hidup berkembang.
+
+---
+
+Tidak hanya naik angka.
+
+---
+
+# THE SIXTH LAW
+
+## MASTERY NEVER ENDS
+
+---
+
+Tidak boleh ada titik:
+
+---
+
+```text id="prog001"
+Aku sudah selesai belajar.
+```
+
+---
+
+# GOAL
+
+---
+
+Selalu ada:
+
+* teknik baru
+* strategi baru
+* kombinasi baru
+* rahasia baru
+
+---
+
+# IMPORTANT
+
+---
+
+Mastery adalah perjalanan.
+
+---
+
+Bukan tujuan.
+
+---
+
+# RELATION TO NIRMANA
+
+---
+
+Nirmana hidup sangat lama.
+
+---
+
+Namun berhenti berkembang.
+
+---
+
+# WHY?
+
+---
+
+Karena ia berhenti percaya.
+
+---
+
+Bahwa ada sesuatu yang layak ditemukan.
+
+---
+
+# IMPORTANT
+
+---
+
+Sedangkan pemain.
+
+---
+
+Terus mencari.
+
+---
+
+Terus belajar.
+
+---
+
+Terus mencoba.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Progression sejati.
+
+---
+
+Bukan menjadi lebih kuat.
+
+---
+
+Progression sejati adalah:
+
+---
+
+Menjadi versi diri yang sebelumnya tidak mungkin.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog06"
+World Bible
+≈ 76% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+✓ Conflict Philosophy
+
+✓ Progression Philosophy
+
+---
+
+Belum selesai:
+
+* Freedom Philosophy
+* Legacy Philosophy
+* Time Philosophy
+* World Synthesis
+
+---
+
+Catatan Direktur:
+
+Semakin jelas bahwa Aetherion bukan game tentang mencapai puncak.
+
+Melainkan game tentang menentukan:
+
+```text id="prog002"
+Puncak seperti apa yang ingin kau capai?
+```
+
+# WORLD BIBLE
+
+## PART 07
+
+### FREEDOM PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Freedom
+* Player Agency
+* Choice
+* Consequences
+* Identity
+* Alternate Paths
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Kebanyakan RPG.
+
+---
+
+Memiliki kebebasan terbatas.
+
+---
+
+Pemain diberi pilihan.
+
+---
+
+Tetapi semua pilihan.
+
+---
+
+Mengarah ke tujuan yang sama.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion harus memberi kebebasan.
+
+---
+
+Bukan ilusi kebebasan.
+
+---
+
+# THE FIRST LAW
+
+## THE PLAYER IS NOT CHOSEN
+
+---
+
+Ini adalah hukum fundamental.
+
+---
+
+Pemain bukan:
+
+* penyelamat yang diramalkan
+* keturunan legenda
+* anak dewa
+* pahlawan terpilih
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain hanyalah seseorang.
+
+---
+
+Yang hidup di dunia.
+
+---
+
+# WHY?
+
+---
+
+Karena fantasi utama Aetherion adalah:
+
+---
+
+```text id="free001"
+Be Yourself In Another World.
+```
+
+---
+
+Bukan:
+
+---
+
+```text id="free002"
+Become The Chosen One.
+```
+
+---
+
+# THE SECOND LAW
+
+## EVERY LIFE IS VALID
+
+---
+
+Tidak ada cara bermain yang dianggap benar.
+
+---
+
+# EXAMPLES
+
+---
+
+Pemain bisa menjadi:
+
+---
+
+Raja.
+
+---
+
+Penjelajah.
+
+---
+
+Peternak.
+
+---
+
+Pedagang.
+
+---
+
+Penjinak monster.
+
+---
+
+Komandan perang.
+
+---
+
+Peneliti reruntuhan.
+
+---
+
+Pemburu.
+
+---
+
+Diplomat.
+
+---
+
+Atau kombinasi semuanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia tidak memaksa.
+
+---
+
+Siapa pemain harus menjadi.
+
+---
+
+# THE THIRD LAW
+
+## CHOICE MUST CHANGE SOMETHING
+
+---
+
+Pilihan tanpa konsekuensi.
+
+---
+
+Bukan pilihan.
+
+---
+
+# EXAMPLES
+
+---
+
+Menyelamatkan desa.
+
+↓
+
+Desa berkembang.
+
+---
+
+Mengabaikan desa.
+
+↓
+
+Desa mungkin hancur.
+
+---
+
+Membantu kerajaan.
+
+↓
+
+Aliansi terbentuk.
+
+---
+
+Menolak kerajaan.
+
+↓
+
+Konflik muncul.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia harus mengingat.
+
+---
+
+# THE BRANCHING PRINCIPLE
+
+---
+
+Tidak semua konten.
+
+---
+
+Harus dapat diakses.
+
+---
+
+Dalam satu playthrough.
+
+---
+
+# WHY?
+
+---
+
+Karena pilihan.
+
+---
+
+Harus menciptakan pengalaman unik.
+
+---
+
+# EXAMPLE
+
+---
+
+Jalur A membuka:
+
+* companion tertentu
+* wilayah tertentu
+* cerita tertentu
+
+---
+
+Jalur B membuka:
+
+* companion berbeda
+* wilayah berbeda
+* cerita berbeda
+
+---
+
+# IMPORTANT
+
+---
+
+Kehilangan sesuatu.
+
+---
+
+Membuat pilihan berarti.
+
+---
+
+# THE FOURTH LAW
+
+## THE WORLD DOES NOT REVOLVE AROUND THE PLAYER
+
+---
+
+Ini adalah salah satu fondasi terbesar Aetherion.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia tidak berhenti.
+
+---
+
+Menunggu keputusan pemain.
+
+---
+
+# EXAMPLES
+
+---
+
+Kerajaan berperang.
+
+---
+
+NPC menikah.
+
+---
+
+Pemukiman berkembang.
+
+---
+
+Monster bermigrasi.
+
+---
+
+Perdagangan berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Dengan atau tanpa pemain.
+
+---
+
+# THE FIFTH LAW
+
+## FREEDOM REQUIRES CONSEQUENCES
+
+---
+
+Tanpa konsekuensi.
+
+---
+
+Tidak ada kebebasan.
+
+---
+
+Hanya sandbox kosong.
+
+---
+
+# EXAMPLES
+
+---
+
+Pemain menjadi tiran.
+
+↓
+
+Rakyat takut.
+
+↓
+
+Pemberontakan meningkat.
+
+---
+
+Pemain menjadi pemimpin baik.
+
+↓
+
+Loyalitas meningkat.
+
+↓
+
+Pertumbuhan lebih stabil.
+
+---
+
+# IMPORTANT
+
+---
+
+Kebebasan dan tanggung jawab.
+
+---
+
+Tidak bisa dipisahkan.
+
+---
+
+# THE SIXTH LAW
+
+## THE PLAYER MAY FAIL
+
+---
+
+Ini harus dikunci.
+
+---
+
+Karena banyak game.
+
+---
+
+Takut memberi kegagalan.
+
+---
+
+# IMPORTANT
+
+---
+
+Di Aetherion.
+
+---
+
+Kegagalan adalah hasil yang sah.
+
+---
+
+# EXAMPLES
+
+---
+
+Companion mati.
+
+---
+
+Kerajaan runtuh.
+
+---
+
+Ekspedisi gagal.
+
+---
+
+Aliansi pecah.
+
+---
+
+# IMPORTANT
+
+---
+
+Cerita tetap berjalan.
+
+---
+
+# THE SEVENTH LAW
+
+## THE PLAYER DEFINES SUCCESS
+
+---
+
+Dunia tidak menentukan.
+
+---
+
+Apa arti kemenangan.
+
+---
+
+# EXAMPLES
+
+---
+
+Bagi seseorang:
+
+---
+
+Membangun kerajaan besar.
+
+---
+
+Adalah kemenangan.
+
+---
+
+Bagi orang lain:
+
+---
+
+Menemukan semua spesies monster.
+
+---
+
+Adalah kemenangan.
+
+---
+
+Bagi orang lain:
+
+---
+
+Membuat desa kecil yang damai.
+
+---
+
+Adalah kemenangan.
+
+---
+
+# IMPORTANT
+
+---
+
+Tujuan dunia.
+
+---
+
+Bukan menentukan arti sukses.
+
+---
+
+Melainkan memberi ruang.
+
+---
+
+Untuk mendefinisikannya.
+
+---
+
+# RELATION TO NIRMANA
+
+---
+
+Konflik terbesar Nirmana.
+
+---
+
+Bukan terhadap kehidupan.
+
+---
+
+Melainkan terhadap kebebasan.
+
+---
+
+# WHY?
+
+---
+
+Karena kebebasan menciptakan:
+
+---
+
+* perang
+* penderitaan
+* kesalahan
+* kehilangan
+
+---
+
+# IMPORTANT
+
+---
+
+Tetapi kebebasan juga menciptakan:
+
+---
+
+* cinta
+* persahabatan
+* harapan
+* penemuan
+
+---
+
+# THE FINAL LAW
+
+---
+
+Dunia tanpa kebebasan.
+
+---
+
+Mungkin lebih aman.
+
+---
+
+Tetapi tidak benar-benar hidup.
+
+---
+
+Dan dunia yang hidup.
+
+---
+
+Harus menerima risiko.
+
+---
+
+Dari kebebasan itu sendiri.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog07"
+World Bible
+≈ 86% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+✓ Conflict Philosophy
+
+✓ Progression Philosophy
+
+✓ Freedom Philosophy
+
+---
+
+Belum selesai:
+
+* Legacy Philosophy
+* Time Philosophy
+* World Synthesis
+
+---
+
+Catatan Direktur:
+
+Jika Wonder adalah alasan pemain memulai perjalanan,
+
+dan Belonging adalah alasan pemain bertahan,
+
+maka Freedom adalah alasan setiap pemain memiliki cerita yang berbeda.
+
+# WORLD BIBLE
+
+## PART 08
+
+### LEGACY PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Legacy
+* History
+* Memory
+* Reputation
+* Generations
+* World Remembrance
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Banyak game.
+
+---
+
+Berakhir ketika pemain selesai bermain.
+
+---
+
+Aetherion tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena tema terbesar Aetherion adalah:
+
+---
+
+```text id="legacy001"
+The World Remembers.
+```
+
+---
+
+# THE FIRST LAW
+
+## NOTHING LASTS FOREVER
+
+---
+
+Ini adalah kebenaran dunia.
+
+---
+
+Kerajaan runtuh.
+
+---
+
+Pahlawan mati.
+
+---
+
+Peradaban hilang.
+
+---
+
+Companion pergi.
+
+---
+
+# IMPORTANT
+
+---
+
+Legacy tidak mencoba melawan kenyataan ini.
+
+---
+
+Legacy menerimanya.
+
+---
+
+# THE SECOND LAW
+
+## HISTORY IS A LIVING SYSTEM
+
+---
+
+Sejarah bukan buku.
+
+---
+
+Sejarah adalah sistem.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia harus mengingat.
+
+---
+
+# EXAMPLES
+
+---
+
+Perang besar terjadi.
+
+↓
+
+Masuk sejarah.
+
+---
+
+Raja terkenal memimpin.
+
+↓
+
+Masuk sejarah.
+
+---
+
+Pemain membangun kerajaan.
+
+↓
+
+Masuk sejarah.
+
+---
+
+Monster legendaris dijinakkan.
+
+↓
+
+Masuk sejarah.
+
+---
+
+# IMPORTANT
+
+---
+
+Peristiwa penting.
+
+---
+
+Harus meninggalkan jejak.
+
+---
+
+# WORLD MEMORY
+
+---
+
+Dunia memiliki ingatan.
+
+---
+
+Tidak sempurna.
+
+---
+
+Tetapi nyata.
+
+---
+
+# EXAMPLES
+
+---
+
+Penduduk mungkin berkata:
+
+---
+
+```text id="legacy002"
+Pendiri kota ini
+adalah seorang penjinak naga.
+```
+
+---
+
+Atau:
+
+---
+
+```text id="legacy003"
+Di sini pernah terjadi perang besar.
+```
+
+---
+
+# IMPORTANT
+
+---
+
+Masa lalu tidak hilang.
+
+---
+
+Ia menjadi fondasi masa depan.
+
+---
+
+# THE THIRD LAW
+
+## LEGACY IS NOT FAME
+
+---
+
+Banyak orang terkenal.
+
+---
+
+Tetapi tidak meninggalkan warisan.
+
+---
+
+# IMPORTANT
+
+---
+
+Warisan bukan popularitas.
+
+---
+
+Warisan adalah dampak.
+
+---
+
+# EXAMPLES
+
+---
+
+Seorang ilmuwan NPC.
+
+---
+
+Menciptakan teknologi baru.
+
+---
+
+Dunia berubah.
+
+---
+
+Warisan tercipta.
+
+---
+
+Seorang pemain.
+
+---
+
+Membuka jalur perdagangan.
+
+---
+
+Wilayah berkembang.
+
+---
+
+Warisan tercipta.
+
+---
+
+# THE FOURTH LAW
+
+## PEOPLE REMEMBER DIFFERENT THINGS
+
+---
+
+Tidak semua orang.
+
+---
+
+Mengingat sejarah yang sama.
+
+---
+
+# IMPORTANT
+
+---
+
+Ingatan bersifat manusiawi.
+
+---
+
+# EXAMPLES
+
+---
+
+Di Utara.
+
+---
+
+Pemain dianggap pahlawan.
+
+---
+
+Di Selatan.
+
+---
+
+Pemain dianggap penjajah.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang raja.
+
+---
+
+Dipuji oleh rakyatnya.
+
+---
+
+Dibenci oleh musuhnya.
+
+---
+
+# IMPORTANT
+
+---
+
+Legacy bukan kebenaran absolut.
+
+---
+
+Legacy adalah bagaimana dunia mengingat.
+
+---
+
+# THE FIFTH LAW
+
+## COMPANIONS LEAVE LEGACIES TOO
+
+---
+
+Warisan bukan milik pemain saja.
+
+---
+
+# IMPORTANT
+
+---
+
+Companion juga hidup.
+
+---
+
+Companion juga berubah dunia.
+
+---
+
+# EXAMPLES
+
+---
+
+Companion mengorbankan dirinya.
+
+↓
+
+Legenda lahir.
+
+---
+
+Companion mendirikan sekolah.
+
+↓
+
+Generasi baru muncul.
+
+---
+
+Companion memimpin pasukan.
+
+↓
+
+Sejarah berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Mereka bukan aksesoris.
+
+---
+
+Mereka bagian dunia.
+
+---
+
+# THE SIXTH LAW
+
+## KINGDOMS ARE LEGACIES
+
+---
+
+Kerajaan bukan bangunan.
+
+---
+
+Kerajaan adalah warisan yang hidup.
+
+---
+
+# IMPORTANT
+
+---
+
+Ketika pemain membangun kerajaan.
+
+---
+
+Ia sebenarnya sedang membangun.
+
+---
+
+Masa depan.
+
+---
+
+# EXAMPLES
+
+---
+
+Sekolah dibangun.
+
+↓
+
+Ilmu berkembang.
+
+---
+
+Perpustakaan dibangun.
+
+↓
+
+Pengetahuan bertahan.
+
+---
+
+Benteng dibangun.
+
+↓
+
+Wilayah aman.
+
+---
+
+# IMPORTANT
+
+---
+
+Keputusan hari ini.
+
+---
+
+Menciptakan generasi berikutnya.
+
+---
+
+# THE SEVENTH LAW
+
+## THE WORLD MUST OUTLIVE THE HERO
+
+---
+
+Ini adalah hukum inti.
+
+---
+
+# IMPORTANT
+
+---
+
+Jika dunia berhenti.
+
+---
+
+Ketika pahlawan pergi.
+
+---
+
+Maka dunia itu palsu.
+
+---
+
+# EXAMPLES
+
+---
+
+Pemain pensiun.
+
+---
+
+Dunia tetap berjalan.
+
+---
+
+Pemain mati.
+
+---
+
+Kerajaan tetap hidup.
+
+---
+
+Companion pergi.
+
+---
+
+Sejarah tetap berlanjut.
+
+---
+
+# IMPORTANT
+
+---
+
+Warisan lebih besar.
+
+---
+
+Daripada individu.
+
+---
+
+# RELATION TO NIRMANA
+
+---
+
+Nirmana melihat:
+
+---
+
+```text id="legacy004"
+Segala sesuatu akan hilang.
+```
+
+---
+
+Dunia menjawab:
+
+---
+
+```text id="legacy005"
+Tidak.
+Segala sesuatu akan berubah.
+```
+
+---
+
+# IMPORTANT
+
+---
+
+Perubahan.
+
+---
+
+Bukan kehancuran.
+
+---
+
+# THE EIGHTH LAW
+
+## LEGACY IS THE PROOF OF EXISTENCE
+
+---
+
+Bagaimana seseorang tahu.
+
+---
+
+Bahwa kehidupannya berarti?
+
+---
+
+# AETHERION ANSWER
+
+---
+
+Karena dunia berbeda.
+
+---
+
+Setelah ia hidup.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak harus besar.
+
+---
+
+Tidak harus terkenal.
+
+---
+
+Tidak harus dikenang semua orang.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang petani.
+
+---
+
+Membantu sebuah desa.
+
+---
+
+Desa itu bertahan.
+
+---
+
+Itu juga warisan.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Seseorang tidak hidup selamanya.
+
+---
+
+Tetapi dampaknya bisa.
+
+---
+
+Dan dunia.
+
+---
+
+Adalah kumpulan warisan.
+
+---
+
+Dari mereka yang datang sebelumnya.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog08"
+World Bible
+≈ 94% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+✓ Conflict Philosophy
+
+✓ Progression Philosophy
+
+✓ Freedom Philosophy
+
+✓ Legacy Philosophy
+
+---
+
+Belum selesai:
+
+* Time Philosophy
+* World Synthesis
+
+---
+
+Catatan Direktur:
+
+Jika saya harus merangkum seluruh Aetherion dalam satu kalimat sejauh ini, mungkin kalimatnya adalah:
+
+```text id="legacy006"
+Dunia yang hidup,
+adalah dunia yang mampu mengingat.
+```
+
+Dan itulah alasan Legacy menjadi pilar terakhir yang mengikat seluruh fondasi dunia.
+
+# WORLD BIBLE
+
+## PART 09
+
+### TIME PHILOSOPHY
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Time
+* Change
+* Generations
+* Aging
+* Historical Progression
+* World Evolution
+
+---
+
+---
+
+# DESIGN PHILOSOPHY
+
+---
+
+Sebagian besar game.
+
+---
+
+Memiliki waktu.
+
+---
+
+Tetapi dunia tidak berubah.
+
+---
+
+# EXAMPLE
+
+---
+
+Sepuluh tahun berlalu.
+
+---
+
+NPC tetap sama.
+
+---
+
+Kerajaan tetap sama.
+
+---
+
+Kota tetap sama.
+
+---
+
+# IMPORTANT
+
+---
+
+Aetherion tidak boleh seperti itu.
+
+---
+
+# THE FIRST LAW
+
+## TIME MUST MATTER
+
+---
+
+Waktu bukan dekorasi.
+
+---
+
+Waktu adalah kekuatan.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena waktu mengubah segalanya.
+
+---
+
+# EXAMPLES
+
+---
+
+Kerajaan berkembang.
+
+---
+
+Peradaban runtuh.
+
+---
+
+Anak-anak tumbuh.
+
+---
+
+Veteran menua.
+
+---
+
+Monster bermigrasi.
+
+---
+
+Hutan meluas.
+
+---
+
+# IMPORTANT
+
+---
+
+Dunia tidak diam.
+
+---
+
+# THE SECOND LAW
+
+## CHANGE IS INEVITABLE
+
+---
+
+Tidak ada kondisi permanen.
+
+---
+
+# EXAMPLES
+
+---
+
+Kota kecil.
+
+↓
+
+Menjadi metropolis.
+
+---
+
+Kerajaan besar.
+
+↓
+
+Terpecah.
+
+---
+
+Desa terpencil.
+
+↓
+
+Menjadi pusat perdagangan.
+
+---
+
+# IMPORTANT
+
+---
+
+Kesuksesan bukan keadaan tetap.
+
+---
+
+# IMPORTANT
+
+---
+
+Kegagalan juga bukan keadaan tetap.
+
+---
+
+# GENERATIONAL DESIGN
+
+---
+
+Generasi adalah sistem inti.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena dunia harus lebih tua.
+
+---
+
+Daripada pemain.
+
+---
+
+Dan tetap hidup.
+
+---
+
+Setelah pemain pergi.
+
+---
+
+# EXAMPLES
+
+---
+
+Seorang guru.
+
+↓
+
+Memiliki murid.
+
+↓
+
+Murid menjadi master.
+
+↓
+
+Master melatih generasi berikutnya.
+
+---
+
+# EXAMPLE
+
+---
+
+Seorang raja meninggal.
+
+↓
+
+Penerus naik tahta.
+
+↓
+
+Kebijakan berubah.
+
+↓
+
+Sejarah berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Orang datang.
+
+---
+
+Orang pergi.
+
+---
+
+Dunia tetap bergerak.
+
+---
+
+# THE THIRD LAW
+
+## HISTORY NEVER STOPS
+
+---
+
+Sejarah tidak boleh berhenti.
+
+---
+
+Menunggu pemain.
+
+---
+
+# EXAMPLES
+
+---
+
+Perang bisa dimulai.
+
+---
+
+Aliansi bisa terbentuk.
+
+---
+
+Kerajaan bisa jatuh.
+
+---
+
+Penemuan bisa terjadi.
+
+---
+
+Tanpa keterlibatan pemain.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain mempengaruhi sejarah.
+
+---
+
+Tetapi tidak memiliki sejarah.
+
+---
+
+# AGING
+
+---
+
+Mayoritas makhluk.
+
+---
+
+Mengalami penuaan.
+
+---
+
+# EXCEPTIONS
+
+---
+
+* Dewa
+* Entitas kosmik tertentu
+* Makhluk khusus berdasarkan lore
+
+---
+
+# IMPORTANT
+
+---
+
+Umur memiliki arti.
+
+---
+
+Karena waktu memiliki arti.
+
+---
+
+# THE FOURTH LAW
+
+## NOTHING IS FROZEN
+
+---
+
+Dunia tidak boleh menjadi museum.
+
+---
+
+# EXAMPLES
+
+---
+
+Jalan perdagangan berubah.
+
+---
+
+Ekosistem berubah.
+
+---
+
+Perbatasan berubah.
+
+---
+
+Populasi berubah.
+
+---
+
+Budaya berubah.
+
+---
+
+# IMPORTANT
+
+---
+
+Perubahan adalah kondisi normal.
+
+---
+
+# THE FIFTH LAW
+
+## THE WORLD OUTLIVES EVERYONE
+
+---
+
+Ini salah satu hukum terbesar Aetherion.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada individu.
+
+---
+
+Yang lebih besar dari dunia.
+
+---
+
+# INCLUDING
+
+---
+
+* pemain
+* raja
+* naga
+* dewa kecil
+* pahlawan
+* companion
+
+---
+
+# IMPORTANT
+
+---
+
+Bahkan Nirmana.
+
+---
+
+Bukan pusat dunia.
+
+---
+
+# THE PARADOX OF NIRMANA
+
+---
+
+Nirmana hidup.
+
+---
+
+Sangat lama.
+
+---
+
+# RESULT
+
+---
+
+Ia melihat:
+
+---
+
+Kerajaan lahir.
+
+---
+
+Kerajaan mati.
+
+---
+
+Pahlawan muncul.
+
+---
+
+Pahlawan dilupakan.
+
+---
+
+Peradaban berkembang.
+
+---
+
+Peradaban runtuh.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia mulai percaya.
+
+---
+
+Bahwa semuanya sia-sia.
+
+---
+
+# WORLD RESPONSE
+
+---
+
+Dunia melihat hal yang sama.
+
+---
+
+Tetapi mengambil kesimpulan berbeda.
+
+---
+
+# WORLD ANSWER
+
+---
+
+```text id="time001"
+Justru karena semuanya berubah.
+Maka setiap momen menjadi berharga.
+```
+
+---
+
+# THE SIXTH LAW
+
+## ERAS DEFINE HISTORY
+
+---
+
+Dunia dibagi.
+
+---
+
+Bukan oleh tahun.
+
+---
+
+Tetapi oleh era.
+
+---
+
+# EXAMPLES
+
+---
+
+Age of Origins
+
+---
+
+Age of Gods
+
+---
+
+Age of Kingdoms
+
+---
+
+Age of Expansion
+
+---
+
+Age of Silence
+
+---
+
+Age of Players
+
+---
+
+# IMPORTANT
+
+---
+
+Orang tidak mengingat angka.
+
+---
+
+Mereka mengingat zaman.
+
+---
+
+# THE SEVENTH LAW
+
+## THE FUTURE IS UNWRITTEN
+
+---
+
+Masa lalu tetap.
+
+---
+
+Masa depan tidak.
+
+---
+
+# IMPORTANT
+
+---
+
+Tidak ada takdir mutlak.
+
+---
+
+Tidak ada jalur tunggal.
+
+---
+
+Tidak ada akhir yang dijamin.
+
+---
+
+# EXAMPLES
+
+---
+
+Kerajaan besar.
+
+---
+
+Bisa runtuh.
+
+---
+
+Desa kecil.
+
+---
+
+Bisa menjadi kekuatan dunia.
+
+---
+
+Monster lemah.
+
+---
+
+Bisa menjadi legenda.
+
+---
+
+# IMPORTANT
+
+---
+
+Masa depan adalah hasil.
+
+---
+
+Dari keputusan yang dibuat.
+
+---
+
+Hari ini.
+
+---
+
+# THE FINAL LAW
+
+---
+
+Waktu tidak menghancurkan dunia.
+
+---
+
+Waktu membentuk dunia.
+
+---
+
+Dan dunia yang hidup.
+
+---
+
+Adalah dunia yang berubah.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldprog09"
+World Bible
+≈ 98% Complete
+```
+
+Selesai:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+✓ Conflict Philosophy
+
+✓ Progression Philosophy
+
+✓ Freedom Philosophy
+
+✓ Legacy Philosophy
+
+✓ Time Philosophy
+
+---
+
+Tersisa:
+
+* World Synthesis (Final Chapter)
+
+---
+
+Catatan Direktur:
+
+Sekarang terlihat jelas bahwa konflik antara dunia dan Nirmana bukanlah konflik antara hidup dan mati.
+
+Melainkan konflik antara dua cara memandang waktu:
+
+```text id="time002"
+Nirmana:
+Semua akan berakhir.
+Maka semuanya sia-sia.
+
+Dunia:
+Semua akan berakhir.
+Maka semuanya berharga.
+```
+
+# WORLD BIBLE
+
+## PART 10
+
+### WORLD SYNTHESIS
+
+# AETHERION
+
+Status:
+FOUNDATION DOCUMENT
+
+Scope:
+
+* Complete World Philosophy
+* Design Identity
+* Final World Thesis
+* Relationship Between All Pillars
+
+---
+
+---
+
+# PURPOSE
+
+---
+
+Dokumen ini bukan menambahkan aturan baru.
+
+---
+
+Dokumen ini menyatukan.
+
+---
+
+Seluruh filosofi dunia.
+
+---
+
+Menjadi satu identitas.
+
+---
+
+# THE QUESTION
+
+---
+
+Sejak awal.
+
+---
+
+Aetherion dibangun.
+
+---
+
+Di atas satu pertanyaan.
+
+---
+
+```text id="synthesis001"
+Apa yang membuat keberadaan
+layak untuk dilanjutkan?
+```
+
+---
+
+Pertanyaan ini.
+
+---
+
+Muncul di mana-mana.
+
+---
+
+Dalam kerajaan.
+
+---
+
+Dalam companion.
+
+---
+
+Dalam monster.
+
+---
+
+Dalam sejarah.
+
+---
+
+Dan terutama.
+
+---
+
+Dalam diri Nirmana.
+
+---
+
+# THE FOUR PILLARS
+
+---
+
+Seluruh dunia berdiri.
+
+---
+
+Di atas empat pilar utama.
+
+---
+
+## WONDER
+
+---
+
+Dunia harus membuat pemain bertanya.
+
+---
+
+```text id="synthesis002"
+Apa yang ada di balik sana?
+```
+
+---
+
+Wonder menciptakan rasa ingin tahu.
+
+---
+
+Tanpa Wonder.
+
+---
+
+Perjalanan tidak dimulai.
+
+---
+
+## BELONGING
+
+---
+
+Dunia harus memberi rumah.
+
+---
+
+```text id="synthesis003"
+Ini tempatku.
+```
+
+---
+
+Belonging menciptakan keterikatan.
+
+---
+
+Tanpa Belonging.
+
+---
+
+Pemain tidak bertahan.
+
+---
+
+## STEWARDSHIP
+
+---
+
+Dunia harus bisa dirawat.
+
+---
+
+```text id="synthesis004"
+Aku ingin membuat tempat ini lebih baik.
+```
+
+---
+
+Stewardship menciptakan tanggung jawab.
+
+---
+
+Tanpa Stewardship.
+
+---
+
+Dunia hanyalah taman bermain.
+
+---
+
+## LEGACY
+
+---
+
+Dunia harus mengingat.
+
+---
+
+```text id="synthesis005"
+Aku pernah ada di sini.
+```
+
+---
+
+Legacy menciptakan makna.
+
+---
+
+Tanpa Legacy.
+
+---
+
+Segala sesuatu terasa sementara.
+
+---
+
+# THE WORLD JOURNEY
+
+---
+
+Seluruh pengalaman pemain.
+
+---
+
+Sebenarnya mengikuti pola yang sama.
+
+---
+
+### Step 1
+
+Wonder
+
+↓
+
+Pemain menemukan dunia.
+
+---
+
+### Step 2
+
+Belonging
+
+↓
+
+Pemain mencintai dunia.
+
+---
+
+### Step 3
+
+Stewardship
+
+↓
+
+Pemain merawat dunia.
+
+---
+
+### Step 4
+
+Legacy
+
+↓
+
+Pemain meninggalkan dunia.
+
+---
+
+# IMPORTANT
+
+---
+
+Ini adalah siklus utama Aetherion.
+
+---
+
+# THE ROLE OF CIVILIZATION
+
+---
+
+Civilizations.
+
+---
+
+Memberi pemain rumah.
+
+---
+
+Tujuan.
+
+---
+
+Dan tanggung jawab.
+
+---
+
+# THE ROLE OF EXPLORATION
+
+---
+
+Exploration.
+
+---
+
+Memberi pemain misteri.
+
+---
+
+Pengetahuan.
+
+---
+
+Dan kemungkinan.
+
+---
+
+# THE ROLE OF FREEDOM
+
+---
+
+Freedom.
+
+---
+
+Memberi pemain identitas.
+
+---
+
+# IMPORTANT
+
+---
+
+Bukan dunia yang menentukan.
+
+---
+
+Siapa pemain.
+
+---
+
+Pemain yang menentukan.
+
+---
+
+Siapa dirinya.
+
+---
+
+# THE ROLE OF CONFLICT
+
+---
+
+Conflict.
+
+---
+
+Menguji nilai yang dimiliki pemain.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena keyakinan.
+
+---
+
+Tidak berarti apa-apa.
+
+---
+
+Sampai diuji.
+
+---
+
+# THE ROLE OF DEATH
+
+---
+
+Death.
+
+---
+
+Memberi nilai pada kehidupan.
+
+---
+
+# IMPORTANT
+
+---
+
+Karena sesuatu yang tidak dapat hilang.
+
+---
+
+Sulit untuk dihargai.
+
+---
+
+# THE ROLE OF TIME
+
+---
+
+Time.
+
+---
+
+Mengubah segalanya.
+
+---
+
+# IMPORTANT
+
+---
+
+Dan karena waktu terus bergerak.
+
+---
+
+Legacy menjadi mungkin.
+
+---
+
+# THE PLAYER
+
+---
+
+Pemain bukan pusat dunia.
+
+---
+
+Ini adalah keputusan desain terbesar.
+
+---
+
+# IMPORTANT
+
+---
+
+Pemain penting.
+
+---
+
+Tetapi dunia lebih besar.
+
+---
+
+Daripada pemain.
+
+---
+
+# CONSEQUENCE
+
+---
+
+Dunia hidup.
+
+---
+
+Sebelum pemain datang.
+
+---
+
+Dan tetap hidup.
+
+---
+
+Setelah pemain pergi.
+
+---
+
+# NIRMANA
+
+---
+
+Pada akhirnya.
+
+---
+
+Seluruh filosofi dunia.
+
+---
+
+Bertabrakan dengan satu orang.
+
+---
+
+Nirmana.
+
+---
+
+# IMPORTANT
+
+---
+
+Ia melihat:
+
+---
+
+Perang.
+
+---
+
+Kehilangan.
+
+---
+
+Kematian.
+
+---
+
+Kehancuran.
+
+---
+
+Keserakahan.
+
+---
+
+Pengkhianatan.
+
+---
+
+Dan menyimpulkan:
+
+---
+
+```text id="synthesis006"
+Keberadaan adalah kesalahan.
+```
+
+---
+
+# THE WORLD ANSWER
+
+---
+
+Dunia melihat hal yang sama.
+
+---
+
+Tetapi menjawab:
+
+---
+
+```text id="synthesis007"
+Keberadaan tidak sempurna.
+
+Namun tetap layak dijalani.
+```
+
+---
+
+# THE FINAL THESIS
+
+---
+
+Inilah inti Aetherion.
+
+---
+
+Bukan:
+
+---
+
+```text id="synthesis008"
+Hidup selalu indah.
+```
+
+---
+
+Karena tidak selalu.
+
+---
+
+Bukan pula:
+
+---
+
+```text id="synthesis009"
+Tidak ada makna.
+```
+
+---
+
+Karena itu juga tidak benar.
+
+---
+
+# AETHERION STATES
+
+---
+
+```text id="synthesis010"
+Makna tidak ditemukan.
+
+Makna diciptakan.
+```
+
+---
+
+Melalui:
+
+* pilihan
+* hubungan
+* perjuangan
+* penemuan
+* pengorbanan
+* waktu
+
+---
+
+# THE FINAL WORLD LAW
+
+---
+
+Tidak ada yang abadi.
+
+---
+
+Tidak ada yang sempurna.
+
+---
+
+Tidak ada yang bertahan selamanya.
+
+---
+
+Namun justru karena itulah.
+
+---
+
+Segala sesuatu memiliki nilai.
+
+---
+
+# THE WORLD MOTTO
+
+---
+
+```text id="synthesis011"
+The World Remembers.
+```
+
+---
+
+Bukan karena dunia menolak perubahan.
+
+---
+
+Tetapi karena dunia menerima perubahan.
+
+---
+
+Dan terus melangkah maju.
+
+---
+
+Membawa jejak.
+
+---
+
+Mereka yang pernah hidup di dalamnya.
+
+---
+
+---
+
+# WORLD BIBLE STATUS
+
+```text id="worldfinal"
+WORLD BIBLE v1.0
+100% COMPLETE
+```
+
+---
+
+Completed Chapters:
+
+✓ Core World Philosophy
+
+✓ Civilization Philosophy
+
+✓ Exploration Philosophy
+
+✓ Life & Death Philosophy
+
+✓ Conflict Philosophy
+
+✓ Progression Philosophy
+
+✓ Freedom Philosophy
+
+✓ Legacy Philosophy
+
+✓ Time Philosophy
+
+✓ World Synthesis
+
+---
+
+---
+
+# DIRECTOR SUMMARY
+
+Jika seluruh World Bible harus dirangkum menjadi satu kalimat:
+
+---
+
+```text id="synthesis012"
+Sebuah dunia hidup tempat makna
+diciptakan melalui pilihan,
+diperkuat oleh hubungan,
+diuji oleh waktu,
+dan diabadikan melalui warisan.
+```
+
+---
+
+Status:
+
+```text id="synthesis013"
+WORLD BIBLE v1.0
+LOCKED
+TIER S COMPLETE
+```
