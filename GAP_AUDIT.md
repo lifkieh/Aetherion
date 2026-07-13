@@ -204,3 +204,11 @@ penuh hari ini (tab Jalur Tempur + Jalur Kehidupan, 4 class kehidupan, combat su
 integrasi skill tree). **Pelajaran proses:** mulai sekarang STATUS.md mencantumkan
 "Exe terakhir: [waktu] — berisi hingga fitur X" agar owner selalu tahu build yang
 diuji, dan mismatch build-vs-arahan ketahuan lebih cepat.
+
+## CATATAN INTEGRITAS (2026-07-13): file "part 2" berukuran 0 byte
+Saat mengambil file konsepsi v2 (16.510 baris — DITERIMA & di-commit), ditemukan
+juga `Aetherion_blueprint_reasoning and design part 2.txt` di Desktop owner dengan
+ukuran **0 byte (kosong)**. Agent **tidak** menebak isinya dan **tidak** memasukkannya
+ke docs/. Bila part 2 memang berisi materi lanjutan (misalnya jawaban Q1–Q7 atau
+Bible lain), **mohon kirim ulang** — pola BD-1/BD-2 mengajarkan: artefak yang tak
+sampai tidak boleh difabrikasi.

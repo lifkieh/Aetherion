@@ -83,6 +83,15 @@ Struktur cerita = **ERA**. Era 1 = **"The Age of Memory"**. Emosi resmi bertamba
 **Loss** & **Continuation** (di samping Echo Principle). Pesan inti dunia:
 *"segala sesuatu akan berakhir, namun itu bukan alasan untuk berhenti membangun."*
 
+## PENDING OWNER Q1–Q7 (#107) — JANGAN SENTUH PENAMAAN
+
+Tujuh pertanyaan konflik masih menunggu owner: ejaan **Nirnama**/Nirmana ·
+**Greenhollow/Ashbrook vs Greenvale** · 7 benua vs enam lingkup budaya · nama asli
+Nirnama · siapa The First Loss · sahabat naga vs Thunder Dragon · identitas Cael
+Morrow. **Jangan mengubah penamaan dokumen, wilayah, atau aset apa pun yang
+bergantung pada ini.** Default sementara: ejaan **"Nirnama"**. Companion Bible
+mencatat lokasi tokoh **apa adanya** (pending-mapping), tidak dipetakan sepihak.
+
 ## Catatan teknis singkat
 - Godot 4.3 (`_tools/godot/`), proyek di `game/`, GDScript, data-driven (`game/data/*.json`).
 - Test: `_tools/godot/Godot_v4.3-stable_win64.exe --headless --path game res://tests/TestRunner.tscn` — **harus 0 failed** sebelum commit.

@@ -54,6 +54,17 @@ menjelaskan. Beberapa NPC adalah salah satu dari mereka tanpa pernah dikonfirmas
 Ditetapkan sebagai **misteri besar resmi** (E3). Nirnama boleh punya identitas
 (B18 Nirnama Bible); hubungan keduanya tidak.
 
+### M5. Identitas humanoid THE LAST WITNESS *(lindungan SEMENTARA — Decision Log #103)*
+Sahabat naga Sang Nirnama: naga yang **memilihnya**, menyaksikan seluruh hidupnya,
+yang terakhir mencoba menghentikannya — lalu menghilang. Ia masih hidup, berwujud
+**humanoid**, berbaur di dunia.
+
+**Status khusus:** ini **bukan** misteri abadi permanen — ia dilindungi **sampai
+owner memutuskan Q7**. Sampai saat itu: tidak ada dokumen, dialog, atau kode yang
+boleh mengikat siapa dia. **Ia juga TIDAK BOLEH muncul sebelum 100–300 jam bermain.**
+Bila owner kelak memutuskan identitasnya, entri ini dicabut dari daftar (dan
+pencabutan itu dicatat di Decision Log sebagai kehilangan yang disengaja).
+
 ---
 
 *Catatan untuk penulis mana pun (manusia atau agent): kalau suatu hari kau merasa

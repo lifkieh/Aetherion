@@ -5760,8 +5760,10730 @@ Dan itulah yang membuat dunia terasa nyata.
 
 
 
+======= mulai dari sini  lanjutan  ====== checkpoint update 2 ==========
+=====
+=====
+=====
+
+STARTING_REGION_BIBLE_PART_01
+THE FIRST 20 HOURS OF AETHERION
+# AETHERION
+# STARTING REGION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Starting Region
+- First Town
+- First Companion
+- First Mysteries
+- First Monsters
+- First Wonder
+
+---
+---
+DESIGN LAW
+THE FIRST REGION MUST REPRESENT THE ENTIRE GAME
+DECISION
+
+Wilayah awal bukan tutorial.
+
+Wilayah awal adalah miniatur seluruh Aetherion.
+
+REASONING
+
+Jika pemain memahami wilayah awal.
+
+Pemain memahami jiwa dunia.
+
+Karena itu.
+
+Semua tema besar harus muncul sejak awal:
+
+harapan
+misteri
+sejarah
+monster
+companion
+kehilangan
+humor
+wonder
+REGION 001
+GREENHOLLOW VALLEY
+Julukan
+
+The Valley of First Steps
+
+Lokasi
+
+Aurelia Selatan
+
+Fungsi
+
+Starting Region
+
+Ukuran
+
+Cukup besar untuk:
+
+20–50 jam gameplay
+
+Deskripsi
+
+Lembah subur.
+
+Dipenuhi:
+
+ladang
+sungai
+bukit
+reruntuhan tua
+
+Sekilas terlihat damai.
+
+Namun di bawah permukaan.
+
+Ada banyak cerita.
+
+Design Reasoning
+
+Pemain harus merasa:
+
+Aku memulai dari tempat kecil.
+
+Agar nanti ketika melihat dunia besar.
+
+Perjalanan terasa bermakna.
+
+STARTING TOWN
+ASHBROOK
+Julukan
+
+Town of Gentle Beginnings
+
+Populasi
+
+± 1.500
+
+Fungsi
+
+Kota awal utama.
+
+Deskripsi
+
+Kota perdagangan kecil.
+
+Dibangun di tepi sungai.
+
+Terkenal karena:
+
+pasar mingguan
+pengrajin kayu
+peternakan kuda
+Visual Feeling
+
+Nyaman.
+
+Hangat.
+
+Ramah.
+
+Namun tidak sempurna.
+
+Karena tidak ada tempat yang sempurna.
+
+IMPORTANT NPC
+OLD BRAM
+Profesi
+
+Pemancing
+
+Umur
+
+78
+
+Penampilan
+
+Kakek tua.
+
+Topi jelek.
+
+Tongkat bambu.
+
+Kenyataan
+
+Tidak penting.
+
+Atau begitulah kelihatannya.
+
+Rahasia
+
+Ia pernah menjadi penjelajah terkenal.
+
+Namun tidak ada yang tahu.
+
+Tujuan
+
+Mengajarkan pemain:
+
+Jangan menilai orang dari penampilannya.
+IMPORTANT NPC
+LYRA
+Profesi
+
+Penjual buku bekas
+
+Umur
+
+24
+
+Kepribadian
+
+Penasaran.
+
+Cerdas.
+
+Sedikit aneh.
+
+Kebiasaan
+
+Mengumpulkan cerita rakyat.
+
+Fungsi
+
+Memperkenalkan Chronicle.
+
+Quest Awal
+
+Mencari halaman buku yang hilang.
+
+Yang ternyata mengarah pada misteri lebih besar.
+
+WEIRD NPC
+THE SPOON MAN
+
+Pria yang mengoleksi sendok.
+
+Ribuan sendok.
+
+Tidak ada yang tahu kenapa.
+
+Ia memiliki rumah penuh sendok.
+
+Design Rule
+
+Tidak ada quest penting.
+
+Tidak ada reward penting.
+
+Hanya dunia yang terasa hidup.
+
+Hidden Twist
+
+200 jam kemudian.
+
+Pemain dapat menemukan satu sendok miliknya di benua lain.
+
+Dan mulai bertanya:
+
+Bagaimana bisa?
+FIRST MONSTERS
+MOSS RABBIT
+
+Elemen:
+
+Nature
+
+Temperamen:
+
+Penakut
+
+Deskripsi
+
+Kelinci kecil.
+
+Ditumbuhi lumut.
+
+Fungsi
+
+Mengajari taming.
+
+FIRST MONSTERS
+BARKFOX
+
+Elemen:
+
+Nature
+
+Earth
+
+Deskripsi
+
+Rubah dengan lapisan kayu tipis.
+
+Populer sebagai companion awal.
+
+FIRST MONSTERS
+STREAMLING
+
+Elemen:
+
+Water
+
+Deskripsi
+
+Makhluk kecil sungai.
+
+Sering mencuri barang.
+
+Penduduk membencinya.
+
+Anak-anak menyukainya.
+
+FIRST MONSTER MYSTERY
+WHITE STAG
+
+Makhluk legenda.
+
+Kadang terlihat di hutan.
+
+Kadang tidak.
+
+Tidak muncul di quest utama.
+
+Tidak dijelaskan.
+
+Jika pemain mengejarnya.
+
+Makhluk itu menghilang.
+
+Jika pemain mengabaikannya.
+
+Kadang muncul lagi.
+
+Design Reasoning
+
+Wonder pertama.
+
+Pemain harus belajar:
+
+Tidak semua hal harus diselesaikan.
+FIRST COMPANION
+ARLEN VALE
+Ras
+
+Human
+
+Umur
+
+19
+
+Profesi
+
+Kurir
+
+Kepribadian
+
+Optimis.
+
+Ceroboh.
+
+Berani.
+
+Mimpi
+
+Melihat seluruh dunia.
+
+Masalah
+
+Belum pernah keluar lembah.
+
+Design Reasoning
+
+Arlen mewakili pemain.
+
+Ia ingin melihat dunia.
+
+Sama seperti pemain.
+
+Potensi Masa Depan
+
+Bisa menjadi:
+
+penjelajah legendaris
+pemimpin guild
+korban tragedi
+petani biasa
+
+Tergantung hidupnya.
+
+FIRST RUMOR
+THE MAN WHO WALKS BACKWARDS
+
+Rumor lokal.
+
+Katanya.
+
+Ada seorang pengembara.
+
+Yang selalu berjalan mundur.
+
+Ia tidak pernah menjelaskan alasannya.
+
+Dan muncul di berbagai kota.
+
+Truth Status
+
+Unknown
+
+Design Reasoning
+
+Membangun rasa penasaran.
+
+Tidak semua rumor harus memiliki jawaban.
+
+FIRST FESTIVAL
+DAY OF FLOATING LIGHTS
+
+Setahun sekali.
+
+Penduduk melepaskan lentera ke sungai.
+
+Untuk mengenang:
+
+keluarga
+teman
+orang yang hilang
+Theme
+
+Memory
+
+Design Reasoning
+
+Tema utama Aetherion muncul sejak awal.
+
+Tanpa ceramah.
+
+Melalui budaya.
+
+FIRST RUIN
+HOLLOWSTONE
+
+Reruntuhan kecil dekat kota.
+
+Tidak berbahaya.
+
+Namun jauh lebih tua daripada Ashbrook.
+
+Tujuan
+
+Mengajarkan:
+
+Dunia ini sudah ada jauh sebelum pemain datang.
+Hidden Detail
+
+Terdapat simbol yang akan muncul lagi ratusan jam kemudian.
 
 
+---
+
+# CATATAN DIREKTUR
+
+Sekarang kita mulai masuk ke area yang benar-benar bisa dikerjakan oleh tim.
+
+Namun setelah menelaah seluruh diskusi kita, saya menemukan satu hal yang masih hilang:
+
+```text
+Aetherion punya dunia.
+Aetherion punya sejarah.
+Aetherion punya monster.
+
+Tapi belum punya aktivitas harian masyarakat.
+
+Kita belum membuat:
+
+profesi dunia
+ekonomi dunia
+pekerjaan aneh
+pasar gelap
+akademi
+pemburu monster
+kurir
+pembuat peta
+peternak monster
+kolektor artefak
+penulis Chronicle
+
+Dan justru itulah yang akan membuat dunia terasa hidup ketika pemain tidak sedang menyelamatkan dunia.
+
+Menurut saya dokumen berikutnya yang paling penting adalah:
+
+LIVING_WORLD_BIBLE
+
+(Profesi, pekerjaan, ekonomi, rutinitas, kelas sosial, aktivitas harian)
+
+karena sebagian besar umur pemain akan dihabiskan di sana, bukan di quest utama.
+
+LIVING_WORLD_BIBLE_PART_01
+THE PEOPLE WHO KEEP THE WORLD RUNNING
+# AETHERION
+# LIVING WORLD BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Economy
+- Jobs
+- Daily Life
+- Social Classes
+- Living World Systems
+
+---
+---
+DESIGN LAW
+HEROES ARE RARE
+DECISION
+
+Mayoritas penduduk tidak bertarung.
+
+REASONING
+
+Kesalahan terbesar RPG:
+
+Semua orang petarung.
+
+Padahal siapa yang:
+
+menanam gandum?
+membangun rumah?
+mengurus pelabuhan?
+membuat sepatu?
+memperbaiki jalan?
+
+Jika semua petualang.
+
+Maka dunia runtuh dalam seminggu.
+
+CONSEQUENCES
+
+99% populasi bukan petarung.
+
+EMOTIONAL TARGET
+
+"Dunia ini hidup bahkan tanpa pahlawan."
+
+SOCIAL CLASS SYSTEM
+LOWER COMMONERS
+
+Bukan miskin.
+
+Bukan bangsawan.
+
+Mayoritas penduduk.
+
+Contoh:
+
+petani
+nelayan
+penggembala
+penebang kayu
+penjahit
+tukang batu
+
+Mereka adalah fondasi dunia.
+
+SOCIAL CLASS SYSTEM
+SKILLED PROFESSIONALS
+
+Kelompok spesialis.
+
+Contoh:
+
+pandai besi
+arsitek
+dokter
+navigator
+guru
+pustakawan
+
+Mereka dihormati karena keahlian.
+
+SOCIAL CLASS SYSTEM
+MERCHANT CLASS
+
+Orang yang menggerakkan ekonomi.
+
+Contoh:
+
+pedagang
+eksportir
+pemilik kapal
+bankir
+
+Sebagian sangat kaya.
+
+Sebagian sangat korup.
+
+SOCIAL CLASS SYSTEM
+NOBILITY
+
+Bangsawan.
+
+Tidak selalu jahat.
+
+Tidak selalu baik.
+
+Mereka hanyalah manusia dengan kekuasaan lebih besar.
+
+SOCIAL CLASS SYSTEM
+THE INVISIBLE CLASS
+
+Kelompok yang tidak tercatat.
+
+Contoh:
+
+tunawisma
+pengungsi
+kriminal kecil
+anak jalanan
+
+Mereka jarang masuk sejarah.
+
+Tetapi mereka selalu ada.
+
+PROFESSION SYSTEM
+CHRONICLERS
+
+Profesi resmi.
+
+Pencatat sejarah.
+
+Mereka bekerja untuk:
+
+kerajaan
+kota
+gereja
+universitas
+
+Tugas:
+
+Mencatat peristiwa.
+
+Masalahnya.
+
+Mereka juga manusia.
+
+Maka bias tetap ada.
+
+PROFESSION SYSTEM
+MAPMAKERS
+
+Pembuat peta.
+
+Profesi yang sangat dihormati.
+
+Karena dunia masih terus ditemukan.
+
+Mapmaker terkenal dapat menjadi selebriti.
+
+PROFESSION SYSTEM
+MONSTER HERDERS
+
+Penggembala monster.
+
+Bukan pemburu.
+
+Mereka mengarahkan migrasi monster.
+
+Mencegah konflik dengan manusia.
+
+Profesi ini sangat umum di Sylvara.
+
+PROFESSION SYSTEM
+RUIN DIVERS
+
+Penjelajah reruntuhan.
+
+Campuran:
+
+arkeolog
+petualang
+pencari harta
+
+Tingkat kematian tinggi.
+
+Tetapi bayarannya besar.
+
+PROFESSION SYSTEM
+BEAST BREEDERS
+
+Peternak monster.
+
+Mengembangbiakkan:
+
+mount
+companion
+monster pekerja
+
+Salah satu profesi paling penting.
+
+PROFESSION SYSTEM
+DREAM INTERPRETERS
+
+Penafsir mimpi.
+
+Separuh psikolog.
+
+Separuh peramal.
+
+Separuh penipu.
+
+Tidak ada yang tahu separuh mana.
+
+PROFESSION SYSTEM
+MEMORY KEEPERS
+
+Profesi unik.
+
+Mengurus:
+
+makam
+monumen
+arsip keluarga
+
+Mereka menjaga nama orang mati.
+
+Sangat cocok dengan tema dunia.
+
+STRANGE PROFESSIONS
+PROFESSIONAL APOLOGIZER
+
+Ada orang yang dibayar untuk meminta maaf.
+
+Biasanya untuk:
+
+bangsawan
+pedagang
+guild
+
+Karena beberapa orang terlalu penting untuk meminta maaf sendiri.
+
+STRANGE PROFESSIONS
+MONSTER THERAPIST
+
+Membantu companion bermasalah.
+
+Kedengarannya lucu.
+
+Tetapi sangat dibutuhkan.
+
+Terutama untuk monster cerdas.
+
+STRANGE PROFESSIONS
+LUCK BROKER
+
+Menjual keberuntungan.
+
+Atau setidaknya mengaku menjual keberuntungan.
+
+Beberapa penipu.
+
+Beberapa ternyata memiliki kemampuan aneh.
+
+STRANGE PROFESSIONS
+PROFESSIONAL MOURNER
+
+Orang yang disewa untuk menangis di pemakaman.
+
+Beberapa tulus.
+
+Beberapa hanya bekerja.
+
+STRANGE PROFESSIONS
+CURSE INSPECTOR
+
+Memeriksa rumah.
+
+Untuk memastikan tidak ada kutukan.
+
+Kadang berguna.
+
+Kadang penipuan.
+
+Kadang keduanya.
+
+DAILY LIFE SYSTEM
+EVERY NPC NEEDS A LIFE
+DECISION
+
+NPC harus punya rutinitas.
+
+REASONING
+
+Kota terasa mati ketika:
+
+NPC berdiri di tempat yang sama
+24 jam sehari.
+CONSEQUENCES
+
+NPC memiliki:
+
+pekerjaan
+rumah
+teman
+kebiasaan
+
+Contoh:
+
+Pagi:
+Toko buka
+
+Siang:
+Makan
+
+Sore:
+Pulang
+
+Malam:
+Pergi ke kedai
+
+Hari libur:
+Mengunjungi keluarga
+
+Festival:
+Mengikuti perayaan
+
+EMOTIONAL TARGET
+
+"Mereka hidup."
+
+THE SMALL STORIES SYSTEM
+DECISION
+
+Tidak semua cerita menjadi quest.
+
+REASONING
+
+Dunia nyata dipenuhi cerita kecil.
+
+Contoh:
+
+pasangan bertengkar
+anak kehilangan mainan
+pedagang bangkrut
+nelayan menemukan benda aneh
+
+Tidak semuanya harus menjadi misi.
+
+Kadang hanya menjadi bagian dunia.
+
+CONSEQUENCES
+
+Pemain dapat menyaksikan kehidupan.
+
+Tanpa harus terlibat.
+
+EMOTIONAL TARGET
+
+"Dunia tidak menungguku."
+
+ECONOMIC LAW
+EVERYTHING COMES FROM SOMEWHERE
+DECISION
+
+Barang harus memiliki asal.
+
+REASONING
+
+Banyak RPG:
+
+Pedagang menjual pedang.
+
+Pertanyaan:
+
+Siapa yang membuatnya?
+
+Tidak ada jawaban.
+
+Aetherion harus punya jawaban.
+
+CONSEQUENCES
+
+Pedang:
+
+Pandai besi.
+
+Pandai besi:
+
+Butuh bijih.
+
+Bijih:
+
+Butuh tambang.
+
+Tambang:
+
+Butuh pekerja.
+
+Pekerja:
+
+Butuh makanan.
+
+Dan seterusnya.
+
+Dunia harus terasa terhubung.
+
+
+---
+
+# CATATAN DIREKTUR
+
+Sekarang kita sudah mulai memiliki:
+
+```text
+Filosofi Dunia
+✓
+
+Ras
+✓
+
+Subculture
+✓
+
+NPC Aneh
+✓
+
+Profesi
+✓
+
+Rutinitas Hidup
+✓
+
+Namun setelah menelaah seluruh diskusi kita, masih ada satu sistem raksasa yang belum terdokumentasi dengan baik:
+
+COMPANION BIBLE
+
+Karena Companion bukan sekadar party member.
+
+Mereka adalah salah satu pilar utama Aetherion.
+
+Dan menurut saya langkah berikutnya adalah:
+
+COMPANION_BIBLE_PART_01
+
+The 50 Great Companions Framework
+
+COMPANION_BIBLE_PART_01
+THE 50 GREAT COMPANIONS FRAMEWORK
+# AETHERION
+# COMPANION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Great Companion Philosophy
+- Companion Categories
+- Companion Lifecycle
+- Companion Influence System
+- Companion Discovery Rules
+
+---
+---
+DESIGN LAW
+COMPANIONS ARE PEOPLE FIRST
+DECISION
+
+Companion bukan party member.
+
+Companion adalah manusia.
+
+(atau makhluk cerdas lain)
+
+REASONING
+
+Masalah Companion di sebagian besar RPG:
+
+Quest
+↓
+Recruit
+↓
+Combat
+↓
+Selesai
+
+Akibatnya mereka terasa seperti equipment.
+
+Padahal Companion harus terasa seperti kehidupan.
+
+CONSEQUENCES
+
+Companion memiliki:
+
+impian
+ketakutan
+trauma
+kebiasaan
+hubungan
+tujuan hidup
+EMOTIONAL TARGET
+
+"Aku peduli pada orang ini."
+
+THE GREAT COMPANION SYSTEM
+
+50 Great Companion adalah karakter yang berpotensi mempengaruhi sejarah.
+
+Penting:
+
+Potensi
+≠
+Takdir
+
+Mereka bisa:
+
+berhasil
+gagal
+mati muda
+hilang
+menjadi legenda
+
+Tidak ada yang dijamin.
+
+REASONING
+
+Jika semuanya sudah ditentukan.
+
+Maka dunia menjadi cerita.
+
+Bukan kehidupan.
+
+CONSEQUENCES
+
+Setiap playthrough dapat menghasilkan sejarah berbeda.
+
+GREAT COMPANION CATEGORIES
+
+Agar tidak semua menjadi petarung.
+
+50 Great Companion dibagi ke berbagai bidang.
+
+CATEGORY 01
+EXPLORERS
+
+Orang yang mengubah peta dunia.
+
+Contoh kontribusi:
+
+menemukan pulau baru
+menemukan reruntuhan
+membuka jalur perdagangan
+
+Jumlah:
+
+6–8 Companion
+
+CATEGORY 02
+WARRIORS
+
+Jenderal.
+
+Ksatria.
+
+Pemburu monster.
+
+Jumlah:
+
+6–8 Companion
+
+CATEGORY 03
+SCHOLARS
+
+Ilmuwan.
+
+Sejarawan.
+
+Pencipta teknologi.
+
+Peneliti sihir.
+
+Jumlah:
+
+6–8 Companion
+
+CATEGORY 04
+LEADERS
+
+Raja.
+
+Pemimpin kota.
+
+Pemimpin faksi.
+
+Jumlah:
+
+6–8 Companion
+
+CATEGORY 05
+REFORMERS
+
+Orang yang mengubah masyarakat.
+
+Contoh:
+
+penghapus perbudakan
+pendiri sekolah
+pembaru hukum
+
+Jumlah:
+
+4–6 Companion
+
+CATEGORY 06
+OUTSIDERS
+
+Kriminal.
+
+Penyelundup.
+
+Bandit.
+
+Penipu.
+
+Jumlah:
+
+4–6 Companion
+
+CATEGORY 07
+MYSTICS
+
+Peramal.
+
+Penafsir mimpi.
+
+Pencari kebenaran.
+
+Jumlah:
+
+4–6 Companion
+
+CATEGORY 08
+WILD CARDS
+
+Tidak bisa dikategorikan.
+
+Mungkin:
+
+kolektor monster
+petani
+penyair
+tukang roti
+
+Tetapi suatu hari mengubah dunia.
+
+Jumlah:
+
+4–6 Companion
+
+REASONING
+
+Sejarah tidak hanya dibentuk pedang.
+
+Kadang sejarah berubah karena:
+
+buku
+lagu
+penemuan
+ide
+COMPANION DISCOVERY LAW
+THEY MUST NOT GATHER TOGETHER
+DECISION
+
+Companion tersebar.
+
+REASONING
+
+Jika seluruh Companion berada di satu tempat.
+
+Dunia terasa kecil.
+
+CONSEQUENCES
+
+Companion harus tersebar pada:
+
+semua benua
+berbagai ras
+berbagai budaya
+berbagai kelas sosial
+EXAMPLES
+
+Companion bisa berupa:
+
+pangeran
+nelayan
+penjaga perpustakaan
+pemburu
+penipu
+
+Pemain tidak boleh langsung tahu siapa yang penting.
+
+EMOTIONAL TARGET
+
+"Aku tidak tahu siapa yang akan menjadi legenda."
+
+COMPANION GROWTH SYSTEM
+DECISION
+
+Companion tumbuh seperti manusia.
+
+REASONING
+
+Growth ≠ Level.
+
+Growth bisa berarti:
+
+lebih berani
+lebih bijak
+lebih egois
+lebih pahit
+lebih baik
+CONSEQUENCES
+
+Dua Companion level sama.
+
+Bisa memiliki perjalanan hidup yang sangat berbeda.
+
+EMOTIONAL TARGET
+
+"Aku melihat dia berubah."
+
+RELATIONSHIP SYSTEM
+DECISION
+
+Companion memiliki hubungan satu sama lain.
+
+REASONING
+
+Banyak RPG membuat semua Companion hanya berhubungan dengan pemain.
+
+Padahal manusia juga berhubungan dengan manusia lain.
+
+CONSEQUENCES
+
+Companion dapat:
+
+berteman
+jatuh cinta
+bermusuhan
+berdebat
+berpisah
+
+bahkan tanpa pemain.
+
+EMOTIONAL TARGET
+
+"Mereka hidup bahkan saat aku tidak melihat."
+
+COMPANION DEATH LAW
+DECISION
+
+Great Companion bisa mati.
+
+REASONING
+
+Jika Companion kebal.
+
+Maka sejarah kehilangan bobot.
+
+CONSEQUENCES
+
+Kematian Companion:
+
+mengubah quest
+mengubah kota
+mengubah faksi
+mengubah sejarah
+EMOTIONAL TARGET
+
+"Kehilangan itu nyata."
+
+THE LEGACY SYSTEM
+DECISION
+
+Companion meninggalkan jejak.
+
+REASONING
+
+Tema utama Aetherion adalah Legacy.
+
+Maka Companion harus meninggalkan warisan.
+
+CONSEQUENCES
+
+Warisan bisa berupa:
+
+sekolah
+buku
+murid
+kerajaan
+teknologi
+cerita rakyat
+
+Bahkan setelah mati.
+
+EMOTIONAL TARGET
+
+"Dia sudah pergi.
+
+Tapi pengaruhnya masih ada."
+
+
+---
+
+# CATATAN DIREKTUR
+
+Sekarang muncul masalah besar berikutnya.
+
+Kita memiliki:
+
+```text
+50 Great Companion
+
+Tetapi belum tahu:
+
+Siapa mereka?
+
+Dan menurut saya ini adalah salah satu bagian terpenting seluruh proyek.
+
+Karena Companion akan menjadi:
+
+wajah dunia
+sumber quest
+sumber konflik
+sumber emosi
+
+Langkah berikutnya bukan membuat sistem baru.
+
+Melainkan mulai mengisi dunia dengan manusia nyata.
+
+Saya menyarankan dokumen berikut:
+
+COMPANION_BIBLE_PART_02
+
+The First 10 Great Companions
+
+FILE 13
+COMPANION_BIBLE_PART_02
+THE FIRST 10 GREAT COMPANIONS
+# AETHERION
+# COMPANION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+The First 10 Great Companions
+
+---
+---
+IMPORTANT DESIGN NOTE
+
+Tidak semua Great Companion harus direkrut.
+
+Tidak semua Great Companion akan menyukai pemain.
+
+Tidak semua Great Companion akan menjadi pahlawan.
+
+Beberapa bahkan bisa menjadi musuh.
+
+Dan itu disengaja.
+
+COMPANION #001
+ARLEN VALE
+Julukan
+
+The Boy Who Wanted The Horizon
+
+Ras
+
+Human
+
+Umur Awal
+
+19
+
+Lokasi Awal
+
+Ashbrook
+
+Greenhollow Valley
+
+Profesi
+
+Kurir
+
+Kepribadian
+
+Sanguinis-Koleris
+
+Big Five
+Openness         85
+
+Conscientious    45
+
+Extraversion     90
+
+Agreeableness    70
+
+Neuroticism      35
+Impian
+
+Melihat seluruh dunia.
+
+Ketakutan
+
+Mati tanpa pernah meninggalkan kampung halaman.
+
+Potensi Sejarah
+
+Dapat menjadi:
+
+penjelajah legendaris
+kartografer dunia
+kapten armada
+orang biasa
+Design Reasoning
+
+Arlen adalah simbol awal petualangan.
+
+COMPANION #002
+ELYN THORNEWOOD
+Julukan
+
+The Keeper of Forgotten Books
+
+Ras
+
+Elf
+
+Umur
+
+134
+
+Lokasi
+
+Perpustakaan tua Sylvara
+
+Profesi
+
+Penjaga Arsip
+
+Kepribadian
+
+Melankolis-Plegmatis
+
+Trauma
+
+Kehilangan sebagian besar koleksi sejarah akibat kebakaran.
+
+Impian
+
+Mengumpulkan kembali sejarah yang hilang.
+
+Potensi Sejarah
+
+Dapat menemukan fakta yang mengubah dunia.
+
+Design Reasoning
+
+Perwujudan tema:
+
+Memory
+COMPANION #003
+TORGRIM IRONVEIN
+Julukan
+
+The Last Great Builder
+
+Ras
+
+Dwarf
+
+Umur
+
+63
+
+Profesi
+
+Arsitek
+
+Kepribadian
+
+Koleris-Melankolis
+
+Filosofi
+Bangunan yang baik harus bertahan lebih lama daripada pembuatnya.
+Impian
+
+Membangun kota yang tidak runtuh selama seribu tahun.
+
+Potensi Sejarah
+
+Mendirikan salah satu kota terbesar dunia.
+
+Design Reasoning
+
+Representasi Legacy melalui konstruksi.
+
+COMPANION #004
+SERAPHINE VOSS
+Julukan
+
+The Woman Who Heard The Stars
+
+Ras
+
+Astralborn
+
+Profesi
+
+Sky Reader
+
+Kepribadian
+
+Melankolis
+
+Kebiasaan
+
+Berbicara kepada langit malam.
+
+Rumor
+
+Katanya bintang menjawab.
+
+Kebenaran
+
+Unknown.
+
+Potensi Sejarah
+
+Dapat memulai gerakan spiritual baru.
+
+Design Reasoning
+
+Wonder.
+
+Mystery.
+
+COMPANION #005
+KAIN BLACKTIDE
+Julukan
+
+The Smiling Smuggler
+
+Ras
+
+Human
+
+Lokasi
+
+Thalassar
+
+Profesi
+
+Penyelundup
+
+Kepribadian
+
+Sanguinis
+
+Kelebihan
+
+Sangat karismatik.
+
+Kekurangan
+
+Tidak bisa dipercaya.
+
+Potensi Sejarah
+
+Dapat menjadi:
+
+raja kriminal
+pahlawan rakyat
+korban pengkhianatan
+Design Reasoning
+
+Companion tidak harus baik.
+
+COMPANION #006
+MAIRA WILLOWSTEP
+Julukan
+
+The Monster Shepherd
+
+Ras
+
+Dryad
+
+Profesi
+
+Penggembala Monster
+
+Kepribadian
+
+Plegmatis
+
+Filosofi
+Monster bukan musuh.
+Mereka hanya berbicara dengan bahasa berbeda.
+Potensi Sejarah
+
+Mengubah hubungan manusia dan monster.
+
+Design Reasoning
+
+Salah satu karakter paling penting untuk sistem monster.
+
+COMPANION #007
+VARKO DRENN
+Julukan
+
+The Fool Who Challenged Death
+
+Ras
+
+Human
+
+Profesi
+
+Pemburu Monster
+
+Kepribadian
+
+Sanguinis-Koleris
+
+Hobi
+
+Menantang makhluk yang jauh lebih kuat.
+
+Rekor
+
+Masih hidup.
+
+Entah bagaimana.
+
+Potensi Sejarah
+
+Masuk Book of Fools.
+
+Atau menjadi legenda.
+
+Design Reasoning
+
+Humor dan keberanian.
+
+COMPANION #008
+NERIAH SALTWIND
+Julukan
+
+The Cartographer of Impossible Seas
+
+Ras
+
+Tidekin
+
+Profesi
+
+Pembuat Peta
+
+Kepribadian
+
+Plegmatis-Melankolis
+
+Impian
+
+Memetakan seluruh dunia.
+
+Masalah
+
+Ia yakin dunia lebih besar daripada semua peta yang ada.
+
+Dan mungkin benar.
+
+Potensi Sejarah
+
+Menemukan benua baru.
+
+Design Reasoning
+
+Eksplorasi.
+
+COMPANION #009
+CAEL MORROW
+Julukan
+
+The Nameless Knight
+
+Ras
+
+Human
+
+Profesi
+
+Ksatria Pengembara
+
+Kepribadian
+
+Koleris-Plegmatis
+
+Misteri
+
+Tidak ada yang tahu nama aslinya.
+
+Bahkan dirinya sendiri.
+
+Potensi Sejarah
+
+Terhubung dengan salah satu misteri terbesar Aetherion.
+
+Design Reasoning
+
+Mystery Character.
+
+COMPANION #010
+LUNA VESPER
+Julukan
+
+The Child Who Remembered Tomorrow
+
+Ras
+
+Shadeborn
+
+Umur
+
+14
+
+Profesi
+
+Tidak ada.
+
+Keanehan
+
+Kadang menceritakan kejadian yang belum terjadi.
+
+Masalah
+
+Tidak semua penglihatannya benar.
+
+Tidak semua penglihatannya salah.
+
+Potensi Sejarah
+
+Salah satu Companion paling berbahaya dalam jangka panjang.
+
+Design Reasoning
+
+Future.
+
+Hope.
+
+Fear.
+
+Wonder.
+
+
+# ANALISIS DIREKTUR
+
+Sekarang mulai terlihat pola yang sehat.
+
+10 Companion pertama sudah mencakup:
+
+```text
+Explorer      ✓
+Scholar       ✓
+Builder       ✓
+Mystic        ✓
+Criminal      ✓
+Monster Ally  ✓
+Warrior       ✓
+Cartographer  ✓
+Knight        ✓
+Prophet       ✓
+
+Artinya kita tidak terjebak dalam kesalahan RPG umum:
+
+50 Companion
+=
+50 Petarung
+
+Tetapi setelah menelaah seluruh diskusi kita, saya melihat ada kekosongan besar yang bahkan lebih penting daripada Companion berikutnya:
+
+FACTION BIBLE
+
+Karena Companion membutuhkan dunia untuk berinteraksi.
+
+Dan dunia membutuhkan organisasi yang menggerakkannya.
+
+Tanpa faksi:
+
+politik tidak hidup
+kriminal tidak hidup
+agama tidak hidup
+ekonomi tidak hidup
+
+Menurut saya langkah paling logis berikutnya adalah:
+
+FACTION_BIBLE_PART_01
+
+The Seven Great Powers of Aetherion
+
+FACTION_BIBLE_PART_01
+THE SEVEN GREAT POWERS OF AETHERION
+# AETHERION
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Major World Powers
+- Political Balance
+- Influence Structure
+- Conflict Engine
+
+---
+---
+DESIGN LAW
+FACTIONS ARE IDEAS WITH ARMIES
+DECISION
+
+Faksi bukan sekumpulan NPC.
+
+Faksi adalah ide.
+
+Ide yang cukup kuat.
+
+Sehingga orang rela:
+
+hidup untuknya
+mati untuknya
+membunuh untuknya
+REASONING
+
+Banyak game membuat faksi seperti:
+
+Guild A
+
+Guild B
+
+Guild C
+
+Lalu bedanya hanya warna baju.
+
+Aetherion tidak boleh seperti itu.
+
+Setiap faksi harus memiliki:
+
+filosofi
+tujuan
+ketakutan
+musuh alami
+kontradiksi internal
+EMOTIONAL TARGET
+
+"Aku mengerti kenapa mereka melakukan ini."
+
+Bahkan jika pemain tidak setuju.
+
+GREAT POWER 01
+THE CHRONICLE ORDER
+Julukan
+
+Keepers of Memory
+
+Pengaruh
+
+Global
+
+Filosofi
+Apa yang tidak dicatat akan mati dua kali.
+Fungsi
+
+Organisasi pencatat sejarah terbesar dunia.
+
+Mereka mengelola:
+
+arsip
+perpustakaan
+catatan kerajaan
+silsilah keluarga
+sejarah perang
+Sisi Terang
+
+Melestarikan pengetahuan.
+
+Sisi Gelap
+
+Kadang memutuskan:
+
+Sejarah mana yang layak diingat.
+Musuh Alami
+
+Nirnama Cult
+
+Pemalsu Sejarah
+
+Design Reasoning
+
+Ini adalah benteng utama melawan pelupaan.
+
+GREAT POWER 02
+THE WAYFARER LEAGUE
+Julukan
+
+The Endless Road
+
+Pengaruh
+
+Seluruh dunia
+
+Filosofi
+Dunia terlalu besar untuk diam di satu tempat.
+Fungsi
+
+Jaringan:
+
+kurir
+pembuat peta
+navigator
+penjelajah
+
+Mereka menghubungkan dunia.
+
+Sisi Terang
+
+Menyebarkan informasi.
+
+Sisi Gelap
+
+Mereka tahu terlalu banyak.
+
+Rumor
+
+Mereka mengetahui lokasi setiap Great Companion.
+
+Tidak pernah dikonfirmasi.
+
+Design Reasoning
+
+Faksi eksplorasi utama.
+
+GREAT POWER 03
+THE MONSTER CONSERVANCY
+Julukan
+
+Voices of the Wild
+
+Filosofi
+Jika monster punah.
+Dunia kehilangan sebagian jiwanya.
+Fungsi
+
+Melindungi:
+
+spesies langka
+jalur migrasi
+habitat monster
+Sisi Terang
+
+Menjaga keseimbangan alam.
+
+Sisi Gelap
+
+Kadang lebih peduli monster daripada manusia.
+
+Konflik Utama
+
+Sering bentrok dengan kerajaan.
+
+Design Reasoning
+
+Konflik moral.
+
+Bukan hitam putih.
+
+GREAT POWER 04
+THE MERCHANT'S CONSTELLATION
+Julukan
+
+The Stars of Coin
+
+Filosofi
+Perdagangan adalah bahasa yang dipahami semua bangsa.
+Fungsi
+
+Aliansi pedagang terbesar.
+
+Mengendalikan:
+
+jalur dagang
+pelabuhan
+pasar besar
+investasi
+Sisi Terang
+
+Menciptakan kemakmuran.
+
+Sisi Gelap
+
+Dapat membeli hampir apa saja.
+
+Termasuk pengaruh politik.
+
+Design Reasoning
+
+Kekuatan ekonomi global.
+
+GREAT POWER 05
+THE ASTRAL OBSERVATORY
+Julukan
+
+Readers of the Sky
+
+Filosofi
+Langit selalu memberi petunjuk.
+Tidak selalu memberi jawaban.
+Fungsi
+
+Pusat:
+
+astronomi
+ramalan
+fenomena langit
+Sisi Terang
+
+Pengetahuan.
+
+Sisi Gelap
+
+Sebagian anggota mulai fanatik terhadap ramalan.
+
+Design Reasoning
+
+Rumah bagi:
+
+peramal
+astrolog
+penafsir mimpi
+
+Yang sebelumnya sudah kita bahas.
+
+GREAT POWER 06
+NETHERDEEP SYNDICATE
+Julukan
+
+The Shadow Nation
+
+Filosofi
+Semua orang memiliki harga.
+Kami hanya lebih jujur.
+Fungsi
+
+Kerajaan kriminal global.
+
+Aktivitas:
+
+penyelundupan
+pemalsuan
+mata-mata
+pembunuhan bayaran
+pasar gelap
+Sisi Terang
+
+Hampir tidak ada.
+
+Namun...
+
+Mereka sering membantu rakyat kecil.
+
+Bila menguntungkan.
+
+Sisi Gelap
+
+Hampir semuanya.
+
+Design Reasoning
+
+Bukan geng jalanan.
+
+Mereka adalah negara bayangan.
+
+GREAT POWER 07
+THE SEEKERS OF THE LAST TRUTH
+Julukan
+
+Truthseekers
+
+Filosofi
+Tidak ada rahasia yang layak dikubur selamanya.
+Fungsi
+
+Mencari:
+
+asal dunia
+asal ras
+misteri Pegasus
+misteri Nirnama
+Sisi Terang
+
+Mencari kebenaran.
+
+Sisi Gelap
+
+Kadang membangunkan sesuatu yang seharusnya tetap tidur.
+
+Design Reasoning
+
+Faksi yang paling dekat dengan misteri utama dunia.
+
+BALANCE OF POWER
+
+Tidak ada faksi yang menguasai dunia.
+
+Dan itu disengaja.
+
+Karena keseimbangan menciptakan cerita.
+
+Jika satu faksi menang total.
+
+Dunia menjadi membosankan.
+
+Hubungan Besar
+Chronicle Order
+        ↑
+        |
+Truthseekers
+        ↓
+
+Astral Observatory
+        ↑
+        |
+Wayfarer League
+
+Merchant Constellation
+        ↔
+Netherdeep Syndicate
+
+Monster Conservancy
+        ↔
+Kerajaan-Kerajaan Dunia
+
+Aliansi dan konflik selalu berubah.
+
+
+# CATATAN DIREKTUR
+
+Sekarang kita memiliki:
+
+```text
+Dunia
+✓
+
+Ras
+✓
+
+Companion
+✓
+
+Profesi
+✓
+
+Subculture
+✓
+
+Faksi Besar
+✓
+
+Tetapi ada satu lubang yang sangat besar.
+
+Dan ini mungkin salah satu dokumen paling penting seluruh proyek:
+
+KINGDOM BIBLE
+
+Karena pemain tidak tinggal di "dunia".
+
+Pemain tinggal di:
+
+kota
+desa
+kerajaan
+wilayah
+
+Saat ini kita punya benua.
+
+Tetapi belum punya negara.
+
+Padahal:
+
+Quest
+Politik
+Perang
+Festival
+Budaya
+Pajak
+Hukum
+
+semuanya lahir dari sana.
+
+Menurut urutan pembangunan game yang benar, langkah berikutnya adalah:
+
+KINGDOM_BIBLE_PART_01
+
+The First Seven Kingdoms of Aurelia
+
+FILE 15
+KINGDOM_BIBLE_PART_01
+THE FIRST SEVEN KINGDOMS OF AURELIA
+# AETHERION
+# KINGDOM BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Aurelia
+- Seven Kingdoms
+- Political Structure
+- Cultural Identity
+- Starting Kingdom
+
+---
+---
+DESIGN LAW
+EVERY KINGDOM MUST FEEL DIFFERENT
+DECISION
+
+Kerajaan tidak boleh hanya berbeda warna bendera.
+
+REASONING
+
+Kesalahan banyak RPG:
+
+Kingdom A
+
+Kingdom B
+
+Kingdom C
+
+Lalu semuanya terasa sama.
+
+Padahal pemain harus bisa langsung merasakan:
+
+Aku sudah berada di negara yang berbeda.
+CONSEQUENCES
+
+Setiap kerajaan wajib memiliki:
+
+filosofi
+budaya
+makanan
+arsitektur
+konflik
+kebanggaan
+kelemahan
+KINGDOM 01
+VALENFORD
+Julukan
+
+The Kingdom of Open Roads
+
+Lokasi
+
+Aurelia Tengah
+
+Status
+
+Starting Kingdom
+
+Filosofi
+Perjalanan adalah guru terbaik.
+Karakteristik
+jalan raya terbaik
+perdagangan aktif
+kota-kota terbuka
+Budaya
+
+Masyarakat menghargai:
+
+petualang
+pedagang
+penjelajah
+Kelemahan
+
+Terlalu terbuka.
+
+Mata-mata mudah masuk.
+
+Design Reasoning
+
+Kerajaan awal harus ramah pemain.
+
+Starting Region
+
+Greenhollow Valley
+
+Ashbrook
+
+berada di sini.
+
+KINGDOM 02
+ROSENHAL
+Julukan
+
+The Kingdom of Flowers and Blades
+
+Filosofi
+Keindahan tanpa kekuatan akan dihancurkan.
+Karakteristik
+seni tinggi
+budaya tinggi
+militer kuat
+Keunikan
+
+Duel legal.
+
+Konflik pribadi sering diselesaikan melalui duel resmi.
+
+Masalah
+
+Banyak bangsawan arogan.
+
+Design Reasoning
+
+Kerajaan elegan namun berbahaya.
+
+KINGDOM 03
+DURNHOLD
+Julukan
+
+The Iron Bastion
+
+Filosofi
+Apa yang bertahan adalah yang layak bertahan.
+Karakteristik
+benteng
+industri
+tambang
+Budaya
+
+Menghormati pekerja keras.
+
+Masalah
+
+Sangat konservatif.
+
+Sulit menerima perubahan.
+
+Design Reasoning
+
+Benteng peradaban Aurelia.
+
+KINGDOM 04
+LUMERIA
+Julukan
+
+The Kingdom of Light
+
+Filosofi
+Pengetahuan adalah bentuk cahaya.
+Karakteristik
+universitas
+perpustakaan
+akademi
+Budaya
+
+Belajar adalah kebanggaan nasional.
+
+Masalah
+
+Kaum intelektual sering meremehkan rakyat biasa.
+
+Design Reasoning
+
+Pusat pendidikan dunia.
+
+KINGDOM 05
+THORNREACH
+Julukan
+
+The Frontier Kingdom
+
+Filosofi
+Jika belum ada jalan.
+Bukalah jalan.
+Karakteristik
+wilayah perbatasan
+eksplorasi
+pemburu monster
+Budaya
+
+Mandiri.
+
+Keras.
+
+Berani.
+
+Masalah
+
+Tingkat kematian tinggi.
+
+Design Reasoning
+
+Wilayah petualang sejati.
+
+KINGDOM 06
+VESKAR
+Julukan
+
+The Merchant Crown
+
+Filosofi
+Uang menghubungkan dunia.
+Karakteristik
+pelabuhan
+perdagangan
+bank
+Budaya
+
+Negosiasi dianggap seni.
+
+Masalah
+
+Korupsi.
+
+Design Reasoning
+
+Kekuatan ekonomi Aurelia.
+
+KINGDOM 07
+ASTRAVEIL
+Julukan
+
+The Veiled Court
+
+Filosofi
+Tidak semua kebenaran perlu diketahui.
+Karakteristik
+diplomasi
+rahasia
+intelijen
+Budaya
+
+Politik sangat kompleks.
+
+Masalah
+
+Tidak ada yang benar-benar percaya satu sama lain.
+
+Design Reasoning
+
+Pusat intrik dunia.
+
+POLITICAL REALITY
+NO KINGDOM IS GOOD
+NO KINGDOM IS EVIL
+DECISION
+
+Tidak ada kerajaan pahlawan.
+
+Tidak ada kerajaan penjahat.
+
+REASONING
+
+Negara adalah kumpulan manusia.
+
+Manusia rumit.
+
+CONSEQUENCES
+
+Semua kerajaan memiliki:
+
+hal baik
+hal buruk
+EXAMPLE
+
+Valenford:
+
+ramah
+terbuka
+mudah disusupi
+kriminal tinggi
+
+Lumeria:
+
+cerdas
+inovatif
+arogan
+elitis
+
+Durnhold:
+
+stabil
+disiplin
+kaku
+lambat berubah
+EMOTIONAL TARGET
+
+Pemain memilih berdasarkan nilai.
+
+Bukan warna baju.
+
+THE REAL POWER STRUCTURE
+
+Banyak orang mengira kerajaan mengendalikan dunia.
+
+Sebenarnya tidak.
+
+Kekuatan dunia dibagi oleh:
+
+Kerajaan
+
+Faksi
+
+Pedagang
+
+Companion
+
+Monster
+
+Rahasia
+
+Dan terkadang.
+
+Rahasia lebih berbahaya daripada tentara.
+
+
+# DESIGN REASONING BESAR
+
+Sekarang kita akhirnya memiliki:
+
+```text
+World
+✓
+
+Continents
+✓
+
+Races
+✓
+
+Subcultures
+✓
+
+Professions
+✓
+
+Companions
+✓
+
+Major Factions
+✓
+
+Kingdoms
+✓
+
+Namun setelah menelaah seluruh fondasi yang sudah dibuat, ada satu sistem yang sebenarnya paling sering ditemui pemain selama 50 jam pertama:
+
+CITY BIBLE
+
+Karena pemain tidak tinggal di kerajaan.
+
+Pemain tinggal di:
+
+kota
+desa
+pelabuhan
+benteng
+pasar
+
+Dan justru di situlah:
+
+quest lahir
+rumor lahir
+companion ditemukan
+kriminal beroperasi
+festival berlangsung
+dunia terasa hidup
+
+Menurut saya langkah berikutnya yang paling bernilai untuk produksi nyata adalah:
+
+CITY_BIBLE_PART_01
+
+10 Kota Terpenting Aurelia
+
+CITY_BIBLE_PART_01
+THE TEN MOST IMPORTANT CITIES OF AURELIA
+# AETHERION
+# CITY BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Major Cities
+- Urban Identity
+- Population Philosophy
+- Economic Functions
+- Companion Distribution
+
+---
+---
+DESIGN LAW
+EVERY CITY NEEDS A SOUL
+DECISION
+
+Kota tidak boleh dibuat hanya sebagai lokasi quest.
+
+REASONING
+
+Kesalahan banyak MMORPG:
+
+Kota = Vendor + Quest Board
+
+Akibatnya semua kota terasa sama.
+
+Padahal pemain harus bisa berkata:
+
+Aku suka kota ini.
+
+atau
+
+Aku benci kota ini.
+
+Berarti kota tersebut berhasil.
+
+CITY 001
+ASHBROOK
+Kingdom
+
+Valenford
+
+Julukan
+
+Town of Gentle Beginnings
+
+Fungsi
+
+Starting Town
+
+Population
+
+1.500
+
+Identitas
+
+Tempat di mana sebagian besar petualangan dimulai.
+
+Aroma Kota
+roti panggang
+kayu basah
+sungai
+NPC Ikonik
+Old Bram
+Lyra
+Spoon Man
+Rumor
+
+White Stag.
+
+Design Goal
+
+Rumah pertama pemain.
+
+CITY 002
+GOLDHAVEN
+Kingdom
+
+Valenford
+
+Julukan
+
+Crossroads of Aurelia
+
+Population
+
+35.000
+
+Identitas
+
+Kota perdagangan terbesar wilayah tengah.
+
+Ciri Khas
+
+Setiap orang berasal dari tempat berbeda.
+
+Aktivitas
+perdagangan
+perjudian
+kontrak petualang
+Masalah
+
+Tingkat kriminalitas tinggi.
+
+Hidden Detail
+
+Netherdeep memiliki pengaruh besar di sini.
+
+Design Goal
+
+Kota tempat pemain pertama kali menyadari dunia jauh lebih besar.
+
+CITY 003
+AURELIS
+Kingdom
+
+Lumeria
+
+Julukan
+
+The City of Ten Thousand Books
+
+Population
+
+52.000
+
+Identitas
+
+Pusat ilmu pengetahuan.
+
+Landmark
+
+Grand Archive.
+
+Aktivitas
+penelitian
+akademi
+debat publik
+Masalah
+
+Kaum akademisi sering meremehkan orang luar.
+
+Design Goal
+
+Membuat pemain merasa kecil di hadapan pengetahuan.
+
+CITY 004
+STONEHEARTH
+Kingdom
+
+Durnhold
+
+Julukan
+
+The City Beneath The Mountain
+
+Population
+
+28.000
+
+Identitas
+
+Pusat industri.
+
+Landmark
+
+Forge District.
+
+Aktivitas
+pandai besi
+tambang
+konstruksi
+Masalah
+
+Polusi.
+
+Design Goal
+
+Memperlihatkan harga kemajuan.
+
+CITY 005
+ROSECOURT
+Kingdom
+
+Rosenhal
+
+Julukan
+
+The Beautiful Knife
+
+Population
+
+22.000
+
+Identitas
+
+Kota seni dan duel.
+
+Aktivitas
+teater
+musik
+duel resmi
+Masalah
+
+Ego bangsawan.
+
+Design Goal
+
+Kota yang tampak indah namun penuh konflik.
+
+CITY 006
+THORNWATCH
+Kingdom
+
+Thornreach
+
+Julukan
+
+Last Wall Before The Wild
+
+Population
+
+12.000
+
+Identitas
+
+Benteng perbatasan.
+
+Aktivitas
+pemburu monster
+penjelajah
+tentara
+Masalah
+
+Monster raid.
+
+Design Goal
+
+Tempat pemain pertama kali memahami bahaya dunia.
+
+CITY 007
+TIDEGATE
+Kingdom
+
+Veskar
+
+Julukan
+
+Harbor of Endless Trade
+
+Population
+
+41.000
+
+Identitas
+
+Pelabuhan terbesar Aurelia.
+
+Aktivitas
+perdagangan laut
+pelayaran
+ekspor
+Masalah
+
+Penyelundupan.
+
+Design Goal
+
+Gerbang menuju benua lain.
+
+CITY 008
+VEILMARK
+Kingdom
+
+Astraveil
+
+Julukan
+
+The City of Whispered Deals
+
+Population
+
+18.000
+
+Identitas
+
+Pusat diplomasi.
+
+Aktivitas
+negosiasi
+mata-mata
+politik
+Masalah
+
+Tidak ada yang percaya siapa pun.
+
+Design Goal
+
+Paranoia.
+
+CITY 009
+HOLLOWSPIRE
+Kingdom
+
+Independent
+
+Julukan
+
+The Forgotten City
+
+Population
+
+Unknown
+
+Identitas
+
+Kota yang tidak muncul pada banyak peta.
+
+Aktivitas
+
+Unknown.
+
+Masalah
+
+Everything.
+
+Design Goal
+
+Mystery City.
+
+Design Rule
+
+Pemain tidak boleh memahami kota ini sepenuhnya.
+
+CITY 010
+SKYREST
+Kingdom
+
+Independent
+
+Julukan
+
+The City Above Clouds
+
+Population
+
+7.000
+
+Identitas
+
+Kota astronom.
+
+Aktivitas
+observasi bintang
+penelitian langit
+ramalan
+Masalah
+
+Sebagian penduduk percaya sesuatu sedang mendekat dari langit.
+
+Design Goal
+
+Wonder.
+
+Fear.
+
+Curiosity.
+
+CITY LAW
+EVERY CITY NEEDS FIVE THINGS
+RULE 1
+
+A Weird Person
+
+Contoh:
+
+Spoon Man
+
+RULE 2
+
+A Local Mystery
+
+Contoh:
+
+White Stag
+
+RULE 3
+
+A Local Festival
+
+Contoh:
+
+Floating Lights Festival
+
+RULE 4
+
+A Local Crime
+
+Contoh:
+
+Penyelundupan Tidegate
+
+RULE 5
+
+A Local Dream
+
+Sesuatu yang ingin dicapai penduduk kota.
+
+Karena kota harus terasa hidup.
+
+DESIGN REASONING
+
+Saat pemain mengingat sebuah kota.
+
+Biasanya bukan karena:
+
+Jumlah NPC
+
+atau
+
+Ukuran Map
+
+Mereka mengingat:
+
+Suasana.
+
+Cerita.
+
+Orang-orangnya.
+
+Karena itu setiap kota wajib memiliki:
+
+orang aneh
+tragedi
+humor
+rahasia
+harapan
+
+Jika salah satu hilang.
+
+Kota akan terasa seperti dekorasi.
+
+
+# CATATAN DIREKTUR BESAR
+
+Sekarang kita sudah memiliki fondasi yang cukup untuk mulai membuat game.
+
+Namun setelah meninjau seluruh percakapan kita dari awal sampai sekarang, ada satu pilar yang masih sangat kurang terdokumentasi dibanding pentingnya:
+
+```text
+MONSTER BIBLE
+
+Padahal monster di Aetherion bukan sekadar musuh.
+
+Mereka adalah:
+
+hewan
+ekosistem
+companion
+legenda
+ancaman
+bagian budaya
+
+Dan ada satu ide yang menurut saya sangat kuat dari diskusi kita yang belum dituangkan penuh:
+
+Monster dapat:
+
+Mutasi
++
+Multi Elemen
++
+Evolusi
++
+Mewariskan sifat
++
+Membentuk sejarah sendiri
+
+Menurut saya langkah berikutnya seharusnya:
+
+MONSTER_BIBLE_PART_01
+
+The Living Creatures of Aetherion
+
+MONSTER_BIBLE_PART_01
+THE LIVING CREATURES OF AETHERION
+# AETHERION
+# MONSTER BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Monster Philosophy
+- Ecology
+- Mutation
+- Evolution
+- Multi Element System
+- Monster Society
+
+---
+---
+DESIGN LAW
+MONSTERS ARE NOT ENEMIES
+DECISION
+
+Monster bukan musuh.
+
+Monster adalah makhluk hidup.
+
+REASONING
+
+Kesalahan terbesar RPG:
+
+Monster
+=
+EXP berjalan
+
+Akibatnya dunia terasa palsu.
+
+Padahal:
+
+serigala tidak bangun pagi untuk menyerang pemain
+burung tidak hidup untuk dijadikan material crafting
+naga tidak ada hanya untuk raid boss
+CONSEQUENCES
+
+Monster harus memiliki:
+
+habitat
+perilaku
+ketakutan
+makanan
+reproduksi
+migrasi
+EMOTIONAL TARGET
+
+"Aku memasuki wilayah mereka."
+
+MONSTER CLASSIFICATION
+CLASS 1
+COMMON CREATURES
+
+Makhluk biasa.
+
+Contoh:
+
+Moss Rabbit
+Barkfox
+Streamling
+
+Peran:
+
+Fondasi ekosistem.
+
+Population
+
+Sangat banyak.
+
+Player Feeling
+
+Dunia hidup.
+
+CLASS 2
+WILD PREDATORS
+
+Pemburu alami.
+
+Contoh:
+
+Stonefang Wolf
+Razorhorn Boar
+Mist Panther
+Peran
+
+Menjaga keseimbangan populasi.
+
+Player Feeling
+
+Bahaya nyata.
+
+CLASS 3
+ANCIENT BEASTS
+
+Makhluk tua.
+
+Sangat tua.
+
+Sebagian lebih tua dari kerajaan.
+
+Contoh
+White Stag
+Ember Leviathan
+Sky Serpent
+Design Rule
+
+Tidak semua dapat dibunuh.
+
+Design Rule
+
+Tidak semua dapat ditangkap.
+
+Player Feeling
+
+Kagum.
+
+CLASS 4
+MYTHICAL CREATURES
+
+Makhluk yang sebagian orang bahkan tidak percaya keberadaannya.
+
+Contoh:
+
+Moon Hare
+Dream Whale
+Ash Phoenix
+Design Goal
+
+Wonder.
+
+CLASS 5
+CALAMITY CREATURES
+
+Bencana hidup.
+
+Jika muncul.
+
+Wilayah berubah.
+
+Contoh:
+
+Void Hydra
+World Eater Worm
+Storm Titan
+Design Goal
+
+Ketakutan.
+
+MONSTER ECOLOGY
+EVERYTHING EATS SOMETHING
+RULE
+
+Semua monster harus masuk rantai makanan.
+
+Example
+Moss Rabbit
+↓
+Barkfox
+↓
+Mist Panther
+↓
+Ancient Predator
+REASONING
+
+Ekosistem menciptakan dunia hidup.
+
+Jika monster muncul sembarangan.
+
+Dunia terasa seperti generator spawn.
+
+MIGRATION SYSTEM
+
+Monster berpindah.
+
+Musim berubah.
+
+Monster berubah lokasi.
+
+Contoh:
+
+Musim Semi
+
+River Turtle
+↓
+Greenhollow
+
+Musim Dingin
+
+River Turtle
+↓
+Southern Marsh
+Consequence
+
+Pemain tidak selalu menemukan monster yang sama.
+
+Emotional Target
+
+Dunia bergerak.
+
+MUTATION SYSTEM
+ONE OF AETHERION'S CORE FEATURES
+DECISION
+
+Monster dapat bermutasi.
+
+REASONING
+
+Dunia hidup harus berubah.
+
+Example
+
+Normal Barkfox
+
+↓
+
+Fire Barkfox
+
+↓
+
+Ash Barkfox
+
+↓
+
+Blazewood Fox
+
+Cause
+lingkungan
+makanan
+cuaca
+energi kuno
+keturunan
+Consequence
+
+Tidak semua Barkfox sama.
+
+Emotional Target
+
+Penemuan.
+
+RARE MUTATION
+
+Kadang mutasi menghasilkan sesuatu yang belum pernah tercatat.
+
+Contoh:
+
+1 dari 50.000
+
+Monster unik.
+
+Mungkin hanya ada satu.
+
+Di seluruh dunia.
+
+Design Goal
+
+Legenda pemain.
+
+MULTI ELEMENT SYSTEM
+NO ELEMENT LIMIT
+DECISION
+
+Monster tidak dibatasi satu elemen.
+
+Examples
+Water
++
+Wind
+
+Stormfin
+
+Earth
++
+Fire
+
+Magma Tortoise
+
+Nature
++
+Light
++
+Water
+
+Bloom Serpent
+
+Shadow
++
+Dream
++
+Void
+
+Nightmare Whale
+
+Design Reasoning
+
+Menciptakan variasi ekstrem.
+
+ELEMENT CATEGORIES
+Basic
+Fire
+Water
+Earth
+Wind
+Nature
+Advanced
+Ice
+Lightning
+Metal
+Poison
+Crystal
+Rare
+Light
+Shadow
+Dream
+Spirit
+Time
+Legendary
+Void
+Star
+Creation
+Memory
+Design Rule
+
+Legendary Elements sangat langka.
+
+EVOLUTION SYSTEM
+EVOLUTION IS NOT LEVEL BASED
+REASONING
+
+Monster berkembang karena kehidupan.
+
+Bukan angka.
+
+Example
+
+Barkfox
+
+↓
+
+hidup di hutan tua
+
+↓
+
+20 tahun
+
+↓
+
+menjadi Elder Barkfox
+
+Barkfox
+
+↓
+
+hidup di area vulkanik
+
+↓
+
+mutasi
+
+↓
+
+Ash Barkfox
+
+Barkfox
+
+↓
+
+terikat dengan pemain
+
+↓
+
+evolusi emosional
+
+↓
+
+Guardian Barkfox
+
+Emotional Target
+
+Ikatan.
+
+INHERITANCE SYSTEM
+
+Anak monster mewarisi:
+
+sifat
+warna
+kecenderungan elemen
+perilaku
+
+Contoh:
+
+Agresif
++
+Cerdas
+
+↓
+
+kemungkinan diwariskan
+
+Design Goal
+
+Breeding yang dalam.
+
+PERSONALITY SYSTEM
+MONSTERS HAVE PERSONALITIES
+
+Monster memiliki:
+
+pemalu
+agresif
+penasaran
+setia
+malas
+rakus
+pemberani
+protektif
+Example
+
+Dua monster spesies sama.
+
+Tetapi:
+
+Monster A
+=
+pemalu
+Monster B
+=
+sangat agresif
+Result
+
+Pengalaman pemain berbeda.
+
+MONSTER CULTURE
+SOME MONSTERS LEARN
+
+Monster cerdas dapat:
+
+membentuk kelompok
+memiliki wilayah
+mengajarkan perilaku
+
+Contoh:
+
+Sky Ravens.
+
+Seekor tua dapat mengajarkan:
+
+rute migrasi
+lokasi makanan
+bahaya manusia
+Design Goal
+
+Monster terasa sebagai spesies.
+
+Bukan objek.
+
+
+# DESIGN REASONING BESAR
+
+Kita baru saja mendefinisikan salah satu pilar terbesar Aetherion:
+
+```text
+Monster
+≠ Musuh
+
+Monster
+= Kehidupan
+
+Namun setelah meninjau seluruh fondasi yang telah dibuat, saya menemukan sesuatu yang bahkan lebih penting untuk gameplay 50 jam pertama:
+
+QUEST BIBLE
+
+Karena sekarang kita sudah punya:
+
+dunia
+kota
+companion
+monster
+kerajaan
+kriminal
+profesi
+
+Tetapi belum punya jawaban untuk:
+
+Apa yang sebenarnya dilakukan pemain
+selama 50 jam pertama?
+
+Dan menurut saya itu harus menjadi dokumen berikutnya:
+
+QUEST_BIBLE_PART_01
+
+The Philosophy of Adventure
+
+
+QUEST_BIBLE_PART_01
+THE PHILOSOPHY OF ADVENTURE
+# AETHERION
+# QUEST BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Quest Philosophy
+- Adventure Design
+- Narrative Structure
+- Living World Quest System
+
+---
+---
+DESIGN LAW
+QUESTS ARE STORIES, NOT TASKS
+DECISION
+
+Quest tidak boleh terasa seperti checklist.
+
+REASONING
+
+Kesalahan terbesar MMORPG:
+
+Bunuh 10 Serigala
+
+Kumpulkan 15 Kayu
+
+Antar Surat
+
+Ambil Barang
+
+Setelah 100 jam.
+
+Pemain lupa semuanya.
+
+Karena mereka bukan cerita.
+
+Mereka hanya pekerjaan.
+
+CONSEQUENCES
+
+Setiap quest harus menjawab minimal satu:
+
+Siapa?
+
+Mengapa?
+
+Apa taruhannya?
+
+Apa yang berubah?
+EMOTIONAL TARGET
+
+"Aku mengingat kisahnya."
+
+Bukan:
+
+"Aku ingat jumlah monster yang kubunuh."
+
+QUEST LAW
+NO ONE THINKS THEY ARE AN NPC
+DECISION
+
+Setiap pemberi quest harus memiliki alasan.
+
+REASONING
+
+Di dunia nyata.
+
+Tidak ada orang yang bangun pagi lalu berkata:
+
+Aku akan menjadi NPC hari ini.
+Example
+
+SALAH:
+
+Halo petualang.
+
+Tolong bunuh 8 serigala.
+
+BENAR:
+
+Dua minggu lalu.
+
+Anakku diserang di jalan hutan.
+
+Aku hanya ingin dia bisa pergi ke sekolah lagi.
+
+Sekarang quest punya emosi.
+
+QUEST TIERS
+
+Aetherion memiliki 5 tingkatan quest.
+
+TIER 1
+SMALL LIFE STORIES
+
+Quest paling umum.
+
+Contoh:
+
+anak kehilangan anjing
+petani kehilangan panen
+pasangan bertengkar
+nelayan kehilangan kapal
+Reward
+
+Kecil.
+
+Impact
+
+Kecil.
+
+Emotional Value
+
+Tinggi.
+
+Design Goal
+
+Membuat dunia hidup.
+
+TIER 2
+LOCAL STORIES
+
+Mempengaruhi:
+
+desa
+kota
+komunitas
+
+Contoh:
+
+kriminal lokal
+festival kota
+monster mengganggu perdagangan
+Impact
+
+Regional.
+
+Design Goal
+
+Membuat pemain merasa berguna.
+
+TIER 3
+COMPANION STORIES
+
+Quest yang berhubungan dengan Companion.
+
+Biasanya:
+
+trauma
+impian
+keluarga
+masa lalu
+Impact
+
+Karakter berkembang.
+
+Design Goal
+
+Ikatan emosional.
+
+TIER 4
+FACTION STORIES
+
+Quest yang melibatkan:
+
+kerajaan
+guild
+organisasi
+Impact
+
+Politik.
+
+Ekonomi.
+
+Kekuasaan.
+
+Design Goal
+
+Dunia terasa bergerak.
+
+TIER 5
+WORLD STORIES
+
+Quest terbesar.
+
+Mempengaruhi sejarah.
+
+Impact
+
+Global.
+
+Design Goal
+
+Legacy.
+
+DESIGN LAW
+THE BEST QUESTS START SMALL
+REASONING
+
+Pemain lebih peduli:
+
+Satu anak kehilangan ayahnya
+
+daripada:
+
+Dunia akan hancur dalam 10 menit.
+
+Karena lebih manusiawi.
+
+Example
+
+Anak kehilangan ayah.
+
+↓
+
+Ayah ternyata penjelajah.
+
+↓
+
+Penjelajah menemukan reruntuhan.
+
+↓
+
+Reruntuhan menyimpan rahasia.
+
+↓
+
+Rahasia mengubah kerajaan.
+
+Quest besar lahir dari cerita kecil.
+
+THE RUMOR SYSTEM
+DECISION
+
+Tidak semua quest muncul di quest log.
+
+REASONING
+
+Dunia terasa lebih hidup.
+
+Example
+
+Pemain mendengar:
+
+Katanya ada rusa putih di hutan.
+
+Tidak ada marker.
+
+Tidak ada panah.
+
+Tidak ada quest.
+
+Hanya rumor.
+
+Jika pemain tertarik.
+
+Ia mencari.
+
+Jika tidak.
+
+Dunia tetap berjalan.
+
+Emotional Target
+
+Penemuan.
+
+THE FAILURE SYSTEM
+DECISION
+
+Quest bisa gagal.
+
+REASONING
+
+Jika semua quest pasti sukses.
+
+Tidak ada ketegangan.
+
+Example
+
+Anak hilang.
+
+Pemain terlalu lama.
+
+Anak ditemukan oleh orang lain.
+
+Quest berubah.
+
+Bukan game over.
+
+Tetapi cerita berubah.
+
+Emotional Target
+
+Pilihan memiliki konsekuensi.
+
+THE FORGOTTEN QUESTS
+DECISION
+
+Beberapa quest sengaja tidak memiliki akhir jelas.
+
+REASONING
+
+Kehidupan tidak selalu memberikan jawaban.
+
+Example
+
+Pemain mengejar:
+
+The Man Who Walks Backwards
+
+Selama 200 jam.
+
+Masih belum tahu alasannya.
+
+Dan mungkin tidak akan pernah tahu.
+
+Design Goal
+
+Mystery.
+
+Wonder.
+
+QUEST CHAIN SYSTEM
+DECISION
+
+Quest dapat berkembang selama bertahun-tahun.
+
+Example
+
+Quest Awal:
+
+Membantu petani memperbaiki pagar.
+
+10 jam kemudian:
+
+Serigala muncul.
+
+30 jam kemudian:
+
+Ditemukan sarang monster.
+
+70 jam kemudian:
+
+Monster bermigrasi.
+
+150 jam kemudian:
+
+Ancient Beast terbangun.
+
+Design Goal
+
+Dunia terasa terhubung.
+
+THE HERO TRAP
+DESIGN RULE
+
+Pemain tidak selalu menjadi tokoh utama.
+
+REASONING
+
+Kadang Companion menyelesaikan masalah.
+
+Kadang kerajaan menyelesaikan masalah.
+
+Kadang pemain terlambat.
+
+Emotional Target
+
+Dunia tidak berputar mengelilingi pemain.
+
+QUEST TYPES UNIQUE TO AETHERION
+MEMORY QUESTS
+
+Mengumpulkan:
+
+kenangan
+surat
+catatan
+cerita keluarga
+
+Bukan loot.
+
+Tetapi sejarah.
+
+LEGACY QUESTS
+
+Membantu seseorang meninggalkan warisan.
+
+Contoh:
+
+menyelesaikan buku
+membangun sekolah
+menanam pohon
+
+Hasilnya baru terlihat puluhan jam kemudian.
+
+WONDER QUESTS
+
+Quest yang mungkin tidak memiliki reward.
+
+Hanya pengalaman.
+
+Contoh:
+
+Mengikuti White Stag.
+
+Menonton hujan meteor.
+
+Mendengar lagu kuno.
+
+FOOL QUESTS
+
+Quest yang terdengar bodoh.
+
+Contoh:
+
+Membantu Spoon Man menemukan sendok ke-10.000.
+
+Namun bisa berkembang menjadi sesuatu yang mengejutkan.
+
+QUEST DESIGN FORMULA
+
+Setiap quest utama harus mengandung minimal:
+
+1 Manusia
+
+1 Konflik
+
+1 Misteri
+
+1 Konsekuensi
+
+1 Harapan
+
+Karena pada akhirnya.
+
+Aetherion bukan tentang menyelamatkan dunia.
+
+Aetherion adalah tentang:
+
+Orang-orang.
+
+Cerita mereka.
+
+Dan jejak yang mereka tinggalkan.
+CATATAN DIREKTUR
+
+Dengan dokumen ini kita akhirnya memiliki:
+
+✓ Dunia
+✓ Benua
+✓ Ras
+✓ Companion
+✓ Kota
+✓ Kerajaan
+✓ Faksi
+✓ Monster
+✓ Profesi
+✓ Quest Philosophy
+
+Namun masih ada satu sistem yang menjadi jantung jangka panjang Aetherion dan berkaitan langsung dengan tema utama dunia:
+
+LEGACY SYSTEM
+MEMORY SYSTEM
+CHRONICLE SYSTEM
+
+Karena seluruh filosofi Aetherion pada akhirnya bermuara pada satu pertanyaan:
+
+"Setelah seseorang pergi, apa yang tersisa?"
+
+Dan menurut saya itu harus menjadi dokumen besar berikutnya:
+
+CHRONICLE_BIBLE_PART_01
+
+The Memory of the World
+
+CHRONICLE_BIBLE_PART_01
+THE MEMORY OF THE WORLD
+# AETHERION
+# CHRONICLE BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Memory System
+- Legacy System
+- Historical Recording
+- World Chronicle
+- Player Legacy
+
+---
+---
+CORE PHILOSOPHY
+WHAT REMAINS?
+
+Jika ada satu pertanyaan yang mendefinisikan seluruh Aetherion.
+
+Maka itu adalah:
+
+Apa yang tersisa setelah seseorang pergi?
+
+Bukan:
+
+Seberapa kuat dia?
+
+Bukan:
+
+Berapa levelnya?
+
+Tetapi:
+
+Apa yang dia tinggalkan?
+
+Karena seluruh dunia dibangun di atas jejak orang yang sudah tidak ada.
+
+THE CHRONICLE
+THE MEMORY OF THE WORLD
+
+Chronicle bukan buku.
+
+Chronicle adalah sistem.
+
+Jaringan catatan terbesar di dunia.
+
+Dikelola oleh:
+
+Chronicle Order
+Memory Keepers
+Scholar
+Archivists
+
+Tujuan:
+
+Mengingat.
+
+Filosofi
+Apa yang diingat akan hidup lebih lama.
+THE THREE DEATHS
+
+Menurut Chronicle.
+
+Seseorang mati tiga kali.
+
+Death 1
+
+Biological Death
+
+Tubuh berhenti hidup.
+
+Death 2
+
+Social Death
+
+Tidak ada lagi yang menyebut namanya.
+
+Death 3
+
+Historical Death
+
+Tidak ada catatan bahwa ia pernah ada.
+
+Inilah kematian terbesar.
+
+Design Reasoning
+
+Sangat selaras dengan tema Aetherion.
+
+LEGACY SCORE
+DECISION
+
+Dunia diam-diam menghitung pengaruh.
+
+Tetapi bukan dalam bentuk angka yang dilihat pemain.
+
+REASONING
+
+Kita tidak ingin:
+
+Legacy +5
+
+Karena merusak imersi.
+
+Sebaliknya.
+
+Dunia mengingat secara organik.
+
+Example
+
+Pemain membangun jembatan.
+
+20 jam kemudian.
+
+Pedagang menggunakan jembatan itu.
+
+50 jam kemudian.
+
+Desa berkembang.
+
+100 jam kemudian.
+
+Peta resmi berubah.
+
+150 jam kemudian.
+
+Anak-anak belajar bahwa:
+
+Jembatan itu dibangun oleh seseorang.
+
+Mungkin nama pemain.
+
+Mungkin tidak.
+
+MEMORY SYSTEM
+PEOPLE REMEMBER DIFFERENTLY
+DECISION
+
+Tidak semua NPC mengingat hal yang sama.
+
+REASONING
+
+Manusia bias.
+
+Example
+
+Pemain menyelamatkan kota.
+
+Penduduk:
+
+Pahlawan.
+
+Bangsawan:
+
+Ancaman politik.
+
+Kriminal:
+
+Masalah baru.
+
+Pedagang:
+
+Peluang bisnis.
+Consequence
+
+Satu tindakan.
+
+Banyak interpretasi.
+
+FALSE HISTORY
+DECISION
+
+Sejarah dapat salah.
+
+REASONING
+
+Dunia nyata juga demikian.
+
+Example
+
+Fakta:
+
+Companion menyelamatkan kota.
+
+100 tahun kemudian:
+
+Raja menyelamatkan kota.
+
+Karena catatan diubah.
+
+Design Goal
+
+Kebenaran dan sejarah tidak selalu sama.
+
+THE MEMORY KEEPERS
+
+Kelompok yang telah kita buat sebelumnya.
+
+Kini menjadi sangat penting.
+
+Tugas mereka:
+
+menjaga makam
+mencatat nama
+melestarikan cerita kecil
+
+Mereka percaya:
+
+Tidak ada kehidupan yang terlalu kecil untuk diingat.
+THE NAMELESS GRAVEYARDS
+
+Ada makam.
+
+Ribuan.
+
+Tanpa nama.
+
+Di seluruh dunia.
+
+Sebagian besar:
+
+korban perang
+korban bencana
+pengembara
+Quest Type
+
+Pemain dapat membantu:
+
+menemukan identitas
+menghubungi keluarga
+mencatat nama
+Reward
+
+Sering kali tidak ada.
+
+Selain mengetahui seseorang akhirnya diingat.
+
+WORLD MEMORY EVENTS
+DECISION
+
+Dunia mencatat peristiwa besar.
+
+Example
+
+Jika naga menyerang kota.
+
+Chronicle mencatat:
+
+Tanggal
+
+Lokasi
+
+Korban
+
+Penyebab
+
+Lalu tersimpan permanen.
+
+Consequence
+
+Sejarah dunia terus bertambah.
+
+THE BOOK OF FOOLS
+
+Salah satu buku paling populer.
+
+Berisi:
+
+keputusan bodoh
+kegagalan legendaris
+petualang nekat
+
+Contoh:
+
+Pria mencoba menunggangi naga.
+
+Gagal.
+Design Goal
+
+Humor dunia.
+
+THE BOOK OF WONDERS
+
+Mencatat:
+
+fenomena aneh
+monster unik
+tempat misterius
+
+Banyak isinya belum terverifikasi.
+
+Dan itu disengaja.
+
+PLAYER CHRONICLE
+DECISION
+
+Pemain tidak hanya membaca Chronicle.
+
+Pemain juga menulisnya.
+
+REASONING
+
+Tema utama dunia adalah Legacy.
+
+Maka pemain harus meninggalkan jejak.
+
+Example
+
+Pemain:
+
+menemukan spesies baru
+membangun kota
+menyelamatkan Companion
+mengubah kerajaan
+
+Semua dapat masuk Chronicle.
+
+THE GOLDEN RULE
+THE PAST CANNOT BE ERASED
+DECISION
+
+Ini hukum fundamental Aetherion.
+
+REASONING
+
+Kita pernah membahasnya.
+
+Dan ini harus menjadi salah satu aturan tertinggi dunia.
+
+LAW
+Masa lalu tidak dapat dihapus.
+
+Masa lalu tidak dapat ditulis ulang.
+
+Masa lalu hanya dapat dipahami.
+CONSEQUENCE
+
+Tidak ada:
+
+time travel rewrite
+reset sejarah
+menghapus kejadian
+
+Apa yang terjadi.
+
+Sudah terjadi.
+
+THE SILVER RULE
+THE FUTURE IS UNKNOWN
+LAW
+Masa depan tidak ada yang tahu.
+
+Bahkan para peramal.
+
+Karena jika masa depan pasti.
+
+Maka pilihan tidak berarti.
+
+Consequence
+
+Ramalan adalah kemungkinan.
+
+Bukan kepastian.
+
+DESIGN REASONING BESAR
+
+Sekarang kita akhirnya menemukan jantung Aetherion:
+
+Monster
+bukan tentang combat.
+
+Companion
+bukan tentang party.
+
+Quest
+bukan tentang reward.
+
+Dunia
+bukan tentang eksplorasi.
+
+Semuanya sebenarnya tentang:
+
+Memory
+
+Legacy
+
+Wonder
+
+Tiga pilar utama Aetherion.
+
+
+CURRENT PROJECT STATUS
+
+FOUNDATION PROGRESS
+
+World Philosophy      ✓
+Continents            ✓
+Races                 ✓
+Kingdoms              ✓
+Cities                ✓
+Companions            ✓
+Factions              ✓
+Living World          ✓
+Monster Ecology       ✓
+Quest Philosophy      ✓
+Chronicle System      ✓
+
+Estimated Foundation Completion:
+≈ 40–45%
+
+CATATAN DIREKTUR
+
+Setelah menelaah SELURUH dokumentasi yang sudah kita buat sampai saat ini, ada satu sistem yang sebenarnya akan menentukan apakah game ini bertahan 20 jam atau 2.000 jam:
+
+DYNAMIC WORLD SYSTEM
+
+Karena saat ini dunia kita masih statis.
+
+Kita sudah punya:
+
+kerajaan
+monster
+companion
+kriminal
+sejarah
+
+Tetapi belum menjawab:
+
+Apa yang terjadi jika pemain tidak melakukan apa-apa?
+
+Menurut saya dokumen paling penting berikutnya adalah:
+
+DYNAMIC_WORLD_BIBLE_PART_01
+
+The World That Moves Without The Player
+
+DYNAMIC_WORLD_BIBLE_PART_01
+THE WORLD THAT MOVES WITHOUT THE PLAYER
+# AETHERION
+# DYNAMIC WORLD BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Autonomous World
+- Dynamic Simulation
+- Companion Progression
+- Political Change
+- Living History
+
+---
+---
+THE MOST IMPORTANT RULE IN AETHERION
+THE WORLD DOES NOT WAIT
+DECISION
+
+Dunia bergerak.
+
+Dengan atau tanpa pemain.
+
+REASONING
+
+Kesalahan terbesar RPG modern:
+
+Bandit menyerang desa.
+
+↓
+
+Menunggu pemain.
+
+↓
+
+10 tahun kemudian.
+
+↓
+
+Masih menunggu pemain.
+
+Konyol.
+
+Dunia hidup tidak bekerja seperti itu.
+
+CONSEQUENCE
+
+Semua hal memiliki timeline.
+
+EMOTIONAL TARGET
+
+"Aku terlambat."
+
+atau
+
+"Aku datang tepat waktu."
+
+Bukan:
+
+Quest Available Forever
+WORLD TIME SYSTEM
+TIME IS A FORCE
+DECISION
+
+Waktu adalah mekanik utama.
+
+REASONING
+
+Sebagian besar game:
+
+Waktu
+=
+Dekorasi
+
+Di Aetherion:
+
+Waktu
+=
+Kekuatan Dunia
+EXAMPLES
+
+1 Minggu
+
+↓
+
+Harga gandum berubah
+
+1 Bulan
+
+↓
+
+Monster migrasi
+
+6 Bulan
+
+↓
+
+Companion pindah kota
+
+2 Tahun
+
+↓
+
+Raja meninggal
+
+10 Tahun
+
+↓
+
+Kerajaan berubah
+
+Design Goal
+
+Menciptakan sejarah hidup.
+
+THE WORLD CLOCK
+
+Dunia memiliki jam global.
+
+Bukan hanya:
+
+siang
+malam
+
+Tetapi:
+
+musim
+tahun
+era
+Consequence
+
+Setiap NPC.
+
+Setiap Companion.
+
+Setiap kerajaan.
+
+Mengalami waktu.
+
+COMPANION AUTONOMY SYSTEM
+COMPANIONS HAVE THEIR OWN LIVES
+DECISION
+
+Companion tidak menunggu pemain.
+
+REASONING
+
+Jika pemain mengabaikan Arlen.
+
+Arlen tetap hidup.
+
+Tetap bermimpi.
+
+Tetap membuat keputusan.
+
+Example
+
+Year 1
+
+Arlen
+=
+Kurir
+
+Year 3
+
+Arlen
+=
+Penjelajah
+
+Year 7
+
+Arlen
+=
+Kartografer terkenal
+
+Atau:
+
+Arlen
+=
+Meninggal di laut
+Emotional Target
+
+Kehidupan nyata.
+
+COMPANION NETWORK SYSTEM
+
+Companion saling bertemu.
+
+Tanpa pemain.
+
+Example
+
+Maira bertemu Neriah.
+
+↓
+
+Mereka menjadi teman.
+
+↓
+
+Membuat ekspedisi.
+
+↓
+
+Menemukan pulau baru.
+
+Pemain mungkin bahkan tidak hadir.
+
+Consequence
+
+Sejarah terbentuk secara alami.
+
+POLITICAL EVOLUTION
+KINGDOMS CHANGE
+DECISION
+
+Kerajaan tidak statis.
+
+Example
+
+Valenford.
+
+Year 1:
+
+Damai
+
+Year 8:
+
+Krisis ekonomi
+
+Year 12:
+
+Pergantian raja
+
+Year 18:
+
+Reformasi besar
+Design Goal
+
+Dunia berkembang.
+
+ECONOMIC EVOLUTION
+
+Harga berubah.
+
+Perdagangan berubah.
+
+Rute berubah.
+
+Example
+
+Tambang runtuh.
+
+↓
+
+Produksi logam turun.
+
+↓
+
+Harga senjata naik.
+
+↓
+
+Bandit meningkat.
+
+↓
+
+Tentara melemah.
+
+↓
+
+Kerajaan terganggu.
+
+Design Goal
+
+Semua sistem terhubung.
+
+THE RUMOR PROPAGATION SYSTEM
+DECISION
+
+Rumor menyebar.
+
+Example
+
+Pemain mengalahkan monster langka.
+
+Hari 1:
+
+5 orang tahu.
+
+Hari 10:
+
+1 kota tahu.
+
+Hari 50:
+
+3 kerajaan tahu.
+
+Hari 100:
+
+Versi ceritanya berubah.
+
+Result
+
+Legenda lahir.
+
+THE FALSE RUMOR SYSTEM
+
+Tidak semua rumor benar.
+
+Example
+
+Kenyataan:
+
+Pemain menyelamatkan pedagang.
+
+Rumor:
+
+Pemain membunuh naga.
+
+Rumor lain:
+
+Pemain adalah naga.
+Design Goal
+
+Dunia terasa manusiawi.
+
+THE SUCCESSION SYSTEM
+EVERYONE DIES
+DECISION
+
+Orang tua akhirnya meninggal.
+
+REASONING
+
+Jika semua NPC abadi.
+
+Dunia membeku.
+
+Consequence
+
+Raja mati.
+
+↓
+
+Penerus naik.
+
+↓
+
+Kebijakan berubah.
+
+↓
+
+Sejarah berubah.
+
+Emotional Target
+
+Generasi berganti.
+
+THE BIRTH SYSTEM
+DECISION
+
+Anak-anak tumbuh.
+
+Example
+
+Anak umur 8 tahun.
+
+↓
+
+10 tahun berlalu.
+
+↓
+
+Menjadi dewasa.
+
+Design Goal
+
+Pemain merasakan waktu.
+
+THE LEGEND SYSTEM
+DECISION
+
+Orang biasa bisa menjadi legenda.
+
+Example
+
+Petani.
+
+↓
+
+Menyelamatkan desa.
+
+↓
+
+Menjadi pahlawan lokal.
+
+↓
+
+Namanya masuk Chronicle.
+
+Design Goal
+
+Dunia tidak hanya milik Companion.
+
+THE FALL SYSTEM
+DECISION
+
+Legenda bisa jatuh.
+
+Example
+
+Pahlawan terkenal.
+
+↓
+
+Korup.
+
+↓
+
+Dibenci rakyat.
+
+↓
+
+Patung dihancurkan.
+
+Design Goal
+
+Sejarah tidak selalu naik.
+
+THE WORLD EVENTS SYSTEM
+
+Dunia secara periodik menciptakan peristiwa.
+
+Kategori:
+
+Natural
+badai
+kekeringan
+migrasi monster
+Political
+perang
+kudeta
+aliansi
+Economic
+krisis
+boom perdagangan
+Cultural
+festival besar
+penemuan karya seni
+Mysterious
+komet
+fenomena langit
+munculnya Ancient Beast
+Consequence
+
+Tidak ada dua playthrough yang identik.
+
+THE ABSENCE SYSTEM
+SOMETIMES NOTHING HAPPENS
+DESIGN RULE
+
+Tidak semua minggu harus penting.
+
+REASONING
+
+Jika setiap hari ada krisis.
+
+Maka krisis menjadi normal.
+
+Consequence
+
+Kadang:
+
+Tidak ada apa-apa.
+
+Dan justru itu membuat peristiwa besar terasa besar.
+
+WORLD LAW
+THE PLAYER IS IMPORTANT
+BUT NOT CENTRAL
+DECISION
+
+Pemain dapat mengubah dunia.
+
+Tetapi dunia tidak berputar mengelilingi pemain.
+
+REASONING
+
+Kita ingin:
+
+Aku mempengaruhi dunia.
+
+Bukan:
+
+Aku adalah dunia.
+Emotional Target
+
+Rasa memiliki.
+
+Bukan rasa menguasai.
+
+# DESIGN REASONING BESAR
+
+Sekarang fondasi Aetherion mulai menunjukkan identitas uniknya.
+
+Sebagian besar RPG memiliki:
+
+Combat
++
+Loot
++
+Quest
+
+---
+
+Aetherion memiliki:
+
+Memory
++
+Legacy
++
+Wonder
++
+Living World
+
+---
+
+Dan setelah meninjau seluruh dokumentasi yang sudah ada, saya menemukan satu pilar terakhir yang belum benar-benar kita pecahkan:
+
+THE PLAYER
+
+Karena kita sudah membangun:
+
+✓ Dunia
+✓ Ras
+✓ Kerajaan
+✓ Kota
+✓ Monster
+✓ Companion
+✓ Chronicle
+✓ Dynamic World
+
+Tetapi kita belum menjawab:
+
+"Siapa sebenarnya pemain?"
+
+Apakah:
+
+- orang biasa?
+- orang terpilih?
+- reinkarnasi?
+- petualang?
+- seseorang tanpa masa lalu?
+- seseorang yang membangun legacy?
+
+Dokumen berikutnya seharusnya:
+
+PLAYER_BIBLE_PART_01
+
+The Place of The Player in Aetherion
+
+Karena keputusan itu akan menentukan seluruh desain gameplay, progression, multiplayer, roleplay, dan ending dunia.
+
+PLAYER_BIBLE_PART_01
+THE PLACE OF THE PLAYER IN AETHERION
+# AETHERION
+# PLAYER BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Player Philosophy
+- Player Identity
+- Character Origin
+- Relationship to the World
+- Role in History
+
+---
+---
+THE BIGGEST QUESTION
+WHO IS THE PLAYER?
+
+Ini adalah salah satu keputusan paling penting seluruh proyek.
+
+Karena jika salah.
+
+Seluruh filosofi dunia runtuh.
+
+Karena kita sudah memutuskan:
+
+Dunia bergerak sendiri.
+
+Companion hidup sendiri.
+
+Sejarah berjalan sendiri.
+
+Maka pemain tidak boleh menjadi:
+
+The Chosen One
+
+Karena akan bertabrakan dengan semua fondasi yang sudah kita buat.
+
+DESIGN LAW
+THE PLAYER IS NOT THE CHOSEN ONE
+DECISION
+
+Pemain bukan penyelamat dunia yang diramalkan.
+
+Pemain bukan dewa.
+
+Pemain bukan reinkarnasi pahlawan.
+
+Pemain bukan keturunan rahasia yang ditakdirkan.
+
+REASONING
+
+Sudah terlalu sering dilakukan.
+
+Dan bertentangan dengan tema:
+
+Legacy
+
+Karena Legacy lebih menarik ketika:
+
+Orang biasa
+
+↓
+
+melakukan hal luar biasa.
+Emotional Target
+
+"Aku membangun arti hidupku sendiri."
+
+THE PLAYER ORIGIN
+THE UNKNOWN LIFE
+DECISION
+
+Pemain memulai sebagai orang biasa.
+
+Namun asal-usul dipilih pemain.
+
+Contoh:
+
+anak petani
+anak pedagang
+kurir
+pemburu
+pelayan kapal
+murid akademi
+penggembala monster
+yatim piatu
+mantan kriminal kecil
+Design Goal
+
+Roleplay.
+
+Consequence
+
+Dunia bereaksi berbeda.
+
+THE FIRST GREAT TRUTH
+THE WORLD DOES NOT KNOW YOU
+DECISION
+
+Saat permainan dimulai.
+
+Tidak ada yang peduli pada pemain.
+
+REASONING
+
+Kita ingin rasa pertumbuhan nyata.
+
+Year 1
+Tidak dikenal.
+Year 5
+Beberapa orang mengenalmu.
+Year 20
+Mungkin menjadi legenda.
+Emotional Target
+
+Perjalanan.
+
+Bukan status gratis.
+
+THE SECOND GREAT TRUTH
+THE PLAYER CAN FAIL
+DECISION
+
+Pemain tidak selalu menjadi pemenang.
+
+Example
+
+Pemain gagal menyelamatkan kota.
+
+Kota tetap hancur.
+
+Dunia berlanjut.
+
+Example
+
+Pemain gagal merekrut Companion.
+
+Companion tetap hidup.
+
+Hanya tidak bersama pemain.
+
+Emotional Target
+
+Pilihan memiliki bobot.
+
+THE THIRD GREAT TRUTH
+THE PLAYER'S GREATEST POWER
+
+IS ATTENTION
+
+REASONING
+
+Dalam Aetherion.
+
+Kekuatan terbesar pemain bukan pedang.
+
+Bukan sihir.
+
+Bukan level.
+
+Melainkan:
+
+Perhatian.
+
+Karena dunia sangat besar.
+
+Pemain tidak bisa menyelamatkan semuanya.
+
+Tidak bisa melihat semuanya.
+
+Tidak bisa mengenal semua Companion.
+
+Tidak bisa menyelesaikan semua misteri.
+
+Consequence
+
+Apa yang dipilih pemain untuk diperhatikan.
+
+Menjadi cerita mereka.
+
+THE LIFE PATH SYSTEM
+DECISION
+
+Pemain secara perlahan membentuk identitas.
+
+Bukan memilih class permanen.
+
+Example
+
+Banyak menjelajah:
+
+↓
+
+Explorer
+
+Banyak meneliti:
+
+↓
+
+Scholar
+
+Banyak berdagang:
+
+↓
+
+Merchant
+
+Banyak berburu monster:
+
+↓
+
+Hunter
+
+Banyak membantu orang:
+
+↓
+
+Guardian
+
+Design Goal
+
+Identitas tumbuh dari tindakan.
+
+Bukan menu karakter.
+
+THE REPUTATION SYSTEM
+DIFFERENT PEOPLE SEE DIFFERENT YOU
+Example
+
+Pedagang melihat:
+
+Pahlawan perdagangan.
+
+Kriminal melihat:
+
+Gangguan.
+
+Monster Conservancy melihat:
+
+Pelindung alam.
+
+Kerajaan melihat:
+
+Ancaman politik.
+Consequence
+
+Tidak ada reputasi tunggal.
+
+THE LEGACY SYSTEM
+THE PLAYER WRITES HISTORY
+DECISION
+
+Pemain dapat meninggalkan jejak.
+
+Tetapi tidak wajib.
+
+Example
+
+Pemain dapat:
+
+membangun sekolah
+mendirikan guild
+menemukan pulau
+melatih murid
+menyelamatkan spesies monster
+menulis buku
+
+Atau tidak melakukan apa-apa.
+
+Design Goal
+
+Kebebasan.
+
+THE LONELINESS LAW
+DECISION
+
+Tidak semua Companion akan tinggal.
+
+Tidak semua teman akan bertahan.
+
+Tidak semua hubungan berhasil.
+
+REASONING
+
+Kehidupan nyata seperti itu.
+
+Consequence
+
+Companion dapat:
+
+pindah
+menikah
+meninggal
+berubah tujuan hidup
+Emotional Target
+
+Kehilangan.
+
+THE FINAL QUESTION
+WHAT WILL BE WRITTEN ABOUT YOU?
+
+Ketika karakter mati.
+
+Chronicle tidak bertanya:
+
+Berapa levelmu?
+
+Chronicle bertanya:
+
+Apa yang kau tinggalkan?
+
+Dan itulah inti seluruh Aetherion.
+
+# DESIGN REASONING BESAR
+
+Dengan dokumen ini, fondasi filosofis Aetherion hampir lengkap.
+
+Namun setelah menelaah seluruh proyek, saya melihat satu sistem raksasa yang belum tersentuh sama sekali:
+
+SOCIETY BIBLE
+
+Karena kita sudah punya:
+
+✓ Raja
+✓ Kerajaan
+✓ Kota
+✓ Profesi
+
+Tetapi belum punya:
+
+- keluarga
+- pernikahan
+- perceraian
+- adopsi
+- persahabatan
+- cinta
+- konflik sosial
+- pendidikan
+- kemiskinan
+- kelas sosial mendalam
+- budaya sehari-hari
+
+Padahal pemain akan menghabiskan lebih banyak waktu dengan manusia daripada monster.
+
+Menurut saya langkah berikutnya yang sangat penting adalah:
+
+SOCIETY_BIBLE_PART_01
+
+The People of Aetherion
+
+Karena dunia menjadi hidup bukan saat naga terbang.
+
+Dunia menjadi hidup saat seorang ayah pulang terlambat dan anaknya menunggu di depan rumah.
+
+Progress estimasi saat ini: sekitar 55–60% fondasi dunia utama sudah terdokumentasi. Yang belum besar antara lain:
+
+Society Bible
+Religion & Belief Bible
+Family & Relationship Systems
+Crime & Underground Bible
+Education & Knowledge Bible
+War & Military Bible
+Ocean & Exploration Bible
+Ancient History Bible
+Endgame & Era Progression Bible
+Multiplayer/Social Design (jika memang MMO)
+
+Dan menurut saya, Society Bible memang prioritas berikutnya karena akan mempengaruhi hampir semua NPC, Companion, kota, quest, dan Chronicle yang sudah kita bangun.
+
+SOCIETY_BIBLE_PART_01
+THE PEOPLE OF AETHERION
+# AETHERION
+# SOCIETY BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Family
+- Friendship
+- Love
+- Social Structure
+- Daily Human Life
+- Human Problems
+
+---
+---
+DESIGN LAW
+PEOPLE ARE THE REAL CONTENT
+DECISION
+
+Monster penting.
+
+Companion penting.
+
+Quest penting.
+
+Tetapi manusia biasa adalah isi dunia.
+
+REASONING
+
+Pemain mungkin hanya bertemu:
+
+50 Great Companions
+
+Tetapi akan bertemu:
+
+ribuan NPC biasa
+
+Jika NPC biasa terasa mati.
+
+Maka dunia terasa mati.
+
+EMOTIONAL TARGET
+
+"Orang-orang ini hidup."
+
+FAMILY SYSTEM
+THE MOST IMPORTANT ORGANIZATION
+DECISION
+
+Faksi pertama manusia bukan kerajaan.
+
+Keluarga.
+
+REASONING
+
+Sebelum:
+
+kerajaan
+agama
+guild
+
+Manusia mengenal keluarga terlebih dahulu.
+
+CONSEQUENCES
+
+Setiap NPC penting memiliki:
+
+Ayah
+
+Ibu
+
+Saudara
+
+Anak
+
+Atau ketiadaan mereka
+
+Karena kehilangan keluarga juga membentuk manusia.
+
+FAMILY TYPES
+Nuclear Family
+
+Ayah
+
+Ibu
+
+Anak
+
+Extended Family
+
+Kakek
+
+Nenek
+
+Paman
+
+Bibi
+
+Sepupu
+
+Single Parent
+
+Sangat umum.
+
+Adoptive Family
+
+Juga umum.
+
+Found Family
+
+Kelompok yang bukan keluarga darah.
+
+Tetapi terasa seperti keluarga.
+
+Sangat penting untuk Companion.
+
+Design Goal
+
+Hubungan manusia lebih penting daripada garis keturunan.
+
+FRIENDSHIP SYSTEM
+FRIENDSHIP CHANGES PEOPLE
+DECISION
+
+Persahabatan dapat mengubah hidup.
+
+Example
+
+Seorang anak pemalu.
+
+↓
+
+Berteman dengan anak berani.
+
+↓
+
+Menjadi lebih percaya diri.
+
+Consequence
+
+NPC dapat berkembang.
+
+Emotional Target
+
+Pertumbuhan.
+
+CHILDHOOD FRIENDS
+
+Beberapa hubungan terkuat.
+
+Banyak Companion harus memiliki:
+
+teman masa kecil
+rival masa kecil
+cinta pertama
+
+Karena itu menciptakan sejarah pribadi.
+
+RIVALRY SYSTEM
+
+Tidak semua konflik adalah kebencian.
+
+Contoh:
+
+Dua pandai besi.
+
+Saling bersaing.
+
+Saling menghormati.
+
+Atau:
+
+Dua penjelajah.
+
+Berlomba menemukan benua baru.
+Design Goal
+
+Konflik yang sehat.
+
+LOVE SYSTEM
+LOVE IS NOT A REWARD
+DECISION
+
+Romansa bukan hadiah.
+
+REASONING
+
+Kesalahan banyak RPG:
+
+Quest selesai
+
+↓
+
+Romance unlocked
+
+Tidak alami.
+
+CONSEQUENCE
+
+Hubungan membutuhkan:
+
+waktu
+kepercayaan
+pengalaman bersama
+Emotional Target
+
+Hubungan terasa manusiawi.
+
+DIFFERENT TYPES OF LOVE
+Romantic Love
+
+Pasangan.
+
+Familial Love
+
+Keluarga.
+
+Friendship Love
+
+Persahabatan mendalam.
+
+Mentorship Love
+
+Guru dan murid.
+
+Devotion
+
+Kepada ide.
+
+Agama.
+
+Negara.
+
+Design Goal
+
+Cinta tidak selalu romantis.
+
+MARRIAGE SYSTEM
+DECISION
+
+Pernikahan adalah bagian masyarakat.
+
+Bukan sekadar fitur.
+
+CONSEQUENCE
+
+NPC dapat:
+
+menikah
+bertunangan
+bercerai
+menjadi duda/janda
+
+Tanpa campur tangan pemain.
+
+Emotional Target
+
+Waktu berjalan.
+
+EDUCATION SYSTEM
+EVERY SOCIETY TEACHES SOMETHING
+DECISION
+
+Pendidikan berbeda tiap wilayah.
+
+Example
+
+Lumeria
+
+↓
+
+Akademik
+
+Thornreach
+
+↓
+
+Survival
+
+Veskar
+
+↓
+
+Perdagangan
+
+Durnhold
+
+↓
+
+Keahlian teknis
+
+Consequence
+
+Budaya membentuk generasi.
+
+LITERACY SYSTEM
+
+Tidak semua orang bisa membaca.
+
+Reasoning
+
+Lebih realistis.
+
+Consequence
+
+Surat.
+
+Buku.
+
+Peta.
+
+Menjadi lebih berharga.
+
+Design Goal
+
+Pengetahuan terasa penting.
+
+POVERTY SYSTEM
+NOT EVERYONE SUCCEEDS
+DECISION
+
+Kemiskinan ada.
+
+REASONING
+
+Dunia tanpa kesulitan ekonomi terasa palsu.
+
+Consequence
+
+Muncul:
+
+pengemis
+pekerja kasar
+anak jalanan
+pengungsi
+Design Goal
+
+Dunia terasa nyata.
+
+THE DIGNITY RULE
+LAW
+
+Orang miskin bukan dekorasi.
+
+CONSEQUENCE
+
+Mereka memiliki:
+
+mimpi
+keluarga
+cerita
+
+Sama seperti semua orang.
+
+Emotional Target
+
+Empati.
+
+ELDER SYSTEM
+OLD PEOPLE MATTER
+DECISION
+
+Orang tua bukan NPC latar.
+
+REASONING
+
+Mereka adalah penyimpan memori dunia.
+
+Consequence
+
+Mereka dapat:
+
+menceritakan sejarah
+menyimpan rahasia
+mengingat Companion muda
+Design Goal
+
+Masa lalu terasa hidup.
+
+FESTIVAL SYSTEM
+PEOPLE NEED REASONS TO CELEBRATE
+DECISION
+
+Setiap kota memiliki festival.
+
+REASONING
+
+Banyak RPG hanya memiliki perang.
+
+Padahal manusia juga:
+
+menari
+bernyanyi
+merayakan
+Examples
+
+Festival Cahaya Terapung
+
+Festival Panen
+
+Festival Langit Musim Dingin
+
+Festival Penjelajah
+
+Emotional Target
+
+Kehidupan.
+
+GRIEF SYSTEM
+PEOPLE NEED REASONS TO CRY
+DECISION
+
+Duka harus terlihat.
+
+Example
+
+Seorang nelayan meninggal.
+
+Keluarga berduka.
+
+Teman kehilangan rekan.
+
+Kedai menjadi lebih sepi.
+
+Design Goal
+
+Kematian memiliki bobot.
+
+THE ORDINARY HEROES
+DECISION
+
+Tidak semua pahlawan membawa pedang.
+
+Examples
+guru desa
+dokter keliling
+penjaga mercusuar
+petani yang memberi makan kota
+tukang roti yang memberi makan yatim
+Design Goal
+
+Kepahlawanan sehari-hari.
+
+THE MOST IMPORTANT RULE
+EVERY NPC WANTS SOMETHING
+LAW
+
+Setiap NPC penting harus memiliki:
+
+1 Keinginan
+
+1 Ketakutan
+
+1 Penyesalan
+
+1 Harapan
+Example
+
+Pandai Besi:
+
+Keinginan:
+Membuat karya terbaik.
+
+Ketakutan:
+Anaknya terluka di tambang.
+
+Penyesalan:
+Bertengkar dengan ayahnya.
+
+Harapan:
+Toko diwariskan ke generasi berikutnya.
+
+Result
+
+NPC terasa manusia.
+
+# DESIGN REASONING BESAR
+
+Sekarang Aetherion mulai memiliki manusia.
+
+Bukan hanya karakter.
+
+Manusia.
+
+---
+
+Namun setelah meninjau seluruh diskusi kita, saya menemukan satu pilar besar yang terus muncul berulang kali:
+
+Peramal
+
+Pencari Kebenaran
+
+Pembaca Masa Depan
+
+Kultus
+
+Kepercayaan
+
+Makna Hidup
+
+Kematian
+
+---
+
+Dan semuanya mengarah ke satu dokumen:
+
+RELIGION_BIBLE_PART_01
+
+Faith, Belief, and Meaning
+
+Karena manusia tidak hanya hidup untuk makan.
+
+Mereka hidup untuk sesuatu yang mereka percayai.
+
+Dan sering kali, apa yang mereka percayai lebih kuat daripada apa yang benar.
+CATATAN DIREKTUR
+
+Jika saya mengaudit seluruh proyek sampai titik ini:
+
+World Foundation         ✓
+Kingdoms                 ✓
+Cities                   ✓
+Companions               ✓
+Factions                 ✓
+Monsters                 ✓
+Quest Design             ✓
+Chronicle                ✓
+Dynamic World            ✓
+Player Philosophy        ✓
+Society                  ✓
+
+
+
+===========================================================================================
+
+KINGDOM_BIBLE_PART_01
+THE REALM OF MEN
+# AETHERION
+# KINGDOM BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Settlement Growth
+- Domain System
+- Autonomous Expansion
+- Stability
+- Kingdom Identity
+
+---
+---
+DESIGN LAW
+A KINGDOM IS A LIVING ORGANISM
+DECISION
+
+Kerajaan bukan bangunan.
+
+Kerajaan bukan wilayah.
+
+Kerajaan adalah makhluk hidup.
+
+REASONING
+
+Sebuah kerajaan:
+
+lahir
+tumbuh
+sakit
+berubah
+runtuh
+
+Sama seperti manusia.
+
+THE FIRST FIRE
+EVERY KINGDOM BEGINS SMALL
+
+Tidak ada kerajaan yang langsung besar.
+
+Semuanya dimulai dari:
+
+Api unggun.
+
+Kemudian:
+
+Api Unggun
+↓
+Camp
+↓
+Homestead
+↓
+Village
+↓
+Town
+↓
+City
+↓
+Kingdom
+Design Goal
+
+Pemain melihat sejarah terbentuk.
+
+STAGE 1
+CAMP
+
+Jumlah Penduduk:
+
+1 - 20
+
+Masih bergantung penuh pada pemain.
+
+Contoh:
+
+tenda
+gudang kecil
+api unggun
+Threat
+monster
+cuaca
+kelaparan
+STAGE 2
+HOMESTEAD
+
+Jumlah Penduduk:
+
+20 - 100
+
+Mulai muncul:
+
+petani
+pemburu
+penebang
+
+NPC mulai membantu pekerjaan.
+
+Tetapi masih membutuhkan arahan.
+
+STAGE 3
+VILLAGE
+
+Jumlah Penduduk:
+
+100 - 1000
+
+Mulai muncul:
+
+pasar
+sekolah kecil
+pandai besi
+IMPORTANT
+
+NPC mulai mengambil keputusan sederhana.
+
+Contoh:
+
+Petani membuat gudang.
+
+Tanpa diperintah.
+
+STAGE 4
+TOWN
+
+Jumlah Penduduk:
+
+1000 - 10000
+
+Mulai muncul:
+
+guild
+penjaga kota
+pemerintahan lokal
+
+NPC mulai mengusulkan proyek.
+
+Contoh:
+
+Penduduk ingin membangun pasar baru.
+
+Pemain dapat:
+
+mendukung
+menolak
+mengabaikan
+STAGE 5
+CITY
+
+Jumlah Penduduk:
+
+10000+
+
+Ekonomi mulai kompleks.
+
+Mulai muncul:
+
+politik
+kriminal terorganisir
+konflik sosial
+
+Kota dapat berkembang tanpa pemain.
+
+STAGE 6
+KINGDOM
+
+Kerajaan bukan kota besar.
+
+Kerajaan adalah:
+
+Jaringan wilayah.
+
+Terdiri dari:
+
+kota
+desa
+benteng
+pelabuhan
+tambang
+Consequence
+
+Setiap wilayah memiliki kebutuhan berbeda.
+
+AUTONOMOUS EXPANSION SYSTEM
+THE WORLD BUILDS ITSELF
+DECISION
+
+NPC dapat memperluas wilayah sendiri.
+
+Example
+
+Desa Timur kekurangan lahan.
+
+6 bulan kemudian.
+
+Muncul laporan:
+
+Penduduk Desa Timur
+mendirikan pemukiman baru
+di Lembah Elara.
+
+Pemain tidak memerintah.
+
+Dunia mengambil keputusan.
+
+Emotional Target
+
+Dunia hidup.
+
+THE FIVE PILLARS
+
+Setiap wilayah memiliki lima nilai utama.
+
+Prosperity
+
+Kemakmuran.
+
+Stability
+
+Kestabilan sosial.
+
+Security
+
+Keamanan.
+
+Loyalty
+
+Kesetiaan rakyat.
+
+Ecology
+
+Keseimbangan alam.
+
+Design Goal
+
+Tidak ada strategi sempurna.
+
+EXAMPLE
+
+Kerajaan Militer
+
+Prosperity : Tinggi
+Security   : Sangat Tinggi
+Loyalty    : Sedang
+Stability  : Rendah
+Ecology    : Rendah
+
+Risiko:
+
+pemberontakan
+kerusakan alam
+konflik internal
+EXAMPLE
+
+Kerajaan Hijau
+
+Prosperity : Sedang
+Security   : Sedang
+Loyalty    : Tinggi
+Stability  : Tinggi
+Ecology    : Sangat Tinggi
+
+Risiko:
+
+pertumbuhan lambat
+
+Keuntungan:
+
+lebih tahan krisis
+KINGDOM PERSONALITY
+REALMS DEVELOP CHARACTER
+
+Kerajaan memiliki kepribadian.
+
+Bukan hanya pemain.
+
+Contoh:
+
+Benevolent Realm
+
+Sering membantu rakyat.
+
+Iron Dominion
+
+Militeristik.
+
+Merchant Confederacy
+
+Berorientasi perdagangan.
+
+Celestial Kingdom
+
+Fokus ilmu pengetahuan.
+
+Wild Realm
+
+Hidup berdampingan dengan monster.
+
+Design Goal
+
+Tidak ada dua kerajaan yang identik.
+
+THE FINAL LAW
+A KINGDOM IS NEVER FINISHED
+
+Kerajaan selalu berubah.
+
+Selalu berkembang.
+
+Selalu menghadapi masalah baru.
+
+Karena kerajaan yang sempurna:
+
+Tidak hidup.
+
+### CATATAN DIREKTUR
+
+Dokumen berikutnya yang paling penting bukan War atau Religion.
+
+Melainkan:
+
+```text
+MONSTER_BIBLE_PART_02
+
+Taming
+Breeding
+Mutation
+Fusion
+Monster Society
+
+Karena semakin jelas bahwa monster bukan fitur sampingan.
+
+Monster adalah setengah dari identitas Aetherion.
+
+
+MONSTER_BIBLE_PART_02
+TAMING, BREEDING, MUTATION, FUSION
+# AETHERION
+# MONSTER BIBLE PART 02
+
+Status:
+LOCKED
+
+Scope:
+
+- Taming System
+- Monster Loyalty
+- Breeding
+- Mutation
+- Fusion
+- Monster Civilization
+
+---
+---
+DESIGN LAW
+MONSTERS ARE NOT ITEMS
+DECISION
+
+Monster bukan equipment.
+
+Monster bukan collectible.
+
+Monster bukan angka statistik.
+
+Monster adalah makhluk hidup.
+
+REASONING
+
+Kesalahan banyak game:
+
+Monster
+=
+Pet Lucu
+
+atau
+
+Monster
+=
+Senjata Bergerak
+
+Di Aetherion:
+
+Monster
+=
+Makhluk hidup
+
+Mereka memiliki:
+
+insting
+sifat
+ketakutan
+preferensi
+kebiasaan
+EVERY MONSTER IS DIFFERENT
+DECISION
+
+Dua monster spesies sama belum tentu identik.
+
+Contoh:
+
+Dua Flame Wolf.
+
+Yang pertama:
+
+Agresif
+Dominan
+Berani
+
+Yang kedua:
+
+Penakut
+Setia
+Protektif
+Design Goal
+
+Monster terasa hidup.
+
+TAMING SYSTEM
+TRUST BEFORE CONTROL
+DECISION
+
+Menjinakkan monster bukan skill.
+
+Tetapi hubungan.
+
+Example
+
+Pemain menyelamatkan anak monster.
+
+↓
+
+Induk mulai percaya.
+
+↓
+
+Monster mendekat.
+
+↓
+
+Ikatan terbentuk.
+
+Alternative
+
+Pemain menangkap monster.
+
+↓
+
+Monster takut.
+
+↓
+
+Monster patuh.
+
+↓
+
+Tetapi tidak percaya.
+
+Consequence
+
+Dua monster bisa sama-sama dijinakkan.
+
+Namun perilakunya berbeda.
+
+LOYALTY SYSTEM
+
+Monster memiliki:
+
+Trust
+Respect
+Fear
+Bond
+
+Keempatnya berbeda.
+
+Example
+
+Fear tinggi.
+
+Trust rendah.
+
+Monster tetap menurut.
+
+Tetapi bisa kabur.
+
+Example
+
+Trust tinggi.
+
+Fear rendah.
+
+Monster rela melindungi pemain.
+
+Emotional Goal
+
+Persahabatan.
+
+MONSTER PERSONALITY
+
+Setiap monster memiliki sifat.
+
+Contoh:
+
+penasaran
+rakus
+malas
+agresif
+protektif
+pemalu
+setia
+pemberani
+pendendam
+ceria
+Consequence
+
+Monster menciptakan cerita.
+
+Contoh:
+
+Seekor Slime kecil.
+
+Tidak kuat.
+
+Tetapi selalu mengikuti pemain.
+
+100 jam kemudian.
+
+Menjadi simbol perjalanan.
+
+THE TAMER PHILOSOPHY
+DECISION
+
+Tamer bukan summoner.
+
+REASONING
+
+Summoner:
+
+Panggil.
+
+Gunakan.
+
+Selesai.
+
+Tamer:
+
+Kenal.
+
+Rawat.
+
+Latih.
+
+Tumbuh bersama.
+Design Goal
+
+Hubungan.
+
+BREEDING SYSTEM
+LIFE CREATES POSSIBILITY
+DECISION
+
+Monster dapat berkembang biak.
+
+REASONING
+
+Dunia hidup.
+
+Maka populasi juga hidup.
+
+Example
+
+2 Flame Wolf.
+
+↓
+
+Melahirkan anak.
+
+↓
+
+Anak memiliki sifat berbeda.
+
+Result
+
+Tidak ada monster yang identik.
+
+GENETIC TRAITS
+
+Monster mewarisi:
+
+warna
+ukuran
+elemen
+sifat
+kemampuan khusus
+Example
+
+Ayah:
+
+Api
+
+Ibu:
+
+Angin
+
+Anak:
+
+Api
++
+Angin
+
+Atau salah satunya.
+
+MULTI ELEMENT SYSTEM
+ELEMENTS CAN MIX
+DECISION
+
+Monster dapat memiliki lebih dari satu elemen.
+
+Examples
+
+Api + Angin
+
+↓
+
+Inferno
+
+Air + Es
+
+↓
+
+Frost Tide
+
+Petir + Cahaya
+
+↓
+
+Storm Radiance
+
+Tanah + Kegelapan
+
+↓
+
+Abyss Earth
+
+Consequence
+
+Variasi hampir tak terbatas.
+
+MUTATION SYSTEM
+EVOLUTION IS UNPREDICTABLE
+DECISION
+
+Monster dapat bermutasi.
+
+Trigger
+umur
+lingkungan
+makanan
+energi kuno
+boss encounter
+fenomena dunia
+Example
+
+Flame Wolf.
+
+↓
+
+Hidup di gunung vulkanik.
+
+↓
+
+20 tahun.
+
+↓
+
+Mutasi.
+
+↓
+
+Magma Wolf.
+
+Design Goal
+
+Eksplorasi selalu menarik.
+
+RARE MUTATIONS
+
+Sebagian mutasi sangat langka.
+
+Misalnya:
+
+1 dari 100.000
+
+Dapat menciptakan spesies baru.
+
+Chronicle Impact
+
+Jika ditemukan.
+
+Dapat dicatat sebagai penemuan baru.
+
+WORLD DISCOVERY
+PLAYERS CAN DISCOVER SPECIES
+DECISION
+
+Tidak semua spesies diketahui dunia.
+
+Example
+
+Pemain menemukan:
+
+Void Stag
+
+Belum pernah dicatat.
+
+Consequence
+
+Nama pemain masuk Chronicle.
+
+FUSION SYSTEM
+TWO SOULS, ONE FORM
+DECISION
+
+Fusion adalah ikatan tertinggi.
+
+Bukan skill biasa.
+
+REASONING
+
+Fusion harus terasa spesial.
+
+Requirement
+
+Trust tinggi.
+
+Bond tinggi.
+
+Pengalaman bersama tinggi.
+
+Design Goal
+
+Hadiah emosional.
+
+FUSION TYPES
+TYPE 1
+
+Combat Fusion
+
+Durasi pendek.
+
+Statistik meningkat.
+
+Skill gabungan terbuka.
+
+Example
+
+Player
+
+Lion Beast
+
+↓
+
+Lionheart Form
+
+TYPE 2
+
+Spiritual Fusion
+
+Durasi lebih lama.
+
+Membuka kemampuan spesies.
+
+Example
+
+Player
+
+Sky Drake
+
+↓
+
+Kemampuan meluncur.
+
+TYPE 3
+
+Legend Fusion
+
+Sangat langka.
+
+Menyatu sempurna.
+
+Dapat mengubah jalur hidup karakter.
+
+Design Goal
+
+Momen legendaris.
+
+MONSTER CIVILIZATION
+SOME MONSTERS THINK
+DECISION
+
+Tidak semua monster liar.
+
+Sebagian memiliki budaya.
+
+Sebagian memiliki masyarakat.
+
+Examples
+
+Raven Scholars
+
+↓
+
+Mengumpulkan pengetahuan.
+
+Stone Giants
+
+↓
+
+Menjaga reruntuhan kuno.
+
+Ocean Serpents
+
+↓
+
+Menjaga wilayah laut tertentu.
+
+Consequence
+
+Monster tidak selalu musuh.
+
+THE ANCIENT BEASTS
+
+Berbeda dari monster biasa.
+
+Mereka hampir menjadi kekuatan alam.
+
+Contoh:
+
+naga
+leviathan
+phoenix
+world turtle
+Important
+
+Jumlah sangat sedikit.
+
+Naga:
+
+10 spesies
+
+5 individu per spesies
+
+≈ 50 total
+
+Melihat naga adalah peristiwa sejarah.
+
+THE FINAL LAW
+EVERY MONSTER HAS A STORY
+
+Monster terbaik bukan:
+
+Yang paling kuat.
+
+Tetapi:
+
+Yang paling berarti.
+
+Karena seekor monster yang menemani pemain selama 500 jam.
+
+Sering kali lebih berharga daripada Ancient Beast terkuat.
+
+
+DESIGN REASONING BESAR
+
+Sekarang mulai terlihat jelas:
+
+Companion
+=
+Setengah dunia manusia
+
+Monster
+=
+Setengah dunia liar
+
+---
+
+Namun ada satu pertanyaan yang mulai muncul.
+
+Jika monster dapat:
+
+- berkembang biak
+- bermutasi
+- memiliki budaya
+- memiliki masyarakat
+
+Maka muncul pertanyaan moral terbesar di Aetherion:
+
+Apakah monster adalah hewan?
+
+Ataukah mereka adalah bangsa?
+
+---
+
+Dokumen berikutnya:
+
+MONSTER_BIBLE_PART_03
+
+Monster Intelligence
+Monster Rights
+Monster Kingdoms
+Ancient Beasts
+The Monster-Human Conflict
+
+Karena keputusan itu akan menentukan seluruh politik, agama, perang, dan sejarah dunia.
+
+
+DECISION LOCK #020
+MONSTER ≠ BEASTMEN
+
+Banyak dunia fantasy mencampur dua konsep ini.
+
+Padahal sebenarnya berbeda.
+
+BEASTMEN
+
+Contoh:
+
+Catfolk
+Wolfkin
+Foxfolk
+Rabbitfolk
+Lizardfolk
+
+Mereka adalah:
+
+Ras manusia.
+
+Ciri-ciri:
+
+memiliki negara
+memiliki budaya
+memiliki keluarga
+memiliki hukum
+memiliki sejarah
+
+Mereka lahir sebagai masyarakat.
+
+Mereka termasuk:
+
+Civilized Races
+
+Walaupun penampilannya hewan.
+
+MONSTER
+
+Monster adalah kategori berbeda.
+
+Mereka berasal dari:
+
+Monster Ecology
+
+bukan
+
+Civilized Society
+
+Monster dapat:
+
+berkembang
+berevolusi
+bermutasi
+beradaptasi
+
+Tetapi tidak otomatis menjadi ras manusia.
+
+MONSTER INTELLIGENCE SPECTRUM
+LEVEL 0
+
+Instinct Beasts
+
+Contoh:
+
+Slime biasa
+Wild Boar
+Cave Rat
+
+Perilaku:
+
+Makan
+Tidur
+Berkembang biak
+Bertahan hidup
+
+Setara hewan.
+
+LEVEL 1
+
+Cunning Monsters
+
+Contoh:
+
+Dire Wolf
+Thorn Panther
+Ember Raptor
+
+Mampu:
+
+berburu kelompok
+membuat strategi sederhana
+mengingat ancaman
+
+Setara predator cerdas.
+
+LEVEL 2
+
+Awakened Monsters
+
+Contoh:
+
+Elder Treant
+Crystal Serpent
+Ancient Raven
+
+Mulai mampu:
+
+memahami bahasa sederhana
+mengenali individu
+memiliki preferensi pribadi
+
+Sudah memiliki kepribadian.
+
+LEVEL 3
+
+Sapient Monsters
+
+Contoh:
+
+Raven Scholar
+Moon Stag Elder
+Tide Oracle Whale
+
+Mampu:
+
+berpikir abstrak
+memiliki filosofi
+memiliki budaya
+
+Mereka sudah mendekati manusia.
+
+LEVEL 4
+
+Monster Civilization
+
+Contoh:
+
+Dragon Courts
+Leviathan Clans
+Ancient Phoenix Circle
+
+Memiliki:
+
+sejarah
+tradisi
+politik
+wilayah
+
+Ini bukan lagi hewan.
+
+Ini bangsa.
+
+LEVEL 5
+
+Transcendent Creatures
+
+Contoh:
+
+Ancient Dragons
+World Turtle
+Celestial Beasts
+
+Kecerdasan bisa melampaui manusia.
+
+Mereka melihat dunia berbeda.
+
+Mungkin bahkan tidak memahami konsep negara.
+
+Karena umur mereka ribuan tahun.
+
+MONSTERMEN
+
+Sekarang masuk kategori yang Anda tambahkan.
+
+MONSTERMEN
+
+Bukan Beastmen.
+
+Bukan Monster biasa.
+
+Mereka adalah:
+
+Monster yang berevolusi menjadi bentuk humanoid.
+
+Contoh:
+
+Spider Queen
+
+Awalnya:
+
+Giant Cave Spider
+
+Ribuan tahun.
+
+↓
+
+Evolusi.
+
+↓
+
+Humanoid.
+
+↓
+
+Spider Queen.
+
+Masih monster.
+
+Tetapi dapat:
+
+berbicara
+memimpin
+membangun wilayah
+MONSTERMEN VS BEASTMEN
+
+Ini harus jelas.
+
+Beastman
+Ras.
+
+Lahir humanoid.
+
+Monsterman
+Monster.
+
+Menjadi humanoid setelah evolusi.
+
+Contoh:
+
+Wolfkin
+
+Beastman.
+
+Punya ayah.
+
+Punya ibu.
+
+Punya kerajaan.
+
+Fenrir Lord
+
+Monster.
+
+Awalnya serigala.
+
+Menjadi humanoid setelah ribuan tahun.
+
+Dua hal berbeda.
+
+KONSEKUENSI BESAR
+
+Sekarang muncul konflik menarik.
+
+Manusia berkata:
+
+Monster itu monster.
+
+Tetapi ada Monsterman yang berkata:
+
+Kalau aku bisa berpikir,
+mencintai,
+bermimpi,
+dan memilih...
+
+apa bedaku dengan kalian?
+
+Dan ini membuka salah satu konflik moral terbesar Aetherion.
+
+FILE BERIKUTNYA
+MONSTER_BIBLE_PART_03
+THE MONSTER QUESTION
+
+Topik:
+
+Hak Monster
+Kerajaan Monster
+Monster Religion
+Monster Society
+Monster-Human War
+Intelligent Monster Politics
+Ancient Beast Hierarchy
+Dragon Courts
+Monster Nations
+
+ECISION LOCK #021
+INTELLIGENT MONSTERS ARE NOT COMPANIONS
+REASONING
+
+Companion adalah:
+
+Orang.
+
+Mereka memiliki:
+
+ambisi
+pekerjaan
+tujuan hidup
+keluarga
+konflik sosial
+
+Sedangkan monster cerdas tetap:
+
+Monster.
+
+Walaupun mereka dapat:
+
+berbicara
+berpikir
+berdebat
+memiliki budaya
+
+Mereka berasal dari dunia yang berbeda.
+
+WHAT THEY BECOME
+MONSTER PARTNERS
+
+Kategori baru.
+
+Contoh:
+
+Ancient Treant
+
+Tidak menjadi Companion.
+
+Tetapi bisa menjadi:
+
+Ancient Partner
+Dragon Sage
+
+Tidak masuk slot Companion.
+
+Tetapi masuk:
+
+Legendary Monster Bond
+HUMAN FORM
+MONSTERS CAN ASSUME HUMANOID FORMS
+
+Ini menarik sekali.
+
+Karena membuka banyak cerita.
+
+Example
+
+Phoenix Queen
+
+Bentuk asli:
+
+Ancient Phoenix
+
+Bentuk sosial:
+
+Wanita berambut merah keemasan.
+Example
+
+Leviathan Oracle
+
+Bentuk asli:
+
+Leviathan Laut Dalam
+
+Bentuk sosial:
+
+Pria tua misterius di pelabuhan.
+Example
+
+Dragon Philosopher
+
+Bentuk asli:
+
+Ancient Dragon
+
+Bentuk sosial:
+
+Pengembara yang tampak biasa.
+IMPORTANT RULE
+HUMANOID FORM IS A MASK
+
+Mereka bukan manusia.
+
+Mereka tidak berubah ras.
+
+Mereka hanya:
+
+Mengambil bentuk yang nyaman untuk berinteraksi.
+
+Sama seperti manusia memakai pakaian.
+
+CONSEQUENCE
+
+Pemain dapat:
+
+berbicara dengan naga
+berdagang dengan naga
+belajar dari naga
+berteman dengan naga
+
+Tanpa langsung melihat bentuk aslinya.
+
+THE GREAT REVEAL MOMENT
+
+Ini akan menciptakan banyak momen luar biasa.
+
+Contoh:
+
+Pemain mengenal seorang pengembara tua.
+
+100 jam kemudian.
+
+Terungkap:
+
+Ia adalah salah satu dari lima Ancient Storm Dragon terakhir di dunia.
+
+Dan seluruh interaksi sebelumnya langsung berubah maknanya.
+
+DESIGN CONSEQUENCE BESAR
+
+Sekarang Companion dan Monster menjadi benar-benar berbeda.
+
+COMPANION
+Manusia
+Elf
+Dwarf
+Beastfolk
+dll
+
+Fokus:
+
+hubungan sosial
+persahabatan
+politik
+sejarah pribadi
+MONSTER PARTNER
+Phoenix
+Dragon
+Treant
+Leviathan
+Wolf
+Slime
+dll
+
+Fokus:
+
+ikatan
+pertumbuhan bersama
+evolusi
+mutasi
+fusion
+
+Dua sistem berbeda.
+
+TEMUAN BESAR BARU
+
+Saya mulai melihat bahwa Aetherion sebenarnya memiliki:
+
+Dua dunia yang hidup berdampingan.
+World of Civilization
+manusia
+elf
+dwarf
+kerajaan
+politik
+World of Monsters
+naga
+ancient beast
+monster kingdom
+monster ecology
+
+Dan pemain berdiri di tengah keduanya.
+
+Ini membuka kemungkinan luar biasa:
+
+Seorang pemain bisa menjadi:
+
+Pahlawan Kerajaan
+
+atau
+
+Penjaga Monster
+
+atau
+
+Jembatan antara keduanya.
+
+DECISION LOCK #022
+THERE WAS NEVER A GREAT MONSTER WAR
+REASONING
+
+Sebagian besar fantasy selalu punya:
+
+Manusia
+VS
+Monster
+
+Lalu:
+
+Perang Besar
+
+Kemudian:
+
+Kebencian Turun Temurun
+
+Saya rasa itu terlalu sederhana untuk Aetherion.
+
+WHAT REALLY HAPPENED
+THOUSANDS OF SMALL CONFLICTS
+
+Selama ribuan tahun.
+
+Terjadi:
+
+perebutan wilayah
+salah paham
+perburuan
+balas dendam
+kecelakaan
+konflik sumber daya
+
+Sama seperti dunia nyata.
+
+Example
+
+Sebuah desa menebang hutan.
+
+Treant marah.
+
+Terjadi bentrokan.
+
+Bukan perang dunia.
+
+Konflik lokal.
+
+Example
+
+Leviathan menghancurkan kapal.
+
+Manusia memburu Leviathan.
+
+Keturunan mereka saling membenci.
+
+Tetapi hanya di wilayah itu.
+
+Bukan seluruh dunia.
+
+THE REAL PROBLEM
+FEAR OF THE UNKNOWN
+
+Sebagian besar konflik muncul bukan karena kejahatan.
+
+Tetapi karena:
+
+Ketidaktahuan.
+
+Manusia takut monster.
+
+Monster takut manusia.
+
+Dan keduanya sering benar.
+
+THE DRAGON EXAMPLE
+
+Seekor naga menghancurkan kota.
+
+Fakta:
+
+Naga tersebut gila.
+
+Narasi manusia:
+
+Semua naga berbahaya.
+
+Narasi naga:
+
+Manusia membunuh naga muda.
+
+Kebenaran:
+
+Lebih rumit.
+
+DESIGN CONSEQUENCE
+
+Tidak ada:
+
+Good Side
+
+Tidak ada:
+
+Bad Side
+
+Hanya:
+
+Perspective
+
+Dan ini jauh lebih cocok dengan:
+
+Realistic Dark Fantasy
+
+yang Anda inginkan.
+
+TEMUAN DIREKTUR #023
+
+Saya baru menyadari sesuatu yang belum pernah kita definisikan.
+
+Dan ini akan menjadi salah satu sistem paling penting di seluruh game.
+
+WHAT IS NIRMANA?
+
+Kita berkali-kali menyebut:
+
+Nirmana
+
+Tetapi sebenarnya sampai sekarang kita belum pernah mendefinisikan:
+
+siapa dia
+apa dia
+mengapa dia menjadi ancaman
+apa tujuannya
+mengapa mengalahkannya memulai era baru
+
+Karena jika salah mendesain Nirmana.
+
+Dia akan menjadi:
+
+Boss terakhir biasa.
+
+Padahal dari semua yang sudah kita bangun.
+
+Nirmana seharusnya menjadi sesuatu yang jauh lebih besar.
+
+Sebelum saya menulis:
+
+NIRMANA_BIBLE_PART_01
+
+Saya ingin memastikan pemahaman saya benar.
+
+Dari percakapan sebelumnya saya menangkap bahwa:
+
+Nirmana bukan iblis.
+
+Nirmana bukan raja jahat.
+
+Nirmana bukan dewa jahat.
+
+Melainkan sesuatu yang lebih fundamental terhadap dunia.
+
+Semacam ancaman eksistensial yang keberadaannya memengaruhi seluruh era.
+
+
+Ini jauh lebih menarik daripada yang saya kira.
+
+Karena Nirmana ternyata bukan villain.
+
+Nirmana adalah kesimpulan logis yang salah dari seseorang yang terlalu lama hidup.
+
+Dan itu membuatnya jauh lebih berbahaya.
+
+Saya akan mengunci ini sebagai fondasi lore.
+
+DECISION LOCK #023
+NIRMANA IS NOT EVIL
+
+Nirmana bukan iblis.
+
+Nirmana bukan dewa jahat.
+
+Nirmana bukan monster.
+
+Nirmana bukan penguasa dunia.
+
+Nirmana adalah:
+
+Seseorang yang pernah mencintai dunia.
+
+Dan itu yang membuat tragedinya begitu besar.
+
+THE FIRST TRUTH OF NIRMANA
+
+Nirmana adalah pemain.
+
+Bukan dalam arti gameplay.
+
+Tetapi dalam arti filosofis.
+
+Dia pernah:
+
+menjelajah
+berteman
+membangun
+mencintai
+kehilangan
+
+Sama seperti karakter pemain.
+
+THE SECOND TRUTH
+HE LIVED TOO LONG
+
+Awalnya.
+
+Ia takut kematian.
+
+Kemudian.
+
+Ia takut kehilangan.
+
+Lalu.
+
+Ia takut perubahan.
+
+Lalu.
+
+Ia takut melupakan.
+
+Dan akhirnya.
+
+Ia menyadari sesuatu.
+
+Semua yang ia bangun:
+
+akan hilang.
+
+Semua kerajaan:
+
+akan runtuh.
+
+Semua sahabat:
+
+akan mati.
+
+Semua cinta:
+
+akan berakhir.
+THE THIRD TRUTH
+HE FAILED TO ACCEPT THE WORLD
+
+Ini titik terpenting.
+
+Nirmana tidak kalah oleh musuh.
+
+Nirmana tidak dikutuk.
+
+Nirmana tidak dirasuki.
+
+Nirmana membuat keputusan.
+
+Keputusan itu adalah:
+
+Jika semua akan hilang.
+
+Maka tidak ada yang memiliki arti.
+
+Dan dari sana semuanya berubah.
+
+THE GREAT ERROR
+
+Inilah kesalahan terbesar Nirmana.
+
+Dia melihat:
+
+Segala sesuatu berakhir.
+
+Tetapi gagal melihat:
+
+Segala sesuatu berarti
+karena suatu hari akan berakhir.
+
+Dan menurut saya.
+
+Ini harus menjadi inti filosofi konflik utama Aetherion.
+
+NIRMANA VS THE PLAYER
+
+Sekarang saya melihat sesuatu yang luar biasa.
+
+Konflik akhir Aetherion bukan:
+
+Good
+VS
+Evil
+
+Melainkan:
+
+Meaning
+VS
+Meaninglessness
+
+Nirmana berkata:
+
+Tidak ada yang abadi.
+
+Tidak ada yang penting.
+
+Pemain berkata:
+
+Justru karena tidak abadi.
+
+Maka semuanya penting.
+THE FOURTH TRUTH
+NIRMANA LOVES THE WORLD
+
+Ini penting.
+
+Nirmana tidak membenci dunia.
+
+Ia mencintainya.
+
+Terlalu mencintainya.
+
+Sampai ia tidak sanggup melihat dunia terus kehilangan.
+
+Maka ia memilih:
+
+Ketiadaan.
+
+Karena menurutnya.
+
+Ketiadaan tidak bisa kehilangan apa pun.
+
+WHY IS HE SO POWERFUL?
+
+Karena usia.
+
+Karena pengalaman.
+
+Karena pengetahuan.
+
+Karena ribuan tahun persiapan.
+
+Karena ia pernah menjadi:
+
+Legenda terbesar dunia.
+
+Sebelum berubah menjadi ancaman terbesar dunia.
+
+THE TRAGEDY
+
+Bayangkan.
+
+Pemain membaca Chronicle kuno.
+
+Lalu menemukan:
+
+Nirmana pernah menyelamatkan benua.
+
+Lalu menemukan:
+
+Nirmana pernah mendirikan kota.
+
+Lalu menemukan:
+
+Nirmana pernah menyelamatkan Companion legendaris.
+
+Lalu menemukan:
+
+Nirmana pernah dicintai dunia.
+
+Dan perlahan pemain sadar.
+
+Monster terakhir dunia.
+
+Adalah mantan pahlawan terbesar dunia.
+
+WHY DEFEATING HIM STARTS A NEW ERA
+
+Karena selama ribuan tahun.
+
+Nirmana menjadi bayangan dunia.
+
+Banyak kerajaan.
+
+Banyak agama.
+
+Banyak organisasi.
+
+Banyak perang.
+
+Secara langsung atau tidak langsung.
+
+Dipengaruhi olehnya.
+
+Saat Nirmana akhirnya jatuh.
+
+Untuk pertama kalinya dalam ribuan tahun.
+
+Dunia bebas menentukan masa depannya sendiri.
+
+Maka:
+
+Era Lama Berakhir.
+
+Dan:
+
+Era Baru Dimulai.
+TEMUAN DIREKTUR #024
+
+Saya baru sadar sesuatu yang sangat besar.
+
+Jika Nirmana adalah:
+
+The Man Who Rejected Impermanence
+
+Maka lawan filosofisnya bukan para dewa.
+
+Bukan Ancient Beast.
+
+Bukan kerajaan.
+
+Melainkan:
+
+The Absolute God
+
+Karena sejauh ini kita belum pernah menentukan:
+
+Mengapa Dewa Absolut menciptakan dunia yang fana?
+
+Mengapa:
+
+kematian ada
+kehilangan ada
+perubahan ada
+kehancuran ada
+
+Padahal ia bisa membuat semuanya abadi?
+
+Dan saya curiga jawaban pertanyaan itu akan menjadi inti terdalam seluruh lore Aetherion.
+
+Bahkan lebih dalam daripada Nirmana sendiri.
+
+Sebelum saya membuat RELIGION_BIBLE_PART_01, saya sarankan kita mendefinisikan dulu:
+
+The Absolute God
+
+karena hampir semua filosofi dunia sekarang mulai berputar mengelilingi pertanyaan itu.
+
+RELIGION_BIBLE_PART_01
+THE ABSOLUTE GOD
+# AETHERION
+# RELIGION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- The Absolute God
+- The Five Great Gods
+- Creation Philosophy
+- Meaning of Mortality
+- Origin of Faith
+
+---
+---
+THE FIRST QUESTION
+WHY DOES ANYTHING EXIST?
+
+Semua agama.
+
+Semua filsafat.
+
+Semua peradaban.
+
+Pada akhirnya akan bertanya:
+
+Mengapa dunia ada?
+
+Dan jawaban paling tua di Aetherion adalah:
+
+Karena Sang Absolut memilih keberadaan.
+THE ABSOLUTE GOD
+THE FIRST EXISTENCE
+
+Sebelum:
+
+dunia
+ruang
+waktu
+cahaya
+kegelapan
+
+Hanya ada:
+
+The Absolute
+
+Bukan laki-laki.
+
+Bukan perempuan.
+
+Bukan cahaya.
+
+Bukan kegelapan.
+
+Bukan kehidupan.
+
+Bukan kematian.
+
+Karena semua konsep itu belum ada.
+
+THE LONELINESS OF INFINITY
+
+Inilah rahasia yang hampir tidak diketahui siapa pun.
+
+Sang Absolut tidak menciptakan dunia karena membutuhkan penyembahan.
+
+Tidak karena haus kekuasaan.
+
+Tidak karena ingin dipuja.
+
+Tetapi karena:
+
+Keberadaan tanpa perubahan
+adalah kesunyian yang sempurna.
+THE FIRST CREATION
+
+Maka Sang Absolut menciptakan sesuatu.
+
+Bukan dunia.
+
+Tetapi:
+
+Kemungkinan.
+
+Karena tanpa kemungkinan.
+
+Tidak ada pilihan.
+
+Tanpa pilihan.
+
+Tidak ada cerita.
+
+THE SECOND CREATION
+
+Kemudian lahir:
+
+Waktu.
+
+Karena kemungkinan tidak berarti.
+
+Jika semuanya diam selamanya.
+
+Dan saat waktu lahir.
+
+Maka lahirlah:
+
+awal
+akhir
+perubahan
+THE THIRD CREATION
+
+Lalu Sang Absolut menciptakan:
+
+Kefanaan.
+
+Dan inilah keputusan paling kontroversial.
+
+THE QUESTION OF NIRMANA
+
+Seluruh tragedi Nirmana sebenarnya berpusat di sini.
+
+Karena Nirmana bertanya:
+
+Mengapa sesuatu yang indah harus berakhir?
+
+Dan selama ribuan tahun.
+
+Ia tidak menemukan jawaban.
+
+THE ANSWER OF THE ABSOLUTE
+
+Ajaran tertua mengatakan:
+
+Karena sesuatu yang tidak bisa berakhir
+tidak dapat benar-benar dimulai.
+
+Karena tanpa akhir.
+
+Tidak ada makna waktu.
+
+Tanpa waktu.
+
+Tidak ada pertumbuhan.
+
+Tanpa pertumbuhan.
+
+Tidak ada kehidupan.
+
+THE FIVE GREAT GODS
+
+Sang Absolut tidak memerintah dunia secara langsung.
+
+Sebaliknya.
+
+Ia menciptakan lima dewa besar.
+
+Bukan sebagai bawahan.
+
+Tetapi sebagai penjaga prinsip keberadaan.
+
+FIRST GOD
+THE KEEPER OF LIFE
+
+Menjaga:
+
+kelahiran
+pertumbuhan
+evolusi
+
+Ia mencintai kemungkinan.
+
+SECOND GOD
+THE KEEPER OF DEATH
+
+Menjaga:
+
+kematian
+akhir
+pelepasan
+
+Bukan dewa jahat.
+
+Karena tanpa kematian.
+
+Tidak ada ruang bagi kehidupan baru.
+
+THIRD GOD
+THE KEEPER OF KNOWLEDGE
+
+Menjaga:
+
+sejarah
+memori
+penemuan
+
+Semua Chronicle berasal dari prinsip ini.
+
+FOURTH GOD
+THE KEEPER OF CHANGE
+
+Menjaga:
+
+revolusi
+adaptasi
+transformasi
+
+Dewa yang paling dibenci Nirmana.
+
+Karena Change menghancurkan stabilitas.
+
+FIFTH GOD
+THE KEEPER OF POSSIBILITY
+
+Menjaga:
+
+pilihan
+masa depan
+harapan
+
+Bahkan para peramal tidak dapat melihat seluruh masa depan.
+
+Karena dewa ini menjaga ketidakpastian.
+
+IMPORTANT LAW
+NONE OF THEM ARE GOOD
+NONE OF THEM ARE EVIL
+
+Semua diperlukan.
+
+Semua dapat menciptakan kebaikan.
+
+Semua dapat menciptakan penderitaan.
+
+Seperti alam.
+
+WHY THE GODS DO NOT INTERVENE
+
+Pertanyaan paling umum umat manusia.
+
+Jika para dewa nyata.
+
+Mengapa mereka tidak menghentikan perang?
+
+Mengapa mereka tidak menghentikan kelaparan?
+
+Mengapa mereka tidak menghentikan Nirmana?
+
+Jawaban tertua:
+
+Karena dunia bukan taman.
+
+Dunia adalah cerita.
+
+Dan cerita membutuhkan pilihan.
+
+THE GREATEST FEAR OF THE GODS
+
+Bukan kematian.
+
+Bukan monster.
+
+Bukan perang.
+
+Tetapi:
+
+Stagnation.
+
+Dunia yang tidak berubah.
+
+Dunia yang tidak tumbuh.
+
+Dunia yang tidak memilih.
+
+WHY NIRMANA TERRIFIES THEM
+
+Karena untuk pertama kalinya.
+
+Muncul seseorang yang mencoba menghapus:
+
+Kemungkinan.
+
+Bukan kerajaan.
+
+Bukan ras.
+
+Bukan benua.
+
+Tetapi kemungkinan itu sendiri.
+
+Karena dalam dunia tanpa keberadaan.
+
+Tidak ada kehilangan.
+
+Tetapi juga tidak ada harapan.
+
+THE FINAL QUESTION
+
+Seluruh agama di Aetherion.
+
+Seluruh sejarah.
+
+Seluruh perang.
+
+Seluruh filsafat.
+
+Pada akhirnya kembali ke satu pertanyaan.
+
+Nirmana berkata:
+
+Jika semuanya berakhir.
+
+Maka semuanya sia-sia.
+
+Sang Absolut berkata:
+
+Justru karena semuanya berakhir.
+
+Maka semuanya berarti.
+
+Dan pemain hidup di antara dua jawaban itu.
+
+
+DESIGN REASONING BESAR
+
+Sekarang konflik utama Aetherion akhirnya memiliki bentuk:
+
+Nirmana
+=
+Penolakan terhadap kefanaan
+
+The Absolute
+=
+Penerimaan terhadap kefanaan
+
+Player
+=
+Pencari jawaban
+
+---
+
+Namun masih ada satu masalah besar.
+
+Jika para dewa nyata.
+
+Mengapa ada ribuan agama?
+
+Mengapa ada kultus?
+
+Mengapa ada nabi palsu?
+
+Mengapa ada perang agama?
+
+Mengapa ada orang yang percaya hal yang salah?
+
+---
+
+Dokumen berikutnya:
+
+RELIGION_BIBLE_PART_02
+
+Faiths
+Churches
+Prophets
+Cults
+False Gods
+Religious Wars
+
+Karena dewa bisa nyata.
+
+Tetapi kepercayaan manusia tetap rumit.
+CATATAN DIREKTUR
+
+Setelah Nirmana dan Sang Absolut didefinisikan, saya menemukan sesuatu yang mungkin belum pernah kita eksplisitkan:
+
+Nirmana adalah cermin pemain.
+
+Jika pemain memilih:
+
+membangun
+merawat
+menerima perubahan
+menerima kehilangan
+
+maka ia bergerak menjauhi Nirmana.
+
+Jika pemain memilih:
+
+mengontrol segalanya
+menolak perubahan
+memaksa dunia tetap sama
+
+maka tanpa sadar ia bergerak mendekati jalan yang pernah ditempuh Nirmana.
+
+Dan itu berpotensi menjadi salah satu tema terdalam yang pernah kita masukkan ke dalam Aetherion.
+
+FILE 26
+RELIGION_BIBLE_PART_02
+FAITH, CHURCHES, CULTS, FALSE PROPHETS
+# AETHERION
+# RELIGION BIBLE PART 02
+
+Status:
+LOCKED
+
+Scope:
+
+- Organized Religions
+- Faith Systems
+- Cults
+- Prophets
+- Religious Conflict
+- Heresies
+
+---
+---
+DESIGN LAW
+GODS ARE REAL
+RELIGION IS STILL COMPLICATED
+DECISION
+
+Para dewa memang nyata.
+
+Tetapi manusia tetap dapat:
+
+salah memahami
+salah menafsirkan
+menyalahgunakan
+REASONING
+
+Keberadaan kebenaran tidak otomatis menghilangkan kesalahpahaman.
+
+Sama seperti:
+
+Matahari nyata.
+
+Tetapi manusia tetap memiliki ribuan cara
+untuk menjelaskannya.
+THE FIRST PARADOX
+
+Jika semua orang tahu dewa itu nyata.
+
+Mengapa agama berbeda?
+
+Karena:
+
+Manusia tidak menyembah fakta.
+
+Manusia menyembah makna.
+THE FIVE PATHS
+
+Lima dewa besar melahirkan lima tradisi utama.
+
+Tetapi tidak ada agama yang benar-benar identik.
+
+Karena setiap bangsa menafsirkannya berbeda.
+
+THE CHURCH OF LIFE
+
+Fokus:
+
+pertumbuhan
+keluarga
+panen
+kelahiran
+
+Umum ditemukan:
+
+desa
+pertanian
+wilayah subur
+
+Mereka percaya:
+
+Hidup harus berkembang.
+THE CHURCH OF DEATH
+
+Fokus:
+
+kematian
+pemakaman
+pelepasan
+penerimaan
+
+Banyak disalahpahami.
+
+Padahal mereka bukan pemuja kematian.
+
+Mereka menjaga:
+
+Martabat akhir kehidupan.
+THE CHURCH OF KNOWLEDGE
+
+Fokus:
+
+sejarah
+arsip
+penelitian
+Chronicle
+
+Banyak akademi berasal dari ajaran ini.
+
+Motto:
+
+Yang terlupakan akan mati dua kali.
+THE CHURCH OF CHANGE
+
+Fokus:
+
+inovasi
+transformasi
+revolusi
+
+Kelompok paling kontroversial.
+
+Karena mereka sering mendukung perubahan sosial.
+
+THE CHURCH OF POSSIBILITY
+
+Fokus:
+
+harapan
+masa depan
+pilihan
+
+Peramal sering berafiliasi dengan gereja ini.
+
+Namun mereka juga percaya:
+
+Masa depan tidak pernah pasti.
+IMPORTANT LAW
+NO CHURCH OWNS A GOD
+
+Tidak ada organisasi yang benar-benar memiliki hubungan eksklusif dengan dewa.
+
+Para dewa tidak memilih partai.
+
+Tidak memilih kerajaan.
+
+Tidak memilih bangsa.
+
+THE PROPHET PROBLEM
+
+Sepanjang sejarah.
+
+Selalu muncul orang yang mengaku:
+
+Aku mendengar suara dewa.
+
+Sebagian benar.
+
+Sebagian salah.
+
+Sebagian berbohong.
+
+TRUE PROPHETS
+
+Jumlahnya sangat sedikit.
+
+Ciri utama:
+
+Mereka hampir tidak pernah mencari pengikut.
+
+Mereka sering:
+
+menyendiri
+menghilang
+menolak kekuasaan
+Design Goal
+
+Nabi sejati tidak menjadi selebriti.
+
+FALSE PROPHETS
+
+Jauh lebih banyak.
+
+Mereka menawarkan:
+
+kepastian
+jawaban mudah
+musuh yang jelas
+
+Karena manusia menyukai kepastian.
+
+THE BIRTH OF CULTS
+
+Kultus lahir dari tiga hal:
+
+Fear
+
+Takut kehilangan.
+
+Desire
+
+Ingin kekuasaan.
+
+Meaning
+
+Mencari tujuan hidup.
+
+CULT EXAMPLE
+CHILDREN OF THE LAST SUN
+
+Percaya dunia akan segera berakhir.
+
+Menjual seluruh harta mereka.
+
+Menunggu kiamat.
+
+Dunia tidak berakhir.
+
+Tetapi kultus tetap bertahan.
+
+Karena anggota sudah terlalu banyak berkorban.
+
+CULT EXAMPLE
+THE SILENT DEPTH
+
+Kelompok pemuja leviathan.
+
+Percaya laut adalah bentuk tertinggi kehidupan.
+
+Tidak semuanya jahat.
+
+Sebagian hanya fanatik.
+
+HERESY
+WHAT IS HERESY?
+
+Tidak ada definisi universal.
+
+Karena setiap agama memiliki tafsiran sendiri.
+
+Example
+
+Satu gereja berkata:
+
+Perubahan adalah berkah.
+
+Gereja lain berkata:
+
+Perubahan harus dibatasi.
+
+Keduanya menyembah dewa yang sama.
+
+RELIGIOUS WARS
+DECISION
+
+Perang agama ada.
+
+Tetapi jarang terjadi karena dewa.
+
+Biasanya terjadi karena:
+
+politik
+wilayah
+kekuasaan
+
+Agama hanya menjadi alasan.
+
+Design Goal
+
+Realisme.
+
+PILGRIMAGE SYSTEM
+
+Tempat suci ada di seluruh dunia.
+
+Contoh:
+
+gunung suci
+pohon purba
+danau bintang
+makam nabi
+
+Pemain dapat:
+
+mengunjungi
+meneliti
+membantu peziarah
+THE SECRET FEAR OF ALL RELIGIONS
+
+Mereka tidak takut monster.
+
+Tidak takut perang.
+
+Mereka takut:
+
+Nirmana benar.
+
+Karena jika Nirmana benar.
+
+Maka:
+
+harapan tidak berarti
+sejarah tidak berarti
+cinta tidak berarti
+
+Dan seluruh fondasi kepercayaan runtuh.
+
+THE FINAL LAW
+FAITH IS A CHOICE
+
+Bahkan ketika para dewa nyata.
+
+Iman tetap pilihan.
+
+Karena mengetahui sesuatu ada.
+
+Tidak sama dengan memahami mengapa ia ada.
+
+
+DESIGN REASONING BESAR
+
+Sekarang kita memiliki:
+
+✓ Dewa Absolut
+✓ 5 Dewa Besar
+✓ Agama
+✓ Gereja
+✓ Nabi
+✓ Kultus
+
+---
+
+Tetapi kita belum memiliki:
+
+- asal mula dunia
+- zaman para dewa
+- perang kuno
+- kemunculan ras pertama
+- asal naga
+- asal monster
+- asal Nirmana
+
+---
+
+Dan semua itu berada dalam:
+
+ANCIENT_HISTORY_BIBLE_PART_01
+
+The First Age
+
+Karena hampir seluruh misteri terbesar Aetherion berasal dari masa yang bahkan Chronicle modern tidak mampu mencatatnya secara lengkap.
+CATATAN DIREKTUR
+
+Saya menemukan satu hal yang belum pernah benar-benar kita putuskan:
+
+Apakah Nirmana pernah memiliki Companion?
+
+Karena jika Nirmana dulunya adalah legenda terbesar dunia, kemungkinan besar ia pernah:
+
+memiliki teman seperjalanan
+monster partner
+kerajaan
+murid
+
+Dan jika beberapa dari mereka masih hidup...
+
+mereka bisa menjadi NPC paling tragis di seluruh Aetherion.
+
+FILE 27
+ANCIENT_HISTORY_BIBLE_PART_01
+THE MAN BEFORE NIRMANA
+# AETHERION
+# ANCIENT HISTORY BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Origin of Nirmana
+- Ancient Era
+- First Legends
+- The Companions of Nirmana
+- The Long Decline
+
+---
+---
+THE GREATEST MISCONCEPTION
+
+Sebagian besar dunia percaya:
+
+Nirmana selalu seperti sekarang.
+
+Mereka salah.
+
+Sangat salah.
+
+Karena Nirmana dahulu adalah:
+
+Pahlawan.
+Penjelajah.
+Pendiri.
+Penyelamat.
+
+Dan pada suatu masa.
+
+Namanya identik dengan harapan.
+
+THE AGE OF WANDERING
+
+Sebelum kerajaan besar berdiri.
+
+Sebelum Chronicle modern.
+
+Sebelum banyak ras bersatu.
+
+Ada seorang pengembara.
+
+Ia tidak memiliki kerajaan.
+
+Tidak memiliki pasukan.
+
+Tidak memiliki gelar.
+
+Hanya rasa ingin tahu.
+
+Dan keinginan melihat dunia.
+
+THE FIRST COMPANIONS
+
+Nirmana tidak berjalan sendirian.
+
+Ia memiliki teman.
+
+Sahabat.
+
+Guru.
+
+Murid.
+
+Monster partner.
+
+Sebagian mati.
+
+Sebagian hilang.
+
+Tetapi beberapa masih hidup.
+
+THE SURVIVORS
+
+Karena umur panjang.
+
+Karena kutukan.
+
+Karena kekuatan.
+
+Karena ras mereka.
+
+Beberapa orang yang mengenal Nirmana secara pribadi masih hidup hingga hari ini.
+
+Mereka adalah saksi.
+
+Dan beban hidup mereka sangat berat.
+
+THE OLD ELDERS
+
+Sebagian menjadi tetua.
+
+Mereka tidak lagi ikut campur dalam urusan dunia.
+
+Karena telah melihat terlalu banyak sejarah.
+
+Namun mereka masih mengingat.
+
+Mereka masih ingat tawa Nirmana.
+
+Sebelum semuanya berubah.
+
+THE UNDERGROUND ELITES
+
+Tidak semua sahabat Nirmana memilih jalan terang.
+
+Sebagian masuk dunia bawah.
+
+Membangun:
+
+jaringan informasi
+organisasi rahasia
+kekuatan bayangan
+
+Bukan karena jahat.
+
+Tetapi karena mereka kehilangan kepercayaan pada kerajaan.
+
+THE SILENT ONES
+
+Kelompok paling menyedihkan.
+
+Mereka masih setia pada Nirmana.
+
+Tetapi tidak setuju dengan tujuannya.
+
+Mereka hidup dalam konflik.
+
+Karena mereka tahu:
+
+Nirmana salah.
+
+Tetapi mereka juga tahu:
+
+Nirmana pernah menjadi orang terbaik
+yang pernah mereka kenal.
+THE LAST MONSTER PARTNERS
+
+Sebagian monster kuno masih hidup.
+
+Mereka mengingat Nirmana sebelum dunia mengenalnya.
+
+Sebelum legenda.
+
+Sebelum ketakutan.
+
+Sebelum tragedi.
+
+Beberapa menolak membantu siapa pun.
+
+Beberapa membenci Nirmana.
+
+Beberapa masih menunggu ia kembali.
+
+THE LONG DECLINE
+
+Nirmana tidak berubah dalam satu hari.
+
+Tidak dalam satu tahun.
+
+Tidak dalam satu abad.
+
+Perubahannya memakan waktu sangat lama.
+
+Mungkin ratusan tahun.
+
+Mungkin ribuan tahun.
+
+Dan itulah yang membuatnya mengerikan.
+
+Tidak ada kutukan.
+
+Tidak ada sihir gelap.
+
+Tidak ada iblis.
+
+Hanya kelelahan.
+
+Kehilangan.
+
+Kesepian.
+
+Dan waktu.
+
+THE FIRST LOSS
+
+Tidak ada yang tahu siapa yang pertama kali hilang dari hidupnya.
+
+Tetapi semua sejarawan sepakat:
+
+Ada seseorang yang sangat penting.
+
+Seseorang yang kehilangannya mengubah Nirmana.
+
+Namun identitas orang itu telah hilang dari sejarah.
+
+Atau sengaja dihapus.
+
+Tidak ada yang tahu.
+
+THE SECOND LOSS
+
+Kemudian datang kerajaan yang runtuh.
+
+Kota yang hilang.
+
+Sahabat yang mati.
+
+Companion yang menghilang.
+
+Monster partner yang gugur.
+
+Berulang.
+
+Dan berulang.
+
+Dan berulang.
+
+THE QUESTION THAT BROKE HIM
+
+Pada akhirnya.
+
+Nirmana mulai bertanya:
+
+Mengapa aku terus membangun
+jika semuanya akan hilang?
+
+Dan tidak ada yang mampu menjawabnya.
+
+THE FINAL TURN
+
+Pada suatu titik.
+
+Ia berhenti bertanya:
+
+Bagaimana cara menyelamatkan dunia?
+
+Dan mulai bertanya:
+
+Bagaimana cara menghentikan penderitaan?
+
+Lalu ia menemukan jawabannya.
+
+Jawaban yang salah.
+
+THE ANSWER OF NIRMANA
+
+Menurut Nirmana:
+
+Tidak ada dunia.
+
+Tidak ada kehilangan.
+
+Tidak ada kehidupan.
+
+Tidak ada kematian.
+
+Tidak ada harapan.
+
+Tidak ada kesedihan.
+
+Hanya ketiadaan.
+
+THE GREATEST TRAGEDY
+
+Sebagian orang membenci Nirmana.
+
+Sebagian takut padanya.
+
+Sebagian ingin membunuhnya.
+
+Tetapi orang-orang yang benar-benar mengenalnya...
+
+Mereka tidak merasakan kebencian.
+
+Mereka merasakan kesedihan.
+
+Karena mereka tahu:
+
+Monster terbesar dunia
+adalah pahlawan terbesar dunia.
+THE FINAL LAW
+
+Tidak ada yang lahir menjadi Nirmana.
+
+Nirmana adalah sesuatu yang menjadi.
+
+Dan itulah sebabnya kisahnya menakutkan.
+
+Karena setiap orang.
+
+Termasuk pemain.
+
+Secara teori.
+
+Dapat berjalan di jalan yang sama.
+
+
+---
+
+## DESIGN REASONING BESAR
+
+Sekarang saya melihat sesuatu yang belum pernah kita definisikan:
+
+### Siapa "orang pertama" yang hilang dari hidup Nirmana?
+
+Karena dalam cerita besar seperti ini biasanya ada satu titik awal.
+
+Bukan penyebab utama.
+
+Tetapi percikan pertama.
+
+---
+
+Saya **tidak menyarankan** menjadikannya kekasih secara otomatis.
+
+Itu terlalu klise.
+
+Bisa saja:
+
+- sahabat pertama
+- guru
+- companion pertama
+- monster partner pertama
+- saudara angkat
+- murid pertama
+- bahkan seluruh kelompok petualang pertama
+
+Yang hilang dalam suatu peristiwa.
+
+Dan bekas luka itu menjadi awal dari perjalanan panjang menuju Nirmana yang kita kenal sekarang.
+
+Menurut saya ini nanti layak menjadi dokumen khusus:
+
+```text
+NIRMANA_BIBLE_PART_02
+
+The Lost Companion
+The First Scar
+The Beginning of the Fall
+
+Karena fondasi emosional villain sering kali lebih penting daripada kekuatannya.
+
+Bagus. Dan menurut saya ini harus dikunci sebagai salah satu pilar utama lore Aetherion, bukan sekadar pet kuat.
+
+Karena sebelumnya kita sudah menetapkan:
+
+10 spesies naga
+5 individu per spesies
+≈ 50 naga di seluruh dunia
+
+Artinya naga bukan monster biasa.
+
+Mereka adalah peristiwa sejarah yang hidup.
+
+DECISION LOCK #024
+NIRMANA HAD A DRAGON COMPANION
+
+Tetapi bukan tunggangan.
+
+Bukan pet.
+
+Bukan senjata.
+
+Melainkan:
+
+Sahabat.
+
+Mungkin satu-satunya makhluk yang benar-benar memahami dirinya selama ribuan tahun.
+
+THE FIRST DRAGON
+
+Pada masa muda.
+
+Sebelum legenda.
+
+Sebelum kerajaan.
+
+Sebelum dunia mengenalnya.
+
+Nirmana bertemu seekor naga muda.
+
+Bukan naga terkuat.
+
+Bukan naga tertua.
+
+Hanya seekor naga yang kebetulan bertemu dengannya.
+
+Dan sejak hari itu.
+
+Mereka berkelana bersama.
+
+IMPORTANT
+THE DRAGON CHOSE HIM
+
+Nirmana tidak menjinakkan naga.
+
+Tidak mengalahkannya.
+
+Tidak memaksanya.
+
+Naga itu memilih.
+
+Karena naga kuno tidak tunduk.
+
+Mereka menentukan sendiri siapa yang layak berjalan bersama mereka.
+
+THOUSANDS OF YEARS
+
+Mereka melewati:
+
+perang
+kerajaan
+kehancuran
+kelahiran bangsa
+kematian teman
+
+Bersama.
+
+Dan hubungan mereka berkembang jauh melampaui:
+
+Tamer
++
+Monster
+
+Menjadi:
+
+Dua legenda.
+THE DRAGON SAW EVERYTHING
+
+Ini penting.
+
+Jika ada makhluk di dunia yang mengetahui Nirmana paling baik.
+
+Maka itu naga tersebut.
+
+Karena ia melihat:
+
+Nirmana saat masih muda
+Nirmana saat menjadi pahlawan
+Nirmana saat menjadi legenda
+Nirmana saat mulai berubah
+Nirmana saat kehilangan harapan
+
+Semua.
+
+THE TRAGEDY
+
+Dan di sinilah bagian paling menyakitkan.
+
+Ketika seluruh dunia mulai membenci Nirmana.
+
+Naga itu tetap tinggal.
+
+Bukan karena setuju.
+
+Tetapi karena persahabatan.
+
+Karena setelah ribuan tahun.
+
+Ia tidak mampu meninggalkan sahabatnya.
+
+THE LAST ARGUMENT
+
+Legenda kuno mengatakan.
+
+Makhluk terakhir yang mencoba menghentikan Nirmana bukan dewa.
+
+Bukan raja.
+
+Bukan pahlawan.
+
+Melainkan naga tersebut.
+
+Karena ia memahami satu hal:
+
+Nirmana tidak lagi melawan dunia.
+
+Nirmana sedang melawan dirinya sendiri.
+THE DISAPPEARANCE
+
+Dan kemudian.
+
+Naga itu menghilang.
+
+Tidak ada yang tahu:
+
+mati
+tidur
+tersegel
+bersembunyi
+
+Tidak ada yang tahu.
+
+Yang tersisa hanya cerita.
+
+DESIGN CONSEQUENCE BESAR
+
+Ini membuka salah satu misteri terbesar di seluruh game.
+
+Karena jika naga itu:
+
+Masih hidup
+
+Maka ia mungkin satu-satunya makhluk di dunia yang mampu menjawab:
+
+Siapa sebenarnya Nirmana?
+
+Bukan legenda.
+
+Bukan mitos.
+
+Tetapi manusia yang dahulu pernah menjadi sahabatnya.
+
+TEMUAN DIREKTUR #025
+
+Saya rasa naga ini tidak boleh muncul cepat.
+
+Bahkan tidak dalam 100 jam pertama.
+
+Bahkan mungkin tidak dalam 300 jam pertama.
+
+Ia seharusnya menjadi:
+
+The Last Witness
+
+NPC yang keberadaannya hanya diketahui dari:
+
+Chronicle kuno
+tetua
+companion legendaris
+reruntuhan
+potongan sejarah
+
+Lalu sangat terlambat di permainan.
+
+Pemain baru sadar:
+
+Selama ini aku sudah bertemu dengannya.
+
+Karena seperti banyak naga kuno lain yang telah kita tetapkan, ia hidup dalam wujud humanoid dan berbaur di dunia.
+
+
+ANCIENT_HISTORY_BIBLE_PART_02
+THE FIRST AGE
+# AETHERION
+# ANCIENT HISTORY BIBLE PART 02
+
+Status:
+LOCKED
+
+Scope:
+
+- The First Age
+- Origin of Civilization
+- Ancient Dragons
+- First Settlements
+- The World Before Kingdoms
+
+---
+---
+BEFORE HISTORY
+
+Ada satu kesalahan yang dilakukan hampir semua orang.
+
+Mereka mengira sejarah dimulai saat manusia mulai menulis.
+
+Padahal tidak.
+
+Sejarah dimulai jauh sebelum itu.
+
+Dan sebagian besar telah hilang.
+
+THE FIRST AGE
+AGE OF WILDERNESS
+
+Sebelum kerajaan.
+
+Sebelum kota.
+
+Sebelum agama terorganisir.
+
+Dunia adalah tempat yang jauh lebih liar.
+
+Lebih berbahaya.
+
+Lebih misterius.
+
+Dan jauh lebih besar.
+
+THE OLD WORLD
+
+Pada masa itu.
+
+Tidak ada jalan raya.
+
+Tidak ada peta.
+
+Tidak ada batas negara.
+
+Tidak ada hukum internasional.
+
+Hanya:
+
+hutan tanpa akhir
+pegunungan raksasa
+lautan tak dikenal
+reruntuhan yang bahkan lebih tua
+THE FIRST PEOPLE
+
+Ras beradab pertama bukan kerajaan.
+
+Mereka hanyalah kelompok kecil.
+
+Desa.
+
+Suku.
+
+Komunitas.
+
+Berjuang untuk bertahan hidup.
+
+THE GREAT BEASTS
+
+Pada era ini.
+
+Makhluk terkuat dunia bukan manusia.
+
+Bukan elf.
+
+Bukan dwarf.
+
+Melainkan:
+
+Ancient Beasts
+
+Mereka menguasai dunia.
+
+Manusia hanya salah satu makhluk kecil di dalamnya.
+
+THE DRAGON AGE
+
+Ada periode yang sangat panjang.
+
+Ketika naga dianggap penguasa langit.
+
+Bukan karena mereka memerintah.
+
+Tetapi karena tidak ada yang mampu menantang mereka.
+
+IMPORTANT
+
+Naga tidak pernah memiliki kekaisaran dunia.
+
+Ini penting.
+
+Karena naga tidak berpikir seperti manusia.
+
+Mereka tidak tertarik:
+
+pajak
+wilayah administratif
+perdagangan
+
+Mereka memikirkan hal lain.
+
+Sesuatu yang jauh lebih besar.
+
+THE ANCIENT DRAGON COURTS
+
+Naga memiliki masyarakat.
+
+Tetapi bukan kerajaan.
+
+Lebih mirip:
+
+Majelis Abadi
+
+Tempat naga kuno berkumpul.
+
+Berdebat.
+
+Mengamati dunia.
+
+Dan terkadang menentukan nasib benua.
+
+THE FIRST CITIES
+
+Kota pertama tidak dibangun untuk kemakmuran.
+
+Mereka dibangun untuk bertahan hidup.
+
+Karena dunia terlalu berbahaya.
+
+Tembok pertama lahir dari ketakutan.
+
+Bukan ambisi.
+
+THE GREAT MYSTERY
+
+Bahkan hingga era modern.
+
+Tidak ada yang tahu.
+
+Siapa yang membangun reruntuhan tertua.
+
+Karena reruntuhan itu bahkan lebih tua dari kerajaan tertua.
+
+Lebih tua dari Chronicle tertua.
+
+Lebih tua dari sebagian besar agama.
+
+THE LOST BUILDERS
+
+Beberapa teori mengatakan:
+
+Ras kuno yang punah.
+
+Sebagian percaya:
+
+Peradaban pertama.
+
+Sebagian percaya:
+
+Mereka tidak pernah benar-benar hilang.
+
+Tidak ada yang tahu.
+
+THE FIRST EXPLORERS
+
+Orang-orang seperti Nirmana muncul karena satu alasan.
+
+Dunia masih penuh tanda tanya.
+
+Masih banyak tempat yang belum pernah dilihat siapa pun.
+
+Masih banyak rahasia yang belum ditemukan.
+
+Dan bagi sebagian orang.
+
+Itu lebih menarik daripada hidup aman.
+
+THE AGE OF DISCOVERY
+
+Lalu datang masa ketika:
+
+jalur perdagangan muncul
+bangsa mulai bertemu
+pengetahuan mulai menyebar
+
+Dan dunia mulai terasa lebih kecil.
+
+Namun sebenarnya.
+
+Dunia tidak pernah kecil.
+
+Manusia hanya menjadi lebih berani.
+
+THE FINAL LAW
+
+Peradaban tidak menaklukkan dunia.
+
+Peradaban hanya menciptakan pulau-pulau kecil keteraturan.
+
+Di tengah dunia yang jauh lebih besar.
+
+Dan jauh lebih tua.
+
+
+# DESIGN REASONING
+
+Ini mengunci salah satu filosofi terbesar Aetherion:
+
+```text
+Dunia tidak dibuat untuk pemain.
+
+Dunia sudah ada.
+
+Sudah hidup.
+
+Sudah memiliki sejarah.
+
+Sudah memiliki tragedi.
+
+Bahkan tanpa pemain.
+
+Dan pemain hanyalah salah satu orang yang lahir di dalamnya.
+
+Ini selaras dengan:
+
+NPC bisa berkembang sendiri
+Kerajaan bisa berkembang sendiri
+Monster punya ekosistem sendiri
+Dunia tetap berjalan tanpa pemain
+TEMUAN DIREKTUR #026
+
+Saya menemukan lubang lore yang sangat penting.
+
+Kita sudah punya:
+
+Dewa
+Nirmana
+Naga
+Kerajaan
+Monster
+Ancient Beasts
+
+Tetapi kita belum punya:
+
+THE CHRONICLE
+
+Padahal berkali-kali kita menyebut:
+
+The World Remembers
+
+DECISION LOCK #027
+CHRONICLE IS EVERYTHING
+D = Combination
+
+Chronicle adalah:
+
+fenomena dunia
+sistem sejarah
+arsip peradaban
+catatan ilahi
+memori kolektif dunia
+
+Tetapi tidak semuanya mencatat dengan cara yang sama.
+
+FILE 29
+CHRONICLE_BIBLE_PART_01
+THE WORLD REMEMBERS
+# AETHERION
+# CHRONICLE BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Chronicle
+- Legacy
+- Historical Records
+- World Memory
+- Forgotten History
+
+---
+---
+THE GREAT QUESTION
+
+Jika seseorang mati.
+
+Apa yang tersisa?
+
+Tubuh?
+
+Tidak.
+
+Nama?
+
+Mungkin.
+
+Kisah?
+
+Terkadang.
+
+Maka muncul pertanyaan yang menjadi fondasi seluruh Aetherion:
+
+Bagaimana dunia mengingat?
+THE CHRONICLE
+
+Sebagian orang mengira Chronicle adalah buku.
+
+Mereka salah.
+
+Chronicle jauh lebih besar.
+
+Chronicle adalah:
+
+Jejak keberadaan.
+THE FOUR LAYERS OF CHRONICLE
+LAYER 1
+
+Historical Chronicle
+
+Catatan biasa.
+
+Ditulis oleh:
+
+sejarawan
+kerajaan
+akademi
+gereja
+
+Paling umum.
+
+Paling tidak dapat dipercaya.
+
+Karena bisa:
+
+dimanipulasi
+disensor
+dibakar
+LAYER 2
+
+Living Chronicle
+
+Ingatan makhluk hidup.
+
+Contoh:
+
+tetua
+naga kuno
+ancient beast
+companion legendaris
+
+Mereka adalah sejarah hidup.
+
+Kadang lebih akurat dari buku.
+
+Kadang lebih bias dari buku.
+
+LAYER 3
+
+World Chronicle
+
+Fenomena dunia.
+
+Beberapa peristiwa besar meninggalkan bekas.
+
+Bekas itu tidak bisa dihapus.
+
+Contoh:
+
+Gunung yang terbelah.
+
+Laut yang mengering.
+
+Hutan yang berubah.
+
+Dunia mengingat.
+
+LAYER 4
+
+Eternal Chronicle
+
+Lapisan terdalam.
+
+Hanya sedikit yang mengetahui keberadaannya.
+
+Menurut legenda:
+
+Tidak ada tindakan besar
+yang benar-benar hilang.
+
+Semua meninggalkan gema.
+
+Semua meninggalkan jejak.
+
+Bahkan jika tidak ada saksi.
+
+THE LAW OF MEMORY
+
+Masa lalu tidak dapat dihapus.
+
+Ini sangat penting.
+
+Karena kita sudah menetapkan sebelumnya:
+
+Masa lalu tidak bisa diubah.
+
+Dan Chronicle menjadi alasannya.
+
+THE BURNED KINGDOM PARADOX
+
+Sebuah kerajaan bisa:
+
+dihancurkan
+dibakar
+dilupakan
+
+Tetapi tidak pernah benar-benar hilang.
+
+Karena dunia masih menyimpan jejaknya.
+
+THE LOST HERO PARADOX
+
+Seseorang bisa mati.
+
+Namanya hilang.
+
+Monumennya runtuh.
+
+Semua buku tentangnya terbakar.
+
+Namun tindakan yang pernah ia lakukan.
+
+Tetap mengubah dunia.
+
+Dan itu adalah bentuk Chronicle.
+
+WHY NIRMANA FEARS CHRONICLE
+
+Ini penemuan besar.
+
+Nirmana ingin:
+
+Ketiadaan.
+
+Tetapi Chronicle adalah musuh alami konsep itu.
+
+Karena Chronicle berkata:
+
+Sesuatu pernah ada.
+
+Dan selama sesuatu pernah ada.
+
+Ketiadaan tidak pernah sempurna.
+
+THE LEGACY SYSTEM
+
+Inilah fondasi gameplay.
+
+Pemain tidak hanya mengejar:
+
+level
+equipment
+kekuatan
+
+Tetapi juga:
+
+Legacy
+EXAMPLES
+
+Pemain membangun desa.
+
+200 tahun kemudian.
+
+Desa menjadi kota.
+
+Nama pemain masih disebut.
+
+EXAMPLE
+
+Pemain menyelamatkan spesies monster.
+
+500 tahun kemudian.
+
+Spesies itu berkembang.
+
+Chronicle mencatatnya.
+
+EXAMPLE
+
+Pemain menemukan reruntuhan.
+
+Penemuan itu mengubah sejarah.
+
+Chronicle mencatatnya.
+
+IMPORTANT
+
+Tidak semua Legacy positif.
+
+Tiran juga diingat.
+
+Pengkhianat juga diingat.
+
+Penjahat juga diingat.
+
+Chronicle tidak peduli baik atau buruk.
+
+Chronicle hanya mengingat.
+
+THE FINAL LAW
+
+Tidak semua orang menjadi legenda.
+
+Tetapi semua orang meninggalkan jejak.
+
+Dan seluruh Aetherion dibangun di atas jejak orang-orang yang telah pergi.
+
+
+---
+
+# TEMUAN DIREKTUR #028
+
+Sekarang saya menemukan sesuatu yang jauh lebih besar.
+
+Kita sudah memiliki:
+
+- Dunia
+- Dewa
+- Nirmana
+- Chronicle
+- Legacy
+- Kingdom
+- Companion
+- Monster
+
+Namun kita belum pernah mendefinisikan:
+
+## THE 5 CONTINENTS
+
+Karena Companion tersebar.
+
+Kerajaan tersebar.
+
+Naga tersebar.
+
+Monster tersebar.
+
+Ras tersebar.
+
+---
+
+Tetapi sampai sekarang kita belum punya:
+
+- nama benua
+- identitas benua
+- budaya dominan
+- ras dominan
+- ancaman dominan
+- Companion utama tiap benua
+- monster unik tiap benua
+
+Dan menurut saya ini adalah fondasi terbesar berikutnya.
+
+Karena setelah ini kita akhirnya bisa mulai membangun:
+
+```text
+50 jam pertama gameplay
+
+secara konkret.
+
+
+
+WORLD_BIBLE_PART_01
+THE SEVEN CONTINENTS
+# AETHERION
+# WORLD BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Continents
+- Geography
+- Cultures
+- Companion Distribution
+- Major Threats
+
+---
+---
+DESIGN PHILOSOPHY
+
+Salah satu kesalahan banyak MMORPG dan Open World RPG adalah:
+
+Semua ras penting berada di satu benua.
+
+Akibatnya dunia terasa kecil.
+
+Padahal Aetherion harus terasa:
+
+Sangat besar.
+
+Karena Wonder adalah pilar utama game.
+
+Maka dunia dibagi menjadi:
+
+5 Benua Utama
+1 Benua Terlarang
+1 Benua Hilang
+
+Total:
+
+7 Benua Besar
+CONTINENT I
+ELDORIA
+The Cradle of Civilization
+
+Benua paling dikenal.
+
+Tempat mayoritas pemain memulai.
+
+Berisi:
+
+kerajaan manusia
+kota perdagangan
+akademi
+guild petualang
+
+Inilah wajah dunia yang paling "normal".
+
+Namun tetap penuh misteri.
+
+Companion tersebar:
+
+8–10 Companion.
+
+Ancaman utama:
+
+bandit
+kriminal
+monster liar
+konflik politik
+CONTINENT II
+VALKARIS
+Land of Iron and Stone
+
+Pegunungan raksasa.
+
+Rumah:
+
+dwarf
+giant clans
+smith kingdoms
+
+Benua ini terkenal karena:
+
+Senjata terbaik dunia.
+
+Namun juga:
+
+Perang klan tidak pernah benar-benar berhenti.
+
+Companion:
+
+6–8 Companion.
+
+Monster unik:
+
+magma beasts
+crystal wyrms
+mountain titans
+CONTINENT III
+SYLVARA
+The Endless Green
+
+Hutan yang sangat luas.
+
+Rumah:
+
+elf
+treant
+spirit creatures
+
+Banyak wilayah belum pernah dipetakan.
+
+Beberapa pohon lebih tua dari kerajaan mana pun.
+
+Companion:
+
+6–8 Companion.
+
+Ancaman:
+
+monster mutasi
+ancient forests
+wilayah terlarang
+CONTINENT IV
+AZHUR
+Ocean of a Thousand Horizons
+
+Kepulauan.
+
+Ribuan pulau.
+
+Tidak ada kerajaan dominan.
+
+Semua terpecah.
+
+Bajak laut.
+
+Pedagang.
+
+Penjelajah.
+
+Pemburu leviathan.
+
+Semuanya hidup di sini.
+
+Companion:
+
+6–8 Companion.
+
+Monster:
+
+sea dragons
+leviathans
+abyssal creatures
+CONTINENT V
+NETHRAK
+The Wild Frontier
+
+Benua paling liar.
+
+Bukan tempat kerajaan berkembang.
+
+Benua ini milik:
+
+Monster.
+
+Manusia hanya tamu.
+
+Banyak Tamer legendaris berasal dari sini.
+
+Companion:
+
+8–10 Companion.
+
+Monster:
+
+terbanyak di dunia.
+
+CONTINENT VI
+VORUM
+The Forbidden Continent
+
+Tidak muncul di peta umum.
+
+Banyak pelaut percaya benua ini tidak ada.
+
+Mereka salah.
+
+Benua ini nyata.
+
+Dan berbahaya.
+
+Alasan terlarang:
+
+belum diketahui pemain.
+
+Berhubungan dengan:
+
+sejarah kuno
+naga
+para dewa
+Nirmana
+
+Companion:
+
+beberapa yang paling kuat berada di sini.
+
+CONTINENT VII
+ASTRAEL
+The Lost Continent
+
+Benua yang hilang dari sejarah.
+
+Bahkan keberadaannya diperdebatkan.
+
+Sebagian sejarawan menganggapnya mitos.
+
+Sebagian naga mengetahui kebenarannya.
+
+Sebagian Companion mencarinya sepanjang hidup.
+
+Dan beberapa organisasi rela membunuh demi informasi tentangnya.
+
+IMPORTANT LAW
+EVERY CONTINENT MUST FEEL DIFFERENT
+
+Pemain tidak boleh merasa:
+
+Benua baru
+=
+map lama dengan tekstur berbeda
+
+Masing-masing harus memiliki:
+
+budaya
+monster
+konflik
+sejarah
+Companion
+ekonomi
+
+yang unik.
+
+COMPANION DISTRIBUTION
+
+50 Great Companions.
+
+Tidak boleh berkumpul.
+
+Target:
+
+Eldoria      : 9
+Valkaris     : 7
+Sylvara      : 7
+Azhur        : 7
+Nethrak      : 9
+Vorum        : 5
+Astrael      : 6
+
+Total:
+
+50
+
+Dan sebagian besar pemain tidak akan menemukan semuanya dalam satu playthrough.
+
+DESIGN REASONING
+
+Pemain harus merasa:
+
+Aku baru melihat sebagian kecil dunia.
+
+Bahkan setelah:
+
+100 jam
+200 jam
+500 jam
+
+Karena dunia jauh lebih besar daripada karakter pemain.
+
+
+# TEMUAN DIREKTUR #029
+
+Sekarang kita akhirnya bisa mulai masuk ke fondasi gameplay 50 jam pertama.
+
+Karena hampir semua lore besar sudah berdiri:
+
+✓ Dewa
+
+✓ Nirmana
+
+✓ Chronicle
+
+✓ Legacy
+
+✓ Kingdom
+
+✓ Monster
+
+✓ Naga
+
+✓ Benua
+
+✓ Companion
+
+✓ Ras
+
+---
+
+Tetapi masih ada satu sistem yang menurut saya akan menentukan apakah Aetherion terasa hidup atau hanya RPG biasa:
+
+# FACTIONS
+
+Bukan kerajaan.
+
+Bukan guild.
+
+Bukan organisasi biasa.
+
+Melainkan kelompok-kelompok dunia yang bergerak sendiri:
+
+- sindikat kriminal
+- pemburu naga
+- pencari kebenaran
+- peramal
+- kultus
+- penjudi
+- penipu
+- organisasi bawah tanah
+- pemburu artefak
+- akademi rahasia
+- kolektor monster
+
+dan semua "sampah dunia" yang sebelumnya Anda minta masuk agar dunia terasa hidup.
+
+Menurut saya setelah ini kita harus membuat:
+
+```text
+FACTION_BIBLE_PART_01
+
+ACTION_BIBLE_PART_01
+THE WORLD BETWEEN HEROES
+# AETHERION
+# FACTION BIBLE
+
+Status:
+LOCKED
+
+Scope:
+
+- Factions
+- Underground Powers
+- Criminal Networks
+- Strange Organizations
+- Independent Groups
+- Living World Events
+
+---
+---
+DESIGN PHILOSOPHY
+
+Salah satu alasan banyak RPG terasa mati adalah:
+
+Dunia hanya berisi:
+
+Quest Giver
+Merchant
+Blacksmith
+Guard
+
+Padahal dunia nyata jauh lebih aneh.
+
+Lebih berantakan.
+
+Lebih tidak masuk akal.
+
+Dan justru itu yang membuatnya hidup.
+
+Maka Aetherion harus memiliki:
+
+The People Between History.
+
+Orang-orang yang tidak akan menyelamatkan dunia.
+
+Tetapi membuat dunia terasa nyata.
+
+THE SHADOW MARKET
+FACTION #001
+
+Pasar gelap terbesar dunia.
+
+Bukan organisasi.
+
+Lebih seperti ekosistem.
+
+Mereka menjual:
+
+artefak ilegal
+monster langka
+informasi
+identitas palsu
+peta terlarang
+
+Tidak ada pemimpin tunggal.
+
+Karena ketika satu pemimpin mati.
+
+Pasar tetap hidup.
+
+THE SEEKERS OF TRUTH
+FACTION #002
+
+Kelompok pencari kebenaran.
+
+Obsesi mereka:
+
+Apa yang sebenarnya terjadi?
+
+Mereka memburu:
+
+sejarah palsu
+Chronicle hilang
+reruntuhan kuno
+
+Sebagian dianggap ilmuwan.
+
+Sebagian dianggap gila.
+
+THE LAST GAMBLERS
+FACTION #003
+
+Penjudi legendaris.
+
+Mereka percaya:
+
+Keberuntungan adalah bahasa dunia.
+
+Beberapa anggota mampu mempertaruhkan:
+
+uang
+senjata
+wilayah
+informasi
+
+Bahkan:
+
+tahun kehidupan.
+THE FORTUNE READERS
+FACTION #004
+
+Peramal.
+
+Tetapi tidak semuanya benar.
+
+Sebagian benar-benar melihat masa depan.
+
+Sebagian penipu.
+
+Sebagian bahkan tidak tahu bahwa kemampuan mereka nyata.
+
+IMPORTANT
+
+Masa depan tidak pasti.
+
+Maka ramalan tidak pernah 100% benar.
+
+THE GRAVE WALKERS
+FACTION #005
+
+Pencari makam.
+
+Pemburu reruntuhan.
+
+Pencuri artefak.
+
+Penjarah sejarah.
+
+Dibenci akademi.
+
+Dicintai kolektor.
+
+THE HUNTERS OF THE IMPOSSIBLE
+FACTION #006
+
+Kelompok pemburu makhluk legendaris.
+
+Target mereka:
+
+naga
+leviathan
+phoenix
+monster mitologi
+
+Mayoritas mati muda.
+
+Tetapi beberapa menjadi legenda.
+
+THE MASK COLLECTORS
+FACTION #007
+
+Kelompok aneh.
+
+Mereka mengumpulkan:
+
+identitas
+nama
+sejarah
+
+Mereka percaya:
+
+Nama memiliki kekuatan.
+
+Tidak ada yang tahu apakah itu benar.
+
+THE ETERNAL DRUNKARDS
+FACTION #008
+
+Kelompok pengembara.
+
+Mabuk.
+
+Berisik.
+
+Tampak tidak penting.
+
+Namun sebagian anggotanya pernah menjadi legenda.
+
+Dan kadang-kadang.
+
+Informasi paling penting dunia.
+
+Muncul dari meja minuman.
+
+THE FALSE PROPHETS
+FACTION #009
+
+Bukan kultus tunggal.
+
+Melainkan fenomena.
+
+Selalu ada seseorang yang mengaku:
+
+Aku tahu akhir dunia.
+
+Selalu ada pengikut.
+
+Selalu ada korban.
+
+THE MONSTER WHISPERERS
+FACTION #010
+
+Kelompok yang percaya:
+
+Monster bukan binatang.
+
+Sebagian besar Tamer besar berasal dari sini.
+
+Mereka mempelajari:
+
+budaya monster
+bahasa monster
+psikologi monster
+DESIGN GOAL
+
+Faksi tidak boleh:
+
+Baik
+atau
+Jahat
+
+Semuanya abu-abu.
+
+Sama seperti dunia nyata.
+
+RANDOM ENCOUNTERS
+
+Karena adanya faksi.
+
+Pemain bisa bertemu:
+
+penipu
+nabi palsu
+penjudi
+mantan raja
+naga menyamar
+kriminal
+ilmuwan gila
+pemburu monster
+
+Tanpa quest utama.
+
+Tanpa cutscene.
+
+Tanpa penanda.
+
+Hanya karena mereka hidup di dunia.
+
+THE RULE OF WEIRDNESS
+
+Minimal 30% dunia harus terasa aneh.
+
+Karena rasa penasaran adalah bahan bakar eksplorasi.
+
+Contoh:
+
+Pemain menemukan pria tua.
+
+Ia meminta:
+
+Tolong hitung jumlah batu di sungai ini.
+
+Quest terlihat bodoh.
+
+100 jam kemudian.
+
+Pemain sadar pria itu adalah salah satu Companion legendaris.
+
+THE RULE OF IRRELEVANT PEOPLE
+
+Tidak semua NPC penting.
+
+Dan itu penting.
+
+Karena jika semua NPC penting.
+
+Maka tidak ada NPC yang terasa penting.
+
+Harus ada:
+
+petani biasa
+penjudi gagal
+pemabuk
+penipu kecil
+pencari kerja
+pedagang keliling
+
+Agar dunia terasa hidup.
+
+THE FINAL LAW
+
+Tidak semua orang sedang menunggu pemain.
+
+Sebagian besar sedang menjalani hidup mereka sendiri.
+
+Dan itulah yang membuat dunia terasa nyata.
+
+
+---
+
+# DESIGN REASONING BESAR
+
+Ini mengunci sesuatu yang sebelumnya sering Anda sebut:
+
+```text
+peramal
+penipu
+orang aneh
+orang kuat asing
+penantang maut
+pembaca masa depan
+kriminal
+geng bawah tanah
+
+Mereka bukan quest.
+
+Mereka bukan konten sampingan.
+
+Mereka adalah "isi dunia".
+
+Karena pemain harus bisa berjalan 10 menit dan menemukan sesuatu yang tidak direncanakan.
+
+TEMUAN DIREKTUR #030
+
+Sekarang saya melihat fondasi 50 jam pertama mulai lengkap.
+
+Tetapi ada satu sistem yang akan menentukan seluruh gameplay:
+
+CLASS SYSTEM
+
+Karena dari visi awal Anda:
+
+Tamer + Warrior
+Tamer + Necromancer
+Tamer + Kingdom Builder
+Tamer + Farmer
+Tamer + Lumberjack
+
+Artinya kita tidak sedang membuat class tradisional MMORPG.
+
+Kita sedang membuat:
+
+Identity System
+
+bukan sekadar class system.
+
+DECISION LOCK #031
+CLASS IS A STARTING IDENTITY
+NOT A PERMANENT LIMITATION
+PROBLEM OF MOST RPG
+
+Biasanya:
+
+Warrior
+=
+Tidak bisa sihir
+
+Mage
+=
+Tidak bisa tank
+
+Archer
+=
+Tidak bisa summon
+
+Aetherion tidak cocok seperti itu.
+
+Karena visi awal Anda adalah:
+
+Aku punya build ku sendiri.
+
+Bukan:
+
+Aku memainkan build yang disediakan developer.
+THE CORE RULE
+ALL SKILLS CAN BE LEARNED
+
+Semua skill tree bisa dipelajari.
+
+Contoh:
+
+Warrior dapat mempelajari:
+
+necromancy
+taming
+crafting
+farming
+rune magic
+
+Mage dapat mempelajari:
+
+sword mastery
+beast handling
+blacksmithing
+leadership
+
+Tamer dapat mempelajari:
+
+shield techniques
+curse magic
+kingdom administration
+THEN WHAT IS A CLASS?
+
+Class hanya menentukan:
+
+Starting Identity
+
+Contoh:
+
+Warrior
+
+Mulai dengan:
+
+pedang
+armor
+combat skills
+Tamer
+
+Mulai dengan:
+
+monster bond
+taming skills
+pet command
+Necromancer
+
+Mulai dengan:
+
+soul manipulation
+undead control
+
+Dan seterusnya.
+
+IMPORTANT
+NO SKILL TREE LOCK
+
+Tidak ada:
+
+Class Requirement
+
+untuk sebagian besar skill.
+
+Karena dunia tidak peduli label.
+
+Yang penting adalah:
+
+Pengetahuan
++
+Latihan
++
+Syarat tertentu
+THE ONLY EXCEPTION
+CLASS ULTIMATE
+
+Ini bagian yang Anda tentukan.
+
+Setiap class memiliki:
+
+Class Core
+
+Dan:
+
+Class Ultimate
+
+Yang tidak dapat dipelajari class lain.
+
+EXAMPLE
+Tamer Ultimate
+
+Misalnya:
+
+Primal Union
+
+Menyatu dengan monster partner.
+
+Transformasi penuh.
+
+Tidak bisa dipelajari Warrior.
+
+Tidak bisa dipelajari Mage.
+
+Tidak bisa dipelajari Necromancer.
+
+EXAMPLE
+Warrior Ultimate
+
+Misalnya:
+
+Worldbreaker Stance
+
+Teknik tempur tertinggi Warrior.
+
+Tidak dapat dipelajari class lain.
+
+EXAMPLE
+Necromancer Ultimate
+
+Misalnya:
+
+Throne of the Dead
+
+Kontrol massal pasukan undead.
+
+Tidak dapat dipelajari class lain.
+
+RESULT
+
+Pemain bisa menjadi:
+
+Tamer
++
+Swordmaster
++
+Farmer
++
+King
++
+Necromancer
+
+Tetapi tetap:
+
+Tamer
+
+di level identitas terdalam.
+
+Karena Ultimate Tamer tetap eksklusif.
+
+THE REAL PROGRESSION
+
+Yang berkembang bukan class.
+
+Melainkan:
+
+Knowledge
+
+Karena pemain belajar.
+
+Bukan naik jalur.
+
+MULTI-DISCIPLINE SYSTEM
+
+Karakter dapat berkembang dalam:
+
+Combat
+sword
+spear
+shield
+archery
+Magic
+elemental
+rune
+necromancy
+spirit
+Monster
+taming
+breeding
+mutation
+fusion
+Life
+farming
+fishing
+cooking
+trading
+Leadership
+settlement
+kingdom
+diplomacy
+warfare
+
+Semua dapat berkembang bersamaan.
+
+DESIGN CONSEQUENCE
+
+Dua pemain Tamer level maksimal.
+
+Bisa sangat berbeda.
+
+Contoh:
+
+Tamer A
+Tamer
++
+Necromancer
++
+Dark Magic
+
+Fokus:
+
+undead beasts
+cursed monsters
+Tamer B
+Tamer
++
+Knight
++
+Leadership
+
+Fokus:
+
+mount army
+kingdom warfare
+Tamer C
+Tamer
++
+Druid
++
+Ecology
+
+Fokus:
+
+monster sanctuary
+rare species
+
+Ketiganya tetap:
+
+Tamer
+
+Tetapi gameplay berbeda total.
+
+DESIGN REASONING BESAR
+
+Ini sangat cocok dengan filosofi yang sudah kita bangun:
+
+The World Remembers
+
+Karena yang diingat dunia bukan:
+
+Class-mu apa.
+
+Tetapi:
+
+Apa yang kamu lakukan.
+TEMUAN DIREKTUR #031
+
+Dengan keputusan ini saya melihat bahwa Aetherion sebenarnya tidak memiliki:
+
+Class Progression
+
+Melainkan:
+
+Identity Progression
+
+Tetapi:
+
+PROGRESSION_BIBLE_PART_01
+Skill Tree
+Mastery
+Learning System
+Teachers
+Hidden Skills
+Legendary Techniques
+Forbidden Arts
+Monster Skills
+Hybrid Builds
+
+Karena keputusan "semua skill bisa dipelajari siapa saja" akan memengaruhi seluruh progression game dari jam pertama hingga endgam
 
 
 
