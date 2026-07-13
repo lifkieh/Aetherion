@@ -1,7 +1,7 @@
 # STATUS — Aetherion Fase 0
 
 **Last update:** 2026-07-12 (BD-1 dua jalur ClassSelect selesai)
-**Exe terakhir:** 2026-07-13 05:28 WIB — berisi hingga: v0.4.2 Gear & Economy lengkap (piramida Transenden A→SSS + ritual MOMEN, quality/maker's mark, Enchanter + enchant +1..+10, coating, RUMAH LELANG + tawanan-dibebaskan). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
+**Exe terakhir:** 2026-07-13 07:33 WIB — berisi hingga: v0.4.2 penuh + kanonisasi E1–E10 (rumor tak akurat, 25 NPC berkepribadian, Miracle System, taksonomi quest) + v0.4.3 sebagian (MUSIM v1, Jurnal Quest + pelacakan, stinger, dungeon peti/ruang rahasia/jebakan). *(Aturan permanen: baris ini WAJIB diperbarui setiap export.)*
 **Engine:** Godot 4.3-stable · GDScript · run via `run_godot.bat`
 **How to run:** `run_godot.bat` (editor) · `run_godot.bat --headless res://tests/TestRunner.tscn --quit-after 30` (tests)
 
@@ -325,7 +325,7 @@ fitur, 6 fitur KOSONG teridentifikasi, 6 konflik antar keputusan), REPORT-02 Sco
 (Life Events & Kingdom = XL, pecahan milestone), REPORT-03 Story Readiness (kekosongan
 naratif terbesar: Nirnama), REPORT-04 v0.4.2 Readiness (SIAP GAS, 2 blocker lunak). 472 test.
 
-## ⏸️ STATUS: v0.4.2 SELESAI + KANONISASI KONSEPSI GPT (E1-E10: Hukum Direktur #1, Law of Eras, Wonder Laws, rumor tak akurat, 25 NPC berkepribadian, Miracle System v1, taksonomi quest) — MENUNGGU PLAYTEST OWNER v0.4.2 + KEPUTUSAN P1-P5; LANJUT: v0.4.3
+## ⏸️ STATUS: v0.4.2 SELESAI + E1–E10 TERKANONISASI + v0.4.3 BERJALAN (4/9 butir: MUSIM v1, Jurnal+pelacakan, stinger, dungeon peti/rahasia/jebakan) — MENUNGGU: playtest owner + keputusan P1–P5. SISA v0.4.3: world map, cutscene engine, jadwal NPC, Rasi penuh, Forest Spirit + first-clear, parallax/ambience dungeon
 v0.4.2 siap (REPORT-04): Transenden sebagai MOMEN #25, Enchant+Enchanter, Coating,
 quality roll + maker's mark, + Rumah Lelang NPC (B8).
 Fase v0.4.1 tuntas. Feedback playtest v0.4.0/v0.4.1 owner akan diterima sebagai koreksi
