@@ -115,7 +115,11 @@ Tapi klimaksnya **tetap pertarungan gameplay besar** — hanya saja objektifnya 
 pertanyaannya bukan pertanyaan tempur. **Nasib akhir Nirnama (pergi / tinggal / berubah
 / menunggu era berikutnya) SENGAJA TIDAK DIKUNCI** — itu keputusan penulisan Act 2.
 
-- **5 ENDING** (Dawn / Final Silence / Last Sky / Broken Answer / **The World Remembers**) + **hukum: tidak ada ending sempurna**.
+- **5 ENDING** (Dawn / **Final Silence** / Last Sky / Broken Answer / **The World Remembers**) + **hukum: tidak ada ending sempurna**.
+  - ⚖ **RATIFIKASI D11 (#176): "THE FINAL SILENCE" = DUNIA *LUPA*, BUKAN DUNIA BERAKHIR.**
+    Dunia **terus ada** — tetapi **tak seorang pun mengingat apa yang pernah dibangun**.
+    **LAW OF ERAS (#75b) UTUH:** tidak ada ending-dunia; yang berakhir adalah **era & ingatan**.
+    *Ini ending paling gelap yang kita punya — dan ia gelap **tanpa** satu pun ledakan.*
 - Butuh **sistem penilaian warisan** (metrik: Chronicle, Domain, companion yang hidup, orang yang mengingat).
 - 10 checklist experience hijau → demo publik.
 

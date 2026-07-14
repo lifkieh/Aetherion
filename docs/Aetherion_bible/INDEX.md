@@ -70,7 +70,8 @@ satu korpus 2026-07-13 (Direktif Bible Folder Ingestion).
 
 **Part 4**
 - 5 kelompok pewaris kehampaan (FILE 69) · **The Last Dragon = The Watcher** (FILE 70)
-- **5 ENDING** (Dawn / Final Silence / Last Sky / Broken Answer / **The World Remembers**) — FILE 72
+- **5 ENDING** (Dawn / **Final Silence** / Last Sky / Broken Answer / **The World Remembers**) — FILE 72
+  - ⚖ **D11 (#176): "Final Silence" = dunia LUPA** (dunia tetap ada; tak ada yang mengingat) — **bukan kiamat**. LAW OF ERAS utuh.
 - Larangan: **tidak ada ending sempurna**; **jawaban bukan sebuah kalimat dialog**
 
 **Part 5 (WORLD BIBLE — konstitusi)**

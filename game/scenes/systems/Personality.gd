@@ -108,16 +108,44 @@ static func label(prof: Dictionary) -> String:
 	return "%s-%s" % [str(prof.get("temperament", "-")).capitalize(),
 		str(prof.get("temperament_sub", "-")).capitalize()]
 
-## Potensi menjadi pengubah sejarah — **bukan jaminan** (L16/L17).
-## Talent+Effort > Talent. Opportunity & Luck melipatgandakan; mental_state memodulasi.
-## Tanpa kesempatan, bakat sebesar apa pun tetap tak tumbuh (L14) — dan itu memang intinya.
-static func potential(prof: Dictionary) -> float:
+## OUTCOME (proyeksi hasil hidup) — **BUKAN "potential"** (Decision Log #174).
+## Rumus induk: `Outcome = Potential + Opportunity + Effort + Luck`, dimodulasi Mental State.
+## Talent+Effort > Talent (L17). Tanpa kesempatan, bakat sebesar apa pun tak tumbuh (L14).
+##
+## ⚠ Dulu bernama `potential()` — dan itu **berbahaya**: HUKUM 1 (`POTENTIAL = ???`) justru
+## menyatakan potensi **tersembunyi**, sehingga penulis berikutnya bisa menampilkan angka ini
+## ke UI karena mengira "inilah potensi yang dimaksud kanon". **Nilai ini TIDAK PERNAH tampil
+## ke pemain** — dijaga oleh test `_test_potential_not_exposed()`.
+static func outcome_projection(prof: Dictionary) -> float:
 	var t: float = float(prof.get("talent", 30))
 	var e: float = float(prof.get("effort", 50))
 	var o: float = float(prof.get("opportunity", 0))
 	var l: float = float(prof.get("luck", 50))
 	var m: float = float(prof.get("mental_state", 100)) / 100.0
 	return (t * 0.3 + e * 0.35 + o * 0.25 + l * 0.1) * m
+
+# --- POTENTIAL: data tersembunyi + GERBANG-ITEM (kanon #174/#175) --------------
+## POTENSI ITU NYATA — ia membedakan orang yang mentok-biasa dari yang mentok-Legendary.
+## Ia **tersembunyi secara default** dan **TIDAK PERNAH tampil sebagai angka**. Satu-satunya
+## jalan mengintipnya = **ITEM PENGLIHAT POTENSI** (langka; **mesinnya = spec v0.6, belum
+## dibangun**) — dan bahkan item itu hanya menampilkan **TIER**, tak pernah angka mentah.
+##
+## Kenapa ini memperkuat, bukan melanggar, Hukum 1: pemain biasa tetap melihat `???`.
+## Pemain yang **berburu item langka** bisa mengintip — dan **pengetahuan itu sendiri menjadi
+## kekuatan**: tahu anak petani ini berpotensi Legendary = **alasan memberinya kesempatan** (L14).
+const TIERS := ["Average", "Gifted", "Exceptional", "Legendary"]
+
+## Tier potensi seorang individu (data internal). **Jangan panggil dari UI** — satu-satunya
+## pemanggil sah kelak adalah Item Penglihat Potensi (v0.6).
+static func talent_tier(prof: Dictionary) -> String:
+	var t := clampi(int(prof.get("talent", 30)), 1, 100)
+	if t >= 90:
+		return "Legendary"
+	if t >= 75:
+		return "Exceptional"
+	if t >= 55:
+		return "Gifted"
+	return "Average"
 
 ## L15 — PEOPLE CAN BREAK: trauma menurunkan mental_state; performa ikut turun.
 static func add_trauma(npc_id: String, event: String, weight: int = 15) -> void:

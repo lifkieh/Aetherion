@@ -275,8 +275,16 @@ dapat dirakit dari repo**.
 sumber mentah **merusak provenance** (kita kehilangan kemampuan membuktikan apa yang benar-benar
 dikirim owner, dan itu pelajaran BD-1/BD-2). Berkas ini **dikecualikan** dari guard rahasia.
 
-**Status: RISIKO DITERIMA, bertanggal.** Bila repo kelak dibuka luas **sebelum reveal Act 2**,
-keputusan ini **wajib ditinjau ulang** bersama #144 — dan peninjauan itu milik Direktur.
+**✅ PUTUSAN DIREKTUR (2026-07-14, BOCOR-1 = a, #177): BIARKAN APA ADANYA.**
+Provenance sumber mentah **lebih berharga** daripada risiko yang tersisa: setelah **marga
+diredaksi** (#169), **nama depan tanpa konteks tidak dapat dirakit menjadi nama utuh** — ia hanya
+satu baris dalam daftar nama NPC.
+
+**RENCANA OWNER:** repo akan **DI-PRIVATE-kan**. Setelah itu, risiko ini **praktis nol**.
+
+> ### ⚠ SYARAT PENINJAUAN ULANG (mengikat)
+> **Bila repo MASIH PUBLIK menjelang reveal Act 2 — keputusan ini WAJIB ditinjau ulang.**
+> Ini bukan catatan sopan; ini **utang bertanggal**. Yang meninjau: **Direktur**, bukan agent.
 
 **Yang BERUBAH hari ini (bukan risiko, melainkan perbaikan):** guard rahasia dulu **hanya
 menyisir `res://`**. Kini ia menyisir **`docs/` + 5 dokumen hukum** untuk **potongan** nama —

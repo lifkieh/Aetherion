@@ -17,18 +17,19 @@ yang membuatnya salah.
 > **Perhatikan bobotnya:** `effort` (0,35) **melebihi** `talent` (0,30) — **Talent + Effort > Talent**
 > (L17), dan itu **sudah berlaku di kode**, bukan aspirasi.
 >
-> ⚠ **TABRAKAN ISTILAH (dilaporkan #171, butuh keputusan):** fungsi kode bernama `potential()`
-> padahal yang dihitungnya adalah **OUTCOME**, bukan POTENTIAL-yang-tersembunyi (Hukum 1).
-> Bahayanya nyata: penulis berikutnya bisa menampilkannya ke UI karena mengira itu "potensi".
-> **Usul agent: rename → `outcome_projection()`.** *(Hari ini sudah diverifikasi: ia **tidak
-> tampil di UI mana pun** — dan itu harus tetap begitu.)*
+> ✅ **TABRAKAN ISTILAH DISELESAIKAN (#174):** fungsi itu **sudah di-rename** `potential()` →
+> **`outcome_projection()`** (beserta semua pemanggilnya). Alasannya: yang dihitungnya adalah
+> **OUTCOME**, bukan POTENTIAL-yang-tersembunyi — dan nama lama akan membuat penulis berikutnya
+> menampilkannya ke UI karena mengira *"inilah potensi yang dimaksud kanon"*.
+> **Dijaga test:** `_test_potential_not_exposed()` menyisir **seluruh skrip UI** dan **gagal**
+> bila ada yang menyentuh `outcome_projection` / `talent_tier` / `talent` / `TIERS`.
 
 ## STATUS PELAKSANAAN — apa yang SUDAH terkode vs apa yang masih SPEC
 
 | Hukum | Status hari ini | Di mana |
 |---|---|---|
-| **1. POTENTIAL = ???** | ✅ **terkode** (nilainya ada, **tak pernah tampil di UI** — diverifikasi) | `Personality.gd` |
-| **2. HIDDEN TALENT TIER** | 🟡 **separuh** — kelangkaannya **sudah struktural** (`talent` = **nilai terkecil dari 3 lemparan**, `Personality.gd:69`), tetapi **tier bernama** (Average/Gifted/Exceptional/Legendary) **belum ada** | v0.6 |
+| **1. POTENTIAL = ???** | ✅ **terkode** (nilai ada, **tak pernah tampil** — dijaga test anti-bocor UI `_test_potential_not_exposed`) · **Item Penglihat = SPEC v0.6** | `Personality.gd` |
+| **2. HIDDEN TALENT TIER** | ✅ **terkode** — `talent_tier()` (Average/Gifted/Exceptional/Legendary) + kelangkaan **struktural** (`talent` = **nilai terkecil dari 3 lemparan**). **Terverifikasi test: Legendary <5%, Average >60%** | `Personality.gd` |
 | **3. OPPORTUNITY** | ✅ **terkode** — `opportunity` **lahir = 0** dan **hanya** naik lewat peristiwa (L14) | `Personality.gd` |
 | **4. LUCK** | ✅ **terkode** — seed per individu, deterministik | `Personality.gd` |
 | **5. MENTAL HEALTH** | 🔴 **SPEC** — yang ada baru `trauma[]` + `mental_state`. Depresi · burnout · kecanduan · kehilangan tujuan hidup · kecemasan **belum ada** | **v0.6** |
@@ -47,11 +48,37 @@ yang **sudah kanon** — **JANGAN duplikasi**. Tidak ada "sistem bakat" kedua, t
 **Masa depan setiap NPC adalah `???`, dan itu TIDAK PERNAH boleh diketahui — oleh pemain,
 oleh penulis, bahkan oleh Sang Nirnama.**
 
-- `potential` **boleh ada di data**; ia **TIDAK PERNAH tampil di UI**. Tak ada bintang, tak ada
-  "bakat: A", tak ada bar tersembunyi yang bocor lewat tooltip.
-- **Tak ada NPC yang dijamin sukses. Tak ada yang dijamin gagal.**
-- **Uji desain:** kalau seorang pemain bisa menyortir NPC berdasarkan siapa yang "layak
-  diinvestasikan", hukum ini sudah mati.
+- **POTENSI ITU NYATA — ia ADA sebagai nilai di data** (#175). Ia harus ada: itulah yang
+  membedakan orang yang **mentok-biasa** dari orang yang **mentok-Legendary**. Menghapusnya =
+  membuat semua orang sama, dan itu **kebohongan yang berbeda**.
+- Ia **TERSEMBUNYI secara default**: tak ada bintang, tak ada "bakat: A", tak ada bar yang bocor
+  lewat tooltip. **Pemain biasa melihat `???` seumur hidup NPC itu.**
+- **Tak ada NPC yang dijamin sukses. Tak ada yang dijamin gagal** — sebab potensi hanyalah satu
+  suku dari empat (rumus induk), dan **Opportunity lahir = 0**.
+- **Uji desain:** kalau seorang pemain bisa menyortir NPC **tanpa berburu apa pun**, hukum ini
+  sudah mati.
+
+### ⚖ SATU PENGECUALIAN KANON — **ITEM PENGLIHAT POTENSI** (#175, spec v0.6)
+
+**Satu-satunya jalan** melihat potensi seseorang: sebuah **item langka** (nama menyusul) yang,
+bila diarahkan kepada seseorang, menampilkan **TIER**-nya.
+
+| Aturan item | |
+|---|---|
+| **Menampilkan** | **TIER saja** (Average / Gifted / Exceptional / Legendary) — dan, bila melampaui pandangannya, **isyarat samar**: *"potensinya melampaui yang bisa kulihat."* |
+| **TIDAK PERNAH menampilkan** | **angka mentah** · `outcome_projection` · rincian talent/effort/luck |
+| **Kelangkaan** | item **langka** — mengintip masa depan seseorang **harus mahal** |
+| **Status** | **SPEC v0.6** (bersama mesin NPC Depth). **JANGAN dibangun sekarang.** |
+
+**Kenapa ini MEMPERKUAT Hukum 1, bukan melanggarnya:** pengetahuan itu **sendiri menjadi
+kekuatan**. Pemain yang berburu item langka lalu tahu bahwa **anak petani ini berpotensi
+Legendary** kini punya **alasan untuk memberinya kesempatan** (L14) — dan **kesempatan itulah
+yang benar-benar mengubah takdirnya**, bukan angkanya. *Potensi yang diketahui tetap tak berarti
+apa-apa sampai seseorang berbuat sesuatu untuknya.*
+
+**Dan sisi gelapnya sengaja dibiarkan:** pemain **boleh** memakai item itu untuk **memilih siapa
+yang layak** — lalu mengabaikan sisanya. Dunia **tidak menghukumnya**, dan **tidak memaafkannya**.
+Chronicle hanya **mencatat siapa yang kau lewati.**
 
 ## 2. HIDDEN TALENT TIER
 
@@ -72,6 +99,8 @@ pemiliknya sendiri**.
   matematikanya, bukan karena kita menahannya.*
 - Tier **tidak pernah ditampilkan** — ia hanya **tersirat** lewat perilaku, kecepatan belajar,
   dan komentar orang lain (*"anak itu… cepat sekali menangkap."*).
+  **⚖ SATU PENGECUALIAN:** **Item Penglihat Potensi** (Hukum 1, #175) — dan ia menampilkan
+  **tier saja**, tak pernah angka. Di luar itu: tetap `???`, selamanya.
 - **Bakat besar di tempat yang salah = tetap tak menjadi apa-apa** (Hukum 3 & ENVIRONMENT).
 - **GENIUS IS RARE** (L17): Talent + Effort **>** Talent. Talent + Effort + Opportunity + Luck
   = **pengubah sejarah**. Sisanya: orang berbakat yang tak pernah terdengar.

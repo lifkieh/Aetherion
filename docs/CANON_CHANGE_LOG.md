@@ -36,9 +36,37 @@ kedua) · kerangka R3/R4/R5/R7.
 |---|---|
 | **M9 (Caevael)** ada di `MISTERI_ABADI.md` | ✅ **ADA** (baris 103, #140) |
 | **Test rahasia produksi** | ✅ **HIJAU** (dan kini menyisir `docs/` + dokumen hukum — #169) |
-| **"The Final Silence = dunia LUPA" (D11)** | ⚠ **KONSISTEN, TAPI BELUM DIRATIFIKASI** — lihat bawah |
+| **"The Final Silence = dunia LUPA" (D11)** | ✅ **DIRATIFIKASI (#176)** — lihat bawah |
 
-### ⚠ D11 — konsisten, tetapi belum punya baris keputusan
+### ✅ D11 — DIRATIFIKASI (#176)
+**"THE FINAL SILENCE" = DUNIA *LUPA*, bukan dunia berakhir.** Dunia **terus ada**; **tak seorang
+pun mengingat apa yang pernah dibangun**. **LAW OF ERAS (#75b) UTUH** — yang berakhir adalah
+**era & ingatan**, bukan dunia. *Ending tergelap yang kita punya — dan ia gelap **tanpa satu pun
+ledakan**.* **Diperbarui di:** `IMPLEMENTATION_ROADBOOK.md` · `Aetherion_bible/INDEX.md` ·
+**Nirnama Bible §XVII** (privat + publik).
+
+---
+
+## 2026-07-14 — POTENTIAL: data tersembunyi + GERBANG-ITEM (#174/#175)
+
+| Perubahan | Isi |
+|---|---|
+| **Kode: rename** | `Personality.potential()` → **`outcome_projection()`** + semua pemanggil. *(Nama lama akan membuat penulis berikutnya menampilkannya ke UI karena mengira "inilah potensi yang dimaksud kanon".)* |
+| **Kode: baru** | `Personality.talent_tier()` + `TIERS` — **Average / Gifted / Exceptional / Legendary**. **Data internal**, bukan UI. |
+| **Kanon baru** | **Potensi ITU NYATA** (membedakan mentok-biasa dari mentok-Legendary), **tersembunyi secara default**, dan **hanya bisa diintip lewat ITEM PENGLIHAT POTENSI** (langka; **TIER saja**, tak pernah angka mentah; **spec v0.6 — belum dibangun**). |
+| **Hukum 1 & 2** | Kini punya **satu pengecualian kanon** — dan itu **memperkuat**: pemain biasa tetap melihat `???`; pemain yang **berburu** bisa mengintip, dan **pengetahuan itu sendiri menjadi kekuatan** (tahu anak petani ini Legendary = **alasan memberinya kesempatan**, L14). |
+| **Test penjaga** | `_test_potential_not_exposed()` — menyisir **seluruh skrip UI** dan **gagal** bila ada yang menyentuh `outcome_projection`/`talent_tier`/`talent`/`TIERS`. Terverifikasi juga: **Legendary <5%**, **Average >60%** dari 300 kelahiran. |
+
+## 2026-07-14 — TEMA RESMI (#178)
+
+> **"Tidak semua yang gagal itu lemah. Tidak semua yang berhasil itu hebat."** *(Bab XV, R5)*
+> Dinaikkan dari kalimat menjadi **syarat kejujuran dunia** — dan **penguat langsung argumen
+> Ordinary People**. Game yang menjanjikan *"kerja keras selalu terbayar"* **membuat Nirnama
+> menang**: kalau usaha selalu berbuah, maka yang tak berbuah **pantas** dilupakan.
+
+---
+
+### (arsip) D11 sebelum ratifikasi — konsisten, tetapi belum punya baris keputusan
 Tafsir *"The Final Silence = dunia LUPA (bukan dunia mati)"* **konsisten** dengan seluruh kanon
 baru: LAW OF ERAS (#75b, *"tidak ada ending dunia"*) · tesis resmi (#168) · poros ingin-lupa vs
 menolak-lupa (§XVI) · penghakiman-lewat-Chronicle (D12). **Ia bahkan lebih tajam** daripada

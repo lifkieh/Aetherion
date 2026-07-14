@@ -87,6 +87,7 @@ func _ready() -> void:
 	_test_report06_regressions()
 	_test_softcap_exp()
 	_test_bilingual_content()
+	_test_potential_not_exposed()
 	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
@@ -3275,20 +3276,20 @@ func _test_personality() -> void:
 	var rajin := {"talent": 40, "effort": 95, "opportunity": 0, "luck": 50, "mental_state": 100}
 	var berbakat := {"talent": 95, "effort": 20, "opportunity": 0, "luck": 50, "mental_state": 100}
 	check("Talent+Effort > Talent telanjang (L17)",
-		Personality.potential(rajin) > Personality.potential(berbakat),
-		"%.1f vs %.1f" % [Personality.potential(rajin), Personality.potential(berbakat)])
+		Personality.outcome_projection(rajin) > Personality.outcome_projection(berbakat),
+		"%.1f vs %.1f" % [Personality.outcome_projection(rajin), Personality.outcome_projection(berbakat)])
 	# L14: kesempatan mengubah takdir
 	var tanpa := {"talent": 80, "effort": 80, "opportunity": 0, "luck": 50, "mental_state": 100}
 	var dengan := tanpa.duplicate()
 	dengan["opportunity"] = 90
-	check("kesempatan menaikkan potensi (L14)", Personality.potential(dengan) > Personality.potential(tanpa))
+	check("kesempatan menaikkan potensi (L14)", Personality.outcome_projection(dengan) > Personality.outcome_projection(tanpa))
 	# L15 — PEOPLE CAN BREAK: trauma menurunkan mental_state & potensi
-	var before := Personality.potential(Personality.of("Saudagar Havel"))
+	var before := Personality.outcome_projection(Personality.of("Saudagar Havel"))
 	Personality.add_trauma("Saudagar Havel", "Kehilangan seluruh kapalnya dalam badai", 40)
 	var after_p := Personality.of("Saudagar Havel")
 	check("trauma tercatat & menurunkan mental_state (L15)",
 		after_p.trauma.size() == 1 and int(after_p.mental_state) < 100)
-	check("orang bisa patah: potensi turun", Personality.potential(after_p) < before)
+	check("orang bisa patah: potensi turun", Personality.outcome_projection(after_p) < before)
 	# NPC tulis-tangan: trauma yang memang bagian ceritanya
 	var tuminah := Personality.of("Nyai Tuminah")
 	check("Nyai Tuminah membawa trauma anaknya (tulis tangan)",
@@ -3577,3 +3578,56 @@ func _test_bilingual_content() -> void:
 				if Loc.c(l).strip_edges() == "":
 					lines_ok = false
 	check("semua baris NPC lama tetap punya teks lewat Loc.c()", lines_ok)
+
+## HUKUM 1 & 2 (#174/#175): POTENSI & TIER tak pernah tampil ke pemain — SATU pengecualian:
+## Item Penglihat Potensi (langka, spec v0.6, BELUM dibangun). Test ini adalah penjaga hukum
+## itu: ia menyisir SELURUH skrip UI dan gagal bila ada yang membocorkan potensi/tier/outcome.
+func _test_potential_not_exposed() -> void:
+	print("[HUKUM 1 & 2: potensi TERSEMBUNYI — penjaga anti-bocor UI]")
+	# tier itu NYATA di data (membedakan mentok-biasa dari mentok-Legendary)
+	check("tier ada sebagai data internal", Personality.TIERS.size() == 4)
+	check("talent 95 → Legendary", Personality.talent_tier({"talent": 95}) == "Legendary")
+	check("talent 80 → Exceptional", Personality.talent_tier({"talent": 80}) == "Exceptional")
+	check("talent 60 → Gifted", Personality.talent_tier({"talent": 60}) == "Gifted")
+	check("talent 20 → Average (mayoritas)", Personality.talent_tier({"talent": 20}) == "Average")
+	# mayoritas dunia HARUS biasa (L18 / Hukum 8) — kelangkaan struktural, bukan tabel drop
+	var legend := 0
+	var average := 0
+	for i in 300:
+		var tier := Personality.talent_tier(Personality.generate("tier_%d" % i))
+		if tier == "Legendary":
+			legend += 1
+		elif tier == "Average":
+			average += 1
+	check("Legendary LANGKA (<5% dari 300)", legend < 15, "legendary=%d" % legend)
+	check("mayoritas Average (>60%)", average > 180, "average=%d" % average)
+	# PENJAGA UTAMA: tak satu pun skrip UI boleh menyentuh potensi/tier/outcome
+	var offenders: Array = []
+	_scan_ui_leak("res://scenes/ui", offenders)
+	_scan_ui_leak("res://scenes/hud", offenders)
+	check("TIDAK ada skrip UI yang membocorkan potensi/tier/outcome", offenders.is_empty(),
+		str(offenders))
+	# rename #174: 'potential()' tak boleh hidup lagi di kode mana pun
+	var src := FileAccess.get_file_as_string("res://scenes/systems/Personality.gd")
+	check("fungsi lama 'potential()' sudah TIDAK ADA (rename #174)",
+		not src.contains("static func potential("))
+	check("fungsi bernama outcome_projection", src.contains("static func outcome_projection("))
+
+func _scan_ui_leak(dir_path: String, offenders: Array) -> void:
+	var d := DirAccess.open(dir_path)
+	if d == null:
+		return
+	d.list_dir_begin()
+	var f := d.get_next()
+	while f != "":
+		var full := dir_path.path_join(f)
+		if d.current_is_dir():
+			if not f.begins_with("."):
+				_scan_ui_leak(full, offenders)
+		elif f.ends_with(".gd"):
+			var txt := FileAccess.get_file_as_string(full)
+			for needle in ["outcome_projection", "talent_tier", "\"talent\"", "TIERS"]:
+				if txt.contains(needle):
+					offenders.append("%s → %s" % [f, needle])
+		f = d.get_next()
+	d.list_dir_end()

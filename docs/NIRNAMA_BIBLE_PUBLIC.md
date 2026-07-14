@@ -291,6 +291,13 @@ berhenti membangun, Chronicle berhenti — dan Nirnama menang **tanpa mengangkat
 3. ❌ **KEMENANGAN SEDERHANA** — tak ada "pemain menyelamatkan dunia" (NO DESTINY, §0), tak ada
    layar kemenangan, tak ada pertobatan di ujung pedang.
 
+**"THE FINAL SILENCE" — apa artinya sebenarnya (RATIFIKASI D11, #176):** salah satu dari 5 ending,
+dan **bukan kiamat**. **Dunia tetap ada. Tak seorang pun mengingat apa yang pernah dibangun.**
+Bukan kehancuran — **kelupaan**. Ini adalah **kemenangan Nirnama tanpa ia menang**: ia tidak
+membunuh apa pun; dunia hanya **berhenti mencatat**. *(LAW OF ERAS #75b tetap utuh: tidak ada
+ending-dunia — yang berakhir adalah **era dan ingatan**.)*
+**Karena itu ia adalah ending tergelap yang kita punya — dan ia gelap tanpa satu pun ledakan.**
+
 **Penghakiman akhirnya sendiri = HITUNGAN CHRONICLE** (D12) — bukan skor, bukan HP, bukan pilihan
 dialog terakhir. **Apa yang dunia ingat, itulah putusannya.**
 
