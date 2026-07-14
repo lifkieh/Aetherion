@@ -9,6 +9,37 @@ mekanis atas Pertanyaan Nirnama** (`NIRNAMA_BIBLE_PUBLIC.md` §XII–XV). Kalau 
 angka yang naik, maka Nirnama benar — tidak ada yang layak diteruskan. Kedelapan hukum inilah
 yang membuatnya salah.
 
+> ### RUMUS INDUK (#172)
+> ### `Outcome = Potential + Opportunity + Effort + Luck` — **dimodulasi Mental State**
+>
+> **Ia BUKAN sistem baru.** Ia **sudah terkode** di `Personality.gd` (model 5 lapis, #137/#138)
+> sebagai `potential()`: `(talent×0,30 + effort×0,35 + opportunity×0,25 + luck×0,10) × mental_state`.
+> **Perhatikan bobotnya:** `effort` (0,35) **melebihi** `talent` (0,30) — **Talent + Effort > Talent**
+> (L17), dan itu **sudah berlaku di kode**, bukan aspirasi.
+>
+> ⚠ **TABRAKAN ISTILAH (dilaporkan #171, butuh keputusan):** fungsi kode bernama `potential()`
+> padahal yang dihitungnya adalah **OUTCOME**, bukan POTENTIAL-yang-tersembunyi (Hukum 1).
+> Bahayanya nyata: penulis berikutnya bisa menampilkannya ke UI karena mengira itu "potensi".
+> **Usul agent: rename → `outcome_projection()`.** *(Hari ini sudah diverifikasi: ia **tidak
+> tampil di UI mana pun** — dan itu harus tetap begitu.)*
+
+## STATUS PELAKSANAAN — apa yang SUDAH terkode vs apa yang masih SPEC
+
+| Hukum | Status hari ini | Di mana |
+|---|---|---|
+| **1. POTENTIAL = ???** | ✅ **terkode** (nilainya ada, **tak pernah tampil di UI** — diverifikasi) | `Personality.gd` |
+| **2. HIDDEN TALENT TIER** | 🟡 **separuh** — kelangkaannya **sudah struktural** (`talent` = **nilai terkecil dari 3 lemparan**, `Personality.gd:69`), tetapi **tier bernama** (Average/Gifted/Exceptional/Legendary) **belum ada** | v0.6 |
+| **3. OPPORTUNITY** | ✅ **terkode** — `opportunity` **lahir = 0** dan **hanya** naik lewat peristiwa (L14) | `Personality.gd` |
+| **4. LUCK** | ✅ **terkode** — seed per individu, deterministik | `Personality.gd` |
+| **5. MENTAL HEALTH** | 🔴 **SPEC** — yang ada baru `trauma[]` + `mental_state`. Depresi · burnout · kecanduan · kehilangan tujuan hidup · kecemasan **belum ada** | **v0.6** |
+| **6. GROWTH RATE** | 🔴 **SPEC** — variasi kecepatan tumbuh per individu belum ada | **v0.6** |
+| **7. TRAINING PHILOSOPHY** | 🟡 **separuh** — bobot rumus **sudah** menegakkan *Training→Progress selalu, Training ≠ Legendary*; **mesin latihannya belum ada** | **v0.6** |
+| **8. ORDINARY PEOPLE** | 🔴 **SPEC** — belum ada apa pun yang **menjamin ~90% tetap biasa** | **v0.6** |
+
+*Aturan integrasi (#172): kedelapan hukum **menyambung** ke model kepribadian 5 lapis & L14–L18
+yang **sudah kanon** — **JANGAN duplikasi**. Tidak ada "sistem bakat" kedua, tidak ada
+"sistem keberuntungan" kedua.*
+
 ---
 
 ## 1. POTENTIAL = ??? *(hukum induk — mengikat tujuh sisanya)*
@@ -27,9 +58,21 @@ oleh penulis, bahkan oleh Sang Nirnama.**
 Bakat **ada** dan **tidak merata** — tapi ia **tersembunyi**, dan **sering tidak diketahui oleh
 pemiliknya sendiri**.
 
-- Tier bakat **tidak pernah ditampilkan** — ia hanya **tersirat** lewat perilaku, kecepatan
-  belajar, dan komentar orang lain (*"anak itu... cepat sekali menangkap."*).
-- **Bakat besar di tempat yang salah = tetap tak menjadi apa-apa** (lihat Hukum 3).
+**Empat tier (kanon — nama internal, TIDAK PERNAH tampil):**
+
+| Tier | Kira-kira | Bagaimana dunia mengetahuinya |
+|---|---|---|
+| **Average** | mayoritas | tidak pernah — dan itu wajar |
+| **Gifted** | tidak umum | terungkap lewat **perbuatan**, bukan tooltip |
+| **Exceptional** | langka | orang mulai **membicarakannya** (rumor — dan rumor boleh salah) |
+| **Legendary** | sangat langka | hanya **Chronicle** yang akhirnya mencatatnya |
+
+- **Kelangkaannya sudah STRUKTURAL, bukan tabel drop:** `talent` = **nilai terkecil dari tiga
+  lemparan** (`Personality.gd:69`) → ekor atas menipis dengan sendirinya. *Genius langka karena
+  matematikanya, bukan karena kita menahannya.*
+- Tier **tidak pernah ditampilkan** — ia hanya **tersirat** lewat perilaku, kecepatan belajar,
+  dan komentar orang lain (*"anak itu… cepat sekali menangkap."*).
+- **Bakat besar di tempat yang salah = tetap tak menjadi apa-apa** (Hukum 3 & ENVIRONMENT).
 - **GENIUS IS RARE** (L17): Talent + Effort **>** Talent. Talent + Effort + Opportunity + Luck
   = **pengubah sejarah**. Sisanya: orang berbakat yang tak pernah terdengar.
 
@@ -60,11 +103,31 @@ Sebagian orang berdiri di tempat yang tepat pada hari yang tepat. Sebagian tidak
 
 **Kekuatan mental adalah bagian dari kekuatan.**
 
-- Trauma, duka, depresi, kelelahan **menurunkan performa** dan **memperlambat/menghentikan**
-  pertumbuhan — bukan sebagai debuff bertimer, melainkan sebagai **keadaan**.
-- **Pemulihan itu mungkin, tapi tidak dijamin.** Sebagian orang **tidak pulih** — dan kitab ini
-  dilarang berpura-pura sebaliknya (§XV Tragedy).
-- Yang memulihkan: **peristiwa**, **orang lain**, **waktu yang diisi**, **tujuan** — bukan potion.
+**MELAMPAUI trauma yang sudah terkode.** Lima keadaan baru (spec v0.6) — masing-masing **keadaan**,
+bukan debuff bertimer:
+
+| Keadaan | Pemicu khas |
+|---|---|
+| **Depresi** | kehilangan berulang · terisolasi · kegagalan yang dianggap salahnya sendiri |
+| **Burnout** | bekerja/dilatih terus **tanpa jeda dan tanpa hasil yang terlihat** |
+| **Kecanduan** | pelarian dari salah satu di atas |
+| **Kehilangan tujuan hidup** | tujuannya tercapai — atau **direnggut** *(inilah keadaan Sang Nirnama)* |
+| **Kecemasan** | hidup di bawah ancaman yang tak berujung (perang, wabah, penghapusan) |
+
+**EFEK (ketiganya wajib):** **Growth Rate ↓** · **Motivation ↓** · **Learning Speed ↓**.
+
+**PEMULIHAN:**
+- **Dapat dirawat SEBAGIAN** — lewat **waktu**, **kedekatan** (seseorang yang tinggal), dan
+  **Life Event**. **TIDAK PERNAH instan. TIDAK PERNAH lewat item.** *Tak ada potion untuk duka.*
+- **Sebagian MENETAP** — dan **itu per tokoh**, bukan per lemparan dadu. Sebagian orang **tidak
+  pulih**, dan kitab dilarang berpura-pura sebaliknya (§XV Tragedy).
+- **Sinkron dengan luka pasca-revive (amandemen D1):** yang bangkit **membawa sesuatu yang tidak
+  kembali utuh**. Luka itu **memakai sistem yang sama** — bukan sistem kedua.
+  ⚠ *Prasyarat: sistem revive & harga-ingatan (#119/#133) belum ada di kode; sinkronisasi ini
+  baru bisa dikerjakan setelah ia lahir.*
+
+*Kalau seorang pemain bisa "menyembuhkan" depresi seorang NPC dengan mengklik item, Hukum 5 mati —
+dan bersamanya, satu-satunya alasan Nirnama terasa manusiawi.*
 
 ## 6. GROWTH RATE
 
@@ -88,7 +151,9 @@ Orang tumbuh dengan **kecepatan berbeda**, dan **kurva yang berbeda** (Early / B
 **Mayoritas NPC bekerja, berkeluarga, menua, dan meninggal tanpa menjadi legenda — DAN ITU BUKAN
 KEGAGALAN.**
 
-- Dunia dibangun oleh **jutaan orang biasa**. **Chronicle menghormati yang biasa.**
+- **~90% penduduk hidup biasa**: bekerja, berkeluarga, menua, mati — **tidak dikenang, tidak
+  masuk Chronicle, tidak diceritakan siapa pun setelah dua generasi.** *Dan dunia berdiri karena
+  mereka.* **Chronicle menghormati yang biasa.**
 - **Dilarang:** sistem apa pun yang memperlakukan NPC biasa sebagai **bahan mentah** (angka yang
   dioptimalkan, unit yang dibuang saat statnya turun).
 - **Uji desain:** kalau seorang pemain optimal **tidak punya alasan** untuk peduli pada tukang

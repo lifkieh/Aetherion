@@ -1,10 +1,10 @@
-# AETHERION — NIRNAMA BIBLE v2.0 *(VERSI REDAKSI PUBLIK)*
+# AETHERION — NIRNAMA BIBLE v2.1 *(VERSI REDAKSI PUBLIK)*
 
 > ## ⚠ VERSI REDAKSI — Decision Log #144
 > Kitab ini **utuh** kecuali tiga hal yang dihapus demi **rahasia produksi** (#108):
 > **nama asli Sang Nirnama**, **etimologi ganda §I** (kata kuncinya), dan **pasangan kata pada
 > rumor Voss**. Semua yang lain — hukum induk, sejarah, filosofi, kekuatan, kelemahan, arc Act 1,
-> dan **seluruh revisi v2.0 (R1–R7)** — **terbaca penuh**, karena kontributor mana pun butuh
+> dan **seluruh revisi v2.0–v2.1 (R1–R7)** — **terbaca penuh**, karena kontributor mana pun butuh
 > memahaminya untuk bekerja.
 >
 > **Versi lengkap:** `docs_private/NIRNAMA_BIBLE.md` — **tidak pernah ter-commit**, hanya ada di
@@ -18,6 +18,10 @@
 **Revisi v2.0 (#168, R1–R7):** Nirnama = **THE GREAT QUESTION**, bukan protagonis · "Jalan" → **"Pertanyaan"** ·
 bab **ORDINARY PEOPLE** · hukum **POTENTIAL = ???** · **Luck/Opportunity/Tragedy** · **Chronicle = tokoh utama kedua** ·
 akhir **tanpa menang/kalah**. *Bab I–XI dipertahankan apa adanya; nomornya TIDAK digeser agar rujukan lama tak putus.*
+**Revisi v2.1 (#171):** faktor **ENVIRONMENT** ditambahkan (§XV) · **Ordinary People diberi angka (~90%, §XIII)** ·
+**§XVII dipertegas: "Nirnama tidak salah, dunia tidak salah"** + tiga penggambaran yang **DILARANG** ·
+**§XIV disambungkan** ke NPC Philosophy / Living World / Legacy / Future Unknown.
+*Tidak ada bab yang dihapus atau diganti-nama. Tidak ada lore yang dimundurkan.*
 
 ---
 
@@ -171,6 +175,10 @@ menyalin ulang halaman yang mungkin tak pernah dibaca siapa pun.
 
 **Tak satu pun dari mereka menjadi legenda. Tak satu pun dari mereka gagal.** (L18.)
 
+**Angkanya kanon: ~90% penduduk Aetherion hidup biasa** — tidak dikenang, tidak masuk Chronicle,
+tidak diceritakan siapa pun setelah dua generasi. **Dan dunia berdiri karena mereka.**
+Sepuluh persen sisanya tidak menopang dunia; mereka hanya **tercatat**.
+
 > **HUKUM ORDINARY PEOPLE:** *Dunia tidak dibangun oleh yang luar biasa. Dunia dibangun oleh
 > jutaan orang biasa yang tetap bekerja meski tahu mereka akan dilupakan.*
 > **Dan justru merekalah bantahan terhadap Nirnama** — bukan pahlawan, bukan dewa, bukan pemain.
@@ -202,7 +210,22 @@ tentang masa depan. **Ia mengira dirinya tahu akhir ceritanya. Ia tidak.**
 4. **Uji tulis:** kalau seorang penulis bisa **memastikan** nasib seorang NPC dengan membaca
    datanya, hukum ini sudah dilanggar.
 
+**Sambungan ke empat sistem (jangan diduplikasi — INTEGRASIKAN):**
+
+| Sistem | Bagaimana POTENTIAL = ??? mengikatnya |
+|---|---|
+| **NPC Philosophy** (personality 5 lapis) | `talent` lahir tersembunyi (**sudah terkode**: nilai terkecil dari 3 lemparan → genius langka **secara struktural**, bukan lewat tabel drop). Ia **tidak pernah** tampil. |
+| **Living World** | Dunia tidak menghitung siapa yang "layak"; ia hanya menyediakan **peristiwa**. Siapa yang tumbuh darinya = `???` |
+| **Legacy** | Warisan bukan transfer angka — ia **kesempatan yang diberikan kepada orang yang belum tentu berhasil**. Itulah sebabnya ia berarti. |
+| **Future Unknown** | Masa depan **tidak pernah** dibocorkan: tak ada ramalan yang benar, tak ada UI yang menjanjikan. *Astrolog boleh salah.* |
+
 *Dunia menarik karena kemungkinannya, bukan karena kepastiannya (#137, hukum penutup).*
+
+> ⚠ **Catatan produksi (#171):** kode punya `Personality.potential()` — tetapi itu **proyeksi
+> hasil** (Outcome), **bukan** POTENTIAL-yang-tersembunyi dalam hukum ini. Istilahnya bertabrakan
+> dan **berbahaya**: seorang penulis kelak bisa menampilkannya ke UI karena mengira itu "potensi".
+> **Usul: rename → `outcome_projection()`.** Hari ini ia **tidak tampil di UI mana pun** (sudah
+> diverifikasi) — dan itu **harus tetap begitu**.
 
 # XV. LUCK · OPPORTUNITY · TRAGEDY — sisi manusiawi (R5)
 
@@ -213,8 +236,16 @@ Tiga kekuatan yang **tidak adil** — dan yang membuat dunia terasa **hidup**, b
 | **LUCK** | Sebagian orang berdiri di tempat yang tepat pada hari yang tepat. Sebagian tidak. | Nirnama membencinya: baginya itu bukti dunia **tak adil dan tak berarti**. **Dunia membacanya terbalik: itu bukti dunia tidak ditentukan sebelumnya.** Fakta yang sama, dua kesimpulan. |
 | **OPPORTUNITY** | Bakat tanpa kesempatan **tidak menjadi apa-apa** (L14). | **PEMAIN ADALAH SUMBER KESEMPATAN TERBESAR DI DUNIA.** Merekrut, mementor, menempatkan seseorang = **mengubah takdirnya**. Inilah senjata sesungguhnya melawan Nirnama: bukan pedang, melainkan **memberi orang lain kesempatan yang tak pernah ia berikan kepada dirinya sendiri.** |
 | **TRAGEDY** | Orang **patah** — trauma, duka, kelelahan (L15). Sebagian tidak pulih. | Kitab ini **tidak boleh** menjanjikan semua luka sembuh. **Nirnama adalah bukti bahwa ada yang tidak.** Tragedinya sah; jawabannya bukan menyangkal luka, melainkan **tetap membangun sambil terluka.** |
+| **ENVIRONMENT** | **Tempat kau lahir menentukan apa yang mungkin.** Desa tanpa guru tak melahirkan sarjana; kota yang kaya melahirkan orang biasa yang tampak hebat. | Lingkungan adalah **kesempatan yang membeku menjadi tempat**. Ia menjelaskan mengapa sebagian besar bakat di dunia **tak pernah ditemukan** — dan mengapa **memindahkan seseorang** (merekrut, membawanya pergi, menempatkannya) adalah **tindakan yang mengubah hidup**, bukan sekadar mekanik party. |
 
-**Aturan keras (#138):** ketiganya bergerak **hanya lewat PERISTIWA** — tak pernah lewat timer
+**HUKUM (R5):** **hasil hidup tidak ditentukan oleh kemauan semata.**
+> *Tidak semua yang gagal itu lemah. Tidak semua yang berhasil itu hebat.*
+
+Ini bukan sinisme — ini **syarat agar dunia terasa jujur**. Game yang menjanjikan "kerja keras
+selalu terbayar" sedang berbohong, dan **kebohongan itu justru membuat Nirnama menang**: kalau
+usaha selalu berbuah, maka orang yang tak berbuah **pantas** dilupakan. Aetherion menolak itu.
+
+**Aturan keras (#138):** keempatnya bergerak **hanya lewat PERISTIWA** — tak pernah lewat timer
 kosong. Keberuntungan yang di-tick tiap detik bukan keberuntungan; itu cuaca.
 
 > *Nirnama tidak salah karena ia kejam. Ia salah karena ia berhenti — tepat sebelum seseorang
@@ -249,10 +280,19 @@ berhenti membangun, Chronicle berhenti — dan Nirnama menang **tanpa mengangkat
 # XVII. AKHIR — TIDAK ADA YANG MENANG, TIDAK ADA YANG KALAH (R7)
 
 > **Ending bukan kemenangan. Ending adalah dunia yang memilih jawaban yang berbeda.**
+>
+> ### **NIRNAMA TIDAK SALAH. DUNIA TIDAK SALAH.**
+> Ia melihat **siklus** — dan siklusnya nyata. Dunia melihat **kemungkinan** — dan kemungkinan itu
+> nyata juga. Dua-duanya benar; mereka hanya **menjawab pertanyaan yang sama secara berbeda.**
 
-**Yang TIDAK terjadi:** ❌ Nirnama dibunuh (konsisten #134: bahkan Lima Dewa Besar tidak dapat
-membunuhnya) · ❌ Nirnama "kalah" lalu bertobat · ❌ pemain "menyelamatkan dunia" seorang diri
-(NO DESTINY, §0).
+**TIGA PENGGAMBARAN YANG DILARANG** (mengikat setiap penulis adegan akhir):
+1. ❌ **KEKALAHAN** — Nirnama tidak "kalah". Tak ada momen ia tunduk, menyerah, atau mengakui salah.
+2. ❌ **EKSEKUSI** — ia tidak dibunuh. **Tidak bisa** dibunuh (#134/D2: bahkan Lima Dewa Besar tak dapat).
+3. ❌ **KEMENANGAN SEDERHANA** — tak ada "pemain menyelamatkan dunia" (NO DESTINY, §0), tak ada
+   layar kemenangan, tak ada pertobatan di ujung pedang.
+
+**Penghakiman akhirnya sendiri = HITUNGAN CHRONICLE** (D12) — bukan skor, bukan HP, bukan pilihan
+dialog terakhir. **Apa yang dunia ingat, itulah putusannya.**
 
 **Yang terjadi — dan inilah PENGAMAN DESAINNYA:** secara naratif hasilnya **seri**; secara
 emosional pemain memperoleh **katarsis penuh**, karena yang ia menangkan bukan pertarungan,
