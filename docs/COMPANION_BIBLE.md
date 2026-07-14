@@ -135,6 +135,29 @@ berpotensi jenius adalah **roster yang berbohong** — dan kebohongan itu **meme
 | Mystics | 4–6 | 2–3 (Seraphine, Luna, Cael?) | 1–4 | |
 | Wild Cards | 4–6 | 3 (Maira, Merrit, Sora?) | 1–3 | |
 
+### 🔴 KUOTA COMPANION PER BENUA (kanon #208) — **ELDORIA PRAKTIS DITUTUP**
+
+**Eldoria 9 · Valkaris 7 · Sylvara 7 · Azhur 7 · Nethrak 9 · Vorum 5 · Astrael 6 = 50.**
+*(+ LAW: **EVERY CONTINENT MUST FEEL DIFFERENT** — benua baru ≠ map lama dengan tekstur berbeda.)*
+
+| Benua | Kuota | **Terisi** | Tokoh | Sisa |
+|---|---|---|---|---|
+| **ELDORIA** | **9** | **≥5** *(+6 belum ditetapkan!)* | Arlen · Merrit *(Ashbrook)* · Luna *(Greenvale)* · Seraphine *(Frostpeak)* · Sora *(Candyveil)* | 🔴 **≤4 — dan bisa MINUS** |
+| Sylvara | 7 | 1 | Elyn | 6 |
+| **Azhur** | 7 | 2 | Kain · Neriah *(Thalassar ⊂ Azhur)* | 5 |
+| **Nethrak** | **9** | 1 | Kessler | **8** |
+| Valkaris | 7 | **0** | — | **7** |
+| Vorum | 5 | **0** | — | **5** |
+| Astrael | 6 | **0** | — | **6** *(⚠ benua yang **HILANG** — misteri)* |
+
+> ### ⚠ ENAM TOKOH BELUM PUNYA BENUA — harus ditetapkan SEBELUM gelombang 3
+> **Torgrim · Maira · Varko · Cael · Veshka · Halen** — sheet mereka tak menyebut benua.
+> **Bila keenamnya jatuh ke Eldoria, kuota Eldoria (9) TERLAMPAUI.**
+> **Menulis 35 tokoh baru di atas hitungan yang belum benar = mengulang kesalahan yang sama.**
+
+**ATURAN GELOMBANG 3–4:** **ELDORIA DITUTUP** untuk companion baru *(kecuali menggantikan slot)*.
+**Prioritas: Valkaris (7 kosong) · Vorum (5 kosong) · Astrael (6 kosong) · Nethrak (8 sisa).**
+
 ### ⚠ KETIMPANGAN RAS (gelombang 3–4 wajib menutupinya)
 
 | Ras | Terisi | Catatan |

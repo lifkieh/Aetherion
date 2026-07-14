@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Kingdom Bible tercerna + visi peta dikunci + Elyn=pembangkang — siap merancang Ashbrook (Direktur+Designer)**
+**Last update:** 2026-07-14 — **Kingdom/City tercerna · Ashbrook = desa-bekas-kota di Valenford · siap MERANCANG ASHBROOK v0.5 (Direktur+Designer)**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -45,7 +45,23 @@
 > **#205: Elyn = PEMBANGKANG Chronicle Order** — *Ordo menjaga sejarah PENTING; Elyn & Sora menjaga
 > sejarah ORANG BIASA.*
 >
-> ### 🔴 EMPAT KONFLIK MENUNGGU DIREKTUR (#203b)
+> ### ✅ EMPAT KONFLIK DIPUTUS (#206–#208)
+> **K-2 ASHBROOK = DESA-BEKAS-KOTA:** dulu starting town ~1.500 jiwa, kini **desa ~40 jiwa** (jalur
+> dagang bergeser). Seluruh kanon City Bible dipertahankan. **ASHBROOK = TESIS GAME DALAM BENTUK
+> TEMPAT** — *sesuatu yang dulu besar, kini nyaris hilang, tetap bermakna karena pernah ada.*
+> **Pemain belajar tesis Aetherion dari GEOGRAFI, sebelum satu dialog pun.** Kesepian **Merrit** kini
+> punya **sebab historis**: ia menyalakan **lampu terakhir dari zaman ramai itu**.
+> **K-1 HIERARKI:** `desa → KERAJAAN → AURELIA (politik) → ELDORIA (benua) → AETHERION`. 7 benua utuh.
+> **K-4 KUOTA BENUA** (Eldoria 9 · Nethrak 9 · Valkaris/Sylvara/Azhur 7 · Astrael 6 · Vorum 5 = 50).
+> 🔴 **ELDORIA PRAKTIS DITUTUP** — gelombang 3–4 wajib mengisi **Valkaris (7 kosong) · Vorum (5) ·
+> Astrael (6)**.
+>
+> ### 🔴 MENUNGGU DIREKTUR
+> **K-3 (#207b):** 5 wilayah hidup → kerajaan mana? **Sumber tidak cukup — tidak saya tebak.**
+> *(Usul: Greenvale→Valenford · Frostpeak→Durnhold · Desert→Thornreach · Storm→Veskar/independen ·
+> **Candyveil → tak ada padanan**.)*
+> **⚠ ENAM TOKOH BELUM PUNYA BENUA** (Torgrim · Maira · Varko · Cael · Veshka · Halen) — **wajib
+> ditetapkan SEBELUM gelombang 3**, atau kuota Eldoria terlampaui.
 > **K-1 "Aurelia" ambigu** (benua? wilayah dalam Eldoria? dunia?) · **K-2 ASHBROOK BERTABRAKAN**
 > (sumber: **starting town 1.500 jiwa**; kanon kita: **desa 40 jiwa** — *usul agent: **dulu kota,
 > sekarang desa** — nol kanon dibuang*) · **K-3** 5 wilayah kita tak ada di sumber (kerajaan mana?)

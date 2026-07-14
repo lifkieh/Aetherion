@@ -81,7 +81,76 @@ sebuah kota yang punya **bau** tidak akan pernah terasa seperti papan quest.)*
 
 ---
 
-# ⚠ EMPAT KONFLIK DENGAN KANON KITA — dilaporkan, **TIDAK ditebak**
+# ✅ KEEMPAT KONFLIK — DIPUTUSKAN DIREKTUR (#206–#208)
+
+## K-1 ✅ **AURELIA = DARATAN POLITIK DI DALAM BENUA ELDORIA** (#207)
+
+> ### HIERARKI LOKASI KANON
+> ```
+> Ashbrook  (desa)
+>    └── VALENFORD  (kerajaan)
+>          └── AURELIA  (daratan berperadaban / entitas politik)
+>                └── ELDORIA  (benua — geografi makro)
+>                      └── AETHERION  (dunia)
+> ```
+> **Eldoria = geografi. Aurelia = politik.** *(Analogi: benua vs uni politik.)* Tujuh kerajaan
+> berdiri **di Aurelia**; benua lain punya negaranya sendiri — **belum ditulis**.
+> **"7 benua" TETAP UTUH.** Tak ada kanon yang ditabrak.
+
+## K-2 ✅ **ASHBROOK = DESA-BEKAS-KOTA** (#206) → detail lengkap: **`docs/CITY_BIBLE.md`**
+
+Dulu **starting town ~1.500 jiwa**; kini **desa ~40 jiwa** — jalur dagang bergeser. **Seluruh kanon
+City Bible dipertahankan** (aroma kota · Old Bram · Lyra · Spoon Man · rumor White Stag); **hanya
+populasi & era yang bergeser.**
+**ASHBROOK = TESIS GAME DALAM BENTUK TEMPAT:** *sesuatu yang dulu besar, kini nyaris hilang, tetap
+bermakna karena pernah ada.* **Pemain belajar tesis Aetherion dari GEOGRAFI, sebelum satu dialog.**
+
+## K-3 ⚠ **LIMA WILAYAH KITA → KERAJAAN MANA? SUMBER TIDAK CUKUP.**
+
+**Perintah Direktur: *"tetapkan dari City/Kingdom Bible; laporkan bila sumber tak cukup — jangan
+tebak."* → SUMBER TIDAK CUKUP. Saya tidak menebak.**
+
+**Yang sumber katakan (pasti):**
+- **Ashbrook ⊂ Greenhollow Valley ⊂ VALENFORD** — eksplisit.
+- **Greenhollow Valley** = *"The Valley of First Steps"*, **Starting Region**.
+- **Greenvale, Candyveil, Desert of Ruins, Frostpeak, Storm Island: NOL penyebutan** di seluruh
+  berkas mentah. Mereka lahir dari GDD fase awal, **bukan** dari Kingdom Bible.
+
+**USUL (bukan keputusan — butuh satu baris Direktur):**
+
+| Wilayah hidup | Usul kerajaan | Alasan |
+|---|---|---|
+| **Greenvale** | **VALENFORD** 🟢 | ia **berada di Greenhollow Valley** (kanon #109) — dan Greenhollow = Starting Region Valenford. **Ini nyaris pasti.** |
+| **Frostpeak Mountain** | **DURNHOLD** *(The Iron Bastion)* | benteng · **tambang** · industri; pos pendaki cocok |
+| **Desert of Ruins** | **THORNREACH** *(The Frontier Kingdom)* | perbatasan · eksplorasi · **reruntuhan**; *"tingkat kematian tinggi"* |
+| **Storm Island** | **VESKAR** *(The Merchant Crown)* | pelabuhan & laut — atau **INDEPENDEN** (badai abadi; tak ada yang mengklaimnya) |
+| **Candyveil Meadows** | **??? — tak ada padanan** | tak satu pun dari 7 kerajaan cocok. **Kandidat: independen**, atau wilayah yang **sengaja tak berkerajaan** |
+
+⚠ **Catatan agent:** memaksakan Candyveil ke salah satu kerajaan akan **merusak keduanya**.
+Candyveil lahir sebagai tempat yang **absurd dan tak masuk akal** — dan *"tanah yang tak diklaim
+siapa pun"* justru **menjelaskan mengapa ia bisa seaneh itu.**
+
+## K-4 ✅ **KUOTA COMPANION PER BENUA — DIRATIFIKASI** (#208)
+
+**Eldoria 9 · Valkaris 7 · Sylvara 7 · Azhur 7 · Nethrak 9 · Vorum 5 · Astrael 6 = 50.**
+**+ LAW: EVERY CONTINENT MUST FEEL DIFFERENT** — *"benua baru ≠ map lama dengan tekstur berbeda"*;
+tiap benua wajib punya **budaya · monster · konflik · sejarah · Companion · ekonomi** yang unik.
+
+> ### 🔴 **ELDORIA PRAKTIS DITUTUP untuk companion baru**
+> **15 tokoh kita menumpuk di Eldoria.** Kuota Eldoria = **9**, dan **≥5 sudah pasti di sana**
+> (Arlen · Merrit · Luna · Seraphine · Sora) — **ditambah 6 tokoh yang lokasinya belum ditetapkan**
+> (Torgrim · Maira · Varko · Cael · Veshka · Halen), yang **bila semuanya jatuh ke Eldoria akan
+> MELAMPAUI kuota**.
+>
+> **Gelombang 3–4 WAJIB mengisi benua lain.** **Eldoria = ditutup**, kecuali **menggantikan slot**.
+> ⚠ **Enam tokoh tanpa lokasi itu harus ditetapkan lebih dulu** — kalau tidak, kita akan menulis
+> 35 tokoh baru di atas hitungan yang belum benar.
+
+---
+
+## (arsip) Empat konflik sebelum diputuskan
+
+### Konteks lengkap (dokumentasi temuan awal)
 
 ## K-1 🔴 **"AURELIA" — statusnya AMBIGU. Butuh keputusan Direktur.**
 

@@ -83,6 +83,30 @@ budaya, sejarah, hukum, prasangka, dan cara dunia memperlakukanmu.
 bersuara satu. Delapan Ras Besar: Human · Elf · Dryad · Dwarf · Beastfolk · Astralborn ·
 Tidekin · Shadeborn.
 
+## HUKUM KERAJAAN & BENUA (#207/#208)
+
+**HIERARKI LOKASI KANON:** `desa → KERAJAAN → AURELIA (daratan politik) → ELDORIA (benua) → AETHERION (dunia)`
+*(Eldoria = geografi makro; **Aurelia = entitas politik di dalamnya**. **7 benua tetap utuh**.)*
+
+**TUJUH KERAJAAN AURELIA:** **Valenford** ⭐ *(starting; "The Kingdom of Open Roads"; perjalanan =
+guru terbaik; **jalan raya terbaik**)* · **Rosenhal** *(duel legal)* · **Durnhold** *(Iron Bastion)* ·
+**Lumeria** *(Kingdom of Light; **intelektual meremehkan rakyat biasa**)* · **Thornreach** *(frontier)* ·
+**Veskar** *(Merchant Crown)* · **Astraveil** *(Veiled Court)*.
+
+> ### ⚖ **"NO KINGDOM IS GOOD. NO KINGDOM IS EVIL."**
+> *Negara adalah kumpulan manusia. Manusia rumit.* **Setiap kerajaan punya hal baik DAN hal buruk.**
+> **EVERY KINGDOM MUST FEEL DIFFERENT** — wajib punya filosofi · budaya · **makanan** ·
+> **arsitektur** · konflik · kebanggaan · **kelemahan**.
+
+> ### ⚖ **EVERY CONTINENT MUST FEEL DIFFERENT**
+> *Benua baru **≠** map lama dengan tekstur berbeda.* Tiap benua wajib punya **budaya · monster ·
+> konflik · sejarah · Companion · ekonomi** yang unik.
+
+**KUOTA COMPANION PER BENUA (kanon, total 50):** Eldoria **9** · Valkaris 7 · Sylvara 7 · Azhur 7 ·
+Nethrak **9** · Vorum 5 · Astrael 6.
+🔴 **ELDORIA PRAKTIS DITUTUP** — 15 tokoh yang ada sudah menumpuk di sana. **Gelombang 3–4 wajib
+mengisi benua lain.**
+
 ## HUKUM PETA DUNIA (#204) — **"JALAN DI ANTARA KOTA HARUS HIDUP"**
 
 > **Perjalanan adalah TEMPAT KEJADIAN, bukan ruang kosong yang dilewati.**

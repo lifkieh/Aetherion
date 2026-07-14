@@ -2,6 +2,20 @@
 **"Yang Menunggu Surat Balasan"**
 *B17 · Tier ditentukan Direktur · Draft Designer detail-penuh · Hukum: Echo ≠ Origin*
 
+
+> ### ⚖ RATIFIKASI #206 — **kesepian Merrit kini punya SEBAB HISTORIS**
+> **Ashbrook DULU adalah starting town yang makmur (~1.500 jiwa); kini desa ~40 jiwa** — jalur
+> dagang Valenford bergeser, penduduk pindah ke kota. *(Sheet ini **sudah** menuliskannya sejak
+> awal: "jalur dagang bergeser, dan orang lebih suka menginap di penginapan kota.")*
+>
+> **Konsekuensi bagi Merrit:** rumah singgahnya nyaris kosong **bukan karena ia orang aneh —
+> melainkan karena kotanya mengecil.** Kesepiannya berhenti menjadi **sifat**; ia menjadi **akibat**.
+> **Ia menyalakan lampu terakhir dari zaman ketika Ashbrook masih ramai.**
+>
+> Dan ironinya menutup lingkaran: **seorang tukang pos yang menolak melupakan satu orang, tinggal
+> di kota yang sedang dilupakan dunia.** *Ia tak pernah menyebutkannya — baginya kedua hal itu
+> bahkan bukan soal yang sama.*
+
 ---
 
 ## IDENTITAS INTI
