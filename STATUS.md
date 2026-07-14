@@ -1,6 +1,20 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Ashbrook diverifikasi fungsional — menunggu playtest manusia owner + rencana asset**
+**Last update:** 2026-07-14 — **Ashbrook fungsional-lengkap — menunggu asset + playtest manusia**
+
+> ### 🕯 JIWA ASHBROOK LENGKAP (#218) — **947 test, 0 gagal**
+> **PAYOFF PERJALANAN AKHIRNYA BEKERJA.** Masalahnya bukan lampu — **kamera**. Kini ada
+> **TITIK-PANDANG**: pemain berdiri di sana, **kamera mundur** (zoom 2,0 → 0,7), desa mengecil di
+> kejauhan — **dan satu titik cahaya tetap menyala di sana.** *Diuji dengan **menaruh pemain di
+> titik itu** dan memeriksa lampu **masuk kotak kamera**.*
+> **MOMEN LAMPU = kontras dari PERBEDAAN:** 5 jendela lain **menyala sore**, lalu **padam satu per
+> satu** (19 · 20 · 21) sampai tersisa **satu**. *Desa tertidur — satu lampu menolak ikut tidur.*
+> **Merrit duduk membaca surat** di bawahnya — tanpa dialog, tanpa prompt. **Isinya tetap rahasia.**
+> **Anak serigala terluka** dipasang di jalan keluar (boleh dibantu · diabaikan · dibunuh).
+> **HUKUM TEST #151b:** *ukur DUNIA, bukan teksnya.*
+>
+> **Sisa gap = ASET** (5 krusial: suara hujan · ambience · musik Ashbrook sendiri · sprite ayam &
+> anak · lentera + jendela). **Fungsi: siap dinilai playtest manusia.**
 
 > ### 🔬 PEMERIKSAAN FUNGSIONAL (#217) — `reports/ASHBROOK_FUNCTIONAL_CHECK.md`
 > **6 BUG NYATA ditemukan lewat probe pada scene NYATA** — termasuk **pintu keluar kamar BUNTU

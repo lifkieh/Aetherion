@@ -385,6 +385,27 @@ hanya karena terjemahannya belum ada). Migrasi konten lama = bagian pipeline v0.
 **Alasannya:** ~4.000 baris pipeline (#162) hanya bisa **benar-benar direview** kalau penulis
 melihat kedua bahasa **bersebelahan** dan diff-nya terbaca.
 
+## HUKUM TEST (#151 · diperluas #158 · **#151b — UKUR DUNIA, BUKAN TEKSNYA**)
+
+> ### **#151b: Test wajib mengukur DUNIA NYATA — scene terinstansiasi, posisi/jarak/state
+> ### runtime aktual — BUKAN representasi teks/string/data dari state itu.**
+>
+> **Test yang memeriksa isi array/dokumen alih-alih hasilnya di scene = HIJAU-PALSU, DILARANG.**
+
+**Sebabnya bukan teori — ia sudah dua kali menipu kita:**
+- **#151:** test menulis state langsung (`counters["trees_cut"] = 260`) → **10 bug lolos**, termasuk
+  pemain gamepad yang **tak bisa memakai skill sama sekali**.
+- **#151b (#217):** test memeriksa pasangan mati↔hidup **di dalam string `RUINS[]`** → **6 bug
+  lolos**, termasuk **pintu keluar kamar yang buntu (pemain terkunci — game tak bisa dimulai)** dan
+  **seluruh kehidupan Ashbrook yang berumah di titik (0,0)**. *Teksnya sempurna. Dunianya rusak.*
+
+**Bentuk yang benar:** `load(scene).instantiate()` → `add_child` → jalankan frame → **ukur**
+(`global_position`, `distance_to`, `Rect2.has_point`, `get_nodes_in_group`, `zoom`, collision).
+*Contoh: "lampu terlihat dari titik-pandang" tidak dibuktikan dengan membaca konstanta — ia
+dibuktikan dengan **menaruh pemain di sana** dan memeriksa lampu **masuk kotak kamera**.*
+
+**Retrofit:** test yang memeriksa string alih-alih dunia ditandai **`[SHALLOW]`** dan dimigrasi.
+
 ## HUKUM TEST (#151, diperluas Designer #158)
 
 > **Test wajib masuk lewat PINTU YANG DIPAKAI PEMAIN.**

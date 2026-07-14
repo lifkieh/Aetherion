@@ -1,4 +1,26 @@
 extends Node
+
+## ================= AUDIT HUKUM TEST #151b (2026-07-14, #219) =================
+## "Test wajib mengukur DUNIA NYATA — bukan representasi teks/data dari dunia itu."
+##
+## HASIL AUDIT 80 test:
+##  • 24 test SUDAH menyentuh dunia (instantiate scene / group / global_position /
+##    parse_input_event) — termasuk SEMUA test Ashbrook (#217/#218).
+##  • 27 test mengklaim fakta ber-rasa-dunia dari DATA saja. Setelah ditinjau satu per
+##    satu: MAYORITAS SAH — mereka menguji **integritas data** (`_test_db`, `_test_quests`,
+##    `_test_rumors`, `_test_nirnama_secret`) atau **fungsi murni** (`_test_ttk`,
+##    `_test_combat_resolver`). Itu bukan hijau-palsu; itu memang lapisannya.
+##  • YANG BERBAHAYA = test yang menyimpulkan **perilaku dunia** dari data. Tiga sudah
+##    ditandai [LEGACY-SHALLOW] (forest_spirit, dark_miracles, settings_gamepad).
+##
+## ATURAN MIGRASI (mengikat): setiap sistem yang DISENTUH ronde apa pun WAJIB sekalian
+## mendapat ≥1 test yang MENGUKUR DUNIA. Jangan migrasi borongan — migrasi saat disentuh.
+##
+## UJI PRIBADI SEBELUM MENULIS TEST BARU:
+##   "Kalau kode ini benar di data tapi RUSAK di scene, apakah test-ku merah?"
+##   Kalau tidak — test itu belum jadi. (Itulah yang meloloskan pintu kamar buntu #217e.)
+## ============================================================================
+
 ## Headless test runner. Run:
 ##   godot --headless --path game res://tests/TestRunner.tscn --quit-after 20
 ## Exits with code 0 on all-pass, 1 on any failure.
@@ -90,6 +112,7 @@ func _ready() -> void:
 	_test_potential_not_exposed()
 	_test_skill_tree_c1()
 	await _test_ashbrook_alive()
+	await _test_ashbrook_soul()
 	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
@@ -3780,3 +3803,83 @@ func _test_ashbrook_alive() -> void:
 		not src.contains("enter_region(\"Ashbrook\", \"Selamat"))
 	check("keruntuhan TIDAK dinyatakan lewat papan info: NOL teks on-screen di Ashbrook (D-ASH-2/#210)",
 		not src.contains("Label.new()") and not src.contains("RichTextLabel"))
+
+## HUKUM TEST #151b (#219): UKUR DUNIA NYATA — scene terinstansiasi, posisi & state
+## runtime aktual — BUKAN string/array/dokumen yang MEWAKILI state itu.
+## Tiga perbaikan jiwa Ashbrook (#218) diuji di sini, semuanya lewat scene nyata.
+func _test_ashbrook_soul() -> void:
+	print("[ASHBROOK #218 — payoff perjalanan · jendela padam · anak serigala]")
+	var scene: Node = load("res://scenes/world/Ashbrook.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	# (1) PAYOFF PERJALANAN — gambar-jiwa cetak biru
+	var vantage := get_tree().get_nodes_in_group("vantage")
+	var beacon := get_tree().get_nodes_in_group("lamp_beacon")
+	check("titik-pandang ADA di dunia", vantage.size() == 1)
+	check("lampu Merrit ADA sebagai titik cahaya lintas-jarak", beacon.size() == 1)
+	var Ash = load("res://scenes/world/Ashbrook.gd")
+	check("dari titik-pandang, lampu MASUK LAYAR (kamera mundur)", Ash.lamp_visible_from_vantage())
+	if vantage.size() == 1 and beacon.size() == 1:
+		var d: float = vantage[0].global_position.distance_to(beacon[0].global_position)
+		var half_view: float = (1280.0 / Ash.VANTAGE_ZOOM) * 0.5
+		check("jarak titik-pandang → lampu (%dpx) < setengah pandang (%dpx)" % [int(d), int(half_view)],
+			d < half_view, "%d < %d" % [int(d), int(half_view)])
+		# pemain BERDIRI di titik-pandang → kamera BENAR-BENAR mundur (state runtime)
+		scene.player.global_position = vantage[0].global_position
+		await get_tree().physics_frame
+		await get_tree().physics_frame
+		await get_tree().create_timer(1.6).timeout
+		var cam: Camera2D = null
+		for c in scene.player.get_children():
+			if c is Camera2D:
+				cam = c
+		check("kamera BENAR-BENAR mundur saat pemain di titik-pandang",
+			cam != null and cam.zoom.x < 1.0, "zoom=%.2f" % (cam.zoom.x if cam else -1.0))
+		# dan lampunya ADA di dalam kotak pandang itu
+		var half := Vector2(1280.0, 720.0) / (cam.zoom.x * 2.0)
+		var view := Rect2(scene.player.global_position - half, half * 2.0)
+		check("LAMPU MERRIT TERLIHAT dari titik-pandang (di dalam kotak kamera)",
+			view.has_point(beacon[0].global_position))
+
+	# (2) MOMEN LAMPU — kontras dari PERBEDAAN, bukan ketiadaan
+	var wins := get_tree().get_nodes_in_group("ashbrook_window")
+	check("rumah lain PUNYA jendela berlampu (bukan ketiadaan)", wins.size() >= 4, str(wins.size()))
+	var lit_sore := 0
+	for w in wins:
+		w.apply_hour(17)
+		if w.is_lit():
+			lit_sore += 1
+	check("sore (17.00): beberapa jendela MENYALA", lit_sore >= 4, str(lit_sore))
+	var lit_19 := 0
+	for w in wins:
+		w.apply_hour(19)
+		if w.is_lit():
+			lit_19 += 1
+	var lit_20 := 0
+	for w in wins:
+		w.apply_hour(20)
+		if w.is_lit():
+			lit_20 += 1
+	var lit_22 := 0
+	for w in wins:
+		w.apply_hour(22)
+		if w.is_lit():
+			lit_22 += 1
+	check("jendela PADAM SATU PER SATU (17 > 19 > 20 > 22)",
+		lit_sore > lit_19 and lit_19 > lit_20 and lit_20 > lit_22,
+		"%d > %d > %d > %d" % [lit_sore, lit_19, lit_20, lit_22])
+	check("larut malam: TAK ADA jendela lain yang menyala — tinggal lampu Merrit", lit_22 == 0)
+	check("lampu Merrit TIDAK ikut padam (ia bukan jendela biasa)", beacon.size() == 1)
+
+	# (3) ANAK SERIGALA TERLUKA — monster gameplay pertama (kanon opening)
+	var pup := get_tree().get_nodes_in_group("wolf_pup")
+	check("anak serigala ADA di jalan keluar", pup.size() == 1)
+	if pup.size() == 1:
+		check("ia TERLUKA (hp jauh di bawah penuh)",
+			int(pup[0].inst.get("hp", 99)) < int(pup[0].inst.get("max_hp", 1)) * 0.4,
+			"%d/%d" % [int(pup[0].inst.get("hp", 0)), int(pup[0].inst.get("max_hp", 0))])
+		check("ia berdiri di JALAN, di luar zona aman desa",
+			pup[0].global_position.x > 700.0 and not SafeZone.contains(pup[0].global_position))
+	scene.queue_free()

@@ -13,13 +13,16 @@ extends Node2D
 ## yang menjelaskan keruntuhan. Pemain menyimpulkan sendiri — atau tidak sama sekali.
 
 const TILE := 16
-const MAP_W := 60
+const MAP_W := 96          # diperpanjang (#218): jalan keluar butuh RUANG untuk payoff
 const MAP_H := 44
 const VC := Vector2(480, 352)                 # pusat desa (alun-alun)
 const MERRIT_HOUSE := Vector2(232, 376)       # rumah singgah — ujung barat jalan
 const INTERIOR := Vector2(-360, -260)         # kamar tempat pemain BANGUN
 const FOREST_Y := 108.0                       # batas hutan (utara) — White Stag
 const STAG_CHANCE := 0.005                    # 0,5% per detik saat menghadap hutan (#D-ASH-4)
+const VANTAGE_X := 1000.0                     # titik-pandang: di sini pemain MENOLEH (#218)
+const VANTAGE_ZOOM := 0.7                     # kamera mundur → lampu masuk layar
+const EXIT_X := 1470.0                        # gerbang jalan ke Greenvale
 
 ## Tiap keruntuhan BERPASANGAN dengan kehidupan (Hukum Tertinggi).
 ## {ruin: apa yang ditunjukkan · life: kehidupan di sebelahnya · at: posisi}
@@ -49,6 +52,9 @@ var _stag_cd := 0.0
 var _chickens: Array = []
 var _kids: Array = []
 var _in_interior := true
+var _seat: Node2D
+var _beacon: Sprite2D
+var _last_hour := -1
 
 func _ready() -> void:
 	WorldState.mark_visited("ashbrook")     # Gerbang Penjelajah (#43) — titik-spawn (#204)
@@ -64,6 +70,10 @@ func _ready() -> void:
 	_add_ui()
 	_spawn_life()                            # ayam yang mengganggu + anak-anak berlari
 	_spawn_paired_life()                     # kambing di jembatan + sepeda di gerbang (#217)
+	_build_windows()                         # jendela rumah lain: menyala sore, PADAM satu per satu (#218)
+	_build_lamp_seat()                       # Merrit duduk membaca surat di momen lampu (#218)
+	_build_vantage()                         # PAYOFF PERJALANAN — gambar-jiwa cetak biru (#218)
+	_spawn_wolf_pup()                        # monster pertama: anak serigala terluka (#118)
 	TownFolk.place(self, "ashbrook", VC)     # 5 NPC berkepribadian (#78) + JADWAL (#97)
 	for c in get_children():                 # warga ikut dihitung sebagai KEHIDUPAN
 		var sc = c.get_script()
@@ -205,7 +215,7 @@ func _build_village() -> void:
 	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Jalan ke Greenvale [E]")
-	portal.global_position = Vector2(MAP_W * TILE - 40, VC.y)
+	portal.global_position = Vector2(EXIT_X, VC.y)
 
 func _building(kind: String, pos: Vector2, label: String) -> void:
 	var spr := Sprite2D.new()
@@ -316,6 +326,108 @@ func _spawn_paired_life() -> void:
 	bike.add_to_group("ashbrook_life")
 	add_child(bike)
 
+# ---------------------------------------------------------------- momen lampu (#218)
+## KONTRAS DARI **PERBEDAAN**, BUKAN KETIADAAN.
+## Rumah-rumah lain **menyala sore hari**, lalu **PADAM SATU PER SATU** menjelang malam
+## (19.00 · 20.00 · 21.00) — sampai tersisa **satu**: lampu Merrit.
+## Mata pemain harus MELIHAT jendela lain padam, bukan sekadar tak ada lampu.
+func _build_windows() -> void:
+	for w in [[Vector2(600, 424), 19], [Vector2(672, 288), 20], [Vector2(560, 216), 21],
+			[Vector2(392, 440), 21], [Vector2(300, 236), 20]]:
+		var win := Node2D.new()
+		win.set_script(load("res://scenes/actors/AshbrookWindow.gd"))
+		add_child(win)
+		win.place(Vector2(w[0]) + Vector2(0, -8), int(w[1]))
+
+## Merrit DUDUK MEMBACA SURAT di bawah lampunya — malam hari, tanpa dialog, tanpa
+## cutscene, tanpa prompt. Pemain boleh menonton atau pergi. Isinya TIDAK dijelaskan
+## (benih, bukan payoff — #216; kekuatannya ada pada penundaan).
+func _build_lamp_seat() -> void:
+	_seat = Node2D.new()
+	add_child(_seat)
+	var stool := ColorRect.new()
+	stool.color = Color(0.35, 0.28, 0.2)
+	stool.size = Vector2(12, 8)
+	stool.position = MERRIT_HOUSE + Vector2(6, 4)
+	_seat.add_child(stool)
+	var letter := ColorRect.new()        # surat tua — kertas pucat, tak pernah dibuka pemain
+	letter.color = Color(0.92, 0.88, 0.76)
+	letter.size = Vector2(7, 5)
+	letter.position = MERRIT_HOUSE + Vector2(14, 0)
+	_seat.add_child(letter)
+	_seat.visible = false
+
+# ---------------------------------------------------------------- payoff perjalanan (#218)
+## GAMBAR-JIWA cetak biru: *"…berjam-jam kemudian, saat pemain berjalan ke Greenvale,
+## ia menoleh — dan masih bisa melihat lampu Merrit dari kejauhan."*
+##
+## Masalah nyata (#217): lampu 670 px dari titik keluar, sementara kamera hanya
+## menampilkan ~640 px (zoom 2). Solusinya BUKAN memindahkan lampu — melainkan
+## **titik-pandang**: di sini kamera MUNDUR (zoom 0.7 → tampak ~1830 px), desa
+## mengecil di kejauhan, dan **satu titik cahaya tetap menyala di sana.**
+func _build_vantage() -> void:
+	var beacon := Sprite2D.new()          # lampu sebagai TITIK CAHAYA lintas-jarak
+	var img := Image.create(4, 4, false, Image.FORMAT_RGBA8)
+	img.fill(Color(1.0, 0.88, 0.6))
+	beacon.texture = ImageTexture.create_from_image(img)
+	beacon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	beacon.global_position = MERRIT_HOUSE + Vector2(18, -14)
+	beacon.z_index = 4096
+	beacon.scale = Vector2(1.6, 1.6)
+	beacon.add_to_group("lamp_beacon")
+	add_child(beacon)
+	_beacon = beacon
+
+	var zone := Area2D.new()
+	var cs := CollisionShape2D.new()
+	var sh := RectangleShape2D.new()
+	sh.size = Vector2(140, 120)
+	cs.shape = sh
+	zone.add_child(cs)
+	zone.global_position = Vector2(VANTAGE_X, VC.y)
+	zone.add_to_group("vantage")
+	add_child(zone)
+	zone.body_entered.connect(func(b):
+		if b == player:
+			_set_zoom(VANTAGE_ZOOM))
+	zone.body_exited.connect(func(b):
+		if b == player:
+			_set_zoom(2.0))
+
+func _set_zoom(z: float) -> void:
+	if player == null or not is_instance_valid(player):
+		return
+	for c in player.get_children():
+		if c is Camera2D:
+			create_tween().tween_property(c, "zoom", Vector2(z, z), 1.4)
+
+## Apakah lampu Merrit BENAR-BENAR masuk layar dari titik-pandang? (diukur test #151b)
+static func lamp_visible_from_vantage() -> bool:
+	var half_view := (1280.0 / VANTAGE_ZOOM) * 0.5      # setengah lebar pandang di titik itu
+	var lamp_x := MERRIT_HOUSE.x + 18.0
+	return absf(VANTAGE_X - lamp_x) < half_view
+
+# ---------------------------------------------------------------- monster pertama (#118)
+## ANAK SERIGALA TERLUKA — monster gameplay PERTAMA (kanon opening).
+## Boleh **dibantu**, **diabaikan**, atau **dibunuh** — ketiganya sah. Ia berdiri di
+## jalan keluar, jauh dari zona aman: pertemuan pertama pemain dengan dunia liar.
+func _spawn_wolf_pup() -> void:
+	var inst := MonsterFactory.make("grey_wolf")
+	if inst.is_empty():
+		return
+	inst["level"] = 1
+	inst["name"] = "Anak Serigala (terluka)"
+	inst["hp"] = max(1, int(inst.get("max_hp", 20)) / 4)     # terluka — bukan ancaman
+	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
+	add_child(m)
+	m.global_position = Vector2(760, VC.y - 30)
+	m.setup(inst, self)
+	m.scale = Vector2(0.7, 0.7)
+	m.add_to_group("wolf_pup")
+
+func on_monster_died(_m) -> void:
+	pass
+
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
 	add_child(player)
@@ -334,8 +446,17 @@ func _process(delta: float) -> void:
 	if canvas_mod:
 		canvas_mod.color = GameClock.ambient_color()
 	# LAMPU MERRIT: menyala siang & malam. Malam hari, ia satu-satunya yang menyala.
+	var h := GameClock.wib_hour()
 	if _lamp:
-		_lamp.modulate = Color(1, 1, 1, 1.0 if GameClock.wib_hour() >= 17 or GameClock.wib_hour() < 6 else 0.75)
+		_lamp.modulate = Color(1, 1, 1, 1.0 if h >= 17 or h < 6 else 0.75)
+	if _seat:
+		_seat.visible = h >= 19 or h < 5      # Merrit duduk membaca surat (tanpa prompt)
+	if _beacon:
+		_beacon.modulate.a = 1.0 if h >= 17 or h < 6 else 0.55
+	if h != _last_hour:
+		_last_hour = h
+		for w in get_tree().get_nodes_in_group("ashbrook_window"):
+			w.apply_hour(h)          # jendela PADAM satu per satu (19 · 20 · 21)
 	_tick_stag(delta)
 
 ## WHITE STAG (#D-ASH-4): tanpa trigger, tanpa marker, tanpa musik, tanpa quest.
