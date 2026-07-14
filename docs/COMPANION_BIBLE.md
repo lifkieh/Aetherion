@@ -150,11 +150,27 @@ Astrael 6. *(+ LAW: **EVERY CONTINENT MUST FEEL DIFFERENT**.)*
 | **ASTRAEL** | 6 | 1 | **Halen #14** — *asal Astrael, **status PENGEMBARA*** | 5 |
 | **VORUM** | 5 | **0** | — | 🔴 **5 — KOSONG** |
 
-> ### ⚠ KOREKSI ARITMETIK (#212b) — **sebaran Direktur memuat 12 dari 15 tokoh**
-> **Tiga tokoh terlewat, dan ketiganya SUDAH punya lokasi kanon:** **Elyn (Sylvara)** · **Kain &
-> Neriah (Thalassar ⊂ Azhur, #110)**. **Maka AZHUR BUKAN 0 — ia sudah berisi 2.**
-> **Satu-satunya benua yang benar-benar KOSONG adalah VORUM (0/5).**
-> *Keputusan penempatan tidak diubah — hanya hitungannya yang dibetulkan.*
+> ### ✅ SEBARAN INI **FINAL** (#213) — koreksi aritmetik diterima Direktur
+> Elyn → Sylvara · Kain & Neriah → Azhur *(Thalassar ⊂ Azhur, #110)*.
+> **VORUM (0/5) = satu-satunya benua yang benar-benar kosong.**
+
+---
+
+## 🔒 TIGA SLOT DICADANGKAN — **PENYINTAS ACT 1** (#214, companion **#16–#18 tentatif**)
+
+**Act 1 §IX Fase 2 (v0.5) sudah MEMESAN tiga tokoh** — dan sampai hari ini **tak satu pun ada**:
+
+| # | Tokoh | Peran di Act 1 §IX | **Benua** |
+|---|---|---|---|
+| **#016** | **OLD ELDER** | **memberi kesaksian** — ia mengingat dunia sebelum penghapusan | **ELDORIA** |
+| **#017** | **SILENT ONE** | **MENOLAK BICARA** — dan penolakannya sendiri adalah kesaksian | **ELDORIA** |
+| **#018** | **UNDERGROUND ELITE** | **MENJUAL** info — kebenaran sebagai komoditas | **NETHRAK atau VORUM** *(dunia-bawah / frontier gelap — **Designer finalkan saat menulisnya**)* |
+
+> ### 🔴 **ELDORIA DITUTUP: 7 + Old Elder + Silent One = 9/9.**
+>
+> **WAJIB ditulis SEBELUM atau BERSAMA Fase 2** — kalau tidak, kita mengirim sebuah fase cerita yang
+> **memanggil tiga orang yang tidak ada**. *Itulah definisi "kanon menggantung", dan kita sudah dua
+> kali membayarnya mahal (REPORT-06).*
 
 ### 🔗 HALEN VOSK (#014) — **tabib tanpa tanah air**
 Astralborn **berasal dari ASTRAEL — benua yang HILANG.** Statusnya **pengembara**, dan itu bukan
@@ -162,12 +178,12 @@ gaya hidup: **rumahnya tidak ada lagi.** *Seorang tabib yang menyembuhkan semua 
 dan yang bahkan tidak punya tempat untuk pulang bila ia gagal.* **(Alasan hilangnya Astrael tetap
 MISTERI — jangan dijawab.)*
 
-**ARAH GELOMBANG 3–4 (WAJIB):**
-1. 🔴 **VORUM (0/5) — KOSONG total.**
-2. **NETHRAK (8 sisa)** · **Valkaris · Sylvara · Azhur (5 sisa masing-masing)** · **Astrael (5)**.
-3. 🔴 **ELDORIA DITUTUP** kecuali 2 slot terakhir *(dan menurut saya keduanya sebaiknya disimpan
-   untuk **Old Elder / Silent One / Underground Elite** — tiga penyintas yang **sudah dipesan Act 1
-   §IX** dan belum punya tokoh)*.
+**ARAH GELOMBANG 3 — DIPUTUS (#215):**
+1. 🔴 **VORUM (0/5)** — dibuka lebih dulu; **satu-satunya benua kosong**.
+2. 🔒 **TIGA PENYINTAS ACT 1** (#16–#18) — **dipesan cerita, bukan opsional**.
+3. ⛔ **ELDORIA TUTUP (9/9)** setelah penyintas.
+4. Berikutnya: **Nethrak (8 sisa)** · Valkaris · Sylvara · Azhur *(5 sisa masing-masing)* ·
+   Astrael *(5)*.
 
 ### ⚠ KETIMPANGAN RAS (gelombang 3–4 wajib menutupinya)
 

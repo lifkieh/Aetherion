@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Kanon lokasi lengkap — 15 companion berbenua, sebaran seimbang · siap MERANCANG ASHBROOK v0.5**
+**Last update:** 2026-07-14 — **kanon lokasi FINAL · siap merancang Ashbrook v0.5**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -45,7 +45,16 @@
 > **#205: Elyn = PEMBANGKANG Chronicle Order** — *Ordo menjaga sejarah PENTING; Elyn & Sora menjaga
 > sejarah ORANG BIASA.*
 >
-> ### 🗺 KANON LOKASI LENGKAP (#210–#212)
+> ### 🔒 KANON LOKASI **FINAL** (#210–#215)
+> **Sebaran benua FINAL:** Eldoria **7/9** · Valkaris 2/7 · Sylvara 2/7 · Azhur 2/7 · Nethrak 1/9 ·
+> Astrael 1/6 · 🔴 **VORUM 0/5 — satu-satunya benua kosong**.
+> **2 slot Eldoria terakhir DICADANGKAN untuk PENYINTAS ACT 1** (#214): **#016 Old Elder** &
+> **#017 Silent One** → **ELDORIA (tutup 9/9)**; **#018 Underground Elite** → Nethrak/Vorum.
+> ⚠ **WAJIB ditulis sebelum/bersama Fase 2 (v0.5)** — kalau tidak, kita mengirim fase cerita yang
+> **memanggil tiga orang yang tidak ada**.
+> **GELOMBANG 3:** Vorum (kosong) + tiga penyintas → lalu Eldoria TUTUP.
+>
+> ### 🗺 KANON LOKASI (#210–#212)
 > **K-3 DIPUTUS:** Greenvale→**Valenford** · Frostpeak→**Durnhold** · Desert→**Thornreach** ·
 > Storm→**Veskar** · 🍬 **Candyveil = TANAH TAK-DIKLAIM** *(kanon, bukan lubang: **ketiadaan hukum
 > kerajaan-lah yang menjelaskan keabsurdannya** — dan artinya **tak ada yang datang menolong**)*.

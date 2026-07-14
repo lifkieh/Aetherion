@@ -89,3 +89,31 @@ bukan lewat teks.)*
 > dari tempat lain** — dan di sanalah ia *"pertama kali menyadari dunia jauh lebih besar."*
 > **Dua kota, dua arah tesis:** yang satu **kehilangan**, yang satu **kelimpahan**. Jalan di
 > antaranya (#204) adalah **kalimat ketiga**.
+
+---
+
+# 🍬 CANDYVEIL MEADOWS — **TANAH TAK-DIKLAIM** (#211/#214b · kanon wilayah)
+
+> **Bukan bagian kerajaan mana pun.** `regions.json → kingdom: "unclaimed"`.
+
+**Ketiadaan hukum kerajaan-lah yang MENJELASKAN keabsurdannya.** Candyveil aneh bukan karena
+penulisnya iseng — **ia aneh karena tak ada satu pun kerajaan yang pernah mengklaimnya,
+menertibkannya, memungut pajaknya, atau menuliskan hukumnya.** *Tempat yang tak diklaim siapa pun
+tumbuh menjadi apa pun yang ia mau.*
+
+## ⚠ SISI GELAP — **KANON, dan mengikat setiap penulis**
+
+> ### **Tidak ada penjaga. Tidak ada pengadilan. Tidak ada pajak.**
+> ### **Dan itu berarti: TIDAK ADA YANG DATANG MENOLONG.**
+
+**Keabsurdan yang manis punya konsekuensi yang keras:**
+- **Bahaya di Candyveil adalah bahaya NYATA** — bukan lelucon berkostum. Kalau sesuatu terjadi
+  padamu di sana, **tak ada yang mencatatnya, tak ada yang menuntut siapa pun, tak ada yang datang.**
+- **Tak ada hukum yang melindungimu** — dan itu berlaku **dua arah**: tak ada juga hukum yang
+  menghukummu. *Sebagian orang datang ke Candyveil justru karena itu.*
+- **Aturan penulisan:** setiap keajaiban manis di Candyveil **wajib punya bayangan**. *Istana gula
+  yang indah berdiri di tanah tempat tak seorang pun akan bertanya ke mana perginya tamu-tamunya.*
+
+*(Konsisten HUKUM ENVIRONMENTAL #210: **jangan jelaskan ini lewat papan info.** Tunjukkan — lewat
+apa yang tidak ada di sana: tak ada pos jaga, tak ada bendera, tak ada kantor pajak, tak ada makam
+yang bertanda.)*
