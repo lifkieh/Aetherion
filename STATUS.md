@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Kingdom/City tercerna · Ashbrook = desa-bekas-kota di Valenford · siap MERANCANG ASHBROOK v0.5 (Direktur+Designer)**
+**Last update:** 2026-07-14 — **Kanon lokasi lengkap — 15 companion berbenua, sebaran seimbang · siap MERANCANG ASHBROOK v0.5**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -44,6 +44,22 @@
 > bukan ruang kosong. ⛔ **Dilarang bangun sistem travel kedua** (perbesar Gerbang Penjelajah #43).
 > **#205: Elyn = PEMBANGKANG Chronicle Order** — *Ordo menjaga sejarah PENTING; Elyn & Sora menjaga
 > sejarah ORANG BIASA.*
+>
+> ### 🗺 KANON LOKASI LENGKAP (#210–#212)
+> **K-3 DIPUTUS:** Greenvale→**Valenford** · Frostpeak→**Durnhold** · Desert→**Thornreach** ·
+> Storm→**Veskar** · 🍬 **Candyveil = TANAH TAK-DIKLAIM** *(kanon, bukan lubang: **ketiadaan hukum
+> kerajaan-lah yang menjelaskan keabsurdannya** — dan artinya **tak ada yang datang menolong**)*.
+> Masuk `regions.json` (field `kingdom`).
+> **15 COMPANION KINI BERBENUA:** Eldoria **7/9** · Valkaris 2/7 · Sylvara 2/7 · Azhur 2/7 ·
+> Nethrak 1/9 · Astrael 1/6 · 🔴 **VORUM 0/5 — KOSONG**.
+> ⚠ **Koreksi:** sebaran Direktur memuat **12 dari 15** — Elyn/Kain/Neriah terlewat; **Azhur bukan 0**.
+> **Halen #14 = tabib tanpa tanah air** (Astralborn dari **benua yang HILANG**; pengembara **karena
+> rumahnya tidak ada lagi**).
+> **HUKUM BARU (#210):** *"Tunjukkan, jangan papan-informasikan"* — sejarah tempat diceritakan lewat
+> **detail yang dilihat** (jembatan terlalu lebar untuk 40 orang · gudang gandum berisi 4 ayam).
+>
+> **GELOMBANG 3–4:** 🔴 **VORUM prioritas (kosong)** · **Eldoria DITUTUP** (sisa 2 — usul: simpan
+> untuk **Old Elder · Silent One · Underground Elite**, tiga penyintas yang sudah dipesan Act 1).
 >
 > ### ✅ EMPAT KONFLIK DIPUTUS (#206–#208)
 > **K-2 ASHBROOK = DESA-BEKAS-KOTA:** dulu starting town ~1.500 jiwa, kini **desa ~40 jiwa** (jalur

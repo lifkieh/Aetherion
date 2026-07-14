@@ -105,7 +105,34 @@ populasi & era yang bergeser.**
 **ASHBROOK = TESIS GAME DALAM BENTUK TEMPAT:** *sesuatu yang dulu besar, kini nyaris hilang, tetap
 bermakna karena pernah ada.* **Pemain belajar tesis Aetherion dari GEOGRAFI, sebelum satu dialog.**
 
-## K-3 ⚠ **LIMA WILAYAH KITA → KERAJAAN MANA? SUMBER TIDAK CUKUP.**
+## K-3 ✅ **PEMETAAN WILAYAH → KERAJAAN — DIPUTUS (#211)**
+
+| Wilayah hidup | Kerajaan | Alasan |
+|---|---|---|
+| **Greenvale** | **VALENFORD** | hub manusia, **kerajaan awal** |
+| **Frostpeak Mountain** | **DURNHOLD** | *The Iron Bastion* — benteng · tambang · industri |
+| **Desert of Ruins** | **THORNREACH** | *The Frontier Kingdom* — perbatasan · reruntuhan |
+| **Storm Island** | **VESKAR** | *The Merchant Crown* — pelabuhan & laut |
+| **CANDYVEIL MEADOWS** | 🔴 **TANAH TAK-DIKLAIM** | **bukan bagian kerajaan mana pun** |
+
+### 🍬 CANDYVEIL = **TANAH TAK-DIKLAIM** — kanon, **bukan lubang**
+
+> **Ketiadaan hukum kerajaan-lah yang MENJELASKAN keabsurdannya.**
+
+Candyveil aneh **bukan karena penulisnya iseng** — ia aneh **karena tak ada satu pun kerajaan yang
+pernah mengklaimnya, menertibkannya, memungut pajaknya, atau menuliskan hukumnya.**
+**Tempat yang tak diklaim siapa pun tumbuh menjadi apa pun yang ia mau.**
+
+*"Tempat yang tak diklaim siapa pun"* = **identitas Candyveil**, dan sekarang ia punya **sebab
+politik**, bukan sekadar nada. *(Data: `regions.json → kingdom: "unclaimed"`.)*
+
+⚠ **Konsekuensi yang harus dihormati penulis:** di Candyveil **tidak ada penjaga kerajaan, tidak ada
+pengadilan, tidak ada pajak** — dan itu berarti **tidak ada yang datang menolong**. Keabsurdan yang
+manis punya sisi yang tidak manis.
+
+---
+
+## (arsip) K-3 sebelum diputus — sumber tidak cukup
 
 **Perintah Direktur: *"tetapkan dari City/Kingdom Bible; laporkan bila sumber tak cukup — jangan
 tebak."* → SUMBER TIDAK CUKUP. Saya tidak menebak.**

@@ -83,6 +83,22 @@ budaya, sejarah, hukum, prasangka, dan cara dunia memperlakukanmu.
 bersuara satu. Delapan Ras Besar: Human · Elf · Dryad · Dwarf · Beastfolk · Astralborn ·
 Tidekin · Shadeborn.
 
+## HUKUM PENULISAN ENVIRONMENTAL (#210) — **"TUNJUKKAN, JANGAN PAPAN-INFORMASIKAN"**
+
+> **Sejarah & keadaan sebuah tempat diceritakan lewat DETAIL YANG PEMAIN LIHAT — tak pernah lewat
+> papan info atau teks eksposisi.**
+
+**Contoh kanon (Ashbrook, #206):** **jembatan yang terlalu lebar untuk empat puluh orang** ·
+**gudang gandum yang kini memelihara empat ekor ayam** · rumah-rumah kosong · papan nama yang pudar
+· dermaga sungai yang dibangun untuk kapal yang tak lagi datang.
+**Tak satu pun dari itu perlu dijelaskan. Pemain mengerti — dan mengerti sendiri terasa berbeda.**
+
+**Berlaku untuk SEMUA wilayah** (dimulai dari Ashbrook). ⛔ **DILARANG:** papan informasi yang
+menjelaskan keruntuhan · NPC yang membacakan sejarah kota · tooltip lore.
+
+*Uji desain: kalau kau menghapus semua teks dari sebuah wilayah, apakah pemain masih bisa merasakan
+apa yang terjadi di sana? Kalau tidak — wilayah itu belum jadi.*
+
 ## HUKUM KERAJAAN & BENUA (#207/#208)
 
 **HIERARKI LOKASI KANON:** `desa → KERAJAAN → AURELIA (daratan politik) → ELDORIA (benua) → AETHERION (dunia)`

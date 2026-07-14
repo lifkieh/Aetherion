@@ -65,23 +65,23 @@ lagu, atau seseorang yang menolak pergi."*
 > wilayah yang sudah dibangun ada di benua **Eldoria**. *(Pemetaan #110 masih **draft yang bisa
 > diveto**.)*
 
-| # | Nama | Julukan | Ras | Kategori | **Potensi (tersembunyi)** | Berkas |
-|---|---|---|---|---|---|---|
-| 001 | **Arlen Vale** | *The Boy Who Wanted The Horizon* | Human | Explorers | **340** · berbakat | `companion_01_arlen_vale.md` |
-| 002 | **Elyn Thornewood** | *The Keeper of Forgotten Books* | Elf | Scholars | **690** · elite | `companion_02_elyn_thornewood.md` |
-| 003 | **Torgrim Ironvein** | *The Last Great Builder* | Dwarf | Leaders/Reformers | **610** · elite | `companion_03_torgrim_ironvein.md` |
-| 004 | **Seraphine Voss** | *The Woman Who Heard The Stars* | Astralborn | Mystics | **830** · jenius | `companion_04_seraphine_voss.md` |
-| 005 | **Kain Blacktide** | *The Smiling Smuggler* | Human | Outsiders | **260** · berbakat | `companion_05_kain_blacktide.md` |
-| 006 | **Maira Willowstep** | *The Monster Shepherd* | Dryad | Wild Cards | **940** · jenius | `companion_06_maira_willowstep.md` |
-| 007 | **Varko Drenn** | *The Fool Who Challenged Death* | Human | Warriors | **120** · **mayoritas** | `companion_07_varko_drenn.md` |
-| 008 | **Neriah Saltwind** | *The Cartographer of Impossible Seas* | Tidekin | Explorers | **480** · elite | `companion_08_neriah_saltwind.md` |
-| 009 | **Cael Morrow** | *The Nameless Knight* | Human | Warriors/Mystics | **`???` — TAK TERBACA** | `companion_09_cael_morrow.md` |
-| 010 | **Luna Vesper** | *The Child Who Remembered Tomorrow* | Shadeborn | Mystics | **1150** · **fenomena** | `companion_10_luna_vesper.md` |
-| 011 | **Merrit Fane** | *Yang Menunggu Surat Balasan* | Human | Wild Cards | **110** · **mayoritas** | `companion_11_merrit_fane.md` |
-| 012 | **Veshka Ironvein** | *(lihat berkas)* | Dwarf | — | **620** · elite | `companion_12_veshka_ironvein.md` |
-| 013 | **Sora Lanternwick** | *(lihat berkas)* | — | — | **780** · jenius | `companion_13_sora_lanternwick.md` |
-| 014 | **Dr. Halen Vosk** | *Tabib yang Menyembuhkan Semua Kecuali Satu* | Astralborn | **Scholars** (#195) | **850** · jenius | `companion_14_halen_vosk.md` |
-| 015 | **Kessler Dray** | *Jenderal yang Menolak Perang Berikutnya* | Beastfolk *(wolfkin)* | **REFORMERS** (#195) | **700** · elite/jenius | `companion_15_kessler_dray.md` |
+| # | Nama | Julukan | Ras | **BENUA** (#212) | Kategori | **Potensi** | Berkas |
+|---|---|---|---|---|---|---|---|
+| 001 | **Arlen Vale** | *The Boy Who Wanted The Horizon* | Human | **Eldoria** | Explorers | **340** · berbakat | `companion_01_arlen_vale.md` |
+| 002 | **Elyn Thornewood** | *The Keeper of Forgotten Books* | Elf | **Sylvara** | Scholars | **690** · elite | `companion_02_elyn_thornewood.md` |
+| 003 | **Torgrim Ironvein** | *The Last Great Builder* | Dwarf | **Valkaris** | Leaders/Reformers | **610** · elite | `companion_03_torgrim_ironvein.md` |
+| 004 | **Seraphine Voss** | *The Woman Who Heard The Stars* | Astralborn | **Eldoria** | Mystics | **830** · jenius | `companion_04_seraphine_voss.md` |
+| 005 | **Kain Blacktide** | *The Smiling Smuggler* | Human | **Azhur** | Outsiders | **260** · berbakat | `companion_05_kain_blacktide.md` |
+| 006 | **Maira Willowstep** | *The Monster Shepherd* | Dryad | **Sylvara** | Wild Cards | **940** · jenius | `companion_06_maira_willowstep.md` |
+| 007 | **Varko Drenn** | *The Fool Who Challenged Death* | Human | **Eldoria** | Warriors | **120** · **mayoritas** | `companion_07_varko_drenn.md` |
+| 008 | **Neriah Saltwind** | *The Cartographer of Impossible Seas* | Tidekin | **Azhur** | Explorers | **480** · elite | `companion_08_neriah_saltwind.md` |
+| 009 | **Cael Morrow** | *The Nameless Knight* | Human | **Eldoria** | Warriors/Mystics | **`???` — TAK TERBACA** | `companion_09_cael_morrow.md` |
+| 010 | **Luna Vesper** | *The Child Who Remembered Tomorrow* | Shadeborn | **Eldoria** | Mystics | **1150** · **fenomena** | `companion_10_luna_vesper.md` |
+| 011 | **Merrit Fane** | *Yang Menunggu Surat Balasan* | Human | **Eldoria** | Wild Cards | **110** · **mayoritas** | `companion_11_merrit_fane.md` |
+| 012 | **Veshka Ironvein** | *(lihat berkas)* | Dwarf | **Valkaris** | — | **620** · elite | `companion_12_veshka_ironvein.md` |
+| 013 | **Sora Lanternwick** | *(lihat berkas)* | — | **Eldoria** | — | **780** · jenius | `companion_13_sora_lanternwick.md` |
+| 014 | **Dr. Halen Vosk** | *Tabib yang Menyembuhkan Semua Kecuali Satu* | Astralborn | **Astrael** | **Scholars** (#195) | **850** · jenius | `companion_14_halen_vosk.md` |
+| 015 | **Kessler Dray** | *Jenderal yang Menolak Perang Berikutnya* | Beastfolk *(wolfkin)* | **Nethrak** | **REFORMERS** (#195) | **700** · elite/jenius | `companion_15_kessler_dray.md` |
 
 > **#014 & #015 = versi FINAL Direktur** (menimpa total draf agent). **DIRATIFIKASI kanon (#190).**
 > ✅ **KATEGORI DITETAPKAN (#195):** **Halen = SCHOLARS** · **Kessler = REFORMERS** — *"jenderal yang
@@ -135,28 +135,39 @@ berpotensi jenius adalah **roster yang berbohong** — dan kebohongan itu **meme
 | Mystics | 4–6 | 2–3 (Seraphine, Luna, Cael?) | 1–4 | |
 | Wild Cards | 4–6 | 3 (Maira, Merrit, Sora?) | 1–3 | |
 
-### 🔴 KUOTA COMPANION PER BENUA (kanon #208) — **ELDORIA PRAKTIS DITUTUP**
+### ✅ SEBARAN BENUA — FINAL 15 TOKOH (#212)
 
-**Eldoria 9 · Valkaris 7 · Sylvara 7 · Azhur 7 · Nethrak 9 · Vorum 5 · Astrael 6 = 50.**
-*(+ LAW: **EVERY CONTINENT MUST FEEL DIFFERENT** — benua baru ≠ map lama dengan tekstur berbeda.)*
+**Kuota kanon (total 50):** Eldoria 9 · Valkaris 7 · Sylvara 7 · Azhur 7 · Nethrak 9 · Vorum 5 ·
+Astrael 6. *(+ LAW: **EVERY CONTINENT MUST FEEL DIFFERENT**.)*
 
-| Benua | Kuota | **Terisi** | Tokoh | Sisa |
+| Benua | Kuota | Terisi | Tokoh | **Sisa** |
 |---|---|---|---|---|
-| **ELDORIA** | **9** | **≥5** *(+6 belum ditetapkan!)* | Arlen · Merrit *(Ashbrook)* · Luna *(Greenvale)* · Seraphine *(Frostpeak)* · Sora *(Candyveil)* | 🔴 **≤4 — dan bisa MINUS** |
-| Sylvara | 7 | 1 | Elyn | 6 |
-| **Azhur** | 7 | 2 | Kain · Neriah *(Thalassar ⊂ Azhur)* | 5 |
-| **Nethrak** | **9** | 1 | Kessler | **8** |
-| Valkaris | 7 | **0** | — | **7** |
-| Vorum | 5 | **0** | — | **5** |
-| Astrael | 6 | **0** | — | **6** *(⚠ benua yang **HILANG** — misteri)* |
+| **ELDORIA** | 9 | **7** | Arlen #1 · Seraphine #4 · Varko #7 · Cael #9 · Luna #10 · Merrit #11 · Sora #13 | 🔴 **2 — hampir tutup** |
+| **VALKARIS** | 7 | 2 | Torgrim #3 · Veshka #12 *(klan Ironvein — dwarf, umat tertua **Valkar**)* | 5 |
+| **SYLVARA** | 7 | **2** | Maira #6 *(dryad — benua hutan)* · **Elyn #2** *(arsip Sylvara)* | 5 |
+| **AZHUR** | 7 | **2** | **Kain #5 · Neriah #8** *(Thalassar ⊂ Azhur, #110)* | 5 |
+| **NETHRAK** | 9 | 1 | Kessler #15 *(perbatasan liar)* | **8** |
+| **ASTRAEL** | 6 | 1 | **Halen #14** — *asal Astrael, **status PENGEMBARA*** | 5 |
+| **VORUM** | 5 | **0** | — | 🔴 **5 — KOSONG** |
 
-> ### ⚠ ENAM TOKOH BELUM PUNYA BENUA — harus ditetapkan SEBELUM gelombang 3
-> **Torgrim · Maira · Varko · Cael · Veshka · Halen** — sheet mereka tak menyebut benua.
-> **Bila keenamnya jatuh ke Eldoria, kuota Eldoria (9) TERLAMPAUI.**
-> **Menulis 35 tokoh baru di atas hitungan yang belum benar = mengulang kesalahan yang sama.**
+> ### ⚠ KOREKSI ARITMETIK (#212b) — **sebaran Direktur memuat 12 dari 15 tokoh**
+> **Tiga tokoh terlewat, dan ketiganya SUDAH punya lokasi kanon:** **Elyn (Sylvara)** · **Kain &
+> Neriah (Thalassar ⊂ Azhur, #110)**. **Maka AZHUR BUKAN 0 — ia sudah berisi 2.**
+> **Satu-satunya benua yang benar-benar KOSONG adalah VORUM (0/5).**
+> *Keputusan penempatan tidak diubah — hanya hitungannya yang dibetulkan.*
 
-**ATURAN GELOMBANG 3–4:** **ELDORIA DITUTUP** untuk companion baru *(kecuali menggantikan slot)*.
-**Prioritas: Valkaris (7 kosong) · Vorum (5 kosong) · Astrael (6 kosong) · Nethrak (8 sisa).**
+### 🔗 HALEN VOSK (#014) — **tabib tanpa tanah air**
+Astralborn **berasal dari ASTRAEL — benua yang HILANG.** Statusnya **pengembara**, dan itu bukan
+gaya hidup: **rumahnya tidak ada lagi.** *Seorang tabib yang menyembuhkan semua orang kecuali satu —
+dan yang bahkan tidak punya tempat untuk pulang bila ia gagal.* **(Alasan hilangnya Astrael tetap
+MISTERI — jangan dijawab.)*
+
+**ARAH GELOMBANG 3–4 (WAJIB):**
+1. 🔴 **VORUM (0/5) — KOSONG total.**
+2. **NETHRAK (8 sisa)** · **Valkaris · Sylvara · Azhur (5 sisa masing-masing)** · **Astrael (5)**.
+3. 🔴 **ELDORIA DITUTUP** kecuali 2 slot terakhir *(dan menurut saya keduanya sebaiknya disimpan
+   untuk **Old Elder / Silent One / Underground Elite** — tiga penyintas yang **sudah dipesan Act 1
+   §IX** dan belum punya tokoh)*.
 
 ### ⚠ KETIMPANGAN RAS (gelombang 3–4 wajib menutupinya)
 

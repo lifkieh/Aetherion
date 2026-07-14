@@ -2,6 +2,7 @@
  {
   "id": "greenvale",
   "name": "Greenvale",
+  "kingdom": "valenford",
   "lv_min": 1,
   "lv_max": 15,
   "scene": "res://scenes/Main.tscn",
@@ -12,6 +13,7 @@
  {
   "id": "desert",
   "name": "Desert of Ruins",
+  "kingdom": "thornreach",
   "lv_min": 12,
   "lv_max": 25,
   "scene": "res://scenes/world/Desert.tscn",
@@ -22,6 +24,7 @@
  {
   "id": "candyveil",
   "name": "Candyveil Meadows",
+  "kingdom": "unclaimed",
   "lv_min": 18,
   "lv_max": 32,
   "scene": "res://scenes/world/Candyveil.tscn",
@@ -32,6 +35,7 @@
  {
   "id": "frostpeak",
   "name": "Frostpeak Mountain",
+  "kingdom": "durnhold",
   "lv_min": 22,
   "lv_max": 38,
   "scene": "res://scenes/world/Frostpeak.tscn",
@@ -42,6 +46,7 @@
  {
   "id": "storm_island",
   "name": "Storm Island",
+  "kingdom": "veskar",
   "lv_min": 40,
   "lv_max": 55,
   "scene": "res://scenes/world/StormIsland.tscn",
