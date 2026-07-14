@@ -1,0 +1,103 @@
+# COMPANION #001 — ARLEN VALE
+**"The Boy Who Wanted The Horizon"**
+*B17 · Tier ditentukan Direktur · Draft Designer detail-penuh · Hukum: Echo ≠ Origin*
+
+---
+
+## IDENTITAS INTI
+Arlen Vale, 19 tahun, manusia, kurir desa Ashbrook — desa empat puluhan jiwa di mulut Greenhollow Valley, sepelemparan batu dari Greenvale. Pekerjaannya adalah berjalan: surat ke ladang seberang, obat ke rumah bidan, kabar duka ke pintu yang belum tahu. Ia berjalan sepanjang hari, setiap hari, dan **tidak satu langkah pun dari langkah-langkah itu pernah keluar dari lembah.** Sebelas jalan; ia hafal kesebelasnya sampai ke lubang-lubangnya. Itulah tragedi kecil yang menjadi seluruh dirinya: seorang kurir yang tak pernah sampai ke mana-mana.
+
+Fisiknya: jangkung-kurus, kaki kuat, kulit terbakar matahari, senyum yang datang terlalu cepat dan terlalu sering. Ia bicara pada semua orang — pedagang lewat, prajurit lewat, siapa pun yang membawa debu dari luar. Pertanyaannya selalu sama dan selalu memalukan bagi orang dewasa yang ditanyanya: *"Di sana seperti apa?"* Di tasnya, dilipat rapi sampai lipatannya sobek, ada peta lembah yang ia gambar sendiri sejak umur sebelas — dan di tepinya, di luar garis lembah, ia menulis satu kata dengan pensil, berkali-kali, sampai kertasnya berlubang: **"lalu?"**
+
+Di ujung jalan utara Ashbrook ada batu penanda batas desa. Arlen mengantar sampai batu itu. Ia berhenti di sana. Ia sudah berhenti di sana ribuan kali.
+
+## ROLE DUNIA
+Permukaan: **kurir & pemandu awal** — dari Arlen pemain mendapat rute, jalan pintas, dan gosip lembah yang lebih riang (dan lebih tidak akurat) daripada milik Merrit. Ia companion yang paling gampang disukai dan paling gampang diabaikan: ia tidak punya rahasia agung, tidak punya kutukan, tidak punya darah penting. Ia cuma anak yang ingin ikut.
+
+Dalam: **Arlen adalah cermin pemain, dan cermin itu dirancang untuk retak dengan cara yang benar.** Ia menginginkan persis apa yang diinginkan pemain di jam pertama — horizon, dunia, gerak. Bedanya: pemain *berjalan*, dan Arlen *tidak bisa*. Lewat dia, pemain merasakan bahwa kemampuan untuk pergi — yang bagi pemain hanyalah tombol — adalah hak istimewa yang tidak dimiliki 90% dunia. Setiap kali pemain meninggalkan Ashbrook dengan enteng, ada seseorang yang berdiri di batu penanda dan menonton.
+
+Bila direkrut: ia bukan petarung hebat dan tak akan pernah jadi. Ia menjadi **kaki Domain** — pembuka rute, pemetaan wilayah, jalur dagang, kurir antar-wilayah. Bersama sistem pos Merrit (#11), ia menjadi separuh dari jaringan yang membuat dunia pemain tetap tersambung: Merrit memegang surat, Arlen memegang jalan.
+
+## PERSONALITY (5 lapis kanon)
+- **Temperamen:** Sanguinis-Koleris. Hangat, cepat, tak bisa diam. Marah seperti hujan sore: keras, sebentar, tak berbekas. Bosan adalah satu-satunya penderitaan yang tak bisa ia tanggung.
+- **Big Five:** Openness 85 (lapar akan apa pun yang baru) · **Conscientiousness 45** (dan inilah kuncinya — ia memulai sepuluh hal dan menyelesaikan dua) · Extraversion 90 (bicara pada semua orang, termasuk yang tak mau diajak bicara) · Agreeableness 70 (baik, mudah dimaafkan, mudah dimanfaatkan) · Neuroticism 35 (tahan banting; kekecewaan tidak menempel padanya lama — itu kekuatannya, dan kadang kedangkalannya).
+- **Trauma & Luka:** tidak ada trauma besar. **Dan itu disengaja** — Arlen adalah satu-satunya di gelombang ini yang tidak dipatahkan oleh apa pun. Lukanya bukan peristiwa; lukanya adalah **ketiadaan peristiwa**. Sembilan belas tahun tanpa satu pun hal yang layak diceritakan.
+- **Sumbu Mencius:** condong baik, belum diuji. Kebaikannya adalah kebaikan orang yang belum pernah diberi alasan untuk jahat. (L4 — *everyone can fall*: dunia belum pernah menawarinya harga.)
+- **Growth Profile:** **Ambition sangat tinggi, Discipline sedang-rendah.** Ia bermimpi seukuran benua dan berlatih seukuran sore. Ini bukan cacat penulisan — ini **mesin nasibnya**: dalam rumus `Outcome = Potential × Effort × (1 + Opportunity) × Time × Luck`, Effort-nya adalah suku terlemahnya, dan pemain **tidak boleh** bisa menaikkannya dengan tombol. Effort Arlen hanya naik lewat satu hal: seseorang yang ia hormati mempercayainya dengan sesuatu yang nyata.
+
+## HIDDEN POTENTIAL
+**340 (berbakat — 150–400).** Dan ini **pernyataan desain paling berani di seluruh gelombang:** tokoh yang paling mirip pemain, yang seed-nya sendiri menyebut "simbol awal petualangan", **bukan jenius.** Ia tidak akan pernah jadi Sora (780). Ia tidak akan pernah jadi Veshka (620). Bila pemain kelak mengarahkan Item Penglihat Potensi kepadanya dan melihat **"Gifted"** — bukan Legendary, bukan Exceptional, hanya *berbakat* — itu adalah antiklimaks yang **sengaja dirancang untuk menyakitkan**, karena pemain sedang melihat versi dirinya sendiri diberi angka, dan angkanya biasa saja.
+
+Tapi bacalah rumusnya sekali lagi. Arlen 340 dengan Opportunity penuh — dibawa pergi, diberi kapal, diberi guru, diberi dua puluh tahun — akan **melampaui** Sora 780 yang ditinggalkan di pemakaman Candyveil. **Itulah tesis L14 dalam satu perbandingan.** Ceiling tidak menentukan hidup. Pintu yang menentukan. Dan seed-nya sendiri sudah jujur sejak awal: *penjelajah legendaris · kartografer dunia · kapten armada — **atau orang biasa.*** Keempatnya sah. Tidak ada yang dijamin.
+
+## AMBITION
+Melihat seluruh dunia. Itu jawaban yang ia berikan, dengan sungguh-sungguh, kepada siapa pun yang bertanya.
+
+Yang tidak ia katakan — mungkin karena tak punya kata-katanya — ada di lapisan bawahnya. Arlen tumbuh di rumah pos Merrit Fane. Sebagai anak, ia duduk di lantai sambil menonton orang tua itu menyerahkan surat ke tangan orang lain: kartu pos dari kota jauh, cap pos asing, tulisan tangan yang datang dari tempat yang tak ada di peta lembah. **Kerinduannya pada horizon lahir di sana** — bukan dari keinginan berjalan, melainkan dari kesadaran kecil dan pahit bahwa surat-surat itu selalu untuk orang lain. Ambisi Arlen yang sesungguhnya: **menjadi orang yang mengirim kartu pos, bukan yang menonton kartu pos orang lain diantar.** Ia ingin ada di ujung sana. Ia ingin seseorang di Ashbrook memegang sesuatu dan membacanya dan tahu bahwa ia ada di suatu tempat yang jauh, dan bahwa ia mengingat mereka.
+
+## FEAR
+Mati tanpa pernah meninggalkan kampung halaman. Itu lapis pertama, dan ia mengucapkannya terbuka — ia tidak malu takut.
+
+Lapis kedua tak pernah ia ucapkan, dan itu yang membuatnya manusia: **ia takut pergi, dan menemukan bahwa dunia besar tidak membuatnya besar.** Selama ia tinggal di Ashbrook, ia bisa terus mempercayai bahwa di luar sana ia akan menjadi seseorang. Melangkahi batu penanda itu berarti mempertaruhkan satu-satunya harta yang benar-benar ia miliki: kemungkinan. Dan lapis ketiga, yang bahkan tak ia sadari — ia takut menjadi Merrit. Ia takut suatu hari menjadi orang tua di jendela yang menyalakan lampu untuk sesuatu yang tak datang, dan menyebutnya kesetiaan agar tidak perlu menyebutnya kekalahan.
+
+*(Ironi kanon yang harus dijaga: Merrit-lah yang mengajarinya menginginkan horizon — dan Merrit juga yang, tanpa pernah bermaksud, mengajarinya bahwa tidak-tahu lebih aman daripada jawaban yang salah.)*
+
+## KONFLIK INTERNAL
+**Ia bermimpi seperti orang berpotensi seribu, dan bekerja seperti orang berpotensi seratus.** Ia mengumpulkan uang untuk pergi, lalu membelanjakannya untuk minum bersama pedagang yang bisa menceritakan tempat-tempat itu — mendengar tentang dunia terasa hampir sama enaknya dengan melihatnya, dan jauh lebih murah. Ia mulai menggambar peta pesisir yang belum pernah ia kunjungi dari cerita orang, dan tak pernah menyelesaikan satu pun. Ia berjanji pada dirinya sendiri, setiap tahun sejak umur lima belas, bahwa tahun ini ia pergi.
+
+Ini bukan kemalasan. Ini **ketakutan yang menyamar sebagai penundaan**: selama keberangkatan belum terjadi, ia belum bisa gagal. Konflik internal Arlen adalah jurang antara besarnya keinginan dan kecilnya perbuatan — jurang yang **hanya bisa dijembatani oleh seseorang dari luar yang mempercayakan sesuatu yang nyata kepadanya.** Itulah kenapa pemain penting baginya. Bukan karena pemain hebat. Karena pemain **datang dari luar batu penanda**, dan meminta.
+
+## KONFLIK EKSTERNAL
+Ashbrook memegangnya, dan tidak dengan rantai — dengan kasih sayang, yang jauh lebih sulit dilawan. Ayahnya, Corvin Vale, punya punggung yang sudah dua musim tak bisa membungkuk penuh; ladang keluarga menyusut; upah kurir Arlen — kecil, tapi tetap — adalah yang menahan keluarga itu di ambang. **Pergi berarti memilih mimpinya di atas ayahnya.** Desa tidak akan menghukumnya kalau ia pergi. Desa akan melakukan hal yang lebih buruk: desa akan **memahaminya**, dengan sopan, dengan senyum tipis, sambil menutup sedikit lebih rapat pintu yang tak akan lagi ia lewati.
+
+Dan ada lapis kedua yang lebih dingin: **dunia tidak membutuhkan Arlen.** Tidak ada faksi yang mengincarnya, tak ada klan yang memburunya, tak ada nubuat. Konflik eksternalnya bukan musuh — melainkan **ketidakpedulian**. Tak ada yang akan datang menjemputnya. Kalau tak ada yang membuka pintu, tidak akan terjadi apa-apa. Selamanya. Itulah bentuk paling jujur dari sebuah hidup yang tak pernah mendapat kesempatan, dan itulah kenapa ia harus ada di sini.
+
+## RELASI PENTING
+- **Merrit Fane (#11):** ayah tak resmi. Merrit menampungnya waktu kecil; dari kartu pos di tangan Merrit, horizon Arlen lahir. Hubungan mereka hangat dan sedikit sesak: Merrit **bangga** padanya dan **tidak pernah menyuruhnya pergi** — karena Merrit tahu betul harga menunggu seseorang yang pergi, dan tak sanggup menjadi orang yang mengirim satu lagi. Bila keduanya di Domain: Arlen membawa surat masuk; Merrit menyortirnya; keduanya, tanpa pernah membicarakannya, sedang membangun jaringan yang seharusnya ada empat puluh tahun lalu.
+- **Ayahnya, Corvin Vale:** bukan penjahat, bukan tiran. Seorang petani yang lelah, yang mencintai anaknya, dan yang satu malam — di cabang terbaik — berkata: *"Jangan tinggal karena aku. Aku tidak sanggup jadi alasan."* Kalimat itu adalah **pintu** (Opportunity dari lantai dunia, bukan dari pemain — L14/#184: dunia punya pintunya sendiri; pemain hanya punya lebih banyak).
+- **Neriah Saltwind (#8), Cartographer of Impossible Seas:** kalau Arlen pernah punya guru, dialah orangnya. Neriah bisa mengubah Arlen dari *anak yang ingin melihat* menjadi *orang yang mencatat apa yang dilihat* — dan perbedaan itu adalah perbedaan antara turis dan kartografer, antara Outcome 40 dan Outcome 340. Pemain yang mempertemukan keduanya sedang melakukan L14 secara telanjang.
+- **Varko Drenn (#7):** persahabatan berbahaya. Varko mengajaknya menantang hal-hal yang jauh lebih kuat, dan Arlen — Neuroticism 35, Openness 85, Conscientiousness 45 — **akan bilang ya.** Jalur "mati muda karena keberanian yang tidak disertai kecakapan" lewat sini. Varko selamat karena entah bagaimana. Arlen belum tentu punya "entah bagaimana".
+- **Pemain:** hubungan terpenting hidupnya, dan pemain mungkin tak pernah menyadarinya. **HUKUM: Arlen tidak boleh menyebut pemain "terpilih".** Ia mengagumi pemain karena satu alasan yang sepenuhnya duniawi — pemain **datang dari sana**. Kalimatnya bukan *"kau ditakdirkan"*, melainkan *"aku cuma ingin melihat apa yang sudah kau lihat."*
+
+## LIFE EVENT CHAIN
+1. **Pertemuan:** pemain tiba di Ashbrook; Arlen mengejar, menawarkan mengantar, menolak dibayar, lalu bertanya — bukan tentang misi pemain, bukan tentang bahaya — *"Kau datang dari arah mana? Di sana seperti apa?"* Ia mengantar pemain sampai batu penanda dan berhenti. Pemain melanjutkan. Ia tidak. **Adegan ini harus dimainkan tanpa satu kata pun penjelasan.**
+2. **Pintu pertama (murah, dan itulah intinya):** pemain menitipkan pengantaran ke luar lembah. Sepele bagi pemain: satu tugas kurir. Bagi Arlen: **hari pertama dalam hidupnya di luar Greenhollow.** Ia pulang dengan mata yang berbeda dan bicara tanpa henti selama dua hari.
+3. **Kegagalan (uji Effort — WAJIB ada):** kesempatan berikutnya lebih besar, dan **ia mengacaukannya.** Tersesat, kehilangan muatan, nyaris terbunuh, pulang malu. C45 bukan hiasan lembar karakter; ia harus **menggigit di dalam cerita.** Di sinilah pemain belajar bahwa memberi kesempatan tidak sama dengan memberi kemampuan — dan bahwa mimpi tidak menggantikan latihan. Reaksi pemain di titik ini membentuk seluruh sisa arc.
+4. **Jangkar (gerbang — dan pemain TIDAK boleh menariknya):** punggung Corvin patah, atau ladang gagal, atau musim buruk. Arlen memutuskan tinggal, dan ia memutuskannya sendiri. **Pemain tidak bisa memaksanya pergi** (Hukum Kemauan NPC — *"the player influences lives. The player does not own them"*). Yang bisa pemain lakukan hanya membuka pintu: mengupah tenaga tani, mengangkat keluarganya ke Domain, membelikan lembu, memberi tanah, meminta Merrit menutup rute kurirnya. **Menghapus jangkar, bukan menyeret orangnya.** Ini definisi Opportunity dalam satu adegan.
+5. **Keberangkatan (bila terjadi):** ia melewati batu penanda dan tidak menoleh. Bertahun kemudian, ia mengaku bahwa ia hampir menoleh, dan bahwa tidak-menoleh adalah hal paling sulit yang pernah ia lakukan.
+6. **Resolusi (bercabang; semuanya sah):**
+   - **Kartografer (Outcome mendekati 340 × Opportunity penuh):** tujuh tahun, tiga lompatan Chronicle. Ia memetakan pesisir, menamai tiga teluk, memperbaiki jalur dagang yang keliru selama dua abad. **Petanya bukan yang terbaik di dunia — tapi ia yang membuatnya.** Ia mengirim kartu pos ke Ashbrook. Merrit yang mengantarnya. *(Itu adegannya. Itu seluruh sheet ini dalam satu gambar.)*
+   - **Mati di laut (Luck — kanon blueprint):** badai, atau kebodohan, atau Varko Drenn. Surat terakhirnya tiba **setelah** kabar kematiannya, lewat sistem pos Domain — Merrit yang memegangnya, dan Merrit tahu persis apa yang sedang ia pegang. **Beradegan. Tidak pernah notifikasi.**
+   - **Pulang (dan ini BUKAN kegagalan):** ia pergi, melihat tiga kota, lalu kembali. Bukan karena kalah — karena ternyata yang ia rindukan bukan dunia, melainkan **punya sesuatu untuk diceritakan.** Ia menjadi kurir Ashbrook seumur hidup, menikah, punya anak, dan setiap sore anak-anak desa duduk di depannya mendengar tentang laut. Salah satu dari mereka akan pergi. **L18 dengan kepala tegak.**
+   - **Tidak pernah pergi (bila pemain tak pernah menyentuhnya):** dua puluh tahun kemudian pemain kembali. Arlen 39, masih kurir, masih sebelas jalan. Ia tidak pahit. Ia menyapa hangat, menanyakan kabar, dan berkata — enteng, sambil lalu, seperti lelucon — *"aku hampir pergi sekali."* **Chronicle tidak mencatat apa-apa tentangnya.** Dan ketiadaan catatan itu adalah dakwaannya.
+
+## AGING PATH
+Manusia, 19 — **busur terpanjang di antara companion dewasa.** Pemain akan menyaksikan seluruhnya lewat lompatan Chronicle Clock (56 hari WIB = 1 tahun): anak → orang muda yang cakap → pria paruh baya dengan lutut yang bicara → orang tua. Dan inilah pisau yang dirancang sejak awal: **pemain hampir tidak menua, Arlen menua penuh.** Suatu hari cermin pemain akan lebih tua daripada pemain. Ia akan memanggil pemain dengan nama yang sama sambil memakai tubuh yang tak sama lagi, dan pada satu lompatan ia akan berhenti bisa mengikuti.
+
+Bila ia hidup cukup lama: ia berpindah peran menjadi **Mentor** (MEJA-3) — bukan dipensiunkan karena statnya turun (itu dilarang). Arlen tua tidak lagi berjalan jauh; ia **mengirim orang lain berjalan jauh**, dan mengurus agar mereka punya apa yang dulu tidak ia punya. Ia menjadi sumber Opportunity — persis hal yang dulu ia tunggu-tunggu dari orang lain.
+
+## LEGACY PATH
+- **Rute Vale:** jalur yang ia buka menjadi jalur dagang resmi; namanya melekat pada jalan, bukan pada dirinya. Dua generasi kemudian orang menyebut "lewat Vale" tanpa tahu Vale adalah seorang anak yang berhenti di batu penanda selama sembilan belas tahun.
+- **Peta:** peta pesisirnya, tidak sempurna, dengan catatan pinggir bernada takjub yang kelak dianggap tidak profesional oleh kartografer sesudahnya — **dan justru catatan pinggir itu yang disalin ulang orang.** (Bila Elyn #2 hidup dan arsipnya berdiri, peta Arlen berakhir di sana. Simetri yang manis: anak yang ingin melihat dunia, disimpan oleh perempuan yang ingin mengingatnya.)
+- **Kartu pos:** legacy terkecil dan paling penting. Satu kartu pos di dinding rumah pos Ashbrook. Anak-anak desa melihatnya. Salah satu dari mereka mulai bertanya *"di sana seperti apa?"* — **dan rantainya berjalan lagi.** Itulah Continuation (LAW OF ERAS), dalam ukuran paling kecil yang bisa dibayangkan.
+- **Tidak ada:** ia mati sebagai kurir, dikenang dua generasi, lalu tidak. Dunia tetap berdiri. Dunia berdiri **karena** orang-orang seperti dia (§XIII).
+
+## COMPANION ARC
+Dari **orang yang ingin pergi** → menjadi **orang yang pergi** → dan lalu ke pertanyaan yang jarang ditanyakan game mana pun: **apa yang terjadi pada seseorang yang mimpinya tercapai?** Arlen yang telah melihat seluruh dunia adalah Arlen yang kehilangan satu-satunya hal yang membuatnya bangun pagi. *(Ini bukan hiasan: "kehilangan tujuan hidup" adalah salah satu dari lima keadaan mental kanon — Hukum 5 — dan pemicunya persis ini: **tujuannya tercapai.**)* Cabang gelapnya bukan kematian; **cabang gelapnya adalah pria empat puluh tahun yang sudah melihat segalanya dan tak tahu harus apa lagi.**
+
+Dan jawabannya — kalau ia menemukannya — harus datang dari arah yang tak ia duga: dunia tidak berhenti menarik saat kau selesai melihatnya, kalau ada seseorang yang menunggu kau ceritakan. Arc Arlen tidak berakhir di horizon. Ia berakhir di **jalan pulang**, dan pada penemuan bahwa jalan pulang hanya ada kalau ada yang menunggu.
+
+## OUTCOME POSSIBILITIES
+- **Kartografer / kapten yang dihormati** (Outcome ≈ ceiling, Opportunity penuh): tidak legendaris, tetapi **nyata** — namanya di peta, bukan di lagu. Persis sebesar yang dijanjikan 340, dan tidak sesenti lebih. *Dan itu cukup.*
+- **Mati muda di laut** (Luck menang): potensi 340 padam pada usia 26. Dunia tidak adil (R5). Satu kartu pos terakhir yang datang terlambat.
+- **Pulang dan menjadi kurir seumur hidup — tanpa penyesalan:** L18 dengan martabat penuh. Pernah melihat laut. Menceritakannya sampai mati. Salah satu pendengarnya pergi.
+- **Tidak pernah melangkahi batu penanda:** hidup kecil, tidak pahit, tidak tercatat. **Ini yang terjadi bila pemain tak berbuat apa-apa — dan game tidak akan pernah memberitahumu bahwa kau melewatkannya.**
+- **Yang kosong** (paling gelap): ia melihat seluruh dunia, dan menemukan bahwa dunia itu sama saja di mana-mana. Ia berhenti. Bukan mati — **berhenti.** Duduk di pelabuhan, memandang laut yang tak lagi berarti apa-apa. *(Lihat Catatan Desainer — ini gema, bukan asal-usul.)*
+
+---
+## CATATAN DESAINER
+**Echo ≠ Origin — dan di sini garisnya paling tipis, jadi dijaga paling keras.** Arlen bergema dengan **The Man Before** (§II): keduanya anak muda yang ingin melihat seluruh dunia; salah satunya melihatnya, dan menyimpulkan bahwa tidak ada yang layak diingat. Kemiripan itu **wajib terasa** dan **haram dijelaskan**. Arlen **BUKAN** keturunan, bukan reinkarnasi, bukan petunjuk, bukan cermin yang ditanam Nirnama, bukan pion. Tidak ada satu pun baris dialog, item, atau catatan yang boleh menghubungkan mereka secara plot. Yang boleh — yang justru harus — adalah ini: **kerinduan yang sama tumbuh dua ribu tahun berjarak, pada dua orang yang tak pernah bertemu, dan berakhir berbeda.** Kalau Arlen berakhir di cabang "Yang Kosong", jangan pernah menyebut Nirnama di adegan itu. Biarkan pemain sendiri yang merasakan dinginnya. Kepastian adalah kehilangan (Hukum Wonder).
+
+**Fungsi desain: Arlen adalah kalibrasi seluruh model potensi.** Ia harus 340, dan ia harus terasa 340. Kalau kelak ada penulis yang tergoda menaikkannya — "tapi dia protagonis-lah, dia mewakili pemain" — **itu persis godaan yang harus ditolak.** Seluruh gunanya adalah membuktikan bahwa yang paling kita cintai tidak dijamin apa-apa, dan bahwa **Legendary bukan sifat, Legendary adalah hasil.** Pasangkan pembacaannya dengan Sora (#13, 780, pintu nol) dan Merrit (#11, 110, hidup penuh makna) dan seluruh model terbaca dalam satu desa: **potensi tinggi tanpa pintu = padam · potensi biasa dengan kesetiaan = fondasi · potensi sedang dengan pintu terbuka = orang yang berhasil.** Tiga tetangga. Satu hukum.
+
+**Fungsi emosional: Arlen adalah tagihan pertama yang dikirim game ini kepada pemain.** Ia meminta sesuatu yang murah — satu tugas kurir, satu kepercayaan, satu pintu — dan biaya mengabaikannya juga murah: tidak ada. Tidak ada hukuman, tidak ada quest gagal, tidak ada notifikasi. **Hanya seorang laki-laki berusia tiga puluh sembilan, dua puluh tahun kemudian, yang menyapa hangat dan berkata "aku hampir pergi sekali."** Kalau adegan itu berhasil, seluruh Aetherion berhasil.
