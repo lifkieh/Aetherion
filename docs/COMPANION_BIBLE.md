@@ -80,13 +80,13 @@ lagu, atau seseorang yang menolak pergi."*
 | 011 | **Merrit Fane** | *Yang Menunggu Surat Balasan* | Human | Wild Cards | **110** · **mayoritas** | `companion_11_merrit_fane.md` |
 | 012 | **Veshka Ironvein** | *(lihat berkas)* | Dwarf | — | **620** · elite | `companion_12_veshka_ironvein.md` |
 | 013 | **Sora Lanternwick** | *(lihat berkas)* | — | — | **780** · jenius | `companion_13_sora_lanternwick.md` |
-| 014 | **Dr. Halen Vosk** | *Tabib yang Menyembuhkan Semua Kecuali Satu* | Astralborn | *(kategori: **belum ditetapkan**)* | **850** · jenius | `companion_14_halen_vosk.md` |
-| 015 | **Kessler Dray** | *Jenderal yang Menolak Perang Berikutnya* | Beastfolk *(wolfkin)* | *(kategori: **belum ditetapkan**)* | **700** · elite/jenius | `companion_15_kessler_dray.md` |
+| 014 | **Dr. Halen Vosk** | *Tabib yang Menyembuhkan Semua Kecuali Satu* | Astralborn | **Scholars** (#195) | **850** · jenius | `companion_14_halen_vosk.md` |
+| 015 | **Kessler Dray** | *Jenderal yang Menolak Perang Berikutnya* | Beastfolk *(wolfkin)* | **REFORMERS** (#195) | **700** · elite/jenius | `companion_15_kessler_dray.md` |
 
-> **#014 & #015 = versi FINAL Direktur** (menimpa total draf agent — tidak ada dua versi).
-> **DIRATIFIKASI kanon (#190).** ⚠ **Kategori keduanya belum ditetapkan** — ia memengaruhi kuota;
-> butuh satu baris keputusan. *(Kandidat: Halen → Scholars/Reformers · Kessler → Warriors/Reformers.
-> Kalau Kessler masuk **Reformers**, kuota yang selama ini NOL akhirnya terisi.)*
+> **#014 & #015 = versi FINAL Direktur** (menimpa total draf agent). **DIRATIFIKASI kanon (#190).**
+> ✅ **KATEGORI DITETAPKAN (#195):** **Halen = SCHOLARS** · **Kessler = REFORMERS** — *"jenderal yang
+> menolak perang berikutnya"* adalah definisi Reformer, dan **kuota Reformers yang selama ini NOL
+> akhirnya terisi (1/4–6).**
 
 ### ⚠ Cael Morrow (#009) — potensinya TIDAK TERBACA
 Satu-satunya tokoh yang **Item Penglihat Potensi pun gagal membaca**. **Jangan dijelaskan.**
@@ -127,10 +127,10 @@ berpotensi jenius adalah **roster yang berbohong** — dan kebohongan itu **meme
 | Kategori | Kuota | Terisi | Sisa | Catatan |
 |---|---|---|---|---|
 | **Explorers** | 6–8 | 2 (Arlen, Neriah) | **4–6** | ⚠ **masih tipis — prioritas gelombang 3** |
-| Warriors | 6–8 | 1–2 (Varko, Cael?, Kessler?) | 4–7 | |
-| Scholars | 6–8 | 1–2 (Elyn, Halen?) | 4–7 | |
+| Warriors | 6–8 | 1–2 (Varko, Cael?) | 4–7 | |
+| Scholars | 6–8 | **2** (Elyn, **Halen**) | 4–6 | |
 | **Leaders** | 6–8 | 1 (Torgrim?) | **5–7** | ⚠ **masih tipis — prioritas gelombang 3** |
-| **Reformers** | 4–6 | **0** | **4–6** | 🔴 **NOL** — kandidat: **Kessler** (jenderal yang menolak perang) |
+| **Reformers** | 4–6 | **1** (**Kessler**) | **3–5** | ✅ kuota **tidak lagi NOL** (#195) |
 | Outsiders | 4–6 | 1 (Kain) | 3–5 | |
 | Mystics | 4–6 | 2–3 (Seraphine, Luna, Cael?) | 1–4 | |
 | Wild Cards | 4–6 | 3 (Maira, Merrit, Sora?) | 1–3 | |

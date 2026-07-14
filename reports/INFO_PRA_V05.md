@@ -12,9 +12,14 @@ Cakupan: `docs/` · `docs/Aetherion_bible/` (berkas mentah) · `game/data` · `g
 > 2. **C1 & C2 TIDAK PUNYA BARIS KEPUTUSAN.** Tidak ada "sidang" yang tercatat. Baris terakhir yang
 >    menyebut keduanya adalah **#160 = MENUNGGU DIREKTUR**. Menurut aturan (a), **keputusan yang
 >    tak tercatat = belum ada** → **nol eksekusi, dan itu benar.**
-> 3. **GATING LOKASI POHON SKILL (#116) TERNYATA TIDAK ADA DI DATA.** 28 pohon, **nol field
->    region/lokasi**. Yang ada: `content_locked` + `requires_scenario`. **Perdebatan C1 selama ini
->    tentang sesuatu yang belum pernah dikodekan.**
+> 3. ~~**GATING LOKASI POHON SKILL (#116) TERNYATA TIDAK ADA DI DATA.**~~
+>    🔴 **KOREKSI (#198) — TEMUAN INI SALAH, DAN SALAHNYA MILIK SAYA.** Gating lokasi **ADA dan
+>    sudah lama hidup**: field-nya bernama **`unlock_location`** — **ada di 28/28 pohon**, lengkap
+>    dengan **`rumor`** berarah. Skrip cek saya memotong daftar key di **10 pertama secara
+>    alfabetis**, sehingga `unlock_location` & `rumor` tak terlihat. **Konsekuensi framing:**
+>    keadaan sebelum C1 bukan "tanpa gating" melainkan **opsi (b) — gating lokasi PENUH**; dan
+>    pilihan Direktur **(a)** adalah **PELONGGARAN**, bukan penambahan. *Dicatat sebagai kesalahan
+>    analisis agent, bukan disembunyikan.*
 
 ---
 
@@ -162,14 +167,14 @@ gereja & ordo · apa yang mereka minta."*
 
 # (C) C1 & C2 — status eksekusi
 
-## C1 (#116, gating pohon skill) — **TIDAK ADA KEPUTUSAN, TIDAK ADA EKSEKUSI**
+## C1 (#116, gating pohon skill) — **KINI DIPUTUS: (a)** *(bagian di bawah = keadaan SEBELUM putusan; satu butirnya SALAH — lihat koreksi #198)*
 
 - **Baris terakhir: #160 = "MENUNGGU DIREKTUR — JANGAN eksekusi apa pun."** Tak ada baris sesudahnya.
 - **Usulan saya** (node dasar di mana pun · node master di tanah asal) **masih usulan**.
-- 🔴 **DAN INI YANG PENTING:** `skill_trees.json` = **28 pohon, NOL field region/lokasi**.
-  Gating yang ada: **`content_locked`** (wilayah belum dibangun) + **`requires_scenario`**.
-  **"Gating lokasi" yang kita perdebatkan BELUM PERNAH DIKODEKAN.** Artinya biaya mengubahnya
-  **nyaris nol sekarang** — dan naik terus setiap wilayah baru lahir.
+- 🔴 ~~`skill_trees.json` = 28 pohon, NOL field region/lokasi.~~ **KELIRU (#198).** Field
+  **`unlock_location` ADA di 28/28 pohon**, dan `SkillTreeSystem.can_unlock()` **menegakkannya**.
+  Gating lokasi **PENUH sudah hidup sejak #30**. **Kesalahan analisis saya** (skrip memotong daftar
+  key di 10 pertama). **Keputusan (a) = pelonggaran**, bukan pembangunan dari nol.
 - Domain: magic 12 · survival 6 · combat 4 · craft 3 · taming 3 · **leadership 0** *(masih kosong,
   REPORT-06 §B7)*.
 

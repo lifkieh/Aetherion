@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **B17 15/50 — gelombang 2 terkunci; kanon companion bersih**
+**Last update:** 2026-07-14 — **Faction tercerna + C1/C2 diputus — menunggu rencana v0.5 Direktur**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -32,6 +32,24 @@
 > Nama rahasia **bisa dirakit dari repo ter-commit** (marga terang-terangan di MISTERI_ABADI M6
 > + ledger #114) — **test hijau selama berminggu-minggu** karena hanya menyisir `res://`.
 > **Diredaksi + guard diperluas ke `docs/` & dokumen hukum. 884 test lulus, 0 gagal.**
+>
+> ### ⚔ FACTION BIBLE TERCERNA + C1/C2 DIPUTUS (#194–#199)
+> **7 GREAT POWERS kanon** (`docs/FACTION_BIBLE.md`): Chronicle Order · Wayfarer League · Monster
+> Conservancy · Merchant's Constellation · Astral Observatory · Netherdeep Syndicate · Seekers of
+> the Last Truth. **"FACTIONS ARE IDEAS WITH ARMIES."**
+> 🔗 **Chronicle Order = musuh alami Nirnama Cult — sudah tertulis di kanon terkunci SEBELUM kita
+> merumuskan poros ingin-lupa vs menolak-lupa (#168). Kanon lama & baru bertemu sendiri.**
+> **C1 = (a) DIBANGUN (#196):** node **dasar** bebas di mana pun · node **MASTER** hanya di tanah
+> asal (`master_level` di 28/28 pohon). *Yang dilonggarkan PINTU, yang dikunci KEDALAMAN.*
+> **C2 = KONJUNGTIF (#197):** **level DAN perbuatan tercatat Chronicle DAN ujian** — peta perbuatan
+> 6 class: `docs/ADVANCED_CLASS_DEEDS.md` (**spec**; gerbang perbuatan dibangun v0.5).
+> **#195:** Halen = Scholars · **Kessler = REFORMERS** → kuota Reformers **tak lagi NOL**.
+> **903 test lulus, 0 gagal.**
+>
+> ### 🔴 MENUNGGU DIREKTUR
+> **KINGDOM BIBLE (#199) belum dibaca** — `THE FIRST SEVEN KINGDOMS OF AURELIA`, status LOCKED.
+> *"Pemain tidak tinggal di dunia — pemain tinggal di negara."* · **Elyn vs Chronicle Order (#194b)**
+> · **Ashbrook belum dibangun** (rumah Merrit & Arlen) · **klimaks Act 1 = Celestial Crisis (v0.8)**.
 >
 > ### 📖 B17 COMPANION BIBLE — 15/50 (#189–#193)
 > **Sheet tokoh pindah ke `docs/Companion_bible/`** (satu berkas per tokoh, ~80–128 baris, format

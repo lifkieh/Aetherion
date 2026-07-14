@@ -88,6 +88,7 @@ func _ready() -> void:
 	_test_softcap_exp()
 	_test_bilingual_content()
 	_test_potential_not_exposed()
+	_test_skill_tree_c1()
 	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
@@ -986,14 +987,16 @@ func _test_life_path() -> void:
 	PlayerData.new_game()
 
 func _test_skill_trees() -> void:
-	print("[Skill Tree terikat lokasi — Decision Log #30]")
+	print("[Skill Tree & TANAH ASAL — #30, direvisi C1=(a) #196]")
 	PlayerData.new_game()
 	PlayerData.gold = 5000
 	check("pohon dimuat (28)", Db.skill_trees.size() >= 26, str(Db.skill_trees.size()))
-	# lokasi salah = DITOLAK dengan pesan RUMOR
-	var wrong := SkillTreeSystem.can_unlock("ice_high", "greenvale")
-	check("beli di lokasi salah DITOLAK", not wrong.ok)
-	check("pesan penolakan berisi RUMOR berarah", wrong.reason.begins_with("🗺 RUMOR:") and "beku" in wrong.reason, wrong.reason)
+	# C1=(a) #196: node DASAR kini boleh dibuka DI MANA PUN (dulu ditolak — aturan lama).
+	# Yang tetap terikat tanah asal adalah node MASTER (diuji di _test_skill_tree_c1).
+	var away := SkillTreeSystem.can_unlock("ice_high", "greenvale")
+	check("C1: node DASAR boleh dibuka di luar tanah asal", away.ok, str(away.reason))
+	check("rumor pohon TETAP mengarah ke tanah asal (identitas dijaga)",
+		String(SkillTreeSystem.tree("ice_high").get("rumor", "")) != "")
 	# pohon lokal terbuka di 5 lokasi hidup
 	for pair in [["arms_common", "greenvale"], ["ice_high", "frostpeak_village"],
 			["lightning_high", "storm_island"], ["earth_metal_high", "desert_ruins"],
@@ -3631,3 +3634,38 @@ func _scan_ui_leak(dir_path: String, offenders: Array) -> void:
 					offenders.append("%s → %s" % [f, needle])
 		f = d.get_next()
 	d.list_dir_end()
+
+## C1 = (a) (#196): node DASAR bebas di mana pun; node MASTER hanya di tanah asal.
+func _test_skill_tree_c1() -> void:
+	print("[C1 #196: node dasar bebas, node MASTER terikat tanah asal]")
+	var all_have := true
+	for t in Db.skill_trees.values():
+		if not t.has("master_level") or not t.has("unlock_location"):
+			all_have = false
+	check("28 pohon punya unlock_location + master_level", all_have and Db.skill_trees.size() == 28)
+	var s_lv: Dictionary = PlayerData.skill_trees.duplicate()
+	var s_gold: int = PlayerData.gold
+	PlayerData.skill_trees = {}
+	PlayerData.gold = 99999
+	# JALUR PEMAIN: buka pohon Frostpeak sambil berdiri di Greenvale — kini SAH
+	var chk := SkillTreeSystem.can_unlock("ice_high", "greenvale")
+	check("node DASAR bisa dibuka di LUAR tanah asal (C1=a)", chk.ok, str(chk.reason))
+	var res := SkillTreeSystem.unlock("ice_high", "greenvale")
+	check("pohon es terbuka di Greenvale", res.ok and SkillTreeSystem.level("ice_high") >= 1)
+	# upgrade ke level di BAWAH master: bebas
+	var ml := int(SkillTreeSystem.tree("ice_high").get("master_level", 3))
+	check("master_level ice_high = 3 (separuh atas pohon)", ml == 3)
+	while SkillTreeSystem.level("ice_high") < ml - 1:
+		var u := SkillTreeSystem.upgrade("ice_high", "greenvale")
+		check("node dasar bisa di-upgrade di mana pun", u.ok, str(u.reason))
+	# langkah MASTER di luar tanah asal: DITOLAK
+	var bad := SkillTreeSystem.upgrade("ice_high", "greenvale")
+	check("node MASTER DITOLAK di luar tanah asal", not bad.ok, str(bad.reason))
+	check("penolakannya berupa RUMOR berarah (bukan error kosong)",
+		String(bad.reason).contains("tanah asalnya"))
+	# langkah MASTER DI tanah asal: sah
+	var good := SkillTreeSystem.upgrade("ice_high", "frostpeak_village")
+	check("node MASTER SAH di tanah asal (frostpeak_village)", good.ok, str(good.reason))
+	check("level naik ke master", SkillTreeSystem.level("ice_high") >= ml)
+	PlayerData.skill_trees = s_lv
+	PlayerData.gold = s_gold

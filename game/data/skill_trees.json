@@ -4,6 +4,7 @@
   "name": "Dasar Bertarung",
   "cat": "common",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 120,
   "bonus": {
    "atk_pct": 0.02
@@ -18,6 +19,7 @@
   "name": "Pertahanan Dasar",
   "cat": "common",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 120,
   "bonus": {
    "def_pct": 0.03
@@ -32,6 +34,7 @@
   "name": "Senjata Tier Dasar",
   "cat": "weapon",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 150,
   "bonus": {
    "aspd_pct": 0.02
@@ -46,6 +49,7 @@
   "name": "Menebang",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 80,
   "bonus": {
    "gather_add": 0.04
@@ -60,6 +64,7 @@
   "name": "Menambang",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 80,
   "bonus": {
    "gather_add": 0.04
@@ -74,6 +79,7 @@
   "name": "Bertani Dasar",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 80,
   "bonus": {
    "gather_add": 0.04
@@ -88,6 +94,7 @@
   "name": "Memancing",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 80,
   "bonus": {
    "gather_add": 0.04
@@ -102,6 +109,7 @@
   "name": "Meramu",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 80,
   "bonus": {
    "gather_add": 0.04
@@ -116,6 +124,7 @@
   "name": "Memasak Dasar",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 80,
   "bonus": {
    "exp_pct": 0.01
@@ -130,6 +139,7 @@
   "name": "Menjinakkan Dasar",
   "cat": "life",
   "unlock_location": "greenvale",
+  "master_level": 3,
   "cost": 100,
   "bonus": {
    "tame_add": 0.02
@@ -144,6 +154,7 @@
   "name": "Es Tingkat Tinggi",
   "cat": "element",
   "unlock_location": "frostpeak_village",
+  "master_level": 3,
   "cost": 600,
   "bonus": {
    "matk_pct": 0.03
@@ -158,6 +169,7 @@
   "name": "Petir Tingkat Tinggi",
   "cat": "element",
   "unlock_location": "storm_island",
+  "master_level": 3,
   "cost": 600,
   "bonus": {
    "matk_pct": 0.03
@@ -172,6 +184,7 @@
   "name": "Tanah & Logam Kuno",
   "cat": "element",
   "unlock_location": "desert_ruins",
+  "master_level": 3,
   "cost": 600,
   "bonus": {
    "def_pct": 0.03,
@@ -187,6 +200,7 @@
   "name": "Patiseri Agung",
   "cat": "life",
   "unlock_location": "candyveil_palace",
+  "master_level": 3,
   "cost": 500,
   "bonus": {
    "exp_pct": 0.02
@@ -201,6 +215,7 @@
   "name": "Bertani & Beternak Menengah",
   "cat": "life",
   "unlock_location": "homestead",
+  "master_level": 3,
   "cost": 300,
   "bonus": {
    "gather_add": 0.05
@@ -215,6 +230,7 @@
   "name": "Cahaya Tingkat Tinggi",
   "cat": "element",
   "unlock_location": "celestia",
+  "master_level": 3,
   "content_locked": true,
   "cost": 800,
   "bonus": {
@@ -230,6 +246,7 @@
   "name": "Senjata Grandmaster",
   "cat": "weapon",
   "unlock_location": "celestia",
+  "master_level": 3,
   "content_locked": true,
   "cost": 1000,
   "bonus": {
@@ -245,6 +262,7 @@
   "name": "Air Tingkat Tinggi",
   "cat": "element",
   "unlock_location": "ocean_kingdom",
+  "master_level": 3,
   "content_locked": true,
   "cost": 800,
   "bonus": {
@@ -260,6 +278,7 @@
   "name": "Api Tingkat Tinggi",
   "cat": "element",
   "unlock_location": "emberfall",
+  "master_level": 3,
   "content_locked": true,
   "cost": 800,
   "bonus": {
@@ -275,6 +294,7 @@
   "name": "Menempa Lanjut",
   "cat": "life",
   "unlock_location": "emberfall",
+  "master_level": 3,
   "content_locked": true,
   "cost": 700,
   "bonus": {
@@ -290,6 +310,7 @@
   "name": "Kayu & Racun Purba",
   "cat": "element",
   "unlock_location": "ancient_jungle",
+  "master_level": 3,
   "content_locked": true,
   "cost": 800,
   "bonus": {
@@ -305,6 +326,7 @@
   "name": "Angin & Langit",
   "cat": "element",
   "unlock_location": "skyveil",
+  "master_level": 3,
   "content_locked": true,
   "cost": 800,
   "bonus": {
@@ -320,6 +342,7 @@
   "name": "Gelap & Hampa",
   "cat": "element",
   "unlock_location": "abyss",
+  "master_level": 3,
   "content_locked": true,
   "cost": 900,
   "bonus": {
@@ -335,6 +358,7 @@
   "name": "Beast & Transformasi",
   "cat": "beast",
   "unlock_location": "wildhearth",
+  "master_level": 3,
   "content_locked": true,
   "cost": 900,
   "bonus": {
@@ -350,6 +374,7 @@
   "name": "Beternak Lanjut",
   "cat": "life",
   "unlock_location": "wildhearth",
+  "master_level": 3,
   "content_locked": true,
   "cost": 600,
   "bonus": {
@@ -365,6 +390,7 @@
   "name": "Celestial: Matahari",
   "cat": "celestial",
   "unlock_location": "astrologer_tower",
+  "master_level": 3,
   "cost": 1200,
   "requires_scenario": "moon_rabbit_warren",
   "bonus": {
@@ -380,6 +406,7 @@
   "name": "Celestial: Bulan",
   "cat": "celestial",
   "unlock_location": "astrologer_tower",
+  "master_level": 3,
   "cost": 1200,
   "requires_scenario": "moon_rabbit_warren",
   "bonus": {
@@ -395,6 +422,7 @@
   "name": "Celestial: Bintang",
   "cat": "celestial",
   "unlock_location": "astrologer_tower",
+  "master_level": 3,
   "cost": 1200,
   "requires_scenario": "star_whale_belly",
   "bonus": {

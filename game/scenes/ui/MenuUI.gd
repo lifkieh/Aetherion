@@ -1089,7 +1089,7 @@ func _tree_row(t: Dictionary, loc: String) -> void:
 			h.add_child(b)
 	elif lv > 0 and lv < int(t.get("max_level", 3)):
 		h.add_child(_btn("Upgrade %d G" % SkillTreeSystem.upgrade_cost(tid), func():
-			var res := SkillTreeSystem.upgrade(tid)
+			var res := SkillTreeSystem.upgrade(tid, loc)
 			if not res.ok: EventBus.toast.emit(res.reason)
 			_rebuild()))
 	elif lv >= int(t.get("max_level", 3)):

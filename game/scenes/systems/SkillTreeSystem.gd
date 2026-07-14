@@ -1,10 +1,17 @@
 class_name SkillTreeSystem
 extends RefCounted
-## Skill Tree TERIKAT LOKASI (Decision Log #30): pohon hanya bisa DIBUKA di
-## `unlock_location`-nya (perjalanan untuk membuka); node lanjutan boleh
-## di-upgrade DI MANA PUN setelah pohon dimiliki. Pohon luar-lokasi tampil
-## sebagai RUMOR berarah di Penjaga Pohon. Lokasi yang wilayahnya belum
-## dibangun = `content_locked` (aktif otomatis saat wilayah dibuka).
+## Skill Tree & TANAH ASAL (#30 → direvisi C1=(a), Decision Log #196).
+##
+## **Node DASAR: bisa dibuka DI MANA PUN** — dari buku, guru pengembara, atau companion.
+## **Node MASTER (level ≥ `master_level`): HANYA di `unlock_location`** — untuk menjadi
+## master es, kau tetap harus mendaki Frostpeak.
+##
+## Alasannya (REPORT-06 §C1): gating pintu menghukum pemain yang **tak sempat bepergian**,
+## bukan pemain yang **belum belajar** — dan di single-player ia berubah jadi checklist
+## perjalanan. Yang dikunci sekarang adalah **KEDALAMAN**, bukan **PINTU**. Identitas
+## tetap: rumor & guru tetap mengarah ke tanah asal; puncaknya tetap milik tanah itu.
+##
+## Wilayah yang belum dibangun = `content_locked` (aktif otomatis saat wilayah dibuka).
 ## Pohon Celestial: hanya terlihat di Menara Astrologer, butuh clear
 ## Hidden Scenario (requires_scenario) — sinkron desain elemen Tier 4.
 
@@ -42,8 +49,9 @@ static func can_unlock(id: String, at_loc: String) -> Dictionary:
 		return {"ok": false, "reason": "Sudah dimiliki — node bisa di-upgrade di mana pun."}
 	if t.get("content_locked", false):
 		return {"ok": false, "reason": "🔒 Wilayah ini belum terbuka. " + t.get("rumor", "")}
-	if t.get("unlock_location", "") != at_loc:
-		return {"ok": false, "reason": "🗺 RUMOR: " + t.get("rumor", "Ilmu ini diajarkan di tempat lain.")}
+	# C1 = (a), Decision Log #196: node DASAR boleh dibuka DI MANA PUN (buku, guru
+	# pengembara, companion). Yang tetap terikat tanah asal adalah node MASTER (lihat
+	# upgrade()). Rumor TETAP mengarah ke tanah asalnya — pohon tetap "lahir" di sana.
 	var req: String = t.get("requires_scenario", "")
 	if req != "" and PlayerData.scenario_flags.get(req, "") != "cleared":
 		return {"ok": false, "reason": "📖 Butuh buku dari sebuah Skenario Tersembunyi... langit tahu yang mana."}
@@ -65,14 +73,22 @@ static func unlock(id: String, at_loc: String) -> Dictionary:
 	Audio.play_sfx("levelup", 1.1)
 	return {"ok": true, "reason": ""}
 
-## Upgrade node — BOLEH DI MANA PUN setelah pohon dimiliki (bukan bolak-balik).
-static func upgrade(id: String) -> Dictionary:
+## Node MASTER hanya di tanah asal (C1=(a), #196). Node dasar: di mana pun.
+static func is_master_step(id: String, next_level: int) -> bool:
+	var t := tree(id)
+	return next_level >= int(t.get("master_level", 99))
+
+## Upgrade node. Node dasar boleh di mana pun; node MASTER menuntut kau berada
+## di tanah asal pohon itu (`at_loc` = wilayah/kota tempat pemain berdiri).
+static func upgrade(id: String, at_loc: String = "") -> Dictionary:
 	var t := tree(id)
 	if t.is_empty() or not owned(id):
-		return {"ok": false, "reason": "Pohon belum dimiliki — buka dulu di lokasinya."}
+		return {"ok": false, "reason": "Pohon belum dimiliki."}
 	var lv := level(id)
 	if lv >= int(t.get("max_level", 3)):
 		return {"ok": false, "reason": "Sudah tingkat maksimal."}
+	if is_master_step(id, lv + 1) and t.get("unlock_location", "") != at_loc:
+		return {"ok": false, "reason": "🗺 Puncak ilmu ini hanya bisa dicapai di tanah asalnya. " + t.get("rumor", "")}
 	var cost := int(t.get("cost", 100) * UPGRADE_COST_MULT * (lv + 1))
 	if PlayerData.gold < cost:
 		return {"ok": false, "reason": "Gold kurang (%d G)." % cost}
