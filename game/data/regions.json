@@ -1,5 +1,16 @@
 [
  {
+  "id": "ashbrook",
+  "name": "Ashbrook",
+  "kingdom": "valenford",
+  "lv_min": 1,
+  "lv_max": 12,
+  "scene": "res://scenes/world/Ashbrook.tscn",
+  "color": "#7a6a52",
+  "icon": "wood",
+  "flavor": "Desa kecil di Greenhollow Valley. Empat puluh jiwa di kota yang dibangun untuk seribu lima ratus."
+ },
+ {
   "id": "greenvale",
   "name": "Greenvale",
   "kingdom": "valenford",

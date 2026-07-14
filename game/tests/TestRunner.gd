@@ -89,6 +89,7 @@ func _ready() -> void:
 	_test_bilingual_content()
 	_test_potential_not_exposed()
 	_test_skill_tree_c1()
+	_test_ashbrook_alive()
 	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
@@ -781,12 +782,12 @@ func _test_travel_hub() -> void:
 	WorldState.mark_visited("frostpeak")   # idempotent
 	check("visited tercatat & idempotent", WorldState.visited_regions == ["greenvale", "frostpeak"])
 	check("current_region terpasang", WorldState.current_region == "frostpeak")
-	# 5 wilayah terdaftar dengan scene valid
+	# 6 wilayah terdaftar dengan scene valid (Ashbrook menambah satu, #216)
 	var ok := true
 	for r in TravelUI.regions():
 		if not ResourceLoader.exists(r.scene):
 			ok = false
-	check("5 wilayah terdaftar + scene valid", TravelUI.regions().size() == 5 and ok)
+	check("6 wilayah terdaftar + scene valid", TravelUI.regions().size() == 6 and ok)
 	# travel pertama hari ini GRATIS, berikutnya berbiaya
 	WorldState.last_free_travel = ""
 	check("travel pertama hari ini gratis", TravelUI.travel_cost_today() == 0)
@@ -2359,7 +2360,7 @@ func _test_rumors() -> void:
 
 func _test_town_folk() -> void:
 	print("[Hukum NPC Aneh E6]")
-	var towns := ["greenvale", "frostpeak_village", "candyveil_palace", "desert_ruins", "storm_island"]
+	var towns := ["greenvale", "frostpeak_village", "candyveil_palace", "desert_ruins", "storm_island", "ashbrook"]
 	var total := 0
 	var oddwalkers := 0
 	for t in towns:
@@ -2374,8 +2375,8 @@ func _test_town_folk() -> void:
 				check("%s: %s punya config CharGen" % [t, p.get("name", "?")], false)
 			if bool(p.get("oddwalker", false)):
 				oddwalkers += 1
-	check("25 NPC berkepribadian total", total == 25, str(total))
-	check("Oddwalker ~10% (1-4 dari 25)", oddwalkers >= 1 and oddwalkers <= 4, str(oddwalkers))
+	check("30 NPC berkepribadian total (Ashbrook menambah 5)", total == 30, str(total))
+	check("Oddwalker ~10% (1-5 dari 30)", oddwalkers >= 1 and oddwalkers <= 5, str(oddwalkers))
 	# persona hidup: dialog bergilir (bukan acak murni)
 	var v = preload("res://scenes/actors/Villager.tscn").instantiate()
 	add_child(v)
@@ -3232,7 +3233,7 @@ func _test_personality() -> void:
 					"talent", "effort", "opportunity", "luck", "mental_state"]:
 				if not prof.has(f):
 					check("profil %s punya lapis '%s'" % [np.get("name", "?"), f], false)
-	check("25 NPC berkepribadian = profil tulis tangan (tak digenerate)", hand == 25, str(hand))
+	check("30 NPC berkepribadian = profil tulis tangan (tak digenerate)", hand == 30, str(hand))
 	# NPC lain (juru lelang, penawar, tawanan) digenerate & dipersist
 	var havel := Personality.of("Saudagar Havel")
 	check("NPC generik dapat profil generate", not bool(havel.get("handwritten", false)) and havel.has("big5"))
@@ -3669,3 +3670,77 @@ func _test_skill_tree_c1() -> void:
 	check("level naik ke master", SkillTreeSystem.level("ice_high") >= ml)
 	PlayerData.skill_trees = s_lv
 	PlayerData.gold = s_gold
+
+## ASHBROOK v0.5.0 (#216) — penjaga HUKUM TERTINGGI: "hidup, bukan makam".
+func _test_ashbrook_alive() -> void:
+	print("[ASHBROOK #216 — hidup, bukan makam]")
+	# wilayah = data kanon (Valenford, Greenhollow Valley)
+	var r := Db.region("ashbrook")
+	check("Ashbrook ada di regions.json", not r.is_empty())
+	check("Ashbrook ⊂ VALENFORD (#203/#211)", r.get("kingdom", "") == "valenford")
+	check("band awal Lv 1–12 (desa awal, bukan lanjutan)",
+		int(r.get("lv_min", 0)) == 1 and int(r.get("lv_max", 0)) == 12)
+	check("scene Ashbrook ada", ResourceLoader.exists(String(r.get("scene", ""))))
+	# ⚖ HUKUM TERTINGGI: tiap keruntuhan BERPASANGAN dengan kehidupan
+	var Ash = load("res://scenes/world/Ashbrook.gd")
+	check("≥7 detail keruntuhan terdaftar", Ash.RUINS.size() >= 7)
+	check("HUKUM TERTINGGI: TIAP keruntuhan punya pasangan KEHIDUPAN", Ash.ruins_paired())
+	var mati_beruntun := 0
+	for d in Ash.RUINS:
+		if String(d.get("life", "")).strip_edges() == "":
+			mati_beruntun += 1
+	check("tak ada satu pun detail-mati tanpa kehidupan di sebelahnya", mati_beruntun == 0)
+	# White Stag: 0,5%, tanpa trigger/marker (#D-ASH-4)
+	check("White Stag ~0,5% (bukan quest, bukan trigger)", abs(Ash.STAG_CHANCE - 0.005) < 0.0001)
+	var src := FileAccess.get_file_as_string("res://scenes/world/Ashbrook.gd")
+	check("White Stag TANPA musik/sfx", not src.contains("play_stinger") and not src.contains("Audio.play_sfx"))
+	check("White Stag TANPA toast/achievement/Chronicle",
+		not src.contains("EventBus.toast") and not src.contains("Achievements.") and not src.contains("Chronicle.record"))
+	# NPC ikonik kanon (CITY_BIBLE) + Hukum NPC Aneh
+	var personas := TownFolk.personas("ashbrook")
+	check("Ashbrook punya 5 NPC berkepribadian", personas.size() == 5)
+	check("Ashbrook memenuhi Hukum NPC Aneh (5 arketipe)", TownFolk.satisfies_law("ashbrook"))
+	var names: Array = []
+	for p in personas:
+		names.append(p.get("name", ""))
+	for canon in ["Old Bram", "Lyra", "Spoon Man", "Merrit Fane"]:
+		check("NPC kanon City Bible hadir: %s" % canon, canon in names)
+	# JADWAL = INTI (bukan hiasan): tiap NPC punya 3 slot
+	var sched_ok := true
+	for p in personas:
+		var sc: Dictionary = p.get("schedule", {})
+		for slot in ["pagi", "sore", "malam"]:
+			if not sc.has(slot) or String(sc[slot].get("do", "")) == "":
+				sched_ok = false
+	check("SEMUA 5 NPC punya jadwal pagi/sore/malam (desa dijalani, bukan dipajang)", sched_ok)
+	# Merrit: rutinitas lampu senja (jiwa Ashbrook)
+	var merrit := {}
+	for p in personas:
+		if p.get("name", "") == "Merrit Fane":
+			merrit = p
+	check("Merrit menyalakan lampu di slot MALAM",
+		String(merrit.get("schedule", {}).get("malam", {}).get("do", "")).to_lower().contains("lampu"))
+	# opening kanon
+	var cut := {}
+	for c in Db.cutscenes:
+		if c.get("id", "") == "opening_pegasus":
+			cut = c
+	check("cutscene opening_pegasus ada", not cut.is_empty())
+	var txt := JSON.stringify(cut)
+	check("kalimat pertama game: 'Oh. Kau akhirnya bangun.'", txt.contains("Oh. Kau akhirnya bangun."))
+	check("audio memimpin: hujan disebut sebelum visual", txt.contains("hujan"))
+	var spoken := ""
+	for st in cut.get("steps", []):
+		for ln in st.get("lines", []):
+			spoken += String(ln).to_lower() + " "
+	check("Pegasus TIDAK menandai pemain sebagai terpilih (NO DESTINY)",
+		not spoken.contains("terpilih") and not spoken.contains("takdir") and not spoken.contains("ramalan"))
+	# SURAT MERRIT = benih, BUKAN payoff di v0.5.0
+	var lines_txt := JSON.stringify(merrit.get("lines", []))
+	check("surat TIDAK dijelaskan di v0.5.0 (kekuatan ada pada penundaan)",
+		not lines_txt.to_lower().contains("surat itu berisi") and not lines_txt.to_lower().contains("isi surat"))
+	# tak ada papan-informasi (#210)
+	check("TIDAK ada banner 'Selamat datang di Ashbrook' (#210)",
+		not src.contains("enter_region(\"Ashbrook\", \"Selamat"))
+	check("keruntuhan TIDAK dinyatakan lewat papan info: NOL teks on-screen di Ashbrook (D-ASH-2/#210)",
+		not src.contains("Label.new()") and not src.contains("RichTextLabel"))

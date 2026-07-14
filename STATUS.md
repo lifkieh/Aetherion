@@ -1,6 +1,21 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **kanon lokasi FINAL · siap merancang Ashbrook v0.5**
+**Last update:** 2026-07-14 — **Ashbrook v0.5.0 dibangun (hidup, bukan makam) — menunggu playtest owner: apakah Ashbrook terasa seperti rumah?**
+
+> ### 🏠 ASHBROOK v0.5.0 DIBANGUN (#216)
+> **HUKUM TERTINGGI DIKODEKAN, BUKAN DIHARAPKAN:** 7 pasangan **mati↔hidup** (`RUINS[]`), dan
+> **test GAGAL** bila ada satu keruntuhan tanpa kehidupan di sebelahnya.
+> **5 NPC + JADWAL PENUH** (pagi/sore/malam): Merrit *(menyalakan lampu tiap malam)* · Old Bram ·
+> Lyra · **Spoon Man** *(Oddwalker)* · **Halloran Muda** *(200 roti tiap pagi untuk 40 orang —
+> **sumber "aroma roti panggang" kanon City Bible**)*.
+> **4 ayam yang benar-benar menghalangi jalan** + **3 anak yang mengejarnya di depan gudang kosong**.
+> **Opening kanon:** hujan memimpin sebelum visual → *"Oh. Kau akhirnya bangun."* Pegasus lewat
+> sekilas — **tidak menandai pemain sebagai terpilih**.
+> **White Stag 0,5%** — tanpa trigger/marker/musik/toast/Chronicle *(dijaga test)*.
+> **Surat Merrit = benih saja** — kekuatannya ada pada penundaan (payoff v0.6+).
+> **#210 dijaga mesin:** **NOL teks on-screen di Ashbrook.**
+>
+> **930 test lulus, 0 gagal.** ⏳ **Menunggu playtest owner.**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini

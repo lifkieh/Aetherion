@@ -1578,5 +1578,342 @@
     "mental_state": 100
    }
   }
+ ],
+ "ashbrook": [
+  {
+   "name": "Merrit Fane",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "long",
+    "hair_color": "#cfc9d6",
+    "shirt": "#4a4436",
+    "pants": "#2f2a24"
+   },
+   "lines": [
+    "Kamar-kamar itu masih kusapu. Bukan karena ada yang datang. Karena kalau berdebu, aku akan terbiasa.",
+    "Tulisan tanganmu jelek. Bagus. Yang jelek biasanya jujur.",
+    "Dulu aku hafal tulisan tangan setiap keluarga di sini. Sekarang aku hafal semuanya karena tinggal sedikit.",
+    "Kalau kau pergi ke Greenvale, jangan menoleh. Atau menolehlah. Terserah. Lampunya tetap menyala."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -232,
+      24
+     ],
+     "do": "membuka rumah singgah, menyortir surat yang tak banyak"
+    },
+    "sore": {
+     "at": [
+      -180,
+      40
+     ],
+     "do": "menyapu kamar yang tak ditiduri siapa pun"
+    },
+    "malam": {
+     "at": [
+      -236,
+      10
+     ],
+     "do": "menyalakan lampu, lalu duduk"
+    }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 45,
+     "conscientiousness": 80,
+     "extraversion": 40,
+     "agreeableness": 85,
+     "neuroticism": 55
+    },
+    "moral": 88,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Kepergian yang tak pernah dijelaskan. Empat puluh tahun ketidakpastian.",
+      "weight": 18
+     }
+    ],
+    "talent": 30,
+    "effort": 88,
+    "opportunity": 0,
+    "luck": 35,
+    "mental_state": 78
+   }
+  },
+  {
+   "name": "Old Bram",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#e8e2f4",
+    "shirt": "#6b5a3a",
+    "pants": "#3a2a1a"
+   },
+   "lines": [
+    "Dulu di bangku itu, tukang roti Halloran duduk tiap sore. Ia bilang rotinya lebih enak kalau didinginkan angin sungai. Bohong. Tapi anginnya memang enak.",
+    "Kau tahu kenapa alun-alun ini kebesaran? Karena dulu penuh. Itu saja. Bukan misteri.",
+    "Anak-anak itu berisik sekali. Bagus. Kalau sepi, aku yang harus berisik sendiri.",
+    "Jangan dengarkan aku terlalu serius. Aku ini cuma orang tua yang punya kursi favorit."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      30,
+      -40
+     ],
+     "do": "duduk di bangku, memandangi air mancur yang kering"
+    },
+    "sore": {
+     "at": [
+      16,
+      -18
+     ],
+     "do": "bercerita kepada siapa pun yang duduk"
+    },
+    "malam": {
+     "at": [
+      70,
+      30
+     ],
+     "do": "tidur di bangku — katanya kasurnya terlalu jauh"
+    }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 60,
+     "conscientiousness": 45,
+     "extraversion": 78,
+     "agreeableness": 88,
+     "neuroticism": 30
+    },
+    "moral": 82,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Ia mengingat nama-nama yang tak diingat siapa pun lagi.",
+      "weight": 8
+     }
+    ],
+    "talent": 22,
+    "effort": 40,
+    "opportunity": 0,
+    "luck": 60,
+    "mental_state": 92
+   }
+  },
+  {
+   "name": "Lyra",
+   "archetype": "misterius",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "long",
+    "hair_color": "#4a3320",
+    "shirt": "#7a4d3a",
+    "pants": "#3a3a2a"
+   },
+   "lines": [
+    "Kenapa aku tinggal? Ini rumahku.",
+    "Semua orang seusiaku sudah pergi. Mereka mengirim surat. Merrit yang mengantarnya.",
+    "Kalau kau mau membantu, angkat yang berat. Kalau tidak, minggir sedikit.",
+    "Aku tidak menunggu apa-apa. Aku cuma tidak pergi. Itu dua hal berbeda."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -120,
+      -30
+     ],
+     "do": "menyapu teras, mengangkut air"
+    },
+    "sore": {
+     "at": [
+      40,
+      60
+     ],
+     "do": "memperbaiki pagar kebun yang masih dirawat"
+    },
+    "malam": {
+     "at": [
+      -100,
+      70
+     ],
+     "do": "pulang; jendelanya padam lebih dulu dari lampu Merrit"
+    }
+   },
+   "profile": {
+    "temperament": "koleris",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 55,
+     "conscientiousness": 82,
+     "extraversion": 42,
+     "agreeableness": 60,
+     "neuroticism": 38
+    },
+    "moral": 76,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Semua orang seusianya pergi. Ia tidak.",
+      "weight": 12
+     }
+    ],
+    "talent": 48,
+    "effort": 85,
+    "opportunity": 0,
+    "luck": 45,
+    "mental_state": 88
+   }
+  },
+  {
+   "name": "Spoon Man",
+   "archetype": "aneh",
+   "oddwalker": true,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "spiky",
+    "hair_color": "#8f8a7a",
+    "shirt": "#3a4a3a",
+    "pants": "#2b2b3a"
+   },
+   "lines": [
+    "Sendok. Kau punya sendok? Tidak? Tidak apa-apa. Nanti ada.",
+    "Orang membuang sendok kalau pindah. Terlalu kecil untuk dibawa, terlalu kecil untuk diingat.",
+    "Aku punya seratus dua puluh empat. Dulu seratus dua puluh tiga. Kemarin ada yang pindah.",
+    "Kau pikir aku gila. Tidak apa-apa. Sendoknya tetap ada."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      120,
+      80
+     ],
+     "do": "menyisir rumah-rumah kosong, memungut yang tertinggal"
+    },
+    "sore": {
+     "at": [
+      -60,
+      100
+     ],
+     "do": "menghitung ulang koleksinya di tanah"
+    },
+    "malam": {
+     "at": [
+      150,
+      40
+     ],
+     "do": "berdiri diam menghadap rumah yang sudah lama gelap"
+    }
+   },
+   "profile": {
+    "temperament": "melankolis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 80,
+     "conscientiousness": 30,
+     "extraversion": 25,
+     "agreeableness": 65,
+     "neuroticism": 62
+    },
+    "moral": 72,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Sesuatu yang tak pernah dibayar tuntas — dan tak pernah ia jelaskan.",
+      "weight": 15
+     }
+    ],
+    "talent": 18,
+    "effort": 55,
+    "opportunity": 0,
+    "luck": 25,
+    "mental_state": 70
+   }
+  },
+  {
+   "name": "Halloran Muda",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#c9a86a",
+    "shirt": "#d8c39a",
+    "pants": "#5c4a3a"
+   },
+   "lines": [
+    "Dua ratus roti. Setiap pagi. Ya, aku tahu kami cuma empat puluh orang.",
+    "Kakekku memanggang untuk seribu lima ratus. Aku memanggang untuk seribu lima ratus.",
+    "Sisanya? Ayam. Anjing. Angin. Sungai. Ada saja yang makan.",
+    "Kalau suatu hari mereka pulang dan tak ada roti — bagaimana?"
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -40,
+      -90
+     ],
+     "do": "memanggang dua ratus roti untuk empat puluh orang"
+    },
+    "sore": {
+     "at": [
+      -20,
+      -60
+     ],
+     "do": "membagikan sisa roti kepada siapa pun, termasuk ayam"
+    },
+    "malam": {
+     "at": [
+      -60,
+      -70
+     ],
+     "do": "menyalakan tungku untuk besok pagi"
+    }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 50,
+     "conscientiousness": 90,
+     "extraversion": 65,
+     "agreeableness": 80,
+     "neuroticism": 42
+    },
+    "moral": 84,
+    "moral_drift": 0,
+    "trauma": [
+     {
+      "event": "Ia memanggang untuk kota yang sudah pergi — dan tak sanggup berhenti.",
+      "weight": 14
+     }
+    ],
+    "talent": 35,
+    "effort": 95,
+    "opportunity": 0,
+    "luck": 40,
+    "mental_state": 85
+   }
+  }
  ]
 }

@@ -1,79 +1,314 @@
 [
-  {
-    "id": "intro_arrival",
-    "name": "Kedatangan (placeholder pra-v0.5)",
-    "note": "Rework ringan: pemain JATUH dari langit lalu disambut. Opening kanon (Pegasus, #76) menyusul di v0.5.",
-    "steps": [
-      {"cmd": "fade", "to": "black", "time": 0.1},
-      {"cmd": "play_music", "track": "greenvale.ogg"},
-      {"cmd": "banner", "title": "GREENVALE", "sub": "Kau memilih datang. Tak seorang pun memanggilmu."},
-      {"cmd": "fade", "to": "clear", "time": 1.2},
-      {"cmd": "camera_zoom", "zoom": 1.35, "time": 0.6},
-      {"cmd": "move_actor", "actor": "player", "rel": [0, -46], "speed": 400},
-      {"cmd": "move_actor", "actor": "player", "rel": [0, 46], "speed": 260},
-      {"cmd": "shake", "amount": 7.0, "time": 0.35},
-      {"cmd": "sfx", "name": "hurt"},
-      {"cmd": "wait", "time": 0.5},
-      {"cmd": "camera_zoom", "zoom": 1.0, "time": 0.8},
-      {"cmd": "dialog", "speaker": "?", "lines": [
-        "Astaga — kau jatuh dari LANGIT.",
-        "Tenang, tenang. Tulangmu utuh. Napasmu juga.",
-        "Orang-orang di sini datang lewat jalan setapak, bukan lewat awan.",
-        "Selamat datang di Greenvale, siapa pun kau."]},
-      {"cmd": "dialog", "speaker": "", "lines": [
-        "(Sesuatu bersayap melintas di atas kepalamu, lalu hilang sebelum kau sempat menoleh.)"]}
+ {
+  "id": "intro_arrival",
+  "name": "Kedatangan (placeholder pra-v0.5)",
+  "note": "Rework ringan: pemain JATUH dari langit lalu disambut. Opening kanon (Pegasus, #76) menyusul di v0.5.",
+  "steps": [
+   {
+    "cmd": "fade",
+    "to": "black",
+    "time": 0.1
+   },
+   {
+    "cmd": "play_music",
+    "track": "greenvale.ogg"
+   },
+   {
+    "cmd": "banner",
+    "title": "GREENVALE",
+    "sub": "Kau memilih datang. Tak seorang pun memanggilmu."
+   },
+   {
+    "cmd": "fade",
+    "to": "clear",
+    "time": 1.2
+   },
+   {
+    "cmd": "camera_zoom",
+    "zoom": 1.35,
+    "time": 0.6
+   },
+   {
+    "cmd": "move_actor",
+    "actor": "player",
+    "rel": [
+     0,
+     -46
+    ],
+    "speed": 400
+   },
+   {
+    "cmd": "move_actor",
+    "actor": "player",
+    "rel": [
+     0,
+     46
+    ],
+    "speed": 260
+   },
+   {
+    "cmd": "shake",
+    "amount": 7.0,
+    "time": 0.35
+   },
+   {
+    "cmd": "sfx",
+    "name": "hurt"
+   },
+   {
+    "cmd": "wait",
+    "time": 0.5
+   },
+   {
+    "cmd": "camera_zoom",
+    "zoom": 1.0,
+    "time": 0.8
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "?",
+    "lines": [
+     "Astaga — kau jatuh dari LANGIT.",
+     "Tenang, tenang. Tulangmu utuh. Napasmu juga.",
+     "Orang-orang di sini datang lewat jalan setapak, bukan lewat awan.",
+     "Selamat datang di Greenvale, siapa pun kau."
     ]
-  },
-  {
-    "id": "forest_spirit_wrath",
-    "name": "Murka Roh Hutan",
-    "steps": [
-      {"cmd": "fade", "to": "black", "time": 0.5},
-      {"cmd": "play_music", "track": "storm.ogg"},
-      {"cmd": "fade", "to": "clear", "time": 0.8},
-      {"cmd": "spawn", "id": "spirit", "script": "res://scenes/actors/ForestSpirit.gd", "at": [0, -70], "relative_to_player": true},
-      {"cmd": "camera_pan", "actor": "spirit", "time": 0.9},
-      {"cmd": "shake", "amount": 8.0, "time": 0.6},
-      {"cmd": "play_stinger", "kind": "discovery"},
-      {"cmd": "dialog", "speaker": "Roh Hutan", "lines": [
-        "Kau menghitung kayu. Aku menghitung yang TIDAK KEMBALI.",
-        "Setiap batang yang kau tebang punya akar yang menahan tanah ini tetap hidup.",
-        "Aku tidak akan membunuhmu. Itu terlalu mudah — dan terlalu cepat.",
-        "Aku hanya akan berhenti memberi. Lihat sendiri apa jadinya hutan tanpa aku.",
-        "Tanam. Tanam sampai tanah memaafkanmu. Aku akan tahu."]},
-      {"cmd": "shake", "amount": 5.0, "time": 0.4},
-      {"cmd": "despawn", "id": "spirit"},
-      {"cmd": "banner", "title": "HUTAN MEMUCAT", "sub": "Roh Hutan menarik berkahnya. Tanamlah pohon untuk menebusnya."},
-      {"cmd": "wait", "time": 0.6}
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "",
+    "lines": [
+     "(Sesuatu bersayap melintas di atas kepalamu, lalu hilang sebelum kau sempat menoleh.)"
     ]
-  },
-  {
-    "id": "forest_spirit_forgiven",
-    "name": "Roh Hutan Kembali",
-    "steps": [
-      {"cmd": "play_music", "track": "greenvale.ogg"},
-      {"cmd": "spawn", "id": "spirit", "script": "res://scenes/actors/ForestSpirit.gd", "at": [0, -60], "relative_to_player": true},
-      {"cmd": "camera_pan", "actor": "spirit", "time": 0.8},
-      {"cmd": "play_stinger", "kind": "boss_kill"},
-      {"cmd": "dialog", "speaker": "Roh Hutan", "lines": [
-        "Kau menanam. Berkali-kali. Tanpa ada yang menyuruhmu.",
-        "Tanah mengingat itu — dan tanah tidak pandai berbasa-basi.",
-        "Aku kembali. Bukan karena kau menang. Karena kau memperbaiki.",
-        "Ambil berkahku. Dan satu hal lagi: ada tunas yang hanya mau tumbuh untuk tangan sepertimu."]},
-      {"cmd": "despawn", "id": "spirit"},
-      {"cmd": "banner", "title": "ROH HUTAN KEMBALI", "sub": "Berkah mingguan aktif · node rahasia pohon Kehidupan terbuka"},
-      {"cmd": "wait", "time": 0.5}
+   }
+  ]
+ },
+ {
+  "id": "forest_spirit_wrath",
+  "name": "Murka Roh Hutan",
+  "steps": [
+   {
+    "cmd": "fade",
+    "to": "black",
+    "time": 0.5
+   },
+   {
+    "cmd": "play_music",
+    "track": "storm.ogg"
+   },
+   {
+    "cmd": "fade",
+    "to": "clear",
+    "time": 0.8
+   },
+   {
+    "cmd": "spawn",
+    "id": "spirit",
+    "script": "res://scenes/actors/ForestSpirit.gd",
+    "at": [
+     0,
+     -70
+    ],
+    "relative_to_player": true
+   },
+   {
+    "cmd": "camera_pan",
+    "actor": "spirit",
+    "time": 0.9
+   },
+   {
+    "cmd": "shake",
+    "amount": 8.0,
+    "time": 0.6
+   },
+   {
+    "cmd": "play_stinger",
+    "kind": "discovery"
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "Roh Hutan",
+    "lines": [
+     "Kau menghitung kayu. Aku menghitung yang TIDAK KEMBALI.",
+     "Setiap batang yang kau tebang punya akar yang menahan tanah ini tetap hidup.",
+     "Aku tidak akan membunuhmu. Itu terlalu mudah — dan terlalu cepat.",
+     "Aku hanya akan berhenti memberi. Lihat sendiri apa jadinya hutan tanpa aku.",
+     "Tanam. Tanam sampai tanah memaafkanmu. Aku akan tahu."
     ]
-  },
-  {
-    "id": "first_clear",
-    "name": "Template perayaan first-clear",
-    "note": "Dipakai ulang oleh SEMUA scenario/boss pertama kali (benih Chronicle).",
-    "steps": [
-      {"cmd": "play_stinger", "kind": "boss_kill"},
-      {"cmd": "camera_zoom", "zoom": 1.2, "time": 0.5},
-      {"cmd": "wait", "time": 0.6},
-      {"cmd": "camera_zoom", "zoom": 1.0, "time": 0.6}
+   },
+   {
+    "cmd": "shake",
+    "amount": 5.0,
+    "time": 0.4
+   },
+   {
+    "cmd": "despawn",
+    "id": "spirit"
+   },
+   {
+    "cmd": "banner",
+    "title": "HUTAN MEMUCAT",
+    "sub": "Roh Hutan menarik berkahnya. Tanamlah pohon untuk menebusnya."
+   },
+   {
+    "cmd": "wait",
+    "time": 0.6
+   }
+  ]
+ },
+ {
+  "id": "forest_spirit_forgiven",
+  "name": "Roh Hutan Kembali",
+  "steps": [
+   {
+    "cmd": "play_music",
+    "track": "greenvale.ogg"
+   },
+   {
+    "cmd": "spawn",
+    "id": "spirit",
+    "script": "res://scenes/actors/ForestSpirit.gd",
+    "at": [
+     0,
+     -60
+    ],
+    "relative_to_player": true
+   },
+   {
+    "cmd": "camera_pan",
+    "actor": "spirit",
+    "time": 0.8
+   },
+   {
+    "cmd": "play_stinger",
+    "kind": "boss_kill"
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "Roh Hutan",
+    "lines": [
+     "Kau menanam. Berkali-kali. Tanpa ada yang menyuruhmu.",
+     "Tanah mengingat itu — dan tanah tidak pandai berbasa-basi.",
+     "Aku kembali. Bukan karena kau menang. Karena kau memperbaiki.",
+     "Ambil berkahku. Dan satu hal lagi: ada tunas yang hanya mau tumbuh untuk tangan sepertimu."
     ]
-  }
+   },
+   {
+    "cmd": "despawn",
+    "id": "spirit"
+   },
+   {
+    "cmd": "banner",
+    "title": "ROH HUTAN KEMBALI",
+    "sub": "Berkah mingguan aktif · node rahasia pohon Kehidupan terbuka"
+   },
+   {
+    "cmd": "wait",
+    "time": 0.5
+   }
+  ]
+ },
+ {
+  "id": "first_clear",
+  "name": "Template perayaan first-clear",
+  "note": "Dipakai ulang oleh SEMUA scenario/boss pertama kali (benih Chronicle).",
+  "steps": [
+   {
+    "cmd": "play_stinger",
+    "kind": "boss_kill"
+   },
+   {
+    "cmd": "camera_zoom",
+    "zoom": 1.2,
+    "time": 0.5
+   },
+   {
+    "cmd": "wait",
+    "time": 0.6
+   },
+   {
+    "cmd": "camera_zoom",
+    "zoom": 1.0,
+    "time": 0.6
+   }
+  ]
+ },
+ {
+  "id": "opening_pegasus",
+  "name": "Opening kanon — Pegasus & Ashbrook (v0.5, #118)",
+  "note": "Bencana -> jatuh -> gelap -> SUARA HUJAN (audio memimpin) -> bangun di rumah Merrit. Pegasus = FIRST MYSTERY: terlihat sekilas, TIDAK menandai pemain sebagai terpilih (NO DESTINY). Arti 'Carilah aku' TIDAK PERNAH dijawab (MISTERI_ABADI).",
+  "steps": [
+   {
+    "cmd": "fade",
+    "to": "black",
+    "time": 0.1
+   },
+   {
+    "cmd": "shake",
+    "amount": 9.0,
+    "time": 0.6
+   },
+   {
+    "cmd": "sfx",
+    "name": "hurt"
+   },
+   {
+    "cmd": "wait",
+    "time": 0.8
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "",
+    "lines": [
+     "(Langit retak. Sesuatu yang besar lewat — atau jatuh. Kau tak sempat membedakannya.)",
+     "(Kau jatuh.)"
+    ]
+   },
+   {
+    "cmd": "wait",
+    "time": 1.0
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "",
+    "lines": [
+     "(Gelap.)",
+     "(Lalu — hujan. Kau mendengarnya lebih dulu sebelum kau melihat apa pun.)"
+    ]
+   },
+   {
+    "cmd": "play_music",
+    "track": "greenvale.ogg"
+   },
+   {
+    "cmd": "fade",
+    "to": "clear",
+    "time": 2.2
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "?",
+    "lines": [
+     "Oh. Kau akhirnya bangun."
+    ]
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "Merrit Fane",
+    "lines": [
+     "Kutemukan kau di dekat jembatan. Basah kuyup, tapi napasmu jalan.",
+     "Aku tidak bertanya dari mana kau datang. Orang lewat sini sudah lama — dan yang lewat biasanya tak suka ditanya.",
+     "Kamar itu kosong. Sudah lama kosong. Pakai saja."
+    ]
+   },
+   {
+    "cmd": "dialog",
+    "speaker": "",
+    "lines": [
+     "(Di luar jendela, sesuatu bersayap melintas di celah awan — jauh, sebentar, lalu tak ada.)",
+     "(Kau tidak yakin kau melihatnya.)"
+    ]
+   }
+  ]
+ }
 ]
