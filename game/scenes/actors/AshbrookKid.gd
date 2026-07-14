@@ -17,8 +17,14 @@ var _home := Vector2.ZERO
 func setup(chickens: Array) -> void:
 	_chickens = chickens
 
+func place(p: Vector2) -> void:      # BUG-217g (lihat AshbrookChicken)
+	global_position = p
+	_home = p
+
 func _ready() -> void:
-	_home = global_position
+	if _home == Vector2.ZERO:
+		_home = global_position
+	add_to_group("ashbrook_life")
 	_spr = Sprite2D.new()
 	var img := Image.create(7, 11, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0.85, 0.6, 0.45))

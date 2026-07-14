@@ -1,6 +1,19 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Ashbrook v0.5.0 dibangun (hidup, bukan makam) — menunggu playtest owner: apakah Ashbrook terasa seperti rumah?**
+**Last update:** 2026-07-14 — **Ashbrook diverifikasi fungsional — menunggu playtest manusia owner + rencana asset**
+
+> ### 🔬 PEMERIKSAAN FUNGSIONAL (#217) — `reports/ASHBROOK_FUNCTIONAL_CHECK.md`
+> **6 BUG NYATA ditemukan lewat probe pada scene NYATA** — termasuk **pintu keluar kamar BUNTU
+> (pemain terkunci, game tak bisa dimulai)** dan **seluruh kehidupan Ashbrook berumah di (0,0)**.
+> **Akarnya: test hijau-palsu lagi** — ia memeriksa pasangan mati↔hidup **di TEKS**, bukan **di
+> DUNIA**. Test kini **mengukur jarak nyata di scene**.
+> **✅ Desa berjalan tanpa pemain: 13/13 aktor bergerak, 0 diam menunggu dialog.**
+> **✅ White Stag** (0,5%, nol sfx/toast/Chronicle). **🔴 PAYOFF PERJALANAN BELUM** (lampu 670 px
+> dari titik keluar — di luar layar). **🔴 Anak serigala belum dipasang.**
+> **ASET — 5 KRUSIAL sebelum playtest adil:** suara hujan opening · ambience desa · **musik Ashbrook
+> sendiri** (kini pakai greenvale.ogg yang ceria — melawan nada desa) · sprite ayam & anak-anak
+> (kini kotak warna) · lentera Merrit + jendela padam.
+> **933 test lulus, 0 gagal.**
 
 > ### 🏠 ASHBROOK v0.5.0 DIBANGUN (#216)
 > **HUKUM TERTINGGI DIKODEKAN, BUKAN DIHARAPKAN:** 7 pasangan **mati↔hidup** (`RUINS[]`), dan

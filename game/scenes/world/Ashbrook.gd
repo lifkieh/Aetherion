@@ -63,7 +63,12 @@ func _ready() -> void:
 	_spawn_player()
 	_add_ui()
 	_spawn_life()                            # ayam yang mengganggu + anak-anak berlari
+	_spawn_paired_life()                     # kambing di jembatan + sepeda di gerbang (#217)
 	TownFolk.place(self, "ashbrook", VC)     # 5 NPC berkepribadian (#78) + JADWAL (#97)
+	for c in get_children():                 # warga ikut dihitung sebagai KEHIDUPAN
+		var sc = c.get_script()
+		if sc != null and String(sc.resource_path).contains("Villager"):
+			c.add_to_group("ashbrook_life")
 	_maybe_opening()
 
 # ---------------------------------------------------------------- opening
@@ -189,8 +194,8 @@ func _build_village() -> void:
 	add_child(f)
 	for i in 8:
 		var b := preload("res://scenes/world/Interactable.tscn").instantiate()
-		b.kind = "bench"
 		add_child(b)
+		b.setup("bench")
 		b.global_position = VC + Vector2(-140 + i * 40, 70 if i % 2 == 0 else -80)
 
 	_keeper(VC + Vector2(-150, 20), "ashbrook")       # Penjaga Pohon (#30)
@@ -222,17 +227,19 @@ func _building(kind: String, pos: Vector2, label: String) -> void:
 	body.add_child(cs)
 	add_child(body)
 
+## BUG-217d: API Interactable dipakai salah (kind="skill" + .location) → SCRIPT ERROR
+## saat scene dimuat. Bentuk yang benar: setup("tree_keeper") + keeper_location.
 func _keeper(pos: Vector2, town: String) -> void:
 	var k := preload("res://scenes/world/Interactable.tscn").instantiate()
-	k.kind = "skill"
-	k.location = town
 	add_child(k)
+	k.setup("tree_keeper")
+	k.keeper_location = town
 	k.global_position = pos
 
 func _world_gate(pos: Vector2) -> void:
 	var g := preload("res://scenes/world/Interactable.tscn").instantiate()
-	g.kind = "board"
 	add_child(g)
+	g.setup("world_gate")
 	g.global_position = pos
 
 # ---------------------------------------------------------------- kamar (bangun)
@@ -256,12 +263,19 @@ func _build_interior() -> void:
 	win.size = Vector2(34, 26)
 	win.position = INTERIOR + Vector2(160, 24)
 	add_child(win)
-	var door := preload("res://scenes/world/Interactable.tscn").instantiate()
-	door.kind = "bench"
-	door.custom_label = "Keluar [E]"
-	add_child(door)
-	door.global_position = INTERIOR + Vector2(110, 140)
-	door.interacted.connect(func(): _leave_interior())
+	# BUG-217e: pintu keluar memakai sinyal `interacted` yang TIDAK ADA di Interactable
+	# → MOMEN BANGUN buntu (pemain terkunci di kamar). Kini: pemicu-area yang bekerja.
+	var exit_zone := Area2D.new()
+	var cs := CollisionShape2D.new()
+	var sh := RectangleShape2D.new()
+	sh.size = Vector2(40, 20)
+	cs.shape = sh
+	exit_zone.add_child(cs)
+	exit_zone.global_position = INTERIOR + Vector2(110, 146)
+	add_child(exit_zone)
+	exit_zone.body_entered.connect(func(b):
+		if _in_interior and b == player:
+			_leave_interior())
 
 # ---------------------------------------------------------------- kehidupan
 ## Ayam yang BENAR-BENAR mengganggu jalan (bukan objek quest) + anak-anak berlari.
@@ -270,15 +284,37 @@ func _spawn_life() -> void:
 		var c := Node2D.new()
 		c.set_script(load("res://scenes/actors/AshbrookChicken.gd"))
 		add_child(c)
-		c.global_position = Vector2(372, 200) + Vector2(randf_range(-40, 60), randf_range(20, 70))
+		c.place(Vector2(372, 200) + Vector2(randf_range(-40, 60), randf_range(20, 70)))
 		_chickens.append(c)
 	for i in 3:
 		var k := Node2D.new()
 		k.set_script(load("res://scenes/actors/AshbrookKid.gd"))
 		add_child(k)
-		k.global_position = VC + Vector2(randf_range(-90, 90), randf_range(-40, 60))
+		k.place(VC + Vector2(randf_range(-90, 90), randf_range(-40, 60)))
 		k.setup(_chickens)          # anak-anak MENGEJAR ayam — hidup × mati (gudang kosong)
 		_kids.append(k)
+
+## BUG-217b: dua "kehidupan" di RUINS[] ternyata **hanya ada di teks** — kambing di
+## jembatan & sepeda di gerbang tak pernah lahir di dunia. Hukum Tertinggi dilanggar
+## di tempat yang justru paling terlihat (dua ujung jalan). Kini keduanya NYATA.
+func _spawn_paired_life() -> void:
+	# KAMBING — benar-benar menghalangi jembatan yang terlalu lebar
+	var goat := Node2D.new()
+	goat.set_script(load("res://scenes/actors/AshbrookChicken.gd"))
+	add_child(goat)
+	goat.body_radius = 9.0
+	goat.wander_radius = 46.0                # ia menghalangi JEMBATAN — bukan berkelana
+	goat.place(Vector2(820, 372))
+	goat.scale = Vector2(2.1, 2.1)
+	goat.modulate = Color(0.85, 0.82, 0.75)
+	# SEPEDA KAYU di gerbang setengah runtuh — bersandar tiap pagi; masih dipakai
+	var bike := ColorRect.new()
+	bike.color = Color(0.55, 0.42, 0.28)
+	bike.size = Vector2(18, 10)
+	bike.position = Vector2(120, 300) + Vector2(14, 6)
+	bike.z_index = 300
+	bike.add_to_group("ashbrook_life")
+	add_child(bike)
 
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()

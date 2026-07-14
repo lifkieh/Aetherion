@@ -89,7 +89,7 @@ func _ready() -> void:
 	_test_bilingual_content()
 	_test_potential_not_exposed()
 	_test_skill_tree_c1()
-	_test_ashbrook_alive()
+	await _test_ashbrook_alive()
 	_test_input_simulation()
 	_test_opening()
 	_test_save_modern()
@@ -3689,7 +3689,43 @@ func _test_ashbrook_alive() -> void:
 	for d in Ash.RUINS:
 		if String(d.get("life", "")).strip_edges() == "":
 			mati_beruntun += 1
-	check("tak ada satu pun detail-mati tanpa kehidupan di sebelahnya", mati_beruntun == 0)
+	check("tak ada satu pun detail-mati tanpa kehidupan di sebelahnya (teks)", mati_beruntun == 0)
+	# ⚠ TEST LAMA HIJAU-PALSU (#217c): ia hanya memeriksa TEKS pasangan — bukan DUNIA.
+	# Probe membuktikan kambing & sepeda "hidup" hanya di dalam string. Kini pasangan
+	# diuji DI SCENE NYATA: tiap keruntuhan wajib punya KEHIDUPAN dalam radius terlihat.
+	var scene: Node = load("res://scenes/world/Ashbrook.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var life := get_tree().get_nodes_in_group("ashbrook_life")
+	check("kehidupan benar-benar ADA di dunia (bukan cuma di teks)", life.size() >= 10, str(life.size()))
+	var terjauh := 0.0
+	var pelanggar := ""
+	for d in Ash.RUINS:
+		var at := Vector2(float(d["at"][0]), float(d["at"][1]))
+		var best := 99999.0
+		for l in life:
+			if l is Node2D or l is Control:
+				best = minf(best, at.distance_to(l.global_position if l is Node2D else Vector2(l.position)))
+		if best > terjauh:
+			terjauh = best
+			pelanggar = String(d["id"])
+	check("HUKUM TERTINGGI DI DUNIA: tiap keruntuhan punya kehidupan dalam ≤200px",
+		terjauh <= 200.0, "terjauh=%s (%dpx)" % [pelanggar, int(terjauh)])
+	# ayam BENAR-BENAR menghalangi jalan (bukan objek quest) — cetak biru v2
+	var ayam := 0
+	var ayam_padat := 0
+	for l in life:
+		var sc = l.get_script()
+		if sc != null and String(sc.resource_path).contains("Chicken"):
+			ayam += 1
+			for ch in l.get_children():
+				if ch is StaticBody2D:
+					ayam_padat += 1
+					break
+	check("ayam+kambing punya tubuh padat (BENAR-BENAR menghalangi jalan)",
+		ayam >= 5 and ayam_padat == ayam, "%d/%d" % [ayam_padat, ayam])
+	scene.queue_free()
 	# White Stag: 0,5%, tanpa trigger/marker (#D-ASH-4)
 	check("White Stag ~0,5% (bukan quest, bukan trigger)", abs(Ash.STAG_CHANCE - 0.005) < 0.0001)
 	var src := FileAccess.get_file_as_string("res://scenes/world/Ashbrook.gd")
