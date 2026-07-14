@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Faction tercerna · C1=a C2=c diputus · v0.5 = Story&Soul Fondasi direncanakan — siap eksekusi v0.5 atas perintah Direktur**
+**Last update:** 2026-07-14 — **Kingdom Bible tercerna + visi peta dikunci + Elyn=pembangkang — siap merancang Ashbrook (Direktur+Designer)**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -32,6 +32,24 @@
 > Nama rahasia **bisa dirakit dari repo ter-commit** (marga terang-terangan di MISTERI_ABADI M6
 > + ledger #114) — **test hijau selama berminggu-minggu** karena hanya menyisir `res://`.
 > **Diredaksi + guard diperluas ke `docs/` & dokumen hukum. 884 test lulus, 0 gagal.**
+>
+> ### 👑 KINGDOM + CITY BIBLE TERCERNA (#203) — **dan Ashbrook ada di sana**
+> **7 KERAJAAN AURELIA:** **VALENFORD** ⭐ *(Starting Kingdom — **"The Kingdom of Open Roads"**)* ·
+> Rosenhal · Durnhold · Lumeria · Thornreach · Veskar · Astraveil. **"NO KINGDOM IS GOOD, NO KINGDOM
+> IS EVIL."** **+ CITY BIBLE** (*"EVERY CITY NEEDS A SOUL"*): **CITY 001 = ASHBROOK, Valenford,
+> *"Town of Gentle Beginnings"*, aroma kota: roti panggang · kayu basah · sungai; NPC ikonik Old
+> Bram, Lyra, Spoon Man; rumor White Stag.**
+> 🔗 **Visi peta Direktur (#204) ternyata sudah jadi identitas nasional tanah kelahiran pemain.**
+> **HUKUM PETA (#204):** *"jalan di antara kota harus HIDUP"* — perjalanan = **tempat kejadian**,
+> bukan ruang kosong. ⛔ **Dilarang bangun sistem travel kedua** (perbesar Gerbang Penjelajah #43).
+> **#205: Elyn = PEMBANGKANG Chronicle Order** — *Ordo menjaga sejarah PENTING; Elyn & Sora menjaga
+> sejarah ORANG BIASA.*
+>
+> ### 🔴 EMPAT KONFLIK MENUNGGU DIREKTUR (#203b)
+> **K-1 "Aurelia" ambigu** (benua? wilayah dalam Eldoria? dunia?) · **K-2 ASHBROOK BERTABRAKAN**
+> (sumber: **starting town 1.500 jiwa**; kanon kita: **desa 40 jiwa** — *usul agent: **dulu kota,
+> sekarang desa** — nol kanon dibuang*) · **K-3** 5 wilayah kita tak ada di sumber (kerajaan mana?)
+> · **K-4** kuota companion per benua (Eldoria 9 · Nethrak 9 · …= 50) — **15 tokoh kita menumpuk**.
 >
 > ### 🗺 BENTUK v0.5 = **"STORY & SOUL: FONDASI"** (#202) — siap dieksekusi
 > **Jujur pada dependensi, bukan berpura-pura.** Act 1 **tidak bisa** selesai di v0.5.

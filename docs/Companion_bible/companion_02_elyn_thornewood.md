@@ -2,6 +2,35 @@
 **"The Keeper of Forgotten Books"**
 *B17 · Tier ditentukan Direktur · Draft Designer detail-penuh · Hukum: Echo ≠ Origin*
 
+
+> ### ⚖ AFILIASI RESMI (MEJA-ELYN = b, Decision Log #205): **PEMBANGKANG CHRONICLE ORDER**
+> Elyn **pernah menjadi** Chronicle Order — dan **meninggalkannya justru karena lukanya.**
+>
+> Dalam kebakaran itu ia melakukan **persis apa yang Ordo ajarkan**: menyelamatkan **kronik
+> kerajaan** (yang punya salinan di tiga kota), membiarkan terbakar **rak orang biasa** yang hanya
+> ada **satu kali di seluruh dunia**. Ia dipuji. Dan seratus tahun kemudian ia mengerti bahwa yang
+> ia lakukan **bukan kesalahan pribadi** — itu **DOKTRIN**. *"Sisi gelap Ordo: kadang memutuskan
+> sejarah mana yang layak diingat"* (FACTION_BIBLE #194) **bukan kritik dari luar — itu deskripsi
+> tentang dirinya sendiri, di malam itu.**
+>
+> **Arsipnya di Sylvara adalah PEMBERONTAKAN DIAM-DIAM:** ia menyimpan **daftar panen, surat,
+> catatan pernikahan** — hal-hal yang Ordo **tidak akan pernah** anggap layak. Ia tidak menulis
+> manifesto. Ia tidak menuntut apa pun. **Ia hanya menolak melupakan orang-orang yang lembaganya
+> putuskan boleh dilupakan.**
+>
+> ### 🔗 JEMBATAN TEMATIK — dua cara mengingat, satu musuh
+> | | Menjaga apa | Melawan Nirnama dengan |
+> |---|---|---|
+> | **CHRONICLE ORDER** | sejarah yang **PENTING** | **institusi** — arsip, ordo, benteng melawan pelupaan |
+> | **ELYN + SORA (#013)** | sejarah **ORANG BIASA** | **kesetiaan** — satu orang yang menolak membiarkan satu nama hilang |
+>
+> **Keduanya benar. Keduanya melawan pelupaan.** Dan **keduanya akan bertengkar** — karena Ordo
+> berkata *"kita tak bisa menyimpan segalanya"*, dan Elyn menjawab *"maka kalian sudah mulai
+> menghapus, hanya lebih sopan."*
+>
+> *(Hukum 8 / Ordinary People: **Elyn adalah Chronicle-nya orang biasa.** Kalau Chronicle Order
+> adalah benteng, Elyn adalah **lilin di jendela** — dan Nirnama meniup keduanya.)*
+
 ---
 
 ## IDENTITAS INTI

@@ -40,6 +40,8 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **Rumah pos + rumah singgah Merrit** (lampu yang menyala di jendela **siang hari**) | jangkar tema |
 | **5 NPC berkepribadian** (Hukum NPC Aneh #78) | 1 Aneh · 1 Misterius · 1 Lucu · 1 Tragis · 1 Tak-masuk-akal |
 | Band level | **Lv 1–12** (bersanding Greenvale; desa **awal**, bukan lanjutan) |
+| **Konsisten HUKUM PETA (#204)** | **titik-spawn sendiri** + **terhubung JALAN nyata ke Greenvale** (bisa ditempuh berjalan kaki; kunjungan pertama **wajib** jalan sendiri) |
+| **Kanon Kingdom Bible (#203)** | Ashbrook ⊂ **VALENFORD** (*The Kingdom of Open Roads*) · **aroma kota: roti panggang · kayu basah · sungai** · NPC ikonik **Old Bram · Lyra · Spoon Man** · **rumor White Stag** ⚠ **populasi = konflik K-2, menunggu Direktur** |
 
 ### Act 1 — **FASE 1 & 2 SAJA** (dependensi eksplisit)
 
@@ -113,6 +115,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
+| 🔴 **PETA DUNIA BERSKALA (#204)** — dunia BESAR · **jalan nyata** antar-kota/kerajaan (bisa ditempuh **berjalan kaki**) · **titik fast-travel dibuka seiring penjelajahan** (⛔ **perbesar Gerbang Penjelajah #43 — DILARANG bangun sistem travel kedua**) · world-map dua-tingkat (v0.4.3) **diperluas** | Kingdom Bible (#203) · visi Direktur | Gerbang Penjelajah ✅ · world map ✅ | 2–3 sesi | **HUKUM: "jalan di antara kota harus HIDUP"** — perjalanan = tempat kejadian (encounter · NPC pengembara · rahasia pinggir jalan · cuaca), **bukan ruang kosong** |
 | **Benua & budaya baru**: Azhur (Thalassar/Tidekin), Nethrak (Wildhearth/Beastfolk), Sylvara (Elf/Ancient Jungle) | World Bible, Ras (#86), #110 | Aset (lihat MANIFEST) | 3–4 sesi | Fairy Realm → benua mana? |
 | **CUACA PER-WILAYAH** (#147): cuaca global dipecah per wilayah/benua — badai di laut ≠ badai di gurun | v0.1 §4.3 | Wilayah baru | 0,5 sesi | Sudah diputus (#147) |
 | **REQUIREMENT DESAIN DUNGEON** (#148): dungeon BARU **wajib mengisi tipe kanon yang masih kosong lebih dulu** — **Raid (III)** · **Companion (VI)** · **Kingdom (VII)** — sebelum menambah Ancient Ruins ke-4 | Dungeon Bible (40), `DUNGEON_ORIGINS.md` | Companion v1 (VI), Domain (VII), entourage (III) | — | Sudah diputus (#148) |

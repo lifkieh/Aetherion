@@ -154,7 +154,17 @@ kemudian tahu ia membiarkan manusia terbakar."*
 - **(ii) Elyn MENINGGALKAN Chronicle Order** justru karena itu — dan arsipnya di Sylvara adalah
   **pemberontakan diam-diam**: ia menyimpan yang biasa, karena Ordo hanya menyimpan yang besar.
 
-**Keduanya sah. Saya TIDAK memilih.** Butuh satu baris keputusan Direktur.
+> ### ✅ DIPUTUS (MEJA-ELYN = **b**, #205): **ELYN = PEMBANGKANG CHRONICLE ORDER**
+> Ia **meninggalkan Ordo justru karena lukanya**. Arsipnya di Sylvara = **pemberontakan diam-diam**
+> terhadap *"Ordo yang memutuskan sejarah mana yang layak diingat."*
+>
+> **JEMBATAN TEMATIK:** **Chronicle Order menjaga sejarah PENTING · Elyn + Sora (#013) menjaga
+> sejarah ORANG BIASA.** **Dua filosofi mengingat — dua-duanya melawan pelupaan Nirnama, dari sudut
+> yang berbeda** *(dan mereka akan bertengkar: Ordo berkata "kita tak bisa menyimpan segalanya";
+> Elyn menjawab "maka kalian sudah mulai menghapus, hanya lebih sopan")*.
+>
+> **Ini juga mengunci Ordinary People (Hukum 8) ke dalam politik dunia:** kalau Ordo adalah
+> **benteng**, Elyn adalah **lilin di jendela** — dan Nirnama meniup keduanya.
 
 ---
 

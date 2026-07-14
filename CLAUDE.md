@@ -83,6 +83,32 @@ budaya, sejarah, hukum, prasangka, dan cara dunia memperlakukanmu.
 bersuara satu. Delapan Ras Besar: Human · Elf · Dryad · Dwarf · Beastfolk · Astralborn ·
 Tidekin · Shadeborn.
 
+## HUKUM PETA DUNIA (#204) — **"JALAN DI ANTARA KOTA HARUS HIDUP"**
+
+> **Perjalanan adalah TEMPAT KEJADIAN, bukan ruang kosong yang dilewati.**
+> **Jauh yang terasa BERISI — bukan jauh yang menyeret.**
+
+1. **DUNIA BESAR.** Perjalanan antar-kota terasa **jauh & bermakna**. **Tidak ada teleport instan
+   sembarangan.**
+2. **JALAN NYATA** menghubungkan kota & kerajaan — **bisa ditempuh dengan kaki**. **Kunjungan
+   PERTAMA ke wilayah baru WAJIB jalan sendiri** (Gerbang Penjelajah, #43 — **sudah hidup**).
+3. **TITIK FAST-TRAVEL dibuka seiring penjelajahan** — waypoint/gerbang aktif **setelah dikunjungi**.
+   ⛔ **DILARANG membangun sistem travel KEDUA.** Perbesar **skala** Gerbang Penjelajah yang sudah
+   ada + tegaskan **titik-spawn per kota**.
+4. **Yang WAJIB ada di jalan:** encounter · **NPC pengembara** · pemandangan · **rahasia pinggir
+   jalan** · cuaca · monster wilayah. *Jalan yang kosong adalah kegagalan desain, bukan efisiensi.*
+
+**Uji desain:** kalau pemain melewati jalan itu **dua kali** dan tak ada satu pun yang berbeda,
+jalan itu belum jadi.
+
+🔗 **Ini bukan ide baru — ia sudah kanon:** kerajaan awal pemain, **VALENFORD**, berjulukan
+***"The Kingdom of Open Roads"*** dengan filosofi *"perjalanan adalah guru terbaik"* dan **"jalan
+raya terbaik"** sebagai identitas nasional (Kingdom Bible, #203). **Visi ini adalah tanah kelahiran
+pemain.**
+
+*Implementasi penuh = **v0.7 Horizon** (saat benua/kerajaan baru lahir). **Ashbrook v0.5 wajib
+lahir konsisten dengannya:** punya **titik-spawn** & **terhubung JALAN ke Greenvale**.*
+
 ## HUKUM SIMULASI DUNIA (P4, #89)
 
 Dunia **tidak** di-tick real-time. Setiap sistem "dunia berjalan tanpa pemain" wajib
