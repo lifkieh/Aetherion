@@ -1,21 +1,26 @@
-# PETA PERBUATAN-GERBANG — Advanced Class (C2, Decision Log #197)
+# PETA PERBUATAN-GERBANG — Advanced Class (C2 = **(c) HIBRIDA**, Decision Log #201)
 
-> ## KEPUTUSAN DIREKTUR: **LEVEL *DAN* PERBUATAN** — bukan salah satu.
-> **Gerbang Advanced Class terbuka hanya bila KETIGANYA terpenuhi:**
-> 1. **LEVEL mencukupi** (band konten — kini **55**; skala final 60, #153) — *"kau sanggup."*
-> 2. **PERBUATAN tercatat di CHRONICLE** — berbeda per class — *"kau sudah menjadi."*
-> 3. **UJIAN tanpa-tumbang** (30 monster ≥Lv40, mati = ulang dari nol) — *"buktikan sekarang."*
+> ## KEPUTUSAN DIREKTUR: **HIBRIDA** — level rendah membuka PINTU, perbuatan menentukan SIAPA.
 >
-> Ini **lebih ketat** daripada tiga opsi yang diajukan (a/b/c). Level saja **tidak cukup**;
-> perbuatan saja **tidak cukup**.
+> | Lapis | Peran | Sifat |
+> |---|---|---|
+> | **1. LEVEL MINIMUM — RENDAH** | **pintu masuk**, bukan gerbang sesungguhnya | angka **mengikuti band konten** (bukan Lv60 mutlak — patch #153). *"Kau cukup kuat untuk berdiri di sini."* |
+> | **2. PERBUATAN tercatat CHRONICLE** | **PENENTU SEJATI** — berbeda per class | *"Kau sudah menjadi seseorang."* **Tidak bisa di-grind.** |
+> | **3. UJIAN tanpa-tumbang** | dipertahankan (30 monster ≥Lv40; mati = ulang dari nol) | *"Buktikan sekarang."* |
 >
-> **Status: SPEC.** Kode hari ini masih memeriksa **level + ujian**. **Pemeriksaan perbuatan
-> dibangun v0.5**, saat Chronicle mulai mencatat perbuatan bertipe (bukan hanya peristiwa).
-> **Detail naratif akan difinalkan Designer.**
+> **Revisi atas #101** (Lv60 mutlak) **dan atas #197** (yang sempat mencatat gerbang *konjungtif
+> ketat* — level band **penuh** + perbuatan). **Yang berlaku: level RENDAH sebagai pintu masuk.**
+
+> ### ⚠ URUTAN PEMBANGUNAN — jangan dibalik (catatan agent)
+> **Kode HARI INI masih memakai gerbang level band (55) dan BELUM memeriksa perbuatan.**
+> **Menurunkan level sekarang — selagi gerbang perbuatan belum ada — justru membuat Advanced Class
+> JAUH LEBIH MUDAH** (pintu terbuka lebar, tak ada penjaga di baliknya).
+> **Maka: level diturunkan BERSAMAAN dengan lahirnya gerbang perbuatan (v0.5), tidak sebelumnya.**
+> **Angka pastinya (mis. ~50% atap band) = keputusan Designer** — saya tidak menebaknya.
 
 ---
 
-## Kenapa konjungtif (dan bukan "salah satu")
+## Kenapa hibrida (dan bukan "salah satu")
 
 **Level** menjawab *"apakah kau sanggup bertahan di puncak?"* — pertanyaan yang sah, dan jujur.
 **Perbuatan** menjawab *"siapa kau sudah menjadi selama perjalanan itu?"* — pertanyaan yang
@@ -27,7 +32,9 @@ dan dua pemain dengan jalan hidup yang sepenuhnya berbeda melewatinya dengan car
 Kalau hanya perbuatan: pemain bisa **menyelinap** ke jalur lanjutan sebelum ia sanggup memikulnya —
 dan momen besarnya menjadi murah.
 
-**Keduanya → gerbang itu berkata: *"kau kuat, DAN kau sudah menjadi seseorang."***
+**Hibrida → pintunya rendah, tetapi di balik pintu ada seseorang yang bertanya siapa kau.**
+*Level tidak lagi menjadi tembok. Ia hanya menjadi ambang. Yang menentukan adalah apa yang sudah
+kau lakukan — dan dunia sudah mencatatnya, jauh sebelum kau tahu itu penting.*
 
 ---
 

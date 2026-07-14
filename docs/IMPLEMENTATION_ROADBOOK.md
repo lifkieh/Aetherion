@@ -12,8 +12,57 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 
 ---
 
-## v0.5 — STORY & SOUL
-**Gerbang:** ✅ B18 Nirnama Bible (#114) · ❌ **B17 Companion Bible 10/50 — masih menahan**
+## v0.5 — **"STORY & SOUL: FONDASI"** (#202)
+**Gerbang:** ✅ B18 Nirnama Bible (#114) · ⚠ **B17 Companion Bible 15/50 — masih menahan**
+
+> ### ⚖ BENTUK v0.5 DIPUTUS (#202): **FONDASI, BUKAN ACT 1 UTUH**
+> **Jujur pada dependensi, bukan berpura-pura.** Act 1 **tidak bisa** selesai di v0.5 — dua
+> tulang punggungnya belum lahir:
+>
+> | Yang dituntut §IX | Butuh | Ada? |
+> |---|---|---|
+> | **Klimaks: bulan retak** | **Celestial Crisis (B5)** | ❌ **v0.8** |
+> | **"Satu NPC yang kau kenal MELUPAKANMU"** | **memori NPC (World Remembers)** | ❌ **v0.6** |
+>
+> **Maka v0.5 mengirim FASE 1–2 saja** — gejala, bukan klimaks. **Dan itu bukan kompromi: itu
+> BENTUK YANG BENAR.** Act 1 dirilis **bertahap v0.5 → v0.6 → v0.8**, *"seperti dunia yang
+> perlahan memutih."* **Pemain tidak akan merasa dipotong; ia akan merasa sedang ditulari.**
+
+### 🥇 PRIORITAS #1 v0.5 — **LAHIRKAN ASHBROOK** (status beku DIBUKA)
+
+**Alasannya keras:** **Merrit Fane (#011)** — patokan companion yang Direktur tulis sendiri,
+**companion PEMBUKA TESIS GAME** — tinggal di Ashbrook. Begitu pula **Arlen Vale (#001)**.
+**Selama Ashbrook tidak ada, tokoh pertama yang memperkenalkan tesis game TIDAK BISA DITEMUI.**
+
+| Yang dibangun | Catatan |
+|---|---|
+| **Ashbrook** = desa kecil (~40 jiwa) dekat Greenvale, mulut **Greenhollow Valley** (Eldoria) | wilayah **main**, bukan kulit; masuk `regions.json` |
+| **Rumah pos + rumah singgah Merrit** (lampu yang menyala di jendela **siang hari**) | jangkar tema |
+| **5 NPC berkepribadian** (Hukum NPC Aneh #78) | 1 Aneh · 1 Misterius · 1 Lucu · 1 Tragis · 1 Tak-masuk-akal |
+| Band level | **Lv 1–12** (bersanding Greenvale; desa **awal**, bukan lanjutan) |
+
+### Act 1 — **FASE 1 & 2 SAJA** (dependensi eksplisit)
+
+| Fase | Isi | Prasyarat | Fase rilis |
+|---|---|---|---|
+| **FASE 1 — GEJALA** *(jam 1–30)* | **wilayah MEMUTIH** (mesin Roh Hutan **dibalik** — ✅ sudah ada) · **rumor** tempat yang memucat (✅ sudah ada, **boleh salah**) · **NPC tergagap** saat menyebut nama · **YANG TERHAPUS (The Erased)** = musuh baru (siluet pucat tanpa wajah) · **Nirnama Cult** memuja *"Keheningan yang Baik"* | Roh Hutan ✅ · rumor ✅ · StatusFx ✅ · **monster baru** (data) | **✅ v0.5** |
+| **FASE 2 — PENYINTAS BERSUARA** *(jam 30–60)* | **Old Elder** memberi kesaksian · **Silent One** MENOLAK bicara · **Underground Elite** MENJUAL info · **satu pertemuan tanpa nama**: pengelana tua lembut yang bertanya tentang apa yang kau bangun — **tak diungkap siapa** | Cutscene ✅ · dialog ✅ · **3 tokoh baru** (gelombang 3) | **✅ v0.5** |
+| **FASE 3a — HOROR PERSONAL** | **satu NPC yang kau kenal MELUPAKANMU** | 🔴 **memori NPC (World Remembers)** | **v0.6** |
+| **FASE 3b — KLIMAKS** | **bulan retak** → Nirnama berdiri terungkap; **pengelana tua itu adalah dia** | 🔴 **Celestial Crisis (B5)** | **v0.8** |
+
+⚠ **Reveal nama asli = BUKAN Act 1.** Itu harta Act 2. *(Rahasia produksi, #144.)*
+
+### Benih yang ditanam v0.5 (dipanen kelak)
+
+| Benih | Aturan |
+|---|---|
+| **OPENING KANON final** — **Pegasus = First Mystery** (*"Carilah aku."*) + **anak serigala terluka** = monster pertama (boleh dibantu / diabaikan / **dibunuh** — semuanya sah) | **Pegasus TIDAK menandai pemain sebagai terpilih** (NO DESTINY). **Arti "Carilah aku" HARAM DIJAWAB** (MISTERI_ABADI) |
+| **THE NAMELESS DOOR** — **TERPASANG di dunia, TIDAK terpecahkan** | Pintunya ada. **Apa yang di baliknya tetap milik kegelapan.** *Ia berdiri di sana selama bertahun-tahun sampai seseorang memutuskan ia penting.* |
+| **Benih Chronicle cerita** — entri fragmen/rusak; % penyelesaian **disembunyikan** | Chronicle = **tokoh utama kedua** (#168) |
+
+---
+
+**Sisa antrean v0.5 (tetap):**
 
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
@@ -28,7 +77,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **GUARD ARTEFAK (#115)** — kode + test yang MENOLAK `enchant_level`/grade pada artefak | K2 (#115) | gear_meta ✅ | 0,3 sesi | Utang murah: kunci **sebelum** artefak pertama lahir |
 | **PROGRESSION NON-LEVEL YANG TERLIHAT (#152b)** — reputasi tampil · milestone profesi dirayakan · hitungan Chronicle di HUD-lite | World Bible ("level bukan sumbu kekuatan") | reputasi slot ✅ | 1 sesi | Requirement Designer (#152): kalau level bukan sumbunya, sumbunya harus **punya angka yang terlihat naik** |
 | **Companion v1**: 3–5 tokoh Tier-S hidup di dunia; **rekrutmen BUKAN menu** (diyakinkan lewat perbuatan); Life Quest; **Argument System** (boleh tak setuju, boleh pergi) | Companion (41), Recruitment (35) | **B17 50/50** | 1,5–2 sesi | Siapa **First Companion** (wajib **bukan** yang terkuat) |
-| **Act 1 Nirnama**: gejala penghapusan — wilayah memutih (mesin Forest Spirit dibalik), NPC tergagap, **The Erased** (musuh baru), satu pertemuan tanpa nama | NIRNAMA_BIBLE §VI, §IX | Cutscene ✅, StatusFx ✅ | 1,5 sesi | Sumbu konflik final (**Q18**) |
+| **Act 1 Nirnama — FASE 1–2 SAJA (#202)**: gejala penghapusan — wilayah memutih (mesin Forest Spirit dibalik), NPC tergagap, **The Erased** (musuh baru), satu pertemuan tanpa nama | NIRNAMA_BIBLE §VI, §IX | Cutscene ✅, StatusFx ✅ | 1,5 sesi | Sumbu konflik final (**Q18**) |
 | **Chronicle: entri fragmen/rusak** + sembunyikan % penyelesaian | Mystery (51) b.1508/1664 | Chronicle ✅ | 0,3 sesi | **C7** |
 | **Hidden Dungeon** pertama (dungeon utuh yang tersembunyi) + asal-usul 5 dungeon masuk ke dalam game (jurnal, artefak bercerita) | Dungeon (40) + `DUNGEON_ORIGINS.md` | — | 1 sesi | — |
 | **Dual Class** (spec → implementasi) | Class & Skill Tree (45) + #117 | — | 1 sesi | Sudah diputus (#117) |
@@ -43,6 +92,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
+| 🔴 **ACT 1 FASE 3a — HOROR PERSONAL** (#202): **satu NPC yang pemain kenal MELUPAKANNYA** | NIRNAMA_BIBLE §IX | 🔴 **memori NPC (World Remembers v1)** — dibangun di fase ini juga | 0,5 sesi | **Dependensi keras** — mustahil sebelum memori NPC ada |
 | 🔴 **MENTOR SYSTEM** (#182) — siklus **Companion → Veteran → Mentor → Retired → Death → Legacy**; di fase Mentor: **berhenti garis depan**, melatih generasi baru, **pengaruh & pengetahuan NAIK** (L14). **Memensiunkan karena stat turun = DILARANG** (L18/T6) | MEJA-3 + `NPC_DEPTH_LAWS.md` | personality ✅ · TIME_LEGACY_SPEC (#165) | 1,5 sesi | **Kanon** — jawaban resmi atas T6 |
 | 🔴 **DELAPAN HUKUM KEDALAMAN NPC** (#170) — Potential=??? · Hidden Talent · **Opportunity (pemain = sumber kesempatan terbesar)** · Luck · Mental Health · Growth Rate · Training Philosophy · **Ordinary People** | `docs/NPC_DEPTH_LAWS.md` + L14–L18 | personality engine ✅ (5 lapis) | 2 sesi | **KANON** — mengikat SEMUA sistem NPC v0.6 |
 | **Living HQ / Domain 5→7 tahap** (tambah Kingdom Capital & Great Civilization) | World Bible b.544, B1 (#46) | — | 2 sesi | **C15** (setuju 7 tahap?) |
@@ -78,6 +128,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
+| 🔴 **ACT 1 FASE 3b — KLIMAKS: BULAN RETAK** (#202): Sang Nirnama berdiri terungkap — **dan pengelana tua yang kau temui sejak Act 1 adalah dia** | NIRNAMA_BIBLE §IX | 🔴 **Celestial Crisis (B5)** | 1 sesi | **Klimaks Act 1 dipindah ke sini** — jujur pada dependensi, bukan berpura-pura |
 | **Celestial Crisis** (bulan retak / supernova) — B5 | Nirnama Bible, GDD v0.3 | Act 1 | 2 sesi | — |
 | **World Dungeon** (tipe IV: *The Hollow Sky* — sudah terlihat dari Zephyr Spire) | Dungeon (40), DUNGEON_ORIGINS | Raid | 2 sesi | — |
 | **Great Monsters** (Leviathan/Titan/Phoenix/World Beast/Ancient Predator/Void Colossus) — **peristiwa dunia, bukan boss** | Great Monster (53) | Ekologi | 2–3 sesi | — |

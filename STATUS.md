@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Faction tercerna + C1/C2 diputus — menunggu rencana v0.5 Direktur**
+**Last update:** 2026-07-14 — **Faction tercerna · C1=a C2=c diputus · v0.5 = Story&Soul Fondasi direncanakan — siap eksekusi v0.5 atas perintah Direktur**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -32,6 +32,18 @@
 > Nama rahasia **bisa dirakit dari repo ter-commit** (marga terang-terangan di MISTERI_ABADI M6
 > + ledger #114) — **test hijau selama berminggu-minggu** karena hanya menyisir `res://`.
 > **Diredaksi + guard diperluas ke `docs/` & dokumen hukum. 884 test lulus, 0 gagal.**
+>
+> ### 🗺 BENTUK v0.5 = **"STORY & SOUL: FONDASI"** (#202) — siap dieksekusi
+> **Jujur pada dependensi, bukan berpura-pura.** Act 1 **tidak bisa** selesai di v0.5.
+> **🥇 PRIORITAS #1: LAHIRKAN ASHBROOK** (beku → main) — **tanpa itu, Merrit Fane, companion
+> pembuka tesis game, TIDAK BISA DITEMUI.**
+> **Act 1 = FASE 1–2 SAJA** (gejala + penyintas bersuara). **Fase 3a horor-personal → v0.6**
+> (butuh memori NPC) · **Fase 3b klimaks bulan-retak → v0.8** (butuh Celestial Crisis).
+> **Benih:** opening Pegasus final · **Nameless Door TERPASANG, tak terpecahkan** · benih Chronicle.
+> *Act 1 dirilis bertahap — "seperti dunia yang perlahan memutih."*
+> **C2 = (c) HIBRIDA (#201):** level rendah = **pintu**, perbuatan Chronicle = **penentu**.
+> ⚠ **Level diturunkan BERSAMAAN gerbang perbuatan — bukan sebelumnya** (kalau tidak, Advanced
+> Class justru jadi lebih mudah).
 >
 > ### ⚔ FACTION BIBLE TERCERNA + C1/C2 DIPUTUS (#194–#199)
 > **7 GREAT POWERS kanon** (`docs/FACTION_BIBLE.md`): Chronicle Order · Wayfarer League · Monster
