@@ -27,7 +27,7 @@ penting daripada dunia — termasuk dia, dan termasuk PEMAIN* (NO DESTINY tetap 
 Pertanyaannya: **"apakah dunia ini layak diteruskan?"** — dan **seluruh save file pemain adalah
 jawabannya**. Konflik sentral bukan pemain-vs-Nirnama, melainkan **INGIN-LUPA vs MENOLAK-LUPA**;
 **Chronicle adalah tokoh utama kedua**. Ending: **tak ada yang menang, tak ada yang kalah** —
-dunia memilih jawaban yang berbeda. *(Kitab: `docs/NIRNAMA_BIBLE_PUBLIC.md` v2.0.)*
+dunia memilih jawaban yang berbeda. *(Kitab: `docs/NIRNAMA_BIBLE_PUBLIC.md` **v2.1**.)*
 
 **Uji tulis:** setiap fitur boleh ditanya *"memperkuat tesis ini, atau menumpulkannya?"*
 
@@ -126,8 +126,10 @@ CLASS** (Ultimate Class), bukan milik pohon — semua orang boleh membuka semua 
 ada?", dunia harus punya jawabannya (`docs/DUNGEON_ORIGINS.md`). Anti-pola
 "masuk → bunuh → loot → keluar" dilarang jadi *alasan* sebuah dungeon ada.
 
-**7. ⏳ SKALA WAKTU (#123) — PENDING OWNER.** Penuaan/generasi/suksesi vs jam WIB asli
-belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
+**7. ✅ SKALA WAKTU — SUDAH DIPUTUS (#154/#165; #123 DITUTUP).** **Dua jam + lompatan:** jam WIB
+memerintah HARI; **jam kronik** (`chronicle_year`, **56 hari WIB = 1 tahun**) memerintah HIDUP —
+penuaan, generasi, suksesi. **Pemain menua HANYA lewat lompatan** (peristiwa/pensiun/time-skip);
+pemain 1.000 jam **tidak dihukum usia**. Spec: `docs/TIME_LEGACY_SPEC.md`.
 
 ## RAHASIA PRODUKSI — **hanya hidup di `docs_private/`** (#144)
 
@@ -155,8 +157,13 @@ belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
 
 > ## **"The player influences lives. The player does not own them."**
 
-**Model kanon:** `Outcome = Potential × Effort × Opportunity × Time × Luck` *(spec v0.6 —
-`docs/NPC_DEPTH_LAWS.md`)*. **POTENTIAL = ceiling bawaan**, bukan kemampuan sekarang, bukan hasil.
+**Model kanon (#184):** `Outcome = Potential × Effort × **(1 + Opportunity)** × Time × Luck`
+*(spec v0.6 — `docs/NPC_DEPTH_LAWS.md`)*. **POTENTIAL = ceiling bawaan**, bukan kemampuan sekarang,
+bukan hasil. **`(1 + Opportunity)`, bukan `× Opportunity`:** kesempatan lahir = 0, dan itu harus
+berarti **"hidup kecil"**, bukan **"tidak ada"** — kalau tidak, ~90% dunia ber-Outcome **nol** dan
+**Hukum Ordinary People runtuh di dalam mesin yang seharusnya membuktikannya**. **Dunia selalu
+memberi sedikit pintu** (desa · pekerjaan · keluarga) bahkan tanpa pemain; **pemain memberi jauh
+lebih banyak** — itulah sebabnya ia sumber kesempatan **terbesar**, bukan **satu-satunya**.
 **HUKUM PENGUNCI: "Legendary bukan SIFAT. Legendary adalah HASIL."** — NPC ber-potensi raksasa
 bisa berakhir sebagai petani (tanpa kesempatan, mati muda, depresi, perang); NPC biasa bisa
 menjadi Founder (kerja keras + mentor + kesempatan + nasib).
@@ -170,6 +177,19 @@ menjadi Founder (kerja keras + mentor + kesempatan + nasib).
 - **Effort & Opportunity WAJIB lahir dari SIMULASI DUNIA**, bukan angka acak dari langit.
 
 *Kalau pemain bisa memaksa siapa pun bekerja keras, NPC adalah alat — dan Belonging mati saat itu juga.*
+
+## HUKUM PENULISAN NIRNAMA (#187) — kerapian sebab-akibat DILARANG
+
+**Kejatuhan Sang Nirnama = kelelahan, kehilangan, kesepian, dan waktu.** Tidak ada trauma tunggal
+yang menjelaskannya. Penyesalan sang guru (§III) adalah **GEMA, bukan SEBAB**.
+
+**Kenapa:** villain dengan satu sebab yang rapi bisa **dibereskan** — pemain akan mencari lukanya,
+menyembuhkannya, lalu pulang. Sang Nirnama **tidak bisa dibereskan**, karena yang menghancurkannya
+adalah **sesuatu yang akan terjadi pada siapa pun yang hidup cukup lama**. *Ia menakutkan bukan
+karena ia berbeda dari kita — karena ia tidak.*
+
+Boleh menambah **gema · isyarat · kesaksian yang bertentangan**.
+**Dilarang** menambah **penjelasan yang menutup**.
 
 ## HUKUM PERTUMBUHAN NPC (L14–L18, #137)
 

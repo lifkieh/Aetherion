@@ -104,11 +104,29 @@ darinya"* — **sementara ia sendiri gagal menerapkannya pada satu kehidupan yan
    memperjuangkan ingatan — **untuk seorang guru yang sendirinya melupakan seseorang.**
 2. **Ia membuat ajaran itu jujur.** Kalimat yang kelak menjadi jawaban dunia diucapkan oleh
    seseorang yang **belum berhasil menghidupinya**. *Kebenaran tidak menuntut pengucapnya sempurna.*
-3. **Ia benih quest** (Companion pass): seseorang di dunia — atau **keturunannya** — **masih
-   menunggu guru itu kembali.** Dan guru itu sudah lama mati.
+3. **BENIH QUEST — DISAHKAN (#187, konten Act 1+):** seseorang di dunia — atau **keturunannya** —
+   **masih menunggu guru itu kembali.** **Dan guru itu sudah lama mati.**
+   *(Quest ini tidak "menyelesaikan" apa pun. Ia hanya membuat pemain mengerti apa artinya
+   ditinggalkan — sebelum ia bertemu orang yang meninggalkan seluruh dunia.)*
 
-**⛔ Batas:** penyesalan itu **tidak boleh dijadikan alasan** kejatuhan Nirnama. Ia bukan sebab —
-ia **gema**. Kejatuhan Nirnama tetap: *kelelahan, kehilangan, kesepian, dan waktu* (§IV).
+### ⚖ HUKUM PENULISAN NIRNAMA (#187) — **KERAPIAN SEBAB-AKIBAT DILARANG**
+
+> **Penyesalan sang guru adalah GEMA, BUKAN SEBAB.**
+
+Kejatuhan Sang Nirnama tetap: **kelelahan, kehilangan, kesepian, dan waktu** (§IV). **Tidak ada
+trauma tunggal yang menjelaskannya.** Tidak ada *"karena gurunya begini, maka ia menjadi begitu."*
+
+**Kenapa ini hukum, bukan selera:** **kerapian sebab-akibat MEMBUNUH KENGERIAN.** Villain yang
+punya satu sebab yang rapi bisa **dibereskan** — pemain akan mencari luka itu, menyembuhkannya,
+dan pulang. Sang Nirnama **tidak bisa dibereskan**, karena yang menghancurkannya adalah **sesuatu
+yang akan terjadi pada siapa pun yang hidup cukup lama**. *Itulah sebabnya ia menakutkan: bukan
+karena ia berbeda dari kita — karena ia tidak.*
+
+**Berlaku untuk SETIAP penulis Act 1–4:** boleh menambah **gema**, **isyarat**, dan **kesaksian
+yang bertentangan**. **Dilarang** menambah **penjelasan yang menutup**.
+
+**⛔ Batas turunan:** penyesalan itu **tidak boleh dijadikan alasan** kejatuhannya, tidak boleh
+menjadi "kunci" untuk menyembuhkannya, dan tidak boleh membuat pemain merasa **cukup memahaminya**.
 
 Maka perang pertama `[NAMA-ASLI]` bukanlah melawan pelupaan atas dirinya — melainkan **untuk ingatan orang lain**. Ia mendirikan kota agar nama-nama tercatat. Ia mengukir sejarah di dinding. Ia adalah *pejuang ingatan pertama di dunia* — leluhur filosofis para **Memory Keepers**... yang kini menjadi lawan filosofis terbesarnya. **Sang Nirnama tidak dikalahkan oleh musuhnya. Ia dikalahkan oleh kegagalan perjuangannya sendiri — lalu berpindah sisi.** (Inilah mengapa ia *mengasihani* pemain: ia melihat dirinya yang muda.)
 

@@ -111,13 +111,17 @@ static func label(prof: Dictionary) -> String:
 ## OUTCOME (proyeksi hasil hidup) — **BUKAN "potential"** (Decision Log #174).
 ## Talent+Effort > Talent (L17). Tanpa kesempatan, bakat sebesar apa pun tak tumbuh (L14).
 ##
-## ⚠ **RUMUS DI BAWAH = INTERIM, BUKAN MODEL KANON** (#179). Model kanon kini:
-## `Outcome = Potential × Effort × Opportunity × Time × Luck` — **perkalian**, dengan faktor
-## **Time** yang belum ada di kode. Implementasinya = **v0.6**, dan ia menunggu keputusan atas
-## satu masalah nyata: dalam rumus perkalian, `opportunity` yang **lahir = 0** membuat Outcome
-## **nol mutlak** bagi semua orang yang tak pernah disentuh pemain — padahal Hukum 8 berkata
-## ~90% hidup biasa, **dan biasa itu bukan nol**. (Usul: `× (1 + opportunity)`, atau lantai
-## kesempatan dari dunia.) Lihat `docs/NPC_DEPTH_LAWS.md` §KONFLIK K1.
+## ⚠ **RUMUS DI BAWAH = INTERIM, BUKAN MODEL KANON** (#179/#186).
+## **MODEL KANON (dibangun v0.6):**
+##     Outcome = Potential × Effort × (1 + Opportunity) × Time × Luck
+## `(1 + Opportunity)` — **bukan** `× Opportunity` (#184): kesempatan **lahir = 0** (Hukum 3 utuh),
+## dan itu harus berarti **"hidup kecil"**, BUKAN **"tidak ada"**. Perkalian murni akan membuat
+## **~90% dunia ber-Outcome NOL** — dan itu membunuh Hukum 8 (Ordinary People) **di dalam mesin
+## yang seharusnya membuktikannya**. Faktor **Time** belum ada di kode.
+##
+## ⚠ **SKALA:** `talent` di sini masih **1–100** = **INTERIM** (#186). Skala kanon: mayoritas
+## 50–150 · berbakat 150–400 · elite 400–700 · jenius 700–1000 · fenomena 1000+.
+## **DILARANG mengklaim skala baru "sudah terkode" sampai migrasi v0.6.**
 ##
 ## ⚠ Dulu bernama `potential()` — dan itu **berbahaya**: HUKUM 1 (`POTENTIAL = ???`) justru
 ## menyatakan potensi **tersembunyi**, sehingga penulis berikutnya bisa menampilkan angka ini

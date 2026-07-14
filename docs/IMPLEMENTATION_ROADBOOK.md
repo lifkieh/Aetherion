@@ -146,9 +146,11 @@ Berlaku sejak sistem companion lahir (v0.5+):
 | **Act 3** | + **30–50% currency** + **1 item acak jatuh** *(bisa diambil kembali di titik mati)* | Kehilangan menjadi **berwujud**. |
 | **Act 4** | + **50% currency** + item jatuh + **DURABILITY SCAR** (**−10% max durability** pada item yang jatuh) | **Luka permanen kecil.** Dunia mulai menyimpan bekas. |
 
-> ### 🔗 KONSEKUENSI: **DURABILITY (#29) NAIK JADI PRASYARAT ACT 4**
-> Janji yang **ditunda-sadar sejak #29/#156** kini **punya tanggal**: tanpa durability, **Durability
-> Scar tidak bisa ada**. **Durability = prasyarat keras Act 4** — bukan lagi "nanti kalau sempat".
+> ### 🔗 **DURABILITY (#29) = PRASYARAT KERAS ACT 4 — RESMI (#188)**
+> **Bukan lagi ditunda-sadar.** Tanpa durability, **Durability Scar mustahil**.
+> **Jadwal: durability & repair dibangun SEBELUM Act 4 dimulai** — ia adalah **gerbang**, bukan
+> pelengkap. Janji yang menggantung sejak #29 (dan nyaris mati diam-diam, REPORT-06 §A) **akhirnya
+> punya tanggal yang mengikat.**
 
 *Semua = spec; dibangun **bertahap seiring Act lahir**. **Act 1 = v0.5.***
 

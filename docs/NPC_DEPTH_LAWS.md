@@ -11,7 +11,8 @@ yang membuatnya salah.
 
 ## MODEL POTENSI — kanon (#179). **Semua = SPEC v0.6.**
 
-> # `Outcome = Potential × Effort × Opportunity × Time × Luck`
+> # `Outcome = Potential × Effort × (1 + Opportunity) × Time × Luck`
+> *(rumus dikoreksi #184 — lihat "Lantai Kesempatan Dunia" di bawah)*
 
 **POTENTIAL = CEILING BAWAAN** — batas teoritis seseorang.
 **Ia TIDAK PERNAH sama dengan kemampuan sekarang. Ia TIDAK PERNAH sama dengan Outcome.**
@@ -20,10 +21,13 @@ yang membuatnya salah.
 
 | Lapis | Rentang | Catatan |
 |---|---|---|
-| **Mayoritas** | **50–150** | *Orang biasa (~80–120) tetap bisa sukses, bahagia, dan bermakna.* Ceiling rendah **bukan** vonis. |
-| **Berbakat** | **150–300** | |
-| **Jenius** | **300–600** | |
-| **Fenomena langka** | **600+** | |
+| **Mayoritas** | **50–150** | *Orang biasa (~80–120) tetap bisa sukses, bahagia, dan bermakna.* **Ceiling rendah BUKAN vonis.** |
+| **Berbakat** | **150–400** | |
+| **Elite** | **400–700** | kalibrasi: **atlet** |
+| **Jenius** | **700–1000** | kalibrasi: **~900** |
+| **Fenomena langka** | **1000+** | *(contoh Direktur: **Potensi 1200 yang berakhir sebagai petani**)* |
+
+*(Skala diperlebar #185 — skala lama 300–600/600+ membuat **atlet terbaca sebagai jenius**.)*
 
 ### ⚖ HUKUM PENGUNCI: **"Legendary bukan SIFAT. Legendary adalah HASIL."**
 
@@ -65,34 +69,28 @@ pada detik itu juga.*
 
 ---
 
-## ⚠ TIGA KONFLIK YANG SAYA ANGKAT (butuh keputusan — **tidak saya tebak**)
+## ⚖ LANTAI KESEMPATAN DUNIA (#184) — dan mengapa rumusnya dikoreksi
 
-**K1 — Rumus baru MULTIPLIKATIF; kode saat ini ADITIF.**
-Kode (`outcome_projection()`, #172) memakai `(t×0,30 + e×0,35 + o×0,25 + l×0,10) × mental`.
-Model baru: **perkalian**, plus faktor **Time** yang **belum ada sama sekali** di kode.
-**Masalah matematis yang serius:** `Opportunity` **lahir = 0** (L14 — dan itu benar). Dalam rumus
-**perkalian**, itu berarti **Outcome = 0 untuk SEMUA orang saat lahir**, selamanya, sampai sebuah
-pintu terbuka. Secara puitis itu **indah dan benar** (*"tanpa pintu, tak ada yang terjadi"*) —
-secara mekanis ia **mematikan semua NPC yang tak pernah disentuh pemain** menjadi nol mutlak,
-padahal Hukum 8 justru berkata **~90% hidup biasa, dan itu bukan nol**.
-**Usul saya:** `Outcome = Potential × (1 + Effort) × (1 + Opportunity) × Time × Luck` — atau
-Opportunity berbasis **lantai dunia** (dunia **selalu** memberi sedikit pintu; pemain memberi
-**jauh lebih banyak**). **Kesempatan nol harus berarti "hidup kecil", bukan "tidak ada".**
+**Cacat yang ditutup:** dalam rumus perkalian murni, `Opportunity` yang **lahir = 0** membuat
+**Outcome = NOL MUTLAK** bagi setiap orang yang tak pernah disentuh pemain. Itu **membunuh Hukum 8
+secara matematis**: ~90% dunia akan bernilai **nol** di dalam mesin yang seharusnya membuktikan
+bahwa mereka **menopang dunia**.
 
-**K2 — Angka skala Anda bertabrakan dengan angka kalibrasi Anda sendiri.**
-Tabel: jenius = **300–600**, fenomena langka = **600+**. Referensi kalibrasi: atlet = **400–700**,
-jenius = **~900+**. Maka seorang **atlet** (400–700) akan **terbaca sebagai "jenius/fenomena
-langka"** di tabel, dan **jenius (900)** jatuh di lapis yang sama dengan atlet elit.
-**Dua kemungkinan:** (a) tabel benar, kalibrasi ilustratif → **naikkan** rentang jenius/fenomena;
-(b) kalibrasi benar → skalanya **lebih lebar** (mayoritas 50–150, berbakat 150–400, elite 400–700,
-jenius 700–1000, fenomena 1000+). **Rekomendasi saya: (b)** — ia konsisten dengan contoh Anda
-sendiri (*"Potential 1200 bisa jadi petani"*, yang mengandaikan skala menembus 1000.)
+**Koreksi (kanon):**
 
-**K3 — `talent` di kode masih 1–100.** Skala baru menuntut 50–1200; `talent_tier()` (ambang
-90/75/55) adalah **kalibrasi sementara** untuk skala lama. **Migrasi = bagian v0.6**, bukan
-sekarang. **Sampai itu terjadi, jangan ada dokumen yang mengklaim skala baru "sudah terkode".**
+> ### `Outcome = Potential × Effort × (1 + Opportunity) × Time × Luck`
 
----
+- **Opportunity lahir = 0 TETAP** (Hukum 3 **utuh** — kesempatan **hanya** datang dari peristiwa).
+- Tetapi `(1 + 0) = 1` → **Outcome tetap mengalir** dari `Potential × Effort × Time`.
+- **Opportunity 0 kini berarti "HIDUP KECIL" — bukan "TIDAK ADA".**
+
+**LANTAI KESEMPATAN DUNIA:** dunia **selalu** memberi sedikit pintu — **desa · pekerjaan ·
+keluarga** — bahkan **tanpa pemain**. **Pemain memberi jauh lebih banyak.** Itulah sebabnya pemain
+tetap **sumber kesempatan terbesar** (L14) **tanpa** menjadi **satu-satunya** sumber.
+
+> **Alasan kanon (#184):** *Hukum 8 harus benar **secara matematis di dalam mesin**, bukan hanya di
+> dalam dokumen. Tukang roti yang tak pernah kau sentuh adalah **hidup kecil yang bermakna** —
+> bukan Outcome nol.* Kalau mesinnya bilang nol, maka **Nirnama benar** — dan seluruh kitab runtuh.
 
 ## STATUS PELAKSANAAN — apa yang SUDAH terkode vs apa yang masih SPEC
 

@@ -57,6 +57,17 @@ ledakan**.* **Diperbarui di:** `IMPLEMENTATION_ROADBOOK.md` · `Aetherion_bible/
 | **Hukum 1 & 2** | Kini punya **satu pengecualian kanon** — dan itu **memperkuat**: pemain biasa tetap melihat `???`; pemain yang **berburu** bisa mengintip, dan **pengetahuan itu sendiri menjadi kekuatan** (tahu anak petani ini Legendary = **alasan memberinya kesempatan**, L14). |
 | **Test penjaga** | `_test_potential_not_exposed()` — menyisir **seluruh skrip UI** dan **gagal** bila ada yang menyentuh `outcome_projection`/`talent_tier`/`talent`/`TIERS`. Terverifikasi juga: **Legendary <5%**, **Average >60%** dari 300 kelahiran. |
 
+## 2026-07-14 — K1–K3 DIRATIFIKASI: model potensi jadi KONSISTEN (#184–#188)
+
+| Perubahan | Isi |
+|---|---|
+| **Rumus (K1, #184)** | `Outcome = Potential × Effort × **(1 + Opportunity)** × Time × Luck`. **Opportunity 0 = "hidup kecil", bukan "tidak ada".** + **LANTAI KESEMPATAN DUNIA** (desa · pekerjaan · keluarga — bahkan tanpa pemain). **Menutup cacat yang membunuh Hukum 8 di dalam mesin.** |
+| **Skala (K2, #185)** | mayoritas 50–150 · berbakat 150–400 · **elite 400–700** · **jenius 700–1000** · **fenomena 1000+**. |
+| **Kode (K3, #186)** | `talent` 1–100 = **INTERIM**; migrasi v0.6. **Dilarang mengklaim skala baru "sudah terkode".** |
+| **Hukum penulisan (#187)** | **Kerapian sebab-akibat DILARANG.** Penyesalan guru = **gema, bukan sebab**. *Villain dengan sebab yang rapi bisa dibereskan; Nirnama tidak bisa.* Benih quest disahkan. |
+| **Durability (#188)** | **Prasyarat KERAS Act 4.** Dibangun **sebelum** Act 4 — gerbang, bukan pelengkap. |
+| **Koreksi (#188b)** | CLAUDE.md: butir "SKALA WAKTU = PENDING" **usang** (sudah diputus #154/#165) → dikoreksi. |
+
 ## 2026-07-14 — MODEL POTENSI + TIGA MEJA (#179–#183)
 
 | Perubahan | Isi |

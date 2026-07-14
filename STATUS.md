@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **GERBANG v0.5 FONDASI LENGKAP — tinggal B17 Companion Bible 10/50 + playtest gamepad**
+**Last update:** 2026-07-14 — **GERBANG v0.5 FONDASI LENGKAP & KONSISTEN — tinggal B17 Companion Bible 10/50 + playtest gamepad**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -43,8 +43,14 @@
 >
 > **SISA GERBANG v0.5: B17 Companion Bible 10/50** + **playtest gamepad owner**.
 >
+> **MODEL POTENSI KINI KONSISTEN (#184–#186):** rumus dikoreksi jadi
+> `Outcome = Potential × Effort × (1 + Opportunity) × Time × Luck` — **kesempatan 0 = "hidup kecil",
+> bukan "tidak ada"** (+ **lantai kesempatan dunia**), sehingga **Hukum Ordinary People benar juga
+> secara MATEMATIS**. Skala diperlebar (elite 400–700 · jenius 700–1000 · fenomena 1000+).
+> Kode ditandai **INTERIM** — migrasi v0.6.
+>
 > ### 🔴 MENUNGGU DIREKTUR (jangan dieksekusi)
-> **3 konflik model potensi (#179b)** · REPORT-06 **§C1** (gating pohon #116) · **§C2** (gerbang Lv60 #101) · sisa **§D**.
+> REPORT-06 **§C1** (gating pohon #116) · **§C2** (gerbang Lv60 #101) · sisa **§D**.
 > **REPORT-06 §C1** (gating lokasi pohon skill #116) · **§C2** (keberatan gerbang Lv60 #101) ·
 > **15 butir §D**. Dan: **playtest gamepad oleh owner** — tiga bug fatal lolos 822 test; hanya
 > tangan manusia yang menemukan hal seperti itu.
