@@ -43,6 +43,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
+| 🔴 **DELAPAN HUKUM KEDALAMAN NPC** (#170) — Potential=??? · Hidden Talent · **Opportunity (pemain = sumber kesempatan terbesar)** · Luck · Mental Health · Growth Rate · Training Philosophy · **Ordinary People** | `docs/NPC_DEPTH_LAWS.md` + L14–L18 | personality engine ✅ (5 lapis) | 2 sesi | **KANON** — mengikat SEMUA sistem NPC v0.6 |
 | **Living HQ / Domain 5→7 tahap** (tambah Kingdom Capital & Great Civilization) | World Bible b.544, B1 (#46) | — | 2 sesi | **C15** (setuju 7 tahap?) |
 | **5 Atribut Kerajaan** (Prosperity/Stability/Loyalty/Security/**Ecology**) menggantikan Stability 3-metrik | World Bible b.814 | — | 1 sesi | 🔴 **C3 / Q5** |
 | **ECOLOGY v1**: populasi terbatas per wilayah, over-hunting → predator lapar → menyerang desa (perluasan mesin Forest Spirit) | World Bible b.933 | 5 atribut | 1,5 sesi | 🔴 **C3 / Q5** |

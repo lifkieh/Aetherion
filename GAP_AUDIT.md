@@ -259,3 +259,25 @@ penggantinya mendapat **barisnya sendiri** (tambahan, bukan substitusi).
 boleh **menghapus atau mengganti** butir bernama dari dokumen kanon. Ia boleh **menambah**,
 boleh **menunda** — tetapi penundaan wajib ditulis sebagai **DITUNDA-SADAR + alasan + fase
 tinjau**, bukan sebagai ketiadaan.
+
+
+---
+
+## RISIKO DITERIMA (2026-07-14, #169): potongan nama rahasia di BERKAS MENTAH Direktur
+
+**Fakta.** `docs/Aetherion_bible/Aetherion_pelengkap.txt` — berkas **mentah milik Direktur**
+yang ter-commit apa adanya — memuat **nama depan** rahasia di dalam sebuah daftar nama NPC.
+Nama itu **tidak diberi konteks** di sana (ia hanya satu baris di antara nama-nama lain), dan
+**marganya sudah diredaksi** dari seluruh dokumen lain (#169), sehingga **nama utuh tidak lagi
+dapat dirakit dari repo**.
+
+**Yang TIDAK dilakukan & alasannya:** berkas mentah Direktur **tidak diubah** — menyunting
+sumber mentah **merusak provenance** (kita kehilangan kemampuan membuktikan apa yang benar-benar
+dikirim owner, dan itu pelajaran BD-1/BD-2). Berkas ini **dikecualikan** dari guard rahasia.
+
+**Status: RISIKO DITERIMA, bertanggal.** Bila repo kelak dibuka luas **sebelum reveal Act 2**,
+keputusan ini **wajib ditinjau ulang** bersama #144 — dan peninjauan itu milik Direktur.
+
+**Yang BERUBAH hari ini (bukan risiko, melainkan perbaikan):** guard rahasia dulu **hanya
+menyisir `res://`**. Kini ia menyisir **`docs/` + 5 dokumen hukum** untuk **potongan** nama —
+karena kebocoran nyata ini **lolos dari test yang hijau selama berminggu-minggu**.

@@ -4,6 +4,17 @@
 
 ---
 
+> # TESIS RESMI AETHERION (#168)
+> ### **"Sang Nirnama percaya segala sesuatu akan hilang.**
+> ### **Aetherion percaya sesuatu yang hilang tetap bermakna — karena ia pernah ada."**
+>
+> Ini **bukan** tagline pemasaran. Ini **uji tulis**: setiap fitur, quest, dan sistem boleh
+> ditanya *"apakah ia memperkuat tesis ini, atau menumpulkannya?"* — dan yang menumpulkannya
+> **diperbaiki, bukan dikirim**. *(Nirnama = **pertanyaan**, bukan protagonis: tak ada individu
+> lebih penting daripada dunia — termasuk dia, termasuk pemain.)*
+
+---
+
 # 1. IDENTITAS
 
 - **Genre:** Fantasy Legacy Adventure RPG 2D (offline-first; online = fase pasca-v1.0).

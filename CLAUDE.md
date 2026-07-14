@@ -17,6 +17,20 @@ MASTER_PLAN. Konsepsi mentah Direktur: `docs/Aetherion_blueprint_reasoning_and_d
 
 ---
 
+## TESIS RESMI AETHERION (#168)
+
+> ### **"Sang Nirnama percaya segala sesuatu akan hilang.**
+> ### **Aetherion percaya sesuatu yang hilang tetap bermakna — karena ia pernah ada."**
+
+**Sang Nirnama adalah sebuah PERTANYAAN, bukan protagonis.** *Tidak ada individu yang lebih
+penting daripada dunia — termasuk dia, dan termasuk PEMAIN* (NO DESTINY tetap terkunci).
+Pertanyaannya: **"apakah dunia ini layak diteruskan?"** — dan **seluruh save file pemain adalah
+jawabannya**. Konflik sentral bukan pemain-vs-Nirnama, melainkan **INGIN-LUPA vs MENOLAK-LUPA**;
+**Chronicle adalah tokoh utama kedua**. Ending: **tak ada yang menang, tak ada yang kalah** —
+dunia memilih jawaban yang berbeda. *(Kitab: `docs/NIRNAMA_BIBLE_PUBLIC.md` v2.0.)*
+
+**Uji tulis:** setiap fitur boleh ditanya *"memperkuat tesis ini, atau menumpulkannya?"*
+
 ## HUKUM DIREKTUR #1 — Gerbang Pilar (E1, Decision Log #75)
 
 > **Setiap fitur baru wajib memperkuat minimal satu dari empat pilar. Bila tidak

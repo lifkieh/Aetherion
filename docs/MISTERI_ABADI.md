@@ -65,10 +65,11 @@ boleh mengikat siapa dia. **Ia juga TIDAK BOLEH muncul sebelum 100–300 jam ber
 Bila owner kelak memutuskan identitasnya, entri ini dicabut dari daftar (dan
 pencabutan itu dicatat di Decision Log sebagai kehilangan yang disengaja).
 
-### M6. Kebenaran rumor **Voss / Vess** *(dari NIRNAMA_BIBLE §X)*
+### M6. Kebenaran rumor **marga Voss** *(dari NIRNAMA_BIBLE §X)*
 Ada yang berbisik bahwa marga **Voss** (mis. Seraphine Voss, Companion #004) adalah
-pelesetan turun-temurun dari **Vess**. Seraphine menyangkalnya. Dunia tidak tahu.
-**Penulis pun dilarang memutuskan.**
+pelesetan turun-temurun dari **sesuatu yang lebih tua** *(pasangan katanya = **redaksi**,
+rahasia produksi #144 — lihat arsip privat Direktur)*. Seraphine menyangkalnya. Dunia tidak
+tahu. **Penulis pun dilarang memutuskan.**
 
 ### M7. Siapa pembangun **reruntuhan yang lebih tua** *(dari NIRNAMA_BIBLE §X)*
 Ada reruntuhan yang lebih tua daripada kerajaan mana pun yang pernah didirikan Sang

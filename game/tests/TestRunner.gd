@@ -3056,11 +3056,50 @@ func _test_nirnama_secret() -> void:
 	for d in dirs:
 		_scan_secret(d, secret, leaks)
 	check("nama asli Nirnama TIDAK ada di build", leaks.is_empty(), str(leaks.slice(0, 3)))
+	# LUBANG GUARD DITUTUP (#169): test lama HANYA menyisir res:// — sementara MARGA rahasia
+	# duduk terang-terangan di docs/MISTERI_ABADI.md M6 dan di baris ledger #114, dan nama
+	# depannya ada di docs/DIVINE_BIBLE.md. Nama utuh BISA dirakit dari repo yang sudah
+	# ter-commit, dan test tetap hijau. Kini POTONGAN pun disisir di dokumen ter-commit.
+	# Dikecualikan: docs/Aetherion_bible/ (berkas mentah Direktur — risiko diterima, #169)
+	# dan docs_private/ (tidak pernah ter-commit).
+	var repo := ProjectSettings.globalize_path("res://").path_join("..")
+	var doc_leaks: Array = []
+	var surname: String = secret.split(" ")[1]
+	_scan_docs_secret(repo.path_join("docs"), surname, doc_leaks)
+	for f in ["PLAN_LEDGER.md", "CLAUDE.md", "STATUS.md", "TRACKBACK.md", "GAP_AUDIT.md"]:
+		_scan_docs_file(repo.path_join(f), surname, doc_leaks)
+	check("MARGA rahasia tidak ada di docs/ maupun dokumen hukum", doc_leaks.is_empty(),
+		str(doc_leaks.slice(0, 3)))
 	# Thunder Dragon: drake muda, BUKAN salah satu 50 Naga Kuno (Q6 #112)
 	var td := Db.monster("thunder_dragon")
 	check("Thunder Dragon ditandai drake (di luar 50 Ancient)", td.get("dragon_class", "") == "drake")
 	check("flavor Thunder Dragon menegaskan bukan Naga Kuno",
 		td.get("flavor", "").to_lower().contains("bukan salah satu naga kuno"))
+
+## Sisir POTONGAN rahasia (marga) di dokumen ter-commit — bukan hanya di build (#169).
+## Berkas mentah Direktur (`docs/Aetherion_bible/`) dikecualikan: mengubahnya merusak
+## provenance sumber; keberadaannya di sana = RISIKO DITERIMA bertanggal (GAP_AUDIT).
+func _scan_docs_secret(dir_path: String, needle: String, leaks: Array) -> void:
+	var d := DirAccess.open(dir_path)
+	if d == null:
+		return
+	d.list_dir_begin()
+	var f := d.get_next()
+	while f != "":
+		var full := dir_path.path_join(f)
+		if d.current_is_dir():
+			if not f.begins_with(".") and f != "Aetherion_bible":
+				_scan_docs_secret(full, needle, leaks)
+		elif f.ends_with(".md"):
+			_scan_docs_file(full, needle, leaks)
+		f = d.get_next()
+	d.list_dir_end()
+
+func _scan_docs_file(path: String, needle: String, leaks: Array) -> void:
+	if not FileAccess.file_exists(path):
+		return
+	if FileAccess.get_file_as_string(path).to_lower().contains(needle.to_lower()):
+		leaks.append(path.get_file())
 
 func _scan_secret(dir_path: String, secret: String, leaks: Array) -> void:
 	var d := DirAccess.open(dir_path)

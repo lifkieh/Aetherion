@@ -22,6 +22,17 @@
 > pemain 1.000 jam tidak dihukum usia. **Lokalisasi dua jalur** (#166): konten = inline
 > dwibahasa di data (`Loc.c()`), UI = tetap `Loc.t()`. **883 test lulus, 0 gagal.**
 >
+> ### 📖 NIRNAMA BIBLE v2.0 (#168) + 8 HUKUM KEDALAMAN NPC (#170)
+> **TESIS RESMI:** *"Sang Nirnama percaya segala sesuatu akan hilang. Aetherion percaya sesuatu
+> yang hilang tetap bermakna — karena ia pernah ada."* Nirnama = **pertanyaan**, bukan protagonis;
+> **Chronicle = tokoh utama kedua**; ending **tanpa menang/kalah**. 8 Hukum Kedalaman NPC = kanon,
+> spec **v0.6**.
+>
+> ### 🔒 KEBOCORAN RAHASIA DITUTUP (#169)
+> Nama rahasia **bisa dirakit dari repo ter-commit** (marga terang-terangan di MISTERI_ABADI M6
+> + ledger #114) — **test hijau selama berminggu-minggu** karena hanya menyisir `res://`.
+> **Diredaksi + guard diperluas ke `docs/` & dokumen hukum. 884 test lulus, 0 gagal.**
+>
 > ### 🔴 MENUNGGU SIDANG DIREKTUR + DESIGNER (jangan dieksekusi)
 > **REPORT-06 §C1** (gating lokasi pohon skill #116) · **§C2** (keberatan gerbang Lv60 #101) ·
 > **15 butir §D**. Dan: **playtest gamepad oleh owner** — tiga bug fatal lolos 822 test; hanya
@@ -78,7 +89,7 @@
 
 ## Now
 **ALL 8 MILESTONES COMPLETE + §4 continuous development ongoing.** Fase 0 feature-complete.
-**883/883 tests, 0 failed** (per 2026-07-14), 0 headless errors. **30 autoloads. 5 wilayah overworld + dungeon
+**884/884 tests, 0 failed** (per 2026-07-14), 0 headless errors. **30 autoloads. 5 wilayah overworld + dungeon
 side-view, 60 monster, 3 Hidden Scenario.** Versi terakhir selesai: **v0.4.4**.
 *(Angka lama "153/153 tests · 18 autoloads · 31 monsters" adalah status FASE 0 — dikoreksi #158: tidak boleh
 ada baris status yang tak bisa dibuktikan kode/test.)* Terraria-style dungeon combat +
