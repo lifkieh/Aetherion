@@ -57,6 +57,18 @@ ledakan**.* **Diperbarui di:** `IMPLEMENTATION_ROADBOOK.md` · `Aetherion_bible/
 | **Hukum 1 & 2** | Kini punya **satu pengecualian kanon** — dan itu **memperkuat**: pemain biasa tetap melihat `???`; pemain yang **berburu** bisa mengintip, dan **pengetahuan itu sendiri menjadi kekuatan** (tahu anak petani ini Legendary = **alasan memberinya kesempatan**, L14). |
 | **Test penjaga** | `_test_potential_not_exposed()` — menyisir **seluruh skrip UI** dan **gagal** bila ada yang menyentuh `outcome_projection`/`talent_tier`/`talent`/`TIERS`. Terverifikasi juga: **Legendary <5%**, **Average >60%** dari 300 kelahiran. |
 
+## 2026-07-14 — MODEL POTENSI + TIGA MEJA (#179–#183)
+
+| Perubahan | Isi |
+|---|---|
+| **Model potensi (kanon, spec v0.6)** | `Outcome = Potential × Effort × Opportunity × Time × Luck`. **POTENTIAL = ceiling bawaan** (bukan kemampuan, bukan hasil). Skala tersembunyi 50–600+. **"Legendary bukan SIFAT — Legendary adalah HASIL."** |
+| **Hukum Kemauan NPC → CLAUDE.md** | **"The player influences lives. The player does not own them."** Pemain **tidak** mengontrol Effort; yang ia ubah adalah **Opportunity** (*jumlah pintu yang terbuka*). |
+| **MEJA-1 (#180)** | **First Scar = Guru** & **Arc Act 1** → **RESMI FINAL**. **+ PENYESALAN SANG GURU** (Bible §III): ia meninggalkan seseorang — *muridnya berjuang ribuan tahun demi ingatan, untuk seorang guru yang sendirinya melupakan seseorang.* |
+| **MEJA-2 (#181)** | **Harga kematian berevolusi per Act** (Act 1 = **memory fade murni**, tanpa gold/item). **→ DURABILITY (#29) naik jadi PRASYARAT KERAS ACT 4.** |
+| **MEJA-3 (#182)** | **Mentor System**: Companion → Veteran → **Mentor** → Retired → Death → Legacy. **Memensiunkan karena stat turun = DILARANG.** |
+| **Tema pemersatu (#183)** | *"Waktu terus berjalan; yang tersisa adalah apa yang kita tinggalkan."* |
+| **⚠ Tiga konflik diangkat (#179b)** | rumus perkalian × `opportunity` lahir-0 → **Outcome nol mutlak** · skala vs kalibrasi bertabrakan · `talent` kode masih 1–100. **Menunggu Direktur.** |
+
 ## 2026-07-14 — TEMA RESMI (#178)
 
 > **"Tidak semua yang gagal itu lemah. Tidak semua yang berhasil itu hebat."** *(Bab XV, R5)*

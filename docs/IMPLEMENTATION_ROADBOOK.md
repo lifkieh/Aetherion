@@ -43,6 +43,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 
 | Sistem | Bible sumber | Prasyarat | Estimasi | Keputusan owner |
 |---|---|---|---|---|
+| 🔴 **MENTOR SYSTEM** (#182) — siklus **Companion → Veteran → Mentor → Retired → Death → Legacy**; di fase Mentor: **berhenti garis depan**, melatih generasi baru, **pengaruh & pengetahuan NAIK** (L14). **Memensiunkan karena stat turun = DILARANG** (L18/T6) | MEJA-3 + `NPC_DEPTH_LAWS.md` | personality ✅ · TIME_LEGACY_SPEC (#165) | 1,5 sesi | **Kanon** — jawaban resmi atas T6 |
 | 🔴 **DELAPAN HUKUM KEDALAMAN NPC** (#170) — Potential=??? · Hidden Talent · **Opportunity (pemain = sumber kesempatan terbesar)** · Luck · Mental Health · Growth Rate · Training Philosophy · **Ordinary People** | `docs/NPC_DEPTH_LAWS.md` + L14–L18 | personality engine ✅ (5 lapis) | 2 sesi | **KANON** — mengikat SEMUA sistem NPC v0.6 |
 | **Living HQ / Domain 5→7 tahap** (tambah Kingdom Capital & Great Civilization) | World Bible b.544, B1 (#46) | — | 2 sesi | **C15** (setuju 7 tahap?) |
 | **5 Atribut Kerajaan** (Prosperity/Stability/Loyalty/Security/**Ecology**) menggantikan Stability 3-metrik | World Bible b.814 | — | 1 sesi | 🔴 **C3 / Q5** |
@@ -131,6 +132,25 @@ Berlaku sejak sistem companion lahir (v0.5+):
   dunia, bukan luka*). Mati tragis/dibunuh/kecelakaan = jalur **per-kasus, ditulis
   tangan, selalu sulit**.
 - **Harga = INGATAN**, tanpa kecuali. **Kematian kedua = final mutlak.**
+
+---
+
+## HARGA KEMATIAN PEMAIN — BEREVOLUSI PER ACT (MEJA-2, #181 · spec)
+
+> **Hukumannya tumbuh mengikuti PEMAHAMAN PEMAIN ATAS KEHILANGAN — bukan mengikuti level.**
+
+| Act | Harga | Kenapa |
+|---|---|---|
+| **Act 1** *(v0.5)* | **MEMORY FADE murni** — harga **ingatan** / serpihan Chronicle. **Tanpa gold. Tanpa item.** | **Edukatif**: pemain diajari *apa* yang dipertaruhkan dunia ini (#119, K6 — tema Memori). Uang tidak mengajarkan apa-apa di sini. |
+| **Act 2** | + **10–30% currency** | Mulai terasa. |
+| **Act 3** | + **30–50% currency** + **1 item acak jatuh** *(bisa diambil kembali di titik mati)* | Kehilangan menjadi **berwujud**. |
+| **Act 4** | + **50% currency** + item jatuh + **DURABILITY SCAR** (**−10% max durability** pada item yang jatuh) | **Luka permanen kecil.** Dunia mulai menyimpan bekas. |
+
+> ### 🔗 KONSEKUENSI: **DURABILITY (#29) NAIK JADI PRASYARAT ACT 4**
+> Janji yang **ditunda-sadar sejak #29/#156** kini **punya tanggal**: tanpa durability, **Durability
+> Scar tidak bisa ada**. **Durability = prasyarat keras Act 4** — bukan lagi "nanti kalau sempat".
+
+*Semua = spec; dibangun **bertahap seiring Act lahir**. **Act 1 = v0.5.***
 
 ---
 

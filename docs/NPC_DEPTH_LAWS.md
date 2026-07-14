@@ -9,20 +9,90 @@ mekanis atas Pertanyaan Nirnama** (`NIRNAMA_BIBLE_PUBLIC.md` §XII–XV). Kalau 
 angka yang naik, maka Nirnama benar — tidak ada yang layak diteruskan. Kedelapan hukum inilah
 yang membuatnya salah.
 
-> ### RUMUS INDUK (#172)
-> ### `Outcome = Potential + Opportunity + Effort + Luck` — **dimodulasi Mental State**
->
-> **Ia BUKAN sistem baru.** Ia **sudah terkode** di `Personality.gd` (model 5 lapis, #137/#138)
-> sebagai `potential()`: `(talent×0,30 + effort×0,35 + opportunity×0,25 + luck×0,10) × mental_state`.
-> **Perhatikan bobotnya:** `effort` (0,35) **melebihi** `talent` (0,30) — **Talent + Effort > Talent**
-> (L17), dan itu **sudah berlaku di kode**, bukan aspirasi.
->
-> ✅ **TABRAKAN ISTILAH DISELESAIKAN (#174):** fungsi itu **sudah di-rename** `potential()` →
-> **`outcome_projection()`** (beserta semua pemanggilnya). Alasannya: yang dihitungnya adalah
-> **OUTCOME**, bukan POTENTIAL-yang-tersembunyi — dan nama lama akan membuat penulis berikutnya
-> menampilkannya ke UI karena mengira *"inilah potensi yang dimaksud kanon"*.
-> **Dijaga test:** `_test_potential_not_exposed()` menyisir **seluruh skrip UI** dan **gagal**
-> bila ada yang menyentuh `outcome_projection` / `talent_tier` / `talent` / `TIERS`.
+## MODEL POTENSI — kanon (#179). **Semua = SPEC v0.6.**
+
+> # `Outcome = Potential × Effort × Opportunity × Time × Luck`
+
+**POTENTIAL = CEILING BAWAAN** — batas teoritis seseorang.
+**Ia TIDAK PERNAH sama dengan kemampuan sekarang. Ia TIDAK PERNAH sama dengan Outcome.**
+
+### Skala tersembunyi (tak pernah tampil — hanya TIER lewat Item Penglihat, #175)
+
+| Lapis | Rentang | Catatan |
+|---|---|---|
+| **Mayoritas** | **50–150** | *Orang biasa (~80–120) tetap bisa sukses, bahagia, dan bermakna.* Ceiling rendah **bukan** vonis. |
+| **Berbakat** | **150–300** | |
+| **Jenius** | **300–600** | |
+| **Fenomena langka** | **600+** | |
+
+### ⚖ HUKUM PENGUNCI: **"Legendary bukan SIFAT. Legendary adalah HASIL."**
+
+Potensi tinggi lahir **hanya sebagai ceiling** — **bukan jaminan apa pun**:
+- **NPC ber-Potential 1200 bisa berakhir sebagai PETANI** — tanpa kesempatan, mati muda,
+  depresi, perang, kemiskinan. **Dan itu bukan bug. Itu dunia.**
+- **NPC ber-Potential 90 bisa menjadi FOUNDER** — kerja keras + mentor + kesempatan + nasib.
+
+**Potensi baru terasa di JANGKA PANJANG** (terikat Chronicle Clock, #154):
+- **Tahun 1:** **effort menang.** Yang rajin mengungguli yang berbakat. Selalu.
+- **Tahun 20–40:** ceiling tinggi **mulai melampaui** — bila (dan **hanya bila**) pintu-pintunya
+  pernah terbuka.
+
+*Inilah mengapa game ini butuh jam kronik. Tanpa waktu panjang, potensi hanyalah angka mati.*
+
+### Lima faktor — siapa yang memegang apa
+
+| Faktor | Sumber | Bisakah pemain mengubahnya? |
+|---|---|---|
+| **POTENTIAL** | bawaan lahir | ❌ **TIDAK PERNAH** |
+| **EFFORT** | personality (Discipline + Ambition) × kondisi mental (Hukum 5) | ❌ **TIDAK dikontrol pemain** — lihat Hukum Kemauan |
+| **OPPORTUNITY** | **dunia + PEMAIN** — *"jumlah pintu yang terbuka"*: rekrut · mentor · ekspedisi · perlengkapan · jaringan | ✅ **INILAH yang pemain ubah** |
+| **TIME** | umur + pengalaman | 🟡 tak langsung (pemain memberi **kesempatan lebih awal**) |
+| **LUCK** | acak | ❌ |
+
+### ⚖ HUKUM KEMAUAN NPC (mengunci **Belonging**)
+
+> ## **"The player influences lives. The player does not own them."**
+
+- **Pemain TIDAK mengontrol Effort.** NPC punya **kehendak sendiri** dan **boleh menolak**:
+  *"aku capek." · "aku ingin pulang." · "aku tidak suka perang." · "aku ingin buka toko."*
+- **Effort naik lewat mentor, inspirasi, dan hubungan — BUKAN lewat paksaan.**
+  Tak ada tombol "latih paksa". Tak ada slider disiplin.
+- **Effort & Opportunity WAJIB lahir dari SIMULASI DUNIA** — **bukan angka acak dari langit.**
+  Kalau seorang NPC tiba-tiba rajin tanpa sebab yang bisa ditunjuk, sistemnya salah.
+
+*Kalau pemain bisa memaksa siapa pun bekerja keras, maka NPC adalah alat — dan Belonging mati
+pada detik itu juga.*
+
+---
+
+## ⚠ TIGA KONFLIK YANG SAYA ANGKAT (butuh keputusan — **tidak saya tebak**)
+
+**K1 — Rumus baru MULTIPLIKATIF; kode saat ini ADITIF.**
+Kode (`outcome_projection()`, #172) memakai `(t×0,30 + e×0,35 + o×0,25 + l×0,10) × mental`.
+Model baru: **perkalian**, plus faktor **Time** yang **belum ada sama sekali** di kode.
+**Masalah matematis yang serius:** `Opportunity` **lahir = 0** (L14 — dan itu benar). Dalam rumus
+**perkalian**, itu berarti **Outcome = 0 untuk SEMUA orang saat lahir**, selamanya, sampai sebuah
+pintu terbuka. Secara puitis itu **indah dan benar** (*"tanpa pintu, tak ada yang terjadi"*) —
+secara mekanis ia **mematikan semua NPC yang tak pernah disentuh pemain** menjadi nol mutlak,
+padahal Hukum 8 justru berkata **~90% hidup biasa, dan itu bukan nol**.
+**Usul saya:** `Outcome = Potential × (1 + Effort) × (1 + Opportunity) × Time × Luck` — atau
+Opportunity berbasis **lantai dunia** (dunia **selalu** memberi sedikit pintu; pemain memberi
+**jauh lebih banyak**). **Kesempatan nol harus berarti "hidup kecil", bukan "tidak ada".**
+
+**K2 — Angka skala Anda bertabrakan dengan angka kalibrasi Anda sendiri.**
+Tabel: jenius = **300–600**, fenomena langka = **600+**. Referensi kalibrasi: atlet = **400–700**,
+jenius = **~900+**. Maka seorang **atlet** (400–700) akan **terbaca sebagai "jenius/fenomena
+langka"** di tabel, dan **jenius (900)** jatuh di lapis yang sama dengan atlet elit.
+**Dua kemungkinan:** (a) tabel benar, kalibrasi ilustratif → **naikkan** rentang jenius/fenomena;
+(b) kalibrasi benar → skalanya **lebih lebar** (mayoritas 50–150, berbakat 150–400, elite 400–700,
+jenius 700–1000, fenomena 1000+). **Rekomendasi saya: (b)** — ia konsisten dengan contoh Anda
+sendiri (*"Potential 1200 bisa jadi petani"*, yang mengandaikan skala menembus 1000.)
+
+**K3 — `talent` di kode masih 1–100.** Skala baru menuntut 50–1200; `talent_tier()` (ambang
+90/75/55) adalah **kalibrasi sementara** untuk skala lama. **Migrasi = bagian v0.6**, bukan
+sekarang. **Sampai itu terjadi, jangan ada dokumen yang mengklaim skala baru "sudah terkode".**
+
+---
 
 ## STATUS PELAKSANAAN — apa yang SUDAH terkode vs apa yang masih SPEC
 
@@ -187,6 +257,30 @@ KEGAGALAN.**
   dioptimalkan, unit yang dibuang saat statnya turun).
 - **Uji desain:** kalau seorang pemain optimal **tidak punya alasan** untuk peduli pada tukang
   roti, kita sudah gagal — dan Nirnama menang.
+
+---
+
+## MENTOR SYSTEM — siklus hidup companion (MEJA-3, #182 · spec v0.6/v0.9)
+
+> **Companion → Veteran → Mentor → Retired → Death → Legacy**
+
+Ini jawaban resmi atas T6 (companion yang menua di samping pemain yang tak menua, #165).
+
+| Fase | Yang terjadi |
+|---|---|
+| **Companion** | bertarung di sisimu |
+| **Veteran** | masih kuat, tapi tubuhnya mulai bicara |
+| **MENTOR** | **berhenti dari garis depan** — dan mulai **MELATIH generasi baru**: mewariskan **skill**, **filosofi**, dan **kenangan**. **Pengaruh & pengetahuannya NAIK** (L14) — ia menjadi **sumber Opportunity** bagi orang lain |
+| **Retired** | pensiun penuh — **hanya bila pemain memilih**; opsi ini tetap ada |
+| **Death** | sebagai **peristiwa** (D1), tak pernah sebagai notifikasi |
+| **Legacy** | apa yang ia tinggalkan **tetap bekerja** — murid, filosofi, Chronicle |
+
+> ### ⛔ **MEMENSIUNKAN COMPANION KARENA STATNYA TURUN = DILARANG.**
+> Itu pelanggaran langsung **L18** (*"most people are ordinary — dan itu bukan kegagalan"*) dan
+> **T6**. Companion yang menua **tidak menjadi beban** — ia **berpindah peran**, dan perannya yang
+> baru **lebih penting** daripada DPS-nya: **ia membuka pintu untuk orang lain.**
+
+**Terhubung ke:** Legacy Family (B3, v0.9) · "The World Remembers" (v0.6) · Hukum 3 (Opportunity).
 
 ---
 

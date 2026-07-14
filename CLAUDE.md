@@ -151,6 +151,26 @@ belum didamaikan. **Jangan bangun apa pun yang bergantung padanya.**
 
 ⚠ **`docs_private/` TIDAK ter-backup GitHub.** Backup adalah tanggung jawab owner.
 
+## HUKUM KEMAUAN NPC (#179) — mengunci BELONGING
+
+> ## **"The player influences lives. The player does not own them."**
+
+**Model kanon:** `Outcome = Potential × Effort × Opportunity × Time × Luck` *(spec v0.6 —
+`docs/NPC_DEPTH_LAWS.md`)*. **POTENTIAL = ceiling bawaan**, bukan kemampuan sekarang, bukan hasil.
+**HUKUM PENGUNCI: "Legendary bukan SIFAT. Legendary adalah HASIL."** — NPC ber-potensi raksasa
+bisa berakhir sebagai petani (tanpa kesempatan, mati muda, depresi, perang); NPC biasa bisa
+menjadi Founder (kerja keras + mentor + kesempatan + nasib).
+
+**Yang mengikat setiap sistem NPC:**
+- **Pemain TIDAK mengontrol Effort.** NPC punya kehendak sendiri dan **boleh menolak** (*"aku
+  capek" · "aku ingin pulang" · "aku tak suka perang" · "aku ingin buka toko"*). Effort naik lewat
+  **mentor, inspirasi, hubungan** — **bukan paksaan**. Tak ada tombol "latih paksa".
+- **Yang pemain ubah adalah OPPORTUNITY** — *"jumlah pintu yang terbuka"* (rekrut · mentor ·
+  ekspedisi · perlengkapan · jaringan). **Itulah kekuatanmu, dan itu saja.**
+- **Effort & Opportunity WAJIB lahir dari SIMULASI DUNIA**, bukan angka acak dari langit.
+
+*Kalau pemain bisa memaksa siapa pun bekerja keras, NPC adalah alat — dan Belonging mati saat itu juga.*
+
 ## HUKUM PERTUMBUHAN NPC (L14–L18, #137)
 
 - **L14 — OPPORTUNITY SHAPES DESTINY.** Dua orang berbakat sama bisa bernasib jauh

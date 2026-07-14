@@ -81,13 +81,34 @@ tahu. **Penulis pun dilarang memutuskan.**
 
 Sebelum kerajaan besar berdiri, sebelum Chronicle modern, ada seorang pengembara tanpa kerajaan, tanpa pasukan, tanpa gelar — hanya rasa ingin tahu. Ia menjadi pahlawan, penjelajah, pendiri, penyelamat. **Pada suatu masa, namanya identik dengan harapan.** Ia berjalan bersama sahabat, guru, murid, dan monster partner. Sebagian mati. Sebagian hilang. Beberapa — karena umur panjang, kutukan, kekuatan, atau ras — **masih hidup sampai hari ini** (The Old Elders, The Underground Elites, The Silent Ones, The Last Monster Partners — kelompok penyintas kanon G1, sumber quest & kesaksian Act 1+).
 
-# III. THE FIRST SCAR (draft designer, mandat Q5f — bisa diveto owner)
+# III. THE FIRST SCAR — **RESMI FINAL** (MEJA-1 diratifikasi #180; bukan lagi "sementara")
 
 Luka pertamanya bukan kekasih (terlalu klise — ketetapan konsepsi), bukan pula naganya. Luka pertamanya adalah **gurunya**.
 
 Seorang tukang-batu-filsuf pengembara — pria tua tanpa gelar yang mengajarinya segalanya, termasuk kalimat yang kelak menjadi jawaban dunia: *"Nilai sesuatu tidak ditentukan oleh lamanya ia bertahan, tetapi oleh kehidupan yang tumbuh darinya."* `[NAMA-ASLI]` muda mencintai guru itu melebihi ayah.
 
 Sang guru mati tua dan damai — bukan tragedi. Tragedinya datang sesudahnya: **dalam satu generasi, dunia melupakannya total.** Tidak ada yang mengingat namanya, ajarannya, bahkan bahwa ia pernah ada. `[NAMA-ASLI]` mengukir nama gurunya di sebuah batu di puncak bukit. Berabad kemudian ia kembali — **dan batu itu pun telah aus. Bahkan batu lupa.**
+
+### PENYESALAN SANG GURU (tambahan Direktur, #180) — agar ia manusia, bukan mentor sempurna
+
+Sang guru **bukan orang bijak yang utuh**. Ia menyimpan satu penyesalan yang tak pernah ia
+selesaikan — dan **ia tak pernah menceritakannya kepada muridnya.**
+
+**Bentuknya (kunci kanon, rinciannya = benih quest):** ada **seseorang yang ia tinggalkan** —
+seorang murid sebelumnya, atau sebuah janji yang ia langgar demi terus berjalan. Ia mengajarkan
+*"nilai sesuatu tidak ditentukan oleh lamanya ia bertahan, tetapi oleh kehidupan yang tumbuh
+darinya"* — **sementara ia sendiri gagal menerapkannya pada satu kehidupan yang ia biarkan layu.**
+
+**Kenapa ini penting, bukan hiasan:**
+1. **Ia melunakkan ironi terbesar kitab ini.** Murid itu (Sang Nirnama) menghabiskan ribuan tahun
+   memperjuangkan ingatan — **untuk seorang guru yang sendirinya melupakan seseorang.**
+2. **Ia membuat ajaran itu jujur.** Kalimat yang kelak menjadi jawaban dunia diucapkan oleh
+   seseorang yang **belum berhasil menghidupinya**. *Kebenaran tidak menuntut pengucapnya sempurna.*
+3. **Ia benih quest** (Companion pass): seseorang di dunia — atau **keturunannya** — **masih
+   menunggu guru itu kembali.** Dan guru itu sudah lama mati.
+
+**⛔ Batas:** penyesalan itu **tidak boleh dijadikan alasan** kejatuhan Nirnama. Ia bukan sebab —
+ia **gema**. Kejatuhan Nirnama tetap: *kelelahan, kehilangan, kesepian, dan waktu* (§IV).
 
 Maka perang pertama `[NAMA-ASLI]` bukanlah melawan pelupaan atas dirinya — melainkan **untuk ingatan orang lain**. Ia mendirikan kota agar nama-nama tercatat. Ia mengukir sejarah di dinding. Ia adalah *pejuang ingatan pertama di dunia* — leluhur filosofis para **Memory Keepers**... yang kini menjadi lawan filosofis terbesarnya. **Sang Nirnama tidak dikalahkan oleh musuhnya. Ia dikalahkan oleh kegagalan perjuangannya sendiri — lalu berpindah sisi.** (Inilah mengapa ia *mengasihani* pemain: ia melihat dirinya yang muda.)
 
@@ -122,7 +143,7 @@ Ia jarang membunuh — membunuh meninggalkan mayat, makam, cerita. Ia **menghapu
 # VIII. SUARA & PERILAKU
 Lembut. Tidak pernah berteriak, tidak pernah monolog kebencian. **Bertanya lebih sering daripada menyatakan** ("Untuk siapa kau membangun itu? ... Apakah mereka akan ingat?"). Sopan kepada pemain hingga terasa mengerikan. Tidak menganggap dirinya villain — ia menganggap dirinya *perawat di dunia yang sekarat*. Kekejamannya sungguhan (B16 berani gelap: NPC bisa benar-benar melupakanmu), tapi tidak pernah gore — horornya eksistensial.
 
-# IX. ARC ACT 1 — [USULAN DESIGNER, MENUNGGU VETO OWNER]
+# IX. ARC ACT 1 — **RESMI FINAL** (MEJA-1 diratifikasi #180, tanpa perubahan besar)
 Fase 1 (jam 1–30): hanya **gejala** — rumor tempat yang "memutih", NPC yang tergagap, satu Yang-Terhapus pertama, Nirnama Cult (Religion Bible) memuja "Keheningan yang Baik". Fase 2 (30–60): para penyintas bersuara (Old Elder memberi kesaksian; Silent One menolak bicara; Underground Elite menjual info); **satu pertemuan tanpa nama**: pengelana tua lembut yang bertanya hal-hal aneh tentang apa yang pemain bangun — tidak diungkap siapa. Fase 3 (60–100): eskalasi penghapusan menyentuh MILIK pemain (satu NPC yang pemain kenal melupakannya — momen horor personal pertama) → klimaks **Celestial Crisis: bulan retak** (B5), Sang Nirnama berdiri terungkap, dan pengelana tua itu... adalah dia. Reveal nama "`[NAMA-ASLI]`" TIDAK terjadi di Act 1 — itu harta Act 2 (ditemukan pemain di reruntuhan Aetheria Prima / lewat The Last Witness).
 
 # X. YANG DILINDUNGI MISTERI_ABADI (tidak dijawab bahkan oleh kitab ini)

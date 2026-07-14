@@ -109,8 +109,15 @@ static func label(prof: Dictionary) -> String:
 		str(prof.get("temperament_sub", "-")).capitalize()]
 
 ## OUTCOME (proyeksi hasil hidup) — **BUKAN "potential"** (Decision Log #174).
-## Rumus induk: `Outcome = Potential + Opportunity + Effort + Luck`, dimodulasi Mental State.
 ## Talent+Effort > Talent (L17). Tanpa kesempatan, bakat sebesar apa pun tak tumbuh (L14).
+##
+## ⚠ **RUMUS DI BAWAH = INTERIM, BUKAN MODEL KANON** (#179). Model kanon kini:
+## `Outcome = Potential × Effort × Opportunity × Time × Luck` — **perkalian**, dengan faktor
+## **Time** yang belum ada di kode. Implementasinya = **v0.6**, dan ia menunggu keputusan atas
+## satu masalah nyata: dalam rumus perkalian, `opportunity` yang **lahir = 0** membuat Outcome
+## **nol mutlak** bagi semua orang yang tak pernah disentuh pemain — padahal Hukum 8 berkata
+## ~90% hidup biasa, **dan biasa itu bukan nol**. (Usul: `× (1 + opportunity)`, atau lantai
+## kesempatan dari dunia.) Lihat `docs/NPC_DEPTH_LAWS.md` §KONFLIK K1.
 ##
 ## ⚠ Dulu bernama `potential()` — dan itu **berbahaya**: HUKUM 1 (`POTENTIAL = ???`) justru
 ## menyatakan potensi **tersembunyi**, sehingga penulis berikutnya bisa menampilkan angka ini
@@ -133,6 +140,11 @@ static func outcome_projection(prof: Dictionary) -> float:
 ## Kenapa ini memperkuat, bukan melanggar, Hukum 1: pemain biasa tetap melihat `???`.
 ## Pemain yang **berburu item langka** bisa mengintip — dan **pengetahuan itu sendiri menjadi
 ## kekuatan**: tahu anak petani ini berpotensi Legendary = **alasan memberinya kesempatan** (L14).
+##
+## ⚠ KALIBRASI SEMENTARA (#179): `talent` di kode masih berskala **1–100**. Model kanon baru
+## memakai skala **50–1200** (mayoritas 50–150 · berbakat · jenius · fenomena langka) dengan
+## rumus **PERKALIAN** + faktor **Time** yang belum ada di kode. **Migrasi = v0.6.**
+## Sampai itu terjadi: ambang di bawah adalah **kalibrasi lama**, bukan skala kanon.
 const TIERS := ["Average", "Gifted", "Exceptional", "Legendary"]
 
 ## Tier potensi seorang individu (data internal). **Jangan panggil dari UI** — satu-satunya

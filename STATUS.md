@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **MENUNGGU SIDANG C/D + PLAYTEST GAMEPAD OWNER**
+**Last update:** 2026-07-14 — **GERBANG v0.5 FONDASI LENGKAP — tinggal B17 Companion Bible 10/50 + playtest gamepad**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -33,7 +33,18 @@
 > + ledger #114) — **test hijau selama berminggu-minggu** karena hanya menyisir `res://`.
 > **Diredaksi + guard diperluas ke `docs/` & dokumen hukum. 884 test lulus, 0 gagal.**
 >
-> ### 🔴 MENUNGGU SIDANG DIREKTUR + DESIGNER (jangan dieksekusi)
+> ### ✅ GERBANG v0.5 — FONDASI LENGKAP (#179–#183)
+> **MEJA-1/2/3 DIRATIFIKASI.** First Scar = Guru & Arc Act 1 = **RESMI FINAL** (+ penyesalan sang
+> guru) · **harga kematian berevolusi per Act** (Act 1 = memory fade murni) → **durability #29 naik
+> jadi prasyarat Act 4** · **Mentor System** (companion menua = berpindah peran, **bukan dibuang**).
+> **Model potensi kanon:** `Outcome = Potential × Effort × Opportunity × Time × Luck`;
+> **"Legendary bukan SIFAT — Legendary adalah HASIL."**
+> **Hukum Kemauan NPC:** *"The player influences lives. The player does not own them."*
+>
+> **SISA GERBANG v0.5: B17 Companion Bible 10/50** + **playtest gamepad owner**.
+>
+> ### 🔴 MENUNGGU DIREKTUR (jangan dieksekusi)
+> **3 konflik model potensi (#179b)** · REPORT-06 **§C1** (gating pohon #116) · **§C2** (gerbang Lv60 #101) · sisa **§D**.
 > **REPORT-06 §C1** (gating lokasi pohon skill #116) · **§C2** (keberatan gerbang Lv60 #101) ·
 > **15 butir §D**. Dan: **playtest gamepad oleh owner** — tiga bug fatal lolos 822 test; hanya
 > tangan manusia yang menemukan hal seperti itu.
