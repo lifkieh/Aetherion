@@ -71,6 +71,19 @@ Dan konflik yang lebih dalam: ia tak pernah membawa kargo manusia. Ia mengatakan
 4. **Halaman itu:** jauh di kemudian hari — setelah pemain berkali-kali kembali, setelah Kain mabuk dan tidak lucu — ia mengeluarkan halaman manifes itu. Ia tidak memintanya dibacakan. Ia hanya meletakkannya di meja dan tidak berkata apa-apa, yang bagi Kain Blacktide setara dengan menangis.
 5. **Titik balik (bercabang):** jaringan lelang menawarkan Kain apa yang ia kejar seumur hidup — **nama itu** — dengan satu harga: **serahkan pemain** (rute, Domain, seseorang yang pemain lindungi). Ini bukan godaan; ini seluruh hidupnya, diletakkan di atas meja. Yang menentukan bukan kebaikan Kain, melainkan **apakah pemain pernah memberinya sesuatu yang tak bisa ia beli** — kepercayaan yang ia sadari tak pernah ia bayar, tempat yang tak menuntutnya menjadi hebat.
 
+## HARGA REVIVE — **DIRATIFIKASI (MEJA-C, #192)**
+Bila Kain mati dan **dibangkitkan** (#119/K6 — kebangkitan **selalu** berharga, harganya **INGATAN**):
+
+> **Yang hilang darinya adalah NESSA.**
+
+Bukan halaman manifes itu — **halamannya tetap ada, di kain minyak di bawah bajunya.** Yang hilang
+adalah **kenapa ia menyimpannya.** Ia bangun **ringan**. Tersenyum lebih mudah. Tidur nyenyak untuk
+pertama kalinya dalam lima belas tahun. **Dan tidak tahu ada sesuatu yang hilang.**
+
+Pemain **tahu**. Pemain **ingat**. Dan tidak ada satu pun mekanik yang bisa mengembalikannya.
+*(Ditulis tangan per kasus — **bukan tabel**, bukan efek acak. Inilah bentuk paling menyayat dari
+harga K6: yang dibayarkan bukan penderitaan, melainkan **satu-satunya alasan ia masih orang baik.**)*
+
 ## AGING PATH
 Manusia, 34 — dan **kandidat kematian-kekerasan paling kuat di seluruh gelombang.** Keberuntungan bukan sifat; ia adalah pinjaman berbunga. Bila Kain mati, ia **WAJIB beradegan** — dan adegannya harus **kecil, cepat, dan tidak heroik**, karena itulah cara orang beruntung mati: bukan dalam duel, melainkan karena satu kali salah menebak di gang yang salah. Bila ia bertahan sampai tua, ia menjadi hal yang paling ia takuti: seorang lelaki tua yang menawan, dikelilingi orang yang mendengarkan ceritanya karena sopan, **dan tak seorang pun lagi percaya bahwa ia dulu berbahaya.** Bagi Kain, itu lebih buruk dari mati.
 

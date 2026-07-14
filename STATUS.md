@@ -1,6 +1,6 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **GERBANG v0.5 FONDASI LENGKAP & KONSISTEN — tinggal B17 Companion Bible 10/50 + playtest gamepad**
+**Last update:** 2026-07-14 — **B17 15/50 — gelombang 2 terkunci; kanon companion bersih**
 
 > ### 🟡 SUDAH DIEKSEKUSI (keputusan Designer #152–#160)
 > - **SOFT-CAP EXP (#69/#152) DIBANGUN** — lubang terbesar REPORT-06 ditutup. Band wilayah kini
@@ -32,6 +32,18 @@
 > Nama rahasia **bisa dirakit dari repo ter-commit** (marga terang-terangan di MISTERI_ABADI M6
 > + ledger #114) — **test hijau selama berminggu-minggu** karena hanya menyisir `res://`.
 > **Diredaksi + guard diperluas ke `docs/` & dokumen hukum. 884 test lulus, 0 gagal.**
+>
+> ### 📖 B17 COMPANION BIBLE — 15/50 (#189–#193)
+> **Sheet tokoh pindah ke `docs/Companion_bible/`** (satu berkas per tokoh, ~80–128 baris, format
+> Merrit Fane). `COMPANION_BIBLE.md` = **dokumen induk + indeks**. **Gelombang 2 TERKUNCI.**
+> **Sebaran potensi jujur:** 2 mayoritas · 2 berbakat · 5 elite · 4 jenius · 1 fenomena (Luna 1150)
+> · **1 TAK TERBACA (Cael)**. *Roster yang semua anggotanya jenius = roster yang berbohong.*
+> **MEJA-B (#191):** Cael boleh ditemui **sejak awal** — yang dilarang <100–300 jam adalah
+> **manifestasi** sifat Last-Witness, bukan kehadirannya. **Q7 tetap terbuka.**
+> **MEJA-C (#192):** harga revive **ditulis tangan per kasus** (revive Kain memakan **Nessa**) ·
+> **dryad yang mati karena POHONNYA = di luar jangkauan revive, selamanya.**
+> **Gelombang 3–4:** prioritas **Reformers (masih NOL)** · Explorers · Leaders; ras **Dryad,
+> Tidekin, Shadeborn, Beastfolk** masing-masing baru 1 (**Human sudah 5 — terlalu dominan**).
 >
 > ### ✅ GERBANG v0.5 — FONDASI LENGKAP (#179–#183)
 > **MEJA-1/2/3 DIRATIFIKASI.** First Scar = Guru & Arc Act 1 = **RESMI FINAL** (+ penyesalan sang

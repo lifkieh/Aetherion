@@ -86,6 +86,21 @@ Dan Great Monster itu sendiri: **ia tidak bisa ditangkap dengan orb, tidak bisa 
    - **Menolak sampai akhir:** ia tetap menggembala, tenang, sampai pohonnya tumbang di suatu hari yang tak istimewa. Potensi 940, Outcome kecil. Dunia tak pernah tahu apa yang baru saja ia kehilangan.
    - **Ironi (paling kejam, dan HARUS tetap ada sebagai kemungkinan):** kawanan yang ia selamatkan, kelaparan di musim yang buruk, **memakan kulit pohonnya.** Ia mati karena yang ia lindungi. **Dan ini bukan fabel. Tidak ada pelajarannya.** Dunia tidak sedang menghukumnya karena naif; dunia hanya tidak sedang memperhatikan.
 
+## BATAS REVIVE DRYAD — **SUB-ATURAN KANON (MEJA-C, #192)**
+
+> **Dryad yang mati KARENA POHONNYA berada DI LUAR jangkauan kebangkitan. Selamanya.**
+
+Bukan karena harganya terlalu mahal — **karena yang mati bukan tubuhnya.** Yang mati adalah **akar
+hidupnya**. Membangkitkan Maira dari pohon yang tumbang sama saja dengan membangkitkan seseorang
+yang **tubuhnya sudah tak ada** (konsisten D1: *tubuh hancur/hilang = mustahil*).
+
+**Konsekuensi yang harus terasa:** kalau pohonnya jatuh, **tidak ada tawar-menawar.** Tidak ada
+harga ingatan yang bisa dibayar, tidak ada ritual, tidak ada pengecualian. **Hanya kehilangan.**
+*Dan pemain akan mengetahuinya terlambat — persis seperti dunia nyata.*
+
+*(Kematian Maira dengan sebab LAIN — luka, penyakit, kekerasan — tetap tunduk aturan revive umum,
+dengan harga ingatan #119.)*
+
 ## AGING PATH
 Dryad — **umur di tabel adalah umur pohonnya, bukan umurnya.** Ini bukan statistik; ini trade-off Stewardship yang mengikat. Maira bisa menemani pemain melintasi **puluhan lompatan Chronicle Clock** — melihat companion manusia lahir, menua, dan mati di sekitarnya sementara ia hampir tidak berubah — **atau ia bisa mati minggu depan**, karena seseorang di kabupaten sebelah membuka jalan baru dan tak seorang pun bertanya pohon siapa yang berdiri di sana. **Tak ada peringatan. Tak ada bar HP. Tak ada penyakit.** Ia hanya akan berhenti berdiri, di tengah kalimat, di tengah pekerjaan, **dan itu WAJIB beradegan** (D1) — dan adegannya harus **datar, tanpa musik, dan sangat cepat**, karena begitulah pohon jatuh.
 

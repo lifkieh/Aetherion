@@ -2,15 +2,6 @@
 **"Jenderal yang Menolak Perang Berikutnya"**
 *B17 · Draft Designer detail-penuh · Hukum: Echo ≠ Origin · Potential dipakai lalu ditolak · Trauma (Hukum 5/15)*
 
-> # ⛔ USULAN AGENT — **BELUM DIRATIFIKASI DIREKTUR** (#189b)
-> Tokoh ini **TIDAK DIPESAN**. Ia lahir sebagai inisiatif agent saat gelombang penulisan 10 sheet —
-> dan **roster 50 Great Companion adalah wilayah keputusan Direktur, bukan agent**.
->
-> **Statusnya sekarang: USULAN.** Ia **tidak dihitung** dalam progres B17 (13/50) sampai Direktur
-> menerimanya. Pilihan Direktur: **terima** (masuk kuota kategori) · **tolak** (hapus) ·
-> **tulis ulang**. Sampai ada baris keputusan, **jangan ada dokumen/kode yang bersandar padanya.**
-
-
 ---
 
 ## IDENTITAS INTI

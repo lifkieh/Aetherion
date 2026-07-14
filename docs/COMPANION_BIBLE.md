@@ -1,6 +1,6 @@
 # COMPANION BIBLE — Aetherion *(dokumen induk & indeks)*
 
-**Status:** DIMULAI (B17, gerbang v0.5). **Progres: 13 / 50 Great Companion.**
+**Status:** DIMULAI (B17, gerbang v0.5). **Progres: 15 / 50 Great Companion.** *(Gelombang 2 TERKUNCI — #190.)*
 **Sumber kanon:** `docs/Aetherion_blueprint_reasoning_and_design.txt` (FILE 05 Companion
 Philosophy; FILE 13 Companion Bible Part 02). Dikanonisasi 2026-07-13 (Decision Log G3 / #104).
 
@@ -80,6 +80,13 @@ lagu, atau seseorang yang menolak pergi."*
 | 011 | **Merrit Fane** | *Yang Menunggu Surat Balasan* | Human | Wild Cards | **110** · **mayoritas** | `companion_11_merrit_fane.md` |
 | 012 | **Veshka Ironvein** | *(lihat berkas)* | Dwarf | — | **620** · elite | `companion_12_veshka_ironvein.md` |
 | 013 | **Sora Lanternwick** | *(lihat berkas)* | — | — | **780** · jenius | `companion_13_sora_lanternwick.md` |
+| 014 | **Dr. Halen Vosk** | *Tabib yang Menyembuhkan Semua Kecuali Satu* | Astralborn | *(kategori: **belum ditetapkan**)* | **850** · jenius | `companion_14_halen_vosk.md` |
+| 015 | **Kessler Dray** | *Jenderal yang Menolak Perang Berikutnya* | Beastfolk *(wolfkin)* | *(kategori: **belum ditetapkan**)* | **700** · elite/jenius | `companion_15_kessler_dray.md` |
+
+> **#014 & #015 = versi FINAL Direktur** (menimpa total draf agent — tidak ada dua versi).
+> **DIRATIFIKASI kanon (#190).** ⚠ **Kategori keduanya belum ditetapkan** — ia memengaruhi kuota;
+> butuh satu baris keputusan. *(Kandidat: Halen → Scholars/Reformers · Kessler → Warriors/Reformers.
+> Kalau Kessler masuk **Reformers**, kuota yang selama ini NOL akhirnya terisi.)*
 
 ### ⚠ Cael Morrow (#009) — potensinya TIDAK TERBACA
 Satu-satunya tokoh yang **Item Penglihat Potensi pun gagal membaca**. **Jangan dijelaskan.**
@@ -98,10 +105,13 @@ berpotensi jenius adalah **roster yang berbohong** — dan kebohongan itu **meme
 |---|---|
 | **Mayoritas (50–150)** | **Varko (120)** · **Merrit (110)** |
 | **Berbakat (150–400)** | Kain (260) · Arlen (340) |
-| **Elite (400–700)** | Neriah (480) · Torgrim (610) · Veshka (620) · Elyn (690) |
-| **Jenius (700–1000)** | Sora (780) · Seraphine (830) · Maira (940) |
+| **Elite (400–700)** | Neriah (480) · Torgrim (610) · Veshka (620) · Elyn (690) · **Kessler (700)** |
+| **Jenius (700–1000)** | Sora (780) · Seraphine (830) · **Halen (850)** · Maira (940) |
 | **Fenomena (1000+)** | **Luna (1150)** |
-| **Tak terbaca** | **Cael (`???`)** |
+| **Tak terbaca** | **Cael (`???`)** — Item Penglihat pun gagal |
+
+**Sebaran 15 tokoh: 2 mayoritas · 2 berbakat · 5 elite · 4 jenius · 1 fenomena · 1 tak terbaca.**
+*Terverifikasi patuh skala K2 (#185).*
 
 **Tiga pernyataan desain yang disengaja:**
 1. **Varko (120)** — pemberani yang **tidak punya apa-apa selain nyali**, dan hidup karena
@@ -112,24 +122,43 @@ berpotensi jenius adalah **roster yang berbohong** — dan kebohongan itu **meme
 
 ---
 
-## Sisa pekerjaan B17 (37 tokoh)
+## Sisa pekerjaan B17 (35 tokoh) — **arahan gelombang 3–4 (#193)**
 
-| Kategori | Kuota | Terisi | Sisa |
-|---|---|---|---|
-| Explorers | 6–8 | 2 (Arlen, Neriah) | 4–6 |
-| Warriors | 6–8 | 1–2 (Varko, Cael?) | 4–7 |
-| Scholars | 6–8 | 1 (Elyn) | 5–7 |
-| Leaders | 6–8 | 1 (Torgrim?) | 5–7 |
-| Reformers | 4–6 | 0 | 4–6 |
-| Outsiders | 4–6 | 1 (Kain) | 3–5 |
-| Mystics | 4–6 | 2–3 (Seraphine, Luna, Cael?) | 1–4 |
-| Wild Cards | 4–6 | 3 (Maira, Merrit, Sora?) | 1–3 |
+| Kategori | Kuota | Terisi | Sisa | Catatan |
+|---|---|---|---|---|
+| **Explorers** | 6–8 | 2 (Arlen, Neriah) | **4–6** | ⚠ **masih tipis — prioritas gelombang 3** |
+| Warriors | 6–8 | 1–2 (Varko, Cael?, Kessler?) | 4–7 | |
+| Scholars | 6–8 | 1–2 (Elyn, Halen?) | 4–7 | |
+| **Leaders** | 6–8 | 1 (Torgrim?) | **5–7** | ⚠ **masih tipis — prioritas gelombang 3** |
+| **Reformers** | 4–6 | **0** | **4–6** | 🔴 **NOL** — kandidat: **Kessler** (jenderal yang menolak perang) |
+| Outsiders | 4–6 | 1 (Kain) | 3–5 | |
+| Mystics | 4–6 | 2–3 (Seraphine, Luna, Cael?) | 1–4 | |
+| Wild Cards | 4–6 | 3 (Maira, Merrit, Sora?) | 1–3 | |
 
-**Gerbang v0.5 tetap tertutup sampai 50 tokoh lengkap** (B17 #64). Sesi penulisan lanjutan
-bersama Direktur diperlukan — terutama karena **Q7** memengaruhi Cael, dan **kuota Reformers
-masih NOL**.
+### ⚠ KETIMPANGAN RAS (gelombang 3–4 wajib menutupinya)
 
-**Format wajib tiap tokoh baru:** ikuti `companion_11_merrit_fane.md` — 16 bagian, ~80 baris:
-IDENTITAS INTI · ROLE DUNIA · PERSONALITY (5 lapis) · HIDDEN POTENTIAL · AMBITION · FEAR ·
-KONFLIK INTERNAL · KONFLIK EKSTERNAL · RELASI PENTING · LIFE EVENT CHAIN · AGING PATH ·
-LEGACY PATH · COMPANION ARC · OUTCOME POSSIBILITIES · CATATAN DESAINER.
+| Ras | Terisi | Catatan |
+|---|---|---|
+| **Human** | 5 (Arlen, Kain, Varko, Cael, Merrit) | **terlalu dominan** |
+| Elf | 1 (Elyn) | wajar untuk sekarang |
+| Dwarf | 2 (Torgrim, Veshka) | cukup |
+| Astralborn | 2 (Seraphine, Halen) | cukup |
+| **Dryad** | **1** (Maira) | 🔴 **tipis** |
+| **Tidekin** | **1** (Neriah) | 🔴 **tipis** |
+| **Shadeborn** | **1** (Luna) | 🔴 **tipis** |
+| **Beastfolk** | **1** (Kessler) | 🔴 **tipis** |
+
+**Aturan gelombang 3–4:** utamakan **Explorers · Leaders · Reformers**, dan **Dryad · Tidekin ·
+Shadeborn · Beastfolk**. *Ras bukan stat — ia budaya (#86); roster yang 1/3-nya manusia membuat
+tujuh ras lain terasa seperti dekorasi.*
+
+**Gerbang v0.5 tetap tertutup sampai 50 tokoh lengkap** (B17 #64).
+
+**Format wajib tiap tokoh baru:** ikuti `companion_11_merrit_fane.md` — 15 bagian + Catatan
+Desainer, ~80–120 baris: IDENTITAS INTI · ROLE DUNIA · PERSONALITY (5 lapis) · HIDDEN POTENTIAL ·
+AMBITION · FEAR · KONFLIK INTERNAL · KONFLIK EKSTERNAL · RELASI PENTING · LIFE EVENT CHAIN ·
+AGING PATH · LEGACY PATH · COMPANION ARC · OUTCOME POSSIBILITIES · CATATAN DESAINER.
+
+**Wajib lolos gerbang QA:** skala potensi K2 · **tiap tokoh punya jalur "hidup kecil / mati /
+dilupakan"** (Hukum 8) · **Echo ≠ Origin** · relasi antar-companion **dua arah** · lokasi cocok
+**#110** · **NO DESTINY** · nol kebocoran rahasia produksi.

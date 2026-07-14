@@ -117,6 +117,16 @@ Early Game Bible), dan boleh diabaikan selamanya. Monster pertama gameplay =
 **4. KEBANGKITAN SELALU BERHARGA — HARGANYA INGATAN (#119).** Tidak ada pengecualian.
 Setiap revive menuntut **sesuatu dilupakan** (oleh yang bangkit atau yang membangkitkan).
 
+**Dua sub-aturan (MEJA-C, #192):**
+- **Harga ditulis TANGAN per kasus, bukan tabel acak.** Yang hilang haruslah **hal yang paling
+  berarti** bagi yang bangkit. *(Contoh kanon: Kain #005 kehilangan **Nessa** — halaman manifesnya
+  tetap ada; yang hilang adalah **kenapa ia menyimpannya**. Ia bangun ringan, tersenyum, **tanpa
+  tahu ada yang hilang.** Pemain tahu. Pemain ingat. Tak ada mekanik yang mengembalikannya.)*
+- **DRYAD yang mati KARENA POHONNYA = DI LUAR jangkauan revive, SELAMANYA.** Bukan karena mahal —
+  **karena yang mati bukan tubuhnya, melainkan akar hidupnya** (konsisten D1: *tubuh hancur/hilang
+  = mustahil*). **Tidak ada tawar-menawar. Hanya kehilangan.** *(Kematian dryad karena sebab lain
+  tetap tunduk aturan umum.)*
+
 **5. POHON SKILL = SUB-POHON dari 6 DOMAIN (#116):** Combat · Magic · Survival ·
 Craft · Leadership · Taming (field `domain` di `skill_trees.json`). **Capstone milik
 CLASS** (Ultimate Class), bukan milik pohon — semua orang boleh membuka semua pohon.

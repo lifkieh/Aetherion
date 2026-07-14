@@ -2,6 +2,14 @@
 **"Ksatria Tanpa Nama"**
 *B17 · Tier ditentukan Direktur · Draft Designer detail-penuh · Hukum: Echo ≠ Origin*
 
+
+> ### ⚖ PUTUSAN MEJA-B (#191) — Cael BOLEH ditemui sejak awal
+> Yang dilarang muncul sebelum ambang **100–300 jam** adalah **MANIFESTASI / pengungkapan**
+> sifat Last-Witness — **bukan kehadiran humanoid-nya**. Cael boleh ditemui, diajak bicara, dan
+> **direkrut sejak awal** — **sebagai Ksatria Tanpa Nama biasa, dan hanya itu.**
+> **Q7 tetap terbuka:** ia **The Last Witness ATAU BUKAN**. Kedua jawaban tetap hidup; tak satu
+> baris pun berkas ini perlu dibuang apa pun putusan Direktur kelak.
+
 ---
 
 ## IDENTITAS INTI

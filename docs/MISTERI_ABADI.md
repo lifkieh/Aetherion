@@ -65,6 +65,22 @@ boleh mengikat siapa dia. **Ia juga TIDAK BOLEH muncul sebelum 100–300 jam ber
 Bila owner kelak memutuskan identitasnya, entri ini dicabut dari daftar (dan
 pencabutan itu dicatat di Decision Log sebagai kehilangan yang disengaja).
 
+> ### ⚖ PENAJAMAN M5 (MEJA-B, #191) — **yang dilarang adalah MANIFESTASI, bukan KEHADIRAN**
+> Tabrakan lama: M5 melarang The Last Witness "muncul" sebelum jam **100–300**, sementara
+> `NIRNAMA_BIBLE §V` menuntut payoff *"selama ini aku sudah bertemu dengannya."* Payoff itu
+> **mensyaratkan pertemuan awal**. Diselesaikan begini:
+>
+> - **BOLEH sejak awal:** kehadiran **humanoid**-nya — ia ditemui, diajak bicara, bahkan
+>   **direkrut** sebagai orang biasa. *(Cael Morrow #009 = Ksatria Tanpa Nama, dan **hanya itu**.)*
+> - **DILARANG sebelum ambang 100–300 jam:** **manifestasi / pengungkapan** sifat naga — tidak
+>   lewat dialog, tidak lewat kemampuan, tidak lewat isyarat yang **menutup**.
+> - **Q7 TETAP TERBUKA:** Cael = The Last Witness **ATAU BUKAN**. **Kedua jawaban wajib tetap
+>   hidup** — dan sheet-nya ditulis agar **tak satu baris pun perlu dibuang** apa pun putusannya.
+>
+> *Kau boleh berjalan bersama sesuatu selama ratusan jam tanpa pernah tahu apa yang berjalan
+> di sisimu. Itulah payoff-nya — dan itu hanya mungkin bila ia hadir sejak awal.*
+
+
 ### M6. Kebenaran rumor **marga Voss** *(dari NIRNAMA_BIBLE §X)*
 Ada yang berbisik bahwa marga **Voss** (mis. Seraphine Voss, Companion #004) adalah
 pelesetan turun-temurun dari **sesuatu yang lebih tua** *(pasangan katanya = **redaksi**,

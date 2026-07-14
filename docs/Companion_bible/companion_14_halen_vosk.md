@@ -2,15 +2,6 @@
 **"Tabib yang Menyembuhkan Semua Kecuali Satu"**
 *B17 · Draft Designer detail-penuh · Hukum: Echo ≠ Origin · Mental Health System (Hukum 5) hidup di dia*
 
-> # ⛔ USULAN AGENT — **BELUM DIRATIFIKASI DIREKTUR** (#189b)
-> Tokoh ini **TIDAK DIPESAN**. Ia lahir sebagai inisiatif agent saat gelombang penulisan 10 sheet —
-> dan **roster 50 Great Companion adalah wilayah keputusan Direktur, bukan agent**.
->
-> **Statusnya sekarang: USULAN.** Ia **tidak dihitung** dalam progres B17 (13/50) sampai Direktur
-> menerimanya. Pilihan Direktur: **terima** (masuk kuota kategori) · **tolak** (hapus) ·
-> **tulis ulang**. Sampai ada baris keputusan, **jangan ada dokumen/kode yang bersandar padanya.**
-
-
 ---
 
 ## IDENTITAS INTI
