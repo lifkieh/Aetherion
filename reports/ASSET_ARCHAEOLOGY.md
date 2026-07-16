@@ -140,6 +140,9 @@ SFX tempur/UI · ikon elemen · rasi bintang & fase bulan.
    **air mancur**, **jembatan batu** sebagai sprite lepas. *Semuanya kini ada hanya menempel di dalam
    tileset* — cukup untuk tilemap, tapi tak ada sprite objek interaktif terpisah (lampu Merrit =
    sekarang dibuat prosedural dari ColorRect, bukan sprite).
+   - 🔴 **4 objek-BUKTI A1/A2 (papan nama · bangku+cekungan · cangkir ×2 · kartu pos kosong) =
+     GAP MEKANIK, bukan estetik** — bekasnya (`akibat`/`kebiasaan`/`benda`) yang dikonsumsi `restore()`
+     tak terbaca dari aset gudang apa adanya. Audit + usul produksi: **`reports/ASSET_BEKAS_A1_A2.md`.**
 2. **Portrait ekspresif besar** (untuk dialog Companion & tokoh utama). Faceset 38px terlalu kecil
    untuk emosi. Butuh portrait ≥96px atau ilustrasi.
 3. **Arsitektur khas per-Kerajaan** (7 kerajaan wajib "feel different" — #207). Gudang hanya punya
