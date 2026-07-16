@@ -201,6 +201,35 @@ sadar**, bukan menemukannya nanti saat trailer terasa "kurang megah".
 
 ---
 
+## G. TES SILUET — dijalankan benar (ukuran layar · bersebelahan · di atas tileset)
+
+> Tes siluet awal saya cacat: tiap sprite dilihat **sendirian, di-zoom, latar transparan** — persis
+> anti-pola. Diulang benar (2026-07-16): **ukuran relatif sejati · bersebelahan lintas-pack · di atas
+> grass tileset kandidat**. Referensi CC0 ter-commit: `assets_aetherion/_reference/siluet_test_ninja_cc0.png`.
+> *(Komposit lintas-pack memuat Pixel Crawler (restricted) + Cainos (unknown) → **tidak di-commit**;
+> hanya dijelaskan di sini.)*
+
+**Tiga temuan:**
+1. **Keluarga Ninja koheren di ground-nya sendiri.** Villager/OldMan/Child/Chicken duduk wajar di grass
+   Ninja — satu palet, satu outline, satu kepadatan. Mereka **milik** tempat itu.
+2. **Pack asing bentrok keras — mengunci "JANGAN hibrida".** Karakter Pixel Crawler (**30px, ~2×**
+   tinggi Ninja 14px), lebih detail, kulit lebih merah-muda, di grass yang sama **terbaca dari game
+   lain.** Ground Cainos (**32px, olive teredam**) vs Ninja (**16px, hijau terang**) = beda skala +
+   palet + perspektif. *Ini bukti visual untuk §F: pilih SATU keluarga; mencampur = dua game.*
+3. **⚠ TEMUAN BARU (disembunyikan oleh view-sendirian): siluet manusia Ninja nyaris kembar.**
+   Diisi hitam, Villager/OldMan/Child = **blob bulat yang hampir tak bisa dibedakan** — mereka beda
+   lewat **WARNA & detail wajah**, bukan **bentuk**. **Di ukuran layar sejati (zoom 2 ≈ 28px), wajah &
+   warna tipis nyaris tak terbaca** → warga akan terbaca sebagai "orang yang sama, beda baju".
+   **TAPI penutup kepala memecah siluet:** topi tinggi Noble & rambut tebal Villager2 **terbaca jelas
+   di hitam**; ayam pun khas.
+
+**Konsekuensi desain (actionable) — kunci BELONGING di skala 16px:**
+> **NPC penting wajib punya HOOK SILUET** (topi · rambut · prop dibawa · postur), **bukan** hanya
+> palet/wajah. Yang khas-bentuk terbaca dari jauh; yang khas-warna hilang.
+Ini **memvalidasi & mempertajam** desain adegan yang sudah ada: **Merrit "duduk membaca surat di bawah
+lampu"** = hook postur+prop (bukan wajah) — benar secara siluet. **Spoon Man** semestinya membawa
+sendok (hook prop), dst. 5 NPC-kepribadian Ashbrook (#78) harus dibedakan **per-bentuk**, bukan per-warna.
+
 ## LAPORAN AKHIR — DIREKTUR + DESIGNER (ringkas; detail per-item di `docs/ASSET_LOG.md`)
 
 ### A. Kandidat terbaik per kebutuhan Ashbrook (alasan GAYA)

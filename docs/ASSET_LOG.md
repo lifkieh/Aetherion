@@ -92,6 +92,7 @@ lisensi di dalam pack** (bukan dari nama): Ninja `LICENSE.txt` · Kenney `Licens
 | `_reference/_HERO_abandoned_village_tileset.png` | Ninja Adventure | Pixel-boy & AAA | CC0 1.0 | Tak wajib | Tidak | Patokan mood Ashbrook |
 | `_reference/aetherion_palette_v1.png` | Aetherion Original v1 | Proyek Aetherion | Milik proyek | — | Tidak | Patokan palet |
 | `_reference/aetherion_candyveil_mockup.png` | Aetherion Original v1 | Proyek Aetherion | Milik proyek | — | Tidak | Patokan gaya candyveil |
+| `_reference/siluet_test_ninja_cc0.png` | Ninja Adventure (komposit) | Pixel-boy & AAA + Aetherion | CC0 1.0 | Tak wajib | Tidak | Bukti tes siluet (ARCHAEOLOGY §G) |
 | `_reference/README_reference.md` | — (dokumen) | Proyek Aetherion | Milik proyek | — | Tidak | Catatan referensi |
 
 ---
