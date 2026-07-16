@@ -1,6 +1,16 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-14 — **Ashbrook fungsional-lengkap — menunggu asset + playtest manusia**
+**Last update:** 2026-07-16 — **Aset Aetherion dipetakan, diinventaris, dikurasi & dianalisis — menunggu keputusan gaya + legal Direktur**
+
+> ### 🗂 ASSET ARCHAEOLOGY LENGKAP (#220) — gudang 5,6 GB dipetakan
+> **Direktur kini tahu apa yang dimiliki, apa yang kurang, kandidat gaya, & risiko lisensi.**
+> `reports/ASSET_ARCHAEOLOGY.md` (cluster gaya · hidden gems · gap · 3 kandidat) ·
+> `reports/ASSET_INVENTORY.md` (13 pack + lisensi) · `assets_aetherion/` (**140 file HANYA
+> CC0/milik-proyek**, aman repo publik) · `docs/ASSET_LOG.md` (legal per-item).
+> **USUL GAYA:** kunci **Ninja Adventure 16px CC0** sebagai kanon (lengkap+koheren+aman+sudah-jalan);
+> `TilesetVillageAbandoned` = permata on-tema Ashbrook. **🔴 LEGAL:** 9 OGG AlkaKrab ter-commit di
+> repo publik = potensi langgar lisensi → ganti CC0 (Abstraction/Ninja) atau minta izin.
+> **Tak ada aset di-wire ke scene** (batas tugas). Fungsi Ashbrook tetap **947 test, 0 gagal**.
 
 > ### 🕯 JIWA ASHBROOK LENGKAP (#218) — **947 test, 0 gagal**
 > **PAYOFF PERJALANAN AKHIRNYA BEKERJA.** Masalahnya bukan lampu — **kamera**. Kini ada
