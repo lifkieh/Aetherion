@@ -1,6 +1,14 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-16 — **Aset Aetherion dipetakan, diinventaris, dikurasi & dianalisis — menunggu keputusan gaya + legal Direktur**
+**Last update:** 2026-07-16 — **Ninja DITOLAK; audit keluarga pengganti selesai — LPC direkomendasikan (menunggu putusan Direktur)**
+
+> ### 🔎 AUDIT KANDIDAT MANUSIA (#221) — `reports/AUDIT_KANDIDAT_MANUSIA.md`
+> **Direktur menolak gaya Ninja.** Sensus SEMUA sprite manusia + **stash kedua `.vscode/assets_raw_new/`**
+> (baru diinventaris) = **didominasi LPC (Universal Sprite Sheet)**: modular ♂♀/anak/tua/muscular/pregnant,
+> hewan (ayam ✓), monster; 64×64 ¾ 4-arah; **CC-BY-SA (flag kuning)**. **Uji siluet LULUS** (anak 23px vs
+> dewasa 30px — jelas beda, kebalikan Ninja). Runner-up **Kushnariova 24×32** (CC-BY + portrait, cakupan tipis).
+> **DCSS = CC0** bank monster. **REKOMENDASI: LPC** (satu-satunya modular yang melayani kanon #138 generate
+> NPC unik + 8-ras×generasi). **Nol perubahan `game/` — audit murni; 947 test utuh.**
 
 > ### 🗂 ASSET ARCHAEOLOGY LENGKAP (#220) — gudang 5,6 GB dipetakan
 > **Direktur kini tahu apa yang dimiliki, apa yang kurang, kandidat gaya, & risiko lisensi.**
