@@ -267,3 +267,13 @@ AlkaKrab didapat **atau** repo dibuat privat **atau** audio dipindah ke jalur ri
 apa pun yang ter-commit. Ini **bukan** menuduh — ini menaikkan risiko jadi butir keputusan (#149:
 diam = kelalaian). Sama untuk **Minifantasy SFX & Cainos & Pixel Chest**: lisensi tak ada di unduhan /
 restricted → **jangan commit mentah** sampai jelas.
+
+---
+
+### E. PUTUSAN AKHIR — satu taruhan, tanpa pagar
+
+**Rekomendasi saya: Cluster A (Ninja Adventure 16px CC0). Kalau Direktur memilih Cluster lain, risiko
+terbesarnya adalah proyek harus me-*re-art* SELURUH karakter/hewan/monster/UI dari nol — dengan artis
+karakter yang belum dimiliki — sambil membuang pipeline CC0 yang sudah jalan dan lisensi Cainos yang
+belum jelas; hasil paling mungkin: Aetherion mandek bertahun di gaya belang setengah-migrasi, bukan
+game yang lebih indah.**
