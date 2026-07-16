@@ -13,6 +13,23 @@
 
 Legend lisensi: **CC0** = domain publik, tanpa kewajiban. **Milik proyek** = dibuat Aetherion.
 
+## ⚖ KEBIJAKAN LISENSI (Fase 1 — arahan Direktur 2026-07-16)
+Aetherion **proyek komersial** (GDD §15: battle pass, Aether Shard). Karena itu:
+1. **CC-BY-NC / NC apa pun = TOLAK.** NC = tak boleh dijual → mustahil untuk kita. Jebakan
+   paling umum di itch.io "free assets". *(Hasil scan gudang: **nol** aset NC ditemukan.)*
+2. **CC-BY-SA / GPL = FLAG KUNING, bukan hijau.** Share-alike bisa menular ke turunan.
+   **Dipisah** di seksi tersendiri di bawah, **tak pernah dicampur dengan CC0.** *(Hasil scan:
+   **nol** aset SA/GPL di set terkurasi saat ini.)*
+3. **OpenGameArt/koleksi = cek PER-FILE, bukan per-halaman/per-folder.** Satu submission sering
+   berlisensi campur. **Nama folder BUKAN lisensi.**
+4. **Lisensi ada tapi ambigu ("free to use") / hanya diklaim nama = TIDAK DIKETAHUI = TOLAK.**
+   "Free" bukan lisensi.
+5. **Kenney = CC0, aman** — tetap dicatat.
+
+**Verifikasi set terkurasi `assets_aetherion/`:** ketiga sumber di bawah = **CC0 dibaca dari BERKAS
+lisensi di dalam pack** (bukan dari nama): Ninja `LICENSE.txt` · Kenney `License.txt` · (Abstraction
+`_LICENSE.txt`, bila loop dipakai). **Set terkurasi lolos kelima aturan — nol NC, nol SA/GPL, nol ambigu.**
+
 ## Karakter — semua Ninja Adventure (Pixel-boy & AAA) · CC0 · kredit tak wajib · no share-alike
 | File | Asal pack | Pembuat | Lisensi | Kredit | Share-alike | Lokasi rencana |
 |---|---|---|---|---|---|---|
@@ -84,7 +101,20 @@ Legend lisensi: **CC0** = domain publik, tanpa kewajiban. **Milik proyek** = dib
 - **Kenney (kenney.nl)** — Fantasy UI Borders (CC0, kredit dihargai).
 - **Aetherion** — aset milik proyek.
 
-## Peringatan (item TIDAK disalin ke sini — jangan commit mentah tanpa keputusan)
-- **AlkaKrab** (musik build sekarang) — restricted, konflik repo publik. Ganti ke CC0 bila repo publik.
-- **Minifantasy SFX / Cainos / Pixel Chest** — lisensi tak ada di unduhan → verifikasi sebelum commit.
-- **Pixel Crawler** — restricted (tak boleh redistribusi mentah). Detail: `../reports/ASSET_ARCHAEOLOGY.md` §D.
+## 🟡 FLAG KUNING — CC-BY-SA / GPL (dipisah dari CC0; share-alike menular)
+*(Kosong. Tak ada aset SA/GPL di gudang saat ini. Seksi ini dijaga tetap ada: bila kelak masuk
+aset SA/GPL, ia **wajib** dicatat DI SINI, tak pernah dicampur dengan tabel CC0 di atas.)*
+
+## 🔴 DITOLAK / DITAHAN — TIDAK DIKETAHUI, restricted, atau NC (jangan commit/pakai tanpa keputusan)
+| Item | Masalah lisensi | Aksi |
+|---|---|---|
+| **80-CC0-RPG-SFX** (⚠ **DI BUILD SEKARANG** `game/assets/game/audio/sfx/`) | **Nol berkas lisensi** di unduhan — "CC0" hanya di **nama folder** (aturan #3/#4: nama ≠ lisensi, koleksi = per-file). | **Minta owner: URL sumber + bukti lisensi per-file.** Bila tak ada → ganti SFX dengan CC0 terbukti (Kenney UI-audio / Ninja Sounds). |
+| **Minifantasy Dungeon SFX** (di build) | Nol berkas lisensi di unduhan | Minta berkas lisensi itch (umumnya CC-BY 4.0 — belum terbukti dari unduhan). |
+| **Cainos Top-Down** | Nol berkas lisensi di unduhan | Verifikasi dari halaman resmi sebelum pakai. |
+| **Pixel Chest** (di build) | Nol berkas lisensi di zip | Minta bukti lisensi karsiori. |
+| **AlkaKrab** ×8 (9 OGG di build) | Restricted: no redistribusi as-is / open-source tanpa izin | Ganti ke CC0 (Abstraction/Ninja) untuk repo publik, atau minta izin. |
+| **Pixel Crawler** | Restricted (tak boleh redistribusi mentah) — bukan CC | Boleh di build, **jangan commit mentah**. |
+
+> **Catatan stash kedua:** `.vscode/assets_raw_new/` memuat `48x48_Faces..._OGA.png` (OpenGameArt) —
+> **wajib cek lisensi per-file** sebelum dipakai (aturan #3). Belum diinventaris.
+> Detail penuh: `../reports/ASSET_ARCHAEOLOGY.md` §D + `../reports/ASSET_INVENTORY.md`.

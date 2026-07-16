@@ -2,8 +2,12 @@
 
 > Katalog per-pack: sumber, pembuat, **LISENSI** (dicari di LICENSE/README/txt/PDF di dalam arsip),
 > kategori, ukuran sprite, animasi, arah, perspektif, mutu, komentar. Survei 2026-07-16.
-> **Aturan:** *lisensi tak ditemukan di dalam unduhan = "LISENSI TIDAK DIKETAHUI = JANGAN PAKAI"*.
+> **Aturan (Fase 1, Direktur 2026-07-16):** proyek **komersial** →
+> **(1)** NC apa pun = **TOLAK** · **(2)** CC-BY-SA/GPL = **flag kuning**, pisah dari CC0 ·
+> **(3)** koleksi/OGA = cek **per-file**, **nama folder ≠ lisensi** · **(4)** ambigu/"free to use"/klaim
+> nama saja = **TIDAK DIKETAHUI = TOLAK** · **(5)** Kenney = CC0 aman, tetap dicatat.
 > `assets_raw/` di-`.gitignore` (gudang mentah, tak pernah masuk build). Total gudang **5,6 GB**.
+> **Scan gudang:** nol NC · nol SA/GPL · **1 reclass ke TIDAK DIKETAHUI** (80-CC0-RPG-SFX, lihat #8).
 
 ## Ringkasan arsip & folder
 | Item | Ukuran | Entri | Audio | Status ekstraksi |
@@ -92,9 +96,13 @@
 - **Komentar:** hapus salah satu duplikat. Aman repo publik.
 
 ## 8. 80-CC0-RPG-SFX
-- **Sumber:** koleksi OpenGameArt (nama folder). **LISENSI:** ✅ **CC0** (klaim per-koleksi; **verifikasi
-  sumber asli tiap file sebelum rilis** — koleksi CC0 kadang mengandung item lisensi campuran).
-- **Kategori:** 80 SFX (blade/coin/gem/creature/spell_fire). **Mutu:** baik. **Komentar:** dipakai build.
+- **Sumber:** koleksi gaya OpenGameArt (hanya nama folder). **LISENSI:** ❌ **TIDAK DIKETAHUI** —
+  **nol berkas lisensi/README/attribution di dalam folder** (80 .ogg saja). "CC0" hanya **klaim nama
+  folder**. Per aturan Fase 1 #3 (koleksi OGA = lisensi **per-file**, nama folder ≠ lisensi) & #4
+  (klaim ambigu = TIDAK DIKETAHUI = TOLAK) → **REJECT sampai owner memberi URL sumber + bukti lisensi
+  per-file.** ⚠ **Sudah dipakai build** (`game/assets/game/audio/sfx/`) → risiko nyata, bukan teori.
+- **Kategori:** 80 SFX (blade/coin/gem/creature/spell_fire). **Mutu:** baik. **Komentar:** ganti dengan
+  CC0 terbukti (Kenney UI-audio / Ninja Sounds) bila bukti tak muncul.
 
 ## 9. Minifantasy — Dungeon SFX
 - **Sumber:** Leohpaz/Krishna Palacio (nama pack). **LISENSI:** ❌ **TIDAK ADA berkas lisensi di dalam
