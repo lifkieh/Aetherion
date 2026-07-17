@@ -121,6 +121,7 @@ composite lapisan LPC ke tileset/UI (kalau tercampur, tileset ikut jadi SA — T
 | LPC animals (chicken, pig, horse, cat, cabbit, bunny, wolf, birds) | CC-BY-SA 3.0 | **Ya** | **Ya** | **ayam ✓** + ternak/burung |
 | LPC monsters (lpc-monsters, Combat Media, dll) | CC-BY-SA 3.0 | **Ya** | **Ya** | monster |
 | LPC medieval weapons / item animations | CC-BY-SA 3.0 / GPL 3.0 | **Ya** | **Ya** | senjata/gear |
+| **[LPC] Character Skintone Rework** (`ElizasLpcSkintones.zip`) — **URL diverifikasi** https://opengameart.org/content/lpc-character-skintone-rework | Sumber **CC-BY-SA 3.0**; dipilih rilis turunan **CC-BY-SA 4.0** (#232, klausa "later version") | **Ya — Death's Darling · Redshrike · Kheftel · Nila122** | **Ya** | tona kulit dewasa/anak + Babies (16 file; cocok 775414 bytes) |
 
 *(Non-LPC di stash — DCSS=CC0, Kushnariova=CC-BY, 2DPIXX=isometric, CraftPix=restricted — dicatat
 di ROW ditolak/ditahan atau tetap kandidat terpisah; JANGAN diperlakukan sebagai LPC.)*

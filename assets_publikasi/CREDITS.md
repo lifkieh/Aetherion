@@ -45,6 +45,7 @@ https://opengameart.org/content/lpc-character-bases . Lisensi: **CC-BY-SA 3.0 / 
 - Yamilian
 - Emilio J. Sanchez-Sierra
 - Radomir Dopieralski
+- Death's Darling *(LPC Character Skintone Rework — "Babies"; verifikasi URL 2026-07-17)*
 
 ## Berkas kredit asli (otoritatif, per-pack) di `source_credits/`
 | Berkas | Cakupan |
@@ -54,6 +55,7 @@ https://opengameart.org/content/lpc-character-bases . Lisensi: **CC-BY-SA 3.0 / 
 | `CREDITS_lpc-sara.txt` | LPC Sara (maskot OGA) |
 | `CREDITS_male-item-frames.txt` | LPC male item/frame animations (per-lapisan) |
 | `CREDITS_animal-cat.txt` / `-horse.txt` / `-pig.txt` / `-cabbit.txt` | Hewan LPC |
+| `CREDITS_skintone-rework.txt` | [LPC] Character Skintone Rework (Death's Darling, Redshrike, Kheftel, Nila122) — verifikasi URL |
 
 > **Catatan:** berkas kredit hewan/rambut/pakaian yang belum tersalin ke sini ada lengkap di
 > gudang `assets_raw/lpc/` (gitignored). Saat sebuah lapisan dipakai untuk merakit sprite, baris

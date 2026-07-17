@@ -1,0 +1,33 @@
+[LPC] Character Skintone Rework
+===============================
+
+Verifikasi dari halaman sumber OpenGameArt (bukan tebakan), 2026-07-17.
+URL: https://opengameart.org/content/lpc-character-skintone-rework
+
+Author / Submitted by:
+  Death's Darling
+
+License(s) (verbatim dari halaman):
+  CC-BY-SA 3.0
+
+Copyright/Attribution Notice (VERBATIM dari halaman):
+  "Babies are my original work. Original adult walkcycles done by Redshrike.
+   Standing child template by Kheftel. Child walk cycle by Nila122."
+
+Seniman yang muncul di halaman:
+  - Death's Darling (author; "Babies")
+  - Redshrike (Stephen Challener) — original adult walkcycles
+  - Kheftel — standing child template
+  - Nila122 — child walk cycle
+  (Junjo & Baŝto = komentator, bukan pembuat.)
+
+Berkas (attachment OGA): ElizasLpcSkintones.zip (775.4 Kb) — COCOK dengan file lokal
+  assets_raw/lpc_extra/ElizasLpcSkintones.zip (775414 bytes).
+Isi: Babies.png + child_{black,brown,olive,peach,white}.png + man_{5 tona} + woman_{5 tona} = 16 file.
+  (Isi konsisten dengan attribution notice.)
+
+CATATAN: nama berkas lokal berawalan "Elizas" (mungkin dinamai ulang pengunduh mengikuti ElizaWy),
+  tetapi submitter OGA yang SAH = Death's Darling. Isi & ukuran cocok dengan submission ini.
+
+Lisensi yang dipilih Aetherion (per Decision Log #232): turunan dirilis CC-BY-SA 4.0
+  (diizinkan oleh klausa "later version" CC-BY-SA 3.0 §4(b)). Sumber tetap CC-BY-SA 3.0.
