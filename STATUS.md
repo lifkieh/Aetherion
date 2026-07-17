@@ -1,6 +1,14 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-17 — **Gudang ULPC baru dikurasi (`lpc_extra/`) — sayap/topi/elder/ternak/ras menutup gap; menunggu putusan format + spec perakit**
+**Last update:** 2026-07-17 — **Uji kelayakan 6 sprite LPC LULUS (4 orang tua bisa dibedakan) — bukan Ninja kedua**
+
+> ### 🧑‍🤝‍🧑 UJI 6 SPRITE ASHBROOK (#235) — `reports/ASHBROOK_6_UJI.md` + `reports/preview/`
+> Skintone URL diverifikasi (#234: Death's Darling, CC-BY-SA, atribusi dicatat). Survei ongkos ras
+> (`RAS_ONGKOS_SURVEI.md`): 5/8 murah, 3 mahal (Shadeborn/Dryad/Tidekin). **Tugas 2 = 6 sprite LPC
+> penuh** (bukan portrait), dirakit sbg file lepas: **VERDIKT LULUS** — 4 orang tua **bisa dibedakan
+> di warna & siluet** (Bram=janggut · Nyai=kerudung · Otha=sanggul · Merrit=abu). Kelemahan jujur:
+> tokoh dgn rambut sama = siluet mirip → **aturan: tiap tokoh WAJIB rambut/tutup-kepala beda.**
+> Sprite = CC-BY-SA (atribusi disertakan). **Nol `game/`; nol edit data; 947 test utuh.**
 
 > ### 🧩➕ KURASI ULPC EXTRA (#233) — `reports/LPC_EXTRA_KURASI.md`
 > `D:\assets_raw_new_2` → **`assets_raw/lpc_extra/`** (437 item, gitignored). **Stack ULPC terbukti**
