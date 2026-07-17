@@ -1,6 +1,14 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-17 — **LPC DIRATIFIKASI keluarga karakter kanon (#232); struktur publikasi berdiri — menunggu spec mesin perakit**
+**Last update:** 2026-07-17 — **Gudang ULPC baru dikurasi (`lpc_extra/`) — sayap/topi/elder/ternak/ras menutup gap; menunggu putusan format + spec perakit**
+
+> ### 🧩➕ KURASI ULPC EXTRA (#233) — `reports/LPC_EXTRA_KURASI.md`
+> `D:\assets_raw_new_2` → **`assets_raw/lpc_extra/`** (437 item, gitignored). **Stack ULPC terbukti**
+> (rambut/sayap/baju PAS tiap frame). **Menutup gap #232:** **sayap** (bat/feathered/lizard+fairy),
+> **topi**, **elder**, **sapi/kambing**, banyak ras (faun/minotaur/boarman/furry/imp/ogre/lizard/elf).
+> 5 ras kanon = semua **parsial** (Dwarf/Dryad paling kurang). **Portrait tetap GAP.** Compound-merged &
+> non-grid = DITAHAN (tak bisa dipretelin). Lisensi ULPC = CC-BY-SA 3.0/4.0+GPL+OGA-BY (bukan GPL-only).
+> **Usul: patok format ULPC EXPANDED 832×2944 (`eulpc_*`).** **Nol `game/`; 947 test utuh.**
 
 > ### 🧩 LPC = KANON (#232) — CC-BY-SA diterima penuh, sadar
 > **`assets_publikasi/`** lahir hari-1: `characters/` (kosong), `LICENSE.txt` (CC-BY-SA 3.0),

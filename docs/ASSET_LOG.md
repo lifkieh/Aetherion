@@ -125,6 +125,13 @@ composite lapisan LPC ke tileset/UI (kalau tercampur, tileset ikut jadi SA — T
 *(Non-LPC di stash — DCSS=CC0, Kushnariova=CC-BY, 2DPIXX=isometric, CraftPix=restricted — dicatat
 di ROW ditolak/ditahan atau tetap kandidat terpisah; JANGAN diperlakukan sebagai LPC.)*
 
+**Gudang ULPC kedua (#233):** `assets_raw/lpc_extra/` (437 item, gitignored) — lapisan **ULPC EXPANDED
+`eulpc_*` (832×2944)** + sayap/topi/elder/ternak/ras. Lisensi ULPC = **CC-BY-SA 3.0 & 4.0 / GPL 3.0 /
+OGA-BY** (bukan GPL-only). ⚠ **Campuran SA 3.0/4.0** → saat lapisan 4.0 (mis. fairy wings) dipakai,
+rilis turunan gabungan **CC-BY-SA 4.0** & tambah `assets_publikasi/LICENSE-4.0.txt`. ⚠ Beberapa zip
+(`Hair00`, `ElizasLpcSkintones`, `hat-bundle`) **tanpa berkas lisensi di dalamnya** → verifikasi kredit
+generator ULPC per-lapisan sebelum sprite dikirim. Detail: `reports/LPC_EXTRA_KURASI.md`.
+
 ## 🔴 DITOLAK / DITAHAN — TIDAK DIKETAHUI, restricted, atau NC (jangan commit/pakai tanpa keputusan)
 | Item | Masalah lisensi | Aksi |
 |---|---|---|
