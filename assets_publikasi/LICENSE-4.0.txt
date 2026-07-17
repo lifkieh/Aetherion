@@ -1,0 +1,52 @@
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+======================================================================
+
+Sprite karakter turunan LPC/ULPC di repositori ini yang menggabungkan lapisan
+ber-lisensi CC-BY-SA 4.0 (mis. LPC Fairy Wings) dirilis di bawah:
+
+    Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+Teks legalcode LENGKAP & OTORITATIF ada di:
+    https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Ringkasan resmi (deed) — https://creativecommons.org/licenses/by-sa/4.0/ :
+
+  You are free to:
+    - Share — copy and redistribute the material in any medium or format
+    - Adapt — remix, transform, and build upon the material
+    for any purpose, even commercially.
+    The licensor cannot revoke these freedoms as long as you follow the
+    license terms.
+
+  Under the following terms:
+    - Attribution — You must give appropriate credit, provide a link to the
+      license, and indicate if changes were made. You may do so in any
+      reasonable manner, but not in any way that suggests the licensor
+      endorses you or your use.
+    - ShareAlike — If you remix, transform, or build upon the material, you
+      must distribute your contributions under the same license as the
+      original.
+    - No additional restrictions — You may not apply legal terms or
+      technological measures that legally restrict others from doing anything
+      the license permits.
+
+Kenapa 4.0 (bukan 3.0) untuk gabungan:
+  Sebagian lapisan sumber = CC-BY-SA 3.0, sebagian = CC-BY-SA 4.0. CC-BY-SA 3.0
+  §4(b) mengizinkan mendistribusikan adaptasi di bawah versi LEBIH BARU dengan
+  License Elements yang sama (3.0 -> 4.0). Karena itu karya GABUNGAN dirilis
+  4.0. Lapisan yang murni 3.0 tetap tersedia di bawah 3.0 (lihat LICENSE.txt).
+
+Atribusi: lihat CREDITS.md + source_credits/ (setiap seniman LPC/ULPC).
+
+Ruang lingkup: HANYA sprite karakter turunan LPC. Kode, cerita, musik, SFX,
+tileset, UI, dan data Aetherion BUKAN CC-BY-SA dan tetap hak milik penuh
+(lihat README.md, hukum pembatas #232).
+
+--------------------------------------------------------------------------------
+CATATAN AGENT (transparansi): legalcode 4.0 lengkap (~7.500 kata) TIDAK bisa
+diambil verbatim otomatis (WebFetch menolak reproduksi penuh; tak ada berkas
+4.0 di gudang). Berkas ini mengidentifikasi lisensi secara sah + menaut teks
+otoritatif. Untuk menyisipkan legalcode penuh verbatim, jalankan:
+    curl -s https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt \
+      -o assets_publikasi/LICENSE-4.0.txt
+--------------------------------------------------------------------------------

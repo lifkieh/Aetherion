@@ -1,6 +1,15 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-17 — **Uji kelayakan 6 sprite LPC LULUS (4 orang tua bisa dibedakan) — bukan Ninja kedua**
+**Last update:** 2026-07-17 — **ULPC expanded diratifikasi kanonik (#233); uji 6-wajah + Dwarf selesai — prop hilang & Dwarf mahal terungkap**
+
+> ### 📐 RATIFIKASI ULPC + UJI PROP/RAS (#236)
+> **#233 RESMI: ULPC EXPANDED (832×2944 `eulpc_*`) = format lapisan kanonik.** `LICENSE-4.0.txt` ditambah.
+> **T2 `LPC_6_WAJAH.md`:** 6 sprite dgn prop — LULUS SEBAGIAN. Hook kuat: kerudung/celemek/keranjang/teen.
+> **KEMBAR Merrit↔Halloran** (rambut sama + hook Merrit hilang). **Lapisan HILANG:** lentera-dipegang,
+> gulungan-benang, surat, bungkuk → prop identitas 3/6 tokoh harus digambar. **T3 `LPC_RAS_ONGKOS.md` +
+> uji Dwarf (`dwarf_test.png`):** wardrobe mendikte proporsi → **Dwarf MAHAL (~30+ layer wardrobe)**;
+> overlay-ras (Astralborn/Shadeborn/Dryad) **MURAH (0 wardrobe rusak)**; Tidekin mahal (redraw).
+> **Hair00/hat-bundle = tahan-URL. Nol `game/`; 947 test utuh.**
 
 > ### 🧑‍🤝‍🧑 UJI 6 SPRITE ASHBROOK (#235) — `reports/ASHBROOK_6_UJI.md` + `reports/preview/`
 > Skintone URL diverifikasi (#234: Death's Darling, CC-BY-SA, atribusi dicatat). Survei ongkos ras

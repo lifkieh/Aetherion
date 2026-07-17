@@ -133,6 +133,17 @@ rilis turunan gabungan **CC-BY-SA 4.0** & tambah `assets_publikasi/LICENSE-4.0.t
 (`Hair00`, `ElizasLpcSkintones`, `hat-bundle`) **tanpa berkas lisensi di dalamnya** → verifikasi kredit
 generator ULPC per-lapisan sebelum sprite dikirim. Detail: `reports/LPC_EXTRA_KURASI.md`.
 
+**Verifikasi lisensi lanjutan (#236):**
+- **`ElizasLpcSkintones` ✅ TERVERIFIKASI** — URL dibuka, `[LPC] Character Skintone Rework` oleh
+  **Death's Darling** (CC-BY-SA 3.0; Redshrike/Kheftel/Nila122). Lihat `source_credits/CREDITS_skintone-rework.txt`.
+- **`Hair00.zip` (187 file) & `hat-bundle.zip` (5 file) — LISENSI TAK ADA DI DALAM ZIP.** Presumtif ULPC
+  (CC-BY-SA), TAPI **tanpa berkas lisensi & tanpa URL → atribusi BELUM bisa diverifikasi.** Per aturan
+  #4 (jangan tebak): **TAHAN sampai Direktur beri URL sumber OGA** (seperti skintone). Belum dipakai
+  merakit apa pun → belum jadi pelanggaran; tapi **jangan kirim sprite dari lapisan ini** sebelum URL.
+- **`assets_publikasi/LICENSE-4.0.txt`** ditambah (CC-BY-SA 4.0) untuk turunan yang memuat lapisan 4.0
+  (mis. fairy wings). ⚠ Legalcode 4.0 verbatim belum ter-inline (WebFetch menolak); berkas menaut URL
+  otoritatif + deed resmi — **Direktur/agent bisa inline penuh via `curl` (dicatat di berkas).**
+
 ## 🔴 DITOLAK / DITAHAN — TIDAK DIKETAHUI, restricted, atau NC (jangan commit/pakai tanpa keputusan)
 | Item | Masalah lisensi | Aksi |
 |---|---|---|
