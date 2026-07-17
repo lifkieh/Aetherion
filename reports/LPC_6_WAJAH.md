@@ -59,3 +59,19 @@ rambut beragam · pose duduk terpisah (sitting kit).
 > **Ringkas untuk Direktur:** bahan cukup untuk **3–4 tokoh berhook-kuat sekarang**; **2 tokoh (Merrit,
 > Otha) dan sebagian Sora** butuh **prop kecil digambar** karena identitas mereka ADALAH propnya. Itu
 > bukan kegagalan LPC — LPC memberi badan/pakaian; **prop-cerita spesifik memang selalu tugas produksi.**
+
+---
+
+## ✅ PERBAIKAN MERRIT (#237) — blocker A2 selesai
+Merrit ↔ Halloran kembar **karena lapisan rambut sama**. Diganti ke lapisan **berbeda BENTUK** (bukan
+recolor): diuji **botak** vs **datar** vs keriting Halloran (`reports/preview/merrit_fix.png`).
+**Terpilih: MERRIT BOTAK** (kepala mulus kecil) — siluet **paling jauh** dari puff keriting Halloran,
+dan cocok: **tukang pos tua 58 th yang menipis rambutnya.** Uji ulang (`final_6_lineup.png`): **keenam
+kini terbedakan di siluet**, Merrit ≠ Halloran **tegas**. *(Prop surat Merrit tetap perlu digambar —
+lihat `PROP_IDENTITAS_SPEC.md` — tapi siluet dasarnya sudah aman.)*
+
+## ✅ PROP SPEC & ASTRALBORN
+- Prop identitas (lentera/benang/surat/bungkuk) → **`reports/PROP_IDENTITAS_SPEC.md`** (rancang, bukan gambar).
+- **Astralborn overlay-ras TERBUKTI MURAH** (`reports/preview/astralborn_test.png`): 1 Astralborn
+  (sayap+starhat) dengan **3 baju berbeda** — **wardrobe nyambung sempurna, 0 rusak.** Jalur overlay-ras
+  (Astralborn→Shadeborn→Dryad) resmi terbukti.

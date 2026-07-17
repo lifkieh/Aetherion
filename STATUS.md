@@ -1,6 +1,14 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-17 — **ULPC expanded diratifikasi kanonik (#233); uji 6-wajah + Dwarf selesai — prop hilang & Dwarf mahal terungkap**
+**Last update:** 2026-07-17 — **Merrit diperbaiki (botak, blocker A2 beres); spec 4 prop; Astralborn overlay-ras TERBUKTI murah**
+
+> ### ✨ MERRIT FIX + PROP SPEC + ASTRALBORN (#237)
+> **Overlay-ras jalan duluan** (Astralborn→Shadeborn→Dryad); Dwarf/Tidekin ditunda.
+> **T1 Merrit:** kembar dgn Halloran (rambut sama) → diganti **BOTAK** (siluet mulus, cocok tukang-pos tua)
+> → Merrit≠Halloran tegas (`final_6_lineup.png`, `merrit_fix.png`). Blocker A2 beres.
+> **T2 `PROP_IDENTITAS_SPEC.md`:** surat/benang/lentera = overlay murah (lentera **glow wajib**); **bungkuk
+> = MAHAL (badan baru) → TOLAK, ganti kerudung+tongkat.** **T3 Astralborn** (`astralborn_test.png`): sayap+
+> starhat × 3 baju → **wardrobe 0 rusak** → overlay-ras terbukti. **Nol `game/`; 947 test utuh.**
 
 > ### 📐 RATIFIKASI ULPC + UJI PROP/RAS (#236)
 > **#233 RESMI: ULPC EXPANDED (832×2944 `eulpc_*`) = format lapisan kanonik.** `LICENSE-4.0.txt` ditambah.
