@@ -28,9 +28,13 @@ Desktop.ini
 # Our ORIGINAL assets live in game/assets/ and are versioned.
 assets_raw/
 # The root asset .zip/.rar archives are ignored (already extracted to assets_raw/).
+# assets_raw/lpc/ = stash LPC (dipindah dari .vscode/ per #232-4) — tercakup baris di atas.
+# CATATAN: assets_publikasi/ (sprite turunan LPC + LICENSE/CREDITS) SENGAJA di-commit (CC-BY-SA).
 
 # === RAHASIA PRODUKSI (Decision Log #144) ===
 # docs_private/ TIDAK PERNAH ter-commit. Isinya: nama asli Sang Nirnama, twist reveal
 # Act 2, dan identitas The Last Witness bila kelak diputuskan.
 # ⚠ TIDAK ter-backup GitHub — owner wajib mem-backup-nya sendiri (drive/copy manual).
 docs_private/
+.vscode/assets_raw_new/
+vscode/assets_raw_new/

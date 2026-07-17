@@ -1,0 +1,118 @@
+"[LPC Expanded] Hair" by JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjölund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), and William.Thompsonj.
+License: CC-BY-SA 3.0.
+
+
+Entire submission is CC-BY-SA 3.0. Full list of authors is below along with license.
+
+
+Mandi Paugh:
+Original Designer of Sara, Trevor, Star, and Puck (GPL 2.0+ / CC-BY 3.0+)
+Long Band (CC-BY-SA 3.0)
+https://opengameart.org/content/puck-overland
+https://opengameart.org/content/star-overland
+https://opengameart.org/content/trevor-overland
+https://opengameart.org/content/fantasy-rpg-npcs
+
+Stephen Challener (Redshrike), William.Thompsonj:
+OGA-BY 3.0+ / CC-BY 3.0+
+LPC Sara
+https://opengameart.org/content/lpc-sara
+
+Manuel Riecke (MrBeast):
+CC-BY-SA 3.0 / GPL 3.0
+Longhawk, Messy 1, Messy 2, Plain, Pixie, Parted, Bedhead, Unkempt, Bangs, Bangs Short, Swoop, Ponytail, Ponytail 2, Loose, Bangs Long, Long
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/concept-art-for-lpc-entry,https://opengameart.org/content/lpc-expanded-hair
+
+Barbara Riviera:
+CC-BY-SA 3.0 / GPL 3.0
+Bunches, Bangs Long 2
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/concept-art-for-lpc-entry,https://opengameart.org/content/lpc-expanded-hair
+
+Joe White:
+OGA-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0
+Updates / Recolors: Plain, Ponytail 2
+
+Lanea Zimmerman (Sharm):
+OGA-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0
+Princess
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+Johannes Sjölund (wulax):
+OGA-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0
+Page
+https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+
+Nila122:
+OGA-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0 / GPL 2.0
+Single, Half Messy, Braid, Wavy
+https://opengameart.org/content/3-hairs-for-lpc
+
+thecilekli:
+CC0
+Idol, Bob Side Part, Long Center Part, Long Tied, Long Straight
+https://opengameart.org/content/lpc-pink-short-hair
+https://opengameart.org/content/lpc-korean-idol-hairstyle-male-with-12-colors
+https://opengameart.org/content/lpc-long-straight-hair-with-12-colors
+https://opengameart.org/content/lpc-long-tied-hair-with-12-colors
+
+Fabzy:
+CC-BY-SA 3.0
+Messy 3, Cowlick Tall, Spiked Porcupine, Spiked Liberty, Spiked Beehive, Spiked 2
+https://opengameart.org/content/the-revolution-hair
+
+Skorpio:
+CC-BY-SA 3.0 / GPL 3.0
+High and Tight, Part 2/Parted 2
+https://opengameart.org/content/lpc-skorpios-scifi-sprite-pack
+
+Radomir Dopieralski:
+CC-BY-SA 3.0 / GPL 3.0
+Mop, Pigtails
+https://opengameart.org/content/one-more-lpc-alternate-character
+https://opengameart.org/content/alternate-lpc-character-sprites-george
+
+Emilio J. Sanchez-Sierra:
+CC-BY-SA 3.0 / GPL 3.0
+Pigtails w/Bangs (Astarea)
+https://opengameart.org/content/steampun-a-fy-with-concept-art
+
+Cobra Hubbard (BlueVortexGames):
+CC-BY 3.0
+Spiked Liberty 2
+https://opengameart.org/content/anime-lpc-hair
+
+kcilds/Rocetti/Eredah:
+CC-BY 4.0
+Spiked
+https://opengameart.org/content/eredah-rpg-character-base-48x64-ongoing
+
+Yamilian:
+CC-BY-SA 3.0 / GPL 3.0
+Braid 2 (Lidia), Long Messy 2 (Shura)
+https://opengameart.org/content/lpc-heroine
+https://opengameart.org/content/lpc-heroine-2
+
+Bluecarrot16:
+LPC Tools, LPC Hair Release & Builds
+Updates (CC-BY-SA 3.0): High and Tight, Curtains (Star), Curtains Long (Trevor), Mop, Spiked 2, Spiked Liberty, Spiked Porcupine, Spiked Beehive, Cowlick Tall
+Updates (CC-BY): Spiked (CC-BY 4.0), Spiked Liberty 2 (CC-BY 3.0), Long Messy / Puck (CC-BY 3.0)
+Updates (OGA-BY 3.0): Half Messy, Pigtails, High Ponytail
+Updates (CC0): Idol, Long Center Part, Long Tied, Long Straight
+Base Hairstyles (all CC0): Afro, Dreadlocks Long, Lob
+https://opengameart.org/content/lpc-character-bases
+https://opengameart.org/content/lpc-hair
+
+ElizaWy:
+All OGA-BY 3.0+
+Revised Combat and Run Animation
+Base Hairstyles: Half Up, High Ponytail, Curly Long
+Animated Hairstyles for: Page
+https://opengameart.org/content/lpc-hair
+
+JaidynReiman:
+Added Climb/Jump/Run/Revised Combat/Sit/Emotes to All Frames for All Hairstyles.
+Shoulder L, Shoulder R Hairstyles (uses curly hair from Sharm's Princess, added new split fg and bg layers; OGA-BY 3.0)
+Split fg and bg layers for: Bangs Long 2, Bunches, High Ponytail, Long Band, Long Tied, Ponytail, Ponytail 2, Princess
+Created new build sheets for: Bangs, Bangs Long, Bangs Short, Bedhead, Long, Long Straight, Longhawk, Loose, Messy 1, Messy 2, Parted, Pixie, Plain, Shorthawk, Swoop, Unkempt
+Filled out remaining animations for: Single, Page, Wavy
+Minor fixes for Page 2

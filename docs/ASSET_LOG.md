@@ -102,9 +102,28 @@ lisensi di dalam pack** (bukan dari nama): Ninja `LICENSE.txt` · Kenney `Licens
 - **Kenney (kenney.nl)** — Fantasy UI Borders (CC0, kredit dihargai).
 - **Aetherion** — aset milik proyek.
 
-## 🟡 FLAG KUNING — CC-BY-SA / GPL (dipisah dari CC0; share-alike menular)
-*(Kosong. Tak ada aset SA/GPL di gudang saat ini. Seksi ini dijaga tetap ada: bila kelak masuk
-aset SA/GPL, ia **wajib** dicatat DI SINI, tak pernah dicampur dengan tabel CC0 di atas.)*
+## 🟡 LPC / CC-BY-SA (RATIFIKASI DIREKTUR #232 — keluarga karakter kanon)
+
+**Direktur memutuskan sadar (#232, 2026-07-16): LPC = keluarga karakter kanon; CC-BY-SA diterima
+penuh, tanpa penyaringan per-lisensi.** Sprite karakter turunan LPC dirilis CC-BY-SA di
+**`assets_publikasi/`** (LICENSE.txt = CC-BY-SA 3.0 Unported verbatim; CREDITS.md + source_credits/).
+
+**⚠ HUKUM PEMBATAS (#232):** SA menular **hanya lewat karya turunan**. Maka **HANYA sprite karakter**
+yang ber-SA. **Tileset · UI · musik · SFX · ikon · kode · data WAJIB TETAP TERPISAH** — jangan pernah
+composite lapisan LPC ke tileset/UI (kalau tercampur, tileset ikut jadi SA — TIDAK diputuskan Direktur).
+
+| Sumber (di `assets_raw/lpc/`, gitignored) | Lisensi | Kredit wajib | Share-alike | Cakupan |
+|---|---|---|---|---|
+| LPC Character Bases v3.1 | CC-BY-SA 3.0 / GPL 3.0 (+CC-BY sebagian) | **Ya** (CREDITS.md) | **Ya** | badan ♂♀/anak/teen/muscular/pregnant + kepala human/orc/lizard/wolf/boarman/minotaur/skeleton/zombie (child/dewasa/tua) |
+| LPC Expanded Hair + hairstyles 2024 | CC-BY-SA 3.0 (+CC0 sebagian) | **Ya** | **Ya** (kecuali bag. CC0) | puluhan gaya rambut |
+| LPC clothing (Androgynous, Clothes00, gentleman, Legion, kimono, obi-boots, Dark Elves, revised, bazaar) | CC-BY-SA 3.0 / GPL 3.0 | **Ya** | **Ya** | baju/celana/sepatu/jubah/armor |
+| LPC Sara / crusader / spartan / whitebeard | CC-BY 3.0+ / CC-BY-SA 3.0 | **Ya** | sebagian | tokoh jadi + janggut/rambut tua |
+| LPC animals (chicken, pig, horse, cat, cabbit, bunny, wolf, birds) | CC-BY-SA 3.0 | **Ya** | **Ya** | **ayam ✓** + ternak/burung |
+| LPC monsters (lpc-monsters, Combat Media, dll) | CC-BY-SA 3.0 | **Ya** | **Ya** | monster |
+| LPC medieval weapons / item animations | CC-BY-SA 3.0 / GPL 3.0 | **Ya** | **Ya** | senjata/gear |
+
+*(Non-LPC di stash — DCSS=CC0, Kushnariova=CC-BY, 2DPIXX=isometric, CraftPix=restricted — dicatat
+di ROW ditolak/ditahan atau tetap kandidat terpisah; JANGAN diperlakukan sebagai LPC.)*
 
 ## 🔴 DITOLAK / DITAHAN — TIDAK DIKETAHUI, restricted, atau NC (jangan commit/pakai tanpa keputusan)
 | Item | Masalah lisensi | Aksi |

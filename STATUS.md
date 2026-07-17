@@ -1,6 +1,14 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-16 — **Ninja DITOLAK; audit keluarga pengganti selesai — LPC direkomendasikan (menunggu putusan Direktur)**
+**Last update:** 2026-07-17 — **LPC DIRATIFIKASI keluarga karakter kanon (#232); struktur publikasi berdiri — menunggu spec mesin perakit**
+
+> ### 🧩 LPC = KANON (#232) — CC-BY-SA diterima penuh, sadar
+> **`assets_publikasi/`** lahir hari-1: `characters/` (kosong), `LICENSE.txt` (CC-BY-SA 3.0),
+> `CREDITS.md`, `README.md` (pembatas), `source_credits/`. **HUKUM PEMBATAS:** hanya sprite karakter
+> ber-SA; **tileset/UI/musik/kode WAJIB terpisah — jangan composite LPC ke tileset/UI.**
+> Stash dipindah `.vscode/` → **`assets_raw/lpc/`** (gitignored). Struktur lapisan: `reports/LPC_STRUKTUR.md`
+> (64×64, 4-arah, walk penuh; ras/usia modular; **ayam ✓**; GAP: portrait/topi/5-ras/sapi).
+> **Mesin perakit BELUM dibangun** (tunggu spec Designer). **Nol perubahan `game/`; 947 test utuh.**
 
 > ### 🔎 AUDIT KANDIDAT MANUSIA (#221) — `reports/AUDIT_KANDIDAT_MANUSIA.md`
 > **Direktur menolak gaya Ninja.** Sensus SEMUA sprite manusia + **stash kedua `.vscode/assets_raw_new/`**
