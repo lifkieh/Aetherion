@@ -77,3 +77,19 @@
 > **Semua 4 = lapisan ULPC 832×2944** (kecuali yang cukup di frame duduk/carry saja). **Tak ada yang
 > menyentuh wardrobe** (semua overlay) → **murah relatif** — **kecuali bungkuk-badan, yang kita TOLAK.**
 > **Direktur menentukan penggambar. Ini spec, bukan gambar.**
+
+---
+
+## EKSEKUSI (#238) — 4 prop digambar (first-pass) & diuji keterbacaan
+Digambar prosedural & diuji (hitam · bersebelahan · ukuran main; lentera di latar GELAP).
+Hasil: `reports/preview/props_test.png` + `prop_*.png`. **Ini first-pass motif pembukti-keterbacaan
++ penempatan — belum sheet 832×2944 penuh per-frame** (produksi frame = langkah artis berikutnya).
+
+| Prop | Terbaca? | Catatan |
+|---|---|---|
+| **Lentera+GLOW (Sora)** | ✅ **KUAT** | glow hangat terbaca jelas di latar gelap — **membuktikan kanon "glow = Sora".** Inti identitas, bukan hiasan. |
+| **Tongkat (Nyai)** | ✅ **KUAT** | garis vertikal **terbaca bahkan di siluet murni** — hook lebih kuat dari bungkuk 3px (persis kata Direktur). |
+| **Keranjang+benang (Otha)** | ✅ **cukup** | bentuk keranjang + benang merah (kontras) terbaca; posisi = pangkuan saat duduk. |
+| **Surat (Merrit)** | ⚠ **LEMAH — dilaporkan, tak dipaksakan** | terbaca lewat kontras, TAPI penempatanku menyatu dgn bib overall pucat. **Perbaikan: taruh di TANGAN (lebih bawah) di atas area gelap, bukan di dada.** Konsep (kertas pucat=kontras) sah; penempatan produksi harus dihindarkan dari kain pucat. |
+
+**Verdikt:** 3 kuat, 1 (surat) perlu penempatan ulang di tangan. Semua overlay, nol sentuh wardrobe.

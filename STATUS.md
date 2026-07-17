@@ -1,6 +1,14 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-17 — **Merrit diperbaiki (botak, blocker A2 beres); spec 4 prop; Astralborn overlay-ras TERBUKTI murah**
+**Last update:** 2026-07-17 — **4 prop digambar+diuji; Shadeborn+Dryad terbukti; mesin perakit di-spec (#231 dikodekan)**
+
+> ### 🛠 PROP + OVERLAY-RAS + SPEC PERAKIT (#238)
+> **Kanon:** bungkuk Nyai DICORET (kerudung+tongkat); **glow=Sora (wajib).**
+> **T1** 4 prop diuji (`props_test.png`): lentera+glow & tongkat **kuat**, keranjang cukup, **surat lemah**
+> (taruh di tangan — dilaporkan). **T2** `OVERLAY_RAS_BUKTI.md`: Shadeborn (dark+3baju=0 rusak),
+> Dryad (faun: torso nyambung, kaki-native); horns/leaf_hair/bark = SPEC. **T3** `PERAKIT_SPEC.md`
+> (rancang, nol kode): JSON→sheet, z-order 14-lapis, `_tools/lpc_assembler/`, output ke `characters/` saja
+> (#232), **#231 HARD-FAIL dikodekan** (tolak 2 tokoh rambut sama). **Nol `game/`; 947 test utuh.**
 
 > ### ✨ MERRIT FIX + PROP SPEC + ASTRALBORN (#237)
 > **Overlay-ras jalan duluan** (Astralborn→Shadeborn→Dryad); Dwarf/Tidekin ditunda.
