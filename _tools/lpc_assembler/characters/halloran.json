@@ -1,0 +1,19 @@
+{
+  "id": "halloran",
+  "named": true,
+  "race": "human",
+  "body": "male",
+  "head": "male",
+  "skin": "light",
+  "hair": "curly_short",
+  "headwear": null,
+  "facial": { "beard": null },
+  "torso": "overalls",
+  "apron": "male",
+  "legs": "pants_thin",
+  "feet": "shoes_thin",
+  "race_overlay": [],
+  "story_prop": [],
+  "palette_shift": null,
+  "_hook": "celemek (apron). Hook kepala = curly_short (BEDA dari Merrit botak — cacat kembar #231 dihindari by design)."
+}

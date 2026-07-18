@@ -11,7 +11,22 @@ build/
 *.tpz
 
 # === Tooling / large binaries (kept local, not versioned) ===
-_tools/
+# _tools/ = perkakas lokal. Binernya TIDAK di-versi (godot/ 127 MB, tpl_extract/ 1,6 GB),
+# TAPI script generator WAJIB ter-commit — HUKUM REPRODUKSI #240.
+# ⚠ CATATAN GIT (sebab baris ini rumit): kalau sebuah DIREKTORI dikecualikan ("_tools/"),
+#   git tak pernah masuk ke dalamnya, sehingga "!pengecualian" di bawahnya MUSTAHIL bekerja.
+#   Itulah kenapa dulu `_tools/` mengubur SEMUA generator secara diam-diam (#240 dilanggar
+#   sejak lahir, termasuk gen_overlays.py yang justru dikutip CLAUDE.md sebagai bukti patuh).
+#   Maka dipakai "_tools/*" (ISI direktori), bukan "_tools/".
+_tools/*
+!_tools/gen_*.py
+!_tools/lpc_assembler/
+_tools/lpc_assembler/*
+!_tools/lpc_assembler/*.py
+!_tools/lpc_assembler/*.json
+!_tools/lpc_assembler/*.md
+!_tools/lpc_assembler/characters/
+!_tools/lpc_assembler/characters/*.json
 _tmp/
 
 # === Python ===
@@ -38,3 +53,11 @@ assets_raw/
 docs_private/
 .vscode/assets_raw_new/
 vscode/assets_raw_new/
+
+# === SCRATCH SESI (#249 sesi lentera/bangku) ===
+# _work/ = ruang kerja sementara: screenshot bukti, salinan-cadangan berkas sebelum
+# eksperimen (*.mine), dump hasil test. Tak boleh masuk repo — bukan sumber, bukan aset.
+# ⚠ CATATAN JUJUR: 14 berkas `_work/tmp/*.ogg` (bank musik wilayah + stinger) SUDAH
+# ter-commit lebih dulu di 10f228b. Baris ini TIDAK mencabut pelacakannya — .gitignore
+# hanya berlaku untuk berkas tak-terlacak. Mereka tetap terlacak sampai ada putusan.
+_work/

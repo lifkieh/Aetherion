@@ -1,0 +1,18 @@
+{
+  "id": "nyai",
+  "named": true,
+  "race": "human",
+  "body": "female",
+  "head": "female",
+  "skin": "light",
+  "hair": null,
+  "headwear": "hijab_grey",
+  "facial": { "beard": null },
+  "torso": "sleeveless2",
+  "legs": "hose_thin",
+  "feet": "shoes_thin",
+  "race_overlay": [],
+  "story_prop": ["cane"],
+  "palette_shift": null,
+  "_hook": "kerudung (hijab_grey) + tongkat (cane, adaptasi lpc_simple_staff). Bungkuk-badan DITOLAK (mahal); tongkat isyaratkan tua tanpa menekuk badan (PROP_IDENTITAS §4)."
+}

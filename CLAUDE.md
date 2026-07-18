@@ -368,6 +368,27 @@ bencana/keajaiban & gosip.
 **Konsekuensi praktis:** apa pun yang keluar dari pipeline harus **bisa dibaca, direview,
 di-diff, dites, dan DIHAPUS bila salah.** Kalau tidak keempatnya — belum siap di-commit.
 
+## HUKUM REPRODUKSI (#240) — **"SETIAP GAMBAR MEMBAWA SCRIPT PEMBUATNYA"**
+
+> **Setiap aset gambar yang masuk repo WAJIB punya script pembuatnya ter-commit di repo juga.**
+> Kalau sebuah PNG tak bisa dibuat ulang dari kode di repo — ia **belum siap di-commit.**
+
+**Sebabnya bukan teori — ia sudah menggigit kita:** sesi-sesi lalu menjalankan script generator di
+sandbox `/home/claude/` lalu script-nya lenyap; yang ter-commit hanya PNG. `merrit_fix`,
+`astralborn_test`, dan uji Dwarf yang **membuktikan hukum proporsi** — **semua tak bisa direproduksi,
+tak bisa di-diff, tak bisa diperbaiki.** Bukti yang tak bisa dijalankan ulang bukan bukti.
+
+> **⚠ KOREKSI #251 (2026-07-19):** kalimat "`gen_overlays.py` ter-commit" di bawah **TIDAK PERNAH BENAR.**
+> `.gitignore` memuat `_tools/` — sebuah DIREKTORI, bukan isinya — sehingga git tak pernah masuk ke dalamnya
+> dan **nol** generator pernah ter-commit, termasuk berkas yang dikutip sebagai bukti kepatuhan ini sendiri.
+> Sudah diperbaiki (`_tools/*` + daftar `!`); 16 generator kini benar-benar terlacak.
+> **Pelajaran yang lebih tajam dari hukumnya:** hukum yang tak pernah diverifikasi = hukum yang tidak ada.
+> Klaim "ter-commit" WAJIB dibuktikan dengan `git ls-files`, bukan dengan berkas yang terlihat ada di disk.
+
+**Pola yang benar:** `_tools/lpc_assembler/gen_overlays.py` ter-commit → overlay bisa dibuat ulang,
+di-diff, dihapus. **Konsisten dengan #162** (apa pun yang di-commit harus bisa di-diff/dites/dihapus).
+Aset foto/artis-eksternal (bukan prosedural) dikecualikan — tapi wajib bawa **kredit + sumber**.
+
 ## LOKALISASI DUA JALUR (#166 — amandemen sadar atas aturan lama)
 
 Aturan lama *"semua teks baru lewat `Loc.t()`"* **tidak pernah berlaku untuk teks konten** —
@@ -405,6 +426,30 @@ melihat kedua bahasa **bersebelahan** dan diff-nya terbaca.
 dibuktikan dengan **menaruh pemain di sana** dan memeriksa lampu **masuk kotak kamera**.*
 
 **Retrofit:** test yang memeriksa string alih-alih dunia ditandai **`[SHALLOW]`** dan dimigrasi.
+
+## HUKUM GERBANG TEST (#249) — **"GERBANG PADA 0 GAGAL, BUKAN PADA JUMLAH LULUS"**
+
+> **Gerbang penerimaan = `0 failed`. TITIK.**
+> **Jumlah total test DILARANG dipakai sebagai gerbang** — angkanya tidak deterministik.
+> Kenaikan cakupan dibuktikan lewat **NAMA test baru**, bukan lewat angka total.
+
+**Sebabnya bukan teori — angkanya memang bergoyang sendiri.** `GameClock` diikat ke
+**tanggal WIB nyata**, bukan waktu palsu (itu keputusan sadar: dunia berjalan walau game
+ditutup). Akibatnya sebagian test bercabang menurut kalender, dan **jumlah `check()` yang
+dipancarkan ikut bergeser tiap hari.**
+
+**Bukti terukur (2026-07-18 → 19):** suite terbaca **1024** pukul 23.52 WIB, lalu **1026**
+setelah tanggal berganti — tanpa satu pun test baru ditulis. Ditelusuri dengan membalik
+**setiap** suntingan satu per satu (`recipes.json` · `Town.gd` · `HouseInterior.gd` ·
+`WorldMapUI.gd` · `Interactable.gd` · `Ashbrook.gd` · bahkan mengeluarkan PNG baru dari
+folder): **semuanya tetap 1026, dan daftar label test IDENTIK** — nol label bertambah,
+berkurang, atau berubah. Perubahan kode menyumbang **nol**. Yang berubah cuma tanggal.
+
+**Ini biang "angka hantu"** yang sudah lama menghantui kita (pola yang sama di era "947").
+
+**Bentuk perintah yang benar:** ~~"pastikan suite naik dari 1024"~~ →
+**"suite 0 gagal; sebutkan nama test baru yang kau tambahkan."**
+Angka mutlak sebagai gerbang = **alarm palsu terjadwal**, menyala tiap ganti hari.
 
 ## HUKUM TEST (#151, diperluas Designer #158)
 
@@ -447,3 +492,137 @@ Lima hal ini adalah **kelebihan proyek**, bukan kebetulan. Mengubahnya butuh bar
 - Setelah menambah file `class_name` baru: jalankan `--headless --path game --import` sekali.
 - Semua teks UI Bahasa Indonesia; teks baru idealnya lewat `Loc.t("key")` (retrofit penuh v0.4.4).
 - Setiap export exe → perbarui baris `**Exe terakhir:**` di `STATUS.md` (aturan permanen).
+
+
+
+
+
+# TAMBAHAN UNTUK `CLAUDE.md`
+## Sisipkan SETELAH "HUKUM DIREKTUR #1 — Gerbang Pilar", SEBELUM "HUKUM PEMELIHARAAN WONDER"
+
+> **Kenapa di sini:** `CLAUDE.md` dibaca **setiap sesi**. Empat hukum ini mengikat setiap
+> pekerjaan setelahnya. Kalau ia cuma hidup di `CANON_CHANGE_LOG.md`, dua bulan lagi ia terlupa —
+> dan agent akan "memperbaiki" hal-hal yang justru inti desainnya.
+
+---
+
+## HUKUM DIREKTUR #2 — Bible = HUKUM, GDD = ISI (#219)
+
+> **Bible adalah HUKUM DUNIA. GDD adalah ISI DUNIA.**
+> **Semua isi boleh ada. Tak ada isi yang boleh melanggar hukum.**
+> **Bila bertabrakan — ISINYA yang dibengkokkan, bukan hukumnya.**
+
+Tidak ada fitur GDD yang dipotong. Racing, judi, PvP, marketplace, breeding — semua tetap kanon.
+Yang berubah: tiap fitur wajib lolos **uji 7 pertanyaan** (`docs/HUKUM_KEPATUHAN_FITUR.md`).
+
+**Pelanggar terparah yang sudah ditemukan:** `rank` bintang 1–5 monster (GDD §7.2) = **potensi yang
+ditampilkan**, melanggar §XIV. **Diputus: `???` selamanya.** Nilai tetap di data; pemain membaca
+**perilaku**, bukan UI. *(Ironi: `Personality.potential` dijaga test anti-bocor, sementara monster
+memamerkan potensinya.)*
+
+## HUKUM DIREKTUR #3 — TAGLINE (#228)
+
+> ### **"Be yourself in another world."**
+>
+> **Tak ada companion, fitur, atau sistem yang boleh menjadi SATU-SATUNYA jalan.**
+> Setiap jalur utama wajib punya **minimal dua cara** — dan salah satunya bisa ditempuh
+> **sendirian, tanpa merekrut siapa pun.**
+>
+> Jalan sendirian boleh **lebih mahal, lebih lama, lebih jelek hasilnya.**
+> **Ia tidak boleh mustahil.**
+
+**Uji gerbang:** bila pemain yang tak merekrut siapa pun terkunci dari cerita utama —
+**hukum ini mati, dan tagline-nya bohong.**
+
+*Seluruh bible sudah menegakkannya tanpa pernah menamainya:* NO DESTINY (§0) · POTENTIAL=??? (§XIV)
+· Ordinary People (§XIII) · Hukum Kemauan NPC (*"the player influences lives, does not own them"* —
+**tagline yang berlaku dua arah: NPC juga boleh jadi diri mereka sendiri**).
+
+> **Sang Nirnama adalah tagline yang GAGAL** — ribuan tahun jadi pahlawan, pendiri, penyelamat,
+> sampai tak ada lagi "dirinya" di bawah semua itu. §XVII: pemain membebaskannya **sehingga ia
+> boleh berhenti.** **Pemain adalah tagline yang masih punya kesempatan.**
+
+## HUKUM DIREKTUR #4 — KEKEJAMAN (#229)
+
+> **Aetherion boleh sekejam dunia nyata. Dua jenis kekejaman diizinkan.**
+
+| Jenis | Sifat | Aturan |
+|---|---|---|
+| **Kejam-cuaca** | tidak punya penulis. *"Dunia hanya tidak sedang memperhatikan"* (sheet #006) | **default** |
+| **Kejam-berpenulis** | tangan penulis terasa | diizinkan — **tapi MAHAL.** Saran: **1× per Act** |
+
+**Kalibrasi (kanon sheet #006):** *"kawanan yang ia selamatkan memakan kulit pohonnya. Ia mati
+karena yang ia lindungi. **Dan ini bukan fabel. Tidak ada pelajarannya.** Dunia tidak sedang
+menghukumnya karena naif; **dunia hanya tidak sedang memperhatikan.**"*
+
+**#229.4 — TIDAK SEMUA KABUT DATANG DARI NIRNAMA.** Sebagian penghapusan **bukan Nirnama sama
+sekali** — cuma orang tua yang mati, toko yang tutup, waktu. **Pemain tak akan pernah bisa
+membedakan, dan kita tak akan pernah menjawabnya, ke arah mana pun.**
+*(Musuhnya berhenti jadi musuh. Musuhnya jadi dunia. Dan dunia tidak berhenti.)*
+
+## HUKUM DIREKTUR #5 — CHRONICLE (#221, #226, #230, D-3, D-4)
+
+> **Chronicle bukan fitur. Ia tokoh utama kedua (§XVI) — dan lawan sejati Sang Nirnama.**
+> **Core loop: Nirnama mencoret. Pemain menulis ulang.**
+> **Tidak ada yang menang. Yang kalah adalah yang berhenti menulis.**
+
+### ⛔ EMPAT LARANGAN — dijaga TEST, bukan disiplin
+
+| # | Larangan | Penjaga |
+|---|---|---|
+| **D-3** | `strike()` **DIAM TOTAL** — nol toast/banner/stinger/cutscene. Pemain boleh melewatkan penghapusan **seumur hidup**. | `_test_strike_is_silent()` |
+| **D-4** | **TAK PERNAH ADA ANGKA** di Chronicle — persen · hitungan · progress bar · badge · sortir "belum pulih" | `_test_no_chronicle_score()` |
+| **#226** | `restore()` **SELALU** kehilangan sesuatu. Butuh **≥2 JENIS** bukti berbeda (bukan jumlah). | `_test_restore_always_loses_something()` |
+| **#229.3** | Yang tak pernah dicatat meninggalkan **TIDAK ADA APA-APA** — bukan entri kosong | `_test_uncared_leaves_nothing()` |
+
+**Kenapa D-4 adalah hukum, bukan selera:** §XIII — *"Kekeliruannya bukan pada logikanya.
+Kekeliruannya pada SKALANYA."* **Nirnama kalah karena MENGHITUNG.** Progress bar mengajari pemain
+berpikir seperti dia. Dan angkanya bohong: berapa penyebutnya? Otha Renn tak pernah punya halaman.
+**Persen hanya bisa menghitung yang sudah tercatat — yang tidak pernah tercatat justru inti
+masalahnya.**
+
+**100% mustahil, dan itu tokohnya:** Elyn bangun tiap pagi mengerjakan sesuatu yang **matematis
+mustahil**. Kalau ada 100%, Elyn cuma pemalas yang belum kelar.
+**Tidak ada yang pernah selesai mengingat.**
+
+### #226 — HUKUM BUKTI
+
+> **Ingatan tidak bisa dipulihkan dari ingatan. Hanya dari BEKAS.**
+
+Nirnama menghapus **ingatan**. Ia tak bisa menghapus **akibat**. Itulah retakan di argumennya.
+
+`benda` · `kebiasaan` · `akibat` · `orang` — **KANON, jangan tambah tanpa putusan Direktur.**
+
+### #225 — HUKUM JALUR A/B/C
+
+**A** = pasti (kanon) · **B** = pemicu (non-kanon, **boleh menyamar sebagai C**) ·
+**C** = lahir dari **keadaan dunia**
+
+> **Uji jalur C:** kalau kamu bisa menulis `if randf() < x` — **jalur itu SALAH.**
+> C harus bisa **ditunjuk sebabnya SESUDAH terjadi**, dan **tak bisa direncanakan SEBELUM terjadi.**
+
+### #224 — HUKUM KEPEKAAN (mengunci NO DESTINY)
+
+**Lapis 1 (pasti):** siapa pun yang cukup **mencintai** seseorang merasakan lubangnya.
+**Lapis 2 (praktik):** merasakan penghapusan atas **orang tak dikenal** — dicapai lewat kerja.
+Sora bisa **karena bertahun-tahun ia menyalakan lampu untuk orang asing**. **Terbuka untuk PEMAIN.**
+**Lapis 3 (luck):** tanpa sebab. Luna Vesper.
+
+> **Kepekaan = HASIL, bukan bakat.** Konsisten: *"Legendary bukan SIFAT. Legendary adalah HASIL."*
+> **⛔ Sora tidak boleh tahu ini hasil kerjanya sendiri.**
+
+---
+
+## ⚠ CATATAN UNTUK AGENT (baca sebelum menyentuh Chronicle)
+
+> **Aetherion SENGAJA melanggar praktik UX yang baik.**
+>
+> Kalau nalurimu bilang *"ini kurang feedback"* · *"user butuh progress"* · *"restore harusnya
+> pulih penuh"* — **kamu sedang merasakan naluri yang benar di proyek yang salah.**
+>
+> **Semua sudah dipertimbangkan dan ditolak Direktur.** Ketiganya terasa seperti bug.
+> **Ketiganya adalah fiturnya.**
+>
+> **Ragu? Jangan "perbaiki". Tulis di `BLOCKED.md` dan lanjut ke tugas lain.**
+
+**Brief lengkap implementasi:** `docs/AGENT_BRIEF_R1.md`

@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+"""Test perakit LPC. Jalur pemakai (panggil perakit), bukan periksa string (#151b).
+
+  python test_perakit.py
+Exit 0 = semua hijau, 1 = ada gagal.
+"""
+import os
+import sys
+import tempfile
+
+import assemble as A
+
+FAILS = []
+
+
+def check(name, fn):
+    try:
+        fn()
+        print(f"[PASS] {name}")
+    except AssertionError as e:
+        print(f"[FAIL] {name}: {e}")
+        FAILS.append(name)
+    except Exception as e:  # noqa
+        print(f"[ERROR] {name}: {type(e).__name__}: {e}")
+        FAILS.append(name)
+
+
+def _raises(fn):
+    try:
+        fn()
+    except A.AssemblyError:
+        return True
+    return False
+
+
+# ---- #231 -----------------------------------------------------------------
+def test_231_twins_rejected():
+    """Cacat Merrit<->Halloran: dua tokoh bernama rambut sama -> HARD FAIL."""
+    a = {"id": "merrit", "named": True, "hair": "jewfro"}
+    b = {"id": "halloran", "named": True, "hair": "jewfro"}
+    assert _raises(lambda: A.guard_231([a, b])), "rambut kembar TIDAK ditolak — guard mati"
+
+
+def test_231_distinct_hair_ok():
+    a = {"id": "a", "named": True, "hair": "jewfro"}
+    b = {"id": "b", "named": True, "hair": "curly_short"}
+    A.guard_231([a, b])  # tak boleh raise
+
+
+def test_231_two_bald_ok():
+    """Botak = hook unik per-id, tak bentrok (Merrit botak)."""
+    a = {"id": "merrit", "named": True, "hair": None, "headwear": None}
+    b = {"id": "bram", "named": True, "hair": None, "headwear": None}
+    A.guard_231([a, b])  # tak boleh raise
+
+
+def test_231_headwear_beats_hair():
+    """Tutup-kepala jadi hook; dua kerudung sama -> tolak."""
+    a = {"id": "nyai", "named": True, "hair": None, "headwear": "hijab_grey"}
+    b = {"id": "x", "named": True, "hair": "jewfro", "headwear": "hijab_grey"}
+    assert _raises(lambda: A.guard_231([a, b])), "kerudung kembar TIDAK ditolak"
+
+
+def test_231_ignores_generic():
+    """NPC generik (named=false) tak kena guard."""
+    a = {"id": "npc1", "named": False, "hair": "jewfro"}
+    b = {"id": "npc2", "named": False, "hair": "jewfro"}
+    A.guard_231([a, b])  # tak boleh raise
+
+
+# ---- #232 -----------------------------------------------------------------
+def test_232_rejects_tiles():
+    assert _raises(lambda: A.guard_232("game/assets/game/sprites/tiles/")), "output tiles/ TIDAK ditolak"
+
+
+def test_232_rejects_ui():
+    assert _raises(lambda: A.guard_232("game/assets/game/sprites/ui/")), "output ui/ TIDAK ditolak"
+
+
+def test_232_rejects_bare_sprites():
+    assert _raises(lambda: A.guard_232("game/assets/game/sprites/")), "output non-characters TIDAK ditolak"
+
+
+def test_232_accepts_characters():
+    A.guard_232("game/assets/game/sprites/characters/")  # tak boleh raise
+    A.guard_232("game/assets/game/sprites/characters")   # tanpa slash akhir juga
+
+
+# ---- resolusi lapisan / error ---------------------------------------------
+def test_missing_hair_id_errors():
+    """id lapisan tak ada di katalog -> error, bukan diam (spec §5)."""
+    cat = A._catalog()
+    char = {"id": "t", "body": "male", "hair": "TIDAK_ADA"}
+    assert _raises(lambda: A._layer_plan(char, cat)), "id rambut palsu TIDAK error"
+
+
+def test_layer_plan_zorder_bald_merrit():
+    """Plan Merrit botak: badan sebelum kepala, tak ada slot rambut."""
+    cat = A._catalog()
+    char = {"id": "merrit", "body": "male", "hair": None, "headwear": None,
+            "torso": "overalls", "legs": "pants_thin", "feet": "shoes_thin"}
+    labels = [l for l, _, _ in A._layer_plan(char, cat)]
+    assert any(x.startswith("body:") for x in labels), "badan hilang"
+    assert any(x.startswith("head:") for x in labels), "kepala hilang"
+    assert not any(x.startswith("hair:") for x in labels), "botak tapi ada lapisan rambut"
+    bi = next(i for i, x in enumerate(labels) if x.startswith("body:"))
+    hi = next(i for i, x in enumerate(labels) if x.startswith("head:"))
+    assert bi < hi, "badan harus di belakang kepala (z-order §3)"
+
+
+# ---- roundtrip nyata (butuh aset; skip bila pustaka tak ada) ---------------
+def test_roundtrip_merrit_produces_slices():
+    cat = A._catalog()
+    char = {"id": "merrit_fane", "named": True, "body": "male", "head": "male",
+            "hair": None, "headwear": None, "facial": {"beard": None},
+            "torso": "overalls", "legs": "pants_thin", "feet": "shoes_thin"}
+    # cek pustaka ada; kalau tidak, ini bukan kegagalan guard tapi lingkungan
+    body_path = A._resolve_path(cat["body"]["male"], cat)
+    if not os.path.exists(body_path):
+        print("    (skip roundtrip: pustaka eulpc tak ada di lingkungan ini)")
+        return
+    with tempfile.TemporaryDirectory() as d:
+        outd = os.path.join(d, "characters")
+        os.makedirs(outd)
+        written, flagged, n = A.build_one(char, outd, cat, A._frame_map(), A._credits_db())
+        assert any(w.endswith("merrit_fane_walk.png") for w in written), "slice walk tak dihasilkan"
+        assert os.path.exists(os.path.join(outd, "merrit_fane.credits.txt")), "manifest kredit hilang"
+        assert os.path.exists(os.path.join(outd, "LICENSE-CC-BY-SA.txt")), "LICENSE SA hilang"
+
+
+def test_232_no_sa_leak_outside_characters():
+    """Penjaga CI #232: tak ada PNG turunan-LPC / berkas SA di luar characters/.
+
+    Menyisir game/assets/.../sprites/. Bila ada sheet ukuran-sprite (832x2944) atau
+    LICENSE-CC-BY-SA / *.credits.txt di tiles/ atau ui/ -> GAGAL (kontaminasi SA).
+    """
+    from PIL import Image as _I
+    sprites = os.path.join(A.REPO_ROOT, "game", "assets", "game", "sprites")
+    if not os.path.isdir(sprites):
+        print("    (skip: folder sprites tak ada)")
+        return
+    leaks = []
+    for root, _dirs, files in os.walk(sprites):
+        norm = root.replace("\\", "/")
+        in_chars = "/characters" in norm
+        for fn in files:
+            low = fn.lower()
+            if in_chars:
+                continue  # characters/ = sah
+            if low in ("license-cc-by-sa.txt",) or low.endswith(".credits.txt"):
+                leaks.append(os.path.join(root, fn))
+            elif low.endswith(".png"):
+                try:
+                    if _I.open(os.path.join(root, fn)).size == (A.SHEET_W, A.SHEET_H):
+                        leaks.append(os.path.join(root, fn))
+                except Exception:
+                    pass
+    assert not leaks, f"kontaminasi SA di luar characters/: {leaks[:5]}"
+
+
+TESTS = [
+    test_231_twins_rejected, test_231_distinct_hair_ok, test_231_two_bald_ok,
+    test_231_headwear_beats_hair, test_231_ignores_generic,
+    test_232_rejects_tiles, test_232_rejects_ui, test_232_rejects_bare_sprites,
+    test_232_accepts_characters, test_232_no_sa_leak_outside_characters,
+    test_missing_hair_id_errors, test_layer_plan_zorder_bald_merrit,
+    test_roundtrip_merrit_produces_slices,
+]
+
+if __name__ == "__main__":
+    for t in TESTS:
+        check(t.__name__, t)
+    print()
+    if FAILS:
+        print(f"{len(FAILS)} GAGAL: {', '.join(FAILS)}")
+        sys.exit(1)
+    print(f"{len(TESTS)} test hijau.")

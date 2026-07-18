@@ -1,0 +1,19 @@
+{
+  "id": "merrit_fane",
+  "named": true,
+  "race": "human",
+  "body": "male",
+  "head": "male",
+  "skin": "light",
+  "hair": null,
+  "headwear": null,
+  "facial": { "beard": null },
+  "torso": "overalls",
+  "legs": "pants_thin",
+  "feet": "shoes_thin",
+  "race_overlay": [],
+  "story_prop": [],
+  "palette_shift": null,
+  "_hook": "botak + duduk + LAMPU (lampu = prop scene, bukan overlay sprite; putusan Direktur #1). Surat DICORET sbg prop tangan.",
+  "_note": "hair=null & headwear=null -> hook __bare__ unik (#231). Frame duduk ada di sheet (baris expanded)."
+}

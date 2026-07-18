@@ -1,0 +1,18 @@
+{
+  "id": "otha_renn",
+  "named": true,
+  "race": "human",
+  "body": "female",
+  "head": "female",
+  "skin": "light",
+  "hair": "topknot_long",
+  "headwear": null,
+  "facial": { "beard": null },
+  "torso": "sleeveless2",
+  "legs": "hose_thin",
+  "feet": "shoes_thin",
+  "race_overlay": [],
+  "story_prop": ["sewing_basket"],
+  "palette_shift": null,
+  "_hook": "sanggul (topknot_long) + keranjang benang (sewing_basket, prop duduk). Penjahit. Korban Chronicle (person_otha_renn) yang tak pernah punya halaman."
+}

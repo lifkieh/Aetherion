@@ -1,0 +1,102 @@
+{
+  "_doc": "Katalog lapisan perakit LPC. slot -> nama file (relatif ke lib_root). Design-time (#162). Semua lapisan 832x2944 (eulpc) ATAU 832x1344 klasik (ditempel rata-atas, baris 0-20 sejajar).",
+  "lib_root": "assets_raw/lpc_extra",
+  "overlay_root": "_tools/lpc_assembler/overlays",
+
+  "body": {
+    "male":     "eulpc_body_male.png",
+    "muscular": "eulpc_body_male.png",
+    "female":   "eulpc_body_female.png",
+    "pregnant": "eulpc_body_female.png",
+    "teen":     "eulpc_body_teen.png",
+    "child":    "eulpc_body_child.png"
+  },
+  "head": {
+    "male":     "eulpc_head_male.png",
+    "muscular": "eulpc_head_male.png",
+    "female":   "eulpc_head_female.png",
+    "pregnant": "eulpc_head_female.png",
+    "teen":     "eulpc_head_female.png",
+    "child":    "eulpc_head_child.png"
+  },
+
+  "hair": {
+    "bob_side_part":      "eulpc_hair_bob_side_part.png",
+    "curly_short":        "eulpc_hair_curly_short.png",
+    "curly_short2":       "eulpc_hair_curly_short2.png",
+    "jewfro":             "eulpc_hair_jewfro.png",
+    "parted2":            "eulpc_hair_parted2.png",
+    "parted_side_bangs":  "eulpc_hair_parted_side_bangs.png",
+    "parted_side_bangs2": "eulpc_hair_parted_side_bangs2.png",
+    "swoop_side":         "eulpc_hair_swoop_side.png",
+    "braid_left":         "eulpc_hairext_braidl.png",
+    "braid_right":        "eulpc_hairext_braidr.png",
+    "topknot_long":       ["eulpc_hairext_topknot_long_bg.png", "eulpc_hairext_topknot_long_fg.png"]
+  },
+
+  "headwear": {
+    "hijab_grey":  "hijabgrey.png",
+    "hijab_blue":  "hijabblue.png",
+    "wizard_hat_m": "wizard_hat_male.png",
+    "wizard_hat_f": "wizard_hat_female.png"
+  },
+
+  "beard": {
+    "white": "whitebeard.png"
+  },
+
+  "apron": {
+    "male":   "_extracted/Apron_male.png",
+    "female": "_extracted/Apron_female.png",
+    "male_white":   "_extracted/Apron_male_white.png",
+    "female_white": "_extracted/Apron_female_white.png"
+  },
+
+  "torso": {
+    "overalls":         "eulpc_torso_overalls_male.png",
+    "sleeveless2":      "eulpc_torso_sleeveless2_female.png",
+    "cardigan_teen":    "eulpc_torso_cardigan_teen.png"
+  },
+  "legs": {
+    "pants_thin":  "eulpc_legs_pants_thin.png",
+    "hose_thin":   "eulpc_legs_hose_thin.png",
+    "shorts_thin": "eulpc_legs_shorts_thin.png"
+  },
+  "feet": {
+    "shoes_thin":     "eulpc_feet_shoes_thin.png",
+    "high_socks_thin":"eulpc_feet_high_socks_thin.png"
+  },
+
+  "wing_back": {
+    "wing_feathered": "eulpc_wing_feathered_back.png",
+    "wing_bat":       "eulpc_wing_bat_back.png",
+    "wing_lizard":    "eulpc_wing_lizard_back.png"
+  },
+  "wing_front": {
+    "wing_feathered": "eulpc_wing_feathered_front.png",
+    "wing_bat":       "eulpc_wing_bat_front.png",
+    "wing_lizard":    "eulpc_wing_lizard_front.png"
+  },
+
+  "_overlays_generated": {
+    "_doc": "Digambar design-time oleh gen_overlays.py -> overlay_root. Rujuk via race_overlay / story_prop.",
+    "horns":     "horns.png",
+    "leaf_hair": "leaf_hair.png",
+    "bark_skin": "bark_skin.png"
+  },
+  "race_overlay": {
+    "horns":     "@overlay/horns.png",
+    "leaf_hair": "@overlay/leaf_hair.png",
+    "wing_feathered_back":  "eulpc_wing_feathered_back.png",
+    "wing_feathered_front": "eulpc_wing_feathered_front.png"
+  },
+  "story_prop": {
+    "cane":          "lpc_simple_staff_female.png",
+    "sewing_basket": "@overlay/sewing_basket.png",
+    "lantern":       "@overlay/lantern.png",
+    "lantern_glow":  "@overlay/lantern_glow.png"
+  },
+  "skin_overlay": {
+    "bark_skin": "@overlay/bark_skin.png"
+  }
+}

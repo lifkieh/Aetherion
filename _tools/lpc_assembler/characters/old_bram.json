@@ -1,0 +1,18 @@
+{
+  "id": "old_bram",
+  "named": true,
+  "race": "human",
+  "body": "male",
+  "head": "male",
+  "skin": "light",
+  "hair": "curly_short2",
+  "headwear": null,
+  "facial": { "beard": "white" },
+  "torso": "overalls",
+  "legs": "pants_thin",
+  "feet": "shoes_thin",
+  "race_overlay": [],
+  "story_prop": [],
+  "palette_shift": null,
+  "_hook": "janggut putih (beard=white). Sang Penempa (echo_bramm)."
+}

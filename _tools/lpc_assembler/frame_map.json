@@ -1,0 +1,13 @@
+{
+  "_doc": "Peta animasi -> baris/frame di sheet ULPC-expanded 832x2944 (64px grid, 13 kol x 46 baris). Baris 0-20 = klasik. Slice dipotong dari sheet flatten (putusan Direktur #3: slice masuk game, sheet = artefak build). Baris sit/run expanded BELUM dikalibrasi visual -> ditandai calibrate:true; jangan dipakai sampai diverifikasi.",
+  "cell": 64,
+  "cols": 13,
+  "rows": 46,
+  "dir_order": ["up", "left", "down", "right"],
+  "animations": {
+    "walk": { "rows": {"up": 8, "left": 9, "down": 10, "right": 11}, "frames": [1,2,3,4,5,6,7,8], "calibrate": false },
+    "idle": { "rows": {"up": 8, "left": 9, "down": 10, "right": 11}, "frames": [0], "calibrate": false },
+    "slash": { "rows": {"up": 12, "left": 13, "down": 14, "right": 15}, "frames": [0,1,2,3,4,5], "calibrate": false },
+    "sit":  { "rows": {"up": 22, "left": 23, "down": 24, "right": 25}, "frames": [0,1,2,3], "calibrate": true }
+  }
+}
