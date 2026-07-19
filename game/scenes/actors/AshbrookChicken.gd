@@ -42,10 +42,18 @@ func _ready() -> void:
 	body.add_child(cs)
 	add_child(body)
 	_spr = Sprite2D.new()
-	var p := "res://assets/game/sprites/props/chicken.png"
+	# ⚠ Aset ada di `animals/`, BUKAN `props/`. Sampai 2026-07-20 baris ini menunjuk
+	# `props/chicken.png` — yang tak pernah ada — jadi `ResourceLoader.exists()`
+	# mengembalikan false dengan TENANG dan setiap ayam lahir sebagai kotak krem.
+	# Nol galat tercetak. Di dunia 16px kotaknya 8 px dan nyaris tak terlihat; di
+	# Ashbrook64 ia diperbesar 1,6x (ayam) dan 3x (kambing) dan jadi mencolok.
+	var p := "res://assets/game/sprites/animals/chicken.png"
 	if ResourceLoader.exists(p):
 		_spr.texture = load(p)
 	else:
+		# FALLBACK BERTERIAK (#aset): placeholder yang menyala DIAM-DIAM adalah bug
+		# berikutnya yang sedang menunggu. Kalau kotak muncul, log harus mengatakannya.
+		push_warning("[aset] gagal muat: %s — memakai kotak placeholder" % p)
 		var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
 		img.fill(Color(0.95, 0.93, 0.86))
 		_spr.texture = ImageTexture.create_from_image(img)

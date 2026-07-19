@@ -246,6 +246,9 @@ func _props_and_evidence() -> void:
 		_lamp.scale = Vector2(2, 2)                                 # 12x20 -> 24x40, seskala LPC
 		var glow := PointLight2D.new()
 		var gp := P_OLD + "lantern_glow.png"
+		if not ResourceLoader.exists(gp):
+			# FALLBACK BERTERIAK (#aset): placeholder senyap = bug berikutnya yang menunggu.
+			push_warning("[aset] gagal muat: %s — cahaya lentera memakai tekstur lentera" % gp)
 		glow.texture = load(gp) if ResourceLoader.exists(gp) else _lamp.texture
 		glow.energy = 0.9          # siang: lentera menyala tapi tak membakar layar
 		glow.texture_scale = 7.0

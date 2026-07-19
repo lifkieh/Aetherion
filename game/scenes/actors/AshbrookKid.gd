@@ -26,6 +26,10 @@ func _ready() -> void:
 		_home = global_position
 	add_to_group("ashbrook_life")
 	_spr = Sprite2D.new()
+	# ⚠ Anak-anak TAK PERNAH punya sprite — kotak warna kulit ini desain aslinya di
+	# dunia 16px, bukan kegagalan muat. Ia ditandai supaya tak disangka bug path
+	# seperti ayam, dan supaya jelas ia menunggu aset, bukan perbaikan.
+	push_warning("[aset] AshbrookKid belum punya sprite — memakai kotak placeholder")
 	var img := Image.create(7, 11, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0.85, 0.6, 0.45))
 	_spr.texture = ImageTexture.create_from_image(img)
