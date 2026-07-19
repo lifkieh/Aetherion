@@ -157,3 +157,21 @@ generator ULPC per-lapisan sebelum sprite dikirim. Detail: `reports/LPC_EXTRA_KU
 > **Catatan stash kedua:** `.vscode/assets_raw_new/` memuat `48x48_Faces..._OGA.png` (OpenGameArt) —
 > **wajib cek lisensi per-file** sebelum dipakai (aturan #3). Belum diinventaris.
 > Detail penuh: `../reports/ASSET_ARCHAEOLOGY.md` §D + `../reports/ASSET_INVENTORY.md`.
+
+## 🟢 DUNIA LPC / non-LPC bebas-SA (#254 — mulai 2026-07-19)
+
+⚠ #232 **DICABUT** (#254): aset dunia kini boleh publik/CC-BY-SA. Atribusi tetap WAJIB
+sebelum rilis untuk semua turunan SA/BY. Berkas kredit verbatim → `assets_publikasi/source_credits/`.
+
+| Sumber | Lisensi | Kredit wajib | Share-alike | Cakupan | URL diverifikasi |
+|---|---|---|---|---|---|
+| **Mage City Arcanos** (`assets_raw/lpc/magecity.png`) | **CC0** | tidak wajib (dicatat sbg kebiasaan) | **tidak** | kota 32px: perkerasan, dinding batu/kayu/bata, air mancur, bangku, tong, pohon, jendela — 13 potongan dipakai lewat `_tools/gen_lpc32_slices.py` | https://opengameart.org/content/mage-city-arcanos |
+| **ULPC / LPC character bases** (`assets_raw/lpc_extra/eulpc_*`) | CC-BY-SA 3.0/4.0 + GPL + OGA-BY | **ya** — seniman LPC/ULPC | **ya** | 6 tokoh Ashbrook dirakit `_tools/lpc_assembler/assemble.py` | lihat `assets_publikasi/CREDITS.md` |
+
+**Kandidat berikutnya (survei `reports/BURU_ASET_64.md`, belum diunduh):** [LPC] Terrains ·
+LPC Tile Atlas · LPC Revised 4-Seasons (**OGA-BY**, tak menular) · [LPC] Monsters ·
+[LPC] Items and game effects · Dungeon Crawl 32×32 (**CC0**).
+
+⚠ **Perangkap SA:** [LPC] Terrains & LPC Tile Atlas **CC-BY-SA** → begitu dipakai, tileset
+Aetherion **dan seni asli yang di-composite bersamanya** ikut SA. Mage City (CC0) dan
+LPC Revised (OGA-BY) **tidak** menular. Dahulukan CC0/OGA-BY bila ingin pilihan tetap terbuka.

@@ -42,6 +42,13 @@ SLICES = [
     ("fountain",   6, 2, 2, 2, "sprites"),  # air mancur 64×64 — pengganti ColorRect Ashbrook
     ("bench_lpc",  7, 0, 1, 1, "sprites"),  # bangku
     ("barrel_lpc", 4, 2, 1, 2, "sprites"),  # tong
+    # --- migrasi Ashbrook penuh (#254 tugas 1) ---
+    ("wall_wood",  0, 23, 3, 3, "sprites"),  # papan kayu 96x96  -> toko Otha (tutup 2 musim)
+    ("wall_brick", 4, 26, 4, 3, "sprites"),  # bata besar 128x96 -> gudang gandum
+    ("wall_ruin",  4, 23, 4, 3, "sprites"),  # batu berlumut 128x96 -> reruntuhan/fondasi
+    ("window_lpc", 1, 21, 2, 1, "sprites"),  # jendela 64x32
+    ("tree_lpc",   3, 17, 2, 2, "sprites"),  # pohon dalam pot batu 64x64
+    ("table_lpc",  1, 16, 1, 1, "sprites"),  # meja/lapak
 ]
 
 
