@@ -207,14 +207,28 @@ func restore_self(id: String, witnesses: Array) -> Dictionary:
 ##
 ## ⚠ #259 HUKUM KETERBUKAAN: pemanggil WAJIB menampilkan ongkos ini SEBELUM
 ## memanggil fungsi ini. Nol jebakan. Keputusan sadar, bukan kejutan.
-const ELYN_YEARS_PER_PAGE := 1
+## #267 — tahun elf yang DIBELANJAKAN per halaman.
+##
+## Dinaikkan 1 → 10 karena 1 tak pernah bisa terlihat: Elyn 134, ambang "menua"
+## 301 → jarak 167 tahun = 167 limpahan. Pada 10, pelimpah-berat (~17 halaman)
+## menyeberang; pelimpah-ringan (~5) tidak — dan itulah bedanya yang harus terasa.
+##
+## **Angka playtest, bukan kanon.** Yang kanon adalah ambangnya (TIME_LEGACY_SPEC
+## tabel §2), bukan laju belanjanya.
+const ELYN_YEARS_PER_PAGE := 10
 
 func restore_elyn(id: String, witnesses: Array) -> Dictionary:
 	var r := restore(id, witnesses, SCRIBE_ELYN)
 	if r.get("ok", false):
 		if not (id in PlayerData.elyn_burden):
 			PlayerData.elyn_burden.append(id)
+		# AMBANG, BUKAN HITUNGAN (#267): tahun menumpuk diam-diam; yang dipancarkan
+		# hanya PENYEBERANGAN. Potret/dialog berubah di sini, tak pernah tiap halaman.
+		var before := PlayerData.elyn_stage()
 		PlayerData.elyn_age_spent += ELYN_YEARS_PER_PAGE
+		var after := PlayerData.elyn_stage()
+		if after != before:
+			EventBus.elyn_stage_changed.emit(after)
 	return r
 
 

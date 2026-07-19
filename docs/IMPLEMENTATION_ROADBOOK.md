@@ -2,8 +2,13 @@
 
 **Aturan yang dipatuhi:** **tidak menciptakan fase baru** — hanya mengisi fase yang
 sudah ada (v0.5 → v1.0). **Gerbang dihormati: B17 Companion Bible 10/50 tetap menahan
-v0.5.** Semua yang bergantung pada **K1 (skala waktu, #123)** ditandai ⏳ dan **tidak
-boleh dibangun** sebelum owner menjawab.
+v0.5.**
+
+> ⚠ **Kalimat berikutnya dulu berbunyi:** *"Semua yang bergantung pada K1 (skala waktu,
+> #123) ditandai ⏳ dan tidak boleh dibangun sebelum owner menjawab."*
+> **Sudah kedaluwarsa (koreksi 2026-07-20).** Owner SUDAH menjawab: `TIME_LEGACY_SPEC:13-15`
+> mencatat K1=c sebagai **#154**, yang **menutup #123**. Penanda ⏳ K1 di bawah karena itu
+> **bukan lagi "menunggu owner"** — ia menunggu **pekerjaan sistemnya**.
 
 **Kondisi awal:** Fase 0 (v0.4.x) **tuntas** — 753 test, 0 gagal. Yang sudah berdiri:
 combat, 10 class, 28 pohon (kini ber-domain), profesi, taming, crafting/enchant,
@@ -107,7 +112,7 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 | **Companion Dungeon** (tipe VI) + **Raid Dungeon** (tipe III, butuh entourage) | Dungeon (40) | Companion v1, rekrutan | 1,5 sesi | — |
 | **LIFE EVENTS + GROWTH ENGINE** (mesin kepribadian penuh, #139): opportunity events (**pemain memberi kesempatan → takdir berubah**, L14), growth tick lewat PERISTIWA, moral drift (kejatuhan & penebusan), mental_state memengaruhi keputusan hidup NPC | Personality (#136–#138), Recruitment (35) | Profil ✅ (sudah ditanam) | 2 sesi | Sudah diputus (#139) |
 | **Rune / Runesmith**, profesi bible (Hunter, Tailor, Farmer, Rancher, Merchant, Scholar, Explorer) | Profession (46) + #122 | — | 1,5 sesi | Cook tetap (#122) |
-| ⏳ **World history ledger** (peristiwa ireversibel offline) | World Bible b.5704 | **K1** | — | ⏳ **K1 #123** |
+| ⏳ **World history ledger** (peristiwa ireversibel offline) | World Bible b.5704 | K1 ✅ | — | ✅ **#154** (menutup #123) — sisa: pekerjaan sistem |
 
 ---
 
@@ -141,13 +146,27 @@ Chronicle (benih), cutscene engine, peta, lokalisasi, gamepad.
 ---
 
 ## v0.9 — GENERATION
-⏳ **SELURUH fase ini terkunci di belakang K1 (#123).** Tanpa keputusan skala waktu,
-penuaan/generasi/suksesi **tidak akan pernah terpicu** (Tahun 120 = ~18,5 tahun nyata).
+
+> ### ✅ KOREKSI RUJUKAN BASI (2026-07-20) — **#123 SUDAH DITUTUP OLEH #154**
+> Baris ini dulu berbunyi *"SELURUH fase ini terkunci di belakang K1 (#123)"*. **Itu sudah
+> kedaluwarsa.** `TIME_LEGACY_SPEC.md:13-15` mencatat keputusan **K1=c** sebagai baris
+> **#154**, yang **menutup #123** — dan seluruh `TIME_LEGACY_SPEC` ditulis sebagai
+> turunannya (*"turunan K1=c — dua jam + lompatan"*, `:1`).
+>
+> **Akibatnya:** skala waktu **bukan lagi penghalang**. Yang masih menahan v0.9 adalah
+> **pekerjaan sistemnya** (suksesi, pewarisan, tabel penuaan yang dikodekan), bukan
+> keputusan owner yang belum ada.
+>
+> Ditemukan saat verifikasi #267 (penuaan Elyn) — model ambang butuh kepastian apakah
+> lompatan waktu boleh dijadwalkan. Boleh.
+
+Tanpa skala waktu yang diputus, penuaan/generasi/suksesi tak akan pernah terpicu
+(Tahun 120 = ~18,5 tahun nyata). **#154 memutusnya; #123 ditutup.**
 
 | Sistem | Bible sumber | Prasyarat | Keputusan owner |
 |---|---|---|---|
-| Aging, generasi, **Succession** (pewaris = individu baru, bukan salinan) | World Bible (Time), Time & Legacy (36) | **K1** | ⏳ 🔴 **K1 #123** |
-| Legacy Family (B3), pernikahan pemain (P3 #88) | — | **K1** | ⏳ |
+| Aging, generasi, **Succession** (pewaris = individu baru, bukan salinan) | World Bible (Time), Time & Legacy (36) | K1 ✅ | ✅ **#154** (menutup #123) |
+| Legacy Family (B3), pernikahan pemain (P3 #88) | — | K1 ✅ | ✅ **#154** |
 | Kurva level rebase + loadout penuh (K1/K2 lama: #68/#69) | — | — | — |
 | **Catatan:** roadmap owner menaruh Multi-Generation di **Tier E (pasca-rilis)** — kita di v0.9 | `game design roadmap.txt` | — | **C12 / Q10** |
 

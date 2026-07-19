@@ -134,6 +134,7 @@ func _ready() -> void:
 	_test_evidence_find_is_silent()
 	_test_no_evidence_score()
 	_test_kitab_shows_no_counts()
+	_test_elyn_aging_thresholds()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4116,6 +4117,68 @@ func _test_kitab_shows_no_counts() -> void:
 	check("penolakan ruang penuh (#257) ada", src.contains("func _kitab_prompt_full"))
 	check("Elyn tetap tersedia saat ruang penuh",
 		src.split("func _kitab_prompt_full")[1].split("func ")[0].contains("SCRIBE_ELYN"))
+
+## #267 — penuaan Elyn adalah AMBANG, bukan hitungan.
+##
+## Dua pemain, dua nasib berbeda, dan bedanya harus terasa: yang melimpahkan
+## banyak menemukan Elyn yang sudah lain saat ia kembali; yang melimpahkan
+## sedikit tidak. Kalau keduanya melihat orang yang sama, ongkosnya fiktif.
+func _test_elyn_aging_thresholds() -> void:
+	print("[#267: Elyn menua lewat AMBANG — pelimpah-berat menyeberang, pelimpah-ringan tidak]")
+	var keep := PlayerData.elyn_age_spent
+	var seen: Array = []
+	var cb := func(stage: String): seen.append(stage)
+	EventBus.elyn_stage_changed.connect(cb)
+
+	PlayerData.elyn_age_spent = 0
+	check("mulai di prima (134)", PlayerData.elyn_stage() == "prima", PlayerData.elyn_stage())
+
+	# pelimpah-RINGAN: 5 halaman -> 134 + 50 = 184. Masih prima.
+	PlayerData.elyn_age_spent = 5 * Chronicle.ELYN_YEARS_PER_PAGE
+	check("pelimpah-ringan (5 halaman) TIDAK menyeberang",
+		PlayerData.elyn_stage() == "prima", PlayerData.elyn_stage())
+
+	# pelimpah-BERAT: 17 halaman -> 134 + 170 = 304. Menyeberang ambang kanon 301.
+	PlayerData.elyn_age_spent = 17 * Chronicle.ELYN_YEARS_PER_PAGE
+	check("pelimpah-berat (17 halaman) menyeberang ke MENUA",
+		PlayerData.elyn_stage() == "menua", PlayerData.elyn_stage())
+
+	# tahap antara harus ada, atau pelimpah menengah tak pernah melihat akibat apa pun
+	PlayerData.elyn_age_spent = 12 * Chronicle.ELYN_YEARS_PER_PAGE   # 254
+	check("pelimpah-menengah (12) melihat SATU perubahan sebelum menua",
+		PlayerData.elyn_stage() == "prima_akhir", PlayerData.elyn_stage())
+
+	# SINYAL: dipancarkan saat menyeberang, dan TIDAK tiap limpahan.
+	PlayerData.elyn_age_spent = 0
+	seen.clear()
+	_r1_fresh("person_elyn_uji")
+	Chronicle.strike("person_elyn_uji")
+	var w := [{"kind": "benda", "id": "a"}, {"kind": "orang", "id": "b"}]
+	Chronicle.restore_elyn("person_elyn_uji", w)          # 0 -> 10 (144), masih prima
+	check("limpahan yang TIDAK menyeberang: nol sinyal", seen.is_empty(), str(seen))
+
+	# satu tahun di bawah ambang "menua" — limpahan berikutnya pasti menyeberang
+	PlayerData.elyn_age_spent = PlayerData.ELYN_STAGE_MENUA - PlayerData.ELYN_AGE_BASE - 1
+	_r1_fresh("person_elyn_uji2")
+	Chronicle.strike("person_elyn_uji2")
+	Chronicle.restore_elyn("person_elyn_uji2", w)         # menyeberang 301
+	check("limpahan yang menyeberang: sinyal terpancar sekali", seen.size() == 1, str(seen))
+	check("sinyal membawa NAMA TAHAP, bukan umur",
+		seen.size() == 1 and seen[0] == "menua", str(seen))
+
+	EventBus.elyn_stage_changed.disconnect(cb)
+	PlayerData.elyn_age_spent = keep
+
+	# D-4 — tak boleh ada pengakses ANGKA umur, di autoload maupun di UI
+	var src := FileAccess.get_file_as_string("res://autoload/PlayerData.gd")
+	var banned: Array = []
+	for needle in ["func elyn_age(", "func elyn_years", "func elyn_age_percent",
+			"func elyn_age_remaining"]:
+		if src.contains(needle):
+			banned.append(needle)
+	check("TIDAK ada pengakses angka umur Elyn (#267/D-4)", banned.is_empty(), str(banned))
+	var ui := FileAccess.get_file_as_string("res://scenes/ui/MenuUI.gd")
+	check("UI tak pernah membaca elyn_age_spent", not ui.contains("elyn_age_spent"))
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)

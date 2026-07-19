@@ -94,9 +94,24 @@ menabrak sheet #002. **Direktur memilih mengubah sheet, bukan mencabut #258.**
    bukan anak** *("memperkuat L14 — kesempatan, bukan darah")*. Belum diratifikasi, tapi
    #267 bergerak berlawanan arah. Menyentuh Sora sebagai warisan-yang-berjalan.
 
-⚠ **Status K1 tidak konsisten** dan menentukan kapan penuaan bisa dijadwalkan:
-`TIME_LEGACY_SPEC:13-15` mencatat K1=c sebagai **#154 yang menutup #123**;
-`IMPLEMENTATION_ROADBOOK:144` masih menulis fase v0.9 *"terkunci di belakang K1 (#123)"*.
+✅ **Status K1 — SUDAH DIBERESKAN (2026-07-20).** `TIME_LEGACY_SPEC:13-15` mencatat K1=c
+sebagai **#154 yang menutup #123**; `IMPLEMENTATION_ROADBOOK` masih memakai rujukan basi di
+tiga tempat (kepala berkas, baris World history ledger, dan kepala v0.9). **Ketiganya
+dikoreksi** — skala waktu **bukan lagi penghalang**; yang menahan v0.9 adalah pekerjaan
+sistemnya, bukan keputusan owner yang belum ada.
+
+✅ **Laju tahun — DIPUTUS (2026-07-20).** `ELYN_YEARS_PER_PAGE` **1 → 10**, dan penuaan
+diubah jadi **model AMBANG**: tahun menumpuk diam-diam di `elyn_age_spent`; yang **terlihat**
+(potret/dialog) hanya berubah saat Elyn **menyeberangi ambang tahap hidup**.
+`EventBus.elyn_stage_changed(stage)` dipancarkan **hanya saat menyeberang** — itulah kailnya.
+Ambang: `prima` → `prima_akhir` (250, **tuning**) → `menua` (**301, KANON**) → `sepuh` (**501, KANON**).
+Pelimpah-berat (~17 halaman) menyeberang ke `menua`; pelimpah-ringan (~5) tidak.
+**Umur tak pernah tampil sebagai angka** (D-4) — `PlayerData` sengaja tak menyediakan
+pengaksesnya; hanya `elyn_stage()` yang mengembalikan nama tahap.
+
+⚠ **`prima_akhir` BUKAN ambang kanon.** Tabel `TIME_LEGACY_SPEC` §2 hanya mengenal
+dewasa/prima/menua/sepuh. Ia ditambahkan supaya pelimpah menengah melihat **satu** perubahan
+sebelum lompatan besar. Kalau Designer ingin ia jadi tahap kanon, itu butuh baris ledger sendiri.
 
 ---
 

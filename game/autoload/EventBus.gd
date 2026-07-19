@@ -59,6 +59,13 @@ signal transcendent_crafted(item_id: String, success: bool)   # crafting A+ seba
 signal captive_freed(name: String, tag: String)                # Rumah Lelang: tawanan dibebaskan (v0.4.2)
 signal spirit_state_changed(state: String)                     # Roh Hutan: none/angry/blessed (#95)
 signal chronicle_recorded(id: String, title: String)           # Pencapaian Tercatat (#96)
+signal chronicle_struck(id: String)                            # R1: halaman tercoret (#226; DIAM — D-3)
+signal chronicle_restored(id: String, loss: String)            # R1: halaman ditulis ulang (#226)
+## #267 — Elyn menyeberangi ambang tahap hidup. Dipancarkan HANYA saat menyeberang,
+## tak pernah tiap limpahan: inilah kail untuk potret/dialog yang berubah.
+## Membawa NAMA TAHAP, bukan umur — D-4 berlaku pada sinyal juga.
+signal elyn_stage_changed(stage: String)
+signal evidence_found(id: String, kind: String)                # R2: bekas ditemukan (#226; DIAM — D-3)
 signal input_device_changed(device: String)                    # keyboard | gamepad (#99)
 signal language_changed(lang: String)                          # ID/EN (#100)
 signal board_visited()                           # player opened the Quest Board (onboarding)

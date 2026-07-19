@@ -102,6 +102,54 @@ const MEMORY_CAP := 3              # nilai UJI playtest, bukan final
 var elyn_burden: Array = []        # id halaman yang dilimpahkan ke Elyn
 var elyn_age_spent: int = 0        # tahun umur tergerus — tiap limpahan menambah
 
+# ══════════════════════════════════════════════════════════════════════════════
+# TAHAP HIDUP ELYN — #267. **AMBANG, BUKAN HITUNGAN.**
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Tahun menumpuk di `elyn_age_spent` diam-diam. Yang TERLIHAT — potret, dialog,
+# cara ia bergerak — hanya berubah saat ia **menyeberangi ambang tahap hidup**.
+# Bukan tiap halaman. Pemain tak pernah melihat meteran merangkak; ia pergi,
+# kembali setelah lompatan, dan menemukan seseorang yang sudah lain.
+#
+# Kenapa model ini, bukan hitungan langsung: `ELYN_YEARS_PER_PAGE = 1` yang lama
+# tak pernah bisa terlihat. Elyn 134, ambang "menua" 301 → **jarak 167 tahun**.
+# Satu tahun per halaman berarti 167 limpahan dalam satu permainan. Tak akan
+# pernah terjadi, jadi penuaannya tak pernah terjadi.
+#
+# ⛔ D-4: **umur Elyn TIDAK PERNAH ditampilkan sebagai angka.** Tak ada
+# `elyn_age()`, tak ada bar, tak ada "134 → 304". Berkas ini sengaja TIDAK
+# menyediakan pengakses angkanya — `elyn_stage()` mengembalikan **nama tahap**,
+# dan angkanya dihitung di dalam lalu dibuang. Dijaga `_test_elyn_aging_thresholds()`.
+
+const ELYN_AGE_BASE := 134         # KANON — companion_02 IDENTITAS INTI
+
+## Ambang tahap hidup elf. `menua` KANON (TIME_LEGACY_SPEC tabel §2: elf prima
+## 110–300, menua 301–500, sepuh 501+).
+##
+## ⚠ `prima_akhir` (250) **BUKAN ambang kanon** — tabel §2 hanya mengenal
+## dewasa/prima/menua/sepuh. Ia ditambahkan supaya ada **satu perubahan terlihat
+## sebelum** lompatan besar ke "menua"; tanpa itu, pelimpah menengah tak pernah
+## melihat akibat apa pun. **Angka tuning, bukan kanon** — kalau Designer ingin
+## ia jadi tahap kanon, itu butuh baris ledger sendiri.
+const ELYN_STAGE_PRIMA_AKHIR := 250
+const ELYN_STAGE_MENUA := 301      # KANON
+const ELYN_STAGE_SEPUH := 501      # KANON
+
+const ELYN_STAGES := ["prima", "prima_akhir", "menua", "sepuh"]
+
+## Tahap hidup Elyn saat ini. **Satu-satunya kueri umur yang diizinkan** — pola
+## sama dengan `memory_full()` dan `Evidence.enough_for()`: ia menjawab
+## "seperti apa ia sekarang", bukan "berapa angkanya".
+func elyn_stage() -> String:
+	var age := ELYN_AGE_BASE + elyn_age_spent
+	if age >= ELYN_STAGE_SEPUH:
+		return "sepuh"
+	if age >= ELYN_STAGE_MENUA:
+		return "menua"
+	if age >= ELYN_STAGE_PRIMA_AKHIR:
+		return "prima_akhir"
+	return "prima"
+
 ## Ruang pemain penuh? Satu-satunya kueri kapasitas yang diizinkan (#257).
 func memory_full() -> bool:
 	return memory_held.size() >= MEMORY_CAP
