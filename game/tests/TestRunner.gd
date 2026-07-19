@@ -3265,9 +3265,39 @@ func _test_production_standards() -> void:
 	check("pesan Pact terdaftar di dua bahasa",
 		Loc.has("tame.pact_only", "id") and Loc.has("tame.pact_only", "en"))
 	# (iv) RESERVE SLOT SAVE: reputasi/faksi/influence + migrasi kosong
-	check("schema save = 2", PlayerData.SAVE_SCHEMA == 2)
+	# #256: schema dinaikkan 2 -> 3 saat ruang-ingatan ditambahkan.
+	check("schema save = 3 (ruang-ingatan #256)", PlayerData.SAVE_SCHEMA == 3)
 	check("tangga reputasi 6 tingkat (Unknown..Legendary)",
 		PlayerData.REP_LADDER.size() == 6 and PlayerData.REP_LADDER[5] == "Legendary")
+	# --- #256/#257/#258 RUANG INGATAN: state ada, migrasi save lama kosong, D-4 utuh ---
+	PlayerData.new_game()
+	check("ruang ingatan mulai kosong", PlayerData.memory_held.is_empty() and PlayerData.elyn_burden.is_empty())
+	check("memory_full() false saat kosong", not PlayerData.memory_full())
+	for i in PlayerData.MEMORY_CAP:
+		PlayerData.memory_held.append("uji_%d" % i)
+	check("memory_full() true saat mencapai MEMORY_CAP", PlayerData.memory_full())
+	# save lama (schema 2, tanpa field ingatan) -> default KOSONG, bukan crash
+	var mem_old := PlayerData.to_save()
+	mem_old.erase("memory_held"); mem_old.erase("elyn_burden"); mem_old.erase("elyn_age_spent")
+	mem_old["save_schema"] = 2
+	PlayerData.from_save(mem_old)
+	check("migrasi save schema 2 -> ruang ingatan default kosong",
+		PlayerData.memory_held.is_empty() and PlayerData.elyn_burden.is_empty() and PlayerData.elyn_age_spent == 0)
+	# save baru round-trip
+	PlayerData.memory_held = ["place_ashbrook_besar"]
+	PlayerData.elyn_burden = ["person_otha_renn"]
+	PlayerData.elyn_age_spent = 7
+	PlayerData.from_save(PlayerData.to_save())
+	check("ruang ingatan bertahan lintas simpan/muat",
+		PlayerData.memory_held.size() == 1 and PlayerData.elyn_burden.size() == 1 and PlayerData.elyn_age_spent == 7)
+	# D-4: DILARANG ada kueri berangka di PlayerData
+	var pd_src := FileAccess.get_file_as_string("res://autoload/PlayerData.gd")
+	var banned_mem := []
+	for needle in ["func memory_count", "func memory_percent", "func memory_remaining", "func memory_progress"]:
+		if pd_src.contains(needle):
+			banned_mem.append(needle)
+	check("D-4: nol kueri kapasitas berangka di PlayerData (#257)", banned_mem.is_empty(), str(banned_mem))
+	PlayerData.new_game()
 	check("influence 6 sumbu", PlayerData.INFLUENCE_AXES.size() == 6)
 	var save := PlayerData.to_save()
 	check("save membawa reputation/faction_standing/influence",

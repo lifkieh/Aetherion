@@ -3,7 +3,9 @@ extends Node
 ## SAVE_SCHEMA 2 (v0.4.4+): menambah slot reputasi/faksi/influence (#130). Save schema 1
 ## tetap bisa dimuat — field baru default kosong (migrasi kosong).
 
-const SAVE_SCHEMA := 2
+## SAVE_SCHEMA 3 (#254/#256): menambah ruang-ingatan (memory_held, elyn_burden,
+## elyn_age_spent). Save schema 1/2 dimuat dengan default KOSONG — lihat from_save().
+const SAVE_SCHEMA := 3
 ## Combat-relevant derived stats feed CombatResolver (Fase0 §4).
 
 signal stats_recalculated()
@@ -74,6 +76,35 @@ var influence: Dictionary = {}      # 6 sumbu: wealth/knowledge/military/reputat
 
 const REP_LADDER := ["Unknown", "Recognized", "Trusted", "Respected", "Influential", "Legendary"]
 const INFLUENCE_AXES := ["wealth", "knowledge", "military", "reputation", "territory", "legacy"]
+
+# ══════════════════════════════════════════════════════════════════════════════
+# RUANG INGATAN — #256 · #257 · #258 (SPEC_PAYOFF_SLICE §4.D)
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# #256 HUKUM INGATAN TERBATAS — ingatan adalah ruang terbatas. Pemain DAN Elyn
+# masing-masing punya ruang; menyimpan halaman mengisi ruang salah satunya.
+#
+# ⛔ #257 / D-4 — KAPASITAS TAK PERNAH BERANGKA.
+# Kapasitas boleh hidup di state; UI **DILARANG** menampilkannya sebagai
+# hitungan/meter/persen. Batas ditemui sebagai **PENOLAKAN**
+# ("kamu tak sanggup memikul lebih"), bukan dibaca sebagai angka.
+# DILARANG ADA di berkas ini, selamanya:
+#   memory_count() · memory_percent() · memory_remaining() · memory_progress()
+# `memory_full()` boleh ada karena ia menjawab ya/tidak untuk satu aksi konkret
+# — pola yang sama dengan `Evidence.enough_for()` (`Evidence.gd:165-167`).
+var memory_held: Array = []        # id halaman yang pemain simpan sendiri
+const MEMORY_CAP := 3              # nilai UJI playtest, bukan final
+
+## #258 HARGA ELYN — justifikasi kanon `companion_02_elyn_thornewood.md:78`:
+## "Umur panjang, bagi Elyn, bukan berkah. Ia adalah ruang yang lebih besar untuk lupa."
+## Representasi minimal: Elyn belum jadi autoload/companion. Sistem Aging penuh
+## (TIME_LEGACY_SPEC) ronde berikutnya.
+var elyn_burden: Array = []        # id halaman yang dilimpahkan ke Elyn
+var elyn_age_spent: int = 0        # tahun umur tergerus — tiap limpahan menambah
+
+## Ruang pemain penuh? Satu-satunya kueri kapasitas yang diizinkan (#257).
+func memory_full() -> bool:
+	return memory_held.size() >= MEMORY_CAP
 
 ## Tingkat reputasi di sebuah wilayah (0..5). Reputasi TIDAK universal (#130).
 func reputation_at(region_id: String) -> int:
@@ -712,6 +743,10 @@ func to_save() -> Dictionary:
 		"skill_trees": skill_trees, "gear_meta": gear_meta,
 		"onboarding_seen": onboarding_seen, "guide_step": guide_step, "guide_progress": guide_progress,
 		"char_config": char_config,
+		# --- ruang ingatan (#256/#258) ---
+		"memory_held": memory_held,
+		"elyn_burden": elyn_burden,
+		"elyn_age_spent": elyn_age_spent,
 	}
 
 func from_save(d: Dictionary) -> void:
@@ -755,6 +790,11 @@ func from_save(d: Dictionary) -> void:
 	gear_meta = d.get("gear_meta", {})
 	coating = {}           # transient — coating tak dibawa lintas-save
 	char_config = d.get("char_config", CharGen.default_config())
+	# MIGRASI schema <3 -> 3: save lama tak punya ruang-ingatan; default KOSONG,
+	# bukan nol-crash. Pemain lama mulai dengan ruang penuh-kosong (#256).
+	memory_held = d.get("memory_held", [])
+	elyn_burden = d.get("elyn_burden", [])
+	elyn_age_spent = int(d.get("elyn_age_spent", 0))
 	onboarding_seen = d.get("onboarding_seen", [])
 	guide_step = int(d.get("guide_step", 0))
 	guide_progress = int(d.get("guide_progress", 0))
