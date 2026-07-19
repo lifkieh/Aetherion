@@ -97,13 +97,30 @@ func _put(path: String, pos: Vector2, z := -1) -> Sprite2D:
 
 
 # ---------------------------------------------------------------- desa
+## Fasad ditambatkan pada KAKI, bukan pusat: `pos` = titik bangunan menyentuh tanah.
+## Dua sebabnya. (1) y-sort: bangunan setinggi 7 petak yang diurutkan menurut
+## pusatnya akan tampak di belakang orang yang berdiri di depannya. (2) Menaruh
+## bangunan jadi soal "di mana ia berdiri", bukan aritmetika tinggi.
+func _building(path: String, foot: Vector2) -> Sprite2D:
+	if not ResourceLoader.exists(path):
+		push_warning("[ash64] fasad hilang: %s" % path)
+		return null
+	var s := Sprite2D.new()
+	s.texture = load(path)
+	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.centered = false
+	s.position = foot - Vector2(s.texture.get_width() * 0.5, s.texture.get_height())
+	s.z_index = int(foot.y)
+	add_child(s)
+	return s
+
+
 func _village() -> void:
-	_put(P_S + "wall_inn.png", MERRIT_HOUSE)                       # rumah singgah Merrit
-	_put(P_S + "window_lpc.png", MERRIT_HOUSE + Vector2(0, -8), Z_LAMP - 10)
-	_put(P_S + "wall_brick.png", Vector2(704, 400))                # gudang gandum (atap sebagian runtuh)
-	_put(P_S + "wall_wood.png", Vector2(1216, 480))                # toko Otha — tutup dua musim
-	_put(P_S + "wall_inn.png", Vector2(1408, 800))                 # rumah kosong
-	_put(P_S + "wall_inn.png", Vector2(640, 992))                  # rumah Lyra (masih dihuni)
+	_building(P_S + "fasad_inn.png", MERRIT_HOUSE)                 # rumah singgah Merrit
+	_building(P_S + "fasad_gudang.png", Vector2(704, 400))         # gudang gandum
+	_building(P_S + "fasad_shop.png", Vector2(1216, 480))          # toko Otha — tutup dua musim
+	_building(P_S + "fasad_kosong.png", Vector2(1408, 800))        # rumah kosong
+	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
 	for p in [Vector2(320, 384), Vector2(1600, 352), Vector2(1728, 1024), Vector2(224, 1088)]:
 		_put(P_S + "tree_lpc.png", p)
 	_put(P_S + "fountain.png", VC + Vector2(0, -32))               # air mancur KERING

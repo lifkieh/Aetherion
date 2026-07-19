@@ -110,3 +110,74 @@ ditarik kembali setelah rilis.
 ⚠ Catatan: #254 memang mencabut #232 dan menerima SA. Jadi (2) **sah**. Saya tetap
 menyarankan (1) karena SA yang **bisa dihindari tanpa ongkos berarti** sebaiknya dihindari —
 menjaga pilihan tetap terbuka lebih murah daripada membukanya kembali nanti.
+
+---
+
+# 5c — HASIL (percobaan-2). Atap terbaca sebagai atap.
+
+**Bukti:** `reports/preview/5c_fasad_lembar.png` (lima fasad + lima siluet + karakter,
+satu skala) dan `reports/preview/5c_ashbrook64_fasad.png` (Ashbrook64, siang, ukuran main).
+Semua dari `_tools/gen_fasad.py` — jalankan `python _tools/gen_fasad.py siluet lembar`.
+
+## Kenapa percobaan-1 gagal, dan bagaimana percobaan-2 menemukan jalannya
+
+Percobaan-1 memakai ubin **permukaan** atap dan mengulangnya mendatar → pita bergaris.
+Sebabnya bukan kurang teliti melihat: atlas `lpc-tileset-buildings.png` itu **64×64 petak
+tanpa label**, dan blok warna besar di kolom 38+ — yang saya kira permukaan atap — sebenarnya
+**contoh warna bahan**, bukan potongan bangun.
+
+Yang membuka kuncinya: **`lpc-tileset-buildings.tsx` ikut di dalam zip.** Berkas Tiled itu
+memuat empat wangset lengkap dengan `tileid` + `wangid` tiap potongan:
+
+| wangset | tipe | warna | petak | isi |
+|---|---|---|---|---|
+| Brick Walls | corner | 24 | 216 | dinding — nine-slice tiap warna bisa **dihitung** dari wangid sudut |
+| Flat Roofs | mixed | 9 | 417 | atap datar |
+| Angled Roof | mixed | 6 | 54 | hanya nine-slice persegi — **bukan** pelana |
+| Adobe Walls | mixed | 4 | 45 | dinding adobe |
+
+Temuan pentingnya: **atap pelana tidak ada di wangset mana pun.** Ia potongan manual yang
+tak terdaftar. Ditemukan dengan merender tiap petak terisolasi + berlabel lalu memilih
+dengan mata: baris 0 = punggung + dua lereng, baris 1 = badan sirap.
+**Lebar 5 = kolom 10–14. Lebar 3 = kolom 7–9.** Enam pasang bahan tersusun blok 18×8,
+jadi satu offset `(dc, dr)` memindahkan seluruh rakitan ke bahan lain.
+
+Satu lagi dari perbandingan sisi-sisi: dinding **w/Border** yang dipakai, bukan **w/Shadow**.
+w/Shadow menaruh bayangan membundar di baris atas; pada fasad utuh ia terbaca sebagai
+**kubah aneh**, bukan bayangan. w/Border memberi lis mendatar yang terbaca sebagai ikat
+pinggang di bawah cucuran atap.
+
+## Nilai sendiri terhadap kriteria Direktur
+
+| kriteria | hasil |
+|---|---|
+| atap terbaca atap miring, ada bubungan + tepi | ✅ punggung + finial di puncak, dua lereng bersirap, sisi kanan digelapkan |
+| **uji siluet**: bentuk hitam terbaca atap, bukan kotak | ✅ kelima siluet berpuncak pelana |
+| bangunan terbaca RUMAH utuh (dinding+atap+pintu menyatu) | ✅ |
+| masih menjulang di atas karakter | ✅ fasad 192–224 px vs badan karakter 48 px → **4–4,7×** |
+| rumah Merrit + toko Otha keduanya jadi | ✅ plus tiga lagi |
+| lengkung-noda percobaan-1 | ✅ hilang — itu ternyata potongan **sudut dinding** yang saya salah baca sebagai lengkung |
+| pintu papan berpalang | ✅ dipertahankan, ditinggikan 48→64 px + ambang batu |
+
+## Lima fasad, dan kenapa lima
+
+Satu bahan untuk semua akan membuat Ashbrook terbaca sebagai barisan bangunan kembar.
+Bahan dibedakan supaya bisa dibaca dari jauh — dan bacaannya bercerita:
+
+| fasad | petak | bahan | jendela |
+|---|---|---|---|
+| `fasad_inn` Merrit | 5×7 | sirap cokelat + bata krem | kisi, **siang** |
+| `fasad_shop` Otha | 3×6 | batu tulis + bata abu | panel, **gelap** (tutup dua musim) |
+| `fasad_gudang` | 5×6 | sirap zaitun + bata cokelat | **nol** — gudang tak butuh cahaya |
+| `fasad_kosong` | 3×6 | batu tulis hitam + bata hitam | panel, **gelap** |
+| `fasad_rumah` Lyra | 5×6 | genteng merah + bata merah | kisi, **berlampu** |
+
+Rumah kosong tetap diberi pintu. Rumah tanpa pintu terbaca "belum jadi", bukan
+"ditinggalkan" — yang bercerita di situ jendela gelapnya.
+
+## Yang masih terbuka
+
+- Lebar pelana hanya tersedia **3 dan 5 petak**. Bangunan 4 petak mustahil tanpa menggambar
+  potongan atap sendiri.
+- Atap tak mencorakkan bayangan ke dinding. Terlihat rata di bawah cucuran.
+- `Ashbrook64.tscn` **masih orphan** — nol acuan gameplay. Membuatnya terjangkau belum digarap.
