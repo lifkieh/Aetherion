@@ -1,7 +1,8 @@
 # UTANG-249 — SEGFAULT FLAKY DI SUITE
 
-**2026-07-20** · **BELUM DITUTUP.** Diselidiki, dilokalisasi, **akar belum terbukti.**
-Prioritas: **sebelum playtest** — playtest bersandar pada suite hijau yang bermakna.
+**2026-07-20** · **AKAR DITEMUKAN & DITAMBAL — `Projectile2.gd:86`.**
+**50 run bersih berturut-turut, nol `signal 11`.** Ambang Direktur (±50) terpenuhi.
+Riwayat penyelidikan di bawah dipertahankan apa adanya — termasuk jalan buntunya.
 
 ---
 
@@ -12,7 +13,7 @@ Prioritas: **sebelum playtest** — playtest bersandar pada suite hijau yang ber
 | **Gejala** | `CrashHandlerException: Program crashed with signal 11` di tengah run |
 | **Frekuensi** | **± 20–25%** — 2 dari 8, lalu 1 dari 10 (run bersih) |
 | **Lokasi** | **DETERMINISTIK** — selalu berhenti di titik yang sama |
-| **Akar** | ❌ **belum terbukti** |
+| **Akar** | ✅ **`Projectile2.gd:86`** — `_source.has_method()` pada rujukan mati (§9) |
 | **Hipotesis Direktur (MonsterFactory "nope")** | ❌ **TERBANTAH** — lihat §2 |
 | **Mitigasi yang bisa dipasang HARI INI** | ✅ ada, murah — lihat §5 |
 
@@ -195,3 +196,68 @@ Select-String -Path <stdout.log> -Pattern "===== RESULT"   # suite selesai?
 2. Putuskan gerbang #249: apakah kehadiran baris `RESULT` jadi syarat (§5).
 3. Kerjakan (b) terlepas dari hasil (1) — ia celah ketahanan produksi yang nyata.
 4. Tutup utang ini **hanya** setelah ± 50 run berturut-turut bersih, bukan 10.
+
+---
+
+# 9 — AKAR: `Projectile2.gd:86` — dan kenapa ia lolos begitu lama
+
+```gdscript
+# SEBELUM
+if _def.get("on_hit_effect", "") == "chain" and res.get("chain", false) \
+        and _source and _source.has_method("get"):
+```
+
+`_source.has_method()` **MENYENTUH** objeknya. Semua tempat lain hanya **meneruskan**
+`_source` (`take_hit(res, _source)`) — dan `take_hit` sendiri menjaga dengan
+`is_instance_valid(from)`, jadi rujukan mati lewat tanpa akibat. Baris ini berbeda:
+ia memanggil metode **pada objek yang sudah dibebaskan** → dereferensi → `signal 11`.
+
+**Kenapa 20–25% dan bukan 100%:** cabangnya butuh `res.chain`, dan `chain` butuh
+`target_wet` (`elements.json`: *"Konduksi lewat air: target basah… menyambar"*).
+Basah itu **keadaan**, bukan tetap. Jadi baris ini hanya dieksekusi ketika sasaran
+kebetulan basah **dan** penembaknya kebetulan sudah mati di frame itu. Dua kebetulan
+yang bertemu ± seperempat waktu.
+
+**Kenapa `print` menghilangkannya (§4):** memperlambat frame menggeser urutan
+physics-server vs `_physics_process`, sehingga peluru sempat menonaktifkan diri
+sebelum `_on_body` dipanggil. Bukan bug yang "hilang" — jendelanya yang tertutup.
+
+```gdscript
+# SESUDAH
+var live_src = _live_source()
+if _def.get("on_hit_effect", "") == "chain" and res.get("chain", false) \
+        and live_src and live_src.has_method("get"):
+```
+
+## Angka — tiga titik ukur
+
+| Titik | Mati-di-tengah | n |
+|---|---|---|
+| **Baseline** | **20–25%** | 2/8, lalu 1/10 |
+| **Pasca-`_on_body`** (`take_hit` dijaga) | **22%** | **11/50** |
+| **Pasca-`:86`** (jalur chain dijaga) | **0%** | **0/50** |
+
+**Penjaga `_on_body` tidak menurunkan apa pun** — dan itu masuk akal setelah akarnya
+diketahui: `take_hit` memang sudah aman. Yang menutupnya adalah `:86`.
+
+**Bukan keberuntungan.** Bila laju sebenarnya masih 22%, peluang mendapat 0 crash dari
+50 run = `0,78^50 ≈ 4 × 10⁻⁶` (± 1 dari 250.000).
+
+## Dua jalan buntu yang dipertahankan di dokumen ini, bukan dihapus
+
+1. **Tersangka pool-peluru (§3)** — masuk akal, cocok dengan semua bukti, dan **salah**.
+   Peluru memang mengambang antar-test, tapi itu bukan yang menjatuhkan proses.
+2. **"Lepas guard, suite tetap lulus" (BAGIAN 2)** — saya membaca itu sebagai *"guard
+   tak menutup crash apa pun"*. **Satu run tak membuktikan apa-apa terhadap cacat 22%.**
+   Itu persis jebakan Heisenbug yang §4 peringatkan, dan saya hampir masuk sendiri.
+
+## Utang sisa
+
+- `Projectile.gd` (jalur lama) — `_live_source()` sudah dipasang, **tapi tak punya
+  cabang `has_method` seperti `:86`**; ia hanya meneruskan. Aman, tak perlu tindakan.
+- **Test flaky milik sendiri** ditemukan di pengukuran 50-run: akurasi tak dipatok →
+  lemparan meleset → 2/50 `[FAIL]`. Sudah diperbaiki (`PlayerData.accuracy` dipatok).
+  *Memasang gerbang lalu memberinya sinyal berisik sendiri adalah kemunduran.*
+- **Skrip tally interim punya balapan sendiri:** membaca log yang sedang ditulis
+  menghitungnya sebagai "mati di tengah". Terjadi sekali (run 13 dilaporkan MATI,
+  ternyata bersih 1195 baris). Kalau dipakai lagi, tunggu berkas selesai ditulis.
