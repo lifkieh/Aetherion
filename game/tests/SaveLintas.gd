@@ -10,6 +10,7 @@ extends Node
 ##   AETHER_SAVE_PHASE=tulis  — dunia baru, isi ruang-ingatan, simpan slot 2
 ##   AETHER_SAVE_PHASE=muat   — proses baru, muat slot 2, periksa isinya
 ##   AETHER_SAVE_PHASE=lama   — turunkan slot 2 ke schema 2 di disk, muat, periksa migrasi
+##   AETHER_SAVE_PHASE=rute   — #274: save dua wilayah berbeda + lokasi usang -> tujuan benar
 ##
 ## Pakai: run_godot.bat res://tests/SaveLintas.tscn
 
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 		"tulis": _tulis()
 		"muat": _muat()
 		"lama": _lama()
+		"rute": _rute()
 		_: print("[save] AETHER_SAVE_PHASE tak dikenal")
 	get_tree().quit(0)
 
@@ -120,3 +122,79 @@ func _lama() -> void:
 	_ok("memory_full() tidak meledak di save lama", PlayerData.memory_full() == false)
 	_ok("nama tetap pulih dari save lama", PlayerData.char_name == "UjiLintas",
 		PlayerData.char_name)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# #274 — ROUTING SAVE: muat ke tempat ia disimpan
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Cacat pra-ada: `_load()` mengeraskan Main.tscn, jadi SETIAP save mendarat di
+# Greenvale. Bukan cuma Ashbrook64 — semua wilayah.
+#
+# Fase ini menulis save dengan `location` berbeda-beda LANGSUNG ke disk (menirukan
+# menyimpan di wilayah itu), lalu memeriksa ke mana `SaveManager.scene_for_slot()`
+# akan mengarahkan. Tak perlu benar-benar memuat scene-nya: yang diuji **keputusan
+# rute**, dan memuat enam scene cuma memperlambat tanpa menambah bukti.
+
+const RUTE_SLOT := 3
+
+func _tulis_lokasi(loc: String) -> void:
+	PlayerData.new_game()
+	WorldState.new_game()
+	PlayerData.char_name = "Rute_" + loc
+	SaveManager.save_game(RUTE_SLOT, true)
+	# `build_payload()` mengambil lokasi dari current_scene, dan harness ini bukan
+	# scene wilayah — jadi lokasinya ditulis langsung, meniru save dari wilayah itu.
+	var path := "user://save/slot_%d.json" % RUTE_SLOT
+	var f := FileAccess.open(path, FileAccess.READ)
+	var data = JSON.parse_string(f.get_as_text())
+	f.close()
+	data["location"] = loc
+	var w := FileAccess.open(path, FileAccess.WRITE)
+	w.store_string(JSON.stringify(data))
+	w.close()
+
+
+func _rute() -> void:
+	print("[save] FASE RUTE (#274) — muat ke tempat ia disimpan")
+
+	# --- dua wilayah berbeda, keduanya harus mendarat di tempatnya sendiri ---
+	for pair in [["Candyveil", "res://scenes/world/Candyveil.tscn"],
+			["Ashbrook64", "res://scenes/world/Ashbrook64.tscn"],
+			["Frostpeak", "res://scenes/world/Frostpeak.tscn"],
+			["Main", "res://scenes/Main.tscn"]]:
+		_tulis_lokasi(pair[0])
+		var got := SaveManager.scene_for_slot(RUTE_SLOT)
+		_ok("save di %s -> %s" % [pair[0], pair[1]], got == pair[1], got)
+		_ok("  meta.location terbaca utuh",
+			String(SaveManager.save_meta(RUTE_SLOT).get("location", "")) == pair[0])
+
+	# --- lapis 2: scene yang TAK ADA (wilayah diganti nama / dihapus) ---
+	_tulis_lokasi("scene_tak_ada")
+	var fb := SaveManager.scene_for_slot(RUTE_SLOT)
+	_ok("lokasi usang -> fallback Greenvale (nol crash)",
+		fb == SaveManager.SCENE_FALLBACK, fb)
+	_ok("save berlokasi usang TETAP bisa dimuat", SaveManager.load_game(RUTE_SLOT))
+
+	# --- lapis 1: save sangat lama, tanpa medan lokasi sama sekali ---
+	_tulis_lokasi("Candyveil")
+	var path := "user://save/slot_%d.json" % RUTE_SLOT
+	var f := FileAccess.open(path, FileAccess.READ)
+	var data = JSON.parse_string(f.get_as_text())
+	f.close()
+	data.erase("location")
+	var w := FileAccess.open(path, FileAccess.WRITE)
+	w.store_string(JSON.stringify(data))
+	w.close()
+	_ok("tanpa medan lokasi -> Greenvale (perilaku lama dijaga)",
+		SaveManager.scene_for_slot(RUTE_SLOT) == SaveManager.SCENE_FALLBACK)
+
+	# --- penyelesai itu sendiri, tanpa berkas ---
+	_ok("string kosong -> fallback",
+		SaveManager.scene_for_location("") == SaveManager.SCENE_FALLBACK)
+	_ok("\"?\" -> fallback",
+		SaveManager.scene_for_location("?") == SaveManager.SCENE_FALLBACK)
+	_ok("spasi berlebih tetap terselesaikan",
+		SaveManager.scene_for_location("  Candyveil  ") == "res://scenes/world/Candyveil.tscn")
+	_ok("Homestead (di luar world/) terselesaikan",
+		SaveManager.scene_for_location("Homestead") == "res://scenes/homestead/Homestead.tscn")

@@ -137,6 +137,7 @@ func _ready() -> void:
 	_test_elyn_aging_thresholds()
 	_test_death_kind_matches_loss()
 	await _test_projectile_survives_dead_source()
+	_test_save_routing_274()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4360,6 +4361,47 @@ func _test_projectile_survives_dead_source() -> void:
 	PlayerData.accuracy = acc0
 	proj._deactivate()
 	target.queue_free()
+
+## #274 — save dimuat ke tempat ia disimpan, bukan selalu Greenvale.
+##
+## Cacat pra-ada yang ini jaga: `MainMenu._load()` dulu mengeraskan `Main.tscn`,
+## sehingga SETIAP save mendarat di Greenvale — simpan di Candyveil, muat, dan kau
+## di Greenvale. Berlaku semua wilayah, bukan cuma Ashbrook64.
+##
+## Yang diuji di sini penyelesainya (fungsi murni, nol disk). Jalur berkas penuh
+## ada di harness `game/tests/SaveLintas.tscn` fase `rute`.
+func _test_save_routing_274() -> void:
+	print("[#274: save dimuat ke tempat ia disimpan]")
+	# lapis 3 — lokasi valid
+	check("Candyveil -> scene Candyveil",
+		SaveManager.scene_for_location("Candyveil") == "res://scenes/world/Candyveil.tscn",
+		SaveManager.scene_for_location("Candyveil"))
+	check("Ashbrook64 -> scene Ashbrook64",
+		SaveManager.scene_for_location("Ashbrook64") == "res://scenes/world/Ashbrook64.tscn")
+	check("Main -> Greenvale (res://scenes/Main.tscn)",
+		SaveManager.scene_for_location("Main") == "res://scenes/Main.tscn")
+	check("Homestead ditemukan di luar world/",
+		SaveManager.scene_for_location("Homestead") == "res://scenes/homestead/Homestead.tscn")
+
+	# lapis 1 — save sangat lama tak punya lokasi; perilaku lamanya DIJAGA
+	check("kosong -> fallback Greenvale",
+		SaveManager.scene_for_location("") == SaveManager.SCENE_FALLBACK)
+	check("\"?\" -> fallback Greenvale",
+		SaveManager.scene_for_location("?") == SaveManager.SCENE_FALLBACK)
+
+	# lapis 2 — wilayah diganti nama/dihapus: JANGAN crash, JANGAN diam
+	check("lokasi usang -> fallback, bukan crash",
+		SaveManager.scene_for_location("wilayah_yang_sudah_dihapus")
+			== SaveManager.SCENE_FALLBACK)
+	check("nama aneh pun aman", SaveManager.scene_for_location("../../etc/passwd")
+			== SaveManager.SCENE_FALLBACK)
+
+	# label dan tujuan tak boleh berpisah lagi
+	var mm := FileAccess.get_file_as_string("res://scenes/ui/MainMenu.gd")
+	check("MainMenu._load TIDAK lagi mengeraskan Main.tscn",
+		not mm.contains("go_to_scene(\"res://scenes/Main.tscn\")"))
+	check("MainMenu._load memakai penyelesai SaveManager",
+		mm.contains("SaveManager.scene_for_slot"))
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)

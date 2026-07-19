@@ -77,6 +77,7 @@ func build_payload() -> Dictionary:
 		"player": PlayerData.to_save(),
 		"world": WorldState.to_save(),
 		"economy": Economy.to_save(),
+		"evidence": Evidence.to_save(),
 	}
 
 func save_game(slot: int, quiet: bool = false) -> bool:
@@ -153,6 +154,7 @@ func _apply(data: Dictionary, slot: int) -> bool:
 	PlayerData.from_save(data.get("player", {}))
 	WorldState.from_save(data.get("world", {}))
 	Economy.from_save(data.get("economy", {}))
+	Evidence.from_save(data.get("evidence", {}))
 	EventBus.game_loaded.emit(slot)
 	EventBus.toast.emit("Game dimuat (slot %d)" % slot)
 	return true
@@ -172,6 +174,54 @@ func delete_save(slot: int) -> void:
 		var fn: String = p.get_file()
 		if da.file_exists(fn):
 			da.remove(fn)
+
+## #274 — KE MANA SEBUAH SAVE HARUS DIMUAT.
+##
+## Cacat pra-ada yang ini tutup: `MainMenu._load()` dulu mengeraskan
+## `res://scenes/Main.tscn`, sehingga **setiap** save mendarat di Greenvale — apa pun
+## isinya. Simpan di Candyveil, muat, dan kau di Greenvale. Labelnya sudah benar sejak
+## awal (`save_meta().location`); yang membuang informasinya adalah tujuannya.
+##
+## `location` di payload = **nama node akar scene** (`build_payload()`), mis. "Candyveil",
+## "Ashbrook64", "Main" — bukan id wilayah. Jadi penyelesaian dilakukan atas nama itu.
+##
+## ⛔ TIGA LAPIS, dan lapisan ketiga yang membuatnya tahan masa depan:
+##   1. kosong/absen/"?"  -> Main.tscn. Save sangat lama memang tak punya lokasi;
+##                           perilaku lamanya DIJAGA, bukan dianggap galat.
+##   2. ada tapi scene-nya HILANG (wilayah diganti nama / dihapus / dipindah)
+##                        -> Main.tscn + `push_warning`. **JANGAN crash.** Save yang
+##                           menunjuk id usang tetap bisa dibuka; pemain tak kehilangan
+##                           berkasnya hanya karena kita merapikan pohon scene.
+##   3. valid            -> scene itu.
+##
+## Ini soal ROUTING SAVE, bukan alur dunia: ia tak menyentuh `regions.json` dan tak
+## menyatakan apa pun tentang wilayah mana yang kanon.
+const SCENE_FALLBACK := "res://scenes/Main.tscn"
+
+## Tempat scene wilayah bisa berada. Urut: yang paling mungkin lebih dulu.
+const SCENE_DIRS := [
+	"res://scenes/world/",
+	"res://scenes/",
+	"res://scenes/homestead/",
+	"res://scenes/scenarios/",
+]
+
+func scene_for_location(loc: String) -> String:
+	var name := loc.strip_edges()
+	if name == "" or name == "?":
+		return SCENE_FALLBACK                     # lapis 1
+	for dir in SCENE_DIRS:
+		var path: String = dir + name + ".tscn"
+		if ResourceLoader.exists(path):
+			return path                            # lapis 3
+	# lapis 2 — jangan diam, dan jangan mati
+	push_warning("[save] lokasi '%s' tak punya scene; jatuh ke %s" % [name, SCENE_FALLBACK])
+	return SCENE_FALLBACK
+
+## Scene tujuan untuk sebuah slot. Dipakai `MainMenu._load()`.
+func scene_for_slot(slot: int) -> String:
+	return scene_for_location(String(save_meta(slot).get("location", "")))
+
 
 func save_meta(slot: int) -> Dictionary:
 	if not has_save(slot):

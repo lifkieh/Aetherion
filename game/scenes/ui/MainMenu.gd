@@ -142,6 +142,10 @@ func _new_game() -> void:
 	# FF-2a flow: pilih class dulu -> Character Creator -> mulai.
 	Stage.go_to_scene("res://scenes/ui/ClassSelect.tscn")
 
+## #274 — muat ke tempat save itu DISIMPAN, bukan selalu Greenvale.
+## Label di atas (`meta.location`) sudah benar sejak awal; baris inilah yang dulu
+## membuang informasinya. Penyelesaian + fallback berlapis ada di `SaveManager`.
 func _load(slot: int) -> void:
+	var target := SaveManager.scene_for_slot(slot)
 	if SaveManager.load_game(slot):
-		Stage.go_to_scene("res://scenes/Main.tscn")
+		Stage.go_to_scene(target)
