@@ -427,6 +427,35 @@ dibuktikan dengan **menaruh pemain di sana** dan memeriksa lampu **masuk kotak k
 
 **Retrofit:** test yang memeriksa string alih-alih dunia ditandai **`[SHALLOW]`** dan dimigrasi.
 
+## HUKUM SKALA VISUAL (#253) — **"KEINDAHAN DARI SENI YANG LEBIH BAIK, BUKAN PIKSEL YANG LEBIH BANYAK"**
+
+> **Dunia Aetherion = 16px. Karakter = `_charsys` 32px. FINAL.**
+> Kalau sebuah adegan kurang indah, yang diperbaiki **SENINYA** — palet, komposisi, siluet,
+> pencahayaan — **bukan ukuran kanvasnya.**
+
+**Preseden yang dipegang Direktur:** Stardew Valley 16px · Celeste 8px · Suikoden resolusi rendah.
+Semuanya indah karena **tangan, palet, dan komposisi** — bukan karena kanvas besar.
+
+**Kenapa 64px ditutup (bukan selera — ketiadaan bahan):** survei OpenGameArt menemukan
+**nol tileset dunia 64px CC0/CC-BY yang lengkap.** Yang ada di 64px gagal di lisensi SA,
+cakupan dungeon-saja, atau gaya 3D-render. Seni dunia top-down piksel yang terbuka
+terkonsentrasi di **16px dan 32px**; 64px hanya dihuni penjual berbayar (48×48, ekosistem
+RPG Maker MZ). Maka "pindah 64px" = **membeli**, atau **menggambar 148 aset dunia dari nol
+(~2 tahun solo)** — itu keputusan menghentikan game, bukan keputusan visual.
+Bukti & angka: `reports/BURU_64PX_HASIL.md` · `reports/BUKTI_64PX.md`.
+
+**Yang DICABUT:** #250 (LPC 64px = sumber karakter tunggal). `_charsys` **dipertahankan**,
+bukan dipensiunkan — 32px milik sendiri, cocok dunia 16px, nol beban lisensi.
+
+**Yang DIARSIPKAN, bukan dibuang:** pipeline LPC (`_tools/lpc_assembler/`, ter-commit #251).
+Kerja tidak hangus. **Pintu tetap terbuka:** bila kelak Direktur MEMBELI tileset 64px pro,
+64px jadi mungkin dan pipeline itu langsung bisa dipakai.
+
+**⚠ Yang sudah terbukti dan tetap berlaku walau 16px:** CC0 **tidak** melindungi identitas
+visual (CC0 = domain publik; pesaing boleh memakai aset yang sama). Yang melindungi hanya
+**digambar sendiri** atau **dibeli proprietary**. Ini alasan tambahan untuk memperbaiki
+seni 16px milik sendiri ketimbang menumpuk aset gratisan.
+
 ## HUKUM GERBANG TEST (#249) — **"GERBANG PADA 0 GAGAL, BUKAN PADA JUMLAH LULUS"**
 
 > **Gerbang penerimaan = `0 failed`. TITIK.**

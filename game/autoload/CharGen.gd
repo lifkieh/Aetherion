@@ -4,15 +4,17 @@ extends Node
 ## as an ImageTexture from a modular config (per-part race + skin + hair + outfit).
 ## Cached per config.
 ##
-## ⚠ KANON #250 (2026-07-19) — **"LPC rejected" DICABUT.**
-## Owner canon #250: **LPC 64px = sumber karakter tunggal. `_charsys` v2 DIPENSIUNKAN**
-## (kualitas visual; keputusan Direktur atas pembanding `reports/preview/skala_16_vs_lpc64.png`
-## — badan tampak 12x27 px di sini vs 34x47 px di LPC).
+## KANON #253 (2026-07-19) — **Karakter: `_charsys` 32px = kanon dunia.**
+## **LPC = pipeline ARSIP**, aktif hanya bila tileset 64px pro dibeli.
 ##
-## **PENSIUN, BUKAN DIHAPUS.** Berkas ini masih menyuplai SELURUH karakter yang hidup di
-## dunia hari ini — pemain, NPC, warga, pratinjau. Jangan hapus sebelum penggantinya jalan.
-## Mode kompresi 64→32→16 untuk perangkat low-end = NANTI (satu sumber, turunkan saat perlu).
-## Daftar migrasi lengkap: `reports/MIGRASI_CHARSYS.md`.
+## Sistem ini 32px, milik proyek sendiri, cocok dengan dunia 16px, nol beban lisensi.
+## #250 (LPC 64px = sumber karakter tunggal) **DICABUT** — bukan karena LPC buruk, tapi
+## karena dunia 64px tak punya bahan: survei OpenGameArt menemukan **nol tileset dunia 64px
+## CC0/CC-BY yang lengkap** (`reports/BURU_64PX_HASIL.md`). Karakter 64px tanpa dunia 64px
+## berarti menggambar 148 aset dunia dari nol.
+##
+## Pipeline LPC TIDAK dibuang — `_tools/lpc_assembler/` tetap ter-commit dan bisa dijalankan
+## (`reports/BUKTI_64PX.md`, `reports/MIGRASI_CHARSYS.md`). Ia menunggu, bukan mati.
 
 const OUTLINE := Color8(36, 31, 54)
 const WHITE := Color(1, 1, 1)
