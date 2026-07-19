@@ -4143,7 +4143,8 @@ func _test_elyn_aging_thresholds() -> void:
 	check("pelimpah-berat (17 halaman) menyeberang ke MENUA",
 		PlayerData.elyn_stage() == "menua", PlayerData.elyn_stage())
 
-	# tahap antara harus ada, atau pelimpah menengah tak pernah melihat akibat apa pun
+	# #268 AMBANG KETERBACAAN — mekanik, bukan biologi. Tahap antara harus ada, atau
+	# pelimpah menengah tak pernah melihat akibat apa pun sampai lompatan kanon 301.
 	PlayerData.elyn_age_spent = 12 * Chronicle.ELYN_YEARS_PER_PAGE   # 254
 	check("pelimpah-menengah (12) melihat SATU perubahan sebelum menua",
 		PlayerData.elyn_stage() == "prima_akhir", PlayerData.elyn_stage())
@@ -4179,6 +4180,15 @@ func _test_elyn_aging_thresholds() -> void:
 	check("TIDAK ada pengakses angka umur Elyn (#267/D-4)", banned.is_empty(), str(banned))
 	var ui := FileAccess.get_file_as_string("res://scenes/ui/MenuUI.gd")
 	check("UI tak pernah membaca elyn_age_spent", not ui.contains("elyn_age_spent"))
+
+	# #268 — ambang keterbacaan HANYA milik jalur limpahan Elyn. Kalau ia bocor ke
+	# CharGen atau tabel ras, seluruh ras elf dapat tahap hidup yang lahir dari satu
+	# mekanik UI — persis yang #268 larang.
+	var leaked: Array = []
+	for f in ["res://autoload/CharGen.gd", "res://autoload/Db.gd"]:
+		if FileAccess.file_exists(f) and FileAccess.get_file_as_string(f).contains("prima_akhir"):
+			leaked.append(f)
+	check("ambang keterbacaan tak bocor ke CharGen/Db (#268)", leaked.is_empty(), str(leaked))
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)

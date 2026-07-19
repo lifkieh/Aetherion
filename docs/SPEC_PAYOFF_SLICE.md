@@ -109,9 +109,29 @@ Pelimpah-berat (~17 halaman) menyeberang ke `menua`; pelimpah-ringan (~5) tidak.
 **Umur tak pernah tampil sebagai angka** (D-4) — `PlayerData` sengaja tak menyediakan
 pengaksesnya; hanya `elyn_stage()` yang mengembalikan nama tahap.
 
-⚠ **`prima_akhir` BUKAN ambang kanon.** Tabel `TIME_LEGACY_SPEC` §2 hanya mengenal
-dewasa/prima/menua/sepuh. Ia ditambahkan supaya pelimpah menengah melihat **satu** perubahan
-sebelum lompatan besar. Kalau Designer ingin ia jadi tahap kanon, itu butuh baris ledger sendiri.
+### ⚖ #268 — AMBANG KETERBACAAN ELYN (Direktur, 2026-07-20)
+
+Diratifikasi menjawab pertanyaan yang #267 tinggalkan terbuka: apa status `prima_akhir`.
+
+```
+#268 — AMBANG KETERBACAAN ELYN (mekanik, bukan biologi). prima_akhir=250
+       adalah ambang penuaan-terlihat khusus mekanik limpahan Elyn, supaya
+       pelimpah menengah melihat satu perubahan sebelum lompatan kanon 301.
+       BUKAN tahap tabel §2 TIME_LEGACY (dewasa/prima/menua/sepuh berlaku semua
+       elf). Angka playtest-tunable.
+```
+
+**Garis yang #268 tarik, dan kenapa ia penting:** tabel §2 `TIME_LEGACY_SPEC` menjelaskan
+**bagaimana elf menua** — ia berlaku untuk setiap elf di dunia. `prima_akhir` menjelaskan
+**kapan pemain melihat akibat perbuatannya** — ia hanya ada di jalur limpahan Elyn.
+Dua benda berbeda yang kebetulan memakai satuan yang sama. Menyatukannya akan membuat
+seluruh ras elf punya tahap hidup yang lahir dari satu mekanik UI.
+
+**Konsekuensi mengikat:**
+- `prima_akhir` **tak boleh** muncul di tabel §2, di CharGen, atau pada elf mana pun selain Elyn.
+- 301 dan 501 tetap **kanon biologis**; 250 tetap **angka mekanik**, bebas disetel playtest.
+- Kalau kelak elf lain memakai mekanik limpahan yang sama, ambang ini ikut — **karena
+  mekaniknya**, bukan karena biologinya.
 
 ---
 

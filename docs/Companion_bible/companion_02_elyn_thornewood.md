@@ -31,10 +31,11 @@
 > pembaca perpustakaan, dan tiga keturunan di `RELASI PENTING` adalah keturunan WREN.**
 > Nama, ras, dan asal garis Elyn menunggu **sesi penulisan Designer**. Agent tidak menebaknya.
 >
-> ⚠ **Prasyarat teknis:** penuaan **terlihat** hanya mungkin lewat **lompatan** (TIME_LEGACY_SPEC
-> §aturan penuaan), dan ambang elf **menua = 301** (tabel §2). Elyn 134 → **167 tahun jarak**
-> ke ambang itu. Berapa tahun elf per halaman yang membuat penuaannya benar-benar terlihat
-> **adalah angka yang belum ada** — `ELYN_YEARS_PER_PAGE = 1` tidak akan pernah terlihat.
+> ✅ **Prasyarat teknis — SUDAH DITUTUP (#268, 2026-07-20).** Penuaan **terlihat** hanya
+> mungkin lewat **lompatan**, dan ia kini bekerja lewat **ambang, bukan hitungan**: tahun
+> menumpuk diam-diam, yang berubah hanya saat Elyn **menyeberang**.
+> `ELYN_YEARS_PER_PAGE` **1 → 10** (yang lama tak pernah menyeberangi jarak 167 tahun).
+> Pelimpah-berat (~17 halaman) menyeberang ke **menua**; pelimpah-ringan (~5) tidak.
 
 
 > ### ⚖ AFILIASI RESMI (MEJA-ELYN = b, Decision Log #205): **PEMBANGKANG CHRONICLE ORDER**
@@ -161,10 +162,14 @@ Elf, 134, **awal prima** — dan itulah pisau yang tersembunyi di dalam tokoh in
 > Pemain yang kembali setelah lompatan menemukan seseorang yang **lebih tua daripada yang
 > ia tinggalkan** — dan tahu persis berapa banyak dari itu ulahnya sendiri.
 >
-> ⚠ **Angka belum ada.** Ambang elf **menua = 301** (tabel laju penuaan §2); Elyn di **134**.
-> Jarak **167 tahun**. `ELYN_YEARS_PER_PAGE = 1` **tak akan pernah menyeberangi ambang itu**
-> dalam satu permainan. Laju yang membuat penuaan benar-benar terbaca = **putusan Designer
-> yang masih terbuka**, bukan sesuatu yang boleh ditebak agent.
+> ✅ **Angkanya sudah ada (#268).** Ambang elf **menua = 301** (tabel §2, **kanon biologis**);
+> Elyn di **134**; jarak **167 tahun**. `ELYN_YEARS_PER_PAGE` **1 → 10** — yang lama menuntut
+> 167 limpahan dalam satu permainan, jadi penuaannya tak pernah terjadi.
+>
+> Di antaranya ada **ambang keterbacaan 250** (#268) — **mekanik, bukan biologi.** Ia ada
+> supaya pelimpah menengah melihat **satu** perubahan sebelum lompatan kanon 301, dan ia
+> **hanya milik jalur limpahan Elyn**: ia bukan tahap hidup elf, dan tak berlaku bagi elf
+> lain mana pun. Angkanya **playtest-tunable**; 301 dan 501 tidak.
 >
 > **Perannya sebagai Mentor tidak berubah** (MEJA-3): yang naik seiring usia tetap pengaruh
 > dan pengetahuannya. Yang baru: **usia itu kini punya harga, dan pemain yang membayarnya
