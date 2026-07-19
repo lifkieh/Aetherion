@@ -133,6 +133,30 @@ seluruh ras elf punya tahap hidup yang lahir dari satu mekanik UI.
 - Kalau kelak elf lain memakai mekanik limpahan yang sama, ambang ini ikut — **karena
   mekaniknya**, bukan karena biologinya.
 
+### ⚖ #269 — EKSTRAKSI THREE DEATHS (Direktur, 2026-07-20)
+
+Lahir dari `reports/TARIKAN_FINAL_SPINE_V03.md` §1: model tiga-kematian terkubur di arsip
+LOCKED, sementara penyederhanaan dua-kematian sudah menyebar dan dua dokumen memakainya salah.
+
+```
+#269 — EKSTRAKSI THREE DEATHS (dari arsip LOCKED ke kanon, pola #194/#211).
+       D1 biologis · D2 sosial/dilupakan · D3 tak-pernah-tercatat ("kematian
+       terbesar"). Menjangkarkan R1: strike()=D2, #229.3=D3. Otha Renn=D3,
+       Merrit=D2. Sapu lima dokumen yang salah pakai model dua-kematian.
+```
+
+**Kanon terbaca:** `docs/THREE_DEATHS.md` — verbatim `…design.txt:9847-9894`, plus jangkar
+kode dan daftar yang belum diputuskan.
+
+**Aturan istilah sejak #269:** *"Second Death"* tetap sah sebagai **istilah dalam-dunia untuk
+D2**. Untuk D3 pakai **"kematian ketiga"** / *Historical Death*. **Jangan** pakai "kematian
+kedua" untuk peristiwa tak-pernah-tercatat.
+
+⚠ **Tiga hal #269 TIDAK putuskan:** apakah D3 bisa dilawan sama sekali (menulis yang belum
+pernah tercatat = mengalahkan D3, atau menundanya?) · apakah *"kematian kedua = final mutlak"*
+(`ROADBOOK:207`, hukum revive) bertabrakan dengan `restore()` yang memulihkan halaman D2 ·
+dan apakah mesin perlu membedakan D2/D3 (`THREE_DEATHS.md` §6 — **kode tidak diubah**).
+
 ---
 
 ## 3 — PETA MESIN YANG SUDAH ADA (jangan bangun ganda)

@@ -46,7 +46,14 @@ Greenvale (spec v0.6).
 melainkan **gua tempat orang berteduh dan tidak pernah keluar**. Selama berabad-abad,
 pendaki yang gagal turun dibawa ke sini oleh yang selamat, karena tanah beku tak bisa
 digali. Nama-nama diukir di dinding. Sebagian ukiran **sudah aus** — dan itu, di dunia
-ini, adalah kematian kedua (bertaut NIRNAMA_BIBLE: *Second Death*).
+ini, adalah **kematian ketiga** (THREE_DEATHS #269: *Historical Death*).
+
+> ⚖ **KOREKSI #269.** Baris ini dulu berbunyi: *"…adalah kematian kedua (bertaut
+> NIRNAMA_BIBLE: Second Death)."* **Salah kematian.** Kematian kedua = *"tidak ada lagi
+> yang menyebut namanya"* — mulutnya yang berhenti. Yang terjadi di sini **catatannya yang
+> lenyap**: ukiran itu adalah satu-satunya bukti mereka pernah ada, dan ausnya berarti
+> *"tidak ada catatan bahwa ia pernah ada"* — **D3, kematian terbesar.**
+> Lihat `docs/THREE_DEATHS.md`.
 
 **Kenapa ada monster:** Frost Titan bukan monster yang "muncul di dungeon". Ia adalah
 **dingin yang mengeras** — apa yang terjadi bila cukup banyak kematian menumpuk di

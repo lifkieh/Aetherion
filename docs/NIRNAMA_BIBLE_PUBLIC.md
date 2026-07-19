@@ -152,6 +152,13 @@ Ia jarang membunuh — membunuh meninggalkan mayat, makam, cerita. Ia **menghapu
 5. **Yang Terhapus (The Erased)** → pelayan-pelayannya: makhluk/manusia yang telah kehilangan nama — siluet pucat tanpa wajah (musuh baru Act 1; dikalahkan = satu ingatan kecil pulih di dunia).
 **Second Death** adalah senjatanya dan ketakutannya sekaligus: tubuh boleh hidup, tapi yang dilupakan sudah mati kedua kalinya.
 
+> ⚖ **JANGKAR #269 (kalimat di atas TIDAK diubah — ia benar).** *"Second Death"* di sini
+> adalah **D2 / Social Death** dalam model tiga-kematian (`docs/THREE_DEATHS.md`):
+> *"tidak ada lagi yang menyebut namanya."* Kekuatan Nirnama menjangkau **keduanya** —
+> menghapus ingatan NPC = D2; memutihkan wilayah & mencoret halaman sampai tak ada bukti
+> = **D3, kematian terbesar.** Istilah "Second Death" tetap sah untuk D2; untuk D3 pakai
+> **kematian ketiga**.
+
 # VII. KELEMAHAN
 
 1. **Ia tidak bisa menjawab satu pertanyaan:** *"Jika semua akan hilang, mengapa masih ada yang tetap membangun?"* — dan jawaban itu tidak diberikan lewat dialog, melainkan lewat **kehidupan pemain: seluruh save file adalah jawabannya** (Domain, keluarga, companion, murid, kota, Chronicle — kanon File 04).

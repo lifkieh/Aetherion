@@ -139,6 +139,8 @@ v0.4.2 Gear & Economy + Lelang → v0.4.3 World Presentation (musim, rasi, journ
    Ras playable bertambah bertahap mengikuti wilayah yang lahir.
 2. **#87 (P2) — Revive:** kematian pertama bisa dibatalkan maks 1×/NPC, selalu kondisional,
    mustahil bila tubuh hancur/hilang; kematian kedua (dilupakan) hanya lewat Chronicle.
+   *(⚖ #269: "kematian kedua" di sini **benar** — D2/Social Death, `docs/THREE_DEATHS.md`.
+   Revive membatalkan **D1**; D2 hanya lewat Chronicle. **D3 tak disentuh baris ini.**)*
 3. **#88 (P3) — Pewarisan dinasti dua jalur:** pernikahan pemain (lahir dari hubungan; anak =
    individu) **atau** murid/anak angkat. Sistem pernikahan = spec v0.9 GENERATION.
 4. **#89 (P4) — Simulasi dunia = SAAT-LOGIN:** hitung selisih waktu WIB saat load, bukan tick

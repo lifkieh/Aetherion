@@ -205,6 +205,10 @@ Berlaku sejak sistem companion lahir (v0.5+):
   dunia, bukan luka*). Mati tragis/dibunuh/kecelakaan = jalur **per-kasus, ditulis
   tangan, selalu sulit**.
 - **Harga = INGATAN**, tanpa kecuali. **Kematian kedua = final mutlak.**
+  > ⚖ **JANGKAR #269.** "Kematian kedua" = **D2/Social Death** (`docs/THREE_DEATHS.md`).
+  > ⚠ **Belum diputus:** R1 `restore()` **memulihkan halaman D2** lewat bukti. Dua sistem
+  > memakai kata "final" dengan arti berbeda — revive tak bisa mengembalikan yang dilupakan,
+  > tapi Chronicle bisa menulisnya ulang. Salah satunya perlu dipersempit.
 
 ---
 

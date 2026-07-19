@@ -53,7 +53,13 @@ Scenario, monster yang tak terlihat berbahaya.
 
 **Kenapa dibangun:** dulu di sini ada **sungai**. Sebuah kota tumbuh di tepinya — kota
 yang **namanya tidak tercatat di mana pun**. Bukan hilang karena perang: hilang karena
-**tak ada yang menuliskannya** (bertaut NIRNAMA_BIBLE: Second Death).
+**tak ada yang menuliskannya** (THREE_DEATHS #269: **kematian ketiga**, *Historical Death*).
+
+> ⚖ **KOREKSI #269.** Dulu tertulis *"(bertaut NIRNAMA_BIBLE: Second Death)"*. **Salah
+> kematian, dan justru di contoh yang paling murni.** Kota ini tak pernah punya catatan
+> sama sekali — ia tak pernah sampai ke kematian kedua, karena tak pernah ada nama yang
+> berhenti disebut. Ia langsung **D3**: *"tidak ada catatan bahwa ia pernah ada."*
+> Lihat `docs/THREE_DEATHS.md`.
 
 **Kenapa masih ada:** yang tersisa hanya batu, dan batu tidak butuh alasan. Penggali,
 pemburu harta, dan **Truth Seeker** datang; sebagian tidak pulang.
