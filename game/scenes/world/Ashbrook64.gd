@@ -23,6 +23,18 @@ const MAP_W := 60
 const MAP_H := 34
 const VC := Vector2(960, 704)       # pusat alun-alun (koordinat dihitung ulang untuk petak 32)
 const MERRIT_HOUSE := Vector2(464, 752)
+## Kamar Merrit diletakkan DI LUAR peta, tapi di koordinat **POSITIF** — dan itu
+## bukan selera.
+##
+## `Player.gd:54` melakukan `z_index = int(global_position.y)` untuk y-sort. Di
+## koordinat negatif (preseden `Ashbrook.gd:20` memakai `(-360,-260)`) z pemain jadi
+## **negatif**, dan ia tergambar DI BAWAH lantainya sendiri: kamar tampak lengkap,
+## pemainnya hilang, dan tak satu pun galat muncul. Ruang positif membuat y-sort
+## bekerja apa adanya untuk lantai, perabot, dan pemain sekaligus.
+##
+## Batas tanah tak menghalangi: ia empat dinding tipis di tepi peta, bukan kurungan
+## penuh — dan pemain sampai ke sini lewat pintu, bukan berjalan.
+const INTERIOR := Vector2(2100, 160)
 const ZOOM := 1.0                   # 16px zoom 2 -> layar memuat 40x22 petak.
                                     # petak 32 pada zoom 1.4 -> ~28x16 petak: alun-alun
                                     # 17x11 MUAT, dan karakter 64px tetap terbaca.
@@ -58,6 +70,7 @@ func _ready() -> void:
 	_build_boundaries()
 	_village()
 	_props_and_evidence()
+	_pintu_dan_interior()
 	_folk()
 	_spawn_player()
 	_add_ui()
@@ -277,6 +290,161 @@ func _examine(pos: Vector2, ev_id: String) -> void:
 	e.evidence_id = ev_id
 	e.setup("examine")
 	e.global_position = pos
+
+
+# ------------------------------------------------- pintu & interior
+const PROP := preload("res://scenes/world/Ashbrook64Prop.gd")
+
+
+func _prop(pos: Vector2) -> Node2D:
+	var n := Node2D.new()
+	n.set_script(PROP)
+	add_child(n)
+	n.global_position = pos
+	return n
+
+
+## `z` SELALU eksplisit. Tak ada mode-otomatis di sini — justru sentinel
+## "negatif berarti hitung dari y" di `_put()` yang sudah sekali menenggelamkan
+## perabot kamar ini. Lantai dan dinding hidup di z rendah tetap (0-3); apa pun yang
+## bisa dilalui pemain memakai y-sort biasa dan otomatis berada di atasnya.
+func _kotak(pos: Vector2, size: Vector2, col: Color, z: int) -> ColorRect:
+	var r := ColorRect.new()
+	r.color = col
+	r.size = size
+	r.position = pos
+	r.z_index = z
+	add_child(r)
+	return r
+
+
+## SATU interior yang bermakna, sisanya pintu yang bercerita.
+##
+## Kenapa bukan interior untuk semua: rumah kosong generik **melemahkan** dunia.
+## Pemain yang membuka lima pintu dan menemukan lima ruangan kosong belajar bahwa
+## pintu tak berarti apa-apa. Pintu tertutup yang mengatakan sesuatu justru menjaga
+## dunia tetap padat — dan lebih jujur, karena isinya memang belum ditulis.
+##
+## Merrit dapat ruangan sungguhan karena payoff menuntutnya: ia yang menulis halaman
+## Ashbrook (#261) dan ia yang menyalakan lentera itu. Kalau rumahnya tak bisa
+## dimasuki, satu-satunya alasan pemain percaya ia "repot" adalah karena kita
+## mengatakannya — bukan karena ia melihatnya.
+func _pintu_dan_interior() -> void:
+	_bangun_kamar_merrit()
+	_gerbang_keluar()
+
+	# pintu MASUK — di kaki fasad Merrit, tempat pintunya digambar
+	var masuk := _prop(MERRIT_HOUSE + Vector2(0, -8))
+	masuk.setup_pindah(INTERIOR + Vector2(150, 170), true, "Masuk rumah Merrit [E]")
+
+	# --- PINTU YANG BERCERITA (nol interior, nol bukti) ---
+	# Toko Otha. #269: Otha adalah D3 — tak pernah tercatat. Teksnya tak boleh
+	# menyebut namanya; yang tersisa cuma pintu dan musim yang lewat.
+	var otha := _prop(Vector2(1216, 472))
+	otha.setup_bicara([
+		"Terkunci. Debu di ambangnya rata — tak ada yang membukanya sejak dua musim.",
+		"Tak ada papan nama. Cuma persegi yang catnya lebih gelap, tempat sesuatu dulu tergantung.",
+	], "Pintu toko [E]")
+
+	# Rumah kosong. #269: DITINGGALKAN (D2) — pernah ada penghuninya, dan itu harus
+	# terbaca. "Belum jadi" akan membuatnya D3, dan itu kematian yang berbeda.
+	var kosong := _prop(Vector2(1408, 792))
+	kosong.setup_bicara([
+		"Pintunya tak terkunci. Engselnya masih diminyaki — seseorang merawatnya sampai hari terakhir.",
+		"Di dalam gelap. Perabotnya masih ada, tertata, menunggu orang yang tak pulang.",
+	], "Rumah kosong [E]")
+
+	# Gudang gandum — pintunya, bukan titik-periksanya (yang itu tetap bukti #226)
+	var gudang := _prop(Vector2(704, 392))
+	gudang.setup_bicara([
+		"Palang pintunya dilepas sejak lama. Di dalam, empat ekor ayam dan ruang untuk empat ratus karung.",
+	], "Pintu gudang [E]")
+
+	# Rumah Lyra — masih dihuni; pintunya menolak dengan sopan
+	var lyra := _prop(Vector2(640, 984))
+	lyra.setup_bicara([
+		"Ada suara di dalam. Seseorang sedang memasak, dan tak menyadari kau berdiri di sini.",
+	], "Rumah Lyra [E]")
+
+
+## JALAN KELUAR (BAGIAN 3) — Ashbrook64 berhenti jadi penjara.
+##
+## Diletakkan di ujung BARAT jalan dagang lama — jalan yang sudah digambar `_ground()`
+## membentang barat→timur. Keluar lewat jalan yang memang menuju ke luar, bukan lewat
+## pintu ajaib di tengah rumput.
+##
+## ⚠ SEMENTARA ia kembali ke MENU, bukan ke Greenvale. Alasannya bukan malas:
+## `TravelUI` + `regions.json` adalah alur dunia PERMANEN, dan Direktur menetapkan
+## putusan "Ashbrook64 ganti vs dampingi 16px" menunggu playtest. Menyambungkannya
+## sekarang berarti menjawab pertanyaan yang belum ditanyakan.
+func _gerbang_keluar() -> void:
+	var g := _prop(Vector2(96, VC.y))
+	g.setup_gerbang("Jalan keluar Ashbrook [E]")
+	# penanda visual: batu penjuru yang sudah aus, bukan portal berkilau (D-3)
+	var b := _put(P_S + "wall_ruin.png", Vector2(96, VC.y + 8))
+	if b:
+		b.scale = Vector2(0.4, 0.4)
+
+
+## Kamar Merrit — kecil, dan setiap benda di dalamnya menjawab satu pertanyaan:
+## kenapa orang ini repot mengingat sebuah kota yang sudah selesai.
+func _bangun_kamar_merrit() -> void:
+	var o := INTERIOR
+	# ⚠ z NEGATIF, dan sengaja. `_put()` menurunkan z dari koordinat-y, dan kamar ini
+	# duduk di koordinat NEGATIF (di luar peta) — jadi perabotnya akan mendarat di z
+	# sekitar −420 dan tenggelam DI BAWAH lantainya sendiri. Semua benda kamar
+	# karena itu diberi z eksplisit, berlapis, dan seluruhnya di bawah 0 supaya
+	# pemain (z 0) selalu tergambar di atasnya.
+	_kotak(o, Vector2(320, 240), Color(0.17, 0.14, 0.11), 0)                   # lantai
+	_kotak(o + Vector2(0, -14), Vector2(320, 14), Color(0.10, 0.08, 0.07), 1)   # dinding
+	_kotak(o + Vector2(28, 52), Vector2(40, 34), Color(0.34, 0.19, 0.11), 2)    # perapian
+
+	# Perapian = satu-satunya cahaya, dan ia menyala. `CanvasModulate` menggelapkan
+	# seisi scene pada malam WIB; tanpa lampu ini kamarnya jadi kotak hitam.
+	var api := PointLight2D.new()
+	api.energy = 2.6
+	api.texture_scale = 13.0
+	api.color = Color(1.0, 0.74, 0.45)
+	var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
+	img.fill(Color(1, 1, 1))
+	api.texture = ImageTexture.create_from_image(img)
+	api.global_position = o + Vector2(48, 70)
+	add_child(api)
+
+	# isian lembut supaya sudut jauh tak hilang total — tetap redup, tetap satu ruangan
+	var isi := PointLight2D.new()
+	isi.energy = 1.5
+	isi.texture_scale = 26.0
+	isi.color = Color(0.95, 0.80, 0.62)
+	isi.texture = api.texture
+	isi.global_position = o + Vector2(160, 120)
+	add_child(isi)
+
+	# Perabot memakai y-sort biasa `_put()` — di ruang positif itu sudah benar, dan
+	# pemain (yang juga y-sort, `Player.gd:54`) otomatis lewat di depan/belakangnya.
+	_put(P_S + "table_lpc.png", o + Vector2(160, 120))
+	_put(P_S + "bench_lpc.png", o + Vector2(120, 156))
+	_put(P_S + "barrel_lpc.png", o + Vector2(272, 96))
+
+	# SURAT di meja — yang ia tunggu empat puluh tahun (A3 / companion_11)
+	var surat := _prop(o + Vector2(160, 112))
+	surat.setup_bicara([
+		"Sepucuk surat, dibuka dan dilipat kembali sampai lipatannya menipis.",
+		"Tanggalnya empat puluh tahun lalu. Isinya cuma satu kalimat: \"Tunggu aku, jangan pindah.\"",
+		"Tak ada nama pengirim. Merrit tak pernah menyebutkannya kepada siapa pun.",
+	], "Surat di meja [E]")
+
+	# BOTOL MINYAK — bukti kerja, bukan penjelasan
+	_kotak(o + Vector2(232, 150), Vector2(64, 18), Color(0.26, 0.30, 0.28), 3)
+	var botol := _prop(o + Vector2(264, 146))
+	botol.setup_bicara([
+		"Botol minyak lampu, kosong semua, berjajar rapi menurut tahun.",
+		"Kau berhenti menghitung di baris ketiga. Ada lebih banyak botol di sini daripada orang di Ashbrook.",
+	], "Botol berjajar [E]")
+
+	# pintu KELUAR
+	var keluar := _prop(o + Vector2(150, 205))
+	keluar.setup_pindah(MERRIT_HOUSE + Vector2(0, 36), false, "Keluar [E]")
 
 
 # ---------------------------------------------------------------- penduduk

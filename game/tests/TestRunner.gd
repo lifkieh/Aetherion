@@ -4430,14 +4430,20 @@ func _test_ashbrook64_padat() -> void:
 	var h: float = float(scn.MAP_H * scn.TILE)
 
 	# ⚠ titik-periksa yang dipindah: harus DI DALAM tanah, atau jalur bukti putus
+	# HANYA titik-periksa berbukti. Prop kamar Merrit sengaja di luar peta (INTERIOR,
+	# ruang positif di luar batas) dan ikut grup yang sama — memasukkannya akan
+	# membuat test ini menuduh interior sebagai cacat.
 	var luar: Array = []
 	for n in get_tree().get_nodes_in_group("interactable"):
 		if not scn.is_ancestor_of(n):
 			continue
+		var ev = n.get("evidence_id")
+		if ev == null or String(ev) == "":
+			continue
 		var q: Vector2 = n.global_position
 		if q.x < 0.0 or q.x > w or q.y < 0.0 or q.y > h:
-			luar.append("%s @ %s" % [n.get("evidence_id"), str(q)])
-	check("nol titik-periksa di luar batas tanah", luar.is_empty(), str(luar))
+			luar.append("%s @ %s" % [String(ev), str(q)])
+	check("nol titik-periksa berbukti di luar batas tanah", luar.is_empty(), str(luar))
 
 	# dorong ke empat arah; batas harus menahan
 	for arah in [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]:
