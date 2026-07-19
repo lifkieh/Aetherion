@@ -83,7 +83,13 @@ func _on_body(body: Node) -> void:
 		var res := CombatResolver.resolve(_atk, body.combat_view(), skill, ctx)
 		body.take_hit(res, _live_source())
 		CombatFeel.on_hit(body, global_position, res.get("is_crit", false))
-		if _def.get("on_hit_effect", "") == "chain" and res.get("chain", false) and _source and _source.has_method("get"):
+		# `_live_source()`, bukan `_source`: ini satu-satunya sisa rujukan mentah di
+		# fungsi ini, dan ia MENYENTUH objeknya (`has_method`), bukan sekadar
+		# meneruskannya. Pemicunya `res.chain` — butuh `target_wet`, jadi keadaan,
+		# bukan tetap. Itulah kenapa ia tak pernah muncul di test yang rapi.
+		var live_src = _live_source()
+		if _def.get("on_hit_effect", "") == "chain" and res.get("chain", false) \
+				and live_src and live_src.has_method("get"):
 			pass  # chain handled by PlayerCombat when relevant
 		if _pierce > 0:
 			_pierce -= 1

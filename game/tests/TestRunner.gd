@@ -4304,6 +4304,11 @@ func _test_projectile_survives_dead_source() -> void:
 	await get_tree().process_frame
 	target.global_position = Vector2(0, 0)
 
+	# Akurasi dipatok: tanpa ini lemparan bisa MELESET, `hp` tak berubah, dan test
+	# ini gagal acak — 2 dari 50 run pada percobaan pertama. Test flaky mencemari
+	# gerbang #273 persis seperti crash yang sedang kita buru.
+	var acc0: float = PlayerData.accuracy
+	PlayerData.accuracy = 99.0
 	var proj = ProjectilePool.spawn(Vector2(0, 0), Vector2.RIGHT, "spark",
 		PlayerData.combat_stats(), shooter, "monsters")
 	check("peluru lahir dari pool", proj != null)
@@ -4331,6 +4336,28 @@ func _test_projectile_survives_dead_source() -> void:
 		old_proj.has_method("_live_source"))
 	old_proj.queue_free()
 
+	# JALUR CHAIN (:86) — di sinilah `_source` dulu DISENTUH, bukan cuma diteruskan.
+	# `res.chain` butuh sasaran basah, jadi cabang ini hanya hidup pada keadaan
+	# tertentu; itu sebabnya ia lolos dari test yang rapi selama ini.
+	var wet_target = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(wet_target)
+	wet_target.setup(MonsterFactory.make("verdant_slime", 5, 3))
+	await get_tree().process_frame
+	wet_target.global_position = Vector2(0, 0)
+	if "is_wet" in wet_target:
+		wet_target.is_wet = true
+	var shooter2 := CharacterBody2D.new()
+	add_child(shooter2)
+	var proj2 = ProjectilePool.spawn(Vector2(0, 0), Vector2.RIGHT, "spark",
+		PlayerData.combat_stats(), shooter2, "monsters")
+	shooter2.free()
+	check("penembak jalur-chain sudah mati", not is_instance_valid(shooter2))
+	proj2._on_body(wet_target)     # menyentuh cabang :86 bila chain memicu
+	check("jalur chain aman dengan penembak mati (:86)", true)
+	proj2._deactivate()
+	wet_target.queue_free()
+
+	PlayerData.accuracy = acc0
 	proj._deactivate()
 	target.queue_free()
 
