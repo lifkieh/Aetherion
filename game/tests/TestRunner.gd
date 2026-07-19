@@ -139,6 +139,7 @@ func _ready() -> void:
 	await _test_projectile_survives_dead_source()
 	_test_save_routing_274()
 	await _test_ashbrook64_padat()
+	await _test_kamar_tak_menelan_pemain()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4463,6 +4464,41 @@ func _test_ashbrook64_padat() -> void:
 		pl.move_and_collide(Vector2(0, -20))
 	check("fasad Merrit menahan pemain (tak tembus)", pl.global_position.y > foot.y - 40.0,
 		str(pl.global_position))
+
+	scn.queue_free()
+	await get_tree().process_frame
+
+## #275 — kamar berkoordinat negatif tak boleh menelan pemainnya.
+##
+## `Player.gd:54` melakukan `z_index = int(global_position.y)`. Di dalam `INTERIOR`
+## Ashbrook (koordinat NEGATIF), z pemain ikut negatif — dan lantai berlapis bawaan
+## `z = 0` tergambar DI ATASNYA. Pemain hilang selama momen bangun (#118), kamarnya
+## tampak lengkap, dan **nol galat muncul**.
+##
+## Dijepit dua sisi: lantai harus di BAWAH z pemain terendah di kamar itu, tapi tetap
+## >= `Light2D.range_z_min` (-1024) atau perapiannya berhenti menyinarinya.
+func _test_kamar_tak_menelan_pemain() -> void:
+	print("[#275: kamar berkoordinat negatif tak menelan pemainnya]")
+	var scn = preload("res://scenes/world/Ashbrook.tscn").instantiate()
+	add_child(scn)
+	await get_tree().process_frame
+
+	var o: Vector2 = scn.INTERIOR
+	var z_kamar: int = scn.Z_KAMAR
+	# z pemain paling ATAS yang mungkin di dalam kamar = tepi atasnya
+	var z_pemain_teratas := int(o.y)
+	check("z lantai kamar di BAWAH z pemain terendah", z_kamar < z_pemain_teratas,
+		"kamar=%d pemain>=%d" % [z_kamar, z_pemain_teratas])
+	# ...tapi tetap dalam jangkauan cahaya, atau kamarnya jadi kotak hitam
+	check("z lantai kamar masih dijangkau Light2D (>= -1024)", z_kamar >= -1024,
+		str(z_kamar))
+
+	# dan benar-benar terpasang pada node-nya, bukan cuma konstanta yang tak dipakai
+	var lantai_ok := false
+	for c in scn.get_children():
+		if c is ColorRect and c.position == o:
+			lantai_ok = c.z_index == z_kamar
+	check("ColorRect lantai memakai Z_KAMAR", lantai_ok)
 
 	scn.queue_free()
 	await get_tree().process_frame

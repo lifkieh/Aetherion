@@ -170,10 +170,17 @@ func _build_village() -> void:
 		_lamp.texture = ImageTexture.create_from_image(img)
 	_lamp.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_lamp.global_position = MERRIT_HOUSE + Vector2(18, -14)
-	_lamp.z_index = 4000
+	# z_index HARUS <= Light2D.range_z_max (1024). Dulu 4000 → lentera berada di LUAR
+	# jangkauan cahayanya sendiri: dinding rumah tersorot, lenteranya tetap gelap =
+	# lampu terbaca MATI dari dekat. 1000 tetap di atas segalanya yang ter-y-sort.
+	_lamp.z_index = 1000
 	add_child(_lamp)
 	var glow := PointLight2D.new()
-	glow.texture = _lamp.texture
+	# Tekstur lampu ≠ sprite. Sprite lentera mayoritas logam gelap + outline hitam;
+	# dipakai sebagai tekstur cahaya, outline itu jadi lubang gelap di dalam glow.
+	# lantern_glow.png = siluet hangat padat, khusus untuk ini (_tools/gen_lantern.py).
+	var gp := "res://assets/game/sprites/props/lantern_glow.png"
+	glow.texture = load(gp) if ResourceLoader.exists(gp) else _lamp.texture
 	glow.energy = 1.5
 	glow.texture_scale = 9.0
 	glow.color = Color(1.0, 0.85, 0.55)
@@ -187,6 +194,10 @@ func _build_village() -> void:
 	_building("store", Vector2(300, 236), "Tungku Halloran")
 	# gudang gandum raksasa (4 ayam tinggal di dalamnya)
 	_building("inn", Vector2(372, 200), "Gudang Gandum")
+	# PINTU R1+R2+R3: objek Ashbrook-besar bisa DIPERIKSA → bukti Hukum Bukti (#226).
+	# Titik di depan tiap objek agar terjangkau. Nol penanda, nol ikon (D-3).
+	_examine_point(Vector2(372, 234), "ev_ashbrook_gudang_gandum")
+	_examine_point(Vector2(300, 268), "ev_ashbrook_halloran_200_roti")   # depan Tungku Halloran
 
 	# jembatan yang terlalu lebar (kesan "dulu besar" #1)
 	var br := ColorRect.new()
@@ -195,6 +206,16 @@ func _build_village() -> void:
 	br.position = Vector2(760, 336)
 	br.z_index = 0
 	add_child(br)
+	_examine_point(Vector2(835, 373), "ev_ashbrook_jembatan_terlalu_lebar")   # di jembatan
+
+	# BEKAS akibat + benda (nol gambar baru: ruins.png, aset aman sudah di game/assets).
+	# garis fondasi di rumput pinggiran (akibat) + batu fondasi berpahat di alun-alun (benda).
+	# Dengan batu (benda), place_ashbrook_besar punya 3 jenis → JALUR SENDIRI terbuka (#228).
+	_ruin_examine(Vector2(662, 452), "ev_ashbrook_fondasi_rumput", Color(0.62, 0.70, 0.45))
+	_ruin_examine(Vector2(440, 300), "ev_ashbrook_batu_fondasi", Color(0.72, 0.70, 0.66))
+	# Papan toko Otha yang tutup 2 musim: KOSONG + BEKAS CAT (varian 2 = bukti `akibat`).
+	# Kayu pudar kecuali persegi tengah = "dulu ada tulisan". Nol penanda (D-3).
+	_otha_sign(Vector2(560, 236))
 
 	# air mancur KERING + bangku yang terlalu banyak
 	var f := ColorRect.new()
@@ -216,6 +237,39 @@ func _build_village() -> void:
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Jalan ke Greenvale [E]")
 	portal.global_position = Vector2(EXIT_X, VC.y)
+
+## Papan nama Otha (varian 2: kosong+bekas cat) — bukti akibat (ev_otha_papan_bekas_cat).
+## Aset non-LPC diturunkan dari signboard.png (_tools/gen_otha_sign.py, #240).
+func _otha_sign(pos: Vector2) -> void:
+	var spr := Sprite2D.new()
+	spr.texture = load("res://assets/game/sprites/props/otha_sign_fadedmark.png")
+	spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	spr.scale = Vector2(2, 2)
+	spr.global_position = pos
+	spr.z_index = int(pos.y)
+	add_child(spr)
+	_examine_point(pos + Vector2(0, 24), "ev_otha_papan_bekas_cat")
+
+## Bekas fisik pakai ruins.png (aset AMAN, non-LPC, sudah di game/assets — nol gambar baru).
+## Sprite terlihat + titik-periksa di depannya. Nol penanda "!" (D-3).
+func _ruin_examine(pos: Vector2, ev_id: String, tint: Color) -> void:
+	var spr := Sprite2D.new()
+	spr.texture = load("res://assets/game/sprites/props/ruins.png")
+	spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	spr.modulate = tint
+	spr.global_position = pos
+	spr.z_index = int(pos.y)
+	add_child(spr)
+	_examine_point(pos + Vector2(0, 20), ev_id)
+
+## Titik-periksa Hukum Bukti (#226): hotspot tak terlihat di depan sebuah objek.
+## Memeriksa → notice bukti muncul sbg teks periksa (Stage.say). Menandai ditemukan (R2).
+func _examine_point(pos: Vector2, ev_id: String) -> void:
+	var e := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(e)
+	e.evidence_id = ev_id
+	e.setup("examine")
+	e.global_position = pos
 
 func _building(kind: String, pos: Vector2, label: String) -> void:
 	var spr := Sprite2D.new()
@@ -253,11 +307,30 @@ func _world_gate(pos: Vector2) -> void:
 	g.global_position = pos
 
 # ---------------------------------------------------------------- kamar (bangun)
+## ⚠ z KAMAR HARUS NEGATIF — dan angkanya dijepit dari DUA sisi.
+##
+## `Player.gd:54` melakukan `z_index = int(global_position.y)` untuk y-sort. `INTERIOR`
+## ada di **koordinat negatif** `(-360,-260)`, jadi di dalam kamar z pemain jatuh ke
+## **-260..-110** — dan lantai berlapis bawaan `z = 0` tergambar **DI ATASNYA**.
+## Akibatnya pemain **tak terlihat** selama momen bangun: kamarnya lengkap, orangnya
+## hilang, dan tak satu pun galat muncul.
+##
+## Batas atas: harus **di bawah -260** (z pemain paling atas di kamar ini).
+## Batas bawah: harus **>= -1024**, yaitu `Light2D.range_z_min` bawaan — di luar itu
+## perapian berhenti menyinarinya dan kamar jadi kotak hitam. (Pelajaran yang sama
+## dengan lentera Merrit, dari arah berlawanan: dulu z TERLALU TINGGI, kini terlalu
+## rendah sama merusaknya.)
+##
+## Ditemukan 2026-07-20 saat memasang interior Ashbrook64; dikonfirmasi sebagai
+## pemain di scene 16px ini sebelum disentuh — bukan ditambal atas dugaan.
+const Z_KAMAR := -900
+
 func _build_interior() -> void:
 	var room := ColorRect.new()
 	room.color = Color(0.16, 0.13, 0.11)
 	room.size = Vector2(220, 150)
 	room.position = INTERIOR
+	room.z_index = Z_KAMAR
 	add_child(room)
 	var fire := PointLight2D.new()          # perapian — hangat
 	fire.energy = 1.2
@@ -272,6 +345,7 @@ func _build_interior() -> void:
 	win.color = Color(0.35, 0.42, 0.55)
 	win.size = Vector2(34, 26)
 	win.position = INTERIOR + Vector2(160, 24)
+	win.z_index = Z_KAMAR + 1        # di atas lantai, tetap di bawah pemain
 	add_child(win)
 	# BUG-217e: pintu keluar memakai sinyal `interacted` yang TIDAK ADA di Interactable
 	# → MOMEN BANGUN buntu (pemain terkunci di kamar). Kini: pemicu-area yang bekerja.
@@ -452,7 +526,16 @@ func _process(delta: float) -> void:
 	if _seat:
 		_seat.visible = h >= 19 or h < 5      # Merrit duduk membaca surat (tanpa prompt)
 	if _beacon:
-		_beacon.modulate.a = 1.0 if h >= 17 or h < 6 else 0.55
+		var ba := 1.0 if h >= 17 or h < 6 else 0.55
+		# Beacon = titik cahaya LINTAS-JARAK (#218), untuk dilihat dari titik-pandang
+		# 670 px jauhnya. DARI DEKAT ia justru MENUTUPI lentera sungguhan: 6x6 px pada
+		# posisi yang sama persis, z 4096 → di atas lentera, DAN di luar range_z_max
+		# Light2D (1024) → tak tersentuh cahaya → terbaca sebagai KOTAK GELAP menempel
+		# di kaca lentera pada malam hari. Dari dekat, lentera + glow-nya sudah bekerja
+		# sendiri; beacon tak dibutuhkan. Node-nya TETAP ADA (uji #218 memeriksa grup).
+		if player and player.global_position.distance_to(_beacon.global_position) < 320.0:
+			ba = 0.0
+		_beacon.modulate.a = ba
 	if h != _last_hour:
 		_last_hour = h
 		for w in get_tree().get_nodes_in_group("ashbrook_window"):
