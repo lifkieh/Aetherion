@@ -2,7 +2,17 @@ extends Node
 ## CharGen (Aetherion Character System v2) — GDScript port of gen_charsys_v2.py's
 ## compose()/make_sheet(). Builds a 96x128 (3 frames x 4 dirs, 32px) character sheet
 ## as an ImageTexture from a modular config (per-part race + skin + hair + outfit).
-## Cached per config. Owner canon: LPC rejected — this is our own modular system.
+## Cached per config.
+##
+## ⚠ KANON #250 (2026-07-19) — **"LPC rejected" DICABUT.**
+## Owner canon #250: **LPC 64px = sumber karakter tunggal. `_charsys` v2 DIPENSIUNKAN**
+## (kualitas visual; keputusan Direktur atas pembanding `reports/preview/skala_16_vs_lpc64.png`
+## — badan tampak 12x27 px di sini vs 34x47 px di LPC).
+##
+## **PENSIUN, BUKAN DIHAPUS.** Berkas ini masih menyuplai SELURUH karakter yang hidup di
+## dunia hari ini — pemain, NPC, warga, pratinjau. Jangan hapus sebelum penggantinya jalan.
+## Mode kompresi 64→32→16 untuk perangkat low-end = NANTI (satu sumber, turunkan saat perlu).
+## Daftar migrasi lengkap: `reports/MIGRASI_CHARSYS.md`.
 
 const OUTLINE := Color8(36, 31, 54)
 const WHITE := Color(1, 1, 1)
