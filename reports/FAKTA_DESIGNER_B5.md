@@ -1,6 +1,16 @@
-# FAKTA DESIGNER — BATCH 5 (prep spec eksekusi payoff)
+# FAKTA DESIGNER — BATCH 5 (prep spec eksekusi payoff + mekanik ingatan)
 
 Read-only. Nol perubahan kode. Semua klaim `path:baris`.
+
+**Peta ke enam pertanyaan:**
+| pertanyaan | bagian |
+|---|---|
+| 1. `_compute_loss` + `chronicle_losses.json` | §1 |
+| 2. `record_person` / yang melahirkan halaman | §2 |
+| 3. **SLOT INGATAN PEMAIN** | **§3-BARU** |
+| 4. **ELYN — umur & keturunan** | **§4-BARU** |
+| 5. `enough_for`/`for_page`/`kinds_for` | §4 *(ambang)* |
+| 6. `struck_entries`/`readable_entries` | §5 |
 
 ---
 
@@ -340,3 +350,145 @@ sinyal `chronicle_recorded`/`chronicle_struck`/`chronicle_restored` · 6 titik-p
 
 ⚠ Yang **tidak** ada dan mungkin dikira ada: `KIND_PLACE` (hanya `deed`/`person`) ·
 dispatch `found_by` · ambang per-halaman · UI apa pun yang menampilkan `loss`.
+
+---
+
+# §3-BARU — SISTEM SLOT INGATAN PEMAIN
+
+## 🔴 **TIDAK ADA DI KODE.**
+
+Grep seluruh `game/**` untuk `memory_slot` · `memory_cap` · `slot_ingatan` · `kapasitas` ·
+`capacity` · `max_memor` · `mem_slot` · `remember_cap` → **nol hasil di kode.**
+Semua kecocokan kata "ingatan" adalah **komentar doktrin** atau **teks naratif data**:
+
+| path:baris | isi |
+|---|---|
+| `Chronicle.gd:23, 178, 196` | komentar #226 |
+| `Evidence.gd:4, 6, 8, 11, 14` | komentar doktrin |
+| `data/evidence.json:3, 8, 11` | `_comment` / `_kinds` |
+| `data/chronicle_losses.json:2` | `_comment` |
+| `data/rumors.json:26` | teks rumor NPC |
+| `data/town_npcs.json:276` | dialog warga |
+
+## 3.1 Seluruh field `PlayerData` (`game/autoload/PlayerData.gd:12-97`)
+
+Identitas & progres: `char_name` · `birth_sign` · `level` · `exp` · `playtime_sec` ·
+`attributes` · `stat_points`
+Stat: `max_hp` · `max_mp` · `atk` · `def` · `matk` · `mdef` · `spd` · `crit_rate` · `crit_dmg` · `hp` · `mp`
+Ekonomi/gear: `gold` · `inventory` · `equipped_weapon/armor/accessory` · `gear_meta` · `coating`
+Kelas: `char_class` · `advanced_class` · `combat_sub` · `pending_*` · `known_skills` ·
+`mastered_elements` · `infusion` · `buffs` · `statuses` · `skill_trees`
+Sosial (#130): `reputation` · `faction_standing` · `influence`
+Lain: `monsters` · `active_pet_index` · `homestead_plots` · `scenario_flags` · `titles` ·
+`professions` · `achievements` · `discovered` · `craft_insight` · `daily_quests` · `prof_xp` ·
+`hotbar` · `discovered_fusions` · `char_config`
+
+**Nol field kapasitas ingatan.** `to_save()` (`:695-715`) juga nol.
+
+## 3.2 "Slot" yang ADA di kode — semuanya BUKAN ingatan
+
+| jenis | path:baris |
+|---|---|
+| slot skill hotbar (`slot_1`…`slot_5`) | `Keybinds.gd:18-19, 37-41` |
+| slot perlengkapan (`armor`/`accessory`) | `PlayerData.gd:52-53, 446` |
+| slot berkas simpan | `EventBus.gd:80-81 save_completed(slot)` |
+| **slot data ter-RESERVE (#130)** | `PlayerData.gd:65-69` |
+
+⚠ `PlayerData.gd:65-69` menarik untuk dicontoh — ada preseden **memesan slot lebih dulu**:
+> `# --- RESERVE (Decision Log #130): slot data reputasi & faksi ---`
+> `# TETAPI slotnya di-reserve SEKARANG: menambah field setelah ratusan save beredar`
+
+Dan `SAVE_SCHEMA := 2` (`:6`) + catatan `:3`:
+> `## SAVE_SCHEMA 2 (v0.4.4+): menambah slot reputasi/faksi/influence (#130). Save schema 1 …`
+
+➡ **Kalau slot ingatan akan dibangun, ini polanya:** tambah field + naikkan `SAVE_SCHEMA` ke 3
++ tangani migrasi di `from_save()` (`:717+`). Preseden #130 sudah membuktikan jalurnya.
+
+## 3.3 Yang paling MENDEKATI kapasitas hari ini
+
+Bukan slot, tapi **ambang jenis**: `SCRIBE_KINDS_NEEDED` (self=3 · elyn=2 · sora=2,
+`Chronicle.gd:49-53`). Itu **syarat menulis**, bukan **kapasitas menyimpan** —
+`Evidence.found` (`Evidence.gd:27`) adalah Dictionary **tanpa batas**.
+Dan `Evidence.gd:157-158` melarang secara eksplisit:
+> `# DILARANG ADA di file ini, selamanya:`
+> `#   found_count() · total_for_page() · progress() · percent() · missing_kinds()`
+
+⚠ **Peringatan desain:** sistem slot ingatan yang menampilkan "3/5 terisi" akan **bertabrakan
+langsung dengan D-4** (#230) yang dikodekan di `Chronicle.gd:229-248` dan `Evidence.gd:154-168`,
+dan dijaga test `_test_no_chronicle_score()` + `_test_no_evidence_score()`.
+Kapasitas boleh ada; **menampilkan angkanya** yang dilarang.
+
+---
+
+# §4-BARU — ELYN: UMUR, CEILING, KETURUNAN
+
+## 4.1 Di DOKUMEN — terkanonkan detail
+
+`docs/Companion_bible/companion_02_elyn_thornewood.md`:
+
+| baris | isi |
+|---|---|
+| `:37` | *"Elyn Thornewood, **134 tahun**, elf, Penjaga Arsip di perpustakaan tua **Sylvara**"* |
+| `:39` | **KETURUNAN WREN:** *"Ada seorang gadis manusia bernama **Wren** yang datang membaca pada usia sebelas. Elyn menuliskan namanya di kartu pinjam. Wren tumbuh, membawa putrinya. Putrinya tum[buh]…"* |
+| `:60` | **Ceiling: 690** (elite 400–700, *"tepat di tepi atas… sepuluh angka dari jenius, dan sepuluh angka itu tidak penting sama sekali"*) |
+| `:76` | *"Ia takut bahwa dirinya sendiri adalah api yang kedua — hanya lebih pelan… ia **tidak lagi** [ingat]"* |
+| `:78` | *"**Umur panjang, bagi Elyn, bukan berkah. Ia adalah ruang yang lebih besar untuk lupa.**"* |
+| `:99` | *"**Wren (dan tiga keturunannya)** — relasi yang seluruhnya sudah selesai sebelum pemain tiba"* |
+| `:114` | *"Elf, 134, **awal prima** — … Ia tidak akan menua di depan pemain. **Ia akan mengubur semua orang.**"* |
+| `:116` | usul desain: *"**jadikan Elyn suara yang menyampaikan kehilangan**"* |
+| `:118` | *"**Mentor** dalam arti paling murni (MEJA-3): ia tidak akan pernah pensiun karena tubuhnya melemah"* |
+
+`docs/COMPANION_BIBLE.md:71`:
+```
+| 002 | **Elyn Thornewood** | *The Keeper of Forgotten Books* | Elf | **Sylvara** | Scholars | **690** · elite | companion_02_elyn_thornewood.md |
+```
+
+## 4.2 Tabel penuaan — `docs/TIME_LEGACY_SPEC.md:64-67`
+
+| Ras | Dewasa | Prima | Menua | Sepuh | Harapan hidup | Laju vs manusia |
+|---|---|---|---|---|---|---|
+| **Elf** | 100 | **110–300** | 301–500 | 501+ | **~600** | **0,13** |
+
+`:75` — *"**Elyn (134) jatuh di awal PRIMA elf.** Ia sudah melihat empat generasi manusia lahir dan…"*
+`:5` — *"pemain menua **hanya lewat lompatan** ✅ (P-AGE=a) · tabel penuaan 8 ras & posisi Elyn **dipertahankan**"*
+
+## 4.3 Di KODE — **TIDAK ADA DI KODE**
+
+Grep `game/**` untuk `age` · `lifespan` · `aging` · `menua` · `generation` · `pewaris` · `dinasti`:
+
+**Nol sistem umur.** Yang muncul hanya:
+| path:baris | isi | bukan sistem umur |
+|---|---|---|
+| `PlayerData.gd:73, 76` | `influence` sumbu **`legacy`** | metrik pengaruh, bukan generasi |
+| `AdvancedClass.gd:5` · `RasiSystem.gd:6` · `Chronicle.gd:3` | kata "LEGACY" sebagai pilar | komentar |
+| `MenuUI.gd:403, 409` | tag NPC `"Memory"` / `"Legacy"` | label warna kartu NPC |
+| `TestRunner.gd:2491` | `["Need","Dream","Fear","Ambition","Memory","Legacy","Hidden","Chronicle","Myth"]` | daftar tag sah |
+| `MenuUI.gd:557` | *"…bekerja, berkeluarga, **menua**, dan meninggal…"* | teks Aetherpedia |
+
+**Nol field `age` pada NPC/companion mana pun.** Nol `Aging` autoload. Nol data keturunan.
+**Elyn sendiri nol node/scene** (dikonfirmasi `FAKTA_DESIGNER.md` §C).
+
+## 4.4 Yang sudah dirancang tapi belum dibangun
+
+`docs/TIME_LEGACY_SPEC.md:165`:
+> `| Aging.thresholds(race, age) | autoload/util **baru** | tabel §2 sebagai **data JSON**, bukan konstanta kode |`
+
+**Pertanyaan terbuka spec** (`:199-208`) — masih menunggu putusan:
+- `:199` *"**Elf & pewarisan:** pemain elf praktis tak pernah menua melewati satu lompatan. Apakah ia…"*
+- `:204-205` *"Tabel §2 = kanon atau tuning? **Rekomendasi: data JSON (bisa disetel)**, dengan **ambang** (dewasa/prima/menua/sepuh) yang **kanon**"*
+- `:208` *"…melampaui usia prima? **Rekomendasi: ia TIDAK dibuang — ia berpindah peran**"*
+
+## 4.5 Apa yang bisa disambung untuk mekanik ingatan
+
+**Kait naratif yang paling kuat, sudah kanon, nol kode:**
+1. **`:78` — "Umur panjang = ruang yang lebih besar untuk lupa."** Ini secara harfiah menyatakan
+   ingatan sebagai **kapasitas terbatas yang tergerus waktu**. Kalau slot ingatan dibangun,
+   kalimat ini adalah justifikasi kanonnya.
+2. **`:39`/`:99` — Wren + tiga keturunan.** Sudah selesai sebelum pemain tiba → bahan
+   **`kind:"orang"`** yang tak butuh NPC hidup, hanya kartu pinjam (**`kind:"benda"`**).
+3. **`SCRIBE_ELYN` sudah ada di kode** (`Chronicle.gd:45`, ambang 2) — jalur mekaniknya siap;
+   yang kurang cuma Elyn di dunia.
+4. **"HARGA ELYN"** (`CHRONICLE_RESTORATION_SPEC.md:262-266`) masih `[BARU — usul, butuh putusan]`:
+   tiap kali Elyn menulis untuk pemain, ia **mempercepat lupa miliknya sendiri**.
+   ⚠ Itu **persis** mekanik slot-ingatan-yang-tergerus, tapi **untuk NPC**, bukan pemain.
+   Belum diratifikasi, belum dikode.
