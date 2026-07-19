@@ -37,7 +37,7 @@ const POINTS := [
 	["ev_ashbrook_gudang_gandum", Vector2(704, 480)],
 	["ev_ashbrook_halloran_200_roti", Vector2(1216, 560)],
 	["ev_ashbrook_jembatan_terlalu_lebar", Vector2(1856, 704)],
-	["ev_ashbrook_fondasi_rumput", Vector2(1504, 1152)],
+	["ev_ashbrook_fondasi_rumput", Vector2(1504, 1056)],
 	["ev_ashbrook_batu_fondasi", Vector2(800, 856)],
 ]
 

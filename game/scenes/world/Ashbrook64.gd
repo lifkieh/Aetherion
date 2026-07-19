@@ -55,6 +55,7 @@ func _ready() -> void:
 	_canvas_mod.color = Color(1, 1, 1)
 	add_child(_canvas_mod)
 	_ground()
+	_build_boundaries()
 	_village()
 	_props_and_evidence()
 	_folk()
@@ -88,6 +89,47 @@ func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
 	add_child(preload("res://scenes/ui/MenuUI.tscn").instantiate())
 	add_child(preload("res://scenes/systems/WorldController.tscn").instantiate())
+
+
+# ---------------------------------------------------------------- tabrakan
+## Semua tabrakan dunia memakai LAPIS 4 — sama dengan `Ashbrook.gd:141-142`, dan
+## `Player.tscn` menyaring tepat lapis itu (`collision_mask = 4`). Angka ini bukan
+## selera: salah lapis = pemain menembus tembok tanpa satu pun galat muncul.
+const SOLID_LAYER := 4
+
+var _solids: StaticBody2D
+
+
+func _solid_body() -> StaticBody2D:
+	if _solids == null:
+		_solids = StaticBody2D.new()
+		_solids.collision_layer = SOLID_LAYER
+		_solids.collision_mask = 0
+		add_child(_solids)
+	return _solids
+
+
+## Satu kotak padat. `rect` dalam koordinat dunia.
+func _solid(rect: Rect2) -> void:
+	var cs := CollisionShape2D.new()
+	var sh := RectangleShape2D.new()
+	sh.size = rect.size
+	cs.shape = sh
+	cs.position = rect.position + rect.size * 0.5
+	_solid_body().add_child(cs)
+
+
+## Batas tanah — preseden `Ashbrook.gd:140-153`.
+##
+## Tanpa ini pemain berjalan keluar peta ke kekosongan: nol ubin, nol apa pun, dan
+## tak ada yang memberitahunya ia sudah di luar dunia. Empat dinding 16 px MENGELILINGI
+## petak 60x34 (1920x1088), diletakkan di LUAR tepi supaya tak memakan ruang main.
+func _build_boundaries() -> void:
+	var w := MAP_W * TILE
+	var h := MAP_H * TILE
+	for rc in [Rect2(-16, -16, w + 32, 16), Rect2(-16, h, w + 32, 16),
+			Rect2(-16, 0, 16, h), Rect2(w, 0, 16, h)]:
+		_solid(rc)
 
 
 # ---------------------------------------------------------------- tanah
@@ -143,11 +185,20 @@ func _building(path: String, foot: Vector2) -> Sprite2D:
 	s.texture = load(path)
 	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	s.centered = false
-	s.position = foot - Vector2(s.texture.get_width() * 0.5, s.texture.get_height())
+	var wdt: float = s.texture.get_width()
+	s.position = foot - Vector2(wdt * 0.5, s.texture.get_height())
 	s.z_index = int(foot.y)
 	add_child(s)
+	# Tabrakan hanya di KAKI, bukan setinggi fasad. Fasad 7 petak yang padat penuh
+	# akan menghalangi pemain jauh sebelum ia "menyentuh" bangunannya, dan merusak
+	# y-sort yang justru membuat orang bisa berdiri di depan rumah.
+	_solid(Rect2(foot.x - wdt * 0.5, foot.y - BUILDING_FOOT_H, wdt, BUILDING_FOOT_H))
 	return s
 
+
+## Setinggi apa kaki bangunan yang padat. 40 px = sedikit di atas tinggi pemain (30x48
+## badan), jadi ia jelas "tak bisa lewat" tanpa memakan petak di depan pintu.
+const BUILDING_FOOT_H := 40.0
 
 func _village() -> void:
 	_building(P_S + "fasad_inn.png", MERRIT_HOUSE)                 # rumah singgah Merrit
@@ -157,9 +208,15 @@ func _village() -> void:
 	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
 	for p in [Vector2(320, 384), Vector2(1600, 352), Vector2(1728, 1024), Vector2(224, 1088)]:
 		_put(P_S + "tree_lpc.png", p)
-	_put(P_S + "fountain.png", VC + Vector2(0, -32))               # air mancur KERING
+	var fnt := VC + Vector2(0, -32)
+	_put(P_S + "fountain.png", fnt)                                # air mancur KERING
+	_solid(Rect2(fnt.x - 26, fnt.y - 10, 52, 34))                  # cekungannya, bukan seluruh sprite
 	for i in 8:                                                     # bangku terlalu banyak
-		_put(P_S + "bench_lpc.png", VC + Vector2(-224 + i * 64, 112 if i % 2 == 0 else -112))
+		var bp: Vector2 = VC + Vector2(-224 + i * 64, 112 if i % 2 == 0 else -112)
+		_put(P_S + "bench_lpc.png", bp)
+		_solid(Rect2(bp.x - 14, bp.y - 4, 28, 16))                  # dudukannya saja
+	for tp in [Vector2(320, 384), Vector2(1600, 352), Vector2(1728, 1024), Vector2(224, 1088)]:
+		_solid(Rect2(tp.x - 10, tp.y - 6, 20, 14))                  # batang, bukan tajuk
 
 
 # ------------------------------------------------- prop cerita + HUKUM BUKTI (#226)
@@ -196,8 +253,12 @@ func _props_and_evidence() -> void:
 	_examine(Vector2(1216, 664), "ev_otha_papan_bekas_cat")
 
 	# reruntuhan: garis fondasi di rumput + batu fondasi berpahat di alun-alun
-	_put(P_S + "wall_ruin.png", Vector2(1504, 1088))
-	_examine(Vector2(1504, 1152), "ev_ashbrook_fondasi_rumput")
+	# ⚠ URUTAN PENTING (#batas): titik ini DULU di y=1152 — di LUAR tanah 34 petak
+	# (1088 px). Memasang batas tanpa memindahkannya akan MEMUTUS jalur bukti:
+	# pemain tak bisa lagi menjangkaunya, dan `ev_ashbrook_fondasi_rumput` jadi
+	# mustahil dikumpulkan. Reruntuhannya ikut naik supaya keduanya tetap sepasang.
+	_put(P_S + "wall_ruin.png", Vector2(1504, 1024))
+	_examine(Vector2(1504, 1056), "ev_ashbrook_fondasi_rumput")
 	# batu fondasi berpahat — memakai batu LPC, BUKAN ruins.png 16px (bentrok gaya)
 	var stone := _put(P_S + "wall_ruin.png", VC + Vector2(-176, 96))
 	if stone:

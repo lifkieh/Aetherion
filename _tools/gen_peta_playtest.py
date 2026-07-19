@@ -38,7 +38,7 @@ POINTS = [
     (2, (1216, 560), "kebiasaan", "Ashbrook", "200 roti Halloran\ntiap pagi"),
     (3, (1216, 664), "akibat", "OTHA", "Papan Otha\n(bekas cat)"),
     (4, (800, 856), "benda", "Ashbrook", "Batu fondasi\nberpahat"),
-    (5, (1504, 1152), "akibat", "Ashbrook", "Garis fondasi\ndi rumput"),
+    (5, (1504, 1056), "akibat", "Ashbrook", "Garis fondasi\ndi rumput"),
     (6, (1856, 704), "akibat", "Ashbrook", "Jembatan\nterlalu lebar"),
 ]
 

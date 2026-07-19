@@ -138,6 +138,7 @@ func _ready() -> void:
 	_test_death_kind_matches_loss()
 	await _test_projectile_survives_dead_source()
 	_test_save_routing_274()
+	await _test_ashbrook64_padat()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4402,6 +4403,63 @@ func _test_save_routing_274() -> void:
 		not mm.contains("go_to_scene(\"res://scenes/Main.tscn\")"))
 	check("MainMenu._load memakai penyelesai SaveManager",
 		mm.contains("SaveManager.scene_for_slot"))
+
+## Ashbrook64 — tabrakan & batas tanah.
+##
+## Sebelum ini scene itu DIORAMA yang bisa ditembus: pemain berjalan menembus fasad,
+## air mancur, bangku, dan keluar peta ke kekosongan tanpa satu pun tanda ia sudah
+## di luar dunia. Test ini menguji BENDANYA, bukan tata letaknya — geser bangunan
+## sesuka hati, test tetap benar.
+func _test_ashbrook64_padat() -> void:
+	print("[Ashbrook64: batas tanah + tabrakan — bukan diorama lagi]")
+	var scn = preload("res://scenes/world/Ashbrook64.tscn").instantiate()
+	add_child(scn)
+	await get_tree().process_frame
+	await get_tree().physics_frame
+
+	var pl: Node2D = null
+	for n in get_tree().get_nodes_in_group("player"):
+		if scn.is_ancestor_of(n):
+			pl = n
+	check("pemain ada di Ashbrook64", pl != null)
+	if pl == null:
+		scn.queue_free()
+		return
+
+	var w: float = float(scn.MAP_W * scn.TILE)
+	var h: float = float(scn.MAP_H * scn.TILE)
+
+	# ⚠ titik-periksa yang dipindah: harus DI DALAM tanah, atau jalur bukti putus
+	var luar: Array = []
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if not scn.is_ancestor_of(n):
+			continue
+		var q: Vector2 = n.global_position
+		if q.x < 0.0 or q.x > w or q.y < 0.0 or q.y > h:
+			luar.append("%s @ %s" % [n.get("evidence_id"), str(q)])
+	check("nol titik-periksa di luar batas tanah", luar.is_empty(), str(luar))
+
+	# dorong ke empat arah; batas harus menahan
+	for arah in [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]:
+		pl.global_position = Vector2(w * 0.5, h * 0.5)
+		await get_tree().physics_frame
+		for _i in range(40):
+			pl.move_and_collide(arah * 64.0)
+		var q: Vector2 = pl.global_position
+		var di_dalam := q.x >= -32.0 and q.x <= w + 32.0 and q.y >= -32.0 and q.y <= h + 32.0
+		check("batas menahan arah %s" % str(arah), di_dalam, str(q))
+
+	# bangunan padat di kakinya — dorong ke rumah Merrit dari depan
+	var foot: Vector2 = scn.MERRIT_HOUSE
+	pl.global_position = foot + Vector2(0, 90)
+	await get_tree().physics_frame
+	for _j in range(30):
+		pl.move_and_collide(Vector2(0, -20))
+	check("fasad Merrit menahan pemain (tak tembus)", pl.global_position.y > foot.y - 40.0,
+		str(pl.global_position))
+
+	scn.queue_free()
+	await get_tree().process_frame
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)
