@@ -77,7 +77,7 @@ func _build_frame() -> void:
 
 	var tabs := HBoxContainer.new()
 	vb.add_child(tabs)
-	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["jurnal", "Jurnal"], ["quest", "Quest"], ["skill", "Skill"], ["trees", "Pohon"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
+	for m in [["status", "Status"], ["inventory", "Tas"], ["crafting", "Craft"], ["shop", "Toko"], ["kitab", "Kitab"], ["jurnal", "Jurnal"], ["quest", "Quest"], ["skill", "Skill"], ["trees", "Pohon"], ["grimoire", "Grimoire"], ["pet", "Pet"], ["prof", "Profesi"], ["pedia", "Pedia"], ["panduan", "Panduan"]]:
 		var b := Button.new()
 		b.text = m[1]
 		if _font: b.add_theme_font_override("font", _font)
@@ -86,6 +86,8 @@ func _build_frame() -> void:
 			mode = m[0]
 			if m[0] == "trees":
 				_ctx = null   # tab = tampilan upgrade-di-mana-pun (tanpa lokasi keeper)
+			if m[0] == "kitab":
+				_kitab_view = ""   # buka tab = kembali ke daftar halaman, bukan prompt lama
 			_rebuild())
 		UiFx.button(b)
 		tabs.add_child(b)
@@ -136,9 +138,11 @@ func open(m: String, ctx = null) -> void:
 func close_menu() -> void:
 	root.visible = false
 	get_tree().paused = false
+	_kitab_view = ""   # menutup menu = menutup kitab; jangan kembali ke prompt lama
 
 func _refresh_gold() -> void:
 	gold_lbl.text = "Gold: %d" % PlayerData.gold
+	gold_lbl.visible = true    # tab Kitab menyembunyikannya lagi saat dibangun
 
 # --- Content ----------------------------------------------------------------
 
@@ -169,6 +173,7 @@ func _rebuild() -> void:
 		"crafting": _build_crafting()
 		"enchant": _build_enchant()
 		"auction": _build_auction()
+		"kitab": _build_kitab()
 		"jurnal": _build_journal()
 		"shop": _build_shop()
 		"system": _build_system()
@@ -1205,3 +1210,391 @@ func _build_status() -> void:
 			PlayerData.respec(); Audio.play_sfx("success"); EventBus.toast.emit("Atribut di-reset. Alokasikan ulang poinmu."); _rebuild()
 		else:
 			EventBus.toast.emit("Gold tidak cukup untuk respec.")))
+
+# ══════════════════════════════════════════════════════════════════════════════
+# KITAB — R1 · SPEC_PAYOFF_SLICE §4.F/§4.G
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Tab TERPISAH dari `pedia`/#96. `_build_pedia()` TIDAK disentuh: Aetherpedia
+# adalah daftar pencapaian, Kitab adalah buku yang dicoret dan ditulis ulang.
+# Dua benda berbeda yang kebetulan membaca larik yang sama.
+#
+# ⛔ HUKUM D-4 — dikodekan di sini juga:
+#   Layar ini TIDAK BOLEH menampilkan hitungan bukti, "3/5", bilah kemajuan,
+#   atau persen. Ia hanya boleh menjawab ya/tidak untuk satu aksi konkret:
+#   bisakah halaman ini ditulis ulang sekarang. Kapasitas ingatan pemain
+#   terasa HANYA lewat penolakan saat penuh (#257) — tak pernah lewat meteran.
+#   Dijaga `_test_no_chronicle_score()` + `_test_no_evidence_score()`.
+#
+# #229.4 — `struck_cause` TIDAK PERNAH ditampilkan. Pemain tak akan pernah bisa
+#   membedakan penghapusan dari kelupaan biasa, dan kita tak menjawabnya.
+#
+# #259 — keterbukaan Elyn tampil SEBELUM konfirmasi. Nol jebakan.
+
+const KITAB_PAPER := Color(0.115, 0.105, 0.095)   # kertas tua, bukan panel biru
+const KITAB_EDGE := Color(0.34, 0.31, 0.26)
+const KITAB_INK := Color(0.91, 0.88, 0.79)
+const KITAB_INK_DIM := Color(0.58, 0.56, 0.50)
+const KITAB_LOSS := Color(0.97, 0.74, 0.44)       # baris tak-terpulihkan
+const KITAB_SCRATCH := Color(0.82, 0.79, 0.71, 0.70)   # tembus: nama tercoret harus TETAP terbaca
+
+## "" = daftar. Selain itu "<layar>:<id_halaman>".
+## path = pilih jalur · elyn = keterbukaan (#259) · full = penolakan (#257) · done = hasil
+var _kitab_view := ""
+
+## Teks kanon §4.G. Dwibahasa sejak awal (#166) — slot EN disiapkan, bukan ditambal nanti.
+const KITAB_TXT := {
+	"elyn_disclosure": {
+		"id": "Elyn akan menulis ini untukmu. Ingatan itu akan menempati ruangnya, bukan ruangmu.\nUmurnya berkurang tiap kali ia menolak lupa. Dan ruang yang penuh diwariskan —\nketurunannya memikul apa yang tak sanggup kaubawa sendiri.",
+		"en": "Elyn will write this for you. The memory will take her room, not yours.\nHer years shorten each time she refuses to forget. And a full room is inherited —\nher descendants carry what you could not carry yourself.",
+	},
+	"elyn_first": {
+		"id": "\"Aku sudah melihat empat generasi manusia pergi. Satu ingatan lagi bukan beban baru — hanya ruang yang lebih sempit untuk lupa. Berikan. Aku akan mengingatnya selama aku bisa.\"",
+		"en": "\"I have watched four generations of humans go. One more memory is no new burden — only less room to forget in. Give it to me. I will remember it while I can.\"",
+	},
+	"memory_full": {
+		"id": "Kamu tak sanggup memikul lebih banyak masa lalu. Lepaskan sesuatu yang kausimpan,\natau biarkan Elyn yang menanggung ini.",
+		"en": "You cannot carry any more of the past. Let go of something you hold,\nor let Elyn bear this one.",
+	},
+	"take_elyn": {"id": "Biarkan Elyn menanggung", "en": "Let Elyn bear it"},
+	"take_self": {"id": "Simpan sendiri", "en": "Keep it yourself"},
+	"rewrite": {"id": "Tulis ulang", "en": "Rewrite"},
+	"back": {"id": "Kembali ke kitab", "en": "Back to the book"},
+	"no_trace": {
+		"id": "Belum ada cukup bekas untuk menuliskannya kembali.",
+		"en": "Not enough traces yet to write it back.",
+	},
+	"from_testimony": {
+		"id": "dipulihkan dari kesaksian",
+		"en": "restored from testimony",
+	},
+	"loss_header": {"id": "Yang tidak kembali:", "en": "What did not come back:"},
+	"empty": {
+		"id": "Belum ada apa pun di kitab ini. Dunia masih menunggu seseorang repot menuliskannya.",
+		"en": "Nothing in this book yet. The world is still waiting for someone to bother writing it.",
+	},
+	"who_bothered": {
+		"id": "Buku ini tidak menghakimi. Ia hanya mencatat siapa yang repot.",
+		"en": "This book does not judge. It only records who bothered.",
+	},
+	"struck_head": {"id": "— Halaman yang tercoret —", "en": "— Struck pages —"},
+	"read_head": {"id": "— Yang masih terbaca —", "en": "— Still legible —"},
+	"choose": {
+		"id": "Siapa yang akan memegang pena?",
+		"en": "Who will hold the pen?",
+	},
+	"self_note": {
+		"id": "Tulisanmu sendiri. Berantakan, dan lebih banyak yang hilang — karena kau tak tahu caranya. Tetap sah: dunia mengingat versimu.",
+		"en": "Your own hand. Messy, and more is lost — because you do not know how. Still valid: the world remembers your version.",
+	},
+	"self_locked": {
+		"id": "Bekas yang kaubawa belum cukup untuk tanganmu sendiri.",
+		"en": "The traces you carry are not enough for your own hand.",
+	},
+	"elyn_locked": {
+		"id": "Bekas yang kaubawa belum cukup, bahkan untuk Elyn.",
+		"en": "The traces you carry are not enough, even for Elyn.",
+	},
+}
+
+
+func _kt(key: String) -> String:
+	return Loc.c(KITAB_TXT[key])
+
+
+## Panel kertas — Kitab sengaja tidak memakai biru JRPG. Ia benda lain di tas.
+func _kitab_paper(pad: int = 10) -> PanelContainer:
+	var p := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = KITAB_PAPER
+	sb.border_color = KITAB_EDGE
+	sb.set_border_width_all(1)
+	sb.border_width_left = 3          # rusuk jilid di tepi kiri
+	sb.corner_radius_top_left = 2
+	sb.corner_radius_bottom_left = 2
+	sb.content_margin_left = pad + 4
+	sb.content_margin_right = pad
+	sb.content_margin_top = pad
+	sb.content_margin_bottom = pad
+	p.add_theme_stylebox_override("panel", sb)
+	content.add_child(p)
+	return p
+
+
+func _kitab_line(box: VBoxContainer, t: String, s: int, col: Color, wrap := true) -> Label:
+	var l := _mk_label(t, s, col)
+	if wrap:
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		l.custom_minimum_size = Vector2(470, 0)
+	box.add_child(l)
+	return l
+
+
+## JUDUL TERCORET — jantung emosi layar ini.
+##
+## Bukan `[s]` RichTextLabel: garis rapi di tengah huruf terbaca sebagai
+## "item dinonaktifkan", bukan sebagai orang yang dicoret dari sebuah buku.
+## Yang digambar di sini dua sapuan pena: satu tebal menyeberang, satu tipis
+## mengulang — persis yang dilakukan tangan saat menghapus sesuatu.
+##
+## Getarannya DITENTUKAN oleh hash id halaman, bukan acak: halaman yang sama
+## harus tercoret dengan bentuk coretan yang sama tiap kali kitab dibuka.
+const KITAB_TITLE_SIZE := 20
+
+func _kitab_struck_title(box: VBoxContainer, text: String, seed_src: String) -> void:
+	var holder := Control.new()
+	holder.custom_minimum_size = Vector2(470, 30)
+	holder.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_child(holder)
+
+	var l := _mk_label(text, KITAB_TITLE_SIZE, KITAB_INK.darkened(0.18))
+	l.set_anchors_preset(Control.PRESET_FULL_RECT)
+	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	holder.add_child(l)
+
+	# LEBAR CORETAN = lebar teksnya, bukan lebar kartu. Garis yang membentang
+	# sepenuh kartu terbaca sebagai garis pemisah; yang berhenti di ujung nama
+	# terbaca sebagai nama yang dicoret.
+	var tw := float(text.length()) * 9.0
+	if _font:
+		tw = _font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, KITAB_TITLE_SIZE).x
+	var seed_v := float(int(abs(float(hash(seed_src)))) % 211)
+
+	holder.draw.connect(func() -> void:
+		var w: float = min(holder.size.x, tw + 8.0)
+		var h: float = holder.size.y
+		var mid: float = h * 0.58
+		# dua sapuan: satu tebal menyeberang, satu tipis mengulang sedikit meleset
+		for stroke in 2:
+			var pts := PackedVector2Array()
+			var steps := 9
+			for i in steps + 1:
+				var f := float(i) / float(steps)
+				var jitter := sin(f * 11.0 + seed_v + float(stroke) * 2.7) * 1.5
+				var tilt := (f - 0.5) * 2.0            # tangan miring sedikit ke bawah
+				var off := -2.2 if stroke == 0 else 2.0
+				pts.append(Vector2(-3.0 + (w + 6.0) * f, mid + jitter + tilt + off))
+			holder.draw_polyline(pts, KITAB_SCRATCH, 2.1 if stroke == 0 else 1.2, true)
+	)
+
+
+func _build_kitab() -> void:
+	title.text = "Kitab"
+	# Gold disembunyikan: Kitab bukan panel inventaris, dan angka apa pun di
+	# kepalanya menarik mata ke arah yang salah.
+	gold_lbl.visible = false
+	if _kitab_view != "":
+		var parts := _kitab_view.split(":", true, 1)
+		var pid: String = parts[1] if parts.size() > 1 else ""
+		match parts[0]:
+			"path": _kitab_prompt_path(pid); return
+			"elyn": _kitab_prompt_elyn(pid); return
+			"full": _kitab_prompt_full(pid); return
+			"done": _kitab_done(pid); return
+	_kitab_list()
+
+
+func _kitab_list() -> void:
+	var struck: Array = Chronicle.struck_entries()
+	var readable: Array = Chronicle.readable_entries()
+	if struck.is_empty() and readable.is_empty():
+		content.add_child(_mk_label(_kt("empty"), 13, KITAB_INK_DIM))
+		return
+
+	var note := _mk_label(_kt("who_bothered"), 12, KITAB_INK_DIM)
+	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	note.custom_minimum_size = Vector2(500, 0)
+	content.add_child(note)
+
+	if not struck.is_empty():
+		content.add_child(_mk_label(_kt("struck_head"), 14, KITAB_INK_DIM))
+	for e in struck:
+		_kitab_card_struck(e)
+
+	if not readable.is_empty():
+		content.add_child(_mk_label(_kt("read_head"), 14, KITAB_INK_DIM))
+	for e in readable:
+		_kitab_card_readable(e)
+
+
+func _kitab_card_struck(e: Dictionary) -> void:
+	var pid: String = e.get("id", "")
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 4)
+	_kitab_paper().add_child(box)
+
+	_kitab_struck_title(box, str(e.get("title", "?")), pid)
+	# #229.4 — `struck_cause` TIDAK IKUT. Tak pernah.
+	_kitab_line(box, "ditulis %s WIB · oleh %s" % [e.get("date", ""), e.get("by", "")],
+		11, KITAB_INK_DIM)
+
+	# Ya/tidak untuk satu aksi konkret — bukan skor (D-4).
+	var can_self: bool = Evidence.enough_for(pid, Chronicle.SCRIBE_SELF)
+	var can_elyn: bool = Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN)
+	if can_self or can_elyn:
+		var b := _btn(_kt("rewrite"), func():
+			_kitab_view = "path:" + pid
+			_rebuild())
+		b.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		box.add_child(b)
+	else:
+		_kitab_line(box, _kt("no_trace"), 12, KITAB_INK_DIM)
+
+
+func _kitab_card_readable(e: Dictionary) -> void:
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 4)
+	_kitab_paper().add_child(box)
+
+	_kitab_line(box, str(e.get("title", "?")), 17, KITAB_INK)
+	_kitab_line(box, "ditulis %s WIB · oleh %s" % [e.get("date", ""), e.get("by", "")],
+		11, KITAB_INK_DIM)
+
+	if e.get("state", "") != Chronicle.ST_RESTORED:
+		return
+	# ATURAN KERAS #3 — "dipulihkan dari kesaksian", tak pernah "dipulihkan".
+	# Halaman pulih tidak pernah identik; menyebutnya "pulih" saja adalah kebohongan.
+	var scribe: String = str(e.get("scribe", ""))
+	var hand := "tanganmu sendiri" if scribe == Chronicle.SCRIBE_SELF else "tangan Elyn"
+	if scribe == Chronicle.SCRIBE_SORA:
+		hand = "tangan Sora"
+	_kitab_line(box, "%s · %s · %s" % [_kt("from_testimony"), hand, e.get("restored_at", "")],
+		12, KITAB_INK_DIM)
+	_kitab_loss_block(box, str(e.get("loss", "")))
+
+
+## BARIS TAK-TERPULIHKAN — fokus visual halaman pulih, bukan catatan kaki (§4.F).
+## Ia diberi kotaknya sendiri, warnanya sendiri, dan ukuran lebih besar daripada
+## judul halaman di sekitarnya. Yang hilang harus lebih keras daripada yang kembali.
+func _kitab_loss_block(box: VBoxContainer, loss: String) -> void:
+	if loss == "":
+		return
+	var p := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.20, 0.14, 0.07)
+	sb.border_color = KITAB_LOSS
+	sb.border_width_left = 4
+	sb.content_margin_left = 12
+	sb.content_margin_right = 10
+	sb.content_margin_top = 8
+	sb.content_margin_bottom = 8
+	p.add_theme_stylebox_override("panel", sb)
+	box.add_child(p)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 3)
+	p.add_child(vb)
+	vb.add_child(_mk_label(_kt("loss_header"), 12, KITAB_LOSS.darkened(0.25)))
+	# lebih besar daripada judul halaman di sekitarnya — itu maksudnya
+	var l := _mk_label(loss, 19, KITAB_LOSS)
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.custom_minimum_size = Vector2(440, 0)
+	vb.add_child(l)
+
+
+func _kitab_back_btn(label_key := "back") -> void:
+	var b := _btn(_kt(label_key), func():
+		_kitab_view = ""
+		_rebuild())
+	b.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	content.add_child(b)
+
+
+func _kitab_entry(pid: String) -> Dictionary:
+	for x in Chronicle.entries():
+		if x.get("id", "") == pid:
+			return x
+	return {}
+
+
+func _kitab_head(pid: String) -> VBoxContainer:
+	var e := _kitab_entry(pid)
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 6)
+	_kitab_paper(12).add_child(box)
+	_kitab_line(box, str(e.get("title", "?")), 18, KITAB_INK)
+	return box
+
+
+## PILIH JALUR (#228) — SENDIRI selalu ditawarkan bila buktinya cukup.
+## Elyn bukan satu-satunya jalan, dan layar ini tak boleh membuatnya terasa begitu.
+func _kitab_prompt_path(pid: String) -> void:
+	var box := _kitab_head(pid)
+	_kitab_line(box, _kt("choose"), 15, KITAB_INK_DIM)
+
+	if Evidence.enough_for(pid, Chronicle.SCRIBE_SELF):
+		var bs := _btn(_kt("take_self"), func(): _kitab_do_self(pid))
+		bs.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		box.add_child(bs)
+		_kitab_line(box, _kt("self_note"), 11, KITAB_INK_DIM)
+	else:
+		_kitab_line(box, _kt("self_locked"), 12, KITAB_INK_DIM)
+
+	if Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN):
+		# #259 — TIDAK langsung menulis. Tekan ini → layar keterbukaan dulu.
+		var be := _btn(_kt("take_elyn"), func():
+			_kitab_view = "elyn:" + pid
+			_rebuild())
+		be.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		box.add_child(be)
+	else:
+		_kitab_line(box, _kt("elyn_locked"), 12, KITAB_INK_DIM)
+
+	_kitab_back_btn()
+
+
+## #259 HUKUM KETERBUKAAN — ongkos Elyn tampil SEBELUM konfirmasi. Nol jebakan.
+func _kitab_prompt_elyn(pid: String) -> void:
+	var box := _kitab_head(pid)
+	var l := _mk_label(_kt("elyn_disclosure"), 15, KITAB_LOSS)
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.custom_minimum_size = Vector2(450, 0)
+	box.add_child(l)
+
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	box.add_child(row)
+	row.add_child(_btn("[ %s ]" % _kt("take_elyn"), func():
+		var r: Dictionary = Chronicle.restore_elyn(pid, Evidence.for_page(pid))
+		if r.get("ok", false):
+			_kitab_view = "done:" + pid
+		_rebuild()))
+	row.add_child(_btn("[ %s ]" % _kt("take_self"), func(): _kitab_do_self(pid)))
+	_kitab_back_btn()
+
+
+## SENDIRI. Ruang penuh → penolakan (#257), BUKAN tombol mati tanpa keterangan.
+func _kitab_do_self(pid: String) -> void:
+	var r: Dictionary = Chronicle.restore_self(pid, Evidence.for_page(pid))
+	if r.get("ok", false):
+		_kitab_view = "done:" + pid
+	elif r.get("reason", "") == "memory_full":
+		_kitab_view = "full:" + pid
+	_rebuild()
+
+
+## #257 — batas ingatan ditemui sebagai PENOLAKAN, tak pernah dibaca sebagai angka.
+## Elyn TETAP tersedia di layar ini: kapasitas memindahkan ongkos, tak mengunci payoff.
+func _kitab_prompt_full(pid: String) -> void:
+	var box := _kitab_head(pid)
+	var l := _mk_label(_kt("memory_full"), 15, KITAB_LOSS)
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.custom_minimum_size = Vector2(450, 0)
+	box.add_child(l)
+	if Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN):
+		var be := _btn("[ %s ]" % _kt("take_elyn"), func():
+			_kitab_view = "elyn:" + pid
+			_rebuild())
+		be.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		box.add_child(be)
+	_kitab_back_btn()
+
+
+func _kitab_done(pid: String) -> void:
+	var e := _kitab_entry(pid)
+	# Elyn bicara HANYA saat pertama kali dilimpahi — sesudahnya ia sudah menjawab.
+	if str(e.get("scribe", "")) == Chronicle.SCRIBE_ELYN and PlayerData.elyn_burden.size() <= 1:
+		var qbox := VBoxContainer.new()
+		_kitab_paper(12).add_child(qbox)
+		_kitab_line(qbox, _kt("elyn_first"), 14, KITAB_INK)
+	_kitab_card_readable(e)
+	_kitab_back_btn()

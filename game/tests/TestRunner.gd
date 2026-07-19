@@ -133,6 +133,7 @@ func _ready() -> void:
 	# R2 — Hukum Bukti (#226/#228/D-3/D-4). Didaftar (pelajaran #241: test tak terdaftar = komentar).
 	_test_evidence_find_is_silent()
 	_test_no_evidence_score()
+	_test_kitab_shows_no_counts()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4080,6 +4081,42 @@ func _test_no_chronicle_score() -> void:
 	check("TIDAK ada UI yang menghitung/menyortir halaman Chronicle",
 		offenders.is_empty(), str(offenders))
 
+## D-4 khusus layar Kitab (§6). Scanner umum menjaga seluruh UI dari kata-kata
+## terlarang; test ini menjaga SATU layar dari cara-cara halus menyelundupkan angka:
+## membaca jumlah bukti, memasang ProgressBar, atau mencetak rasio "3/5".
+##
+## `Evidence.enough_for()` SENGAJA tidak dilarang — ia menjawab ya/tidak untuk satu
+## aksi konkret (bisakah ditulis sekarang), bukan kemajuan. Itu batas garisnya.
+func _test_kitab_shows_no_counts() -> void:
+	print("[D-4: Kitab tak boleh menghitung — kapasitas terasa lewat penolakan, bukan meteran]")
+	var src := FileAccess.get_file_as_string("res://scenes/ui/MenuUI.gd")
+	check("tab Kitab ada", src.contains("func _build_kitab"))
+	check("Aetherpedia (#96) tak disentuh — tetap terpisah", src.contains("func _build_pedia"))
+	# Hanya seksi Kitab yang dipindai. Tab lain SAH memakai ProgressBar (mis. XP)
+	# — larangannya soal menghitung ingatan, bukan soal kata "ProgressBar".
+	var parts := src.split("# KITAB — R1")
+	var kitab: String = parts[1] if parts.size() > 1 else ""
+	check("seksi Kitab ketemu untuk dipindai", kitab != "")
+	var banned: Array = []
+	for needle in ["Evidence.kinds_for", "for_page(pid).size", "ProgressBar",
+			"kinds.size()", "found.size()", "memory_held.size()", "MEMORY_CAP"]:
+		if kitab.contains(needle):
+			banned.append(needle)
+	check("Kitab TIDAK membaca jumlah bukti / kapasitas", banned.is_empty(), str(banned))
+	# #229.4 — sebab pencoretan tak pernah sampai ke mata pemain.
+	# Yang dilarang MEMBACA field-nya; komentar yang menjelaskan larangan itu boleh.
+	check("Kitab TIDAK pernah membaca struck_cause", not kitab.contains("get(\"struck_cause"))
+	# aturan keras #3
+	check("halaman pulih ditandai \"dipulihkan dari kesaksian\"",
+		src.contains("dipulihkan dari kesaksian"))
+	# #259 — keterbukaan Elyn ada, dan dipisah dari aksinya
+	check("keterbukaan Elyn (#259) ada sebelum konfirmasi",
+		src.contains("func _kitab_prompt_elyn") and src.contains("Umurnya berkurang"))
+	# #257 — penolakan ruang penuh, dan Elyn tetap tersedia di layar itu
+	check("penolakan ruang penuh (#257) ada", src.contains("func _kitab_prompt_full"))
+	check("Elyn tetap tersedia saat ruang penuh",
+		src.split("func _kitab_prompt_full")[1].split("func ")[0].contains("SCRIBE_ELYN"))
+
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)
 	if d == null:
@@ -4449,6 +4486,13 @@ func _scan_decay_timer_leak(dir_path: String, offenders: Array) -> void:
 				_scan_decay_timer_leak(full, offenders)
 		elif f.ends_with(".gd"):
 			var txt := FileAccess.get_file_as_string(full)
+			# `MiracleSystem.days_left()` = hitung mundur Dark Miracle, sistem lain
+			# sama sekali. Ia disisihkan SEBAGAI TOKEN PERSIS — bukan dengan
+			# melonggarkan kata kuncinya — supaya `days_left` mana pun yang lain
+			# di berkas yang menyentuh Evidence TETAP tertangkap.
+			# (Terpicu saat MenuUI mulai memakai Evidence.enough_for() untuk Kitab.)
+			for safe in ["MiracleSystem.days_left", "dark.days_left"]:
+				txt = txt.replace(safe, "")
 			if txt.contains("Evidence.") or txt.contains("is_decayed"):
 				for needle in ["days_remaining", "decay_progress", "time_left",
 						"urgency", "akan hilang", "days_left"]:
