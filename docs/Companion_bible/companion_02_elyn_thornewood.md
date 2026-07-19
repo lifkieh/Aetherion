@@ -3,6 +3,40 @@
 *B17 · Tier ditentukan Direktur · Draft Designer detail-penuh · Hukum: Echo ≠ Origin*
 
 
+> ### ⚖ AMANDEMEN KANON — **OVERRIDE #267** (Direktur, 2026-07-20, perubahan sadar)
+> **Elyn KINI MENUA, DAN PUNYA KETURUNAN.** Ini bukan koreksi kekeliruan bacaan — ini
+> **perubahan kanon yang diputuskan dengan sadar**, dan ia membatalkan dua hal di sheet ini.
+>
+> **Apa yang berubah:**
+> 1. **Penuaan.** `AGING PATH` di bawah menyatakan *"Ia tidak akan menua di depan pemain."*
+>    Baris itu **DIPERTAHANKAN sebagai teks** dan **DIREINTERPRETASI**, bukan dihapus:
+>    Elyn tetap **melampaui umur biasa** — ia masih akan mengubur Merrit, Arlen, dan Sora —
+>    **tetapi penuaannya kini TERLIHAT**, dan **tahun-tahun elf-nya bisa dibelanjakan.**
+> 2. **Keturunan.** `LEGACY PATH` di bawah tak menyebut anak. **Kini ia punya garis keturunan**,
+>    dan beban yang dilimpahkan pemain **diwariskan kepadanya** (#258).
+>
+> **Mekanismenya — dan kenapa ia mengubah tokoh, bukan cuma angka:**
+> Tiap halaman yang pemain limpahkan kepada Elyn dibayar dengan **tahun elf**
+> (`ELYN_YEARS_PER_PAGE`, sudah di kode — kini **sah**, sebelumnya tak berjangkar kanon).
+> Yang dulu hanya **ruang ingatan** kini juga **umur**. Ketakutan lamanya (`FEAR`) tetap benar
+> dan bertambah tajam: ia takut menjadi **api kedua yang lebih pelan** — sekarang apinya
+> **punya laju yang bisa dipercepat pemain.**
+>
+> **Yang TIDAK berubah, dan tidak boleh dijadikan efek samping override ini:**
+> luka kebakaran · doktrin Ordo (#205) · Sora sebagai penebusan · empat cabang `OUTCOME` ·
+> `CATATAN DESAINER` (Echo ≠ Origin; lupa Elyn tetap **lupa yang WAJAR**, bukan kabut).
+>
+> ⚠ **GARIS KETURUNANNYA BELUM DITETAPKAN.** Verifikasi Wren sudah dijalankan dan hasilnya
+> **jangan direalokasi** — lihat `reports/VERIFIKASI_WREN.md`. **Wren adalah manusia,
+> pembaca perpustakaan, dan tiga keturunan di `RELASI PENTING` adalah keturunan WREN.**
+> Nama, ras, dan asal garis Elyn menunggu **sesi penulisan Designer**. Agent tidak menebaknya.
+>
+> ⚠ **Prasyarat teknis:** penuaan **terlihat** hanya mungkin lewat **lompatan** (TIME_LEGACY_SPEC
+> §aturan penuaan), dan ambang elf **menua = 301** (tabel §2). Elyn 134 → **167 tahun jarak**
+> ke ambang itu. Berapa tahun elf per halaman yang membuat penuaannya benar-benar terlihat
+> **adalah angka yang belum ada** — `ELYN_YEARS_PER_PAGE = 1` tidak akan pernah terlihat.
+
+
 > ### ⚖ AFILIASI RESMI (MEJA-ELYN = b, Decision Log #205): **PEMBANGKANG CHRONICLE ORDER**
 > Elyn **pernah menjadi** Chronicle Order — dan **meninggalkannya justru karena lukanya.**
 >
@@ -113,6 +147,29 @@ Dan ada lapis kedua yang lebih dingin, dan lebih jujur tentang dunia ini: **seba
 ## AGING PATH
 Elf, 134, **awal prima** — dan itulah pisau yang tersembunyi di dalam tokoh ini. Ia tidak akan menua di depan pemain. **Ia akan mengubur semua orang.** Merrit akan mati. Arlen akan menua dan mati. Sora akan menjadi tua, lalu mati. Dan Elyn — masih di kursi yang sama, dengan tinta yang sama — akan **menuliskan mereka.**
 
+> ### ⚖ REINTERPRETASI — OVERRIDE #267 (teks di atas DIPERTAHANKAN, tidak dihapus)
+> Paragraf di atas tetap benar **terhadap waktu biasa**: Elyn tidak menua menurut jam dunia.
+> Ia tetap akan mengubur Merrit, Arlen, dan Sora. **Itu tidak dicabut.**
+>
+> Yang berubah: **ada jalan kedua menuju usia, dan pemain yang membukanya.** Tiap halaman
+> yang dilimpahkan kepadanya dibayar dengan **tahun elf** (#258/#267) — bukan waktu yang
+> berlalu, melainkan **waktu yang dibelanjakan.** Elyn tidak menua karena dunia berputar;
+> **ia menua karena seseorang meminta tolong, dan ia tidak bisa menolak.**
+>
+> **Karena itu penuaannya harus TERLIHAT** — dan hanya bisa terlihat lewat **lompatan**
+> (TIME_LEGACY_SPEC: penuaan hanya di lompatan, selalu **beradegan**, tak pernah notifikasi).
+> Pemain yang kembali setelah lompatan menemukan seseorang yang **lebih tua daripada yang
+> ia tinggalkan** — dan tahu persis berapa banyak dari itu ulahnya sendiri.
+>
+> ⚠ **Angka belum ada.** Ambang elf **menua = 301** (tabel laju penuaan §2); Elyn di **134**.
+> Jarak **167 tahun**. `ELYN_YEARS_PER_PAGE = 1` **tak akan pernah menyeberangi ambang itu**
+> dalam satu permainan. Laju yang membuat penuaan benar-benar terbaca = **putusan Designer
+> yang masih terbuka**, bukan sesuatu yang boleh ditebak agent.
+>
+> **Perannya sebagai Mentor tidak berubah** (MEJA-3): yang naik seiring usia tetap pengaruh
+> dan pengetahuannya. Yang baru: **usia itu kini punya harga, dan pemain yang membayarnya
+> lewat tangan orang lain.**
+
 Karena itu, satu usul desain yang saya ajukan sekarang agar tidak hilang: **jadikan Elyn suara yang menyampaikan kehilangan.** Kematian companion adalah **peristiwa yang beradegan, tidak pernah notifikasi** — dan cara paling manusiawi untuk menyampaikan kematian yang terjadi *di dalam lompatan Chronicle*, saat pemain tidak hadir, adalah **seorang perempuan tua-yang-tak-menua yang menutup sebuah buku, mendongak, dan memberitahumu dengan lembut.** Bukan pop-up. Seseorang yang mengingat, memberitahu seseorang yang pergi terlalu lama. *(Usul, bukan keputusan — Direktur yang memutuskan.)*
 
 Dan ia adalah **Mentor** dalam arti paling murni (MEJA-3): ia tidak akan pernah pensiun karena tubuhnya melemah; perannya memang tidak pernah tentang tubuh. Yang naik seiring usia justru pengaruh dan pengetahuannya — ia menjadi **sumber Opportunity** bagi generasi demi generasi yang lewat di ruang bacanya. Empat generasi sudah. Ia baru mulai.
@@ -122,6 +179,28 @@ Dan ia adalah **Mentor** dalam arti paling murni (MEJA-3): ia tidak akan pernah 
 - **Metode Thornewood:** bukan bangunan, bukan gelar — sebuah **cara**: aturan penyalinan yang mengharuskan setiap arsip menyimpan yang biasa **lebih dulu**, karena yang penting selalu punya salinan di tempat lain. Murid-muridnya membawanya ke seluruh benua. Namanya menempel pada metode itu dan pelan-pelan lepas darinya; dua abad kemudian orang menyalin dengan cara Thornewood tanpa tahu Thornewood adalah seseorang.
 - **Sora:** legacy yang berjalan dengan dua kaki dan membawa lentera. **Warisan terbaiknya mungkin bukan yang ia tulis, melainkan yang ia beri kesempatan.**
 - **Tidak ada:** perpustakaan dipindahkan, "yang berharga" diselamatkan, sisanya dilepas. Ia hidup empat ratus tahun lagi tanpa arsip, dan tak seorang pun tahu bahwa ada rak yang pernah ada.
+
+> ### ⚖ WARISAN KELIMA — OVERRIDE #267: **KETURUNAN**
+> Empat butir di atas **tetap utuh**. Yang ditambahkan: **Elyn punya garis keturunan**, dan
+> **beban yang dilimpahkan pemain diwariskan kepadanya** (#258/#267).
+>
+> **Kenapa ini mengubah taruhan, bukan sekadar menambah lore:** melimpahkan halaman ke Elyn
+> berhenti menjadi transaksi antara pemain dan satu orang. Ia menjadi transaksi antara pemain
+> dan **orang yang belum lahir.** Layar keterbukaan (#259) sudah mengatakannya ke pemain sejak
+> LANGKAH 6 — sekarang kalimat itu **berjangkar kanon**, bukan menyalahi sheet.
+>
+> ⚠ **BELUM DITETAPKAN, dan sengaja dikosongkan:** nama · ras · dari siapa · masih hidup atau
+> sudah beberapa generasi. **Verifikasi Wren sudah dijalankan dan hasilnya JANGAN direalokasi**
+> (`reports/VERIFIKASI_WREN.md`): Wren manusia, pembaca, dan tiga keturunan di `RELASI PENTING`
+> adalah **keturunan WREN**, bukan Elyn — lagi pula **kartu pinjam Wren sudah jadi bukti
+> `benda` kanon** di tiga spec, dan memindahkannya mengubah apa yang bukti itu buktikan.
+>
+> ⚠ **Tabrakan yang harus diputus bersamaan:** TIME_LEGACY_SPEC merekomendasikan elf mewariskan
+> **lewat MURID, bukan anak** *("itu justru memperkuat L14 — kesempatan, bukan darah")*.
+> Rekomendasi itu **belum diratifikasi**, tapi #267 bergerak berlawanan arah dengannya.
+> Kalau Elyn mewariskan lewat darah, **Sora sebagai warisan-yang-berjalan** (`LEGACY PATH`
+> butir 3) kehilangan sebagian keistimewaannya. Designer perlu memutuskan apakah keduanya
+> berdampingan, atau garis darah menggantikan murid.
 
 ## COMPANION ARC
 Dari **perempuan yang menyelamatkan hal yang benar dan tak pernah memaafkan dirinya** → menjadi seseorang yang belajar bahwa **penebusan bukan memulihkan yang hilang** (itu mustahil, dan ia tahu), **melainkan memastikan orang berikutnya tidak harus memilih seperti ia dulu.**

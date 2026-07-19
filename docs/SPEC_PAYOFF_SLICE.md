@@ -60,6 +60,44 @@ Salin verbatim. Ini meratifikasi kanon-de-facto yang sudah di kode + keputusan D
 
 Plus ketuk empat yang menggantung: **#226 · #228 · #229 · #231** (draf ada di sesi sebelumnya).
 
+### ⚖ AMANDEMEN KANON — #267 (Direktur, 2026-07-20)
+
+Diratifikasi setelah rekonsiliasi B18 (`reports/REKONSILIASI_B18.md` K2) menemukan #258
+menabrak sheet #002. **Direktur memilih mengubah sheet, bukan mencabut #258.**
+
+```
+#267 — OVERRIDE #002 (Direktur, sadar). Elyn MENUA dan BERKETURUNAN.
+       Ongkos limpahan #258 = tahun elf yang dibelanjakan + beban yang
+       diwariskan ke keturunannya.
+       MEMBATALKAN: companion_02 AGING PATH "tak menua di depan pemain"
+       (teksnya DIPERTAHANKAN, DIREINTERPRETASI — ia tetap melampaui umur
+       biasa, tapi penuaannya kini TERLIHAT dan tahunnya bisa dibelanjakan)
+       dan LEGACY PATH yang nol-keturunan.
+       KODE DIVALIDASI, TIDAK DIUBAH: PlayerData.elyn_age_spent ·
+       Chronicle.ELYN_YEARS_PER_PAGE · teks keterbukaan Kitab §4.G
+       (LANGKAH 6-7). Yang dulu menyalahi sheet kini berjangkar kanon.
+```
+
+**Tiga hal yang #267 TIDAK putuskan — dan tak boleh ditebak siapa pun:**
+
+1. **Identitas garis keturunan.** Verifikasi Wren sudah dijalankan:
+   **garis BARU, jangan realokasi** (`reports/VERIFIKASI_WREN.md`). Wren manusia, pembaca
+   perpustakaan; tiga keturunan di `RELASI PENTING` adalah keturunan **Wren**; dan
+   **kartu pinjam Wren sudah jadi bukti `benda` kanon** di `R1_SPEC_TEKNIS:54`,
+   `CHRONICLE_RESTORATION_SPEC:114`, `CANON_219-230_FINAL:184` — memindahkannya mengubah
+   apa yang bukti itu buktikan. Nama/ras/asal garis = sesi penulisan Designer.
+2. **Laju tahun per halaman.** Ambang elf **menua = 301** (`TIME_LEGACY_SPEC:66`); Elyn **134**.
+   Jarak **167 tahun**. `ELYN_YEARS_PER_PAGE = 1` **tak akan pernah** menyeberanginya dalam
+   satu permainan — jadi "penuaan terlihat" butuh laju baru, atau definisi ulang
+   ("terlihat" = menyeberang ambang, bukan hitungan tahun).
+3. **Darah vs murid.** `TIME_LEGACY_SPEC:199-200` menyarankan elf mewariskan **lewat MURID,
+   bukan anak** *("memperkuat L14 — kesempatan, bukan darah")*. Belum diratifikasi, tapi
+   #267 bergerak berlawanan arah. Menyentuh Sora sebagai warisan-yang-berjalan.
+
+⚠ **Status K1 tidak konsisten** dan menentukan kapan penuaan bisa dijadwalkan:
+`TIME_LEGACY_SPEC:13-15` mencatat K1=c sebagai **#154 yang menutup #123**;
+`IMPLEMENTATION_ROADBOOK:144` masih menulis fase v0.9 *"terkunci di belakang K1 (#123)"*.
+
 ---
 
 ## 3 — PETA MESIN YANG SUDAH ADA (jangan bangun ganda)
