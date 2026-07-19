@@ -20,6 +20,10 @@ build/
 #   Maka dipakai "_tools/*" (ISI direktori), bukan "_tools/".
 _tools/*
 !_tools/gen_*.py
+# perkakas gerbang test (#273) — WAJIB ter-versi: gerbang yang tak ter-commit
+# = gerbang yang hilang di mesin lain, dan itu pelajaran #251 terulang.
+!_tools/run_suite.ps1
+!_tools/test_gate.ps1
 !_tools/lpc_assembler/
 _tools/lpc_assembler/*
 !_tools/lpc_assembler/*.py

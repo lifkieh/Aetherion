@@ -456,11 +456,37 @@ visual (CC0 = domain publik; pesaing boleh memakai aset yang sama). Yang melindu
 **digambar sendiri** atau **dibeli proprietary**. Ini alasan tambahan untuk memperbaiki
 seni 16px milik sendiri ketimbang menumpuk aset gratisan.
 
-## HUKUM GERBANG TEST (#249) — **"GERBANG PADA 0 GAGAL, BUKAN PADA JUMLAH LULUS"**
+## HUKUM GERBANG TEST (#249, diperketat #273) — **"0 GAGAL, DAN SUITE HARUS SELESAI"**
 
-> **Gerbang penerimaan = `0 failed`. TITIK.**
+> **Gerbang penerimaan = baris `===== RESULT: N passed, M failed =====` HADIR *dan* `M = 0`.**
+> **Nol baris RESULT = GAGAL**, apa pun sebabnya.
 > **Jumlah total test DILARANG dipakai sebagai gerbang** — angkanya tidak deterministik.
 > Kenaikan cakupan dibuktikan lewat **NAMA test baru**, bukan lewat angka total.
+
+**Jalankan lewat gerbangnya, jangan membaca log dengan mata:**
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File _tools/run_suite.ps1
+```
+
+| exit | arti | tindakan |
+|---|---|---|
+| **0** | LULUS — RESULT ada, 0 gagal | lanjut |
+| **1** | GAGAL nyata — RESULT ada, M > 0 | **selidiki commit** |
+| **2** | GAGAL — **RESULT tak ada**, suite mati di tengah | **UTANG-249**, bukan regresi. Ulang run. |
+
+### ⚠ #273 — kenapa "nol `[FAIL]`" TIDAK CUKUP
+
+Rumusan #249 punya lubang yang baru ketahuan lewat **UTANG-249**: suite bisa **mati di
+tengah** (segfault ±20–25%) dan **tak pernah mencetak satu pun `[FAIL]`** — sehingga
+pembacaan *"nol `[FAIL]` berarti lulus"* **MELOLOSKANNYA**. Log yang crash berhenti di
+164 baris; run sehat 1186 baris. Keduanya nol `[FAIL]`.
+
+**Baris `RESULT` adalah satu-satunya bukti suite benar-benar selesai.**
+
+Gerbangnya sendiri diuji — `_tools/test_gate.ps1`, empat kasus, termasuk log terpenggal
+yang **wajib** dibaca GAGAL. *Gerbang yang salah baca lebih berbahaya daripada tak ada
+gerbang: ia memberi keyakinan palsu.*
 
 **Sebabnya bukan teori — angkanya memang bergoyang sendiri.** `GameClock` diikat ke
 **tanggal WIB nyata**, bukan waktu palsu (itu keputusan sadar: dunia berjalan walau game
@@ -517,7 +543,7 @@ Lima hal ini adalah **kelebihan proyek**, bukan kebetulan. Mengubahnya butuh bar
 
 ## Catatan teknis singkat
 - Godot 4.3 (`_tools/godot/`), proyek di `game/`, GDScript, data-driven (`game/data/*.json`).
-- Test: `_tools/godot/Godot_v4.3-stable_win64.exe --headless --path game res://tests/TestRunner.tscn` — **harus 0 failed** sebelum commit.
+- Test: `powershell -File _tools/run_suite.ps1` — **exit 0** sebelum commit (#249+#273: baris RESULT hadir **dan** 0 failed; exit 2 = suite mati di tengah, lihat UTANG-249).
 - Setelah menambah file `class_name` baru: jalankan `--headless --path game --import` sekali.
 - Semua teks UI Bahasa Indonesia; teks baru idealnya lewat `Loc.t("key")` (retrofit penuh v0.4.4).
 - Setiap export exe → perbarui baris `**Exe terakhir:**` di `STATUS.md` (aturan permanen).
