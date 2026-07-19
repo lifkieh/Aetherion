@@ -175,3 +175,37 @@ LPC Tile Atlas · LPC Revised 4-Seasons (**OGA-BY**, tak menular) · [LPC] Monst
 ⚠ **Perangkap SA:** [LPC] Terrains & LPC Tile Atlas **CC-BY-SA** → begitu dipakai, tileset
 Aetherion **dan seni asli yang di-composite bersamanya** ikut SA. Mage City (CC0) dan
 LPC Revised (OGA-BY) **tidak** menular. Dahulukan CC0/OGA-BY bila ingin pilihan tetap terbuka.
+
+### LPC Revised 4-Seasons — **OGA-BY 3.0** (putusan Direktur opsi (1), 2026-07-19)
+
+| Kolom | Isi |
+|---|---|
+| Pack | **[LPC Revised] Fully Configured 4-Seasons Tilesets for Tiled Map Editor** |
+| Berkas dipakai | `lpc-tileset-buildings.png` (2048×2048 = 64×64 petak @32px) |
+| Penyusun | **JaidynReiman** |
+| Kontributor asli | **Eliza Wyatt (DeathsDarling)** · Lanea Zimmerman (Sharm) · Stephen Challener (Redshrike) · Johannes Sjölund (Wulax) · **BlueCarrot16** · BenCreating · Durrani · YuriNikolai · **Craftpix.net** |
+| **Lisensi** | **OGA-BY 3.0** (halaman OGA juga menawarkan CC-BY 3.0) |
+| Share-alike | **TIDAK** — atribusi saja, **tak menular** |
+| URL pack | https://opengameart.org/content/lpc-revised-fully-configured-4-seasons-tilesets-for-tiled-map-editor |
+| URL unduhan | https://opengameart.org/sites/default/files/lpc-revised-exterior-tilesets.zip |
+| Kredit resmi | https://github.com/ElizaWy/LPC/blob/main/Credits.txt |
+| Tanggal | 2026-07-19 |
+| Lokasi gudang | `assets_raw/lpc_revised/` (gitignored) |
+
+**⚠ Verifikasi lisensi yang WAJIB dicatat (pelajaran 80-CC0-RPG-SFX):**
+Zip **TIDAK memuat berkas lisensi** — hanya 5 PNG + 5 TSX. Klaim OGA-BY ada di halaman OGA.
+Karena daftar kontributornya memuat **BlueCarrot16** (yang pack pribadinya CC-BY-SA) dan
+**Craftpix.net** (proprietary), penularan diperiksa ke sumber hulu:
+`github.com/ElizaWy/LPC/Credits.txt` menyatakan **verbatim: "This pack is licensed OGA-BY 3.0."**
+— lisensi **tunggal & eksklusif**. LPC Revised memang sengaja dibatasi OGA-BY; Eliza Wyatt
+hanya menerima materi berlisensi OGA-BY ke koleksinya. **Aman, tak menular.**
+
+**Atribusi WAJIB saat rilis** (salin apa adanya):
+> JaidynReiman for compiling assets from LPC Revised and configuring Tiled Map Editor tilesets.
+> Original LPC Revised contributors: Eliza Wyatt (DeathsDarling), Lanea Zimmerman (Sharm),
+> Stephen Challener (Redshrike), Johannes Sjölund (Wulax), BlueCarrot16, BenCreating,
+> Durrani, YuriNikolai and Craftpix.net.
+
+**DITOLAK dengan sengaja** (menular, tak bisa ditarik pasca-rilis):
+`[LPC] Roofs` · `[LPC] Walls` · `[LPC] Windows & Doors` — bluecarrot16, **CC-BY-SA 3.0 + GPL**.
+Karena itu **PINTU digambar sendiri** (`_tools/gen_fasad.py`), milik penuh Aetherion.
