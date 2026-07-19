@@ -1,0 +1,18 @@
+{
+  "id": "player_default",
+  "named": false,
+  "race": "human",
+  "body": "male",
+  "head": "male",
+  "skin": "light",
+  "hair": "parted2",
+  "headwear": null,
+  "facial": { "beard": null },
+  "torso": "sleeveless2",
+  "legs": "pants_thin",
+  "feet": "shoes_thin",
+  "race_overlay": [],
+  "story_prop": [],
+  "palette_shift": null,
+  "_hook": "PEMAIN default — bukan tokoh bernama, jadi named=false (guard_231 tak berlaku; pemain boleh berbagi hook dengan siapa pun). Dipakai CharGen jalur LPC untuk jalur Play nyata (#254)."
+}

@@ -1,0 +1,3 @@
+Aset sprite karakter di folder ini diturunkan dari Liberated Pixel Cup (LPC).
+Lisensi: CC-BY-SA 3.0 / GPL 3.0 (atribusi + share-alike WAJIB).
+Kredit per-sprite ada di <id>.credits.txt. Jangan hapus file ini (kewajiban SA).

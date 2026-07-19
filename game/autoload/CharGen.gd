@@ -259,8 +259,72 @@ func _make_sheet(config: Dictionary) -> Image:
 			sheet.blend_rect(spr, Rect2i(0, 0, spr.get_width(), spr.get_height()), Vector2i(fr * CW + ox, r * CH + oy))
 	return sheet
 
+# ══════════════════════════════════════════════════════════════════════════════
+# JALUR LPC (#254) — TITIK CEKIK TUNGGAL
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Seluruh karakter dunia lahir dari `sprite_frames()` / `sheet_texture()`:
+#   Player.gd:42 · Villager.gd:51 · Interactable.gd:153 · CharacterCreator.gd:188
+# Maka satu cabang di sini memindahkan SELURUH jalur pemain ke LPC sekaligus —
+# tanpa menyentuh satu pun scene.
+#
+# Aktif bila config punya kunci "lpc" berisi id tokoh yang sudah dirakit
+# `_tools/lpc_assembler/assemble.py` (#240: script ter-commit).
+# Bila lembarnya tak ada → JATUH KEMBALI ke _charsys. `_charsys` TIDAK dihapus
+# sampai LPC terbukti di jalur nyata (perintah Direktur).
+#
+# Perbedaan bentuk yang ditangani cabang ini:
+#   sel     : _charsys 32px  →  LPC 64px
+#   frame   : _charsys 3/baris → LPC walk 8/baris (idle = lembar terpisah, 1 frame)
+#   urutan  : _charsys [down,left,right,up] → LPC [up,left,down,right] (frame_map.json)
+const LPC_CELL := 64
+const LPC_DIR_ROW := {"up": 0, "left": 1, "down": 2, "right": 3}
+const LPC_DIR := "res://assets/game/sprites/characters/"
+
+func _lpc_id(config: Dictionary) -> String:
+	var id: String = str(config.get("lpc", ""))
+	if id == "":
+		return ""
+	return id if ResourceLoader.exists(LPC_DIR + id + "_walk.png") else ""
+
+
+func _lpc_atlas(tex: Texture2D, col: int, dir: String) -> AtlasTexture:
+	var at := AtlasTexture.new()
+	at.atlas = tex
+	at.region = Rect2(col * LPC_CELL, int(LPC_DIR_ROW[dir]) * LPC_CELL, LPC_CELL, LPC_CELL)
+	return at
+
+
+func _lpc_frames(id: String, fps: float) -> SpriteFrames:
+	var walk: Texture2D = load(LPC_DIR + id + "_walk.png")
+	var idle_path := LPC_DIR + id + "_idle.png"
+	var idle: Texture2D = load(idle_path) if ResourceLoader.exists(idle_path) else walk
+	var sf := SpriteFrames.new()
+	sf.remove_animation("default")
+	for dir in ["down", "left", "right", "up"]:
+		sf.add_animation("walk_" + dir)
+		sf.set_animation_speed("walk_" + dir, fps)
+		sf.set_animation_loop("walk_" + dir, true)
+		for fr in range(8):                      # LPC walk = 8 frame per arah
+			sf.add_frame("walk_" + dir, _lpc_atlas(walk, fr, dir))
+		# idle: lembar 64x256 (1 kolom x 4 arah)
+		sf.add_animation("idle_" + dir)
+		sf.set_animation_speed("idle_" + dir, 2.0)
+		sf.add_frame("idle_" + dir, _lpc_atlas(idle, 0, dir))
+		# serang: pinjam dua frame walk (slash LPC = ronde berikutnya)
+		sf.add_animation("attack_" + dir)
+		sf.set_animation_speed("attack_" + dir, 14.0)
+		sf.set_animation_loop("attack_" + dir, false)
+		sf.add_frame("attack_" + dir, _lpc_atlas(walk, 2, dir))
+		sf.add_frame("attack_" + dir, _lpc_atlas(walk, 6, dir))
+	return sf
+
+
 ## Build a SpriteFrames from a config: walk_<dir> (0-1-2-1) + idle_<dir> (frame 1).
 func sprite_frames(config: Dictionary, fps: float = 8.0) -> SpriteFrames:
+	var lpc := _lpc_id(config)
+	if lpc != "":
+		return _lpc_frames(lpc, fps)
 	var tex := sheet_texture(config)
 	var sf := SpriteFrames.new()
 	sf.remove_animation("default")
@@ -285,6 +349,10 @@ func _atlas(tex: Texture2D, col: int, row: int) -> AtlasTexture:
 	return at
 
 ## The default starter look (human).
+## Kunci `lpc` mengaktifkan jalur LPC (#254). Kunci _charsys DIPERTAHANKAN sebagai
+## cadangan: bila lembar LPC hilang, `_lpc_id()` mengembalikan "" dan sistem lama
+## dipakai tanpa error. `_charsys` tidak dihapus sampai LPC terbukti di jalur nyata.
 func default_config() -> Dictionary:
 	return {"head_race": "human", "torso_race": "human", "legs_race": "human",
-		"hair": "short", "hair_color": "#6b4226", "shirt": "#2e6b3f", "pants": "#453d5c"}
+		"hair": "short", "hair_color": "#6b4226", "shirt": "#2e6b3f", "pants": "#453d5c",
+		"lpc": "player_default"}

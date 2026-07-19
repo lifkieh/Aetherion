@@ -1,0 +1,11 @@
+# Kredit sprite: player_default
+# Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
+
+- body:male: eulpc_body_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:pants_thin: eulpc_legs_pants_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:sleeveless2: eulpc_torso_sleeveless2_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:male: eulpc_head_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:parted2: eulpc_hair_parted2.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+
+# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

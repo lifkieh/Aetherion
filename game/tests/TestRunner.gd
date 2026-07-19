@@ -119,6 +119,33 @@ func _ready() -> void:
 	_test_equipment()
 	_test_skycalendar()
 	await _test_bugfixes()
+	# R1 — Chronicle Restoration (#221/#226/#228/#229/#230/D-3/D-4). Fungsi ini SUDAH
+	# ditulis sesi lalu tapi TAK PERNAH didaftar → guard kanon D-3/D-4/#226 mati. Diaktifkan.
+	_test_strike_preserves_data()
+	_test_strike_is_silent()
+	_test_no_chronicle_score()
+	_test_restore_needs_two_kinds()
+	_test_restore_alone_is_possible()
+	_test_restore_always_loses_something()
+	_test_chronicle_two_kinds_one_book()
+	_test_uncared_leaves_nothing()
+	_test_chronicle_save_r1()
+	# R2 — Hukum Bukti (#226/#228/D-3/D-4). Didaftar (pelajaran #241: test tak terdaftar = komentar).
+	_test_evidence_find_is_silent()
+	_test_no_evidence_score()
+	_test_evidence_counts_kinds_not_items()
+	_test_evidence_228_solo_never_locked()
+	_test_evidence_kinds_are_canon()
+	_test_evidence_to_restore_flow()
+	# R3 — Pembusukan bukti (#226/#229/D-3/D-4). Didaftar (pelajaran #241).
+	_test_decay_is_silent()
+	_test_no_decay_timer()
+	_test_benda_never_decays()
+	_test_decay_day0_solo_ok()
+	await _test_examine_door_gudang()
+	await _test_core_loop_ashbrook_besar()
+	await _test_solo_loop_ashbrook_besar()
+	await _test_examine_papan_otha()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -514,11 +541,17 @@ func _test_homestead_growth() -> void:
 	check("half-grown < ready", half < stages)
 	check("fully grown at elapsed>=grow", done >= stages)
 	check("ready detection", HomesteadSystem.is_ready(grow + 1, grow, stages))
-	# offline growth via plot_status (time-delta based)
-	var ready_plot := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - (grow + 5)}
+	# offline growth via plot_status (time-delta based).
+	# #151b — UKUR DUNIA NYATA: plot_status menerapkan pengali musim kanon (#83,
+	# daftar-dilindungi #159): gugur=1.15, dingin=1.5, DI LUAR musim=2.5x. Test lama
+	# memakai `grow` MENTAH (600s) → date-fragile: lulus di panas (1.0), gagal di
+	# gugur/dingin. Grow EFEKTIF harus dihitung dengan logika yang sama seperti runtime.
+	var eff: int = int(ceil(float(grow) * Seasons.growth_mult(crop.get("id", ""))))
+	var ready_plot := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - (eff + 5)}
 	var st := HomesteadSystem.plot_status(ready_plot)
-	check("backdated plot is ready", st.ready and st.stage == st.stages)
-	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(grow / 4)}
+	check("backdated plot is ready", st.ready and st.stage == st.stages,
+		"eff=%ds season=%s mult=%.2f stage=%d/%d" % [eff, Seasons.id(), Seasons.growth_mult(crop.get("id","")), st.stage, st.stages])
+	var young := {"crop_id": "mintleaf", "planted_at_unix": GameClock.unix_now() - int(eff / 4)}
 	check("young plot not ready", not HomesteadSystem.plot_status(young).ready)
 
 func _test_safezone() -> void:
@@ -1408,13 +1441,30 @@ func _test_chargen() -> void:
 	# per-part skin override
 	var cs := CharGen.default_config(); cs["head_skin"] = "#ff3355"
 	check("per-part skin override composes", CharGen.sheet_image(cs).get_width() == 96)
-	# sprite frames
-	var sf := CharGen.sprite_frames(CharGen.default_config())
+	# sprite frames — JALUR _charsys. #254 menaruh kunci "lpc" di default_config(),
+	# jadi test ini kini menguji jalur _charsys SECARA EKSPLISIT (tanpa kunci itu).
+	# Maksud aslinya utuh: _charsys tetap harus bekerja sebagai cadangan.
+	var cs_cfg := CharGen.default_config()
+	cs_cfg.erase("lpc")
+	var sf := CharGen.sprite_frames(cs_cfg)
 	check("walk_down has 4 frames (0-1-2-1)", sf.get_frame_count("walk_down") == 4)
 	check("idle_down animation present", sf.has_animation("idle_down"))
 	check("all 4 directions have walk anims", sf.has_animation("walk_up") and sf.has_animation("walk_left") and sf.has_animation("walk_right"))
 	check("attack_down is a 2-frame non-loop swing", sf.has_animation("attack_down") and sf.get_frame_count("attack_down") == 2 and not sf.get_animation_loop("attack_down"))
 	check("6 hair styles (added mohawk/bun)", CharGen.hair_styles().size() == 6)
+	# --- #254 JALUR LPC: titik cekik memindahkan seluruh jalur pemain ---
+	var lpc_cfg := CharGen.default_config()
+	check("default_config membawa kunci lpc (#254)", lpc_cfg.has("lpc") and str(lpc_cfg["lpc"]) != "")
+	var lsf := CharGen.sprite_frames(lpc_cfg)
+	check("LPC walk_down = 8 frame (lembar ULPC)", lsf.get_frame_count("walk_down") == 8)
+	check("LPC punya 4 arah walk", lsf.has_animation("walk_up") and lsf.has_animation("walk_left") \
+		and lsf.has_animation("walk_right") and lsf.has_animation("walk_down"))
+	check("LPC idle_down ada", lsf.has_animation("idle_down") and lsf.get_frame_count("idle_down") == 1)
+	# cadangan WAJIB hidup: lembar hilang -> jatuh kembali ke _charsys, bukan crash
+	var bogus := CharGen.default_config()
+	bogus["lpc"] = "__tak_ada__"
+	check("lembar LPC hilang -> jatuh ke _charsys (nol crash)",
+		CharGen.sprite_frames(bogus).get_frame_count("walk_down") == 4)
 
 func _test_onboarding() -> void:
 	print("[Onboarding + Guide chain]")
@@ -3883,3 +3933,664 @@ func _test_ashbrook_soul() -> void:
 		check("ia berdiri di JALAN, di luar zona aman desa",
 			pup[0].global_position.x > 700.0 and not SafeZone.contains(pup[0].global_position))
 	scene.queue_free()
+
+
+## ═══════════════════════════════════════════════════════════════════════════
+## R1 — CHRONICLE RESTORATION (#221, #226, #228, #229, #230, D-3, D-4)
+##
+## Tempel ke `game/tests/TestRunner.gd`. Daftarkan 8 fungsi ini di runner.
+## Hukum test #151b: **ukur DUNIA, bukan teksnya.**
+## Pola `check(name, cond, detail)` & `_scan_ui_leak()` mengikuti test yang sudah ada.
+## ═══════════════════════════════════════════════════════════════════════════
+
+## Helper: buat halaman uji bersih tanpa menyentuh save nyata.
+func _r1_fresh(id: String, kind: String = Chronicle.KIND_PERSON) -> void:
+	for i in range(WorldState.chronicle.size() - 1, -1, -1):
+		if WorldState.chronicle[i].get("id", "") == id:
+			WorldState.chronicle.remove_at(i)
+	if kind == Chronicle.KIND_PERSON:
+		Chronicle.record_person(id, "uji: %s" % id)
+	else:
+		Chronicle.record(id, "uji: %s" % id, false)
+
+## §VI.2 — "data asli disimpan tersembunyi — bisa DIPULIHKAN lewat perlawanan".
+## Entri TIDAK PERNAH dihapus dari array. Buku menyimpan luka.
+func _test_strike_preserves_data() -> void:
+	print("[R1 §VI.2: mencoret ≠ menghapus — buku menyimpan luka]")
+	_r1_fresh("person_otha_renn")
+	var before := WorldState.chronicle.size()
+	var title_before := ""
+	var date_before := ""
+	for e in WorldState.chronicle:
+		if e.get("id", "") == "person_otha_renn":
+			title_before = e.get("title", ""); date_before = e.get("date", "")
+	check("strike() berhasil", Chronicle.strike("person_otha_renn"))
+	check("entri TIDAK hilang dari buku", WorldState.chronicle.size() == before)
+	check("state → struck", Chronicle.state_of("person_otha_renn") == Chronicle.ST_STRUCK)
+	var ok_data := false
+	for e in WorldState.chronicle:
+		if e.get("id", "") == "person_otha_renn":
+			ok_data = e.get("title", "") == title_before and e.get("date", "") == date_before
+	check("judul & tanggal WIB asli UTUH (tersembunyi, bukan hilang)", ok_data)
+	check("strike kedua ditolak (sudah tercoret)", not Chronicle.strike("person_otha_renn"))
+
+## ⛔ D-3 — PENGHAPUSAN TIDAK DIUMUMKAN. SAMA SEKALI.
+## Preseden: #210 (nol teks Ashbrook) · #216 (White Stag tanpa toast/marker).
+## Kalau ada toast, permainannya jadi: baca notifikasi → pergi ke penanda → selesai.
+## Itu quest. Quest tidak menakutkan.
+## **Bukan simulasi penghapusan — penghapusan yang sungguhan terjadi, pada pemain.**
+func _test_strike_is_silent() -> void:
+	print("[R1 D-3: kabut DIAM — pemain boleh melewatkannya seumur hidup]")
+	_r1_fresh("person_merrit_fane")
+	var noise := {"n": 0}
+	var f := func(_a = null, _b = null, _c = null): noise.n += 1
+	EventBus.toast.connect(f)
+	Chronicle.strike("person_merrit_fane")
+	EventBus.toast.disconnect(f)
+	check("NOL toast saat strike()", noise.n == 0, "toast=%d" % noise.n)
+
+	# PENJAGA SUMBER: strike() dilarang menyentuh UI/audio/cutscene sama sekali.
+	var src := FileAccess.get_file_as_string("res://autoload/Chronicle.gd")
+	var body := src.substr(src.find("func strike("))
+	body = body.substr(0, body.find("\nfunc "))
+	var leaks: Array = []
+	for needle in ["Stage.banner", "Stage.say", "EventBus.toast", "Audio.play_stinger",
+			"Cutscene.play", "MusicDirector"]:
+		if body.contains(needle):
+			leaks.append(needle)
+	check("strike() TIDAK menyentuh UI/audio/cutscene mana pun", leaks.is_empty(), str(leaks))
+
+## ⛔ D-4 — CHRONICLE TIDAK PERNAH PUNYA ANGKA.
+## §XIII: "Kekeliruannya pada SKALANYA." Nirnama kalah karena MENGHITUNG.
+## Progress bar mengajari pemain berpikir seperti Nirnama.
+## Dan angkanya bohong: Otha tak pernah punya halaman — berapa penyebutnya?
+func _test_no_chronicle_score() -> void:
+	print("[R1 D-4: tak ada angka — menghitung ADALAH kesalahan Nirnama]")
+	var src := FileAccess.get_file_as_string("res://autoload/Chronicle.gd")
+	var banned: Array = []
+	for needle in ["func restored_count", "func struck_count", "func total_count",
+			"func progress", "func completion", "func percent", "func ratio"]:
+		if src.contains(needle):
+			banned.append(needle)
+	check("TIDAK ada fungsi skor/persen/hitungan di Chronicle", banned.is_empty(), str(banned))
+	# PENJAGA UI: tak satu pun layar boleh menghitung halaman
+	var offenders: Array = []
+	_scan_chronicle_score_leak("res://scenes/ui", offenders)
+	_scan_chronicle_score_leak("res://scenes/hud", offenders)
+	check("TIDAK ada UI yang menghitung/menyortir halaman Chronicle",
+		offenders.is_empty(), str(offenders))
+
+func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
+	var d := DirAccess.open(dir_path)
+	if d == null:
+		return
+	d.list_dir_begin()
+	var f := d.get_next()
+	while f != "":
+		var full := dir_path.path_join(f)
+		if d.current_is_dir():
+			if not f.begins_with("."):
+				_scan_chronicle_score_leak(full, offenders)
+		elif f.ends_with(".gd"):
+			var txt := FileAccess.get_file_as_string(full)
+			# UI boleh MENAMPILKAN halaman; UI dilarang MENGHITUNGNYA.
+			if txt.contains("Chronicle.") or txt.contains("WorldState.chronicle"):
+				for needle in ["chronicle.size()", "struck_entries().size()",
+						"restored_count", "completion", "% pulih", "progress_bar"]:
+					if txt.contains(needle):
+						offenders.append("%s → %s" % [f, needle])
+		f = d.get_next()
+	d.list_dir_end()
+
+## #226 #1 — "Satu bukti tak pernah cukup. Ingatan itu jaringan, bukan item."
+## Yang dihitung: JUMLAH JENIS, bukan jumlah bukti. Sepuluh surat tetap satu jenis.
+func _test_restore_needs_two_kinds() -> void:
+	print("[R1 #226: ingatan tak bisa dipulihkan dari ingatan — hanya dari BEKAS]")
+	_r1_fresh("person_otha_renn")
+	Chronicle.strike("person_otha_renn")
+
+	# 3 bukti, SATU jenis → tetap gagal
+	var same := [
+		{"kind": "benda", "id": "kain_1"},
+		{"kind": "benda", "id": "kain_2"},
+		{"kind": "benda", "id": "kain_3"},
+	]
+	var r1: Dictionary = Chronicle.restore("person_otha_renn", same, Chronicle.SCRIBE_ELYN)
+	check("3 bukti SEJENIS → GAGAL (jenis, bukan jumlah)", not r1.ok, str(r1.reason))
+
+	# 2 jenis berbeda → Elyn bisa
+	var mixed := [
+		{"kind": "benda", "id": "papan_bekas_cat"},
+		{"kind": "orang", "id": "nyai_tuminah"},
+	]
+	var r2: Dictionary = Chronicle.restore("person_otha_renn", mixed, Chronicle.SCRIBE_ELYN)
+	check("2 jenis BERBEDA → Elyn berhasil", r2.ok, str(r2.reason))
+	check("state → restored", Chronicle.state_of("person_otha_renn") == Chronicle.ST_RESTORED)
+
+	# halaman yang belum tercoret tak bisa "dipulihkan"
+	var r3: Dictionary = Chronicle.restore("person_otha_renn", mixed, Chronicle.SCRIBE_ELYN)
+	check("restore ulang ditolak (sudah pulih)", not r3.ok, str(r3.reason))
+
+## #228 HUKUM TAGLINE — "Be yourself in another world."
+## **Elyn bukan satu-satunya jalan.** Jalan sendirian boleh lebih mahal, lebih
+## lama, lebih jelek hasilnya. Ia TIDAK BOLEH MUSTAHIL.
+## Uji: bila pemain yang tak merekrut siapa pun terkunci — hukum ini mati,
+## dan tagline-nya bohong.
+func _test_restore_alone_is_possible() -> void:
+	print("[R1 #228: TAGLINE — pemain sendirian TIDAK PERNAH terkunci]")
+	_r1_fresh("person_merrit_fane")
+	Chronicle.strike("person_merrit_fane")
+
+	var two := [{"kind": "benda", "id": "surat"}, {"kind": "orang", "id": "arlen"}]
+	var r1: Dictionary = Chronicle.restore("person_merrit_fane", two, Chronicle.SCRIBE_SELF)
+	check("sendiri + 2 jenis → GAGAL (ia tak tahu caranya)", not r1.ok, str(r1.reason))
+
+	var three := [
+		{"kind": "benda", "id": "surat"},
+		{"kind": "kebiasaan", "id": "lampu_tiap_malam"},
+		{"kind": "orang", "id": "arlen"},
+	]
+	var r2: Dictionary = Chronicle.restore("person_merrit_fane", three, Chronicle.SCRIBE_SELF)
+	check("sendiri + 3 jenis → BERHASIL (tanpa merekrut siapa pun)", r2.ok, str(r2.reason))
+
+	var e := Chronicle._find("person_merrit_fane")
+	check("juru tulis tercatat = pemain sendiri", e.get("scribe", "") == Chronicle.SCRIBE_SELF)
+	check("Elyn butuh lebih sedikit bukti daripada pemain (ia arsiparis)",
+		Chronicle.SCRIBE_KINDS_NEEDED[Chronicle.SCRIBE_ELYN]
+		< Chronicle.SCRIBE_KINDS_NEEDED[Chronicle.SCRIBE_SELF])
+
+## #226 #3 — "Halaman yang ditulis ulang TIDAK PERNAH identik dengan aslinya."
+## LAW OF ERAS: Loss & Continuation. Tak ada pemulihan yang gratis.
+func _test_restore_always_loses_something() -> void:
+	print("[R1 #226 #3: yang dipulihkan TIDAK PERNAH sama — selalu ada harga]")
+	var kinds_sets := [
+		[{"kind": "benda", "id": "a"}, {"kind": "kebiasaan", "id": "b"}],
+		[{"kind": "akibat", "id": "c"}, {"kind": "orang", "id": "d"}],
+		[{"kind": "benda", "id": "a"}, {"kind": "orang", "id": "d"}],
+	]
+	var all_lost := true
+	var losses: Array = []
+	for i in kinds_sets.size():
+		var id := "person_otha_renn"
+		_r1_fresh(id)
+		Chronicle.strike(id)
+		var r: Dictionary = Chronicle.restore(id, kinds_sets[i], Chronicle.SCRIBE_ELYN)
+		if not r.ok or String(r.loss).strip_edges() == "":
+			all_lost = false
+		losses.append(String(r.get("loss", "")))
+	check("SETIAP pemulihan kehilangan sesuatu (loss tak pernah kosong)", all_lost, str(losses))
+	# bukti berbeda → halaman berbeda: "ingatan dunia berbentuk seperti apa yang kau temukan"
+	check("bukti BERBEDA → yang hilang BERBEDA", losses[0] != losses[1], str(losses))
+
+## #230 — SATU BUKU, DUA JENIS HALAMAN. Boss kill di sebelah penjahit.
+## Buku TIDAK menghakimi (§XVI): ia tak tahu mana yang penting.
+## §XIII: "Chronicle menghormati yang biasa — dan Chronicle-lah yang membantah
+## argumennya, bukan pedang." Chronicle yang cuma mencatat boss kill SETUJU
+## dengan Nirnama: cuma yang hebat yang layak dicatat.
+func _test_chronicle_two_kinds_one_book() -> void:
+	print("[R1 #230: boss kill di sebelah penjahit — buku tak menghakimi]")
+	_r1_fresh("deed_uji_boss", Chronicle.KIND_DEED)
+	_r1_fresh("person_otha_renn", Chronicle.KIND_PERSON)
+	var deed := Chronicle._find("deed_uji_boss")
+	var person := Chronicle._find("person_otha_renn")
+	check("pencapaian tercatat sebagai KIND_DEED", deed.get("kind", "") == Chronicle.KIND_DEED)
+	check("orang tercatat sebagai KIND_PERSON", person.get("kind", "") == Chronicle.KIND_PERSON)
+	check("keduanya di BUKU YANG SAMA", Chronicle.has("deed_uji_boss")
+		and Chronicle.has("person_otha_renn"))
+	# ORANG tak pernah dirayakan: ini bukan prestasi.
+	var noise := {"n": 0}
+	var f := func(_a = null, _b = null, _c = null): noise.n += 1
+	EventBus.toast.connect(f)
+	Chronicle.record_person("person_uji_diam", "seseorang")
+	EventBus.toast.disconnect(f)
+	check("record_person() TIDAK merayakan (bukan prestasi)", noise.n == 0, "toast=%d" % noise.n)
+
+## #229.3 — PEMAIN MENGHAPUS DENGAN TIDAK PEDULI. Bukan membunuh.
+## "Nirnama menghapus dengan kabut — perlu kekuatan ribuan tahun.
+##  Pemain menghapus dengan punya urusan lain." Hasilnya sama persis.
+## Sheet #001: "Chronicle tidak mencatat apa-apa tentangnya. Dan ketiadaan
+## catatan itu adalah dakwaannya."
+func _test_uncared_leaves_nothing() -> void:
+	print("[R1 #229.3: yang tak pernah dicatat tak meninggalkan APA-APA]")
+	for i in range(WorldState.chronicle.size() - 1, -1, -1):
+		if WorldState.chronicle[i].get("id", "") == "person_tak_pernah_disentuh":
+			WorldState.chronicle.remove_at(i)
+	check("tak ada entri", not Chronicle.has("person_tak_pernah_disentuh"))
+	check("state = '' (bukan 'kosong', bukan placeholder)",
+		Chronicle.state_of("person_tak_pernah_disentuh") == "")
+	# strike pada yang tak pernah ada = tak ada yang bisa dicoret. Ia sudah hilang.
+	check("strike() pada yang tak tercatat → false (tak ada apa-apa untuk dihapus)",
+		not Chronicle.strike("person_tak_pernah_disentuh"))
+	# tak muncul di pembacaan akhir (§XVII): buku tak bisa membacakan yang tak ditulis
+	var found := false
+	for e in Chronicle.readable_entries():
+		if e.get("id", "") == "person_tak_pernah_disentuh":
+			found = true
+	check("tak ikut dibacakan di adegan terakhir", not found)
+
+## Save roundtrip + migrasi save lama. Save lama tetap jalan.
+func _test_chronicle_save_r1() -> void:
+	print("[R1: save/muat + migrasi — tak ada kanon yang dimundurkan]")
+	_r1_fresh("person_otha_renn")
+	Chronicle.strike("person_otha_renn")
+	Chronicle.restore("person_otha_renn",
+		[{"kind": "akibat", "id": "papan"}, {"kind": "kebiasaan", "id": "bangku"}],
+		Chronicle.SCRIBE_SORA)
+	var payload: Dictionary = WorldState.to_save()
+	var json := JSON.stringify(payload)
+	var back: Dictionary = JSON.parse_string(json)
+	var e: Dictionary = {}
+	for x in back.get("chronicle", []):
+		if x.get("id", "") == "person_otha_renn":
+			e = x
+	check("state bertahan lewat save", e.get("state", "") == Chronicle.ST_RESTORED)
+	check("saksi bertahan lewat save", (e.get("witnesses", []) as Array).size() == 2)
+	check("loss bertahan lewat save", String(e.get("loss", "")).strip_edges() != "")
+	check("juru tulis bertahan lewat save", e.get("scribe", "") == Chronicle.SCRIBE_SORA)
+
+	# migrasi: entri lama (#96) tanpa "state"
+	var old := [{"id": "lama", "title": "Entri Lama", "date": "1 Jan 2026"}]
+	Chronicle.migrate_r1(old)
+	check("save lama → state 'written', tidak crash", old[0].get("state", "") == Chronicle.ST_WRITTEN)
+	check("save lama → kind default 'deed'", old[0].get("kind", "") == Chronicle.KIND_DEED)
+	check("judul lama utuh", old[0].get("title", "") == "Entri Lama")
+
+## ═══════════════════════════════════════════════════════════════════════
+## R2 — HUKUM BUKTI (#226, #228, D-3, D-4). Ditempel dari TestRunner_R2_tests.gd.
+## ═══════════════════════════════════════════════════════════════════════
+
+## ⛔ D-3 — MENEMUKAN BUKTI TIDAK DIUMUMKAN.
+func _test_evidence_find_is_silent() -> void:
+	print("[R2 D-3: menemukan bukti TIDAK dirayakan]")
+	Evidence.found.clear()
+	var noise := {"n": 0}
+	var f := func(_a = null, _b = null, _c = null): noise.n += 1
+	EventBus.toast.connect(f)
+	Evidence.find("ev_otha_papan_bekas_cat")
+	EventBus.toast.disconnect(f)
+	check("NOL toast saat menemukan bukti", noise.n == 0, "toast=%d" % noise.n)
+
+	# PENJAGA SUMBER — find() dilarang menyentuh UI/audio sama sekali
+	var src := FileAccess.get_file_as_string("res://autoload/Evidence.gd")
+	var i := src.find("func find(")
+	var body := src.substr(i, src.find("\nfunc ", i + 5) - i)
+	var leaks: Array = []
+	for needle in ["Stage.banner", "Stage.say", "EventBus.toast",
+			"Audio.play_stinger", "Cutscene.play", "MusicDirector"]:
+		if body.contains(needle):
+			leaks.append(needle)
+	check("find() TIDAK menyentuh UI/audio/cutscene", leaks.is_empty(), str(leaks))
+
+## ⛔ D-4 — TIDAK ADA HITUNGAN BUKTI.
+func _test_no_evidence_score() -> void:
+	print("[R2 D-4: tak ada hitungan bukti — perhatian bukan checklist]")
+	var src := FileAccess.get_file_as_string("res://autoload/Evidence.gd")
+	var banned: Array = []
+	for needle in ["func found_count", "func total_for_page", "func progress",
+			"func percent", "func missing_kinds", "func completion"]:
+		if src.contains(needle):
+			banned.append(needle)
+	check("TIDAK ada fungsi skor/hitungan di Evidence", banned.is_empty(), str(banned))
+
+## #226 #1 — yang dihitung JENIS, bukan JUMLAH.
+func _test_evidence_counts_kinds_not_items() -> void:
+	print("[R2 #226: jenis, bukan jumlah — ingatan itu jaringan]")
+	Evidence.found.clear()
+	# semua bukti Ashbrook berjenis 'akibat' saja
+	Evidence.find("ev_ashbrook_jembatan_terlalu_lebar")
+	Evidence.find("ev_ashbrook_gudang_gandum")
+	Evidence.find("ev_ashbrook_fondasi_rumput")
+	check("3 bukti sejenis = 1 jenis",
+		Evidence.kinds_for("place_ashbrook_besar").size() == 1)
+	check("3 bukti sejenis TIDAK cukup untuk Elyn (butuh 2 jenis)",
+		not Evidence.enough_for("place_ashbrook_besar", Chronicle.SCRIBE_ELYN))
+	# tambah jenis kedua
+	Evidence.find("ev_ashbrook_halloran_200_roti")   # kebiasaan
+	check("+1 jenis berbeda → cukup untuk Elyn",
+		Evidence.enough_for("place_ashbrook_besar", Chronicle.SCRIBE_ELYN))
+	check("2 jenis TIDAK cukup untuk pemain sendiri (butuh 3)",
+		not Evidence.enough_for("place_ashbrook_besar", Chronicle.SCRIBE_SELF))
+
+## ⛔⛔ #228 HUKUM TAGLINE — pemain sendirian TIDAK PERNAH terkunci (penjaga DATA).
+func _test_evidence_228_solo_never_locked() -> void:
+	print("[R2 #228: TAGLINE — pemain sendirian TIDAK PERNAH terkunci]")
+	var need_solo: int = Chronicle.SCRIBE_KINDS_NEEDED[Chronicle.SCRIBE_SELF]
+	var pages := {}          # page -> {kind: true}  (hanya bukti TANPA companion)
+	for eid in Db.evidence.keys():
+		var def: Dictionary = Db.evidence[eid]
+		if String(eid).begins_with("_"):
+			continue
+		# bukti yang butuh COMPANION direkrut tak dihitung untuk jalur sendiri
+		if def.has("requires_npc"):
+			continue
+		var p: String = def.get("page", "")
+		if p == "" or p.begins_with("_"):
+			continue
+		if not pages.has(p):
+			pages[p] = {}
+		pages[p][def.get("kind", "")] = true
+
+	var locked: Array = []
+	for p in pages.keys():
+		if (pages[p] as Dictionary).size() < need_solo:
+			locked.append("%s (%d jenis, butuh %d)" % [p, pages[p].size(), need_solo])
+	check("SETIAP halaman bisa dipulihkan pemain SENDIRIAN", locked.is_empty(), str(locked))
+
+## #226 — empat jenis adalah KANON. Data tak boleh menyelundupkan jenis baru.
+func _test_evidence_kinds_are_canon() -> void:
+	print("[R2 #226: empat jenis = kanon, tak boleh ditambah diam-diam]")
+	var canon := Chronicle.EVIDENCE_KINDS      # benda/kebiasaan/akibat/orang
+	var bad: Array = []
+	for eid in Db.evidence.keys():
+		if String(eid).begins_with("_"):
+			continue
+		var k: String = Db.evidence[eid].get("kind", "")
+		if not (k in canon):
+			bad.append("%s → '%s'" % [eid, k])
+	check("semua bukti berjenis kanon", bad.is_empty(), str(bad))
+	# tiap bukti wajib menunjuk halaman & punya notice (kalimat periksa)
+	var incomplete: Array = []
+	for eid in Db.evidence.keys():
+		if String(eid).begins_with("_"):
+			continue
+		var d: Dictionary = Db.evidence[eid]
+		if String(d.get("page", "")) == "" or (d.get("notice", {}) as Dictionary).is_empty():
+			incomplete.append(eid)
+	check("tiap bukti punya page + notice", incomplete.is_empty(), str(incomplete))
+
+## Alur penuh: temukan bekas → tulis ulang halaman → SELALU kehilangan sesuatu.
+func _test_evidence_to_restore_flow() -> void:
+	print("[R2×R1: bekas → halaman pulih → dan sesuatu tetap hilang]")
+	Evidence.found.clear()
+	for i in range(WorldState.chronicle.size() - 1, -1, -1):
+		if WorldState.chronicle[i].get("id", "") == "person_otha_renn":
+			WorldState.chronicle.remove_at(i)
+	Chronicle.record_person("person_otha_renn", "Otha Renn, penjahit")
+	Chronicle.strike("person_otha_renn")
+
+	# pemain sendirian: papan (akibat) + bangku (kebiasaan) = 2 jenis → belum cukup
+	Evidence.find("ev_otha_papan_bekas_cat")
+	Evidence.find("ev_otha_bangku_cekungan")
+	var r1: Dictionary = Chronicle.restore("person_otha_renn",
+		Evidence.for_page("person_otha_renn"), Chronicle.SCRIBE_SELF)
+	check("2 jenis → pemain sendiri GAGAL (ia tak tahu caranya)", not r1.ok, str(r1.reason))
+
+	# + Nyai Tuminah (orang) = 3 jenis → cukup
+	Evidence.find("ev_otha_nyai_tuminah_kamis")
+	var r2: Dictionary = Chronicle.restore("person_otha_renn",
+		Evidence.for_page("person_otha_renn"), Chronicle.SCRIBE_SELF)
+	check("3 jenis → pemain sendiri BERHASIL", r2.ok, str(r2.reason))
+	check("dan sesuatu TETAP hilang (#226 #3)", String(r2.loss).strip_edges() != "", str(r2.loss))
+	check("halaman pulih", Chronicle.state_of("person_otha_renn") == Chronicle.ST_RESTORED)
+
+	# bukti TIDAK dikonsumsi — bekas tetap ada di dunia
+	check("bekas tetap ada setelah halaman ditulis",
+		Evidence.has("ev_otha_papan_bekas_cat"))
+
+## ═══════════════════════════════════════════════════════════════════════
+## R3 — PEMBUSUKAN BUKTI (#226, #229 kejam-cuaca, D-3, D-4).
+## ═══════════════════════════════════════════════════════════════════════
+
+## ⛔ D-3 — BEKAS MEMBUSUK TANPA SUARA. Pemain kembali ke bangku, tanahnya rata.
+func _test_decay_is_silent() -> void:
+	print("[R3 D-3: bekas membusuk DIAM — tak ada yang memberitahu pemain]")
+	Evidence.found.clear()
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	# jam mulai 25 hari lalu → Nyai (stopped 21) sudah membusuk
+	Evidence._clock_start["person_otha_renn"] = GameClock.unix_now() - (25 * 86400)
+	var noise := {"n": 0}
+	var f := func(_a = null, _b = null, _c = null): noise.n += 1
+	EventBus.toast.connect(f)
+	var gone := Evidence.is_decayed("ev_otha_nyai_tuminah_kamis")
+	var found_notice := Evidence.find("ev_otha_nyai_tuminah_kamis")
+	EventBus.toast.disconnect(f)
+	check("bekas 'orang' membusuk pada hari 25 (umur 21)", gone)
+	check("NOL toast saat bekas membusuk / dicari", noise.n == 0, "toast=%d" % noise.n)
+	check("bekas busuk tak bisa ditemukan lagi (DIAM)", found_notice == "")
+
+	# PENJAGA SUMBER — is_decayed() dilarang menyentuh UI/audio
+	var src := FileAccess.get_file_as_string("res://autoload/Evidence.gd")
+	var i := src.find("func is_decayed(")
+	var body := src.substr(i, src.find("\nfunc ", i + 5) - i)
+	var leaks: Array = []
+	for needle in ["Stage.banner", "Stage.say", "EventBus.toast",
+			"Audio.play_stinger", "Cutscene.play", "MusicDirector"]:
+		if body.contains(needle):
+			leaks.append(needle)
+	check("is_decayed() TIDAK menyentuh UI/audio/cutscene", leaks.is_empty(), str(leaks))
+
+## ⛔ D-4 — TIDAK ADA TIMER/HITUNGAN PEMBUSUKAN di kode maupun UI.
+func _test_no_decay_timer() -> void:
+	print("[R3 D-4: tak ada timer/urgency — perhatian bukan manajemen]")
+	var src := FileAccess.get_file_as_string("res://autoload/Evidence.gd")
+	var banned: Array = []
+	for needle in ["func days_remaining", "func decay_progress", "func time_left",
+			"func urgency", "func decay_percent", "days_left"]:
+		if src.contains(needle):
+			banned.append(needle)
+	check("TIDAK ada fungsi timer/sisa-waktu di Evidence", banned.is_empty(), str(banned))
+	# PENJAGA UI — tak satu pun layar boleh menghitung mundur pembusukan
+	var offenders: Array = []
+	_scan_decay_timer_leak("res://scenes/ui", offenders)
+	_scan_decay_timer_leak("res://scenes/hud", offenders)
+	check("TIDAK ada UI yang menampilkan timer pembusukan", offenders.is_empty(), str(offenders))
+
+func _scan_decay_timer_leak(dir_path: String, offenders: Array) -> void:
+	var d := DirAccess.open(dir_path)
+	if d == null:
+		return
+	d.list_dir_begin()
+	var f := d.get_next()
+	while f != "":
+		var full := dir_path.path_join(f)
+		if d.current_is_dir():
+			if not f.begins_with("."):
+				_scan_decay_timer_leak(full, offenders)
+		elif f.ends_with(".gd"):
+			var txt := FileAccess.get_file_as_string(full)
+			if txt.contains("Evidence.") or txt.contains("is_decayed"):
+				for needle in ["days_remaining", "decay_progress", "time_left",
+						"urgency", "akan hilang", "days_left"]:
+					if txt.contains(needle):
+						offenders.append("%s → %s" % [f, needle])
+		f = d.get_next()
+	d.list_dir_end()
+
+## #226 — BENDA tak punya ingatan untuk dihapus. SEMUA kind=benda WAJIB never.
+func _test_benda_never_decays() -> void:
+	print("[R3 #226: benda abadi — kalau benda membusuk, hukumnya bohong]")
+	var bad: Array = []
+	for eid in Db.evidence.keys():
+		if String(eid).begins_with("_"):
+			continue
+		var def: Dictionary = Db.evidence[eid]
+		if def.get("kind", "") == "benda":
+			if def.get("decay", {}).get("mode", "never") != "never":
+				bad.append(eid)
+	check("SEMUA bukti 'benda' bermode never", bad.is_empty(), str(bad))
+	# dan benda sungguh tak membusuk lewat jalur pemakai, bahkan 999 hari
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	Evidence._clock_start["person_otha_renn"] = GameClock.unix_now() - (999 * 86400)
+	check("jahitan mantel (benda) TIDAK membusuk setelah 999 hari",
+		not Evidence.is_decayed("ev_otha_jahitan_mantel_merrit"))
+
+## ⛔⛔ #228 — HARI-0 tiap halaman bisa dipulihkan SENDIRIAN. Kalau tidak, hukum
+## mati sejak lahir. (Kehilangan karena TERLAMBAT = sah; karena TAK PERNAH mungkin = mati.)
+func _test_decay_day0_solo_ok() -> void:
+	print("[R3 #228: hari-0 setiap halaman bisa dipulihkan SENDIRIAN]")
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	var need_solo: int = Chronicle.SCRIBE_KINDS_NEEDED[Chronicle.SCRIBE_SELF]
+	# mulai jam SEMUA halaman sekarang (hari-0)
+	var pages := {}
+	for eid in Db.evidence.keys():
+		if String(eid).begins_with("_"):
+			continue
+		var p: String = Db.evidence[eid].get("page", "")
+		if p != "":
+			Evidence.start_decay_clock(p)
+			pages[p] = true
+	var locked: Array = []
+	for p in pages.keys():
+		var kinds := {}
+		for eid in Db.evidence.keys():
+			if String(eid).begins_with("_"):
+				continue
+			var def: Dictionary = Db.evidence[eid]
+			if def.get("page", "") != p:
+				continue
+			if def.has("requires_npc"):
+				continue                       # jalur sendiri tak pakai companion
+			if Evidence.is_decayed(eid):
+				continue                       # hari-0: tak boleh ada yang busuk
+			kinds[def.get("kind", "")] = true
+		if kinds.size() < need_solo:
+			locked.append("%s (%d jenis hari-0, butuh %d)" % [p, kinds.size(), need_solo])
+	check("hari-0: SETIAP halaman bisa dipulihkan sendirian", locked.is_empty(), str(locked))
+
+## PINTU R1+R2+R3 — bukti bisa DIPERIKSA di dunia nyata (#151b: scene, bukan teks).
+## examine → notice muncul, bukti tercatat ditemukan. NOL toast (D-3).
+func _test_examine_door_gudang() -> void:
+	print("[PINTU: gudang Ashbrook bisa diperiksa → Hukum Bukti hidup]")
+	Evidence.found.clear()
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	var scene: Node = load("res://scenes/world/Ashbrook.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var node: Node = null
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == "ev_ashbrook_gudang_gandum":
+			node = n
+			break
+	check("titik-periksa gudang ADA di scene Ashbrook (bukan cuma data)", node != null)
+	# D-3: memeriksa TIDAK memancarkan toast/notifikasi
+	var noise := {"n": 0}
+	var f := func(_a = null, _b = null, _c = null): noise.n += 1
+	EventBus.toast.connect(f)
+	var notice := ""
+	if node:
+		notice = node.examine_notice()
+	EventBus.toast.disconnect(f)
+	check("memeriksa gudang memunculkan notice bukti",
+		notice.contains("empat ayam") or notice.contains("four chickens"), notice)
+	check("memeriksa MENANDAI bukti ditemukan (R2 hidup)",
+		Evidence.has("ev_ashbrook_gudang_gandum"))
+	check("NOL toast saat memeriksa (D-3: teks periksa, bukan notifikasi)",
+		noise.n == 0, "toast=%d" % noise.n)
+	if is_instance_valid(scene):
+		scene.queue_free()
+
+## CORE LOOP PERTAMA YANG UTUH — dari tangan pemain, di scene nyata (#151b):
+## strike → periksa 3 objek Ashbrook → Elyn tulis ulang → halaman + loss.
+func _test_core_loop_ashbrook_besar() -> void:
+	print("[CORE LOOP: strike → periksa 3 objek → Elyn tulis ulang → halaman + loss]")
+	Evidence.found.clear()
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	for i in range(WorldState.chronicle.size() - 1, -1, -1):
+		if WorldState.chronicle[i].get("id", "") == "place_ashbrook_besar":
+			WorldState.chronicle.remove_at(i)
+	Chronicle.record_person("place_ashbrook_besar", "Ashbrook — kota yang dulu besar")
+	check("halaman Ashbrook-besar tercoret", Chronicle.strike("place_ashbrook_besar"))
+
+	var scene: Node = load("res://scenes/world/Ashbrook.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	# pemain memeriksa TIGA objek lewat pintu examine di dunia
+	var want := ["ev_ashbrook_gudang_gandum", "ev_ashbrook_jembatan_terlalu_lebar",
+			"ev_ashbrook_halloran_200_roti"]
+	var examined := 0
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("kind")) == "examine" and (str(n.get("evidence_id")) in want):
+			if node_examine(n) != "":
+				examined += 1
+	check("3 objek Ashbrook-besar bisa diperiksa di scene", examined == 3, str(examined))
+	var kinds := Evidence.kinds_for("place_ashbrook_besar")
+	check("periksa hasilkan 2 jenis berbeda (akibat + kebiasaan)", kinds.size() == 2, str(kinds))
+	check("2 jenis CUKUP untuk Elyn", Evidence.enough_for("place_ashbrook_besar", Chronicle.SCRIBE_ELYN))
+	# Elyn menulis ulang DARI bukti yang pemain kumpulkan sendiri
+	var r: Dictionary = Chronicle.restore("place_ashbrook_besar",
+		Evidence.for_page("place_ashbrook_besar"), Chronicle.SCRIBE_ELYN)
+	check("Elyn menulis ulang halaman dari bukti tangan pemain", r.ok, str(r.reason))
+	check("halaman pulih (state RESTORED)", Chronicle.state_of("place_ashbrook_besar") == Chronicle.ST_RESTORED)
+	check("dan sesuatu TETAP hilang (#226 #3)", String(r.loss).strip_edges() != "", str(r.loss))
+	if is_instance_valid(scene):
+		scene.queue_free()
+
+func node_examine(n) -> String:
+	return n.examine_notice() if n.has_method("examine_notice") else ""
+
+## PAPAN OTHA — bekas cat (varian 2) bisa diperiksa di scene → bukti akibat (A1).
+func _test_examine_papan_otha() -> void:
+	print("[PAPAN OTHA: bekas cat bisa diperiksa → ev_otha_papan_bekas_cat]")
+	# 3 varian aset ADA (diturunkan dari signboard non-LPC via gen_otha_sign.py #240)
+	for suf in ["written", "fadedmark", "plain"]:
+		check("aset papan Otha ada: otha_sign_%s.png" % suf,
+			ResourceLoader.exists("res://assets/game/sprites/props/otha_sign_%s.png" % suf))
+	Evidence.found.clear()
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	var scene: Node = load("res://scenes/world/Ashbrook.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var node: Node = null
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == "ev_otha_papan_bekas_cat":
+			node = n
+			break
+	check("titik-periksa papan Otha ADA di scene Ashbrook", node != null)
+	var notice := ""
+	if node:
+		notice = node_examine(node)
+	check("periksa papan → notice bekas cat",
+		notice.contains("persegi panjang") or notice.contains("rectangle"), notice)
+	check("memeriksa menandai bukti ditemukan (R2)", Evidence.has("ev_otha_papan_bekas_cat"))
+	if is_instance_valid(scene):
+		scene.queue_free()
+
+## ⛔⛔ #228 HIDUP DI TANGAN PEMAIN — pemain SENDIRIAN (butuh 3 jenis), tanpa merekrut
+## siapa pun, memulihkan Ashbrook dari objek nyata: akibat + kebiasaan + BENDA (batu fondasi).
+func _test_solo_loop_ashbrook_besar() -> void:
+	print("[#228 SENDIRI: strike → periksa objek → pemain SENDIRI tulis ulang Ashbrook]")
+	Evidence.found.clear()
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	for i in range(WorldState.chronicle.size() - 1, -1, -1):
+		if WorldState.chronicle[i].get("id", "") == "place_ashbrook_besar":
+			WorldState.chronicle.remove_at(i)
+	Chronicle.record_person("place_ashbrook_besar", "Ashbrook — kota yang dulu besar")
+	Chronicle.strike("place_ashbrook_besar")
+
+	var scene: Node = load("res://scenes/world/Ashbrook.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	# pemain memeriksa SEMUA objek Ashbrook-besar yang punya pintu di dunia
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("kind")) == "examine":
+			var eid := str(n.get("evidence_id"))
+			if Db.evidence.get(eid, {}).get("page", "") == "place_ashbrook_besar":
+				node_examine(n)
+	var kinds := Evidence.kinds_for("place_ashbrook_besar")
+	check("periksa objek Ashbrook → ≥3 jenis (akibat+kebiasaan+benda)", kinds.size() >= 3, str(kinds))
+	check("CUKUP untuk pemain SENDIRI (butuh 3 jenis)",
+		Evidence.enough_for("place_ashbrook_besar", Chronicle.SCRIBE_SELF))
+	# #228: tiap bukti dari tangan pemain sendiri — nol yang butuh companion direkrut
+	var used_companion := false
+	for w in Evidence.for_page("place_ashbrook_besar"):
+		if Db.evidence.get(w.get("id", ""), {}).has("requires_npc"):
+			used_companion = true
+	check("nol bukti butuh companion (jalur SENDIRI murni)", not used_companion)
+	var r: Dictionary = Chronicle.restore("place_ashbrook_besar",
+		Evidence.for_page("place_ashbrook_besar"), Chronicle.SCRIBE_SELF)
+	check("pemain SENDIRIAN menulis ulang Ashbrook (#228 hidup di tangan pemain)", r.ok, str(r.reason))
+	check("halaman pulih (state RESTORED)", Chronicle.state_of("place_ashbrook_besar") == Chronicle.ST_RESTORED)
+	check("dan sesuatu TETAP hilang (#226 #3)", String(r.loss).strip_edges() != "", str(r.loss))
+	if is_instance_valid(scene):
+		scene.queue_free()

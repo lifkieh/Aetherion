@@ -1,0 +1,12 @@
+# Kredit sprite: halloran
+# Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
+
+- body:male: eulpc_body_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:pants_thin: eulpc_legs_pants_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:overalls: eulpc_torso_overalls_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- apron:male: Apron_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:male: eulpc_head_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:curly_short: eulpc_hair_curly_short.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+
+# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
