@@ -218,6 +218,8 @@ func from_save(d: Dictionary) -> void:
 	town_talk = d.get("town_talk", {})
 	npc_profiles = d.get("npc_profiles", {})
 	dark_event = d.get("dark_event", {})
+	# save lama ikut mendapat halaman Ashbrook (idempoten — lihat _ensure_world_pages)
+	_ensure_world_pages()
 
 func new_game() -> void:
 	counters = {}
@@ -236,3 +238,28 @@ func new_game() -> void:
 	npc_profiles = {}
 	dark_event = {}
 	_roll_weather(true)
+	_ensure_world_pages()
+
+
+## #261 ASAL-USUL HALAMAN + #226/K-4 STRIKE SENYAP (SPEC_PAYOFF_SLICE §4.A/§4.B).
+##
+## Halaman Ashbrook lahir SEKALI PER SAVE, di lapisan world-state — bukan di
+## `_ready` scene Ashbrook (itu jalan tiap kali pemain masuk). Ia lahir atas nama
+## **Merrit**, bukan sistem: `record_person` bersemantik "tak pernah otomatis;
+## seseorang harus repot" (#230, `Chronicle.gd:73-75`).
+##
+## ⛔ SENYAP (K-4/#226): jalur ini DILARANG memanggil `Stage.banner` /
+## `EventBus.toast` / `Audio.play_stinger` / `Cutscene.play`. Halaman sudah
+## tercoret SEBELUM pemain tiba; pemain MENEMUKAN coretannya di Kitab, tidak
+## diberi tahu. `_write` dipanggil dengan `celebrate=false`, dan sinyal
+## `chronicle_recorded`/`chronicle_struck` nol pendengar yang menampilkan apa pun.
+##
+## Idempoten: `record_person` mengembalikan false bila halaman sudah ada
+## (`Chronicle.gd:80-81`), jadi aman dipanggil dari `new_game()` MAUPUN
+## `from_save()` — save lama ikut mendapat halamannya tanpa tercoret ulang.
+func _ensure_world_pages() -> void:
+	if Chronicle.record_person("place_ashbrook_besar", "Ashbrook — kota yang dulu besar", "merrit_fane"):
+		# dicoret oleh WAKTU, bukan oleh Nirnama (#229.4: pemain tak akan pernah
+		# bisa membedakannya — dan kita tak akan menjawabnya). `struck_cause`
+		# tersimpan, TAK PERNAH ditampilkan.
+		Chronicle.strike("place_ashbrook_besar", "waktu")
