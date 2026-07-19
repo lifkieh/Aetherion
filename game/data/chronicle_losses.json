@@ -2,7 +2,7 @@
   "_comment": "#226 HUKUM BUKTI — 'Halaman yang ditulis ulang TIDAK PERNAH identik dengan aslinya.' YANG HILANG DITENTUKAN OLEH JENIS BUKTI YANG **TIDAK** PEMAIN BAWA. Ditulis TANGAN per halaman — bukan tabel acak (pola sama dengan harga revive Kain #192). Pemain yang membawa bukti berbeda mendapat halaman yang BERBEDA: ingatan dunia berbentuk seperti apa yang berhasil ia temukan.",
   "_kinds": ["benda", "kebiasaan", "akibat", "orang"],
   "_urutan": "loss_by_missing_kind diperiksa urut EVIDENCE_KINDS: benda → kebiasaan → akibat → orang. Yang pertama hilang, itu yang tercatat.",
-  "_death": "#269/#270 — medan opsional per halaman: d2 = ADA lalu dicoret (bukti tersisa, dapat dipulihkan dari kesaksian). d3 = TAK PERNAH tercatat (hanya bisa DILAHIRKAN sekali, bukan dipulihkan). DIPAKAI PENJAGA TEST SAJA — bukan UI, bukan _compute_loss. D-4 utuh, #226 tulisan-tangan utuh. place_ashbrook_besar SENGAJA dikosongkan: halamannya sendiri d2 (lahir dari Merrit lalu dicoret), tapi 1.500 orangnya d3 (tak pernah tercatat satu per satu) — kasus campuran, menunggu putusan Designer.",
+  "_death": "#269/#270/#272 — WAJIB ADA di tiap halaman. d2 = ADA lalu dicoret (bukti tersisa, dapat dipulihkan dari kesaksian). d3 = TAK PERNAH tercatat (hanya bisa DILAHIRKAN sekali, bukan dipulihkan). KOSONG = KEMATIAN-CAMPURAN (#272): halaman D2 pada dirinya tapi D3 pada loss permanennya — jenisnya hidup di BARIS LOSS tulisan-tangan, bukan di medan ini. Kosong itu BERMAKNA, bukan absen. DIPAKAI PENJAGA TEST SAJA — bukan UI, bukan _compute_loss. D-4 utuh, #226 tulisan-tangan utuh.",
 
   "person_otha_renn": {
     "_scene": "A1 — Penghapusan Pertama. Otha Renn, penjahit, 61 tahun, 34 tahun menjahit untuk Ashbrook sejak kota ini masih punya 1.500 jiwa. Ia berhenti buka toko karena tidak ada lagi yang memesan. Ia tidak pernah muncul di layar.",
@@ -68,6 +68,7 @@
 
   "place_ashbrook_besar": {
     "_scene": "#206 — Ashbrook dulu kota ~1.500 jiwa, kini desa ~40. Bekasnya (#210): jembatan terlalu lebar untuk 40 orang, gudang gandum berisi 4 ayam, 200 roti Halloran tiap pagi. TESIS GAME DALAM BENTUK TEMPAT.",
+    "death": "",
     "loss_by_missing_kind": {
       "benda": {
         "id": "Tercatat bahwa ia pernah besar. Tak ada satu pun benda yang membuktikannya, dan dua generasi lagi orang akan menyebutnya lebih-lebihan.",

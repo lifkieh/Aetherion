@@ -110,6 +110,49 @@ kesempatan yang akan pernah ada.**
 
 ---
 
+# 3b — KEMATIAN-CAMPURAN (#272)
+
+**Sebuah halaman tidak selalu bercerita satu jenis kematian.**
+
+> **#272 — HALAMAN KEMATIAN-CAMPURAN.** Sebuah halaman boleh **D2 pada dirinya** tapi
+> **D3 pada loss permanennya** (`place_ashbrook_besar`: kota = D2 pulih dari kesaksian,
+> 1500 orang = D3 tak pernah tercatat). Medan `death` **KOSONG = campuran**, jenis hidup
+> di baris loss tulisan-tangan, bukan di medan. Penjaga #270 hanya menjaga halaman
+> berjenis-tunggal. Menegakkan #260: **cangkang pulih, isi tetap dalam kematian ketiga.**
+
+## Contoh kanon: `place_ashbrook_besar`
+
+| Lapis | Apa | Kematian |
+|---|---|---|
+| **Halaman itu sendiri** | *"Ashbrook — kota yang dulu besar"*. Lahir dari Merrit (#261), lalu dicoret oleh waktu. Bekasnya tersisa: jembatan terlalu lebar, gudang gandum, 200 roti Halloran. | **D2** — dapat dipulihkan dari kesaksian |
+| **Isi yang tak ikut pulih** | *"Ashbrook tercatat sebagai kota. **Bukan sebagai seribu lima ratus orang.**"* | **D3** — mereka tak pernah tercatat satu per satu, dan tak akan pernah |
+
+▸ **Inilah #260 dalam wujud paling telanjang.** *"Restore tak pernah lengkap"* bukan aturan
+keseimbangan — ia **konsekuensi langsung** dari dua kematian yang berbeda hidup di satu
+halaman. Yang pulih adalah **cangkangnya**; isinya tetap tinggal di kematian ketiga.
+Pemain memulihkan Ashbrook dan tetap kehilangan seribu lima ratus orang — **bukan karena
+game menahan sesuatu, melainkan karena tak pernah ada catatan untuk dipulihkan.**
+
+## Aturan medan `death` sejak #272
+
+| Nilai | Arti |
+|---|---|
+| `"d2"` | berjenis tunggal — ada lalu dicoret |
+| `"d3"` | berjenis tunggal — tak pernah tercatat |
+| `""` **(kosong)** | **campuran** — jenisnya hidup di **baris loss tulisan-tangan**, bukan di medan |
+| **absen** | ⛔ **tak sah** — penulis belum memikirkan jenis kematiannya |
+
+**Kosong itu bermakna, bukan belum-diisi.** Bedanya ditegakkan
+`_test_death_kind_matches_loss()`: absen gagal, kosong lulus.
+
+⚠ **Batas penjaga #270, dinyatakan terang:** ia hanya menjaga halaman **berjenis tunggal**.
+Untuk halaman campuran, **tak ada penjaga mesin yang mungkin** — jenisnya ada di prosa, dan
+prosa tak bisa diperiksa mesin tanpa melanggar #226 (baris loss ditulis **tangan**, bukan
+dicabang tabel). Yang bisa dijaga cuma satu: **halaman campuran wajib punya baris `default`**,
+karena di sanalah D3-nya tinggal dan ia harus selalu terbaca — apa pun bukti yang dibawa pemain.
+
+---
+
 # 4 — HUBUNGAN DENGAN "SECOND DEATH"
 
 Arsip yang sama, `…design.txt:576-580`, memakai istilah **Second Death** dalam model **dua**
@@ -143,7 +186,7 @@ Untuk D3, pakai **"kematian ketiga"** / *Historical Death* — **jangan** pakai 
 2. **`ROADBOOK:207` — *"Kematian kedua = final mutlak"*** (hukum revive). Tapi R1 `restore()`
    **memulihkan halaman D2**. Dua sistem, dua arti "final"? Atau satu di antaranya perlu
    dipersempit? **Belum diputus.**
-3. **`_compute_loss()` tak membedakan D2 dan D3.** Lihat §6.
+3. ~~**`_compute_loss()` tak membedakan D2 dan D3.**~~ **Terjawab #270/#272** — dan jawabannya *tidak boleh membedakan*: jenis kematian hidup di prosa, medan `death` hanya penjaga test. Lihat §3b dan §6.
 
 ---
 
@@ -170,8 +213,13 @@ tuntut (*"bukan tabel acak"*). Tapi konsekuensinya harus disadari:
 > **Tak ada penjaga yang mencegah halaman D3 diberi baris loss bergaya D2, atau sebaliknya.**
 > Satu penulis yang tak tahu bedanya bisa merusaknya tanpa satu test pun gagal.
 
-**Usul (BUKAN keputusan, kode tak disentuh):** medan `death` opsional per halaman di
-`chronicle_losses.json` (`"d2"`/`"d3"`), dipakai **hanya** oleh test sebagai penjaga
-konsistensi — bukan oleh UI, bukan oleh `_compute_loss()`. Ia menjawab satu pertanyaan
-ya/tidak (*"halaman ini bercerita kematian yang mana?"*), jadi ia tak melanggar D-4.
-**Menunggu putusan Designer.**
+**✅ DIPUTUS — #270 lalu #272.** Medan `death` ditambahkan ke `chronicle_losses.json`
+(`"d2"` / `"d3"` / `""` campuran), dipakai **hanya** oleh test sebagai penjaga konsistensi —
+bukan oleh UI, bukan oleh `_compute_loss()`. Ia menjawab satu pertanyaan ya/tidak, jadi
+D-4 utuh; dan karena mesin tak pernah membacanya, **#226 tulisan-tangan juga utuh.**
+
+Dijaga `_test_death_kind_matches_loss()`: jangkar kanon (Otha=d3 · Merrit=d2 · Ashbrook=campuran) ·
+nilai hanya d2/d3/kosong · **absen tak sah** · D3 & campuran wajib punya baris `default` ·
+dan yang terpenting — **`Chronicle.gd` maupun UI mana pun tak boleh membacanya.**
+Assert terakhir itu risiko sebenarnya: begitu `death` dibaca mesin, ia berhenti jadi penjaga
+dan mulai mencabang cerita.

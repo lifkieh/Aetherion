@@ -4191,48 +4191,73 @@ func _test_elyn_aging_thresholds() -> void:
 			leaked.append(f)
 	check("ambang keterbacaan tak bocor ke CharGen/Db (#268)", leaked.is_empty(), str(leaked))
 
-## #270 — medan `death` adalah PENJAGA, bukan mesin.
+## #270/#272 — medan `death` adalah PENJAGA, bukan mesin.
 ##
 ## D2 = halaman ADA lalu dicoret; buktinya tersisa, jadi ia dapat dipulihkan dari
 ## kesaksian. D3 = tak pernah tercatat; ia hanya bisa DILAHIRKAN sekali — penulisan
 ## pertama, bukan pemulihan ("Pertama kali. Terakhir kali.").
 ##
+## #272 — KOSONG ("") BUKAN BELUM-DIISI. Ia menyatakan **kematian-campuran**: halaman
+## yang D2 pada dirinya tapi D3 pada loss permanennya. `place_ashbrook_besar` adalah
+## contoh kanonnya — kotanya pulih dari kesaksian, tapi seribu lima ratus orangnya
+## tak pernah tercatat satu per satu. **Jenisnya hidup di BARIS LOSS tulisan-tangan,
+## bukan di medan ini** — dan itu justru #260 ditegakkan: cangkang pulih, isi tetap
+## dalam kematian ketiga.
+##
+## Karena itu medannya **WAJIB ADA di tiap halaman**: absen = penulis lupa memikirkannya;
+## kosong = penulis sudah memikirkannya dan memutuskan halaman ini campuran.
+##
 ## Yang dijaga di sini BUKAN perilakunya — `_compute_loss()` sengaja tidak membacanya
 ## (#226: baris loss ditulis TANGAN per halaman, bukan dicabang mesin). Yang dijaga:
 ## medan itu tetap **inert**, dan jangkar kanon #269 tak bergeser diam-diam.
 func _test_death_kind_matches_loss() -> void:
-	print("[#270: medan `death` — penjaga konsistensi D2/D3, bukan mesin]")
+	print("[#270/#272: medan `death` — penjaga D2/D3/campuran, bukan mesin]")
 	var tbl: Dictionary = Db.chronicle_losses
 
 	# jangkar kanon #269 — dua tokoh, dua jenis kematian
 	var otha: Dictionary = tbl.get("person_otha_renn", {})
 	var merrit: Dictionary = tbl.get("person_merrit_fane", {})
 	check("Otha Renn = D3 (tak pernah tercatat)", otha.get("death", "") == "d3",
-		str(otha.get("death", "<kosong>")))
+		str(otha.get("death", "<absen>")))
 	check("Merrit Fane = D2 (ada lalu dicoret)", merrit.get("death", "") == "d2",
-		str(merrit.get("death", "<kosong>")))
+		str(merrit.get("death", "<absen>")))
 
-	# nilai yang sah cuma dua; salah ketik harus gagal, bukan diam-diam diabaikan
+	# jangkar kanon #272 — kematian-campuran, dinyatakan KOSONG (bukan dihilangkan)
+	var ash: Dictionary = tbl.get("place_ashbrook_besar", {})
+	check("Ashbrook menyatakan medan `death` (tak absen)", ash.has("death"))
+	check("Ashbrook = CAMPURAN, dinyatakan kosong (#272)",
+		String(ash.get("death", "<absen>")) == "", str(ash.get("death", "<absen>")))
+
+	# WAJIB ADA — absen berarti penulis belum memikirkan jenis kematiannya.
+	# Kosong sah; hilang tidak.
+	var absen: Array = []
 	var bad: Array = []
 	for pid in tbl.keys():
 		var row = tbl[pid]
 		if not (row is Dictionary):
 			continue
 		if not row.has("death"):
-			continue      # opsional — halaman boleh tak menyatakannya
-		if not (String(row["death"]) in ["d2", "d3"]):
+			absen.append(pid)
+			continue
+		if not (String(row["death"]) in ["", "d2", "d3"]):
 			bad.append("%s=%s" % [pid, row["death"]])
-	check("nilai `death` hanya d2/d3", bad.is_empty(), str(bad))
+	check("tiap halaman MENYATAKAN `death` (kosong sah, absen tidak)",
+		absen.is_empty(), str(absen))
+	check("nilai `death` hanya d2/d3/kosong", bad.is_empty(), str(bad))
 
-	# D3 hanya lahir sekali → baris loss-nya WAJIB ada, tak boleh bergantung
-	# pada jenis bukti yang kebetulan dibawa. Tak ada kesempatan kedua.
-	var d3_tanpa_default: Array = []
+	# D3 hanya lahir sekali → baris loss-nya WAJIB ada, tak boleh bergantung pada
+	# jenis bukti yang kebetulan dibawa. Tak ada kesempatan kedua.
+	# CAMPURAN juga wajib: di sanalah D3-nya tinggal (#272), jadi ia harus selalu terbaca.
+	var tanpa_default: Array = []
 	for pid2 in tbl.keys():
 		var r2 = tbl[pid2]
-		if r2 is Dictionary and String(r2.get("death", "")) == "d3" and not r2.has("default"):
-			d3_tanpa_default.append(pid2)
-	check("tiap halaman D3 punya baris `default` (tak ada kesempatan kedua)",
-		d3_tanpa_default.is_empty(), str(d3_tanpa_default))
+		if not (r2 is Dictionary) or not r2.has("death"):
+			continue
+		var dk := String(r2["death"])
+		if (dk == "d3" or dk == "") and not r2.has("default"):
+			tanpa_default.append("%s(%s)" % [pid2, "campuran" if dk == "" else dk])
+	check("halaman D3 & campuran punya baris `default` (tak ada kesempatan kedua)",
+		tanpa_default.is_empty(), str(tanpa_default))
 
 	# ⛔ INERT — inilah risiko sebenarnya. Begitu `death` dibaca mesin atau UI,
 	# ia berhenti jadi penjaga dan mulai mencabang cerita (#226) atau bocor (D-4).
