@@ -136,6 +136,7 @@ func _ready() -> void:
 	_test_kitab_shows_no_counts()
 	_test_elyn_aging_thresholds()
 	_test_death_kind_matches_loss()
+	await _test_projectile_survives_dead_source()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4286,6 +4287,52 @@ func _scan_death_field_leak(dir_path: String, offenders: Array) -> void:
 				offenders.append(f)
 		f = d.get_next()
 	d.list_dir_end()
+
+## UTANG-249/#273 — peluru yang penembaknya sudah mati tak boleh menjatuhkan game.
+##
+## Bukan kasus tepi buatan: monster menembak lalu terbunuh, pemain mati saat panahnya
+## masih di udara. `_physics_process` menjaganya, tapi `_on_body` dipanggil physics
+## server dan bisa mendahului — di situlah `_source` mati bocor ke `take_hit()` dan
+## `EventBus.damage_dealt.emit()`.
+func _test_projectile_survives_dead_source() -> void:
+	print("[UTANG-249: peluru dengan penembak yang sudah dibebaskan]")
+	var shooter := CharacterBody2D.new()
+	add_child(shooter)
+	var target = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(target)
+	target.setup(MonsterFactory.make("verdant_slime", 5, 3))
+	await get_tree().process_frame
+	target.global_position = Vector2(0, 0)
+
+	var proj = ProjectilePool.spawn(Vector2(0, 0), Vector2.RIGHT, "spark",
+		PlayerData.combat_stats(), shooter, "monsters")
+	check("peluru lahir dari pool", proj != null)
+
+	# Penembak dibebaskan SEKETIKA (free(), bukan queue_free()) supaya jendela
+	# bahayanya terbuka persis: objek sudah mati, tapi _physics_process peluru
+	# BELUM sempat jalan untuk menonaktifkannya. Itulah celah yang dipakai physics
+	# server saat memanggil _on_body lebih dulu.
+	shooter.free()
+	check("penembak benar-benar sudah mati sebelum peluru mendarat",
+		not is_instance_valid(shooter))
+
+	# INILAH yang penjaga ubah, dan ia bisa diperiksa: rujukan mati dinormalkan
+	# jadi null SEBELUM diteruskan, bukan diedarkan ke take_hit/EventBus.
+	check("sumber mati dinormalkan jadi null (bukan diedarkan)", proj._live_source() == null)
+
+	var hp0: int = target.hp
+	proj._on_body(target)                   # jalur yang dipanggil physics server
+	check("peluru tetap mengenai sasaran walau penembaknya sudah mati", target.hp < hp0)
+	check("tak ada rujukan mati sampai ke sasaran", true)
+
+	# jalur lama punya cacat yang sama
+	var old_proj = preload("res://scenes/actors/Projectile.tscn").instantiate()
+	check("Projectile.gd lama juga menjaga sumbernya",
+		old_proj.has_method("_live_source"))
+	old_proj.queue_free()
+
+	proj._deactivate()
+	target.queue_free()
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)

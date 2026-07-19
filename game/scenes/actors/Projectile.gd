@@ -24,11 +24,17 @@ func _physics_process(delta: float) -> void:
 	if _life <= 0.0:
 		queue_free()
 
+## Sama dengan `Projectile2._live_source()` — penembak yang sudah dibebaskan tak boleh
+## sampai ke `take_hit()`. Jalur ini lebih tua tapi cacatnya identik.
+func _live_source() -> Node:
+	return _source if (_source != null and is_instance_valid(_source)) else null
+
+
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("monsters") and body.has_method("take_hit"):
 		var ctx := CombatResolver.build_ctx(body.is_wet)
 		var res := CombatResolver.resolve(_attacker, body.combat_view(), _skill, ctx)
-		body.take_hit(res, _source)
+		body.take_hit(res, _live_source())
 		if res.get("chain", false):
 			_chain(body, res, ctx)
 		queue_free()
@@ -40,7 +46,7 @@ func _chain(origin: Node2D, _res: Dictionary, ctx: Dictionary) -> void:
 		if m.global_position.distance_to(origin.global_position) < 90.0:
 			var r := CombatResolver.resolve(_attacker, m.combat_view(), _skill, ctx)
 			r["damage"] = int(r["damage"] * 0.6)
-			m.take_hit(r, _source)
+			m.take_hit(r, _live_source())
 			EventBus.toast.emit("⚡ Chain!")
 			break
 

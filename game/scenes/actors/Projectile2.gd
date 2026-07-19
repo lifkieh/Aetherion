@@ -56,6 +56,22 @@ func _physics_process(delta: float) -> void:
 	if _life <= 0.0 or (_source != null and not is_instance_valid(_source)):
 		_deactivate()
 
+## Penembak yang sudah dibebaskan TIDAK BOLEH ikut terbang bersama pelurunya.
+##
+## `_physics_process` sudah menjaga ini (lihat di atas) — tapi `_on_body` dipanggil
+## oleh physics server dan **bisa mendahului** `_physics_process` pada frame yang sama.
+## Kalau penembaknya dibebaskan di frame itu, `_source` sampai ke `take_hit()` lalu ke
+## `EventBus.damage_dealt.emit(from, ...)` sebagai objek mati, dan pendengar mana pun
+## yang menyentuhnya ikut jatuh.
+##
+## Ini bukan kasus tepi buatan test: peluru masih terbang ketika penembaknya mati adalah
+## kejadian biasa — monster yang menembak lalu terbunuh, pemain yang mati saat panahnya
+## di udara. **Peluru tetap mengenai sasaran** (kerusakan sudah dihitung saat ditembakkan);
+## yang hilang cuma atribusi penembaknya, dan itu memang sudah tak ada.
+func _live_source():
+	return _source if (_source != null and is_instance_valid(_source)) else null
+
+
 func _on_body(body: Node) -> void:
 	if not active:
 		return
@@ -65,7 +81,7 @@ func _on_body(body: Node) -> void:
 		var wet: bool = body.is_wet if ("is_wet" in body) else false
 		var ctx := CombatResolver.build_ctx(wet)
 		var res := CombatResolver.resolve(_atk, body.combat_view(), skill, ctx)
-		body.take_hit(res, _source)
+		body.take_hit(res, _live_source())
 		CombatFeel.on_hit(body, global_position, res.get("is_crit", false))
 		if _def.get("on_hit_effect", "") == "chain" and res.get("chain", false) and _source and _source.has_method("get"):
 			pass  # chain handled by PlayerCombat when relevant
