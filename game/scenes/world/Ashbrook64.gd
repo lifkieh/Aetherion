@@ -39,21 +39,55 @@ const P_OLD := "res://assets/game/sprites/props/"
 const Z_LAMP := 2000
 const Z_BEACON := 4000              # < 4096, dan > semua y-sort
 var _lamp: Sprite2D
+var _beacon: Sprite2D
+var _canvas_mod: CanvasModulate
+var _player: Node2D
 
 
 func _ready() -> void:
-	var cm := CanvasModulate.new()
-	cm.color = Color(1, 1, 1)       # siang dipatok — hasil sama tiap dijalankan
-	add_child(cm)
+	WorldState.mark_visited("ashbrook")
+	SafeZone.set_region("ashbrook")
+	_canvas_mod = CanvasModulate.new()
+	# Siang dipatok HANYA untuk harness tangkap-layar (hasil sama tiap dijalankan).
+	# Di permainan sungguhan langit ikut GameClock — kalau tidak, Ashbrook tak pernah
+	# malam, dan lentera Merrit tak pernah jadi satu-satunya yang menyala. Payoff #218
+	# butuh gelap; siang abadi diam-diam membatalkannya.
+	_canvas_mod.color = Color(1, 1, 1)
+	add_child(_canvas_mod)
 	_ground()
 	_village()
 	_props_and_evidence()
 	_folk()
-	var cam := Camera2D.new()
-	cam.zoom = Vector2(ZOOM, ZOOM)
-	cam.position = VC
-	cam.make_current()
-	add_child(cam)
+	_spawn_player()
+	_add_ui()
+
+
+## Sampai LANGKAH 7, scene ini adalah DIORAMA: nol pemain, nol UI, nol pengendali —
+## satu-satunya cara melihatnya adalah harness tangkap-layar. Titik-periksanya ada,
+## tapi tak seorang pun bisa menekan E di depannya.
+##
+## Tiga hal yang membuatnya jadi tempat yang bisa dimainkan:
+##   Player      — `Interactable` mencari grup "player" untuk jarak & label
+##   WorldController — yang mengubah tombol E jadi `interact()`
+##   MenuUI      — tab Kitab, tempat halaman ditulis ulang
+## Tanpa ketiganya rantai §0 putus di sambungan pertama.
+func _spawn_player() -> void:
+	var p := preload("res://scenes/actors/Player.tscn").instantiate()
+	add_child(p)
+	_player = p
+	p.global_position = MERRIT_HOUSE + Vector2(96, 64)   # di depan pintu Merrit
+	# Kamera Player dipatok 2.0 untuk dunia 16px. Di petak 32 itu memperbesar dua
+	# kali lipat: layar cuma memuat ~14x8 petak dan alun-alun tak lagi muat.
+	# ZOOM di berkas ini adalah angka yang sudah dinilai pada 5b — pakai itu.
+	for c in p.get_children():
+		if c is Camera2D:
+			c.zoom = Vector2(ZOOM, ZOOM)
+
+
+func _add_ui() -> void:
+	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
+	add_child(preload("res://scenes/ui/MenuUI.tscn").instantiate())
+	add_child(preload("res://scenes/systems/WorldController.tscn").instantiate())
 
 
 # ---------------------------------------------------------------- tanah
@@ -152,6 +186,7 @@ func _props_and_evidence() -> void:
 	beacon.modulate.a = 0.0                                         # siang: lentera sendiri sudah cukup
 	beacon.add_to_group("lamp_beacon")
 	add_child(beacon)
+	_beacon = beacon
 
 	# PAPAN OTHA — kosong + BEKAS CAT (bukti `akibat`). Diskalakan 4x supaya
 	# persegi bekasnya TETAP TERBACA pada petak 32 (16x14 -> 64x56).
@@ -207,3 +242,28 @@ func _folk() -> void:
 		s.global_position = spec[1]
 		s.z_index = int(s.global_position.y)
 		add_child(s)
+
+
+## Langit & lentera mengikuti jam WIB — aturan yang SAMA dengan `Ashbrook.gd`
+## (#218). Diulang, bukan diwarisi: dua scene ini sengaja tak berbagi induk sampai
+## salah satunya dipensiunkan, dan menyalin 12 baris lebih jujur daripada membuat
+## kelas dasar untuk sesuatu yang akan dihapus.
+##
+## `AETHER_PIN_DAY=1` mematok siang untuk harness tangkap-layar.
+func _process(_delta: float) -> void:
+	if OS.get_environment("AETHER_PIN_DAY") == "1":
+		return
+	if _canvas_mod:
+		_canvas_mod.color = GameClock.ambient_color()
+	var h := GameClock.wib_hour()
+	if _lamp:
+		# Lentera Merrit menyala siang & malam. Malam hari ia satu-satunya yang menyala.
+		_lamp.modulate = Color(1, 1, 1, 1.0 if h >= 17 or h < 6 else 0.75)
+	if _beacon:
+		var ba := 1.0 if h >= 17 or h < 6 else 0.55
+		# Dari dekat beacon MENUTUPI lenteranya (6x6 px, z di atas segalanya, di luar
+		# jangkauan Light2D → kotak gelap menempel di kaca). Pelajaran yang sudah
+		# dibayar di scene 16px; jangan bayar dua kali.
+		if _player and is_instance_valid(_player) 				and _player.global_position.distance_to(_beacon.global_position) < 320.0:
+			ba = 0.0
+		_beacon.modulate.a = ba

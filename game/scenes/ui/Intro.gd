@@ -3,6 +3,20 @@ extends Control
 ## konteks & motivasi ("aku siapa, di mana, mau apa"). Klik / Space / Enter =
 ## lanjut; Esc = lewati. Layar 3 dipersonalisasi dengan class pilihan pemain.
 
+## ⚠ SEMENTARA (LANGKAH 7) — SATU-SATUNYA jalan pemain menuju Ashbrook64.
+##
+## `regions.json` SENGAJA TIDAK disentuh: penggantian permanen 16px→32px menunggu
+## playtest manusia lulus. Sampai saat itu, Ashbrook64 dijangkau lewat sini —
+## ujung alur permainan baru (MainMenu → ClassSelect → CharacterCreator → Intro),
+## jadi pemain masuk lewat jalur nyata, bukan lewat `--script`.
+##
+## CharacterCreator sudah memanggil `WorldState.new_game()` sebelum layar ini,
+## jadi halaman `place_ashbrook_besar` sudah lahir DAN sudah tercoret diam-diam
+## saat pemain tiba. Itu prasyarat rantai §0, dan ia terpenuhi sendirinya di sini.
+##
+## MENCABUTNYA: kembalikan `_finish()` ke `res://scenes/Main.tscn`. Satu baris.
+const NEXT_SCENE := "res://scenes/world/Ashbrook64.tscn"
+
 var _font: Font
 var _page := 0
 var _label: Label
@@ -100,7 +114,7 @@ func _advance() -> void:
 	_show_page(_page + 1)
 
 func _finish() -> void:
-	Stage.go_to_scene("res://scenes/Main.tscn")
+	Stage.go_to_scene(NEXT_SCENE)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
