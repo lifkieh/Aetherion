@@ -1,0 +1,98 @@
+{
+  "_comment": "#226 HUKUM BUKTI — 'Halaman yang ditulis ulang TIDAK PERNAH identik dengan aslinya.' YANG HILANG DITENTUKAN OLEH JENIS BUKTI YANG **TIDAK** PEMAIN BAWA. Ditulis TANGAN per halaman — bukan tabel acak (pola sama dengan harga revive Kain #192). Pemain yang membawa bukti berbeda mendapat halaman yang BERBEDA: ingatan dunia berbentuk seperti apa yang berhasil ia temukan.",
+  "_kinds": ["benda", "kebiasaan", "akibat", "orang"],
+  "_urutan": "loss_by_missing_kind diperiksa urut EVIDENCE_KINDS: benda → kebiasaan → akibat → orang. Yang pertama hilang, itu yang tercatat.",
+  "_death": "#269/#270 — medan opsional per halaman: d2 = ADA lalu dicoret (bukti tersisa, dapat dipulihkan dari kesaksian). d3 = TAK PERNAH tercatat (hanya bisa DILAHIRKAN sekali, bukan dipulihkan). DIPAKAI PENJAGA TEST SAJA — bukan UI, bukan _compute_loss. D-4 utuh, #226 tulisan-tangan utuh. place_ashbrook_besar SENGAJA dikosongkan: halamannya sendiri d2 (lahir dari Merrit lalu dicoret), tapi 1.500 orangnya d3 (tak pernah tercatat satu per satu) — kasus campuran, menunggu putusan Designer.",
+
+  "person_otha_renn": {
+    "_scene": "A1 — Penghapusan Pertama. Otha Renn, penjahit, 61 tahun, 34 tahun menjahit untuk Ashbrook sejak kota ini masih punya 1.500 jiwa. Ia berhenti buka toko karena tidak ada lagi yang memesan. Ia tidak pernah muncul di layar.",
+    "death": "d3",
+    "loss_by_missing_kind": {
+      "benda": {
+        "id": "Tak ada satu pun jahitannya yang tersisa untuk dilihat. Orang percaya ia menjahit. Tak seorang pun tahu sebaik apa.",
+        "en": "Not one of her stitches remains to be seen. People believe she sewed. No one knows how well."
+      },
+      "kebiasaan": {
+        "id": "Ia tercatat sebagai penjahit. Bukan sebagai perempuan yang duduk di bangku itu tiap sore selama tiga puluh empat tahun.",
+        "en": "She is recorded as a seamstress. Not as the woman who sat on that bench every evening for thirty-four years."
+      },
+      "akibat": {
+        "id": "Namanya kembali ke papan. Tak seorang pun ingat lagi warna catnya.",
+        "en": "Her name returns to the sign. No one remembers the colour of the paint."
+      },
+      "orang": {
+        "id": "Namanya tercatat. Wajahnya tidak.",
+        "en": "Her name is recorded. Her face is not."
+      }
+    },
+    "loss_self": {
+      "id": "Kau menuliskan namanya dengan tanganmu sendiri. Kau salah mengeja marganya, dan tak seorang pun yang hidup bisa mengoreksimu.",
+      "en": "You wrote her name in your own hand. You misspelled her surname, and no one alive can correct you."
+    },
+    "default": {
+      "id": "Ia tercatat. Tiga puluh empat tahun itu tidak.",
+      "en": "She is recorded. The thirty-four years are not."
+    }
+  },
+
+  "person_merrit_fane": {
+    "_scene": "Rumah Singgah Fane. Merrit menyalakan lampu tiap malam selama 40 tahun untuk seseorang yang menitipkan surat. #229.2: bila ia mati sebelum suratnya terpecahkan, lampunya cuma tidak menyala lagi.",
+    "death": "d2",
+    "loss_by_missing_kind": {
+      "benda": {
+        "id": "Suratnya tidak ikut tertulis. Buku ini tahu ia menunggu. Buku ini tidak tahu untuk apa.",
+        "en": "The letter is not written with him. This book knows he waited. This book does not know for what."
+      },
+      "kebiasaan": {
+        "id": "Tak seorang pun ingat lagi jam berapa lampunya dinyalakan.",
+        "en": "No one remembers any more at what hour the lamp was lit."
+      },
+      "akibat": {
+        "id": "Ia tercatat sebagai tukang pos. Bukan sebagai orang yang menahan sebuah desa tetap tersambung ke dunia selama empat puluh tahun.",
+        "en": "He is recorded as a postman. Not as the man who held a village connected to the world for forty years."
+      },
+      "orang": {
+        "id": "Ia tercatat. Bahwa ada yang menyayanginya, tidak.",
+        "en": "He is recorded. That anyone loved him is not."
+      }
+    },
+    "loss_self": {
+      "id": "Kau menuliskannya sendiri. Tanggalnya meleset setahun, dan itu akan tetap begitu selamanya.",
+      "en": "You wrote him yourself. The date is off by a year, and it will stay that way forever."
+    },
+    "default": {
+      "id": "Ia tercatat sebagai orang yang menunggu. Apa yang ia tunggu tidak.",
+      "en": "He is recorded as a man who waited. What he waited for is not."
+    }
+  },
+
+  "place_ashbrook_besar": {
+    "_scene": "#206 — Ashbrook dulu kota ~1.500 jiwa, kini desa ~40. Bekasnya (#210): jembatan terlalu lebar untuk 40 orang, gudang gandum berisi 4 ayam, 200 roti Halloran tiap pagi. TESIS GAME DALAM BENTUK TEMPAT.",
+    "loss_by_missing_kind": {
+      "benda": {
+        "id": "Tercatat bahwa ia pernah besar. Tak ada satu pun benda yang membuktikannya, dan dua generasi lagi orang akan menyebutnya lebih-lebihan.",
+        "en": "It is recorded that it was once large. Not one object proves it, and in two generations people will call it an exaggeration."
+      },
+      "kebiasaan": {
+        "id": "Kotanya tercatat. Kenapa Halloran memanggang dua ratus roti tiap pagi untuk empat puluh orang — tidak. Ia pun tak akan pernah tahu.",
+        "en": "The town is recorded. Why Halloran bakes two hundred loaves each morning for forty people is not. He will never know either."
+      },
+      "akibat": {
+        "id": "Angkanya tercatat: seribu lima ratus. Jembatan itu tetap terlalu lebar, dan sekarang tak seorang pun bertanya kenapa.",
+        "en": "The number is recorded: one thousand five hundred. The bridge is still too wide, and now no one asks why."
+      },
+      "orang": {
+        "id": "Ashbrook tercatat sebagai kota. Bukan sebagai seribu lima ratus orang.",
+        "en": "Ashbrook is recorded as a town. Not as one thousand five hundred people."
+      }
+    },
+    "loss_self": {
+      "id": "Kau menuliskan apa yang kau lihat. Kau menulis 'dulu lebih besar' — dan itulah yang dunia akan ingat, karena itulah yang kau tahu.",
+      "en": "You wrote what you saw. You wrote 'it was bigger once' — and that is what the world will remember, because that is what you knew."
+    },
+    "default": {
+      "id": "Ia tercatat sebagai desa yang dulu kota. Yang tidak tercatat: bahwa tak ada yang salah. Orang cuma pindah.",
+      "en": "It is recorded as a village that was once a town. What is not recorded: that nothing went wrong. People simply left."
+    }
+  }
+}

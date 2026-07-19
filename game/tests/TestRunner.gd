@@ -135,6 +135,7 @@ func _ready() -> void:
 	_test_no_evidence_score()
 	_test_kitab_shows_no_counts()
 	_test_elyn_aging_thresholds()
+	_test_death_kind_matches_loss()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4189,6 +4190,77 @@ func _test_elyn_aging_thresholds() -> void:
 		if FileAccess.file_exists(f) and FileAccess.get_file_as_string(f).contains("prima_akhir"):
 			leaked.append(f)
 	check("ambang keterbacaan tak bocor ke CharGen/Db (#268)", leaked.is_empty(), str(leaked))
+
+## #270 — medan `death` adalah PENJAGA, bukan mesin.
+##
+## D2 = halaman ADA lalu dicoret; buktinya tersisa, jadi ia dapat dipulihkan dari
+## kesaksian. D3 = tak pernah tercatat; ia hanya bisa DILAHIRKAN sekali — penulisan
+## pertama, bukan pemulihan ("Pertama kali. Terakhir kali.").
+##
+## Yang dijaga di sini BUKAN perilakunya — `_compute_loss()` sengaja tidak membacanya
+## (#226: baris loss ditulis TANGAN per halaman, bukan dicabang mesin). Yang dijaga:
+## medan itu tetap **inert**, dan jangkar kanon #269 tak bergeser diam-diam.
+func _test_death_kind_matches_loss() -> void:
+	print("[#270: medan `death` — penjaga konsistensi D2/D3, bukan mesin]")
+	var tbl: Dictionary = Db.chronicle_losses
+
+	# jangkar kanon #269 — dua tokoh, dua jenis kematian
+	var otha: Dictionary = tbl.get("person_otha_renn", {})
+	var merrit: Dictionary = tbl.get("person_merrit_fane", {})
+	check("Otha Renn = D3 (tak pernah tercatat)", otha.get("death", "") == "d3",
+		str(otha.get("death", "<kosong>")))
+	check("Merrit Fane = D2 (ada lalu dicoret)", merrit.get("death", "") == "d2",
+		str(merrit.get("death", "<kosong>")))
+
+	# nilai yang sah cuma dua; salah ketik harus gagal, bukan diam-diam diabaikan
+	var bad: Array = []
+	for pid in tbl.keys():
+		var row = tbl[pid]
+		if not (row is Dictionary):
+			continue
+		if not row.has("death"):
+			continue      # opsional — halaman boleh tak menyatakannya
+		if not (String(row["death"]) in ["d2", "d3"]):
+			bad.append("%s=%s" % [pid, row["death"]])
+	check("nilai `death` hanya d2/d3", bad.is_empty(), str(bad))
+
+	# D3 hanya lahir sekali → baris loss-nya WAJIB ada, tak boleh bergantung
+	# pada jenis bukti yang kebetulan dibawa. Tak ada kesempatan kedua.
+	var d3_tanpa_default: Array = []
+	for pid2 in tbl.keys():
+		var r2 = tbl[pid2]
+		if r2 is Dictionary and String(r2.get("death", "")) == "d3" and not r2.has("default"):
+			d3_tanpa_default.append(pid2)
+	check("tiap halaman D3 punya baris `default` (tak ada kesempatan kedua)",
+		d3_tanpa_default.is_empty(), str(d3_tanpa_default))
+
+	# ⛔ INERT — inilah risiko sebenarnya. Begitu `death` dibaca mesin atau UI,
+	# ia berhenti jadi penjaga dan mulai mencabang cerita (#226) atau bocor (D-4).
+	var chron := FileAccess.get_file_as_string("res://autoload/Chronicle.gd")
+	check("`_compute_loss` / Chronicle TIDAK membaca medan `death` (#270)",
+		not chron.contains("\"death\""), "Chronicle.gd membacanya")
+	var leaked: Array = []
+	_scan_death_field_leak("res://scenes/ui", leaked)
+	_scan_death_field_leak("res://scenes/hud", leaked)
+	check("nol UI yang membaca medan `death`", leaked.is_empty(), str(leaked))
+
+func _scan_death_field_leak(dir_path: String, offenders: Array) -> void:
+	var d := DirAccess.open(dir_path)
+	if d == null:
+		return
+	d.list_dir_begin()
+	var f := d.get_next()
+	while f != "":
+		var full := dir_path.path_join(f)
+		if d.current_is_dir():
+			if not f.begins_with("."):
+				_scan_death_field_leak(full, offenders)
+		elif f.ends_with(".gd"):
+			var txt := FileAccess.get_file_as_string(full)
+			if txt.contains("chronicle_losses") or txt.contains("\"death\""):
+				offenders.append(f)
+		f = d.get_next()
+	d.list_dir_end()
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:
 	var d := DirAccess.open(dir_path)
