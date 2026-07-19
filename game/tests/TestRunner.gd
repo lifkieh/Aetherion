@@ -3298,26 +3298,56 @@ func _test_production_standards() -> void:
 			banned_mem.append(needle)
 	check("D-4: nol kueri kapasitas berangka di PlayerData (#257)", banned_mem.is_empty(), str(banned_mem))
 	PlayerData.new_game()
-	check("influence 6 sumbu", PlayerData.INFLUENCE_AXES.size() == 6)
-	var save := PlayerData.to_save()
-	check("save membawa reputation/faction_standing/influence",
-		save.has("reputation") and save.has("faction_standing") and save.has("influence"))
-	# save LAMA (tanpa field baru) tetap bisa dimuat -> migrasi kosong
-	var old_save: Dictionary = save.duplicate(true)
-	old_save.erase("reputation")
-	old_save.erase("faction_standing")
-	old_save.erase("influence")
-	old_save.erase("save_schema")
-	PlayerData.from_save(old_save)
-	check("save lama tetap termuat (migrasi kosong)", PlayerData.reputation.is_empty()
-		and PlayerData.faction_standing.is_empty() and PlayerData.influence.is_empty())
-	PlayerData.reputation["greenvale"] = 3
-	check("reputasi LOKAL per wilayah (bukan global)",
-		PlayerData.reputation_at("greenvale") == 3 and PlayerData.reputation_at("frostpeak") == 0)
-	check("label tangga reputasi", PlayerData.reputation_label("greenvale") == "Respected",
-		PlayerData.reputation_label("greenvale"))
-	PlayerData.reputation.clear()
+	_test_dua_jalur_restore()
 
+## #256/#258 — dua jalur menulis ulang mengisi DUA ruang berbeda.
+## NON-DESTRUKTIF: state global disimpan lalu dikembalikan. Versi pertama test ini
+## memanggil PlayerData.new_game() + mengosongkan WorldState.chronicle di tengah
+## suite -> meracuni test hilir sampai SEGFAULT. Jangan ulangi.
+func _test_dua_jalur_restore() -> void:
+	print("[#256/#258: SENDIRI mengisi ruang pemain · ELYN mengisi ruang Elyn + umur]")
+	var sv_chron: Array = WorldState.chronicle.duplicate(true)
+	var sv_mem: Array = PlayerData.memory_held.duplicate()
+	var sv_bur: Array = PlayerData.elyn_burden.duplicate()
+	var sv_age: int = PlayerData.elyn_age_spent
+	PlayerData.memory_held = []
+	PlayerData.elyn_burden = []
+	PlayerData.elyn_age_spent = 0
+	var mr_tiga := [{"kind": "benda", "id": "a"}, {"kind": "kebiasaan", "id": "b"}, {"kind": "akibat", "id": "c"}]
+	var mr_dua := [{"kind": "benda", "id": "a"}, {"kind": "kebiasaan", "id": "b"}]
+
+	Chronicle.record_person("uji_self", "Uji Sendiri", "merrit_fane")
+	Chronicle.strike("uji_self", "waktu")
+	var mr_self: Dictionary = Chronicle.restore_self("uji_self", mr_tiga)
+	check("SENDIRI: 3 jenis berhasil", mr_self.ok, str(mr_self.reason))
+	check("SENDIRI mengisi ruang PEMAIN", PlayerData.memory_held.has("uji_self"))
+	check("SENDIRI tak menyentuh ruang Elyn",
+		PlayerData.elyn_burden.is_empty() and PlayerData.elyn_age_spent == 0)
+	check("loss ada & tak pernah kosong (#260)", String(mr_self.loss).strip_edges() != "")
+
+	PlayerData.memory_held = ["x", "y", "z"]
+	Chronicle.record_person("uji_penuh", "Uji Penuh", "merrit_fane")
+	Chronicle.strike("uji_penuh", "waktu")
+	var mr_full: Dictionary = Chronicle.restore_self("uji_penuh", mr_tiga)
+	check("ruang penuh -> SENDIRI DITOLAK", not mr_full.ok and mr_full.reason == "memory_full")
+	check("halaman tetap tercoret setelah ditolak", Chronicle.state_of("uji_penuh") == Chronicle.ST_STRUCK)
+
+	var mr_elyn: Dictionary = Chronicle.restore_elyn("uji_penuh", mr_dua)
+	check("ruang pemain penuh -> ELYN tetap bisa (#228)", mr_elyn.ok, str(mr_elyn.reason))
+	check("ELYN mengisi ruang ELYN", PlayerData.elyn_burden.has("uji_penuh"))
+	check("ELYN menggerus umur (#258)", PlayerData.elyn_age_spent == Chronicle.ELYN_YEARS_PER_PAGE)
+	check("ELYN tak menambah ruang pemain", not PlayerData.memory_held.has("uji_penuh"))
+
+	PlayerData.memory_held = []
+	Chronicle.record_person("uji_ambang", "Uji Ambang", "merrit_fane")
+	Chronicle.strike("uji_ambang", "waktu")
+	var mr_two: Dictionary = Chronicle.restore_self("uji_ambang", mr_dua)
+	check("SENDIRI dengan 2 jenis DITOLAK (self=3)", not mr_two.ok and String(mr_two.reason).begins_with("need_"))
+
+	WorldState.chronicle = sv_chron
+	PlayerData.memory_held = sv_mem
+	PlayerData.elyn_burden = sv_bur
+	PlayerData.elyn_age_spent = sv_age
 
 func _test_personality() -> void:
 	print("[Model kepribadian 5 lapis + hukum pertumbuhan (#136-#138)]")

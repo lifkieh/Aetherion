@@ -179,6 +179,45 @@ func restore(id: String, witnesses: Array, scribe: String = SCRIBE_SELF) -> Dict
 	EventBus.chronicle_restored.emit(id, e["loss"])
 	return {"ok": true, "reason": "", "loss": e["loss"]}
 
+# ══════════════════════════════════════════════════════════════════════════════
+# DUA JALUR MENULIS ULANG — #256/#257/#258 (SPEC_PAYOFF_SLICE §4.E)
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Memakai ambang yang SUDAH ADA (`SCRIBE_KINDS_NEEDED`): self=3, elyn=2.
+# Yang BARU hanyalah ke mana halamannya disimpan — ruang pemain atau ruang Elyn.
+#
+# ⛔ #257/D-4: penolakan karena ruang penuh mengembalikan `reason:"memory_full"`.
+# Pemanggil menampilkan KALIMAT PENOLAKAN (§4.G), TIDAK PERNAH angka.
+
+## Tulis ulang SENDIRI (#228) — 3 jenis bukti, loss terbesar, selalu tersedia.
+## Mengisi ruang ingatan PEMAIN. Ditolak bila ruangnya penuh.
+func restore_self(id: String, witnesses: Array) -> Dictionary:
+	if PlayerData.memory_full():
+		# Batas ditemui sebagai PENOLAKAN, bukan dibaca sebagai angka (#257).
+		return {"ok": false, "reason": "memory_full", "loss": ""}
+	var r := restore(id, witnesses, SCRIBE_SELF)
+	if r.get("ok", false) and not (id in PlayerData.memory_held):
+		PlayerData.memory_held.append(id)
+	return r
+
+
+## Limpahkan ke ELYN (R5) — 2 jenis bukti; ia arsiparis, syaratnya lebih ringan.
+## HARGA (#258): mengisi ruang ELYN dan menggerus umurnya. Ruang Elyn tak pernah
+## "penuh" di slice ini — yang bertambah adalah ongkosnya.
+##
+## ⚠ #259 HUKUM KETERBUKAAN: pemanggil WAJIB menampilkan ongkos ini SEBELUM
+## memanggil fungsi ini. Nol jebakan. Keputusan sadar, bukan kejutan.
+const ELYN_YEARS_PER_PAGE := 1
+
+func restore_elyn(id: String, witnesses: Array) -> Dictionary:
+	var r := restore(id, witnesses, SCRIBE_ELYN)
+	if r.get("ok", false):
+		if not (id in PlayerData.elyn_burden):
+			PlayerData.elyn_burden.append(id)
+		PlayerData.elyn_age_spent += ELYN_YEARS_PER_PAGE
+	return r
+
+
 ## Jenis bukti unik yang dibawa (bukan jumlah bukti — JUMLAH JENIS).
 ## #226 #1: "Satu bukti tak pernah cukup. Ingatan itu jaringan, bukan item."
 func _kinds_of(witnesses: Array) -> Array:
