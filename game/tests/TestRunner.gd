@@ -140,6 +140,7 @@ func _ready() -> void:
 	_test_save_routing_274()
 	await _test_ashbrook64_padat()
 	await _test_kamar_tak_menelan_pemain()
+	await _test_jendela_terlupa()
 	_test_evidence_counts_kinds_not_items()
 	_test_evidence_228_solo_never_locked()
 	_test_evidence_kinds_are_canon()
@@ -4501,6 +4502,66 @@ func _test_kamar_tak_menelan_pemain() -> void:
 	check("ColorRect lantai memakai Z_KAMAR", lantai_ok)
 
 	scn.queue_free()
+	await get_tree().process_frame
+
+## #218 + payoff — JENDELA YANG MENGABARKAN PELUPAAN.
+##
+## Jendela biasa padam menurut jam (19·20·21). Jendela yang terikat halaman Chronicle
+## gelap **permanen selama halaman itu tercoret** — bukan gelap karena jam. Kota
+## mengabarkan apa yang sudah dilupakannya lewat jendela yang tak pernah menyala lagi.
+##
+## Diuji lewat jam eksplisit, bukan jam dinding: `GameClock` terikat WIB nyata (#249),
+## jadi test yang menunggu malam akan lulus/gagal menurut kalender.
+func _test_jendela_terlupa() -> void:
+	print("[#218: jendela gelap karena TERLUPA, bukan karena jam]")
+	var W = load("res://scenes/actors/AshbrookWindow.gd")
+
+	var biasa := Node2D.new()
+	biasa.set_script(W)
+	add_child(biasa)
+	biasa.place(Vector2.ZERO, 20, "")
+	await get_tree().process_frame
+
+	biasa.apply_hour(18)
+	check("jendela biasa MENYALA sore (18 < padam 20)", biasa.visible)
+	biasa.apply_hour(21)
+	check("jendela biasa PADAM sesudah jamnya", not biasa.visible)
+	biasa.apply_hour(12)
+	check("jendela biasa padam siang", not biasa.visible)
+
+	# halaman tercoret -> gelap permanen
+	_r1_fresh("person_otha_renn")
+	Chronicle.strike("person_otha_renn")
+	var lupa := Node2D.new()
+	lupa.set_script(W)
+	add_child(lupa)
+	lupa.place(Vector2.ZERO, 20, "person_otha_renn")
+	await get_tree().process_frame
+
+	check("halaman Otha memang tercoret",
+		Chronicle.state_of("person_otha_renn") == Chronicle.ST_STRUCK)
+	check("jendela TERLUPA melapor dirinya terlupa", lupa.terlupa())
+	lupa.apply_hour(18)
+	check("jendela TERLUPA tetap gelap di jam yang menyalakan tetangganya",
+		not lupa.visible)
+
+	# halaman pulih -> jendela kembali menuruti jam
+	var w := [{"kind": "benda", "id": "a"}, {"kind": "orang", "id": "b"}]
+	Chronicle.restore("person_otha_renn", w, Chronicle.SCRIBE_ELYN)
+	check("jendela berhenti terlupa sesudah halaman ditulis ulang", not lupa.terlupa())
+	lupa.apply_hour(18)
+	check("jendela pulih ikut menyala lagi sore", lupa.visible)
+
+	# halaman yang TAK PERNAH LAHIR bukan "terlupa" — itu D3, dan D3 nol jejak (#229.3)
+	var kosong := Node2D.new()
+	kosong.set_script(W)
+	add_child(kosong)
+	kosong.place(Vector2.ZERO, 20, "halaman_yang_tak_pernah_ada")
+	await get_tree().process_frame
+	check("halaman yang tak pernah lahir TIDAK menggelapkan jendela (#229.3)",
+		not kosong.terlupa())
+
+	biasa.queue_free(); lupa.queue_free(); kosong.queue_free()
 	await get_tree().process_frame
 
 func _scan_chronicle_score_leak(dir_path: String, offenders: Array) -> void:

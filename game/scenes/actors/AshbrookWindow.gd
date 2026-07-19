@@ -9,12 +9,30 @@ extends Node2D
 ## menolak ikut tidur.
 
 var off_hour := 20
+
+## #218 + payoff — JENDELA YANG MENGABARKAN PELUPAAN.
+##
+## Bila diisi id halaman Chronicle, jendela ini **gelap permanen** selama halaman itu
+## TERCORET — bukan gelap karena jam. Kota mengabarkan apa yang sudah dilupakannya
+## lewat jendela yang tak pernah menyala lagi.
+##
+## D-3 tetap: nol teks, nol penanda. Pemain yang tak memperhatikan tak akan tahu
+## bahwa satu jendela ini gelap karena sebab yang berbeda dari tetangganya.
+var page_id := ""
+
 var _rect: ColorRect
 var _light: PointLight2D
 
-func place(p: Vector2, hour_off: int) -> void:
+func place(p: Vector2, hour_off: int, page := "") -> void:
 	global_position = p
 	off_hour = hour_off
+	page_id = page
+
+
+## Terlupa = halaman ada DAN tercoret. Halaman yang tak pernah lahir tak membuat
+## jendela gelap — itu D3, dan D3 tak meninggalkan apa-apa untuk dilihat (#229.3).
+func terlupa() -> bool:
+	return page_id != "" and Chronicle.state_of(page_id) == Chronicle.ST_STRUCK
 
 func _ready() -> void:
 	add_to_group("ashbrook_window")
@@ -36,6 +54,9 @@ func _ready() -> void:
 
 ## Menyala hanya SORE (17.00) sampai jam padamnya sendiri. Dipanggil test (#151b).
 func apply_hour(h: int) -> void:
+	if terlupa():
+		visible = false          # gelap permanen; jam tak berlaku lagi
+		return
 	var lit := h >= 17 and h < off_hour
 	visible = lit
 

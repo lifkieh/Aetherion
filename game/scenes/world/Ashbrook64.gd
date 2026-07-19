@@ -51,6 +51,11 @@ const P_OLD := "res://assets/game/sprites/props/"
 const Z_LAMP := 2000
 const Z_BEACON := 4000              # < 4096, dan > semua y-sort
 var _lamp: Sprite2D
+var _chickens: Array = []
+var _kids: Array = []
+var _stag: Sprite2D
+var _stag_cd := 0.0
+var _last_hour := -1
 var _beacon: Sprite2D
 var _canvas_mod: CanvasModulate
 var _player: Node2D
@@ -74,6 +79,7 @@ func _ready() -> void:
 	_folk()
 	_spawn_player()
 	_add_ui()
+	_kehidupan()
 
 
 ## Sampai LANGKAH 7, scene ini adalah DIORAMA: nol pemain, nol UI, nol pengendali —
@@ -292,6 +298,158 @@ func _examine(pos: Vector2, ev_id: String) -> void:
 	e.global_position = pos
 
 
+# ---------------------------------------------------------------- KEHIDUPAN
+## Dipindahkan dari `Ashbrook.gd` 16px (keputusan Direktur: 64px jadi utama).
+##
+## ⚠ KOORDINAT DIHITUNG ULANG, BUKAN DISALIN. Petak 16px → 32px berarti dunia dua
+## kali lebih besar dalam piksel, dan tata letak Ashbrook64 memang berbeda: alun-alun
+## di `VC`, jembatan di timur, gerbang di barat. Menyalin angka 16px mentah-mentah
+## akan menaruh ayam di dalam tembok. Setiap penempatan di bawah ditambatkan ke
+## **penanda Ashbrook64**, bukan ke angka lama.
+##
+## Radius berkelana juga digandakan: makhluk yang berkelana 40 px di dunia 16px
+## menempuh 2,5 petak; di petak 32 itu cuma 1,25 petak — terlihat lumpuh.
+func _kehidupan() -> void:
+	_hidup_ayam_anak()
+	_hidup_berpasangan()
+	_jendela()
+	_titik_pandang()
+	_anak_serigala()
+
+
+## Ayam yang benar-benar menghalangi jalan + anak-anak yang mengejarnya.
+## Hidup × mati: mereka bermain di depan gudang yang isinya empat ekor ayam.
+func _hidup_ayam_anak() -> void:
+	for i in 4:
+		var c := Node2D.new()
+		c.set_script(load("res://scenes/actors/AshbrookChicken.gd"))
+		add_child(c)
+		c.body_radius = 7.0
+		c.wander_radius = 76.0
+		c.place(Vector2(704, 470) + Vector2(randf_range(-70, 90), randf_range(20, 90)))
+		c.scale = Vector2(1.6, 1.6)
+		_chickens.append(c)
+	for i in 3:
+		var k := Node2D.new()
+		k.set_script(load("res://scenes/actors/AshbrookKid.gd"))
+		add_child(k)
+		k.place(VC + Vector2(randf_range(-150, 150), randf_range(-70, 100)))
+		k.setup(_chickens)
+		k.scale = Vector2(1.6, 1.6)
+		_kids.append(k)
+
+
+## Kambing di jembatan + sepeda di gerbang — dua ujung jalan dagang lama.
+func _hidup_berpasangan() -> void:
+	var goat := Node2D.new()
+	goat.set_script(load("res://scenes/actors/AshbrookChicken.gd"))
+	add_child(goat)
+	goat.body_radius = 14.0
+	goat.wander_radius = 60.0          # ia MENGHALANGI jembatan, bukan berkelana
+	goat.place(Vector2(1790, VC.y + 8))
+	goat.scale = Vector2(3.0, 3.0)
+	goat.modulate = Color(0.85, 0.82, 0.75)
+
+	var bike := ColorRect.new()        # sepeda kayu bersandar di gerbang; masih dipakai
+	bike.color = Color(0.55, 0.42, 0.28)
+	bike.size = Vector2(30, 16)
+	bike.position = Vector2(150, VC.y - 26)
+	bike.z_index = int(VC.y)
+	bike.add_to_group("ashbrook_life")
+	add_child(bike)
+
+
+## #218 — kontras dari PERBEDAAN, bukan ketiadaan. Jendela lain menyala sore lalu
+## PADAM satu per satu (19·20·21) sampai tersisa lampu Merrit.
+##
+## DAN yang 16px tak bisa: satu jendela gelap karena **halamannya tercoret**, bukan
+## karena jam. Toko Otha punya halamannya sendiri (`person_otha_renn`), dan selama
+## halaman itu tercoret jendelanya **tak pernah menyala** — siang maupun malam.
+## Kota mengabarkan pelupaannya lewat jendela.
+func _jendela() -> void:
+	# [posisi, jam padam, id halaman (kosong = jendela biasa)]
+	for w in [
+		[Vector2(608, 992), 19, ""],          # rumah Lyra — masih dihuni
+		[Vector2(672, 992), 21, ""],
+		[Vector2(1392, 800), 20, ""],         # rumah kosong — padam paling awal terasa
+		[Vector2(1424, 800), 19, ""],
+		[Vector2(1200, 480), 21, "person_otha_renn"],   # TOKO OTHA — gelap karena TERLUPA
+		[Vector2(1232, 480), 21, "person_otha_renn"],
+	]:
+		var win := Node2D.new()
+		win.set_script(load("res://scenes/actors/AshbrookWindow.gd"))
+		add_child(win)
+		win.place(Vector2(w[0]) + Vector2(0, -96), int(w[1]), String(w[2]))
+		win.scale = Vector2(2.0, 2.0)
+
+
+## #218 PAYOFF PERJALANAN — pemain berjalan menjauh, MENOLEH, dan lampu Merrit masih
+## di sana. Kamera mundur supaya lampu masuk layar dari jarak itu.
+func _titik_pandang() -> void:
+	var zone := Area2D.new()
+	var cs := CollisionShape2D.new()
+	var sh := RectangleShape2D.new()
+	sh.size = Vector2(280, 240)
+	cs.shape = sh
+	zone.add_child(cs)
+	zone.global_position = Vector2(1480, VC.y)
+	zone.add_to_group("vantage")
+	add_child(zone)
+	zone.body_entered.connect(func(b):
+		if b == _player:
+			_zoom_kamera(0.55))
+	zone.body_exited.connect(func(b):
+		if b == _player:
+			_zoom_kamera(ZOOM))
+
+
+func _zoom_kamera(z: float) -> void:
+	if _player == null or not is_instance_valid(_player):
+		return
+	for c in _player.get_children():
+		if c is Camera2D:
+			create_tween().tween_property(c, "zoom", Vector2(z, z), 0.6)
+
+
+## #118 — monster pertama: anak serigala TERLUKA. Boleh dibantu, diabaikan, atau
+## dibunuh. Semuanya sah; dunia tak menghakimi pilihannya.
+func _anak_serigala() -> void:
+	var m = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	add_child(m)
+	m.setup(MonsterFactory.make("grey_wolf", 2, 1))
+	m.global_position = Vector2(1700, 980)
+	m.add_to_group("wolf_pup")
+
+
+## WHITE STAG (#D-ASH-4) — tanpa pemicu, tanpa penanda, tanpa musik, tanpa quest.
+## Muncul jauh & singkat di tepi hutan, lalu hilang. Kalau pemain melihatnya: bagus.
+## Kalau tidak: juga bagus. **Legenda tidak wajib ditemukan.**
+func _tick_rusa(delta: float) -> void:
+	if _stag != null and is_instance_valid(_stag):
+		_stag_cd -= delta
+		if _stag_cd <= 0.0:
+			_stag.queue_free()
+			_stag = null
+		return
+	if _player == null or not is_instance_valid(_player):
+		return
+	if _player.global_position.y > 460.0:      # hanya di dekat tepi hutan utara
+		return
+	if randf() > 0.005 * delta * 60.0:
+		return
+	_stag = Sprite2D.new()
+	var img := Image.create(6, 10, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0.96, 0.96, 0.92))
+	_stag.texture = ImageTexture.create_from_image(img)
+	_stag.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_stag.scale = Vector2(3, 3)
+	_stag.global_position = Vector2(_player.global_position.x + randf_range(-260, 260), 190)
+	_stag.z_index = 500
+	_stag.modulate.a = 0.85
+	add_child(_stag)
+	_stag_cd = 2.2
+
+
 # ------------------------------------------------- pintu & interior
 const PROP := preload("res://scenes/world/Ashbrook64Prop.gd")
 
@@ -449,7 +607,19 @@ func _bangun_kamar_merrit() -> void:
 
 # ---------------------------------------------------------------- penduduk
 ## Enam wajah LPC. Hook siluet berbeda per #231 (uji hitam: reports/preview/siluet231.png).
+## 5 NPC berkepribadian + JADWAL (#78/#97) — sama dengan 16px. Ini yang membuat
+## kota terasa punya penghuni, bukan patung. Enam wajah statis di bawah TETAP ada:
+## mereka tokoh bernama di tempat tetapnya (Merrit di rumahnya, Otha di tokonya).
+func _folk_berjadwal() -> void:
+	TownFolk.place(self, "ashbrook", VC)
+	for c in get_children():
+		var sc = c.get_script()
+		if sc != null and String(sc.resource_path).contains("Villager"):
+			c.add_to_group("ashbrook_life")
+
+
 func _folk() -> void:
+	_folk_berjadwal()
 	for spec in [
 		["merrit_fane", MERRIT_HOUSE + Vector2(48, 96)],
 		["halloran", Vector2(1216, 688)],
@@ -480,11 +650,16 @@ func _folk() -> void:
 ##
 ## `AETHER_PIN_DAY=1` mematok siang untuk harness tangkap-layar.
 func _process(_delta: float) -> void:
+	var h := GameClock.wib_hour()
+	if h != _last_hour:
+		_last_hour = h
+		for w in get_tree().get_nodes_in_group("ashbrook_window"):
+			w.apply_hour(h)      # desa TERTIDUR satu per satu — dan satu menolak
+	_tick_rusa(_delta)
 	if OS.get_environment("AETHER_PIN_DAY") == "1":
 		return
 	if _canvas_mod:
 		_canvas_mod.color = GameClock.ambient_color()
-	var h := GameClock.wib_hour()
 	if _lamp:
 		# Lentera Merrit menyala siang & malam. Malam hari ia satu-satunya yang menyala.
 		_lamp.modulate = Color(1, 1, 1, 1.0 if h >= 17 or h < 6 else 0.75)
