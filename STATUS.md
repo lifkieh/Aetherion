@@ -1,6 +1,34 @@
 # STATUS — Aetherion Fase 0
 
-**Last update:** 2026-07-17 — **4 prop digambar+diuji; Shadeborn+Dryad terbukti; mesin perakit di-spec (#231 dikodekan)**
+<!-- ══════════════════════════════════════════════════════════════════════════
+     ANGKA TEST = SATU SUMBER KEBENARAN. Diukur, bukan disalin. (#240)
+     "947 test" adalah ANGKA HANTU — disalin turun-temurun dari ronde lama tanpa
+     pernah dijalankan ulang. Jangan pernah menyalin angka dari baris ronde di
+     bawah; JALANKAN suite dan tulis hasilnya di sini.
+
+     ⚠ BARIS INI SENDIRI SUDAH PERNAH JADI HANTU. Ia berhenti di "1024, diukur
+     2026-07-17" dan bertahan begitu selama belasan ronde kerja sesudahnya —
+     peringatan yang tak diperbarui berubah menjadi persis hal yang diperingatkannya.
+     Perbarui angkanya di commit yang sama dengan pekerjaan yang mengubahnya.
+     ══════════════════════════════════════════════════════════════════════════ -->
+## ✅ TEST — angka SUNGGUHAN (diukur 2026-07-21)
+
+**1119 assertion lulus, 0 gagal.** Runner memanggil **113 fungsi `_test_*`**.
+
+*(Riwayat: 947 hantu → 1024 diukur 2026-07-17 → 1119 diukur 2026-07-21.)*
+
+**Cara menjalankan (dari root repo):**
+```bash
+_tools/godot/Godot_v4.3-stable_win64_console.exe --headless --path game res://tests/TestRunner.tscn
+# JANGAN pakai --quit-after 20: itu 20 FRAME, memotong suite di tengah await.
+# Baris terakhir: "===== RESULT: <lulus> passed, <gagal> failed ====="  (exit 1 bila ada gagal)
+```
+Runner: `game/tests/TestRunner.gd` (`_ready()` memanggil 113 fungsi `_test_*`, sebagian `await`).
+**Ganti angka di atas setiap kali suite dijalankan. Nol tebakan.**
+
+---
+
+**Last update:** 2026-07-17 — **R1 ditambal (Db.get_json + 3 bug laten); backdated-plot test dibetulkan; angka test hantu diperbaiki**
 
 > ### 🛠 PROP + OVERLAY-RAS + SPEC PERAKIT (#238)
 > **Kanon:** bungkuk Nyai DICORET (kerudung+tongkat); **glow=Sora (wajib).**
