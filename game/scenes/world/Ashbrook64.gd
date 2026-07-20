@@ -176,6 +176,52 @@ func _ground() -> void:
 	_tile(P_T + "stone32.png", Rect2(0, VC.y - 48, w, 96), 1)
 	# alun-alun berperkerasan
 	_tile(P_T + "cobble32.png", Rect2(VC.x - 272, VC.y - 176, 544, 352), 2)
+	# PELATARAN MELINGKAR di sekeliling air mancur (gen_pelataran.py, #240).
+	# Pusat desa diberi TEPI, bukan sekadar objek yang lebih besar: sebelum ini air
+	# mancur duduk di tengah persegi batu rata, dan mata tak punya alasan berhenti
+	# di sana. Satu lentera di pinggir kota lebih memerintah daripada pusatnya.
+	_setapak_cakram(VC + Vector2(0, -32), 3)
+
+	# SETAPAK BERCABANG — jalan dagang timur-barat tadinya satu-satunya jalur di peta,
+	# dan tiap rumah duduk di rumput di sebelahnya tanpa tersambung apa pun. Kaki orang
+	# meninggalkan jejak; rumah yang dihuni bertahun-tahun punya jalan ke pintunya.
+	# Cabang ini juga memecah grid: jalan utama berhenti jadi satu garis lurus tunggal.
+	var jalan_atas := VC.y - 48
+	var jalan_bawah := VC.y + 48
+	_setapak(Vector2(704, 452), Vector2(704, VC.y - 176))          # gudang -> tepi alun-alun
+	_setapak(Vector2(1216, 532), Vector2(1216, VC.y - 176))        # toko Otha -> tepi alun-alun
+	_setapak(Vector2(1408, jalan_bawah), Vector2(1408, 812))       # rumah kosong -> jalan
+	# rumah Lyra jauh dari jalan: DUA ruas dengan siku, bukan satu garis lurus. Jalan
+	# setapak sungguhan menghindar, bukan menembus.
+	_setapak(Vector2(640, jalan_bawah), Vector2(640, 900))
+	_setapak(Vector2(640, 900), Vector2(700, 900))
+	_setapak(Vector2(700, 900), Vector2(700, 1004))
+	_setapak(Vector2(1216, jalan_atas), Vector2(1216, jalan_atas)) # sambungan toko ke jalan
+
+
+## Cakram pelataran, dipusatkan (bukan `_tile` yang selalu rata-kiri-atas).
+func _setapak_cakram(pusat: Vector2, z: int) -> void:
+	var p := P_T + "pelataran32.png"
+	if not ResourceLoader.exists(p):
+		push_warning("[ash64] pelataran hilang: %s — jalankan _tools/gen_pelataran.py" % p)
+		return
+	var s := Sprite2D.new()
+	s.texture = load(p)
+	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.global_position = pusat
+	s.z_index = z
+	add_child(s)
+
+
+## Setapak lurus antara dua titik BERSUMBU TEGAK/DATAR. Dipakai menyambungkan pintu
+## rumah ke jalan dagang: sebelum ini rumah "terapung di rumput" — nol jejak kaki
+## antara pintu dan jalan, seolah tak seorang pun pernah berjalan ke sana.
+func _setapak(a: Vector2, b: Vector2, lebar := 28.0) -> void:
+	var x0 := minf(a.x, b.x) - lebar * 0.5
+	var y0 := minf(a.y, b.y) - lebar * 0.5
+	var w := absf(b.x - a.x) + lebar
+	var h := absf(b.y - a.y) + lebar
+	_tile(P_T + "stone32.png", Rect2(x0, y0, w, h), 1)
 
 
 func _put(path: String, pos: Vector2, z := -1) -> Sprite2D:
@@ -227,6 +273,22 @@ func _village() -> void:
 	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
 	for p in [Vector2(320, 384), Vector2(1600, 352), Vector2(1728, 1024), Vector2(224, 1088)]:
 		_put(P_S + "tree_lpc.png", p)
+	# PENJURU ALUN-ALUN — bingkai, bukan hiasan. Sudut yang ditandai membuat mata
+	# membaca ruang TERTUTUP ("ini tempatnya") alih-alih hamparan terbuka ("lewat saja").
+	#
+	# TONG, BUKAN POHON, dan itu bukan pilihan rasa: `tree_lpc.png` TERNYATA BUKAN POHON.
+	# Berkasnya potongan salah-krop — lengkungan cokelat-keemasan tanpa batang maupun
+	# tajuk (lihat empat "pohon" lama di 320,384 / 1600,352 / 1728,1024 / 224,1088: dari
+	# kamera main mereka cuma noda tan di rumput). Komentar di kode ini pun ikut percaya,
+	# sampai menulis "batang, bukan tajuk" untuk sprite yang tak punya keduanya.
+	# Menambah empat salinan aset rusak bukan bingkai — itu derau yang menyamar jadi
+	# bingkai. Tong terbukti terbaca sebagai tong, jadi tong yang dipakai sampai ada
+	# aset pohon yang benar. Empat pohon lama DIBIARKAN: memperbaikinya kerja aset,
+	# bukan tata letak.
+	for p in [VC + Vector2(-248, -152), VC + Vector2(248, -152),
+			VC + Vector2(-248, 152), VC + Vector2(248, 152)]:
+		_put(P_S + "barrel_lpc.png", p)
+		_solid(Rect2(p.x - 12, p.y - 4, 24, 16))
 	var fnt := VC + Vector2(0, -32)
 	_put(P_S + "fountain.png", fnt)                                # air mancur KERING
 	_solid(Rect2(fnt.x - 26, fnt.y - 10, 52, 34))                  # cekungannya, bukan seluruh sprite
@@ -623,7 +685,22 @@ func _folk_berjadwal() -> void:
 	# dari `_charsys` 32px ke LPC 64px. 5..19 = lima belas penghuni latar tanpa persona.
 	# Dua puluh wajah dari generator (#276), seed tetap: warga yang sama tiap muat.
 	TownFolk.place(self, "ashbrook", VC, 0)
-	TownFolk.place_latar(self, VC, 5, 15)
+	# ZONA BERALASAN. Tiap angka menjawab "kenapa orang ini berdiri di sini?", dan
+	# jumlahnya sengaja TIMPANG: alun-alun bukan tempat semua orang berkumpul, ia cuma
+	# salah satu tempat. Sebelumnya lima belas orang mengelilingi pusat pada radius
+	# tetap — kota jadi satu gerombolan di tengah lapangan kosong.
+	#
+	# Ashbrook MENGECIL: rumah kosong dapat NOL warga, gudang gandum cuma dua. Yang
+	# sepi harus terbaca sepi, dan itu cuma berarti kalau yang ramai terbaca ramai.
+	TownFolk.place_latar(self, [
+		{"pos": Vector2(704, 470),  "r": 54.0, "n": 2},    # gudang gandum — depan pintunya
+		{"pos": Vector2(1216, 552), "r": 48.0, "n": 2},    # toko Otha — menunggu yang tak buka
+		{"pos": Vector2(640, 1060), "r": 56.0, "n": 2},    # rumah Lyra — satu-satunya yang dihuni
+		{"pos": Vector2(560, 704),  "r": 60.0, "n": 2},    # jalan dagang, ujung barat
+		{"pos": Vector2(1440, 704), "r": 60.0, "n": 2},    # jalan dagang, ujung timur
+		{"pos": Vector2(464, 830),  "r": 46.0, "n": 1},    # depan rumah singgah Merrit
+		{"pos": VC + Vector2(0, 96), "r": 96.0, "n": 4},   # alun-alun — RAMAI, tapi bukan semua
+	], 5)
 	for c in get_children():
 		var sc = c.get_script()
 		if sc != null and String(sc.resource_path).contains("Villager"):
