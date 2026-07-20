@@ -19,6 +19,10 @@ import os
 import sys
 from PIL import Image
 
+# Gerbang #231 hidup di uji_siluet.py — SATU sumber kebenaran. assemble.py
+# memanggilnya, tidak menyalin rumusnya (dua salinan = dua ambang yang menyimpang).
+from uji_siluet import AMBANG as AMBANG_SILUET, pasangan_kembar, silhouette_of_sheet
+
 SHEET_W, SHEET_H = 832, 2944
 CELL = 64
 
@@ -224,25 +228,32 @@ def slice_sheet(sheet, fmap):
 
 
 # ------------------------------------------------------------------ guards
-def guard_231(named_chars):
-    """#231: dua tokoh bernama berbagi hook rambut/tutup-kepala -> HARD FAIL.
+def guard_231(sheets_per_id):
+    """#231: dua tokoh bernama tak boleh punya SILUET kembar -> HARD FAIL.
 
-    Botak (hair=null, headwear=null) diperlakukan UNIK per-id (tak bentrok).
+    KENAPA INI MENGGANTI GERBANG LAMA
+    ---------------------------------
+    Versi lama membandingkan STRING id hook kepala: dua tokoh lolos asal nama
+    rambutnya berbeda. Itu menangkap `curly_short` vs `curly_short`, tapi
+    meloloskan `curly_short` vs `curly_short2` — dua rambut keriting yang nyaris
+    identik BENTUKNYA. Old Bram lolos gerbang itu berbulan-bulan dan tetap terbaca
+    kembar dengan Halloran di layar. Gerbang yang membandingkan NAMA tak pernah
+    bisa menangkap kemiripan BENTUK.
+
+    Versi ini mengukur bentuk: siluet alpha frame hadap-bawah, XOR antar-pasangan.
+    Jalan SEBELUM PNG ditulis — tokoh kembar tak pernah mendarat di repo.
+
+    Batasnya jujur: alpha buta WARNA. Dua tokoh berkerudung abu dan berkerudung
+    biru lolos identik. Untuk itu tetap perlu mata (lihat uji_siluet.py).
     """
-    seen = {}
-    for c in named_chars:
-        if not c.get("named"):
-            continue
-        key = c.get("headwear") or c.get("hair")
-        if key is None:
-            key = f"__bare__:{c['id']}"
-        else:
-            key = f"hook:{key}"
-        if key in seen:
-            raise AssemblyError(
-                f"#231 DILANGGAR: '{c['id']}' dan '{seen[key]}' berbagi hook kepala '{key}'. "
-                f"Tokoh bernama WAJIB rambut/tutup-kepala berbeda-BENTUK. Rakit DITOLAK.")
-        seen[key] = c["id"]
+    sil = {cid: silhouette_of_sheet(sheet) for cid, sheet in sheets_per_id.items()}
+    gagal = pasangan_kembar(sil)
+    if gagal:
+        rinci = "; ".join(f"{a} & {b} = {d} px" for a, b, d in gagal)
+        raise AssemblyError(
+            f"#231 DILANGGAR: siluet kembar (< {AMBANG_SILUET} px XOR): {rinci}. "
+            f"Tokoh bernama WAJIB berbeda BENTUK, bukan cuma berbeda nama lapisan. "
+            f"Rakit DITOLAK.")
 
 
 def guard_232(out_dir):
@@ -288,8 +299,9 @@ def write_credits(out_dir, char_id, used, cdb):
 
 
 # ------------------------------------------------------------------ build
-def build_one(char, out_dir, cat, fmap, cdb, emit_sheet=True):
-    sheet, used = assemble_sheet(char, cat)
+def build_one(char, out_dir, cat, fmap, cdb, emit_sheet=True, sheet=None, used=None):
+    if sheet is None:
+        sheet, used = assemble_sheet(char, cat)
     cid = char["id"]
     os.makedirs(out_dir, exist_ok=True)
     written = []
@@ -324,11 +336,22 @@ def main(argv=None):
     if args.all:
         files = sorted(f for f in os.listdir(args.input) if f.endswith(".json"))
         chars = [_load_json(os.path.join(args.input, f)) for f in files]
-        guard_231(chars)  # lintas-tokoh SEBELUM rakit apa pun
-        ok = 0
+        # Rakit ke MEMORI dulu, gerbang siluet, BARU tulis. Urutan ini disengaja:
+        # gerbang lama jalan sebelum perakitan karena ia cuma membaca JSON; gerbang
+        # bentuk butuh lembar jadi. Kalau menulis dulu lalu menguji, tokoh kembar
+        # sudah terlanjur mendarat di repo dan gerbangnya jadi laporan, bukan gerbang.
+        siap, ok = [], 0
         for c in chars:
             try:
-                w, flagged, n = build_one(c, args.out, cat, fmap, cdb, emit_sheet=not args.no_sheet)
+                sheet, used = assemble_sheet(c, cat)
+                siap.append((c, sheet, used))
+            except AssemblyError as e:
+                print(f"[GAGAL] {c.get('id','?')}: {e}", file=sys.stderr)
+        guard_231({c["id"]: s for c, s, _ in siap if c.get("named")})
+        for c, sheet, used in siap:
+            try:
+                w, flagged, n = build_one(c, args.out, cat, fmap, cdb,
+                                          emit_sheet=not args.no_sheet, sheet=sheet, used=used)
                 print(f"[OK] {c['id']}: {n} lapisan -> {len(w)} file" + ("  ⚠kredit" if flagged else ""))
                 ok += 1
             except AssemblyError as e:
@@ -336,9 +359,9 @@ def main(argv=None):
         print(f"\n{ok}/{len(chars)} tokoh dirakit.")
         return 0 if ok == len(chars) else 2
 
+    # Satu tokoh sendirian tak punya lawan banding — gerbang #231 hanya berarti
+    # lintas-tokoh (--all). Merakit satu-satu TIDAK menjamin #231.
     char = _load_json(args.input)
-    if char.get("named"):
-        guard_231([char])
     w, flagged, n = build_one(char, args.out, cat, fmap, cdb, emit_sheet=not args.no_sheet)
     print(f"[OK] {char['id']}: {n} lapisan -> {len(w)} file" + ("  ⚠kredit" if flagged else ""))
     return 0

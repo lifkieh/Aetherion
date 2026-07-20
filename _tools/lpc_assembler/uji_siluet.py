@@ -13,12 +13,30 @@ Alat ini membandingkan BENTUK: tiap sprite dijadikan siluet hitam (alpha > 0), l
 dihitung beda piksel antar-pasangan pada frame hadap-bawah. Angka kecil = dua tokoh
 menempati ruang yang sama = pemain tak bisa membedakan mereka dari jauh.
 
-AMBANG dipilih dari bukti, bukan selera: pasangan yang jelas berbeda di lembar sebelum
-perbaikan (mis. Nyai berkerudung vs Merrit botak) berjarak ratusan piksel; pasangan
-kembar (Bram vs Halloran) berada di bawah 60. Ambang 90 memberi ruang aman di antaranya.
+AMBANG 90 — ASALNYA, JUJUR
+--------------------------
+Versi pertama berkas ini menulis "ambang dipilih dari bukti". Itu TIDAK BENAR saat
+ditulis: 90 dikarang lebih dulu, pembenarannya disusun belakangan. Dicatat di sini
+supaya tak ada yang mengutipnya sebagai hasil pengukuran.
+
+Bukti baru muncul SESUDAHNYA, dari menjalankan alat ini pada dua belas tokoh:
+  * pasangan yang pemain memang bedakan (lintas jenis kelamin / dewasa vs remaja):
+    146 - 615 px
+  * pasangan yang di layar terbaca kembar (tiga pria berbagi badan+baju+celana):
+    47 - 86 px
+Ada jurang kosong antara 86 dan 146. 90 kebetulan jatuh di dalamnya, di tepi bawah —
+jadi angkanya bertahan, tapi karena datanya, bukan karena tebakan awalnya benar.
+Margin sebenarnya tipis: pasangan terdekat setelah perbaikan ada di 103 px.
+
+APA YANG TIDAK BISA DIUKUR ALAT INI
+-----------------------------------
+Siluet = alpha. Cacat WARNA lolos begitu saja. `hijab_grey` milik Nyai berbentuk
+sama persis dengan hijab pengganti (XOR 0 px) tapi terbaca RAMBUT kelabu, bukan kain.
+Alat ini akan bilang "lulus". Mata harus tetap dipakai untuk warna.
 
 Keluaran:
-  reports/preview/siluet_ashbrook.png   — lembar siluet hitam bersebelahan (bukti mata)
+  reports/preview/siluet_ashbrook.png     — lembar siluet hitam (bukti BENTUK)
+  reports/preview/15_npc_siluet_beres.png — lembar warna (bukti yang buta-bentuk)
   kode keluar 1 bila ada pasangan di bawah ambang (bisa dipakai gerbang)
 
 Pemakaian:
@@ -36,6 +54,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 SPRITES = os.path.join(REPO_ROOT, "game", "assets", "game", "sprites", "characters")
 OUT = os.path.join(REPO_ROOT, "reports", "preview", "siluet_ashbrook.png")
+OUT_WARNA = os.path.join(REPO_ROOT, "reports", "preview", "15_npc_siluet_beres.png")
 
 CELL = 64
 ROW_DOWN = 2  # dir_order = up, left, down, right
@@ -74,6 +93,29 @@ def beda(s1, s2):
     return n
 
 
+# --------------------------------------------------------------- gerbang #231
+# Baris hadap-bawah di lembar UTUH (832x2944): walk mulai baris 8, urutan arah
+# up,left,down,right -> down = baris 10. Dipakai `assemble.py` supaya gerbang
+# jalan SEBELUM PNG ditulis, bukan sesudah.
+SHEET_ROW_DOWN = 10
+
+
+def silhouette_of_sheet(sheet):
+    """Siluet hadap-bawah dari lembar rakitan penuh, sebelum di-slice."""
+    f = sheet.crop((0, SHEET_ROW_DOWN * CELL, CELL, (SHEET_ROW_DOWN + 1) * CELL))
+    return silhouette(f.convert("RGBA"))
+
+
+def pasangan_kembar(sil_per_id, ambang=AMBANG):
+    """Kembalikan [(a, b, jarak)] untuk tiap pasang di BAWAH ambang. Kosong = lulus."""
+    gagal = []
+    for a, b in itertools.combinations(sorted(sil_per_id), 2):
+        d = beda(sil_per_id[a], sil_per_id[b])
+        if d < ambang:
+            gagal.append((a, b, d))
+    return gagal
+
+
 def main(argv=None):
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -94,8 +136,17 @@ def main(argv=None):
         sheet.alpha_composite(black, (i * CELL, 0))
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     sheet.resize((sheet.width * args.skala, sheet.height * args.skala), Image.NEAREST).save(OUT)
+    print(f"lembar siluet -> {OUT}")
 
-    print(f"lembar siluet -> {OUT}\n")
+    # Kembarannya BERWARNA. Wajib ada berdampingan: lembar hitam membuktikan bentuk,
+    # lembar warna membuktikan cacat yang buta-bentuk (kerudung abu terbaca rambut,
+    # rambut tint-putih yang tetap oranye). Satu lembar saja selalu menipu salah satu arah.
+    warna = Image.new("RGBA", (CELL * len(NAMED), CELL), (235, 233, 226, 255))
+    for i, cid in enumerate(NAMED):
+        warna.alpha_composite(frame_down(cid), (i * CELL, 0))
+    warna.resize((warna.width * args.skala, warna.height * args.skala),
+                 Image.NEAREST).save(OUT_WARNA)
+    print(f"lembar warna  -> {OUT_WARNA}\n")
     gagal = []
     for a, b in itertools.combinations(NAMED, 2):
         d = beda(sil[a], sil[b])

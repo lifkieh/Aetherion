@@ -17,7 +17,7 @@
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
-  "_hook": "celemek (apron). Hook kepala = curly_short (BEDA dari Merrit botak — cacat kembar #231 dihindari by design).",
+  "_hook": "celemek (apron) + rambut curly_short. TIDAK diubah: dialah acuan yang dua pria lain harus menjauh darinya. Angka dari uji_siluet.py (XOR alpha, frame hadap-bawah), bukan selera: merrit-halloran 159 px, merrit-bram 134 px, halloran-bram 103 px. Sebelum ini ketiganya 47-86 px = kembar.",
   "undershirt": "ls_male_white",
   "tint": {
     "body": "#dcae8a"

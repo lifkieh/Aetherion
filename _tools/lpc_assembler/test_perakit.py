@@ -34,38 +34,58 @@ def _raises(fn):
 
 
 # ---- #231 -----------------------------------------------------------------
+# Gerbang ini DIGANTI: dulu ia membandingkan string id hook kepala, sekarang ia
+# membandingkan BENTUK (siluet alpha frame hadap-bawah). Test lama ikut diganti —
+# bukan karena rewel, tapi karena yang diuji memang beda: "nama lapisan berbeda"
+# tak sama dengan "pemain bisa membedakan mereka". Satu test malah BALIK arah:
+# dua tokoh botak dulu LULUS (hook unik per-id), padahal siluetnya 0 px beda.
+# Itu persis cacat yang meloloskan Old Bram berbulan-bulan.
+from PIL import Image as _Im
+import uji_siluet as U
+
+
+def _sheet(lebar, tinggi):
+    """Lembar rakitan palsu: satu blok isi di baris hadap-bawah. Bentuk = ukuran blok."""
+    s = _Im.new("RGBA", (A.SHEET_W, A.SHEET_H), (0, 0, 0, 0))
+    blok = _Im.new("RGBA", (lebar, tinggi), (255, 0, 0, 255))
+    s.alpha_composite(blok, (4, U.SHEET_ROW_DOWN * A.CELL + 4))
+    return s
+
+
 def test_231_twins_rejected():
-    """Cacat Merrit<->Halloran: dua tokoh bernama rambut sama -> HARD FAIL."""
-    a = {"id": "merrit", "named": True, "hair": "jewfro"}
-    b = {"id": "halloran", "named": True, "hair": "jewfro"}
-    assert _raises(lambda: A.guard_231([a, b])), "rambut kembar TIDAK ditolak — guard mati"
+    """Dua tokoh bernama dengan siluet sama -> HARD FAIL."""
+    sheets = {"merrit": _sheet(30, 40), "halloran": _sheet(30, 40)}
+    assert _raises(lambda: A.guard_231(sheets)), "siluet kembar TIDAK ditolak — gerbang mati"
 
 
-def test_231_distinct_hair_ok():
-    a = {"id": "a", "named": True, "hair": "jewfro"}
-    b = {"id": "b", "named": True, "hair": "curly_short"}
-    A.guard_231([a, b])  # tak boleh raise
+def test_231_distinct_shape_ok():
+    """Beda bentuk cukup jauh (>= ambang) -> lolos."""
+    sheets = {"a": _sheet(30, 40), "b": _sheet(30, 10)}   # selisih 30x30 = 900 px
+    A.guard_231(sheets)  # tak boleh raise
 
 
-def test_231_two_bald_ok():
-    """Botak = hook unik per-id, tak bentrok (Merrit botak)."""
-    a = {"id": "merrit", "named": True, "hair": None, "headwear": None}
-    b = {"id": "bram", "named": True, "hair": None, "headwear": None}
-    A.guard_231([a, b])  # tak boleh raise
+def test_231_two_bald_now_rejected():
+    """BALIK ARAH dari gerbang lama. Dua botak = 0 px beda = kembar, harus DITOLAK.
+
+    Gerbang string dulu meluluskan ini ('__bare__:<id>' selalu unik). Uji siluet
+    mengukur botak-Bram vs botak-Merrit = 0 px — mereka memang orang yang sama
+    di mata pemain.
+    """
+    sheets = {"merrit": _sheet(30, 40), "bram": _sheet(30, 40)}
+    assert _raises(lambda: A.guard_231(sheets)), "dua botak identik TIDAK ditolak"
 
 
-def test_231_headwear_beats_hair():
-    """Tutup-kepala jadi hook; dua kerudung sama -> tolak."""
-    a = {"id": "nyai", "named": True, "hair": None, "headwear": "hijab_grey"}
-    b = {"id": "x", "named": True, "hair": "jewfro", "headwear": "hijab_grey"}
-    assert _raises(lambda: A.guard_231([a, b])), "kerudung kembar TIDAK ditolak"
+def test_231_beda_tipis_tetap_ditolak():
+    """Beda ADA tapi di bawah ambang -> tetap kembar. Ini yang tak bisa diuji gerbang
+    string sama sekali: `curly_short` vs `curly_short2` = nama beda, bentuk sama."""
+    sheets = {"halloran": _sheet(30, 40), "bram": _sheet(30, 41)}   # selisih 30 px
+    assert _raises(lambda: A.guard_231(sheets)), "beda di bawah ambang TIDAK ditolak"
 
 
-def test_231_ignores_generic():
-    """NPC generik (named=false) tak kena guard."""
-    a = {"id": "npc1", "named": False, "hair": "jewfro"}
-    b = {"id": "npc2", "named": False, "hair": "jewfro"}
-    A.guard_231([a, b])  # tak boleh raise
+def test_231_satu_tokoh_lolos():
+    """Satu tokoh tak punya lawan banding — tak boleh raise, tak boleh crash."""
+    A.guard_231({"merrit": _sheet(30, 40)})
+    A.guard_231({})
 
 
 # ---- #232 -----------------------------------------------------------------
@@ -159,8 +179,8 @@ def test_232_no_sa_leak_outside_characters():
 
 
 TESTS = [
-    test_231_twins_rejected, test_231_distinct_hair_ok, test_231_two_bald_ok,
-    test_231_headwear_beats_hair, test_231_ignores_generic,
+    test_231_twins_rejected, test_231_distinct_shape_ok, test_231_two_bald_now_rejected,
+    test_231_beda_tipis_tetap_ditolak, test_231_satu_tokoh_lolos,
     test_232_rejects_tiles, test_232_rejects_ui, test_232_rejects_bare_sprites,
     test_232_accepts_characters, test_232_no_sa_leak_outside_characters,
     test_missing_hair_id_errors, test_layer_plan_zorder_bald_merrit,

@@ -7,5 +7,6 @@
 - undershirt:ls_male_slate: eulpc_torso_longsleeve_male_slate.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - torso:overalls: eulpc_torso_overalls_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:male: eulpc_head_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- headwear:feather_cap_walnut: eulpc_hat_feather_cap_walnut.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

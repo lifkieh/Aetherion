@@ -7,7 +7,7 @@
 - undershirt:ls_female_charcoal: eulpc_torso_longsleeve_female_charcoal.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - torso:sleeveless2: eulpc_torso_sleeveless2_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:female: eulpc_head_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- headwear:hijab_grey: hijabgrey.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- headwear:hijab_navy: eulpc_hijab_navy.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - story_prop:cane: lpc_simple_staff_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

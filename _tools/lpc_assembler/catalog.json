@@ -29,14 +29,24 @@
     "parted_side_bangs":  "eulpc_hair_parted_side_bangs.png",
     "parted_side_bangs2": "eulpc_hair_parted_side_bangs2.png",
     "swoop_side":         "eulpc_hair_swoop_side.png",
+    "longknot_white":     "eulpc_hair_longknot_white.png",
+    "longknot_ash":       "eulpc_hair_longknot_ash.png",
+    "shortknot_gray":     "eulpc_hair_shortknot_gray.png",
+    "jewfro_ash":         "eulpc_hair_jewfro_ash.png",
     "braid_left":         "eulpc_hairext_braidl.png",
     "braid_right":        "eulpc_hairext_braidr.png",
     "topknot_long":       ["eulpc_hairext_topknot_long_bg.png", "eulpc_hairext_topknot_long_fg.png"]
   },
 
+  "_hair_beruban_doc": "Rambut beruban HARUS lapisan warna asli. `tint` di perakit adalah MULTIPLY — ia cuma bisa menggelapkan, jadi memutihkan rambut lewat tint gagal DIAM-DIAM (tak ada galat, warna tak berubah). Berlaku umum untuk NPC tua/pirang.",
+
+  "_headwear_doc": "Tuas siluet TERBESAR yang dimiliki LPC. Diukur di luar siluet pria berpakaian (frame hadap-bawah): feather_cap 164 px, hood 73 px, hood_sack 24 px, bandana 0 px. Bandingkan: celana/sepatu/torso apa pun = 0 px, badan `muscular` cuma 34 px. Pakaian LPC dilukis DI DALAM garis badan, jadi memisahkan tokoh lewat potongan baju TIDAK MUNGKIN di pustaka ini.",
   "headwear": {
     "hijab_grey":  "hijabgrey.png",
     "hijab_blue":  "hijabblue.png",
+    "hijab_navy":  "eulpc_hijab_navy.png",
+    "feather_cap_walnut": "eulpc_hat_feather_cap_walnut.png",
+    "hood_charcoal":      "eulpc_hat_hood_charcoal.png",
     "wizard_hat_m": "wizard_hat_male.png",
     "wizard_hat_f": "wizard_hat_female.png"
   },

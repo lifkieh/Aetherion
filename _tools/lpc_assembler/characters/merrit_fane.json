@@ -6,7 +6,7 @@
   "head": "male",
   "skin": "light",
   "hair": null,
-  "headwear": null,
+  "headwear": "feather_cap_walnut",
   "facial": {
     "beard": null
   },
@@ -16,7 +16,7 @@
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
-  "_hook": "botak + duduk + LAMPU (lampu = prop scene, bukan overlay sprite; putusan Direktur #1). Surat DICORET sbg prop tangan.",
+  "_hook": "TOPI BERBULU di atas kepala botak. Sebelumnya botak-polos, dan itu GAGAL: botak vs botak = 0 px beda siluet, botak vs Halloran-berambut cuma 86 px. Topi menambah 164 px massa di luar garis badan — tuas siluet terbesar yang dipunyai pustaka LPC. Lampu tetap prop scene (putusan Direktur #1), surat dicoret prop tangan. Angka dari uji_siluet.py (XOR alpha, frame hadap-bawah), bukan selera: merrit-halloran 159 px, merrit-bram 134 px, halloran-bram 103 px. Sebelum ini ketiganya 47-86 px = kembar.",
   "_note": "hair=null & headwear=null -> hook __bare__ unik (#231). Frame duduk ada di sheet (baris expanded).",
   "undershirt": "ls_male_slate",
   "tint": {

@@ -83,6 +83,45 @@ def stitch(zf, variant, sex, color):
     return canvas
 
 
+# ---------------------------------------------------------------- salin utuh
+# Sebagian pack ULPC sudah dikirim sebagai lembar penuh (832x2944) atau lembar
+# klasik (832x1344, ditempel rata-atas oleh assemble.py). Lapisan itu tak perlu
+# dijahit — cuma perlu DIKELUARKAN dari zip. Dicatat di sini, bukan disalin tangan,
+# supaya #240 tetap berlaku: tiap PNG di pustaka punya baris yang membuatnya.
+#
+# (zip, entry di dalam zip, nama keluaran)
+COPIES = [
+    # --- tutup kepala: SATU-SATUNYA tuas siluet yang cukup besar di LPC ---
+    #     Diukur pada frame hadap-bawah, di luar siluet pria berpakaian:
+    #       feather_cap 164 px | hood 73 px | hood_sack 24 px | bandana 0 px
+    #       celana/sepatu/baju  0 px  <- pakaian LPC dilukis DI DALAM garis badan
+    #     Itu sebabnya "potongan baju berbeda" tak bisa memisahkan siluet siapa pun.
+    ("lpc-2024-12-10-expanded-ulpc-facial-assets.zip",
+     "hat/cloth/feather_cap/adult/walnut.png", "eulpc_hat_feather_cap_walnut"),
+    ("lpc-2024-12-10-expanded-ulpc-facial-assets.zip",
+     "hat/cloth/hood/adult/charcoal.png", "eulpc_hat_hood_charcoal"),
+    # kerudung ULPC asli. `hijabgrey.png` lama berbentuk sama persis (XOR 0 px) tapi
+    # dibayang ABU — dari jauh terbaca RAMBUT kelabu, bukan kain. Bentuk bukan
+    # masalahnya; warna yang jadi masalah. Varian `thin` + warna jenuh membaca kain.
+    ("lpc-2024-12-10-expanded-ulpc-facial-assets.zip",
+     "hat/cloth/hijab/thin/navy.png", "eulpc_hijab_navy"),
+
+    # --- rambut BERUBAN ASLI ---
+    #     `_tint` adalah MULTIPLY: ia cuma bisa menggelapkan. `tint.hair = "#d8d4cc"`
+    #     di atas rambut oranye tetap oranye — gagal DIAM-DIAM, tak ada galat.
+    #     Rambut tua/pirang WAJIB lapisan warna asli, bukan tint. Berlaku umum,
+    #     bukan cuma untuk Bram.
+    ("hairstyles-2024-03-10.zip",
+     "longknot/universal/adult_universal_hair_longknot/white.png", "eulpc_hair_longknot_white"),
+    ("hairstyles-2024-03-10.zip",
+     "longknot/universal/adult_universal_hair_longknot/ash.png", "eulpc_hair_longknot_ash"),
+    ("hairstyles-2024-03-10.zip",
+     "shortknot/universal/adult_universal_hair_shortknot/gray.png", "eulpc_hair_shortknot_gray"),
+    ("hairstyles-2024-03-10.zip",
+     "jewfro/universal/adult_universal_hair_jewfro/ash.png", "eulpc_hair_jewfro_ash"),
+]
+
+
 # (zip, variant, sex, color, nama keluaran)
 # Warna dipilih supaya enam tokoh TIDAK seragam — desa dihuni orang berbeda.
 JOBS = [
@@ -126,6 +165,20 @@ def main(argv=None):
 
     os.makedirs(LIB, exist_ok=True)
     ok = 0
+    for zname, entry, out in COPIES:
+        try:
+            zf = _zip(zname)
+            if entry not in zf.namelist():
+                raise LayerError(f"tak ada di zip {zname}: {entry}")
+            im = Image.open(io.BytesIO(zf.read(entry))).convert("RGBA")
+            w, h = im.size
+            if w != SHEET_W or h not in (1344, SHEET_H):
+                raise LayerError(f"{entry}: {w}x{h} bukan lembar LPC (832x1344 / 832x2944).")
+            im.save(os.path.join(LIB, out + ".png"))
+            print(f"[SALIN] {out}.png  ({w}x{h})")
+            ok += 1
+        except LayerError as e:
+            print(f"[GAGAL] {out}: {e}", file=sys.stderr)
     for zname, variant, sex, color, out in JOBS:
         try:
             zf = _zip(zname)
@@ -136,8 +189,9 @@ def main(argv=None):
             ok += 1
         except LayerError as e:
             print(f"[GAGAL] {out}: {e}", file=sys.stderr)
-    print(f"\n{ok}/{len(JOBS)} lapisan dijahit -> {LIB}")
-    return 0 if ok == len(JOBS) else 2
+    total = len(JOBS) + len(COPIES)
+    print(f"\n{ok}/{total} lapisan siap -> {LIB}")
+    return 0 if ok == total else 2
 
 
 if __name__ == "__main__":

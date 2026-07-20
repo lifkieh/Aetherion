@@ -8,6 +8,6 @@
 - torso:overalls: eulpc_torso_overalls_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:male: eulpc_head_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - beard:white: whitebeard.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:jewfro: eulpc_hair_jewfro.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:longknot_white: eulpc_hair_longknot_white.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

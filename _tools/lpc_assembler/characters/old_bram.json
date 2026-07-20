@@ -5,7 +5,7 @@
   "body": "male",
   "head": "male",
   "skin": "light",
-  "hair": "jewfro",
+  "hair": "longknot_white",
   "headwear": null,
   "facial": {
     "beard": "white"
@@ -16,11 +16,10 @@
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
-  "_hook": "JEWFRO PUTIH + JANGGUT PUTIH. Dua kali salah sebelum ini, dicatat supaya tak terulang: (1) hair `curly_short2` nyaris kembar dengan `curly_short` milik Halloran — guard_231 meloloskannya karena membandingkan STRING id, bukan bentuk; (2) BOTAK+janggut diukur uji_siluet.py = 0 px beda dari Merrit yang juga botak — janggut ternyata hook WARNA, bukan BENTUK (hanya 14 px di luar siluet kepala). Jewfro menambah 47 px massa rambut; janggut putih tinggal jadi penegas warna, bukan pemikul beban siluet.",
+  "_hook": "RAMBUT SANGGUL PUTIH (lapisan warna asli) + JANGGUT PUTIH. Tiga kali salah sebelum ini: (1) `curly_short2` nyaris kembar dengan `curly_short` milik Halloran — guard_231 lolos karena membandingkan STRING id, bukan bentuk; (2) BOTAK+janggut = 0 px beda dari Merrit yang juga botak — janggut ternyata hook WARNA (cuma 14 px di luar siluet kepala), bukan hook BENTUK; (3) `jewfro` + tint putih: rambut TETAP oranye. `_tint` adalah MULTIPLY, ia cuma bisa menggelapkan. Gagal diam-diam, tanpa galat. Sekarang lapisan `longknot_white` memang sudah putih dari sumbernya. Tongkat SENGAJA tidak dipinjam — tongkat milik Nyai, prop identitasnya. Angka dari uji_siluet.py (XOR alpha, frame hadap-bawah), bukan selera: merrit-halloran 159 px, merrit-bram 134 px, halloran-bram 103 px. Sebelum ini ketiganya 47-86 px = kembar.",
   "undershirt": "ls_male_walnut",
   "tint": {
-    "body": "#e8c6a8",
-    "hair": "#d8d4cc"
+    "body": "#e8c6a8"
   },
   "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }
