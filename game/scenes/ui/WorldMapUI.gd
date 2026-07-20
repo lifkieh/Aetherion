@@ -94,7 +94,7 @@ func _collect_markers() -> Array:
 			"world_gate": icon = "🌍"; name = "Gerbang Penjelajah"
 			"tree_keeper": icon = "🌳"; name = "Penjaga Pohon"
 			"shop": icon = "$"; name = "Pedagang"
-			"bench": icon = "⚒"; name = "Bengkel"
+			"workbench": icon = "⚒"; name = "Bengkel"
 			"inn": icon = "🛏"; name = "Penginapan"
 			"board": icon = "📜"; name = "Papan Quest"
 			"astrologer": icon = "✧"; name = "Astrolog"

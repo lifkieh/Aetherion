@@ -146,7 +146,7 @@ func _build_resident() -> void:
 	# A themed NPC inside the building providing its service (reuses Interactable kinds).
 	var kind := ""
 	match variant:
-		"blacksmith": kind = "bench"
+		"blacksmith": kind = "workbench"
 		"inn": kind = "inn"
 		"store": kind = "shop"
 		_: return                      # plain houses have no service NPC

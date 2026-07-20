@@ -232,7 +232,7 @@ static func _deco_at(holder: Node2D, tex: Texture2D, pos: Vector2) -> void:
 static func _place_npcs(host: Node2D, center: Vector2) -> void:
 	# [kind, offset] — placed just outside their building's door
 	var npcs := [
-		["bench", Vector2(-210, -66)],        # blacksmith (crafting) by the forge
+		["workbench", Vector2(-210, -66)],    # blacksmith (crafting) by the forge
 		["shop", Vector2(292, 68)],           # merchant by the store
 		["astrologer", Vector2(-300, 78)],    # astrologer by the tower
 		["inn", Vector2(292, -62)],           # innkeeper by the inn

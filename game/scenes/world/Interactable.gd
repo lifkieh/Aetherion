@@ -1,7 +1,11 @@
 extends Node2D
 ## World interactable (M5): crafting bench or shop NPC. Press E nearby.
 
-var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon | house_door | guide
+## PEMISAHAN bench/workbench (putusan Direktur 2026-07-18): dua benda beda yang
+## kebetulan sama nama Inggris. `workbench` = meja tempa fungsional (37 resep,
+## label "Bengkel", punya jam kerja). `bench` = bangku duduk, perabot CERITA
+## (8 di alun-alun Ashbrook) — tak meramu apa pun, tak pergi ke penginapan malam hari.
+var kind := "workbench"   # workbench | bench | shop | inn | board | astrologer | pond | dungeon | house_door | guide
 var dungeon_scene := "res://scenes/world/GreenvaleDepths.tscn"
 var dungeon_label := "Gua Greenvale ▼ [E]"
 var custom_label := ""              # override the door/sign label (R2 town buildings)
@@ -23,7 +27,10 @@ var _home_pos := Vector2.ZERO      # pos kerja (JADWAL NPC, #97)
 var _sched_cd := 0.0
 
 ## NPC fungsional yang punya jam kerja: malam hari mereka pindah ke penginapan.
-const WORKERS := ["bench", "shop", "enchanter", "auctioneer", "trainer"]
+## `workbench` (bukan `bench`): yang punya jam kerja adalah pandai besinya. Bangku
+## alun-alun TIDAK boleh ikut — 8 bangku yang berpindah ke penginapan tiap malam
+## mengosongkan alun-alun peringatan itu sendiri.
+const WORKERS := ["workbench", "shop", "enchanter", "auctioneer", "trainer"]
 
 func _ready() -> void:
 	add_to_group("interactable")
@@ -121,6 +128,20 @@ func _build() -> void:
 		_char_sprite({"head_race": "human2", "torso_race": "human2", "legs_race": "human2",
 			"hair": "short", "hair_color": "#241f36", "shirt": "#c9a227", "pants": "#453d5c"})
 		label.text = "Pedagang [E]"
+	elif kind == "workbench":
+		sprite.texture = load("res://assets/game/sprites/props/workbench.png")
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.scale = Vector2.ONE
+		sprite.offset = Vector2(0, -8)
+		label.text = "Bengkel [E]"
+	elif kind == "bench":
+		# Perabot CERITA, bukan stasiun. Label kosong = tak ada ajakan tekan-E
+		# (#210 tunjukkan-jangan-papan-informasikan · D-3 nol penanda).
+		sprite.texture = load("res://assets/game/sprites/props/bench.png")
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.scale = Vector2.ONE
+		sprite.offset = Vector2(0, -4)
+		label.text = ""
 	else:
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(1.8, 1.4)
@@ -157,6 +178,8 @@ func examine_notice() -> String:
 func interact() -> void:
 	if Stage.is_busy():
 		return
+	if kind == "bench":
+		return   # bangku duduk = perabot, bukan stasiun. Diam total (D-3).
 	if kind == "examine":
 		# Teks periksa BIASA (speaker "" = narasi, bukan NPC). Bukan toast/banner (D-3).
 		var n := examine_notice()
