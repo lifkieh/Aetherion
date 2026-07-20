@@ -140,14 +140,25 @@ def _layer_plan(char, cat):
     if not char.get("skip_legs"):
         add("legs", char.get("legs"), tint=tints.get("legs"), required=bool(char.get("legs")))
         add("feet", char.get("feet"), tint=tints.get("feet"), required=bool(char.get("feet")))
-    # 6 torso (+ apron/celemek di atas torso)
+    # 6 undershirt -> torso -> apron. TIGA lapis, bukan satu.
+    #    `overalls`/`sleeveless2` di pustaka ULPC memang TANPA LENGAN — mereka dirancang
+    #    dipakai DI ATAS kemeja, bukan langsung di kulit. Katalog #239 tak punya slot untuk
+    #    kemeja itu, jadi enam tokoh Ashbrook lahir berlengan & berdada telanjang meski
+    #    JSON-nya menyebut `torso`. Slot ini menutup celah itu (lapisan dari gen_layers.py).
+    add("undershirt", char.get("undershirt"), tint=tints.get("undershirt"),
+        required=bool(char.get("undershirt")))
     add("torso", char.get("torso"), tint=tints.get("torso"), required=bool(char.get("torso")))
     add("apron", char.get("apron"), tint=tints.get("apron"), required=bool(char.get("apron")))
     # 7 kepala (+ palette shift)  — KOREKSI SPEC §3: kepala SEBELUM janggut, kalau tidak
     #    kepala menimpa janggut & hook Old Bram hilang (ditemukan uji visual #151b).
+    #    KEPALA MEWARISI WARNA BADAN. Pustaka eulpc cuma punya SATU nada kulit, jadi variasi
+    #    kulit dilakukan lewat `tint.body`. Sebelum ini kepala tak ikut diwarnai — badan cokelat
+    #    di atas leher pucat, cacat yang cuma kelihatan kalau tint dipakai (dan #239 tak memakainya,
+    #    jadi ia tak pernah ketahuan). `tint.head` bisa menimpa bila memang diinginkan beda.
     head_key = char.get("head", char["body"])
+    head_tint = tints.get("head", body_tint)
     plan.append(("head:" + head_key, _resolve_path(cat["head"][head_key], cat),
-                 ("__pshift__:" + pshift) if pshift else None))
+                 ("__pshift__:" + pshift) if pshift else head_tint))
     # 8 beard (DI DEPAN wajah, kanon ULPC z-beard > z-head)
     facial = char.get("facial", {}) or {}
     add("beard", facial.get("beard"), required=bool(facial.get("beard")))
@@ -158,7 +169,7 @@ def _layer_plan(char, cat):
     if char.get("headwear"):
         add("headwear", char["headwear"])
     elif char.get("hair"):
-        add("hair", char["hair"])
+        add("hair", char["hair"], tint=tints.get("hair"))
     # 11 leaf_hair / starhat
     if "leaf_hair" in ro:
         add("race_overlay", "leaf_hair")

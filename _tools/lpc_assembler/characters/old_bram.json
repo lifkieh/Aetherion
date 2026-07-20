@@ -5,14 +5,22 @@
   "body": "male",
   "head": "male",
   "skin": "light",
-  "hair": "curly_short2",
+  "hair": "jewfro",
   "headwear": null,
-  "facial": { "beard": "white" },
+  "facial": {
+    "beard": "white"
+  },
   "torso": "overalls",
   "legs": "pants_thin",
   "feet": "shoes_thin",
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
-  "_hook": "janggut putih (beard=white). Sang Penempa (echo_bramm)."
+  "_hook": "JEWFRO PUTIH + JANGGUT PUTIH. Dua kali salah sebelum ini, dicatat supaya tak terulang: (1) hair `curly_short2` nyaris kembar dengan `curly_short` milik Halloran — guard_231 meloloskannya karena membandingkan STRING id, bukan bentuk; (2) BOTAK+janggut diukur uji_siluet.py = 0 px beda dari Merrit yang juga botak — janggut ternyata hook WARNA, bukan BENTUK (hanya 14 px di luar siluet kepala). Jewfro menambah 47 px massa rambut; janggut putih tinggal jadi penegas warna, bukan pemikul beban siluet.",
+  "undershirt": "ls_male_walnut",
+  "tint": {
+    "body": "#e8c6a8",
+    "hair": "#d8d4cc"
+  },
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }

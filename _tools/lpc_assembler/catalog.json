@@ -57,6 +57,21 @@
     "sleeveless2":      "eulpc_torso_sleeveless2_female.png",
     "cardigan_teen":    "eulpc_torso_cardigan_teen.png"
   },
+
+  "_undershirt_doc": "Kemeja berlengan, dijahit gen_layers.py dari longsleeve-shirts.zip. `overalls` & `sleeveless2` TANPA lengan by design — mereka dipakai DI ATAS salah satu ini. Tanpa slot ini tokoh berlengan telanjang.",
+  "undershirt": {
+    "ls_male_slate":      "eulpc_torso_longsleeve_male_slate.png",
+    "ls_male_white":      "eulpc_torso_longsleeve_male_white.png",
+    "ls_male_walnut":     "eulpc_torso_longsleeve_male_walnut.png",
+    "ls_male_forest":     "eulpc_torso_longsleeve_male_forest.png",
+    "ls_male_maroon":     "eulpc_torso_longsleeve_male_maroon.png",
+    "ls_female_maroon":   "eulpc_torso_longsleeve_female_maroon.png",
+    "ls_female_charcoal": "eulpc_torso_longsleeve_female_charcoal.png",
+    "ls_female_forest":   "eulpc_torso_longsleeve_female_forest.png",
+    "ls_female_sky":      "eulpc_torso_longsleeve_female_sky.png",
+    "ls_teen_teal":       "eulpc_torso_longsleeve_teen_teal.png",
+    "ls_teen_rose":       "eulpc_torso_longsleeve_teen_rose.png"
+  },
   "legs": {
     "pants_thin":  "eulpc_legs_pants_thin.png",
     "hose_thin":   "eulpc_legs_hose_thin.png",

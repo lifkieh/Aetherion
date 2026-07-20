@@ -7,7 +7,9 @@
   "skin": "light",
   "hair": "curly_short",
   "headwear": null,
-  "facial": { "beard": null },
+  "facial": {
+    "beard": null
+  },
   "torso": "overalls",
   "apron": "male",
   "legs": "pants_thin",
@@ -15,5 +17,10 @@
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
-  "_hook": "celemek (apron). Hook kepala = curly_short (BEDA dari Merrit botak — cacat kembar #231 dihindari by design)."
+  "_hook": "celemek (apron). Hook kepala = curly_short (BEDA dari Merrit botak — cacat kembar #231 dihindari by design).",
+  "undershirt": "ls_male_white",
+  "tint": {
+    "body": "#dcae8a"
+  },
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }

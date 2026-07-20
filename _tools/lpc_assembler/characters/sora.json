@@ -7,12 +7,22 @@
   "skin": "light",
   "hair": "swoop_side",
   "headwear": null,
-  "facial": { "beard": null },
+  "facial": {
+    "beard": null
+  },
   "torso": "cardigan_teen",
   "legs": "pants_thin",
   "feet": "shoes_thin",
   "race_overlay": [],
-  "story_prop": ["lantern", "lantern_glow"],
+  "story_prop": [
+    "lantern",
+    "lantern_glow"
+  ],
   "palette_shift": null,
-  "_hook": "teen + lentera + GLOW WAJIB (#237: glow tak boleh dihilangkan demi optimasi). Menyalakan lampu utk orang asing bertahun-tahun -> kepekaannya HASIL, bukan bakat (#224)."
+  "_hook": "teen + lentera + GLOW WAJIB (#237: glow tak boleh dihilangkan demi optimasi). Menyalakan lampu utk orang asing bertahun-tahun -> kepekaannya HASIL, bukan bakat (#224).",
+  "undershirt": "ls_teen_teal",
+  "tint": {
+    "body": "#eccaa8"
+  },
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }

@@ -7,7 +7,9 @@
   "skin": "light",
   "hair": null,
   "headwear": null,
-  "facial": { "beard": null },
+  "facial": {
+    "beard": null
+  },
   "torso": "overalls",
   "legs": "pants_thin",
   "feet": "shoes_thin",
@@ -15,5 +17,10 @@
   "story_prop": [],
   "palette_shift": null,
   "_hook": "botak + duduk + LAMPU (lampu = prop scene, bukan overlay sprite; putusan Direktur #1). Surat DICORET sbg prop tangan.",
-  "_note": "hair=null & headwear=null -> hook __bare__ unik (#231). Frame duduk ada di sheet (baris expanded)."
+  "_note": "hair=null & headwear=null -> hook __bare__ unik (#231). Frame duduk ada di sheet (baris expanded).",
+  "undershirt": "ls_male_slate",
+  "tint": {
+    "body": "#f0d0b4"
+  },
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }

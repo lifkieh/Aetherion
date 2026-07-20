@@ -7,12 +7,21 @@
   "skin": "light",
   "hair": "topknot_long",
   "headwear": null,
-  "facial": { "beard": null },
+  "facial": {
+    "beard": null
+  },
   "torso": "sleeveless2",
   "legs": "hose_thin",
   "feet": "shoes_thin",
   "race_overlay": [],
-  "story_prop": ["sewing_basket"],
+  "story_prop": [
+    "sewing_basket"
+  ],
   "palette_shift": null,
-  "_hook": "sanggul (topknot_long) + keranjang benang (sewing_basket, prop duduk). Penjahit. Korban Chronicle (person_otha_renn) yang tak pernah punya halaman."
+  "_hook": "sanggul (topknot_long) + keranjang benang (sewing_basket, prop duduk). Penjahit. Korban Chronicle (person_otha_renn) yang tak pernah punya halaman.",
+  "undershirt": "ls_female_maroon",
+  "tint": {
+    "body": "#c69a78"
+  },
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }

@@ -4,6 +4,7 @@
 - body:teen: eulpc_body_teen.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - legs:pants_thin: eulpc_legs_pants_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- undershirt:ls_teen_teal: eulpc_torso_longsleeve_teen_teal.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - torso:cardigan_teen: eulpc_torso_cardigan_teen.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:female: eulpc_head_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - hair:swoop_side: eulpc_hair_swoop_side.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]

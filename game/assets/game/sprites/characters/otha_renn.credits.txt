@@ -4,6 +4,7 @@
 - body:female: eulpc_body_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - legs:hose_thin: eulpc_legs_hose_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- undershirt:ls_female_maroon: eulpc_torso_longsleeve_female_maroon.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - torso:sleeveless2: eulpc_torso_sleeveless2_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:female: eulpc_head_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - hair:topknot_long: eulpc_hairext_topknot_long_bg.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]

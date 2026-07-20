@@ -7,12 +7,21 @@
   "skin": "light",
   "hair": null,
   "headwear": "hijab_grey",
-  "facial": { "beard": null },
+  "facial": {
+    "beard": null
+  },
   "torso": "sleeveless2",
   "legs": "hose_thin",
   "feet": "shoes_thin",
   "race_overlay": [],
-  "story_prop": ["cane"],
+  "story_prop": [
+    "cane"
+  ],
   "palette_shift": null,
-  "_hook": "kerudung (hijab_grey) + tongkat (cane, adaptasi lpc_simple_staff). Bungkuk-badan DITOLAK (mahal); tongkat isyaratkan tua tanpa menekuk badan (PROP_IDENTITAS §4)."
+  "_hook": "kerudung (hijab_grey) + tongkat (cane, adaptasi lpc_simple_staff). Bungkuk-badan DITOLAK (mahal); tongkat isyaratkan tua tanpa menekuk badan (PROP_IDENTITAS §4).",
+  "undershirt": "ls_female_charcoal",
+  "tint": {
+    "body": "#a87c5c"
+  },
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
 }
