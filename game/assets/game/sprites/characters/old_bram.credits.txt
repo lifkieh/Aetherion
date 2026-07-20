@@ -1,13 +1,11 @@
 # Kredit sprite: old_bram
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:male: eulpc_body_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:pants_thin: eulpc_legs_pants_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- undershirt:ls_male_walnut: eulpc_torso_longsleeve_male_walnut.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:overalls: eulpc_torso_overalls_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:male: eulpc_head_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- beard:white: whitebeard.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:longknot_white: eulpc_hair_longknot_white.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:male: eulpc_body_male.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- legs:pants_thin: eulpc_legs_pants_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:shoes_thin: eulpc_feet_shoes_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- undershirt:ls_male_walnut: eulpc_torso_longsleeve_male_walnut.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:overalls: eulpc_torso_overalls_male.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- head:male: eulpc_head_male.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- beard:white: whitebeard.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk) (CC-BY-SA 3.0 / GPL 3.0)
+- hair:longknot_white: eulpc_hair_longknot_white.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)

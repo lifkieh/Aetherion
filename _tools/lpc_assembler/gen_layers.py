@@ -120,6 +120,27 @@ COPIES = [
     ("hairstyles-2024-03-10.zip",
      "jewfro/universal/adult_universal_hair_jewfro/ash.png", "eulpc_hair_jewfro_ash"),
 
+    # --- rambut BERWARNA untuk warga latar ---
+    #     Lapisan `eulpc_hair_*` lama semuanya SATU warna (oranye). Dua puluh warga
+    #     berambut oranye = dua puluh saudara kandung. Dan warna adalah satu-satunya
+    #     tuas yang dipunyai warga latar: #275b melepas mereka dari siluet-unik justru
+    #     karena di LPC cuma tutup-kepala yang berdaya bentuk. Melepas siluet TANPA
+    #     memberi warna = melepas pembeda terakhir mereka.
+    ("hairstyles-2024-03-10.zip",
+     "jewfro/universal/adult_universal_hair_jewfro/black.png", "eulpc_hair_jewfro_black"),
+    ("hairstyles-2024-03-10.zip",
+     "jewfro/universal/adult_universal_hair_jewfro/chestnut.png", "eulpc_hair_jewfro_chestnut"),
+    ("hairstyles-2024-03-10.zip",
+     "jewfro/universal/adult_universal_hair_jewfro/gold.png", "eulpc_hair_jewfro_gold"),
+    ("hairstyles-2024-03-10.zip",
+     "side_swoop/universal/adult_universal_side_swoop/black.png", "eulpc_hair_swoop_black"),
+    ("hairstyles-2024-03-10.zip",
+     "side_swoop/universal/adult_universal_side_swoop/chestnut.png", "eulpc_hair_swoop_chestnut"),
+    ("hairstyles-2024-03-10.zip",
+     "longknot/universal/adult_universal_hair_longknot/dark_brown.png", "eulpc_hair_longknot_darkbrown"),
+    ("hairstyles-2024-03-10.zip",
+     "shortknot/universal/adult_universal_hair_shortknot/raven.png", "eulpc_hair_shortknot_raven"),
+
     # --- rambut ANAK (832x2944, langsung pakai) ---
     ("lpc-2024-11-09-redrawn-topknot-hairstyles.zip",
      "hair/jewfro/child/chestnut.png", "eulpc_hair_child_jewfro_chestnut"),

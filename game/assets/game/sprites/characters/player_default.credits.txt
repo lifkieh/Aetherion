@@ -1,11 +1,9 @@
 # Kredit sprite: player_default
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:male: eulpc_body_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:pants_thin: eulpc_legs_pants_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:sleeveless2: eulpc_torso_sleeveless2_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:male: eulpc_head_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:parted2: eulpc_hair_parted2.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:male: eulpc_body_male.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- legs:pants_thin: eulpc_legs_pants_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:shoes_thin: eulpc_feet_shoes_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:sleeveless2: eulpc_torso_sleeveless2_female.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- head:male: eulpc_head_male.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- hair:parted2: eulpc_hair_parted2.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)

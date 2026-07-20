@@ -1,14 +1,12 @@
 # Kredit sprite: otha_renn
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:female: eulpc_body_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:hose_thin: eulpc_legs_hose_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:shoes_thin: eulpc_feet_shoes_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- undershirt:ls_female_maroon: eulpc_torso_longsleeve_female_maroon.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:sleeveless2: eulpc_torso_sleeveless2_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:female: eulpc_head_female.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:topknot_long: eulpc_hairext_topknot_long_bg.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:topknot_long: eulpc_hairext_topknot_long_fg.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- story_prop:sewing_basket: sewing_basket.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:female: eulpc_body_female.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- legs:hose_thin: eulpc_legs_hose_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:shoes_thin: eulpc_feet_shoes_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- undershirt:ls_female_maroon: eulpc_torso_longsleeve_female_maroon.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:sleeveless2: eulpc_torso_sleeveless2_female.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- head:female: eulpc_head_female.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- hair:topknot_long: eulpc_hairext_topknot_long_bg.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- hair:topknot_long: eulpc_hairext_topknot_long_fg.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- story_prop:sewing_basket: sewing_basket.png — Proyek Aetherion, digambar oleh gen_overlays.py (CC-BY-SA 3.0)
