@@ -124,7 +124,22 @@ func _spawn_player() -> void:
 	var p := preload("res://scenes/actors/Player.tscn").instantiate()
 	add_child(p)
 	_player = p
-	p.global_position = MERRIT_HOUSE + Vector2(96, 64)   # di depan pintu Merrit
+	# LAHIR DI GERBANG SELATAN (spec D4), bukan di tengah desa.
+	#
+	# Dulu pemain lahir di depan pintu Merrit — sudah DI DALAM desa, jadi ketimpangan
+	# yang jadi seluruh tesis Ashbrook (kota untuk 1500, dihuni 40) baru terbaca kalau
+	# ia kebetulan berjalan ke pinggir. Lahir di gerbang membalik urutannya: langkah
+	# pertama menghadap ke UTARA, dan yang dilihat lebih dulu adalah pemakaman yang
+	# terlalu besar, denah rumah yang tak berisi, lalu barulah alun-alun yang ramai.
+	# Ketimpangan dibaca sebagai perjalanan, bukan sebagai penemuan kebetulan.
+	#
+	# y 1222: dua syarat sekaligus. (1) cukup jauh di utara tabrakan pilar (1298)
+	# supaya pemain lahir di ruang berpijak lapang, tidak terjepit batu gerbangnya
+	# sendiri. (2) LEBIH DARI 72 px (`Ashbrook64Prop.NEAR`) dari prop gerbang (1288) — pada jarak 158 px
+	# label "Jalan keluar Ashbrook [E]" muncul di frame pertama, dan langkah nol
+	# yang menawarkan PERGI membatalkan seluruh maksud lahir-di-gerbang. Pemain
+	# harus melihat desanya dulu; pintu keluar menunggu, tak memanggil. Jarak kini 94 px.
+	p.global_position = Vector2(VC.x, float(MAP_H * TILE) - 214.0)
 	# Kamera Player dipatok 2.0 untuk dunia 16px. Di petak 32 itu memperbesar dua
 	# kali lipat: layar cuma memuat ~14x8 petak dan alun-alun tak lagi muat.
 	# ZOOM di berkas ini adalah angka yang sudah dinilai pada 5b — pakai itu.
@@ -1042,12 +1057,31 @@ func _pintu_dan_interior() -> void:
 ## putusan "Ashbrook64 ganti vs dampingi 16px" menunggu playtest. Menyambungkannya
 ## sekarang berarti menjawab pertanyaan yang belum ditanyakan.
 func _gerbang_keluar() -> void:
-	var g := _prop(Vector2(96, VC.y))
+	# DIPINDAH KE SELATAN — memperbaiki "janji yang diingkari".
+	#
+	# Dulu ada DUA gerbang, dan yang SALAH yang berfungsi: penanda kecil di tepi
+	# BARAT (96, 704) benar-benar mengeluarkan pemain, sementara gerbang selatan —
+	# megah, berkarat, berdiri di ujung jalan — nol interaksi. Pemain hampir pasti
+	# berjalan ke selatan, menekan E di bawah dua pilar batu, dan tak terjadi apa-apa.
+	# Cacat yang sama persis yang dihindari mati-matian di treeline: yang TERLIHAT
+	# seperti pintu HARUS jadi pintu.
+	#
+	# Penanda barat DICABUT, bukan dimatikan — dua gerbang membingungkan. Ia juga
+	# memakai `wall_ruin.png` sebagai "batu penjuru aus", padahal audit-mata
+	# membuktikan berkas itu PAGAR KAYU UTUH (lpc32/DEPRECATED.md).
+	#
+	# ⚠ TAPI ITU BUKAN SATU-SATUNYA. Dua pemakaian `wall_ruin.png` lain MASIH ADA dan
+	# lebih parah, karena keduanya menopang BUKTI CERITA, bukan hiasan:
+	#   :728  "reruntuhan" pendamping `ev_ashbrook_fondasi_rumput`
+	#   :731  "batu fondasi berpahat" pendamping `ev_ashbrook_batu_fondasi`
+	# Keduanya menggambarkan batu, dan yang tergambar adalah pagar kayu. Tak diganti
+	# di sini: mengganti aset pendamping titik-periksa menyentuh jalur payoff, dan itu
+	# putusan tersendiri — bukan efek samping perbaikan gerbang. Dilaporkan, dicatat.
+	#
+	# Ditaruh di UTARA pilar (1288 vs pilar 1298-1326): pemain berdiri DI DEPAN
+	# gerbang, bukan di dalam batunya.
+	var g := _prop(Vector2(VC.x, float(MAP_H * TILE) - 120.0))
 	g.setup_gerbang("Jalan keluar Ashbrook [E]")
-	# penanda visual: batu penjuru yang sudah aus, bukan portal berkilau (D-3)
-	var b := _put(P_S + "wall_ruin.png", Vector2(96, VC.y + 8))
-	if b:
-		b.scale = Vector2(0.4, 0.4)
 
 
 ## Kamar Merrit — kecil, dan setiap benda di dalamnya menjawab satu pertanyaan:
