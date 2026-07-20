@@ -1,0 +1,7 @@
+# serigala_kiri.png — hewan 'serigala'
+# menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px
+
+Pack   : Wild Animals (berkas gudang 'All.zip')
+Seniman: TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun
+Lisensi: TIDAK TERCATAT
+URL    : 

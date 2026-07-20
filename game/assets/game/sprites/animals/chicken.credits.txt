@@ -1,0 +1,7 @@
+# chicken.png — hewan 'ayam'
+# sprite lama sudah benar; yang salah cuma skalanya (dulu 1.6 = ayam sebesar anjing)
+
+Pack   : Ninja Adventure - Asset Pack
+Seniman: Pixel-boy / Aleksandr Makarov
+Lisensi: CC0 1.0
+URL    : https://pixel-boy.itch.io/ninja-adventure-asset-pack

@@ -34,6 +34,20 @@
     "terverifikasi": true,
     "url": ""
   },
+  "chicken.png": {
+    "author": "Pixel-boy / Aleksandr Makarov",
+    "license": "CC0 1.0",
+    "pack": "Ninja Adventure - Asset Pack",
+    "terverifikasi": true,
+    "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack"
+  },
+  "domba_kiri.png": {
+    "author": "Kimmo Rundelin (kiheru)",
+    "license": "CC-BY-SA 3.0 atau lebih baru",
+    "pack": "Stendhal Animals (git 99362c8)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/81251"
+  },
   "eulpc_body_child.png": {
     "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
     "license": "CC-BY-SA 3.0 / GPL 3.0",
@@ -635,6 +649,20 @@
     "pack": "[LPC] Farming tilesets, magic animations and UI elements",
     "terverifikasi": true,
     "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "rusa_kiri.png": {
+    "author": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
+    "license": "TIDAK TERCATAT",
+    "pack": "Wild Animals (berkas gudang 'All.zip')",
+    "terverifikasi": false,
+    "url": ""
+  },
+  "serigala_kiri.png": {
+    "author": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
+    "license": "TIDAK TERCATAT",
+    "pack": "Wild Animals (berkas gudang 'All.zip')",
+    "terverifikasi": false,
+    "url": ""
   },
   "sewing_basket.png": {
     "author": "Proyek Aetherion, digambar oleh gen_overlays.py",

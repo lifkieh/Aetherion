@@ -1,0 +1,7 @@
+# rusa_kiri.png — hewan 'rusa'
+# rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos
+
+Pack   : Wild Animals (berkas gudang 'All.zip')
+Seniman: TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun
+Lisensi: TIDAK TERCATAT
+URL    : 

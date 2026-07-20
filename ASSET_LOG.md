@@ -65,6 +65,24 @@ pembatas lama tidak menjaga apa pun; ia melarang satu-satunya pilihan yang ada.
 | **Universal LPC Spritesheet Generator — pakaian & topi modular** | Kontributor ULPC (daftar per-lapisan belum terbaca dari disk — zip hanya berisi PNG) | CC-BY-SA 3.0 / GPL 3.0 | **Ya (tingkat-pack; penelusuran seniman = utang-rilis)** | Kemeja, celana, sepatu, topi, hood, hijab | **In use** |
 | **Aetherion — lapisan gambar-sendiri** | Proyek (gen_overlays.py / gen_pelataran.py) | CC-BY-SA 3.0 (KARYA TURUNAN dari siluet LPC — SA ikut menempel) | — | Tunik anak, pelataran alun-alun, fondasi rumah runtuh | **In use** |
 
+## Hewan (katalog `_tools/katalog_hewan.json`, generator `_tools/gen_hewan.py`)
+
+| Pack | Author / Source | License | Attribution req. | Used for | Status |
+|---|---|---|---|---|---|
+| **Stendhal Animals** (git 99362c8) | **Kimmo Rundelin (kiheru)** — https://opengameart.org/node/81251 | CC-BY-SA 3.0 atau lebih baru | **Ya — WAJIB** | `domba` (domba jantan bertanduk) — menggantikan "kambing" yang sebenarnya sprite ayam di-tint | **In use** |
+| **Wild Animals** (berkas gudang `All.zip`) | **TIDAK TERCATAT** — zip sumber nol berkas kredit | **TIDAK TERCATAT** | tak bisa ditentukan | `serigala` (hias + `DungeonMonster` #118), `rusa` (white stag) | **In use — UTANG KREDIT** |
+| Ninja Adventure - Asset Pack | Pixel-boy / Aleksandr Makarov | CC0 1.0 | Tidak | `ayam` | **In use** |
+
+> ⚠ **`All.zip` tak memuat berkas lisensi maupun kredit apa pun.** Dipakai dengan
+> atribusi tingkat-pack dan ditandai `terverifikasi: false`, mengikuti preseden empat
+> pack ULPC yang Direktur terima sebagai utang-rilis. **Bedanya penting dan tak boleh
+> dikaburkan:** pack ULPC lisensinya DIKETAHUI (CC-BY-SA) dan cuma daftar senimannya
+> yang belum ditelusuri; `All.zip` **lisensinya sendiri tidak diketahui**. Ini harus
+> diselesaikan sebelum rilis — cari sumber asli, atau ganti aset serigala & rusa.
+>
+> **NOL kambing di seluruh 111 zip gudang** (sisiran nama berkas). Domba adalah ternak
+> berkaki empat bergaya LPC satu-satunya yang benar-benar ada.
+
 ## Notes
 - `aetherion_palette_v1.png` is the canonical 53-colour palette; procedural assets follow it.
 - Root archive `eyJleHBpcmVz...==.6lkCYto...` is an **expired itch.io download** (HTML error page, not an asset) — see BLOCKED.md.

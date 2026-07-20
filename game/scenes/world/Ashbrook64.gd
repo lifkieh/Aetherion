@@ -520,12 +520,14 @@ func _kehidupan() -> void:
 func _hidup_ayam_anak() -> void:
 	for i in 4:
 		var c := Node2D.new()
-		c.set_script(load("res://scenes/actors/AshbrookChicken.gd"))
+		# Lewat KATALOG (#240): jenis + skala dibaca dari `_tools/katalog_hewan.json`,
+		# bukan disetel di sini. `scale` sengaja TIDAK diberikan — skala yang dikarang
+		# di sisi pemanggil persis cara "kambing 3x" lahir sebagai ayam raksasa.
+		c.set_script(load("res://scenes/actors/Hewan.gd"))
+		c.setup("ayam")
 		add_child(c)
-		c.body_radius = 7.0
 		c.wander_radius = 76.0
 		c.place(Vector2(704, 470) + Vector2(randf_range(-70, 90), randf_range(20, 90)))
-		c.scale = Vector2(1.6, 1.6)
 		_chickens.append(c)
 	for i in 3:
 		var k := Node2D.new()
@@ -544,14 +546,17 @@ func _hidup_ayam_anak() -> void:
 
 ## Kambing di jembatan + sepeda di gerbang — dua ujung jalan dagang lama.
 func _hidup_berpasangan() -> void:
-	var goat := Node2D.new()
-	goat.set_script(load("res://scenes/actors/AshbrookChicken.gd"))
-	add_child(goat)
-	goat.body_radius = 14.0
-	goat.wander_radius = 60.0          # ia MENGHALANGI jembatan, bukan berkelana
-	goat.place(Vector2(1790, VC.y + 8))
-	goat.scale = Vector2(3.0, 3.0)
-	goat.modulate = Color(0.85, 0.82, 0.75)
+	# DOMBA, bukan "kambing". Sampai 2026-07-20 makhluk ini adalah sprite AYAM yang
+	# di-`scale` 3x lalu di-`modulate` abu — paruh dan jenggernya masih terlihat dari
+	# kamera main. Sisiran nama berkas atas 111 zip gudang menemukan NOL kambing;
+	# domba jantan bertanduk (Stendhal, Kimmo Rundelin) adalah ternak berkaki empat
+	# bergaya LPC satu-satunya yang benar-benar ada. Nama variabel ikut dijujurkan.
+	var domba := Node2D.new()
+	domba.set_script(load("res://scenes/actors/Hewan.gd"))
+	domba.setup("domba")
+	add_child(domba)
+	domba.wander_radius = 60.0          # ia MENGHALANGI jembatan, bukan berkelana
+	domba.place(Vector2(1790, VC.y + 8))
 
 	var bike := ColorRect.new()        # sepeda kayu bersandar di gerbang; masih dipakai
 	bike.color = Color(0.55, 0.42, 0.28)
@@ -640,12 +645,28 @@ func _tick_rusa(delta: float) -> void:
 		return
 	if randf() > 0.005 * delta * 60.0:
 		return
+	# Dulu `Image.create(6,10)` — KOTAK PUTIH POLOS diperbesar 3x. Ia tak pernah jadi
+	# sprite, dan karena kemunculannya acak & jarang (0,5%/frame, hanya y<460) ia lolos
+	# dari tiap tangkap-layar termasuk seluruh audit visual. Sekarang rusa jantan
+	# BERTANDUK dari katalog. Putih pucat dipertahankan lewat `modulate`: legendanya
+	# adalah rusa PUTIH, dan aset sumbernya cokelat.
 	_stag = Sprite2D.new()
-	var img := Image.create(6, 10, false, Image.FORMAT_RGBA8)
-	img.fill(Color(0.96, 0.96, 0.92))
-	_stag.texture = ImageTexture.create_from_image(img)
+	# skrip dimuat lewat `load`, bukan `class_name`: nama kelas global baru terdaftar
+	# sesudah proyek dipindai ulang, dan scene ini harus jalan pada impor pertama.
+	var H = load("res://scenes/actors/Hewan.gd")
+	var kat: Dictionary = H.katalog()
+	var hr: Dictionary = kat.get("hewan", {}).get("rusa", {})
+	var pr: String = hr.get("sprite", "")
+	if pr == "" or not ResourceLoader.exists(pr):
+		push_error("[ash64] rusa: sprite katalog TAK ADA (%s) — jalankan _tools/gen_hewan.py" % pr)
+		_stag = null
+		return
+	var atr := AtlasTexture.new()
+	atr.atlas = load(pr)
+	atr.region = Rect2(0, 0, int(hr.get("fw", 72)), int(hr.get("fh", 52)))
+	_stag.texture = atr
 	_stag.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_stag.scale = Vector2(3, 3)
+	_stag.modulate = Color(1.35, 1.35, 1.3)      # dipucatkan -> rusa PUTIH legenda
 	_stag.global_position = Vector2(_player.global_position.x + randf_range(-260, 260), 190)
 	_stag.z_index = 500
 	_stag.modulate.a = 0.85

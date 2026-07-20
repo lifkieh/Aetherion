@@ -1,0 +1,5 @@
+# serigala_monster.png — frame persegi 64x64 untuk DungeonMonster
+
+Pack   : Wild Animals (berkas gudang 'All.zip')
+Seniman: TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun
+Lisensi: TIDAK TERCATAT
