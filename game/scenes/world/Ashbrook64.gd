@@ -444,6 +444,28 @@ func _pemakaman_dan_kabut() -> void:
 	# kepercayaan yang dibangun §2 anti-kosong.
 	_solid(Rect2(0, dasar - 76.0, w, 40.0))
 
+	# ── WISP: GRADIEN HANTU -> NYATA ─────────────────────────────────────────
+	# Tiga di pemakaman, satu di C3, NOL di inti. Gradiennya adalah tesisnya:
+	# di tepi, yang hidup cuma cahaya yang tak bisa diraih; makin ke dalam, kehidupan
+	# menjadi daging — ayam yang berbunyi, warga yang bisa diajak bicara. Kota untuk
+	# 1500 menyusut jadi 40, dan perjalanan dari gerbang ke alun-alun MENEMPUH
+	# penyusutan itu, bukan sekadar menceritakannya.
+	#
+	# Alfa ikut menurun ke dalam (0,50 -> 0,44 -> 0,38 -> 0,26): yang terjauh dari
+	# inti paling tebal, yang mendekat paling pudar. Fase diacak beda supaya ketiganya
+	# tak bernapas seirama — roh yang berdenyut serempak terbaca sebagai lampu hias.
+	for wp in [
+		{"pos": Vector2(pm.x - 118.0, pm.y - 34.0), "a": 0.50, "f": 0.0},
+		{"pos": Vector2(pm.x + 46.0, pm.y + 26.0), "a": 0.44, "f": 1.9},
+		{"pos": Vector2(pm.x + 152.0, pm.y - 58.0), "a": 0.38, "f": 3.4},
+		# C3 — di atas ladang yang berhenti digarap, separuh jalan ke inti
+		{"pos": Vector2(872.0, 1006.0), "a": 0.26, "f": 2.6},
+	]:
+		var wsp := Node2D.new()
+		wsp.set_script(load("res://scenes/actors/Wisp.gd"))
+		add_child(wsp)
+		wsp.place(wp["pos"], wp["a"], wp["f"])
+
 
 func _pinggir_jejak() -> void:
 	# 1. DUA FONDASI RUMAH YANG SUDAH TAK ADA. Yang digambar bukan reruntuhan
