@@ -822,8 +822,18 @@ func _folk_berjadwal() -> void:
 	# Ashbrook MENGECIL: rumah kosong dapat NOL warga, gudang gandum cuma dua. Yang
 	# sepi harus terbaca sepi, dan itu cuma berarti kalau yang ramai terbaca ramai.
 	TownFolk.place_latar(self, [
-		{"pos": Vector2(704, 470),  "r": 54.0, "n": 2},    # gudang gandum — depan pintunya
-		{"pos": Vector2(1216, 552), "r": 48.0, "n": 2},    # toko Otha — menunggu yang tak buka
+		# ⚠ DI SAMPING pintu, bukan di depannya — dan itu bukan selera.
+		#   Versi pertama menaruh dua zona ini di (704,470) dan (1216,552): PERSIS di
+		#   atas titik-periksa `ev_ashbrook_gudang_gandum` (704,480) dan
+		#   `ev_ashbrook_halloran_200_roti` (1216,560). Warga juga `interactable`, jadi
+		#   ia MEREBUT tombol E — pemain menekan E di depan bukti, yang menjawab warga.
+		#   `PlayLoop64` melaporkannya sebagai "bukti tak tercatat": rantai payoff PUTUS
+		#   di 2 dari 5 titik, dan jalur SENDIRI jadi mustahil. Nol galat muncul; yang
+		#   pecah cerita, bukan mesin — dan tak satu pun test suite bisa melihatnya.
+		#   ATURAN: zona warga latar TAK BOLEH menyentuh titik-periksa. Beri jarak, atau
+		#   kehidupan latar menelan alur utama.
+		{"pos": Vector2(608, 506),  "r": 46.0, "n": 2},    # gudang gandum — di samping pintunya
+		{"pos": Vector2(1310, 596), "r": 44.0, "n": 2},    # toko Otha — di samping terasnya
 		{"pos": Vector2(640, 1060), "r": 56.0, "n": 2},    # rumah Lyra — satu-satunya yang dihuni
 		{"pos": Vector2(560, 704),  "r": 60.0, "n": 2},    # jalan dagang, ujung barat
 		{"pos": Vector2(1440, 704), "r": 60.0, "n": 2},    # jalan dagang, ujung timur
