@@ -20,7 +20,32 @@ extends Node2D
 
 const TILE := 32                    # petak LPC (BUKAN 64 — lihat catatan skala di atas)
 const MAP_W := 60
-const MAP_H := 34
+## KANVAS DITUMBUHKAN ASIMETRIS — inti TIDAK dipindahkan.
+##
+## Alun-alun (`VC`) sudah TEPAT di tengah mendatar sejak awal: x=960 = 1920/2.
+## Yang meleset cuma sumbu tegak — ia 22 petak dari tepi utara tapi cuma 12 dari
+## selatan. Membuatnya pusat bisa lewat dua jalan:
+##
+##   (a) GESER isi ke tengah kanvas baru — ditolak. Isi tersebar di ~40 titik
+##       penempatan dengan tiga aturan berbeda (rumput tanpa offset, isi dengan
+##       offset, kamar INTERIOR di ruang terpisah), dan beberapa sistem menulis
+##       `global_position` sendiri sehingga transform induk tak menolong. Satu titik
+##       terlewat = rantai payoff putus tanpa satu galat pun. Pergeseran 90 px sudah
+##       pernah melakukannya.
+##   (b) TUMBUHKAN kanvas ke arah yang kurang, sampai inti berakhir di tengah.
+##       NOL node bergeser, NOL koordinat disentuh.
+##
+## Dipakai (b): tinggi 34 -> 44 petak, seluruh 10 petak baru tumbuh KE SELATAN.
+## Hasilnya 22 petak di atas VC dan 22 di bawah — inti jadi pusat sejati tanpa
+## pernah bergerak.
+##
+## KENAPA TIDAK 50 PETAK: itu menuntut 25 petak di atas VC, sementara yang ada 22.
+## Sisanya harus tumbuh ke ATAS, yaitu ke koordinat Y NEGATIF — dan `z_index =
+## int(global_position.y)` membuat y negatif menggambar node DI BAWAH lantainya
+## sendiri. #275 sudah membayar cacat itu sekali (kamar berkoordinat negatif menelan
+## pemainnya, nol galat muncul). Radius terbesar yang bisa dicapai tanpa menyentuh
+## apa pun = 22 petak.
+const MAP_H := 44
 const VC := Vector2(960, 704)       # pusat alun-alun (koordinat dihitung ulang untuk petak 32)
 const MERRIT_HOUSE := Vector2(464, 752)
 ## Kamar Merrit diletakkan DI LUAR peta, tapi di koordinat **POSITIF** — dan itu
@@ -45,7 +70,8 @@ const P_C := "res://assets/game/sprites/characters/"
 const P_OLD := "res://assets/game/sprites/props/"
 
 ## z_index: y-sort dipakai untuk dunia, tapi PLAFON GODOT = 4096.
-## y-maks di sini = MAP_H*TILE = 1088 → aman. Konstanta di bawah sengaja dipisah
+## y-maks di sini = MAP_H*TILE = 1408 (sesudah kanvas tumbuh ke selatan) → tetap jauh
+## di bawah Z_LAMP 2000, jadi lampu tak tertimpa. Konstanta di bawah sengaja dipisah
 ## jauh di ATAS y-maks supaya tak pernah tertimpa objek ber-y besar (bug yang
 ## dipetakan sesi lalu: lamp z=1000 tenggelam saat y>1000).
 const Z_LAMP := 2000
