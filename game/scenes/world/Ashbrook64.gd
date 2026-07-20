@@ -293,9 +293,21 @@ func _pinggir_jejak() -> void:
 	# 1. DUA FONDASI RUMAH YANG SUDAH TAK ADA. Yang digambar bukan reruntuhan
 	#    bertumpuk, melainkan DENAHNYA: batu sudut + sisa garis dinding. Mata membaca
 	#    persegi di rumput sebagai "ada bangunan di sini", lalu menyadari isinya hilang.
+	#
+	#    C3 DIUKUR SEBAGAI BUSUR, BUKAN CINCIN. Sisiran arah atas delapan jejak lama:
+	#    selatan 8, utara 0, timur 0, barat 0. Dari dalam desa, "yang mati" tampak
+	#    cuma di satu sisi — dan kota yang mengecil tidak mengecil ke satu arah.
+	#    Lima denah baru menutup keliling: utara, timur-laut, timur, barat, barat-laut.
+	#    Ukurannya sengaja BERAGAM — rumah yang sama besar berarti dibangun sekaligus
+	#    oleh satu tangan; kota yang tumbuh bertahun-tahun tak pernah serapi itu.
 	for denah in [
 		{"pos": Vector2(1520, 936), "w": 132.0, "h": 92.0},   # tenggara, sejajar rumah kosong
 		{"pos": Vector2(352, 952),  "w": 108.0, "h": 80.0},   # barat daya, di luar rumah Lyra
+		{"pos": Vector2(944, 232),  "w": 148.0, "h": 104.0},  # UTARA — di balik balai desa
+		{"pos": Vector2(1456, 336), "w": 96.0,  "h": 76.0},   # timur laut
+		{"pos": Vector2(1664, 592), "w": 120.0, "h": 88.0},   # TIMUR — di luar jalan dagang
+		{"pos": Vector2(288, 560),  "w": 112.0, "h": 84.0},   # BARAT — di luar rumah Merrit
+		{"pos": Vector2(416, 288),  "w": 88.0,  "h": 72.0},   # barat laut, dekat gudang
 	]:
 		var c: Vector2 = denah["pos"]
 		var w: float = denah["w"]
@@ -367,10 +379,25 @@ func _pinggir_jejak() -> void:
 
 	# 3. POHON MATI di tepi ladang — kebun yang tak lagi disiram. Aset pohon SUNGGUHAN
 	#    (tree_dead_*), bukan `tree_lpc.png` yang ternyata potongan salah-krop.
-	for p in [Vector2(1640, 880), Vector2(1720, 964), Vector2(232, 848)]:
+	#    Disebar mengelilingi, sama alasannya dengan denah: pohon mati di satu sisi
+	#    saja membaca "kebun rusak"; mengelilingi, ia membaca "musim yang sama
+	#    menimpa semua".
+	for p in [Vector2(1640, 880), Vector2(1720, 964), Vector2(232, 848),
+			Vector2(1088, 200), Vector2(1568, 424), Vector2(216, 632), Vector2(560, 216)]:
 		_jejak("tree_dead_a.png" if int(p.x) % 2 == 0 else "tree_dead_b.png", p, 2.0)
 	_jejak("stump.png", Vector2(1560, 1030), 1.8)
 	_jejak("log_fallen.png", Vector2(1668, 1044), 1.8)
+	_jejak("stump.png", Vector2(1616, 336), 1.8)          # timur laut
+	_jejak("log_fallen.png", Vector2(344, 640), 1.8)      # barat
+
+	# 4. ANTI-KOSONG (spec §2): tiap tujuan jauh harus BERUJUNG pada sesuatu.
+	#    Sudut peta yang cuma rumput mengajari pemain bahwa menjauh tak berbuah, dan
+	#    sesudah itu ia berhenti menjelajah — kekosongan berhenti bermakna dan mulai
+	#    terasa belum-jadi. Empat sudut diberi satu benda kecil saja: cukup untuk
+	#    membalas perjalanan, terlalu sedikit untuk mengisi.
+	for p in [Vector2(176, 176), Vector2(1760, 200), Vector2(176, 1296), Vector2(1776, 1288)]:
+		_jejak("rock.png", p, 2.2)
+		_jejak("dead_bush.png", p + Vector2(38, 22), 1.6)
 
 
 ## Cakram pelataran, dipusatkan (bukan `_tile` yang selalu rata-kiri-atas).
@@ -819,6 +846,42 @@ func _pintu_dan_interior() -> void:
 	lyra.setup_bicara([
 		"Ada suara di dalam. Seseorang sedang memasak, dan tak menyadari kau berdiri di sini.",
 	], "Rumah Lyra [E]")
+
+	# ── PINTU BANGUNAN BARU (C1 balai + 3 rumah C2) ──────────────────────────
+	# Fasad tanpa pintu adalah dinding BUTA: pemain mendekat, tak ada apa-apa, dan
+	# bangunan berhenti jadi tempat. Interior baru terlalu mahal untuk empat
+	# bangunan. Jalan ketiga — yang sudah dipakai toko Otha & rumah kosong:
+	# TERTUTUP YANG BERCERITA. Pintunya ada dan bisa ditekan; yang dikembalikannya
+	# bukan ruangan, melainkan sebab kenapa ia tertutup.
+
+	# BALAI DESA — satu-satunya bangunan yang MASIH dipakai, dan justru itu yang
+	# menyakitkan: ia dipakai oleh jumlah yang salah. Angka 500 sengaja tak disebut
+	# sebagai statistik; yang dipakai adalah GEMA, karena gema itu yang dirasakan.
+	var balai := _prop(Vector2(960, 456))
+	balai.setup_bicara([
+		"Pintunya terbuka. Tak pernah dikunci — tak ada lagi yang perlu dikunci dari siapa.",
+		"Empat puluh kursi dirapatkan ke satu sudut, menghadap mimbar. Sisa lantainya kosong,",
+		"dan langkahmu kembali kepadamu sebelum kau sempat berhenti berjalan.",
+	], "Balai desa [E]")
+
+	# TIGA RUMAH C2 — semuanya gelap, tapi TIGA SEBAB BERBEDA. Kalau ketiganya
+	# berkata "ditinggalkan", mereka jadi satu rumah yang disalin tiga kali, dan
+	# yang hilang justru bahwa tiap keluarga pergi dengan caranya sendiri.
+	var r_tenggara := _prop(Vector2(1120, 1144))
+	r_tenggara.setup_bicara([
+		"Terkunci dari LUAR. Siapa pun yang terakhir keluar berniat kembali.",
+	], "Rumah terkunci [E]")
+
+	var r_selatan := _prop(Vector2(736, 1176))
+	r_selatan.setup_bicara([
+		"Pintunya menganga. Daun jatuh masuk sampai ke tengah ruangan, bertahun-tahun tebalnya.",
+		"Tak ada yang dibawa pergi, dan tak ada pula yang diambil orang. Bahkan pencuri berhenti datang.",
+	], "Rumah terbuka [E]")
+
+	var r_timur := _prop(Vector2(1376, 1048))
+	r_timur.setup_bicara([
+		"Jendelanya dipaku papan dari DALAM. Palunya masih tergeletak di ambang.",
+	], "Rumah berpapan [E]")
 
 
 ## JALAN KELUAR (BAGIAN 3) — Ashbrook64 berhenti jadi penjara.
