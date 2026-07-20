@@ -1,0 +1,8 @@
+# pohon_gundul.png — pohon TELANJANG musim dingin — hutan mati mengelilingi kota mati
+# potongan (32, 320, 128, 480) dari Terrain Objects/Trees, Generic.png
+
+Sumber : LPC Base Assets (map tiles) via pack "4 Season Terrain"
+Seniman: Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)
+Lisensi: OGA-BY 3.0 (atribusi WAJIB, non-viral)
+URL    : https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+Dipakai per #277. Jangan hapus berkas ini.

@@ -197,6 +197,27 @@ func _tile(path: String, rect: Rect2, z: int) -> void:
 	add_child(s)
 
 
+## `_tile` + modulate. Dipakai treeline C4: kedalaman dibuat dengan MENGGELAPKAN
+## lapisan yang lebih jauh, bukan dengan menambah ruang. Mata membaca gelap sebagai
+## jarak jauh sebelum ia membaca ukuran.
+func _tile_mod(path: String, rect: Rect2, z: int, warna: Color) -> Sprite2D:
+	if not ResourceLoader.exists(path):
+		push_warning("[ash64] ubin hilang: %s" % path)
+		return null
+	var s := Sprite2D.new()
+	s.texture = load(path)
+	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	s.region_enabled = true
+	s.region_rect = Rect2(Vector2.ZERO, rect.size)
+	s.centered = false
+	s.position = rect.position
+	s.z_index = z
+	s.modulate = warna
+	add_child(s)
+	return s
+
+
 func _ground() -> void:
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
@@ -353,20 +374,60 @@ func _pemakaman_dan_kabut() -> void:
 	#    siluet #231), dan tokoh yang lahir setengah lebih buruk daripada tempat
 	#    yang menunggu. Koordinat: pm + Vector2(lebar * 0.5 - 40, -tinggi * 0.5 + 18)
 
-	# ── KABUT: TEMBOK YANG INDAH ─────────────────────────────────────────────
-	# Garis fondasi samar DULU, kabut menimpanya. Urutannya penting: fondasi yang
-	# digambar DI ATAS kabut akan terbaca sebagai bangunan di dekat kita yang
-	# kebetulan berkabut; yang digambar DI BAWAHNYA terbaca sebagai bangunan
-	# di dalam kabut — jauh, dan tak bisa didatangi.
-	for fx in [420.0, 880.0, 1240.0, 1600.0]:
-		_tile(P_T + "fondasi32.png", Rect2(fx, h - 56.0, 104.0, 48.0), 3)
-	var kabut_y := h - 64.0
-	_tile(P_T + "kabut32.png", Rect2(0, kabut_y, MAP_W * TILE, 64.0), 900)
-	_tile(P_T + "kabut32.png", Rect2(0, kabut_y + 10.0, MAP_W * TILE, 54.0), 901)
+	# ── TREELINE: TEMBOK YANG INDAH ──────────────────────────────────────────
+	# Menggantikan pita kabut. Kabut lama terbaca RATA dan TERANG — dua sifat yang
+	# membunuh kedalaman, dan tak satu pun bisa disembuhkan dengan menebalkannya.
+	# Massa pohon gelap punya tiga hal yang tak dimiliki pita: siluet, tumpang-tindih,
+	# dan gelap. Kedalaman datang dari SUSUNAN, bukan dari ruang — jadi ia muat di
+	# ~98 px sisa tanpa menggeser pemakaian sepetak pun.
+	#
+	# EMPAT LAPIS, dari jauh ke dekat. Urutannya yang bekerja, bukan jumlahnya:
+	var w := float(MAP_W * TILE)
+	var dasar := h - 8.0
 
-	# TABRAKAN PENUH selebar peta. Inilah yang membedakan "tepi yang jujur tertutup"
-	# dari "janji yang diingkari" — pemain berhenti DI DEPAN kabut, bukan di dalamnya.
-	_solid(Rect2(0, kabut_y, MAP_W * TILE, 24.0))
+	# (1) FONDASI PALING DULU, paling jauh, dan DIGELAPKAN. Ia digambar sebelum
+	#     apa pun menutupinya, lalu tertutup sebagian — itulah yang membuat mata
+	#     membacanya "di dalam hutan" alih-alih "di depan hutan". Trik Tunic/HLD:
+	#     kota lama terlihat membentang lebih jauh daripada yang boleh dijelajahi.
+	for fx in [416.0, 880.0, 1248.0, 1600.0]:
+		var f := _tile_mod(P_T + "fondasi32.png", Rect2(fx, dasar - 116.0, 104.0, 52.0),
+				700, Color(0.46, 0.50, 0.47))
+		if f:
+			pass
+
+	# (2) KANOPI JAUH — dihamparkan penuh selebar peta, digelapkan paling dalam.
+	_tile_mod(P_T + "pinus_isi.png", Rect2(0, dasar - 72.0, w, 72.0), 720,
+			Color(0.44, 0.50, 0.45))
+	# (3) KANOPI TENGAH — digeser turun 20 px. Pergeseran itulah tumpang-tindihnya;
+	#     tepi bergerigi lapis atas terbaca sebagai puncak pohon di belakangnya.
+	_tile_mod(P_T + "pinus_atas.png", Rect2(0, dasar - 52.0, w, 32.0), 740,
+			Color(0.52, 0.58, 0.53))
+	_tile_mod(P_T + "pinus_isi.png", Rect2(0, dasar - 24.0, w, 32.0), 741,
+			Color(0.52, 0.58, 0.53))
+
+	# (4) BARIS DEPAN — pohon utuh, warna penuh, berjarak TAK RATA. Baris pohon yang
+	#     rapi terbaca sebagai pagar tanaman; yang tak rata terbaca sebagai hutan.
+	#     Dicampur pinus hidup & pohon GUNDUL: kota mati dikelilingi hutan mati.
+	#     Hutan berdaun saja akan mengabarkan "alam sehat mengambil alih" — cerita
+	#     yang berbeda, dan bukan cerita Ashbrook.
+	var rngp := RandomNumberGenerator.new()
+	rngp.seed = 20260721
+	var px := 24.0
+	while px < w:
+		var gundul := rngp.randf() < 0.42
+		var s := _put(P_OLD + ("pohon_gundul.png" if gundul else "pinus_pohon.png"),
+				Vector2(px, dasar - (34.0 if gundul else 14.0)), 760)
+		if s:
+			s.scale = Vector2(1.0, 1.0)
+			if not gundul:
+				s.modulate = Color(0.78, 0.84, 0.80)   # masih di belakang, belum penuh
+		px += rngp.randf_range(58.0, 104.0)
+
+	# TABRAKAN PENUH selebar peta — pemain berhenti DI DEPAN treeline, tak pernah di
+	# dalamnya. Inilah yang membedakan "tepi yang jujur tertutup" dari "janji yang
+	# diingkari": kalau ia bisa dimasuki dan tak ada apa-apa, tepi ini merusak
+	# kepercayaan yang dibangun §2 anti-kosong.
+	_solid(Rect2(0, dasar - 76.0, w, 40.0))
 
 
 func _pinggir_jejak() -> void:

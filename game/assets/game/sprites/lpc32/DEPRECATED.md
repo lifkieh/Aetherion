@@ -28,3 +28,15 @@ yang cukup kecil di layar untuk lolos dari mata.
 
 Karena itu audit dilakukan dengan **merasterisasi tiap berkas**, bukan membaca
 daftar nama.
+
+## Aset yatim — dibuat lalu digantikan
+
+| Berkas | Kenapa lahir | Kenapa mati |
+|---|---|---|
+| `tiles/lpc32/kabut32.png` | C4 tepi hantu butuh kabut; sapuan 111 zip gudang menemukan NOL kabut bergaya LPC, jadi digambar sendiri (`gen_c4.py`). | Terbaca sebagai **PITA PUCAT**: rata dan terang — dua sifat yang membunuh kedalaman, dan tak satu pun bisa disembuhkan dengan menebalkannya. Digantikan **treeline pinus** (`gen_treeline.py`): massa gelap punya siluet, tumpang-tindih, dan bayangan — tiga hal yang membuat mata membaca jarak. |
+
+Berkasnya **tetap ada dan tetap punya kreditnya**, tidak dihapus — alasan yang sama
+dengan `tree_lpc.png` di atas: berkas yang lenyap tak mengajari siapa pun; berkas
+yang ditandai mengajari. Kalau suatu saat kabut dibutuhkan sebagai **cuaca** (bukan
+sebagai batas), ubin ini titik mulainya — yang salah dulu bukan asetnya, melainkan
+pekerjaan yang dibebankan kepadanya.
