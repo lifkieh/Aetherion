@@ -68,5 +68,45 @@ func _process(delta: float) -> void:
 	var goal: Vector2 = _target.global_position if is_instance_valid(_target) else _home + Vector2(randf_range(-70, 70), randf_range(-50, 50))
 	var d := goal - global_position
 	if d.length() > 6.0:
-		global_position += d.normalized() * SPEED * delta
+		var langkah := global_position + d.normalized() * SPEED * delta
+		# ⚠ Anak adalah Node2D MURNI — nol badan fisika, nol tabrakan. Ia bergerak
+		# dengan menambah `global_position`, jadi tembok tak pernah menghentikannya:
+		# ia berjalan MENEMBUS rumah, dan dari luar terlihat seperti anak yang
+		# separuh badannya hilang ke dalam dinding.
+		#
+		# Cacat ini MUSTAHIL dilihat oleh pemeriksaan statis maupun harness ber-warp:
+		# titik lahirnya sah, yang rusak adalah ke mana ia berjalan sesudahnya. Hanya
+		# playtest jalan-kaki yang bisa menangkapnya, dan memang begitu ia ditemukan.
+		#
+		# Diberi penolak, bukan badan fisika: menjadikannya CharacterBody2D akan
+		# mengubah aktor yang juga dipakai dunia 16px. Penolak cuma membatalkan
+		# langkah yang berakhir di dalam benda padat, lalu anak berbelok sendiri di
+		# putaran berikutnya karena sasarannya diacak ulang.
+		if not _terhalang(langkah):
+			global_position = langkah
+		else:
+			_t = 0.0                      # pilih sasaran baru segera, jangan menempel
 	z_index = int(global_position.y)
+
+
+## Apakah petak ini ditempati benda padat dunia? Dibaca dari tabrakan yang BENAR-BENAR
+## terpasang di scene, bukan dari daftar koordinat yang bisa menyimpang dari peta.
+## Diuji sebagai KOTAK KECIL, bukan satu titik. Uji-titik meloloskan anak yang
+## berdiri tepat di tepi bangku: titik kakinya bebas, badannya menembus. Empat sudut
+## kotak ~16x18 (seukuran anak, bukan dewasa) cukup dan tak mengalokasi apa pun
+## per-frame.
+const KOTAK_ANAK := Vector2(16, 18)
+
+func _terhalang(p: Vector2) -> bool:
+	var st := get_world_2d().direct_space_state
+	var q := PhysicsPointQueryParameters2D.new()
+	q.collide_with_areas = false
+	q.collide_with_bodies = true
+	q.collision_mask = 4                  # SOLID_LAYER dunia (Ashbrook64.SOLID_LAYER)
+	var h := KOTAK_ANAK * 0.5
+	for sudut in [Vector2(-h.x, 0.0), Vector2(h.x, 0.0),
+			Vector2(0.0, -KOTAK_ANAK.y), Vector2(0.0, 0.0)]:
+		q.position = p + sudut
+		if not st.intersect_point(q, 1).is_empty():
+			return true
+	return false

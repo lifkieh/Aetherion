@@ -82,6 +82,7 @@ static func place_latar(host: Node2D, zona: Array, awal: int, seed_pos := 202607
 					* rng.randf_range(24.0, 64.0)]
 			var v := preload("res://scenes/actors/Villager.tscn").instantiate()
 			v.lpc_sheet = "warga_%02d" % (awal + n)
+			v.latar = true          # kerumunan: tanpa dialog, tanpa tombol E
 			host.add_child(v)
 			v.setup("Warga", {}, wps)
 			v.set("_home", anchor)

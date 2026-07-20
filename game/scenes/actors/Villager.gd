@@ -25,6 +25,10 @@ var _label: Label
 ## yang dipasang sesudahnya tak pernah terbaca (pelajaran anak Ashbrook, dibayar sekali).
 var lpc_sheet := ""
 
+## Warga LATAR: kerumunan tanpa persona, tanpa jadwal, tanpa dialog — dan tanpa
+## tombol E. WAJIB dipasang sebelum add_child (lihat `_ready`).
+var latar := false
+
 const P_LPC := "res://assets/game/sprites/characters/"
 const ARAH := ["up", "left", "down", "right"]   # frame_map.json dir_order
 var _persona: Dictionary = {}    # NPC berkepribadian (Hukum NPC Aneh, E6 #78)
@@ -48,7 +52,25 @@ func set_persona(p: Dictionary) -> void:
 		add_to_group("town_folk")
 
 func _ready() -> void:
-	add_to_group("interactable")
+	# Warga LATAR bukan orang yang diajak bicara — ia KERUMUNAN. Ia sengaja TIDAK
+	# masuk grup "interactable", dan itu memperbaiki cacat yang lebih besar daripada
+	# sekadar dialog kosong:
+	#
+	# Tiap benda ber-`interactable` bersaing memperebutkan tombol E. Warga latar
+	# ditaruh di tempat beralasan — depan gudang, teras toko — dan di situlah bukti
+	# cerita juga berada, karena alasannya sama. Sesi lalu dua zona warga menindih dua
+	# titik-periksa dan MEREBUT E-nya: rantai payoff putus tanpa satu galat pun.
+	# Zona lalu digeser, tapi itu tambalan yang rapuh — warga BERJALAN, sampai 64 px
+	# dari jangkarnya, jadi jarak statis tak pernah menjamin apa pun.
+	#
+	# Mencabut mereka dari perebutan itu menutup seluruh kelas cacat ini, bukan satu
+	# kejadiannya. Warga berjadwal (#97) punya persona & dialog dan TETAP interactable.
+	#
+	# Dipakai bendera EKSPLISIT, bukan "persona kosong": `_persona` baru diisi
+	# `set_persona()` SESUDAH add_child, jadi saat `_ready()` jalan ia masih kosong
+	# untuk kedua jenis warga. Menebaknya dari situ akan mencabut warga berjadwal juga.
+	if not latar:
+		add_to_group("interactable")
 	add_to_group("villagers")
 	if not _persona.is_empty():
 		add_to_group("town_folk")

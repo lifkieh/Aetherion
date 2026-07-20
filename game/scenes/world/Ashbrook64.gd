@@ -414,7 +414,11 @@ func _village() -> void:
 	# bingkai. Tong terbukti terbaca sebagai tong, jadi tong yang dipakai sampai ada
 	# aset pohon yang benar. Empat pohon lama DIBIARKAN: memperbaikinya kerja aset,
 	# bukan tata letak.
-	for p in [VC + Vector2(-248, -152), VC + Vector2(248, -152),
+	# Penjuru timur-laut digeser 32 px ke dalam: di (248,-152) tongnya PERSIS menindih
+	# titik-periksa `ev_ashbrook_halloran_200_roti` (1216,560) — `CekJangkau.gd`
+	# mengukurnya `titik_di_dalam_padat=true`. Buktinya masih terjangkau dari 20 arah,
+	# jadi ia tak pernah gagal keras; ia cuma dikubur di dalam tong. Cacat diam.
+	for p in [VC + Vector2(-248, -152), VC + Vector2(216, -152),
 			VC + Vector2(-248, 152), VC + Vector2(248, 152)]:
 		_put(P_S + "barrel_lpc.png", p)
 		_solid(Rect2(p.x - 12, p.y - 4, 24, 16))
