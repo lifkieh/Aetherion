@@ -727,6 +727,13 @@
     "terverifikasi": false,
     "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
   },
+  "wisp.png": {
+    "author": "Google Gemini (AI-generated), diminta Direktur",
+    "license": "AI-GENERATED — bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga",
+    "pack": "Gemini generation, diproses _tools/gen_wisp.py",
+    "terverifikasi": true,
+    "url": ""
+  },
   "wizard_hat_female.png": {
     "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
     "license": "CC-BY-SA 3.0 / GPL 3.0",
