@@ -39,6 +39,32 @@ for exact per-file picks and layouts.
 - 3 track lama Ninja Adventure (`11 - Clearing`, `23 - Road`, `26 - Lost Village`)
   **dihapus dari build** — digantikan bank musik baru (menghemat ~3,2 MB).
 
+## #277 — ATURAN LISENSI VISUAL (berlaku 2026-07-20, mengamandemen #232)
+
+**Semua aset VISUAL boleh CC-BY-SA — karakter, dunia, DAN prop.** Hukum pembatas
+lama (*“SA cuma untuk sprite karakter; dunia harus non-viral”*) **DICABUT**.
+
+Sebabnya terukur, bukan preferensi: audit gudang (64 zip, tiap kandidat dibuka dan
+dilihat) menemukan aset dunia bergaya LPC **hampir seluruhnya CC-BY-SA/GPL**,
+sementara yang non-viral gugur karena **gaya**, bukan lisensi — pack CC0 berskala
+peta-dunia 14–16 px, isometrik 128 px, atau bukan pixel art sama sekali. Hukum
+pembatas lama tidak menjaga apa pun; ia melarang satu-satunya pilihan yang ada.
+
+**Yang TETAP mengikat:**
+- **Kode dan naratif TIDAK SA.** Itu garis yang membuat amandemen ini aman.
+- **Atribusi wajib untuk TIAP aset**, tanpa kecuali — `_tools/lpc_assembler/credits_db.json`
+  (per-lapisan) + tabel di berkas ini (per-pack) + `LICENSE-CC-BY-SA.txt` yang terbit
+  bersama sprite.
+- **UI / musik / SFX / ikon TIDAK ikut dibebaskan** oleh baris ini; tetap dinilai per-pack.
+
+| Pack | Author / Source | License | Attribution req. | Used for | Status |
+|---|---|---|---|---|---|
+| **[LPC] Farming tilesets, magic animations and UI elements** | Daniel Eddeland (daneeklu) — opengameart.org | CC-BY-SA 3.0 / GPL 3.0 | **Ya — WAJIB: “Daniel Eddeland (daneeklu)” + tautan OpenGameArt** | Ashbrook64 pinggir (#277): `fence.png` pagar lapuk · `plowed_soil.png` ladang berhenti digarap · `tallgrass.png` rumput yang menutupinya | **In use** |
+| **LPC Character Bases v3.1** | BenCreating, Redshrike, dalonedrau, Durrani, ElizaWy, wulax, kheftel, madmarcel, makrohn, MuffinElZangano, Nila122, bluecarrot16, castelonia, pvigier, Evert, William.Thompsonj, Zi Ye | CC-BY-SA 3.0 / GPL 3.0 | **Ya** | Badan/kepala 6 NPC bernama + 3 anak + 20 warga | **In use** |
+| **[LPC Expanded] Hair** | JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, dkk. | CC-BY-SA 3.0 | **Ya** | Rambut semua tokoh LPC (kolam warna seimbang) | **In use** |
+| **Universal LPC Spritesheet Generator — pakaian & topi modular** | Kontributor ULPC (daftar per-lapisan belum terbaca dari disk — zip hanya berisi PNG) | CC-BY-SA 3.0 / GPL 3.0 | **Ya (tingkat-pack; penelusuran seniman = utang-rilis)** | Kemeja, celana, sepatu, topi, hood, hijab | **In use** |
+| **Aetherion — lapisan gambar-sendiri** | Proyek (gen_overlays.py / gen_pelataran.py) | CC-BY-SA 3.0 (KARYA TURUNAN dari siluet LPC — SA ikut menempel) | — | Tunik anak, pelataran alun-alun, fondasi rumah runtuh | **In use** |
+
 ## Notes
 - `aetherion_palette_v1.png` is the canonical 53-colour palette; procedural assets follow it.
 - Root archive `eyJleHBpcmVz...==.6lkCYto...` is an **expired itch.io download** (HTML error page, not an asset) — see BLOCKED.md.

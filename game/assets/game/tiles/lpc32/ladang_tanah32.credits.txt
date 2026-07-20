@@ -1,0 +1,8 @@
+# ladang_tanah32.png — tanah bajakan beralur — petak yang DULU ditanami
+# sel (1,3) dari plowed_soil.png
+
+Sumber: "[LPC] Farming tilesets, magic animations and UI elements"
+Seniman: Daniel Eddeland (daneeklu)
+Lisensi: CC-BY-SA 3.0 / GPL 3.0 (atribusi + share-alike WAJIB)
+https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements
+Dipakai per #277 (SA sah untuk aset visual dunia). Jangan hapus berkas ini.

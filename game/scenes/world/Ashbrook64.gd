@@ -216,7 +216,9 @@ func _ground() -> void:
 const SKALA_JEJAK := 2.0
 
 func _jejak(nama: String, pos: Vector2, skala := SKALA_JEJAK) -> Sprite2D:
-	var s := _put(P_OLD + nama, pos)
+	# ubin pinggir (gen_pinggir.py) hidup di P_T, prop 16px lama di P_OLD
+	var akar := P_T if nama.ends_with("32.png") else P_OLD
+	var s := _put(akar + nama, pos)
 	if s:
 		s.scale = Vector2(skala, skala)
 	return s
@@ -246,12 +248,14 @@ func _pinggir_jejak() -> void:
 		var c: Vector2 = denah["pos"]
 		var w: float = denah["w"]
 		var h: float = denah["h"]
-		# LANTAINYA DULU, baru puingnya. Pelajaran yang sama dengan pelataran alun-alun:
-		# yang membuat mata membaca "tempat" adalah RUANG, bukan objek. Percobaan pertama
-		# cuma menaruh batu di empat sudut — dari zoom 0.55 hasilnya terbaca "puing
-		# tersebar", bukan "rumah pernah berdiri di sini". Petak lantai memberi bentuk;
-		# batu sudut baru bisa menjelaskan bentuk itu.
-		_tile(P_T + "stone32.png", Rect2(c.x - w * 0.5, c.y - h * 0.5, w, h), 1)
+		# RUANG DULU, OBJEK MENYUSUL. Petak fondasi memberi BENTUK rumah yang hilang;
+		# batu sudut cuma menjelaskan bentuk itu. Percobaan pertama membalik urutannya —
+		# cuma batu di empat sudut — dan dari zoom 0.55 terbaca "puing tersebar", bukan
+		# "rumah pernah berdiri di sini". Percobaan kedua memakai `stone32` (batu jalan)
+		# sebagai lantai: bentuknya terbaca, tapi warnanya sama dengan jalan, jadi ia
+		# terbaca "pelataran kecil" — masih hidup, bukan ditinggalkan. `fondasi32`
+		# digelapkan & berlubang: batu yang tak lagi diinjak, dimakan kembali tanah.
+		_tile(P_T + "fondasi32.png", Rect2(c.x - w * 0.5, c.y - h * 0.5, w, h), 1)
 		for sudut in [Vector2(-w, -h), Vector2(w, -h), Vector2(-w, h), Vector2(w, h)]:
 			_jejak("ruins.png", c + sudut * 0.5, 1.6)
 		# sisa garis dinding — sengaja TERPUTUS. Dinding utuh berarti rumah kosong;
@@ -260,21 +264,54 @@ func _pinggir_jejak() -> void:
 				Vector2(-w * 0.5, h * 0.12)]:
 			_jejak("rock.png", c + t, 1.8)
 
-	# 2. LADANG YANG BERHENTI DIGARAP + pagarnya yang lapuk. Pagar dibuat BERLUBANG,
-	#    bukan utuh: pagar utuh mengabarkan "milik seseorang", pagar berlubang
-	#    mengabarkan "dulu milik seseorang". Lubangnya yang bercerita, bukan tiangnya.
-	var ladang := Vector2(700, 1000)
-	for i in 9:
-		if i in [3, 6]:                       # dua ruas hilang — lapuk, bukan dibongkar
+	# 2. LADANG YANG BERHENTI DIGARAP — sekali lagi RUANG DULU.
+	#    Petak tanah bajakan memberi bentuk "ini pernah ladang"; rumput liar yang
+	#    ditumpuk DI ATASNYA memberi waktunya — tanah yang mulai ditutupi kembali.
+	#    Satu petak tanah polos cuma "kebun". Tanah bajak + rumput yang menyerbu =
+	#    "kebun yang ditinggalkan", dan itu yang perlu terbaca.
+	#    Ubin dari LPC Farming (daneeklu, CC-BY-SA, sah sejak #277 — kredit di
+	#    ASSET_LOG.md + <ubin>.credits.txt).
+	# digeser ke timur dari (700,1000): di sana petaknya tertimpa rumah Lyra, dan
+	# ladang yang setengah masuk ke dalam rumah membaca sebagai cacat, bukan jejak.
+	var ladang := Vector2(900, 995)
+	var lw := 320.0
+	var lh := 160.0
+	_tile(P_T + "ladang_tanah32.png", Rect2(ladang.x - lw * 0.5, ladang.y - lh * 0.5, lw, lh), 1)
+	# Rumput liar sengaja TAK BERPOLA. Percobaan pertama menghamparkannya sebagai pita
+	# selebar ladang — hasilnya jadi GARIS-GARIS RAPI, dan mata membacanya sebagai
+	# BARISAN TANAMAN. Ladang yang tampak ditanami rapi mengabarkan "masih digarap",
+	# yaitu kebalikan persis dari yang harus diceritakan. Rumput yang merebut tanah
+	# tak pernah tumbuh dalam baris.
+	#
+	# Petak tak-beraturan, menebal di tepi (di sanalah rumput masuk lebih dulu) dan
+	# menyisakan tengah yang masih telanjang — bekas garapan terakhir yang belum kalah.
+	for petak in [
+		Rect2(ladang.x - lw * 0.5, ladang.y - lh * 0.5, 96, 64),
+		Rect2(ladang.x - lw * 0.5 + 64, ladang.y - lh * 0.5, 64, 32),
+		Rect2(ladang.x + lw * 0.5 - 128, ladang.y - lh * 0.5, 128, 96),
+		Rect2(ladang.x + lw * 0.5 - 64, ladang.y - 32, 64, 96),
+		Rect2(ladang.x - lw * 0.5, ladang.y + lh * 0.5 - 64, 64, 64),
+		Rect2(ladang.x - lw * 0.5 + 96, ladang.y + lh * 0.5 - 32, 96, 32),
+		Rect2(ladang.x - 32, ladang.y - 16, 64, 32),
+	]:
+		_tile(P_T + "ladang_semak32.png", petak, 2)
+
+	#    PAGARNYA BERLUBANG, bukan utuh. Pagar utuh mengabarkan "milik seseorang";
+	#    pagar berlubang mengabarkan "DULU milik seseorang". Lubangnya yang bercerita.
+	#    Di dua tempat ruasnya hilang tapi TIANGNYA masih berdiri — itu bedanya lapuk
+	#    (roboh sendiri, tiang bertahan) dengan dibongkar (semua diangkut).
+	for i in 10:
+		var fx: float = ladang.x - lw * 0.5 + 16 + i * 32
+		if i in [3, 7]:
+			_jejak("pagar_tiang32.png", Vector2(fx, ladang.y - lh * 0.5 - 10), 1.0)
 			continue
-		_jejak("fence_h.png", ladang + Vector2(-160 + i * 40, -72), 1.7)
-	for i in 4:
+		_jejak("pagar_h32.png", Vector2(fx, ladang.y - lh * 0.5 - 10), 1.0)
+	for i in 5:
 		if i == 2:
 			continue
-		_jejak("fence_post.png", ladang + Vector2(-168, -40 + i * 40), 1.7)
-	for p in [Vector2(-96, 8), Vector2(24, -16), Vector2(96, 32), Vector2(-32, 48)]:
-		_jejak("dead_bush.png", ladang + p, 1.6)   # tanah yang dulu ditanami
-	_jejak("hay.png", ladang + Vector2(140, -8), 1.8)
+		_jejak("pagar_tiang32.png",
+				Vector2(ladang.x - lw * 0.5 - 8, ladang.y - lh * 0.5 + 16 + i * 32), 1.0)
+	_jejak("hay.png", ladang + Vector2(lw * 0.5 - 30, -lh * 0.5 + 24), 1.8)
 
 	# 3. POHON MATI di tepi ladang — kebun yang tak lagi disiram. Aset pohon SUNGGUHAN
 	#    (tree_dead_*), bukan `tree_lpc.png` yang ternyata potongan salah-krop.
@@ -356,8 +393,15 @@ func _village() -> void:
 	_building(P_S + "fasad_shop.png", Vector2(1216, 480))          # toko Otha — tutup dua musim
 	_building(P_S + "fasad_kosong.png", Vector2(1408, 800))        # rumah kosong
 	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
+	# POHON. Dulu `tree_lpc.png` — dan berkas itu ternyata BUKAN POHON: potongan
+	# salah-krop berupa lengkungan cokelat-keemasan, nol batang, nol tajuk. Empat
+	# "pohon" ini selama berbulan-bulan cuma noda tan di rumput, dan tak ada yang
+	# menyadarinya karena dari kamera main ukurannya kecil. Komentar di bawah pun ikut
+	# percaya sampai menulis "batang, bukan tajuk" untuk sprite yang tak punya keduanya.
+	# `tree_oak.png` sudah ada di repo sejak lama, berbatang & bertajuk — asetnya tak
+	# pernah hilang, kodenya yang menunjuk berkas salah (pola yang sama dengan ayam).
 	for p in [Vector2(320, 384), Vector2(1600, 352), Vector2(1728, 1024), Vector2(224, 1088)]:
-		_put(P_S + "tree_lpc.png", p)
+		_jejak("tree_oak.png", p, 2.0)
 	# PENJURU ALUN-ALUN — bingkai, bukan hiasan. Sudut yang ditandai membuat mata
 	# membaca ruang TERTUTUP ("ini tempatnya") alih-alih hamparan terbuka ("lewat saja").
 	#

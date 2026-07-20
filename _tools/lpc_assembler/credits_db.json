@@ -552,6 +552,13 @@
     "terverifikasi": false,
     "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
   },
+  "fondasi32.png": {
+    "author": "Proyek Aetherion (gen_pinggir.py) — turunan stone32.png (LPC)",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri",
+    "terverifikasi": true,
+    "url": ""
+  },
   "hijabblue.png": {
     "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
     "license": "CC-BY-SA 3.0 / GPL 3.0",
@@ -572,6 +579,20 @@
     "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
     "terverifikasi": true,
     "url": ""
+  },
+  "ladang_semak32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "ladang_tanah32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
   },
   "lantern.png": {
     "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
@@ -600,6 +621,20 @@
     "pack": "LPC Character Bases v3.1",
     "terverifikasi": true,
     "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "pagar_h32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "pagar_tiang32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
   },
   "sewing_basket.png": {
     "author": "Proyek Aetherion, digambar oleh gen_overlays.py",

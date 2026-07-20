@@ -1,0 +1,5 @@
+# fondasi32.png — sisa lantai batu rumah yang sudah tak ada.
+# DIGAMBAR gen_pinggir.py, diturunkan dari stone32.png.
+# Alasan digambar, bukan dipilih: audit gudang (64 zip, tiap kandidat
+# dibuka & dilihat) menemukan NOL aset puing/fondasi bergaya LPC.
+# Karya turunan aset LPC -> CC-BY-SA 3.0 ikut menempel (#232/#277).
