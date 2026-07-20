@@ -74,6 +74,7 @@ func _ready() -> void:
 	_ground()
 	_build_boundaries()
 	_village()
+	_pinggir_jejak()
 	_props_and_evidence()
 	_pintu_dan_interior()
 	_folk()
@@ -197,6 +198,90 @@ func _ground() -> void:
 	_setapak(Vector2(640, 900), Vector2(700, 900))
 	_setapak(Vector2(700, 900), Vector2(700, 1004))
 	_setapak(Vector2(1216, jalan_atas), Vector2(1216, jalan_atas)) # sambungan toko ke jalan
+
+	# SETAPAK YANG MEMUDAR — dulu menuju sesuatu, kini menuju ketiadaan. Ia menyempit
+	# ruas demi ruas lalu berhenti di rumput, tanpa pernah sampai ke apa pun. Inilah
+	# satu-satunya bentuk "jalan" yang bisa mengabarkan D2 spasial: jalan yang MASIH
+	# ADA membuktikan ada tujuan, dan tujuan itulah yang hilang. Jalan yang dihapus
+	# bersih tak membuktikan apa-apa (itu D3 — seolah tak pernah ada).
+	_setapak(Vector2(1408, 860), Vector2(1408, 908), 26.0)
+	_setapak(Vector2(1408, 908), Vector2(1452, 908), 20.0)
+	_setapak(Vector2(1452, 908), Vector2(1470, 924), 13.0)
+	_setapak(Vector2(1470, 924), Vector2(1484, 930), 7.0)
+
+
+## Prop pinggir dari pustaka 16px lama: kecil untuk dunia berpetak 32 & tokoh 64,
+## jadi diperbesar seperti ayam (#BAGIAN1, skala 1.6). 2.0 dipilih supaya jejak masih
+## terbaca di zoom 0.55 tanpa menyaingi bangunan.
+const SKALA_JEJAK := 2.0
+
+func _jejak(nama: String, pos: Vector2, skala := SKALA_JEJAK) -> Sprite2D:
+	var s := _put(P_OLD + nama, pos)
+	if s:
+		s.scale = Vector2(skala, skala)
+	return s
+
+
+## PINGGIR SEBAGAI JEJAK-KEHILANGAN, bukan pinggir yang diisi penuh.
+##
+## Penilaian visual: bagian selatan & tenggara peta hamparan rumput kosong, dan
+## kekosongan itu AMBIGU — tak bisa dibedakan antara "Ashbrook mengecil" (D2 spasial:
+## sesuatu pernah di sini lalu pergi) dan "belum digarap". Dua hal itu terlihat sama.
+##
+## Obatnya BUKAN mengisi. Desa yang mengecil memang sepi; mengisinya sampai ramai
+## justru menghapus tesisnya. Yang kurang bukan kepadatan, melainkan BUKTI bahwa
+## kepadatan itu pernah ada. Maka: sedikit objek, masing-masing menyisakan bentuk
+## dari sesuatu yang sudah tak ada.
+##
+## Semua aset dipakai dari yang TERBUKTI terbaca (audit: ruins/fence/tree_dead/stump/
+## log_fallen/dead_bush/rock/hay). Nol aset baru, nol `tree_lpc.png` yang rusak.
+func _pinggir_jejak() -> void:
+	# 1. DUA FONDASI RUMAH YANG SUDAH TAK ADA. Yang digambar bukan reruntuhan
+	#    bertumpuk, melainkan DENAHNYA: batu sudut + sisa garis dinding. Mata membaca
+	#    persegi di rumput sebagai "ada bangunan di sini", lalu menyadari isinya hilang.
+	for denah in [
+		{"pos": Vector2(1520, 936), "w": 132.0, "h": 92.0},   # tenggara, sejajar rumah kosong
+		{"pos": Vector2(352, 952),  "w": 108.0, "h": 80.0},   # barat daya, di luar rumah Lyra
+	]:
+		var c: Vector2 = denah["pos"]
+		var w: float = denah["w"]
+		var h: float = denah["h"]
+		# LANTAINYA DULU, baru puingnya. Pelajaran yang sama dengan pelataran alun-alun:
+		# yang membuat mata membaca "tempat" adalah RUANG, bukan objek. Percobaan pertama
+		# cuma menaruh batu di empat sudut — dari zoom 0.55 hasilnya terbaca "puing
+		# tersebar", bukan "rumah pernah berdiri di sini". Petak lantai memberi bentuk;
+		# batu sudut baru bisa menjelaskan bentuk itu.
+		_tile(P_T + "stone32.png", Rect2(c.x - w * 0.5, c.y - h * 0.5, w, h), 1)
+		for sudut in [Vector2(-w, -h), Vector2(w, -h), Vector2(-w, h), Vector2(w, h)]:
+			_jejak("ruins.png", c + sudut * 0.5, 1.6)
+		# sisa garis dinding — sengaja TERPUTUS. Dinding utuh berarti rumah kosong;
+		# dinding terputus berarti rumah yang batunya sudah diambili orang.
+		for t in [Vector2(-w * 0.18, -h * 0.5), Vector2(w * 0.22, h * 0.5),
+				Vector2(-w * 0.5, h * 0.12)]:
+			_jejak("rock.png", c + t, 1.8)
+
+	# 2. LADANG YANG BERHENTI DIGARAP + pagarnya yang lapuk. Pagar dibuat BERLUBANG,
+	#    bukan utuh: pagar utuh mengabarkan "milik seseorang", pagar berlubang
+	#    mengabarkan "dulu milik seseorang". Lubangnya yang bercerita, bukan tiangnya.
+	var ladang := Vector2(700, 1000)
+	for i in 9:
+		if i in [3, 6]:                       # dua ruas hilang — lapuk, bukan dibongkar
+			continue
+		_jejak("fence_h.png", ladang + Vector2(-160 + i * 40, -72), 1.7)
+	for i in 4:
+		if i == 2:
+			continue
+		_jejak("fence_post.png", ladang + Vector2(-168, -40 + i * 40), 1.7)
+	for p in [Vector2(-96, 8), Vector2(24, -16), Vector2(96, 32), Vector2(-32, 48)]:
+		_jejak("dead_bush.png", ladang + p, 1.6)   # tanah yang dulu ditanami
+	_jejak("hay.png", ladang + Vector2(140, -8), 1.8)
+
+	# 3. POHON MATI di tepi ladang — kebun yang tak lagi disiram. Aset pohon SUNGGUHAN
+	#    (tree_dead_*), bukan `tree_lpc.png` yang ternyata potongan salah-krop.
+	for p in [Vector2(1640, 880), Vector2(1720, 964), Vector2(232, 848)]:
+		_jejak("tree_dead_a.png" if int(p.x) % 2 == 0 else "tree_dead_b.png", p, 2.0)
+	_jejak("stump.png", Vector2(1560, 1030), 1.8)
+	_jejak("log_fallen.png", Vector2(1668, 1044), 1.8)
 
 
 ## Cakram pelataran, dipusatkan (bukan `_tile` yang selalu rata-kiri-atas).
