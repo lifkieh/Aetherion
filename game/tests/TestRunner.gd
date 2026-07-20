@@ -139,6 +139,7 @@ func _ready() -> void:
 	await _test_projectile_survives_dead_source()
 	_test_save_routing_274()
 	await _test_ashbrook64_padat()
+	await _test_frozen_regions_stay_charsys()
 	await _test_kamar_tak_menelan_pemain()
 	await _test_jendela_terlupa()
 	_test_evidence_counts_kinds_not_items()
@@ -4478,6 +4479,82 @@ func _test_ashbrook64_padat() -> void:
 ##
 ## Dijepit dua sisi: lantai harus di BAWAH z pemain terendah di kamar itu, tapi tetap
 ## >= `Light2D.range_z_min` (-1024) atau perapiannya berhenti menyinarinya.
+## GERBANG WILAYAH-BEKU — opt-in LPC (#276) tak boleh bocor keluar Ashbrook64.
+##
+## `Villager.gd` dipakai BERSAMA enam wilayah. Lima di antaranya beku
+## (Greenvale/Candyveil/Desert/Frostpeak/Storm Island), satu lagi dunia 16px.
+## Yang memisahkan mereka dari Ashbrook64 cuma SATU hal: `TownFolk.place()` dipanggil
+## dengan TIGA argumen, sehingga `lpc_awal` jatuh ke -1 dan warga tetap `_charsys`.
+##
+## Sebelum test ini jaminannya cuma tangkap-layar + grep: bukti pada SATU saat, bukan
+## sepanjang waktu. Kalau kelak nilai default `lpc_awal` berubah, sprite warga di lima
+## wilayah beku berganti diam-diam — nol galat, nol crash, cuma orang yang tiba-tiba
+## berbeda di kota yang tak pernah diminta berubah.
+##
+## Diuji lewat JALUR PEMAKAI (#151b), bukan periksa string: `place()` benar-benar
+## dijalankan, lalu UKURAN FRAME jadinya dibaca. 32 px = `_charsys`, 64 px = LPC.
+## Cabang Ashbrook64 diuji BERDAMPINGAN — tanpa itu, test yang selalu lulus tak bisa
+## dibedakan dari test yang bekerja.
+func _test_frozen_regions_stay_charsys() -> void:
+	print("[gerbang wilayah-beku: opt-in LPC tak bocor dari Ashbrook64]")
+
+	var host := Node2D.new()
+	add_child(host)
+	# TIGA argumen — persis cara Greenvale/Candyveil/Desert/Frostpeak/StormIsland memanggil
+	var n: int = TownFolk.place(host, "greenvale", Vector2.ZERO)
+	check("greenvale menempatkan warga", n > 0, str(n))
+	await get_tree().process_frame
+
+	var diperiksa := 0
+	for c in host.get_children():
+		if not ("lpc_sheet" in c):
+			continue
+		diperiksa += 1
+		check("warga beku: lpc_sheet KOSONG (default 3-argumen)", c.lpc_sheet == "", str(c.lpc_sheet))
+		var sumber := _sumber_frame_warga(c)
+		check("warga beku: piksel BUKAN dari lembar warga LPC",
+			not sumber.contains("/characters/warga_"), sumber)
+	check("ada warga yang benar-benar diperiksa", diperiksa > 0, str(diperiksa))
+	host.queue_free()
+	await get_tree().process_frame
+
+	# CABANG PEMBANDING: dengan argumen keempat, warga HARUS berganti ke LPC. Kalau ini
+	# juga 32px, berarti test di atas lulus karena opt-in-nya mati total — gerbang yang
+	# selalu hijau, bukan gerbang.
+	var host2 := Node2D.new()
+	add_child(host2)
+	TownFolk.place(host2, "ashbrook", Vector2.ZERO, 0)
+	await get_tree().process_frame
+	var lpc := 0
+	for c in host2.get_children():
+		if not ("lpc_sheet" in c):
+			continue
+		if String(c.lpc_sheet) != "" and _sumber_frame_warga(c).contains("/characters/warga_"):
+			lpc += 1
+	check("cabang Ashbrook64 (4 argumen) BENAR-BENAR memuat lembar warga LPC", lpc > 0, str(lpc))
+	host2.queue_free()
+	await get_tree().process_frame
+
+
+## Dari BERKAS MANA piksel warga ini datang? "" = bukan dari berkas (CharGen menyusun
+## teksturnya di memori), sebuah path = lembar LPC di disk.
+##
+## Lebar frame TIDAK bisa dipakai membedakan — sempat dicoba dan gagal: `_charsys`
+## ternyata juga menghasilkan frame 64 px, jadi ukurannya sama di kedua jalur. Yang
+## benar-benar berbeda adalah ASALNYA.
+func _sumber_frame_warga(v: Node) -> String:
+	for c in v.get_children():
+		if c is AnimatedSprite2D and c.sprite_frames != null:
+			if not c.sprite_frames.has_animation("idle_down"):
+				continue
+			var t: Texture2D = c.sprite_frames.get_frame_texture("idle_down", 0)
+			if t is AtlasTexture and t.atlas != null:
+				return t.atlas.resource_path
+			if t != null:
+				return t.resource_path
+	return ""
+
+
 func _test_kamar_tak_menelan_pemain() -> void:
 	print("[#275: kamar berkoordinat negatif tak menelan pemainnya]")
 	var scn = preload("res://scenes/world/Ashbrook.tscn").instantiate()
