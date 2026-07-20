@@ -101,6 +101,7 @@ func _ready() -> void:
 	_build_boundaries()
 	_village()
 	_pinggir_jejak()
+	_gerbang_selatan()
 	_props_and_evidence()
 	_pintu_dan_interior()
 	_folk()
@@ -263,6 +264,31 @@ func _jejak(nama: String, pos: Vector2, skala := SKALA_JEJAK) -> Sprite2D:
 ##
 ## Semua aset dipakai dari yang TERBUKTI terbaca (audit: ruins/fence/tree_dead/stump/
 ## log_fallen/dead_bush/rock/hay). Nol aset baru, nol `tree_lpc.png` yang rusak.
+## GERBANG SELATAN — jalan keluar. Megah, berkarat, TAK BERPENJAGA.
+##
+## Ketiganya harus terbaca sekaligus, dan tak satu pun boleh ditulis sebagai teks:
+##   megah        — dua pilar batu 3x, lebih tinggi dari apa pun di dekatnya
+##   berkarat     — dimodulasi ke cokelat-oksida, bukan abu batu bersih
+##   tak berpenjaga — NOL prop penjaga, nol pos, nol pintu. Cuma bukaan.
+##
+## Ia menghadap ke selatan, ke tanah yang baru lahir: satu-satunya arah keluar yang
+## dipunyai desa, dan tak seorang pun berdiri di sana lagi. Setapak yang menuju ke
+## sana sengaja MEMUDAR sebelum sampai — jalan ke luar masih ada, kebiasaan
+## memakainya yang hilang.
+func _gerbang_selatan() -> void:
+	var gy := float(MAP_H * TILE) - 96.0          # sedikit di dalam batas selatan
+	for dx in [-52.0, 52.0]:
+		var pilar := _put(P_OLD + "stone_gate.png", Vector2(VC.x + dx, gy))
+		if pilar:
+			pilar.scale = Vector2(3.0, 3.0)
+			pilar.modulate = Color(0.82, 0.70, 0.55)   # oksida, bukan batu bersih
+			_solid(Rect2(VC.x + dx - 22, gy - 14, 44, 28))
+	# jalan menuju gerbang: melebar dari desa lalu BERHENTI 2 petak sebelum bukaan.
+	# Jalan yang menyentuh gerbang berkata "masih dilewati"; jalan yang berhenti
+	# sebelum sampai berkata "dulu dilewati".
+	_setapak(Vector2(VC.x, VC.y + 320), Vector2(VC.x, gy - 160), 44.0)
+
+
 func _pinggir_jejak() -> void:
 	# 1. DUA FONDASI RUMAH YANG SUDAH TAK ADA. Yang digambar bukan reruntuhan
 	#    bertumpuk, melainkan DENAHNYA: batu sudut + sisa garis dinding. Mata membaca
@@ -419,6 +445,26 @@ func _village() -> void:
 	_building(P_S + "fasad_shop.png", Vector2(1216, 480))          # toko Otha — tutup dua musim
 	_building(P_S + "fasad_kosong.png", Vector2(1408, 800))        # rumah kosong
 	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
+
+	# ── C1: BALAI DESA — terlalu besar untuk yang tersisa ────────────────────
+	# Fasad terbesar yang dipunyai repo (inn 160x224), menghadap alun-alun dari utara.
+	# Ia sengaja bangunan PALING BESAR di peta: empat puluh orang menggema di ruang
+	# yang dibangun untuk lima ratus. Kekosongannya bukan kekurangan aset — itu isi
+	# ceritanya, dan ia harus terbaca dari luar tanpa satu baris teks pun.
+	_building(P_S + "fasad_inn.png", Vector2(960, 464))
+
+	# ── C2: TIGA RUMAH MENUTUP CINCIN KE SELATAN ─────────────────────────────
+	# C2 sebelumnya cuma BUSUR, bukan cincin: Merrit barat, gudang barat-laut, toko
+	# timur-laut, rumah kosong timur, Lyra barat-daya. Sisi selatan & tenggara NOL —
+	# dan itu justru tanah yang baru lahir saat kanvas tumbuh. Ketiganya di jari-jari
+	# 12-16 petak, sama dengan rumah lama, jadi cincinnya rata.
+	#
+	# Ketiganya GELAP (nol jendela didaftarkan di `_jendela()`). Gradien #218 yang
+	# diminta — 1 dari 4 hidup — sekarang terpenuhi dengan hitungan sungguhan:
+	# 8 bangunan, yang menyala cuma Lyra + lentera Merrit.
+	_building(P_S + "fasad_kosong.png", Vector2(1120, 1152))       # selatan-tenggara
+	_building(P_S + "fasad_rumah.png", Vector2(736, 1184))          # selatan
+	_building(P_S + "fasad_kosong.png", Vector2(1376, 1056))        # timur-tenggara
 	# POHON. Dulu `tree_lpc.png` — dan berkas itu ternyata BUKAN POHON: potongan
 	# salah-krop berupa lengkungan cokelat-keemasan, nol batang, nol tajuk. Empat
 	# "pohon" ini selama berbulan-bulan cuma noda tan di rumput, dan tak ada yang

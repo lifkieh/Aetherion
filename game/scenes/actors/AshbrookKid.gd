@@ -104,7 +104,14 @@ func _terhalang(p: Vector2) -> bool:
 	q.collide_with_bodies = true
 	q.collision_mask = 4                  # SOLID_LAYER dunia (Ashbrook64.SOLID_LAYER)
 	var h := KOTAK_ANAK * 0.5
+	# EMPAT SUDUT + dua titik tengah. Versi sebelumnya melewatkan sudut ATAS
+	# (±h.x, -tinggi) dan itu terukur: `CekJangkau` menandai satu anak "tak berpijak"
+	# pada 1 dari 3 putaran — anak yang menyusur tepi air mancur berhenti dengan
+	# badan menempel, sementara keempat titik yang diuji kebetulan bebas semua.
+	# Penjaga dan pemeriksa harus mengukur BENTUK YANG SAMA, atau salah satunya
+	# berbohong dan kita tak pernah tahu yang mana.
 	for sudut in [Vector2(-h.x, 0.0), Vector2(h.x, 0.0),
+			Vector2(-h.x, -KOTAK_ANAK.y), Vector2(h.x, -KOTAK_ANAK.y),
 			Vector2(0.0, -KOTAK_ANAK.y), Vector2(0.0, 0.0)]:
 		q.position = p + sudut
 		if not st.intersect_point(q, 1).is_empty():
