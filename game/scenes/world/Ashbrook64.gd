@@ -729,12 +729,21 @@ func _props_and_evidence() -> void:
 	# (1088 px). Memasang batas tanpa memindahkannya akan MEMUTUS jalur bukti:
 	# pemain tak bisa lagi menjangkaunya, dan `ev_ashbrook_fondasi_rumput` jadi
 	# mustahil dikumpulkan. Reruntuhannya ikut naik supaya keduanya tetap sepasang.
-	_put(P_S + "wall_ruin.png", Vector2(1504, 1024))
+	# ⚠ DULU `wall_ruin.png`, dan itu SALAH. Audit-mata membuktikan berkas itu PAGAR
+	# KAYU UTUH, bukan reruntuhan (lpc32/DEPRECATED.md, "nama menyesatkan"). Dua
+	# titik-periksa di bawah bercerita tentang BATU — garis fondasi dan batu berpahat —
+	# dan yang tergambar selama ini kayu. Teksnya menyebut satu benda, gambarnya
+	# menunjukkan benda lain, dan pemain yang memeriksa menerima keduanya sekaligus.
+	#
+	# Komentar lama di baris `stone` bahkan MENOLAK `ruins.png` dengan alasan
+	# "16px bentrok gaya" — padahal ia 40x28 dan sudah dipakai sebagai batu sudut
+	# denah C3 di seluruh peta. Alasan yang salah menutup aset yang benar, dan
+	# alasannya bertahan lebih lama daripada pemeriksaannya.
+	_jejak("ruins.png", Vector2(1504, 1024), 1.8)
 	_examine(Vector2(1504, 1056), "ev_ashbrook_fondasi_rumput")
-	# batu fondasi berpahat — memakai batu LPC, BUKAN ruins.png 16px (bentrok gaya)
-	var stone := _put(P_S + "wall_ruin.png", VC + Vector2(-176, 96))
-	if stone:
-		stone.scale = Vector2(0.5, 0.5)
+	# batu fondasi berpahat — lebih kecil dari reruntuhan di atas: SATU batu, bukan
+	# sisa dinding. Digeser sedikit ke selatan supaya tak bertindih titik-periksanya.
+	_jejak("ruins.png", VC + Vector2(-176, 104), 1.2)
 	_examine(VC + Vector2(-160, 152), "ev_ashbrook_batu_fondasi")
 
 	# tiga pintu periksa Ashbrook-besar
