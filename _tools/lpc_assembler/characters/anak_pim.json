@@ -1,0 +1,23 @@
+{
+  "id": "anak_pim",
+  "named": false,
+  "race": "human",
+  "body": "child",
+  "head": "child",
+  "skin": "light",
+  "hair": "child_jewfro_chestnut",
+  "headwear": null,
+  "facial": {
+    "beard": null
+  },
+  "torso": "tunik_anak_forest",
+  "legs": "child_brown",
+  "feet": null,
+  "race_overlay": [],
+  "story_prop": [],
+  "palette_shift": null,
+  "tint": {
+    "body": "#e8c6a8"
+  },
+  "_hook": "Anak Ashbrook (#216). Dirakit dari LPC child v3.1 (#232 sah): badan child HEADLESS + heads/human_child terpisah. Kulit lewat tint.body — pustaka child sudah punya nada asli, tapi katalog menunjuk satu berkas, jadi tint tetap dipakai. TORSO = tunik gambar-sendiri: gudang NOL baju anak. Celana anak cuma punya baris `walk`; slash kosong, dan anak memang tak pernah menyerang."
+}

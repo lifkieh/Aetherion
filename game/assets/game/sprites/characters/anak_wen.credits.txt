@@ -1,0 +1,10 @@
+# Kredit sprite: anak_wen
+# Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
+
+- body:child: eulpc_body_child.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:child_darkblue: eulpc_legs_child_pants_darkblue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:tunik_anak_maroon: tunik_anak_maroon.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:child: eulpc_head_child.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:child_swoop_black: eulpc_hair_child_swoop_black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+
+# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

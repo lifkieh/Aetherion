@@ -164,6 +164,70 @@ def gen_lantern(alpha, cells):
     glow.save(os.path.join(OUT, "lantern_glow.png"))
 
 
+BODY_ANAK = os.path.join(REPO, "assets_raw", "lpc_extra", "eulpc_body_child.png")
+
+# (nama, warna kain, warna keliman)
+TUNIK_ANAK = [
+    ("tunik_anak_forest", (74, 104, 72), (52, 76, 52)),
+    ("tunik_anak_maroon", (132, 68, 68), (96, 46, 46)),
+    ("tunik_anak_sky", (94, 122, 150), (66, 90, 116)),
+]
+
+
+def gen_tunik_anak(body_anak):
+    """Tunik anak, DITURUNKAN dari siluet badan anak — teknik sama dgn bark_skin.
+
+    KENAPA DIGAMBAR, BUKAN DIAMBIL DARI PACK
+    ----------------------------------------
+    Sapuan seluruh gudang (tiap zip di lpc_extra + pohon _ex/): NOL baju anak.
+    `longsleeve/`, `shortsleeve/`, `sleeveless/`, `fixed-shirt-assets`,
+    `expanded-ulpc-clothing` — tak satu pun punya baris `child`. Yang ADA cuma
+    CELANA anak (`pants/child/walk/`, itupun animasi walk saja).
+
+    Badan + kepala + celana anak merakit rapi TAPI BERDADA TELANJANG — persis
+    cacat yang baru dibayar untuk enam tokoh dewasa. Menaruhnya di scene =
+    mengulang cacat yang sama dengan sadar.
+
+    Diturunkan dari alpha badan anak, jadi sejajar di SETIAP frame & arah tanpa
+    kalibrasi — termasuk animasi yang celana anak sendiri tak punya. Ini
+    first-pass pembukti-keterbacaan (sesuai kontrak berkas ini): satu warna +
+    keliman, tanpa lipatan. Kalau Direktur mau kain sungguhan, ini titik
+    penggantinya, bukan pondasi yang harus dibongkar.
+    """
+    src = body_anak
+    w, h = src.size
+    px = src.load()
+    alpha = src.split()[3]
+    hasil = []
+    for nama, kain, kelim in TUNIK_ANAK:
+        im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        op = im.load()
+        for r in range(h // CELL):
+            for c in range(w // CELL):
+                cell = alpha.crop((c * CELL, r * CELL, c * CELL + CELL, r * CELL + CELL))
+                bbox = cell.getbbox()
+                if not bbox:
+                    continue
+                x0, y0, x1, y1 = bbox
+                tinggi = y1 - y0
+                # Pecahan DIUKUR dari profil lebar badan anak, bukan ditebak. Tebakan
+                # pertama (0.34-0.62) meleset jadi rok di pinggul, dada tetap telanjang —
+                # karena badan child ini HEADLESS: pecahan 0 sudah di leher, bukan di
+                # ubun-ubun. Profil sel hadap-bawah:
+                #   0.00-0.08 leher | 0.08-0.50 bahu & dada (lebar 21-23 px)
+                #   0.50-0.62 pinggang menyempit (17->12) | 0.62+ kaki
+                atas = r * CELL + y0 + int(tinggi * 0.08)
+                bawah = r * CELL + y0 + int(tinggi * 0.55)
+                for y in range(atas, min(bawah + 1, (r + 1) * CELL)):
+                    for x in range(c * CELL, (c + 1) * CELL):
+                        if px[x, y][3] == 0:
+                            continue
+                        op[x, y] = (kain if y < bawah - 1 else kelim) + (255,)
+        im.save(os.path.join(OUT, nama + ".png"))
+        hasil.append(nama)
+    return hasil
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     body = Image.open(BODY).convert("RGBA")
@@ -174,7 +238,9 @@ def main():
     gen_bark_skin(body)
     gen_sewing_basket(alpha, cells)
     gen_lantern(alpha, cells)
+    tunik = gen_tunik_anak(Image.open(BODY_ANAK).convert("RGBA"))
     print(f"overlay digambar -> {OUT} ({len(cells)} sel sejajar)")
+    print(f"tunik anak: {', '.join(tunik)}")
 
 
 if __name__ == "__main__":

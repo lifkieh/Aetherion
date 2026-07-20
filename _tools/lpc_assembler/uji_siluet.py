@@ -61,6 +61,7 @@ ROW_DOWN = 2  # dir_order = up, left, down, right
 AMBANG = 90
 
 NAMED = ["merrit_fane", "halloran", "old_bram", "otha_renn", "nyai", "sora"]
+ANAK = ["anak_pim", "anak_wen", "anak_toka"]
 
 
 def frame_down(cid):
@@ -106,12 +107,34 @@ def silhouette_of_sheet(sheet):
     return silhouette(f.convert("RGBA"))
 
 
-def pasangan_kembar(sil_per_id, ambang=AMBANG):
+def isi(s):
+    """Luas siluet (px terisi)."""
+    return sum(1 for v in s.get_flattened_data() if v > 0)
+
+
+# Ambang 90 diturunkan dari badan DEWASA (~1100 px terisi) = 8,2% luas badan.
+# Badan anak cuma ~614 px. Memakai 90 px apa adanya bukan "standar yang sama" —
+# itu standar 1,8x LEBIH KETAT untuk tubuh yang lebih kecil, dan tak ada aset yang
+# bisa memenuhinya (rambut anak terluas cuma bermassa 41 px). Yang dibandingkan
+# harusnya PROPORSI, bukan hitungan mentah.
+RASIO = 90.0 / 1100.0
+
+
+def ambang_untuk(sil_per_id, ambang=None):
+    """Ambang yang diskalakan ke ukuran badan kelompok ini."""
+    if ambang is not None:
+        return ambang
+    rata = sum(isi(s) for s in sil_per_id.values()) / max(1, len(sil_per_id))
+    return max(1, int(round(rata * RASIO)))
+
+
+def pasangan_kembar(sil_per_id, ambang=None):
     """Kembalikan [(a, b, jarak)] untuk tiap pasang di BAWAH ambang. Kosong = lulus."""
+    amb = ambang_untuk(sil_per_id, ambang)
     gagal = []
     for a, b in itertools.combinations(sorted(sil_per_id), 2):
         d = beda(sil_per_id[a], sil_per_id[b])
-        if d < ambang:
+        if d < amb:
             gagal.append((a, b, d))
     return gagal
 
@@ -122,15 +145,17 @@ def main(argv=None):
     except Exception:
         pass
     ap = argparse.ArgumentParser(description="Uji siluet #231.")
-    ap.add_argument("--ambang", type=int, default=AMBANG)
+    # default None = skalakan per kelompok. Beri angka untuk memaksa satu ambang mentah.
+    ap.add_argument("--ambang", type=int, default=None)
     ap.add_argument("--skala", type=int, default=4)
     args = ap.parse_args(argv)
 
-    sil = {cid: silhouette(frame_down(cid)) for cid in NAMED}
+    semua = NAMED + ANAK
+    sil = {cid: silhouette(frame_down(cid)) for cid in semua}
 
     # lembar bukti: siluet hitam di latar terang, berdampingan
-    sheet = Image.new("RGBA", (CELL * len(NAMED), CELL), (235, 233, 226, 255))
-    for i, cid in enumerate(NAMED):
+    sheet = Image.new("RGBA", (CELL * len(semua), CELL), (235, 233, 226, 255))
+    for i, cid in enumerate(semua):
         black = Image.new("RGBA", (CELL, CELL), (20, 18, 24, 255))
         black.putalpha(sil[cid])
         sheet.alpha_composite(black, (i * CELL, 0))
@@ -141,27 +166,37 @@ def main(argv=None):
     # Kembarannya BERWARNA. Wajib ada berdampingan: lembar hitam membuktikan bentuk,
     # lembar warna membuktikan cacat yang buta-bentuk (kerudung abu terbaca rambut,
     # rambut tint-putih yang tetap oranye). Satu lembar saja selalu menipu salah satu arah.
-    warna = Image.new("RGBA", (CELL * len(NAMED), CELL), (235, 233, 226, 255))
-    for i, cid in enumerate(NAMED):
+    warna = Image.new("RGBA", (CELL * len(semua), CELL), (235, 233, 226, 255))
+    for i, cid in enumerate(semua):
         warna.alpha_composite(frame_down(cid), (i * CELL, 0))
     warna.resize((warna.width * args.skala, warna.height * args.skala),
                  Image.NEAREST).save(OUT_WARNA)
     print(f"lembar warna  -> {OUT_WARNA}\n")
+
+    # DUA KELOMPOK, tak dicampur. Anak berbadan lain — mengadu anak vs dewasa cuma
+    # mengukur "anak lebih kecil", angka besar yang tak membuktikan apa-apa. Yang
+    # perlu dibuktikan: anak beda satu sama LAIN, dan dewasa beda satu sama lain.
     gagal = []
-    for a, b in itertools.combinations(NAMED, 2):
-        d = beda(sil[a], sil[b])
-        tanda = "KEMBAR" if d < args.ambang else "beda"
-        if d < args.ambang:
-            gagal.append((a, b, d))
-        print(f"  {a:12} vs {b:12}  {d:5} px  {tanda}")
+    for judul, grup in (("TOKOH BERNAMA", NAMED), ("ANAK", ANAK)):
+        sub = {c: sil[c] for c in grup}
+        amb = ambang_untuk(sub, args.ambang)
+        rata = sum(isi(s) for s in sub.values()) / len(sub)
+        print(f"  -- {judul}  (badan rata-rata {rata:.0f} px -> ambang {amb} px)")
+        for a, b in itertools.combinations(grup, 2):
+            d = beda(sil[a], sil[b])
+            tanda = "KEMBAR" if d < amb else "beda"
+            if d < amb:
+                gagal.append((a, b, d, amb))
+            print(f"  {a:12} vs {b:12}  {d:5} px  {tanda}")
 
     print()
     if gagal:
-        for a, b, d in gagal:
-            print(f"[#231 GAGAL] {a} & {b} berjarak {d} px (< {args.ambang}) — siluet kembar.",
+        for a, b, d, amb in gagal:
+            print(f"[#231 GAGAL] {a} & {b} berjarak {d} px (< {amb}) — siluet kembar.",
                   file=sys.stderr)
         return 1
-    print(f"[#231 LULUS] {len(NAMED)} tokoh, nol pasangan di bawah {args.ambang} px.")
+    print(f"[#231 LULUS] {len(NAMED)} tokoh bernama + {len(ANAK)} anak, "
+          f"nol pasangan kembar dalam kelompoknya masing-masing.")
     return 0
 
 

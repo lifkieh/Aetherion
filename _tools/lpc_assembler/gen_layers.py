@@ -119,6 +119,37 @@ COPIES = [
      "shortknot/universal/adult_universal_hair_shortknot/gray.png", "eulpc_hair_shortknot_gray"),
     ("hairstyles-2024-03-10.zip",
      "jewfro/universal/adult_universal_hair_jewfro/ash.png", "eulpc_hair_jewfro_ash"),
+
+    # --- rambut ANAK (832x2944, langsung pakai) ---
+    ("lpc-2024-11-09-redrawn-topknot-hairstyles.zip",
+     "hair/jewfro/child/chestnut.png", "eulpc_hair_child_jewfro_chestnut"),
+    ("lpc-2024-11-09-redrawn-topknot-hairstyles.zip",
+     "hair/swoop_side/child/black.png", "eulpc_hair_child_swoop_black"),
+    # topknot_short, BUKAN parted_side_bangs. Diukur: parted* nyaris rata dgn tempurung
+    # kepala (massa 5 px di luar siluet) — tiga anak berambut rata = tiga anak kembar.
+    # Tiga terjauh yang tersedia: topknot_short / jewfro / swoop_side (60, 53, 53 px).
+    ("lpc-2024-11-09-redrawn-topknot-hairstyles.zip",
+     "hair/extensions/ponytails/topknot_short/child/gold.png", "eulpc_hair_child_topknot_gold"),
+]
+
+
+# ------------------------------------------------------- jahit sebagian animasi
+# Celana anak cuma dikirim untuk `walk`. Tak ada slash, tak ada yang lain.
+# Dijahit apa adanya: baris walk terisi, baris slash TETAP TRANSPARAN.
+#
+# AKIBAT YANG DITERIMA SADAR: kalau seorang anak pernah memainkan animasi slash,
+# ia akan tampil tanpa celana di frame itu. Anak Ashbrook tak pernah menyerang
+# (AshbrookKid.gd cuma berjalan mengejar ayam), jadi baris itu tak pernah dibaca.
+# Kalau suatu saat anak diberi animasi lain, INI yang pecah lebih dulu.
+#
+# (zip, {anim: entry}, nama keluaran)
+PIECES = [
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/child/walk/brown.png"}, "eulpc_legs_child_pants_brown"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/child/walk/darkblue.png"}, "eulpc_legs_child_pants_darkblue"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/child/walk/green.png"}, "eulpc_legs_child_pants_green"),
 ]
 
 
@@ -179,6 +210,23 @@ def main(argv=None):
             ok += 1
         except LayerError as e:
             print(f"[GAGAL] {out}: {e}", file=sys.stderr)
+    for zname, potongan, out in PIECES:
+        try:
+            zf = _zip(zname)
+            canvas = Image.new("RGBA", (SHEET_W, SHEET_H), (0, 0, 0, 0))
+            for anim, entry in potongan.items():
+                if entry not in zf.namelist():
+                    raise LayerError(f"tak ada di zip {zname}: {entry}")
+                im = Image.open(io.BytesIO(zf.read(entry))).convert("RGBA")
+                if im.height != 4 * CELL:
+                    raise LayerError(f"{entry}: tinggi {im.height} bukan 4 baris arah.")
+                canvas.alpha_composite(im, (0, ANIM_ROW[anim] * CELL))
+            canvas.save(os.path.join(LIB, out + ".png"))
+            kosong = sorted(set(ANIM_ROW) - set(potongan))
+            print(f"[SEBAGIAN] {out}.png  terisi={sorted(potongan)} KOSONG={kosong}")
+            ok += 1
+        except LayerError as e:
+            print(f"[GAGAL] {out}: {e}", file=sys.stderr)
     for zname, variant, sex, color, out in JOBS:
         try:
             zf = _zip(zname)
@@ -189,7 +237,7 @@ def main(argv=None):
             ok += 1
         except LayerError as e:
             print(f"[GAGAL] {out}: {e}", file=sys.stderr)
-    total = len(JOBS) + len(COPIES)
+    total = len(JOBS) + len(COPIES) + len(PIECES)
     print(f"\n{ok}/{total} lapisan siap -> {LIB}")
     return 0 if ok == total else 2
 

@@ -33,6 +33,9 @@
     "longknot_ash":       "eulpc_hair_longknot_ash.png",
     "shortknot_gray":     "eulpc_hair_shortknot_gray.png",
     "jewfro_ash":         "eulpc_hair_jewfro_ash.png",
+    "child_jewfro_chestnut": "eulpc_hair_child_jewfro_chestnut.png",
+    "child_swoop_black":     "eulpc_hair_child_swoop_black.png",
+    "child_topknot_gold":    "eulpc_hair_child_topknot_gold.png",
     "braid_left":         "eulpc_hairext_braidl.png",
     "braid_right":        "eulpc_hairext_braidr.png",
     "topknot_long":       ["eulpc_hairext_topknot_long_bg.png", "eulpc_hairext_topknot_long_fg.png"]
@@ -65,7 +68,10 @@
   "torso": {
     "overalls":         "eulpc_torso_overalls_male.png",
     "sleeveless2":      "eulpc_torso_sleeveless2_female.png",
-    "cardigan_teen":    "eulpc_torso_cardigan_teen.png"
+    "cardigan_teen":    "eulpc_torso_cardigan_teen.png",
+    "tunik_anak_forest": "@overlay/tunik_anak_forest.png",
+    "tunik_anak_maroon": "@overlay/tunik_anak_maroon.png",
+    "tunik_anak_sky":    "@overlay/tunik_anak_sky.png"
   },
 
   "_undershirt_doc": "Kemeja berlengan, dijahit gen_layers.py dari longsleeve-shirts.zip. `overalls` & `sleeveless2` TANPA lengan by design — mereka dipakai DI ATAS salah satu ini. Tanpa slot ini tokoh berlengan telanjang.",
@@ -82,8 +88,13 @@
     "ls_teen_teal":       "eulpc_torso_longsleeve_teen_teal.png",
     "ls_teen_rose":       "eulpc_torso_longsleeve_teen_rose.png"
   },
+  "_torso_anak_doc": "NOL baju anak di seluruh gudang (tiap zip + pohon _ex/ disapu: longsleeve/shortsleeve/sleeveless/fixed-shirt/expanded-clothing tak punya baris `child`). Tunik ini DIGAMBAR design-time oleh gen_overlays.py, diturunkan dari siluet badan anak. Tanpa slot ini anak berdada telanjang — cacat yang sama dengan enam dewasa, diulang dengan sadar.",
+
   "legs": {
     "pants_thin":  "eulpc_legs_pants_thin.png",
+    "child_brown":    "eulpc_legs_child_pants_brown.png",
+    "child_darkblue": "eulpc_legs_child_pants_darkblue.png",
+    "child_green":    "eulpc_legs_child_pants_green.png",
     "hose_thin":   "eulpc_legs_hose_thin.png",
     "shorts_thin": "eulpc_legs_shorts_thin.png"
   },

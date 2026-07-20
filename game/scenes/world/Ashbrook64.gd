@@ -335,10 +335,15 @@ func _hidup_ayam_anak() -> void:
 	for i in 3:
 		var k := Node2D.new()
 		k.set_script(load("res://scenes/actors/AshbrookKid.gd"))
+		# varian DIPASANG SEBELUM add_child: `_ready()` jalan di dalam add_child, dan
+		# yang dipasang sesudahnya tak pernah terbaca. (Pertama kali salah urutan,
+		# ketiga anak diam-diam jatuh ke kotak placeholder — log yang menangkapnya.)
+		k.varian = i                 # tiga anak BERBEDA, bukan tiga salinan
 		add_child(k)
 		k.place(VC + Vector2(randf_range(-150, 150), randf_range(-70, 100)))
 		k.setup(_chickens)
-		k.scale = Vector2(1.6, 1.6)
+		# skala 1.6 dulu membesarkan kotak 7x11. Sprite LPC sudah 64px — 1.6 akan
+		# membuat anak lebih besar daripada orang dewasa di alun-alun yang sama.
 		_kids.append(k)
 
 
