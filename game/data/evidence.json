@@ -1,0 +1,242 @@
+[
+ {
+  "_comment": "#226 HUKUM BUKTI — 'Ingatan tidak bisa dipulihkan dari ingatan. Hanya dari BEKAS.' Nirnama menghapus INGATAN; ia tak bisa menghapus AKIBAT. Empat kind adalah KANON (#226) — jangan tambah tanpa putusan Direktur. Format _load_indexed(id). SETIAP baris di sini adalah OBJEK YANG BISA DILIHAT PEMAIN DI DUNIA — bukan item inventory, bukan quest flag. Kalau ia tak bisa dilihat tanpa dijelaskan, ia bukan bukti.",
+  "id": "_doc",
+  "kind": "_doc",
+  "page": "_doc",
+  "_kinds": {
+   "benda": "benda fisik yang selamat — benda tak punya ingatan untuk dihapus",
+   "kebiasaan": "tubuh ingat setelah kepala lupa",
+   "akibat": "bekas yang tak bisa dicoret — hanya salah dibaca",
+   "orang": "mencintai = ingatan yang tak disimpan di kepala (#224 Lapis 1)"
+  },
+  "_aturan": "found_by: cara pemain MENEMUKANNYA di dunia. TIDAK PERNAH lewat quest marker (D-3). notice: kalimat yang muncul HANYA saat pemain sudah memeriksa — bukan hint, bukan tooltip."
+ },
+ {
+  "id": "ev_otha_papan_bekas_cat",
+  "kind": "akibat",
+  "page": "person_otha_renn",
+  "where": "ashbrook_jalan_utama",
+  "found_by": "examine",
+  "_note": "A1 — INI BUKTI TERPENTING DI SELURUH ADEGAN. Kayu di bawah tulisan tidak pudar oleh matahari selama 34 tahun; sisanya pudar. Persegi panjang lebih gelap. Kabut tak bisa menyentuhnya karena ini bukan ingatan — ini FISIKA. ⚠ AGENT: kalau kau mengganti sprite papan kosong dengan papan bersih tanpa bekas, kau MENGHAPUS MEKANIK.",
+  "notice": {
+   "id": "Kayunya pudar oleh tiga puluh empat musim panas — kecuali satu persegi panjang di tengah.",
+   "en": "The wood is faded by thirty-four summers — except for one rectangle in the middle."
+  },
+  "decay": {
+   "mode": "faded",
+   "days": 60,
+   "accel": {
+    "sunny": 1.5
+   }
+  }
+ },
+ {
+  "id": "ev_otha_bangku_cekungan",
+  "kind": "kebiasaan",
+  "page": "person_otha_renn",
+  "where": "ashbrook_jalan_utama",
+  "found_by": "examine",
+  "_note": "A1 — empat cekungan di tanah, sedalam 34 tahun. Tanah ingat setelah orang lupa. Bangkunya masih ada. Kosong.",
+  "notice": {
+   "id": "Empat cekungan di tanah, di bawah kaki bangku. Dalam. Seseorang duduk di sini setiap sore, sangat lama.",
+   "en": "Four hollows in the earth, beneath the bench legs. Deep. Someone sat here every evening, for a very long time."
+  },
+  "decay": {
+   "mode": "washed",
+   "days": 30,
+   "accel": {
+    "rain": 5.0
+   }
+  }
+ },
+ {
+  "id": "ev_otha_jahitan_mantel_merrit",
+  "kind": "benda",
+  "page": "person_otha_renn",
+  "where": "ashbrook_rumah_singgah",
+  "found_by": "dialog_merrit",
+  "_note": "A1 × kanon #011 — 'mantel ini yang dipakainya waktu ia melihatku terakhir kali'. Merrit menolak mengganti mantel pos tuanya. Jahitan di siku kanan sudah diperbaiki — BUKAN oleh Merrit. Ia tak ingat siapa. Ia cuma tahu ia tak pernah bisa menjahit serapi itu. ⚠ Merrit TIDAK menawarkan info ini. Pemain harus memeriksa mantelnya.",
+  "notice": {
+   "id": "Siku kanan mantel itu pernah robek, dan dijahit ulang oleh tangan yang jauh lebih sabar daripada tangan Merrit.",
+   "en": "The right elbow of that coat was torn once, and mended by hands far more patient than Merrit's."
+  },
+  "_gate_note": "NPC kota, bukan companion — selalu tersedia (#228)",
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_otha_nyai_tuminah_kamis",
+  "kind": "orang",
+  "page": "person_otha_renn",
+  "where": "ashbrook_jalan_utama",
+  "found_by": "observe",
+  "schedule": "kamis_sore",
+  "_note": "A1 × #224 Lapis 1 — mencintai = ingatan yang tak disimpan di kepala. Nyai Tuminah TIDAK ingat Otha. Tapi tiap Kamis sore ia berjalan ke jalan utama, berhenti di depan toko itu, berdiri sebentar, lalu pulang. Ia tidak tahu kenapa. ⚠ found_by=observe: pemain harus MELIHATNYA, bukan bertanya. Kalau ditanya: 'Kaki tua. Sudah hafal jalannya sendiri.'",
+  "notice": {
+   "id": "Ia berhenti di depan pintu yang tertutup itu. Berdiri. Lalu pulang. Ia melakukannya tiap Kamis, dan ia tidak tahu kenapa.",
+   "en": "She stops before that closed door. Stands. Then goes home. She does it every Thursday, and she does not know why."
+  },
+  "_gate_note": "NPC kota, bukan companion — selalu tersedia (#228)",
+  "decay": {
+   "mode": "stopped",
+   "days": 21
+  }
+ },
+ {
+  "id": "ev_merrit_kartu_pos_kosong",
+  "kind": "benda",
+  "page": "person_merrit_fane",
+  "where": "ashbrook_rumah_singgah",
+  "found_by": "examine",
+  "_note": "A2 — 'Aku beli waktu kau pertama datang. Kalau-kalau kau pergi jauh dan mau kirim kabar. Aku belum tulis alamatnya. Aku tidak tahu kau mau ke mana.' Setelah A2 ia tak ingat membelinya — TAPI ITU TULISAN TANGANNYA DI SUDUT: harga, tanggal. Ia tak akan pernah membuangnya. Tangannya tidak mau.",
+  "notice": {
+   "id": "Kartu pos kosong. Tanpa alamat. Di sudutnya, tulisan tangan Merrit: harga, dan sebuah tanggal — hari pertama kau tiba di Ashbrook.",
+   "en": "A blank postcard. No address. In the corner, Merrit's handwriting: a price, and a date — the first day you arrived in Ashbrook."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_merrit_cangkir_kedua",
+  "kind": "kebiasaan",
+  "page": "person_merrit_fane",
+  "where": "ashbrook_rumah_singgah",
+  "found_by": "observe",
+  "schedule": "pagi",
+  "_note": "A2 — Merrit masih menyisihkan cangkir kedua tiap pagi. Ia tidak tahu untuk siapa. Ia sudah melakukannya berbulan-bulan. Tubuh ingat setelah kepala lupa.",
+  "notice": {
+   "id": "Dua cangkir di meja. Ia menuang teh ke keduanya, seperti tiap pagi. Yang kedua dingin tanpa disentuh, seperti tiap pagi.",
+   "en": "Two cups on the table. He pours tea into both, as he does every morning. The second goes cold untouched, as it does every morning."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_merrit_rute_pos_berubah",
+  "kind": "akibat",
+  "page": "person_merrit_fane",
+  "where": "ashbrook_rumah_singgah",
+  "found_by": "examine",
+  "_note": "A2 — buku rute Merrit. Ia menambahkan satu perhentian berbulan-bulan lalu: tempat pemain sering ada. Ia MASIH melewatinya tiap hari. Ia tidak tahu kenapa. Catatannya menunjukkan kapan ia menambahkannya — tulisan tangannya sendiri.",
+  "notice": {
+   "id": "Rute posnya punya satu perhentian yang tak masuk akal — tak ada rumah di sana. Ditambahkan beberapa bulan lalu, dengan tulisan tangannya sendiri. Ia masih melewatinya tiap hari.",
+   "en": "His postal route has one stop that makes no sense — there is no house there. Added a few months ago, in his own hand. He still walks it every day."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_merrit_arlen_ingat",
+  "kind": "orang",
+  "page": "person_merrit_fane",
+  "where": "ashbrook",
+  "found_by": "dialog_arlen",
+  "requires_npc": "arlen",
+  "_note": "A2 × #228 — Arlen ingat. 'Kalian ngobrol tiap malam, Pak Tua. Aku lihat.' MERRIT TIDAK PERCAYA PADANYA — Merrit percaya pada dirinya sendiri, dan dirinya bilang ia tak pernah kenal orang ini. ⚠ Pemain yang tak merekrut Arlen tidak dapat bukti ini — dan itu SAH (#228: masih ada 3 bukti lain, cukup untuk jalur SENDIRI).",
+  "notice": {
+   "id": "\"Kalian ngobrol tiap malam, Pak Tua. Aku lihat dari jalan. Tiap malam.\"",
+   "en": "\"You two talked every night, old man. I saw it from the road. Every night.\""
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_ashbrook_jembatan_terlalu_lebar",
+  "kind": "akibat",
+  "page": "place_ashbrook_besar",
+  "where": "ashbrook_jembatan",
+  "found_by": "examine",
+  "_note": "#206/#210 — 'Tunjukkan, jangan papan-informasikan'. Jembatan dibangun untuk 1.500 jiwa. Sekarang 40 orang menyeberanginya. Bekas tak bisa dicoret — hanya salah dibaca.",
+  "notice": {
+   "id": "Jembatan ini muat enam gerobak berdampingan. Ashbrook punya dua gerobak.",
+   "en": "This bridge fits six carts abreast. Ashbrook has two carts."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_ashbrook_gudang_gandum",
+  "kind": "akibat",
+  "page": "place_ashbrook_besar",
+  "where": "ashbrook_gudang",
+  "found_by": "examine",
+  "_note": "#216 — gudang gandum berisi 4 ayam. Sudah dibangun di Ashbrook v0.5.0.",
+  "notice": {
+   "id": "Gudang gandum sebesar ini menyimpan panen untuk seribu orang. Di dalamnya ada empat ayam.",
+   "en": "A granary this size holds a harvest for a thousand people. Inside there are four chickens."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_ashbrook_halloran_200_roti",
+  "kind": "kebiasaan",
+  "page": "place_ashbrook_besar",
+  "where": "ashbrook_toko_roti",
+  "found_by": "observe",
+  "schedule": "pagi",
+  "_note": "#216 kanon — 'Halloran Muda: 200 roti tiap pagi untuk 40 orang — sumber aroma roti panggang kanon City Bible'. Ia memanggang 200 karena ayahnya memanggang 200. Ayahnya memanggang 200 karena dulu ada 1.500 orang. Halloran tidak tahu itu. Ia cuma tahu 200 adalah angka yang benar. Tubuh ingat setelah kepala lupa — DAN INI SUDAH ADA DI GAME.",
+  "notice": {
+   "id": "Dua ratus roti. Tiap pagi. Untuk empat puluh orang. Ia membuang yang sisa, dan besok memanggang dua ratus lagi.",
+   "en": "Two hundred loaves. Every morning. For forty people. He throws away what is left, and tomorrow bakes two hundred more."
+  },
+  "_gate_note": "NPC kota, bukan companion — selalu tersedia (#228)",
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_ashbrook_fondasi_rumput",
+  "kind": "akibat",
+  "page": "place_ashbrook_besar",
+  "where": "ashbrook_pinggiran",
+  "found_by": "examine",
+  "_note": "#206 — garis fondasi rumah-rumah yang tak ada lagi, masih terlihat di rumput. Rumput tumbuh berbeda di atas batu.",
+  "notice": {
+   "id": "Rumputnya tumbuh dalam garis-garis lurus. Persegi. Berpetak. Ada rumah-rumah di sini, dan tanahnya belum lupa.",
+   "en": "The grass grows in straight lines. Squares. Plots. There were houses here, and the ground has not forgotten."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_ashbrook_batu_fondasi",
+  "kind": "benda",
+  "page": "place_ashbrook_besar",
+  "where": "ashbrook_alun_alun",
+  "found_by": "examine",
+  "_note": "#171/#206 — batu fondasi berpahat 'DARI SERIBU LIMA RATUS TANGAN'. benda ABADI yang tulisannya TAK TERBACA LAGI. Menyambung Kael=batu penanda (#171). Pakai ruins.png (aset aman, nol gambar baru).",
+  "notice": {
+   "id": "Ada pahatan di batu itu, hampir habis dimakan lumut: DARI SERIBU LIMA RATUS TANGAN. Hurufnya sudah bukan huruf yang dipakai sekarang. Tak ada yang bisa membacanya lagi.",
+   "en": "There is carving on that stone, nearly eaten by moss: FROM ONE THOUSAND FIVE HUNDRED HANDS. The letters are no longer letters anyone uses. No one can read it any more."
+  },
+  "decay": {
+   "mode": "never"
+  }
+ },
+ {
+  "id": "ev_ashbrook_bram_ingat_ayahnya",
+  "kind": "orang",
+  "page": "place_ashbrook_besar",
+  "where": "ashbrook",
+  "found_by": "dialog_bram",
+  "_gate_note": "Old Bram = NPC kota, bukan companion — selalu tersedia (#228)",
+  "_note": "#224 Lapis 1 — Old Bram tidak ingat Ashbrook besar; ia lahir setelahnya. Tapi ia ingat AYAHNYA mengeluh soal antrean di penggilingan. Antrean. Di desa 40 orang tidak ada antrean. Ia menceritakannya sebagai lelucon tentang orang tua yang membesar-besarkan. ⚠ Bram TIDAK sedang membantu pemain. Ia sedang bergosip.",
+  "notice": {
+   "id": "\"Ayahku dulu ngeluh soal antrean di penggilingan. Antrean! Di sini! Orang tua memang suka melebih-lebihkan.\"",
+   "en": "\"My father used to complain about the queue at the mill. A queue! Here! Old men do love to exaggerate.\""
+  },
+  "decay": {
+   "mode": "never"
+  }
+ }
+]

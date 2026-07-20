@@ -5,6 +5,7 @@ var kind := "bench"   # bench | shop | inn | board | astrologer | pond | dungeon
 var dungeon_scene := "res://scenes/world/GreenvaleDepths.tscn"
 var dungeon_label := "Gua Greenvale ▼ [E]"
 var custom_label := ""              # override the door/sign label (R2 town buildings)
+var evidence_id := ""               # R2/R3: id bukti utk kind "examine" (Hukum Bukti #226)
 var keeper_location := "greenvale"  # lokasi Penjaga Pohon (skill tree, Decision Log #30)
 var interior_variant := "house"     # which interior HouseInterior builds on entry
 var solid_landmark := false         # true = building can't be entered (just flavour)
@@ -72,6 +73,12 @@ func _build() -> void:
 		# R2: the building sprite is drawn by Town; the door is an invisible hotspot.
 		sprite.visible = false
 		label.text = custom_label if custom_label != "" else "Rumah Warga [E]"
+	elif kind == "examine":
+		# HUKUM BUKTI (#226): titik-periksa. Sprite objeknya digambar scene; ini
+		# hotspot tak terlihat. Label = ajakan periksa BIASA — bukan penanda "!"
+		# atau ikon bukti (D-3: pemain yang tak memeriksa tak pernah tahu ada apa).
+		sprite.visible = false
+		label.text = custom_label if custom_label != "" else "Periksa [E]"
 	elif kind == "inn":
 		sprite.texture = load("res://assets/game/sprites/props/rock.png")
 		sprite.scale = Vector2(2.4, 2.0)
@@ -131,8 +138,30 @@ func _char_sprite(config: Dictionary) -> void:
 	sprite.scale = Vector2.ONE
 	sprite.offset = Vector2(0, -8)
 
+## HUKUM BUKTI (#226/#229) — teks periksa untuk bukti ini.
+## Dipisah dari interact() supaya jalur inti (Evidence.find) bisa diuji tanpa
+## menggerakkan UI Stage.say. Mengembalikan notice ("" bila tak ada / sudah busuk).
+## Memanggil ini MENANDAI bukti ditemukan (R2). Diam total — tak menyentuh UI/audio (D-3).
+func examine_notice() -> String:
+	if evidence_id == "":
+		return ""
+	# R3 — bekas yang membusuk: objek biasa, tak ada yang diperhatikan. DIAM (D-3).
+	if Evidence.is_decayed(evidence_id):
+		return ""
+	var n := Evidence.find(evidence_id)
+	if n == "":
+		# sudah pernah ditemukan → boleh dilihat lagi (teks yang sama)
+		n = Loc.c(Db.evidence.get(evidence_id, {}).get("notice", {}))
+	return n
+
 func interact() -> void:
 	if Stage.is_busy():
+		return
+	if kind == "examine":
+		# Teks periksa BIASA (speaker "" = narasi, bukan NPC). Bukan toast/banner (D-3).
+		var n := examine_notice()
+		if n != "":
+			await Stage.say(n)
 		return
 	if kind == "inn":
 		await Stage.say(["Istirahatlah, petualang. Malam masih panjang.",

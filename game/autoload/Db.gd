@@ -32,6 +32,8 @@ var seasons: Array = []            # 4 musim x 2 minggu nyata (A4, v0.4.3 #83)
 var rasi: Array = []               # 12 Rasi Agung (A5, v0.4.3 #91)
 var cutscenes: Array = []          # skrip cutscene data-driven (v0.4.3 #94)
 var regions: Array = []            # wilayah + BAND level (lv_min/lv_max) — sumber kanon soft-cap EXP (#69)
+var chronicle_losses: Dictionary = {}  # loss_id -> halaman yang hilang per jenis-bukti (#226; R1)
+var evidence: Dictionary = {}      # evidence_id -> def (bukti Chronicle; belum dikonsumsi, forward-looking)
 
 var _errors: Array[String] = []
 
@@ -68,6 +70,10 @@ func load_all() -> void:
 	rasi = _load_array("rasi.json")
 	cutscenes = _load_array("cutscenes.json")
 	regions = _load_array("regions.json")
+	chronicle_losses = _load_object("chronicle_losses.json")
+	# R2 (#226): evidence.json SEKARANG ADA → muat TANPA SYARAT. File hilang HARUS
+	# jadi error (bukan didiamkan) — bersyarat benar saat file belum ada (#241), kini salah.
+	evidence = _load_indexed("evidence.json", "id")
 	if _errors.is_empty():
 		print("[Db] Loaded: %d monsters, %d items, %d skills, %d recipes, %d crops, %d scenarios" % [
 			monsters.size(), items.size(), skills.size(), recipes.size(), crops.size(), scenarios.size()])
