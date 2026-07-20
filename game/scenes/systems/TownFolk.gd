@@ -25,7 +25,11 @@ static func satisfies_law(town_id: String) -> bool:
 	return true
 
 ## Tempatkan kelima persona di sekitar `center` (rute jalan kecil per orang).
-static func place(host: Node2D, town_id: String, center: Vector2) -> int:
+##
+## `lpc_awal` OPT-IN (#276): kosong = sprite `_charsys` 32px, perilaku lama persis.
+## Diisi indeks awal = kelima persona memakai sheet LPC `warga_<NN>` berurutan.
+## Greenvale memanggil tanpa argumen itu dan TIDAK berubah — itu inti opt-in.
+static func place(host: Node2D, town_id: String, center: Vector2, lpc_awal := -1) -> int:
 	var list := personas(town_id)
 	var n := 0
 	for i in list.size():
@@ -34,10 +38,37 @@ static func place(host: Node2D, town_id: String, center: Vector2) -> int:
 		var anchor := center + Vector2.from_angle(a) * 120.0
 		var wps := [anchor, anchor + Vector2.from_angle(a + 1.2) * 46.0, anchor + Vector2(0, 40)]
 		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
+		# SEBELUM add_child: `_build()` jalan di dalam `_ready()`.
+		if lpc_awal >= 0:
+			v.lpc_sheet = "warga_%02d" % (lpc_awal + i)
 		host.add_child(v)
 		v.setup(p.get("name", "Warga"), p.get("config", {}), wps)
 		v.set("_home", anchor)        # jangkar jadwal (#97)
 		v.set_persona(p)
 		v.global_position = wps[0]
+		n += 1
+	return n
+
+
+## Penghuni latar TANPA persona & TANPA jadwal — mereka bukan tokoh, mereka KERUMUNAN.
+## Sengaja dipisah dari `place()`: warga berjadwal (#97) punya kepribadian dan dialog,
+## warga latar cuma menjadikan kota berpenghuni. Mencampur keduanya akan menuntut
+## persona untuk dua puluh orang yang tak pernah diajak bicara.
+static func place_latar(host: Node2D, center: Vector2, awal: int, jumlah: int,
+		radius := 300.0, seed_pos := 20260720) -> int:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_pos            # posisi ikut reproducible, bukan cuma wajahnya
+	var n := 0
+	for i in jumlah:
+		var a := TAU * float(i) / float(jumlah) + rng.randf_range(-0.25, 0.25)
+		var r := radius * rng.randf_range(0.45, 1.0)
+		var anchor := center + Vector2.from_angle(a) * r
+		var wps := [anchor, anchor + Vector2.from_angle(a + 1.7) * rng.randf_range(28.0, 70.0)]
+		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
+		v.lpc_sheet = "warga_%02d" % (awal + i)
+		host.add_child(v)
+		v.setup("Warga", {}, wps)
+		v.set("_home", anchor)
+		v.global_position = anchor
 		n += 1
 	return n

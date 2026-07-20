@@ -12,6 +12,21 @@ var _wp := 0
 var _pause := 0.0
 var _sprite: AnimatedSprite2D
 var _label: Label
+
+## OPT-IN LPC 64px (#276). Kosong = jalur `_charsys` 32px lama, tak berubah sedikit pun.
+## Diisi id sheet (mis. "warga_03") = warga dirakit generator.
+##
+## OPT-IN, BUKAN PENGGANTIAN, dan itu disengaja: `Villager.gd` dipakai BERSAMA
+## Greenvale, dan Greenvale BEKU. Mengganti `_build()` langsung akan menukar sprite
+## warga Greenvale juga — perubahan senyap di wilayah yang tak diminta berubah.
+## Yang memilih adalah scene, sama seperti `AshbrookKid.varian`.
+##
+## WAJIB dipasang SEBELUM add_child: `_build()` jalan di dalam `_ready()`, dan apa pun
+## yang dipasang sesudahnya tak pernah terbaca (pelajaran anak Ashbrook, dibayar sekali).
+var lpc_sheet := ""
+
+const P_LPC := "res://assets/game/sprites/characters/"
+const ARAH := ["up", "left", "down", "right"]   # frame_map.json dir_order
 var _persona: Dictionary = {}    # NPC berkepribadian (Hukum NPC Aneh, E6 #78)
 var _line_idx := 0               # dialog persona bergilir, bukan acak
 var _home := Vector2.ZERO        # jangkar jadwal (JADWAL NPC, #97)
@@ -46,11 +61,55 @@ func _ready() -> void:
 	if not _waypoints.is_empty():
 		global_position = _waypoints[0]
 
+## Susun SpriteFrames dari potongan LPC 64px (`<id>_walk.png` 512x256, `<id>_idle.png`
+## 64x256). Nama animasi SENGAJA sama dengan `CharGen` (`idle_down`, `walk_left`, ...)
+## supaya sisa berkas ini tak perlu tahu jalur mana yang dipakai.
+##
+## Kembalikan null kalau sheet tak ada — dan BERTERIAK. Diam-diam jatuh ke `_charsys`
+## adalah cacat yang sudah dibayar dua kali (ayam di folder salah, anak yang varian-nya
+## dipasang terlambat). Warga latar 32px di tengah kota 64px terlihat "agak kecil",
+## bukan "rusak" — persis jenis cacat yang bertahan berbulan-bulan tanpa ketahuan.
+func _frames_lpc() -> SpriteFrames:
+	var pw := P_LPC + lpc_sheet + "_walk.png"
+	var pi := P_LPC + lpc_sheet + "_idle.png"
+	if not ResourceLoader.exists(pw) or not ResourceLoader.exists(pi):
+		push_error("[aset] warga LPC '%s': sheet TAK ADA (%s) — generator belum jalan?" % [lpc_sheet, pw])
+		return null
+	var tw: Texture2D = load(pw)
+	var ti: Texture2D = load(pi)
+	var sf := SpriteFrames.new()
+	sf.remove_animation("default")
+	var n := int(tw.get_width() / 64)
+	for d in ARAH.size():
+		var arah: String = ARAH[d]
+		sf.add_animation("walk_" + arah)
+		sf.set_animation_speed("walk_" + arah, 10.0)
+		for f in n:
+			var at := AtlasTexture.new()
+			at.atlas = tw
+			at.region = Rect2(f * 64, d * 64, 64, 64)
+			sf.add_frame("walk_" + arah, at)
+		sf.add_animation("idle_" + arah)
+		var ai := AtlasTexture.new()
+		ai.atlas = ti
+		ai.region = Rect2(0, d * 64, 64, 64)
+		sf.add_frame("idle_" + arah, ai)
+	return sf
+
+
 func _build() -> void:
 	_sprite = AnimatedSprite2D.new()
-	_sprite.sprite_frames = CharGen.sprite_frames(_config if not _config.is_empty() else CharGen.default_config())
+	# Tetap AnimatedSprite2D di KEDUA jalur. Menukarnya ke Sprite2D akan mematahkan
+	# `_sprite.play(...)` di dua tempat lain — dan jalur `_charsys` yang tak diminta
+	# berubah ikut pecah. Yang berbeda cuma dari mana SpriteFrames-nya datang.
+	var sf: SpriteFrames = _frames_lpc() if lpc_sheet != "" else null
+	if sf != null:
+		_sprite.sprite_frames = sf
+		_sprite.offset = Vector2(0, -20)    # sel 64px: kaki di titik asal node
+	else:
+		_sprite.sprite_frames = CharGen.sprite_frames(_config if not _config.is_empty() else CharGen.default_config())
+		_sprite.offset = Vector2(0, -8)     # 32px cell: feet at the node origin
 	_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_sprite.offset = Vector2(0, -8)     # 32px cell: feet at the node origin
 	_sprite.play("idle_down")
 	add_child(_sprite)
 	_label = Label.new()

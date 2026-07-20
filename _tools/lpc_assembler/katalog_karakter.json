@@ -1,9 +1,7 @@
 {
   "_doc": "Katalog karakter per-tipe (#276). BUKAN pengganti catalog.json — catalog.json tetap peta lapisan mentah yang dipakai assemble.py untuk enam NPC bernama, dan TIDAK disentuh. Berkas ini adalah lapisan di ATASNYA: tiap entri membawa kredit, lisensi, ukuran tubuh, dan massa siluet terukur, supaya generator bisa memilih acak tanpa pernah melanggar hukum.",
   "versi": 1,
-
   "_kredit_doc": "Kredit dicatat DI SINI, bukan disusul belakangan. Utang [TODO kredit] lahir persis karena atribusi ditunda sampai 'nanti sebelum rilis'. `credit.terverifikasi=false` berarti berkas kreditnya TIDAK ADA di dalam zip sumber (unduhan ULPC modular hanya berisi PNG); pack + URL + lisensi diketahui, daftar seniman per-lapisan belum dibaca dari disk. Itu dilaporkan apa adanya, bukan ditebak dengan nama.",
-
   "pack": {
     "lpc_bases_v3_1": {
       "nama": "LPC Character Bases v3.1",
@@ -44,87 +42,526 @@
       "catatan": "TURUNAN dari siluet badan LPC, jadi ia karya turunan CC-BY-SA (#232) — bukan aset bebas. Share-alike ikut menempel."
     }
   },
-
   "_peta_pack_doc": "Aturan berkas -> pack, dipakai membangun credits_db untuk SELURUH pustaka (termasuk lapisan yang cuma dipakai enam NPC bernama dan tak ada di daftar `tipe`). Dicocokkan berurutan; yang pertama cocok menang. `null` = pack tak diketahui, dan itu DILAPORKAN, tidak ditebak.",
   "peta_pack": [
-    ["@overlay/",              "aetherion_turunan"],
-    ["tunik_anak",             "aetherion_turunan"],
-    ["eulpc_body_",            "lpc_bases_v3_1"],
-    ["eulpc_head_",            "lpc_bases_v3_1"],
-    ["eulpc_hair",             "lpc_expanded_hair"],
-    ["adult_universal_hair",   "lpc_expanded_hair"],
-    ["eulpc_hat_",             "ulpc_facial_hat"],
-    ["eulpc_hijab",            "ulpc_facial_hat"],
-    ["hijab",                  "ulpc_facial_hat"],
-    ["wizard_hat",             "ulpc_facial_hat"],
-    ["eulpc_torso_",           "ulpc_clothing"],
-    ["eulpc_legs_",            "ulpc_clothing"],
-    ["eulpc_feet_",            "ulpc_clothing"],
-    ["Apron_",                 "ulpc_clothing"],
-    ["eulpc_wing_",            "ulpc_clothing"],
-    ["whitebeard",             "ulpc_facial_hat"],
-    ["lpc_simple_staff",       "lpc_bases_v3_1"]
+    [
+      "@overlay/",
+      "aetherion_turunan"
+    ],
+    [
+      "tunik_anak",
+      "aetherion_turunan"
+    ],
+    [
+      "eulpc_body_",
+      "lpc_bases_v3_1"
+    ],
+    [
+      "eulpc_head_",
+      "lpc_bases_v3_1"
+    ],
+    [
+      "eulpc_hair",
+      "lpc_expanded_hair"
+    ],
+    [
+      "adult_universal_hair",
+      "lpc_expanded_hair"
+    ],
+    [
+      "eulpc_hat_",
+      "ulpc_facial_hat"
+    ],
+    [
+      "eulpc_hijab",
+      "ulpc_facial_hat"
+    ],
+    [
+      "hijab",
+      "ulpc_facial_hat"
+    ],
+    [
+      "wizard_hat",
+      "ulpc_facial_hat"
+    ],
+    [
+      "eulpc_torso_",
+      "ulpc_clothing"
+    ],
+    [
+      "eulpc_legs_",
+      "ulpc_clothing"
+    ],
+    [
+      "eulpc_feet_",
+      "ulpc_clothing"
+    ],
+    [
+      "Apron_",
+      "ulpc_clothing"
+    ],
+    [
+      "eulpc_wing_",
+      "ulpc_clothing"
+    ],
+    [
+      "whitebeard",
+      "ulpc_facial_hat"
+    ],
+    [
+      "lpc_simple_staff",
+      "lpc_bases_v3_1"
+    ]
   ],
-
   "_aturan_doc": "Aturan kompatibilitas dijalankan generator SEBELUM memilih, bukan diperiksa sesudahnya. Kombinasi mustahil tak pernah lahir, jadi tak perlu ditolak.",
   "aturan": {
     "ukuran_harus_cocok": true,
     "max_headwear": 1,
     "headwear_menimpa_hair": true,
-    "slot_wajib": ["body", "torso", "legs"],
-    "slot_opsional": ["hair", "headwear", "feet"]
+    "slot_wajib": [
+      "body",
+      "torso",
+      "legs"
+    ],
+    "slot_opsional": [
+      "hair",
+      "headwear",
+      "feet"
+    ]
   },
-
   "_tipe_doc": "silhouette_mass = piksel DI LUAR siluet badan berpakaian, frame hadap-bawah, diukur uji_siluet/ukur. 0 berarti lapisan itu tak mengubah bentuk sama sekali — dipakai untuk warna, bukan untuk membedakan siluet (#275b).",
   "tipe": {
-    "body_male_a":   {"slot": "body", "size": "adult", "sheet": "eulpc_body_male.png",   "head": "eulpc_head_male.png",   "tint": "#f0d0b4", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "body_male_b":   {"slot": "body", "size": "adult", "sheet": "eulpc_body_male.png",   "head": "eulpc_head_male.png",   "tint": "#dcae8a", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "body_male_c":   {"slot": "body", "size": "adult", "sheet": "eulpc_body_male.png",   "head": "eulpc_head_male.png",   "tint": "#a87c5c", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "body_female_a": {"slot": "body", "size": "adult", "sheet": "eulpc_body_female.png", "head": "eulpc_head_female.png", "tint": "#eccaa8", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "body_female_b": {"slot": "body", "size": "adult", "sheet": "eulpc_body_female.png", "head": "eulpc_head_female.png", "tint": "#c69a78", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "body_female_c": {"slot": "body", "size": "adult", "sheet": "eulpc_body_female.png", "head": "eulpc_head_female.png", "tint": "#8f6244", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-
-    "hair_long_a":  {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_bob_side_part.png",  "silhouette_mass": 105, "pack": "lpc_expanded_hair"},
-    "hair_long_b":  {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_longknot_ash.png",   "silhouette_mass": 42,  "pack": "lpc_expanded_hair"},
-    "hair_short_a": {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_curly_short.png",    "silhouette_mass": 100, "pack": "lpc_expanded_hair"},
-    "hair_short_b": {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_jewfro.png",         "silhouette_mass": 47,  "pack": "lpc_expanded_hair"},
-    "hair_short_c": {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_swoop_side.png",     "silhouette_mass": 51,  "pack": "lpc_expanded_hair"},
-    "hair_gray_a":  {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_shortknot_gray.png", "silhouette_mass": 42,  "pack": "lpc_expanded_hair"},
-
-    "_warna_doc": "Rambut BERWARNA. Bentuknya berulang (jewfro/swoop/knot yang sama) dan itu disengaja: #275b melepas warga latar dari siluet-unik, jadi yang membedakan mereka adalah WARNA. Melepas siluet tanpa memberi warna berarti melepas pembeda terakhir mereka — dua puluh warga berambut oranye adalah dua puluh saudara kandung.",
-    "hair_black_a":    {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_jewfro_black.png",        "silhouette_mass": 47, "pack": "lpc_expanded_hair"},
-    "hair_chestnut_a": {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_jewfro_chestnut.png",     "silhouette_mass": 47, "pack": "lpc_expanded_hair"},
-    "hair_gold_a":     {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_jewfro_gold.png",         "silhouette_mass": 47, "pack": "lpc_expanded_hair"},
-    "hair_black_b":    {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_swoop_black.png",         "silhouette_mass": 51, "pack": "lpc_expanded_hair"},
-    "hair_chestnut_b": {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_swoop_chestnut.png",      "silhouette_mass": 51, "pack": "lpc_expanded_hair"},
-    "hair_darkbrown_a":{"slot": "hair", "size": "adult", "sheet": "eulpc_hair_longknot_darkbrown.png",  "silhouette_mass": 42, "pack": "lpc_expanded_hair"},
-    "hair_raven_a":    {"slot": "hair", "size": "adult", "sheet": "eulpc_hair_shortknot_raven.png",     "silhouette_mass": 42, "pack": "lpc_expanded_hair"},
-
-    "headwear_topi_a":  {"slot": "headwear", "size": "adult", "sheet": "eulpc_hat_feather_cap_walnut.png", "silhouette_mass": 164, "pack": "ulpc_facial_hat"},
-    "headwear_hood_a":  {"slot": "headwear", "size": "adult", "sheet": "eulpc_hat_hood_charcoal.png",      "silhouette_mass": 73,  "pack": "ulpc_facial_hat"},
-    "headwear_hijab_a": {"slot": "headwear", "size": "adult", "sheet": "eulpc_hijab_navy.png",             "silhouette_mass": 13,  "pack": "ulpc_facial_hat"},
-
-    "torso_slate":    {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_male_slate.png",      "cocok_body": ["male"],   "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_walnut":   {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_male_walnut.png",     "cocok_body": ["male"],   "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_forest_m": {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_male_forest.png",     "cocok_body": ["male"],   "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_maroon_m": {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_male_maroon.png",     "cocok_body": ["male"],   "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_charcoal": {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_female_charcoal.png", "cocok_body": ["female"], "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_forest_f": {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_female_forest.png",   "cocok_body": ["female"], "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_sky_f":    {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_female_sky.png",      "cocok_body": ["female"], "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "torso_maroon_f": {"slot": "torso", "size": "adult", "sheet": "eulpc_torso_longsleeve_female_maroon.png",   "cocok_body": ["female"], "silhouette_mass": 0, "pack": "ulpc_clothing"},
-
-    "legs_pants":  {"slot": "legs", "size": "adult", "sheet": "eulpc_legs_pants_thin.png", "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "legs_hose":   {"slot": "legs", "size": "adult", "sheet": "eulpc_legs_hose_thin.png",  "silhouette_mass": 0, "pack": "ulpc_clothing"},
-
-    "feet_shoes":  {"slot": "feet", "size": "adult", "sheet": "eulpc_feet_shoes_thin.png", "silhouette_mass": 0, "pack": "ulpc_clothing"},
-
-    "body_child_a":  {"slot": "body", "size": "child", "sheet": "eulpc_body_child.png", "head": "eulpc_head_child.png", "tint": "#e8c6a8", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "body_child_b":  {"slot": "body", "size": "child", "sheet": "eulpc_body_child.png", "head": "eulpc_head_child.png", "tint": "#a0714f", "silhouette_mass": 0, "pack": "lpc_bases_v3_1"},
-    "hair_child_a":  {"slot": "hair", "size": "child", "sheet": "eulpc_hair_child_jewfro_chestnut.png", "silhouette_mass": 36, "pack": "lpc_expanded_hair"},
-    "hair_child_b":  {"slot": "hair", "size": "child", "sheet": "eulpc_hair_child_swoop_black.png",     "silhouette_mass": 41, "pack": "lpc_expanded_hair"},
-    "torso_child_a": {"slot": "torso", "size": "child", "sheet": "@overlay/tunik_anak_forest.png", "silhouette_mass": 0, "pack": "aetherion_turunan"},
-    "torso_child_b": {"slot": "torso", "size": "child", "sheet": "@overlay/tunik_anak_maroon.png", "silhouette_mass": 0, "pack": "aetherion_turunan"},
-    "legs_child_a":  {"slot": "legs", "size": "child", "sheet": "eulpc_legs_child_pants_brown.png",    "silhouette_mass": 0, "pack": "ulpc_clothing"},
-    "legs_child_b":  {"slot": "legs", "size": "child", "sheet": "eulpc_legs_child_pants_darkblue.png", "silhouette_mass": 0, "pack": "ulpc_clothing"}
+    "body_male_a": {
+      "slot": "body",
+      "size": "adult",
+      "sheet": "eulpc_body_male.png",
+      "head": "eulpc_head_male.png",
+      "tint": "#f0d0b4",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "body_male_b": {
+      "slot": "body",
+      "size": "adult",
+      "sheet": "eulpc_body_male.png",
+      "head": "eulpc_head_male.png",
+      "tint": "#dcae8a",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "body_male_c": {
+      "slot": "body",
+      "size": "adult",
+      "sheet": "eulpc_body_male.png",
+      "head": "eulpc_head_male.png",
+      "tint": "#a87c5c",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "body_female_a": {
+      "slot": "body",
+      "size": "adult",
+      "sheet": "eulpc_body_female.png",
+      "head": "eulpc_head_female.png",
+      "tint": "#eccaa8",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "body_female_b": {
+      "slot": "body",
+      "size": "adult",
+      "sheet": "eulpc_body_female.png",
+      "head": "eulpc_head_female.png",
+      "tint": "#c69a78",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "body_female_c": {
+      "slot": "body",
+      "size": "adult",
+      "sheet": "eulpc_body_female.png",
+      "head": "eulpc_head_female.png",
+      "tint": "#8f6244",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "headwear_topi_a": {
+      "slot": "headwear",
+      "size": "adult",
+      "sheet": "eulpc_hat_feather_cap_walnut.png",
+      "silhouette_mass": 164,
+      "pack": "ulpc_facial_hat"
+    },
+    "headwear_hood_a": {
+      "slot": "headwear",
+      "size": "adult",
+      "sheet": "eulpc_hat_hood_charcoal.png",
+      "silhouette_mass": 73,
+      "pack": "ulpc_facial_hat"
+    },
+    "headwear_hijab_a": {
+      "slot": "headwear",
+      "size": "adult",
+      "sheet": "eulpc_hijab_navy.png",
+      "silhouette_mass": 13,
+      "pack": "ulpc_facial_hat"
+    },
+    "torso_slate": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_male_slate.png",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_walnut": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_male_walnut.png",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_forest_m": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_male_forest.png",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_maroon_m": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_male_maroon.png",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_charcoal": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_female_charcoal.png",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_forest_f": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_female_forest.png",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_sky_f": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_female_sky.png",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "torso_maroon_f": {
+      "slot": "torso",
+      "size": "adult",
+      "sheet": "eulpc_torso_longsleeve_female_maroon.png",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "feet_shoes": {
+      "slot": "feet",
+      "size": "adult",
+      "sheet": "eulpc_feet_shoes_thin.png",
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "body_child_a": {
+      "slot": "body",
+      "size": "child",
+      "sheet": "eulpc_body_child.png",
+      "head": "eulpc_head_child.png",
+      "tint": "#e8c6a8",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "body_child_b": {
+      "slot": "body",
+      "size": "child",
+      "sheet": "eulpc_body_child.png",
+      "head": "eulpc_head_child.png",
+      "tint": "#a0714f",
+      "silhouette_mass": 0,
+      "pack": "lpc_bases_v3_1"
+    },
+    "hair_child_a": {
+      "slot": "hair",
+      "size": "child",
+      "sheet": "eulpc_hair_child_jewfro_chestnut.png",
+      "silhouette_mass": 36,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_child_b": {
+      "slot": "hair",
+      "size": "child",
+      "sheet": "eulpc_hair_child_swoop_black.png",
+      "silhouette_mass": 41,
+      "pack": "lpc_expanded_hair"
+    },
+    "torso_child_a": {
+      "slot": "torso",
+      "size": "child",
+      "sheet": "@overlay/tunik_anak_forest.png",
+      "silhouette_mass": 0,
+      "pack": "aetherion_turunan"
+    },
+    "torso_child_b": {
+      "slot": "torso",
+      "size": "child",
+      "sheet": "@overlay/tunik_anak_maroon.png",
+      "silhouette_mass": 0,
+      "pack": "aetherion_turunan"
+    },
+    "legs_child_a": {
+      "slot": "legs",
+      "size": "child",
+      "sheet": "eulpc_legs_child_pants_brown.png",
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_child_b": {
+      "slot": "legs",
+      "size": "child",
+      "sheet": "eulpc_legs_child_pants_darkblue.png",
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "_hair_kolam_doc": "KOLAM SEIMBANG — syarat #275b, bukan poles. Warga latar dilepas dari kewajiban siluet-unik justru karena WARNA yang membedakan mereka; kolam yang didominasi satu warna membatalkan dasar itu. 3 gaya x 5 warna = 15 tipe, tiap warna tepat 20%, nol warna dominan. Lapisan `eulpc_hair_*` oranye-tunggal TIDAK masuk kolam ini — mereka tetap dipakai enam NPC bernama lewat catalog.json yang tak disentuh.",
+    "hair_jewfro_black": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_jewfro_black.png",
+      "warna": "black",
+      "silhouette_mass": 47,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_jewfro_chestnut": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_jewfro_chestnut.png",
+      "warna": "chestnut",
+      "silhouette_mass": 47,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_jewfro_gold": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_jewfro_gold.png",
+      "warna": "gold",
+      "silhouette_mass": 47,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_jewfro_gray": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_jewfro_gray.png",
+      "warna": "gray",
+      "silhouette_mass": 47,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_jewfro_carrot": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_jewfro_carrot.png",
+      "warna": "carrot",
+      "silhouette_mass": 47,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_swoop_black": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_swoop_black.png",
+      "warna": "black",
+      "silhouette_mass": 51,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_swoop_chestnut": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_swoop_chestnut.png",
+      "warna": "chestnut",
+      "silhouette_mass": 51,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_swoop_gold": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_swoop_gold.png",
+      "warna": "gold",
+      "silhouette_mass": 51,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_swoop_gray": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_swoop_gray.png",
+      "warna": "gray",
+      "silhouette_mass": 51,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_swoop_carrot": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_swoop_carrot.png",
+      "warna": "carrot",
+      "silhouette_mass": 51,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_shortknot_black": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_shortknot_black.png",
+      "warna": "black",
+      "silhouette_mass": 42,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_shortknot_chestnut": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_shortknot_chestnut.png",
+      "warna": "chestnut",
+      "silhouette_mass": 42,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_shortknot_gold": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_shortknot_gold.png",
+      "warna": "gold",
+      "silhouette_mass": 42,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_shortknot_gray": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_shortknot_gray.png",
+      "warna": "gray",
+      "silhouette_mass": 42,
+      "pack": "lpc_expanded_hair"
+    },
+    "hair_shortknot_carrot": {
+      "slot": "hair",
+      "size": "adult",
+      "sheet": "eulpc_hair_shortknot_carrot.png",
+      "warna": "carrot",
+      "silhouette_mass": 42,
+      "pack": "lpc_expanded_hair"
+    },
+    "_legs_kolam_doc": "Celana BERWARNA. `pants_thin`/`hose_thin` lama keduanya krem — dua puluh warga bercelana krem membuang separuh permukaan tubuh sebagai pembeda. Potongan `male` untuk badan male, `thin` untuk female (baku ULPC), dipaksa lewat `cocok_body`.",
+    "legs_male_walnut": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_male_walnut.png",
+      "warna": "walnut",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_male_charcoal": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_male_charcoal.png",
+      "warna": "charcoal",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_male_forest": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_male_forest.png",
+      "warna": "forest",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_male_navy": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_male_navy.png",
+      "warna": "navy",
+      "cocok_body": [
+        "male"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_female_walnut": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_thin_walnut.png",
+      "warna": "walnut",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_female_charcoal": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_thin_charcoal.png",
+      "warna": "charcoal",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_female_maroon": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_thin_maroon.png",
+      "warna": "maroon",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    },
+    "legs_female_navy": {
+      "slot": "legs",
+      "size": "adult",
+      "sheet": "eulpc_legs_pants_thin_navy.png",
+      "warna": "navy",
+      "cocok_body": [
+        "female"
+      ],
+      "silhouette_mass": 0,
+      "pack": "ulpc_clothing"
+    }
   }
 }

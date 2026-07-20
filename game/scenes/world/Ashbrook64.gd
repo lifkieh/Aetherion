@@ -619,7 +619,11 @@ func _bangun_kamar_merrit() -> void:
 ## kota terasa punya penghuni, bukan patung. Enam wajah statis di bawah TETAP ada:
 ## mereka tokoh bernama di tempat tetapnya (Merrit di rumahnya, Otha di tokonya).
 func _folk_berjadwal() -> void:
-	TownFolk.place(self, "ashbrook", VC)
+	# 0..4 = lima warga BERJADWAL (#97) — persona & dialog utuh, cuma sprite yang naik
+	# dari `_charsys` 32px ke LPC 64px. 5..19 = lima belas penghuni latar tanpa persona.
+	# Dua puluh wajah dari generator (#276), seed tetap: warga yang sama tiap muat.
+	TownFolk.place(self, "ashbrook", VC, 0)
+	TownFolk.place_latar(self, VC, 5, 15)
 	for c in get_children():
 		var sc = c.get_script()
 		if sc != null and String(sc.resource_path).contains("Villager"):

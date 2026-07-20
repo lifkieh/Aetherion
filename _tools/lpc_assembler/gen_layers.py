@@ -120,6 +120,33 @@ COPIES = [
     ("hairstyles-2024-03-10.zip",
      "jewfro/universal/adult_universal_hair_jewfro/ash.png", "eulpc_hair_jewfro_ash"),
 
+    # --- rambut BERWARNA, KOLAM SEIMBANG ---
+    #     Syarat #275b, bukan poles: warga latar dilepas dari kewajiban siluet-unik
+    #     JUSTRU karena warna yang membedakan mereka. Kolam yang didominasi satu warna
+    #     membatalkan dasar itu — dua puluh warga oranye tetap dua puluh kembar,
+    #     entah siluetnya diuji atau tidak.
+    #     3 gaya x 5 warna = 15 tipe, tiap warna tepat 20%. Lapisan `eulpc_hair_*`
+    #     lama (semua oranye) TIDAK masuk kolam generator — mereka tetap dipakai
+    #     enam NPC bernama lewat catalog.json, yang tak disentuh.
+    ("hairstyles-2024-03-10.zip",
+     "jewfro/universal/adult_universal_hair_jewfro/carrot.png", "eulpc_hair_jewfro_carrot"),
+    ("hairstyles-2024-03-10.zip",
+     "jewfro/universal/adult_universal_hair_jewfro/gray.png", "eulpc_hair_jewfro_gray"),
+    ("hairstyles-2024-03-10.zip",
+     "side_swoop/universal/adult_universal_side_swoop/carrot.png", "eulpc_hair_swoop_carrot"),
+    ("hairstyles-2024-03-10.zip",
+     "side_swoop/universal/adult_universal_side_swoop/gold.png", "eulpc_hair_swoop_gold"),
+    ("hairstyles-2024-03-10.zip",
+     "side_swoop/universal/adult_universal_side_swoop/gray.png", "eulpc_hair_swoop_gray"),
+    ("hairstyles-2024-03-10.zip",
+     "shortknot/universal/adult_universal_hair_shortknot/black.png", "eulpc_hair_shortknot_black"),
+    ("hairstyles-2024-03-10.zip",
+     "shortknot/universal/adult_universal_hair_shortknot/chestnut.png", "eulpc_hair_shortknot_chestnut"),
+    ("hairstyles-2024-03-10.zip",
+     "shortknot/universal/adult_universal_hair_shortknot/gold.png", "eulpc_hair_shortknot_gold"),
+    ("hairstyles-2024-03-10.zip",
+     "shortknot/universal/adult_universal_hair_shortknot/carrot.png", "eulpc_hair_shortknot_carrot"),
+
     # --- rambut BERWARNA untuk warga latar ---
     #     Lapisan `eulpc_hair_*` lama semuanya SATU warna (oranye). Dua puluh warga
     #     berambut oranye = dua puluh saudara kandung. Dan warna adalah satu-satunya
@@ -165,6 +192,34 @@ COPIES = [
 #
 # (zip, {anim: entry}, nama keluaran)
 PIECES = [
+    # CELANA DEWASA BERWARNA. Sebelumnya cuma `pants_thin`/`hose_thin` yang keduanya
+    # krem — dua puluh warga bercelana krem membuang separuh permukaan tubuh sebagai
+    # pembeda. `male` untuk badan male, `thin` untuk female (potongan ULPC baku).
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/male/walk/walnut.png", "slash": "pants/male/slash/walnut.png"},
+     "eulpc_legs_pants_male_walnut"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/male/walk/charcoal.png", "slash": "pants/male/slash/charcoal.png"},
+     "eulpc_legs_pants_male_charcoal"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/male/walk/forest.png", "slash": "pants/male/slash/forest.png"},
+     "eulpc_legs_pants_male_forest"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/male/walk/navy.png", "slash": "pants/male/slash/navy.png"},
+     "eulpc_legs_pants_male_navy"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/thin/walk/walnut.png", "slash": "pants/thin/slash/walnut.png"},
+     "eulpc_legs_pants_thin_walnut"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/thin/walk/charcoal.png", "slash": "pants/thin/slash/charcoal.png"},
+     "eulpc_legs_pants_thin_charcoal"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/thin/walk/maroon.png", "slash": "pants/thin/slash/maroon.png"},
+     "eulpc_legs_pants_thin_maroon"),
+    ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
+     {"walk": "pants/thin/walk/navy.png", "slash": "pants/thin/slash/navy.png"},
+     "eulpc_legs_pants_thin_navy"),
+
     ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
      {"walk": "pants/child/walk/brown.png"}, "eulpc_legs_child_pants_brown"),
     ("lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip",
