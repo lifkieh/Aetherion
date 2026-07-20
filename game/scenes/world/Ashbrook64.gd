@@ -102,6 +102,7 @@ func _ready() -> void:
 	_village()
 	_pinggir_jejak()
 	_gerbang_selatan()
+	_pemakaman_dan_kabut()
 	_props_and_evidence()
 	_pintu_dan_interior()
 	_folk()
@@ -287,6 +288,85 @@ func _gerbang_selatan() -> void:
 	# Jalan yang menyentuh gerbang berkata "masih dilewati"; jalan yang berhenti
 	# sebelum sampai berkata "dulu dilewati".
 	_setapak(Vector2(VC.x, VC.y + 320), Vector2(VC.x, gy - 160), 44.0)
+
+
+## C4 TEPI HANTU — pemakaman yang BISA dicapai, kabut yang TIDAK.
+##
+## Dua aturan proyek bertabrakan di cincin ini, dan penyelesaiannya adalah GARIS,
+## bukan kompromi:
+##   §2 anti-kosong  — tiap tujuan jauh harus berujung pada sesuatu, atau pemain
+##                     belajar bahwa menjauh tak berbuah lalu berhenti menjelajah.
+##   tepi-hantu      — kekuatannya pada KETIDAKLENGKAPAN; yang tak tercapai membuat
+##                     dunia terasa lebih besar dari petanya (teknik Tunic/HLD).
+##
+## Garisnya: PEMAKAMAN adalah tujuan — bisa dimasuki, bisa dijalani, berbuah.
+## KABUT bukan tujuan — ia tembok, dan harus terbaca sebagai tembok sejak jauh.
+## Kalau pemain bisa MASUK kabut mengharap sesuatu lalu tak menemukan apa-apa, itu
+## janji yang diingkari, dan itu lebih buruk daripada tepi yang jujur tertutup.
+##
+## Karena itu kabut diberi TABRAKAN PENUH selebar peta. Ia dilihat, tak pernah
+## dimasuki. Yang membuatnya bekerja: garis fondasi samar TERLIHAT DI DALAMNYA —
+## bentuk rumah yang jelas ada dan jelas tak bisa dicapai. Kota lama membentang
+## lebih jauh daripada yang boleh dijelajahi, dan pemain tahu itu tanpa diberi tahu.
+func _pemakaman_dan_kabut() -> void:
+	var h := float(MAP_H * TILE)
+
+	# ── PEMAKAMAN ────────────────────────────────────────────────────────────
+	# Ditaruh di tepi TERLUAR ruang selatan: makin jauh dari inti = makin mundur
+	# waktunya. Barat dari gerbang, supaya koridor gerbang tetap lapang.
+	var pm := Vector2(624, 1216)
+	var lebar := 460.0
+	var tinggi := 190.0
+
+	# RUANG DULU: batasnya dulu, batunya menyusul. Pemakaman dikenali dari TEPI —
+	# sama seperti alun-alun dikenali dari pelataran, bukan dari air mancurnya.
+	# Tiang pagar saja, tanpa ruas: pagar utuh berkata "dirawat".
+	for i in 9:
+		var fx: float = pm.x - lebar * 0.5 + i * (lebar / 8.0)
+		_jejak("pagar_tiang32.png", Vector2(fx, pm.y - tinggi * 0.5), 1.0)
+		if i % 3 != 1:                          # sisi selatan BOLONG — sudah tak dijaga
+			_jejak("pagar_tiang32.png", Vector2(fx, pm.y + tinggi * 0.5), 1.0)
+
+	# NISAN. Jumlahnya yang bicara: desa berpenduduk empat puluh tak pernah butuh
+	# sebanyak ini. Barisnya sengaja TAK RAPI dan jaraknya berubah-ubah — pemakaman
+	# yang digali bertahun-tahun tumbuh berantakan; yang digali sekaligus berbaris
+	# lurus, dan baris lurus akan menceritakan bencana, bukan kemunduran perlahan.
+	#
+	# Perbandingan D2:D3 kira-kira 1:2 — yang masih terbaca LEBIH SEDIKIT daripada
+	# yang sudah aus. Itu arah waktunya (#269/#270): nama habis lebih dulu daripada
+	# batunya, dan batu aus tak bisa dipulihkan, cuma dilahirkan sekali.
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 20260721                          # tetap tiap muat, bukan acak ulang
+	for baris in 6:
+		var by: float = pm.y - tinggi * 0.5 + 26.0 + baris * 30.0
+		var n := 13 + (baris % 3)
+		for kol in n:
+			if rng.randf() < 0.12:               # petak kosong — belum semua terisi
+				continue
+			var px: float = pm.x - lebar * 0.5 + 22.0 + kol * ((lebar - 44.0) / float(n - 1))
+			var p := Vector2(px + rng.randf_range(-5.0, 5.0), by + rng.randf_range(-6.0, 6.0))
+			_jejak("nisan_terbaca.png" if rng.randf() < 0.34 else "nisan_aus.png", p, 1.0)
+
+	# ⚠ TEMPAT SORA (#013 penjaga kubur) DISIAPKAN, BELUM DI-WIRE.
+	#    Sudut timur-laut pemakaman sengaja dikosongkan dari nisan — di sanalah ia
+	#    akan berdiri. Menempatkannya sekarang butuh sesi tokoh (dialog, jadwal,
+	#    siluet #231), dan tokoh yang lahir setengah lebih buruk daripada tempat
+	#    yang menunggu. Koordinat: pm + Vector2(lebar * 0.5 - 40, -tinggi * 0.5 + 18)
+
+	# ── KABUT: TEMBOK YANG INDAH ─────────────────────────────────────────────
+	# Garis fondasi samar DULU, kabut menimpanya. Urutannya penting: fondasi yang
+	# digambar DI ATAS kabut akan terbaca sebagai bangunan di dekat kita yang
+	# kebetulan berkabut; yang digambar DI BAWAHNYA terbaca sebagai bangunan
+	# di dalam kabut — jauh, dan tak bisa didatangi.
+	for fx in [420.0, 880.0, 1240.0, 1600.0]:
+		_tile(P_T + "fondasi32.png", Rect2(fx, h - 56.0, 104.0, 48.0), 3)
+	var kabut_y := h - 64.0
+	_tile(P_T + "kabut32.png", Rect2(0, kabut_y, MAP_W * TILE, 64.0), 900)
+	_tile(P_T + "kabut32.png", Rect2(0, kabut_y + 10.0, MAP_W * TILE, 54.0), 901)
+
+	# TABRAKAN PENUH selebar peta. Inilah yang membedakan "tepi yang jujur tertutup"
+	# dari "janji yang diingkari" — pemain berhenti DI DEPAN kabut, bukan di dalamnya.
+	_solid(Rect2(0, kabut_y, MAP_W * TILE, 24.0))
 
 
 func _pinggir_jejak() -> void:
@@ -636,7 +716,13 @@ func _hidup_ayam_anak() -> void:
 		# ketiga anak diam-diam jatuh ke kotak placeholder — log yang menangkapnya.)
 		k.varian = i                 # tiga anak BERBEDA, bukan tiga salinan
 		add_child(k)
-		k.place(VC + Vector2(randf_range(-150, 150), randf_range(-70, 100)))
+		# CINCIN, bukan kotak. Kotak lama (VC ± 150x100) memuat air mancur di
+		# tengahnya, jadi anak bisa LAHIR di dalam benda padat — dan penjaga
+		# `_terhalang()` cuma menjaga GERAK, bukan kelahiran. `CekJangkau` menandainya
+		# 1 dari 3 putaran; dua putaran bersih itu hasil undian, bukan bukti.
+		var a := randf() * TAU
+		var r := randf_range(96.0, 168.0)      # 96 px melempar titik lahir ke luar cekungan
+		k.place(VC + Vector2(cos(a) * r, sin(a) * r * 0.7))
 		k.setup(_chickens)
 		# skala 1.6 dulu membesarkan kotak 7x11. Sprite LPC sudah 64px — 1.6 akan
 		# membuat anak lebih besar daripada orang dewasa di alun-alun yang sama.

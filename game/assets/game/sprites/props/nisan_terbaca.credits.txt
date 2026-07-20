@@ -1,0 +1,4 @@
+# nisan_terbaca.png — DIGAMBAR gen_c4.py (C4 tepi hantu).
+# Alasan digambar: sapuan 111 zip gudang menemukan NOL nisan
+# bergaya LPC; pack CC0 yang punya berskala peta-dunia 14 px.
+# Karya proyek, nol turunan aset pihak ketiga.
