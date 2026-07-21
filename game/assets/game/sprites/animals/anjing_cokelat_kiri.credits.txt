@@ -1,0 +1,7 @@
+# anjing_cokelat_kiri.png — hewan 'anjing_cokelat'
+# anjing liar. Anjing dulu SETIA pada manusia, jadi anjing yang tak lagi punya tuan menyayat dengan cara yang tak bisa dilakukan kucing liar
+
+Pack   : [LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)
+Seniman: bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)
+URL    : https://opengameart.org/node/69399

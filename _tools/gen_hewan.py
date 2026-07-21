@@ -82,6 +82,12 @@ PACK = {
 ## di mesin yang punya gudang itu. Yang di `assets_raw/` bisa dijalankan siapa pun
 ## yang meng-clone repo, dan itulah arti #240 yang sebenarnya.
 ZIP_KUCING = os.path.join(REPO, "assets_raw", "lpc", "cat-1.0.zip")
+## Lembar ANJING diunduh dari halaman OGA-nya langsung, lalu disimpan di repo
+## BERSAMA berkas kreditnya (`.credits.txt` di sebelahnya). Kucing datang lewat zip
+## Stendhal yang kebetulan memuat README; anjing tak punya zip semacam itu, jadi
+## kreditnya ditulis tangan dari halaman sumber dan disertai sha256 unduhannya —
+## supaya "dari mana ini?" tak pernah jadi pertanyaan tanpa jawaban lagi.
+PNG_ANJING = os.path.join(REPO, "assets_raw", "lpc", "lpc_cats_and_dogs_dog.png")
 
 # (id, sumber, jenis, param, pack, skala, kecepatan, catatan)
 #   jenis "baris" : lembar 4-arah, ambil satu baris  -> (fw, fh, baris, n_frame)
@@ -122,6 +128,18 @@ JOBS = [
      "lpc_cats_dogs", 1.0, 34.0,
      "kucing liar kedua. Warna berbeda supaya dua ekor di layar terbaca DUA EKOR, "
      "bukan satu sprite yang muncul dua kali"),
+
+    # ── LAPIS 2: ANJING LIAR ─────────────────────────────────────────────────
+    # Lembar anjing bertata letak PERSIS sama dengan lembar kucing (512x256, petak
+    # 32x32, empat blok warna empat kolom: putih 0-3 · cokelat 4-7 · kuning 8-11 ·
+    # kelabu 12-15) — jadi `blok` yang sama menjawab keduanya, nol kode baru.
+    ("anjing_cokelat", PNG_ANJING, "blok", (32, 32, 4, 0, 3, True),
+     "lpc_cats_dogs", 1.0, 30.0,
+     "anjing liar. Anjing dulu SETIA pada manusia, jadi anjing yang tak lagi punya "
+     "tuan menyayat dengan cara yang tak bisa dilakukan kucing liar"),
+    ("anjing_kelabu", PNG_ANJING, "blok", (32, 32, 12, 0, 3, True),
+     "lpc_cats_dogs", 1.0, 30.0,
+     "anjing liar kedua; warna berbeda supaya dua ekor terbaca dua ekor"),
 ]
 
 ## Pose DIAM — bukan hewan berkelana, jadi tak masuk JOBS (nol frame jalan, nol
@@ -132,6 +150,10 @@ POSE = [
      "kucing kelabu DUDUK menghadap depan — dipasang di ambang rumah gelap"),
     ("kucing_meringkuk.png", ZIP_KUCING + "|PNG/cat.png", (32, 32, 15, 0, True),
      "kucing kelabu MERINGKUK — pose tidur, untuk sudut yang lebih terlindung"),
+    ("anjing_menunggu.png", PNG_ANJING, (32, 32, 15, 4, False),
+     "anjing kelabu DUDUK menghadap depan — menunggu tuan yang tak pulang. Pose yang "
+     "sama pada kucing berkata 'aku tinggal di sini'; pada anjing ia berkata 'aku "
+     "menunggu', dan bedanya datang dari hewannya, bukan dari gambarnya"),
 ]
 
 

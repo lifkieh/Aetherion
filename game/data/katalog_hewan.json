@@ -99,6 +99,28 @@
       "kecepatan": 34.0,
       "pack": "lpc_cats_dogs",
       "_catatan": "kucing liar kedua. Warna berbeda supaya dua ekor di layar terbaca DUA EKOR, bukan satu sprite yang muncul dua kali"
+    },
+    "anjing_cokelat": {
+      "sprite": "res://assets/game/sprites/animals/anjing_cokelat_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 30.0,
+      "pack": "lpc_cats_dogs",
+      "_catatan": "anjing liar. Anjing dulu SETIA pada manusia, jadi anjing yang tak lagi punya tuan menyayat dengan cara yang tak bisa dilakukan kucing liar"
+    },
+    "anjing_kelabu": {
+      "sprite": "res://assets/game/sprites/animals/anjing_kelabu_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 30.0,
+      "pack": "lpc_cats_dogs",
+      "_catatan": "anjing liar kedua; warna berbeda supaya dua ekor terbaca dua ekor"
     }
   }
 }

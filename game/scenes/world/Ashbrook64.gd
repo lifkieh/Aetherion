@@ -1288,6 +1288,37 @@ func _liar() -> void:
 		k.wander_radius = float(spec[2])
 		k.place(spec[1])
 
+	# ── ANJING ───────────────────────────────────────────────────────────────
+	# Anjing bukan kucing yang berbeda gambar. Kucing liar tak pernah bergantung
+	# pada siapa pun, jadi ia cuma jadi lebih jauh. Anjing DULU setia pada seseorang;
+	# yang tersisa sekarang kebiasaan setianya, tanpa orangnya — dan itu kalimat yang
+	# tak bisa diucapkan kucing.
+	for spec in [
+		["anjing_cokelat", Vector2(1330, 940), 110.0],   # tepi timur, dekat rumah gelap
+		["anjing_kelabu", Vector2(408, 268), 104.0],     # distrik bekas
+	]:
+		var d := Node2D.new()
+		d.set_script(load("res://scenes/actors/Hewan.gd"))
+		d.setup(String(spec[0]))
+		add_child(d)
+		d.liar = true
+		d.wander_radius = float(spec[2])
+		d.place(spec[1])
+
+	# SATU anjing yang MENGIKUTI, dan cuma satu. Ia satu-satunya makhluk di peta yang
+	# mendekat alih-alih kabur — dan seluruh maksudnya ada pada BERHENTINYA: ia ikut
+	# lima detik karena itu yang selalu ia lakukan, lalu berdiri diam empat detik
+	# karena kau bukan orang yang ditunggunya. Nol dialog, nol pemicu, nol imbalan.
+	# Ditaruh di jalan dagang barat: jalur yang pasti dilewati, tapi bukan di alun-alun
+	# — momen ini butuh sepi di sekelilingnya untuk terbaca.
+	var pengikut := Node2D.new()
+	pengikut.set_script(load("res://scenes/actors/Hewan.gd"))
+	pengikut.setup("anjing_cokelat")
+	add_child(pengikut)
+	pengikut.ikut = true
+	pengikut.wander_radius = 92.0
+	pengikut.place(Vector2(392, 782))
+
 	# ── KUCING PENUNGGU — nol teks, nol penjelasan ───────────────────────────
 	# Duduk DIAM di ambang rumah yang gelap. Ia tak berkelana, tak lari, tak
 	# menunggu tombol; ia cuma ada di sana tiap kali pemain lewat. Yang memperhatikan
@@ -1309,6 +1340,13 @@ func _liar() -> void:
 	var m := _put(P_A + "kucing_meringkuk.png", Vector2(322, 214))
 	if m:
 		m.scale = Vector2(1.4, 1.4)
+	# ANJING PENUNGGU di ambang rumah kosong timur. Pose duduknya sama persis dengan
+	# kucing penunggu — yang berbeda cuma hewannya, dan itu cukup: kucing yang duduk
+	# di ambang berkata "aku tinggal di sini", anjing yang duduk di ambang berkata
+	# "aku menunggu". Bedanya datang dari hewannya, bukan dari gambarnya.
+	var aw := _put(P_A + "anjing_menunggu.png", Vector2(1436, 812))
+	if aw:
+		aw.scale = Vector2(1.4, 1.4)
 
 
 func _hidup_ayam_anak() -> void:

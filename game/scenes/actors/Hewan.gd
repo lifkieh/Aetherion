@@ -50,6 +50,25 @@ var _kecepatan := 26.0
 var liar := false
 const FLEE_LIAR := 116.0
 
+## IKUT — anjing yang MENGIKUTI pemain sebentar, lalu berhenti.
+##
+## Ini satu-satunya hewan di peta yang mendekat alih-alih kabur, dan seluruh
+## maksudnya ada pada BERHENTINYA. Anjing dulu setia pada seseorang; yang tersisa
+## sekarang cuma kebiasaan setia itu, tanpa orangnya. Ia mengikuti karena itu yang
+## selalu ia lakukan, lalu berhenti karena kau bukan orang yang ditunggunya.
+##
+## ⚠ Jatah tak diisi ulang selama pemain masih dekat. Tanpa aturan itu ia akan
+##   mengikuti selamanya dalam siklus ikut-bingung-ikut, dan anjing yang mengikuti
+##   selamanya adalah COMPANION — sistem yang berbeda, janji yang berbeda, dan
+##   janji yang tak bisa ditepati Ashbrook.
+var ikut := false
+const IKUT_JANGKAU := 168.0     # sejauh ini ia menyadari ada orang
+const IKUT_JEDA := 52.0         # sedekat ini ia berhenti — tak pernah menempel
+const IKUT_JATAH := 5.0         # detik mengikuti sebelum ia kehilangan alasannya
+const IKUT_BINGUNG := 4.0       # berdiri diam sesudahnya, memandang
+var _ikut_sisa := IKUT_JATAH
+var _bingung := 0.0
+
 const SPEED := 26.0
 const FLEE_RADIUS := 84.0
 
@@ -139,14 +158,33 @@ func _process(delta: float) -> void:
 			_dir = Vector2.ZERO
 	var spd := _kecepatan
 	var pl = get_tree().get_first_node_in_group("player")
-	if is_instance_valid(pl):
+	if ikut and is_instance_valid(pl):
+		var ke: Vector2 = pl.global_position - global_position
+		var jauh := ke.length()
+		if _bingung > 0.0:
+			_bingung -= delta                        # berdiri diam, memandang
+			_dir = Vector2.ZERO
+		elif jauh < IKUT_JANGKAU and _ikut_sisa > 0.0:
+			_ikut_sisa -= delta
+			_dir = ke.normalized() if jauh > IKUT_JEDA else Vector2.ZERO
+			spd = _kecepatan * 1.7
+			_t = maxf(_t, 0.4)
+			if _ikut_sisa <= 0.0:
+				_bingung = IKUT_BINGUNG              # alasannya habis
+		elif jauh >= IKUT_JANGKAU:
+			_ikut_sisa = IKUT_JATAH                  # isi ulang HANYA setelah ditinggal
+	elif is_instance_valid(pl):
 		var d: Vector2 = global_position - pl.global_position
 		if d.length() < (FLEE_LIAR if liar else FLEE_RADIUS):
 			_dir = d.normalized()                    # lari — bukan properti diam
 			spd = _kecepatan * (3.2 if liar else 2.4)
 			_t = maxf(_t, 0.7)                       # jangan berhenti di tengah kabur
 	var calon := global_position + _dir * spd * delta
-	if calon.distance_to(_home) > wander_radius:
+	# Tali kekang dilonggarkan SELAMA mengikuti — kalau tidak, anjing tertarik pulang
+	# di tengah langkah dan berhenti sebelum sempat bercerita. Yang membatasinya
+	# tetap ada, cuma pindah: bukan jarak dari rumah, melainkan JATAH WAKTU.
+	var kekang := wander_radius * (2.8 if (ikut and _ikut_sisa > 0.0) else 1.0)
+	if calon.distance_to(_home) > kekang:
 		_dir = (_home - global_position).normalized()
 		calon = global_position + _dir * spd * delta
 	global_position = calon

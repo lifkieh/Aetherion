@@ -27,6 +27,20 @@
     "terverifikasi": false,
     "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
   },
+  "anjing_cokelat_kiri.png": {
+    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/69399"
+  },
+  "anjing_kelabu_kiri.png": {
+    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/69399"
+  },
   "bark_skin.png": {
     "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
     "license": "CC-BY-SA 3.0",

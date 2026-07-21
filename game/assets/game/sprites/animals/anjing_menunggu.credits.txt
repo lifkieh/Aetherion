@@ -1,0 +1,7 @@
+# anjing_menunggu.png — pose diam
+# anjing kelabu DUDUK menghadap depan — menunggu tuan yang tak pulang. Pose yang sama pada kucing berkata 'aku tinggal di sini'; pada anjing ia berkata 'aku menunggu', dan bedanya datang dari hewannya, bukan dari gambarnya
+
+Pack   : [LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)
+Seniman: bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)
+URL    : https://opengameart.org/node/69399
