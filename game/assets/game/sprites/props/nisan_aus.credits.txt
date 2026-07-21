@@ -2,3 +2,4 @@
 # Alasan digambar: sapuan 111 zip gudang menemukan NOL nisan
 # bergaya LPC; pack CC0 yang punya berskala peta-dunia 14 px.
 # Karya proyek, nol turunan aset pihak ketiga.
+Lisensi: karya proyek (digambar generator; nol turunan pihak ketiga)

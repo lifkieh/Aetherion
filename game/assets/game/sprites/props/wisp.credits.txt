@@ -2,7 +2,7 @@
 # 4 frame 48x48, hadap-netral, denyut alpha 0.42/0.70/1.00/0.74
 
 Asal   : GAMBAR HASIL AI (Google Gemini), diminta Direktur
-Lisensi: bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga
+Lisensi: karya proyek (bukan aset pihak ketiga, bukan turunan LPC)
 Proses : latar 'transparan' bawaan ternyata papan catur yang DILUKIS
          (alpha berkas asli 255 rata). Alpha dikunci ulang dari warna,
          lalu keempat frame dibangun dari SATU bentuk terbersih karena

@@ -1,7 +1,0 @@
-# domba_kiri.png — hewan 'domba'
-# domba jantan bertanduk. NOL kambing di seluruh 111 zip gudang — domba adalah ternak berkaki empat bergaya LPC satu-satunya yang ada
-
-Pack   : Stendhal Animals (git 99362c8)
-Seniman: Kimmo Rundelin (kiheru)
-Lisensi: CC-BY-SA 3.0 atau lebih baru
-URL    : https://opengameart.org/node/81251

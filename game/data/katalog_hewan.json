@@ -11,6 +11,13 @@
       "url": "https://opengameart.org/node/81251",
       "terverifikasi": true
     },
+    "pig_rework": {
+      "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
+      "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
+      "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
+      "url": "https://opengameart.org/content/lpc-style-farm-animals",
+      "terverifikasi": true
+    },
     "wild_animals_all": {
       "nama": "Wild Animals (berkas gudang 'All.zip')",
       "pencipta": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
@@ -52,16 +59,16 @@
       "pack": "ninja_adventure",
       "_catatan": "sprite lama sudah benar; yang salah cuma skalanya (dulu 1.6 = ayam sebesar anjing)"
     },
-    "domba": {
-      "sprite": "res://assets/game/sprites/animals/domba_kiri.png",
-      "fw": 48,
+    "babi": {
+      "sprite": "res://assets/game/sprites/animals/babi_kiri.png",
+      "fw": 64,
       "fh": 64,
       "frame": 3,
       "arah": "kiri_kanan",
       "skala": 1.0,
       "kecepatan": 13.0,
-      "pack": "stendhal_animals",
-      "_catatan": "domba jantan bertanduk. NOL kambing di seluruh 111 zip gudang — domba adalah ternak berkaki empat bergaya LPC satu-satunya yang ada"
+      "pack": "pig_rework",
+      "_catatan": "babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan sisa, domba menuntut padang"
     },
     "serigala": {
       "sprite": "res://assets/game/sprites/animals/serigala_kiri.png",

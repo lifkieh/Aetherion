@@ -1,0 +1,7 @@
+# babi_kiri.png — hewan 'babi'
+# babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan sisa, domba menuntut padang
+
+Pack   : Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)
+Seniman: daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1
+Lisensi: CC-BY 3.0 (atribusi WAJIB, TIDAK menular)
+URL    : https://opengameart.org/content/lpc-style-farm-animals

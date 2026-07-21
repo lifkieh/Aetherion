@@ -46,6 +46,13 @@ PACK = {
         "url": "https://opengameart.org/node/81251",
         "terverifikasi": True,
     },
+    "pig_rework": {
+        "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
+        "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
+        "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
+        "url": "https://opengameart.org/content/lpc-style-farm-animals",
+        "terverifikasi": True,
+    },
     "wild_animals_all": {
         "nama": "Wild Animals (berkas gudang 'All.zip')",
         "pencipta": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
@@ -110,10 +117,20 @@ PNG_BURUNG_PUTIH = os.path.join(REPO, "assets_raw", "lpc", "lpc_birds_white.png"
 JOBS = [
     ("ayam", "repo:chicken.png", "repo", (16, 16, 2), "ninja_adventure", 0.9, 26.0,
      "sprite lama sudah benar; yang salah cuma skalanya (dulu 1.6 = ayam sebesar anjing)"),
-    ("domba", os.path.join(GUDANG, "stendhal_animals-99362c8-1", "ram.png"), "baris",
-     (48, 64, 3, 3), "stendhal_animals", 1.0, 13.0,
-     "domba jantan bertanduk. NOL kambing di seluruh 111 zip gudang — domba adalah "
-     "ternak berkaki empat bergaya LPC satu-satunya yang ada"),
+    # ⚠ DOMBA DIGANTI BABI KARENA LISENSI, BUKAN KARENA SELERA.
+    #   Domba lama = `stendhal_animals/ram.png`, CC-BY-SA 3.0 (Kimmo Rundelin). SA
+    #   menular ke turunannya, jadi ia melanggar #232 di luar `characters/` — dan tak
+    #   ada cara mematuhinya selain mengarantina seekor ternak latar.
+    #   Babi ini CC-BY 3.0: atribusi WAJIB, tapi TIDAK menular.
+    #   Bonusnya aslinya sprite LPC (daneeklu), jadi gayanya lebih sepadan dengan warga
+    #   Ashbrook daripada domba yang ia gantikan.
+    #   Baris 3 = hadap BARAT. Urutan lembar N/E/S/W menurut README pack, dan barat
+    #   itulah yang cocok dengan kebiasaan repo (sprite menghadap KIRI).
+    ("babi", os.path.join(GUDANG, "pig-1.1", "PNG", "64x64", "pig.png"), "baris",
+     (64, 64, 3, 3), "pig_rework", 1.0, 13.0,
+     "babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar "
+     "characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan "
+     "sisa, domba menuntut padang"),
     ("serigala", os.path.join(GUDANG, "All", "Wild Animals", "Wolf", "Wolf_Walk.png"),
      "strip", (64, 40, 8), "wild_animals_all", 1.0, 30.0,
      "menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px"),

@@ -1341,8 +1341,8 @@ func _ternak() -> void:
 
 	var pusat := k.position + k.size * 0.5
 	for spec in [
-		["domba", pusat + Vector2(-34, 6), 44.0],
-		["domba", pusat + Vector2(30, -12), 44.0],
+		["babi", pusat + Vector2(-34, 6), 44.0],
+		["babi", pusat + Vector2(30, -12), 44.0],
 		["ayam", pusat + Vector2(-52, 32), 34.0],
 		["ayam", pusat + Vector2(46, 26), 34.0],
 		["ayam", pusat + Vector2(8, 38), 34.0],
@@ -1581,24 +1581,25 @@ func _hidup_ayam_anak() -> void:
 
 ## Kambing di jembatan + sepeda di gerbang — dua ujung jalan dagang lama.
 func _hidup_berpasangan() -> void:
-	# DOMBA, bukan "kambing". Sampai 2026-07-20 makhluk ini adalah sprite AYAM yang
-	# di-`scale` 3x lalu di-`modulate` abu — paruh dan jenggernya masih terlihat dari
-	# kamera main. Sisiran nama berkas atas 111 zip gudang menemukan NOL kambing;
-	# domba jantan bertanduk (Stendhal, Kimmo Rundelin) adalah ternak berkaki empat
-	# bergaya LPC satu-satunya yang benar-benar ada. Nama variabel ikut dijujurkan.
-	var domba := Node2D.new()
-	domba.set_script(load("res://scenes/actors/Hewan.gd"))
-	domba.setup("domba")
-	add_child(domba)
-	# ⚠ DOMBA INI SEKARANG LIAR (putusan Direktur, Lapis 2). Ia berdiri di jembatan
-	#   di C4 — dan aturan gradien Lapis 1 berbunyi NOL ternak di luar inti. Bukannya
-	#   memindahkannya, bacaannya yang dibetulkan: ia memang bukan ternak. Ia domba
+	# BABI, bukan "kambing" dan bukan lagi domba. Sampai 2026-07-20 makhluk ini sprite
+	# AYAM yang di-`scale` 3x lalu di-`modulate` abu — paruh dan jenggernya masih
+	# terlihat dari kamera main. Lalu ia jadi domba Stendhal (Kimmo Rundelin), dan
+	# sekarang babi: domba itu CC-BY-SA, dan SA menular ke turunannya, jadi ia tak bisa
+	# dipatuhi di luar `characters/`. Babi ini CC-BY 3.0 — atribusi wajib, tak menular.
+	# Nama variabel ikut dijujurkan tiap kali makhluknya berganti.
+	var babi := Node2D.new()
+	babi.set_script(load("res://scenes/actors/Hewan.gd"))
+	babi.setup("babi")
+	add_child(babi)
+	# ⚠ BABI INI LIAR (putusan Direktur, Lapis 2). Ia berdiri di jembatan di C4 —
+	#   dan aturan gradien Lapis 1 berbunyi NOL ternak di luar inti. Bukannya
+	#   memindahkannya, bacaannya yang dibetulkan: ia memang bukan ternak. Ia babi
 	#   yang tak lagi dimiliki siapa pun, berdiri di ujung jalan yang tak lagi
 	#   ditempuh. Itu justru kalimat yang lebih kuat daripada tempatnya semula.
 	#   Posisinya TAK DIUBAH — ia masih menghalangi jembatan, dan itu masih bekerja.
-	domba.liar = true
-	domba.wander_radius = 60.0          # ia MENGHALANGI jembatan, bukan berkelana
-	domba.place(Vector2(1790, VC.y + 8))
+	babi.liar = true
+	babi.wander_radius = 60.0          # ia MENGHALANGI jembatan, bukan berkelana
+	babi.place(Vector2(1790, VC.y + 8))
 
 	var bike := ColorRect.new()        # sepeda kayu bersandar di gerbang; masih dipakai
 	bike.color = Color(0.55, 0.42, 0.28)

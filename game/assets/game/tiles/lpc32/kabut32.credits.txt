@@ -1,1 +1,2 @@
 # kabut32.png — DIGAMBAR gen_c4.py. Karya proyek, nol turunan.
+Lisensi: karya proyek (digambar generator; nol turunan pihak ketiga)
