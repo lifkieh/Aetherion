@@ -1189,6 +1189,7 @@ func _examine(pos: Vector2, ev_id: String) -> void:
 ## Radius berkelana juga digandakan: makhluk yang berkelana 40 px di dunia 16px
 ## menempuh 2,5 petak; di petak 32 itu cuma 1,25 petak — terlihat lumpuh.
 func _kehidupan() -> void:
+	_ternak()
 	_hidup_ayam_anak()
 	_hidup_berpasangan()
 	_jendela()
@@ -1198,6 +1199,64 @@ func _kehidupan() -> void:
 
 ## Ayam yang benar-benar menghalangi jalan + anak-anak yang mengejarnya.
 ## Hidup × mati: mereka bermain di depan gudang yang isinya empat ekor ayam.
+# ------------------------------------------------ LAPIS 1 — TERNAK (kehidupan tersisa)
+## Ternak bukan hiasan; ia ALAT UKUR. Hewan yang dipelihara menuntut orang yang
+## memeliharanya, jadi kehadirannya membuktikan rumah di sebelahnya masih dihuni —
+## dan ketiadaannya di tepi membuktikan kebalikannya, tanpa satu baris teks.
+##
+## ⚠ GRADIENNYA TERBALIK DARI YANG DIDUGA. Bukan "banyak di pusat, sedikit di tepi"
+## melainkan "ada di sebelah rumah berpenghuni, NOL di mana pun selain itu". Ternak
+## yang tersebar merata cuma jadi latar; ternak yang berkelompok di dua titik
+## menjadikan dua titik itu terbaca sebagai rumah yang masih ditunggui.
+##
+## ⚠ PAGARNYA TAK PADAT — dan itu putusan, bukan kelalaian. `Hewan` dikurung oleh
+## `wander_radius`, bukan oleh tabrakan; memberi pagar `_solid()` berarti menambah
+## sepuluh kotak padat di jalur yang sudah lulus `CekKoridor`, demi kurungan yang
+## sudah bekerja tanpa itu. Yang berhak memakan ruang jalan cuma yang harus
+## menghalangi pemain, dan kandang ayam tidak.
+func _ternak() -> void:
+	# KANDANG di sisi timur rumah Lyra — satu-satunya rumah C2 yang terbaca dihuni,
+	# dan satu-satunya yang sudah punya palung air sejak lapisan dekorasi (1.5).
+	# Palung itu sekarang punya sebab: ia milik kandang ini.
+	var k := Rect2(752, 880, 176, 110)
+	for i in 6:                                   # pagar utara & selatan
+		var fx: float = k.position.x + 14 + i * 30
+		_jejak("pagar_h32.png", Vector2(fx, k.position.y), 1.0)
+		if i != 4:                                # satu ruas hilang = pintu kandang
+			_jejak("pagar_h32.png", Vector2(fx, k.position.y + k.size.y), 1.0)
+	for i in 3:                                   # tiang sisi timur & barat
+		var fy: float = k.position.y + 22 + i * 34
+		_jejak("pagar_tiang32.png", Vector2(k.position.x, fy), 1.0)
+		_jejak("pagar_tiang32.png", Vector2(k.position.x + k.size.x, fy), 1.0)
+	_jejak("hay.png", Vector2(k.position.x + 26, k.position.y + 30), 1.8)
+
+	var pusat := k.position + k.size * 0.5
+	for spec in [
+		["domba", pusat + Vector2(-34, 6), 44.0],
+		["domba", pusat + Vector2(30, -12), 44.0],
+		["ayam", pusat + Vector2(-52, 32), 34.0],
+		["ayam", pusat + Vector2(46, 26), 34.0],
+		["ayam", pusat + Vector2(8, 38), 34.0],
+	]:
+		var h := Node2D.new()
+		h.set_script(load("res://scenes/actors/Hewan.gd"))
+		h.setup(String(spec[0]))
+		add_child(h)
+		h.wander_radius = float(spec[2])
+		h.place(spec[1])
+
+	# DUA AYAM LEPAS di halaman rumah C2 yang menyala. Bukan kandang — cuma ayam
+	# yang dibiarkan berkeliaran, dan itu justru bacaan yang benar: rumah kecil
+	# tak berkandang, ia cuma punya ayam. Satu-satunya rumah lain yang berlampu.
+	for p in [Vector2(452, 700), Vector2(492, 716)]:
+		var a := Node2D.new()
+		a.set_script(load("res://scenes/actors/Hewan.gd"))
+		a.setup("ayam")
+		add_child(a)
+		a.wander_radius = 40.0
+		a.place(p)
+
+
 func _hidup_ayam_anak() -> void:
 	for i in 4:
 		var c := Node2D.new()

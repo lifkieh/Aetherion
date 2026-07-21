@@ -40,6 +40,9 @@ var _t := 0.0
 var _anim := 0.0
 var _dir := Vector2.ZERO
 var _home := Vector2.ZERO
+## Kecepatan per JENIS, dibaca katalog. Ayam menyambar, domba merumput — memberi
+## keduanya 26 px/s membuat domba tampak meluncur di atas rumput.
+var _kecepatan := 26.0
 
 const SPEED := 26.0
 const FLEE_RADIUS := 84.0
@@ -104,6 +107,7 @@ func _ready() -> void:
 	_spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	# SKALA DARI KATALOG, tak pernah dari pemanggil. Itu batas yang mencegah
 	# "kambing 3x" lahir kembali di scene mana pun.
+	_kecepatan = float(h.get("kecepatan", SPEED))
 	var s: float = float(h.get("skala", 1.0))
 	_spr.scale = Vector2(s, s)
 	_spr.offset = Vector2(0, -_fh * 0.5)      # kaki di titik asal node
@@ -116,15 +120,24 @@ func _process(delta: float) -> void:
 		return
 	_t -= delta
 	if _t <= 0.0:
-		_t = randf_range(0.9, 2.6)
-		_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	var spd := SPEED
+		# DIAM adalah bagian dari berkelana, bukan kebalikannya. Sebelum ini hewan
+		# TAK PERNAH berhenti — ia meluncur tanpa jeda seumur hidupnya, dan itu
+		# terbaca sebagai mainan berputar, bukan makhluk. Ternak sungguhan berdiri
+		# jauh lebih lama daripada berjalan; JEDA yang membuatnya hidup, bukan
+		# geraknya. Diam juga lebih lama daripada jalan (1,6-4,2 vs 1,2-3,4).
+		if _dir == Vector2.ZERO:
+			_t = randf_range(1.2, 3.4)
+			_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		else:
+			_t = randf_range(1.6, 4.2)
+			_dir = Vector2.ZERO
+	var spd := _kecepatan
 	var pl = get_tree().get_first_node_in_group("player")
 	if is_instance_valid(pl):
 		var d: Vector2 = global_position - pl.global_position
 		if d.length() < FLEE_RADIUS:          # lari saat didekati — bukan properti diam
 			_dir = d.normalized()
-			spd = SPEED * 2.4
+			spd = _kecepatan * 2.4
 	var calon := global_position + _dir * spd * delta
 	if calon.distance_to(_home) > wander_radius:
 		_dir = (_home - global_position).normalized()
@@ -134,9 +147,14 @@ func _process(delta: float) -> void:
 	# hadap arah gerak: strip digambar menghadap KIRI, jadi balik saat ke kanan
 	if absf(_dir.x) > 0.05:
 		_spr.flip_h = _dir.x > 0.0
-	# animasi jalan — hanya saat benar-benar bergerak
-	_anim += delta * 8.0
-	_frame = int(_anim) % _n
+	# animasi jalan — HANYA saat benar-benar bergerak. Kaki yang terus melangkah di
+	# tempat lebih buruk daripada patung: patung cuma diam, sedangkan kaki yang
+	# melangkah tanpa maju mengabarkan bahwa yang hidup gambarnya, bukan hewannya.
+	if _dir == Vector2.ZERO:
+		_frame = 0
+	else:
+		_anim += delta * 8.0
+		_frame = int(_anim) % _n
 	var at := _spr.texture as AtlasTexture
 	if at:
 		at.region = Rect2(_frame * _fw, 0, _fw, _fh)
