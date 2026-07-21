@@ -1,0 +1,158 @@
+{
+ "_doc": "Peta kecocokan untuk pembuat karakter. Pilih badan -> slot pakaian TERKUNCI ke build yang tercantum; kepala mengikuti badan; rambut mengikuti UKURAN KEPALA (dewasa/anak), bukan build badan.",
+ "badan": {
+  "child": {
+   "kepala": "child",
+   "pakaian": "child",
+   "rambut": "child"
+  },
+  "teen": {
+   "kepala": "female",
+   "pakaian": "teen",
+   "rambut": "adult"
+  },
+  "female": {
+   "kepala": "female",
+   "pakaian": "female",
+   "rambut": "adult"
+  },
+  "muscular_female": {
+   "kepala": "female",
+   "pakaian": "female",
+   "rambut": "adult"
+  },
+  "male": {
+   "kepala": "male",
+   "pakaian": "male",
+   "rambut": "adult"
+  },
+  "muscular": {
+   "kepala": "male",
+   "pakaian": "muscular",
+   "rambut": "adult"
+  },
+  "pregnant": {
+   "kepala": "female",
+   "pakaian": "pregnant",
+   "rambut": "adult"
+  }
+ },
+ "tersedia": {
+  "legs": {
+   "male": 4992,
+   "thin": 4960,
+   "muscular": 500,
+   "child": 18,
+   "female": 181,
+   "pregnant": 168,
+   "teen": 169
+  },
+  "torso": {
+   "female": 10607,
+   "male": 4186,
+   "teen": 10606,
+   "thin": 150
+  },
+  "feet": {
+   "thin": 143,
+   "child": 225,
+   "female": 46,
+   "male": 46,
+   "teen": 23
+  }
+ },
+ "rambut": {
+  "aturan": "ikut ukuran kepala, bukan build badan",
+  "jumlah": {
+   "adult": 810,
+   "child": 324
+  },
+  "gaya": [
+   "jewfro",
+   "left_braid",
+   "longknot",
+   "right_braid",
+   "shortknot",
+   "side_swoop"
+  ],
+  "sudah_dipotong_ke_pustaka": [
+   "eulpc_hair_bob_side_part.png",
+   "eulpc_hair_child_jewfro_chestnut.png",
+   "eulpc_hair_child_parted_gold.png",
+   "eulpc_hair_child_swoop_black.png",
+   "eulpc_hair_child_topknot_gold.png",
+   "eulpc_hair_curly_short.png",
+   "eulpc_hair_curly_short2.png",
+   "eulpc_hair_jewfro.png",
+   "eulpc_hair_jewfro_ash.png",
+   "eulpc_hair_jewfro_black.png",
+   "eulpc_hair_jewfro_carrot.png",
+   "eulpc_hair_jewfro_chestnut.png",
+   "eulpc_hair_jewfro_gold.png",
+   "eulpc_hair_jewfro_gray.png",
+   "eulpc_hair_longknot_ash.png",
+   "eulpc_hair_longknot_darkbrown.png",
+   "eulpc_hair_longknot_white.png",
+   "eulpc_hair_parted2.png",
+   "eulpc_hair_parted_side_bangs.png",
+   "eulpc_hair_parted_side_bangs2.png",
+   "eulpc_hair_shortknot_black.png",
+   "eulpc_hair_shortknot_carrot.png",
+   "eulpc_hair_shortknot_chestnut.png",
+   "eulpc_hair_shortknot_gold.png",
+   "eulpc_hair_shortknot_gray.png",
+   "eulpc_hair_shortknot_raven.png",
+   "eulpc_hair_swoop_black.png",
+   "eulpc_hair_swoop_carrot.png",
+   "eulpc_hair_swoop_chestnut.png",
+   "eulpc_hair_swoop_gold.png",
+   "eulpc_hair_swoop_gray.png",
+   "eulpc_hair_swoop_side.png",
+   "eulpc_hairext_braidl.png",
+   "eulpc_hairext_braidr.png",
+   "eulpc_hairext_topknot_long_bg.png",
+   "eulpc_hairext_topknot_long_fg.png"
+  ]
+ },
+ "sumber": {
+  "legs": [
+   "lpc-2024-12-31-expanded-ulpc-pants.zip",
+   "lpc-2025-02-03-expanded-ulpc-pants-cleaned-split.zip"
+  ],
+  "torso": [
+   "longsleeve-shirts.zip",
+   "lpc-2024-10-15-expanded-ulpc-clothing.zip",
+   "lpc-2025-03-02-fixed-shirt-assets.zip"
+  ],
+  "feet": [
+   "lpc-2024-10-15-expanded-ulpc-set.zip"
+  ]
+ },
+ "lubang": [
+  {
+   "badan": "child",
+   "slot": "torso",
+   "build_pakaian": "child"
+  },
+  {
+   "badan": "muscular",
+   "slot": "torso",
+   "build_pakaian": "muscular"
+  },
+  {
+   "badan": "muscular",
+   "slot": "feet",
+   "build_pakaian": "muscular"
+  },
+  {
+   "badan": "pregnant",
+   "slot": "torso",
+   "build_pakaian": "pregnant"
+  },
+  {
+   "badan": "pregnant",
+   "slot": "feet",
+   "build_pakaian": "pregnant"
+  }
+ ]
+}
