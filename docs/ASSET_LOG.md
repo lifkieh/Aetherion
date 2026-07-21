@@ -209,3 +209,23 @@ hanya menerima materi berlisensi OGA-BY ke koleksinya. **Aman, tak menular.**
 **DITOLAK dengan sengaja** (menular, tak bisa ditarik pasca-rilis):
 `[LPC] Roofs` · `[LPC] Walls` · `[LPC] Windows & Doors` — bluecarrot16, **CC-BY-SA 3.0 + GPL**.
 Karena itu **PINTU digambar sendiri** (`_tools/gen_fasad.py`), milik penuh Aetherion.
+
+### 2026-07-21 — dua wangset yang selama ini menganggur DINYALAKAN (1.7a)
+
+**Nol berkas baru masuk repo.** Atlas `lpc-tileset-buildings.png` mendaftarkan **empat**
+wangset di `.tsx`-nya: `Angled Roof` · `Flat Roofs` · `Brick Walls` · `Adobe Walls`.
+`gen_fasad.py` sejak lahir cuma memakai **dua** (Angled Roof + Brick Walls), sehingga
+kelima fasad Ashbrook berbagi satu siluet: kotak + atap pelana.
+
+Dua sisanya kini dipakai, dari atlas dan lisensi yang **sudah dibayar di blok atas**:
+- **Flat Roofs** → nine-slice `(1,5)`, mengikuti offset bahan 18×8 yang sama dengan atap
+  pelana. **Diuji dengan merender keenam offset berdampingan sebelum dipakai**
+  (`reports/preview/blockout/T17a_flat_bahan.png`), bukan diandaikan dari polanya.
+- **Adobe Walls** → blok `(0,1,3)` baris 33 (pasir) & 36 (lembayung). Lebarnya **empat**
+  petak, bukan tiga seperti bata — menebak `c0+2` sebagai tepi kanan akan mengambil petak
+  TENGAH, dan cacat itu baru terlihat pada bangunan lebar. Kolomnya karena itu **disebut
+  satu per satu di `ADOBE`, tidak dihitung**.
+
+Empat fasad baru lahir dari kombinasi itu: `fasad_singgah` · `fasad_datar_tinggi` ·
+`fasad_datar_lebar` · `fasad_adobe_pudar`. **Atribusi tak bertambah** — sumber, lisensi,
+dan teks kreditnya persis sama dengan yang tercatat di atas.

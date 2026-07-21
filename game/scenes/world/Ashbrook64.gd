@@ -969,7 +969,12 @@ func _building(path: String, foot: Vector2) -> Sprite2D:
 const BUILDING_FOOT_H := 40.0
 
 func _village() -> void:
-	_building(P_S + "fasad_inn.png", MERRIT_HOUSE)                 # rumah singgah Merrit
+	# ⚠ BUKAN LAGI `fasad_inn`. Merrit dan balai memakai fasad yang SAMA selama
+	#   berbulan-bulan — dua bangunan kembar bersebelahan di sisi utara alun-alun,
+	#   dan koreksi 3 B' justru meminta Merrit yang TERPENDEK. `fasad_singgah`
+	#   (adobe pasir, 160x192) membayar keduanya sekaligus: bahan berbeda, dan 32 px
+	#   lebih pendek daripada balai yang berdiri 176 px di sebelahnya.
+	_building(P_S + "fasad_singgah.png", MERRIT_HOUSE)             # rumah singgah Merrit
 	_building(P_S + "fasad_gudang.png", GUDANG_KAKI)               # gudang gandum — C3
 	_building(P_S + "fasad_shop.png", OTHA_KAKI)                   # toko Otha — tutup dua musim
 	_building(P_S + "fasad_kosong.png", Vector2(1408, 800))        # rumah kosong
@@ -986,12 +991,20 @@ func _village() -> void:
 	# Kenapa yang dihuni bukan yang terdekat ke inti: rumah hidup di tengah barisan
 	# membuat kegelapan di kedua sisinya terbaca sebagai KEHILANGAN. Rumah hidup di
 	# ujung dalam cuma menggambar batas antara "kota" dan "bukan kota".
+	# ── BENTUK IKUT KEADAAN, bukan diundi (1.7a) ─────────────────────────────
+	# Dua rumah tetap `fasad_kosong` DENGAN SENGAJA. Desa yang tiap rumahnya
+	# berbeda tak terbaca beragam — ia terbaca sebagai pameran, dan tak seorang
+	# pun tinggal di pameran. Yang diganti cuma yang punya alasan diganti.
 	_building(P_S + "fasad_kosong.png", Vector2(640, 656))
 	_building(P_S + "fasad_rumah.png", Vector2(492, 650))          # satu-satunya yang menyala
-	_building(P_S + "fasad_kosong.png", Vector2(320, 660))
+	# adobe pudar: bahan lebih tua daripada tetangganya, dan sudah mati lebih dulu
+	_building(P_S + "fasad_adobe_pudar.png", Vector2(320, 660))
 	_building(P_S + "fasad_kosong.png", Vector2(126, 668))
 	# C2 TIMUR — gradien yang sama, dari toko Otha ke luar: 156, lalu 194.
-	_building(P_S + "fasad_kosong.png", Vector2(1602, 700))
+	# MENARA TEPI (96x256): satu-satunya bangunan yang memecah garis atap desa.
+	# Ditaruh paling timur supaya ia terlihat dari jauh sebelum dicapai — sisa kota
+	# lama yang masih menjulang, dan tak ada lagi yang menempatinya.
+	_building(P_S + "fasad_datar_tinggi.png", Vector2(1602, 700))
 
 	# ── C1: BALAI DESA — terlalu besar untuk yang tersisa ────────────────────
 	# Fasad terbesar yang dipunyai repo (inn 160x224), menghadap alun-alun dari utara.
@@ -1015,7 +1028,10 @@ func _village() -> void:
 	# Ketiganya GELAP (nol jendela didaftarkan di `_jendela()`). Gradien #218 yang
 	# diminta — 1 dari 4 hidup — sekarang terpenuhi dengan hitungan sungguhan:
 	# 8 bangunan, yang menyala cuma Lyra + lentera Merrit.
-	_building(P_S + "fasad_kosong.png", Vector2(1120, 1152))       # selatan-tenggara
+	# LEBAR-PENDEK (160x160) — kebalikan menara timur. Dua siluet ekstrem di peta
+	# yang sama membuat yang di antaranya terbaca "biasa"; tanpa keduanya, semua
+	# ukuran terasa sama besar.
+	_building(P_S + "fasad_datar_lebar.png", Vector2(1120, 1152))  # selatan-tenggara
 	_building(P_S + "fasad_rumah.png", Vector2(736, 1184))          # selatan
 	_building(P_S + "fasad_kosong.png", Vector2(1376, 1056))        # timur-tenggara
 	# POHON. Dulu `tree_lpc.png` — dan berkas itu ternyata BUKAN POHON: potongan

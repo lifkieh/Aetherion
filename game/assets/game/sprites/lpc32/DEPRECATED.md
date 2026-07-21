@@ -40,3 +40,27 @@ dengan `tree_lpc.png` di atas: berkas yang lenyap tak mengajari siapa pun; berka
 yang ditandai mengajari. Kalau suatu saat kabut dibutuhkan sebagai **cuaca** (bukan
 sebagai batas), ubin ini titik mulainya — yang salah dulu bukan asetnya, melainkan
 pekerjaan yang dibebankan kepadanya.
+
+## Nama menipu di GUDANG — bukan di repo, tapi menipu dengan cara yang sama
+
+Ditemukan saat katalog visual gudang 2026-07-21 (`reports/KATALOG_GUDANG.md`). Dicatat
+di sini karena mekanismenya identik dengan `tree_lpc`/`wall_ruin`: **namanya masuk akal,
+isinya lain**, dan satu-satunya cara mengetahuinya adalah merasterisasi lalu melihat.
+Tak satu pun berkas di bawah ada di repo — daftar ini mencegah sesi berikutnya
+mengambilnya berdasarkan nama.
+
+| berkas gudang | yang dijanjikan namanya | isinya sebenarnya |
+|---|---|---|
+| `NewFields.png` | ubin ladang | bagan palet ARNE + sprite karakter merah mungil |
+| `Everything.zip` | tileset besar | 105 ikon UI/musik |
+| `lpc_entry.zip` | tileset LPC | 184 lembar karakter (zirah per-animasi) |
+| `expansion_pack-0.04.zip` | ekspansi ubin | animasi senjata + berkas xcf |
+| `4-season_terrain.zip` | terrain 4 musim | 2.621 berkas, 96% `Characters/`; terrain-nya 81 berkas |
+| `fantasy-tileset.png` | tileset fantasy | palet GameBoy 4-warna hijau |
+| `tombstones.png` | nisan | siluet hitam tampak-samping, nol alpha |
+| `ground_tiles.png` · `Cliff_tileset.png` · `object- layer.png` | ubin netral | set Avalon (GPL3, Len Pabin 2009), palet kuning-pucat |
+| `fluffy_wolf_tail_back/front.png` | ekor serigala "berbulu" varian | **byte-identik** dengan `wolf_tail_back/front.png` — ketahuan dari SHA256, mustahil dari mata |
+
+Baris terakhir itu batas alat: untuk **duplikat**, hash lebih tajam daripada mata.
+Dua berkas bisa terlihat sama karena memang mirip, atau karena memang berkas yang sama —
+dan hanya hash yang bisa membedakan keduanya.

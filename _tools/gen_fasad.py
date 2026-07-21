@@ -84,6 +84,34 @@ WALL = {
     "merah": (24, 30),   # Red Brick w/Border
 }
 
+# --- ADOBE (wangset "Adobe Walls") — DINDING YANG SELAMA INI MENGANGGUR ---------
+#
+# Atlas ini mendaftarkan EMPAT wangset: Angled Roof · Flat Roofs · Brick Walls ·
+# Adobe Walls. Sampai revisi ini generator cuma memakai DUA, jadi lima fasad
+# Ashbrook lahir dari satu resep dan berbagi satu siluet — kotak + atap pelana.
+# Dua wangset sisanya sudah ada di repo dan lisensinya sudah dibayar (OGA-BY 3.0).
+#
+# ⚠ ADOBE TAK BISA DIPAKAI `WALL` APA ADANYA. Nine-slice bata lebarnya TIGA petak
+#   berurutan, jadi `c0 + rx` cukup. Blok adobe lebarnya EMPAT (kiri, dua tengah,
+#   kanan), dan menebak `c0+2` sebagai tepi kanan mengambil petak TENGAH — hasilnya
+#   dinding tanpa sisi kanan, dan cacat itu cuma terlihat pada bangunan lebar.
+#   Karena itu kolomnya disebut satu per satu, bukan dihitung.
+ADOBE = {
+    #            (kiri, tengah, kanan), baris atas
+    "pasir": ((0, 1, 3), 33),    # adobe tanah terang — hangat, masih dirawat
+    "lembayung": ((0, 1, 3), 36),  # adobe kelabu-ungu — pudar, sudah lama
+}
+
+# --- ATAP DATAR (wangset "Flat Roofs") ----------------------------------------
+# Nine-slice 3x3 di (1,5), dan ia mengikuti offset bahan 18x8 yang sama dengan
+# atap pelana — diuji dengan merender keenam offset berdampingan sebelum dipakai
+# (reports/preview/blockout/T17a_flat_bahan.png), bukan diandaikan.
+#
+# INI YANG MEMBERI VARIASI SILUET, bukan variasi warna: atap pelana berpuncak
+# SEGITIGA, atap datar bertepi LURUS. Dari kejauhan, di mana warna sudah menyatu,
+# perbedaan itu yang masih terbaca.
+FLAT = (1, 5)
+
 # --- JENDELA: 1 petak lebar x 2 petak tinggi. Kolom 37 = siang, 38 = berlampu ---
 WIN_KISI = (37, 20)   # kisi belah ketupat berbingkai kayu - hangat, rasa kedai
 WIN_PANEL = (37, 14)  # jendela panel berkusen batu - rapi, rasa toko
@@ -161,16 +189,40 @@ def roof(src, mat, gable_col, cols):
     return im
 
 
-def wall(src, key, cols, rows):
-    """Badan bangunan dari nine-slice dinding."""
-    c0, r0 = WALL[key]
+def nine(src, kolom, r0, cols, rows):
+    """Nine-slice umum. `kolom` = (kiri, tengah, kanan) — disebut, bukan dihitung.
+
+    Dipisah dari `wall()` supaya blok yang lebarnya bukan tiga petak (adobe) dan
+    blok yang bukan dinding (atap datar) memakai mesin yang sama.
+    """
     im = Image.new("RGBA", (cols * T, rows * T), (0, 0, 0, 0))
     for y in range(rows):
         ry = 0 if y == 0 else (2 if y == rows - 1 else 1)
         for x in range(cols):
-            rx = 0 if x == 0 else (2 if x == cols - 1 else 1)
-            im.paste(tile(src, c0 + rx, r0 + ry), (x * T, y * T))
+            kx = kolom[0] if x == 0 else (kolom[2] if x == cols - 1 else kolom[1])
+            im.paste(tile(src, kx, r0 + ry), (x * T, y * T))
     return im
+
+
+def wall(src, key, cols, rows):
+    """Badan bangunan. `key` boleh nama bata (WALL) atau nama adobe (ADOBE)."""
+    if key in ADOBE:
+        kolom, r0 = ADOBE[key]
+        return nine(src, kolom, r0, cols, rows)
+    c0, r0 = WALL[key]
+    return nine(src, (c0, c0 + 1, c0 + 2), r0, cols, rows)
+
+
+def flat_roof(src, mat, cols, rows=2):
+    """Atap DATAR bertembok pengaman. `rows` 2 = tepi atas + bibir bawah saja.
+
+    Tiga baris memberi bidang atap yang lebar — benar untuk bangunan besar, tapi
+    pada bangunan sempit ia menelan dindingnya sendiri dan bangunan itu berhenti
+    terbaca sebagai rumah. Ketinggian atap ikut lebar bangunan, bukan sebaliknya.
+    """
+    dc, dr = mat
+    c0, r0 = FLAT[0] + dc, FLAT[1] + dr
+    return nine(src, (c0, c0 + 1, c0 + 2), r0, cols, rows)
 
 
 # Keadaan jendela = geser kolom. 36 gelap (tak berpenghuni), 37 siang, 38 berlampu.
@@ -187,14 +239,22 @@ def window(src, kind, state="siang"):
 
 
 def facade(src, mat, gable_col, cols, wall_key, wall_rows, win_kind, win_cols,
-           win_row=1, win_state="siang", door=True, name=""):
-    """Susun fasad menjulang: atap pelana -> dinding -> jendela -> pintu."""
-    rows = 2 + wall_rows
+           win_row=1, win_state="siang", door=True, name="", atap="pelana",
+           atap_rows=2):
+    """Susun fasad menjulang: atap -> dinding -> jendela -> pintu.
+
+    `atap` = "pelana" (puncak segitiga) atau "datar" (tepi lurus bertembok).
+    """
+    rows = atap_rows + wall_rows
     im = Image.new("RGBA", (cols * T, rows * T), (0, 0, 0, 0))
-    im.alpha_composite(roof(src, mat, gable_col, cols), (0, 0))
-    im.alpha_composite(wall(src, wall_key, cols, wall_rows), (0, 2 * T))
+    if atap == "datar":
+        im.alpha_composite(flat_roof(src, mat, cols, atap_rows), (0, 0))
+    else:
+        im.alpha_composite(roof(src, mat, gable_col, cols), (0, 0))
+    im.alpha_composite(wall(src, wall_key, cols, wall_rows), (0, atap_rows * T))
     for x in win_cols:
-        im.alpha_composite(window(src, win_kind, win_state), (x * T, (2 + win_row) * T))
+        im.alpha_composite(window(src, win_kind, win_state),
+                           (x * T, (atap_rows + win_row) * T))
     if door:  # pintu di tengah, menempel tanah
         im.alpha_composite(draw_door(T, 2 * T), ((cols // 2) * T, (rows - 2) * T))
     print("  %-14s %3dx%-3d  (%dx%d petak)" % (name, im.width, im.height, cols, rows))
@@ -241,6 +301,46 @@ def main():
         ("fasad_rumah", dict(mat=MAT_RED, gable_col=GABLE5, cols=5, wall_key="merah",
                              wall_rows=4, win_kind=WIN_KISI, win_cols=(1, 3),
                              win_state="terang")),
+
+        # ══ EMPAT BENTUK BARU (1.7a) — dari dua wangset yang menganggur ═══════
+        #
+        # Sengaja EMPAT, bukan sepuluh. Sembilan bentuk untuk lima belas bangunan
+        # berarti ada yang terulang, dan pengulangan itu yang membuatnya terbaca
+        # SATU DESA. Desa yang tiap rumahnya berbeda tidak terbaca beragam — ia
+        # terbaca sebagai pameran, dan tak seorang pun tinggal di pameran.
+        #
+        # Variasinya diberi ALASAN, bukan diundi: bahan mengikuti keadaan penghuni.
+        # Adobe pasir = masih dirawat. Adobe lembayung = pudar. Atap datar = gaya
+        # kota lama yang lebih tua daripada rumah pelana di sekitarnya.
+
+        # rumah singgah Merrit — adobe pasir hangat, dan LEBIH PENDEK dari balai.
+        # Ini membayar utang koreksi 3 di B': Merrit seharusnya yang terpendek,
+        # tapi ia memakai `fasad_inn` yang justru tertinggi (224). Sekarang 192,
+        # dan bahannya beda sehingga ia tak lagi kembar dengan balai di sebelahnya.
+        ("fasad_singgah", dict(mat=MAT_BROWN, gable_col=GABLE5, cols=5,
+                               wall_key="pasir", wall_rows=4, win_kind=WIN_KISI,
+                               win_cols=(1, 3))),
+        # MENARA TEPI — atap datar, sempit, TINGGI (96x256). Satu-satunya bangunan
+        # yang memecah garis atap desa. Ditaruh di tepi timur: sisa kota lama yang
+        # menjulang, dilihat dari jauh sebelum dicapai.
+        ("fasad_datar_tinggi", dict(mat=MAT_SLATE, gable_col=GABLE3, cols=3,
+                                    wall_key="abu", wall_rows=6, win_kind=WIN_PANEL,
+                                    win_cols=(0, 2), win_state="gelap",
+                                    atap="datar", atap_rows=2)),
+        # RUMAH LEBAR-PENDEK (160x160) — kebalikan menara. Dua siluet ekstrem di
+        # peta yang sama membuat yang di antaranya terbaca sebagai "biasa"; tanpa
+        # keduanya, semua ukuran terasa sama.
+        ("fasad_datar_lebar", dict(mat=MAT_BROWN, gable_col=GABLE5, cols=5,
+                                   wall_key="lembayung", wall_rows=3,
+                                   win_kind=WIN_KISI, win_cols=(1, 3),
+                                   atap="datar", atap_rows=2)),
+        # ADOBE PUDAR — atap datar hitam + adobe lembayung, jendela gelap.
+        # Bahan yang berbeda DAN mati: rumah yang ditinggalkan lebih dulu daripada
+        # tetangganya, dan bahannya mengabarkan ia juga dibangun lebih dulu.
+        ("fasad_adobe_pudar", dict(mat=MAT_BLACK, gable_col=GABLE3, cols=3,
+                                   wall_key="lembayung", wall_rows=4,
+                                   win_kind=WIN_PANEL, win_cols=(0, 2),
+                                   win_state="gelap", atap="datar", atap_rows=2)),
     ):
         made[nm] = facade(src, name=nm, **kw)
         made[nm].save(os.path.join(OUT, nm + ".png"))
