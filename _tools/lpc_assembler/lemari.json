@@ -1,0 +1,113 @@
+{
+ "_doc": "LEMARI — garmen sebagai identitas BEBAS-BUILD. `berkas[keluarga][warna]` = nama berkas nyata. Resolver memilih keluarga dari rangka build, bukan dari resep tokoh. Dihasilkan gen_lemari.py; jangan disunting tangan.",
+ "_cara_tambah_garmen": "Taruh berkasnya di assets_raw/lpc_extra dengan pola eulpc_<slot>_<garmen>_<keluarga>[_<warna>].png lalu jalankan ulang gen_lemari.py. Nol perubahan kode.",
+ "garmen": {
+  "feet": {
+   "high_socks": {
+    "slot": "feet",
+    "berkas": {
+     "thin": {
+      "polos": "eulpc_feet_high_socks_thin.png"
+     }
+    }
+   },
+   "shoes": {
+    "slot": "feet",
+    "berkas": {
+     "thin": {
+      "polos": "eulpc_feet_shoes_thin.png"
+     }
+    }
+   }
+  },
+  "legs": {
+   "pants": {
+    "slot": "legs",
+    "berkas": {
+     "child": {
+      "brown": "eulpc_legs_child_pants_brown.png",
+      "darkblue": "eulpc_legs_child_pants_darkblue.png",
+      "green": "eulpc_legs_child_pants_green.png"
+     },
+     "male": {
+      "charcoal": "eulpc_legs_pants_male_charcoal.png",
+      "forest": "eulpc_legs_pants_male_forest.png",
+      "navy": "eulpc_legs_pants_male_navy.png",
+      "walnut": "eulpc_legs_pants_male_walnut.png"
+     },
+     "thin": {
+      "polos": "eulpc_legs_pants_thin.png",
+      "charcoal": "eulpc_legs_pants_thin_charcoal.png",
+      "maroon": "eulpc_legs_pants_thin_maroon.png",
+      "navy": "eulpc_legs_pants_thin_navy.png",
+      "walnut": "eulpc_legs_pants_thin_walnut.png"
+     }
+    }
+   },
+   "hose": {
+    "slot": "legs",
+    "berkas": {
+     "thin": {
+      "polos": "eulpc_legs_hose_thin.png"
+     }
+    }
+   },
+   "shorts": {
+    "slot": "legs",
+    "berkas": {
+     "thin": {
+      "polos": "eulpc_legs_shorts_thin.png"
+     }
+    }
+   }
+  },
+  "torso": {
+   "cardigan": {
+    "slot": "torso",
+    "berkas": {
+     "teen": {
+      "polos": "eulpc_torso_cardigan_teen.png"
+     }
+    }
+   },
+   "longsleeve": {
+    "slot": "torso",
+    "berkas": {
+     "female": {
+      "charcoal": "eulpc_torso_longsleeve_female_charcoal.png",
+      "forest": "eulpc_torso_longsleeve_female_forest.png",
+      "maroon": "eulpc_torso_longsleeve_female_maroon.png",
+      "sky": "eulpc_torso_longsleeve_female_sky.png"
+     },
+     "male": {
+      "forest": "eulpc_torso_longsleeve_male_forest.png",
+      "maroon": "eulpc_torso_longsleeve_male_maroon.png",
+      "slate": "eulpc_torso_longsleeve_male_slate.png",
+      "walnut": "eulpc_torso_longsleeve_male_walnut.png",
+      "white": "eulpc_torso_longsleeve_male_white.png"
+     },
+     "teen": {
+      "rose": "eulpc_torso_longsleeve_teen_rose.png",
+      "teal": "eulpc_torso_longsleeve_teen_teal.png"
+     }
+    }
+   },
+   "overalls": {
+    "slot": "torso",
+    "berkas": {
+     "male": {
+      "polos": "eulpc_torso_overalls_male.png"
+     }
+    }
+   },
+   "sleeveless2": {
+    "slot": "torso",
+    "berkas": {
+     "female": {
+      "polos": "eulpc_torso_sleeveless2_female.png"
+     }
+    }
+   }
+  }
+ }
+}

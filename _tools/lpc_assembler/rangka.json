@@ -1,0 +1,88 @@
+{
+  "_doc": "RANGKA — daftar build badan. LAPIS 1 dari tiga lapis sistem karakter. Menambah rangka baru = MENAMBAH SATU ENTRI DI SINI, nol perubahan kode. Tabel pemetaannya bukan karangan sendiri: ia disalin dari sheet_definitions generator ULPC resmi (github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator), yang sudah dipakai ribuan proyek. Lihat _sumber di bawah.",
+
+  "_sumber": {
+    "legs_pants":  "male->legs/pants/male/ · muscular->legs/pants/male/ · female|teen|pregnant->legs/pants/thin/",
+    "feet_shoes":  "male|muscular->feet/shoes/male/ · female|pregnant|teen->feet/shoes/female/",
+    "torso_longsleeve": "female · male · teen · pregnant punya berkas SENDIRI; muscular NOL ENTRI",
+    "_kesimpulan": "MUSCULAR MEMINJAM MALE — itu desain hulu, bukan kekurangan kita. PREGNANT dapat torso sendiri karena perut adalah perubahan BENTUK, bukan ukuran; tak ada peminjaman yang bisa mengarangnya."
+  },
+
+  "_aturan": {
+    "pakaian": "ikut `keluarga` build, per slot. Dua build boleh berbagi satu keluarga — itu normal, bukan kompromi.",
+    "kepala": "ikut `kepala` build. LPC cuma punya TIGA bentuk kepala; tujuh rangka dipetakan ke tiga itu.",
+    "rambut": "ikut `rambut` (ukuran batok), BUKAN build badan. Batok cuma dua ukuran. Mengunci rambut per-build membuang ratusan berkas tanpa sebab."
+  },
+
+  "build": {
+    "child": {
+      "badan": "child",
+      "kepala": "child",
+      "rambut": "child",
+      "keluarga": { "torso": "child", "legs": "child", "feet": "child" },
+      "catatan": "Rangka LAIN, bukan dewasa yang dikecilkan: rasio kepala lebih besar, tungkai lebih pendek. Tak ada peminjaman dari dewasa yang bisa bekerja, dan generator ULPC pun tak mendaftarkannya."
+    },
+    "teen": {
+      "badan": "teen",
+      "kepala": "female",
+      "rambut": "dewasa",
+      "keluarga": { "torso": "teen", "legs": "thin", "feet": "female" }
+    },
+    "female": {
+      "badan": "female",
+      "kepala": "female",
+      "rambut": "dewasa",
+      "keluarga": { "torso": "female", "legs": "thin", "feet": "female" }
+    },
+    "muscular_female": {
+      "badan": "muscular_female",
+      "kepala": "female",
+      "rambut": "dewasa",
+      "keluarga": { "torso": "female", "legs": "thin", "feet": "female" },
+      "catatan": "Badan TURUNAN (gen_base_karakter.py): siluet female + isi muscular. Siluetnya sudah dibuktikan identik piksel-per-piksel dengan female (0 beda), jadi memakai keluarga female bukan perkiraan — ia dijamin pas."
+    },
+    "male": {
+      "badan": "male",
+      "kepala": "male",
+      "rambut": "dewasa",
+      "keluarga": { "torso": "male", "legs": "male", "feet": "male" }
+    },
+    "muscular": {
+      "badan": "muscular",
+      "kepala": "male",
+      "rambut": "dewasa",
+      "keluarga": { "torso": "male", "legs": "male", "feet": "male" },
+      "catatan": "MEMINJAM keluarga male seluruhnya — persis yang dilakukan generator ULPC resmi. Selisih badan male(30px) vs muscular(32px) = 2px; folder `muscular` di zip celana hulu ternyata salinan kemudahan, bukan seni terpisah."
+    },
+    "pregnant": {
+      "badan": "pregnant",
+      "kepala": "female",
+      "rambut": "dewasa",
+      "keluarga": { "torso": "pregnant", "legs": "thin", "feet": "female" },
+      "catatan": "Satu-satunya rangka yang butuh torso SENDIRI. Lebarnya sama dengan female (28px) — yang beda BENTUKNYA. Tak ada peregangan mendatar yang bisa mengarang tonjolan perut."
+    }
+  },
+
+  "_mundur_doc": "RANTAI MUNDUR — kalau keluarga yang diminta build belum ada berkasnya, coba keluarga berikut. Ini BUKAN tambalan: hulu pun melakukannya (muscular meminjam male). Bedanya, di sini peminjaman DITULIS, bukan disembunyikan di dalam nama berkas — dan resolver selalu melaporkan bahwa ia mundur, jadi utangnya tak pernah hilang dari pandangan. Kosongkan daftarnya begitu berkas aslinya masuk.",
+  "mundur": {
+    "feet": {
+      "male":   ["thin"],
+      "female": ["thin"],
+      "child":  ["thin"]
+    },
+    "torso": {
+      "pregnant": ["female"]
+    }
+  },
+  "_utang": {
+    "feet/*": "Pustaka cuma punya sepatu berkeluarga `thin`, dan `thin` bukan keluarga kaki mana pun menurut hulu (male|muscular->male, female|pregnant|teen->female). Pack `lpc-2024-10-15-expanded-ulpc-set.zip` PUNYA feet male/female/child — tinggal diekstrak, lalu hapus rantai mundur ini.",
+    "torso/pregnant": "Hulu punya torso pregnant sendiri (longsleeve mendaftarkannya). Belum ada di pustaka lokal; sementara mundur ke female, yang berarti perutnya tak tertutup benar.",
+    "torso/child": "SENGAJA tanpa mundur. Anak rangka lain — meminjam baju dewasa akan terlihat salah, dan lebih baik kosong yang jujur daripada salah yang diam."
+  },
+
+  "kepala": {
+    "male":   "eulpc_head_male.png",
+    "female": "eulpc_head_female.png",
+    "child":  "eulpc_head_child.png"
+  }
+}
