@@ -24,6 +24,14 @@ _tools/*
 # = gerbang yang hilang di mesin lain, dan itu pelajaran #251 terulang.
 !_tools/run_suite.ps1
 !_tools/test_gate.ps1
+# Alat ANALISIS, bukan generator — jadi ia tak tertangkap `gen_*.py`, dan hampir
+# ikut terkubur oleh aturan yang komentarnya sendiri memperingatkan soal itu.
+# Wajib ter-versi: `reports/RAPIKAN_ASET.md` mengutip angkanya, dan angka yang
+# alatnya hilang tak bisa dibantah maupun diulang.
+!_tools/peta_aset.py
+# keluarannya TIDAK ikut: ia turunan, dan ia memuat seluruh daftar jalur aset —
+# yang justru pernah membuat alat ini menyatakan tiap aset terpakai (lihat ABAIKAN).
+_tools/_peta_aset.json
 !_tools/lpc_assembler/
 _tools/lpc_assembler/*
 !_tools/lpc_assembler/*.py
