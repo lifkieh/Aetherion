@@ -149,33 +149,49 @@ def test_roundtrip_merrit_produces_slices():
 
 
 def test_232_no_sa_leak_outside_characters():
-    """Penjaga CI #232: tak ada PNG turunan-LPC / berkas SA di luar characters/.
+    """Penjaga CI #232: tak ada keviralan / lisensi tak dikenal di luar characters/.
 
-    Menyisir game/assets/.../sprites/. Bila ada sheet ukuran-sprite (832x2944) atau
-    LICENSE-CC-BY-SA / *.credits.txt di tiles/ atau ui/ -> GAGAL (kontaminasi SA).
+    VERSI LAMA MENGHUKUM KEJUJURAN. Ia menandai SETIAP `*.credits.txt` di luar
+    `characters/` sebagai kebocoran — jadi aset hewan yang benar (punya kredit, sesuai
+    #277) otomatis melanggar #232 justru KARENA kreditnya ada. Penjaga yang membuat
+    dua hukum proyek mustahil dipatuhi bersamaan bukan penjaga, ia jebakan.
+
+    Yang sebenarnya dijaga #232 adalah KEVIRALAN, bukan keberadaan berkas kredit.
+    Maka sekarang yang diperiksa ISI kreditnya (lihat `lisensi.py`):
+
+        aman          -> lolos (ada lisensi non-viral yang dinyatakan)
+        viral         -> GAGAL (share-alike menular ke sisa proyek)
+        tak_tercatat  -> GAGAL (tak bisa dipatuhi, jadi tak bisa dirilis)
+
+    Sheet ukuran-karakter (832x2944) dan LICENSE-CC-BY-SA tetap ditolak apa pun
+    isinya: yang pertama pasti turunan LPC, yang kedua pernyataan viral itu sendiri.
     """
     from PIL import Image as _I
+    import lisensi
     sprites = os.path.join(A.REPO_ROOT, "game", "assets", "game", "sprites")
     if not os.path.isdir(sprites):
         print("    (skip: folder sprites tak ada)")
         return
     leaks = []
     for root, _dirs, files in os.walk(sprites):
-        norm = root.replace("\\", "/")
-        in_chars = "/characters" in norm
+        if "/characters" in root.replace("\\", "/"):
+            continue                                   # characters/ = karantina sah
         for fn in files:
-            low = fn.lower()
-            if in_chars:
-                continue  # characters/ = sah
-            if low in ("license-cc-by-sa.txt",) or low.endswith(".credits.txt"):
-                leaks.append(os.path.join(root, fn))
+            low, path = fn.lower(), os.path.join(root, fn)
+            if low == "license-cc-by-sa.txt":
+                leaks.append("%s [pernyataan SA]" % path)
+            elif low.endswith(".credits.txt"):
+                putusan, alasan = lisensi.periksa_berkas(path)
+                if putusan != "aman":
+                    leaks.append("%s [%s: %s]" % (path, putusan, alasan))
             elif low.endswith(".png"):
                 try:
-                    if _I.open(os.path.join(root, fn)).size == (A.SHEET_W, A.SHEET_H):
-                        leaks.append(os.path.join(root, fn))
+                    if _I.open(path).size == (A.SHEET_W, A.SHEET_H):
+                        leaks.append("%s [sheet ukuran-LPC]" % path)
                 except Exception:
                     pass
-    assert not leaks, f"kontaminasi SA di luar characters/: {leaks[:5]}"
+    assert not leaks, "lisensi bermasalah di luar characters/ (%d):\n      %s" % (
+        len(leaks), "\n      ".join(leaks))
 
 
 TESTS = [

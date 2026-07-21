@@ -90,12 +90,14 @@ def main():
             f.write(f"# {nama}.png — DIGAMBAR gen_c4.py (C4 tepi hantu).\n"
                     "# Alasan digambar: sapuan 111 zip gudang menemukan NOL nisan\n"
                     "# bergaya LPC; pack CC0 yang punya berskala peta-dunia 14 px.\n"
-                    "# Karya proyek, nol turunan aset pihak ketiga.\n")
+                    "# Karya proyek, nol turunan aset pihak ketiga.\n"
+                    "Lisensi: karya proyek (digambar generator; nol turunan pihak ketiga)\n")
         print(f"[GAMBAR] {nama}.png {im.size}")
     p = os.path.join(TILES, "kabut32.png")
     kabut().save(p)
     with open(p.replace(".png", ".credits.txt"), "w", encoding="utf-8") as f:
-        f.write("# kabut32.png — DIGAMBAR gen_c4.py. Karya proyek, nol turunan.\n")
+        f.write("# kabut32.png — DIGAMBAR gen_c4.py. Karya proyek, nol turunan.\n"
+                "Lisensi: karya proyek (digambar generator; nol turunan pihak ketiga)\n")
     print("[GAMBAR] kabut32.png (32, 32)")
     return 0
 

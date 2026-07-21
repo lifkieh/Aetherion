@@ -75,7 +75,7 @@ with open(DST.replace(".png", ".credits.txt"), "w", encoding="utf-8") as f:
         "# wisp.png — roh/cahaya melayang C4 (atmosfer, bukan makhluk)\n"
         "# 4 frame 48x48, hadap-netral, denyut alpha 0.42/0.70/1.00/0.74\n\n"
         "Asal   : GAMBAR HASIL AI (Google Gemini), diminta Direktur\n"
-        "Lisensi: bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga\n"
+        "Lisensi: karya proyek (bukan aset pihak ketiga, bukan turunan LPC)\n"
         "Proses : latar 'transparan' bawaan ternyata papan catur yang DILUKIS\n"
         "         (alpha berkas asli 255 rata). Alpha dikunci ulang dari warna,\n"
         "         lalu keempat frame dibangun dari SATU bentuk terbersih karena\n"
