@@ -1,0 +1,7 @@
+# gagak_kiri.png — hewan 'gagak'
+# gagak tepi & distrik bekas — burung yang berkumpul di tempat ditinggalkan
+
+Pack   : [LPC] Birds
+Seniman: bluecarrot16, dipesan oleh castelonia
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)
+URL    : https://opengameart.org/content/lpc-birds

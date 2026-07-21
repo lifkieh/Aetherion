@@ -25,6 +25,13 @@
       "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack",
       "terverifikasi": true
     },
+    "lpc_birds": {
+      "nama": "[LPC] Birds",
+      "pencipta": "bluecarrot16, dipesan oleh castelonia",
+      "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+      "url": "https://opengameart.org/content/lpc-birds",
+      "terverifikasi": true
+    },
     "lpc_cats_dogs": {
       "nama": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
       "pencipta": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
@@ -121,6 +128,50 @@
       "kecepatan": 30.0,
       "pack": "lpc_cats_dogs",
       "_catatan": "anjing liar kedua; warna berbeda supaya dua ekor terbaca dua ekor"
+    },
+    "merpati": {
+      "sprite": "res://assets/game/sprites/animals/merpati_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 18.0,
+      "pack": "lpc_birds",
+      "_catatan": "merpati alun-alun — mematuk tanah dekat orang. Jinak: ia satu-satunya burung yang membiarkan pemain mendekat sebelum terbang"
+    },
+    "merpati_terbang": {
+      "sprite": "res://assets/game/sprites/animals/merpati_terbang_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 96.0,
+      "pack": "lpc_birds",
+      "_catatan": "frame TERBANG merpati — ditukar saat kabur, lalu ditukar balik saat mendarat"
+    },
+    "gagak": {
+      "sprite": "res://assets/game/sprites/animals/gagak_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 20.0,
+      "pack": "lpc_birds",
+      "_catatan": "gagak tepi & distrik bekas — burung yang berkumpul di tempat ditinggalkan"
+    },
+    "gagak_terbang": {
+      "sprite": "res://assets/game/sprites/animals/gagak_terbang_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 104.0,
+      "pack": "lpc_birds",
+      "_catatan": "frame TERBANG gagak"
     }
   }
 }

@@ -1319,6 +1319,59 @@ func _liar() -> void:
 	pengikut.wander_radius = 92.0
 	pengikut.place(Vector2(392, 782))
 
+	# ── BURUNG (2.5) — dua jenis yang memilih tempat BERLAWANAN ──────────────
+	# Merpati hidup dekat manusia karena manusia menjatuhkan makanan. Gagak
+	# berkumpul di tempat yang manusianya sudah pergi. Menaruh keduanya di peta yang
+	# sama membuat penyusutan kota terbaca dari langit-langitnya: alun-alun masih
+	# punya yang menunggu remah, distrik bekas sudah punya yang menunggu hal lain.
+	for spec in [
+		["merpati", "merpati_terbang", VC + Vector2(-96, 118), 52.0],
+		["merpati", "merpati_terbang", VC + Vector2(118, 92), 52.0],
+		["merpati", "merpati_terbang", VC + Vector2(24, 168), 48.0],
+		["gagak", "gagak_terbang", Vector2(286, 236), 76.0],      # distrik bekas
+		["gagak", "gagak_terbang", Vector2(430, 396), 76.0],
+		["gagak", "gagak_terbang", Vector2(1666, 1130), 70.0],    # ladang timur, tepi
+	]:
+		var b := Node2D.new()
+		b.set_script(load("res://scenes/actors/Hewan.gd"))
+		b.setup(String(spec[0]))
+		b.terbang_sheet = String(spec[1])
+		add_child(b)
+		b.wander_radius = float(spec[3])
+		b.place(spec[2])
+
+	# ── BURUNG LANGIT — memecah kekosongan DI ATAS ───────────────────────────
+	# Ashbrook dilihat dari atas, jadi "langit" tak punya ruang sendiri; satu-satunya
+	# cara menaruh sesuatu di udara adalah z tetap yang di atas seluruh y-sort, sama
+	# seperti wisp (#275). Tanpa z tetap ia akan tenggelam di belakang rumah yang
+	# kebetulan ber-y lebih besar, dan burung yang lewat DI BALIK atap bukan burung.
+	#
+	# Melintas PELAN dan JARANG. Burung yang menyeberang tiap tiga detik jadi hiasan
+	# bergerak; yang lewat sekali dalam waktu lama membuat pemain mendongak.
+	for lintas in [
+		{"y": 168.0, "lama": 26.0, "tunda": 0.0, "jenis": "gagak_terbang_kiri.png"},
+		{"y": 452.0, "lama": 34.0, "tunda": 12.0, "jenis": "merpati_terbang_kiri.png"},
+	]:
+		var s := _put(P_A + String(lintas["jenis"]), Vector2(-64, lintas["y"]), Z_LAMP)
+		if s == null:
+			continue
+		s.scale = Vector2(1.3, 1.3)
+		var at := AtlasTexture.new()
+		at.atlas = s.texture
+		at.region = Rect2(0, 0, 32, 32)
+		s.texture = at
+		s.modulate = Color(1, 1, 1, 0.85)
+		var t := create_tween().set_loops()
+		t.tween_interval(float(lintas["tunda"]))
+		t.tween_property(s, "position:x", float(MAP_W * TILE) + 64.0, float(lintas["lama"]))
+		t.tween_callback(func(): s.position.x = -64.0)
+		t.tween_interval(float(lintas["lama"]) * 0.8)
+		# kepakan: frame berganti sendiri, lepas dari gerak mendatarnya
+		var k := create_tween().set_loops()
+		for f in 3:
+			k.tween_callback(func(): at.region = Rect2(f * 32, 0, 32, 32))
+			k.tween_interval(0.14)
+
 	# ── KUCING PENUNGGU — nol teks, nol penjelasan ───────────────────────────
 	# Duduk DIAM di ambang rumah yang gelap. Ia tak berkelana, tak lari, tak
 	# menunggu tombol; ia cuma ada di sana tiap kali pemain lewat. Yang memperhatikan

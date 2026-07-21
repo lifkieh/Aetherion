@@ -63,6 +63,13 @@ PACK = {
     # Kreditnya TIDAK ditebak: `README.txt` DI DALAM zip menyebut sumber, pengolah,
     # dan lisensinya verbatim — persis jalur yang diminta #277, dan persis yang
     # HILANG pada `wild_animals_all` di atas.
+    "lpc_birds": {
+        "nama": "[LPC] Birds",
+        "pencipta": "bluecarrot16, dipesan oleh castelonia",
+        "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+        "url": "https://opengameart.org/content/lpc-birds",
+        "terverifikasi": True,
+    },
     "lpc_cats_dogs": {
         "nama": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
         "pencipta": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
@@ -88,6 +95,8 @@ ZIP_KUCING = os.path.join(REPO, "assets_raw", "lpc", "cat-1.0.zip")
 ## kreditnya ditulis tangan dari halaman sumber dan disertai sha256 unduhannya —
 ## supaya "dari mana ini?" tak pernah jadi pertanyaan tanpa jawaban lagi.
 PNG_ANJING = os.path.join(REPO, "assets_raw", "lpc", "lpc_cats_and_dogs_dog.png")
+PNG_BURUNG_HITAM = os.path.join(REPO, "assets_raw", "lpc", "lpc_birds_black.png")
+PNG_BURUNG_PUTIH = os.path.join(REPO, "assets_raw", "lpc", "lpc_birds_white.png")
 
 # (id, sumber, jenis, param, pack, skala, kecepatan, catatan)
 #   jenis "baris" : lembar 4-arah, ambil satu baris  -> (fw, fh, baris, n_frame)
@@ -140,6 +149,30 @@ JOBS = [
     ("anjing_kelabu", PNG_ANJING, "blok", (32, 32, 12, 0, 3, True),
      "lpc_cats_dogs", 1.0, 30.0,
      "anjing liar kedua; warna berbeda supaya dua ekor terbaca dua ekor"),
+
+    # ── LAPIS 2.5: BURUNG ────────────────────────────────────────────────────
+    # 96x256 = 3 frame x 8 baris petak 32x32. Baris 0-3 TERBANG, 4-7 BERJALAN,
+    # dan baris hadap-kiri sudah ada di keduanya (0 dan 4) — jadi NOL pembalikan.
+    # Diverifikasi mata (L25_burung_lembar.png), bukan diandaikan dari urutan LPC:
+    # lembar kucing pack yang sama justru menghadap kanan.
+    #
+    # Merpati DI INTI, gagak DI BEKAS, dan itu bukan pilihan warna. Merpati hidup
+    # dekat manusia karena manusia menjatuhkan makanan; gagak berkumpul di tempat
+    # yang manusianya sudah pergi. Dua burung yang memilih tempat berlawanan
+    # menceritakan penyusutan kota tanpa satu kata pun.
+    ("merpati", PNG_BURUNG_PUTIH, "blok", (32, 32, 0, 4, 3, False),
+     "lpc_birds", 1.0, 18.0,
+     "merpati alun-alun — mematuk tanah dekat orang. Jinak: ia satu-satunya burung "
+     "yang membiarkan pemain mendekat sebelum terbang"),
+    ("merpati_terbang", PNG_BURUNG_PUTIH, "blok", (32, 32, 0, 0, 3, False),
+     "lpc_birds", 1.0, 96.0,
+     "frame TERBANG merpati — ditukar saat kabur, lalu ditukar balik saat mendarat"),
+    ("gagak", PNG_BURUNG_HITAM, "blok", (32, 32, 0, 4, 3, False),
+     "lpc_birds", 1.0, 20.0,
+     "gagak tepi & distrik bekas — burung yang berkumpul di tempat ditinggalkan"),
+    ("gagak_terbang", PNG_BURUNG_HITAM, "blok", (32, 32, 0, 0, 3, False),
+     "lpc_birds", 1.0, 104.0,
+     "frame TERBANG gagak"),
 ]
 
 ## Pose DIAM — bukan hewan berkelana, jadi tak masuk JOBS (nol frame jalan, nol

@@ -69,6 +69,22 @@ const IKUT_BINGUNG := 4.0       # berdiri diam sesudahnya, memandang
 var _ikut_sisa := IKUT_JATAH
 var _bingung := 0.0
 
+## BURUNG — satu-satunya hewan yang punya DUA gambar untuk satu makhluk.
+##
+## Burung yang kabur dengan berlari terbaca sebagai ayam. Yang membuat merpati
+## terbaca merpati bukan spritenya di tanah melainkan CARA IA PERGI: mematuk,
+## lalu tiba-tiba tak ada di sana lagi. Karena itu lembar jalan dan lembar terbang
+## ditukar saat kabur, dan ditukar balik saat mendarat.
+##
+## Mendarat berarti `_home` PINDAH ke tempat baru. Burung yang terbang lalu kembali
+## ke titik yang sama persis terbaca sebagai animasi berulang; yang mendarat di
+## tempat lain terbaca sebagai burung yang memutuskan sesuatu.
+var terbang_sheet := ""
+var _tex_darat: Texture2D
+var _tex_terbang: Texture2D
+var _terbang_sisa := 0.0
+const TERBANG_LAMA := 1.9
+
 const SPEED := 26.0
 const FLEE_RADIUS := 84.0
 
@@ -129,15 +145,43 @@ func _ready() -> void:
 	at.atlas = load(path)
 	at.region = Rect2(0, 0, _fw, _fh)
 	_spr.texture = at
+	_tex_darat = at.atlas
 	_spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	# SKALA DARI KATALOG, tak pernah dari pemanggil. Itu batas yang mencegah
 	# "kambing 3x" lahir kembali di scene mana pun.
 	_kecepatan = float(h.get("kecepatan", SPEED))
+	if terbang_sheet != "":
+		var ht: Dictionary = kat.get("hewan", {}).get(terbang_sheet, {})
+		var pt: String = ht.get("sprite", "")
+		if ResourceLoader.exists(pt):
+			_tex_terbang = load(pt)
+		else:
+			push_error("[hewan] '%s': lembar terbang '%s' tak ada" % [jenis, terbang_sheet])
 	var s: float = float(h.get("skala", 1.0))
 	_spr.scale = Vector2(s, s)
 	_spr.offset = Vector2(0, -_fh * 0.5)      # kaki di titik asal node
 	add_child(_spr)
 	z_index = int(global_position.y)
+
+
+func _lepas_landas(arah: Vector2) -> void:
+	_terbang_sisa = TERBANG_LAMA
+	_dir = arah
+	var at := _spr.texture as AtlasTexture
+	if at and _tex_terbang:
+		at.atlas = _tex_terbang
+
+
+func _mendarat() -> void:
+	var at := _spr.texture as AtlasTexture
+	if at and _tex_darat:
+		at.atlas = _tex_darat
+	# Rumah PINDAH ke tempat mendarat. Burung yang selalu pulang ke titik yang sama
+	# terbaca sebagai animasi berulang; yang mendarat di tempat lain terbaca sebagai
+	# burung yang memutuskan sesuatu.
+	_home = global_position
+	_dir = Vector2.ZERO
+	_t = randf_range(1.4, 3.0)
 
 
 func _process(delta: float) -> void:
@@ -173,9 +217,17 @@ func _process(delta: float) -> void:
 				_bingung = IKUT_BINGUNG              # alasannya habis
 		elif jauh >= IKUT_JANGKAU:
 			_ikut_sisa = IKUT_JATAH                  # isi ulang HANYA setelah ditinggal
+	elif _terbang_sisa > 0.0:
+		_terbang_sisa -= delta
+		spd = _kecepatan * 4.0
+		_t = maxf(_t, 0.5)
+		if _terbang_sisa <= 0.0:
+			_mendarat()
 	elif is_instance_valid(pl):
 		var d: Vector2 = global_position - pl.global_position
-		if d.length() < (FLEE_LIAR if liar else FLEE_RADIUS):
+		if _tex_terbang != null and d.length() < FLEE_LIAR:
+			_lepas_landas(d.normalized())
+		elif d.length() < (FLEE_LIAR if liar else FLEE_RADIUS):
 			_dir = d.normalized()                    # lari — bukan properti diam
 			spd = _kecepatan * (3.2 if liar else 2.4)
 			_t = maxf(_t, 0.7)                       # jangan berhenti di tengah kabur
@@ -184,6 +236,8 @@ func _process(delta: float) -> void:
 	# di tengah langkah dan berhenti sebelum sempat bercerita. Yang membatasinya
 	# tetap ada, cuma pindah: bukan jarak dari rumah, melainkan JATAH WAKTU.
 	var kekang := wander_radius * (2.8 if (ikut and _ikut_sisa > 0.0) else 1.0)
+	if _terbang_sisa > 0.0:
+		kekang = wander_radius * 4.0        # terbang tak dikekang halaman
 	if calon.distance_to(_home) > kekang:
 		_dir = (_home - global_position).normalized()
 		calon = global_position + _dir * spd * delta

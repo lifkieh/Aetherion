@@ -587,6 +587,20 @@
     "terverifikasi": true,
     "url": ""
   },
+  "gagak_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
+  "gagak_terbang_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
   "hijabblue.png": {
     "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
     "license": "CC-BY-SA 3.0 / GPL 3.0",
@@ -663,6 +677,20 @@
     "pack": "LPC Character Bases v3.1",
     "terverifikasi": true,
     "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "merpati_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
+  "merpati_terbang_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
   },
   "pagar_h32.png": {
     "author": "Daniel Eddeland (daneeklu)",

@@ -1,0 +1,7 @@
+# merpati_terbang_kiri.png — hewan 'merpati_terbang'
+# frame TERBANG merpati — ditukar saat kabur, lalu ditukar balik saat mendarat
+
+Pack   : [LPC] Birds
+Seniman: bluecarrot16, dipesan oleh castelonia
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)
+URL    : https://opengameart.org/content/lpc-birds

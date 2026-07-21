@@ -1,0 +1,7 @@
+# merpati_kiri.png — hewan 'merpati'
+# merpati alun-alun — mematuk tanah dekat orang. Jinak: ia satu-satunya burung yang membiarkan pemain mendekat sebelum terbang
+
+Pack   : [LPC] Birds
+Seniman: bluecarrot16, dipesan oleh castelonia
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)
+URL    : https://opengameart.org/content/lpc-birds
