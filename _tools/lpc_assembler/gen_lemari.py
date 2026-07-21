@@ -83,6 +83,23 @@ def urai(nama):
     return slot, "_".join(bagian), "thin", "polos"
 
 
+## Garmen yang hidup sebagai OVERLAY (digambar `gen_overlays.py`), bukan sebagai
+## berkas `eulpc_*`. Pemindaian pertama melewatkannya seluruhnya, dan akibatnya
+## `child` dilaporkan NOL torso — padahal tiga tunik anak sudah ada sejak lama.
+## Pelajaran: pemindai yang cuma mengenal SATU pola akan menyatakan barang yang ada
+## sebagai tak ada, dan itu lebih berbahaya daripada tak memindai sama sekali.
+OVERLAY_KELUARGA = [("_anak_", "child")]
+
+
+def urai_overlay(kunci, ref):
+    """`tunik_anak_forest` + `@overlay/...` -> (slot, garmen, keluarga, warna)."""
+    for tanda, kel in OVERLAY_KELUARGA:
+        if tanda in kunci:
+            garmen, _, warna = kunci.partition(tanda)
+            return garmen, kel, (warna or "polos")
+    return None
+
+
 def pindai():
     lemari = {}
     lain = []
@@ -96,6 +113,24 @@ def pindai():
         slot, garmen, keluarga, warna = u
         g = lemari.setdefault(slot, {}).setdefault(garmen, {"slot": slot, "berkas": {}})
         g["berkas"].setdefault(keluarga, {})[warna] = f
+
+    # --- garmen berbasis overlay, dibaca dari catalog.json ---
+    kat = os.path.join(HERE, "catalog.json")
+    if os.path.exists(kat):
+        with open(kat, encoding="utf-8") as fh:
+            cat = json.load(fh)
+        for slot in SLOT_PAKAIAN:
+            for kunci, ref in (cat.get(slot) or {}).items():
+                if not (isinstance(ref, str) and ref.startswith("@overlay")):
+                    continue
+                u = urai_overlay(kunci, ref)
+                if u is None:
+                    lain.append(kunci)
+                    continue
+                garmen, kel, warna = u
+                g = lemari.setdefault(slot, {}).setdefault(
+                    garmen, {"slot": slot, "berkas": {}})
+                g["berkas"].setdefault(kel, {})[warna] = ref
     return lemari, lain
 
 

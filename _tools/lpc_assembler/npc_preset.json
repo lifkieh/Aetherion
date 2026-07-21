@@ -1,0 +1,2655 @@
+{
+ "_doc": "PRESET NPC terkurasi. Pemain bebas berkombinasi; NPC memakai daftar ini apa adanya supaya penduduk tak berganti baju tiap muat, dan supaya kombinasi yang dipakai bisa disisir sebelum rilis.",
+ "_benih": 20260722,
+ "_per_kategori": 20,
+ "kategori": {
+  "anak": "child",
+  "hamil": "pregnant",
+  "kekar_lelaki": "muscular",
+  "kekar_perempuan": "muscular_female",
+  "biasa_lelaki": "male",
+  "biasa_perempuan": "female"
+ },
+ "npc": [
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_jewfro_chestnut",
+   "id": "npc_anak_00",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_topknot_gold",
+   "id": "npc_anak_01",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_02",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_topknot_gold",
+   "id": "npc_anak_03",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "brown"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_jewfro_chestnut",
+   "id": "npc_anak_04",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "brown"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_jewfro_chestnut",
+   "id": "npc_anak_05",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_06",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_swoop_black",
+   "id": "npc_anak_07",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_08",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_jewfro_chestnut",
+   "id": "npc_anak_09",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "brown"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_10",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_jewfro_chestnut",
+   "id": "npc_anak_11",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_swoop_black",
+   "id": "npc_anak_12",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_jewfro_chestnut",
+   "id": "npc_anak_13",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_14",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_15",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "brown"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_16",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "darkblue"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_topknot_gold",
+   "id": "npc_anak_17",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "brown"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_parted_gold",
+   "id": "npc_anak_18",
+   "kategori": "anak"
+  },
+  {
+   "build": "child",
+   "badan": "child",
+   "kepala": "child",
+   "pakaian": {
+    "torso": {
+     "garmen": "tunik",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "green"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "child_swoop_black",
+   "id": "npc_anak_19",
+   "kategori": "anak"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted_side_bangs",
+   "id": "npc_hamil_00",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_hamil_01",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_black",
+   "id": "npc_hamil_02",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_white",
+   "id": "npc_hamil_03",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_hamil_04",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_hamil_05",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_gold",
+   "id": "npc_hamil_06",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_black",
+   "id": "npc_hamil_07",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_hamil_08",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted2",
+   "id": "npc_hamil_09",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_hamil_10",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_ash",
+   "id": "npc_hamil_11",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_hamil_12",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted_side_bangs",
+   "id": "npc_hamil_13",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_hamil_14",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_hamil_15",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_gold",
+   "id": "npc_hamil_16",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_black",
+   "id": "npc_hamil_17",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gray",
+   "id": "npc_hamil_18",
+   "kategori": "hamil"
+  },
+  {
+   "build": "pregnant",
+   "badan": "pregnant",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_hamil_19",
+   "kategori": "hamil"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "walnut"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_black",
+   "id": "npc_kekar_lelaki_00",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "curly_short",
+   "id": "npc_kekar_lelaki_01",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_black",
+   "id": "npc_kekar_lelaki_02",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_gray",
+   "id": "npc_kekar_lelaki_03",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_chestnut",
+   "id": "npc_kekar_lelaki_04",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_ash",
+   "id": "npc_kekar_lelaki_05",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_gold",
+   "id": "npc_kekar_lelaki_06",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_carrot",
+   "id": "npc_kekar_lelaki_07",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted2",
+   "id": "npc_kekar_lelaki_08",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted2",
+   "id": "npc_kekar_lelaki_09",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_kekar_lelaki_10",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_kekar_lelaki_11",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_kekar_lelaki_12",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gray",
+   "id": "npc_kekar_lelaki_13",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gray",
+   "id": "npc_kekar_lelaki_14",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_ash",
+   "id": "npc_kekar_lelaki_15",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_gray",
+   "id": "npc_kekar_lelaki_16",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_chestnut",
+   "id": "npc_kekar_lelaki_17",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted_side_bangs",
+   "id": "npc_kekar_lelaki_18",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular",
+   "badan": "muscular",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_chestnut",
+   "id": "npc_kekar_lelaki_19",
+   "kategori": "kekar_lelaki"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_gray",
+   "id": "npc_kekar_perempuan_00",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_white",
+   "id": "npc_kekar_perempuan_01",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_kekar_perempuan_02",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "curly_short",
+   "id": "npc_kekar_perempuan_03",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_black",
+   "id": "npc_kekar_perempuan_04",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted_side_bangs2",
+   "id": "npc_kekar_perempuan_05",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_kekar_perempuan_06",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_side",
+   "id": "npc_kekar_perempuan_07",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_raven",
+   "id": "npc_kekar_perempuan_08",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_black",
+   "id": "npc_kekar_perempuan_09",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gray",
+   "id": "npc_kekar_perempuan_10",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_ash",
+   "id": "npc_kekar_perempuan_11",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gold",
+   "id": "npc_kekar_perempuan_12",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_raven",
+   "id": "npc_kekar_perempuan_13",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_gray",
+   "id": "npc_kekar_perempuan_14",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_white",
+   "id": "npc_kekar_perempuan_15",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted2",
+   "id": "npc_kekar_perempuan_16",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_carrot",
+   "id": "npc_kekar_perempuan_17",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_kekar_perempuan_18",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "muscular_female",
+   "badan": "muscular_female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "curly_short",
+   "id": "npc_kekar_perempuan_19",
+   "kategori": "kekar_perempuan"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_biasa_lelaki_00",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_biasa_lelaki_01",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_black",
+   "id": "npc_biasa_lelaki_02",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_biasa_lelaki_03",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_biasa_lelaki_04",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_black",
+   "id": "npc_biasa_lelaki_05",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_biasa_lelaki_06",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_biasa_lelaki_07",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gold",
+   "id": "npc_biasa_lelaki_08",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_ash",
+   "id": "npc_biasa_lelaki_09",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_biasa_lelaki_10",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "white"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_biasa_lelaki_11",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gold",
+   "id": "npc_biasa_lelaki_12",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "overalls",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_ash",
+   "id": "npc_biasa_lelaki_13",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_carrot",
+   "id": "npc_biasa_lelaki_14",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_biasa_lelaki_15",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_side",
+   "id": "npc_biasa_lelaki_16",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "walnut"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_biasa_lelaki_17",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_biasa_lelaki_18",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "male",
+   "badan": "male",
+   "kepala": "male",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "slate"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "forest"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_ash",
+   "id": "npc_biasa_lelaki_19",
+   "kategori": "biasa_lelaki"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_gold",
+   "id": "npc_biasa_perempuan_00",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_biasa_perempuan_01",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_white",
+   "id": "npc_biasa_perempuan_02",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_gold",
+   "id": "npc_biasa_perempuan_03",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_white",
+   "id": "npc_biasa_perempuan_04",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_black",
+   "id": "npc_biasa_perempuan_05",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted_side_bangs",
+   "id": "npc_biasa_perempuan_06",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_chestnut",
+   "id": "npc_biasa_perempuan_07",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro_black",
+   "id": "npc_biasa_perempuan_08",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "curly_short2",
+   "id": "npc_biasa_perempuan_09",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "maroon"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_gold",
+   "id": "npc_biasa_perempuan_10",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "bob_side_part",
+   "id": "npc_biasa_perempuan_11",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "navy"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "parted_side_bangs",
+   "id": "npc_biasa_perempuan_12",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "shorts",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_biasa_perempuan_13",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "forest"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_gray",
+   "id": "npc_biasa_perempuan_14",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_carrot",
+   "id": "npc_biasa_perempuan_15",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "charcoal"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "charcoal"
+    },
+    "feet": {
+     "garmen": "shoes",
+     "warna": "polos"
+    }
+   },
+   "rambut": "longknot_darkbrown",
+   "id": "npc_biasa_perempuan_16",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "sky"
+    },
+    "legs": {
+     "garmen": "hose",
+     "warna": "polos"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "shortknot_gold",
+   "id": "npc_biasa_perempuan_17",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "sleeveless2",
+     "warna": "polos"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "jewfro",
+   "id": "npc_biasa_perempuan_18",
+   "kategori": "biasa_perempuan"
+  },
+  {
+   "build": "female",
+   "badan": "female",
+   "kepala": "female",
+   "pakaian": {
+    "torso": {
+     "garmen": "longsleeve",
+     "warna": "maroon"
+    },
+    "legs": {
+     "garmen": "pants",
+     "warna": "walnut"
+    },
+    "feet": {
+     "garmen": "high_socks",
+     "warna": "polos"
+    }
+   },
+   "rambut": "swoop_black",
+   "id": "npc_biasa_perempuan_19",
+   "kategori": "biasa_perempuan"
+  }
+ ]
+}

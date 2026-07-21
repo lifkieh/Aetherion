@@ -107,6 +107,16 @@
       "polos": "eulpc_torso_sleeveless2_female.png"
      }
     }
+   },
+   "tunik": {
+    "slot": "torso",
+    "berkas": {
+     "child": {
+      "forest": "@overlay/tunik_anak_forest.png",
+      "maroon": "@overlay/tunik_anak_maroon.png",
+      "sky": "@overlay/tunik_anak_sky.png"
+     }
+    }
    }
   }
  }

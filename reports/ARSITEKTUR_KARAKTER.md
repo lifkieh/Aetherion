@@ -157,6 +157,51 @@ daripada salah yang diam.**
 
 ---
 
+## Preset NPC — dua aturan untuk dua jenis karakter
+
+```
+PEMAIN : bebas. Pembuat karakter memanggil `rangka.pilihan(build, slot)`
+         langsung — apa pun yang muat, boleh dipakai.
+NPC    : KURASI. Diundi sekali, disimpan sebagai data, dipakai apa adanya.
+```
+
+**Kenapa NPC tidak diundi saat main:** warga yang berganti baju tiap kali scene
+dimuat bukan penduduk, ia gangguan. Yang sama hari ini harus sama besok. Preset
+membuatnya begitu — dan sekaligus membuat kombinasi yang dipakai bisa **disisir
+sebelum rilis**; kombinasi yang lahir saat main tidak bisa.
+
+```bash
+python gen_npc.py        # 120 preset: 6 kategori x 20
+```
+
+| kategori | build | ruang kombinasi | garmen terpakai | rambut |
+|---|---|---|---|---|
+| anak | `child` | 72 | torso 3/3 · legs 3/3 · feet 2/2 | 4 |
+| hamil | `pregnant` | 1.960 | 5 · 6 · 2 | 13 |
+| kekar_lelaki | `muscular` | 1.344 | 6 · 4 · 2 | 14 |
+| kekar_perempuan | `muscular_female` | 1.960 | 5 · 7 · 2 | 16 |
+| biasa_lelaki | `male` | 1.344 | 6 · 4 · 2 | 11 |
+| biasa_perempuan | `female` | 1.960 | 5 · 7 · 2 | 14 |
+
+**120 NPC · 120 resep unik · 0 kembar.**
+
+Keunikan dijaga himpunan kunci penuh (garmen+warna tiap slot + rambut). Kalau ruang
+kombinasinya habis, `gen_npc.py` **gagal keras** alih-alih mengulang diam-diam —
+warga kembar terlihat jauh lebih cepat daripada yang diduga.
+
+### Lubang `child` torso ternyata palsu
+
+Pemindaian pertama melaporkan `child` nol torso. Sebabnya bukan barangnya tak ada:
+tiga **tunik anak** sudah lama ada sebagai *overlay* (`@overlay/tunik_anak_*.png`),
+dan pemindai cuma mengenal pola `eulpc_*`.
+
+> Pemindai yang cuma mengenal satu pola akan menyatakan barang yang **ada** sebagai
+> **tak ada** — dan itu lebih berbahaya daripada tak memindai sama sekali.
+
+Sesudah overlay ikut dibaca: **nol lubang di seluruh build × slot.**
+
+---
+
 ## Yang BELUM dikerjakan (sengaja)
 
 **Sepuluh resep tokoh masih memakai bentuk lama** (`"legs": "pants_thin"`). Arsitektur
