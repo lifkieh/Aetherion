@@ -87,6 +87,25 @@ func _bad(s: String) -> void:
 	_say("PUTUS: " + s)
 
 
+## Cari titik-periksa DI SCENE, jangan percaya tabel.
+##
+## ⚠ Tabel `POINTS` membeku di tata letak sebelum B'. Tiga koordinatnya berpindah
+##   (gudang, roti Halloran, fondasi rumput) dan harness melaporkan RANTAI PUTUS —
+##   padahal yang putus cuma tabelnya: pemain di-warp ke rumput kosong lalu menekan
+##   E di depan ketiadaan. Persis tiga yang pindah gagal, dua yang tak pindah lolos;
+##   korelasi sesempurna itu tanda tabelnya yang salah, bukan dunianya.
+##   Membaca dari node membuat gerbang ini kebal terhadap tata ulang berikutnya.
+##   Tabel tetap jadi cadangan supaya node yang HILANG tetap berteriak.
+func _posisi_bukti(eid: String, cadangan: Vector2) -> Vector2:
+	var scn = root.get_tree().current_scene
+	if scn:
+		for c in scn.get_children():
+			if c.get("evidence_id") != null and String(c.get("evidence_id")) == eid:
+				return c.global_position
+	push_warning("[main] titik-periksa '%s' TAK ADA di scene — pakai cadangan" % eid)
+	return cadangan
+
+
 func _player() -> Node2D:
 	return root.get_tree().get_first_node_in_group("player")
 
@@ -216,7 +235,7 @@ func _run(step: int) -> bool:
 		2, 3, 4, 5, 6:
 			var idx := step - 2
 			var eid: String = POINTS[idx][0]
-			var pos: Vector2 = POINTS[idx][1]
+			var pos: Vector2 = _posisi_bukti(eid, POINTS[idx][1])
 			if _sub == 0:
 				_player().global_position = pos + Vector2(0, 28)   # berdiri di depannya
 				_key(KEY_E, true)

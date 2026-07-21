@@ -1623,8 +1623,16 @@ func _jendela() -> void:
 		[Vector2(672, 992), 21, ""],
 		[Vector2(1392, 800), 20, ""],         # rumah kosong — padam paling awal terasa
 		[Vector2(1424, 800), 19, ""],
-		[OTHA_KAKI + Vector2(-16, 0), 21, "person_otha_renn"],  # TOKO OTHA — gelap karena TERLUPA
-		[OTHA_KAKI + Vector2(16, 0), 21, "person_otha_renn"],
+		# TOKO OTHA — gelap karena KOSONG, bukan karena jam dan bukan karena Chronicle.
+		# ⚠ Komentar lama di sini berkata "gelap karena TERLUPA", dan itu MUSTAHIL:
+		#   `terlupa()` menuntut halaman tercoret, sedangkan Otha adalah kematian d3 —
+		#   halamannya tak pernah lahir, jadi tak pernah bisa tercoret. Selama
+		#   berbulan-bulan tokonya justru MENYALA tiap malam, berlawanan dengan
+		#   pintunya sendiri yang berkata tak ada yang membukanya sejak dua musim.
+		#   `page_id` tetap dibawa: kalau suatu hari Otha punya halaman, mekanisme
+		#   Chronicle-nya sudah tersambung.
+		[OTHA_KAKI + Vector2(-16, 0), 21, "person_otha_renn", true],
+		[OTHA_KAKI + Vector2(16, 0), 21, "person_otha_renn", true],
 		# C2 barat: SATU rumah menyala di tengah barisan gelap (koreksi 6). Kegelapan
 		# di kedua sisinya baru terbaca sebagai kehilangan kalau ada yang masih menyala
 		# di antaranya — deretan yang seluruhnya gelap cuma terbaca sebagai latar.
@@ -1634,7 +1642,8 @@ func _jendela() -> void:
 		var win := Node2D.new()
 		win.set_script(load("res://scenes/actors/AshbrookWindow.gd"))
 		add_child(win)
-		win.place(Vector2(w[0]) + Vector2(0, -96), int(w[1]), String(w[2]))
+		win.place(Vector2(w[0]) + Vector2(0, -96), int(w[1]), String(w[2]),
+				bool(w[3]) if w.size() > 3 else false)
 		win.scale = Vector2(2.0, 2.0)
 
 

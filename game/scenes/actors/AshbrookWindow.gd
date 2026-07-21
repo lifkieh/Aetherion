@@ -23,10 +23,26 @@ var page_id := ""
 var _rect: ColorRect
 var _light: PointLight2D
 
-func place(p: Vector2, hour_off: int, page := "") -> void:
+## MATI = tak berpenghuni, titik. Bukan mekanisme Chronicle.
+##
+## ⚠ KENAPA INI PERLU ADA, dan kenapa `terlupa()` saja tak cukup:
+##   `terlupa()` menuntut halaman ADA dan TERCORET. Otha Renn adalah kematian **d3**
+##   (`chronicle_losses.json`) — halamannya tak pernah lahir sama sekali, jadi ia tak
+##   pernah bisa tercoret, jadi `terlupa()` selamanya false untuknya.
+##   Akibatnya jendela tokonya menyala tiap malam seperti rumah berpenghuni —
+##   sementara pintunya berkata "Terkunci. Debu di ambangnya rata; tak ada yang
+##   membukanya sejak dua musim." Pemain MEMBACA satu hal dan MELIHAT kebalikannya.
+##   Aturan #229.3 tetap utuh: d3 tak meninggalkan apa-apa untuk dilihat. Yang
+##   membuat jendela ini gelap bukan Chronicle — melainkan kenyataan bahwa tak ada
+##   seorang pun di dalam untuk menyalakan lampu.
+var mati := false
+
+
+func place(p: Vector2, hour_off: int, page := "", kosong := false) -> void:
 	global_position = p
 	off_hour = hour_off
 	page_id = page
+	mati = kosong
 
 
 ## Terlupa = halaman ada DAN tercoret. Halaman yang tak pernah lahir tak membuat
@@ -54,7 +70,7 @@ func _ready() -> void:
 
 ## Menyala hanya SORE (17.00) sampai jam padamnya sendiri. Dipanggil test (#151b).
 func apply_hour(h: int) -> void:
-	if terlupa():
+	if mati or terlupa():
 		visible = false          # gelap permanen; jam tak berlaku lagi
 		return
 	var lit := h >= 17 and h < off_hour

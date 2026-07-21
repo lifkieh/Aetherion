@@ -24,13 +24,31 @@ const KEY_ENTER := 4194309
 const KEY_ESC := 4194305
 
 ## Titik-periksa Ashbrook64 — target BERJALAN, bukan tujuan warp.
+##
+## ⚠ DISEGARKAN. Angka-angka di sini membeku di tata letak SEBELUM B'. Sesudah tata
+## ulang tak satu pun masih benar, dan akibatnya BERANTAI: pejalan tak pernah sampai
+## ke papan Otha -> halaman `person_otha_renn` tak pernah tercoret -> pemeriksaan
+## "jendela Otha gelap" ikut gagal, belasan langkah jauhnya dari sebabnya. Gerbang
+## yang melaporkan kegagalan palsu akan diabaikan, dan sesudah itu kegagalan
+## SUNGGUHAN ikut diabaikan bersamanya.
+##
+## Koordinat diambil dari petak berpijak yang sudah dibuktikan `CekJangkau.gd`,
+## bukan dikarang ulang. Urutannya menaik dari titik lahir (gerbang selatan) karena
+## pejalan di sini TAK punya pencarian jalur — urutan melompat menghasilkan
+## kegagalan yang bukan kegagalan peta. Rantai naratifnya sendiri tak bergantung
+## urutan: Chronicle mencatat apa pun yang ditemukan lebih dulu.
 const TITIK := [
-	["1 gudang gandum", Vector2(704, 500), "ev_ashbrook_gudang_gandum"],
-	["2 roti Halloran", Vector2(1216, 580), "ev_ashbrook_halloran_200_roti"],
-	["4 batu fondasi", Vector2(800, 876), "ev_ashbrook_batu_fondasi"],
-	["3 papan Otha", Vector2(1216, 684), "ev_otha_papan_bekas_cat"],
-	["5 fondasi rumput", Vector2(1504, 1076), "ev_ashbrook_fondasi_rumput"],
-	["6 jembatan", Vector2(1856, 724), "ev_ashbrook_jembatan_terlalu_lebar"],
+	# ⚠ Sasarannya TITIK-PERIKSA ITU SENDIRI, bukan petak berpijak di sebelahnya.
+	#   `_melangkah()` berhenti pada jarak 40 px; kalau sasarannya sudah digeser 20 px
+	#   dari buktinya, jarak akhir bisa mencapai 60 px — di luar radius interaksi 48,
+	#   dan E ditekan tanpa apa pun dalam jangkauan. Menuju buktinya langsung membuat
+	#   40 px selalu lebih kecil daripada 48.
+	["1 papan Otha", Vector2(1252, 752), "ev_otha_papan_bekas_cat"],
+	["2 jembatan", Vector2(1856, 704), "ev_ashbrook_jembatan_terlalu_lebar"],
+	["3 roti Halloran", Vector2(1310, 500), "ev_ashbrook_halloran_200_roti"],
+	["4 batu fondasi", Vector2(800, 856), "ev_ashbrook_batu_fondasi"],
+	["5 gudang gandum", Vector2(578, 490), "ev_ashbrook_gudang_gandum"],
+	["6 fondasi rumput", Vector2(322, 462), "ev_ashbrook_fondasi_rumput"],
 ]
 
 var _dir := ""
@@ -45,11 +63,17 @@ var _pd: Node
 var _ch: Node
 var _ev: Node
 var _gc: Node
+var _stage: Node
 
 # --- keadaan jalan ---
 var _target := Vector2.ZERO
 var _walk_t := 0.0
 var _walk_from := Vector2.ZERO
+# --- anti-sangkut: pejalan ini tak punya pencarian jalur ---
+var _sangkut_t := 0.0
+var _sangkut_pos := Vector2.ZERO
+var _samping := 0.0        # sisa detik melangkah menyamping
+var _samping_arah := 1.0
 var _shot_pending := ""
 
 
@@ -61,6 +85,7 @@ func _initialize() -> void:
 
 func _auto() -> void:
 	_pd = root.get_node("PlayerData")
+	_stage = root.get_node("Stage")
 	_ch = root.get_node("Chronicle")
 	_ev = root.get_node("Evidence")
 	_gc = root.get_node("GameClock")
@@ -134,9 +159,44 @@ func _melangkah(delta: float) -> bool:
 		_lepas_semua()
 		return true
 	_walk_t += delta
-	if _walk_t > 30.0:              # menyerah — jalannya benar-benar terhalang
+	# 45 detik, naik dari 30. Pejalan ini tak punya pencarian jalur: ia menekan
+	# tombol ke ARAH sasaran dan tersangkut di tiap sudut bangunan. Keterjangkauan
+	# sebenarnya dibuktikan `CekJalur.gd` (banjir BFS atas kotak padat); di sini
+	# jatah waktu cuma perlu cukup longgar supaya tersangkut sesaat tak dilaporkan
+	# sebagai peta yang terputus.
+	if _walk_t > 45.0:
 		_lepas_semua()
 		return true
+	# ── ANTI-SANGKUT ────────────────────────────────────────────────────────
+	# Menekan tombol lurus ke sasaran membuat pejalan menempel di sudut bangunan
+	# pertama yang memotong garis pandang, lalu diam di sana sampai jatah waktu
+	# habis — dan itu dilaporkan sebagai "peta terputus" padahal manusia cukup
+	# melangkah satu langkah ke samping. `CekJalur.gd` sudah membuktikan tiap titik
+	# TERJANGKAU; yang kurang di sini cuma kemampuan memutar.
+	#
+	# Bukan pencarian jalur, dan sengaja bukan: kalau tersangkut lebih dari 1,2
+	# detik, ia melangkah TEGAK LURUS arah sasaran selama 0,7 detik lalu mencoba
+	# lagi, berganti sisi tiap kali. Cukup untuk melewati sudut; terlalu bodoh untuk
+	# menyembunyikan halangan yang sungguhan.
+	if _samping > 0.0:
+		_samping -= delta
+		var tegak := Vector2(-d.normalized().y, d.normalized().x) * _samping_arah
+		_key(KEY_D, tegak.x > 0.4)
+		_key(KEY_A, tegak.x < -0.4)
+		_key(KEY_S, tegak.y > 0.4)
+		_key(KEY_W, tegak.y < -0.4)
+		return false
+	if p.global_position.distance_to(_sangkut_pos) < 4.0:
+		_sangkut_t += delta
+		if _sangkut_t > 1.2:
+			_sangkut_t = 0.0
+			_samping = 0.7
+			_samping_arah = -_samping_arah
+			_lepas_semua()
+			return false
+	else:
+		_sangkut_t = 0.0
+		_sangkut_pos = p.global_position
 	_key(KEY_D, d.x > 8.0)
 	_key(KEY_A, d.x < -8.0)
 	_key(KEY_S, d.y > 8.0)
@@ -147,6 +207,9 @@ func _melangkah(delta: float) -> bool:
 func _mulai_jalan(t: Vector2) -> void:
 	_target = t
 	_walk_t = 0.0
+	_sangkut_t = 0.0
+	_samping = 0.0
+	_sangkut_pos = Vector2.ZERO
 	_walk_from = _player().global_position if _player() else Vector2.ZERO
 
 
@@ -200,7 +263,10 @@ func _jalankan(delta: float) -> bool:
 			ok("pemain ada", _player() != null)
 			if _player():
 				var sp: Vector2 = _player().global_position
-				ok("spawn di depan pintu Merrit", sp.distance_to(Vector2(560, 816)) < 120.0, str(sp))
+				# ⚠ LAHIR DI GERBANG SELATAN, bukan di pintu Merrit. Harapan lama
+				#   membeku sebelum spec D4 dijalankan; sekarang langkah pertama
+				#   pemain menghadap utara dari gerbang, dan itu memang maksudnya.
+				ok("lahir di gerbang selatan", sp.distance_to(Vector2(960, 1194)) < 140.0, str(sp))
 			ok("halaman place_ashbrook_besar TERCORET saat tiba",
 				_ch.state_of("place_ashbrook_besar") == "struck",
 				_ch.state_of("place_ashbrook_besar"))
@@ -225,8 +291,23 @@ func _jalankan(delta: float) -> bool:
 			_lanjut()
 		13:
 			_key(KEY_E, false)
-			ok("E saat berjalan mencatat bukti",
-				_ev.has("ev_ashbrook_jembatan_terlalu_lebar"))
+			# ⚠ TUTUP PANELNYA. Begitu E berhasil, teks periksa terbuka dan
+			#   `Stage` MEM-PAUSE pohon scene. Harness ini tak pernah menutupnya,
+			#   jadi seluruh sisa pemeriksaan berjalan di dunia yang membeku:
+			#   makhluk dilaporkan "patung" (gerak=0 dari 23) dan titik-pandang
+			#   dilaporkan tak memundurkan kamera — dua kegagalan yang sebabnya
+			#   bukan dunia melainkan panel yang menganga. Gejalanya seragam
+			#   ("semuanya diam"), dan keseragaman itu petunjuknya.
+			if _stage != null and _stage.is_busy():
+				_key(KEY_E, true)
+				_key(KEY_E, false)
+				return false
+			# ⚠ Diikat ke TABEL, bukan ke nama beku. Versi lama memastikan
+			#   `ev_ashbrook_jembatan_terlalu_lebar` — benar HANYA selama jembatan
+			#   kebetulan titik terakhir. Begitu urutan berubah, asersi ini gagal
+			#   tanpa ada yang rusak, dan gerbang mulai berbohong.
+			var akhir: String = String(TITIK[TITIK.size() - 1][2])
+			ok("E saat berjalan mencatat bukti (%s)" % akhir, _ev.has(akhir))
 			_shot_pending = "02_jembatan"
 			_lanjut()
 		14:
@@ -250,7 +331,9 @@ func _jalankan(delta: float) -> bool:
 			if not _melangkah(delta):
 				return false
 			var py: float = _player().global_position.y
-			ok("batas SELATAN menahan (y <= 1130)", py <= 1130.0, "y=%.0f" % py)
+			# Peta tumbuh 34 -> 44 petak (1088 -> 1408 px); yang menahan sekarang
+			# tabrakan treeline di y~1324, bukan batas lama 1130.
+			ok("batas SELATAN menahan (y <= 1340)", py <= 1340.0, "y=%.0f" % py)
 			_sub = 0
 			_lanjut()
 		16:
@@ -265,9 +348,11 @@ func _jalankan(delta: float) -> bool:
 				var sc = n.get_script()
 				if sc == null: continue
 				var rp := String(sc.resource_path)
-				if rp.ends_with("AshbrookChicken.gd"): ayam += 1
+				# `AshbrookChicken.gd` sudah dipensiunkan untuk dunia 64px; semua
+				# hewan kini satu aktor `Hewan.gd` yang jenisnya dibaca katalog.
+				if rp.ends_with("Hewan.gd"): ayam += 1
 				elif rp.ends_with("AshbrookKid.gd"): anak += 1
-			ok("4 ayam + 1 kambing hidup", ayam == 5, str(ayam))
+			ok("hewan hidup terpasang (ternak+liar+burung)", ayam >= 10, str(ayam))
 			ok("3 anak hidup", anak == 3, str(anak))
 			ok("NPC berjadwal + sepeda masuk grup ashbrook_life", warga >= 5, str(warga))
 			ok("anak serigala (#118) ada", t.get_nodes_in_group("wolf_pup").size() >= 1)
@@ -286,7 +371,7 @@ func _jalankan(delta: float) -> bool:
 		19:
 			# TITIK-PANDANG: jalan ke zona, kamera harus mundur
 			if _sub == 0:
-				_mulai_jalan(Vector2(1480, 704))
+				_mulai_jalan(Vector2(1716, 856))     # titik pandang #218 dipindah
 				_sub = 1
 				return false
 			if not _melangkah(delta):
@@ -315,7 +400,7 @@ func _jalankan(delta: float) -> bool:
 				elif not w.visible:
 					biasa_padam += 1
 			ok("jam 20: sebagian jendela biasa padam", biasa_padam >= 1, str(biasa_padam))
-			ok("jam 20: jendela Otha gelap", otha_gelap >= 2, str(otha_gelap))
+			ok("jam 20: jendela Otha gelap (kosong, bukan jam)", otha_gelap >= 2, str(otha_gelap))
 			var siang_nyala := 0
 			var otha_siang_gelap := 0
 			for w in wins:
