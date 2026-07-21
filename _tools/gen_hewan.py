@@ -323,6 +323,40 @@ def main(argv=None):
                     f"Lisensi: {p['license']}\nURL    : {p['url']}\n")
         print(f"[OK] {'pose':9} -> {nama:22} 1 frame {fw}x{fh}")
 
+    # RUSA PUTIH (#D-ASH-4). Legendanya rusa PUTIH; asetnya rusa COKELAT, dan
+    # `modulate` di sisi scene tak bisa memperbaikinya — mengalikan warna cuma
+    # MENERANGKAN cokelat, jadi hasilnya rusa cokelat yang silau. Yang dibutuhkan
+    # penghilangan warna, dan itu operasi piksel: ia milik generator, bukan scene.
+    # Sisa warna 12% ditahan dengan sengaja — putih rata terbaca sebagai siluet
+    # hilang, bukan sebagai makhluk pucat.
+    src_r = os.path.join(GUDANG, "All", "Wild Animals", "Deer", "Deer_Walk.png")
+    if os.path.exists(src_r):
+        r = Image.open(src_r).convert("RGBA").crop((0, 0, 8 * 72, 52))
+        px = r.load()
+        for y in range(r.height):
+            for x in range(r.width):
+                cr, cg, cb, ca = px[x, y]
+                if ca == 0:
+                    continue
+                abu = int(0.299 * cr + 0.587 * cg + 0.114 * cb)
+                terang = min(255, int(abu * 0.55 + 190))
+                px[x, y] = (int(terang * 0.97 + cr * 0.12), int(terang * 0.98 + cg * 0.12),
+                            int(terang + cb * 0.12), ca)
+        r.save(os.path.join(DST, "rusa_putih_kiri.png"))
+        p_r = PACK["wild_animals_all"]
+        with open(os.path.join(DST, "rusa_putih_kiri.credits.txt"), "w",
+                  encoding="utf-8") as f:
+            f.write(
+                "# rusa_putih_kiri.png — rusa dipucatkan untuk WHITE STAG (#D-ASH-4)\n"
+                "# Turunan `rusa_kiri.png`: luminans + pemutihan, dikerjakan di\n"
+                "# generator karena `modulate` cuma bisa MENGALIKAN warna — ia tak\n"
+                "# bisa menghapusnya, jadi rusa cokelat yang di-modulate terang\n"
+                "# tetap rusa cokelat, cuma silau.\n\n"
+                f"Pack   : {p_r['nama']}\n"
+                f"Seniman: {p_r['pencipta']}\n"
+                f"Lisensi: {p_r['license']}\n")
+        print("[OK] rusa      -> rusa_putih_kiri.png  8 frame 72x52 (WHITE STAG)")
+
     # SERIGALA versi MONSTER. `DungeonMonster._apply()` memakai satu frame PERSEGI
     # (`region = Rect2(0,0,fs,fs)`) dan membalik horizontal sendiri. Serigala tetap
     # `DungeonMonster` — ia momen #118 (boleh ditolong / diabaikan / dibunuh), dan

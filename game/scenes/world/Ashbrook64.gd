@@ -106,6 +106,16 @@ var _chickens: Array = []
 var _kids: Array = []
 var _stag: Sprite2D
 var _stag_cd := 0.0
+var _stag_arah := 1.0
+var _rusa_dipaksa := false
+var _stag_fw := 72
+var _stag_fh := 52
+var _stag_frame := 8
+## Pelan dan panjang, bukan cepat dan sekejap. 52 px/detik x 11 detik = 572 px:
+## cukup untuk menyeberangi pandangan pemain sekali, dan cukup lambat untuk terbaca
+## sebagai hewan yang berjalan alih-alih sesuatu yang melesat.
+const RUSA_LAJU := 52.0
+const RUSA_LAMA := 11.0
 var _last_hour := -1
 var _beacon: Sprite2D
 var _canvas_mod: CanvasModulate
@@ -1572,19 +1582,56 @@ func _anak_serigala() -> void:
 ## WHITE STAG (#D-ASH-4) — tanpa pemicu, tanpa penanda, tanpa musik, tanpa quest.
 ## Muncul jauh & singkat di tepi hutan, lalu hilang. Kalau pemain melihatnya: bagus.
 ## Kalau tidak: juga bagus. **Legenda tidak wajib ditemukan.**
+## ⚠ DIPERBAIKI — dulu ia "berkedip", dan kedipnya gejala dari EMPAT cacat sekaligus:
+##
+##   1. TAK BERGERAK. Muncul di satu titik, diam 2,2 detik, lalu `queue_free()`.
+##      Makhluk yang muncul-diam-lenyap tak terbaca sebagai makhluk; ia terbaca
+##      sebagai gambar yang salah gambar.
+##   2. FRAME BEKU di `Rect2(0,0,fw,fh)`. Rusa punya delapan frame jalan dan tak
+##      satu pun pernah dipakai — jadi bahkan seandainya ia bergerak, kakinya diam.
+##   3. MUNCUL & HILANG MENDADAK. Alfa langsung 0,85 lalu langsung nol. Yang muncul
+##      tanpa pudar terbaca sebagai kesalahan render, bukan sebagai penampakan.
+##   4. DI TEMPAT YANG SALAH. `y = 190` tetap, `z_index = 500` — di atas hampir
+##      segalanya. Komentarnya menyebut "tepi hutan utara", padahal hutan Ashbrook
+##      ada di SELATAN (treeline y~1324). Jadi legenda hutan melayang di atas atap
+##      rumah, di ujung peta yang tak berhutan.
+##
+## Yang menyembuhkan keempatnya satu hal: ia harus MELINTAS. Rusa yang berjalan
+## melewati garis pohon lalu hilang di antaranya adalah penampakan; rusa yang
+## muncul dan padam adalah artefak.
 func _tick_rusa(delta: float) -> void:
 	if _stag != null and is_instance_valid(_stag):
 		_stag_cd -= delta
+		var lewat: float = RUSA_LAMA - _stag_cd
+		_stag.position.x += _stag_arah * RUSA_LAJU * delta
+		# kaki ikut berjalan — delapan frame yang selama ini menganggur
+		var fr := int(lewat * 9.0) % maxi(1, _stag_frame)
+		var atr := _stag.texture as AtlasTexture
+		if atr:
+			atr.region = Rect2(fr * _stag_fw, 0, _stag_fw, _stag_fh)
+		# PUDAR MASUK & KELUAR. Legenda tak menyala seperti lampu.
+		var a := minf(lewat / 1.0, 1.0) * minf(_stag_cd / 1.4, 1.0)
+		_stag.modulate.a = clampf(a, 0.0, 1.0) * 0.9
+		_stag.z_index = int(_stag.global_position.y)
 		if _stag_cd <= 0.0:
 			_stag.queue_free()
 			_stag = null
 		return
 	if _player == null or not is_instance_valid(_player):
 		return
-	if _player.global_position.y > 460.0:      # hanya di dekat tepi hutan utara
-		return
-	if randf() > 0.005 * delta * 60.0:
-		return
+	# `AETHER_RUSA=1` memaksa rusa muncul sekali, untuk harness tangkap-layar.
+	# Tanpa kail ini ia MUSTAHIL dibuktikan: 0,5% per frame + syarat posisi berarti
+	# tiap tangkap-layar melewatkannya — dan itulah persis kenapa versi kotak-putih
+	# bertahan berbulan-bulan melewati seluruh audit visual. Cacat yang tak bisa
+	# dijepret adalah cacat yang tak akan pernah diperbaiki.
+	var paksa := OS.get_environment("AETHER_RUSA") == "1" and not _rusa_dipaksa
+	if not paksa:
+		# Hanya kalau pemain berada di paruh SELATAN — di sanalah hutannya.
+		if _player.global_position.y < 900.0:
+			return
+		if randf() > 0.005 * delta * 60.0:
+			return
+	_rusa_dipaksa = _rusa_dipaksa or paksa
 	# Dulu `Image.create(6,10)` — KOTAK PUTIH POLOS diperbesar 3x. Ia tak pernah jadi
 	# sprite, dan karena kemunculannya acak & jarang (0,5%/frame, hanya y<460) ia lolos
 	# dari tiap tangkap-layar termasuk seluruh audit visual. Sekarang rusa jantan
@@ -1596,22 +1643,43 @@ func _tick_rusa(delta: float) -> void:
 	var H = load("res://scenes/actors/Hewan.gd")
 	var kat: Dictionary = H.katalog()
 	var hr: Dictionary = kat.get("hewan", {}).get("rusa", {})
-	var pr: String = hr.get("sprite", "")
-	if pr == "" or not ResourceLoader.exists(pr):
-		push_error("[ash64] rusa: sprite katalog TAK ADA (%s) — jalankan _tools/gen_hewan.py" % pr)
+	# ⚠ LEMBAR YANG SUDAH DIPUCATKAN, bukan lembar cokelat + `modulate`. Legendanya
+	#   rusa PUTIH, dan `modulate` cuma bisa MENGALIKAN warna — ia tak sanggup
+	#   menghapusnya. Rusa cokelat yang diterangkan tetap rusa cokelat, cuma silau,
+	#   dan begitulah "rusa putih" ini tampak selama ini. Memucatkan adalah operasi
+	#   piksel, dan operasi piksel milik generator (#240), bukan scene.
+	#   Ukuran frame tetap dibaca dari katalog `rusa`: keduanya potongan yang sama.
+	var pr := P_A + "rusa_putih_kiri.png"
+	if not ResourceLoader.exists(pr):
+		push_error("[ash64] rusa: %s TAK ADA — jalankan _tools/gen_hewan.py" % pr)
 		_stag = null
 		return
+	_stag_fw = int(hr.get("fw", 72))
+	_stag_fh = int(hr.get("fh", 52))
+	_stag_frame = maxi(1, int(hr.get("frame", 8)))
 	var atr := AtlasTexture.new()
 	atr.atlas = load(pr)
-	atr.region = Rect2(0, 0, int(hr.get("fw", 72)), int(hr.get("fh", 52)))
+	atr.region = Rect2(0, 0, _stag_fw, _stag_fh)
 	_stag.texture = atr
 	_stag.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_stag.modulate = Color(1.35, 1.35, 1.3)      # dipucatkan -> rusa PUTIH legenda
-	_stag.global_position = Vector2(_player.global_position.x + randf_range(-260, 260), 190)
-	_stag.z_index = 500
-	_stag.modulate.a = 0.85
+	_stag.modulate = Color(1, 1, 1)              # pemucatan sudah di berkasnya
+	_stag.modulate.a = 0.0                       # mulai TAK TERLIHAT, lalu memudar masuk
+	# DI DEPAN GARIS POHON SELATAN, bukan di y=190. Ia melintas di pita rumput sempit
+	# antara desa dan hutan — cukup jauh untuk terasa bukan bagian dari desa, cukup
+	# dekat untuk terlihat. Masuk dari sisi yang BERLAWANAN dengan arah jalannya,
+	# supaya ia menyeberangi pandangan alih-alih menjauh darinya.
+	# ⚠ MASUK DARI TEPI PANDANGAN PEMAIN, bukan dari tepi PETA. Percobaan pertama
+	#   melahirkannya di x = -90 / lebar+90: benar secara peta, tapi dengan laju 52
+	#   px/s selama 11 detik ia menempuh 572 px dan TAK PERNAH sampai ke layar —
+	#   legenda yang berjalan di luar pandangan sama saja dengan legenda yang tak ada.
+	_stag_arah = -1.0 if randf() < 0.5 else 1.0
+	var masuk_x: float = _player.global_position.x - _stag_arah * 430.0
+	_stag.global_position = Vector2(masuk_x, randf_range(1252.0, 1296.0))
+	# strip menghadap KIRI (konvensi katalog); balik saat berjalan ke kanan
+	_stag.flip_h = _stag_arah > 0.0
+	_stag.z_index = int(_stag.global_position.y)
 	add_child(_stag)
-	_stag_cd = 2.2
+	_stag_cd = RUSA_LAMA
 
 
 # ------------------------------------------------- pintu & interior
