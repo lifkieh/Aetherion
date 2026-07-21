@@ -1,0 +1,7 @@
+# kucing_menunggu.png — pose diam
+# kucing kelabu DUDUK menghadap depan — dipasang di ambang rumah gelap
+
+Pack   : [LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)
+Seniman: bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)
+URL    : https://opengameart.org/node/69399

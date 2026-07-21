@@ -1,75 +1,104 @@
 {
- "_doc": "Katalog HEWAN (#240). Satu tempat untuk semua wilayah. Menambah hewan = menambah baris di sini + satu baris di gen_hewan.py — bukan skrip aktor baru.",
- "_bentuk": "Tiap sprite adalah STRIP MENDATAR berisi `frame` gambar berukuran `fw`x`fh`, semuanya MENGHADAP KIRI. Aktor membalik horizontal saat hewan bergerak ke kanan. Satu format, satu jalur kode.",
- "_skala_doc": "skala relatif manusia LPC 64px. Nilai di sini sudah proporsi ternak; JANGAN disetel ulang di sisi pemanggil — begitulah kambing dulu jadi ayam 3x.",
- "pack": {
-  "stendhal_animals": {
-   "nama": "Stendhal Animals (git 99362c8)",
-   "pencipta": "Kimmo Rundelin (kiheru)",
-   "license": "CC-BY-SA 3.0 atau lebih baru",
-   "url": "https://opengameart.org/node/81251",
-   "terverifikasi": true
+  "_doc": "Katalog HEWAN (#240). Satu tempat untuk semua wilayah. Menambah hewan = menambah baris di sini + satu baris di gen_hewan.py — bukan skrip aktor baru.",
+  "_bentuk": "Tiap sprite adalah STRIP MENDATAR berisi `frame` gambar berukuran `fw`x`fh`, semuanya MENGHADAP KIRI. Aktor membalik horizontal saat hewan bergerak ke kanan. Satu format, satu jalur kode.",
+  "_kecepatan_doc": "px/detik saat berkelana. Ayam menyambar, domba merumput, kucing liar menyelinap. Satu angka untuk semua membuat domba tampak meluncur di atas rumput, dan itu membatalkan bobot yang diberikan ukurannya.",
+  "_skala_doc": "skala relatif manusia LPC 64px. Nilai di sini sudah proporsi ternak; JANGAN disetel ulang di sisi pemanggil — begitulah kambing dulu jadi ayam 3x.",
+  "pack": {
+    "stendhal_animals": {
+      "nama": "Stendhal Animals (git 99362c8)",
+      "pencipta": "Kimmo Rundelin (kiheru)",
+      "license": "CC-BY-SA 3.0 atau lebih baru",
+      "url": "https://opengameart.org/node/81251",
+      "terverifikasi": true
+    },
+    "wild_animals_all": {
+      "nama": "Wild Animals (berkas gudang 'All.zip')",
+      "pencipta": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
+      "license": "TIDAK TERCATAT",
+      "url": "",
+      "terverifikasi": false
+    },
+    "ninja_adventure": {
+      "nama": "Ninja Adventure - Asset Pack",
+      "pencipta": "Pixel-boy / Aleksandr Makarov",
+      "license": "CC0 1.0",
+      "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack",
+      "terverifikasi": true
+    },
+    "lpc_cats_dogs": {
+      "nama": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+      "pencipta": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+      "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+      "url": "https://opengameart.org/node/69399",
+      "terverifikasi": true
+    }
   },
-  "wild_animals_all": {
-   "nama": "Wild Animals (berkas gudang 'All.zip')",
-   "pencipta": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
-   "license": "TIDAK TERCATAT",
-   "url": "",
-   "terverifikasi": false
-  },
-  "ninja_adventure": {
-   "nama": "Ninja Adventure - Asset Pack",
-   "pencipta": "Pixel-boy / Aleksandr Makarov",
-   "license": "CC0 1.0",
-   "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack",
-   "terverifikasi": true
+  "hewan": {
+    "ayam": {
+      "sprite": "res://assets/game/sprites/animals/chicken.png",
+      "fw": 16,
+      "fh": 16,
+      "frame": 2,
+      "arah": "kiri_kanan",
+      "skala": 0.9,
+      "kecepatan": 26.0,
+      "pack": "ninja_adventure",
+      "_catatan": "sprite lama sudah benar; yang salah cuma skalanya (dulu 1.6 = ayam sebesar anjing)"
+    },
+    "domba": {
+      "sprite": "res://assets/game/sprites/animals/domba_kiri.png",
+      "fw": 48,
+      "fh": 64,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 13.0,
+      "pack": "stendhal_animals",
+      "_catatan": "domba jantan bertanduk. NOL kambing di seluruh 111 zip gudang — domba adalah ternak berkaki empat bergaya LPC satu-satunya yang ada"
+    },
+    "serigala": {
+      "sprite": "res://assets/game/sprites/animals/serigala_kiri.png",
+      "fw": 64,
+      "fh": 40,
+      "frame": 8,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 30.0,
+      "pack": "wild_animals_all",
+      "_catatan": "menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px"
+    },
+    "rusa": {
+      "sprite": "res://assets/game/sprites/animals/rusa_kiri.png",
+      "fw": 72,
+      "fh": 52,
+      "frame": 8,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 22.0,
+      "pack": "wild_animals_all",
+      "_catatan": "rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos"
+    },
+    "kucing_kelabu": {
+      "sprite": "res://assets/game/sprites/animals/kucing_kelabu_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 34.0,
+      "pack": "lpc_cats_dogs",
+      "_catatan": "kucing liar. Kelabu dipilih untuk tepi & distrik bekas: ia hilang di antara batu, dan kucing yang sulit dilihat lebih terbaca liar daripada kucing berwarna"
+    },
+    "kucing_jingga": {
+      "sprite": "res://assets/game/sprites/animals/kucing_jingga_kiri.png",
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 34.0,
+      "pack": "lpc_cats_dogs",
+      "_catatan": "kucing liar kedua. Warna berbeda supaya dua ekor di layar terbaca DUA EKOR, bukan satu sprite yang muncul dua kali"
+    }
   }
- },
- "hewan": {
-  "ayam": {
-   "sprite": "res://assets/game/sprites/animals/chicken.png",
-   "fw": 16,
-   "fh": 16,
-   "frame": 2,
-   "arah": "kiri_kanan",
-   "skala": 0.9,
-   "pack": "ninja_adventure",
-   "_catatan": "sprite lama sudah benar; yang salah cuma skalanya (dulu 1.6 = ayam sebesar anjing)",
-   "kecepatan": 26.0
-  },
-  "domba": {
-   "sprite": "res://assets/game/sprites/animals/domba_kiri.png",
-   "fw": 48,
-   "fh": 64,
-   "frame": 3,
-   "arah": "kiri_kanan",
-   "skala": 1.0,
-   "pack": "stendhal_animals",
-   "_catatan": "domba jantan bertanduk. NOL kambing di seluruh 111 zip gudang — domba adalah ternak berkaki empat bergaya LPC satu-satunya yang ada",
-   "kecepatan": 13.0
-  },
-  "serigala": {
-   "sprite": "res://assets/game/sprites/animals/serigala_kiri.png",
-   "fw": 64,
-   "fh": 40,
-   "frame": 8,
-   "arah": "kiri_kanan",
-   "skala": 1.0,
-   "pack": "wild_animals_all",
-   "_catatan": "menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px",
-   "kecepatan": 30.0
-  },
-  "rusa": {
-   "sprite": "res://assets/game/sprites/animals/rusa_kiri.png",
-   "fw": 72,
-   "fh": 52,
-   "frame": 8,
-   "arah": "kiri_kanan",
-   "skala": 1.0,
-   "pack": "wild_animals_all",
-   "_catatan": "rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos",
-   "kecepatan": 22.0
-  }
- },
- "_kecepatan_doc": "Kecepatan berkelana px/detik. Ayam menyambar-nyambar; domba merumput. Satu angka untuk semua membuat domba tampak meluncur di atas rumput, dan itu membatalkan bobot yang diberikan ukurannya."
 }

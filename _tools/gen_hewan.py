@@ -23,9 +23,11 @@ Ditulis tiga tempat sekaligus supaya tak bisa terpisah dari asetnya:
 Pemakaian:
   python gen_hewan.py
 """
+import io
 import json
 import os
 import sys
+import zipfile
 
 from PIL import Image
 
@@ -58,25 +60,78 @@ PACK = {
         "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack",
         "terverifikasi": True,
     },
+    # Kreditnya TIDAK ditebak: `README.txt` DI DALAM zip menyebut sumber, pengolah,
+    # dan lisensinya verbatim — persis jalur yang diminta #277, dan persis yang
+    # HILANG pada `wild_animals_all` di atas.
+    "lpc_cats_dogs": {
+        "nama": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+        "pencipta": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+        # Zip menyertakan teks CC-BY-SA 3.0, TAPI README-nya menyatakan karya ini boleh
+        # juga diedarkan di bawah CC-BY 3.0 / GPL 2 / GPL 3 / OGA-BY 3.0. Dipilih
+        # OGA-BY 3.0 karena ia TAK MENULAR: kucing ini tak menyeret sisa repo ke
+        # share-alike. Pelajaran yang sama dengan penolakan `[LPC] Walls` di ASSET_LOG —
+        # bedanya di sini ada pilihan sah yang tidak menular, jadi tak perlu ditolak.
+        "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+        "url": "https://opengameart.org/node/69399",
+        "terverifikasi": True,
+    },
 }
 
-# (id, sumber, jenis, param, pack, skala, catatan)
+## Zip sumber yang hidup DI DALAM repo — bukan di gudang Desktop. Bedanya penting:
+## yang di gudang tak ikut ter-commit, jadi generatornya cuma bisa dijalankan ulang
+## di mesin yang punya gudang itu. Yang di `assets_raw/` bisa dijalankan siapa pun
+## yang meng-clone repo, dan itulah arti #240 yang sebenarnya.
+ZIP_KUCING = os.path.join(REPO, "assets_raw", "lpc", "cat-1.0.zip")
+
+# (id, sumber, jenis, param, pack, skala, kecepatan, catatan)
 #   jenis "baris" : lembar 4-arah, ambil satu baris  -> (fw, fh, baris, n_frame)
 #   jenis "strip" : sudah strip satu arah            -> (fw, fh, n_frame)
 #   jenis "repo"  : sudah ada di repo, tak dipotong   -> (fw, fh, n_frame)
+#   jenis "blok"  : lembar banyak-warna DI DALAM ZIP -> (fw, fh, kolom0, baris, n_frame, balik_h)
+#
+# `kecepatan` px/detik. Ayam menyambar, domba merumput, kucing liar menyelinap lalu
+# menghambur. Satu angka untuk semua membuat domba tampak meluncur di atas rumput —
+# dan itu membatalkan bobot yang sudah diberikan oleh ukurannya.
 JOBS = [
-    ("ayam", "repo:chicken.png", "repo", (16, 16, 2), "ninja_adventure", 0.9,
+    ("ayam", "repo:chicken.png", "repo", (16, 16, 2), "ninja_adventure", 0.9, 26.0,
      "sprite lama sudah benar; yang salah cuma skalanya (dulu 1.6 = ayam sebesar anjing)"),
     ("domba", os.path.join(GUDANG, "stendhal_animals-99362c8-1", "ram.png"), "baris",
-     (48, 64, 3, 3), "stendhal_animals", 1.0,
+     (48, 64, 3, 3), "stendhal_animals", 1.0, 13.0,
      "domba jantan bertanduk. NOL kambing di seluruh 111 zip gudang — domba adalah "
      "ternak berkaki empat bergaya LPC satu-satunya yang ada"),
     ("serigala", os.path.join(GUDANG, "All", "Wild Animals", "Wolf", "Wolf_Walk.png"),
-     "strip", (64, 40, 8), "wild_animals_all", 1.0,
+     "strip", (64, 40, 8), "wild_animals_all", 1.0, 30.0,
      "menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px"),
     ("rusa", os.path.join(GUDANG, "All", "Wild Animals", "Deer", "Deer_Walk.png"),
-     "strip", (72, 52, 8), "wild_animals_all", 1.0,
+     "strip", (72, 52, 8), "wild_animals_all", 1.0, 22.0,
      "rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos"),
+
+    # ── LAPIS 2: KUCING LIAR ─────────────────────────────────────────────────
+    # `PNG/cat.png` = 16x8 petak 32x32. Empat blok warna empat kolom:
+    # putih 0-3 · jingga 4-7 · cokelat 8-11 · kelabu 12-15.
+    # Baris 0 kolom 0-2 = jalan tampak-samping HADAP KIRI (diverifikasi mata,
+    # reports/preview/blockout/L2_cat_sheet.png — bukan diandaikan dari urutan baris,
+    # karena urutan baris LPC dan Stendhal TIDAK sama).
+    # Kolom ke-4 tiap blok bukan frame jalan melainkan pose berbaring — itulah yang
+    # dipakai kucing penunggu di bawah.
+    ("kucing_kelabu", ZIP_KUCING + "|PNG/cat.png", "blok", (32, 32, 12, 0, 3, True),
+     "lpc_cats_dogs", 1.0, 34.0,
+     "kucing liar. Kelabu dipilih untuk tepi & distrik bekas: ia hilang di antara "
+     "batu, dan kucing yang sulit dilihat lebih terbaca liar daripada kucing berwarna"),
+    ("kucing_jingga", ZIP_KUCING + "|PNG/cat.png", "blok", (32, 32, 4, 0, 3, True),
+     "lpc_cats_dogs", 1.0, 34.0,
+     "kucing liar kedua. Warna berbeda supaya dua ekor di layar terbaca DUA EKOR, "
+     "bukan satu sprite yang muncul dua kali"),
+]
+
+## Pose DIAM — bukan hewan berkelana, jadi tak masuk JOBS (nol frame jalan, nol
+## kecepatan). Kucing yang duduk menunggu di depan rumah gelap harus BENAR-BENAR
+## diam; memberinya `wander_radius` sekecil apa pun membatalkan seluruh maksudnya.
+POSE = [
+    ("kucing_menunggu.png", ZIP_KUCING + "|PNG/cat.png", (32, 32, 15, 4, False),
+     "kucing kelabu DUDUK menghadap depan — dipasang di ambang rumah gelap"),
+    ("kucing_meringkuk.png", ZIP_KUCING + "|PNG/cat.png", (32, 32, 15, 0, True),
+     "kucing kelabu MERINGKUK — pose tidur, untuk sudut yang lebih terlindung"),
 ]
 
 
@@ -84,15 +139,53 @@ class HewanError(Exception):
     """Kegagalan yang menghentikan build."""
 
 
+def buka(src):
+    """Buka sumber, baik berkas lepas maupun `<zip>|<jalur di dalam>`.
+
+    Zip dibaca DI MEMORI: mengekstraknya lebih dulu meninggalkan salinan yang
+    tak seorang pun tahu harus dibersihkan, dan salinan itulah yang berikutnya
+    dikira sumber asli.
+    """
+    if "|" in src:
+        zpath, inner = src.split("|", 1)
+        if not os.path.exists(zpath):
+            raise HewanError(f"zip hilang: {zpath}")
+        with zipfile.ZipFile(zpath) as z:
+            return Image.open(io.BytesIO(z.read(inner))).convert("RGBA")
+    if not os.path.exists(src):
+        raise HewanError(f"sumber hilang: {src}")
+    return Image.open(src).convert("RGBA")
+
+
 def potong(job):
-    hid, src, jenis, par, pack, skala, cat = job
+    hid, src, jenis, par, pack, skala, kecepatan, cat = job
     if jenis == "repo":
         fw, fh, n = par
         keluar = "chicken.png"
         return keluar, fw, fh, n
-    if not os.path.exists(src):
-        raise HewanError(f"sumber hilang: {src}")
-    im = Image.open(src).convert("RGBA")
+    im = buka(src)
+    if jenis == "blok":
+        fw, fh, c0, baris, n, balik = par
+        if im.width < (c0 + n) * fw or im.height < (baris + 1) * fh:
+            raise HewanError(f"{src}: {im.size} tak memuat blok ({c0},{baris}) x{n}")
+        potongan = im.crop((c0 * fw, baris * fh, (c0 + n) * fw, (baris + 1) * fh))
+        if balik:
+            # ⚠ DIBALIK DI SINI, BUKAN DI AKTOR. Lembar kucing Stendhal menghadap
+            #   KANAN; seluruh repo bersepakat hadap-KIRI. Memperbaikinya di sisi
+            #   pemanggil (`flip_h` dibalik khusus kucing) berarti satu hewan yang
+            #   aturannya berbeda dari semua hewan lain — dan aturan yang berlaku
+            #   untuk satu kasus adalah aturan yang akan dilanggar diam-diam oleh
+            #   hewan kesebelas. Berkasnya yang dinormalkan, bukan kodenya.
+            #   Membalik TIAP FRAME sendiri-sendiri, bukan seluruh strip: membalik
+            #   strip utuh juga membalik URUTAN frame, dan jalannya jadi mundur.
+            hasil = Image.new("RGBA", potongan.size, (0, 0, 0, 0))
+            for i in range(n):
+                f = potongan.crop((i * fw, 0, (i + 1) * fw, fh))
+                hasil.paste(f.transpose(Image.FLIP_LEFT_RIGHT), (i * fw, 0))
+            potongan = hasil
+        keluar = f"{hid}_kiri.png"
+        potongan.save(os.path.join(DST, keluar))
+        return keluar, fw, fh, n
     if jenis == "baris":
         fw, fh, baris, n = par
         if im.height < (baris + 1) * fh:
@@ -120,6 +213,7 @@ def main(argv=None):
         "_bentuk": "Tiap sprite adalah STRIP MENDATAR berisi `frame` gambar berukuran "
                    "`fw`x`fh`, semuanya MENGHADAP KIRI. Aktor membalik horizontal saat "
                    "hewan bergerak ke kanan. Satu format, satu jalur kode.",
+        "_kecepatan_doc": "px/detik saat berkelana. Ayam menyambar, domba merumput, kucing liar menyelinap. Satu angka untuk semua membuat domba tampak meluncur di atas rumput, dan itu membatalkan bobot yang diberikan ukurannya.",
         "_skala_doc": "skala relatif manusia LPC 64px. Nilai di sini sudah proporsi ternak; "
                       "JANGAN disetel ulang di sisi pemanggil — begitulah kambing dulu jadi "
                       "ayam 3x.",
@@ -127,7 +221,7 @@ def main(argv=None):
         "hewan": {},
     }
     for job in JOBS:
-        hid, src, jenis, par, pack, skala, cat = job
+        hid, src, jenis, par, pack, skala, kecepatan, cat = job
         try:
             berkas, fw, fh, n = potong(job)
         except HewanError as e:
@@ -138,6 +232,7 @@ def main(argv=None):
             "fw": fw, "fh": fh, "frame": n,
             "arah": "kiri_kanan",
             "skala": skala,
+            "kecepatan": kecepatan,
             "pack": pack,
             "_catatan": cat,
         }
@@ -148,6 +243,30 @@ def main(argv=None):
                     f"Pack   : {p['nama']}\nSeniman: {p['pencipta']}\n"
                     f"Lisensi: {p['license']}\nURL    : {p['url']}\n")
         print(f"[OK] {hid:9} -> {berkas:18} {n} frame {fw}x{fh}  skala {skala}  [{pack}]")
+
+    # POSE DIAM — satu frame, nol animasi, nol katalog. Sengaja TIDAK masuk
+    # `katalog_hewan.json`: yang masuk katalog adalah hewan yang BERKELANA, dan
+    # kucing penunggu justru bercerita karena ia tidak. Menaruhnya di katalog akan
+    # mengundang orang berikutnya memberinya `wander_radius`, dan itu menghapus
+    # seluruh maksudnya.
+    for nama, src, par, cat in POSE:
+        fw, fh, c, r, balik = par
+        try:
+            im = buka(src)
+        except HewanError as e:
+            print(f"[GAGAL] {nama}: {e}", file=sys.stderr)
+            return 2
+        pose = im.crop((c * fw, r * fh, (c + 1) * fw, (r + 1) * fh))
+        if balik:
+            pose = pose.transpose(Image.FLIP_LEFT_RIGHT)
+        pose.save(os.path.join(DST, nama))
+        p = PACK["lpc_cats_dogs"]
+        with open(os.path.join(DST, nama.replace(".png", ".credits.txt")), "w",
+                  encoding="utf-8") as f:
+            f.write(f"# {nama} — pose diam\n# {cat}\n\n"
+                    f"Pack   : {p['nama']}\nSeniman: {p['pencipta']}\n"
+                    f"Lisensi: {p['license']}\nURL    : {p['url']}\n")
+        print(f"[OK] {'pose':9} -> {nama:22} 1 frame {fw}x{fh}")
 
     # SERIGALA versi MONSTER. `DungeonMonster._apply()` memakai satu frame PERSEGI
     # (`region = Rect2(0,0,fs,fs)`) dan membalik horizontal sendiri. Serigala tetap

@@ -43,6 +43,12 @@ var _home := Vector2.ZERO
 ## Kecepatan per JENIS, dibaca katalog. Ayam menyambar, domba merumput — memberi
 ## keduanya 26 px/s membuat domba tampak meluncur di atas rumput.
 var _kecepatan := 26.0
+## LIAR — hewan yang tak lagi dipelihara siapa pun. Bedanya dengan ternak bukan
+## jenisnya melainkan JARAKNYA: ternak membiarkan orang mendekat karena orang yang
+## memberinya makan; yang liar sudah lupa manusia pernah ramah, jadi ia kabur lebih
+## awal, lebih jauh, dan lebih cepat. Jarak itulah yang bercerita, bukan spritenya.
+var liar := false
+const FLEE_LIAR := 116.0
 
 const SPEED := 26.0
 const FLEE_RADIUS := 84.0
@@ -135,9 +141,10 @@ func _process(delta: float) -> void:
 	var pl = get_tree().get_first_node_in_group("player")
 	if is_instance_valid(pl):
 		var d: Vector2 = global_position - pl.global_position
-		if d.length() < FLEE_RADIUS:          # lari saat didekati — bukan properti diam
-			_dir = d.normalized()
-			spd = _kecepatan * 2.4
+		if d.length() < (FLEE_LIAR if liar else FLEE_RADIUS):
+			_dir = d.normalized()                    # lari — bukan properti diam
+			spd = _kecepatan * (3.2 if liar else 2.4)
+			_t = maxf(_t, 0.7)                       # jangan berhenti di tengah kabur
 	var calon := global_position + _dir * spd * delta
 	if calon.distance_to(_home) > wander_radius:
 		_dir = (_home - global_position).normalized()

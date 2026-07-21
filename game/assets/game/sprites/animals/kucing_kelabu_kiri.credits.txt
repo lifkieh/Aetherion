@@ -1,0 +1,7 @@
+# kucing_kelabu_kiri.png — hewan 'kucing_kelabu'
+# kucing liar. Kelabu dipilih untuk tepi & distrik bekas: ia hilang di antara batu, dan kucing yang sulit dilihat lebih terbaca liar daripada kucing berwarna
+
+Pack   : [LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)
+Seniman: bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+Lisensi: OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)
+URL    : https://opengameart.org/node/69399

@@ -92,6 +92,7 @@ const P_T := "res://assets/game/tiles/lpc32/"
 const P_S := "res://assets/game/sprites/lpc32/"
 const P_C := "res://assets/game/sprites/characters/"
 const P_OLD := "res://assets/game/sprites/props/"
+const P_A := "res://assets/game/sprites/animals/"
 
 ## z_index: y-sort dipakai untuk dunia, tapi PLAFON GODOT = 4096.
 ## y-maks di sini = MAP_H*TILE = 1408 (sesudah kanvas tumbuh ke selatan) → tetap jauh
@@ -1190,6 +1191,7 @@ func _examine(pos: Vector2, ev_id: String) -> void:
 ## menempuh 2,5 petak; di petak 32 itu cuma 1,25 petak — terlihat lumpuh.
 func _kehidupan() -> void:
 	_ternak()
+	_liar()
 	_hidup_ayam_anak()
 	_hidup_berpasangan()
 	_jendela()
@@ -1257,6 +1259,58 @@ func _ternak() -> void:
 		a.place(p)
 
 
+# --------------------------------------------- LAPIS 2 — LIAR (rumah yang hilang)
+## Kebalikan persis dari ternak, dan kebalikannya disengaja: ternak berkumpul di
+## sebelah rumah berpenghuni, yang liar berkumpul di tempat yang penghuninya sudah
+## pergi. Dua gradien yang berlawanan arah membuat KEDUANYA terbaca; satu gradien
+## saja cuma jadi sebaran.
+##
+## Yang membedakan liar dari ternak bukan spritenya melainkan JARAKNYA. Ternak
+## membiarkan orang mendekat karena orang yang memberinya makan. Yang liar kabur
+## dari 116 px — ia sudah lupa manusia pernah ramah, dan jarak itulah kalimatnya.
+func _liar() -> void:
+	# BANYAK di distrik bekas, sedikit di tepi, SATU di inti. Yang satu di inti itu
+	# penting: tanpa ia, "liar" jadi wilayah yang terpisah rapi dari "desa", dan
+	# yang harus terbaca justru batas yang sudah kabur.
+	for spec in [
+		["kucing_kelabu", Vector2(258, 300), 96.0],    # distrik bekas
+		["kucing_kelabu", Vector2(452, 372), 88.0],
+		["kucing_jingga", Vector2(196, 452), 92.0],
+		["kucing_kelabu", Vector2(1470, 892), 84.0],   # tepi timur, dekat rumah gelap
+		["kucing_jingga", Vector2(1618, 1094), 84.0],
+		["kucing_jingga", Vector2(1046, 830), 64.0],   # SATU di inti — batas yang kabur
+	]:
+		var k := Node2D.new()
+		k.set_script(load("res://scenes/actors/Hewan.gd"))
+		k.setup(String(spec[0]))
+		add_child(k)
+		k.liar = true
+		k.wander_radius = float(spec[2])
+		k.place(spec[1])
+
+	# ── KUCING PENUNGGU — nol teks, nol penjelasan ───────────────────────────
+	# Duduk DIAM di ambang rumah yang gelap. Ia tak berkelana, tak lari, tak
+	# menunggu tombol; ia cuma ada di sana tiap kali pemain lewat. Yang memperhatikan
+	# akan mengerti sendiri bahwa dulu ada yang tinggal di situ, dan pengertian yang
+	# datang sendiri lebih tinggal daripada yang diberitahukan.
+	#
+	# ⚠ Sengaja DUA, bukan lima. Satu bisa terbaca kebetulan; dua terbaca pola; lima
+	#   terbaca sistem, dan sistem menghapus rasa bahwa kita menemukan sesuatu.
+	for p in [
+		Vector2(156, 706),      # ambang rumah terlapuk, paling barat
+		Vector2(1400, 1092),    # ambang rumah berpapan, tenggara
+	]:
+		var s := _put(P_A + "kucing_menunggu.png", p)
+		if s:
+			s.scale = Vector2(1.4, 1.4)
+	# Satu lagi MERINGKUK di antara fondasi distrik bekas — tidur di rumah yang
+	# tinggal denahnya. Ia tidur, jadi ia tak lari: hewan yang merasa aman di
+	# reruntuhan mengabarkan sudah berapa lama tak ada orang lewat.
+	var m := _put(P_A + "kucing_meringkuk.png", Vector2(322, 214))
+	if m:
+		m.scale = Vector2(1.4, 1.4)
+
+
 func _hidup_ayam_anak() -> void:
 	for i in 4:
 		var c := Node2D.new()
@@ -1290,13 +1344,36 @@ func _hidup_ayam_anak() -> void:
 		#   LAHIR di dalam benda padat tak pernah keluar — `_terhalang()` menjaga langkah,
 		#   bukan kelahiran, sehingga setiap arah tertutup dan ia terkunci diam.
 		#   Sekarang titiknya DIUJI, bukan ditebak: sampai 24 lemparan, ambil yang bebas.
+		#   ⚠ DAN LEMPARAN TERAKHIR TAK BOLEH DIPAKAI KALAU IA GAGAL. Versi pertama
+		#     mengulang 24 kali lalu memakai `pos` apa adanya — jadi kalau kedua puluh
+		#     empatnya kebetulan jatuh di bangku, anak tetap lahir di dalam bangku,
+		#     cuma lebih jarang. `CekJangkau` menangkapnya 1 dari 6 putaran: cacat
+		#     yang diperkecil bukan cacat yang dibereskan, dan yang jarang justru
+		#     lebih mahal — ia lolos playtest lalu muncul di tangan pemain.
+		#     Sekarang ada JATUH-BALIK: kalau acak menyerah, cincinnya dilebarkan
+		#     selangkah demi selangkah sampai benar-benar bebas.
 		var pos := VC
+		var bebas := false
 		for percobaan in 24:
 			var a := randf() * TAU
 			var r := randf_range(108.0, 172.0)
 			pos = VC + Vector2(cos(a) * r, sin(a) * r * 0.7)
 			if not _padat_menyentuh(pos, Vector2(16, 18), Vector2(0, -9)):
+				bebas = true
 				break
+		if not bebas:
+			for langkah in 40:
+				var a2 := TAU * float(langkah) / 8.0
+				var r2 := 180.0 + float(langkah / 8) * 26.0
+				var q := VC + Vector2(cos(a2) * r2, sin(a2) * r2 * 0.7)
+				if not _padat_menyentuh(q, Vector2(16, 18), Vector2(0, -9)):
+					pos = q
+					bebas = true
+					break
+		if not bebas:
+			# Tak pernah diam-diam menyerah: anak yang lahir di dalam benda padat
+			# terkunci selamanya, dan nol galat akan memberitahu siapa pun.
+			push_warning("[ash64] anak %d: tak menemukan titik lahir bebas" % i)
 		k.place(pos)
 		k.setup(_chickens)
 		# skala 1.6 dulu membesarkan kotak 7x11. Sprite LPC sudah 64px — 1.6 akan
@@ -1315,6 +1392,13 @@ func _hidup_berpasangan() -> void:
 	domba.set_script(load("res://scenes/actors/Hewan.gd"))
 	domba.setup("domba")
 	add_child(domba)
+	# ⚠ DOMBA INI SEKARANG LIAR (putusan Direktur, Lapis 2). Ia berdiri di jembatan
+	#   di C4 — dan aturan gradien Lapis 1 berbunyi NOL ternak di luar inti. Bukannya
+	#   memindahkannya, bacaannya yang dibetulkan: ia memang bukan ternak. Ia domba
+	#   yang tak lagi dimiliki siapa pun, berdiri di ujung jalan yang tak lagi
+	#   ditempuh. Itu justru kalimat yang lebih kuat daripada tempatnya semula.
+	#   Posisinya TAK DIUBAH — ia masih menghalangi jembatan, dan itu masih bekerja.
+	domba.liar = true
 	domba.wander_radius = 60.0          # ia MENGHALANGI jembatan, bukan berkelana
 	domba.place(Vector2(1790, VC.y + 8))
 
