@@ -50,6 +50,15 @@ KATEGORI = [
 
 BENIH = 20260722
 
+## Kulit yang boleh dipakai PENDUDUK. Pustaka punya 22 nada, tapi 15 di antaranya
+## bukan manusia: `zombie`, `zombie_green`, `fur_*`, `lavender`, dan empat nada hijau.
+## Undian mentah memberi Ashbrook 16 warga zombi — bukan karena pengundinya salah,
+## melainkan karena "sah" dan "pantas" bukan pertanyaan yang sama, dan cuma yang
+## pertama bisa dijawab oleh data persediaan.
+##
+## Pemain TIDAK dibatasi daftar ini; `rangka.kulit_sepadan()` tetap menawarkan semua.
+KULIT_NPC = ["amber", "black", "bronze", "brown", "light", "olive", "taupe"]
+
 
 def kunci(r):
     """Identitas resep untuk uji kembar. Warna ikut — dua warga berbaju sama warna
@@ -57,6 +66,7 @@ def kunci(r):
     p = r["pakaian"]
     return (
         r["build"],
+        r.get("kulit"),
         tuple((s, (p[s]["garmen"], p[s]["warna"]) if p.get(s) else None)
               for s in sorted(p)),
         r["rambut"],
@@ -70,7 +80,15 @@ def ruang(R, L, build):
         n *= max(1, len(rangka.pilihan(R, L, build, s)))
     b = R["build"][build]
     n *= max(1, len(rangka.rambut_tersedia(b["rambut"])))
+    n *= max(1, len(_kulit(R, build)))
     return n
+
+
+def _kulit(R, build):
+    b = R["build"][build]
+    ada = rangka.kulit_sepadan(build, b["kepala"])
+    pilih = [k for k in KULIT_NPC if k in ada]
+    return pilih or ada          # kalau kurasi tak beririsan, jujur pakai apa adanya
 
 
 def buat(R, L, kategori, build, n=PER_KATEGORI):
@@ -83,8 +101,14 @@ def buat(R, L, kategori, build, n=PER_KATEGORI):
             % (kategori, build, maks, n))
     out, seen, i, batas = [], set(), 0, n * 400
     while len(out) < n and i < batas:
-        r = rangka.undi(R, L, BENIH + hash(kategori) % 100000 + i, build)
+        benih = BENIH + hash(kategori) % 100000 + i
+        r = rangka.undi(R, L, benih, build)
         i += 1
+        # Kulit di-UNDI ULANG dari daftar kurasi. Menyaring hasil undi (buang yang
+        # bukan manusia, ulangi) akan memiringkan sebaran ke kulit yang kebetulan
+        # lebih sering keluar; mengundi dari daftar yang benar tidak.
+        kul = _kulit(R, r["build"])
+        r["kulit"] = kul[benih % len(kul)] if kul else None
         k = kunci(r)
         if k in seen:
             continue
@@ -112,7 +136,8 @@ def main():
                       for d in daftar if d["pakaian"].get(s)})
               for s in rangka.SLOT_PAKAIAN}
         rb = len({d["rambut"] for d in daftar})
-        ringkas.append((kategori, build, ruang(R, L, build), gm, rb))
+        kl = len({d.get("kulit") for d in daftar})
+        ringkas.append((kategori, build, ruang(R, L, build), gm, rb, kl))
 
     data = {
         "_doc": "PRESET NPC terkurasi. Pemain bebas berkombinasi; NPC memakai daftar "
@@ -129,9 +154,10 @@ def main():
         print("-> %s  (%d NPC)" % (OUT, len(semua)))
 
     print("\n=== SEBARAN ===")
-    print("  %-17s %-16s %-7s %-34s %s" % ("kategori", "build", "ruang", "garmen unik dipakai", "rambut"))
-    for kategori, build, rg, gm, rb in ringkas:
-        print("  %-17s %-16s %-7d %-34s %d" % (kategori, build, rg, str(gm), rb))
+    print("  %-17s %-16s %-8s %-34s %-7s %s"
+          % ("kategori", "build", "ruang", "garmen unik dipakai", "rambut", "kulit"))
+    for kategori, build, rg, gm, rb, kl in ringkas:
+        print("  %-17s %-16s %-8d %-34s %-7d %d" % (kategori, build, rg, str(gm), rb, kl))
 
     # bukti tak kembar — lintas kategori sekalian
     ku = {kunci(d) for d in semua}

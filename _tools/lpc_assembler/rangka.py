@@ -75,6 +75,36 @@ def rambut_tersedia(ukuran):
 
 
 # ─────────────────────────────────────────────────────────── inti resolver
+def kulit_tersedia(build):
+    """Nada kulit yang punya BADAN untuk build ini.
+
+    Sumbernya persediaan badan, bukan daftar terpisah: kepala punya 22 nada dan badan
+    punya 22 nada, tapi kalau suatu hari salah satunya bertambah, daftar terpisah akan
+    berbohong sampai ada yang menyadarinya di layar.
+    """
+    d = os.path.join(LIB, "bases", build)
+    if not os.path.isdir(d):
+        return []
+    return sorted(f[:-4] for f in os.listdir(d) if f.endswith(".png"))
+
+
+def kulit_sepadan(build, kepala):
+    """Kulit yang punya BADAN build ini DAN KEPALA varian ini.
+
+    Irisan, bukan gabungan. Badan bernada `amber` dengan kepala bernada `light` adalah
+    persis cacat leher-pucat yang selama ini ditambal `tint` — dan tambalan itu bocor
+    tiap kali seseorang memakai nada yang tak dimiliki kepala.
+    """
+    return sorted(set(kulit_tersedia(build)) & set(_kulit_kepala(kepala)))
+
+
+def _kulit_kepala(varian):
+    d = os.path.join(LIB, "heads", varian)
+    if not os.path.isdir(d):
+        return []
+    return sorted(f[:-4] for f in os.listdir(d) if f.endswith(".png"))
+
+
 def keluarga(rangka, build, slot):
     b = rangka["build"].get(build)
     if b is None:
@@ -148,10 +178,15 @@ def undi(rangka, lemari, benih, build=None, wajib_lengkap=True):
     if build is None:
         build = rng.choice(sorted(rangka["build"]))
     b = rangka["build"][build]
+    # SATU nada kulit dipakai badan DAN kepala. Mengundi keduanya terpisah akan
+    # melahirkan leher pucat di badan gelap — bukan sesekali, melainkan pada 21 dari
+    # 22 kemungkinan.
+    kul = kulit_sepadan(build, b["kepala"])
     resep = {
         "build": build,
         "badan": b["badan"],
         "kepala": b["kepala"],
+        "kulit": rng.choice(kul) if kul else None,
         "pakaian": {},
         "rambut": None,
     }
@@ -174,7 +209,16 @@ def ke_resep_lama(rangka, lemari, resep):
     Adapter, dan sengaja hanya SATU arah: lapis domain tak pernah membaca bentuk lama.
     Kalau perakit suatu hari diganti, yang dibuang cuma fungsi ini.
     """
-    out = {"body": resep["badan"], "head": resep["kepala"], "hair": resep["rambut"]}
+    # Badan & kepala dirujuk sebagai PATH BERKAS, bukan id katalog. Katalog cuma punya
+    # satu nada kulit per build; menambahkan 7x22 entri ke sana akan menjadikannya
+    # tempat ketiga yang harus disunting tiap pustaka bertambah — persoalan yang baru
+    # saja dibongkar, cuma berpindah tempat.
+    kul = resep.get("kulit")
+    out = {
+        "body": ("bases/%s/%s.png" % (resep["build"], kul)) if kul else resep["badan"],
+        "head": ("heads/%s/%s.png" % (resep["kepala"], kul)) if kul else resep["kepala"],
+        "hair": resep["rambut"],
+    }
     for slot, p in resep["pakaian"].items():
         if p is None:
             out[slot] = None

@@ -62,17 +62,17 @@ def ke_char(R, L, p, cat):
     cat = {k: (dict(v) if isinstance(v, dict) else v) for k, v in cat.items()}
     char = {"id": p["id"], "body": p["build"], "head": lama["head"], "hair": None}
 
-    # ⚠ BADAN DIAMBIL DARI KATALOG, BUKAN DARI `bases/`.
-    #   `bases/<build>/<kulit>.png` yang dipisah `gen_base_karakter.py` TERPOTONG:
-    #   baris 1344-2944 kosong, sedangkan `eulpc_body_male.png` terisi 82.995 piksel
-    #   di sana. Memakainya akan menghapus setiap animasi di luar set klasik 21 baris —
-    #   diam-diam, karena lembarnya tetap berukuran benar. Ukuran yang benar bukan
-    #   bukti isi yang lengkap.
-    if p["build"] not in cat.get("body", {}):
-        # `muscular_female` belum ada di katalog. Dipinjamkan ke `female` SEMENTARA,
-        # sejajar dengan cara katalog memperlakukan `muscular` -> male hari ini.
-        cat.setdefault("body", {})[p["build"]] = cat["body"]["female"]
-        cat.setdefault("head", {})[p["build"]] = cat["head"]["female"]
+    # Badan & kepala datang sebagai PATH (`bases/muscular/amber.png`), bukan id
+    # katalog — lihat `rangka.ke_resep_lama`. Didaftarkan dengan kunci sintetis supaya
+    # `assemble.py` tetap menerima bentuk yang sudah dimengertinya.
+    #
+    # Ini yang menghidupkan `muscular`. Katalog memetakannya ke `eulpc_body_male.png`,
+    # padahal badan muscular asli beda 51.918 piksel dari male — jadi selama ini tiap
+    # tokoh muscular dirender berbadan biasa, buildnya mati kosmetik.
+    cat.setdefault("body", {})[p["build"]] = lama["body"]
+    kunci_kepala = "_npc_kepala_%s" % p["build"]
+    cat.setdefault("head", {})[kunci_kepala] = lama["head"]
+    char["head"] = kunci_kepala
 
     for slot in rangka.SLOT_PAKAIAN:
         berkas = lama.get(slot)
