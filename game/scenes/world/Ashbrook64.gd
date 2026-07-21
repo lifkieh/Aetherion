@@ -2099,7 +2099,13 @@ func _folk() -> void:
 	for spec in [
 		["merrit_fane", MERRIT_HOUSE + Vector2(48, 96)],
 		["halloran", HALLORAN_KAKI + Vector2(58, 68)],   # di depan penempaannya sendiri
-		["old_bram", VC + Vector2(-224, 96)],
+		# ⚠ OLD BRAM DICABUT DARI DAFTAR INI — dan itu perbaikan, bukan penghapusan.
+		#   Dulu ada DUA Bram di alun-alun yang sama: potret buatan tangan yang berdiri
+		#   bisu di sini, dan `Villager` berwajah generik yang justru memegang seluruh
+		#   dialognya. Sekarang keduanya satu orang: persona `Old Bram` di
+		#   `town_npcs.json` menyebut `lpc_sheet: "old_bram"` (wajah asli) dan
+		#   `anchor: [736, 800]` (bangku ini, koordinat yang sama persis dengan baris
+		#   yang dicabut). Ia bisa diajak bicara, dan baris kelimanya adalah kesaksian.
 		["nyai", VC + Vector2(160, 128)],
 		["otha_renn", OTHA_KAKI + Vector2(58, 52)],      # di luar tokonya yang tutup
 		["sora", Vector2(672, 1024)],

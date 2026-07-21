@@ -35,11 +35,26 @@ static func place(host: Node2D, town_id: String, center: Vector2, lpc_awal := -1
 	for i in list.size():
 		var p: Dictionary = list[i]
 		var a := TAU * float(i) / maxf(1.0, float(list.size()))
+		# ⚠ JANGKAR BOLEH DITENTUKAN PERSONA. Cincin berjari-jari 120 px benar untuk
+		#   warga yang tak punya tempat; ia SALAH untuk warga yang tempatnya bagian
+		#   dari ceritanya. Old Bram duduk di bangku alun-alun — "aku ini cuma orang
+		#   tua yang punya kursi favorit" — dan menaruhnya di titik cincin yang
+		#   kebetulan membatalkan kalimatnya sendiri.
 		var anchor := center + Vector2.from_angle(a) * 120.0
+		if p.has("anchor"):
+			var av: Array = p["anchor"]
+			anchor = Vector2(float(av[0]), float(av[1]))
 		var wps := [anchor, anchor + Vector2.from_angle(a + 1.2) * 46.0, anchor + Vector2(0, 40)]
 		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
 		# SEBELUM add_child: `_build()` jalan di dalam `_ready()`.
-		if lpc_awal >= 0:
+		# ⚠ WAJAH ASLI kalau persona menyebutnya. Sebelum ini SEMUA warga berpersona
+		#   memakai wajah generik `warga_NN`, termasuk yang punya potret buatan tangan
+		#   sendiri — jadi "Old Bram" yang bisa diajak bicara berwajah orang asing,
+		#   sementara potret Bram yang sesungguhnya berdiri bisu beberapa petak darinya.
+		#   Audit menyebutnya "dua Bram berdampingan". Satu berkas, satu orang.
+		if p.has("lpc_sheet"):
+			v.lpc_sheet = String(p["lpc_sheet"])
+		elif lpc_awal >= 0:
 			v.lpc_sheet = "warga_%02d" % (lpc_awal + i)
 		host.add_child(v)
 		v.setup(p.get("name", "Warga"), p.get("config", {}), wps)

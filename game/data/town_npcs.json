@@ -1,1919 +1,1928 @@
 {
- "greenvale": [
-  {
-   "name": "Kakek Warno",
-   "archetype": "aneh",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "short",
-    "hair_color": "#e8e2f4",
-    "shirt": "#5c4a3a",
-    "pants": "#3a2a1a"
-   },
-   "lines": [
-    "Tiga puluh tahun aku memancing ikan yang bisa bicara. Belum ketemu.",
-    "Sekali ia menjawabku. Aku bertanya 'kau ada?' dan air berkata 'ya'. Cuma sekali.",
-    "Orang bilang aku gila. Orang juga bilang laut tak punya dasar. Dua-duanya belum dibuktikan.",
-    "Kalau kau lihat ikan yang menatapmu terlalu lama — jangan makan. Ajak bicara."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -40,
-      -30
-     ],
-     "do": "berdiri di tepi air, menunggu ikan menjawab"
+  "greenvale": [
+    {
+      "name": "Kakek Warno",
+      "archetype": "aneh",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "short",
+        "hair_color": "#e8e2f4",
+        "shirt": "#5c4a3a",
+        "pants": "#3a2a1a"
+      },
+      "lines": [
+        "Tiga puluh tahun aku memancing ikan yang bisa bicara. Belum ketemu.",
+        "Sekali ia menjawabku. Aku bertanya 'kau ada?' dan air berkata 'ya'. Cuma sekali.",
+        "Orang bilang aku gila. Orang juga bilang laut tak punya dasar. Dua-duanya belum dibuktikan.",
+        "Kalau kau lihat ikan yang menatapmu terlalu lama — jangan makan. Ajak bicara."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -40,
+            -30
+          ],
+          "do": "berdiri di tepi air, menunggu ikan menjawab"
+        },
+        "sore": {
+          "at": [
+            30,
+            20
+          ],
+          "do": "mengamati sesuatu yang tak terlihat"
+        },
+        "malam": {
+          "at": [
+            -10,
+            60
+          ],
+          "do": "duduk di bawah lampu, bicara sendiri"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 88,
+          "conscientiousness": 35,
+          "extraversion": 30,
+          "agreeableness": 70,
+          "neuroticism": 45
+        },
+        "moral": 80,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Air pernah menjawabnya sekali. Tak pernah lagi.",
+            "weight": 10
+          }
+        ],
+        "talent": 25,
+        "effort": 90,
+        "opportunity": 0,
+        "luck": 20,
+        "mental_state": 100
+      }
     },
-    "sore": {
-     "at": [
-      30,
-      20
-     ],
-     "do": "mengamati sesuatu yang tak terlihat"
+    {
+      "name": "Ibu Larasati",
+      "archetype": "misterius",
+      "oddwalker": true,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "long",
+        "hair_color": "#241f36",
+        "shirt": "#5c2380",
+        "pants": "#453d5c"
+      },
+      "lines": [
+        "Kau datang dari langit, bukan? Jangan kaget. Punggungmu masih berdebu bintang.",
+        "Aku menghitung orang yang lewat desa ini. Kau nomor seribu. Angka bagus. Angka menakutkan.",
+        "Suatu hari kau akan menanyakan sesuatu padaku dan aku akan menjawabnya. Bukan hari ini.",
+        "Tidurlah nyenyak. Yang menunggu tak keberatan menunggu sedikit lagi."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            60,
+            10
+          ],
+          "do": "menghitung orang yang lewat"
+        },
+        "sore": {
+          "at": [
+            -50,
+            40
+          ],
+          "do": "berdiri diam terlalu lama"
+        },
+        "malam": {
+          "at": [
+            0,
+            -50
+          ],
+          "do": "menatap langit, tak berkedip"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 95,
+          "conscientiousness": 80,
+          "extraversion": 25,
+          "agreeableness": 45,
+          "neuroticism": 30
+        },
+        "moral": 75,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 85,
+        "effort": 70,
+        "opportunity": 0,
+        "luck": 60,
+        "mental_state": 100
+      }
     },
-    "malam": {
-     "at": [
-      -10,
-      60
-     ],
-     "do": "duduk di bawah lampu, bicara sendiri"
+    {
+      "name": "Pak Sukro",
+      "archetype": "lucu",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human2",
+        "torso_race": "human2",
+        "legs_race": "human2",
+        "hair": "short",
+        "hair_color": "#3a2a1a",
+        "shirt": "#c9a227",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Aku jual pedang. Tidak punya pedang. Tapi aku jual. Ini soal semangat.",
+        "Istriku bilang aku tak berguna. Aku bilang aku hiasan. Kami berdua benar.",
+        "Kau kelihatan kuat! Mau kupinjam sepuluh gold? Bukan pinjam. Kado. Untukku.",
+        "Kalau kau mati, boleh kuambil sepatumu? Bercanda. Setengah bercanda."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            20,
+            40
+          ],
+          "do": "menawarkan barang yang tak ia miliki"
+        },
+        "sore": {
+          "at": [
+            -60,
+            0
+          ],
+          "do": "mengganggu pedagang"
+        },
+        "malam": {
+          "at": [
+            40,
+            50
+          ],
+          "do": "pulang sambil bernyanyi fals"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 55,
+          "conscientiousness": 20,
+          "extraversion": 95,
+          "agreeableness": 75,
+          "neuroticism": 35
+        },
+        "moral": 60,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 15,
+        "effort": 15,
+        "opportunity": 0,
+        "luck": 70,
+        "mental_state": 100
+      }
+    },
+    {
+      "name": "Nyai Tuminah",
+      "archetype": "tragis",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "long",
+        "hair_color": "#b0b0c0",
+        "shirt": "#3a3a4a",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Anakku pergi ke gua itu. Lima musim lalu. Aku masih masak dua porsi.",
+        "Jangan bilang 'ia pasti kembali'. Semua bilang begitu. Tak satu pun benar.",
+        "Kalau kau turun ke bawah sana... namanya Ardi. Dia takut gelap.",
+        "Aku tak ingin kau berjanji. Janji itu berat. Cukup ingat namanya."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -30,
+            50
+          ],
+          "do": "menjemur dua porsi pakaian"
+        },
+        "sore": {
+          "at": [
+            -70,
+            -20
+          ],
+          "do": "menatap arah gua/gunung"
+        },
+        "malam": {
+          "at": [
+            -20,
+            30
+          ],
+          "do": "menyalakan lentera untuk yang tak pulang"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 40,
+          "conscientiousness": 75,
+          "extraversion": 20,
+          "agreeableness": 80,
+          "neuroticism": 85
+        },
+        "moral": 85,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Anaknya, Ardi, tak pernah kembali dari gua.",
+            "weight": 55
+          }
+        ],
+        "talent": 30,
+        "effort": 60,
+        "opportunity": 0,
+        "luck": 10,
+        "mental_state": 45
+      }
+    },
+    {
+      "name": "Si Gondrong",
+      "archetype": "tak_masuk_akal",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "long",
+        "hair_color": "#8f2611",
+        "shirt": "#2e6b3f",
+        "pants": "#6b4226"
+      },
+      "lines": [
+        "Aku mengumpulkan sendok. Dua ratus empat puluh satu. Tak satu pun kupakai makan.",
+        "Sendok itu ingatan yang dipipihkan. Kau tak paham. Tak apa. Aku juga tidak.",
+        "Kalau kau menemukan sendok berukir bulan, itu milikku. Sudah milikku. Sejak sebelum dibuat.",
+        "Jangan beri aku garpu. Garpu itu sendok yang marah."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            50,
+            -40
+          ],
+          "do": "menyusun benda dengan urutan rahasia"
+        },
+        "sore": {
+          "at": [
+            10,
+            10
+          ],
+          "do": "berjalan mundur mengelilingi alun-alun"
+        },
+        "malam": {
+          "at": [
+            -45,
+            -35
+          ],
+          "do": "berdebat dengan bulan"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "sanguinis",
+        "big5": {
+          "openness": 98,
+          "conscientiousness": 45,
+          "extraversion": 50,
+          "agreeableness": 55,
+          "neuroticism": 55
+        },
+        "moral": 70,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 60,
+        "effort": 85,
+        "opportunity": 0,
+        "luck": 35,
+        "mental_state": 100
+      }
     }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 88,
-     "conscientiousness": 35,
-     "extraversion": 30,
-     "agreeableness": 70,
-     "neuroticism": 45
+  ],
+  "frostpeak_village": [
+    {
+      "name": "Bibi Anka",
+      "archetype": "aneh",
+      "oddwalker": false,
+      "config": {
+        "head_race": "frostkin",
+        "torso_race": "frostkin",
+        "legs_race": "frostkin",
+        "hair": "long",
+        "hair_color": "#b8e4f2",
+        "shirt": "#3a6fa0",
+        "pants": "#1e3a5c"
+      },
+      "lines": [
+        "Aku bicara pada salju. Salju menjawab dengan diam. Itu jawaban yang jujur.",
+        "Setiap kepingan salju punya nama. Aku hafal empat. Sisanya menolak berkenalan.",
+        "Kalau kau mendengar salju berderak dua kali, jangan menoleh. Itu bukan salju."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -40,
+            -30
+          ],
+          "do": "berdiri di tepi air, menunggu ikan menjawab"
+        },
+        "sore": {
+          "at": [
+            30,
+            20
+          ],
+          "do": "mengamati sesuatu yang tak terlihat"
+        },
+        "malam": {
+          "at": [
+            -10,
+            60
+          ],
+          "do": "duduk di bawah lampu, bicara sendiri"
+        }
+      },
+      "profile": {
+        "temperament": "plegmatis",
+        "temperament_sub": "melankolis",
+        "big5": {
+          "openness": 80,
+          "conscientiousness": 50,
+          "extraversion": 25,
+          "agreeableness": 75,
+          "neuroticism": 40
+        },
+        "moral": 80,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 35,
+        "effort": 55,
+        "opportunity": 0,
+        "luck": 45,
+        "mental_state": 100
+      }
     },
-    "moral": 80,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Air pernah menjawabnya sekali. Tak pernah lagi.",
-      "weight": 10
-     }
-    ],
-    "talent": 25,
-    "effort": 90,
-    "opportunity": 0,
-    "luck": 20,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Ibu Larasati",
-   "archetype": "misterius",
-   "oddwalker": true,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "long",
-    "hair_color": "#241f36",
-    "shirt": "#5c2380",
-    "pants": "#453d5c"
-   },
-   "lines": [
-    "Kau datang dari langit, bukan? Jangan kaget. Punggungmu masih berdebu bintang.",
-    "Aku menghitung orang yang lewat desa ini. Kau nomor seribu. Angka bagus. Angka menakutkan.",
-    "Suatu hari kau akan menanyakan sesuatu padaku dan aku akan menjawabnya. Bukan hari ini.",
-    "Tidurlah nyenyak. Yang menunggu tak keberatan menunggu sedikit lagi."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      60,
-      10
-     ],
-     "do": "menghitung orang yang lewat"
+    {
+      "name": "Orang Tanpa Mantel",
+      "archetype": "misterius",
+      "oddwalker": true,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "none",
+        "hair_color": "#e8e2f4",
+        "shirt": "#2b2b3a",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Dingin? Aku tak merasa dingin sejak lama. Sejak sesuatu di dalamku padam.",
+        "Kau sedang mencari sesuatu. Semua yang naik ke sini mencari sesuatu. Sedikit yang tahu apa.",
+        "Puncak itu bukan tujuan. Puncak itu pertanyaan. Naiklah kalau kau siap ditanyai."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            60,
+            10
+          ],
+          "do": "menghitung orang yang lewat"
+        },
+        "sore": {
+          "at": [
+            -50,
+            40
+          ],
+          "do": "berdiri diam terlalu lama"
+        },
+        "malam": {
+          "at": [
+            0,
+            -50
+          ],
+          "do": "menatap langit, tak berkedip"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 90,
+          "conscientiousness": 70,
+          "extraversion": 15,
+          "agreeableness": 35,
+          "neuroticism": 25
+        },
+        "moral": 65,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Sesuatu di dalamnya padam. Ia tak menyebutkan apa.",
+            "weight": 45
+          }
+        ],
+        "talent": 90,
+        "effort": 80,
+        "opportunity": 0,
+        "luck": 30,
+        "mental_state": 55
+      }
     },
-    "sore": {
-     "at": [
-      -50,
-      40
-     ],
-     "do": "berdiri diam terlalu lama"
+    {
+      "name": "Grim si Wolfkin",
+      "archetype": "lucu",
+      "oddwalker": false,
+      "config": {
+        "head_race": "wolfkin",
+        "torso_race": "wolfkin",
+        "legs_race": "wolfkin",
+        "hair": "none",
+        "hair_color": "#241f36",
+        "shirt": "#8f2611",
+        "pants": "#453d5c"
+      },
+      "lines": [
+        "Aku melolong tiap purnama. Bukan naluri. Tetangga sebelah benci itu. Itu alasannya.",
+        "Kata orang wolfkin pelacak ulung. Aku tersesat di rumahku sendiri kemarin.",
+        "Mau kutunjukkan jalan ke puncak? Jangan. Sungguh, jangan mau."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            20,
+            40
+          ],
+          "do": "menawarkan barang yang tak ia miliki"
+        },
+        "sore": {
+          "at": [
+            -60,
+            0
+          ],
+          "do": "mengganggu pedagang"
+        },
+        "malam": {
+          "at": [
+            40,
+            50
+          ],
+          "do": "pulang sambil bernyanyi fals"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 50,
+          "conscientiousness": 30,
+          "extraversion": 85,
+          "agreeableness": 65,
+          "neuroticism": 30
+        },
+        "moral": 70,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 40,
+        "effort": 25,
+        "opportunity": 0,
+        "luck": 55,
+        "mental_state": 100
+      }
     },
-    "malam": {
-     "at": [
-      0,
-      -50
-     ],
-     "do": "menatap langit, tak berkedip"
+    {
+      "name": "Pendaki Tua Baruk",
+      "archetype": "tragis",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "short",
+        "hair_color": "#b0b0c0",
+        "shirt": "#453d5c",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Empat orang naik. Satu turun. Aku yang turun. Itu bukan keberuntungan, itu hukuman.",
+        "Aku masih menyimpan tali mereka. Tak sanggup kubuang. Tak sanggup kupakai.",
+        "Kalau kau naik, jangan tinggalkan siapa pun. Bahkan yang menyuruhmu pergi."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -30,
+            50
+          ],
+          "do": "menjemur dua porsi pakaian"
+        },
+        "sore": {
+          "at": [
+            -70,
+            -20
+          ],
+          "do": "menatap arah gua/gunung"
+        },
+        "malam": {
+          "at": [
+            -20,
+            30
+          ],
+          "do": "menyalakan lentera untuk yang tak pulang"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 45,
+          "conscientiousness": 85,
+          "extraversion": 30,
+          "agreeableness": 70,
+          "neuroticism": 75
+        },
+        "moral": 90,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Empat naik, satu turun. Ia yang turun.",
+            "weight": 60
+          }
+        ],
+        "talent": 55,
+        "effort": 90,
+        "opportunity": 0,
+        "luck": 15,
+        "mental_state": 40
+      }
+    },
+    {
+      "name": "Nenek Es",
+      "archetype": "tak_masuk_akal",
+      "oddwalker": false,
+      "config": {
+        "head_race": "frostkin",
+        "torso_race": "frostkin",
+        "legs_race": "frostkin",
+        "hair": "bun",
+        "hair_color": "#eefaff",
+        "shirt": "#1e3a5c",
+        "pants": "#3a6fa0"
+      },
+      "lines": [
+        "Bulan marah padaku. Sudah dua puluh tahun. Aku tak tahu salahku apa.",
+        "Tiap purnama ia menatap tepat ke jendelaku. Ke JENDELAKU. Coba lihat sendiri.",
+        "Aku sudah minta maaf. Ke langit. Keras-keras. Tetangga yang marah sekarang."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            50,
+            -40
+          ],
+          "do": "menyusun benda dengan urutan rahasia"
+        },
+        "sore": {
+          "at": [
+            10,
+            10
+          ],
+          "do": "berjalan mundur mengelilingi alun-alun"
+        },
+        "malam": {
+          "at": [
+            -45,
+            -35
+          ],
+          "do": "berdebat dengan bulan"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "sanguinis",
+        "big5": {
+          "openness": 75,
+          "conscientiousness": 40,
+          "extraversion": 60,
+          "agreeableness": 60,
+          "neuroticism": 90
+        },
+        "moral": 75,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 20,
+        "effort": 45,
+        "opportunity": 0,
+        "luck": 25,
+        "mental_state": 100
+      }
     }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 95,
-     "conscientiousness": 80,
-     "extraversion": 25,
-     "agreeableness": 45,
-     "neuroticism": 30
+  ],
+  "candyveil_palace": [
+    {
+      "name": "Tuan Karamel",
+      "archetype": "aneh",
+      "oddwalker": false,
+      "config": {
+        "head_race": "candyfolk",
+        "torso_race": "candyfolk",
+        "legs_race": "candyfolk",
+        "hair": "short",
+        "hair_color": "#f7c6d9",
+        "shirt": "#8a3a6b",
+        "pants": "#5c2380"
+      },
+      "lines": [
+        "Aku menjilat tembok istana tiap pagi. Untuk memastikan rasanya belum berubah.",
+        "Hari ini rasanya sedikit... asin. Itu tak pernah terjadi sebelumnya.",
+        "Kalau tembok mulai asin, sesuatu di dalam istana sedang menangis."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -40,
+            -30
+          ],
+          "do": "berdiri di tepi air, menunggu ikan menjawab"
+        },
+        "sore": {
+          "at": [
+            30,
+            20
+          ],
+          "do": "mengamati sesuatu yang tak terlihat"
+        },
+        "malam": {
+          "at": [
+            -10,
+            60
+          ],
+          "do": "duduk di bawah lampu, bicara sendiri"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 70,
+          "conscientiousness": 80,
+          "extraversion": 35,
+          "agreeableness": 65,
+          "neuroticism": 60
+        },
+        "moral": 75,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 45,
+        "effort": 85,
+        "opportunity": 0,
+        "luck": 40,
+        "mental_state": 100
+      }
     },
-    "moral": 75,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 85,
-    "effort": 70,
-    "opportunity": 0,
-    "luck": 60,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Pak Sukro",
-   "archetype": "lucu",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human2",
-    "torso_race": "human2",
-    "legs_race": "human2",
-    "hair": "short",
-    "hair_color": "#3a2a1a",
-    "shirt": "#c9a227",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Aku jual pedang. Tidak punya pedang. Tapi aku jual. Ini soal semangat.",
-    "Istriku bilang aku tak berguna. Aku bilang aku hiasan. Kami berdua benar.",
-    "Kau kelihatan kuat! Mau kupinjam sepuluh gold? Bukan pinjam. Kado. Untukku.",
-    "Kalau kau mati, boleh kuambil sepatumu? Bercanda. Setengah bercanda."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      20,
-      40
-     ],
-     "do": "menawarkan barang yang tak ia miliki"
+    {
+      "name": "Gadis Bergula",
+      "archetype": "misterius",
+      "oddwalker": false,
+      "config": {
+        "head_race": "candyfolk",
+        "torso_race": "candyfolk",
+        "legs_race": "candyfolk",
+        "hair": "long",
+        "hair_color": "#ffd9ec",
+        "shirt": "#c9a227",
+        "pants": "#8a3a6b"
+      },
+      "lines": [
+        "Ratu tersenyum pada semua orang. Ia tersenyum juga saat sendirian. Di kegelapan.",
+        "Undangan pesta teh datang sendiri. Kau tak mencarinya. Ia yang mencium bau manis dirimu.",
+        "Jangan habiskan cangkirmu sampai dasar. Di dasar ada namamu."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            60,
+            10
+          ],
+          "do": "menghitung orang yang lewat"
+        },
+        "sore": {
+          "at": [
+            -50,
+            40
+          ],
+          "do": "berdiri diam terlalu lama"
+        },
+        "malam": {
+          "at": [
+            0,
+            -50
+          ],
+          "do": "menatap langit, tak berkedip"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 85,
+          "conscientiousness": 65,
+          "extraversion": 40,
+          "agreeableness": 40,
+          "neuroticism": 50
+        },
+        "moral": 60,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 70,
+        "effort": 60,
+        "opportunity": 0,
+        "luck": 50,
+        "mental_state": 100
+      }
     },
-    "sore": {
-     "at": [
-      -60,
-      0
-     ],
-     "do": "mengganggu pedagang"
+    {
+      "name": "Bocah Lolipop",
+      "archetype": "lucu",
+      "oddwalker": false,
+      "config": {
+        "head_race": "candyfolk",
+        "torso_race": "candyfolk",
+        "legs_race": "candyfolk",
+        "hair": "spiky",
+        "hair_color": "#7de0d0",
+        "shirt": "#2e6b3f",
+        "pants": "#453d5c"
+      },
+      "lines": [
+        "Aku makan diriku sendiri waktu kecil. Jari kelingking. Enak. Tak kusesali.",
+        "Kau mau gigit lenganku? Semua orang mau. Jawabannya tetap tidak.",
+        "Ayahku sirup. Ibuku sirup. Aku... aku sedang mencari tahu."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            20,
+            40
+          ],
+          "do": "menawarkan barang yang tak ia miliki"
+        },
+        "sore": {
+          "at": [
+            -60,
+            0
+          ],
+          "do": "mengganggu pedagang"
+        },
+        "malam": {
+          "at": [
+            40,
+            50
+          ],
+          "do": "pulang sambil bernyanyi fals"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 75,
+          "conscientiousness": 25,
+          "extraversion": 90,
+          "agreeableness": 80,
+          "neuroticism": 45
+        },
+        "moral": 70,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 30,
+        "effort": 20,
+        "opportunity": 0,
+        "luck": 80,
+        "mental_state": 100
+      }
     },
-    "malam": {
-     "at": [
-      40,
-      50
-     ],
-     "do": "pulang sambil bernyanyi fals"
+    {
+      "name": "Pembuat Kue Tanpa Nama",
+      "archetype": "tragis",
+      "oddwalker": false,
+      "config": {
+        "head_race": "candyfolk",
+        "torso_race": "human",
+        "legs_race": "candyfolk",
+        "hair": "short",
+        "hair_color": "#b0b0c0",
+        "shirt": "#5c4a3a",
+        "pants": "#3a2a1a"
+      },
+      "lines": [
+        "Aku membuat kue untuk pesta teh setiap tahun. Tamunya tak pernah pulang.",
+        "Aku tak boleh berhenti membuatnya. Kalau berhenti... aku yang jadi hidangan.",
+        "Cicipi kueku. Tolong. Biar ada satu orang yang memilih memakannya."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -30,
+            50
+          ],
+          "do": "menjemur dua porsi pakaian"
+        },
+        "sore": {
+          "at": [
+            -70,
+            -20
+          ],
+          "do": "menatap arah gua/gunung"
+        },
+        "malam": {
+          "at": [
+            -20,
+            30
+          ],
+          "do": "menyalakan lentera untuk yang tak pulang"
+        }
+      },
+      "profile": {
+        "temperament": "plegmatis",
+        "temperament_sub": "melankolis",
+        "big5": {
+          "openness": 45,
+          "conscientiousness": 90,
+          "extraversion": 20,
+          "agreeableness": 85,
+          "neuroticism": 80
+        },
+        "moral": 85,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Ia membuat kue untuk tamu yang tak pernah pulang.",
+            "weight": 60
+          }
+        ],
+        "talent": 65,
+        "effort": 95,
+        "opportunity": 0,
+        "luck": 5,
+        "mental_state": 35
+      }
+    },
+    {
+      "name": "Si Terbalik",
+      "archetype": "tak_masuk_akal",
+      "oddwalker": false,
+      "config": {
+        "head_race": "candyfolk",
+        "torso_race": "candyfolk",
+        "legs_race": "candyfolk",
+        "hair": "long",
+        "hair_color": "#ff9db8",
+        "shirt": "#3a6fa0",
+        "pants": "#c9a227"
+      },
+      "lines": [
+        "Aku hanya berjalan mundur. Ke depan sudah pernah. Membosankan.",
+        "Mundur itu jujur: kau melihat apa yang kau tinggalkan, bukan yang kau bayangkan.",
+        "Suatu hari aku akan mundur cukup jauh sampai bertemu diriku yang dulu. Kami tak akan saling sapa."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            50,
+            -40
+          ],
+          "do": "menyusun benda dengan urutan rahasia"
+        },
+        "sore": {
+          "at": [
+            10,
+            10
+          ],
+          "do": "berjalan mundur mengelilingi alun-alun"
+        },
+        "malam": {
+          "at": [
+            -45,
+            -35
+          ],
+          "do": "berdebat dengan bulan"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "melankolis",
+        "big5": {
+          "openness": 99,
+          "conscientiousness": 30,
+          "extraversion": 55,
+          "agreeableness": 60,
+          "neuroticism": 50
+        },
+        "moral": 70,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 50,
+        "effort": 40,
+        "opportunity": 0,
+        "luck": 60,
+        "mental_state": 100
+      }
     }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 55,
-     "conscientiousness": 20,
-     "extraversion": 95,
-     "agreeableness": 75,
-     "neuroticism": 35
+  ],
+  "desert_ruins": [
+    {
+      "name": "Penggali Rahim",
+      "archetype": "aneh",
+      "oddwalker": false,
+      "config": {
+        "head_race": "lizardkin",
+        "torso_race": "lizardkin",
+        "legs_race": "lizardkin",
+        "hair": "none",
+        "hair_color": "#6b8f3a",
+        "shirt": "#c9a227",
+        "pants": "#5c4a3a"
+      },
+      "lines": [
+        "Aku menggali bukan untuk emas. Aku menggali untuk mendengar pasir berhenti bicara.",
+        "Di bawah sana ada ruangan yang lebih tua dari kata 'tua'.",
+        "Jangan sebut namamu keras-keras di reruntuhan. Ada yang mengoleksi nama."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -40,
+            -30
+          ],
+          "do": "berdiri di tepi air, menunggu ikan menjawab"
+        },
+        "sore": {
+          "at": [
+            30,
+            20
+          ],
+          "do": "mengamati sesuatu yang tak terlihat"
+        },
+        "malam": {
+          "at": [
+            -10,
+            60
+          ],
+          "do": "duduk di bawah lampu, bicara sendiri"
+        }
+      },
+      "profile": {
+        "temperament": "koleris",
+        "temperament_sub": "melankolis",
+        "big5": {
+          "openness": 85,
+          "conscientiousness": 75,
+          "extraversion": 35,
+          "agreeableness": 45,
+          "neuroticism": 45
+        },
+        "moral": 65,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 60,
+        "effort": 80,
+        "opportunity": 0,
+        "luck": 30,
+        "mental_state": 100
+      }
     },
-    "moral": 60,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 15,
-    "effort": 15,
-    "opportunity": 0,
-    "luck": 70,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Nyai Tuminah",
-   "archetype": "tragis",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "long",
-    "hair_color": "#b0b0c0",
-    "shirt": "#3a3a4a",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Anakku pergi ke gua itu. Lima musim lalu. Aku masih masak dua porsi.",
-    "Jangan bilang 'ia pasti kembali'. Semua bilang begitu. Tak satu pun benar.",
-    "Kalau kau turun ke bawah sana... namanya Ardi. Dia takut gelap.",
-    "Aku tak ingin kau berjanji. Janji itu berat. Cukup ingat namanya."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -30,
-      50
-     ],
-     "do": "menjemur dua porsi pakaian"
+    {
+      "name": "Yang Menunggu",
+      "archetype": "misterius",
+      "oddwalker": true,
+      "config": {
+        "head_race": "undead",
+        "torso_race": "undead",
+        "legs_race": "undead",
+        "hair": "none",
+        "hair_color": "#b0b0c0",
+        "shirt": "#3a3a4a",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Aku menunggu. Sudah lama. Kau bukan yang kutunggu — tapi kau mendekati bentuknya.",
+        "Kami banyak. Kami tersebar. Kami tidak berkumpul. Belum.",
+        "Kalau ia bertanya siapa yang memberitahumu, katakan: tak ada siapa-siapa."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            60,
+            10
+          ],
+          "do": "menghitung orang yang lewat"
+        },
+        "sore": {
+          "at": [
+            -50,
+            40
+          ],
+          "do": "berdiri diam terlalu lama"
+        },
+        "malam": {
+          "at": [
+            0,
+            -50
+          ],
+          "do": "menatap langit, tak berkedip"
+        }
+      },
+      "profile": {
+        "temperament": "plegmatis",
+        "temperament_sub": "melankolis",
+        "big5": {
+          "openness": 90,
+          "conscientiousness": 60,
+          "extraversion": 10,
+          "agreeableness": 30,
+          "neuroticism": 20
+        },
+        "moral": 50,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 75,
+        "effort": 50,
+        "opportunity": 0,
+        "luck": 40,
+        "mental_state": 70
+      }
     },
-    "sore": {
-     "at": [
-      -70,
-      -20
-     ],
-     "do": "menatap arah gua/gunung"
+    {
+      "name": "Saudagar Kehausan",
+      "archetype": "lucu",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human2",
+        "torso_race": "human2",
+        "legs_race": "human2",
+        "hair": "short",
+        "hair_color": "#241f36",
+        "shirt": "#8f2611",
+        "pants": "#5c4a3a"
+      },
+      "lines": [
+        "Kujual pasir. Di gurun. Ya, aku tahu. Modalnya nol, untungnya juga.",
+        "Pelangganku satu: dia beli karena kasihan. Dia sekarang kaya. Aku tetap begini.",
+        "Mau beli pasir? Kubungkus rapi. Ada pitanya."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            20,
+            40
+          ],
+          "do": "menawarkan barang yang tak ia miliki"
+        },
+        "sore": {
+          "at": [
+            -60,
+            0
+          ],
+          "do": "mengganggu pedagang"
+        },
+        "malam": {
+          "at": [
+            40,
+            50
+          ],
+          "do": "pulang sambil bernyanyi fals"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 50,
+          "conscientiousness": 35,
+          "extraversion": 88,
+          "agreeableness": 80,
+          "neuroticism": 40
+        },
+        "moral": 75,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 20,
+        "effort": 55,
+        "opportunity": 0,
+        "luck": 8,
+        "mental_state": 100
+      }
     },
-    "malam": {
-     "at": [
-      -20,
-      30
-     ],
-     "do": "menyalakan lentera untuk yang tak pulang"
+    {
+      "name": "Janda Sungai Kering",
+      "archetype": "tragis",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human2",
+        "torso_race": "human2",
+        "legs_race": "human2",
+        "hair": "long",
+        "hair_color": "#3a2a1a",
+        "shirt": "#5c4a3a",
+        "pants": "#453d5c"
+      },
+      "lines": [
+        "Dulu ada sungai di sini. Suamiku belajar berenang untukku. Sungainya pergi duluan.",
+        "Aku masih menjemur baju menghadap arah air. Kebiasaan itu lebih keras kepala dari aku.",
+        "Kalau kau menemukan air di bawah reruntuhan — jangan minum semua. Sisakan untuk yang pulang."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -30,
+            50
+          ],
+          "do": "menjemur dua porsi pakaian"
+        },
+        "sore": {
+          "at": [
+            -70,
+            -20
+          ],
+          "do": "menatap arah gua/gunung"
+        },
+        "malam": {
+          "at": [
+            -20,
+            30
+          ],
+          "do": "menyalakan lentera untuk yang tak pulang"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 40,
+          "conscientiousness": 70,
+          "extraversion": 25,
+          "agreeableness": 85,
+          "neuroticism": 80
+        },
+        "moral": 88,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Suaminya belajar berenang untuknya. Sungainya pergi duluan.",
+            "weight": 50
+          }
+        ],
+        "talent": 35,
+        "effort": 65,
+        "opportunity": 0,
+        "luck": 15,
+        "mental_state": 50
+      }
+    },
+    {
+      "name": "Penghitung Bayangan",
+      "archetype": "tak_masuk_akal",
+      "oddwalker": false,
+      "config": {
+        "head_race": "lizardkin",
+        "torso_race": "human",
+        "legs_race": "lizardkin",
+        "hair": "spiky",
+        "hair_color": "#6b8f3a",
+        "shirt": "#453d5c",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Aku menghitung bayangan, bukan orang. Bayangan lebih jujur soal jumlahnya.",
+        "Hari ini ada satu bayangan lebih banyak daripada orang di alun-alun. Sudah tiga hari begitu.",
+        "Bayanganmu... berdiri sedikit terlalu tegak. Tak apa. Aku tak akan bilang siapa-siapa."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            50,
+            -40
+          ],
+          "do": "menyusun benda dengan urutan rahasia"
+        },
+        "sore": {
+          "at": [
+            10,
+            10
+          ],
+          "do": "berjalan mundur mengelilingi alun-alun"
+        },
+        "malam": {
+          "at": [
+            -45,
+            -35
+          ],
+          "do": "berdebat dengan bulan"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 92,
+          "conscientiousness": 85,
+          "extraversion": 20,
+          "agreeableness": 35,
+          "neuroticism": 65
+        },
+        "moral": 60,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 70,
+        "effort": 75,
+        "opportunity": 0,
+        "luck": 35,
+        "mental_state": 100
+      }
     }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 40,
-     "conscientiousness": 75,
-     "extraversion": 20,
-     "agreeableness": 80,
-     "neuroticism": 85
+  ],
+  "storm_island": [
+    {
+      "name": "Pelaut Tuli",
+      "archetype": "aneh",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "short",
+        "hair_color": "#b0b0c0",
+        "shirt": "#1e3a5c",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Petir merenggut pendengaranku. Sebagai gantinya aku bisa MERASAKAN guruh.",
+        "Guruh hari ini bilang: ada yang datang dari jauh. Itu kau, ya?",
+        "Langit tak pernah berbohong. Ia cuma sering tak diajak bicara."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -40,
+            -30
+          ],
+          "do": "berdiri di tepi air, menunggu ikan menjawab"
+        },
+        "sore": {
+          "at": [
+            30,
+            20
+          ],
+          "do": "mengamati sesuatu yang tak terlihat"
+        },
+        "malam": {
+          "at": [
+            -10,
+            60
+          ],
+          "do": "duduk di bawah lampu, bicara sendiri"
+        }
+      },
+      "profile": {
+        "temperament": "plegmatis",
+        "temperament_sub": "sanguinis",
+        "big5": {
+          "openness": 80,
+          "conscientiousness": 60,
+          "extraversion": 50,
+          "agreeableness": 75,
+          "neuroticism": 30
+        },
+        "moral": 80,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Petir merenggut pendengarannya. Ia menyebutnya pertukaran.",
+            "weight": 25
+          }
+        ],
+        "talent": 55,
+        "effort": 70,
+        "opportunity": 0,
+        "luck": 45,
+        "mental_state": 75
+      }
     },
-    "moral": 85,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Anaknya, Ardi, tak pernah kembali dari gua.",
-      "weight": 55
-     }
-    ],
-    "talent": 30,
-    "effort": 60,
-    "opportunity": 0,
-    "luck": 10,
-    "mental_state": 45
-   }
-  },
-  {
-   "name": "Si Gondrong",
-   "archetype": "tak_masuk_akal",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "long",
-    "hair_color": "#8f2611",
-    "shirt": "#2e6b3f",
-    "pants": "#6b4226"
-   },
-   "lines": [
-    "Aku mengumpulkan sendok. Dua ratus empat puluh satu. Tak satu pun kupakai makan.",
-    "Sendok itu ingatan yang dipipihkan. Kau tak paham. Tak apa. Aku juga tidak.",
-    "Kalau kau menemukan sendok berukir bulan, itu milikku. Sudah milikku. Sejak sebelum dibuat.",
-    "Jangan beri aku garpu. Garpu itu sendok yang marah."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      50,
-      -40
-     ],
-     "do": "menyusun benda dengan urutan rahasia"
+    {
+      "name": "Penjaga Menara Tanpa Kunci",
+      "archetype": "misterius",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "long",
+        "hair_color": "#3a6fa0",
+        "shirt": "#5c2380",
+        "pants": "#453d5c"
+      },
+      "lines": [
+        "Menara ini tak pernah kukunci. Yang pantas masuk akan masuk. Sisanya tersesat di tangga.",
+        "Ada yang naik dan tak pernah turun. Aku tak menghitung mereka sebagai hilang.",
+        "Petir bukan hukuman. Petir itu jawaban atas pertanyaan yang tak sempat kau ucapkan."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            60,
+            10
+          ],
+          "do": "menghitung orang yang lewat"
+        },
+        "sore": {
+          "at": [
+            -50,
+            40
+          ],
+          "do": "berdiri diam terlalu lama"
+        },
+        "malam": {
+          "at": [
+            0,
+            -50
+          ],
+          "do": "menatap langit, tak berkedip"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 88,
+          "conscientiousness": 75,
+          "extraversion": 25,
+          "agreeableness": 55,
+          "neuroticism": 35
+        },
+        "moral": 70,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 80,
+        "effort": 70,
+        "opportunity": 0,
+        "luck": 40,
+        "mental_state": 100
+      }
     },
-    "sore": {
-     "at": [
-      10,
-      10
-     ],
-     "do": "berjalan mundur mengelilingi alun-alun"
+    {
+      "name": "Bocah Layangan",
+      "archetype": "lucu",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human2",
+        "torso_race": "human2",
+        "legs_race": "human2",
+        "hair": "spiky",
+        "hair_color": "#241f36",
+        "shirt": "#2e6b3f",
+        "pants": "#6b4226"
+      },
+      "lines": [
+        "Aku main layangan saat badai. Sekali. Rambutku masih begini sampai sekarang.",
+        "Kata ibu, aku tak boleh menyentuh logam waktu hujan. Aku tak sengaja jadi logam.",
+        "Kalau kau lihat layangan tanpa benang di langit — itu punyaku. Sampaikan salamku."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            20,
+            40
+          ],
+          "do": "menawarkan barang yang tak ia miliki"
+        },
+        "sore": {
+          "at": [
+            -60,
+            0
+          ],
+          "do": "mengganggu pedagang"
+        },
+        "malam": {
+          "at": [
+            40,
+            50
+          ],
+          "do": "pulang sambil bernyanyi fals"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 70,
+          "conscientiousness": 20,
+          "extraversion": 92,
+          "agreeableness": 75,
+          "neuroticism": 35
+        },
+        "moral": 75,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 45,
+        "effort": 25,
+        "opportunity": 0,
+        "luck": 90,
+        "mental_state": 100
+      }
     },
-    "malam": {
-     "at": [
-      -45,
-      -35
-     ],
-     "do": "berdebat dengan bulan"
+    {
+      "name": "Ibu Karam",
+      "archetype": "tragis",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "bun",
+        "hair_color": "#3a2a1a",
+        "shirt": "#3a3a4a",
+        "pants": "#453d5c"
+      },
+      "lines": [
+        "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
+        "Aku menyalakan lentera tiap malam. Bukan agar mereka pulang. Agar aku punya alasan bangun.",
+        "Kau pelaut? Bukan? Bagus. Tetaplah begitu."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -30,
+            50
+          ],
+          "do": "menjemur dua porsi pakaian"
+        },
+        "sore": {
+          "at": [
+            -70,
+            -20
+          ],
+          "do": "menatap arah gua/gunung"
+        },
+        "malam": {
+          "at": [
+            -20,
+            30
+          ],
+          "do": "menyalakan lentera untuk yang tak pulang"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 35,
+          "conscientiousness": 80,
+          "extraversion": 25,
+          "agreeableness": 85,
+          "neuroticism": 85
+        },
+        "moral": 90,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
+            "weight": 60
+          }
+        ],
+        "talent": 25,
+        "effort": 80,
+        "opportunity": 0,
+        "luck": 10,
+        "mental_state": 40
+      }
+    },
+    {
+      "name": "Si Penantang Petir",
+      "archetype": "tak_masuk_akal",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human2",
+        "torso_race": "human2",
+        "legs_race": "human2",
+        "hair": "long",
+        "hair_color": "#8f2611",
+        "shirt": "#c9a227",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Aku menantang petir berkelahi. Setiap badai. Sejauh ini seri: nol-nol.",
+        "Ia belum berani menyambarku. Itu artinya ia takut. Jelas sekali.",
+        "Kalau suatu hari aku tak ada di sini — berarti pertandingannya sudah selesai. Jangan tanya siapa menang."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            50,
+            -40
+          ],
+          "do": "menyusun benda dengan urutan rahasia"
+        },
+        "sore": {
+          "at": [
+            10,
+            10
+          ],
+          "do": "berjalan mundur mengelilingi alun-alun"
+        },
+        "malam": {
+          "at": [
+            -45,
+            -35
+          ],
+          "do": "berdebat dengan bulan"
+        }
+      },
+      "profile": {
+        "temperament": "koleris",
+        "temperament_sub": "sanguinis",
+        "big5": {
+          "openness": 65,
+          "conscientiousness": 25,
+          "extraversion": 90,
+          "agreeableness": 45,
+          "neuroticism": 25
+        },
+        "moral": 65,
+        "moral_drift": 0,
+        "trauma": [],
+        "talent": 35,
+        "effort": 30,
+        "opportunity": 0,
+        "luck": 95,
+        "mental_state": 100
+      }
     }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "sanguinis",
-    "big5": {
-     "openness": 98,
-     "conscientiousness": 45,
-     "extraversion": 50,
-     "agreeableness": 55,
-     "neuroticism": 55
+  ],
+  "ashbrook": [
+    {
+      "name": "Merrit Fane",
+      "archetype": "tragis",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "long",
+        "hair_color": "#cfc9d6",
+        "shirt": "#4a4436",
+        "pants": "#2f2a24"
+      },
+      "lines": [
+        "Kamar-kamar itu masih kusapu. Bukan karena ada yang datang. Karena kalau berdebu, aku akan terbiasa.",
+        "Tulisan tanganmu jelek. Bagus. Yang jelek biasanya jujur.",
+        "Dulu aku hafal tulisan tangan setiap keluarga di sini. Sekarang aku hafal semuanya karena tinggal sedikit.",
+        "Kalau kau pergi ke Greenvale, jangan menoleh. Atau menolehlah. Terserah. Lampunya tetap menyala."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -232,
+            24
+          ],
+          "do": "membuka rumah singgah, menyortir surat yang tak banyak"
+        },
+        "sore": {
+          "at": [
+            -180,
+            40
+          ],
+          "do": "menyapu kamar yang tak ditiduri siapa pun"
+        },
+        "malam": {
+          "at": [
+            -236,
+            10
+          ],
+          "do": "menyalakan lampu, lalu duduk"
+        }
+      },
+      "profile": {
+        "temperament": "plegmatis",
+        "temperament_sub": "melankolis",
+        "big5": {
+          "openness": 45,
+          "conscientiousness": 80,
+          "extraversion": 40,
+          "agreeableness": 85,
+          "neuroticism": 55
+        },
+        "moral": 88,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Kepergian yang tak pernah dijelaskan. Empat puluh tahun ketidakpastian.",
+            "weight": 18
+          }
+        ],
+        "talent": 30,
+        "effort": 88,
+        "opportunity": 0,
+        "luck": 35,
+        "mental_state": 78
+      }
     },
-    "moral": 70,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 60,
-    "effort": 85,
-    "opportunity": 0,
-    "luck": 35,
-    "mental_state": 100
-   }
-  }
- ],
- "frostpeak_village": [
-  {
-   "name": "Bibi Anka",
-   "archetype": "aneh",
-   "oddwalker": false,
-   "config": {
-    "head_race": "frostkin",
-    "torso_race": "frostkin",
-    "legs_race": "frostkin",
-    "hair": "long",
-    "hair_color": "#b8e4f2",
-    "shirt": "#3a6fa0",
-    "pants": "#1e3a5c"
-   },
-   "lines": [
-    "Aku bicara pada salju. Salju menjawab dengan diam. Itu jawaban yang jujur.",
-    "Setiap kepingan salju punya nama. Aku hafal empat. Sisanya menolak berkenalan.",
-    "Kalau kau mendengar salju berderak dua kali, jangan menoleh. Itu bukan salju."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -40,
-      -30
-     ],
-     "do": "berdiri di tepi air, menunggu ikan menjawab"
+    {
+      "name": "Old Bram",
+      "archetype": "lucu",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "short",
+        "hair_color": "#e8e2f4",
+        "shirt": "#6b5a3a",
+        "pants": "#3a2a1a"
+      },
+      "lines": [
+        "Dulu di bangku itu, tukang roti Halloran duduk tiap sore. Ia bilang rotinya lebih enak kalau didinginkan angin sungai. Bohong. Tapi anginnya memang enak.",
+        "Kau tahu kenapa alun-alun ini kebesaran? Karena dulu penuh. Itu saja. Bukan misteri.",
+        "Anak-anak itu berisik sekali. Bagus. Kalau sepi, aku yang harus berisik sendiri.",
+        "Jangan dengarkan aku terlalu serius. Aku ini cuma orang tua yang punya kursi favorit.",
+        "Ayahku dulu ngeluh soal antrean di penggilingan. Antrean! Di sini! Orang tua memang suka melebih-lebihkan."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            30,
+            -40
+          ],
+          "do": "duduk di bangku, memandangi air mancur yang kering"
+        },
+        "sore": {
+          "at": [
+            16,
+            -18
+          ],
+          "do": "bercerita kepada siapa pun yang duduk"
+        },
+        "malam": {
+          "at": [
+            70,
+            30
+          ],
+          "do": "tidur di bangku — katanya kasurnya terlalu jauh"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 60,
+          "conscientiousness": 45,
+          "extraversion": 78,
+          "agreeableness": 88,
+          "neuroticism": 30
+        },
+        "moral": 82,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Ia mengingat nama-nama yang tak diingat siapa pun lagi.",
+            "weight": 8
+          }
+        ],
+        "talent": 22,
+        "effort": 40,
+        "opportunity": 0,
+        "luck": 60,
+        "mental_state": 92
+      },
+      "lpc_sheet": "old_bram",
+      "anchor": [
+        736,
+        800
+      ],
+      "evidence_line": 4,
+      "evidence_id": "ev_ashbrook_bram_ingat_ayahnya",
+      "_note_bukti": "BARIS KE-5 = kesaksian, dan Bram TIDAK TAHU ia sedang bersaksi. Ia bergosip tentang bapaknya yang suka membesar-besarkan. Empat baris gosip mendahuluinya BUKAN sebagai basa-basi melainkan sebagai tangga: pemain harus mengobrol berkali-kali sebelum sampai ke sana, dan waktu ia sampai, nadanya tetap obrolan sore. Bukti yang diucapkan seperti bukti berhenti jadi bukti — ia jadi tugas."
     },
-    "sore": {
-     "at": [
-      30,
-      20
-     ],
-     "do": "mengamati sesuatu yang tak terlihat"
+    {
+      "name": "Lyra",
+      "archetype": "misterius",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "long",
+        "hair_color": "#4a3320",
+        "shirt": "#7a4d3a",
+        "pants": "#3a3a2a"
+      },
+      "lines": [
+        "Kenapa aku tinggal? Ini rumahku.",
+        "Semua orang seusiaku sudah pergi. Mereka mengirim surat. Merrit yang mengantarnya.",
+        "Kalau kau mau membantu, angkat yang berat. Kalau tidak, minggir sedikit.",
+        "Aku tidak menunggu apa-apa. Aku cuma tidak pergi. Itu dua hal berbeda."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -120,
+            -30
+          ],
+          "do": "menyapu teras, mengangkut air"
+        },
+        "sore": {
+          "at": [
+            40,
+            60
+          ],
+          "do": "memperbaiki pagar kebun yang masih dirawat"
+        },
+        "malam": {
+          "at": [
+            -100,
+            70
+          ],
+          "do": "pulang; jendelanya padam lebih dulu dari lampu Merrit"
+        }
+      },
+      "profile": {
+        "temperament": "koleris",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 55,
+          "conscientiousness": 82,
+          "extraversion": 42,
+          "agreeableness": 60,
+          "neuroticism": 38
+        },
+        "moral": 76,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Semua orang seusianya pergi. Ia tidak.",
+            "weight": 12
+          }
+        ],
+        "talent": 48,
+        "effort": 85,
+        "opportunity": 0,
+        "luck": 45,
+        "mental_state": 88
+      }
     },
-    "malam": {
-     "at": [
-      -10,
-      60
-     ],
-     "do": "duduk di bawah lampu, bicara sendiri"
+    {
+      "name": "Spoon Man",
+      "archetype": "aneh",
+      "oddwalker": true,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "spiky",
+        "hair_color": "#8f8a7a",
+        "shirt": "#3a4a3a",
+        "pants": "#2b2b3a"
+      },
+      "lines": [
+        "Sendok. Kau punya sendok? Tidak? Tidak apa-apa. Nanti ada.",
+        "Orang membuang sendok kalau pindah. Terlalu kecil untuk dibawa, terlalu kecil untuk diingat.",
+        "Aku punya seratus dua puluh empat. Dulu seratus dua puluh tiga. Kemarin ada yang pindah.",
+        "Kau pikir aku gila. Tidak apa-apa. Sendoknya tetap ada."
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            120,
+            80
+          ],
+          "do": "menyisir rumah-rumah kosong, memungut yang tertinggal"
+        },
+        "sore": {
+          "at": [
+            -60,
+            100
+          ],
+          "do": "menghitung ulang koleksinya di tanah"
+        },
+        "malam": {
+          "at": [
+            150,
+            40
+          ],
+          "do": "berdiri diam menghadap rumah yang sudah lama gelap"
+        }
+      },
+      "profile": {
+        "temperament": "melankolis",
+        "temperament_sub": "plegmatis",
+        "big5": {
+          "openness": 80,
+          "conscientiousness": 30,
+          "extraversion": 25,
+          "agreeableness": 65,
+          "neuroticism": 62
+        },
+        "moral": 72,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Sesuatu yang tak pernah dibayar tuntas — dan tak pernah ia jelaskan.",
+            "weight": 15
+          }
+        ],
+        "talent": 18,
+        "effort": 55,
+        "opportunity": 0,
+        "luck": 25,
+        "mental_state": 70
+      }
+    },
+    {
+      "name": "Halloran Muda",
+      "archetype": "tak_masuk_akal",
+      "oddwalker": false,
+      "config": {
+        "head_race": "human",
+        "torso_race": "human",
+        "legs_race": "human",
+        "hair": "short",
+        "hair_color": "#c9a86a",
+        "shirt": "#d8c39a",
+        "pants": "#5c4a3a"
+      },
+      "lines": [
+        "Dua ratus roti. Setiap pagi. Ya, aku tahu kami cuma empat puluh orang.",
+        "Kakekku memanggang untuk seribu lima ratus. Aku memanggang untuk seribu lima ratus.",
+        "Sisanya? Ayam. Anjing. Angin. Sungai. Ada saja yang makan.",
+        "Kalau suatu hari mereka pulang dan tak ada roti — bagaimana?"
+      ],
+      "schedule": {
+        "pagi": {
+          "at": [
+            -40,
+            -90
+          ],
+          "do": "memanggang dua ratus roti untuk empat puluh orang"
+        },
+        "sore": {
+          "at": [
+            -20,
+            -60
+          ],
+          "do": "membagikan sisa roti kepada siapa pun, termasuk ayam"
+        },
+        "malam": {
+          "at": [
+            -60,
+            -70
+          ],
+          "do": "menyalakan tungku untuk besok pagi"
+        }
+      },
+      "profile": {
+        "temperament": "sanguinis",
+        "temperament_sub": "koleris",
+        "big5": {
+          "openness": 50,
+          "conscientiousness": 90,
+          "extraversion": 65,
+          "agreeableness": 80,
+          "neuroticism": 42
+        },
+        "moral": 84,
+        "moral_drift": 0,
+        "trauma": [
+          {
+            "event": "Ia memanggang untuk kota yang sudah pergi — dan tak sanggup berhenti.",
+            "weight": 14
+          }
+        ],
+        "talent": 35,
+        "effort": 95,
+        "opportunity": 0,
+        "luck": 40,
+        "mental_state": 85
+      }
     }
-   },
-   "profile": {
-    "temperament": "plegmatis",
-    "temperament_sub": "melankolis",
-    "big5": {
-     "openness": 80,
-     "conscientiousness": 50,
-     "extraversion": 25,
-     "agreeableness": 75,
-     "neuroticism": 40
-    },
-    "moral": 80,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 35,
-    "effort": 55,
-    "opportunity": 0,
-    "luck": 45,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Orang Tanpa Mantel",
-   "archetype": "misterius",
-   "oddwalker": true,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "none",
-    "hair_color": "#e8e2f4",
-    "shirt": "#2b2b3a",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Dingin? Aku tak merasa dingin sejak lama. Sejak sesuatu di dalamku padam.",
-    "Kau sedang mencari sesuatu. Semua yang naik ke sini mencari sesuatu. Sedikit yang tahu apa.",
-    "Puncak itu bukan tujuan. Puncak itu pertanyaan. Naiklah kalau kau siap ditanyai."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      60,
-      10
-     ],
-     "do": "menghitung orang yang lewat"
-    },
-    "sore": {
-     "at": [
-      -50,
-      40
-     ],
-     "do": "berdiri diam terlalu lama"
-    },
-    "malam": {
-     "at": [
-      0,
-      -50
-     ],
-     "do": "menatap langit, tak berkedip"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 90,
-     "conscientiousness": 70,
-     "extraversion": 15,
-     "agreeableness": 35,
-     "neuroticism": 25
-    },
-    "moral": 65,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Sesuatu di dalamnya padam. Ia tak menyebutkan apa.",
-      "weight": 45
-     }
-    ],
-    "talent": 90,
-    "effort": 80,
-    "opportunity": 0,
-    "luck": 30,
-    "mental_state": 55
-   }
-  },
-  {
-   "name": "Grim si Wolfkin",
-   "archetype": "lucu",
-   "oddwalker": false,
-   "config": {
-    "head_race": "wolfkin",
-    "torso_race": "wolfkin",
-    "legs_race": "wolfkin",
-    "hair": "none",
-    "hair_color": "#241f36",
-    "shirt": "#8f2611",
-    "pants": "#453d5c"
-   },
-   "lines": [
-    "Aku melolong tiap purnama. Bukan naluri. Tetangga sebelah benci itu. Itu alasannya.",
-    "Kata orang wolfkin pelacak ulung. Aku tersesat di rumahku sendiri kemarin.",
-    "Mau kutunjukkan jalan ke puncak? Jangan. Sungguh, jangan mau."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      20,
-      40
-     ],
-     "do": "menawarkan barang yang tak ia miliki"
-    },
-    "sore": {
-     "at": [
-      -60,
-      0
-     ],
-     "do": "mengganggu pedagang"
-    },
-    "malam": {
-     "at": [
-      40,
-      50
-     ],
-     "do": "pulang sambil bernyanyi fals"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 50,
-     "conscientiousness": 30,
-     "extraversion": 85,
-     "agreeableness": 65,
-     "neuroticism": 30
-    },
-    "moral": 70,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 40,
-    "effort": 25,
-    "opportunity": 0,
-    "luck": 55,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Pendaki Tua Baruk",
-   "archetype": "tragis",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "short",
-    "hair_color": "#b0b0c0",
-    "shirt": "#453d5c",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Empat orang naik. Satu turun. Aku yang turun. Itu bukan keberuntungan, itu hukuman.",
-    "Aku masih menyimpan tali mereka. Tak sanggup kubuang. Tak sanggup kupakai.",
-    "Kalau kau naik, jangan tinggalkan siapa pun. Bahkan yang menyuruhmu pergi."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -30,
-      50
-     ],
-     "do": "menjemur dua porsi pakaian"
-    },
-    "sore": {
-     "at": [
-      -70,
-      -20
-     ],
-     "do": "menatap arah gua/gunung"
-    },
-    "malam": {
-     "at": [
-      -20,
-      30
-     ],
-     "do": "menyalakan lentera untuk yang tak pulang"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 45,
-     "conscientiousness": 85,
-     "extraversion": 30,
-     "agreeableness": 70,
-     "neuroticism": 75
-    },
-    "moral": 90,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Empat naik, satu turun. Ia yang turun.",
-      "weight": 60
-     }
-    ],
-    "talent": 55,
-    "effort": 90,
-    "opportunity": 0,
-    "luck": 15,
-    "mental_state": 40
-   }
-  },
-  {
-   "name": "Nenek Es",
-   "archetype": "tak_masuk_akal",
-   "oddwalker": false,
-   "config": {
-    "head_race": "frostkin",
-    "torso_race": "frostkin",
-    "legs_race": "frostkin",
-    "hair": "bun",
-    "hair_color": "#eefaff",
-    "shirt": "#1e3a5c",
-    "pants": "#3a6fa0"
-   },
-   "lines": [
-    "Bulan marah padaku. Sudah dua puluh tahun. Aku tak tahu salahku apa.",
-    "Tiap purnama ia menatap tepat ke jendelaku. Ke JENDELAKU. Coba lihat sendiri.",
-    "Aku sudah minta maaf. Ke langit. Keras-keras. Tetangga yang marah sekarang."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      50,
-      -40
-     ],
-     "do": "menyusun benda dengan urutan rahasia"
-    },
-    "sore": {
-     "at": [
-      10,
-      10
-     ],
-     "do": "berjalan mundur mengelilingi alun-alun"
-    },
-    "malam": {
-     "at": [
-      -45,
-      -35
-     ],
-     "do": "berdebat dengan bulan"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "sanguinis",
-    "big5": {
-     "openness": 75,
-     "conscientiousness": 40,
-     "extraversion": 60,
-     "agreeableness": 60,
-     "neuroticism": 90
-    },
-    "moral": 75,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 20,
-    "effort": 45,
-    "opportunity": 0,
-    "luck": 25,
-    "mental_state": 100
-   }
-  }
- ],
- "candyveil_palace": [
-  {
-   "name": "Tuan Karamel",
-   "archetype": "aneh",
-   "oddwalker": false,
-   "config": {
-    "head_race": "candyfolk",
-    "torso_race": "candyfolk",
-    "legs_race": "candyfolk",
-    "hair": "short",
-    "hair_color": "#f7c6d9",
-    "shirt": "#8a3a6b",
-    "pants": "#5c2380"
-   },
-   "lines": [
-    "Aku menjilat tembok istana tiap pagi. Untuk memastikan rasanya belum berubah.",
-    "Hari ini rasanya sedikit... asin. Itu tak pernah terjadi sebelumnya.",
-    "Kalau tembok mulai asin, sesuatu di dalam istana sedang menangis."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -40,
-      -30
-     ],
-     "do": "berdiri di tepi air, menunggu ikan menjawab"
-    },
-    "sore": {
-     "at": [
-      30,
-      20
-     ],
-     "do": "mengamati sesuatu yang tak terlihat"
-    },
-    "malam": {
-     "at": [
-      -10,
-      60
-     ],
-     "do": "duduk di bawah lampu, bicara sendiri"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 70,
-     "conscientiousness": 80,
-     "extraversion": 35,
-     "agreeableness": 65,
-     "neuroticism": 60
-    },
-    "moral": 75,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 45,
-    "effort": 85,
-    "opportunity": 0,
-    "luck": 40,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Gadis Bergula",
-   "archetype": "misterius",
-   "oddwalker": false,
-   "config": {
-    "head_race": "candyfolk",
-    "torso_race": "candyfolk",
-    "legs_race": "candyfolk",
-    "hair": "long",
-    "hair_color": "#ffd9ec",
-    "shirt": "#c9a227",
-    "pants": "#8a3a6b"
-   },
-   "lines": [
-    "Ratu tersenyum pada semua orang. Ia tersenyum juga saat sendirian. Di kegelapan.",
-    "Undangan pesta teh datang sendiri. Kau tak mencarinya. Ia yang mencium bau manis dirimu.",
-    "Jangan habiskan cangkirmu sampai dasar. Di dasar ada namamu."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      60,
-      10
-     ],
-     "do": "menghitung orang yang lewat"
-    },
-    "sore": {
-     "at": [
-      -50,
-      40
-     ],
-     "do": "berdiri diam terlalu lama"
-    },
-    "malam": {
-     "at": [
-      0,
-      -50
-     ],
-     "do": "menatap langit, tak berkedip"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 85,
-     "conscientiousness": 65,
-     "extraversion": 40,
-     "agreeableness": 40,
-     "neuroticism": 50
-    },
-    "moral": 60,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 70,
-    "effort": 60,
-    "opportunity": 0,
-    "luck": 50,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Bocah Lolipop",
-   "archetype": "lucu",
-   "oddwalker": false,
-   "config": {
-    "head_race": "candyfolk",
-    "torso_race": "candyfolk",
-    "legs_race": "candyfolk",
-    "hair": "spiky",
-    "hair_color": "#7de0d0",
-    "shirt": "#2e6b3f",
-    "pants": "#453d5c"
-   },
-   "lines": [
-    "Aku makan diriku sendiri waktu kecil. Jari kelingking. Enak. Tak kusesali.",
-    "Kau mau gigit lenganku? Semua orang mau. Jawabannya tetap tidak.",
-    "Ayahku sirup. Ibuku sirup. Aku... aku sedang mencari tahu."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      20,
-      40
-     ],
-     "do": "menawarkan barang yang tak ia miliki"
-    },
-    "sore": {
-     "at": [
-      -60,
-      0
-     ],
-     "do": "mengganggu pedagang"
-    },
-    "malam": {
-     "at": [
-      40,
-      50
-     ],
-     "do": "pulang sambil bernyanyi fals"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 75,
-     "conscientiousness": 25,
-     "extraversion": 90,
-     "agreeableness": 80,
-     "neuroticism": 45
-    },
-    "moral": 70,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 30,
-    "effort": 20,
-    "opportunity": 0,
-    "luck": 80,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Pembuat Kue Tanpa Nama",
-   "archetype": "tragis",
-   "oddwalker": false,
-   "config": {
-    "head_race": "candyfolk",
-    "torso_race": "human",
-    "legs_race": "candyfolk",
-    "hair": "short",
-    "hair_color": "#b0b0c0",
-    "shirt": "#5c4a3a",
-    "pants": "#3a2a1a"
-   },
-   "lines": [
-    "Aku membuat kue untuk pesta teh setiap tahun. Tamunya tak pernah pulang.",
-    "Aku tak boleh berhenti membuatnya. Kalau berhenti... aku yang jadi hidangan.",
-    "Cicipi kueku. Tolong. Biar ada satu orang yang memilih memakannya."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -30,
-      50
-     ],
-     "do": "menjemur dua porsi pakaian"
-    },
-    "sore": {
-     "at": [
-      -70,
-      -20
-     ],
-     "do": "menatap arah gua/gunung"
-    },
-    "malam": {
-     "at": [
-      -20,
-      30
-     ],
-     "do": "menyalakan lentera untuk yang tak pulang"
-    }
-   },
-   "profile": {
-    "temperament": "plegmatis",
-    "temperament_sub": "melankolis",
-    "big5": {
-     "openness": 45,
-     "conscientiousness": 90,
-     "extraversion": 20,
-     "agreeableness": 85,
-     "neuroticism": 80
-    },
-    "moral": 85,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Ia membuat kue untuk tamu yang tak pernah pulang.",
-      "weight": 60
-     }
-    ],
-    "talent": 65,
-    "effort": 95,
-    "opportunity": 0,
-    "luck": 5,
-    "mental_state": 35
-   }
-  },
-  {
-   "name": "Si Terbalik",
-   "archetype": "tak_masuk_akal",
-   "oddwalker": false,
-   "config": {
-    "head_race": "candyfolk",
-    "torso_race": "candyfolk",
-    "legs_race": "candyfolk",
-    "hair": "long",
-    "hair_color": "#ff9db8",
-    "shirt": "#3a6fa0",
-    "pants": "#c9a227"
-   },
-   "lines": [
-    "Aku hanya berjalan mundur. Ke depan sudah pernah. Membosankan.",
-    "Mundur itu jujur: kau melihat apa yang kau tinggalkan, bukan yang kau bayangkan.",
-    "Suatu hari aku akan mundur cukup jauh sampai bertemu diriku yang dulu. Kami tak akan saling sapa."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      50,
-      -40
-     ],
-     "do": "menyusun benda dengan urutan rahasia"
-    },
-    "sore": {
-     "at": [
-      10,
-      10
-     ],
-     "do": "berjalan mundur mengelilingi alun-alun"
-    },
-    "malam": {
-     "at": [
-      -45,
-      -35
-     ],
-     "do": "berdebat dengan bulan"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "melankolis",
-    "big5": {
-     "openness": 99,
-     "conscientiousness": 30,
-     "extraversion": 55,
-     "agreeableness": 60,
-     "neuroticism": 50
-    },
-    "moral": 70,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 50,
-    "effort": 40,
-    "opportunity": 0,
-    "luck": 60,
-    "mental_state": 100
-   }
-  }
- ],
- "desert_ruins": [
-  {
-   "name": "Penggali Rahim",
-   "archetype": "aneh",
-   "oddwalker": false,
-   "config": {
-    "head_race": "lizardkin",
-    "torso_race": "lizardkin",
-    "legs_race": "lizardkin",
-    "hair": "none",
-    "hair_color": "#6b8f3a",
-    "shirt": "#c9a227",
-    "pants": "#5c4a3a"
-   },
-   "lines": [
-    "Aku menggali bukan untuk emas. Aku menggali untuk mendengar pasir berhenti bicara.",
-    "Di bawah sana ada ruangan yang lebih tua dari kata 'tua'.",
-    "Jangan sebut namamu keras-keras di reruntuhan. Ada yang mengoleksi nama."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -40,
-      -30
-     ],
-     "do": "berdiri di tepi air, menunggu ikan menjawab"
-    },
-    "sore": {
-     "at": [
-      30,
-      20
-     ],
-     "do": "mengamati sesuatu yang tak terlihat"
-    },
-    "malam": {
-     "at": [
-      -10,
-      60
-     ],
-     "do": "duduk di bawah lampu, bicara sendiri"
-    }
-   },
-   "profile": {
-    "temperament": "koleris",
-    "temperament_sub": "melankolis",
-    "big5": {
-     "openness": 85,
-     "conscientiousness": 75,
-     "extraversion": 35,
-     "agreeableness": 45,
-     "neuroticism": 45
-    },
-    "moral": 65,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 60,
-    "effort": 80,
-    "opportunity": 0,
-    "luck": 30,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Yang Menunggu",
-   "archetype": "misterius",
-   "oddwalker": true,
-   "config": {
-    "head_race": "undead",
-    "torso_race": "undead",
-    "legs_race": "undead",
-    "hair": "none",
-    "hair_color": "#b0b0c0",
-    "shirt": "#3a3a4a",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Aku menunggu. Sudah lama. Kau bukan yang kutunggu — tapi kau mendekati bentuknya.",
-    "Kami banyak. Kami tersebar. Kami tidak berkumpul. Belum.",
-    "Kalau ia bertanya siapa yang memberitahumu, katakan: tak ada siapa-siapa."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      60,
-      10
-     ],
-     "do": "menghitung orang yang lewat"
-    },
-    "sore": {
-     "at": [
-      -50,
-      40
-     ],
-     "do": "berdiri diam terlalu lama"
-    },
-    "malam": {
-     "at": [
-      0,
-      -50
-     ],
-     "do": "menatap langit, tak berkedip"
-    }
-   },
-   "profile": {
-    "temperament": "plegmatis",
-    "temperament_sub": "melankolis",
-    "big5": {
-     "openness": 90,
-     "conscientiousness": 60,
-     "extraversion": 10,
-     "agreeableness": 30,
-     "neuroticism": 20
-    },
-    "moral": 50,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 75,
-    "effort": 50,
-    "opportunity": 0,
-    "luck": 40,
-    "mental_state": 70
-   }
-  },
-  {
-   "name": "Saudagar Kehausan",
-   "archetype": "lucu",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human2",
-    "torso_race": "human2",
-    "legs_race": "human2",
-    "hair": "short",
-    "hair_color": "#241f36",
-    "shirt": "#8f2611",
-    "pants": "#5c4a3a"
-   },
-   "lines": [
-    "Kujual pasir. Di gurun. Ya, aku tahu. Modalnya nol, untungnya juga.",
-    "Pelangganku satu: dia beli karena kasihan. Dia sekarang kaya. Aku tetap begini.",
-    "Mau beli pasir? Kubungkus rapi. Ada pitanya."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      20,
-      40
-     ],
-     "do": "menawarkan barang yang tak ia miliki"
-    },
-    "sore": {
-     "at": [
-      -60,
-      0
-     ],
-     "do": "mengganggu pedagang"
-    },
-    "malam": {
-     "at": [
-      40,
-      50
-     ],
-     "do": "pulang sambil bernyanyi fals"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 50,
-     "conscientiousness": 35,
-     "extraversion": 88,
-     "agreeableness": 80,
-     "neuroticism": 40
-    },
-    "moral": 75,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 20,
-    "effort": 55,
-    "opportunity": 0,
-    "luck": 8,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Janda Sungai Kering",
-   "archetype": "tragis",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human2",
-    "torso_race": "human2",
-    "legs_race": "human2",
-    "hair": "long",
-    "hair_color": "#3a2a1a",
-    "shirt": "#5c4a3a",
-    "pants": "#453d5c"
-   },
-   "lines": [
-    "Dulu ada sungai di sini. Suamiku belajar berenang untukku. Sungainya pergi duluan.",
-    "Aku masih menjemur baju menghadap arah air. Kebiasaan itu lebih keras kepala dari aku.",
-    "Kalau kau menemukan air di bawah reruntuhan — jangan minum semua. Sisakan untuk yang pulang."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -30,
-      50
-     ],
-     "do": "menjemur dua porsi pakaian"
-    },
-    "sore": {
-     "at": [
-      -70,
-      -20
-     ],
-     "do": "menatap arah gua/gunung"
-    },
-    "malam": {
-     "at": [
-      -20,
-      30
-     ],
-     "do": "menyalakan lentera untuk yang tak pulang"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 40,
-     "conscientiousness": 70,
-     "extraversion": 25,
-     "agreeableness": 85,
-     "neuroticism": 80
-    },
-    "moral": 88,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Suaminya belajar berenang untuknya. Sungainya pergi duluan.",
-      "weight": 50
-     }
-    ],
-    "talent": 35,
-    "effort": 65,
-    "opportunity": 0,
-    "luck": 15,
-    "mental_state": 50
-   }
-  },
-  {
-   "name": "Penghitung Bayangan",
-   "archetype": "tak_masuk_akal",
-   "oddwalker": false,
-   "config": {
-    "head_race": "lizardkin",
-    "torso_race": "human",
-    "legs_race": "lizardkin",
-    "hair": "spiky",
-    "hair_color": "#6b8f3a",
-    "shirt": "#453d5c",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Aku menghitung bayangan, bukan orang. Bayangan lebih jujur soal jumlahnya.",
-    "Hari ini ada satu bayangan lebih banyak daripada orang di alun-alun. Sudah tiga hari begitu.",
-    "Bayanganmu... berdiri sedikit terlalu tegak. Tak apa. Aku tak akan bilang siapa-siapa."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      50,
-      -40
-     ],
-     "do": "menyusun benda dengan urutan rahasia"
-    },
-    "sore": {
-     "at": [
-      10,
-      10
-     ],
-     "do": "berjalan mundur mengelilingi alun-alun"
-    },
-    "malam": {
-     "at": [
-      -45,
-      -35
-     ],
-     "do": "berdebat dengan bulan"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 92,
-     "conscientiousness": 85,
-     "extraversion": 20,
-     "agreeableness": 35,
-     "neuroticism": 65
-    },
-    "moral": 60,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 70,
-    "effort": 75,
-    "opportunity": 0,
-    "luck": 35,
-    "mental_state": 100
-   }
-  }
- ],
- "storm_island": [
-  {
-   "name": "Pelaut Tuli",
-   "archetype": "aneh",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "short",
-    "hair_color": "#b0b0c0",
-    "shirt": "#1e3a5c",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Petir merenggut pendengaranku. Sebagai gantinya aku bisa MERASAKAN guruh.",
-    "Guruh hari ini bilang: ada yang datang dari jauh. Itu kau, ya?",
-    "Langit tak pernah berbohong. Ia cuma sering tak diajak bicara."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -40,
-      -30
-     ],
-     "do": "berdiri di tepi air, menunggu ikan menjawab"
-    },
-    "sore": {
-     "at": [
-      30,
-      20
-     ],
-     "do": "mengamati sesuatu yang tak terlihat"
-    },
-    "malam": {
-     "at": [
-      -10,
-      60
-     ],
-     "do": "duduk di bawah lampu, bicara sendiri"
-    }
-   },
-   "profile": {
-    "temperament": "plegmatis",
-    "temperament_sub": "sanguinis",
-    "big5": {
-     "openness": 80,
-     "conscientiousness": 60,
-     "extraversion": 50,
-     "agreeableness": 75,
-     "neuroticism": 30
-    },
-    "moral": 80,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Petir merenggut pendengarannya. Ia menyebutnya pertukaran.",
-      "weight": 25
-     }
-    ],
-    "talent": 55,
-    "effort": 70,
-    "opportunity": 0,
-    "luck": 45,
-    "mental_state": 75
-   }
-  },
-  {
-   "name": "Penjaga Menara Tanpa Kunci",
-   "archetype": "misterius",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "long",
-    "hair_color": "#3a6fa0",
-    "shirt": "#5c2380",
-    "pants": "#453d5c"
-   },
-   "lines": [
-    "Menara ini tak pernah kukunci. Yang pantas masuk akan masuk. Sisanya tersesat di tangga.",
-    "Ada yang naik dan tak pernah turun. Aku tak menghitung mereka sebagai hilang.",
-    "Petir bukan hukuman. Petir itu jawaban atas pertanyaan yang tak sempat kau ucapkan."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      60,
-      10
-     ],
-     "do": "menghitung orang yang lewat"
-    },
-    "sore": {
-     "at": [
-      -50,
-      40
-     ],
-     "do": "berdiri diam terlalu lama"
-    },
-    "malam": {
-     "at": [
-      0,
-      -50
-     ],
-     "do": "menatap langit, tak berkedip"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 88,
-     "conscientiousness": 75,
-     "extraversion": 25,
-     "agreeableness": 55,
-     "neuroticism": 35
-    },
-    "moral": 70,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 80,
-    "effort": 70,
-    "opportunity": 0,
-    "luck": 40,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Bocah Layangan",
-   "archetype": "lucu",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human2",
-    "torso_race": "human2",
-    "legs_race": "human2",
-    "hair": "spiky",
-    "hair_color": "#241f36",
-    "shirt": "#2e6b3f",
-    "pants": "#6b4226"
-   },
-   "lines": [
-    "Aku main layangan saat badai. Sekali. Rambutku masih begini sampai sekarang.",
-    "Kata ibu, aku tak boleh menyentuh logam waktu hujan. Aku tak sengaja jadi logam.",
-    "Kalau kau lihat layangan tanpa benang di langit — itu punyaku. Sampaikan salamku."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      20,
-      40
-     ],
-     "do": "menawarkan barang yang tak ia miliki"
-    },
-    "sore": {
-     "at": [
-      -60,
-      0
-     ],
-     "do": "mengganggu pedagang"
-    },
-    "malam": {
-     "at": [
-      40,
-      50
-     ],
-     "do": "pulang sambil bernyanyi fals"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 70,
-     "conscientiousness": 20,
-     "extraversion": 92,
-     "agreeableness": 75,
-     "neuroticism": 35
-    },
-    "moral": 75,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 45,
-    "effort": 25,
-    "opportunity": 0,
-    "luck": 90,
-    "mental_state": 100
-   }
-  },
-  {
-   "name": "Ibu Karam",
-   "archetype": "tragis",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "bun",
-    "hair_color": "#3a2a1a",
-    "shirt": "#3a3a4a",
-    "pants": "#453d5c"
-   },
-   "lines": [
-    "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
-    "Aku menyalakan lentera tiap malam. Bukan agar mereka pulang. Agar aku punya alasan bangun.",
-    "Kau pelaut? Bukan? Bagus. Tetaplah begitu."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -30,
-      50
-     ],
-     "do": "menjemur dua porsi pakaian"
-    },
-    "sore": {
-     "at": [
-      -70,
-      -20
-     ],
-     "do": "menatap arah gua/gunung"
-    },
-    "malam": {
-     "at": [
-      -20,
-      30
-     ],
-     "do": "menyalakan lentera untuk yang tak pulang"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 35,
-     "conscientiousness": 80,
-     "extraversion": 25,
-     "agreeableness": 85,
-     "neuroticism": 85
-    },
-    "moral": 90,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Kapal itu berangkat cerah. Semua kapal berangkat cerah.",
-      "weight": 60
-     }
-    ],
-    "talent": 25,
-    "effort": 80,
-    "opportunity": 0,
-    "luck": 10,
-    "mental_state": 40
-   }
-  },
-  {
-   "name": "Si Penantang Petir",
-   "archetype": "tak_masuk_akal",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human2",
-    "torso_race": "human2",
-    "legs_race": "human2",
-    "hair": "long",
-    "hair_color": "#8f2611",
-    "shirt": "#c9a227",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Aku menantang petir berkelahi. Setiap badai. Sejauh ini seri: nol-nol.",
-    "Ia belum berani menyambarku. Itu artinya ia takut. Jelas sekali.",
-    "Kalau suatu hari aku tak ada di sini — berarti pertandingannya sudah selesai. Jangan tanya siapa menang."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      50,
-      -40
-     ],
-     "do": "menyusun benda dengan urutan rahasia"
-    },
-    "sore": {
-     "at": [
-      10,
-      10
-     ],
-     "do": "berjalan mundur mengelilingi alun-alun"
-    },
-    "malam": {
-     "at": [
-      -45,
-      -35
-     ],
-     "do": "berdebat dengan bulan"
-    }
-   },
-   "profile": {
-    "temperament": "koleris",
-    "temperament_sub": "sanguinis",
-    "big5": {
-     "openness": 65,
-     "conscientiousness": 25,
-     "extraversion": 90,
-     "agreeableness": 45,
-     "neuroticism": 25
-    },
-    "moral": 65,
-    "moral_drift": 0,
-    "trauma": [],
-    "talent": 35,
-    "effort": 30,
-    "opportunity": 0,
-    "luck": 95,
-    "mental_state": 100
-   }
-  }
- ],
- "ashbrook": [
-  {
-   "name": "Merrit Fane",
-   "archetype": "tragis",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "long",
-    "hair_color": "#cfc9d6",
-    "shirt": "#4a4436",
-    "pants": "#2f2a24"
-   },
-   "lines": [
-    "Kamar-kamar itu masih kusapu. Bukan karena ada yang datang. Karena kalau berdebu, aku akan terbiasa.",
-    "Tulisan tanganmu jelek. Bagus. Yang jelek biasanya jujur.",
-    "Dulu aku hafal tulisan tangan setiap keluarga di sini. Sekarang aku hafal semuanya karena tinggal sedikit.",
-    "Kalau kau pergi ke Greenvale, jangan menoleh. Atau menolehlah. Terserah. Lampunya tetap menyala."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -232,
-      24
-     ],
-     "do": "membuka rumah singgah, menyortir surat yang tak banyak"
-    },
-    "sore": {
-     "at": [
-      -180,
-      40
-     ],
-     "do": "menyapu kamar yang tak ditiduri siapa pun"
-    },
-    "malam": {
-     "at": [
-      -236,
-      10
-     ],
-     "do": "menyalakan lampu, lalu duduk"
-    }
-   },
-   "profile": {
-    "temperament": "plegmatis",
-    "temperament_sub": "melankolis",
-    "big5": {
-     "openness": 45,
-     "conscientiousness": 80,
-     "extraversion": 40,
-     "agreeableness": 85,
-     "neuroticism": 55
-    },
-    "moral": 88,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Kepergian yang tak pernah dijelaskan. Empat puluh tahun ketidakpastian.",
-      "weight": 18
-     }
-    ],
-    "talent": 30,
-    "effort": 88,
-    "opportunity": 0,
-    "luck": 35,
-    "mental_state": 78
-   }
-  },
-  {
-   "name": "Old Bram",
-   "archetype": "lucu",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "short",
-    "hair_color": "#e8e2f4",
-    "shirt": "#6b5a3a",
-    "pants": "#3a2a1a"
-   },
-   "lines": [
-    "Dulu di bangku itu, tukang roti Halloran duduk tiap sore. Ia bilang rotinya lebih enak kalau didinginkan angin sungai. Bohong. Tapi anginnya memang enak.",
-    "Kau tahu kenapa alun-alun ini kebesaran? Karena dulu penuh. Itu saja. Bukan misteri.",
-    "Anak-anak itu berisik sekali. Bagus. Kalau sepi, aku yang harus berisik sendiri.",
-    "Jangan dengarkan aku terlalu serius. Aku ini cuma orang tua yang punya kursi favorit."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      30,
-      -40
-     ],
-     "do": "duduk di bangku, memandangi air mancur yang kering"
-    },
-    "sore": {
-     "at": [
-      16,
-      -18
-     ],
-     "do": "bercerita kepada siapa pun yang duduk"
-    },
-    "malam": {
-     "at": [
-      70,
-      30
-     ],
-     "do": "tidur di bangku — katanya kasurnya terlalu jauh"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 60,
-     "conscientiousness": 45,
-     "extraversion": 78,
-     "agreeableness": 88,
-     "neuroticism": 30
-    },
-    "moral": 82,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Ia mengingat nama-nama yang tak diingat siapa pun lagi.",
-      "weight": 8
-     }
-    ],
-    "talent": 22,
-    "effort": 40,
-    "opportunity": 0,
-    "luck": 60,
-    "mental_state": 92
-   }
-  },
-  {
-   "name": "Lyra",
-   "archetype": "misterius",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "long",
-    "hair_color": "#4a3320",
-    "shirt": "#7a4d3a",
-    "pants": "#3a3a2a"
-   },
-   "lines": [
-    "Kenapa aku tinggal? Ini rumahku.",
-    "Semua orang seusiaku sudah pergi. Mereka mengirim surat. Merrit yang mengantarnya.",
-    "Kalau kau mau membantu, angkat yang berat. Kalau tidak, minggir sedikit.",
-    "Aku tidak menunggu apa-apa. Aku cuma tidak pergi. Itu dua hal berbeda."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -120,
-      -30
-     ],
-     "do": "menyapu teras, mengangkut air"
-    },
-    "sore": {
-     "at": [
-      40,
-      60
-     ],
-     "do": "memperbaiki pagar kebun yang masih dirawat"
-    },
-    "malam": {
-     "at": [
-      -100,
-      70
-     ],
-     "do": "pulang; jendelanya padam lebih dulu dari lampu Merrit"
-    }
-   },
-   "profile": {
-    "temperament": "koleris",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 55,
-     "conscientiousness": 82,
-     "extraversion": 42,
-     "agreeableness": 60,
-     "neuroticism": 38
-    },
-    "moral": 76,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Semua orang seusianya pergi. Ia tidak.",
-      "weight": 12
-     }
-    ],
-    "talent": 48,
-    "effort": 85,
-    "opportunity": 0,
-    "luck": 45,
-    "mental_state": 88
-   }
-  },
-  {
-   "name": "Spoon Man",
-   "archetype": "aneh",
-   "oddwalker": true,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "spiky",
-    "hair_color": "#8f8a7a",
-    "shirt": "#3a4a3a",
-    "pants": "#2b2b3a"
-   },
-   "lines": [
-    "Sendok. Kau punya sendok? Tidak? Tidak apa-apa. Nanti ada.",
-    "Orang membuang sendok kalau pindah. Terlalu kecil untuk dibawa, terlalu kecil untuk diingat.",
-    "Aku punya seratus dua puluh empat. Dulu seratus dua puluh tiga. Kemarin ada yang pindah.",
-    "Kau pikir aku gila. Tidak apa-apa. Sendoknya tetap ada."
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      120,
-      80
-     ],
-     "do": "menyisir rumah-rumah kosong, memungut yang tertinggal"
-    },
-    "sore": {
-     "at": [
-      -60,
-      100
-     ],
-     "do": "menghitung ulang koleksinya di tanah"
-    },
-    "malam": {
-     "at": [
-      150,
-      40
-     ],
-     "do": "berdiri diam menghadap rumah yang sudah lama gelap"
-    }
-   },
-   "profile": {
-    "temperament": "melankolis",
-    "temperament_sub": "plegmatis",
-    "big5": {
-     "openness": 80,
-     "conscientiousness": 30,
-     "extraversion": 25,
-     "agreeableness": 65,
-     "neuroticism": 62
-    },
-    "moral": 72,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Sesuatu yang tak pernah dibayar tuntas — dan tak pernah ia jelaskan.",
-      "weight": 15
-     }
-    ],
-    "talent": 18,
-    "effort": 55,
-    "opportunity": 0,
-    "luck": 25,
-    "mental_state": 70
-   }
-  },
-  {
-   "name": "Halloran Muda",
-   "archetype": "tak_masuk_akal",
-   "oddwalker": false,
-   "config": {
-    "head_race": "human",
-    "torso_race": "human",
-    "legs_race": "human",
-    "hair": "short",
-    "hair_color": "#c9a86a",
-    "shirt": "#d8c39a",
-    "pants": "#5c4a3a"
-   },
-   "lines": [
-    "Dua ratus roti. Setiap pagi. Ya, aku tahu kami cuma empat puluh orang.",
-    "Kakekku memanggang untuk seribu lima ratus. Aku memanggang untuk seribu lima ratus.",
-    "Sisanya? Ayam. Anjing. Angin. Sungai. Ada saja yang makan.",
-    "Kalau suatu hari mereka pulang dan tak ada roti — bagaimana?"
-   ],
-   "schedule": {
-    "pagi": {
-     "at": [
-      -40,
-      -90
-     ],
-     "do": "memanggang dua ratus roti untuk empat puluh orang"
-    },
-    "sore": {
-     "at": [
-      -20,
-      -60
-     ],
-     "do": "membagikan sisa roti kepada siapa pun, termasuk ayam"
-    },
-    "malam": {
-     "at": [
-      -60,
-      -70
-     ],
-     "do": "menyalakan tungku untuk besok pagi"
-    }
-   },
-   "profile": {
-    "temperament": "sanguinis",
-    "temperament_sub": "koleris",
-    "big5": {
-     "openness": 50,
-     "conscientiousness": 90,
-     "extraversion": 65,
-     "agreeableness": 80,
-     "neuroticism": 42
-    },
-    "moral": 84,
-    "moral_drift": 0,
-    "trauma": [
-     {
-      "event": "Ia memanggang untuk kota yang sudah pergi — dan tak sanggup berhenti.",
-      "weight": 14
-     }
-    ],
-    "talent": 35,
-    "effort": 95,
-    "opportunity": 0,
-    "luck": 40,
-    "mental_state": 85
-   }
-  }
- ]
+  ]
 }

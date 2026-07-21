@@ -230,8 +230,23 @@ func persona_line() -> String:
 	if randf() < 0.25:
 		var r := RumorSystem.speak(null, _name)
 		return r.get("text", "")
-	var l: String = lines[_line_idx % lines.size()]
+	var idx := _line_idx % lines.size()
+	var l: String = lines[idx]
 	_line_idx += 1
+	# ── KESAKSIAN YANG TAK DISADARI (#226 · D-3) ─────────────────────────────
+	# Sebuah baris boleh MENJADI bukti. Yang mengucapkannya tidak tahu itu bukti —
+	# ia sedang bergosip — dan pemain tidak diberi tahu bahwa ia baru mendapat
+	# sesuatu. Nol toast, nol banner, nol suara: teks pemberitahuan yang
+	# dikembalikan `Evidence.find()` sengaja DIBUANG di sini. Yang tidak
+	# memperhatikan tidak akan pernah tahu.
+	#
+	# Ini juga sebabnya bukti ditaruh di baris TERAKHIR: empat baris sebelumnya
+	# adalah tangga, bukan basa-basi. Bukti yang jatuh di sapaan pertama terbaca
+	# sebagai imbalan; bukti yang jatuh setelah orang itu mulai terasa nyata
+	# terbaca sebagai sesuatu yang terlepas dari mulutnya.
+	var ev_id := String(_persona.get("evidence_id", ""))
+	if ev_id != "" and idx == int(_persona.get("evidence_line", -1)):
+		Evidence.find(ev_id)          # nilai baliknya SENGAJA tak dipakai
 	return l
 
 func persona() -> Dictionary:
