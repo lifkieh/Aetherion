@@ -125,6 +125,8 @@ func _ready() -> void:
 	_build_boundaries()
 	_village()
 	_pinggir_jejak()
+	_variasi_tanah()
+	_dekorasi()
 	_gerbang_selatan()
 	_pemakaman_dan_kabut()
 	_props_and_evidence()
@@ -699,6 +701,205 @@ func _pinggir_jejak() -> void:
 	for p in [Vector2(176, 176), Vector2(1760, 200), Vector2(176, 1296), Vector2(1776, 1288)]:
 		_jejak("rock.png", p, 2.2)
 		_jejak("dead_bush.png", p + Vector2(38, 22), 1.6)
+
+
+# ---------------------------------------------------- TAHAP 1.6 — VARIASI TANAH
+## Rumput seragam terbaca sebagai KANVAS, bukan tanah. Yang memecahnya bukan
+## menambah warna melainkan menambah SEBAB: tanah gundul lahir di tempat kaki lewat,
+## bunga lahir di tempat kaki tak lewat, dan rumput tinggi lahir di tempat tak ada
+## yang peduli. Bercak yang ditabur tanpa sebab cuma jadi derau berwarna.
+##
+## Semuanya dari RNG BERBIJI TETAP: tangkap-layar harus bisa diulang (#240), dan
+## "Direktur menunjuk semak yang itu" mustahil kalau semaknya pindah tiap muat.
+const BIJI_TANAH := 20260722
+
+## Petak yang TIDAK boleh ditaburi: jalan, pelataran, kaki bangunan, pemakaman,
+## ladang. Bukan soal rapi — rumput tinggi di tengah jalan membatalkan jalan itu.
+func _zona_larangan() -> Array:
+	var larang: Array = [
+		Rect2(VC.x - 272, VC.y - 176, 544, 352),          # alun-alun
+		Rect2(0, VC.y - 56, MAP_W * TILE, 112),           # jalan dagang
+		Rect2(VC.x - 30, VC.y + 168, 60, 300),            # jalan gerbang
+		Rect2(394, 1113, 460, 206),                       # pemakaman
+		Rect2(322, 982, 300, 140),                        # ladang
+		Rect2(0, float(MAP_H * TILE) - 96.0, MAP_W * TILE, 96.0),   # treeline
+	]
+	if _solids != null:
+		for cs in _solids.get_children():
+			if cs is CollisionShape2D and cs.shape is RectangleShape2D:
+				var sz: Vector2 = cs.shape.size
+				larang.append(Rect2(cs.position - sz * 0.5 - Vector2(18, 30), sz + Vector2(36, 44)))
+	return larang
+
+
+func _boleh_tabur(p: Vector2, larang: Array) -> bool:
+	for r in larang:
+		if r.has_point(p):
+			return false
+	return true
+
+
+func _variasi_tanah() -> void:
+	var larang := _zona_larangan()
+
+	# ── 1. TANAH GUNDUL DI TEMPAT KAKI LEWAT ─────────────────────────────────
+	# Bukan jalan — jalan sudah ada. Ini AMBANG: petak yang botak karena diinjak
+	# tiap hari dari pintu ke jalan. Rumput yang tumbuh sampai menyentuh pintu
+	# mengabarkan "tak ada yang keluar dari sini", dan itu cerita untuk rumah gelap,
+	# bukan untuk rumah yang dihuni.
+	#
+	# ⚠ DAFTARNYA DIPANGKAS setelah tangkap-layar. Percobaan pertama menaruh ambang di
+	#   depan TIAP pintu — dan sebagian besar mendarat DI ATAS BATU, bukan di rumput:
+	#   rumah C2 barat membuka langsung ke jalan dagang (celahnya cuma 6 px), dan tiap
+	#   bangunan bernama sudah punya setapak sendiri ke alun-alun. Tanah gundul yang
+	#   digambar di atas jalan bukan jejak kaki — itu jalan yang kotor.
+	#   Yang tersisa cuma tempat yang benar-benar RUMPUT: pintu yang jauh dari jalan,
+	#   dan sela antar-rumah tempat orang memotong jalan.
+	for amb in [
+		Rect2(600, 994, 96, 42),      # pintu rumah Lyra — 200 px dari jalan terdekat
+		Rect2(688, 1100, 96, 42),     # rumah selatan
+		Rect2(1072, 1068, 96, 42),    # rumah tenggara
+		Rect2(1328, 972, 96, 42),     # rumah timur-tenggara
+		Rect2(368, 596, 44, 62),      # SELA antar-rumah C2 — jalan potong ke distrik
+	]:
+		_tile_mod(P_T + "ladang_tanah32.png", amb, 1, Color(0.74, 0.70, 0.64))
+
+	# ── 2. RUMPUT MERAMBAT DI DISTRIK BEKAS ──────────────────────────────────
+	# z=3: DI ATAS fondasi (z=1), karena itulah tesisnya — tanah mengambil kembali
+	# batu, bukan batu yang bertahan di atas tanah. Petaknya tak beraturan; petak
+	# rapi akan terbaca sebagai kebun, dan kebun berarti ada yang merawat.
+	for semak in [
+		Rect2(148, 232, 64, 32), Rect2(272, 176, 32, 64), Rect2(392, 240, 96, 32),
+		Rect2(200, 290, 32, 64), Rect2(320, 344, 64, 32), Rect2(444, 288, 32, 64),
+		Rect2(160, 448, 96, 32), Rect2(300, 400, 32, 64), Rect2(468, 440, 64, 32),
+		Rect2(228, 372, 64, 32),
+	]:
+		_tile_mod(P_T + "ladang_semak32.png", semak, 3, Color(0.82, 0.88, 0.78))
+
+	# ── 3. BERCAK — HALUS, DAN BERGRADIEN SEPERTI WARGA ──────────────────────
+	# Dekat inti: bunga & rumput terawat (ada yang masih menyiangi). Menjauh:
+	# semak liar & rumput tinggi. Di tepi: batu, ranting, jamur — tak ada lagi
+	# tangan manusia, cuma waktu.
+	var rng := RandomNumberGenerator.new()
+	rng.seed = BIJI_TANAH
+	# ⚠ WARNANYA IKUT MEREDUP KE TEPI, dan itu bukan gaya. `branch.png` berwarna
+	#   oranye terang; ditaburkan penuh-warna di rumput ia terbaca sebagai SAMPAH —
+	#   benda kecil menyolok yang mata cari padahal tak berarti apa-apa. Diredupkan,
+	#   ia mundur jadi tekstur, dan itu memang tugasnya. Bercak tepi tak boleh menang
+	#   melawan apa pun; ia cuma boleh memecah keseragaman.
+	for cincin in [
+		{"r0": 190.0, "r1": 420.0, "n": 26, "warna": Color(1.0, 1.0, 1.0),
+			"jenis": ["flower_blue.png", "flower_pink.png", "grass.png", "bush.png"]},
+		{"r0": 420.0, "r1": 700.0, "n": 34, "warna": Color(0.90, 0.93, 0.88),
+			"jenis": ["grass.png", "bush.png", "pebbles.png", "flower_pink.png", "mushroom.png"]},
+		{"r0": 700.0, "r1": 1080.0, "n": 30, "warna": Color(0.74, 0.79, 0.74),
+			"jenis": ["bush.png", "pebbles.png", "branch.png", "rock.png", "mushroom.png"]},
+	]:
+		var jenis: Array = cincin["jenis"]
+		for i in int(cincin["n"]):
+			for percobaan in 14:
+				var a := rng.randf() * TAU
+				var d: float = lerpf(cincin["r0"], cincin["r1"], sqrt(rng.randf()))
+				var p := VC + Vector2(cos(a) * d, sin(a) * d * 0.78)
+				if p.x < 40.0 or p.x > float(MAP_W * TILE) - 40.0:
+					continue
+				if p.y < 40.0 or p.y > float(MAP_H * TILE) - 120.0:
+					continue
+				if not _boleh_tabur(p, larang):
+					continue
+				var sb := _jejak(jenis[rng.randi() % jenis.size()], p, rng.randf_range(1.3, 1.9))
+				if sb:
+					sb.modulate = cincin["warna"]
+				break
+
+	# ── 4. POHON — VARIASI BENTUK, dan ini separuh jawaban tahap 1.7 ─────────
+	# Repo punya lima siluet pohon berbeda (oak, round, birch, giant, pine). Sampai
+	# sekarang cuma `tree_oak` yang dipakai, empat kali, di empat sudut — jadi peta
+	# punya SATU pohon yang diulang. Bentuk yang berbeda di kejauhan mengerjakan apa
+	# yang tak bisa dikerjakan warna: ia memberi mata sesuatu untuk membedakan.
+	for t in [
+		["tree_giant.png", Vector2(232, 872), 1.7],
+		["tree_round.png", Vector2(1596, 912), 1.9],
+		["tree_birch.png", Vector2(1712, 548), 1.8],
+		["tree_round.png", Vector2(186, 742), 1.7],
+		["tree_birch.png", Vector2(1486, 1204), 1.8],
+		["tree_giant.png", Vector2(1744, 1216), 1.6],
+		["tree_round.png", Vector2(884, 176), 1.8],
+		["tree_birch.png", Vector2(1128, 152), 1.7],
+	]:
+		var s := _jejak(String(t[0]), t[1], float(t[2]))
+		if s:
+			# batangnya saja, seperti empat pohon lama. Tajuk yang padat menghalangi
+			# pemain jauh sebelum ia menyentuh pohonnya.
+			_solid(Rect2(t[1].x - 9, t[1].y - 5, 18, 12))
+
+
+# --------------------------------------------------- TAHAP 1.5 — LAPISAN DEKORASI
+## Prop yang MENGISI ruang antar-rumah, dengan satu aturan yang membedakannya dari
+## hiasan: kepadatannya ikut gradien yang sama dengan warga. C1 penuh kehidupan,
+## C2 lebih jarang, C3 cuma sisa dan yang rusak.
+##
+## Tesisnya dikerjakan oleh BENDA YANG SAMA di tempat berbeda: lapak di alun-alun
+## bercerita "pasar", lapak yang sama digelapkan di distrik bekas bercerita "pasar
+## yang tak lagi ditunggui". Barang tak perlu diganti untuk berganti arti — cuma
+## perlu dipindah ke tempat yang tak lagi punya orang.
+func _dekorasi() -> void:
+	# ── C1 — PENUH KEHIDUPAN ─────────────────────────────────────────────────
+	for d in [
+		["stall.png", Vector2(1140, 616), 2.0],      # lapak pasar, masih ditunggui
+		["stall.png", Vector2(742, 792), 2.0],
+		["signboard.png", Vector2(1016, 556), 2.2],  # papan pengumuman, di jalur balai
+		["flower_pot.png", Vector2(1004, 494), 1.8], # ambang balai
+		["flower_pot.png", Vector2(828, 456), 1.8],  # ambang Merrit
+		["flower_pot.png", Vector2(1270, 468), 1.8], # ambang Halloran
+		["crate.png", Vector2(1148, 474), 1.9],      # Halloran memanggang 200 roti
+		["sack.png", Vector2(1178, 488), 1.9],
+		["laundry.png", Vector2(686, 430), 1.8],     # rumah singgah: ada tamu
+		["street_lamp.png", Vector2(672, 596), 1.9],
+		["street_lamp.png", Vector2(1258, 812), 1.9],
+	]:
+		_jejak(String(d[0]), d[1], float(d[2]))
+	# lapak PADAT — ia perabot, bukan hiasan; pemain tak boleh menembusnya
+	for sp in [Vector2(1140, 616), Vector2(742, 792)]:
+		_solid(Rect2(sp.x - 34, sp.y - 6, 68, 18))
+
+	# ── C2 — LEBIH JARANG. Satu benda per rumah, dan rumah gelap dapat yang MATI ──
+	# Rumah yang menyala dapat benda yang dipakai (jemuran, palung, pot). Rumah gelap
+	# dapat peti dan karung — barang yang ditinggalkan, bukan barang yang dipakai.
+	for d in [
+		["flower_pot.png", Vector2(446, 664), 1.7],  # rumah C2 yang menyala
+		["laundry.png", Vector2(544, 660), 1.7],
+		["hay.png", Vector2(418, 676), 1.8],
+		["trough.png", Vector2(596, 1006), 1.8],     # Lyra — masih dihuni
+		["flower_pot.png", Vector2(710, 1002), 1.7],
+		["crate.png", Vector2(302, 676), 1.7],       # rumah gelap: yang tertinggal
+		["crate.png", Vector2(142, 684), 1.7],
+		["sack.png", Vector2(706, 634), 1.7],
+		["crate.png", Vector2(1318, 670), 1.7],      # samping toko Otha
+		["sack.png", Vector2(1668, 710), 1.7],
+		["crate.png", Vector2(1472, 808), 1.7],
+	]:
+		_jejak(String(d[0]), d[1], float(d[2]))
+
+	# ── C3 — CUMA SISA DAN YANG RUSAK ────────────────────────────────────────
+	# LAPAK KOSONG, dan ia benda terpenting di seluruh fungsi ini. Aset yang sama
+	# dengan lapak alun-alun, digelapkan dan berdiri sendirian di antara fondasi:
+	# pasar yang dulu ada di SINI, waktu di sinilah pusatnya. Ia mengatakan seluruh
+	# tesis peta tanpa satu baris teks — dan mengatakannya dengan aset yang sudah ada.
+	var lapak_mati := _jejak("stall.png", Vector2(690, 292), 1.9)
+	if lapak_mati:
+		lapak_mati.modulate = Color(0.60, 0.60, 0.62)
+	for d in [
+		["workbench.png", Vector2(516, 522), 1.7],   # bengkel yang berhenti
+		["crate.png", Vector2(252, 476), 1.6],
+		["sack.png", Vector2(436, 254), 1.6],
+		["log_fallen.png", Vector2(178, 486), 1.7],
+		["stump.png", Vector2(604, 198), 1.7],
+		["trough.png", Vector2(346, 196), 1.6],      # palung ternak, nol ternak
+	]:
+		var s := _jejak(String(d[0]), d[1], float(d[2]))
+		if s:
+			s.modulate = Color(0.82, 0.82, 0.84)     # semua di sini kehilangan warnanya
 
 
 ## Cakram pelataran, dipusatkan (bukan `_tile` yang selalu rata-kiri-atas).
