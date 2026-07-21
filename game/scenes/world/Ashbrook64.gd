@@ -147,6 +147,7 @@ func _ready() -> void:
 	_build_boundaries()
 	_village()
 	_pinggir_jejak()
+	_hutan_tepi()
 	_variasi_tanah()
 	_dekorasi()
 	_gerbang_selatan()
@@ -922,6 +923,84 @@ func _dekorasi() -> void:
 		var s := _jejak(String(d[0]), d[1], float(d[2]))
 		if s:
 			s.modulate = Color(0.82, 0.82, 0.84)     # semua di sini kehilangan warnanya
+
+
+# ------------------------------------------- HUTAN TEPI (POTRET 🔴-3 · B' koreksi 7)
+## Kehampaan hitam di luar tepi peta diganti HUTAN, dan itu bukan tambalan kosmetik.
+##
+## Void hitam mengabarkan "belum jadi". Hutan gelap mengabarkan "dunia menutup dari
+## luar". Bahannya sama — ruang yang tak bisa dimasuki — tapi yang satu cacat dan
+## yang lain tesis: hutan maju dari tiga sisi karena kota mundur, sumber yang sama
+## dengan datangnya serigala. Cacat berubah jadi kalimat.
+##
+## ⚠ KENAPA SISI TEGAK TAK BISA MEMAKAI RESEP SELATAN.
+## Treeline selatan disusun dari PITA UBIN mendatar: `pinus_atas` adalah tepi atas
+## kanopi yang bergerigi, dan gerigi itu punya ARAH. Memutarnya 90° untuk sisi timur
+## juga memutar arah cahayanya — kanopi jadi disinari dari samping sementara seluruh
+## peta disinari dari atas, dan mata menangkap itu jauh sebelum ia bisa menamainya.
+##
+## Jadi sisi tegak dibangun dari POHON TEGAK: sprite utuh yang cahayanya sudah benar,
+## ditumpuk rapat dengan simpangan. Kedalaman datang dari TUMPANG-TINDIH dan GELAP,
+## bukan dari memutar apa pun. Nol aset baru, nol ubin diputar.
+const RIMBA_LUAR := 1250.0     # sejauh ini hutan digambar KE LUAR tepi peta
+const BIJI_RIMBA := 20260723
+
+
+## Satu deret pohon tegak. `x0` pangkal, `arah` +1 ke timur / -1 ke barat.
+func _deret_pohon(rng: RandomNumberGenerator, x0: float, arah: float, y0: float,
+		y1: float, gelap: float, z: int) -> void:
+	var y := y0
+	while y < y1:
+		var gundul := rng.randf() < 0.42
+		var p := Vector2(x0 + arah * rng.randf_range(0.0, 26.0), y)
+		var s := _put(P_OLD + ("pohon_gundul.png" if gundul else "pinus_pohon.png"), p, z)
+		if s:
+			s.modulate = Color(gelap, gelap * 1.06, gelap * 1.0)
+		y += rng.randf_range(52.0, 92.0)
+
+
+func _hutan_tepi() -> void:
+	var w := float(MAP_W * TILE)
+	var h := float(MAP_H * TILE)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = BIJI_RIMBA
+
+	# (1) MASSA JAUH — satu hamparan gelap di luar tiap tepi. z=690 sengaja DI BAWAH
+	#     lapisan treeline selatan yang sudah ada (700-760), supaya resep selatan yang
+	#     sudah berhasil tetap tergambar di atasnya dan tak perlu disentuh sama sekali.
+	for m in [
+		Rect2(w - 16.0, -RIMBA_LUAR, RIMBA_LUAR, h + RIMBA_LUAR * 2.0),          # timur
+		Rect2(-RIMBA_LUAR + 16.0, -RIMBA_LUAR, RIMBA_LUAR, h + RIMBA_LUAR * 2.0),  # barat
+		Rect2(-RIMBA_LUAR, -RIMBA_LUAR + 16.0, w + RIMBA_LUAR * 2.0, RIMBA_LUAR),  # utara
+		Rect2(-RIMBA_LUAR, h - 12.0, w + RIMBA_LUAR * 2.0, RIMBA_LUAR),            # selatan
+	]:
+		_tile_mod(P_T + "pinus_isi.png", m, 690, Color(0.44, 0.52, 0.45))
+
+	# (2) LAPIS TENGAH — sedikit lebih terang, sedikit lebih ke dalam. Dua nilai
+	#     gelap yang berbeda sudah cukup memberi kedalaman; tiga mulai terbaca
+	#     sebagai pita, dan pita terbaca sebagai gambar, bukan sebagai jarak.
+	for m in [
+		Rect2(w - 8.0, -160.0, 132.0, h + 320.0),
+		Rect2(-124.0, -160.0, 132.0, h + 320.0),
+		Rect2(-160.0, -124.0, w + 320.0, 132.0),
+	]:
+		_tile_mod(P_T + "pinus_isi.png", m, 700, Color(0.58, 0.66, 0.58))
+
+	# (3) BARIS DEPAN — pohon UTUH, tegak, cahaya apa adanya. Dua deret tiap sisi:
+	#     yang lebih luar lebih gelap, jadi tepi hutan punya tebal, bukan garis.
+	_deret_pohon(rng, w + 46.0, 1.0, -120.0, h + 120.0, 0.52, 706)
+	_deret_pohon(rng, w - 10.0, 1.0, -120.0, h + 120.0, 0.78, 762)
+	_deret_pohon(rng, -46.0, -1.0, -120.0, h + 120.0, 0.52, 706)
+	_deret_pohon(rng, 10.0, -1.0, -120.0, h + 120.0, 0.78, 762)
+	# UTARA — deret mendatar. Dipakai `_deret_pohon` juga, cuma disapu menyamping.
+	var x := -80.0
+	while x < w + 80.0:
+		var gundul := rng.randf() < 0.42
+		var s := _put(P_OLD + ("pohon_gundul.png" if gundul else "pinus_pohon.png"),
+				Vector2(x, rng.randf_range(-24.0, 14.0)), 762)
+		if s:
+			s.modulate = Color(0.78, 0.83, 0.78)
+		x += rng.randf_range(58.0, 104.0)
 
 
 ## Cakram pelataran, dipusatkan (bukan `_tile` yang selalu rata-kiri-atas).
