@@ -83,7 +83,18 @@ const OTHA_KAKI := Vector2(1252, 660)
 ##
 ## Batas tanah tak menghalangi: ia empat dinding tipis di tepi peta, bukan kurungan
 ## penuh — dan pemain sampai ke sini lewat pintu, bukan berjalan.
-const INTERIOR := Vector2(2100, 160)
+##
+## ⚠ 4200, BUKAN 2100 lagi. Kamar ini hidup di luar peta, dan selama kamera tak
+##   pernah mundur tak seorang pun menyadarinya. Titik pandang #218 memundurkan
+##   kamera ke zoom 0,55 — bingkainya melebar jadi ±1164 px, jadi dari tepi timur
+##   (x~1716) pandangan mencapai x=2880, dan kamar di x=2100 muncul MELAYANG DI
+##   KEHAMPAAN di sudut layar, lengkap dengan lantai dan perabotnya.
+##   Cacatnya sudah ada sejak titik pandang lama (x=1480 -> jangkauan 2644 > 2100).
+##   Ia tak pernah terlihat karena tak ada yang pernah menjepret momen itu — dan
+##   itu pelajaran yang sama persis dengan rusa kotak-putih.
+##   4200 aman dengan margin: dari mana pun di peta (x maks 1920) jangkauan
+##   terjauh pada zoom 0,55 adalah 1920 + 1164 = 3084.
+const INTERIOR := Vector2(4200, 160)
 const ZOOM := 1.0                   # 16px zoom 2 -> layar memuat 40x22 petak.
                                     # petak 32 pada zoom 1.4 -> ~28x16 petak: alun-alun
                                     # 17x11 MUAT, dan karakter 64px tetap terbaca.
@@ -831,7 +842,7 @@ func _variasi_tanah() -> void:
 	for t in [
 		["tree_giant.png", Vector2(232, 872), 1.7],
 		["tree_round.png", Vector2(1596, 912), 1.9],
-		["tree_birch.png", Vector2(1712, 548), 1.8],
+		["tree_birch.png", Vector2(1824, 520), 1.8],
 		["tree_round.png", Vector2(186, 742), 1.7],
 		["tree_birch.png", Vector2(1486, 1204), 1.8],
 		["tree_giant.png", Vector2(1744, 1216), 1.6],
@@ -887,7 +898,7 @@ func _dekorasi() -> void:
 		["crate.png", Vector2(142, 684), 1.7],
 		["sack.png", Vector2(706, 634), 1.7],
 		["crate.png", Vector2(1318, 670), 1.7],      # samping toko Otha
-		["sack.png", Vector2(1668, 710), 1.7],
+		["sack.png", Vector2(1596, 726), 1.7],   # digeser: massa menara pindah ke sini
 		["crate.png", Vector2(1472, 808), 1.7],
 	]:
 		_jejak(String(d[0]), d[1], float(d[2]))
@@ -1020,7 +1031,14 @@ func _village() -> void:
 	# MENARA TEPI (96x256): satu-satunya bangunan yang memecah garis atap desa.
 	# Ditaruh paling timur supaya ia terlihat dari jauh sebelum dicapai — sisa kota
 	# lama yang masih menjulang, dan tak ada lagi yang menempatinya.
-	_building(P_S + "fasad_datar_tinggi.png", Vector2(1602, 700))
+	#
+	# ⚠ DIGESER dari (1602,700) ke (1700,800): ia sekarang PENANDA TITIK PANDANG
+	#   #218. Momen yang tak bertanda bukan momen — kamera yang mundur di tengah
+	#   rumput terbaca sebagai cacat, kamera yang mundur setelah pemain SAMPAI DI
+	#   MENARA terbaca sebagai tiba di suatu tempat. Menara ini jangkar alaminya:
+	#   bangunan tertinggi di tepi, memandang balik ke desa yang mengecil.
+	#   Jaraknya dari Otha juga tetap melebar (156 -> 292 px), sejalan koreksi 6.
+	_building(P_S + "fasad_datar_tinggi.png", Vector2(1700, 800))
 
 	# ── C1: BALAI DESA — terlalu besar untuk yang tersisa ────────────────────
 	# Fasad terbesar yang dipunyai repo (inn 160x224), menghadap alun-alun dari utara.
@@ -1543,22 +1561,58 @@ func _jendela() -> void:
 
 ## #218 PAYOFF PERJALANAN — pemain berjalan menjauh, MENOLEH, dan lampu Merrit masih
 ## di sana. Kamera mundur supaya lampu masuk layar dari jarak itu.
+## ⚠ DIPINDAH & DITULIS ULANG. Titik lama (1480, 704) tak pernah bekerja, dan
+## angkanya yang membuktikannya — bukan selera:
+##
+##   viewport 1280x720, lentera Merrit di (862, 384) sesudah Merrit pindah (Tahap 1)
+##   dari (1480,704): dx=618 dy=320
+##     zoom 1,00  bingkai ±640 x ±360  -> lentera SUDAH DI DALAM (sisa 22 px saja)
+##     zoom 0,55  bingkai ±1164 x ±655 -> di dalam, lega
+##
+## Artinya kamera mundur untuk MEMPERJELAS yang sudah terlihat. Payoff #218 berbunyi
+## "dari sejauh ini pun ia masih menyala" — dan kalimat itu cuma punya arti kalau
+## sebelum mundur ia TIDAK terlihat. Zoom yang tak mengungkap apa pun bukan payoff;
+## ia cuma kamera yang berubah, dan pemain membacanya sebagai cacat. (Direktur
+## menanyakannya sebagai "kenapa mapnya membesar?" — pertanyaan itu vonisnya.)
+##
+##   dari (1716, 856): dx=854 dy=472
+##     zoom 1,00  -> lentera DI LUAR bingkai, 214 px melewati tepi
+##     zoom 0,55  -> DI DALAM, sisa 310 x 183 px
+##
+## Sekarang mundurnya kamera MENGUNGKAP: lentera yang tadi tak ada muncul jauh di
+## sudut kiri-atas, satu titik kuning di kota yang gelap.
+const PANDANG := Vector2(1716, 856)
+## Histeresis. Ambang masuk & keluar sengaja BERBEDA 110 px. Dengan satu ambang —
+## atau dengan tepi keras Area2D seperti versi lama — berjalan menyusuri garis batas
+## memicu masuk-keluar berulang, dan tiap picu menjalankan tween 0,6 detik. Hasilnya
+## kamera berdenyut. Pita mati inilah yang menghentikannya, dan ia jauh lebih murah
+## daripada zoom bertahap (opsi C, ditunda).
+const PANDANG_MASUK := 130.0
+const PANDANG_KELUAR := 240.0
+var _pandang_aktif := false
+
+
 func _titik_pandang() -> void:
-	var zone := Area2D.new()
-	var cs := CollisionShape2D.new()
-	var sh := RectangleShape2D.new()
-	sh.size = Vector2(280, 240)
-	cs.shape = sh
-	zone.add_child(cs)
-	zone.global_position = Vector2(1480, VC.y)
-	zone.add_to_group("vantage")
-	add_child(zone)
-	zone.body_entered.connect(func(b):
-		if b == _player:
-			_zoom_kamera(0.55))
-	zone.body_exited.connect(func(b):
-		if b == _player:
-			_zoom_kamera(ZOOM))
+	# Penanda tetap didaftarkan ke grup `vantage` — `PlayWalk64.gd:274` dan
+	# `TestRunner` memeriksa keberadaannya. Mengganti Area2D dengan pemeriksaan
+	# jarak TANPA menyisakan node grup akan mematikan gerbang itu diam-diam.
+	var tanda := Node2D.new()
+	tanda.name = "TitikPandang"
+	tanda.global_position = PANDANG
+	tanda.add_to_group("vantage")
+	add_child(tanda)
+
+
+func _tick_pandang() -> void:
+	if _player == null or not is_instance_valid(_player):
+		return
+	var d := _player.global_position.distance_to(PANDANG)
+	if not _pandang_aktif and d < PANDANG_MASUK:
+		_pandang_aktif = true
+		_zoom_kamera(0.55)
+	elif _pandang_aktif and d > PANDANG_KELUAR:
+		_pandang_aktif = false
+		_zoom_kamera(ZOOM)
 
 
 func _zoom_kamera(z: float) -> void:
@@ -1990,6 +2044,7 @@ func _process(_delta: float) -> void:
 		for w in get_tree().get_nodes_in_group("ashbrook_window"):
 			w.apply_hour(h)      # desa TERTIDUR satu per satu — dan satu menolak
 	_tick_rusa(_delta)
+	_tick_pandang()
 	if OS.get_environment("AETHER_PIN_DAY") == "1":
 		return
 	if _canvas_mod:
