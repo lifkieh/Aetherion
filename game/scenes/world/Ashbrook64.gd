@@ -47,7 +47,31 @@ const MAP_W := 60
 ## apa pun = 22 petak.
 const MAP_H := 44
 const VC := Vector2(960, 704)       # pusat alun-alun (koordinat dihitung ulang untuk petak 32)
-const MERRIT_HOUSE := Vector2(464, 752)
+
+## ── TATA LETAK B' (reports/BLOCKOUT_ASHBROOK.md) ─────────────────────────────
+## Kaki bangunan dikumpulkan JADI SATU TEMPAT, dan itu bukan kerapian: pintu,
+## jendela, titik-periksa, ayam, dan zona warga semuanya ditambatkan ke angka yang
+## sama. Waktu koordinat masih tersebar di lima fungsi, memindahkan satu bangunan
+## berarti mengejar enam pengikutnya dengan tangan — dan file ini sendiri sudah
+## memperingatkan apa yang terjadi kalau satu terlewat: rantai payoff putus tanpa
+## satu galat pun muncul.
+##
+## KOREKSI 3 — ketiganya di sisi UTARA alun-alun supaya pintu-selatan fasad repo
+## otomatis menghadap ke dalam, dan ketiganya BERDIRI DI GARIS BERBEDA. Barisan
+## rata mengabarkan "dibangun sekaligus"; tiga garis berbeda mengabarkan tiga
+## dasawarsa berbeda. Balai paling maju, Merrit paling mundur.
+const BALAI_KAKI := Vector2(966, 478)       # maju — bangunan terakhir yang mampu bayar tanah depan
+const HALLORAN_KAKI := Vector2(1232, 452)   # mundur 26
+const MERRIT_HOUSE := Vector2(790, 440)     # mundur 38
+## KOREKSI 4 — gudang keluar dari inti, berdiri di TEPI distrik bekas barat-laut.
+## ⚠ 578, bukan 600. `CekKoridor.gd` membuktikan celah gudang<->Merrit di x=600 cuma
+##   30 px — PERSIS selebar badan pemain (30x48), jadi ia tak bisa dilewati sama sekali.
+##   Celah selebar badan adalah cacat terburuk jenisnya: ia TERLIHAT seperti lorong dari
+##   kamera main, pemain mencoba lewat, dan tertahan tanpa sebab yang kelihatan. Digeser
+##   22 px ke barat -> celah jadi 52 px. Ditemukan alat, bukan mata.
+const GUDANG_KAKI := Vector2(578, 450)
+## KOREKSI 6 — toko Otha turun ke C2 timur, di sisi utara jalan dagang.
+const OTHA_KAKI := Vector2(1252, 660)
 ## Kamar Merrit diletakkan DI LUAR peta, tapi di koordinat **POSITIF** — dan itu
 ## bukan selera.
 ##
@@ -182,6 +206,30 @@ func _solid(rect: Rect2) -> void:
 	_solid_body().add_child(cs)
 
 
+## Adakah kotak padat yang menyentuh kotak seukuran `ukuran` di titik `p`?
+##
+## Dipakai KELAHIRAN, bukan gerak. `_terhalang()` di aktor cuma menjaga langkah —
+## makhluk yang sudah LAHIR di dalam bangku tak pernah melangkah keluar darinya,
+## karena setiap arah terhalang. `CekJangkau` menandai cacat ini 1 dari 6 putaran,
+## dan sisanya lolos karena undian, bukan karena benar.
+##
+## Aman dipanggil dari `_kehidupan()`: ia berjalan PALING AKHIR di `_ready()`, jadi
+## seluruh `_solid()` dari `_village()` & kawan-kawan sudah terpasang.
+func _padat_menyentuh(p: Vector2, ukuran: Vector2, geser := Vector2.ZERO) -> bool:
+	if _solids == null:
+		return false
+	var kaki := Rect2(p + geser - ukuran * 0.5, ukuran)
+	for cs in _solids.get_children():
+		if not (cs is CollisionShape2D) or cs.shape == null:
+			continue
+		if not (cs.shape is RectangleShape2D):
+			continue
+		var sz: Vector2 = cs.shape.size
+		if Rect2(cs.position - sz * 0.5, sz).intersects(kaki):
+			return true
+	return false
+
+
 ## Batas tanah — preseden `Ashbrook.gd:140-153`.
 ##
 ## Tanpa ini pemain berjalan keluar peta ke kekosongan: nol ubin, nol apa pun, dan
@@ -253,15 +301,22 @@ func _ground() -> void:
 	# Cabang ini juga memecah grid: jalan utama berhenti jadi satu garis lurus tunggal.
 	var jalan_atas := VC.y - 48
 	var jalan_bawah := VC.y + 48
-	_setapak(Vector2(704, 452), Vector2(704, VC.y - 176))          # gudang -> tepi alun-alun
-	_setapak(Vector2(1216, 532), Vector2(1216, VC.y - 176))        # toko Otha -> tepi alun-alun
+	# Tiga bangunan bernama menempel tepi UTARA alun-alun: setapaknya pendek, dan
+	# pendeknya itu yang bercerita — pintu yang jaraknya dua langkah dari ruang publik
+	# adalah pintu yang dulu sering dibuka.
+	_setapak(Vector2(BALAI_KAKI.x, BALAI_KAKI.y + 10), Vector2(BALAI_KAKI.x, VC.y - 176))
+	_setapak(Vector2(MERRIT_HOUSE.x, MERRIT_HOUSE.y + 10), Vector2(MERRIT_HOUSE.x, VC.y - 176))
+	_setapak(Vector2(HALLORAN_KAKI.x, HALLORAN_KAKI.y + 10), Vector2(HALLORAN_KAKI.x, VC.y - 176))
+	# Gudang gandum tak lagi menempel alun-alun: ia di C3, dan jalannya turun ke jalan
+	# dagang. Jarak itu bagian dari koreksi 4 — gudang harus terasa DI LUAR.
+	_setapak(Vector2(GUDANG_KAKI.x, GUDANG_KAKI.y + 10), Vector2(GUDANG_KAKI.x, jalan_atas))
+	_setapak(Vector2(OTHA_KAKI.x, OTHA_KAKI.y + 6), Vector2(OTHA_KAKI.x, jalan_atas))
 	_setapak(Vector2(1408, jalan_bawah), Vector2(1408, 812))       # rumah kosong -> jalan
 	# rumah Lyra jauh dari jalan: DUA ruas dengan siku, bukan satu garis lurus. Jalan
 	# setapak sungguhan menghindar, bukan menembus.
 	_setapak(Vector2(640, jalan_bawah), Vector2(640, 900))
 	_setapak(Vector2(640, 900), Vector2(700, 900))
 	_setapak(Vector2(700, 900), Vector2(700, 1004))
-	_setapak(Vector2(1216, jalan_atas), Vector2(1216, jalan_atas)) # sambungan toko ke jalan
 
 	# SETAPAK YANG MEMUDAR — dulu menuju sesuatu, kini menuju ketiadaan. Ia menyempit
 	# ruas demi ruas lalu berhenti di rumput, tanpa pernah sampai ke apa pun. Inilah
@@ -323,7 +378,13 @@ func _gerbang_selatan() -> void:
 	# jalan menuju gerbang: melebar dari desa lalu BERHENTI 2 petak sebelum bukaan.
 	# Jalan yang menyentuh gerbang berkata "masih dilewati"; jalan yang berhenti
 	# sebelum sampai berkata "dulu dilewati".
-	_setapak(Vector2(VC.x, VC.y + 320), Vector2(VC.x, gy - 160), 44.0)
+	# ⚠ PANGKALNYA DINAIKKAN ke tepi selatan alun-alun (VC.y + 176), bukan lagi
+	#   VC.y + 320. Dulu ada JURANG RUMPUT 144 px antara ujung jalan dan pelataran:
+	#   jalan gerbang berpangkal di ketiadaan, jadi ia tak pernah terbaca sebagai
+	#   "jalan menuju alun-alun" — cuma sepotong batu di rumput selatan. Yang
+	#   diceritakan ujung selatannya (berhenti sebelum bukaan) baru bekerja kalau
+	#   ujung utaranya BERPANGKAL pada sesuatu.
+	_setapak(Vector2(VC.x, VC.y + 176), Vector2(VC.x, gy - 160), 44.0)
 
 
 ## C4 TEPI HANTU — pemakaman yang BISA dicapai, kabut yang TIDAK.
@@ -458,7 +519,13 @@ func _pemakaman_dan_kabut() -> void:
 		{"pos": Vector2(pm.x - 118.0, pm.y - 34.0), "a": 0.50, "f": 0.0},
 		{"pos": Vector2(pm.x + 46.0, pm.y + 26.0), "a": 0.44, "f": 1.9},
 		{"pos": Vector2(pm.x + 152.0, pm.y - 58.0), "a": 0.38, "f": 3.4},
-		# C3 — di atas ladang yang berhenti digarap, separuh jalan ke inti
+		# C3 — separuh jalan antara inti dan pemakaman.
+		# ⚠ KOORDINATNYA TAK DISENTUH (perintah Direktur: wisp tak dibongkar), tapi
+		#   ALASANNYA sudah bergeser: ia dulu melayang di atas ladang yang berhenti
+		#   digarap, dan ladang itu pindah ke timur waktu jalan gerbang disambungkan.
+		#   Sekarang ia melayang di rumput kosong. Masih sah sebagai gradien C3, tapi
+		#   jangkarnya hilang — putusan memindahkannya milik Direktur, bukan efek
+		#   samping perbaikan jalan.
 		{"pos": Vector2(872.0, 1006.0), "a": 0.26, "f": 2.6},
 	]:
 		var wsp := Node2D.new()
@@ -478,14 +545,36 @@ func _pinggir_jejak() -> void:
 	#    Lima denah baru menutup keliling: utara, timur-laut, timur, barat, barat-laut.
 	#    Ukurannya sengaja BERAGAM — rumah yang sama besar berarti dibangun sekaligus
 	#    oleh satu tangan; kota yang tumbuh bertahun-tahun tak pernah serapi itu.
+	# ⚠ SISIRAN LAMA DIBALIK (koreksi 4). Tujuh denah dulu ditaburkan MENGELILINGI desa
+	#   supaya "yang mati" tak cuma tampak di satu sisi — niatnya benar, hasilnya bukan.
+	#   Sebaran merata cuma bisa mengabarkan "beberapa rumah roboh". Yang harus
+	#   dikabarkan jauh lebih tajam: INTI YANG SEKARANG BUKAN INTI YANG DULU. Kota tak
+	#   menyusut ke tengah — ia menyusut MENJAUH dari tempat ia lahir.
+	#
+	#   Karena itu sepuluh fondasi dirapatkan jadi SATU DISTRIK di barat-laut, dengan
+	#   lorong sempit yang masih terbaca di antaranya (digambar di bawah). Yang membuat
+	#   mata membaca "distrik" bukan jumlah puingnya melainkan JALAN di antaranya —
+	#   puing tanpa jalan tetap puing, berapa pun banyaknya.
 	for denah in [
-		{"pos": Vector2(1520, 936), "w": 132.0, "h": 92.0},   # tenggara, sejajar rumah kosong
-		{"pos": Vector2(352, 952),  "w": 108.0, "h": 80.0},   # barat daya, di luar rumah Lyra
-		{"pos": Vector2(944, 232),  "w": 148.0, "h": 104.0},  # UTARA — di balik balai desa
-		{"pos": Vector2(1456, 336), "w": 96.0,  "h": 76.0},   # timur laut
-		{"pos": Vector2(1664, 592), "w": 120.0, "h": 88.0},   # TIMUR — di luar jalan dagang
-		{"pos": Vector2(288, 560),  "w": 112.0, "h": 84.0},   # BARAT — di luar rumah Merrit
-		{"pos": Vector2(416, 288),  "w": 88.0,  "h": 72.0},   # barat laut, dekat gudang
+		# baris utara
+		{"pos": Vector2(176, 210), "w": 108.0, "h": 70.0},
+		{"pos": Vector2(300, 204), "w": 92.0,  "h": 64.0},
+		{"pos": Vector2(424, 212), "w": 118.0, "h": 74.0},
+		{"pos": Vector2(548, 206), "w": 86.0,  "h": 62.0},
+		# baris tengah
+		{"pos": Vector2(168, 318), "w": 90.0,  "h": 66.0},
+		{"pos": Vector2(286, 322), "w": 116.0, "h": 78.0},
+		{"pos": Vector2(420, 316), "w": 98.0,  "h": 68.0},
+		# baris selatan
+		{"pos": Vector2(186, 424), "w": 118.0, "h": 72.0},
+		{"pos": Vector2(322, 428), "w": 94.0,  "h": 64.0},
+		{"pos": Vector2(452, 420), "w": 104.0, "h": 68.0},
+		# TIGA PENYINTAS yang meluruh ke luar distrik. Batas distrik yang tajam terbaca
+		# sebagai DINDING — sesuatu yang sengaja memagari. Yang meluruh terbaca sebagai
+		# kota yang habis pelan-pelan, dan itu yang benar.
+		{"pos": Vector2(742, 556), "w": 76.0,  "h": 58.0},
+		{"pos": Vector2(238, 528), "w": 84.0,  "h": 60.0},
+		{"pos": Vector2(596, 132), "w": 68.0,  "h": 52.0},
 	]:
 		var c: Vector2 = denah["pos"]
 		var w: float = denah["w"]
@@ -498,13 +587,33 @@ func _pinggir_jejak() -> void:
 		# terbaca "pelataran kecil" — masih hidup, bukan ditinggalkan. `fondasi32`
 		# digelapkan & berlubang: batu yang tak lagi diinjak, dimakan kembali tanah.
 		_tile(P_T + "fondasi32.png", Rect2(c.x - w * 0.5, c.y - h * 0.5, w, h), 1)
+		# ⚠ BATUNYA DIKURUSKAN waktu tujuh denah tersebar jadi tiga belas denah RAPAT.
+		#   Resep lama (4 batu sudut skala 1,6 + 3 sisa dinding skala 1,8) benar untuk
+		#   denah yang berdiri sendirian di rumput. Dipakai di distrik padat ia jadi
+		#   91 batu dalam satu layar, dan tangkap-layar membuktikannya: yang terbaca
+		#   bukan "fondasi berbaris" melainkan hamparan batu putih — mirip pemakaman,
+		#   yaitu tempat lain di peta yang sama. Kepadatan mengubah arti resep yang
+		#   sama, dan itu tak bisa dilihat dari daftar koordinat.
+		#   Sekarang: sudut 1,25 + SATU sisa dinding. Bentuk petaknya yang bercerita;
+		#   batu cuma menjelaskan bentuk itu, dan penjelasan yang terlalu banyak
+		#   menenggelamkan yang dijelaskan.
 		for sudut in [Vector2(-w, -h), Vector2(w, -h), Vector2(-w, h), Vector2(w, h)]:
-			_jejak("ruins.png", c + sudut * 0.5, 1.6)
+			_jejak("ruins.png", c + sudut * 0.5, 1.25)
 		# sisa garis dinding — sengaja TERPUTUS. Dinding utuh berarti rumah kosong;
 		# dinding terputus berarti rumah yang batunya sudah diambili orang.
-		for t in [Vector2(-w * 0.18, -h * 0.5), Vector2(w * 0.22, h * 0.5),
-				Vector2(-w * 0.5, h * 0.12)]:
-			_jejak("rock.png", c + t, 1.8)
+		_jejak("rock.png", c + Vector2(w * 0.22, h * 0.5), 1.5)
+
+	# LORONG DISTRIK — digambar SESUDAH fondasi supaya ia terbaca di ATAS batu, seperti
+	# jalan yang masih dilewati di antara rumah yang sudah tidak. Digelapkan jauh di
+	# bawah jalan dagang: ini jalan yang tak lagi diinjak, dan warnanya harus berkata
+	# begitu sebelum bentuknya sempat berkata apa pun.
+	#
+	# ⚠ LURUS, dan itu SEMENTARA. B' meminta lorong bengkok berlebar tak rata; `_setapak`
+	#   dan `_tile` cuma bisa `Rect2` bersumbu. Membengkokkannya menuntut alat gambar
+	#   jalan baru — itu TAHAP 2, bukan penyesuaian angka di sini.
+	for lorong in [Rect2(126, 258, 434, 20), Rect2(140, 362, 460, 20),
+			Rect2(292, 190, 20, 260)]:
+		_tile_mod(P_T + "stone32.png", lorong, 3, Color(0.60, 0.62, 0.58))
 
 	# 2. LADANG YANG BERHENTI DIGARAP — sekali lagi RUANG DULU.
 	#    Petak tanah bajakan memberi bentuk "ini pernah ladang"; rumput liar yang
@@ -515,9 +624,23 @@ func _pinggir_jejak() -> void:
 	#    ASSET_LOG.md + <ubin>.credits.txt).
 	# digeser ke timur dari (700,1000): di sana petaknya tertimpa rumah Lyra, dan
 	# ladang yang setengah masuk ke dalam rumah membaca sebagai cacat, bukan jejak.
-	var ladang := Vector2(900, 995)
-	var lw := 320.0
-	var lh := 160.0
+	# ⚠ DIPINDAH KE TIMUR (900 -> 1170) dan disempitkan (320 -> 300).
+	#   Sebabnya ditemukan tangkap-layar, bukan dibayangkan: begitu jalan gerbang
+	#   disambungkan sampai tepi selatan alun-alun, pita batunya MEMBELAH ladang ini
+	#   dari utara ke selatan. Ladang yang dilintasi jalan raya berhenti mengabarkan
+	#   "berhenti digarap" — ia mengabarkan "petak yang lupa dihapus".
+	#   ⚠ PERCOBAAN PERTAMA memindahkannya ke TIMUR (1170,1000) — dan tangkap-layar
+	#     menolaknya juga: di sana fasad rumah (1120,1152) tergambar DI ATAS petaknya.
+	#     Sisi timur peta sudah penuh; yang tampak lapang di peta kotak ternyata
+	#     tertutup massa fasad yang tingginya 192 px, dan massa itu tak muncul di
+	#     blockout karena blockout menggambar KAKI, bukan bayangan bangunan.
+	#   Tempatnya sekarang: celah barat-daya antara rumah Lyra dan pemakaman. Ia di
+	#   TEPI (spec), menempel satu-satunya rumah yang masih dihuni, dan tak dilintasi
+	#   apa pun. Petaknya disempitkan (320x160 -> 280x120) supaya muat tanpa menyenggol
+	#   kaki Lyra di utara maupun pagar pemakaman di selatan.
+	var ladang := Vector2(470, 1050)
+	var lw := 280.0
+	var lh := 120.0
 	_tile(P_T + "ladang_tanah32.png", Rect2(ladang.x - lw * 0.5, ladang.y - lh * 0.5, lw, lh), 1)
 	# Rumput liar sengaja TAK BERPOLA. Percobaan pertama menghamparkannya sebagai pita
 	# selebar ladang — hasilnya jadi GARIS-GARIS RAPI, dan mata membacanya sebagai
@@ -646,17 +769,41 @@ const BUILDING_FOOT_H := 40.0
 
 func _village() -> void:
 	_building(P_S + "fasad_inn.png", MERRIT_HOUSE)                 # rumah singgah Merrit
-	_building(P_S + "fasad_gudang.png", Vector2(704, 400))         # gudang gandum
-	_building(P_S + "fasad_shop.png", Vector2(1216, 480))          # toko Otha — tutup dua musim
+	_building(P_S + "fasad_gudang.png", GUDANG_KAKI)               # gudang gandum — C3
+	_building(P_S + "fasad_shop.png", OTHA_KAKI)                   # toko Otha — tutup dua musim
 	_building(P_S + "fasad_kosong.png", Vector2(1408, 800))        # rumah kosong
 	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
+
+	# ── C2 BARAT: GRADIEN DI RUANG (koreksi 6) ───────────────────────────────
+	# Jarak antar rumah MELEBAR ke tepi — 148, 172, 194 px — dan selisihnya sendiri
+	# ikut membesar. Ini koreksi yang paling tak terlihat dan paling banyak membayar:
+	# kepadatan yang menipis lewat JARAK terbaca sebagai kota yang meluruh, sedangkan
+	# kepadatan yang menipis lewat jumlah lampu saja terbaca sebagai kota utuh yang
+	# kebetulan gelap. Ashbrook harus meluruh, bukan sekadar padam.
+	#
+	# Yang di 492 DIHUNI (jendelanya didaftarkan di `_jendela()`); tiga sisanya gelap.
+	# Kenapa yang dihuni bukan yang terdekat ke inti: rumah hidup di tengah barisan
+	# membuat kegelapan di kedua sisinya terbaca sebagai KEHILANGAN. Rumah hidup di
+	# ujung dalam cuma menggambar batas antara "kota" dan "bukan kota".
+	_building(P_S + "fasad_kosong.png", Vector2(640, 656))
+	_building(P_S + "fasad_rumah.png", Vector2(492, 650))          # satu-satunya yang menyala
+	_building(P_S + "fasad_kosong.png", Vector2(320, 660))
+	_building(P_S + "fasad_kosong.png", Vector2(126, 668))
+	# C2 TIMUR — gradien yang sama, dari toko Otha ke luar: 156, lalu 194.
+	_building(P_S + "fasad_kosong.png", Vector2(1602, 700))
 
 	# ── C1: BALAI DESA — terlalu besar untuk yang tersisa ────────────────────
 	# Fasad terbesar yang dipunyai repo (inn 160x224), menghadap alun-alun dari utara.
 	# Ia sengaja bangunan PALING BESAR di peta: empat puluh orang menggema di ruang
 	# yang dibangun untuk lima ratus. Kekosongannya bukan kekurangan aset — itu isi
 	# ceritanya, dan ia harus terbaca dari luar tanpa satu baris teks pun.
-	_building(P_S + "fasad_inn.png", Vector2(960, 464))
+	_building(P_S + "fasad_inn.png", BALAI_KAKI)
+	# HALLORAN — penempaan/warung, naik ke sisi utara alun-alun bersama balai & Merrit.
+	# Fasadnya `fasad_rumah` (192 px) sementara balai `fasad_inn` (224 px): dua tinggi
+	# berbeda dari aset yang SUDAH ADA. ⚠ Merrit masih memakai `fasad_inn` juga, jadi
+	# ia setinggi balai — koreksi 3 meminta Merrit yang TERPENDEK, dan itu menuntut
+	# fasad baru, bukan koordinat. Ditinggalkan sebagai utang aset, bukan disamarkan.
+	_building(P_S + "fasad_rumah.png", HALLORAN_KAKI)
 
 	# ── C2: TIGA RUMAH MENUTUP CINCIN KE SELATAN ─────────────────────────────
 	# C2 sebelumnya cuma BUSUR, bukan cincin: Merrit barat, gudang barat-laut, toko
@@ -699,7 +846,20 @@ func _village() -> void:
 			VC + Vector2(-248, 152), VC + Vector2(248, 152)]:
 		_put(P_S + "barrel_lpc.png", p)
 		_solid(Rect2(p.x - 12, p.y - 4, 24, 16))
-	var fnt := VC + Vector2(0, -32)
+	# ── KOREKSI 5 — AIR MANCUR OFF-CENTER ────────────────────────────────────
+	# Digeser 38 px ke barat & 22 px ke utara dari pusat matematis alun-alun. Tempat
+	# tua tumbuh DI SEKITAR sesuatu; ia tak pernah dipusatkan padanya. Air mancurnya
+	# lebih tua daripada pelatarannya, dan pelataran itulah yang mengalah — bukan
+	# sebaliknya. Pergeseran kecil ini yang membedakan "alun-alun yang dirancang"
+	# dari "alun-alun yang tumbuh".
+	#
+	# ⚠ MASIH `fountain.png` (KERING). Direktur meminta `WaterFountain.png` (berair),
+	#   dan berkas itu ADA di gudang — tapi lisensinya masuk daftar ⚠CEK yang belum
+	#   ditelusuri (`KATALOG_GUDANG.md`). #277 mewajibkan atribusi untuk tiap aset,
+	#   dan perintah berdiri Direktur sendiri berbunyi "nol pakai aset sampai lisensi
+	#   pasti". Memasangnya sekarang melanggar keduanya. Pergeserannya dijalankan;
+	#   penggantian asetnya menunggu telusur — cacat 🔴-4 POTRET setengah terbayar.
+	var fnt := VC + Vector2(-38, -22)
 	_put(P_S + "fountain.png", fnt)                                # air mancur KERING
 	_solid(Rect2(fnt.x - 26, fnt.y - 10, 52, 34))                  # cekungannya, bukan seluruh sprite
 	for i in 8:                                                     # bangku terlalu banyak
@@ -741,10 +901,10 @@ func _props_and_evidence() -> void:
 
 	# PAPAN OTHA — kosong + BEKAS CAT (bukti `akibat`). Diskalakan 4x supaya
 	# persegi bekasnya TETAP TERBACA pada petak 32 (16x14 -> 64x56).
-	var sign := _put(P_OLD + "otha_sign_fadedmark.png", Vector2(1216, 608))
+	var sign := _put(P_OLD + "otha_sign_fadedmark.png", OTHA_KAKI + Vector2(0, 40))
 	if sign:
 		sign.scale = Vector2(4, 4)
-	_examine(Vector2(1216, 664), "ev_otha_papan_bekas_cat")
+	_examine(OTHA_KAKI + Vector2(0, 92), "ev_otha_papan_bekas_cat")
 
 	# reruntuhan: garis fondasi di rumput + batu fondasi berpahat di alun-alun
 	# ⚠ URUTAN PENTING (#batas): titik ini DULU di y=1152 — di LUAR tanah 34 petak
@@ -761,16 +921,23 @@ func _props_and_evidence() -> void:
 	# "16px bentrok gaya" — padahal ia 40x28 dan sudah dipakai sebagai batu sudut
 	# denah C3 di seluruh peta. Alasan yang salah menutup aset yang benar, dan
 	# alasannya bertahan lebih lama daripada pemeriksaannya.
-	_jejak("ruins.png", Vector2(1504, 1024), 1.8)
-	_examine(Vector2(1504, 1056), "ev_ashbrook_fondasi_rumput")
+	# ⚠ DIPINDAH KE DISTRIK BEKAS (koreksi 4). Titik ini dulu berdiri sendiri di
+	#   tenggara — satu batu di rumput, dan teksnya bercerita tentang garis fondasi
+	#   yang tak terlihat di sekelilingnya. Di dalam distrik, yang dibaca pemain dan
+	#   yang dilihatnya akhirnya benda yang sama.
+	_jejak("ruins.png", Vector2(322, 428), 1.8)
+	_examine(Vector2(322, 462), "ev_ashbrook_fondasi_rumput")
 	# batu fondasi berpahat — lebih kecil dari reruntuhan di atas: SATU batu, bukan
 	# sisa dinding. Digeser sedikit ke selatan supaya tak bertindih titik-periksanya.
 	_jejak("ruins.png", VC + Vector2(-176, 104), 1.2)
 	_examine(VC + Vector2(-160, 152), "ev_ashbrook_batu_fondasi")
 
 	# tiga pintu periksa Ashbrook-besar
-	_examine(Vector2(704, 480), "ev_ashbrook_gudang_gandum")
-	_examine(Vector2(1216, 560), "ev_ashbrook_halloran_200_roti")
+	_examine(GUDANG_KAKI + Vector2(0, 40), "ev_ashbrook_gudang_gandum")
+	# Digeser ke TIMUR fasad Halloran, bukan di depan pintunya: tepat di depan pintu
+	# ia bertabrakan dengan setapak balai-Halloran dan dengan zona warga yang berdiri
+	# di teras. Aturan yang sudah dibayar sekali (#zona warga vs titik-periksa).
+	_examine(HALLORAN_KAKI + Vector2(78, 48), "ev_ashbrook_halloran_200_roti")
 	_examine(Vector2(1856, 704), "ev_ashbrook_jembatan_terlalu_lebar")
 
 
@@ -813,7 +980,7 @@ func _hidup_ayam_anak() -> void:
 		c.setup("ayam")
 		add_child(c)
 		c.wander_radius = 76.0
-		c.place(Vector2(704, 470) + Vector2(randf_range(-70, 90), randf_range(20, 90)))
+		c.place(GUDANG_KAKI + Vector2(randf_range(-70, 90), randf_range(20, 90)))
 		_chickens.append(c)
 	for i in 3:
 		var k := Node2D.new()
@@ -827,9 +994,23 @@ func _hidup_ayam_anak() -> void:
 		# tengahnya, jadi anak bisa LAHIR di dalam benda padat — dan penjaga
 		# `_terhalang()` cuma menjaga GERAK, bukan kelahiran. `CekJangkau` menandainya
 		# 1 dari 3 putaran; dua putaran bersih itu hasil undian, bukan bukti.
-		var a := randf() * TAU
-		var r := randf_range(96.0, 168.0)      # 96 px melempar titik lahir ke luar cekungan
-		k.place(VC + Vector2(cos(a) * r, sin(a) * r * 0.7))
+		# 108 px, naik dari 96: cekungan air mancur bergeser 38 px ke BARAT (koreksi 5),
+		# jadi sisi barat cincin ini jadi lebih sempit daripada waktu angkanya dipilih.
+		#
+		# ⚠ TAPI JARI-JARI SAJA TAK PERNAH CUKUP, dan itu pelajaran yang dibayar dua kali.
+		#   Cincin ini melintasi DUA BARIS BANGKU (VC.y ± 112), jadi berapa pun jari-jari
+		#   yang dipilih, ada sudut yang menjatuhkan anak tepat di atas bangku. Anak yang
+		#   LAHIR di dalam benda padat tak pernah keluar — `_terhalang()` menjaga langkah,
+		#   bukan kelahiran, sehingga setiap arah tertutup dan ia terkunci diam.
+		#   Sekarang titiknya DIUJI, bukan ditebak: sampai 24 lemparan, ambil yang bebas.
+		var pos := VC
+		for percobaan in 24:
+			var a := randf() * TAU
+			var r := randf_range(108.0, 172.0)
+			pos = VC + Vector2(cos(a) * r, sin(a) * r * 0.7)
+			if not _padat_menyentuh(pos, Vector2(16, 18), Vector2(0, -9)):
+				break
+		k.place(pos)
 		k.setup(_chickens)
 		# skala 1.6 dulu membesarkan kotak 7x11. Sprite LPC sudah 64px — 1.6 akan
 		# membuat anak lebih besar daripada orang dewasa di alun-alun yang sama.
@@ -873,8 +1054,13 @@ func _jendela() -> void:
 		[Vector2(672, 992), 21, ""],
 		[Vector2(1392, 800), 20, ""],         # rumah kosong — padam paling awal terasa
 		[Vector2(1424, 800), 19, ""],
-		[Vector2(1200, 480), 21, "person_otha_renn"],   # TOKO OTHA — gelap karena TERLUPA
-		[Vector2(1232, 480), 21, "person_otha_renn"],
+		[OTHA_KAKI + Vector2(-16, 0), 21, "person_otha_renn"],  # TOKO OTHA — gelap karena TERLUPA
+		[OTHA_KAKI + Vector2(16, 0), 21, "person_otha_renn"],
+		# C2 barat: SATU rumah menyala di tengah barisan gelap (koreksi 6). Kegelapan
+		# di kedua sisinya baru terbaca sebagai kehilangan kalau ada yang masih menyala
+		# di antaranya — deretan yang seluruhnya gelap cuma terbaca sebagai latar.
+		[Vector2(460, 650), 19, ""],
+		[Vector2(524, 650), 21, ""],
 	]:
 		var win := Node2D.new()
 		win.set_script(load("res://scenes/actors/AshbrookWindow.gd"))
@@ -1014,7 +1200,7 @@ func _pintu_dan_interior() -> void:
 	# --- PINTU YANG BERCERITA (nol interior, nol bukti) ---
 	# Toko Otha. #269: Otha adalah D3 — tak pernah tercatat. Teksnya tak boleh
 	# menyebut namanya; yang tersisa cuma pintu dan musim yang lewat.
-	var otha := _prop(Vector2(1216, 472))
+	var otha := _prop(OTHA_KAKI + Vector2(0, -8))
 	otha.setup_bicara([
 		"Terkunci. Debu di ambangnya rata — tak ada yang membukanya sejak dua musim.",
 		"Tak ada papan nama. Cuma persegi yang catnya lebih gelap, tempat sesuatu dulu tergantung.",
@@ -1029,7 +1215,7 @@ func _pintu_dan_interior() -> void:
 	], "Rumah kosong [E]")
 
 	# Gudang gandum — pintunya, bukan titik-periksanya (yang itu tetap bukti #226)
-	var gudang := _prop(Vector2(704, 392))
+	var gudang := _prop(GUDANG_KAKI + Vector2(0, -8))
 	gudang.setup_bicara([
 		"Palang pintunya dilepas sejak lama. Di dalam, empat ekor ayam dan ruang untuk empat ratus karung.",
 	], "Pintu gudang [E]")
@@ -1050,7 +1236,7 @@ func _pintu_dan_interior() -> void:
 	# BALAI DESA — satu-satunya bangunan yang MASIH dipakai, dan justru itu yang
 	# menyakitkan: ia dipakai oleh jumlah yang salah. Angka 500 sengaja tak disebut
 	# sebagai statistik; yang dipakai adalah GEMA, karena gema itu yang dirasakan.
-	var balai := _prop(Vector2(960, 456))
+	var balai := _prop(BALAI_KAKI + Vector2(0, -8))
 	balai.setup_bicara([
 		"Pintunya terbuka. Tak pernah dikunci — tak ada lagi yang perlu dikunci dari siapa.",
 		"Empat puluh kursi dirapatkan ke satu sudut, menghadap mimbar. Sisa lantainya kosong,",
@@ -1185,7 +1371,13 @@ func _folk_berjadwal() -> void:
 	# 0..4 = lima warga BERJADWAL (#97) — persona & dialog utuh, cuma sprite yang naik
 	# dari `_charsys` 32px ke LPC 64px. 5..19 = lima belas penghuni latar tanpa persona.
 	# Dua puluh wajah dari generator (#276), seed tetap: warga yang sama tiap muat.
-	TownFolk.place(self, "ashbrook", VC, 0)
+	# ⚠ PUSATNYA BUKAN LAGI `VC`. `TownFolk.place()` menebar lima warga berjadwal pada
+	#   CINCIN BERJARI-JARI 120 px dari titik yang diberikan — dan dengan `VC`, cincin
+	#   itu jatuh persis di atas air mancur. Inilah separuh dari cacat 🔴-4 POTRET
+	#   ("air mancur terkubur warga"); separuh lainnya zona latar di bawah ini.
+	#   Digeser ke tenggara alun-alun: mereka tetap di C1, tetap di pelataran, tapi
+	#   pusat desa tak lagi mereka duduki.
+	TownFolk.place(self, "ashbrook", VC + Vector2(60, 120), 0)
 	# ZONA BERALASAN. Tiap angka menjawab "kenapa orang ini berdiri di sini?", dan
 	# jumlahnya sengaja TIMPANG: alun-alun bukan tempat semua orang berkumpul, ia cuma
 	# salah satu tempat. Sebelumnya lima belas orang mengelilingi pusat pada radius
@@ -1204,13 +1396,25 @@ func _folk_berjadwal() -> void:
 		#   pecah cerita, bukan mesin — dan tak satu pun test suite bisa melihatnya.
 		#   ATURAN: zona warga latar TAK BOLEH menyentuh titik-periksa. Beri jarak, atau
 		#   kehidupan latar menelan alur utama.
-		{"pos": Vector2(608, 506),  "r": 46.0, "n": 2},    # gudang gandum — di samping pintunya
-		{"pos": Vector2(1310, 596), "r": 44.0, "n": 2},    # toko Otha — di samping terasnya
-		{"pos": Vector2(640, 1060), "r": 56.0, "n": 2},    # rumah Lyra — satu-satunya yang dihuni
-		{"pos": Vector2(560, 704),  "r": 60.0, "n": 2},    # jalan dagang, ujung barat
-		{"pos": Vector2(1440, 704), "r": 60.0, "n": 2},    # jalan dagang, ujung timur
-		{"pos": Vector2(464, 830),  "r": 46.0, "n": 1},    # depan rumah singgah Merrit
-		{"pos": VC + Vector2(0, 96), "r": 96.0, "n": 4},   # alun-alun — RAMAI, tapi bukan semua
+		# ── C1 = 8 latar (+5 berjadwal di atas = 13) ─────────────────────────
+		# ⚠ ZONA ALUN-ALUN LAMA DICABUT. `VC + (0,96)` berjari-jari 96 dengan 4 orang:
+		#   empat warga tersebar dalam lingkaran yang MEMUAT air mancur, dan dari kamera
+		#   main pusat desa jadi kerumunan punggung. Penggantinya dua zona kecil yang
+		#   MENGAPIT air mancur — orang berdiri DI SEKITAR pusat, bukan DI ATASnya.
+		{"pos": VC + Vector2(-80, 58),  "r": 46.0, "n": 2},   # barat daya pelataran
+		{"pos": VC + Vector2(128, 38),  "r": 52.0, "n": 3},   # timur pelataran
+		{"pos": VC + Vector2(50, 154),  "r": 48.0, "n": 1},   # mulut selatan, arah gerbang
+		{"pos": MERRIT_HOUSE + Vector2(0, 72),   "r": 44.0, "n": 1},   # teras rumah singgah
+		{"pos": HALLORAN_KAKI + Vector2(-82, 68), "r": 40.0, "n": 1},  # teras Halloran
+		# ── C2 = 6 ───────────────────────────────────────────────────────────
+		{"pos": Vector2(560, 728),  "r": 52.0, "n": 2},    # jalan dagang, ujung barat
+		{"pos": Vector2(1330, 724), "r": 52.0, "n": 2},    # jalan dagang, ujung timur
+		{"pos": Vector2(640, 1060), "r": 44.0, "n": 1},    # rumah Lyra — satu-satunya yang dihuni
+		{"pos": Vector2(492, 726),  "r": 40.0, "n": 1},    # rumah C2 yang masih menyala
+		# ── C3 = 1 · C4 = 0 ──────────────────────────────────────────────────
+		# Satu orang di distrik bekas, dan cuma satu. Nol di C4 disengaja: yang hidup
+		# di tepi hanya cahaya yang tak bisa diraih (wisp), dan gradien itu tesisnya.
+		{"pos": Vector2(420, 360),  "r": 44.0, "n": 1},
 	], 5)
 	for c in get_children():
 		var sc = c.get_script()
@@ -1222,10 +1426,10 @@ func _folk() -> void:
 	_folk_berjadwal()
 	for spec in [
 		["merrit_fane", MERRIT_HOUSE + Vector2(48, 96)],
-		["halloran", Vector2(1216, 688)],
+		["halloran", HALLORAN_KAKI + Vector2(58, 68)],   # di depan penempaannya sendiri
 		["old_bram", VC + Vector2(-224, 96)],
 		["nyai", VC + Vector2(160, 128)],
-		["otha_renn", Vector2(1280, 672)],
+		["otha_renn", OTHA_KAKI + Vector2(58, 52)],      # di luar tokonya yang tutup
 		["sora", Vector2(672, 1024)],
 	]:
 		var p := P_C + str(spec[0]) + "_idle.png"
