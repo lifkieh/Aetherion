@@ -189,28 +189,63 @@ def roof(src, mat, gable_col, cols):
     return im
 
 
-def nine(src, kolom, r0, cols, rows):
+def nine(src, kolom, r0, cols, rows, sabuk=(), r_dasar=None):
     """Nine-slice umum. `kolom` = (kiri, tengah, kanan) — disebut, bukan dihitung.
 
-    Dipisah dari `wall()` supaya blok yang lebarnya bukan tiga petak (adobe) dan
-    blok yang bukan dinding (atap datar) memakai mesin yang sama.
+    `sabuk` = baris-baris di TENGAH badan yang digambar memakai petak BARIS ATAS.
+
+    Kenapa itu cukup untuk membuat lantai: petak baris atas nine-slice ini varian
+    "w/Border", dan lis mendatarnya yang selama ini terbaca sebagai ikat pinggang di
+    bawah cucuran atap. Ditaruh di tengah dinding, lis yang sama terbaca sebagai
+    PEMISAH LANTAI. Bangunan bertingkat karena itu tak menuntut petak baru sama
+    sekali — cuma menuntut petak yang sudah ada dipasang di tempat kedua.
     """
     im = Image.new("RGBA", (cols * T, rows * T), (0, 0, 0, 0))
     for y in range(rows):
-        ry = 0 if y == 0 else (2 if y == rows - 1 else 1)
+        if y == 0:
+            ry = 0
+        elif y == rows - 1:
+            ry = 2
+        elif y in sabuk:
+            ry = 0
+        else:
+            ry = 1
+        ry_abs = r_dasar if (r_dasar is not None and y == rows - 1) else r0 + ry
         for x in range(cols):
             kx = kolom[0] if x == 0 else (kolom[2] if x == cols - 1 else kolom[1])
-            im.paste(tile(src, kx, r0 + ry), (x * T, y * T))
+            im.paste(tile(src, kx, ry_abs), (x * T, y * T))
     return im
 
 
-def wall(src, key, cols, rows):
+def wall(src, key, cols, rows, sabuk=(), r_dasar=None):
     """Badan bangunan. `key` boleh nama bata (WALL) atau nama adobe (ADOBE)."""
     if key in ADOBE:
         kolom, r0 = ADOBE[key]
-        return nine(src, kolom, r0, cols, rows)
+        return nine(src, kolom, r0, cols, rows, sabuk, r_dasar)
     c0, r0 = WALL[key]
-    return nine(src, (c0, c0 + 1, c0 + 2), r0, cols, rows)
+    return nine(src, (c0, c0 + 1, c0 + 2), r0, cols, rows, sabuk, r_dasar)
+
+
+# --- LUBANG DINDING (adobe rusak, kolom 7-8 baris 39-40) ----------------------
+# Dua petak x dua petak: tepinya bergerigi dan TENGAHNYA TEMBUS.
+LUBANG = (7, 39)
+# Gelap yang dipasang DI BALIK lubang. Ini bagian terpenting dari seluruh langkah:
+# lubang yang benar-benar tembus akan menampakkan RUMPUT di baliknya, dan dinding
+# yang menampakkan rumput terbaca sebagai CACAT GAMBAR, bukan sebagai rumah yang
+# bolong. Yang membuatnya bercerita bukan lubangnya — melainkan gelap di dalamnya.
+GELAP_DALAM = (26, 21, 18, 255)
+
+
+def pasang_lubang(im, src, di, atap_rows):
+    """Tempel lubang 2x2 pada dinding, berlatar gelap ruang dalam."""
+    for (cx, wy) in di:
+        x, y = cx * T, (atap_rows + wy) * T
+        im.paste(Image.new("RGBA", (2 * T, 2 * T), GELAP_DALAM), (x, y))
+        for dx in range(2):
+            for dy in range(2):
+                im.alpha_composite(tile(src, LUBANG[0] + dx, LUBANG[1] + dy),
+                                   (x + dx * T, y + dy * T))
+    return im
 
 
 def flat_roof(src, mat, cols, rows=2):
@@ -240,10 +275,12 @@ def window(src, kind, state="siang"):
 
 def facade(src, mat, gable_col, cols, wall_key, wall_rows, win_kind, win_cols,
            win_row=1, win_state="siang", door=True, name="", atap="pelana",
-           atap_rows=2):
+           atap_rows=2, sabuk=(), r_dasar=None, lubang=()):
     """Susun fasad menjulang: atap -> dinding -> jendela -> pintu.
 
-    `atap` = "pelana" (puncak segitiga) atau "datar" (tepi lurus bertembok).
+    `atap`  = "pelana" (puncak segitiga) atau "datar" (tepi lurus bertembok).
+    `win_row` boleh satu angka atau BEBERAPA — beberapa baris jendela + `sabuk`
+    di antaranya adalah seluruh isi "bangunan bertingkat".
     """
     rows = atap_rows + wall_rows
     im = Image.new("RGBA", (cols * T, rows * T), (0, 0, 0, 0))
@@ -251,10 +288,15 @@ def facade(src, mat, gable_col, cols, wall_key, wall_rows, win_kind, win_cols,
         im.alpha_composite(flat_roof(src, mat, cols, atap_rows), (0, 0))
     else:
         im.alpha_composite(roof(src, mat, gable_col, cols), (0, 0))
-    im.alpha_composite(wall(src, wall_key, cols, wall_rows), (0, atap_rows * T))
-    for x in win_cols:
-        im.alpha_composite(window(src, win_kind, win_state),
-                           (x * T, (atap_rows + win_row) * T))
+    im.alpha_composite(wall(src, wall_key, cols, wall_rows, sabuk, r_dasar),
+                       (0, atap_rows * T))
+    if lubang:
+        pasang_lubang(im, src, lubang, atap_rows)
+    baris_jendela = win_row if isinstance(win_row, (tuple, list)) else (win_row,)
+    for wr in baris_jendela:
+        for x in win_cols:
+            im.alpha_composite(window(src, win_kind, win_state),
+                               (x * T, (atap_rows + wr) * T))
     if door:  # pintu di tengah, menempel tanah
         im.alpha_composite(draw_door(T, 2 * T), ((cols // 2) * T, (rows - 2) * T))
     print("  %-14s %3dx%-3d  (%dx%d petak)" % (name, im.width, im.height, cols, rows))
@@ -326,7 +368,8 @@ def main():
         ("fasad_datar_tinggi", dict(mat=MAT_SLATE, gable_col=GABLE3, cols=3,
                                     wall_key="abu", wall_rows=6, win_kind=WIN_PANEL,
                                     win_cols=(0, 2), win_state="gelap",
-                                    atap="datar", atap_rows=2)),
+                                    atap="datar", atap_rows=2,
+                                    win_row=(1, 4), sabuk=(3,))),
         # RUMAH LEBAR-PENDEK (160x160) — kebalikan menara. Dua siluet ekstrem di
         # peta yang sama membuat yang di antaranya terbaca sebagai "biasa"; tanpa
         # keduanya, semua ukuran terasa sama.
@@ -341,6 +384,43 @@ def main():
                                    wall_key="lembayung", wall_rows=4,
                                    win_kind=WIN_PANEL, win_cols=(0, 2),
                                    win_state="gelap", atap="datar", atap_rows=2)),
+
+        # ══ BERTINGKAT (1.7b-1) — LANGKA DENGAN SENGAJA ═══════════════════════
+        # Bertingkat adalah PENANDA, dan penanda hanya bekerja kalau jarang. Kalau
+        # separuh desa bertingkat, tingkat berhenti berarti "penting" dan mulai
+        # berarti "gaya rumah di sini". Cuma dua bangunan yang mendapatkannya:
+        # balai (satu-satunya yang masih dipakai bersama) dan menara tepi timur
+        # (satu-satunya yang tak lagi dipakai siapa pun). Dua kutub yang sama:
+        # keduanya dibangun waktu Ashbrook masih mampu membangun ke ATAS.
+        #
+        # 160x288 = sembilan petak. Ia jadi bangunan tertinggi di peta dengan
+        # selisih 64 px dari mana pun — itu yang membuatnya jadi jangkar mata dari
+        # gerbang (koreksi 7 B'), dan sekarang jangkarnya punya sebab: ia bertingkat.
+        ("fasad_balai", dict(mat=MAT_BROWN, gable_col=GABLE5, cols=5, wall_key="krem",
+                             wall_rows=7, win_kind=WIN_KISI, win_cols=(1, 3),
+                             win_row=(1, 4), sabuk=(3,))),
+
+        # ══ LAPUK DITINGGALKAN (1.7b-2) — dinding retak + BOLONG ══════════════
+        # Ini yang paling naratif dari seluruh 1.7, dan paling murah.
+        #
+        # Tiga hal harus benar bersamaan supaya ia terbaca "ditinggalkan" dan bukan
+        # "rusak/bug", dan menghilangkan satu saja membatalkan dua sisanya:
+        #   1. dinding masih BERDIRI dan masih rapi di atas — kalau seluruhnya hancur
+        #      ia terbaca reruntuhan, dan reruntuhan sudah punya tempatnya sendiri
+        #      (denah fondasi di distrik bekas). Yang diceritakan di sini beda:
+        #      rumah yang MASIH RUMAH, tapi tak ada lagi yang menambalnya.
+        #   2. keretakan mulai dari BAWAH — lembap naik dari tanah, dan atap yang
+        #      masih menahan air membuat kerusakan berjalan dari kaki, bukan puncak.
+        #   3. lubangnya berlatar GELAP, bukan tembus. Lubang yang benar-benar tembus
+        #      menampakkan rumput di baliknya, dan itu terbaca cacat gambar.
+        #
+        # Jendelanya sengaja TIDAK gelap-mati melainkan `siang`: kaca yang masih
+        # memantulkan langit di rumah yang dindingnya sudah bolong lebih menyayat
+        # daripada dua-duanya mati. Sesuatu di sini masih bertahan, dan itu bukan
+        # penghuninya.
+        ("fasad_lapuk", dict(mat=MAT_OLIVE, gable_col=GABLE3, cols=3, wall_key="pasir",
+                             wall_rows=4, win_kind=WIN_KISI, win_cols=(0,),
+                             r_dasar=40, lubang=((2, 2),))),
     ):
         made[nm] = facade(src, name=nm, **kw)
         made[nm].save(os.path.join(OUT, nm + ".png"))

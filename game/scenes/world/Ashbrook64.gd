@@ -999,7 +999,12 @@ func _village() -> void:
 	_building(P_S + "fasad_rumah.png", Vector2(492, 650))          # satu-satunya yang menyala
 	# adobe pudar: bahan lebih tua daripada tetangganya, dan sudah mati lebih dulu
 	_building(P_S + "fasad_adobe_pudar.png", Vector2(320, 660))
-	_building(P_S + "fasad_kosong.png", Vector2(126, 668))
+	# RUMAH TERLAPUK (1.7b-2) — paling barat, paling jauh dari inti, dan satu-satunya
+	# yang dindingnya sudah bolong. Gradien C2 tak lagi cuma soal JARAK dan LAMPU;
+	# di ujungnya bahan bangunannya sendiri mulai menyerah. Lubangnya berlatar gelap
+	# ruang dalam, bukan tembus — yang tembus terbaca cacat gambar, bukan rumah yang
+	# ditinggalkan.
+	_building(P_S + "fasad_lapuk.png", Vector2(126, 668))
 	# C2 TIMUR — gradien yang sama, dari toko Otha ke luar: 156, lalu 194.
 	# MENARA TEPI (96x256): satu-satunya bangunan yang memecah garis atap desa.
 	# Ditaruh paling timur supaya ia terlihat dari jauh sebelum dicapai — sisa kota
@@ -1011,7 +1016,13 @@ func _village() -> void:
 	# Ia sengaja bangunan PALING BESAR di peta: empat puluh orang menggema di ruang
 	# yang dibangun untuk lima ratus. Kekosongannya bukan kekurangan aset — itu isi
 	# ceritanya, dan ia harus terbaca dari luar tanpa satu baris teks pun.
-	_building(P_S + "fasad_inn.png", BALAI_KAKI)
+	# BERTINGKAT (1.7b-1), dan langka dengan sengaja: cuma balai + menara tepi timur.
+	# Penanda cuma bekerja kalau jarang — kalau separuh desa bertingkat, tingkat
+	# berhenti berarti "penting" dan mulai berarti "begitulah rumah di sini".
+	# 160x288 membuatnya tertinggi di peta dengan selisih 32 px, jadi jangkar mata
+	# dari gerbang (koreksi 7 B') akhirnya punya SEBAB: ia bertingkat, dan yang
+	# bertingkat di Ashbrook cuma yang dibangun waktu kota masih mampu ke atas.
+	_building(P_S + "fasad_balai.png", BALAI_KAKI)
 	# HALLORAN — penempaan/warung, naik ke sisi utara alun-alun bersama balai & Merrit.
 	# Fasadnya `fasad_rumah` (192 px) sementara balai `fasad_inn` (224 px): dua tinggi
 	# berbeda dari aset yang SUDAH ADA. ⚠ Merrit masih memakai `fasad_inn` juga, jadi
