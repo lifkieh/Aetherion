@@ -3,6 +3,17 @@
  "_cara_tambah_garmen": "Taruh berkasnya di assets_raw/lpc_extra dengan pola eulpc_<slot>_<garmen>_<keluarga>[_<warna>].png lalu jalankan ulang gen_lemari.py. Nol perubahan kode.",
  "garmen": {
   "feet": {
+   "boots": {
+    "slot": "feet",
+    "berkas": {
+     "male": {
+      "polos": "eulpc_feet_boots_male.png"
+     },
+     "thin": {
+      "polos": "eulpc_feet_boots_thin.png"
+     }
+    }
+   },
    "high_socks": {
     "slot": "feet",
     "berkas": {
@@ -14,6 +25,9 @@
    "shoes": {
     "slot": "feet",
     "berkas": {
+     "male": {
+      "polos": "eulpc_feet_shoes_male.png"
+     },
      "thin": {
       "polos": "eulpc_feet_shoes_thin.png"
      }
@@ -100,21 +114,28 @@
      }
     }
    },
+   "shirt": {
+    "slot": "torso",
+    "berkas": {
+     "child": {
+      "black": "eulpc_torso_shirt_child_black.png",
+      "blue": "eulpc_torso_shirt_child_blue.png",
+      "brown": "eulpc_torso_shirt_child_brown.png",
+      "gray": "eulpc_torso_shirt_child_gray.png",
+      "green": "eulpc_torso_shirt_child_green.png",
+      "lavender": "eulpc_torso_shirt_child_lavender.png",
+      "lightblue": "eulpc_torso_shirt_child_lightblue.png",
+      "pink": "eulpc_torso_shirt_child_pink.png",
+      "red": "eulpc_torso_shirt_child_red.png",
+      "white": "eulpc_torso_shirt_child_white.png"
+     }
+    }
+   },
    "sleeveless2": {
     "slot": "torso",
     "berkas": {
      "female": {
       "polos": "eulpc_torso_sleeveless2_female.png"
-     }
-    }
-   },
-   "tunik": {
-    "slot": "torso",
-    "berkas": {
-     "child": {
-      "forest": "@overlay/tunik_anak_forest.png",
-      "maroon": "@overlay/tunik_anak_maroon.png",
-      "sky": "@overlay/tunik_anak_sky.png"
      }
     }
    }

@@ -88,7 +88,13 @@ def urai(nama):
 ## `child` dilaporkan NOL torso — padahal tiga tunik anak sudah ada sejak lama.
 ## Pelajaran: pemindai yang cuma mengenal SATU pola akan menyatakan barang yang ada
 ## sebagai tak ada, dan itu lebih berbahaya daripada tak memindai sama sekali.
-OVERLAY_KELUARGA = [("_anak_", "child")]
+## ⚠ SEKARANG KOSONG, DAN ITU KEMAJUAN. Dulu berisi `("_anak_", "child")` yang
+## memasukkan tiga overlay `tunik_anak_*` buatan sendiri — satu-satunya baju anak yang
+## kita punya waktu itu, dan ia terbaca sebagai ponco tanpa lengan. Sesudah kemeja anak
+## LPC asli masuk lewat `ambil_lpc.py` (10 warna), ponco itu tak lagi perlu dipakai.
+## Berkasnya TIDAK dihapus — cuma berhenti ditawarkan. Menghapusnya akan memutus
+## katalog lama yang masih menyebutnya.
+OVERLAY_KELUARGA = []
 
 
 def urai_overlay(kunci, ref):

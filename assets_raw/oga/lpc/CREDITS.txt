@@ -1,0 +1,10 @@
+# Unduhan dari generator LPC resmi, diambil `_tools/ambil_lpc.py`.
+# Sengaja DI-COMMIT supaya alat ini bisa dijalankan ulang oleh siapa pun
+# yang meng-clone repo (#240) — bukan cuma di mesin yang punya gudang.
+
+Pack   : Universal LPC Spritesheet Character Generator
+Sumber : https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
+Lisensi: CC-BY-SA 3.0 / GPL 3.0 / OGA-BY 3.0 (berganda; DIPILIH OGA-BY 3.0
+         karena ia TIDAK menular — lihat pola yang sama pada kucing LPC)
+Catatan: kredit per-aset ada di `credits/` repo hulu; tiap aset yang dipakai
+         proyek ini juga tercatat di _tools/lpc_assembler/credits_db.json
