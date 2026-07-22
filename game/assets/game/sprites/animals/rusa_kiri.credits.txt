@@ -1,7 +1,7 @@
 # rusa_kiri.png — hewan 'rusa'
-# rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos
+# doe CC0. Menggantikan rusa 'All/Wild Animals' yang lisensinya TIDAK TERCATAT
 
-Pack   : Wild Animals (berkas gudang 'All.zip')
-Seniman: TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun
-Lisensi: TIDAK TERCATAT
-URL    : 
+Pack   : Seasons of Forest Animal Pack (sampel gratis v1)
+Seniman: inkbubi
+Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)
+URL    : https://inkbubi.itch.io/seasons-of-forest-animal-pack

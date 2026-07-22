@@ -11,6 +11,20 @@
       "url": "https://opengameart.org/node/81251",
       "terverifikasi": true
     },
+    "seasons_forest_cc0": {
+      "nama": "Seasons of Forest Animal Pack (sampel gratis v1)",
+      "pencipta": "inkbubi",
+      "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+      "url": "https://inkbubi.itch.io/seasons-of-forest-animal-pack",
+      "terverifikasi": true
+    },
+    "dcss_tiles": {
+      "nama": "Dungeon Crawl Stone Soup - ubin monster",
+      "pencipta": "penyumbang ubin DCSS",
+      "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+      "url": "https://opengameart.org/content/dungeon-crawl-32x32-tiles",
+      "terverifikasi": true
+    },
     "pig_rework": {
       "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
       "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
@@ -70,27 +84,16 @@
       "pack": "pig_rework",
       "_catatan": "babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan sisa, domba menuntut padang"
     },
-    "serigala": {
-      "sprite": "res://assets/game/sprites/animals/serigala_kiri.png",
-      "fw": 64,
-      "fh": 40,
-      "frame": 8,
-      "arah": "kiri_kanan",
-      "skala": 1.0,
-      "kecepatan": 30.0,
-      "pack": "wild_animals_all",
-      "_catatan": "menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px"
-    },
     "rusa": {
       "sprite": "res://assets/game/sprites/animals/rusa_kiri.png",
-      "fw": 72,
-      "fh": 52,
-      "frame": 8,
+      "fw": 41,
+      "fh": 33,
+      "frame": 4,
       "arah": "kiri_kanan",
-      "skala": 1.0,
+      "skala": 1.5,
       "kecepatan": 22.0,
-      "pack": "wild_animals_all",
-      "_catatan": "rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos"
+      "pack": "seasons_forest_cc0",
+      "_catatan": "doe CC0. Menggantikan rusa 'All/Wild Animals' yang lisensinya TIDAK TERCATAT"
     },
     "kucing_kelabu": {
       "sprite": "res://assets/game/sprites/animals/kucing_kelabu_kiri.png",

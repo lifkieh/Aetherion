@@ -1,5 +1,5 @@
 # serigala_monster.png — frame persegi 64x64 untuk DungeonMonster
 
-Pack   : Wild Animals (berkas gudang 'All.zip')
-Seniman: TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun
-Lisensi: TIDAK TERCATAT
+Pack   : Dungeon Crawl Stone Soup - ubin monster
+Seniman: penyumbang ubin DCSS
+Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)

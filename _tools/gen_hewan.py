@@ -46,6 +46,20 @@ PACK = {
         "url": "https://opengameart.org/node/81251",
         "terverifikasi": True,
     },
+    "seasons_forest_cc0": {
+        "nama": "Seasons of Forest Animal Pack (sampel gratis v1)",
+        "pencipta": "inkbubi",
+        "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+        "url": "https://inkbubi.itch.io/seasons-of-forest-animal-pack",
+        "terverifikasi": True,
+    },
+    "dcss_tiles": {
+        "nama": "Dungeon Crawl Stone Soup - ubin monster",
+        "pencipta": "penyumbang ubin DCSS",
+        "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+        "url": "https://opengameart.org/content/dungeon-crawl-32x32-tiles",
+        "terverifikasi": True,
+    },
     "pig_rework": {
         "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
         "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
@@ -131,12 +145,31 @@ JOBS = [
      "babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar "
      "characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan "
      "sisa, domba menuntut padang"),
-    ("serigala", os.path.join(GUDANG, "All", "Wild Animals", "Wolf", "Wolf_Walk.png"),
-     "strip", (64, 40, 8), "wild_animals_all", 1.0, 30.0,
-     "menggantikan grey_wolf.png 16px yang terbaca sebagai serangga di dunia 64px"),
-    ("rusa", os.path.join(GUDANG, "All", "Wild Animals", "Deer", "Deer_Walk.png"),
-     "strip", (72, 52, 8), "wild_animals_all", 1.0, 22.0,
-     "rusa jantan BERTANDUK — menggantikan Image.create(6,10) kotak putih polos"),
+    # ⚠ SERIGALA DIHAPUS, BUKAN DIGANTI. Sumbernya `All/Wild Animals` — folder gudang
+    #   yang NOL berkas dokumentasi, jadi lisensinya tak bisa dipatuhi maupun dilanggar
+    #   dengan sadar; ia cuma tak boleh dirilis. Seluruh gudang disisir: nol serigala
+    #   berkaki empat berlisensi permisif. Lapis 3 (serigala malam) sedang DITAHAN
+    #   Direktur, jadi tak ada yang menunggu aset ini.
+    #   Rubah CC0 yang diwarnai kelabu sudah dicoba sebagai gantinya, lalu ditolak: ia
+    #   terbaca noda kelabu, bukan serigala. Aset yang berpura-pura lebih buruk
+    #   daripada aset yang tak ada.
+    #
+    # ⚠ RUSA JUGA DARI `All/Wild Animals` — lisensi TIDAK TERCATAT. Diganti doe dari
+    #   pak CC0. DOE, bukan rusa jantan: pak CC0 tak punya yang bertanduk, dan
+    #   menggambar tanduk di atasnya sudah dicoba dua kali lalu ditolak — pada 41x33
+    #   tanduk terbaca serpihan melayang, apalagi karena "puncak kepala" tiap frame
+    #   kadang jatuh di ujung telinga. Akibatnya WHITE STAG jadi WHITE DOE; itu
+    #   perubahan CERITA, dan dilaporkan ke Direktur, bukan diselipkan.
+    #   Lembar doe 8x4 petak 41x33; baris 2 kolom 4-7 = lari hadap-KIRI (dicocokkan
+    #   piksel-per-piksel dengan berkas `run_left_frame_*.png`, bukan ditebak).
+    ("rusa", os.path.join(GUDANG, "seasons_of_forest_animal_pack_free_v1", "doe",
+                          "doe_sheet.png"), "blok", (41, 33, 4, 2, 4, False),
+     # 1.5, bukan 1.0. Doe CC0 ini 41x33 sedangkan rusa lama 72x52 — pada skala 1
+     # ia berdiri setinggi separuh babi, dan rusa yang lebih pendek dari ternak
+     # terbaca sebagai anak hilang, bukan satwa liar. Persis kesalahan kebalikan
+     # dari ayam yang dulu di-skala 1.6 jadi sebesar anjing.
+     "seasons_forest_cc0", 1.5, 22.0,
+     "doe CC0. Menggantikan rusa 'All/Wild Animals' yang lisensinya TIDAK TERCATAT"),
 
     # ── LAPIS 2: KUCING LIAR ─────────────────────────────────────────────────
     # `PNG/cat.png` = 16x8 petak 32x32. Empat blok warna empat kolom:
@@ -346,9 +379,9 @@ def main(argv=None):
     # penghilangan warna, dan itu operasi piksel: ia milik generator, bukan scene.
     # Sisa warna 12% ditahan dengan sengaja — putih rata terbaca sebagai siluet
     # hilang, bukan sebagai makhluk pucat.
-    src_r = os.path.join(GUDANG, "All", "Wild Animals", "Deer", "Deer_Walk.png")
+    src_r = os.path.join(DST, "rusa_kiri.png")
     if os.path.exists(src_r):
-        r = Image.open(src_r).convert("RGBA").crop((0, 0, 8 * 72, 52))
+        r = Image.open(src_r).convert("RGBA")
         px = r.load()
         for y in range(r.height):
             for x in range(r.width):
@@ -356,15 +389,20 @@ def main(argv=None):
                 if ca == 0:
                     continue
                 abu = int(0.299 * cr + 0.587 * cg + 0.114 * cb)
-                terang = min(255, int(abu * 0.55 + 190))
-                px[x, y] = (int(terang * 0.97 + cr * 0.12), int(terang * 0.98 + cg * 0.12),
-                            int(terang + cb * 0.12), ca)
+                # 0.45, BUKAN 0.82. Percobaan pertama menarik terlalu jauh ke putih dan
+                # seluruh bentuk hilang - yang tersisa gumpalan putih, bukan makhluk
+                # pucat. Justru bayangan yang masih tertinggal itu yang membuatnya
+                # terbaca sebagai penampakan.
+                terang = int(abu + (255 - abu) * 0.45)
+                px[x, y] = (terang, terang, min(255, terang + 8), ca)
         r.save(os.path.join(DST, "rusa_putih_kiri.png"))
-        p_r = PACK["wild_animals_all"]
+        p_r = PACK["seasons_forest_cc0"]
         with open(os.path.join(DST, "rusa_putih_kiri.credits.txt"), "w",
                   encoding="utf-8") as f:
             f.write(
-                "# rusa_putih_kiri.png — rusa dipucatkan untuk WHITE STAG (#D-ASH-4)\n"
+                "# rusa_putih_kiri.png — doe dipucatkan untuk WHITE DOE (#D-ASH-4)\n"
+                "# Dulu WHITE STAG. Sumber bertanduknya lisensi TIDAK TERCATAT, dan\n"
+                "# pak CC0 penggantinya tak punya rusa bertanduk.\n"
                 "# Turunan `rusa_kiri.png`: luminans + pemutihan, dikerjakan di\n"
                 "# generator karena `modulate` cuma bisa MENGALIKAN warna — ia tak\n"
                 "# bisa menghapusnya, jadi rusa cokelat yang di-modulate terang\n"
@@ -372,19 +410,23 @@ def main(argv=None):
                 f"Pack   : {p_r['nama']}\n"
                 f"Seniman: {p_r['pencipta']}\n"
                 f"Lisensi: {p_r['license']}\n")
-        print("[OK] rusa      -> rusa_putih_kiri.png  8 frame 72x52 (WHITE STAG)")
+        print("[OK] rusa      -> rusa_putih_kiri.png  4 frame 41x33 (WHITE DOE)")
 
     # SERIGALA versi MONSTER. `DungeonMonster._apply()` memakai satu frame PERSEGI
     # (`region = Rect2(0,0,fs,fs)`) dan membalik horizontal sendiri. Serigala tetap
     # `DungeonMonster` — ia momen #118 (boleh ditolong / diabaikan / dibunuh), dan
     # menjadikannya hewan hias akan MENGHAPUS momen itu. Yang diganti cuma gambarnya.
-    src = os.path.join(GUDANG, "All", "Wild Animals", "Wolf", "Wolf_Walk.png")
-    if os.path.exists(src):
-        w = Image.open(src).convert("RGBA").crop((0, 0, 64, 40))
+    # Ubin serigala DCSS, CC0. Peran berkas ini SATU FRAME DIAM, dan justru itu yang
+    # membuat ubin statis cocok di sini padahal tak cocok untuk serigala berkelana:
+    # yang dibutuhkan potret, bukan langkah. Sumber lamanya `All/Wild Animals`, lisensi
+    # TIDAK TERCATAT.
+    src = os.path.join(GUDANG, "Dungeon Crawl Stone Soup Full.zip") +         "|Dungeon Crawl Stone Soup Full/monster/animals/wolf.png"
+    if os.path.exists(src.split("|")[0]):
+        w = buka(src)
         kotak = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
-        kotak.alpha_composite(w, (0, 64 - 40))          # rata-bawah: kaki di dasar frame
+        kotak.alpha_composite(w, ((64 - w.width) // 2, 64 - w.height))   # rata-bawah
         kotak.save(os.path.join(DST, "serigala_monster.png"))
-        p = PACK["wild_animals_all"]
+        p = PACK["dcss_tiles"]
         with open(os.path.join(DST, "serigala_monster.credits.txt"), "w",
                   encoding="utf-8") as f:
             f.write(f"# serigala_monster.png — frame persegi 64x64 untuk DungeonMonster\n\n"

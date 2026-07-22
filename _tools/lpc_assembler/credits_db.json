@@ -1,807 +1,800 @@
 {
- "Apron_female.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "Apron_female_white.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "Apron_male.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "Apron_male_white.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "anjing_cokelat_kiri.png": {
-  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/node/69399"
- },
- "anjing_kelabu_kiri.png": {
-  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/node/69399"
- },
- "babi_kiri.png": {
-  "author": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
-  "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
-  "pack": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-style-farm-animals"
- },
- "bark_skin.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "chicken.png": {
-  "author": "Pixel-boy / Aleksandr Makarov",
-  "license": "CC0 1.0",
-  "pack": "Ninja Adventure - Asset Pack",
-  "terverifikasi": true,
-  "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack"
- },
- "eulpc_body_child.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_body_female.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_body_male.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_body_teen.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_feet_high_socks_thin.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_feet_shoes_thin.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_hair_bob_side_part.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_child_jewfro_chestnut.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_child_swoop_black.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_child_topknot_gold.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_curly_short.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_curly_short2.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_jewfro.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_jewfro_ash.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_jewfro_carrot.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_jewfro_gold.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_longknot_ash.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_longknot_white.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_parted2.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_parted_side_bangs.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_parted_side_bangs2.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_shortknot_black.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_shortknot_carrot.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_shortknot_chestnut.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_shortknot_gold.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_shortknot_gray.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_shortknot_raven.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_swoop_black.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_swoop_chestnut.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hair_swoop_side.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hairext_braidl.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hairext_braidr.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hairext_topknot_long_bg.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hairext_topknot_long_fg.png": {
-  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-  "license": "CC-BY-SA 3.0",
-  "pack": "[LPC Expanded] Hair",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-hair"
- },
- "eulpc_hat_feather_cap_walnut.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_hat_hood_charcoal.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_head_child.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_head_female.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_head_male.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "eulpc_hijab_navy.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_child_pants_brown.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_child_pants_darkblue.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_child_pants_green.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_hose_thin.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_male_charcoal.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_male_forest.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_male_navy.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_male_walnut.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_thin.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_thin_charcoal.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_thin_maroon.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_thin_navy.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_pants_thin_walnut.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_legs_shorts_thin.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_cardigan_teen.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_female_charcoal.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_female_forest.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_female_maroon.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_female_sky.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_male_forest.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_male_maroon.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_male_slate.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_male_walnut.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_male_white.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_teen_rose.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_longsleeve_teen_teal.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_overalls_male.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_torso_sleeveless2_female.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_wing_bat_back.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_wing_bat_front.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_wing_feathered_back.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_wing_feathered_front.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_wing_lizard_back.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "eulpc_wing_lizard_front.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "fondasi32.png": {
-  "author": "Proyek Aetherion (gen_pinggir.py) — turunan stone32.png (LPC)",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri",
-  "terverifikasi": true,
-  "url": ""
- },
- "gagak_kiri.png": {
-  "author": "bluecarrot16, dipesan oleh castelonia",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-  "pack": "[LPC] Birds",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-birds"
- },
- "gagak_terbang_kiri.png": {
-  "author": "bluecarrot16, dipesan oleh castelonia",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-  "pack": "[LPC] Birds",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-birds"
- },
- "hijabblue.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "hijabgrey.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "horns.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "kucing_jingga_kiri.png": {
-  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/node/69399"
- },
- "kucing_kelabu_kiri.png": {
-  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/node/69399"
- },
- "ladang_semak32.png": {
-  "author": "Daniel Eddeland (daneeklu)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
- },
- "ladang_tanah32.png": {
-  "author": "Daniel Eddeland (daneeklu)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
- },
- "lantern.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "lantern_glow.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "leaf_hair.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "lpc_simple_staff_female.png": {
-  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "LPC Character Bases v3.1",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-character-bases"
- },
- "merpati_kiri.png": {
-  "author": "bluecarrot16, dipesan oleh castelonia",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-  "pack": "[LPC] Birds",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-birds"
- },
- "merpati_terbang_kiri.png": {
-  "author": "bluecarrot16, dipesan oleh castelonia",
-  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-  "pack": "[LPC] Birds",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-birds"
- },
- "pagar_h32.png": {
-  "author": "Daniel Eddeland (daneeklu)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
- },
- "pagar_tiang32.png": {
-  "author": "Daniel Eddeland (daneeklu)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
- },
- "pinus_atas.png": {
-  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-  "license": "OGA-BY 3.0",
-  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
- },
- "pinus_isi.png": {
-  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-  "license": "OGA-BY 3.0",
-  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
- },
- "pinus_pohon.png": {
-  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-  "license": "OGA-BY 3.0",
-  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
- },
- "pohon_gundul.png": {
-  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-  "license": "OGA-BY 3.0",
-  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-  "terverifikasi": true,
-  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
- },
- "rusa_kiri.png": {
-  "author": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
-  "license": "TIDAK TERCATAT",
-  "pack": "Wild Animals (berkas gudang 'All.zip')",
-  "terverifikasi": false,
-  "url": ""
- },
- "serigala_kiri.png": {
-  "author": "TIDAK TERCATAT — zip sumber tak memuat berkas kredit apa pun",
-  "license": "TIDAK TERCATAT",
-  "pack": "Wild Animals (berkas gudang 'All.zip')",
-  "terverifikasi": false,
-  "url": ""
- },
- "sewing_basket.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "tunik_anak_forest.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "tunik_anak_maroon.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "tunik_anak_sky.png": {
-  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-  "license": "CC-BY-SA 3.0",
-  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-  "terverifikasi": true,
-  "url": ""
- },
- "whitebeard.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "wisp.png": {
-  "author": "Google Gemini (AI-generated), diminta Direktur",
-  "license": "AI-GENERATED — bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga",
-  "pack": "Gemini generation, diproses _tools/gen_wisp.py",
-  "terverifikasi": true,
-  "url": ""
- },
- "wizard_hat_female.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- },
- "wizard_hat_male.png": {
-  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-  "license": "CC-BY-SA 3.0 / GPL 3.0",
-  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-  "terverifikasi": false,
-  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
- }
+  "Apron_female.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "Apron_female_white.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "Apron_male.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "Apron_male_white.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "anjing_cokelat_kiri.png": {
+    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/69399"
+  },
+  "anjing_kelabu_kiri.png": {
+    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/69399"
+  },
+  "babi_kiri.png": {
+    "author": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
+    "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
+    "pack": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-style-farm-animals"
+  },
+  "bark_skin.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "chicken.png": {
+    "author": "Pixel-boy / Aleksandr Makarov",
+    "license": "CC0 1.0",
+    "pack": "Ninja Adventure - Asset Pack",
+    "terverifikasi": true,
+    "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack"
+  },
+  "eulpc_body_child.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_body_female.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_body_male.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_body_teen.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_feet_high_socks_thin.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_feet_shoes_thin.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_hair_bob_side_part.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_child_jewfro_chestnut.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_child_swoop_black.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_child_topknot_gold.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_curly_short.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_curly_short2.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_jewfro.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_jewfro_ash.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_jewfro_carrot.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_jewfro_gold.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_longknot_ash.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_longknot_white.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_parted2.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_parted_side_bangs.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_parted_side_bangs2.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_shortknot_black.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_shortknot_carrot.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_shortknot_chestnut.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_shortknot_gold.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_shortknot_gray.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_shortknot_raven.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_swoop_black.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_swoop_chestnut.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hair_swoop_side.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hairext_braidl.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hairext_braidr.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hairext_topknot_long_bg.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hairext_topknot_long_fg.png": {
+    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+    "license": "CC-BY-SA 3.0",
+    "pack": "[LPC Expanded] Hair",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-hair"
+  },
+  "eulpc_hat_feather_cap_walnut.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_hat_hood_charcoal.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_head_child.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_head_female.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_head_male.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "eulpc_hijab_navy.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_child_pants_brown.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_child_pants_darkblue.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_child_pants_green.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_hose_thin.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_male_charcoal.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_male_forest.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_male_navy.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_male_walnut.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_thin.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_thin_charcoal.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_thin_maroon.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_thin_navy.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_pants_thin_walnut.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_legs_shorts_thin.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_cardigan_teen.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_female_charcoal.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_female_forest.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_female_maroon.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_female_sky.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_male_forest.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_male_maroon.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_male_slate.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_male_walnut.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_male_white.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_teen_rose.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_longsleeve_teen_teal.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_overalls_male.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_torso_sleeveless2_female.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_wing_bat_back.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_wing_bat_front.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_wing_feathered_back.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_wing_feathered_front.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_wing_lizard_back.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "eulpc_wing_lizard_front.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "fondasi32.png": {
+    "author": "Proyek Aetherion (gen_pinggir.py) — turunan stone32.png (LPC)",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "gagak_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
+  "gagak_terbang_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
+  "hijabblue.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "hijabgrey.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "horns.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "kucing_jingga_kiri.png": {
+    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/69399"
+  },
+  "kucing_kelabu_kiri.png": {
+    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/node/69399"
+  },
+  "ladang_semak32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "ladang_tanah32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "lantern.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "lantern_glow.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "leaf_hair.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "lpc_simple_staff_female.png": {
+    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "LPC Character Bases v3.1",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-character-bases"
+  },
+  "merpati_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
+  "merpati_terbang_kiri.png": {
+    "author": "bluecarrot16, dipesan oleh castelonia",
+    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+    "pack": "[LPC] Birds",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-birds"
+  },
+  "pagar_h32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "pagar_tiang32.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+  },
+  "pinus_atas.png": {
+    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+    "license": "OGA-BY 3.0",
+    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+  },
+  "pinus_isi.png": {
+    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+    "license": "OGA-BY 3.0",
+    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+  },
+  "pinus_pohon.png": {
+    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+    "license": "OGA-BY 3.0",
+    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+  },
+  "pohon_gundul.png": {
+    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+    "license": "OGA-BY 3.0",
+    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+  },
+  "rusa_kiri.png": {
+    "author": "inkbubi",
+    "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+    "pack": "Seasons of Forest Animal Pack (sampel gratis v1)",
+    "terverifikasi": true,
+    "url": "https://inkbubi.itch.io/seasons-of-forest-animal-pack"
+  },
+  "sewing_basket.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "tunik_anak_forest.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "tunik_anak_maroon.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "tunik_anak_sky.png": {
+    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+    "license": "CC-BY-SA 3.0",
+    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "whitebeard.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "wisp.png": {
+    "author": "Google Gemini (AI-generated), diminta Direktur",
+    "license": "AI-GENERATED — bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga",
+    "pack": "Gemini generation, diproses _tools/gen_wisp.py",
+    "terverifikasi": true,
+    "url": ""
+  },
+  "wizard_hat_female.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  },
+  "wizard_hat_male.png": {
+    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+    "license": "CC-BY-SA 3.0 / GPL 3.0",
+    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+    "terverifikasi": false,
+    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+  }
 }
