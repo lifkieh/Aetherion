@@ -735,11 +735,18 @@
     "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
   },
   "rusa_kiri.png": {
-    "author": "inkbubi",
-    "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
-    "pack": "Seasons of Forest Animal Pack (sampel gratis v1)",
+    "author": "Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+    "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
+    "pack": "Deer (Rework) - 32x32, N/E/S/W, 3 frame per arah",
     "terverifikasi": true,
-    "url": "https://inkbubi.itch.io/seasons-of-forest-animal-pack"
+    "url": "https://opengameart.org/content/deer-rework"
+  },
+  "serigala_kiri.png": {
+    "author": "patvanmackelberg",
+    "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+    "pack": "Wolf Pack! 32x32 Walking Wolf Animation",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation"
   },
   "sewing_basket.png": {
     "author": "Proyek Aetherion, digambar oleh gen_overlays.py",

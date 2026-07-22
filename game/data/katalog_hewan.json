@@ -25,6 +25,20 @@
       "url": "https://opengameart.org/content/dungeon-crawl-32x32-tiles",
       "terverifikasi": true
     },
+    "deer_rework": {
+      "nama": "Deer (Rework) - 32x32, N/E/S/W, 3 frame per arah",
+      "pencipta": "Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+      "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
+      "url": "https://opengameart.org/content/deer-rework",
+      "terverifikasi": true
+    },
+    "wolfpack_cc0": {
+      "nama": "Wolf Pack! 32x32 Walking Wolf Animation",
+      "pencipta": "patvanmackelberg",
+      "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+      "url": "https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation",
+      "terverifikasi": true
+    },
     "pig_rework": {
       "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
       "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
@@ -86,14 +100,25 @@
     },
     "rusa": {
       "sprite": "res://assets/game/sprites/animals/rusa_kiri.png",
-      "fw": 41,
-      "fh": 33,
+      "fw": 32,
+      "fh": 32,
+      "frame": 3,
+      "arah": "kiri_kanan",
+      "skala": 1.6,
+      "kecepatan": 22.0,
+      "pack": "deer_rework",
+      "_catatan": "rusa jantan BERTANDUK. Memulihkan WHITE STAG (#D-ASH-4)"
+    },
+    "serigala": {
+      "sprite": "res://assets/game/sprites/animals/serigala_kiri.png",
+      "fw": 32,
+      "fh": 32,
       "frame": 4,
       "arah": "kiri_kanan",
       "skala": 1.5,
-      "kecepatan": 22.0,
-      "pack": "seasons_forest_cc0",
-      "_catatan": "doe CC0. Menggantikan rusa 'All/Wild Animals' yang lisensinya TIDAK TERCATAT"
+      "kecepatan": 30.0,
+      "pack": "wolfpack_cc0",
+      "_catatan": "serigala kelabu CC0. Menggantikan sumber 'All/Wild Animals' yang lisensinya TIDAK TERCATAT"
     },
     "kucing_kelabu": {
       "sprite": "res://assets/game/sprites/animals/kucing_kelabu_kiri.png",

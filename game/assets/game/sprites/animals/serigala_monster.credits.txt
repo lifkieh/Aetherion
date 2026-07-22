@@ -1,5 +1,5 @@
 # serigala_monster.png — frame persegi 64x64 untuk DungeonMonster
 
-Pack   : Dungeon Crawl Stone Soup - ubin monster
-Seniman: penyumbang ubin DCSS
+Pack   : Wolf Pack! 32x32 Walking Wolf Animation
+Seniman: patvanmackelberg
 Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)

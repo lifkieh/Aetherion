@@ -1,7 +1,7 @@
 # rusa_kiri.png — hewan 'rusa'
-# doe CC0. Menggantikan rusa 'All/Wild Animals' yang lisensinya TIDAK TERCATAT
+# rusa jantan BERTANDUK. Memulihkan WHITE STAG (#D-ASH-4)
 
-Pack   : Seasons of Forest Animal Pack (sampel gratis v1)
-Seniman: inkbubi
-Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)
-URL    : https://inkbubi.itch.io/seasons-of-forest-animal-pack
+Pack   : Deer (Rework) - 32x32, N/E/S/W, 3 frame per arah
+Seniman: Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+Lisensi: CC-BY 3.0 (atribusi WAJIB, TIDAK menular)
+URL    : https://opengameart.org/content/deer-rework

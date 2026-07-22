@@ -1,0 +1,7 @@
+# serigala_kiri.png — hewan 'serigala'
+# serigala kelabu CC0. Menggantikan sumber 'All/Wild Animals' yang lisensinya TIDAK TERCATAT
+
+Pack   : Wolf Pack! 32x32 Walking Wolf Animation
+Seniman: patvanmackelberg
+Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)
+URL    : https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation

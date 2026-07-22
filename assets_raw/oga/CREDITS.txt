@@ -1,0 +1,22 @@
+# Sumber ASLI berlisensi permisif, diunduh langsung dari OpenGameArt.
+# Sengaja DI-COMMIT (pengecualian .gitignore) supaya _tools/gen_hewan.py bisa
+# dijalankan ulang oleh siapa pun yang meng-clone repo — itu arti #240 yang
+# sebenarnya. Gudang Desktop tidak ikut ter-commit, jadi apa pun yang cuma ada
+# di sana membuat generatornya tak bisa diulang orang lain.
+
+deer-m-run.png · deer-f-run.png
+  Pack   : Deer (Rework) — 32x32, N/E/S/W, 3 frame per arah
+  Seniman: Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+  Lisensi: CC-BY 3.0 (atribusi WAJIB, TIDAK menular)
+  URL    : https://opengameart.org/content/deer-rework
+  Catatan: -m- = JANTAN BERTANDUK. Inilah yang memulihkan WHITE STAG (#D-ASH-4)
+           sesudah sempat turun jadi WHITE DOE.
+
+Wolfpack.png
+  Pack   : Wolf Pack! 32x32 Walking Wolf Animation
+  Seniman: patvanmackelberg
+  Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)
+  URL    : https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation
+  Catatan: petak 8x8 32px. Empat warna (cokelat/kelabu/hitam/putih) x empat baris
+           (samping-kanan, samping-kiri, depan, belakang). Latar tiap petak OPAK
+           dan berbeda warna — dikupas di generator, bukan disunting tangan.

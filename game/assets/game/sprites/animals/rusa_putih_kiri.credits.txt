@@ -1,11 +1,12 @@
-# rusa_putih_kiri.png — doe dipucatkan untuk WHITE DOE (#D-ASH-4)
-# Dulu WHITE STAG. Sumber bertanduknya lisensi TIDAK TERCATAT, dan
-# pak CC0 penggantinya tak punya rusa bertanduk.
+# rusa_putih_kiri.png — rusa JANTAN dipucatkan untuk WHITE STAG (#D-ASH-4)
+# Sempat turun jadi WHITE DOE waktu satu-satunya sumber berlisensi
+# bersih tak bertanduk. Dipulihkan sesudah pencarian diperluas ke
+# OpenGameArt — tanduk itu yang membuat legendanya terbaca.
 # Turunan `rusa_kiri.png`: luminans + pemutihan, dikerjakan di
 # generator karena `modulate` cuma bisa MENGALIKAN warna — ia tak
 # bisa menghapusnya, jadi rusa cokelat yang di-modulate terang
 # tetap rusa cokelat, cuma silau.
 
-Pack   : Seasons of Forest Animal Pack (sampel gratis v1)
-Seniman: inkbubi
-Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)
+Pack   : Deer (Rework) - 32x32, N/E/S/W, 3 frame per arah
+Seniman: Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)
+Lisensi: CC-BY 3.0 (atribusi WAJIB, TIDAK menular)

@@ -53,7 +53,16 @@ Desktop.ini
 # === Third-party extracted assets (NOT versioned — repo slim + license-safe) ===
 # The extracted zip packs live only locally; ASSET_LOG.md records their source/license.
 # Our ORIGINAL assets live in game/assets/ and are versioned.
-assets_raw/
+# ⚠ `assets_raw/*`, BUKAN `assets_raw/`. Pola berakhiran garis-miring menutup seluruh
+#   direktori dan git tak pernah masuk ke dalamnya — jadi tiap negasi di bawahnya mati
+#   diam-diam, dan berkas yang "sudah dikecualikan" tetap tak ter-commit.
+assets_raw/*
+# KECUALI assets_raw/oga/ — sumber KECIL berlisensi permisif yang diunduh langsung dari
+# OpenGameArt. Ini yang membuat #240 benar-benar berlaku: generator hewan bisa
+# dijalankan ulang oleh siapa pun yang meng-clone repo, tanpa perlu gudang Desktop.
+# Syarat masuk: (a) CC0/CC-BY/OGA-BY — bukan share-alike, (b) kecil, (c) punya
+# CREDITS.txt di sebelahnya. Bukan tempat menampung pack utuh.
+!assets_raw/oga/
 # The root asset .zip/.rar archives are ignored (already extracted to assets_raw/).
 # assets_raw/lpc/ = stash LPC (dipindah dari .vscode/ per #232-4) — tercakup baris di atas.
 # CATATAN: assets_publikasi/ (sprite turunan LPC + LICENSE/CREDITS) SENGAJA di-commit (CC-BY-SA).
