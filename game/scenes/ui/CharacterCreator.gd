@@ -27,7 +27,13 @@ func _ready() -> void:
 		get_tree().paused = true
 		cfg = PlayerData.char_config.duplicate(true)
 	else:
-		cfg = CharGen.default_config()
+		cfg = LpcGen.acak() if LpcGen.siap() else CharGen.default_config()
+	# Config LAMA (dari save `_charsys`) dirapikan ke bentuk LPC begitu masuk, bukan
+	# dibiarkan lalu ditambal per-tombol. Save lama tak punya `build`/`kulit`; tanpa
+	# baris ini panel LPC membuka dengan pilihan kosong dan pemain melihat orang
+	# tanpa baju.
+	if LpcGen.siap():
+		cfg = LpcGen.rapikan(cfg)
 	_build()
 	_refresh_preview()
 	if OS.get_environment("AETHER_SHOT") == "1":
@@ -100,16 +106,31 @@ func _build() -> void:
 	_opts_box.custom_minimum_size = Vector2(720, 0)
 	scroll.add_child(_opts_box)
 
-	_cycler("Kepala (ras)", "head_race", CharGen.races(), RACE_NAME)
-	_cycler("Badan & Tangan (ras)", "torso_race", CharGen.races(), RACE_NAME)
-	_cycler("Kaki (ras)", "legs_race", CharGen.races(), RACE_NAME)
-	_cycler("Rambut", "hair", CharGen.hair_styles(), HAIR_NAME)
-	_swatches("Warna Rambut", "hair_color", HAIR_SWATCH)
-	_swatches("Kulit Kepala", "head_skin", SKIN_SWATCH)
-	_swatches("Kulit Badan", "torso_skin", SKIN_SWATCH)
-	_swatches("Kulit Kaki", "legs_skin", SKIN_SWATCH)
-	_swatches("Baju", "shirt", CLOTH_SWATCH)
-	_swatches("Celana", "pants", CLOTH_SWATCH)
+	# ── PILIHAN LPC (badan · kulit · rambut · pakaian sungguhan) ──────────────
+	# Sebelum ini panel ini menawarkan ras per-bagian, enam gaya rambut prosedural,
+	# dan "Baju"/"Celana" sebagai SWATCH WARNA — bukan garmen. Pemain tak bisa
+	# memakai satu pun pakaian yang dipakai 120 tetangganya, karena ia digambar
+	# sistem yang berbeda (`CharGen` 32 px prosedural) dari mereka (`LPC` 64 px).
+	# Sekarang keduanya menarik dari pustaka yang sama.
+	if LpcGen.siap():
+		_cycler_lpc("Bentuk Badan", "build", LpcGen.builds(), BUILD_NAME)
+		_cycler_lpc("Warna Kulit", "kulit", LpcGen.kulit(_lb()), {})
+		_cycler_lpc("Rambut", "rambut", LpcGen.rambut(_lb()), {})
+		_cycler_pakaian("Baju", "torso")
+		_cycler_pakaian("Celana", "legs")
+		_cycler_pakaian("Alas Kaki", "feet")
+	else:
+		# JATUH KEMBALI, dan BERTERIAK. Panel lama masih benar — ia cuma tak punya
+		# pakaian sungguhan. Diam-diam menampilkan panel lama akan membuat cacat
+		# "chargen.json hilang" terbaca sebagai keputusan desain.
+		push_warning("[chargen] chargen.json tak ada — memakai panel _charsys lama")
+		_cycler("Kepala (ras)", "head_race", CharGen.races(), RACE_NAME)
+		_cycler("Badan & Tangan (ras)", "torso_race", CharGen.races(), RACE_NAME)
+		_cycler("Kaki (ras)", "legs_race", CharGen.races(), RACE_NAME)
+		_cycler("Rambut", "hair", CharGen.hair_styles(), HAIR_NAME)
+		_swatches("Warna Rambut", "hair_color", HAIR_SWATCH)
+		_swatches("Baju", "shirt", CLOTH_SWATCH)
+		_swatches("Celana", "pants", CLOTH_SWATCH)
 
 	# buttons (bottom)
 	var bar := HBoxContainer.new()
@@ -184,13 +205,110 @@ func _swatches(label: String, key: String, colors: Array) -> void:
 		sw.pressed.connect(func(): Audio.play_sfx("menu"); cfg[key] = hex; _refresh_preview())
 		row.add_child(sw)
 
+## Nama build dalam bahasa manusia. `muscular_female` bukan kalimat.
+const BUILD_NAME := {
+	"child": "Anak", "teen": "Remaja", "female": "Perempuan", "male": "Laki-laki",
+	"muscular": "Laki-laki Kekar", "muscular_female": "Perempuan Kekar",
+	"pregnant": "Mengandung",
+}
+
+
+func _lb() -> String:
+	return String(cfg.get("build", "male"))
+
+
+## Pemutar untuk nilai LPC. Bedanya dengan `_cycler` lama: sesudah nilai berubah,
+## seluruh config DIRAPIKAN — mengganti badan bisa membuat baju lama tak ada di
+## build baru, dan menyisakannya menghasilkan lapis yang gagal dimuat. Gejalanya
+## "bajunya hilang", bukan galat, jadi ia harus dicegah di sini.
+func _cycler_lpc(label: String, key: String, values: Array, names: Dictionary) -> void:
+	if values.is_empty():
+		return
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	_opts_box.add_child(row)
+	row.add_child(_lbl(label, 15))
+	var tampil := func(v): return String(names.get(v, v)).capitalize()
+	var nilai := _lbl(tampil.call(cfg.get(key, values[0])), 15, Color(1, 0.9, 0.6))
+	nilai.custom_minimum_size = Vector2(200, 0)
+	var geser := func(arah: int):
+		var kini: Array = values
+		if key != "build":
+			kini = (LpcGen.kulit(_lb()) if key == "kulit" else LpcGen.rambut(_lb()))
+		if kini.is_empty():
+			return
+		var i: int = maxi(0, kini.find(cfg.get(key, kini[0])))
+		cfg[key] = kini[(i + arah + kini.size()) % kini.size()]
+		cfg = LpcGen.rapikan(cfg)
+		_rebuild_opsi()
+		_refresh_preview()
+	row.add_child(_btn2("◀", func(): geser.call(-1)))
+	row.add_child(nilai)
+	row.add_child(_btn2("▶", func(): geser.call(1)))
+
+
+## Pakaian: dua nilai sekaligus (garmen + warna), jadi ia tak muat di `_cycler_lpc`.
+func _cycler_pakaian(label: String, slot: String) -> void:
+	var opsi: Array = LpcGen.pakaian(_lb(), slot)
+	if opsi.is_empty():
+		return
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	_opts_box.add_child(row)
+	row.add_child(_lbl(label, 15))
+	var kini = cfg.get(slot, opsi[0])
+	var teks := "%s · %s" % [String(kini[0]).capitalize(), String(kini[1])] if kini is Array else "-"
+	var nilai := _lbl(teks, 15, Color(1, 0.9, 0.6))
+	nilai.custom_minimum_size = Vector2(200, 0)
+	var geser := func(arah: int):
+		var o: Array = LpcGen.pakaian(_lb(), slot)
+		if o.is_empty():
+			return
+		var i := 0
+		for j in o.size():
+			if cfg.get(slot, null) is Array and o[j][0] == cfg[slot][0] and o[j][1] == cfg[slot][1]:
+				i = j
+				break
+		cfg[slot] = o[(i + arah + o.size()) % o.size()]
+		_rebuild_opsi()
+		_refresh_preview()
+	row.add_child(_btn2("◀", func(): geser.call(-1)))
+	row.add_child(nilai)
+	row.add_child(_btn2("▶", func(): geser.call(1)))
+
+
+## Panel dibangun ULANG, bukan ditambal. Mengganti badan mengubah SELURUH daftar
+## pilihan (anak punya 3 baju, perempuan 29) — menambal label satu per satu akan
+## menyisakan baris yang menunjuk pilihan yang sudah tak ada.
+func _rebuild_opsi() -> void:
+	if _opts_box == null:
+		return
+	for c in _opts_box.get_children():
+		c.queue_free()
+	await get_tree().process_frame
+	if LpcGen.siap():
+		_cycler_lpc("Bentuk Badan", "build", LpcGen.builds(), BUILD_NAME)
+		_cycler_lpc("Warna Kulit", "kulit", LpcGen.kulit(_lb()), {})
+		_cycler_lpc("Rambut", "rambut", LpcGen.rambut(_lb()), {})
+		_cycler_pakaian("Baju", "torso")
+		_cycler_pakaian("Celana", "legs")
+		_cycler_pakaian("Alas Kaki", "feet")
+
+
 func _refresh_preview() -> void:
-	var sf := CharGen.sprite_frames(cfg)
+	var sf: SpriteFrames = LpcGen.sprite_frames(cfg) if LpcGen.siap() else CharGen.sprite_frames(cfg)
+	if sf == null:
+		sf = CharGen.sprite_frames(cfg)
 	for p in _preview:
 		p.spr.sprite_frames = sf
 		p.spr.play("walk_" + p.dir)
 
 func _randomize() -> void:
+	if LpcGen.siap():
+		cfg = LpcGen.acak()
+		_rebuild_opsi()
+		_refresh_preview()
+		return
 	var races := CharGen.races()
 	cfg = {
 		"head_race": races[randi() % races.size()],
@@ -201,10 +319,14 @@ func _randomize() -> void:
 		"shirt": CLOTH_SWATCH[randi() % CLOTH_SWATCH.size()],
 		"pants": CLOTH_SWATCH[randi() % CLOTH_SWATCH.size()],
 	}
-	_rebuild_options()
 	_refresh_preview()
-
 func _rebuild_options() -> void:
+	# Jalur LAMA. Dibiarkan hidup untuk save `_charsys` dan Cermin Jiwa; kalau LPC
+	# siap, ia menyerahkan pekerjaan ke `_rebuild_opsi()`. Dua panel yang sama-sama
+	# membangun ke kotak yang sama akan saling menimpa kalau keduanya jalan.
+	if LpcGen.siap():
+		_rebuild_opsi()
+		return
 	for c in _opts_box.get_children():
 		c.queue_free()
 	_cycler("Kepala (ras)", "head_race", CharGen.races(), RACE_NAME)
