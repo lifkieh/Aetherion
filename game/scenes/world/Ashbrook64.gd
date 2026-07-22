@@ -1222,6 +1222,24 @@ func _props_and_evidence() -> void:
 		glow.texture_scale = 7.0
 		glow.color = Color(1.0, 0.85, 0.55)
 		_lamp.add_child(glow)
+	# BANGKU & SURAT DI BAWAH LAMPU — dipulihkan dari peta 16px (#216/#218).
+	# `Ashbrook.gd:414` punya `_build_lamp_seat()`: Merrit duduk membaca surat di
+	# bawah lampunya, malam hari, tanpa dialog, tanpa cutscene, tanpa prompt. Adegan
+	# itu tak ikut pindah waktu Ashbrook naik ke 64px — yang tersisa cuma suratnya
+	# sebagai benda periksa DI DALAM kamar. Bendanya selamat; gambarnya hilang.
+	#
+	# Bedanya dengan versi 16px: di sana bangkunya kosong dan Merrit digambar
+	# terpisah. Di sini bangkunya SUNGGUH ditempati — jadwal Merrit malam hari kini
+	# berjarak 13 px dari lampu ini, jadi ia benar-benar berjalan ke sini dan duduk.
+	# Perabotnya tak perlu berpura-pura ada orangnya.
+	_jejak("bench_lpc.png", MERRIT_HOUSE + Vector2(58, -34), 1.0)
+	var surat_luar := ColorRect.new()          # kertas pucat — tak pernah dibuka pemain
+	surat_luar.color = Color(0.92, 0.88, 0.76)
+	surat_luar.size = Vector2(9, 7)
+	surat_luar.position = MERRIT_HOUSE + Vector2(72, -30)
+	surat_luar.z_index = int(surat_luar.position.y) + 1
+	add_child(surat_luar)
+
 	# titik cahaya lintas-jarak (#218) — z di bawah plafon, di atas seluruh y-sort
 	var beacon := Sprite2D.new()
 	var img := Image.create(6, 6, false, Image.FORMAT_RGBA8)
