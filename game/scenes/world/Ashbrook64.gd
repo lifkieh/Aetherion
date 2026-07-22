@@ -113,6 +113,11 @@ const P_A := "res://assets/game/sprites/animals/"
 const Z_LAMP := 2000
 const Z_BEACON := 4000              # < 4096, dan > semua y-sort
 var _lamp: Sprite2D
+## Petak tiap kandang, DIISI saat `_ternak()` membangunnya. Ada supaya `CekKandang`
+## bisa mengukurnya; kalau angkanya cuma hidup sebagai variabel lokal, satu-satunya
+## cara memeriksanya adalah membaca layar — dan membaca layar itu yang meloloskan
+## pagar domba menembus dua rumah selama sesi ini.
+var kandang_rect: Array[Rect2] = []
 var _chickens: Array = []
 var _kids: Array = []
 var _stag: Sprite2D
@@ -1356,6 +1361,7 @@ func _ternak() -> void:
 	# dan satu-satunya yang sudah punya palung air sejak lapisan dekorasi (1.5).
 	# Palung itu sekarang punya sebab: ia milik kandang ini.
 	var k := Rect2(752, 880, 176, 110)
+	kandang_rect.append(k)
 	for i in 6:                                   # pagar utara & selatan
 		var fx: float = k.position.x + 14 + i * 30
 		_jejak("pagar_h32.png", Vector2(fx, k.position.y), 1.0)
@@ -1392,7 +1398,18 @@ func _ternak() -> void:
 	# Di tenggara, bukan di sebelah kandang babi: Ashbrook mengecil dari luar ke
 	# dalam, jadi rumah tangga yang masih beternak DUA jenis akan tersebar, bukan
 	# berhimpitan. Yang berhimpitan itu desa yang penuh.
-	var kd := Rect2(1176, 1032, 224, 128)
+	#
+	# ⚠ (1176, 1032) DIGANTI (1224, 1080) sesudah playtest #151b. Petak lama menembus
+	#   DUA rumah: dinding tenggara (1040,1112,160x40) di sudut barat-daya, dan
+	#   dinding timur-tenggara (1328,1016,96x40) di sudut timur-laut. Yang kedua
+	#   lebih buruk — pagar utara di y=1032 melintas persis di depan pintunya.
+	#   Petak ini tak ditebak: seluruh kotak 224x128 di tenggara disisir, dan ini yang
+	#   TERDEKAT dengan niat semula (geser 67 px) sambil bersih dengan margin 24 px.
+	#   Kandang babi lolos karena ia lama dan sudah pernah diperiksa; yang baru tidak,
+	#   dan 1.122 test diam karena tak satu pun mengukur pagar terhadap bangunan.
+	#   Itu yang diperbaiki `CekKandang.gd`.
+	var kd := Rect2(1224, 1080, 224, 128)
+	kandang_rect.append(kd)
 	for i in 7:                                   # pagar utara & selatan
 		var dx: float = kd.position.x + 16 + i * 32
 		_jejak("pagar_h32.png", Vector2(dx, kd.position.y), 1.0)
@@ -1482,7 +1499,10 @@ func _liar() -> void:
 		["babi", Vector2(1022, 1108), 80.0],    # dekat kandang babi, di luar pagar
 		["domba", Vector2(618, 1188), 104.0],   # tepi selatan, bekas ladang
 		["domba", Vector2(742, 1244), 104.0],
-		["domba", Vector2(1560, 1160), 96.0],   # tepi tenggara, jauh dari siapa pun
+		# Digeser dari (1560,1160) waktu kandang domba pindah ke (1224,1080): jaraknya
+		# tinggal 112 px, dan domba liar yang merumput di sebelah pagar bukan domba
+		# liar — ia domba yang lepas. Yang dijaga di sini justru jaraknya.
+		["domba", Vector2(1704, 1240), 96.0],   # tepi tenggara, jauh dari siapa pun
 	]:
 		var t := Node2D.new()
 		t.set_script(load("res://scenes/actors/Hewan.gd"))
