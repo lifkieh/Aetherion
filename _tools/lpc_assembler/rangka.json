@@ -95,10 +95,6 @@
    ]
   }
  },
- "_utang": {
-  "torso/child": "LUNAS sebagian: kemeja anak LPC asli (10 warna) masuk lewat ambil_lpc.py. SISA: sumbernya cuma punya animasi `walk`, jadi anak yang memainkan `slash` akan bertelanjang dada. Diterima karena anak Ashbrook warga, bukan petarung.",
-  "feet/child": "HULU TAK PUNYA SEPATU ANAK SAMA SEKALI — dan bukan karena lupa: definisi resmi `feet_shoes_basic.json` mendaftarkan female/male/muscular/pregnant/teen, dan TIDAK mendaftarkan child. Anak LPC bertelanjang kaki menurut desain. Kita mundur ke `thin` supaya anak tetap bersepatu; kalau suatu hari itu terlihat salah, jalan yang benar adalah MELEPAS sepatunya, bukan mencari berkas yang tak pernah ada."
- },
  "kepala": {
   "male": "eulpc_head_male.png",
   "female": "eulpc_head_female.png",
@@ -112,5 +108,10 @@
   ],
   "pakai_garmen": "longsleeve"
  },
- "_catatan_feet": "`thin` BUKAN pinjaman untuk perempuan — ia nama folder yang dipakai hulu untuk female/pregnant/teen. Versi lama berkas ini mencatatnya sebagai utang `feet/female`, dan utang itu TIDAK PERNAH ADA: kita memodelkan kekurangan yang cuma kekeliruan baca penamaan hulu. Diperbaiki sesudah membaca sheet_definitions, bukan sesudah menebak."
+ "_catatan_feet": "`thin` BUKAN pinjaman untuk perempuan — ia nama folder yang dipakai hulu untuk female/pregnant/teen. Versi lama berkas ini mencatatnya sebagai utang `feet/female`, dan utang itu TIDAK PERNAH ADA: kita memodelkan kekurangan yang cuma kekeliruan baca penamaan hulu. Diperbaiki sesudah membaca sheet_definitions, bukan sesudah menebak.",
+ "_langit_langit_hulu": {
+  "_doc": "BUKAN utang kita — batas ekosistem LPC itu sendiri. Dipisah dari `_utang` karena keduanya menuntut tindakan berbeda: utang dibayar dengan MENCARI, langit-langit cuma bisa ditembus dengan MENGGAMBAR. Menyamakannya membuat orang berikutnya menghabiskan sore mencari berkas yang tak pernah dibuat.",
+  "anak_cuma_walk": "Seluruh pakaian anak (torso/shirt 10, legs/pants 9, legs/skirt 10) HANYA punya animasi `walk`. Empat konfirmasi bebas: (1) pohon penuh repo generator resmi, (2) zip pants-cleaned-split 2025-02-03 yang terbaru, (3) pernyataan komunitas LPC 'children only have walking animation', (4) fork Kallaste = NOL aset anak. AKIBAT: anak yang memainkan `slash` akan bertelanjang dada. Aman hari ini karena anak Ashbrook warga, bukan petarung.",
+  "sepatu_anak_tak_ada": "Tiga konfirmasi bebas: pohon repo (feet cuma male|thin), `sheet_definitions/feet/shoes/feet_shoes_basic.json` mendaftarkan female|male|muscular|pregnant|teen dan TIDAK child, serta zip feet khusus 2025-03-08. Anak LPC bertelanjang kaki menurut DESAIN. Kita mundur ke `thin` supaya anak tetap bersepatu; kalau itu terlihat salah, jalan yang benar MELEPAS sepatunya, bukan mencari berkas yang tak pernah ada."
+ }
 }

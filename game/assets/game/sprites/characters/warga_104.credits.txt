@@ -1,11 +1,11 @@
 # Kredit sprite: warga_104
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:pregnant: bronze.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_shorts_thin_orange: eulpc_legs_shorts_thin_orange.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_boots2_thin_lavender: eulpc_feet_boots2_thin_lavender.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_longsleeve_pregnant_red: eulpc_torso_longsleeve_pregnant_red.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_pregnant: bronze.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_swoop_gray: eulpc_hair_swoop_gray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- body:pregnant: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:_npc_eulpc_legs_pants_thin_maroon: eulpc_legs_pants_thin_maroon.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:_npc_eulpc_feet_shoes2_thin_white: eulpc_feet_shoes2_thin_white.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:_npc_eulpc_torso_sleeveless_pregnant_charcoal: eulpc_torso_sleeveless_pregnant_charcoal.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:_npc_kepala_pregnant: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:_npc_jewfro_chestnut: eulpc_hair_jewfro_chestnut.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

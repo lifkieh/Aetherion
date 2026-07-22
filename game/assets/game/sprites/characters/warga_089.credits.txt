@@ -1,11 +1,11 @@
 # Kredit sprite: warga_089
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:pregnant: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_pants_thin: eulpc_legs_pants_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- feet:_npc_eulpc_feet_boots2_thin_lavender: eulpc_feet_boots2_thin_lavender.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_longsleeve_pregnant_tan: eulpc_torso_longsleeve_pregnant_tan.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_pregnant: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_shortknot_black: eulpc_hair_shortknot_black.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- body:pregnant: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:_npc_eulpc_legs_formal_striped_thin_pink: eulpc_legs_formal_striped_thin_pink.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:_npc_eulpc_feet_socks_ankle_thin_blue: eulpc_feet_socks_ankle_thin_blue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:_npc_eulpc_torso_sleeveless_pregnant_rose: eulpc_torso_sleeveless_pregnant_rose.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:_npc_kepala_pregnant: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:_npc_jewfro_gray: eulpc_hair_jewfro_gray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

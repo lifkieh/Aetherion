@@ -1,12 +1,11 @@
 # Kredit sprite: warga_059
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:female: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_shorts_thin_slate: eulpc_legs_shorts_thin_slate.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_shoes2_thin_gold: eulpc_feet_shoes2_thin_gold.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- undershirt:_npc_dalam_eulpc_torso_longsleeve_female_sky: eulpc_torso_longsleeve_female_sky.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_suspenders_female_sky: eulpc_torso_suspenders_female_sky.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_female: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_curly_short2: eulpc_hair_curly_short2.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- body:female: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:_npc_eulpc_legs_short_shorts_thin_navy: eulpc_legs_short_shorts_thin_navy.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:_npc_eulpc_feet_socks_high_thin_red: eulpc_feet_socks_high_thin_red.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:_npc_eulpc_torso_tshirt_buttoned_female_purple: eulpc_torso_tshirt_buttoned_female_purple.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:_npc_kepala_female: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:_npc_swoop_side: eulpc_hair_swoop_side.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

@@ -2,11 +2,11 @@
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
 - body:muscular: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_pants_male_forest: eulpc_legs_pants_male_forest.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- feet:_npc_eulpc_feet_boots2_male_green: eulpc_feet_boots2_male_green.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- undershirt:_npc_dalam_eulpc_torso_longsleeve_male_white: eulpc_torso_longsleeve_male_white.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_suspenders_male_walnut: eulpc_torso_suspenders_male_walnut.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:_npc_eulpc_legs_pantaloons_male_bluegray: eulpc_legs_pantaloons_male_bluegray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:_npc_eulpc_feet_socks_high_male_yellow: eulpc_feet_socks_high_male_yellow.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- undershirt:_npc_dalam_eulpc_torso_longsleeve_male_slate: eulpc_torso_longsleeve_male_slate.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:_npc_eulpc_torso_suspenders_male_black: eulpc_torso_suspenders_male_black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:_npc_kepala_muscular: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_shortknot_raven: eulpc_hair_shortknot_raven.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- hair:_npc_jewfro_gold: eulpc_hair_jewfro_gold.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

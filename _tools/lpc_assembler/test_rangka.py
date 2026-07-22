@@ -116,10 +116,18 @@ def main():
 
     # 9 — lubang yang tersisa HARUS tercatat sebagai utang, bukan kejutan
     lb = rangka.periksa(R, L)
-    tercatat = set(R.get("_utang", {}))
+    # Lubang boleh tercatat di SALAH SATU dari dua tempat, dan pemisahannya penting:
+    #   `_utang`               kekurangan KITA — dibayar dengan mencari
+    #   `_langit_langit_hulu`  batas LPC sendiri — cuma bisa ditembus dengan menggambar
+    # Menyamakannya membuat orang berikutnya menghabiskan sore mencari berkas yang tak
+    # pernah dibuat. Uji ini cuma menuntut lubangnya TERCATAT, bukan terbayar.
+    tercatat = set(R.get("_utang", {})) | {
+        "feet/child" if "sepatu_anak" in k else k
+        for k in R.get("_langit_langit_hulu", {}) if not k.startswith("_")}
     tak_tercatat = [(b, s) for b, s, _k in lb
                     if "%s/%s" % (s, b) not in tercatat and "%s/*" % s not in tercatat]
-    ok("tiap lubang tercatat di `_utang`", not tak_tercatat, str(tak_tercatat))
+    ok("tiap lubang tercatat di `_utang` atau `_langit_langit_hulu`",
+       not tak_tercatat, str(tak_tercatat))
 
     print("\n===== RANGKA: %d lulus, %d gagal =====" % (_lulus, _gagal))
     return 0 if _gagal == 0 else 1
