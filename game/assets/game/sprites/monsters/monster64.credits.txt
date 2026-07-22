@@ -1,5 +1,11 @@
 # Monster 64 px — dipotong `_tools/gen_monster64.py` dari ubin DCSS.
 # Menggantikan seni 16 px tanpa kredit (25 berkas, NOL provenans).
+# Keluarannya LEMBAR ARAH 256x256 (4x4 rangka 64 px), bukan gambar tunggal:
+# `monsters.json` menjanjikan cols=4/rows=4 dan `SheetUtil` memotong
+# menurut janji itu. Seni DCSS satu pose diam — pose yang sama diisikan ke
+# keempat arah (baris `right` dicerminkan) supaya monster tak hilang saat
+# menghadap selain bawah. Itu menyembuhkan KEHILANGAN, bukan kekakuan;
+# siklus jalan sungguhan menuntut sumber lain.
 # Diperbesar 2x nearest-neighbour: DCSS digambar untuk petak 32 px, dan
 # dunia ini berpetak 32 px dengan karakter setinggi dua petak.
 
