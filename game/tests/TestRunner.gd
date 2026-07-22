@@ -4436,6 +4436,17 @@ func _test_ashbrook64_padat() -> void:
 	# HANYA titik-periksa berbukti. Prop kamar Merrit sengaja di luar peta (INTERIOR,
 	# ruang positif di luar batas) dan ikut grup yang sama — memasukkannya akan
 	# membuat test ini menuduh interior sebagai cacat.
+	# ⚠ YANG DIJAGA ADALAH KETERJANGKAUAN, BUKAN KOORDINAT.
+	#   Versi pertama menyamakan "di dalam batas peta" dengan "bisa dicapai pemain",
+	#   dan kedua hal itu berbeda: kamar Merrit hidup di ruang POSITIF DI LUAR peta
+	#   (INTERIOR), dan ia terjangkau lewat pintu `setup_pindah`. Begitu dua bukti
+	#   kamar dipasang (Jalur B), penjaga ini menuduh keduanya cacat padahal keduanya
+	#   justru baru saja jadi bisa ditemukan.
+	#   Pengecualian lama bekerja lewat "prop kamar tak punya evidence_id" — cara yang
+	#   benar secara kebetulan, dan runtuh persis saat kamar itu diberi bukti.
+	#   Sekarang: di luar batas BOLEH, asal berada di dalam kotak interior yang dikenal.
+	#   Di luar batas DAN di luar interior tetap ditolak.
+	var ruang_dalam := Rect2(scn.INTERIOR, Vector2(320, 240))
 	var luar: Array = []
 	for n in get_tree().get_nodes_in_group("interactable"):
 		if not scn.is_ancestor_of(n):
@@ -4444,9 +4455,24 @@ func _test_ashbrook64_padat() -> void:
 		if ev == null or String(ev) == "":
 			continue
 		var q: Vector2 = n.global_position
-		if q.x < 0.0 or q.x > w or q.y < 0.0 or q.y > h:
+		var di_tanah := q.x >= 0.0 and q.x <= w and q.y >= 0.0 and q.y <= h
+		if not di_tanah and not ruang_dalam.has_point(q):
 			luar.append("%s @ %s" % [String(ev), str(q)])
-	check("nol titik-periksa berbukti di luar batas tanah", luar.is_empty(), str(luar))
+	check("nol titik-periksa berbukti di luar tanah MAUPUN di luar interior",
+		luar.is_empty(), str(luar))
+
+	# Pengecualian interior cuma sah kalau kamarnya PUNYA PINTU. Tanpa uji ini,
+	# "di dalam interior" jadi lubang bebas: bukti mana pun bisa disembunyikan di
+	# ruang yang tak seorang pun bisa masuki, dan penjaga di atas akan meluluskannya.
+	var ada_pintu := false
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if not scn.is_ancestor_of(n):
+			continue
+		var tuj = n.get("teleport_to")
+		if tuj != null and ruang_dalam.has_point(tuj):
+			ada_pintu = true
+			break
+	check("kamar interior punya pintu masuk (pengecualian di atas sah)", ada_pintu)
 
 	# dorong ke empat arah; batas harus menahan
 	for arah in [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]:

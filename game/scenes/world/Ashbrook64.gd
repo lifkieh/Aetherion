@@ -2030,6 +2030,31 @@ func _bangun_kamar_merrit() -> void:
 		"Kau berhenti menghitung di baris ketiga. Ada lebih banyak botol di sini daripada orang di Ashbrook.",
 	], "Botol berjajar [E]")
 
+	# ── DUA BUKTI KAMAR (Jalur B, #226) ────────────────────────────────────────
+	# Halaman `person_merrit_fane` menuntut empat jenis bukti. Dua di antaranya
+	# `found_by: examine` dan sudah lengkap datanya di `evidence.json` sejak lama —
+	# yang kurang cuma TEMPATNYA di dunia. Bukti yang punya teks tapi tak punya titik
+	# adalah bukti yang tak pernah bisa ditemukan siapa pun.
+	#
+	# ⚠ JARAK KE TITIK LAIN DIJAGA >72 px, dan itu bukan selera: `Interactable`
+	#   memunculkan label pada radius 72, jadi dua titik yang lebih dekat saling
+	#   MEREBUT tombol E. Pelajaran yang sudah dibayar sekali di alun-alun, waktu zona
+	#   warga latar menelan `ev_ashbrook_gudang_gandum` dan rantai payoff putus di dua
+	#   dari lima titik tanpa satu galat pun muncul.
+	#   surat (160,112) · botol (264,146) · keluar (150,205) — kedua titik di bawah
+	#   berjarak >=105 px dari ketiganya.
+
+	# KARTU POS KOSONG — di para-para perapian. Disimpan, tidak dipajang: ia tak tahu
+	# lagi kenapa ia membelinya, tapi tangannya menolak membuangnya.
+	_kotak(o + Vector2(34, 88), Vector2(48, 6), Color(0.30, 0.24, 0.18), 3)
+	_examine(o + Vector2(56, 96), "ev_merrit_kartu_pos_kosong")
+
+	# BUKU RUTE POS — di rak dekat tong, tempat ia menyambarnya tiap pagi. Perhentian
+	# yang tak masuk akal itu masih dilewatinya, dan tulisan tangannya sendiri yang
+	# mencatat kapan ia menambahkannya.
+	_kotak(o + Vector2(250, 34), Vector2(44, 6), Color(0.30, 0.24, 0.18), 3)
+	_examine(o + Vector2(272, 40), "ev_merrit_rute_pos_berubah")
+
 	# pintu KELUAR
 	var keluar := _prop(o + Vector2(150, 205))
 	keluar.setup_pindah(MERRIT_HOUSE + Vector2(0, 36), false, "Keluar [E]")
