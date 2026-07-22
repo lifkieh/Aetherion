@@ -2,9 +2,11 @@
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
 - body:male: eulpc_body_male.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
-- legs:pants_thin: eulpc_legs_pants_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- feet:shoes_thin: eulpc_feet_shoes_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- legs:_tokoh_eulpc_legs_pants_male_charcoal: eulpc_legs_pants_male_charcoal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:_tokoh_eulpc_feet_shoes_male: eulpc_feet_shoes_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - undershirt:ls_male_slate: eulpc_torso_longsleeve_male_slate.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:overalls: eulpc_torso_overalls_male.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:_tokoh_eulpc_torso_overalls_male: eulpc_torso_overalls_male.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
 - head:male: eulpc_head_male.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
 - headwear:feather_cap_walnut: eulpc_hat_feather_cap_walnut.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk) (CC-BY-SA 3.0 / GPL 3.0)
+
+# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

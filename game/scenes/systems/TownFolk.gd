@@ -55,7 +55,7 @@ static func place(host: Node2D, town_id: String, center: Vector2, lpc_awal := -1
 		if p.has("lpc_sheet"):
 			v.lpc_sheet = String(p["lpc_sheet"])
 		elif lpc_awal >= 0:
-			v.lpc_sheet = "warga_%02d" % (lpc_awal + i)
+			v.lpc_sheet = "warga_%03d" % (lpc_awal + i)
 		host.add_child(v)
 		v.setup(p.get("name", "Warga"), p.get("config", {}), wps)
 		v.set("_home", anchor)        # jangkar jadwal (#97)
@@ -96,7 +96,7 @@ static func place_latar(host: Node2D, zona: Array, awal: int, seed_pos := 202607
 			var wps := [anchor, anchor + Vector2.from_angle(rng.randf_range(0.0, TAU))
 					* rng.randf_range(24.0, 64.0)]
 			var v := preload("res://scenes/actors/Villager.tscn").instantiate()
-			v.lpc_sheet = "warga_%02d" % (awal + n)
+			v.lpc_sheet = "warga_%03d" % (awal + n)
 			v.latar = true          # kerumunan: tanpa dialog, tanpa tombol E
 			host.add_child(v)
 			v.setup("Warga", {}, wps)

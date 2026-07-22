@@ -132,11 +132,121 @@ def lembar_kontak(hasil, fmap, keluar, judul):
     return keluar
 
 
+KELUAR = os.path.join(A.REPO_ROOT, "game", "assets", "game", "sprites", "characters")
+
+
+def pasang(R, L, cat, fmap, data, cdb):
+    """Tulis 120 lembar + irisannya ke `characters/`. Nama `warga_NNN` berurutan.
+
+    TIGA DIGIT, bukan dua. `TownFolk` dulu memakai `warga_%02d` untuk dua puluh warga;
+    seratus dua puluh tak muat, dan `%02d` pada indeks 100 menghasilkan "warga_100"
+    yang kebetulan MASIH terbaca — jadi kegagalannya bukan galat melainkan warga yang
+    diam-diam salah. Formatnya diseragamkan ke `%03d` di kedua sisi.
+
+    Penjaga #231 sengaja TIDAK dipanggil: ia menguji tokoh BERNAMA. Seratus dua puluh
+    warga latar memang boleh bersiluet mirip — di LPC cuma tutup-kepala yang berdaya
+    bentuk, dan menuntut 120 siluet unik mustahil sekaligus salah sasaran.
+    """
+    A.guard_232(KELUAR)
+    os.makedirs(KELUAR, exist_ok=True)
+    tulis, gagal = 0, []
+    for i, p in enumerate(data["npc"]):
+        nama = "warga_%03d" % i
+        try:
+            char, catx = ke_char(R, L, p, cat)
+            sheet, dipakai = A.assemble_sheet(char, catx)
+        except Exception as e:
+            gagal.append((nama, p["id"], "%s: %s" % (type(e).__name__, e)))
+            continue
+        for anim, strip in A.slice_sheet(sheet, fmap).items():
+            strip.save(os.path.join(KELUAR, "%s_%s.png" % (nama, anim)))
+        A.write_credits(KELUAR, nama, dipakai, cdb)
+        tulis += 1
+    return tulis, gagal
+
+
+def tokoh_ke_char(R, L, c, cat):
+    """Resep tokoh bentuk BARU -> (char, katalog+). Ekstra hand-tuned dipertahankan.
+
+    Bedanya dari `ke_char` NPC: tokoh bernama punya barang yang tak pernah diundi —
+    `tint`, `facial`, `story_prop`, `headwear`, `palette_shift`, `race_overlay`.
+    Semua itu dibiarkan lewat apa adanya. Yang diambil alih resolver HANYA tiga slot
+    pakaian, karena cuma di situ pasangan mustahil pernah bisa ditulis.
+    """
+    build = c["build"]
+    cat = {k: (dict(v) if isinstance(v, dict) else v) for k, v in cat.items()}
+    char = dict(c)
+    char["body"] = build
+    b = R["build"][build]
+
+    # Badan & kepala TETAP dari katalog kurasi, bukan dari `bases/`: tokoh bernama
+    # punya `tint.body` yang disetel tangan, dan menukar sumber badannya akan
+    # mengubah warna kulit sepuluh tokoh sekaligus tanpa diminta.
+    if build in cat.get("body", {}):
+        char["body"] = build
+    char["head"] = c.get("head", b["kepala"])
+
+    for slot, g in (c.get("garmen") or {}).items():
+        berkas, kel, sebab = rangka.resolve(R, L, build, slot, g["garmen"], g["warna"])
+        if berkas is None:
+            raise ValueError("%s: %s" % (c["id"], sebab))
+        kunci = "_tokoh_" + os.path.splitext(os.path.basename(str(berkas)))[0]
+        cat.setdefault(slot, {})[kunci] = berkas
+        char[slot] = kunci
+    return char, cat
+
+
+def tokoh(R, L, cat, fmap, cdb):
+    """Rakit ulang sepuluh resep tokoh yang sudah dimigrasikan."""
+    import glob
+    A.guard_232(KELUAR)
+    siap, gagal = [], []
+    for f in sorted(glob.glob(os.path.join(HERE, "characters", "*.json"))):
+        with open(f, encoding="utf-8") as fh:
+            c = json.load(fh)
+        if "garmen" not in c:
+            gagal.append((c.get("id", f), "belum dimigrasikan (tak punya `garmen`)"))
+            continue
+        try:
+            char, catx = tokoh_ke_char(R, L, c, cat)
+            sheet, dipakai = A.assemble_sheet(char, catx)
+            siap.append((c, sheet, dipakai))
+        except Exception as e:
+            gagal.append((c.get("id"), "%s: %s" % (type(e).__name__, e)))
+
+    # #231 BERLAKU DI SINI, tak seperti pada warga latar: ini tokoh BERNAMA, dan
+    # kembar-siluet di antara mereka persis yang gerbang itu dibuat untuk menahan.
+    bernama = {c["id"]: sh for c, sh, _ in siap if c.get("named")}
+    if len(bernama) > 1:
+        A.guard_231(bernama)
+
+    for c, sheet, dipakai in siap:
+        for anim, strip in A.slice_sheet(sheet, fmap).items():
+            strip.save(os.path.join(KELUAR, "%s_%s.png" % (c["id"], anim)))
+        sheet.save(os.path.join(KELUAR, "%s.png" % c["id"]))
+        A.write_credits(KELUAR, c["id"], dipakai, cdb)
+    return len(siap), gagal
+
+
 def main():
     R, L = rangka.muat()
     cat = A._catalog()
     fmap = A._frame_map()
     data = preset()
+
+    if "--tokoh" in sys.argv:
+        n, gagal = tokoh(R, L, cat, fmap, A._credits_db())
+        for cid, sebab in gagal:
+            print("  [GAGAL] %-16s %s" % (cid, sebab))
+        print("-> %s   (%d tokoh, %d gagal)" % (KELUAR, n, len(gagal)))
+        return 1 if gagal else 0
+
+    if "--pasang" in sys.argv:
+        n, gagal = pasang(R, L, cat, fmap, data, A._credits_db())
+        for nm, pid, sebab in gagal:
+            print("  [GAGAL] %-12s %-24s %s" % (nm, pid, sebab))
+        print("-> %s   (%d warga, %d gagal)" % (KELUAR, n, len(gagal)))
+        return 1 if gagal else 0
 
     contoh = "--semua" not in sys.argv
     if contoh:

@@ -121,6 +121,39 @@ def buat(R, L, kategori, build, n=PER_KATEGORI):
     return out
 
 
+## Bobot KEMUNCULAN di kerumunan — bukan bobot jumlah preset. Tiap kategori tetap
+## punya 20; yang diatur di sini cuma URUTANNYA.
+##
+## Kenapa perlu: preset lahir berkelompok per kategori, dan `TownFolk` mengambil
+## `warga_000`, `warga_001`, ... berurutan. Tanpa penyusunan ulang, dua puluh warga
+## pertama Ashbrook SEMUANYA anak — desa berisi anak-anak tanpa satu orang dewasa.
+## Cacat itu tak akan muncul di uji mana pun; ia cuma terlihat waktu dimainkan.
+BOBOT = [("biasa_lelaki", 3), ("biasa_perempuan", 3), ("anak", 2),
+         ("kekar_lelaki", 1), ("kekar_perempuan", 1), ("hamil", 1)]
+
+
+def kerumunan(npc):
+    """Susun ulang jadi urutan yang terbaca sebagai DESA, bukan sebagai daftar.
+
+    Round-robin berbobot: tiap putaran mengambil 3 lelaki biasa, 3 perempuan biasa,
+    2 anak, dan masing-masing 1 dari sisanya. Sisa yang tak terambil ditempel di
+    belakang supaya NOL preset hilang — kota lain boleh memakai ekornya.
+    """
+    sisa = {k: [n for n in npc if n["kategori"] == k] for k, _ in BOBOT}
+    out = []
+    while any(sisa.values()):
+        maju = False
+        for k, w in BOBOT:
+            for _ in range(w):
+                if sisa[k]:
+                    out.append(sisa[k].pop(0))
+                    maju = True
+        if not maju:
+            break
+    assert len(out) == len(npc), "penyusunan ulang kehilangan preset"
+    return out
+
+
 def main():
     R, L = rangka.muat()
     lubang = rangka.periksa(R, L)
@@ -139,6 +172,7 @@ def main():
         kl = len({d.get("kulit") for d in daftar})
         ringkas.append((kategori, build, ruang(R, L, build), gm, rb, kl))
 
+    semua = kerumunan(semua)
     data = {
         "_doc": "PRESET NPC terkurasi. Pemain bebas berkombinasi; NPC memakai daftar "
                 "ini apa adanya supaya penduduk tak berganti baju tiap muat, dan supaya "

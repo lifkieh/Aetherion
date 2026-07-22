@@ -7,12 +7,27 @@
   "skin": "light",
   "hair": "parted2",
   "headwear": null,
-  "facial": { "beard": null },
-  "torso": "sleeveless2",
-  "legs": "pants_thin",
-  "feet": "shoes_thin",
+  "facial": {
+    "beard": null
+  },
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
-  "_hook": "PEMAIN default — bukan tokoh bernama, jadi named=false (guard_231 tak berlaku; pemain boleh berbagi hook dengan siapa pun). Dipakai CharGen jalur LPC untuk jalur Play nyata (#254)."
+  "_hook": "PEMAIN default — bukan tokoh bernama, jadi named=false (guard_231 tak berlaku; pemain boleh berbagi hook dengan siapa pun). Dipakai CharGen jalur LPC untuk jalur Play nyata (#254).",
+  "build": "male",
+  "garmen": {
+    "torso": {
+      "garmen": "longsleeve",
+      "warna": "white"
+    },
+    "legs": {
+      "garmen": "pants",
+      "warna": "charcoal"
+    },
+    "feet": {
+      "garmen": "shoes",
+      "warna": "polos"
+    }
+  },
+  "_migrasi": "Dimigrasikan ke resep berbasis GARMEN. Sebelum ini slot menyebut NAMA BERKAS langsung, dan empat tokoh berbadan `male` memakai `pants_thin`+`shoes_thin` — berkas keluarga female/teen. Itulah cacat 'kaki kelebaran' (16 px vs 20 px). Sekarang resep menyebut garmen; keluarganya dipilih resolver dari `build`, jadi pasangan mustahil TAK BISA DITULIS."
 }

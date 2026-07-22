@@ -10,9 +10,6 @@
   "facial": {
     "beard": "white"
   },
-  "torso": "overalls",
-  "legs": "pants_thin",
-  "feet": "shoes_thin",
   "race_overlay": [],
   "story_prop": [],
   "palette_shift": null,
@@ -21,5 +18,21 @@
   "tint": {
     "body": "#e8c6a8"
   },
-  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat."
+  "_skin": "Variasi kulit lewat tint.body (pustaka eulpc 1-nada). Kepala mewarisi tint yang sama — tanpa itu leher pucat di atas badan cokelat.",
+  "build": "male",
+  "garmen": {
+    "torso": {
+      "garmen": "longsleeve",
+      "warna": "walnut"
+    },
+    "legs": {
+      "garmen": "pants",
+      "warna": "navy"
+    },
+    "feet": {
+      "garmen": "boots",
+      "warna": "polos"
+    }
+  },
+  "_migrasi": "Dimigrasikan ke resep berbasis GARMEN. Sebelum ini slot menyebut NAMA BERKAS langsung, dan empat tokoh berbadan `male` memakai `pants_thin`+`shoes_thin` — berkas keluarga female/teen. Itulah cacat 'kaki kelebaran' (16 px vs 20 px). Sekarang resep menyebut garmen; keluarganya dipilih resolver dari `build`, jadi pasangan mustahil TAK BISA DITULIS."
 }
