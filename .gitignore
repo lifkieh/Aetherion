@@ -11,7 +11,16 @@ build/
 *.tpz
 
 # === Tooling / large binaries (kept local, not versioned) ===
-# _tools/ = perkakas lokal. Binernya TIDAK di-versi (godot/ 127 MB, tpl_extract/ 1,6 GB),
+# _tools/ = perkakas lokal. Binernya TIDAK di-versi (godot/ 127 MB),
+# ⚠ CATATAN 2026-07-23: `tpl_extract/`, `templates.zip`, `templates.tpz`, dan
+#   `godot43.zip` DIHAPUS — 3,66 GB. Semuanya salinan berlebih: template ekspor
+#   Godot 4.3 sudah terpasang di %APPDATA%/Godot/export_templates/4.3.stable
+#   (34 berkas, nama & ukuran identik), dan `templates.zip` byte-identik dengan
+#   `templates.tpz` di sebelahnya. Bisa diunduh ulang dari godotengine.org.
+#   Yang TIDAK ikut terhapus: cadangan git bundle — ia memuat commit yang sudah
+#   tak ada di repo ini, jadi ia satu-satunya salinannya. Dipindah ke
+#   D:/2DGAME_arsip\ dengan BACA_DULU.md di sebelahnya, karena cadangan yang
+#   tinggal di dalam benda yang dicadangkannya bukan cadangan.
 # TAPI script generator WAJIB ter-commit — HUKUM REPRODUKSI #240.
 # ⚠ CATATAN GIT (sebab baris ini rumit): kalau sebuah DIREKTORI dikecualikan ("_tools/"),
 #   git tak pernah masuk ke dalamnya, sehingga "!pengecualian" di bawahnya MUSTAHIL bekerja.
