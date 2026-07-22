@@ -74,6 +74,13 @@ PACK = {
         "url": "https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation",
         "terverifikasi": True,
     },
+    "lpc_farm_daneeklu": {
+        "nama": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
+        "pencipta": "Daniel Eddeland (daneeklu)",
+        "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
+        "url": "https://opengameart.org/content/lpc-style-farm-animals",
+        "terverifikasi": True,
+    },
     "pig_rework": {
         "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
         "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
@@ -159,11 +166,25 @@ JOBS = [
     #   Ashbrook daripada domba yang ia gantikan.
     #   Baris 3 = hadap BARAT. Urutan lembar N/E/S/W menurut README pack, dan barat
     #   itulah yang cocok dengan kebiasaan repo (sprite menghadap KIRI).
-    ("babi", os.path.join(GUDANG, "pig-1.1", "PNG", "64x64", "pig.png"), "baris",
-     (64, 64, 3, 3), "pig_rework", 1.0, 13.0,
-     "babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar "
-     "characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan "
-     "sisa, domba menuntut padang"),
+    # BABI & DOMBA dari SATU pack yang sama (daneeklu), dan sumbernya kini ADA DI
+    # REPO — bukan di gudang Desktop. Versi sebelumnya membaca `pig-1.1` dari Desktop,
+    # jadi sprite babi TAK BISA dibuat ulang oleh siapa pun yang meng-clone. Celah itu
+    # tercatat di `assets_raw/SUMBER.md`; ini yang menutupnya.
+    # Petak 4x4 128 px. Baris 1 = hadap KIRI — diverifikasi mata, bukan ditebak dari
+    # urutan baris; pack lain di repo ini memakai urutan yang berbeda-beda.
+    ("babi", os.path.join(OGA, "farm", "pig_walk.png"), "rapat",
+     (128, 128, 0, 1, 4, False), "lpc_farm_daneeklu", 1.0, 13.0,
+     "babi ternak. Desa bekas-kota masuk akal beternak babi: babi makan sisa"),
+
+    # DOMBA KEMBALI — dan kali ini surat-suratnya lengkap.
+    #   Domba lama dibuang karena `stendhal_animals/ram.png` CC-BY-SA 3.0 (menular).
+    #   Berkas `sheep_walk.png` yang tergeletak di akar gudang ternyata BYTE-IDENTIK
+    #   dengan rilis resmi `LPC style farm animals` (Daniel Eddeland) — CC-BY 3.0,
+    #   TIDAK menular. Yang dulu hilang bukan dombanya, melainkan provenansnya.
+    ("domba", os.path.join(OGA, "farm", "sheep_walk.png"), "rapat",
+     (128, 128, 0, 1, 4, False), "lpc_farm_daneeklu", 1.0, 11.0,
+     "domba ternak. Kembali sesudah sumber berlisensi bersih ditemukan — domba "
+     "merumput lebih lambat daripada babi mengais"),
     # RUSA JANTAN BERTANDUK, CC-BY 3.0. Dua sumber sebelumnya gagal dengan cara
     #   berbeda: `All/Wild Animals` lisensinya TIDAK TERCATAT, dan doe CC0
     #   penggantinya tak bertanduk sehingga WHITE STAG sempat turun jadi WHITE DOE.
@@ -298,6 +319,37 @@ def tanpa_latar_petak(im, fw, fh):
     return out
 
 
+def rapat(im, fw, fh, c0, baris, n):
+    """Potong satu baris petak ke BBOX GABUNGAN seluruh frame-nya.
+
+    Pack `lpc_farm_daneeklu` memakai petak 128x128 untuk sprite yang cuma ~49x38 —
+    sisanya kosong. Menyimpannya apa adanya membuat aktor memakai frame yang 90%
+    transparan, dan tiap perhitungan skala di sisi pemanggil jadi berbohong: "domba
+    128 px" padahal dombanya 38 px.
+
+    BBOX-nya GABUNGAN, bukan per-frame. Memotong tiap frame sendiri-sendiri akan
+    membuat kaki domba berpindah tempat tiap frame — hewannya bergetar, bukan
+    berjalan. Yang sama untuk semua frame harus dipotong sama.
+    """
+    kotak = None
+    for i in range(n):
+        sel = im.crop(((c0 + i) * fw, baris * fh, (c0 + i + 1) * fw, (baris + 1) * fh))
+        bb = sel.getbbox()
+        if bb is None:
+            continue
+        kotak = bb if kotak is None else (min(kotak[0], bb[0]), min(kotak[1], bb[1]),
+                                          max(kotak[2], bb[2]), max(kotak[3], bb[3]))
+    if kotak is None:
+        raise HewanError("baris %d kosong seluruhnya" % baris)
+    w, h = kotak[2] - kotak[0], kotak[3] - kotak[1]
+    out = Image.new("RGBA", (w * n, h), (0, 0, 0, 0))
+    for i in range(n):
+        sel = im.crop(((c0 + i) * fw + kotak[0], baris * fh + kotak[1],
+                       (c0 + i) * fw + kotak[2], baris * fh + kotak[3]))
+        out.paste(sel, (i * w, 0))
+    return out, w, h
+
+
 def potong(job):
     hid, src, jenis, par, pack, skala, kecepatan, cat = job
     if jenis == "repo":
@@ -305,6 +357,18 @@ def potong(job):
         keluar = "chicken.png"
         return keluar, fw, fh, n
     im = buka(src)
+    if jenis == "rapat":
+        fw, fh, c0, baris, n, balik = par
+        potongan, fw, fh = rapat(im, fw, fh, c0, baris, n)
+        if balik:
+            hasil = Image.new("RGBA", potongan.size, (0, 0, 0, 0))
+            for i in range(n):
+                f = potongan.crop((i * fw, 0, (i + 1) * fw, fh))
+                hasil.paste(f.transpose(Image.FLIP_LEFT_RIGHT), (i * fw, 0))
+            potongan = hasil
+        keluar = "%s_kiri.png" % hid
+        potongan.save(os.path.join(DST, keluar))
+        return keluar, fw, fh, n
     if jenis == "petak":
         im = tanpa_latar_petak(im, par[0], par[1])
         jenis = "blok"

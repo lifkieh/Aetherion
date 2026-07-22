@@ -42,9 +42,9 @@
     "url": "https://opengameart.org/node/69399"
   },
   "babi_kiri.png": {
-    "author": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
-    "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
-    "pack": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
+    "pack": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
     "terverifikasi": true,
     "url": "https://opengameart.org/content/lpc-style-farm-animals"
   },
@@ -61,6 +61,13 @@
     "pack": "Ninja Adventure - Asset Pack",
     "terverifikasi": true,
     "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack"
+  },
+  "domba_kiri.png": {
+    "author": "Daniel Eddeland (daneeklu)",
+    "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
+    "pack": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
+    "terverifikasi": true,
+    "url": "https://opengameart.org/content/lpc-style-farm-animals"
   },
   "eulpc_body_child.png": {
     "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",

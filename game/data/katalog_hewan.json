@@ -39,6 +39,13 @@
       "url": "https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation",
       "terverifikasi": true
     },
+    "lpc_farm_daneeklu": {
+      "nama": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
+      "pencipta": "Daniel Eddeland (daneeklu)",
+      "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
+      "url": "https://opengameart.org/content/lpc-style-farm-animals",
+      "terverifikasi": true
+    },
     "pig_rework": {
       "nama": "Pigs Rework v1.1 (sprite babi daneeklu, dirapikan untuk Stendhal)",
       "pencipta": "daneeklu (asli) · pengerjaan ulang Pigs Rework v1.1",
@@ -89,14 +96,25 @@
     },
     "babi": {
       "sprite": "res://assets/game/sprites/animals/babi_kiri.png",
-      "fw": 64,
-      "fh": 64,
-      "frame": 3,
+      "fw": 55,
+      "fh": 31,
+      "frame": 4,
       "arah": "kiri_kanan",
       "skala": 1.0,
       "kecepatan": 13.0,
-      "pack": "pig_rework",
-      "_catatan": "babi ternak. Menggantikan domba CC-BY-SA yang tak bisa dipatuhi di luar characters/. Desa bekas-kota pun lebih masuk akal beternak babi: babi makan sisa, domba menuntut padang"
+      "pack": "lpc_farm_daneeklu",
+      "_catatan": "babi ternak. Desa bekas-kota masuk akal beternak babi: babi makan sisa"
+    },
+    "domba": {
+      "sprite": "res://assets/game/sprites/animals/domba_kiri.png",
+      "fw": 49,
+      "fh": 40,
+      "frame": 4,
+      "arah": "kiri_kanan",
+      "skala": 1.0,
+      "kecepatan": 11.0,
+      "pack": "lpc_farm_daneeklu",
+      "_catatan": "domba ternak. Kembali sesudah sumber berlisensi bersih ditemukan — domba merumput lebih lambat daripada babi mengais"
     },
     "rusa": {
       "sprite": "res://assets/game/sprites/animals/rusa_kiri.png",

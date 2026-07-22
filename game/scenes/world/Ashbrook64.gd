@@ -1354,6 +1354,45 @@ func _ternak() -> void:
 		h.wander_radius = float(spec[2])
 		h.place(spec[1])
 
+	# ── KANDANG KEDUA: DOMBA ───────────────────────────────────────────────────
+	# Dipisah dari kandang babi, dan jaraknya yang bercerita. Babi dikandangkan
+	# SEMPIT di sebelah rumah — ia makan sisa dapur, jadi ia tinggal dekat dapurnya.
+	# Domba menuntut PADANG: kandangnya lebih lebar, lebih jauh dari rumah, dan
+	# terbuka ke rumput selatan. Dua kandang dengan bentuk berbeda membaca sebagai
+	# dua penghidupan; dua kandang serupa cuma membaca sebagai satu kandang digandakan.
+	#
+	# Di tenggara, bukan di sebelah kandang babi: Ashbrook mengecil dari luar ke
+	# dalam, jadi rumah tangga yang masih beternak DUA jenis akan tersebar, bukan
+	# berhimpitan. Yang berhimpitan itu desa yang penuh.
+	var kd := Rect2(1176, 1032, 224, 128)
+	for i in 7:                                   # pagar utara & selatan
+		var dx: float = kd.position.x + 16 + i * 32
+		_jejak("pagar_h32.png", Vector2(dx, kd.position.y), 1.0)
+		if i != 2:                                # satu ruas hilang = pintu kandang
+			_jejak("pagar_h32.png", Vector2(dx, kd.position.y + kd.size.y), 1.0)
+	for i in 4:                                   # tiang sisi timur & barat
+		var dy: float = kd.position.y + 20 + i * 32
+		_jejak("pagar_tiang32.png", Vector2(kd.position.x, dy), 1.0)
+		_jejak("pagar_tiang32.png", Vector2(kd.position.x + kd.size.x, dy), 1.0)
+	_jejak("trough.png", Vector2(kd.position.x + 32, kd.position.y + 96), 1.6)
+	_jejak("hay.png", Vector2(kd.position.x + 190, kd.position.y + 34), 1.6)
+
+	var pd := kd.position + kd.size * 0.5
+	# EMPAT domba, bukan dua. Kawanan adalah kebiasaan domba; dua ekor terbaca
+	# sebagai sisa, dan sisa itu kalimat yang sudah diucapkan kandang babi.
+	for spec in [
+		["domba", pd + Vector2(-58, -8), 52.0],
+		["domba", pd + Vector2(-16, 14), 52.0],
+		["domba", pd + Vector2(34, -18), 52.0],
+		["domba", pd + Vector2(66, 12), 52.0],
+	]:
+		var s := Node2D.new()
+		s.set_script(load("res://scenes/actors/Hewan.gd"))
+		s.setup(String(spec[0]))
+		add_child(s)
+		s.wander_radius = float(spec[2])
+		s.place(spec[1])
+
 	# DUA AYAM LEPAS di halaman rumah C2 yang menyala. Bukan kandang — cuma ayam
 	# yang dibiarkan berkeliaran, dan itu justru bacaan yang benar: rumah kecil
 	# tak berkandang, ia cuma punya ayam. Satu-satunya rumah lain yang berlampu.
@@ -1394,6 +1433,36 @@ func _liar() -> void:
 		k.liar = true
 		k.wander_radius = float(spec[2])
 		k.place(spec[1])
+
+	# ── TERNAK YANG SUDAH TAK DIHITUNG SIAPA PUN ─────────────────────────────
+	# Babi liar & domba liar memakai sprite yang SAMA dengan yang di kandang, dan
+	# itu justru maksudnya. Ini bukan spesies lain — ini ternak yang kandangnya
+	# runtuh bersama rumahnya, lalu tak pernah ada yang datang menghitungnya lagi.
+	# Yang membedakannya cuma JARAK: `liar = true` membuatnya kabur dari 116 px,
+	# sementara saudaranya di kandang membiarkan orang mendekat.
+	#
+	# Babi di DISTRIK BEKAS: ia mengais, dan yang paling banyak diais ada di tempat
+	# rumah-rumah pernah berdiri. Domba di TEPI: ia merumput, dan rumput tumbuh
+	# paling tebal di ladang yang berhenti digarap.
+	#
+	# Satu babi ditaruh dekat kandang babi (jarak ~200 px) — cukup jauh untuk liar,
+	# cukup dekat untuk terbaca: yang di dalam dan yang di luar pagar dulu satu
+	# kawanan.
+	for spec in [
+		["babi", Vector2(332, 356), 92.0],      # distrik bekas barat-laut
+		["babi", Vector2(214, 528), 88.0],
+		["babi", Vector2(1022, 1108), 80.0],    # dekat kandang babi, di luar pagar
+		["domba", Vector2(618, 1188), 104.0],   # tepi selatan, bekas ladang
+		["domba", Vector2(742, 1244), 104.0],
+		["domba", Vector2(1560, 1160), 96.0],   # tepi tenggara, jauh dari siapa pun
+	]:
+		var t := Node2D.new()
+		t.set_script(load("res://scenes/actors/Hewan.gd"))
+		t.setup(String(spec[0]))
+		add_child(t)
+		t.liar = true
+		t.wander_radius = float(spec[2])
+		t.place(spec[1])
 
 	# ── ANJING ───────────────────────────────────────────────────────────────
 	# Anjing bukan kucing yang berbeda gambar. Kucing liar tak pernah bergantung

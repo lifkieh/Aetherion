@@ -158,10 +158,29 @@ func _ukur() -> int:
 		   100.0 * float(terjangkau) / maxf(1.0, float(total_bebas))])
 
 	# ── TITIK-PERIKSA: dibaca dari node nyata, bukan dari daftar yang bisa basi ──
+	#
+	# ⚠ TITIK DI DALAM RUANGAN DILEWATI, dan ini bukan pelonggaran.
+	#   Alat ini menguji "bisakah dicapai BERJALAN dari titik lahir" dengan flood-fill
+	#   di atas peta. Kamar Merrit hidup di ruang positif DI LUAR peta dan dicapai
+	#   lewat PINTU, bukan dengan berjalan — jadi flood-fill akan selalu bilang tidak,
+	#   dan selalu salah. Begitu dua bukti kamar dipasang (Jalur B), alat ini mulai
+	#   melaporkan dua kegagalan palsu tiap kali dijalankan.
+	#   Alarm palsu yang berulang jauh lebih berbahaya daripada tak ada alarm: ia
+	#   melatih pembacanya mengabaikan keluaran alat ini.
+	#   Keterjangkauan kamar dijamin uji lain — `TestRunner` memeriksa kotak interior
+	#   PUNYA PINTU, dan `CekMerrit` memeriksa titiknya ada serta tak berebut tombol E.
+	var ruang_dalam := Rect2(scn.INTERIOR, Vector2(320, 240))
 	var titik: Array = []
+	var dilewat: Array = []
 	for c in scn.get_children():
 		if c.get("evidence_id") != null and String(c.get("evidence_id")) != "":
+			if ruang_dalam.has_point(c.global_position):
+				dilewat.append(String(c.get("evidence_id")))
+				continue
 			titik.append([String(c.get("evidence_id")), c.global_position])
+	if not dilewat.is_empty():
+		print("  (dilewati — di dalam ruangan, dicapai lewat pintu: %s)"
+			% ", ".join(dilewat))
 	titik.sort_custom(func(a, b): return String(a[0]) < String(b[0]))
 
 	print("\n=== RANTAI INTI: bisakah dicapai BERJALAN dari titik lahir? ===")

@@ -1,5 +1,5 @@
-# babi_kiri.png — hewan 'babi'
-# babi ternak. Desa bekas-kota masuk akal beternak babi: babi makan sisa
+# domba_kiri.png — hewan 'domba'
+# domba ternak. Kembali sesudah sumber berlisensi bersih ditemukan — domba merumput lebih lambat daripada babi mengais
 
 Pack   : LPC style farm animals (ayam · sapi · llama · babi · DOMBA)
 Seniman: Daniel Eddeland (daneeklu)
