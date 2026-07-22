@@ -721,10 +721,10 @@ func _pinggir_jejak() -> void:
 	for p in [Vector2(1640, 880), Vector2(1720, 964), Vector2(232, 848),
 			Vector2(1088, 200), Vector2(1568, 424), Vector2(216, 632), Vector2(560, 216)]:
 		_jejak("tree_dead_a.png" if int(p.x) % 2 == 0 else "tree_dead_b.png", p, 2.0)
-	_jejak("stump.png", Vector2(1560, 1030), 1.8)
-	_jejak("log_fallen.png", Vector2(1668, 1044), 1.8)
-	_jejak("stump.png", Vector2(1616, 336), 1.8)          # timur laut
-	_jejak("log_fallen.png", Vector2(344, 640), 1.8)      # barat
+	_jejak("kayu_tumpuk32.png", Vector2(1560, 515.0), 1.8)
+	_jejak("kayu_batang32.png", Vector2(1668, 522.0), 1.8)
+	_jejak("kayu_tumpuk32.png", Vector2(1616, 168.0), 1.8)          # timur laut
+	_jejak("kayu_batang32.png", Vector2(344, 320.0), 1.8)      # barat
 
 	# 4. ANTI-KOSONG (spec §2): tiap tujuan jauh harus BERUJUNG pada sesuatu.
 	#    Sudut peta yang cuma rumput mengajari pemain bahwa menjauh tak berbuah, dan
@@ -919,7 +919,7 @@ func _dekorasi() -> void:
 	# dengan lapak alun-alun, digelapkan dan berdiri sendirian di antara fondasi:
 	# pasar yang dulu ada di SINI, waktu di sinilah pusatnya. Ia mengatakan seluruh
 	# tesis peta tanpa satu baris teks — dan mengatakannya dengan aset yang sudah ada.
-	var lapak_mati := _jejak("stall.png", Vector2(690, 292), 1.9)
+	var lapak_mati := _jejak("gerobak32.png", Vector2(690, 146.0), 1.9)
 	if lapak_mati:
 		lapak_mati.modulate = Color(0.60, 0.60, 0.62)
 	for d in [

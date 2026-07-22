@@ -81,6 +81,28 @@ def _baris_lisensi(teks):
     return out
 
 
+## ⚖ PUTUSAN DIREKTUR 2026-07-23 — SHARE-ALIKE DIIZINKAN UNTUK SELURUH ASET GAMBAR.
+##
+##   "seluruh asset bergambar dalam project ini diperbolehkan untuk sa, saya tidak
+##    mempermasalahkan harus publikasi asset2"
+##
+## Sebelum ini `viral` ditolak di luar `characters/` (#232 sebagai KARANTINA). Itu
+## masuk akal selama proyek berharap menahan sisa repo tetap non-viral — tapi proyek
+## ini SUDAH mengirim 130 karakter LPC di bawah CC-BY-SA, jadi karantinanya menjaga
+## garis yang sebenarnya sudah dilewati.
+##
+## Yang BERUBAH: `viral` tak lagi menggagalkan penjaga #232 untuk aset GAMBAR.
+## Yang TIDAK berubah, dan ini yang penting:
+##   * `tak_tercatat` TETAP menggagalkan. Izin memakai SA bukan izin memakai yang
+##     provenansnya tak diketahui — yang viral bisa DIPATUHI, yang tak tercatat tak
+##     bisa dipatuhi maupun dilanggar dengan sadar.
+##   * atribusi TETAP wajib (#277). SA menuntutnya lebih keras, bukan lebih longgar.
+##   * konsekuensinya MENEMPEL: apa pun yang menurunkan dari aset SA ikut SA. Itu
+##     harga yang Direktur pilih sadar, dan dicatat di sini supaya orang berikutnya
+##     tak mengira ia kecelakaan.
+SA_DIIZINKAN = True
+
+
 def klasifikasi(teks):
     """-> ('aman'|'viral'|'tak_tercatat', alasan). Tak pernah melempar."""
     baris = _baris_lisensi(teks)

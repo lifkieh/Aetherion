@@ -172,16 +172,33 @@ def test_232_no_sa_leak_outside_characters():
     if not os.path.isdir(sprites):
         print("    (skip: folder sprites tak ada)")
         return
+    # RUMAH SAH BAGI SENI KARAKTER LPC. Dulu cuma `characters/`; `chargen/` menyusul
+    # waktu pembuat karakter pemain butuh lapis yang ikut dikirim. Keduanya seni
+    # karakter — memisahkan mereka di sini akan membuat penjaga menuduh 330 lapis
+    # yang justru baru saja sengaja ditaruh di sana.
+    #
+    # ⚠ KEJUJURAN: penjaga ini SUDAH gagal sejak commit `chargen`, dan saya tak
+    #   menyadarinya karena waktu itu saya menjalankan TestRunner + CekLpcGen tapi
+    #   TIDAK test_perakit. Suite yang tak dijalankan sama tak bergunanya dengan
+    #   suite yang tak ada.
+    RUMAH = ("/characters", "/chargen")
     leaks = []
     for root, _dirs, files in os.walk(sprites):
-        if "/characters" in root.replace("\\", "/"):
-            continue                                   # characters/ = karantina sah
+        if any(h in root.replace("\\", "/") for h in RUMAH):
+            continue
         for fn in files:
             low, path = fn.lower(), os.path.join(root, fn)
-            if low == "license-cc-by-sa.txt":
+            if low == "license-cc-by-sa.txt" and not lisensi.SA_DIIZINKAN:
                 leaks.append("%s [pernyataan SA]" % path)
             elif low.endswith(".credits.txt"):
                 putusan, alasan = lisensi.periksa_berkas(path)
+                # ⚖ PUTUSAN DIREKTUR 2026-07-23: share-alike DIIZINKAN untuk seluruh
+                #   aset gambar. `viral` berhenti jadi kegagalan; `tak_tercatat`
+                #   TIDAK. Izin memakai SA bukan izin memakai yang provenansnya tak
+                #   diketahui — yang viral bisa dipatuhi, yang tak tercatat tak bisa
+                #   dipatuhi maupun dilanggar dengan sadar.
+                if putusan == "viral" and lisensi.SA_DIIZINKAN:
+                    continue
                 if putusan != "aman":
                     leaks.append("%s [%s: %s]" % (path, putusan, alasan))
             elif low.endswith(".png"):
