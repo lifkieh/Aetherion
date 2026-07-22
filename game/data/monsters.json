@@ -109,7 +109,7 @@
     "size": "medium",
     "rideable": false,
     "level": 4,
-    "sprite": "res://assets/game/sprites/monsters/beast.png",
+    "sprite": "res://assets/game/sprites/monsters/wild_boar.png",
     "frame_size": 64,
     "cols": 4,
     "rows": 4,

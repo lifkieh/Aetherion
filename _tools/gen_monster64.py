@@ -95,6 +95,12 @@ PETA = [
     #    alat ini ada. Sekarang masing-masing punya seninya sendiri.
     ("woolly_calf",      "animals/yak_new.png"),
     ("mammoth",          "animals/elephant_dire_new.png"),
+    # ── BABI HUTAN. Ia dipasang di luar gerbang Ashbrook untuk langkah tutorial
+    #    pertama, dan di layar ia BERUANG: `monsters.json` mengarahkan `wild_boar`
+    #    ke `beast.png`, yang dipotong dari `animals/grizzly_bear.png`. Ketahuan dari
+    #    tangkapan layar, bukan dari test — persis kelas galat yang sama dengan
+    #    `cloud_ray`->murray dulu, dan alasan alat ini merender sebelum menulis.
+    ("wild_boar",        "animals/hog_new.png"),
 ]
 
 CELL = 64

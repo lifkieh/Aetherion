@@ -1337,6 +1337,7 @@ func _kehidupan() -> void:
 	_jendela()
 	_titik_pandang()
 	_anak_serigala()
+	_monster_liar()
 
 
 ## Ayam yang benar-benar menghalangi jalan + anak-anak yang mengejarnya.
@@ -1831,12 +1832,97 @@ func _zoom_kamera(z: float) -> void:
 
 ## #118 — monster pertama: anak serigala TERLUKA. Boleh dibantu, diabaikan, atau
 ## dibunuh. Semuanya sah; dunia tak menghakimi pilihannya.
+##
+## ⚠ DULU `DungeonMonster.tscn`, dan itu SALAH KELAS. `DungeonMonster` monster
+##   platformer sisi-samping: `GRAVITY = 900.0`, patroli tepi, lompat. Di peta
+##   atas-bawah ia JATUH. Diukur, bukan dikira:
+##
+##       [pup] awal (1705, 989)
+##       [pup] t=4.0  posisi (1735, 1317)  hanyut 330.3 px
+##
+##   Empat detik sesudah peta lahir, anak serigala itu sudah meluncur ke selatan
+##   sampai tersangkut treeline — jadi monster pertama permainan tak pernah ada di
+##   tempat yang ditulis di sini, dan `PlayWalk64` tetap hijau karena ia cuma
+##   bertanya "grup `wolf_pup` ada?", tak pernah "di mana ia berakhir?".
+##
+##   `Monster.tscn` kelas yang benar: atas-bawah, WANDER/CHASE/FLEE, tahu SafeZone.
+##   Spesies, level, posisi, dan grupnya TIDAK diubah — yang diperbaiki cuma rangka
+##   fisikanya. Peran ceritanya tetap milik Direktur.
 func _anak_serigala() -> void:
-	var m = preload("res://scenes/actors/DungeonMonster.tscn").instantiate()
+	var m = preload("res://scenes/actors/Monster.tscn").instantiate()
 	add_child(m)
-	m.setup(MonsterFactory.make("grey_wolf", 2, 1))
 	m.global_position = Vector2(1700, 980)
+	m.setup(MonsterFactory.make("grey_wolf", 2, 1))
 	m.add_to_group("wolf_pup")
+
+
+## MONSTER LIAR DI LUAR TEMBOK — permintaan Direktur 2026-07-23.
+##
+## KENAPA INI SEBELUMNYA MUSTAHIL
+## ------------------------------
+## Langkah tutorial pertama berbunyi "COMBAT — Kalahkan 2 monster di luar gerbang",
+## dan Ashbrook cuma punya SATU monster: anak serigala #118, yang justru bukan untuk
+## dibunuh. Jadi langkah pembuka permainan tak bisa diselesaikan di peta pembuka.
+##
+## Menaruh monster saja tak cukup, dan itu bukan kehati-hatian berlebih: `SafeZone`
+## Ashbrook masih memakai koordinat era 16 px (`center [480, 352]` — persis separuh
+## `VC`). Poligonnya menutupi x160..800, y132..602 — pojok barat-laut yang kosong,
+## sementara ALUN-ALUNNYA SENDIRI di luar zona. Monster yang dimunculkan sebelum itu
+## dibetulkan akan berjalan lurus ke pasar dan menyerang warga. `towns.json` sudah
+## diperbaiki lebih dulu; tanpa itu fungsi ini merusak desa.
+##
+## LETAKNYA DARI DATA, BUKAN DARI MATA
+## -----------------------------------
+## Tiap titik di bawah diambil dari penyisiran petak bebas di luar poligon zona aman
+## (`_CariTitik`): selatan 478 petak bebas, timur 1006, barat 626, utara 1072.
+## `CekMonsterLiar` menahannya di sana — kalau zona aman digeser lagi, uji itu yang
+## berteriak, bukan pemain yang menemukan babi di alun-alun.
+##
+## SPESIESNYA DARI HABITAT DI `monsters.json`, bukan selera:
+##   wild_boar     "Semak lebat & ladang pinggiran"  -> tepat di luar gerbang
+##   grey_wolf     "Hutan Greenvale, sarang di rongga akar" -> tepi hutan timur
+##   fluffbit      "Padang rumput & semak tepi hutan" -> distrik bekas utara
+##   verdant_slime "Rawa & genangan hutan"            -> tepi kabut barat
+##
+## LEVEL 2, bukan level bawaan spesiesnya. `wild_boar` lahir level 4 di data, dan
+## pahlawan di gerbang masih level 1 — langkah tutorial yang membunuh muridnya bukan
+## tutorial. `MonsterFactory.make()` menerima `level_override` justru untuk ini.
+##
+## DUA di selatan, bukan satu: langkahnya menuntut dua bangkai. Satu monster berarti
+## pemain menunggu respawn yang tak pernah datang — peta ini tak punya spawner.
+func _monster_liar() -> void:
+	# (spesies, posisi, level) — posisi SUDAH diuji di luar poligon zona aman.
+	for spec in [
+		# Selatan, di luar gerbang: dua babi hutan MENGAPIT jalan keluar, tidak
+		# menghadangnya — pemain memilih berkelahi, tak dipaksa.
+		#
+		# ⚠ JARAKNYA DIHITUNG, bukan dikira-kira. Percobaan pertama menaruh mereka di
+		#   (848,1272) dan (1088,1268): 136 px dari titik lahir (960,1194), sementara
+		#   `wild_boar` beraggro 140. Keduanya menyerbu di detik pertama lalu MENEMPEL
+		#   garis zona aman tepat di depan pemain yang baru lahir — dan tak bisa
+		#   menembusnya, jadi yang terlihat bukan bahaya melainkan dua babi bergetar
+		#   di dinding kaca. Sekarang >= 260 px: di luar aggro, masih dalam pandangan.
+		["wild_boar", Vector2(700, 1280), 2],
+		["wild_boar", Vector2(1240, 1276), 2],
+		# timur: serigala dewasa. JAUH dari anak serigala #118 (1700, 980) — cukup
+		# jauh untuk tak terbaca sebagai induknya, karena induk yang muncul akan
+		# menjawab pertanyaan yang sengaja dibiarkan terbuka.
+		["grey_wolf", Vector2(1792, 470), 3],
+		# utara, distrik bekas: dua fluffbit. `ai: skittish` — ia LARI, bukan
+		# menyerang. Ia ada supaya pinggiran terbaca dihuni, bukan supaya dibunuh.
+		["fluffbit", Vector2(660, 168), 2],
+		["fluffbit", Vector2(1240, 152), 2],
+		# barat, tepi kabut
+		["verdant_slime", Vector2(136, 856), 2],
+	]:
+		var inst := MonsterFactory.make(String(spec[0]), int(spec[2]))
+		if inst.is_empty():
+			continue
+		var m = preload("res://scenes/actors/Monster.tscn").instantiate()
+		add_child(m)
+		m.global_position = spec[1]
+		m.setup(inst)
+		m.add_to_group("liar_ashbrook")
 
 
 ## WHITE STAG (#D-ASH-4) — tanpa pemicu, tanpa penanda, tanpa musik, tanpa quest.
