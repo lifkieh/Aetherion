@@ -1,0 +1,92 @@
+# SUMBER SENI MONSTER BERANIMASI — 64 px asli, empat arah
+#
+# Menggantikan ubin Dungeon Crawl Stone Soup (CC0) yang dipakai sebelumnya. DCSS
+# bukan pilihan buruk secara lisensi — ia CC0 dan cakupannya luas — tapi ia punya
+# dua batas yang tak bisa ditawar:
+#
+#   1. Ubinnya 32x32. Dibesarkan 2x jadi 64 px, tiap piksel sumber jadi blok 2x2,
+#      dan di sebelah karakter LPC yang ASLI 64 px ia terbaca kasar.
+#   2. Ubinnya SATU RANGKA. DCSS roguelike giliran — seninya statis by design, jadi
+#      tak ada siklus jalan untuk dipanen. Yang dipasang sebelumnya cuma satu pose
+#      disalin ke empat arah; itu menyembuhkan monster yang HILANG, bukan yang KAKU.
+#
+# ⚠ URUTAN BARIS BERBEDA ANTAR PAKET — diperiksa mata, satu per satu, bukan
+#   diasumsikan dari konvensi LPC. `SheetUtil.DIRS` memakai [bawah, atas, kiri, kanan],
+#   jadi tiap paket harus DIPETAKAN ULANG oleh generator:
+#
+#     wild_boar        b0 belakang, b1 kiri, b2 depan, b3 kanan   (LPC baku)
+#     [LPC] Monsters   b0 belakang, b1 kiri, b2 depan, b3 kanan   (LPC baku)
+#     lpc animals 2022 b0 belakang, b1 kiri, b2 KANAN,  b3 depan  (BUKAN baku)
+#
+#   Menebak di sini tak menghasilkan galat apa pun — cuma monster yang berjalan
+#   memunggungi pemain, dan itu jenis cacat yang bertahan berbulan-bulan.
+
+
+## 1. [LPC] Monsters
+Berkas : lpc-monsters.zip  (dari gudang lokal; tak punya berkas kredit di dalamnya)
+Isi    : slime, bat, snake, bee, big_worm, small_worm, eyeball, ghost,
+         pumpking (labu), man_eater_flower
+Seniman: Charles Sanchez (CharlesGabriel), bagzie, bluecarrot16
+Lisensi: CC-BY-SA 3.0+ / GPL 3.0+
+URL    : https://opengameart.org/content/lpc-monsters
+         https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+         https://opengameart.org/content/bat-sprite
+Catatan: share-alike DIIZINKAN (putusan Direktur 2026-07-23). Turunannya ikut SA.
+         Zip di gudang TIDAK memuat kredit — atribusi di atas dilacak dari halaman
+         OGA, bukan dikarang. Tanpa langkah itu paket ini `tak_tercatat` dan tak
+         boleh dipakai sama sekali.
+
+
+## 2. [LPC] bears, deer, lions and more
+Berkas : lpc_animals_2022_v1.1.zip
+Isi    : beruang (grizzly/hitam/kutub), rusa (buck & doe, terang & gelap),
+         rubah (hutan & arktik), singa & singa betina, tikus raksasa,
+         tikus (kelabu & putih), anjing shiba, jamur berjalan, hiu
+Seniman: tapatilorenzo — karya aslinya CC0 (atribusi tak wajib, tetap dicatat)
+         Sevarihk  — shiba, hiu, tikus raksasa, jamur berjalan (CC-BY 4.0)
+         FiveBrosStopMosYT — pewarnaan ulang hiu
+Lisensi: CC0 1.0 (tapatilorenzo) + CC-BY 4.0 (bagian Sevarihk — ATRIBUSI WAJIB)
+URL    : https://opengameart.org/content/lpc-bears-deer-lions-and-more
+Catatan: Rusa 64x96, tikus raksasa 80x64, tikus kecil & jamur 32x32, hiu 160x160 —
+         BUKAN semuanya 64x64. Ukuran rangka harus dibaca per berkas.
+
+
+## 3. [LPC] Wild Boar
+Berkas : wild_boar.zip
+Isi    : Boar Walk (256x256, 4x4), Stand (256x64), Attack (384x256), Die (256x256),
+         plus lapisan zirah modular yang TIDAK kita pakai
+Seniman: Benjamin K. Smith (BenCreating), Daniel Eddeland (daneeklu),
+         Lanea Zimmerman (Sharm). Dipesan oleh Castelonia.
+Lisensi: CC-BY-SA 3.0 / GPL 3.0
+URL    : https://opengameart.org/content/lpc-wild-boar
+Catatan: Turunan dari babi `LPC style farm animals` daneeklu — paket yang SAMA
+         dengan babi & domba di kandang Ashbrook. Jadi babi hutan di luar tembok
+         dan babi ternak di dalam kandang memang sedarah, dan itu terbaca benar.
+
+
+## 4. [LPC] Wolf Animation  — DIUNDUH, BELUM DIPAKAI
+Berkas : wolfsheet1.png .. wolfsheet6.png (6 warna)
+Isi    : jalan, lari, gigit, melolong, mati
+Seniman: Stephen "Redshrike" Challener (seniman grafis),
+         William.Thompsonj (kontributor)
+Lisensi: CC-BY 4.0 / CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+URL    : https://opengameart.org/content/lpc-wolf-animation
+Atribusi verbatim dari halaman OGA:
+  "Attribute Stephen "Redshrike" Challener as graphic artist and
+   William.Thompsonj as contributor. If reasonable link back to this page or the
+   OGA homepage."
+⚠ BELUM DIPAKAI — lembarnya TAK SERAGAM. Selokan transparan terukur berjarak
+  32 px di x 0..319 lalu 64 px di x 320..639: pose depan/belakang lebar 32 px,
+  pose samping lebar 64 px, dalam lembar yang sama. Memotongnya dengan kisi 64 px
+  seragam menghasilkan potongan yang membelah dua ekor serigala. Perlu definisi
+  per-wilayah, dan itu belum dikerjakan. Lima spesies bergantung padanya
+  (grey_wolf, alpha_wolf, ice_wolf, dire_wolf, frost_dire_wolf) plus anak
+  serigala #118 di Ashbrook.
+
+
+## DITOLAK — dicatat supaya tak dicari dua kali
+Animated Wild Animals (ScratchIO, CC0)
+  https://opengameart.org/content/animated-wild-animals
+  Punya persis yang dicari secara nama — rusa, beruang, SERIGALA, rubah, BABI,
+  kelinci, dengan jalan/lari/diam. Tapi seluruhnya TAMPAK SAMPING, satu baris
+  (tinggi 26..52 px). Untuk peta atas-bawah ia tak terpakai sama sekali.
