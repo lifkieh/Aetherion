@@ -19,7 +19,18 @@ build/
 #   sejak lahir, termasuk gen_overlays.py yang justru dikutip CLAUDE.md sebagai bukti patuh).
 #   Maka dipakai "_tools/*" (ISI direktori), bukan "_tools/".
 _tools/*
-!_tools/gen_*.py
+# ⚠ `*.py`, BUKAN `gen_*.py`. Whitelist lama menyaring berdasarkan NAMA, dan itu
+#   diam-diam mengubur tiap alat yang tak kebetulan dinamai `gen_`. Sesi 2026-07-22
+#   kehilangan LIMA: ambil_lpc.py, panen_clothing.py, panen_feet.py, panen_legs.py,
+#   pandang_gudang.py — dan empat di antaranya yang menghasilkan SELURUH lemari
+#   pakaian (1.817 lembar). PNG-nya ter-commit, generatornya tidak. #240 dilanggar,
+#   dan nol galat muncul.
+#   Ini kegagalan KEDUA dari aturan yang sama: catatan di atas sudah memperingatkan
+#   soal `_tools/` mengubur generator lewat aturan DIREKTORI, lalu ia terulang lewat
+#   pintu POLA NAMA. Kesamaannya: keduanya menuntut nama menebak isi.
+#   Tiap `.py` di `_tools/` adalah alat, nol keluaran — jadi tak ada yang perlu
+#   disaring, dan konvensi penamaan berhenti jadi penopang beban.
+!_tools/*.py
 # perkakas gerbang test (#273) — WAJIB ter-versi: gerbang yang tak ter-commit
 # = gerbang yang hilang di mesin lain, dan itu pelajaran #251 terulang.
 !_tools/run_suite.ps1
