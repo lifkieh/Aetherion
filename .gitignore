@@ -74,6 +74,9 @@ assets_raw/*
 # Syarat masuk: (a) CC0/CC-BY/OGA-BY — bukan share-alike, (b) kecil, (c) punya
 # CREDITS.txt di sebelahnya. Bukan tempat menampung pack utuh.
 !assets_raw/oga/
+# Manifes sumber: URL + SHA256 tiap zip yang DIBUTUHKAN generator tapi terlalu besar
+# untuk di-commit (1,5 GB). Yang di-commit cara mendapatkannya kembali, bukan barangnya.
+!assets_raw/SUMBER.md
 # The root asset .zip/.rar archives are ignored (already extracted to assets_raw/).
 # assets_raw/lpc/ = stash LPC (dipindah dari .vscode/ per #232-4) — tercakup baris di atas.
 # CATATAN: assets_publikasi/ (sprite turunan LPC + LICENSE/CREDITS) SENGAJA di-commit (CC-BY-SA).
