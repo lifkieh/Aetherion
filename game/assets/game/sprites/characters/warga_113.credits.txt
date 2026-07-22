@@ -2,10 +2,10 @@
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
 - body:pregnant: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_pants_thin_navy: eulpc_legs_pants_thin_navy.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- feet:_npc_eulpc_feet_boots_thin: eulpc_feet_boots_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_longsleeve_female_maroon: eulpc_torso_longsleeve_female_maroon.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- legs:_npc_eulpc_legs_pants_thin_charcoal: eulpc_legs_pants_thin_charcoal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:_npc_eulpc_feet_high_socks_thin: eulpc_feet_high_socks_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:_npc_eulpc_torso_longsleeve_pregnant_blue: eulpc_torso_longsleeve_pregnant_blue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:_npc_kepala_pregnant: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_swoop_gold: eulpc_hair_swoop_gold.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:_npc_swoop_carrot: eulpc_hair_swoop_carrot.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

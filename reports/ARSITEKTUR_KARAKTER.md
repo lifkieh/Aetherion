@@ -202,6 +202,42 @@ Sesudah overlay ikut dibaca: **nol lubang di seluruh build × slot.**
 
 ---
 
+## Persediaan sesudah tiga panen
+
+| build | torso | legs | feet |
+|---|---|---|---|
+| child | 10 | 3 | 3 ↩ |
+| teen | 435 | 55 | 3 ↩ |
+| female · muscular_female | 438 | 55 | 3 ↩ |
+| male · muscular | 54 | 4 | **2** |
+| pregnant | **48** | 55 | 3 ↩ |
+
+Tiga sumber, tiga pelajaran yang sama:
+
+1. **Sepatu male** — generator LPC resmi. Zip lokal cuma punya `thin`.
+2. **Kemeja anak** — generator LPC resmi. Ponco buatan sendiri pensiun.
+3. **961 berkas pakaian** — `clothing.zip`, **sudah di disk sejak lama**.
+
+> Lemari melaporkan `female torso: 5` selama berminggu-minggu. Angka itu benar
+> tentang **pustaka** sekaligus salah tentang **apa yang tersedia**. Yang membatasi
+> bukan aset, melainkan kesediaan memeriksa apa yang sudah dipegang.
+
+`torso/pregnant` **lunas** — 48 torso sendiri, rantai mundurnya dihapus. Perut hamil
+akhirnya tertutup benar.
+
+### Dalaman — aturan yang tinggal di data
+
+`overalls` & `suspenders` di ULPC memang **tanpa lengan**: mereka tali dan kain depan,
+dirancang dipakai di atas kemeja. Undian pertama menghasilkan **41 dari 120 warga
+berdada telanjang** — dan itu bukan kegagalan resolver: tiap lapisnya sah, cuma
+kombinasinya tak pernah dimaksudkan berdiri sendiri.
+
+Daftarnya di `rangka.json → dalaman`, bukan di kode, supaya garmen semacam ini nanti
+bisa ditambah tanpa menyentuh satu baris pun. Hasil: 41 dari 41 berdalaman, nol yang
+tak perlu.
+
+---
+
 ## Yang BELUM dikerjakan (sengaja)
 
 **Sepuluh resep tokoh masih memakai bentuk lama** (`"legs": "pants_thin"`). Arsitektur

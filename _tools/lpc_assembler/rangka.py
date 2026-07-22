@@ -200,6 +200,22 @@ def undi(rangka, lemari, benih, build=None, wajib_lengkap=True):
         resep["pakaian"][slot] = {"garmen": garmen, "warna": warna}
     r = rambut_tersedia(b["rambut"])
     resep["rambut"] = rng.choice(r) if r else None
+
+    # DALAMAN. `overalls` & `suspenders` di ULPC memang TANPA LENGAN — mereka tali dan
+    # kain depan, dirancang dipakai di atas kemeja. Mengundinya tanpa dalaman
+    # menghasilkan warga berdada telanjang, dan itu bukan kegagalan resolver: tiap
+    # lapisnya sah, cuma kombinasinya tak pernah dimaksudkan berdiri sendiri.
+    # Daftarnya di `rangka.json`, bukan di sini, supaya garmen semacam ini nanti bisa
+    # ditambah tanpa menyentuh kode.
+    resep["dalaman"] = None
+    d = rangka.get("dalaman") or {}
+    t = resep["pakaian"].get("torso")
+    if t and t["garmen"] in (d.get("butuh") or []):
+        opsi = [(g, w) for g, w in pilihan(rangka, lemari, build, "torso")
+                if g == d.get("pakai_garmen")]
+        if opsi:
+            g, w = rng.choice(opsi)
+            resep["dalaman"] = {"garmen": g, "warna": w}
     return resep
 
 

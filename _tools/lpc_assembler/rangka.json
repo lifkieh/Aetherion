@@ -96,16 +96,10 @@
    "child": [
     "thin"
    ]
-  },
-  "torso": {
-   "pregnant": [
-    "female"
-   ]
   }
  },
  "_utang": {
-  "torso/pregnant": "Hulu punya torso pregnant sendiri (longsleeve mendaftarkannya). Belum ada di pustaka lokal; sementara mundur ke female, yang berarti perutnya tak tertutup benar.",
-  "torso/child": "LUNAS sebagian: kemeja anak LPC asli (10 warna) sudah masuk lewat ambil_lpc.py. SISA: sumbernya cuma punya animasi `walk`, jadi anak yang memainkan `slash` akan bertelanjang dada. Diterima karena anak Ashbrook warga, bukan petarung.",
+  "torso/child": "LUNAS sebagian: kemeja anak LPC asli (10 warna) masuk lewat ambil_lpc.py. SISA: sumbernya cuma punya animasi `walk`, jadi anak yang memainkan `slash` akan bertelanjang dada. Diterima karena anak Ashbrook warga, bukan petarung.",
   "feet/female": "Sepatu keluarga `female` tak ada di hulu maupun lokal; mundur ke `thin`. Sepatu male SUDAH dibayar (ambil_lpc.py mengunduhnya dari generator LPC resmi), jadi utang ini menyempit dari `feet/*` jadi female+child saja.",
   "feet/child": "Generator LPC resmi TAK PUNYA sepatu anak sama sekali — disisir seluruh feet/{shoes,boots,sandals,slippers,socks}, semuanya cuma male|thin. Ini lubang HULU, bukan celah ekstraksi kita. Mundur ke `thin`."
  },
@@ -113,5 +107,13 @@
   "male": "eulpc_head_male.png",
   "female": "eulpc_head_female.png",
   "child": "eulpc_head_child.png"
+ },
+ "dalaman": {
+  "_doc": "Garmen yang TANPA LENGAN by design dan dirancang dipakai DI ATAS kemeja. Tanpa dalaman, pemakainya berdada telanjang — 41 dari 120 warga, dan itu terlihat sebagai kerumunan setengah bugil di siang bolong. Aturannya taruh di DATA supaya menambah garmen semacam ini nanti tak menuntut sentuh kode.",
+  "butuh": [
+   "overalls",
+   "suspenders"
+  ],
+  "pakai_garmen": "longsleeve"
  }
 }

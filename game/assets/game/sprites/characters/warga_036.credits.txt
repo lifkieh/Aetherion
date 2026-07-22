@@ -1,11 +1,11 @@
 # Kredit sprite: warga_036
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:female: amber.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_pants_thin_charcoal: eulpc_legs_pants_thin_charcoal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- body:female: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:_npc_eulpc_legs_shorts_thin_slate: eulpc_legs_shorts_thin_slate.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - feet:_npc_eulpc_feet_high_socks_thin: eulpc_feet_high_socks_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_longsleeve_female_forest: eulpc_torso_longsleeve_female_forest.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- head:_npc_kepala_female: amber.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_swoop_gold: eulpc_hair_swoop_gold.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:_npc_eulpc_torso_sleeveless2_scoop_female_maroon: eulpc_torso_sleeveless2_scoop_female_maroon.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:_npc_kepala_female: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:_npc_shortknot_chestnut: eulpc_hair_shortknot_chestnut.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

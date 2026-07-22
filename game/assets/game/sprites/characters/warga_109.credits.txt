@@ -2,10 +2,10 @@
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
 - body:muscular_female: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_hose_thin: eulpc_legs_hose_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- legs:_npc_eulpc_legs_short_shorts_thin_red: eulpc_legs_short_shorts_thin_red.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - feet:_npc_eulpc_feet_high_socks_thin: eulpc_feet_high_socks_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_longsleeve_female_sky: eulpc_torso_longsleeve_female_sky.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- torso:_npc_eulpc_torso_sleeveless2_scoop_female_rose: eulpc_torso_sleeveless2_scoop_female_rose.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:_npc_kepala_muscular_female: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_jewfro: eulpc_hair_jewfro.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- hair:_npc_swoop_black: eulpc_hair_swoop_black.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

@@ -1,4 +1,23 @@
 #!/usr/bin/env python3
+# =====================================================================
+# PENSIUN — DIGANTIKAN rangka.py + gen_npc.py + rakit_npc.py (2026-07-22)
+# =====================================================================
+# JANGAN DIJALANKAN. Ia menulis dua puluh `warga_%02d` yang sudah dihapus,
+# dengan format nama dua digit yang sudah diseragamkan ke tiga.
+#
+# KENAPA DISIMPAN, BUKAN DIHAPUS
+# Ia memuat tiga hukum yang MASIH BENAR dan masih ditegakkan penggantinya,
+# cuma di tempat yang berbeda:
+#   1. kompatibilitas disaring SEBELUM diacak -> sekarang rangka.pilihan()
+#   2. tutup-kepala tunggal secara struktural -> menunggu slot hat di lemari
+#   3. kredit ditulis SAAT lahir, bukan nanti -> sekarang A.write_credits()
+#
+# Yang berubah bukan hukumnya melainkan lapisnya. Dulu ia membaca
+# catalog.json langsung, jadi build tertanam di nama berkas dan pasangan
+# mustahil masih bisa ditulis. Penggantinya memisahkan rangka/lemari/resep,
+# dan di situ pasangan mustahil berhenti jadi kesalahan yang mungkin
+# dilakukan. Berkas ini tinggal sebagai catatan alasan, bukan sebagai alat.
+# =====================================================================
 """Generator warga PATUH-HUKUM (#276) — acak dari katalog, tak pernah melanggar.
 
 KENAPA GENERATOR, BUKAN JSON SATU-SATU

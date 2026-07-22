@@ -82,6 +82,19 @@ def ke_char(R, L, p, cat):
         kunci = "_npc_" + os.path.splitext(os.path.basename(str(berkas)))[0]
         cat.setdefault(slot, {})[kunci] = berkas
         char[slot] = kunci
+    # DALAMAN -> slot `undershirt` perakit. Dipisah dari `pakaian` di resep karena ia
+    # bukan pilihan gaya melainkan KONSEKUENSI: ia muncul justru saat torso yang
+    # terpilih tak bisa berdiri sendiri.
+    dal = p.get("dalaman")
+    if dal:
+        berkas, _kel, sebab = rangka.resolve(R, L, p["build"], "torso",
+                                             dal["garmen"], dal["warna"])
+        if berkas is None:
+            raise ValueError("dalaman %s: %s" % (p["id"], sebab))
+        kunci = "_npc_dalam_" + os.path.splitext(os.path.basename(str(berkas)))[0]
+        cat.setdefault("undershirt", {})[kunci] = berkas
+        char["undershirt"] = kunci
+
     if lama.get("hair"):
         kunci = "_npc_" + lama["hair"]
         cat.setdefault("hair", {})[kunci] = "eulpc_hair_%s.png" % lama["hair"]
