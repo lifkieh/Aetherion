@@ -1,0 +1,9 @@
+# Monster 64 px — dipotong `_tools/gen_monster64.py` dari ubin DCSS.
+# Menggantikan seni 16 px tanpa kredit (25 berkas, NOL provenans).
+# Diperbesar 2x nearest-neighbour: DCSS digambar untuk petak 32 px, dan
+# dunia ini berpetak 32 px dengan karakter setinggi dua petak.
+
+Pack   : Dungeon Crawl Stone Soup — ubin monster
+Seniman: penyumbang ubin DCSS
+Lisensi: CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)
+URL    : https://opengameart.org/content/dungeon-crawl-32x32-tiles
