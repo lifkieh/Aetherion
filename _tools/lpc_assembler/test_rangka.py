@@ -10,9 +10,13 @@ yang berteriak lebih dulu.
 
 Pakai:  python test_rangka.py
 """
+import json
+import os
 import sys
 
 import rangka
+
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -128,6 +132,54 @@ def main():
                     if "%s/%s" % (s, b) not in tercatat and "%s/*" % s not in tercatat]
     ok("tiap lubang tercatat di `_utang` atau `_langit_langit_hulu`",
        not tak_tercatat, str(tak_tercatat))
+
+    # 10 — CAKUPAN ANIMASI. Tiap garmen yang BISA TERPILIH harus punya piksel di tiap
+    #      animasi yang benar-benar DIPOTONG game. Yang tidak, wajib tercatat di
+    #      `_langit_langit_hulu`.
+    #
+    #      Kenapa uji ini ada: "anak cuma punya walk" sudah ditulis di catatan
+    #      berhari-hari, dan catatan tak pernah berteriak waktu dilanggar. Kalau suatu
+    #      hari seseorang memberi anak animasi `slash`, ia bertelanjang dada di layar
+    #      dan NOL uji yang melihatnya. Sekarang ada.
+    #
+    #      Daftar animasinya dibaca dari `frame_map.json`, BUKAN ditulis tangan di
+    #      sini — dan yang bertanda `calibrate` dilewati, karena `slice_sheet` pun
+    #      melewatinya. Menuntut cakupan untuk potongan yang tak pernah dibuat akan
+    #      menolak aset yang benar.
+    fmap_p = os.path.join(HERE, "frame_map.json")
+    cache_p = os.path.join(HERE, "warna_rata.json")
+    if os.path.exists(fmap_p) and os.path.exists(cache_p):
+        with open(fmap_p, encoding="utf-8") as fh:
+            fmap = json.load(fh)
+        with open(cache_p, encoding="utf-8") as fh:
+            cak = json.load(fh).get("cakupan", {})
+        # `idle` memakai baris `walk`; cakupan dicatat per BARIS, jadi ia sudah
+        # terwakili dan tak perlu dituntut terpisah.
+        KANON = ("spellcast", "thrust", "walk", "slash", "shoot", "hurt")
+        dipotong = {a for a, sp in fmap["animations"].items()
+                    if not sp.get("calibrate") and a in KANON}
+        dimaafkan = set(R.get("_langit_langit_hulu", {}))
+        bolong = []
+        for b in builds:
+            for slot in rangka.SLOT_PAKAIAN:
+                for garmen, warna in rangka.pilihan(R, L, b, slot):
+                    berkas, _k, _sb = rangka.resolve(R, L, b, slot, garmen, warna)
+                    punya = cak.get(berkas)
+                    if punya is None:
+                        continue          # tak terukur -> DILEWATI, bukan ditolak
+                    kurang = dipotong - set(punya)
+                    if kurang:
+                        bolong.append((b, slot, garmen, warna, sorted(kurang)))
+        # Lubang pada build `child` dimaafkan HANYA selama langit-langitnya tercatat.
+        # Kalau catatan itu dihapus tanpa asetnya diperbaiki, uji ini yang berteriak.
+        tak_dimaafkan = [x for x in bolong
+                         if not (x[0] == "child" and "anak_cuma_walk" in dimaafkan)]
+        ok("garmen menutupi tiap animasi yang dipotong game "
+           "(atau tercatat di `_langit_langit_hulu`)",
+           not tak_dimaafkan, str(tak_dimaafkan[:3]))
+        print("      %d kombinasi berlubang; %d di antaranya build `child` "
+              "(langit-langit hulu)"
+              % (len(bolong), sum(1 for x in bolong if x[0] == "child")))
 
     print("\n===== RANGKA: %d lulus, %d gagal =====" % (_lulus, _gagal))
     return 0 if _gagal == 0 else 1

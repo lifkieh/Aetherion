@@ -45,6 +45,24 @@ CELL = 64
 ## akan membuat alat ini berjalan berjam-jam tanpa menghasilkan angka yang berbeda.
 PETAK = (CELL, 10 * CELL, 2 * CELL, 11 * CELL)
 
+## Baris kanon tiap animasi. Dipakai mencatat CAKUPAN: animasi mana yang benar-benar
+## punya piksel di sebuah lembar. Ini yang membuat "anak cuma punya walk" bisa diuji
+## alih-alih cuma ditulis di catatan — catatan tak pernah berteriak waktu dilanggar.
+BARIS = {
+    "spellcast": (0, 4), "thrust": (4, 8), "walk": (8, 12),
+    "slash": (12, 16), "shoot": (16, 20), "hurt": (20, 21),
+}
+
+
+def cakupan(im):
+    """Animasi mana yang punya piksel. Dibaca dari lembar PENUH, bukan satu petak."""
+    out = []
+    for anim, (a, b) in BARIS.items():
+        blok = im.crop((0, a * CELL, im.width, min(b * CELL, im.height)))
+        if any(px[3] > 0 for px in blok.getdata()):
+            out.append(anim)
+    return out
+
 
 def rata(path):
     """Nada rata piksel yang TERLIHAT. Piksel transparan tak ikut — memasukkannya
@@ -65,13 +83,18 @@ def rata(path):
 
 
 def main():
-    hasil = {}
+    hasil, cak = {}, {}
     # pakaian
     for f in sorted(os.listdir(LIB)):
         if f.startswith("eulpc_") and f.endswith(".png"):
-            v = rata(os.path.join(LIB, f))
+            path = os.path.join(LIB, f)
+            v = rata(path)
             if v:
                 hasil[f] = v
+            try:
+                cak[f] = cakupan(Image.open(path).convert("RGBA"))
+            except Exception:
+                pass
     # kulit: badan per build x nada
     bases = os.path.join(LIB, "bases")
     if os.path.isdir(bases):
@@ -91,7 +114,12 @@ def main():
                     "menolak pakaian yang warnanya nyaris sama dengan kulit pemakainya "
                     "— cacat yang membuat warga tampak bugil padahal berpakaian.",
             "_petak": list(PETAK),
+            "_cakupan_doc": "Animasi yang punya piksel di tiap lembar pakaian. "
+                            "Dipakai uji invarian: garmen yang tak menutupi animasi "
+                            "yang DIPOTONG game harus tercatat di `_langit_langit_hulu`, "
+                            "bukan lolos diam-diam.",
             "warna": hasil,
+            "cakupan": cak,
         }, fh, ensure_ascii=False)
     print("-> %s   (%d lembar terukur)" % (OUT, len(hasil)))
     return 0
