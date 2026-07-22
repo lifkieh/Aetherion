@@ -360,8 +360,18 @@ func _ground() -> void:
 const SKALA_JEJAK := 2.0
 
 func _jejak(nama: String, pos: Vector2, skala := SKALA_JEJAK) -> Sprite2D:
-	# ubin pinggir (gen_pinggir.py) hidup di P_T, prop 16px lama di P_OLD
+	# ⚠ TIGA AKAR, dan dulu cuma dua. Aturan lama "berakhiran 32.png -> P_T, sisanya
+	#   -> P_OLD" benar untuk zaman ketika cuma ada dua zaman aset. Ia diam-diam
+	#   salah untuk `sprites/lpc32/` (fasad & perabot LPC), yang namanya TIDAK
+	#   berakhiran `32.png` — `bench_lpc.png` diarahkan ke `props/` yang tak
+	#   memilikinya, dan bangku Merrit di bawah lampu TAK PERNAH TERGAMBAR.
+	#   Gejalanya nol: `_put` mengeluarkan `push_warning`, dan peringatan tenggelam
+	#   di antara ratusan baris keluaran uji.
+	#   Sekarang akarnya dipilih dari BERKASNYA ADA DI MANA, bukan dari tebakan nama.
 	var akar := P_T if nama.ends_with("32.png") else P_OLD
+	if not nama.ends_with("32.png") and not ResourceLoader.exists(P_OLD + nama) \
+			and ResourceLoader.exists(P_S + nama):
+		akar = P_S
 	var s := _put(akar + nama, pos)
 	if s:
 		s.scale = Vector2(skala, skala)
