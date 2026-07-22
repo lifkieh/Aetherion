@@ -1,11 +1,11 @@
 # Kredit sprite: warga_106
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:muscular_female: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_short_shorts_thin_pink: eulpc_legs_short_shorts_thin_pink.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_boots_thin: eulpc_feet_boots_thin.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_longsleeve2_vneck_female_navy: eulpc_torso_longsleeve2_vneck_female_navy.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_muscular_female: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_shortknot_gray: eulpc_hair_shortknot_gray.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- body:muscular_female: amber.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- legs:_npc_eulpc_legs_short_shorts_thin_lavender: eulpc_legs_short_shorts_thin_lavender.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:_npc_eulpc_feet_socks_high_thin_teal: eulpc_feet_socks_high_thin_teal.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:_npc_eulpc_torso_tshirt_buttoned_female_black: eulpc_torso_tshirt_buttoned_female_black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:_npc_kepala_muscular_female: amber.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- hair:_npc_shortknot_chestnut: eulpc_hair_shortknot_chestnut.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

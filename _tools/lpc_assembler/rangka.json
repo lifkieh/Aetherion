@@ -30,7 +30,7 @@
    "keluarga": {
     "torso": "teen",
     "legs": "thin",
-    "feet": "female"
+    "feet": "thin"
    }
   },
   "female": {
@@ -40,7 +40,7 @@
    "keluarga": {
     "torso": "female",
     "legs": "thin",
-    "feet": "female"
+    "feet": "thin"
    }
   },
   "muscular_female": {
@@ -50,7 +50,7 @@
    "keluarga": {
     "torso": "female",
     "legs": "thin",
-    "feet": "female"
+    "feet": "thin"
    },
    "catatan": "Badan TURUNAN (gen_base_karakter.py): siluet female + isi muscular. Siluetnya sudah dibuktikan identik piksel-per-piksel dengan female (0 beda), jadi memakai keluarga female bukan perkiraan — ia dijamin pas."
   },
@@ -82,7 +82,7 @@
    "keluarga": {
     "torso": "pregnant",
     "legs": "thin",
-    "feet": "female"
+    "feet": "thin"
    },
    "catatan": "Satu-satunya rangka yang butuh torso SENDIRI. Lebarnya sama dengan female (28px) — yang beda BENTUKNYA. Tak ada peregangan mendatar yang bisa mengarang tonjolan perut."
   }
@@ -90,9 +90,6 @@
  "_mundur_doc": "RANTAI MUNDUR — kalau keluarga yang diminta build belum ada berkasnya, coba keluarga berikut. Ini BUKAN tambalan: hulu pun melakukannya (muscular meminjam male). Bedanya, di sini peminjaman DITULIS, bukan disembunyikan di dalam nama berkas — dan resolver selalu melaporkan bahwa ia mundur, jadi utangnya tak pernah hilang dari pandangan. Kosongkan daftarnya begitu berkas aslinya masuk.",
  "mundur": {
   "feet": {
-   "female": [
-    "thin"
-   ],
    "child": [
     "thin"
    ]
@@ -100,8 +97,7 @@
  },
  "_utang": {
   "torso/child": "LUNAS sebagian: kemeja anak LPC asli (10 warna) masuk lewat ambil_lpc.py. SISA: sumbernya cuma punya animasi `walk`, jadi anak yang memainkan `slash` akan bertelanjang dada. Diterima karena anak Ashbrook warga, bukan petarung.",
-  "feet/female": "Sepatu keluarga `female` tak ada di hulu maupun lokal; mundur ke `thin`. Sepatu male SUDAH dibayar (ambil_lpc.py mengunduhnya dari generator LPC resmi), jadi utang ini menyempit dari `feet/*` jadi female+child saja.",
-  "feet/child": "Generator LPC resmi TAK PUNYA sepatu anak sama sekali — disisir seluruh feet/{shoes,boots,sandals,slippers,socks}, semuanya cuma male|thin. Ini lubang HULU, bukan celah ekstraksi kita. Mundur ke `thin`."
+  "feet/child": "HULU TAK PUNYA SEPATU ANAK SAMA SEKALI — dan bukan karena lupa: definisi resmi `feet_shoes_basic.json` mendaftarkan female/male/muscular/pregnant/teen, dan TIDAK mendaftarkan child. Anak LPC bertelanjang kaki menurut desain. Kita mundur ke `thin` supaya anak tetap bersepatu; kalau suatu hari itu terlihat salah, jalan yang benar adalah MELEPAS sepatunya, bukan mencari berkas yang tak pernah ada."
  },
  "kepala": {
   "male": "eulpc_head_male.png",
@@ -115,5 +111,6 @@
    "suspenders"
   ],
   "pakai_garmen": "longsleeve"
- }
+ },
+ "_catatan_feet": "`thin` BUKAN pinjaman untuk perempuan — ia nama folder yang dipakai hulu untuk female/pregnant/teen. Versi lama berkas ini mencatatnya sebagai utang `feet/female`, dan utang itu TIDAK PERNAH ADA: kita memodelkan kekurangan yang cuma kekeliruan baca penamaan hulu. Diperbaiki sesudah membaca sheet_definitions, bukan sesudah menebak."
 }

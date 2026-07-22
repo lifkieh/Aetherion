@@ -50,6 +50,56 @@ KATEGORI = [
 
 BENIH = 20260722
 
+## Jarak warna MINIMUM antara kain dan kulit (Euclid RGB). Di bawah ini, pakaian
+## berhenti terbaca sebagai pakaian.
+##
+## Angkanya bukan tebakan. Diukur pada kasus yang benar-benar lolos ke layar:
+## `sleeveless2_scoop` walnut di atas kulit bronze = 21.4, dan warganya tampak BUGIL.
+## Garmen yang sama dalam merah = 54.8 (jelas berbaju), putih = 189.6. Jadi ambang
+## ditaruh di 40: cukup rendah untuk membiarkan cokelat-di-atas-cokelat yang masih
+## terbaca, cukup tinggi untuk menolak yang lenyap.
+##
+## Cacat ini tak bisa ditangkap penjaga mana pun yang sudah ada: resolver benar
+## (garmen sah untuk build itu), lemari benar (berkasnya ada), dan penjaga siluet #231
+## BUTA WARNA menurut rancangannya. Yang kurang ukuran yang tak pernah diambil.
+AMBANG_KONTRAS = 40.0
+
+
+def _warna():
+    p = os.path.join(HERE, "warna_rata.json")
+    if not os.path.exists(p):
+        return {}
+    with open(p, encoding="utf-8") as f:
+        return json.load(f).get("warna", {})
+
+
+def kontras_cukup(W, R, L, r):
+    """False kalau ada garmen yang nadanya nyaris sama dengan kulit pemakainya.
+
+    Cache BOLEH usang tanpa bahaya: berkas yang tak ada di cache DILEWATI, bukan
+    ditolak. Uji yang hilang lebih baik daripada uji yang menolak barang yang benar
+    karena cache-nya ketinggalan."""
+    kul = r.get("kulit")
+    if not kul or not W:
+        return True
+    kunci_kulit = "bases/%s/%s.png" % (r["build"], kul)
+    k = W.get(kunci_kulit)
+    if k is None:
+        return True
+    for slot in ("torso", "legs"):
+        g = r["pakaian"].get(slot)
+        if not g:
+            continue
+        berkas, _kel, _sebab = rangka.resolve(R, L, r["build"], slot,
+                                              g["garmen"], g["warna"])
+        v = W.get(berkas) if berkas else None
+        if v is None:
+            continue
+        jarak = sum((v[i] - k[i]) ** 2 for i in range(3)) ** 0.5
+        if jarak < AMBANG_KONTRAS:
+            return False
+    return True
+
 ## Kulit yang boleh dipakai PENDUDUK. Pustaka punya 22 nada, tapi 15 di antaranya
 ## bukan manusia: `zombie`, `zombie_green`, `fur_*`, `lavender`, dan empat nada hijau.
 ## Undian mentah memberi Ashbrook 16 warga zombi — bukan karena pengundinya salah,
@@ -99,7 +149,8 @@ def buat(R, L, kategori, build, n=PER_KATEGORI):
             "        Tambah garmen/warna dulu — mengulang kombinasi akan melahirkan "
             "warga kembar, dan kembar terlihat jauh lebih cepat daripada yang diduga."
             % (kategori, build, maks, n))
-    out, seen, i, batas = [], set(), 0, n * 400
+    W = _warna()
+    out, seen, i, batas, tolak = [], set(), 0, n * 400, 0
     while len(out) < n and i < batas:
         benih = BENIH + hash(kategori) % 100000 + i
         r = rangka.undi(R, L, benih, build)
@@ -109,6 +160,9 @@ def buat(R, L, kategori, build, n=PER_KATEGORI):
         # lebih sering keluar; mengundi dari daftar yang benar tidak.
         kul = _kulit(R, r["build"])
         r["kulit"] = kul[benih % len(kul)] if kul else None
+        if not kontras_cukup(W, R, L, r):
+            tolak += 1
+            continue                 # kain sewarna kulit -> tampak bugil, undi ulang
         k = kunci(r)
         if k in seen:
             continue
@@ -118,6 +172,9 @@ def buat(R, L, kategori, build, n=PER_KATEGORI):
         out.append(r)
     if len(out) < n:
         raise SystemExit("[GAGAL] '%s': cuma %d unik sesudah %d undian" % (kategori, len(out), i))
+    if tolak:
+        print("  [kontras] %-17s %d undian ditolak (kain sewarna kulit)"
+              % (kategori, tolak))
     return out
 
 

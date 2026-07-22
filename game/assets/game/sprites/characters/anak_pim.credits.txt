@@ -2,7 +2,7 @@
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
 - body:child: eulpc_body_child.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
-- legs:_tokoh_eulpc_legs_child_pants_brown: eulpc_legs_child_pants_brown.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- legs:_tokoh_eulpc_legs_pants_child_brown: eulpc_legs_pants_child_brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - feet:_tokoh_eulpc_feet_shoes_thin: eulpc_feet_shoes_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
 - torso:_tokoh_eulpc_torso_shirt_child_green: eulpc_torso_shirt_child_green.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:child: eulpc_head_child.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)

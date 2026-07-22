@@ -3,6 +3,79 @@
  "_cara_tambah_garmen": "Taruh berkasnya di assets_raw/lpc_extra dengan pola eulpc_<slot>_<garmen>_<keluarga>[_<warna>].png lalu jalankan ulang gen_lemari.py. Nol perubahan kode.",
  "garmen": {
   "feet": {
+   "boots2": {
+    "slot": "feet",
+    "berkas": {
+     "male": {
+      "black": "eulpc_feet_boots2_male_black.png",
+      "blue": "eulpc_feet_boots2_male_blue.png",
+      "bluegray": "eulpc_feet_boots2_male_bluegray.png",
+      "brass": "eulpc_feet_boots2_male_brass.png",
+      "bronze": "eulpc_feet_boots2_male_bronze.png",
+      "brown": "eulpc_feet_boots2_male_brown.png",
+      "ceramic": "eulpc_feet_boots2_male_ceramic.png",
+      "charcoal": "eulpc_feet_boots2_male_charcoal.png",
+      "copper": "eulpc_feet_boots2_male_copper.png",
+      "forest": "eulpc_feet_boots2_male_forest.png",
+      "gold": "eulpc_feet_boots2_male_gold.png",
+      "gray": "eulpc_feet_boots2_male_gray.png",
+      "green": "eulpc_feet_boots2_male_green.png",
+      "iron": "eulpc_feet_boots2_male_iron.png",
+      "lavender": "eulpc_feet_boots2_male_lavender.png",
+      "leather": "eulpc_feet_boots2_male_leather.png",
+      "maroon": "eulpc_feet_boots2_male_maroon.png",
+      "navy": "eulpc_feet_boots2_male_navy.png",
+      "orange": "eulpc_feet_boots2_male_orange.png",
+      "pink": "eulpc_feet_boots2_male_pink.png",
+      "purple": "eulpc_feet_boots2_male_purple.png",
+      "red": "eulpc_feet_boots2_male_red.png",
+      "rose": "eulpc_feet_boots2_male_rose.png",
+      "silver": "eulpc_feet_boots2_male_silver.png",
+      "sky": "eulpc_feet_boots2_male_sky.png",
+      "slate": "eulpc_feet_boots2_male_slate.png",
+      "steel": "eulpc_feet_boots2_male_steel.png",
+      "tan": "eulpc_feet_boots2_male_tan.png",
+      "teal": "eulpc_feet_boots2_male_teal.png",
+      "walnut": "eulpc_feet_boots2_male_walnut.png",
+      "white": "eulpc_feet_boots2_male_white.png",
+      "yellow": "eulpc_feet_boots2_male_yellow.png"
+     },
+     "thin": {
+      "black": "eulpc_feet_boots2_thin_black.png",
+      "blue": "eulpc_feet_boots2_thin_blue.png",
+      "bluegray": "eulpc_feet_boots2_thin_bluegray.png",
+      "brass": "eulpc_feet_boots2_thin_brass.png",
+      "bronze": "eulpc_feet_boots2_thin_bronze.png",
+      "brown": "eulpc_feet_boots2_thin_brown.png",
+      "ceramic": "eulpc_feet_boots2_thin_ceramic.png",
+      "charcoal": "eulpc_feet_boots2_thin_charcoal.png",
+      "copper": "eulpc_feet_boots2_thin_copper.png",
+      "forest": "eulpc_feet_boots2_thin_forest.png",
+      "gold": "eulpc_feet_boots2_thin_gold.png",
+      "gray": "eulpc_feet_boots2_thin_gray.png",
+      "green": "eulpc_feet_boots2_thin_green.png",
+      "iron": "eulpc_feet_boots2_thin_iron.png",
+      "lavender": "eulpc_feet_boots2_thin_lavender.png",
+      "leather": "eulpc_feet_boots2_thin_leather.png",
+      "maroon": "eulpc_feet_boots2_thin_maroon.png",
+      "navy": "eulpc_feet_boots2_thin_navy.png",
+      "orange": "eulpc_feet_boots2_thin_orange.png",
+      "pink": "eulpc_feet_boots2_thin_pink.png",
+      "purple": "eulpc_feet_boots2_thin_purple.png",
+      "red": "eulpc_feet_boots2_thin_red.png",
+      "rose": "eulpc_feet_boots2_thin_rose.png",
+      "silver": "eulpc_feet_boots2_thin_silver.png",
+      "sky": "eulpc_feet_boots2_thin_sky.png",
+      "slate": "eulpc_feet_boots2_thin_slate.png",
+      "steel": "eulpc_feet_boots2_thin_steel.png",
+      "tan": "eulpc_feet_boots2_thin_tan.png",
+      "teal": "eulpc_feet_boots2_thin_teal.png",
+      "walnut": "eulpc_feet_boots2_thin_walnut.png",
+      "white": "eulpc_feet_boots2_thin_white.png",
+      "yellow": "eulpc_feet_boots2_thin_yellow.png"
+     }
+    }
+   },
    "boots": {
     "slot": "feet",
     "berkas": {
@@ -22,6 +95,79 @@
      }
     }
    },
+   "shoes2": {
+    "slot": "feet",
+    "berkas": {
+     "male": {
+      "black": "eulpc_feet_shoes2_male_black.png",
+      "blue": "eulpc_feet_shoes2_male_blue.png",
+      "bluegray": "eulpc_feet_shoes2_male_bluegray.png",
+      "brass": "eulpc_feet_shoes2_male_brass.png",
+      "bronze": "eulpc_feet_shoes2_male_bronze.png",
+      "brown": "eulpc_feet_shoes2_male_brown.png",
+      "ceramic": "eulpc_feet_shoes2_male_ceramic.png",
+      "charcoal": "eulpc_feet_shoes2_male_charcoal.png",
+      "copper": "eulpc_feet_shoes2_male_copper.png",
+      "forest": "eulpc_feet_shoes2_male_forest.png",
+      "gold": "eulpc_feet_shoes2_male_gold.png",
+      "gray": "eulpc_feet_shoes2_male_gray.png",
+      "green": "eulpc_feet_shoes2_male_green.png",
+      "iron": "eulpc_feet_shoes2_male_iron.png",
+      "lavender": "eulpc_feet_shoes2_male_lavender.png",
+      "leather": "eulpc_feet_shoes2_male_leather.png",
+      "maroon": "eulpc_feet_shoes2_male_maroon.png",
+      "navy": "eulpc_feet_shoes2_male_navy.png",
+      "orange": "eulpc_feet_shoes2_male_orange.png",
+      "pink": "eulpc_feet_shoes2_male_pink.png",
+      "purple": "eulpc_feet_shoes2_male_purple.png",
+      "red": "eulpc_feet_shoes2_male_red.png",
+      "rose": "eulpc_feet_shoes2_male_rose.png",
+      "silver": "eulpc_feet_shoes2_male_silver.png",
+      "sky": "eulpc_feet_shoes2_male_sky.png",
+      "slate": "eulpc_feet_shoes2_male_slate.png",
+      "steel": "eulpc_feet_shoes2_male_steel.png",
+      "tan": "eulpc_feet_shoes2_male_tan.png",
+      "teal": "eulpc_feet_shoes2_male_teal.png",
+      "walnut": "eulpc_feet_shoes2_male_walnut.png",
+      "white": "eulpc_feet_shoes2_male_white.png",
+      "yellow": "eulpc_feet_shoes2_male_yellow.png"
+     },
+     "thin": {
+      "black": "eulpc_feet_shoes2_thin_black.png",
+      "blue": "eulpc_feet_shoes2_thin_blue.png",
+      "bluegray": "eulpc_feet_shoes2_thin_bluegray.png",
+      "brass": "eulpc_feet_shoes2_thin_brass.png",
+      "bronze": "eulpc_feet_shoes2_thin_bronze.png",
+      "brown": "eulpc_feet_shoes2_thin_brown.png",
+      "ceramic": "eulpc_feet_shoes2_thin_ceramic.png",
+      "charcoal": "eulpc_feet_shoes2_thin_charcoal.png",
+      "copper": "eulpc_feet_shoes2_thin_copper.png",
+      "forest": "eulpc_feet_shoes2_thin_forest.png",
+      "gold": "eulpc_feet_shoes2_thin_gold.png",
+      "gray": "eulpc_feet_shoes2_thin_gray.png",
+      "green": "eulpc_feet_shoes2_thin_green.png",
+      "iron": "eulpc_feet_shoes2_thin_iron.png",
+      "lavender": "eulpc_feet_shoes2_thin_lavender.png",
+      "leather": "eulpc_feet_shoes2_thin_leather.png",
+      "maroon": "eulpc_feet_shoes2_thin_maroon.png",
+      "navy": "eulpc_feet_shoes2_thin_navy.png",
+      "orange": "eulpc_feet_shoes2_thin_orange.png",
+      "pink": "eulpc_feet_shoes2_thin_pink.png",
+      "purple": "eulpc_feet_shoes2_thin_purple.png",
+      "red": "eulpc_feet_shoes2_thin_red.png",
+      "rose": "eulpc_feet_shoes2_thin_rose.png",
+      "silver": "eulpc_feet_shoes2_thin_silver.png",
+      "sky": "eulpc_feet_shoes2_thin_sky.png",
+      "slate": "eulpc_feet_shoes2_thin_slate.png",
+      "steel": "eulpc_feet_shoes2_thin_steel.png",
+      "tan": "eulpc_feet_shoes2_thin_tan.png",
+      "teal": "eulpc_feet_shoes2_thin_teal.png",
+      "walnut": "eulpc_feet_shoes2_thin_walnut.png",
+      "white": "eulpc_feet_shoes2_thin_white.png",
+      "yellow": "eulpc_feet_shoes2_thin_yellow.png"
+     }
+    }
+   },
    "shoes": {
     "slot": "feet",
     "berkas": {
@@ -32,6 +178,120 @@
       "polos": "eulpc_feet_shoes_thin.png"
      }
     }
+   },
+   "socks_ankle": {
+    "slot": "feet",
+    "berkas": {
+     "male": {
+      "black": "eulpc_feet_socks_ankle_male_black.png",
+      "blue": "eulpc_feet_socks_ankle_male_blue.png",
+      "bluegray": "eulpc_feet_socks_ankle_male_bluegray.png",
+      "brown": "eulpc_feet_socks_ankle_male_brown.png",
+      "charcoal": "eulpc_feet_socks_ankle_male_charcoal.png",
+      "forest": "eulpc_feet_socks_ankle_male_forest.png",
+      "gray": "eulpc_feet_socks_ankle_male_gray.png",
+      "green": "eulpc_feet_socks_ankle_male_green.png",
+      "lavender": "eulpc_feet_socks_ankle_male_lavender.png",
+      "leather": "eulpc_feet_socks_ankle_male_leather.png",
+      "maroon": "eulpc_feet_socks_ankle_male_maroon.png",
+      "navy": "eulpc_feet_socks_ankle_male_navy.png",
+      "orange": "eulpc_feet_socks_ankle_male_orange.png",
+      "pink": "eulpc_feet_socks_ankle_male_pink.png",
+      "purple": "eulpc_feet_socks_ankle_male_purple.png",
+      "red": "eulpc_feet_socks_ankle_male_red.png",
+      "rose": "eulpc_feet_socks_ankle_male_rose.png",
+      "sky": "eulpc_feet_socks_ankle_male_sky.png",
+      "slate": "eulpc_feet_socks_ankle_male_slate.png",
+      "tan": "eulpc_feet_socks_ankle_male_tan.png",
+      "teal": "eulpc_feet_socks_ankle_male_teal.png",
+      "walnut": "eulpc_feet_socks_ankle_male_walnut.png",
+      "white": "eulpc_feet_socks_ankle_male_white.png",
+      "yellow": "eulpc_feet_socks_ankle_male_yellow.png"
+     },
+     "thin": {
+      "black": "eulpc_feet_socks_ankle_thin_black.png",
+      "blue": "eulpc_feet_socks_ankle_thin_blue.png",
+      "bluegray": "eulpc_feet_socks_ankle_thin_bluegray.png",
+      "brown": "eulpc_feet_socks_ankle_thin_brown.png",
+      "charcoal": "eulpc_feet_socks_ankle_thin_charcoal.png",
+      "forest": "eulpc_feet_socks_ankle_thin_forest.png",
+      "gray": "eulpc_feet_socks_ankle_thin_gray.png",
+      "green": "eulpc_feet_socks_ankle_thin_green.png",
+      "lavender": "eulpc_feet_socks_ankle_thin_lavender.png",
+      "leather": "eulpc_feet_socks_ankle_thin_leather.png",
+      "maroon": "eulpc_feet_socks_ankle_thin_maroon.png",
+      "navy": "eulpc_feet_socks_ankle_thin_navy.png",
+      "orange": "eulpc_feet_socks_ankle_thin_orange.png",
+      "pink": "eulpc_feet_socks_ankle_thin_pink.png",
+      "purple": "eulpc_feet_socks_ankle_thin_purple.png",
+      "red": "eulpc_feet_socks_ankle_thin_red.png",
+      "rose": "eulpc_feet_socks_ankle_thin_rose.png",
+      "sky": "eulpc_feet_socks_ankle_thin_sky.png",
+      "slate": "eulpc_feet_socks_ankle_thin_slate.png",
+      "tan": "eulpc_feet_socks_ankle_thin_tan.png",
+      "teal": "eulpc_feet_socks_ankle_thin_teal.png",
+      "walnut": "eulpc_feet_socks_ankle_thin_walnut.png",
+      "white": "eulpc_feet_socks_ankle_thin_white.png",
+      "yellow": "eulpc_feet_socks_ankle_thin_yellow.png"
+     }
+    }
+   },
+   "socks_high": {
+    "slot": "feet",
+    "berkas": {
+     "male": {
+      "black": "eulpc_feet_socks_high_male_black.png",
+      "blue": "eulpc_feet_socks_high_male_blue.png",
+      "bluegray": "eulpc_feet_socks_high_male_bluegray.png",
+      "brown": "eulpc_feet_socks_high_male_brown.png",
+      "charcoal": "eulpc_feet_socks_high_male_charcoal.png",
+      "forest": "eulpc_feet_socks_high_male_forest.png",
+      "gray": "eulpc_feet_socks_high_male_gray.png",
+      "green": "eulpc_feet_socks_high_male_green.png",
+      "lavender": "eulpc_feet_socks_high_male_lavender.png",
+      "leather": "eulpc_feet_socks_high_male_leather.png",
+      "maroon": "eulpc_feet_socks_high_male_maroon.png",
+      "navy": "eulpc_feet_socks_high_male_navy.png",
+      "orange": "eulpc_feet_socks_high_male_orange.png",
+      "pink": "eulpc_feet_socks_high_male_pink.png",
+      "purple": "eulpc_feet_socks_high_male_purple.png",
+      "red": "eulpc_feet_socks_high_male_red.png",
+      "rose": "eulpc_feet_socks_high_male_rose.png",
+      "sky": "eulpc_feet_socks_high_male_sky.png",
+      "slate": "eulpc_feet_socks_high_male_slate.png",
+      "tan": "eulpc_feet_socks_high_male_tan.png",
+      "teal": "eulpc_feet_socks_high_male_teal.png",
+      "walnut": "eulpc_feet_socks_high_male_walnut.png",
+      "white": "eulpc_feet_socks_high_male_white.png",
+      "yellow": "eulpc_feet_socks_high_male_yellow.png"
+     },
+     "thin": {
+      "black": "eulpc_feet_socks_high_thin_black.png",
+      "blue": "eulpc_feet_socks_high_thin_blue.png",
+      "bluegray": "eulpc_feet_socks_high_thin_bluegray.png",
+      "brown": "eulpc_feet_socks_high_thin_brown.png",
+      "charcoal": "eulpc_feet_socks_high_thin_charcoal.png",
+      "forest": "eulpc_feet_socks_high_thin_forest.png",
+      "gray": "eulpc_feet_socks_high_thin_gray.png",
+      "green": "eulpc_feet_socks_high_thin_green.png",
+      "lavender": "eulpc_feet_socks_high_thin_lavender.png",
+      "leather": "eulpc_feet_socks_high_thin_leather.png",
+      "maroon": "eulpc_feet_socks_high_thin_maroon.png",
+      "navy": "eulpc_feet_socks_high_thin_navy.png",
+      "orange": "eulpc_feet_socks_high_thin_orange.png",
+      "pink": "eulpc_feet_socks_high_thin_pink.png",
+      "purple": "eulpc_feet_socks_high_thin_purple.png",
+      "red": "eulpc_feet_socks_high_thin_red.png",
+      "rose": "eulpc_feet_socks_high_thin_rose.png",
+      "sky": "eulpc_feet_socks_high_thin_sky.png",
+      "slate": "eulpc_feet_socks_high_thin_slate.png",
+      "tan": "eulpc_feet_socks_high_thin_tan.png",
+      "teal": "eulpc_feet_socks_high_thin_teal.png",
+      "walnut": "eulpc_feet_socks_high_thin_walnut.png",
+      "white": "eulpc_feet_socks_high_thin_white.png",
+      "yellow": "eulpc_feet_socks_high_thin_yellow.png"
+     }
+    }
    }
   },
   "legs": {
@@ -39,9 +299,15 @@
     "slot": "legs",
     "berkas": {
      "child": {
-      "brown": "eulpc_legs_child_pants_brown.png",
-      "darkblue": "eulpc_legs_child_pants_darkblue.png",
-      "green": "eulpc_legs_child_pants_green.png"
+      "brown": "eulpc_legs_pants_child_brown.png",
+      "darkblue": "eulpc_legs_pants_child_darkblue.png",
+      "green": "eulpc_legs_pants_child_green.png",
+      "black": "eulpc_legs_pants_child_black.png",
+      "blue": "eulpc_legs_pants_child_blue.png",
+      "lightblue": "eulpc_legs_pants_child_lightblue.png",
+      "maroon": "eulpc_legs_pants_child_maroon.png",
+      "red": "eulpc_legs_pants_child_red.png",
+      "white": "eulpc_legs_pants_child_white.png"
      },
      "male": {
       "charcoal": "eulpc_legs_pants_male_charcoal.png",
@@ -126,6 +392,23 @@
       "walnut": "eulpc_legs_shorts_thin_walnut.png",
       "white": "eulpc_legs_shorts_thin_white.png",
       "yellow": "eulpc_legs_shorts_thin_yellow.png"
+     }
+    }
+   },
+   "skirt": {
+    "slot": "legs",
+    "berkas": {
+     "child": {
+      "black": "eulpc_legs_skirt_child_black.png",
+      "blue": "eulpc_legs_skirt_child_blue.png",
+      "darkblue": "eulpc_legs_skirt_child_darkblue.png",
+      "green": "eulpc_legs_skirt_child_green.png",
+      "lavender": "eulpc_legs_skirt_child_lavender.png",
+      "lightblue": "eulpc_legs_skirt_child_lightblue.png",
+      "maroon": "eulpc_legs_skirt_child_maroon.png",
+      "pink": "eulpc_legs_skirt_child_pink.png",
+      "red": "eulpc_legs_skirt_child_red.png",
+      "white": "eulpc_legs_skirt_child_white.png"
      }
     }
    }

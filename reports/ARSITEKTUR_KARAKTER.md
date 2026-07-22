@@ -238,6 +238,33 @@ tak perlu.
 
 ---
 
+## Kontras kain vs kulit — ukuran yang tak pernah diambil
+
+`sleeveless2_scoop` warna **walnut** di atas kulit **bronze** menghasilkan warga yang
+tampak **bugil**. Garmennya tergambar benar — diuji dengan merender garmen yang sama
+dalam putih, merah, dan hitam: ketiganya jelas tank top.
+
+| kain | jarak ke kulit `bronze` | terbaca? |
+|---|---|---|
+| `sleeveless2_scoop` walnut | **21,4** | tidak — tampak telanjang |
+| `longsleeve2` walnut | **3,6** | tidak — sewarna kulit persis |
+| `sleeveless2_scoop` red | 54,8 | ya |
+| `sleeveless2_scoop` white | 189,6 | ya |
+
+Ambang **40**. Tak ada penjaga yang sudah ada bisa menangkap ini: resolver benar
+(garmen sah untuk build itu), lemari benar (berkasnya ada), dan penjaga siluet #231
+**buta warna menurut rancangannya**. Yang kurang bukan penjaga tambahan, melainkan
+**ukuran yang tak pernah diambil siapa pun**.
+
+Diukur di `gen_warna.py` sekali, disimpan sebagai data biasa, dibaca pengundi. Lapis
+domain tetap murni — mengukur saat mengundi akan menyeret PIL ke dalamnya dan membuat
+35 uji invarian bergantung pada berkas PNG. Cache **boleh usang tanpa bahaya**: berkas
+yang tak ada di dalamnya dilewati, bukan ditolak.
+
+Hasil: 16 undian ditolak dari 120 yang lolos.
+
+---
+
 ## Yang BELUM dikerjakan (sengaja)
 
 **Sepuluh resep tokoh masih memakai bentuk lama** (`"legs": "pants_thin"`). Arsitektur

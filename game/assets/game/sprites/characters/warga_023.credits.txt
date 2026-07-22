@@ -3,10 +3,10 @@
 
 - body:male: taupe.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - legs:_npc_eulpc_legs_pants_male_forest: eulpc_legs_pants_male_forest.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- feet:_npc_eulpc_feet_shoes_male: eulpc_feet_shoes_male.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- feet:_npc_eulpc_feet_socks_ankle_male_yellow: eulpc_feet_socks_ankle_male_yellow.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - undershirt:_npc_dalam_eulpc_torso_longsleeve_male_forest: eulpc_torso_longsleeve_male_forest.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_suspenders_male_gray: eulpc_torso_suspenders_male_gray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- torso:_npc_eulpc_torso_suspenders_male_black: eulpc_torso_suspenders_male_black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 - head:_npc_kepala_male: taupe.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_shortknot_chestnut: eulpc_hair_shortknot_chestnut.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+- hair:_npc_jewfro_chestnut: eulpc_hair_jewfro_chestnut.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
 
 # ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
