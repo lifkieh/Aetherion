@@ -27,9 +27,9 @@ Tiga zaman aset hidup berdampingan; kanon #256: **dunia 32px · karakter/monster
 |---|---|---|---|
 | `sprites/props/` | 66 PNG (barrel 13×16 dst.) | Greenvale/Town lama, sebagian dipakai Ashbrook64 dgn pengali skala | ganti bertahap ke `lpc32/` (pola `barrel_lpc` 32×64 sudah ada — dua generasi sudah berdampingan) |
 | `tiles/` akar | ~8 ubin (grass/dirt/cobble/field) | Greenvale (`Main.gd`) — **wilayah BEKU** | ikut migrasi wilayah (D di bawah) |
-| `tiles/dungeon/` | ~7 ubin | `DungeonBase.gd` + dungeon side-view | migrasi dungeon (butuh tileset side-view 32px — belum ada di gudang; BURU) |
+| ~~`tiles/dungeon/`~~ | ~~7 ubin 16px~~ | **MIGRASI SELESAI (R1 #286, 2026-07-25)** — ubin 32px prosedural (`gen_tiles_dungeon32.py`), pemain platformer = LPC 64, fisika ×2, kamera 1.5. Gudang/OGA nihil tileset gua side-view → prosedural sah per #279. Sisa kecil: obor masih 16px di-skala 2 (gambar obor 32 menyusul); blok bijih "melayang" = keanehan layout LAMA (ada juga di 16px). | — |
 | `tiles/desert/` · `tiles/candyveil/` | ubin wilayah | Desert, Candyveil | ikut migrasi wilayah |
-| `sprites/player/` (walk/idle/attack/dead 16px) | 4 PNG | **PlayerPlatformer (dungeon)** · Guard.gd:29 · EchoVendor.gd:22 · Main.gd:115 | platformer: TAHAN sampai dungeon 32px (pemain 64px di dungeon 16px = raksasa); Guard/EchoVendor: ganti saat wilayahnya migrasi |
+| `sprites/player/` (walk/idle/attack/dead 16px) | 4 PNG | ~~PlayerPlatformer~~ **(migrasi R1 — kini LPC)** · Guard.gd:29 · EchoVendor.gd:22 · Main.gd:115 (cadangan HUD) | sisa pemakai = wilayah beku; mati saat R2 Greenvale |
 | HUD potret | ~~idle.png 16px~~ | ~~HUD.gd:99~~ | **SUDAH DIGANTI** (wajah LPC) |
 
 **Kenapa tidak dihapus sekaligus sekarang:** Greenvale/Desert/Candyveil/Frostpeak/Storm

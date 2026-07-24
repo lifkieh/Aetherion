@@ -4,7 +4,7 @@ extends Node2D
 ## to theme a dungeon; everything else (terrain, lighting, spawns, boss, exit,
 ## perf hook) is reused — no per-dungeon duplication.
 
-const TILE := 16
+const TILE := 32   # R1 #286: ikut DungeonTerrain.TILE — dua konstanta, satu nilai (audit C3)
 var W := 46
 var H := 46
 var _light_tex: Texture2D
@@ -204,14 +204,15 @@ func _add_light(pos: Vector2, color: Color, energy: float, scale: float) -> Poin
 func _place_torches(tcol: Color) -> void:
 	for fy in [11, 21, 31, H - 3]:
 		for x in range(4, W - 4, 8):
-			var tp := Vector2(x * TILE + TILE / 2.0, fy * TILE - 8)
+			var tp := Vector2(x * TILE + TILE / 2.0, fy * TILE - 16)
 			var spr := Sprite2D.new()
 			spr.texture = load("res://assets/game/sprites/dungeon/torch.png")
 			spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			spr.scale = Vector2(2, 2)   # obor 16px di dunia 32 (#286) — sementara sampai obor 32 digambar
 			spr.position = tp
 			spr.z_index = 2
 			add_child(spr)
-			_add_light(tp + Vector2(0, -4), tcol, 1.1, 0.9)
+			_add_light(tp + Vector2(0, -8), tcol, 1.1, 0.9)
 
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/PlayerPlatformer.tscn").instantiate()

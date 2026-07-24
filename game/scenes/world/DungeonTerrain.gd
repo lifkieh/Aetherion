@@ -4,7 +4,7 @@ extends Node2D
 ## (dirt/stone/ore) are diggable; hard bedrock is not. Ore veins give material
 ## + Miner EXP. Also builds one-way platforms and ladder zones.
 
-const TILE := 16
+const TILE := 32   # R1 #286: dunia dungeon ikut kanon #256 (petak 32, pemain LPC 64)
 # char -> block config. source = TileSet source id; hard = undiggable.
 const BLOCKS := {
 	"D": {"source": 0, "soft": true, "hp": 2, "drop": "", "xp": 1},   # dirt

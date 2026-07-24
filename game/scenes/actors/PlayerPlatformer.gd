@@ -5,12 +5,14 @@ extends CharacterBody2D
 ## Physics: gravity, jump (coyote + buffer), Wind double-jump, one-way drop,
 ## ladders, and mining soft blocks in the facing direction.
 
-const MOVE_SPEED := 118.0
-const GRAVITY := 980.0
-const MAX_FALL := 560.0
-const JUMP_VELOCITY := -330.0
-const DOUBLE_JUMP_VELOCITY := -270.0
-const CLIMB_SPEED := 90.0
+# R1 #286: dunia dungeon 16px -> 32px. Semua kecepatan/gravitasi berbasis PIKSEL
+# dikali 2 supaya rasanya per-PETAK identik (lompatan tetap ~3.5 petak, dst.).
+const MOVE_SPEED := 236.0
+const GRAVITY := 1960.0
+const MAX_FALL := 1120.0
+const JUMP_VELOCITY := -660.0
+const DOUBLE_JUMP_VELOCITY := -540.0
+const CLIMB_SPEED := 180.0
 const COYOTE := 0.10
 const JUMP_BUFFER := 0.10
 const PLATFORM_MASK_BIT := 3   # collision layer 8 (one-way platforms)
@@ -36,16 +38,25 @@ func _ready() -> void:
 	add_to_group("player")
 	_build_sprite()
 	var cam := Camera2D.new()
-	cam.zoom = Vector2(3, 3)
+	cam.zoom = Vector2(1.5, 1.5)   # dunia 2x lebih besar -> cakupan pandang sama dgn zoom 3 di 16px
 	cam.position_smoothing_enabled = true
 	cam.position_smoothing_speed = 9.0
 	add_child(cam)
 	terrain = get_tree().get_first_node_in_group("terrain")
 
 func _build_sprite() -> void:
-	var tex := SheetUtil.load_tex("res://assets/game/sprites/player/walk.png")
-	if tex:
-		sprite.sprite_frames = SheetUtil.build_directional(tex, 16, 4, 4, 8.0)
+	# LPC 64px (#286/#280a): pemain dungeon = pemain yang sama dengan dunia atas —
+	# dulu satu-satunya tempat pemain menyusut jadi 16px. Jalur lama tinggal
+	# cadangan bila manifest LPC absen.
+	var sf: SpriteFrames = null
+	if LpcGen.siap():
+		sf = LpcGen.sprite_frames(LpcGen.rapikan(PlayerData.char_config))
+	if sf == null:
+		var tex := SheetUtil.load_tex("res://assets/game/sprites/player/walk.png")
+		if tex:
+			sf = SheetUtil.build_directional(tex, 16, 4, 4, 8.0)
+	if sf:
+		sprite.sprite_frames = sf
 		sprite.play("idle_right")
 
 func _facing_vec() -> Vector2:
@@ -78,7 +89,7 @@ func _physics_process(delta: float) -> void:
 		if not on_ladder:
 			climbing = false
 			if iy < 0.0:
-				velocity.y = -140.0   # dorongan kecil di ujung atas agar tidak nyangkut di bibir
+				velocity.y = -280.0   # dorongan kecil di ujung atas agar tidak nyangkut di bibir (2x, #286)
 		elif Input.is_action_just_pressed("dodge"):
 			climbing = false          # SPACE = lompat lepas dari tangga
 			velocity.y = JUMP_VELOCITY * 0.85
@@ -223,7 +234,7 @@ func _basic_attack(aim: Vector2) -> void:
 func _try_mine() -> void:
 	if _mine_cd > 0.0 or terrain == null or not terrain.has_method("try_mine"):
 		return
-	var target := global_position + _facing_vec() * 14.0
+	var target := global_position + _facing_vec() * 28.0   # jangkauan = satu petak (2x, #286)
 	if terrain.try_mine(target):
 		_mine_cd = 0.25
 
