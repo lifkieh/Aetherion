@@ -23,14 +23,25 @@ func _ready() -> void:
 	_build()
 	_home = global_position
 
+## OPT-IN LPC (#286): kosong = ikon 16px lama (Frostpeak 16px tak berubah).
+var lpc_sheet := ""
+
 func _build() -> void:
 	_sprite = Sprite2D.new()
-	var at := AtlasTexture.new()
-	at.atlas = load("res://assets/game/sprites/player/idle.png")
-	at.region = Rect2(0, 0, 16, 16)
-	_sprite.texture = at
+	if lpc_sheet != "" and ResourceLoader.exists(
+			"res://assets/game/sprites/characters/%s_idle.png" % lpc_sheet):
+		var ai := AtlasTexture.new()
+		ai.atlas = load("res://assets/game/sprites/characters/%s_idle.png" % lpc_sheet)
+		ai.region = Rect2(0, 2 * 64, 64, 64)   # baris 2 = hadap bawah
+		_sprite.texture = ai
+		_sprite.offset = Vector2(0, -20)
+	else:
+		var at := AtlasTexture.new()
+		at.atlas = load("res://assets/game/sprites/player/idle.png")
+		at.region = Rect2(0, 0, 16, 16)
+		_sprite.texture = at
+		_sprite.scale = Vector2(1.7, 1.7)
 	_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_sprite.scale = Vector2(1.7, 1.7)
 	_sprite.modulate = Color(0.72, 0.82, 1.05)   # steel-blue sentinel
 	add_child(_sprite)
 

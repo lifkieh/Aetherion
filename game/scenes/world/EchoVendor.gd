@@ -17,12 +17,25 @@ func _ready() -> void:
 	if not data.is_empty():
 		_build()
 
+## OPT-IN LPC (#286): kosong = ikon 16px lama (wilayah 16px lain tak berubah).
+## Diisi id sheet warga = gema tampil sebagai sosok LPC 64 transparan.
+var lpc_sheet := ""
+
 func _build() -> void:
-	var at := AtlasTexture.new()
-	at.atlas = load("res://assets/game/sprites/player/idle.png")
-	at.region = Rect2(0, 0, 16, 16)
-	sprite.texture = at
-	sprite.scale = Vector2(1.4, 1.4)
+	if lpc_sheet != "" and ResourceLoader.exists(
+			"res://assets/game/sprites/characters/%s_idle.png" % lpc_sheet):
+		var ai := AtlasTexture.new()
+		ai.atlas = load("res://assets/game/sprites/characters/%s_idle.png" % lpc_sheet)
+		ai.region = Rect2(0, 2 * 64, 64, 64)   # baris 2 = hadap bawah
+		sprite.texture = ai
+		sprite.scale = Vector2(1, 1)
+		sprite.offset = Vector2(0, -20)
+	else:
+		var at := AtlasTexture.new()
+		at.atlas = load("res://assets/game/sprites/player/idle.png")
+		at.region = Rect2(0, 0, 16, 16)
+		sprite.texture = at
+		sprite.scale = Vector2(1.4, 1.4)
 	var tint: String = data.get("tint", "ffffff")
 	sprite.modulate = Color(tint)
 	sprite.modulate.a = 0.75   # ghostly

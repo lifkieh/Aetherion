@@ -2,15 +2,16 @@ extends Node2D
 ## Main — Greenvale Forest region bootstrap. Builds ground, sky, weather,
 ## player, monster spawner and HUD in code (Fase0 §2 world/Region).
 
-const TILE := 16
+# R2 #286: Greenvale naik ke petak 32 (kanon #256) — layout & konten TETAP,
+# hanya bahasa visual yang naik. Ubin dari keluarga lpc32 yang sama dengan
+# Ashbrook64 supaya dua kota terbaca satu dunia.
+const TILE := 32
 const MAP_W := 80
 const MAP_H := 60
-const GRASS_PRIMARY := Vector2i(1, 7)
-const GRASS_VARIANTS := [Vector2i(3, 6), Vector2i(4, 6)]
 
 const SPAWN_TABLE := ["fluffbit", "fluffbit", "grey_wolf", "verdant_slime", "wild_boar", "forest_fox"]
 const MAX_MONSTERS := 12
-const PLAZA_RADIUS := 210.0   # town plaza kept clear of props (tidy layout, UI/UX §3)
+const PLAZA_RADIUS := 420.0   # town plaza kept clear of props (2x, dunia 32)
 
 var ground: TileMapLayer
 var canvas_mod: CanvasModulate
@@ -235,14 +236,17 @@ func _process(delta: float) -> void:
 # --- World build ------------------------------------------------------------
 
 func _make_field_tileset() -> TileSet:
+	# lpc32 (R2 #286): rumput yang sama dengan Ashbrook64 — atlas field.png 16px pensiun
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE, TILE)
-	var src := TileSetAtlasSource.new()
-	src.texture = load("res://assets/game/tiles/field.png")
-	src.texture_region_size = Vector2i(TILE, TILE)
-	for coord in [GRASS_PRIMARY] + GRASS_VARIANTS:
-		src.create_tile(coord)
-	ts.add_source(src, 0)
+	var i := 0
+	for nama in ["grass32", "ladang_semak32"]:
+		var src := TileSetAtlasSource.new()
+		src.texture = load("res://assets/game/tiles/lpc32/%s.png" % nama)
+		src.texture_region_size = Vector2i(TILE, TILE)
+		src.create_tile(Vector2i(0, 0))
+		ts.add_source(src, i)
+		i += 1
 	return ts
 
 func _build_ground() -> void:
@@ -251,11 +255,9 @@ func _build_ground() -> void:
 	add_child(ground)
 	for y in range(MAP_H):
 		for x in range(MAP_W):
-			var coord := GRASS_PRIMARY
-			var r := randf()
-			if r < 0.10:
-				coord = GRASS_VARIANTS[randi() % GRASS_VARIANTS.size()]
-			ground.set_cell(Vector2i(x, y), 0, coord)
+			# 3% varian semak — 10% terbaca papan-catur rusak di ubin 32 (mata, #286)
+			var src := 1 if randf() < 0.03 else 0
+			ground.set_cell(Vector2i(x, y), src, Vector2i(0, 0))
 
 func _build_boundaries() -> void:
 	var walls := StaticBody2D.new()
@@ -306,10 +308,10 @@ func _dress_wild() -> void:
 	# R2 Part 2 — dense forest ring around the town, directional landmarks, edge band,
 	# a dirt path to the dungeon, and ambient butterflies/fireflies.
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
-	var town := Rect2(center - Vector2(418, 384), Vector2(836, 768))
-	var dungeon := center + Vector2(0, 430)
-	var paths := [[center + Vector2(0, 360), dungeon]]
-	WildDresser.dress(self, "forest", MAP_W, MAP_H, [town], paths)
+	var town := Rect2(center - Vector2(836, 768), Vector2(1672, 1536))   # 2x (#286)
+	var dungeon := center + Vector2(0, 860)
+	var paths := [[center + Vector2(0, 720), dungeon]]
+	WildDresser.dress(self, "forest", MAP_W, MAP_H, [town], paths, TILE)
 	var amb := Node2D.new()
 	amb.set_script(load("res://scenes/systems/Ambience.gd"))
 	add_child(amb)
@@ -343,6 +345,7 @@ func _scatter_props() -> void:
 		var s := Sprite2D.new()
 		s.texture = load("res://assets/game/sprites/props/%s.png" % pick)
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		s.scale = Vector2(2, 2)   # deco 16px di dunia 32 (#286) — pola pengali Ashbrook64
 		s.position = pos
 		props.add_child(s)
 
@@ -372,7 +375,7 @@ func _build_weather() -> void:
 	rain.emitting = false
 	var mat := ParticleProcessMaterial.new()
 	mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
-	mat.emission_box_extents = Vector3(280, 10, 1)
+	mat.emission_box_extents = Vector3(560, 10, 1)   # 2x lebar layar dunia 32 (#286)
 	mat.direction = Vector3(0.1, 1, 0)
 	mat.gravity = Vector3(0, 900, 0)
 	mat.initial_velocity_min = 300.0
@@ -403,6 +406,11 @@ func _spawn_player() -> void:
 	else:
 		player.global_position = Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
 	add_child(player)
+	# Kamera Player dipatok 2.0 untuk dunia 16px; di petak 32 itu memperbesar dua
+	# kali. Pola yang sama dengan Ashbrook64 (#286): scene yang menentukan zoom.
+	for c in player.get_children():
+		if c is Camera2D:
+			c.zoom = Vector2(1.0, 1.0)
 
 func _add_hud() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
@@ -421,10 +429,10 @@ func _spawn_gathering_nodes() -> void:
 	holder.y_sort_enabled = true
 	add_child(holder)
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
-	var town := Rect2(center - Vector2(430, 396), Vector2(860, 792))
+	var town := Rect2(center - Vector2(860, 792), Vector2(1720, 1584))   # 2x (#286)
 	# a handful of choppable pines right outside the gates so the opening "chop 3
 	# trees" quest is completable the moment the player steps out of town
-	for gp in [Vector2(-40, 420), Vector2(40, 430), Vector2(-410, 90), Vector2(410, -20), Vector2(0, -410)]:
+	for gp in [Vector2(-80, 840), Vector2(80, 860), Vector2(-820, 180), Vector2(820, -40), Vector2(0, -820)]:
 		_add_gather_node(holder, "tree", center + gp)
 	for i in range(12):
 		_add_gather_node(holder, "tree", _wild_pos(town))
@@ -444,32 +452,37 @@ func _spawn_interactables() -> void:
 	var center := Vector2(MAP_W * TILE / 2, MAP_H * TILE / 2)
 	Town.build(self, center)
 
-	# Town exits at the fence road-gaps (leaving town → wild / other regions).
-	_place_portal(center + Vector2(-400, 24), "res://scenes/world/Desert.tscn", "◀ Gurun Reruntuhan [E]")
-	_place_portal(center + Vector2(400, 24), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
-	_place_portal(center + Vector2(0, -372), "res://scenes/world/Frostpeak.tscn", "▲ Frostpeak [E]")
-	_place_portal(center + Vector2(70, 116), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
+	# Town exits at the fence road-gaps — offset 2x, dunia 32 (#286).
+	_place_portal(center + Vector2(-800, 48), "res://scenes/world/Desert.tscn", "◀ Gurun Reruntuhan [E]")
+	_place_portal(center + Vector2(800, 48), "res://scenes/world/Candyveil.tscn", "Padang Candyveil ▶ [E]")
+	_place_portal(center + Vector2(0, -744), "res://scenes/world/Frostpeak.tscn", "▲ Frostpeak [E]")
+	_place_portal(center + Vector2(140, 232), "res://scenes/homestead/Homestead.tscn", "Rumah (Homestead) [E]")
 	# Dungeon entrance just outside the south gate (dirt path leads to it).
-	_place_interactable("dungeon", center + Vector2(0, 430))
+	_place_interactable("dungeon", center + Vector2(0, 860))
 	# A dock south-west: sail to Storm Island.
-	_place_portal(center + Vector2(-320, 360), "res://scenes/world/StormIsland.tscn", "⛵ Perahu ke Storm Island [E]")
+	_place_portal(center + Vector2(-640, 720), "res://scenes/world/StormIsland.tscn", "⛵ Perahu ke Storm Island [E]")
 
 	# --- fishing ponds well outside the town ---
-	for p in [Vector2(-520, 300), Vector2(540, -300), Vector2(-540, -280)]:
+	for p in [Vector2(-1040, 600), Vector2(1080, -600), Vector2(-1080, -560)]:
 		_place_interactable("pond", center + p)
 
 	# Immortal gate guards at each town gate (UI/UX §4) — repel monsters.
+	var g_i := 70   # LPC warga_070.. utk penjaga gerbang (#286)
 	for gate in SafeZone.gates():
 		var guard := Node2D.new()
 		guard.set_script(load("res://scenes/actors/Guard.gd"))
+		guard.set("lpc_sheet", "warga_%03d" % g_i)
+		g_i += 1
 		add_child(guard)
 		guard.global_position = gate
 
 	# Echo Vendors — ghost kiosks by the town edge (lived-in feel)
 	var evs := Db.echo_vendors
-	var ev_spots := [Vector2(-320, -120), Vector2(320, -140)]
+	var ev_spots := [Vector2(-640, -240), Vector2(640, -280)]
+	var ev_i := 80   # LPC warga_080.. utk gema (#286)
 	for i in range(min(evs.size(), ev_spots.size())):
 		var ev := preload("res://scenes/world/EchoVendor.tscn").instantiate()
+		ev.set("lpc_sheet", "warga_%03d" % (ev_i + i))
 		add_child(ev)
 		ev.setup(evs[i])
 		ev.global_position = center + ev_spots[i]
@@ -478,12 +491,14 @@ func _place_interactable(kind: String, pos: Vector2) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(n)
 	n.setup(kind)
+	n.scale = Vector2(2, 2)   # ikon 16px + radius ikut dunia 32 (#286)
 	n.global_position = pos
 
 func _place_portal(pos: Vector2, scene: String, label: String) -> void:
 	var p := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(p)
 	p.setup(scene, label)
+	p.scale = Vector2(2, 2)   # gerbang 16px di dunia 32 (#286)
 	p.global_position = pos
 
 func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
@@ -491,6 +506,7 @@ func _add_gather_node(holder: Node2D, kind: String, pos: Vector2) -> void:
 	holder.add_child(node)
 	node.global_position = pos
 	node.setup(kind, "gn_%s_%d" % [kind, holder.get_child_count()])
+	node.scale = Vector2(2, 2)   # sprite node 16px di dunia 32 (#286); wilayah lain tak tersentuh
 
 # --- Spawner ----------------------------------------------------------------
 

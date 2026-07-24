@@ -5,23 +5,28 @@ extends RefCounted
 ## night street-lamps, fences, market deco, NPCs at logical posts, strolling villagers
 ## and small animals. Everything is added as children of `host` (Main).
 
-const TILE := 16
+const TILE := 32   # R2 #286: kota Greenvale ikut petak 32 — layout tetap, skala naik
+const S := 2.0     # pengali offset piksel tulisan-tangan era 16px (posisi relatif center)
+const P_L := "res://assets/game/sprites/lpc32/"
 const BDIR := "res://assets/game/sprites/buildings/"
 const PDIR := "res://assets/game/sprites/props/"
 
 # Building table: sprite, size, offset-from-center, sign label, door target
 # door: "" = solid landmark, "house"/"blacksmith"/"inn"/"store" = enterable interior
 static func _buildings() -> Array:
+	# R2 #286: fasad lpc32 (keluarga visual Ashbrook64) menggantikan sprite 16px.
+	# w/h = dimensi fasad nyata (diukur); off = offset lama x2. `tint` membedakan
+	# tiga rumah warga yang memakai fasad sama (pengganti house_red/green/blue).
 	return [
-		{"spr": "blacksmith", "w": 64, "h": 74, "off": Vector2(-250, -120), "sign": "Bengkel Pandai Besi", "door": "blacksmith"},
-		{"spr": "townhall",   "w": 90, "h": 80, "off": Vector2(0, -150),    "sign": "Balai Kota",          "door": ""},
-		{"spr": "inn",        "w": 74, "h": 98, "off": Vector2(250, -118),  "sign": "Penginapan Rusa Emas","door": "inn"},
-		{"spr": "tower",      "w": 50, "h": 106,"off": Vector2(-330, 20),   "sign": "Menara Astrolog",     "door": ""},
-		{"spr": "store",      "w": 74, "h": 66, "off": Vector2(330, 30),    "sign": "Toko Umum",           "door": "store"},
-		{"spr": "house_red",  "w": 58, "h": 62, "off": Vector2(-250, 175),  "sign": "Rumah Warga",         "door": "house"},
-		{"spr": "house_green","w": 58, "h": 62, "off": Vector2(-92, 190),   "sign": "Rumah Warga",         "door": "house"},
-		{"spr": "house_blue", "w": 58, "h": 62, "off": Vector2(110, 190),   "sign": "Rumah Warga",         "door": "house"},
-		{"spr": "stable",     "w": 74, "h": 56, "off": Vector2(288, 170),   "sign": "Kandang",             "door": ""},
+		{"spr": "fasad_datar_lebar", "w": 160, "h": 160, "off": Vector2(-500, -240), "sign": "Bengkel Pandai Besi", "door": "blacksmith"},
+		{"spr": "fasad_balai",       "w": 160, "h": 288, "off": Vector2(0, -300),    "sign": "Balai Kota",          "door": ""},
+		{"spr": "fasad_inn",         "w": 160, "h": 224, "off": Vector2(500, -236),  "sign": "Penginapan Rusa Emas","door": "inn"},
+		{"spr": "fasad_datar_tinggi","w": 96,  "h": 256, "off": Vector2(-660, 40),   "sign": "Menara Astrolog",     "door": ""},
+		{"spr": "fasad_shop",        "w": 96,  "h": 192, "off": Vector2(660, 60),    "sign": "Toko Umum",           "door": "store"},
+		{"spr": "fasad_rumah",       "w": 160, "h": 192, "off": Vector2(-500, 350),  "sign": "Rumah Warga",         "door": "house", "tint": Color(1.0, 0.82, 0.82)},
+		{"spr": "fasad_rumah",       "w": 160, "h": 192, "off": Vector2(-184, 380),  "sign": "Rumah Warga",         "door": "house", "tint": Color(0.84, 1.0, 0.86)},
+		{"spr": "fasad_rumah",       "w": 160, "h": 192, "off": Vector2(220, 380),   "sign": "Rumah Warga",         "door": "house", "tint": Color(0.84, 0.9, 1.0)},
+		{"spr": "fasad_gudang",      "w": 160, "h": 192, "off": Vector2(576, 340),   "sign": "Kandang",             "door": ""},
 	]
 
 static func build(host: Node2D, center: Vector2) -> void:
@@ -34,17 +39,20 @@ static func build(host: Node2D, center: Vector2) -> void:
 	_place_npcs(host, center)
 	_place_villagers(host, center)
 	_place_animals(host, center)
-	TownFolk.place(host, "greenvale", center)          # Hukum NPC Aneh (E6 #78)
-	MiracleSystem.manifest(host, center, 260.0)        # keajaiban hari ini (E7 #79)
+	TownFolk.place(host, "greenvale", center, 60)      # Hukum NPC Aneh (E6 #78) — LPC warga_060.. (#286)
+	MiracleSystem.manifest(host, center, 520.0)        # keajaiban hari ini (E7 #79) — radius 2x
 
 # --- cobbled ground ---------------------------------------------------------
 
 static func _paint_ground(host: Node2D, center: Vector2) -> void:
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE, TILE)
-	for i in ["cobble_0", "cobble_1", "dirt_path"]:
+	# lpc32 (R2 #286): perkerasan yang sama dengan Ashbrook64.
+	# pelataran32 TERNYATA bertekstur rumput-injak (mata, v2/v3) — variasi halus
+	# perkerasan memakai stone32; tanah tetap aksen langka.
+	for i in ["cobble32", "stone32", "ladang_tanah32"]:
 		var src := TileSetAtlasSource.new()
-		src.texture = load("res://assets/game/tiles/%s.png" % i)
+		src.texture = load("res://assets/game/tiles/lpc32/%s.png" % i)
 		src.texture_region_size = Vector2i(TILE, TILE)
 		src.create_tile(Vector2i(0, 0))
 		ts.add_source(src)
@@ -74,7 +82,13 @@ static func _paint_ground(host: Node2D, center: Vector2) -> void:
 				_cobble(layer, xx, yy)
 
 static func _cobble(layer: TileMapLayer, x: int, y: int) -> void:
-	var src := 2 if (randi() % 7 == 0) else (randi() % 2)   # mostly cobble, rare dirt
+	# dominan cobble; pelataran 1/6 sebagai variasi halus; tanah 1/16 (mata #286:
+	# campuran lama terbaca genangan lumpur di mana-mana pada ubin 32)
+	var src := 0
+	if randi() % 16 == 0:
+		src = 2
+	elif randi() % 6 == 0:
+		src = 1
 	layer.set_cell(Vector2i(x, y), src, Vector2i(0, 0))
 
 # --- buildings --------------------------------------------------------------
@@ -82,10 +96,12 @@ static func _cobble(layer: TileMapLayer, x: int, y: int) -> void:
 static func _place_buildings(host: Node2D, center: Vector2) -> void:
 	for b in _buildings():
 		var pos: Vector2 = center + b.off
-		# sprite
+		# sprite — fasad lpc32 (#286); tint opsional utk varian rumah
 		var spr := Sprite2D.new()
-		spr.texture = load(BDIR + b.spr + ".png")
+		spr.texture = load(P_L + b.spr + ".png")
 		spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		if b.has("tint"):
+			spr.modulate = b.tint
 		spr.global_position = pos
 		spr.z_index = int(pos.y + b.h * 0.5)   # y-sort by base
 		host.add_child(spr)
@@ -99,11 +115,11 @@ static func _place_buildings(host: Node2D, center: Vector2) -> void:
 		cs.position = Vector2(0, -b.h * 0.08)
 		body.add_child(cs)
 		host.add_child(body)
-		# hanging signboard
+		# hanging signboard — papan_gantung32 (native 32-world, #286)
 		var sign := Sprite2D.new()
-		sign.texture = load(PDIR + "signboard.png")
+		sign.texture = load(P_L + "papan_gantung32.png")
 		sign.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		sign.global_position = pos + Vector2(b.w * 0.5 - 6, -b.h * 0.5 + 20)
+		sign.global_position = pos + Vector2(b.w * 0.5 - 12, -b.h * 0.5 + 40)
 		sign.z_index = int(pos.y + b.h * 0.5) + 1
 		host.add_child(sign)
 		# door interactable at the bottom-centre
@@ -116,19 +132,21 @@ static func _place_buildings(host: Node2D, center: Vector2) -> void:
 		door.global_position = pos + Vector2(0, b.h * 0.5 - 4)
 
 static func _place_well(host: Node2D, center: Vector2) -> void:
+	# fountain lpc32 (#286) menggantikan well 16px — pusat plaza yang sama dengan
+	# bahasa visual Ashbrook64
 	var spr := Sprite2D.new()
-	spr.texture = load(BDIR + "well.png")
+	spr.texture = load(P_L + "fountain.png")
 	spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	spr.global_position = center + Vector2(0, 44)
-	spr.z_index = int(spr.global_position.y + 18)
+	spr.global_position = center + Vector2(0, 88)
+	spr.z_index = int(spr.global_position.y + 36)
 	host.add_child(spr)
 	var body := StaticBody2D.new()
 	body.global_position = spr.global_position
 	var cs := CollisionShape2D.new()
 	var shape := RectangleShape2D.new()
-	shape.size = Vector2(24, 14)
+	shape.size = Vector2(48, 28)
 	cs.shape = shape
-	cs.position = Vector2(0, 8)
+	cs.position = Vector2(0, 16)
 	body.add_child(cs)
 	host.add_child(body)
 
@@ -143,7 +161,7 @@ static func _place_lamps(host: Node2D, center: Vector2) -> void:
 		var lamp := Node2D.new()
 		lamp.set_script(load("res://scenes/actors/StreetLamp.gd"))
 		host.add_child(lamp)
-		lamp.global_position = center + s
+		lamp.global_position = center + s * S
 
 # --- fences -----------------------------------------------------------------
 
@@ -163,9 +181,9 @@ static func _place_fences(host: Node2D, center: Vector2) -> void:
 
 static func _fence(holder: Node2D, tx: int, ty: int) -> void:
 	var s := Sprite2D.new()
-	s.texture = load(PDIR + "fence_h.png")
+	s.texture = load("res://assets/game/tiles/lpc32/pagar_h32.png")
 	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	s.global_position = Vector2(tx * TILE + 8, ty * TILE + 8)
+	s.global_position = Vector2(tx * TILE + TILE / 2.0, ty * TILE + TILE / 2.0)
 	s.z_index = int(s.global_position.y)
 	holder.add_child(s)
 
@@ -194,12 +212,14 @@ static func _place_deco(host: Node2D, center: Vector2) -> void:
 		["mushroom", Vector2(-160, 40)], ["pebbles", Vector2(60, 100)],
 	]
 	for it in items:
-		_deco_at(holder, load(PDIR + it[0] + ".png"), center + it[1])
+		_deco_at(holder, load(PDIR + it[0] + ".png"), center + it[1] * S)
 
 	# --- dense garden fill: scatter greenery in the town's grassy gaps so no bare
 	#     patch of grass survives (owner rule: no plain grass > 4 tiles in town) ---
 	var blds := _buildings()
-	var fill := ["bush", "bush", "flower_pink", "flower_blue", "mushroom", "pebbles", "grass", "grass", "grass"]
+	# "grass" prop dibuang (#286): tuft 16px di-skala 2 terbaca LEMPENGAN hijau di
+	# atas perkerasan, bukan rumput — di dunia 32 isian kota cukup semak & bunga
+	var fill := ["bush", "bush", "flower_pink", "flower_blue", "mushroom", "pebbles", "pebbles"]
 	for gy in range(-21, 22):
 		for gx in range(-25, 26):
 			if (gx + gy) % 2 != 0:
@@ -223,6 +243,7 @@ static func _deco_at(holder: Node2D, tex: Texture2D, pos: Vector2) -> void:
 	var s := Sprite2D.new()
 	s.texture = tex
 	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.scale = Vector2(S, S)   # deco 16px di dunia 32 (#286) — pola pengali Ashbrook64
 	s.global_position = pos
 	s.z_index = int(pos.y)
 	holder.add_child(s)
@@ -250,7 +271,8 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 		host.add_child(node)
 		node.setup(n[0])
 		node.keeper_location = "greenvale"
-		node.global_position = center + n[1]
+		node.scale = Vector2(S, S)   # ikon/NPC 16px + radius interaksi ikut dunia 32 (#286)
+		node.global_position = center + n[1] * S
 
 # --- strolling villagers ----------------------------------------------------
 
@@ -268,11 +290,16 @@ static func _place_villagers(host: Node2D, center: Vector2) -> void:
 		["Joko", _human("short", "#241f36", "#8f2611", "#2b2b3a", true), [Vector2(100, 40), Vector2(260, 120), Vector2(120, 170)]],
 		["Nenek Ijah", _human("long", "#e8e2f4", "#5c2380", "#453d5c"), [Vector2(-60, 150), Vector2(60, 160), Vector2(0, 60)]],
 	]
+	var lpc_i := 40   # warga_040.. — rentang di luar pemakaian Ashbrook64 awal
 	for r in routes:
 		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
 		var wps: Array = []
 		for w in r[2]:
-			wps.append(center + w)
+			wps.append(center + w * S)
+		# LPC 64 (#286): persona & rute tetap, hanya sumber frame yang naik kelas.
+		# WAJIB sebelum add_child (pelajaran anak Ashbrook).
+		v.lpc_sheet = "warga_%03d" % lpc_i
+		lpc_i += 1
 		host.add_child(v)
 		v.setup(r[0], r[1], wps)
 		v.global_position = wps[0]
@@ -289,5 +316,6 @@ static func _place_animals(host: Node2D, center: Vector2) -> void:
 		node.set_script(load("res://scenes/actors/Critter.gd"))
 		node.set("_kind", c[0])
 		host.add_child(node)
-		node.global_position = center + c[1]
+		node.global_position = center + c[1] * S
 		node.setup(c[0])
+		node.scale = Vector2(S, S)   # critter 16px di dunia 32 (#286)

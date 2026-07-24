@@ -3,7 +3,7 @@ extends Node2D
 ## wooden room with furniture and an exit portal back to Greenvale. Demonstrates
 ## interiors; no monsters, no day/night dimming (interiors are always lit).
 
-const TILE := 16
+const TILE := 32   # R2 #286: interior ikut dunia 32 — pemain LPC 64 tak lagi raksasa di dalam ruangan
 const MAP_W := 20
 const MAP_H := 14
 
@@ -59,8 +59,8 @@ func _build_floor() -> void:
 	# skirting/wall band at the top
 	var wall := ColorRect.new()
 	wall.color = Color(0.34, 0.24, 0.16)
-	wall.size = Vector2(w, 24)
-	wall.position = Vector2(0, -24)
+	wall.size = Vector2(w, 48)
+	wall.position = Vector2(0, -48)
 	add_child(wall)
 
 func _build_walls() -> void:
@@ -70,7 +70,7 @@ func _build_walls() -> void:
 	add_child(walls)
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
-	for rc in [Rect2(-16, -16, w + 32, 16), Rect2(-16, h, w + 32, 16), Rect2(-16, 0, 16, h), Rect2(w, 0, 16, h)]:
+	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, h, w + 64, 32), Rect2(-32, 0, 32, h), Rect2(w, 0, 32, h)]:
 		var cs := CollisionShape2D.new()
 		var shape := RectangleShape2D.new()
 		shape.size = rc.size
@@ -87,6 +87,7 @@ func _deco(path: String, pos: Vector2) -> void:
 	var s := Sprite2D.new()
 	s.texture = load(path)
 	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.scale = Vector2(2, 2)   # perabot 16px di ruangan 32 (#286)
 	s.position = pos
 	s.z_index = int(pos.y)
 	add_child(s)
@@ -106,41 +107,42 @@ func _build_furniture() -> void:
 	var cx := MAP_W * TILE * 0.5
 	var W := MAP_W * TILE
 	var H := MAP_H * TILE
+	# Offset piksel era-16 dikali 2 (#286) — jangkar dinding tetap proporsional
 	_deco(_p("int_rug"), Vector2(cx, H * 0.5))
-	_deco(_p("int_lamp"), Vector2(18, H - 40))
-	_deco(_p("int_lamp"), Vector2(W - 18, H - 40))
+	_deco(_p("int_lamp"), Vector2(36, H - 80))
+	_deco(_p("int_lamp"), Vector2(W - 36, H - 80))
 	match variant:
 		"blacksmith":
-			_deco(_p("int_shelf"), Vector2(30, 34))          # tool rack
-			_deco(_p("barrel"), Vector2(W - 30, 40))
-			_deco(_p("crate"), Vector2(W - 50, 46))
-			_deco(_p("int_table"), Vector2(cx + 6, 54))      # anvil bench
+			_deco(_p("int_shelf"), Vector2(60, 68))          # tool rack
+			_deco(_p("barrel"), Vector2(W - 60, 80))
+			_deco(_p("crate"), Vector2(W - 100, 92))
+			_deco(_p("int_table"), Vector2(cx + 12, 108))    # anvil bench
 			# forge glow (orange, strong) at the far wall
 			var forge := ColorRect.new()
-			forge.color = Color(1.0, 0.5, 0.1); forge.size = Vector2(26, 18)
-			forge.position = Vector2(W - 58, 20); add_child(forge)
-			_hearth(Vector2(W - 45, 28), Color(1.0, 0.5, 0.2), 1.1)
+			forge.color = Color(1.0, 0.5, 0.1); forge.size = Vector2(52, 36)
+			forge.position = Vector2(W - 116, 40); add_child(forge)
+			_hearth(Vector2(W - 90, 56), Color(1.0, 0.5, 0.2), 1.1)
 		"inn":
-			_deco(_p("int_bed"), Vector2(40, 40))
-			_deco(_p("int_bed"), Vector2(W - 44, 40))
-			_deco(_p("int_bed"), Vector2(40, H - 46))
-			_deco(_p("int_table"), Vector2(cx, 54))
-			_deco(_p("int_shelf"), Vector2(cx + 40, 34))
-			_hearth(Vector2(cx, 40), Color(1.0, 0.85, 0.6), 0.6)
+			_deco(_p("int_bed"), Vector2(80, 80))
+			_deco(_p("int_bed"), Vector2(W - 88, 80))
+			_deco(_p("int_bed"), Vector2(80, H - 92))
+			_deco(_p("int_table"), Vector2(cx, 108))
+			_deco(_p("int_shelf"), Vector2(cx + 80, 68))
+			_hearth(Vector2(cx, 80), Color(1.0, 0.85, 0.6), 0.6)
 		"store":
-			_deco(_p("int_shelf"), Vector2(24, 34))
-			_deco(_p("int_shelf"), Vector2(56, 34))
-			_deco(_p("int_shelf"), Vector2(W - 24, 34))
-			_deco(_p("stall"), Vector2(cx, 58))              # shop counter
-			_deco(_p("sack"), Vector2(30, H - 40))
-			_deco(_p("barrel"), Vector2(W - 30, H - 44))
-			_hearth(Vector2(cx, 50), Color(1.0, 0.9, 0.7), 0.5)
+			_deco(_p("int_shelf"), Vector2(48, 68))
+			_deco(_p("int_shelf"), Vector2(112, 68))
+			_deco(_p("int_shelf"), Vector2(W - 48, 68))
+			_deco(_p("stall"), Vector2(cx, 116))             # shop counter
+			_deco(_p("sack"), Vector2(60, H - 80))
+			_deco(_p("barrel"), Vector2(W - 60, H - 88))
+			_hearth(Vector2(cx, 100), Color(1.0, 0.9, 0.7), 0.5)
 		_:  # cosy home
-			_deco(_p("int_bed"), Vector2(40, 40))
-			_deco(_p("int_shelf"), Vector2(W - 28, 34))
-			_deco(_p("int_table"), Vector2(cx + 30, 60))
-			_deco(_p("flower_pot"), Vector2(W - 24, H - 42))
-			_hearth(Vector2(W - 28, 34), Color(1.0, 0.8, 0.5), 0.7)
+			_deco(_p("int_bed"), Vector2(80, 80))
+			_deco(_p("int_shelf"), Vector2(W - 56, 68))
+			_deco(_p("int_table"), Vector2(cx + 60, 120))
+			_deco(_p("flower_pot"), Vector2(W - 48, H - 84))
+			_hearth(Vector2(W - 56, 68), Color(1.0, 0.8, 0.5), 0.7)
 
 func _build_resident() -> void:
 	# A themed NPC inside the building providing its service (reuses Interactable kinds).
@@ -153,7 +155,7 @@ func _build_resident() -> void:
 	var npc := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(npc)
 	npc.setup(kind)
-	npc.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE * 0.5 - 4)
+	npc.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE * 0.5 - 8)
 
 func _glow_tex() -> Texture2D:
 	var img := Image.create(64, 64, false, Image.FORMAT_RGBA8)
@@ -168,12 +170,16 @@ func _build_portal() -> void:
 	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Keluar rumah [E]")
-	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 20)
+	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 40)
 
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
-	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 44)
+	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 88)
 	add_child(player)
+	# ruangan 32 (#286): zoom 2.0 bawaan Player utk dunia 16 terlalu dekat
+	for c in player.get_children():
+		if c is Camera2D:
+			c.zoom = Vector2(1.2, 1.2)
 
 func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
