@@ -1,4 +1,8 @@
 # Monster LPC beranimasi — dirakit `_tools/gen_monster_lpc.py` (#278).
+
+Lisensi: CC-BY-SA 3.0 / CC-BY 3.0 / CC-BY 4.0 / OGA-BY 3.0 / CC0 1.0 (campuran
+         per-paket, rincian di bawah; SA sah untuk aset visual per #277)
+
 # Lembar N kolom x 4 baris, baris = SheetUtil.DIRS [down, up, left, right],
 # frame 0 = idle. Makhluk kecil DIBIARKAN kecil (32px) — kepadatan piksel sama,
 # tanpa pembesaran blok.

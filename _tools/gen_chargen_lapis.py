@@ -114,7 +114,14 @@ def main():
                 berkas, _kel, _s = rangka.resolve(R, L, build, slot, garmen, warna)
                 if berkas is None or str(berkas).startswith("@"):
                     continue          # overlay: bentuk lain, tak ikut jalur ini
-                nama = "%s_%s_%s.png" % (slot, garmen, warna)
+                # NAMA MEMUAT BUILD (#284). Dulu `torso_longsleeve_forest.png` —
+                # tiap build punya POTONGAN garmen sendiri di ULPC (longsleeve male
+                # ≠ longsleeve pregnant), tapi namanya sama, dan dedup last-wins
+                # membuat potongan PREGNANT menimpa potongan male: "Laki-laki"
+                # tampil hamil, Kekar tampil sama dengan biasa. Ketahuan dari
+                # SCREENSHOT, bukan dari test — nama file tak pernah bohong ke
+                # test yang cuma memeriksa keberadaan.
+                nama = "%s_%s_%s_%s.png" % (slot, build, garmen, warna)
                 if salin(berkas, nama, rencana, ukuran):
                     opsi.append([garmen, warna])
             slot_out[slot] = opsi

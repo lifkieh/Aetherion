@@ -116,12 +116,14 @@ func _lapis(cfg: Dictionary) -> Array:
 		var pilih := String(d.get("pakai_garmen", "longsleeve"))
 		for o in pakaian(b, "torso"):
 			if String(o[0]) == pilih:
-				out.append("torso_%s_%s.png" % [o[0], o[1]])
+				out.append("torso_%s_%s_%s.png" % [b, o[0], o[1]])
 				break
+	# Nama garmen MEMUAT BUILD (#284): potongan tiap build beda gambar; tanpa build
+	# di nama, salinan terakhir menimpa yang lain dan "Laki-laki" tampil hamil.
 	for slot in ["legs", "feet", "torso"]:
 		var g = cfg.get(slot, null)
 		if g is Array and g.size() == 2:
-			out.append("%s_%s_%s.png" % [slot, g[0], g[1]])
+			out.append("%s_%s_%s_%s.png" % [slot, b, g[0], g[1]])
 	out.append("head_%s_%s.png" % [kepala, kul])
 	var r := String(cfg.get("rambut", ""))
 	if r != "":

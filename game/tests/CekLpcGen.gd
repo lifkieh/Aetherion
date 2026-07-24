@@ -73,7 +73,8 @@ func _jalan() -> void:
 			if opsi.is_empty():
 				kosong.append("%s/%s" % [b, slot])
 			for o in opsi:
-				var q := "res://assets/game/sprites/chargen/%s_%s_%s.png" % [slot, o[0], o[1]]
+				# nama garmen ber-build (#284) — potongan per-build beda gambar
+				var q := "res://assets/game/sprites/chargen/%s_%s_%s_%s.png" % [slot, b, o[0], o[1]]
 				if not ResourceLoader.exists(q):
 					hilang.append(q)
 	_ok("nol slot kosong di build mana pun", kosong.is_empty(), str(kosong.slice(0, 4)))

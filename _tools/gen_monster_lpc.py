@@ -153,27 +153,36 @@ def lpcm128(nama):
 
 
 def golem():
-    """[LPC] Golem Redshrike — golem-walk.png 448x256 = 7x4 sel 64. Urutan baris
-    LPC baku (diverifikasi lewat pratinjau mata sebelum ditulis)."""
+    """[LPC] Golem Redshrike — golem-walk.png 448x256 = 7x4 sel 64.
+    KOREKSI #284 (bukti reports/preview/golem_rows_zoom.png): urutan N/E/S/W
+    [up, right, down, left] — BUKAN LPC baku; b1 profil KANAN (rahang kanan),
+    b3 profil KIRI. Tebakan "LPC baku" membuat golem moonwalk menyamping."""
     im = Image.open(os.path.join(SRC, "golem-walk.png")).convert("RGBA")
-    return _grid(im, 64, 64, ["up", "left", "down", "right"])
+    return _grid(im, 64, 64, ["up", "right", "down", "left"])
 
 
-def a22(nama, fw, fh):
-    """lpc animals 2022 (bagian tapatilorenzo) — bukti-arah 2026-07-24
-    (reports/preview/monster_arah_proof): b0 DEPAN · b1 kiri · b2 kanan · b3 BELAKANG."""
+def a22(nama, fw, fh, depan_dulu=True):
+    """lpc animals 2022 (bagian tapatilorenzo: fox/deer/bear/lion).
+    KOREKSI #284 (bukti reports/preview/arah_audit_zoom*.png): sisi = b1 KANAN ·
+    b2 KIRI (pembacaan lama tertukar). Dan depan/belakang TIDAK SERAGAM ANTAR-HEWAN
+    dalam pack yang sama: FOX b0=DEPAN, tapi DEER & BEAR b0=BELAKANG — ketahuan
+    hanya karena tiap spesies diperiksa mata satu-satu pasca-regen.
+    `depan_dulu=False` untuk deer/bear."""
     im = _buka(os.path.join(SRC, "lpc_animals_2022_v1.1.zip"),
                "lpc animals 2022 v1.1/individual creature spritesheets/%s.png" % nama)
-    return _grid(im, fw, fh, ["down", "left", "right", "up"])
+    urutan = ["down", "right", "left", "up"] if depan_dulu else ["up", "right", "left", "down"]
+    return _grid(im, fw, fh, urutan)
 
 
 def a22_sev(nama, fw, fh):
     """lpc animals 2022 — lembar SEVARIHK (giant rat, mushroom, shiba, shark).
-    Urutan BEDA dari bagian tapatilorenzo: b0 BELAKANG (ekor tikus menghadap kamera
-    di pratinjau saat dipetakan sebagai depan) · b1 kiri · b2 kanan · b3 depan."""
+    KOREKSI #284 (bukti reports/preview/rat_rows_zoom.png): b0 DEPAN (muka+kumis) ·
+    b1 KIRI · b2 kanan · b3 BELAKANG — beda dari tapatilorenzo justru di SISI,
+    bukan depan/belakang seperti pembacaan lama. Dua seniman, dua urutan,
+    satu zip: satu-satunya jalan aman memang memeriksa per-artis."""
     im = _buka(os.path.join(SRC, "lpc_animals_2022_v1.1.zip"),
                "lpc animals 2022 v1.1/individual creature spritesheets/%s.png" % nama)
-    return _grid(im, fw, fh, ["up", "left", "right", "down"])
+    return _grid(im, fw, fh, ["down", "left", "right", "up"])
 
 
 def boar():
@@ -246,26 +255,30 @@ def wolf(sheet, ice=None):
     samping 64px, dalam satu berkas). Wilayah dipetakan MATA dari
     reports/preview/wolf_region_proof*.png (2026-07-24):
       depan  = y192 x0..160  (5 frame 32x64)   belakang = y192 x160..320 (5 frame)
-      kiri   = y128 [x320, x384, x576] (3 frame 64x32)   kanan = cermin kiri
+      samping y128 [x320, x384, x576] (3 frame 64x32) = hadap-KANAN ASLI.
+    KOREKSI #284 (bukti reports/preview/wolf_arah_zoom.png): pembacaan pertama
+    menyebut baris samping "kiri" dari proof 1x yang terlalu kecil — akibatnya
+    serigala se-game moonwalk (laporan Direktur: "wolf berjalan terbalik").
     `ice` = kwargs re-warna."""
     im = Image.open(os.path.join(SRC, "wolfsheet%d.png" % sheet)).convert("RGBA")
     down = [im.crop((x, 192, x + 32, 256)) for x in (0, 32, 64, 96, 128)]
     up = [im.crop((x, 192, x + 32, 256)) for x in (160, 192, 224, 256, 288)]
-    left = [im.crop((x, 128, x + 64, 160)) for x in (320, 384, 576)]
-    return {"down": down, "up": up, "left": left, "right": _mirror(left)}
+    right = [im.crop((x, 128, x + 64, 160)) for x in (320, 384, 576)]
+    return {"down": down, "up": up, "left": _mirror(right), "right": right}
 
 
 def bunny():
     """Bunnysheet5 — lembar tak-seragam; frame diambil lewat deteksi komponen lalu
-    dikelompokkan per pita-y (bukti: reports/preview/bunny_region_proof.png):
-      depan y96..160 kiri · belakang y96..160 kanan · kanan y192..256 · kiri y256+ kanan."""
+    dikelompokkan per pita-y. KOREKSI #284 (bukti reports/preview/arah_audit_zoom.png):
+    pita y96..160 KIRI = BELAKANG (telinga dari belakang), KANAN = DEPAN (muka) —
+    kebalikan pembacaan lama; kelinci se-game membelakangi pemain."""
     im = Image.open(os.path.join(SRC, "bunnysheet5.png")).convert("RGBA")
     comps = _komponen(im)
     def ambil(cond):
         fr = [im.crop(b) for b in sorted(comps, key=lambda b: b[0]) if cond(b)]
         return fr
-    down = ambil(lambda b: 96 <= b[1] < 160 and b[0] < 150)
-    up = ambil(lambda b: 96 <= b[1] < 160 and b[0] >= 150)
+    down = ambil(lambda b: 96 <= b[1] < 160 and b[0] >= 150)
+    up = ambil(lambda b: 96 <= b[1] < 160 and b[0] < 150)
     right = ambil(lambda b: 192 <= b[1] < 256)
     left = ambil(lambda b: b[1] >= 256 and b[0] >= 150)
     if not left:
@@ -362,10 +375,10 @@ SPESIES = [
     ("forest_fox",      lambda: a22("fox, woods", 64, 64), None, None),
     ("frost_fox",       lambda: a22("fox, arctic", 64, 64), None, None),
     ("aurora_fox",      lambda: a22("fox, arctic", 64, 64), {"h_deg": 160, "sat": 1.3, "val": 1.05}, None),
-    ("cervel",          lambda: a22("deer, light buck", 64, 96), None, None),
-    ("choco_bear",      lambda: a22("bear, black", 64, 64), {"h_deg": -15, "sat": 1.2, "val": 1.05}, None),
-    ("yeti_cub",        lambda: a22("bear, polar", 64, 64), None, None),
-    ("frost_titan",     lambda: a22("bear, polar", 64, 64), {"sat": 1.2, "val": 1.05}, "boss: butuh skala engine"),
+    ("cervel",          lambda: a22("deer, light buck", 64, 96, False), None, None),
+    ("choco_bear",      lambda: a22("bear, black", 64, 64, False), {"h_deg": -15, "sat": 1.2, "val": 1.05}, None),
+    ("yeti_cub",        lambda: a22("bear, polar", 64, 64, False), None, None),
+    ("frost_titan",     lambda: a22("bear, polar", 64, 64, False), {"sat": 1.2, "val": 1.05}, "boss: butuh skala engine"),
     # ── tikus & 'musang'
     ("volt_weasel",     lambda: a22_sev("giant rat (Sevarihk)", 80, 64), {"h_deg": 30, "sat": 1.3, "val": 1.15}, "tikus ≈ musang"),
     ("raiju",           lambda: a22_sev("giant rat (Sevarihk)", 80, 64), {"h_deg": 170, "sat": 0.7, "val": 1.3}, "tikus ≈ raiju"),
@@ -497,6 +510,10 @@ def main():
 
 
 KREDIT = """# Monster LPC beranimasi — dirakit `_tools/gen_monster_lpc.py` (#278).
+
+Lisensi: CC-BY-SA 3.0 / CC-BY 3.0 / CC-BY 4.0 / OGA-BY 3.0 / CC0 1.0 (campuran
+         per-paket, rincian di bawah; SA sah untuk aset visual per #277)
+
 # Lembar N kolom x 4 baris, baris = SheetUtil.DIRS [down, up, left, right],
 # frame 0 = idle. Makhluk kecil DIBIARKAN kecil (32px) — kepadatan piksel sama,
 # tanpa pembesaran blok.
