@@ -1,11 +1,9 @@
 # Kredit sprite: warga_018
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:child: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_skirt_child_lightblue: eulpc_legs_skirt_child_lightblue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_shoes2_thin_blue: eulpc_feet_shoes2_thin_blue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_shirt_child_lavender: eulpc_torso_shirt_child_lavender.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_child: brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_child_parted_gold: eulpc_hair_child_parted_gold.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:child: brown.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_skirt_child_lightblue: eulpc_legs_skirt_child_lightblue.png — ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0)
+- feet:_npc_eulpc_feet_shoes2_thin_blue: eulpc_feet_shoes2_thin_blue.png — JaidynReiman,Evert (CC-BY-SA 3.0,GPL 3.0)
+- torso:_npc_eulpc_torso_shirt_child_lavender: eulpc_torso_shirt_child_lavender.png — Nila122 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- head:_npc_kepala_child: brown.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- hair:_npc_child_parted_gold: eulpc_hair_child_parted_gold.png — JaidynReiman,Joe White,Manuel Riecke (MrBeast) (CC-BY-SA 3.0,GPL 3.0)

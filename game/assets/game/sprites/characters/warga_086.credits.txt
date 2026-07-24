@@ -1,11 +1,9 @@
 # Kredit sprite: warga_086
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:child: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_skirt_child_lightblue: eulpc_legs_skirt_child_lightblue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_socks_high_thin_leather: eulpc_feet_socks_high_thin_leather.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_shirt_child_gray: eulpc_torso_shirt_child_gray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_child: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- body:child: olive.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_skirt_child_lightblue: eulpc_legs_skirt_child_lightblue.png — ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0)
+- feet:_npc_eulpc_feet_socks_high_thin_leather: eulpc_feet_socks_high_thin_leather.png — ElizaWy,JaidynReiman (OGA-BY 3.0)
+- torso:_npc_eulpc_torso_shirt_child_gray: eulpc_torso_shirt_child_gray.png — Nila122 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- head:_npc_kepala_child: olive.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
 - hair:_npc_child_jewfro_chestnut: eulpc_hair_child_jewfro_chestnut.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

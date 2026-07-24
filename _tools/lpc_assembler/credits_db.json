@@ -1,814 +1,2619 @@
 {
-  "Apron_female.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "Apron_female_white.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "Apron_male.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "Apron_male_white.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "anjing_cokelat_kiri.png": {
-    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/node/69399"
-  },
-  "anjing_kelabu_kiri.png": {
-    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/node/69399"
-  },
-  "babi_kiri.png": {
-    "author": "Daniel Eddeland (daneeklu)",
-    "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
-    "pack": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-style-farm-animals"
-  },
-  "bark_skin.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "chicken.png": {
-    "author": "Pixel-boy / Aleksandr Makarov",
-    "license": "CC0 1.0",
-    "pack": "Ninja Adventure - Asset Pack",
-    "terverifikasi": true,
-    "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack"
-  },
-  "domba_kiri.png": {
-    "author": "Daniel Eddeland (daneeklu)",
-    "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
-    "pack": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-style-farm-animals"
-  },
-  "eulpc_body_child.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_body_female.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_body_male.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_body_teen.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_feet_high_socks_thin.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_feet_shoes_thin.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_hair_bob_side_part.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_child_jewfro_chestnut.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_child_swoop_black.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_child_topknot_gold.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_curly_short.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_curly_short2.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_jewfro.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_jewfro_ash.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_jewfro_carrot.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_jewfro_gold.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_longknot_ash.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_longknot_white.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_parted2.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_parted_side_bangs.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_parted_side_bangs2.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_shortknot_black.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_shortknot_carrot.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_shortknot_chestnut.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_shortknot_gold.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_shortknot_gray.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_shortknot_raven.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_swoop_black.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_swoop_chestnut.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hair_swoop_side.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hairext_braidl.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hairext_braidr.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hairext_topknot_long_bg.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hairext_topknot_long_fg.png": {
-    "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
-    "license": "CC-BY-SA 3.0",
-    "pack": "[LPC Expanded] Hair",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-hair"
-  },
-  "eulpc_hat_feather_cap_walnut.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_hat_hood_charcoal.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_head_child.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_head_female.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_head_male.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "eulpc_hijab_navy.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_child_pants_brown.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_child_pants_darkblue.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_child_pants_green.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_hose_thin.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_male_charcoal.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_male_forest.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_male_navy.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_male_walnut.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_thin.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_thin_charcoal.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_thin_maroon.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_thin_navy.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_pants_thin_walnut.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_legs_shorts_thin.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_cardigan_teen.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_female_charcoal.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_female_forest.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_female_maroon.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_female_sky.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_male_forest.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_male_maroon.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_male_slate.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_male_walnut.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_male_white.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_teen_rose.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_longsleeve_teen_teal.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_overalls_male.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_torso_sleeveless2_female.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_wing_bat_back.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_wing_bat_front.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_wing_feathered_back.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_wing_feathered_front.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_wing_lizard_back.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "eulpc_wing_lizard_front.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "fondasi32.png": {
-    "author": "Proyek Aetherion (gen_pinggir.py) — turunan stone32.png (LPC)",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "gagak_kiri.png": {
-    "author": "bluecarrot16, dipesan oleh castelonia",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-    "pack": "[LPC] Birds",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-birds"
-  },
-  "gagak_terbang_kiri.png": {
-    "author": "bluecarrot16, dipesan oleh castelonia",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-    "pack": "[LPC] Birds",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-birds"
-  },
-  "hijabblue.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "hijabgrey.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "horns.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "kucing_jingga_kiri.png": {
-    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/node/69399"
-  },
-  "kucing_kelabu_kiri.png": {
-    "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
-    "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/node/69399"
-  },
-  "ladang_semak32.png": {
-    "author": "Daniel Eddeland (daneeklu)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
-  },
-  "ladang_tanah32.png": {
-    "author": "Daniel Eddeland (daneeklu)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
-  },
-  "lantern.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "lantern_glow.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "leaf_hair.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "lpc_simple_staff_female.png": {
-    "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "LPC Character Bases v3.1",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-character-bases"
-  },
-  "merpati_kiri.png": {
-    "author": "bluecarrot16, dipesan oleh castelonia",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-    "pack": "[LPC] Birds",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-birds"
-  },
-  "merpati_terbang_kiri.png": {
-    "author": "bluecarrot16, dipesan oleh castelonia",
-    "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
-    "pack": "[LPC] Birds",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-birds"
-  },
-  "pagar_h32.png": {
-    "author": "Daniel Eddeland (daneeklu)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
-  },
-  "pagar_tiang32.png": {
-    "author": "Daniel Eddeland (daneeklu)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "[LPC] Farming tilesets, magic animations and UI elements",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
-  },
-  "pinus_atas.png": {
-    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-    "license": "OGA-BY 3.0",
-    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-  },
-  "pinus_isi.png": {
-    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-    "license": "OGA-BY 3.0",
-    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-  },
-  "pinus_pohon.png": {
-    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-    "license": "OGA-BY 3.0",
-    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-  },
-  "pohon_gundul.png": {
-    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
-    "license": "OGA-BY 3.0",
-    "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-  },
-  "rusa_kiri.png": {
-    "author": "Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
-    "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
-    "pack": "Deer (Rework) - 32x32, N/E/S/W, 3 frame per arah",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/deer-rework"
-  },
-  "serigala_kiri.png": {
-    "author": "patvanmackelberg",
-    "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
-    "pack": "Wolf Pack! 32x32 Walking Wolf Animation",
-    "terverifikasi": true,
-    "url": "https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation"
-  },
-  "sewing_basket.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "tunik_anak_forest.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "tunik_anak_maroon.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "tunik_anak_sky.png": {
-    "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
-    "license": "CC-BY-SA 3.0",
-    "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "whitebeard.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "wisp.png": {
-    "author": "Google Gemini (AI-generated), diminta Direktur",
-    "license": "AI-GENERATED — bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga",
-    "pack": "Gemini generation, diproses _tools/gen_wisp.py",
-    "terverifikasi": true,
-    "url": ""
-  },
-  "wizard_hat_female.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  },
-  "wizard_hat_male.png": {
-    "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
-    "license": "CC-BY-SA 3.0 / GPL 3.0",
-    "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
-    "terverifikasi": false,
-    "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
-  }
+ "Apron_female.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "Apron_female_white.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "Apron_male.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-aprons",
+  "sumber_csv": "torso/aprons/apron/male/spellcast.png"
+ },
+ "Apron_male_white.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "anjing_cokelat_kiri.png": {
+  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/node/69399"
+ },
+ "anjing_kelabu_kiri.png": {
+  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/node/69399"
+ },
+ "babi_kiri.png": {
+  "author": "Daniel Eddeland (daneeklu)",
+  "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
+  "pack": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-style-farm-animals"
+ },
+ "bark_skin.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "chicken.png": {
+  "author": "Pixel-boy / Aleksandr Makarov",
+  "license": "CC0 1.0",
+  "pack": "Ninja Adventure - Asset Pack",
+  "terverifikasi": true,
+  "url": "https://pixel-boy.itch.io/ninja-adventure-asset-pack"
+ },
+ "domba_kiri.png": {
+  "author": "Daniel Eddeland (daneeklu)",
+  "license": "CC-BY 3.0 / GPL 2.0 (berganda; DIPILIH CC-BY 3.0 — atribusi wajib, TIDAK menular)",
+  "pack": "LPC style farm animals (ayam · sapi · llama · babi · DOMBA)",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-style-farm-animals"
+ },
+ "eulpc_body_child.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_body_female.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_body_male.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_body_teen.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_feet_high_socks_thin.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes_thin.png": {
+  "author": "JaidynReiman,Joe White,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "feet/shoes/basic/thin/spellcast.png"
+ },
+ "eulpc_hair_bob_side_part.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_child_jewfro_chestnut.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_child_swoop_black.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_child_topknot_gold.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_curly_short.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_curly_short2.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_jewfro.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_jewfro_ash.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_jewfro_carrot.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_jewfro_gold.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_longknot_ash.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_longknot_white.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_parted2.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_parted_side_bangs.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_parted_side_bangs2.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_shortknot_black.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_shortknot_carrot.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_shortknot_chestnut.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_shortknot_gold.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_shortknot_gray.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_shortknot_raven.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_swoop_black.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_swoop_chestnut.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hair_swoop_side.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hairext_braidl.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hairext_braidr.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hairext_topknot_long_bg.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hairext_topknot_long_fg.png": {
+  "author": "JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj",
+  "license": "CC-BY-SA 3.0",
+  "pack": "[LPC Expanded] Hair",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-hair"
+ },
+ "eulpc_hat_feather_cap_walnut.png": {
+  "author": "Johannes Sjölund (wulax),Matthew Krohn (Makrohn),JaidynReiman",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "hat/cloth/leather_cap/feather/adult/spellcast.png"
+ },
+ "eulpc_hat_hood_charcoal.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_head_child.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_head_female.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_head_male.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "eulpc_hijab_navy.png": {
+  "author": "thecilekli",
+  "license": "CC0",
+  "url": "https://opengameart.org/content/lpc-hijab",
+  "sumber_csv": "hat/cloth/hijab/thin/spellcast.png"
+ },
+ "eulpc_legs_child_pants_brown.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_legs_child_pants_darkblue.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_legs_child_pants_green.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_legs_hose_thin.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/hose/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_charcoal.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_forest.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_navy.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_walnut.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin_charcoal.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_legs_pants_thin_maroon.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin_navy.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_legs_pants_thin_walnut.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_legs_shorts_thin.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_torso_cardigan_teen.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/clothes/shortsleeve/shortsleeve_cardigan/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_female_charcoal.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_female_forest.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_torso_longsleeve_female_maroon.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_female_sky.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_male_forest.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_male_maroon.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_male_slate.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_male_walnut.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_male_white.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_teen_rose.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_torso_longsleeve_teen_teal.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_female.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2/male/spellcast.png"
+ },
+ "eulpc_wing_bat_back.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_wing_bat_front.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_wing_feathered_back.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_wing_feathered_front.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_wing_lizard_back.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "eulpc_wing_lizard_front.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Universal LPC Spritesheet Generator — pakaian modular (longsleeve-shirts, pants, socks-shoes)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "fondasi32.png": {
+  "author": "Proyek Aetherion (gen_pinggir.py) — turunan stone32.png (LPC)",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "gagak_kiri.png": {
+  "author": "bluecarrot16, dipesan oleh castelonia",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+  "pack": "[LPC] Birds",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-birds"
+ },
+ "gagak_terbang_kiri.png": {
+  "author": "bluecarrot16, dipesan oleh castelonia",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+  "pack": "[LPC] Birds",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-birds"
+ },
+ "hijabblue.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "hijabgrey.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "horns.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "kucing_jingga_kiri.png": {
+  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/node/69399"
+ },
+ "kucing_kelabu_kiri.png": {
+  "author": "bluecarrot16; diolah ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY-SA 3.0 / CC-BY 3.0 / GPL 2 / GPL 3)",
+  "pack": "[LPC] Cats and Dogs (rilis 'cat v1.0' untuk Stendhal)",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/node/69399"
+ },
+ "ladang_semak32.png": {
+  "author": "Daniel Eddeland (daneeklu)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+ },
+ "ladang_tanah32.png": {
+  "author": "Daniel Eddeland (daneeklu)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+ },
+ "lantern.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "lantern_glow.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "leaf_hair.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "lpc_simple_staff_female.png": {
+  "author": "Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "LPC Character Bases v3.1",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-character-bases"
+ },
+ "merpati_kiri.png": {
+  "author": "bluecarrot16, dipesan oleh castelonia",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+  "pack": "[LPC] Birds",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-birds"
+ },
+ "merpati_terbang_kiri.png": {
+  "author": "bluecarrot16, dipesan oleh castelonia",
+  "license": "OGA-BY 3.0 (berganda: juga CC-BY 4.0/3.0, CC-BY-SA 4.0/3.0, GPL 2/3)",
+  "pack": "[LPC] Birds",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-birds"
+ },
+ "pagar_h32.png": {
+  "author": "Daniel Eddeland (daneeklu)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+ },
+ "pagar_tiang32.png": {
+  "author": "Daniel Eddeland (daneeklu)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "[LPC] Farming tilesets, magic animations and UI elements",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements"
+ },
+ "pinus_atas.png": {
+  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+  "license": "OGA-BY 3.0",
+  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+ },
+ "pinus_isi.png": {
+  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+  "license": "OGA-BY 3.0",
+  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+ },
+ "pinus_pohon.png": {
+  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+  "license": "OGA-BY 3.0",
+  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+ },
+ "pohon_gundul.png": {
+  "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+  "license": "OGA-BY 3.0",
+  "pack": "LPC Base Assets (map tiles) via 4 Season Terrain",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+ },
+ "rusa_kiri.png": {
+  "author": "Calciumtrice; dikerjakan ulang untuk Stendhal oleh Jordan Irwin (AntumDeluge)",
+  "license": "CC-BY 3.0 (atribusi WAJIB, TIDAK menular)",
+  "pack": "Deer (Rework) - 32x32, N/E/S/W, 3 frame per arah",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/deer-rework"
+ },
+ "serigala_kiri.png": {
+  "author": "patvanmackelberg",
+  "license": "CC0 1.0 (domain publik; atribusi tak wajib, tetap dicatat)",
+  "pack": "Wolf Pack! 32x32 Walking Wolf Animation",
+  "terverifikasi": true,
+  "url": "https://opengameart.org/content/wolf-pack-32x32-walking-wolf-animation"
+ },
+ "sewing_basket.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "tunik_anak_forest.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "tunik_anak_maroon.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "tunik_anak_sky.png": {
+  "author": "Proyek Aetherion, digambar oleh gen_overlays.py",
+  "license": "CC-BY-SA 3.0",
+  "pack": "Aetherion — lapisan gambar-sendiri (design-time)",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "whitebeard.png": {
+  "author": "ElizaWy",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Head%20Accessories",
+  "sumber_csv": "facial/glasses/glasses/adult/spellcast.png"
+ },
+ "wisp.png": {
+  "author": "Google Gemini (AI-generated), diminta Direktur",
+  "license": "AI-GENERATED — bukan CC-BY-SA, bukan LPC, bukan aset pihak ketiga",
+  "pack": "Gemini generation, diproses _tools/gen_wisp.py",
+  "terverifikasi": true,
+  "url": ""
+ },
+ "wizard_hat_female.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "wizard_hat_male.png": {
+  "author": "Kontributor ULPC (daftar per-lapisan belum dibaca dari disk)",
+  "license": "CC-BY-SA 3.0 / GPL 3.0",
+  "pack": "Expanded ULPC facial assets + hat (2024-12-10)",
+  "terverifikasi": false,
+  "url": "https://github.com/sanderfrenken/Universal-LPC-Spritesheet-Character-Generator"
+ },
+ "amber.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "black.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "body_child_light.png": {
+  "author": "bluecarrot16,Benjamin K. Smith (BenCreating),ElizaWy,MuffinElZangano,Durrani,Nila122,kheftel,Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/child/spellcast.png"
+ },
+ "body_female_light.png": {
+  "author": "Benjamin K. Smith (BenCreating),bluecarrot16,TheraHedwig,Evert,MuffinElZangano,Durrani,Pierre Vigier (pvigier),ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/female/spellcast.png"
+ },
+ "body_male_light.png": {
+  "author": "bluecarrot16,JaidynReiman,Benjamin K. Smith (BenCreating),Evert,Eliza Wyatt (ElizaWy),TheraHedwig,MuffinElZangano,Durrani,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/male/spellcast.png"
+ },
+ "body_teen_light.png": {
+  "author": "bluecarrot16,Evert,TheraHedwig,Benjamin K. Smith (BenCreating),MuffinElZangano,Durrani,Pierre Vigier (pvigier),Eliza Wyatt (ElizaWy),Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/teen/spellcast.png"
+ },
+ "bronze.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "brown.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_brass.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_copper.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_forest.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_green.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_maroon.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_navy.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_pink.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_red.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_sky.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_male_walnut.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_bluegray.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_bronze.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_brown.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_ceramic.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_copper.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_forest.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_gold.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_leather.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_maroon.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_navy.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_purple.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_rose.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_tan.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_teal.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_walnut.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_boots2_thin_yellow.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_black.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_bluegray.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_ceramic.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_copper.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_forest.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_navy.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_orange.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_pink.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_slate.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_white.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_male_yellow.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_blue.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_bluegray.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_brass.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_charcoal.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_copper.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_gold.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_gray.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_green.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_maroon.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_navy.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_orange.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_pink.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_purple.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_red.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_sky.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_tan.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_teal.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_walnut.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes2_thin_white.png": {
+  "author": "JaidynReiman,Evert",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-faun-and-minotaur",
+  "sumber_csv": "feet/hoofs/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_bluegray.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_leather.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_maroon.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_pink.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_red.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_slate.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_male_white.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_black.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_blue.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_forest.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_green.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_purple.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_sky.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_teal.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_ankle_thin_yellow.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/ankle/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_blue.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_bluegray.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_forest.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_leather.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_maroon.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_navy.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_pink.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_rose.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_male_yellow.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_gray.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_lavender.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_leather.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_maroon.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_purple.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_red.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_slate.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_tan.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_teal.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_feet_socks_high_thin_walnut.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "feet/socks/high/thin/spellcast.png"
+ },
+ "eulpc_hair_child_parted_gold.png": {
+  "author": "JaidynReiman,Joe White,Manuel Riecke (MrBeast)",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "hair/parted/adult/spellcast.png"
+ },
+ "eulpc_hair_jewfro_black.png": {
+  "author": "JaidynReiman",
+  "license": "OGA-BY 3.0+,CC-BY 3.0+,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles",
+  "sumber_csv": "hair/jewfro/adult/spellcast.png"
+ },
+ "eulpc_hair_jewfro_chestnut.png": {
+  "author": "JaidynReiman",
+  "license": "OGA-BY 3.0+,CC-BY 3.0+,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles",
+  "sumber_csv": "hair/jewfro/adult/spellcast.png"
+ },
+ "eulpc_hair_jewfro_gray.png": {
+  "author": "JaidynReiman",
+  "license": "OGA-BY 3.0+,CC-BY 3.0+,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles",
+  "sumber_csv": "hair/jewfro/adult/spellcast.png"
+ },
+ "eulpc_hair_longknot_darkbrown.png": {
+  "author": "bluecarrot16",
+  "license": "CC0",
+  "url": "https://opengameart.org/content/lpc-hair",
+  "sumber_csv": "hair/afro/adult/spellcast.png"
+ },
+ "eulpc_hair_swoop_carrot.png": {
+  "author": "JaidynReiman,Manuel Riecke (MrBeast)",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "hair/swoop/adult/spellcast.png"
+ },
+ "eulpc_hair_swoop_gold.png": {
+  "author": "JaidynReiman,Manuel Riecke (MrBeast)",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "hair/swoop/adult/spellcast.png"
+ },
+ "eulpc_hair_swoop_gray.png": {
+  "author": "JaidynReiman,Manuel Riecke (MrBeast)",
+  "license": "CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "hair/swoop/adult/spellcast.png"
+ },
+ "eulpc_legs_cuffed_male_leather.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_male_orange.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_male_pink.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_male_teal.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_male_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_thin_blue.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_thin_lavender.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_thin_teal.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_cuffed_thin_walnut.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_male_lavender.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_male_bluegray.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_male_charcoal.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_male_forest.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_male_rose.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_male_slate.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_thin_bluegray.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_thin_charcoal.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_thin_pink.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_thin_red.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_striped_thin_yellow.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal_striped/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_base.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_black.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_lavender.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_pink.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_purple.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_sky.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_tan.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_formal_thin_yellow.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/formal/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_male_fur_brown.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_male_fur_copper.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_male_fur_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_male_maroon.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_thin_black.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_thin_blue.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_thin_bluegray.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_thin_fur_black.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_thin_sky.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_fur_thin_walnut.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_hose_male_walnut.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/hose/thin/spellcast.png"
+ },
+ "eulpc_legs_hose_thin_gray.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/hose/thin/spellcast.png"
+ },
+ "eulpc_legs_hose_thin_purple.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/hose/thin/spellcast.png"
+ },
+ "eulpc_legs_hose_thin_yellow.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/hose/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_male_black.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_male_red.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_male_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_thin_black.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_thin_charcoal.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_thin_sky.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_thin_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings2_thin_yellow.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/leggings2/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_male_brown.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_male_gray.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_male_walnut.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_thin_black.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_thin_lavender.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_thin_rose.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_leggings_thin_yellow.png": {
+  "author": "bluecarrot16,ElizaWy,JaidynReiman,Mandi Paugh,William.Thompsonj,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/sara-wizard",
+  "sumber_csv": "legs/leggings/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_male_bluegray.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_male_green.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_male_white.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_thin_black.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_thin_blue.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_thin_forest.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_thin_orange.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pantaloons_thin_sky.png": {
+  "author": "Nila122,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-pirates",
+  "sumber_csv": "legs/pantaloons/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_male_blue.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_male_brown.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_male_leather.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_male_slate.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_male_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_male_yellow.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_thin_green.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_thin_sky.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_thin_slate.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_thin_walnut.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants2_thin_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/pants2/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_child_blue.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_child_brown.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_child_darkblue.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_child_green.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_child_lightblue.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_child_red.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_gray.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_green.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_leather.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_pink.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_male_red.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin_bluegray.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin_forest.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin_purple.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_pants_thin_sky.png": {
+  "author": "bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "legs/pants/thin/spellcast.png"
+ },
+ "eulpc_legs_short_shorts_thin_blue.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/shorts/short_shorts/thin/spellcast.png"
+ },
+ "eulpc_legs_short_shorts_thin_green.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/shorts/short_shorts/thin/spellcast.png"
+ },
+ "eulpc_legs_short_shorts_thin_leather.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/shorts/short_shorts/thin/spellcast.png"
+ },
+ "eulpc_legs_short_shorts_thin_navy.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/shorts/short_shorts/thin/spellcast.png"
+ },
+ "eulpc_legs_short_shorts_thin_sky.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/shorts/short_shorts/thin/spellcast.png"
+ },
+ "eulpc_legs_short_shorts_thin_yellow.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/shorts/short_shorts/thin/spellcast.png"
+ },
+ "eulpc_legs_skirt_child_black.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_skirt_child_darkblue.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_skirt_child_green.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_skirt_child_lightblue.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_skirt_child_red.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_legs_skirt_child_white.png": {
+  "author": "ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "legs/cuffed/thin/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_buttoned_female_maroon.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_buttoned_female_tan.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_buttoned_female_walnut.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_cardigan_female_tan.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_cardigan/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_polo_female_black.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_polo_female_pink.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_polo_female_red.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_polo_female_slate.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_polo_female_teal.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_scoop_female_sky.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_scoop/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve2_vneck_female_rose.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve2_vneck/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_black.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_blue.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_charcoal.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_forest.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_orange.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_sky.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_teal.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_longsleeve_pregnant_yellow.png": {
+  "author": "JaidynReiman,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "torso/clothes/longsleeve/longsleeve/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_female_charcoal.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_female_lavender.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_bluegray.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_brown.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_charcoal.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_forest.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_green.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_leather.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_orange.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_purple.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_red.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_sky.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_slate.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_teal.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_white.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_overalls_male_yellow.png": {
+  "author": "ElizaWy,bluecarrot16,JaidynReiman",
+  "license": "OGA-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/aprons/overalls/male/spellcast.png"
+ },
+ "eulpc_torso_shirt_child_black.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_blue.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_gray.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_green.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_lavender.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_lightblue.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_pink.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_red.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shirt_child_white.png": {
+  "author": "Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-for-children",
+  "sumber_csv": "torso/clothes/shirt/child/walk.png"
+ },
+ "eulpc_torso_shortsleeve_polo_female_white.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/shortsleeve_polo/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_buttoned_female_green.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_female_charcoal.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_female_purple.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_female_teal.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_polo_female_black.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_polo_female_red.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_polo_female_slate.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_polo/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_scoop_female_blue.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_scoop/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_scoop_female_gray.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_scoop/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_scoop_female_green.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_scoop/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_scoop_female_orange.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_scoop/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_vneck_female_purple.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_vneck/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless2_vneck_female_white.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless2_vneck/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_blue.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_charcoal.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_forest.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_green.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_leather.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_orange.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_red.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_rose.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_sleeveless_pregnant_teal.png": {
+  "author": "bluecarrot16,Matthew Krohn (makrohn),JaidynReiman,Marcel van de Steeg (MadMarcel),Nila122,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+  "sumber_csv": "torso/clothes/sleeveless/sleeveless/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_female_slate.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_female_yellow.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_black.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_charcoal.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_gray.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_green.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_navy.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_sky.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_slate.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_teal.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_walnut.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_white.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_suspenders_male_yellow.png": {
+  "author": "ElizaWy,JaidynReiman",
+  "license": "OGA-BY 3.0",
+  "url": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+  "sumber_csv": "torso/aprons/suspenders/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_buttoned_female_charcoal.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_buttoned_female_gray.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_buttoned_female_leather.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_buttoned_female_navy.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_buttoned_female_purple.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_buttoned_female_teal.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "http://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt_buttoned/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_female_navy.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt/male/spellcast.png"
+ },
+ "eulpc_torso_tshirt_female_yellow.png": {
+  "author": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0",
+  "url": "https://opengameart.org/content/lpc-revised-character-basics",
+  "sumber_csv": "torso/clothes/shortsleeve/tshirt/male/spellcast.png"
+ },
+ "head_child_light.png": {
+  "author": "Stephen Challener (Redshrike),kheftel,bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/",
+  "sumber_csv": "head/heads/human/child/spellcast.png"
+ },
+ "head_female_light.png": {
+  "author": "bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/",
+  "sumber_csv": "head/heads/human/female/spellcast.png"
+ },
+ "head_male_light.png": {
+  "author": "bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "head/heads/human/male/spellcast.png"
+ },
+ "light.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "olive.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "taupe.png": {
+  "author": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+  "sumber_csv": "body/bodies/zombie/spellcast.png"
+ },
+ "eulpc_feet_boots_male.png": {
+  "author": "JaidynReiman,bluecarrot16,Nila122",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 2.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-clothes-and-hair",
+  "sumber_csv": "feet/boots/basic/thin/spellcast.png"
+ },
+ "eulpc_feet_shoes_male.png": {
+  "author": "JaidynReiman,Joe White,Johannes Sjölund (wulax)",
+  "license": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+  "url": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+  "sumber_csv": "feet/shoes/basic/thin/spellcast.png"
+ }
 }

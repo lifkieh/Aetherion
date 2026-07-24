@@ -41,13 +41,23 @@ python test_perakit.py    # 13 test hijau (guard 231/232, z-order, roundtrip, le
 - Dryad = **human-body + bark/leaf overlay** (putusan Direktur, bukan faun). `race_overlay:["bark_skin","leaf_hair"]`.
 - Merrit = botak + prop **LAMPU = scene** (bukan overlay sprite). Surat dicoret.
 
-## Celah jujur (belum tuntas — untuk Direktur)
-1. **Skin 1-tone.** Pustaka `eulpc_body_*` cuma satu warna kulit → field `skin` belum berefek.
-   Butuh badan per-skintone (Death's Darling) diekstrak & dipetakan ke katalog.
-2. **Slice sit-frame belum dikalibrasi.** Baris expanded (sit/run/jump, baris 21-45) di `frame_map.json`
-   ditandai `calibrate:true` → belum di-slice. **walk + idle andal.** Merrit/Otha "duduk" ada di **sheet penuh**
-   tapi slice sit menunggu verifikasi baris. Kalibrasi = render tiap baris expanded, cocokkan nama.
-3. **horns first-pass.** Terbaca (hitam/kontras) tapi posisi di **sisi kepala**; sapuan-atas bisa diperkuat.
-4. **Prop di semua frame.** basket/lantern ditaruh per-sel di walk/idle (motif pembukti). Pelacakan-tangan
+## Celah jujur (status 2026-07-24, #278)
+1. ~~Skin 1-tone~~ **TUTUP (#278-2).** Field `skin` berefek: badan+kepala diambil dari
+   pustaka chargen per-warna (22 nada). Baris expanded pada bases per-skin dilengkapi
+   `_tools/lengkapi_expanded_skin.py` (LUT dari baris klasik yang sejajar, deterministik).
+   Skin tak dikenal = HARD FAIL. Test: `test_skin_*` (3).
+2. ~~Slice sit belum dikalibrasi~~ **TUTUP (#278-2).** Baris expanded dikalibrasi MATA
+   dari sheet rakitan nyata (bukti `reports/preview/expanded_rows_0/1.png`):
+   b21 climb·6f | b22-25 idle·4f | b26-29 jump·5f | **b30-33 SIT** (f0-2; f3+ bangkit) |
+   b34-37 run·8f | b38-41/42-45 tak dipetakan. Tebakan lama "sit di 22-25" = IDLE, salah.
+   `sit`/`run`/`jump` kini di-slice.
+3. **BARU — garmen tanpa baris expanded.** Keluarga `longsleeve_*` (undershirt male!) &
+   `pants2_male_*` di pustaka eulpc kosong di baris 21+; keluarga `longsleeve2_*` penuh.
+   Perakit kini MELEWATI slice expanded bila garmen terpakai bolong (dan menghapus slice
+   telanjang lama) — anak-anak dapat sit/run/jump penuh, 5 tokoh dewasa tertahan.
+   Jalan keluar: tarik lapisan longsleeve male dari rilis ULPC-expanded lebih baru, ATAU
+   Designer menukar undershirt tokoh ke keluarga yang punya baris expanded.
+4. **horns first-pass.** Terbaca (hitam/kontras) tapi posisi di **sisi kepala**; sapuan-atas bisa diperkuat.
+5. **Prop di semua frame.** basket/lantern ditaruh per-sel di walk/idle (motif pembukti). Pelacakan-tangan
    per-frame penuh (lentera ikut tangan tiap langkah) = langkah seni berikutnya.
-5. **Kredit per-lapisan.** `credits_db.json` belum diisi → manifest flagged `[TODO]`. Wajib sebelum rilis (SA).
+6. **Kredit per-lapisan.** `credits_db.json` belum diisi → manifest flagged `[TODO]`. Wajib sebelum rilis (SA).

@@ -1,12 +1,10 @@
 # Kredit sprite: warga_041
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:muscular: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_cuffed_male_pink: eulpc_legs_cuffed_male_pink.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_socks_ankle_male_pink: eulpc_feet_socks_ankle_male_pink.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- undershirt:_npc_dalam_eulpc_torso_longsleeve_male_forest: eulpc_torso_longsleeve_male_forest.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_overalls_male_leather: eulpc_torso_overalls_male_leather.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_muscular: light.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_jewfro_black: eulpc_hair_jewfro_black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:muscular: light.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_cuffed_male_pink: eulpc_legs_cuffed_male_pink.png — ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0)
+- feet:_npc_eulpc_feet_socks_ankle_male_pink: eulpc_feet_socks_ankle_male_pink.png — ElizaWy,JaidynReiman (OGA-BY 3.0)
+- undershirt:_npc_dalam_eulpc_torso_longsleeve_male_forest: eulpc_torso_longsleeve_male_forest.png — JaidynReiman,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- torso:_npc_eulpc_torso_overalls_male_leather: eulpc_torso_overalls_male_leather.png — ElizaWy,bluecarrot16,JaidynReiman (OGA-BY 3.0,GPL 3.0)
+- head:_npc_kepala_muscular: light.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- hair:_npc_jewfro_black: eulpc_hair_jewfro_black.png — JaidynReiman (OGA-BY 3.0+,CC-BY 3.0+,CC-BY-SA 3.0,GPL 3.0)

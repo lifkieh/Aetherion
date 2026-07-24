@@ -1,11 +1,9 @@
 # Kredit sprite: warga_048
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:female: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_short_shorts_thin_green: eulpc_legs_short_shorts_thin_green.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_socks_high_thin_gray: eulpc_feet_socks_high_thin_gray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_sleeveless2_scoop_female_orange: eulpc_torso_sleeveless2_scoop_female_orange.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_female: olive.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- body:female: olive.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_short_shorts_thin_green: eulpc_legs_short_shorts_thin_green.png — ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0)
+- feet:_npc_eulpc_feet_socks_high_thin_gray: eulpc_feet_socks_high_thin_gray.png — ElizaWy,JaidynReiman (OGA-BY 3.0)
+- torso:_npc_eulpc_torso_sleeveless2_scoop_female_orange: eulpc_torso_sleeveless2_scoop_female_orange.png — ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) (OGA-BY 3.0)
+- head:_npc_kepala_female: olive.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
 - hair:_npc_parted_side_bangs: eulpc_hair_parted_side_bangs.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

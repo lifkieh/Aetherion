@@ -211,6 +211,41 @@ def test_232_no_sa_leak_outside_characters():
         len(leaks), "\n      ".join(leaks))
 
 
+# ---- #278-2 skintone -------------------------------------------------------
+def test_skin_changes_pixels():
+    """`skin` BEREFEK: dua kulit -> piksel badan berbeda nyata (jalur pemakai)."""
+    cat = A._catalog()
+    dasar = {"named": False, "body": "male", "hair": None, "torso": "sleeveless2",
+             "legs": "shorts_thin", "feet": "shoes_thin"}
+    a, _ = A.assemble_sheet(dict(dasar, id="uji_a", skin="light"), cat)
+    b, _ = A.assemble_sheet(dict(dasar, id="uji_b", skin="black"), cat)
+    beda = 0
+    y0 = 10 * A.CELL
+    for y in range(y0, y0 + A.CELL, 2):
+        for x in range(0, A.CELL, 2):
+            pa, pb = a.getpixel((x, y)), b.getpixel((x, y))
+            if pa[3] and pb[3] and pa[:3] != pb[:3]:
+                beda += 1
+    assert beda > 60, "kulit light vs black nyaris identik (%d px beda) — skin tak berefek" % beda
+
+
+def test_skin_unknown_rejected():
+    """Skin yang tak ada di pustaka -> HARD FAIL, bukan jatuh diam ke default."""
+    cat = A._catalog()
+    ch = {"id": "uji_x", "named": False, "body": "male", "skin": "warna_khayalan",
+          "hair": None, "torso": "sleeveless2", "legs": "shorts_thin", "feet": "shoes_thin"}
+    assert _raises(lambda: A.assemble_sheet(ch, cat)), "skin tak dikenal TIDAK ditolak"
+
+
+def test_skin_kosong_masih_jalan():
+    """Tanpa `skin` jalur lama (eulpc 1-nada + tint) tetap hidup."""
+    cat = A._catalog()
+    ch = {"id": "uji_polos", "named": False, "body": "male", "hair": None,
+          "torso": "sleeveless2", "legs": "shorts_thin", "feet": "shoes_thin"}
+    sheet, _ = A.assemble_sheet(ch, cat)
+    assert sheet.size == (A.SHEET_W, A.SHEET_H)
+
+
 TESTS = [
     test_231_twins_rejected, test_231_distinct_shape_ok, test_231_two_bald_now_rejected,
     test_231_beda_tipis_tetap_ditolak, test_231_satu_tokoh_lolos,
@@ -218,6 +253,7 @@ TESTS = [
     test_232_accepts_characters, test_232_no_sa_leak_outside_characters,
     test_missing_hair_id_errors, test_layer_plan_zorder_bald_merrit,
     test_roundtrip_merrit_produces_slices,
+    test_skin_changes_pixels, test_skin_unknown_rejected, test_skin_kosong_masih_jalan,
 ]
 
 if __name__ == "__main__":

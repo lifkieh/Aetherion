@@ -1,12 +1,10 @@
 # Kredit sprite: warga_066
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:male: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_formal_striped_male_bluegray: eulpc_legs_formal_striped_male_bluegray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_shoes2_male_copper: eulpc_feet_shoes2_male_copper.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- undershirt:_npc_dalam_eulpc_torso_longsleeve_male_walnut: eulpc_torso_longsleeve_male_walnut.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_npc_eulpc_torso_overalls_male_sky: eulpc_torso_overalls_male_sky.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_male: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_swoop_carrot: eulpc_hair_swoop_carrot.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:male: black.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_formal_striped_male_bluegray: eulpc_legs_formal_striped_male_bluegray.png — bluecarrot16,JaidynReiman,ElizaWy,Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- feet:_npc_eulpc_feet_shoes2_male_copper: eulpc_feet_shoes2_male_copper.png — JaidynReiman,Evert (CC-BY-SA 3.0,GPL 3.0)
+- undershirt:_npc_dalam_eulpc_torso_longsleeve_male_walnut: eulpc_torso_longsleeve_male_walnut.png — JaidynReiman,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- torso:_npc_eulpc_torso_overalls_male_sky: eulpc_torso_overalls_male_sky.png — ElizaWy,bluecarrot16,JaidynReiman (OGA-BY 3.0,GPL 3.0)
+- head:_npc_kepala_male: black.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- hair:_npc_swoop_carrot: eulpc_hair_swoop_carrot.png — JaidynReiman,Manuel Riecke (MrBeast) (CC-BY-SA 3.0,GPL 3.0)

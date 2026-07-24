@@ -1,5 +1,5 @@
 {
-  "_doc": "Peta animasi -> baris/frame di sheet ULPC-expanded 832x2944 (64px grid, 13 kol x 46 baris). Baris 0-20 = klasik. Slice dipotong dari sheet flatten (putusan Direktur #3: slice masuk game, sheet = artefak build). Baris sit/run expanded BELUM dikalibrasi visual -> ditandai calibrate:true; jangan dipakai sampai diverifikasi.",
+  "_doc": "Peta animasi -> baris/frame di sheet ULPC-expanded 832x2944 (64px grid, 13 kol x 46 baris). Baris 0-20 = klasik. Slice dipotong dari sheet flatten (putusan Direktur #3). Baris expanded DIKALIBRASI MATA 2026-07-24 dari sheet rakitan nyata (bukti: reports/preview/expanded_rows_0/1.png): b21 climb(6f) · b22-25 idle(4f) · b26-29 jump(5f) · b30-33 SIT(f0-2; f3+ = bangkit) · b34-37 run(8f) · b38-41 emote-gabungan 13f (tak dipetakan — bukan kebutuhan game) · b42-45 6f (tak dipetakan). Kalibrasi lama menebak sit di 22-25 — itu IDLE, bukan sit.",
   "cell": 64,
   "cols": 13,
   "rows": 46,
@@ -8,6 +8,8 @@
     "walk": { "rows": {"up": 8, "left": 9, "down": 10, "right": 11}, "frames": [1,2,3,4,5,6,7,8], "calibrate": false },
     "idle": { "rows": {"up": 8, "left": 9, "down": 10, "right": 11}, "frames": [0], "calibrate": false },
     "slash": { "rows": {"up": 12, "left": 13, "down": 14, "right": 15}, "frames": [0,1,2,3,4,5], "calibrate": false },
-    "sit":  { "rows": {"up": 22, "left": 23, "down": 24, "right": 25}, "frames": [0,1,2,3], "calibrate": true }
+    "sit":  { "rows": {"up": 30, "left": 31, "down": 32, "right": 33}, "frames": [0,1,2], "calibrate": false },
+    "run":  { "rows": {"up": 34, "left": 35, "down": 36, "right": 37}, "frames": [0,1,2,3,4,5,6,7], "calibrate": false },
+    "jump": { "rows": {"up": 26, "left": 27, "down": 28, "right": 29}, "frames": [0,1,2,3,4], "calibrate": false }
   }
 }

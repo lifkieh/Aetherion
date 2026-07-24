@@ -1,11 +1,9 @@
 # Kredit sprite: warga_106
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:muscular_female: bronze.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_pants_thin_bluegray: eulpc_legs_pants_thin_bluegray.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_shoes2_thin_copper: eulpc_feet_shoes2_thin_copper.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_tshirt_buttoned_female_navy: eulpc_torso_tshirt_buttoned_female_navy.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_muscular_female: bronze.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_jewfro_chestnut: eulpc_hair_jewfro_chestnut.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:muscular_female: bronze.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_pants_thin_bluegray: eulpc_legs_pants_thin_bluegray.png — bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0)
+- feet:_npc_eulpc_feet_shoes2_thin_copper: eulpc_feet_shoes2_thin_copper.png — JaidynReiman,Evert (CC-BY-SA 3.0,GPL 3.0)
+- torso:_npc_eulpc_torso_tshirt_buttoned_female_navy: eulpc_torso_tshirt_buttoned_female_navy.png — ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) (OGA-BY 3.0)
+- head:_npc_kepala_muscular_female: bronze.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- hair:_npc_jewfro_chestnut: eulpc_hair_jewfro_chestnut.png — JaidynReiman (OGA-BY 3.0+,CC-BY 3.0+,CC-BY-SA 3.0,GPL 3.0)

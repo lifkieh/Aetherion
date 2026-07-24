@@ -1,11 +1,9 @@
 # Kredit sprite: warga_007
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:child: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- legs:_npc_eulpc_legs_skirt_child_darkblue: eulpc_legs_skirt_child_darkblue.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- feet:_npc_eulpc_feet_socks_high_thin_teal: eulpc_feet_socks_high_thin_teal.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- torso:_npc_eulpc_torso_shirt_child_white: eulpc_torso_shirt_child_white.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- head:_npc_kepala_child: black.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-- hair:_npc_child_parted_gold: eulpc_hair_child_parted_gold.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
-
-# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).
+- body:child: black.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_npc_eulpc_legs_skirt_child_darkblue: eulpc_legs_skirt_child_darkblue.png — ElizaWy,JaidynReiman,Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0)
+- feet:_npc_eulpc_feet_socks_high_thin_teal: eulpc_feet_socks_high_thin_teal.png — ElizaWy,JaidynReiman (OGA-BY 3.0)
+- torso:_npc_eulpc_torso_shirt_child_white: eulpc_torso_shirt_child_white.png — Nila122 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- head:_npc_kepala_child: black.png — Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16 (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- hair:_npc_child_parted_gold: eulpc_hair_child_parted_gold.png — JaidynReiman,Joe White,Manuel Riecke (MrBeast) (CC-BY-SA 3.0,GPL 3.0)

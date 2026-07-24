@@ -1,12 +1,12 @@
 # Kredit sprite: sora
 # Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
 
-- body:teen: eulpc_body_teen.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
-- legs:_tokoh_eulpc_legs_pants_thin_maroon: eulpc_legs_pants_thin_maroon.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- feet:_tokoh_eulpc_feet_shoes_thin: eulpc_feet_shoes_thin.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- undershirt:ls_teen_teal: eulpc_torso_longsleeve_teen_teal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- torso:_tokoh_eulpc_torso_cardigan_teen: eulpc_torso_cardigan_teen.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
-- head:female: eulpc_head_female.png — Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike), dalonedrau, Durrani, Eliza Wyatt (ElizaWy), Johannes Sjolund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, bluecarrot16, castelonia, Pierre Vigier (pvigier), Evert, William.Thompsonj, Zi Ye (CC-BY-SA 3.0 / GPL 3.0)
+- body:teen: body_teen_light.png — bluecarrot16,Evert,TheraHedwig,Benjamin K. Smith (BenCreating),MuffinElZangano,Durrani,Pierre Vigier (pvigier),Eliza Wyatt (ElizaWy),Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_tokoh_eulpc_legs_pants_thin_maroon: eulpc_legs_pants_thin_maroon.png — bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0)
+- feet:_tokoh_eulpc_feet_shoes_thin: eulpc_feet_shoes_thin.png — JaidynReiman,Joe White,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- undershirt:ls_teen_teal: eulpc_torso_longsleeve_teen_teal.png — JaidynReiman,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- torso:_tokoh_eulpc_torso_cardigan_teen: eulpc_torso_cardigan_teen.png — ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) (OGA-BY 3.0)
+- head:female: head_female_light.png — bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
 - hair:swoop_side: eulpc_hair_swoop_side.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
 - story_prop:lantern: lantern.png — Proyek Aetherion, digambar oleh gen_overlays.py (CC-BY-SA 3.0)
 - story_prop:lantern_glow: lantern_glow.png — Proyek Aetherion, digambar oleh gen_overlays.py (CC-BY-SA 3.0)

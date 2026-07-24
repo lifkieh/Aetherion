@@ -60,6 +60,18 @@ def _resolve_path(ref, cat):
     return os.path.join(REPO_ROOT, cat["lib_root"], ref)
 
 
+## Pustaka per-warna-kulit (#278-2) — lapisan 832x2944 yang SUDAH di-commit di game/.
+CHARGEN_LIB = os.path.join(REPO_ROOT, "game", "assets", "game", "sprites", "chargen")
+## Kepala pustaka chargen hanya punya male/female/child; build lain dipetakan.
+_HEAD_SKIN_MAP = {"muscular": "male", "pregnant": "female", "teen": "female"}
+
+
+def _skin_path(kind, key, skin):
+    """Path lapisan chargen `<kind>_<key>_<skin>.png`, None bila tak ada."""
+    p = os.path.join(CHARGEN_LIB, f"{kind}_{key}_{skin}.png")
+    return p if os.path.exists(p) else None
+
+
 # ------------------------------------------------------------------ imaging
 def _open_layer(path):
     """Buka PNG, pastikan RGBA, tempel rata-ATAS ke kanvas 832x2944.
@@ -135,8 +147,24 @@ def _layer_plan(char, cat):
         if o in cat["wing_back"]:
             plan.append((f"wing_back:{o}", _resolve_path(cat["wing_back"][o], cat), None))
     # 2 badan (+ palette shift / bark skin overlay)
+    #   SKINTONE (#278-2): field `skin` kini BEREFEK. Pustaka per-warna-kulit yang
+    #   sudah ada di repo (game/assets/.../chargen/body_<build>_<skin>.png, 832x2944,
+    #   22 warna — hasil gen_chargen_lapis.py) dipakai langsung; eulpc 1-nada tinggal
+    #   fallback saat `skin` kosong. `skin` terisi tapi berkasnya tak ada = DITOLAK,
+    #   bukan diam (spec §5) — kulit yang salah-jatuh-ke-default adalah cacat yang
+    #   bertahan berbulan-bulan tanpa ketahuan.
     body_tint = tints.get("body")
-    plan.append(("body:" + char["body"], _resolve_path(cat["body"][char["body"]], cat),
+    skin = char.get("skin") or ""
+    body_path = _resolve_path(cat["body"][char["body"]], cat)
+    if skin:
+        p = _skin_path("body", char["body"], skin)
+        if p is None:
+            raise AssemblyError(
+                f"'{char['id']}': skin '{skin}' tak ada untuk badan '{char['body']}' "
+                f"di pustaka chargen. Rakit DITOLAK (spec §5).")
+        body_path = p
+        body_tint = None          # warna datang dari lapisan, bukan tint multiply
+    plan.append(("body:" + char["body"], body_path,
                  ("__pshift__:" + pshift) if pshift else body_tint))
     if "bark_skin" in ro:
         add("skin_overlay", "bark_skin")
@@ -161,7 +189,16 @@ def _layer_plan(char, cat):
     #    jadi ia tak pernah ketahuan). `tint.head` bisa menimpa bila memang diinginkan beda.
     head_key = char.get("head", char["body"])
     head_tint = tints.get("head", body_tint)
-    plan.append(("head:" + head_key, _resolve_path(cat["head"][head_key], cat),
+    head_path = _resolve_path(cat["head"][head_key], cat)
+    if skin:
+        # Kepala ikut warna kulit HANYA bila pustaka chargen punya variannya
+        # (male/female/child + turunannya). Kepala khusus (elderly dsb.) tetap
+        # dari katalog eulpc — mereka digambar dengan warnanya sendiri.
+        p = _skin_path("head", _HEAD_SKIN_MAP.get(head_key, head_key), skin)
+        if p is not None:
+            head_path = p
+            head_tint = tints.get("head")
+    plan.append(("head:" + head_key, head_path,
                  ("__pshift__:" + pshift) if pshift else head_tint))
     # 8 beard (DI DEPAN wajah, kanon ULPC z-beard > z-head)
     facial = char.get("facial", {}) or {}
@@ -204,13 +241,47 @@ def assemble_sheet(char, cat):
 
 
 # ------------------------------------------------------------------ slicing
-def slice_sheet(sheet, fmap):
-    """Potong slice per-animasi (putusan #3). Lewati animasi calibrate:true."""
+## Animasi klasik selalu utuh; animasi EXPANDED (sit/run/jump, baris 21+) hanya ada
+## di sebagian pustaka garmen (keluarga `longsleeve2_*` punya, `longsleeve_*`/
+## `pants2_male_*` tidak). Slice yang garmennya bolong = tokoh duduk TELANJANG —
+## lebih buruk daripada tak ada slice. Maka: slice expanded ditulis HANYA bila
+## semua lapisan garmen yang dipakai punya isi di baris animasinya (dicek piksel,
+## bukan daftar) — yang bolong DILEWATI dan DILAPORKAN, bukan dikirim diam-diam.
+_ANIM_KLASIK = {"walk", "idle", "slash"}
+_SLOT_GARMEN = ("torso:", "legs:", "feet:", "undershirt:", "apron:", "headwear:", "hair:")
+
+
+def _garmen_punya_baris(used, spec, cell):
+    """True bila tiap lapisan garmen terpakai punya piksel di baris animasi ini."""
+    bolong = []
+    for label, path in used:
+        if not label.startswith(_SLOT_GARMEN):
+            continue
+        im = _open_layer(path)
+        ada = False
+        for row in spec["rows"].values():
+            if im.crop((0, row * cell, im.width, (row + 1) * cell)).getbbox():
+                ada = True
+                break
+        if not ada:
+            bolong.append(label)
+    return bolong
+
+
+def slice_sheet(sheet, fmap, used=None):
+    """Potong slice per-animasi (putusan #3). Lewati animasi calibrate:true dan
+    animasi expanded yang garmennya bolong (lihat catatan di atas)."""
     out = {}
     c = fmap["cell"]
     for anim, spec in fmap["animations"].items():
         if spec.get("calibrate"):
             continue
+        if used is not None and anim not in _ANIM_KLASIK:
+            bolong = _garmen_punya_baris(used, spec, c)
+            if bolong:
+                print("    ~ slice '%s' DILEWATI: garmen tanpa baris expanded: %s"
+                      % (anim, ", ".join(bolong)))
+                continue
         dirs = spec["rows"]
         frames = spec["frames"]
         w = len(frames) * c
@@ -309,10 +380,17 @@ def build_one(char, out_dir, cat, fmap, cdb, emit_sheet=True, sheet=None, used=N
         sp = os.path.join(out_dir, f"{cid}.png")
         sheet.save(sp)
         written.append(sp)
-    for anim, strip in slice_sheet(sheet, fmap).items():
+    for anim, strip in slice_sheet(sheet, fmap, used).items():
         sp = os.path.join(out_dir, f"{cid}_{anim}.png")
         strip.save(sp)
         written.append(sp)
+    # slice lama dari animasi yang kini DILEWATI tak boleh tertinggal di repo —
+    # ia telanjang, dan tak ada yang akan menghapusnya kalau bukan perakit sendiri
+    for anim in fmap["animations"]:
+        sp = os.path.join(out_dir, f"{cid}_{anim}.png")
+        if sp not in written and os.path.exists(sp):
+            os.remove(sp)
+            print("    ~ slice lama dihapus: %s" % os.path.basename(sp))
     flagged = write_credits(out_dir, cid, used, cdb)
     return written, flagged, len(used)
 

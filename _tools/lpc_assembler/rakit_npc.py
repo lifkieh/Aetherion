@@ -171,7 +171,7 @@ def pasang(R, L, cat, fmap, data, cdb):
         except Exception as e:
             gagal.append((nama, p["id"], "%s: %s" % (type(e).__name__, e)))
             continue
-        for anim, strip in A.slice_sheet(sheet, fmap).items():
+        for anim, strip in A.slice_sheet(sheet, fmap, dipakai).items():
             strip.save(os.path.join(KELUAR, "%s_%s.png" % (nama, anim)))
         A.write_credits(KELUAR, nama, dipakai, cdb)
         tulis += 1
@@ -234,7 +234,7 @@ def tokoh(R, L, cat, fmap, cdb):
         A.guard_231(bernama)
 
     for c, sheet, dipakai in siap:
-        for anim, strip in A.slice_sheet(sheet, fmap).items():
+        for anim, strip in A.slice_sheet(sheet, fmap, dipakai).items():
             strip.save(os.path.join(KELUAR, "%s_%s.png" % (c["id"], anim)))
         sheet.save(os.path.join(KELUAR, "%s.png" % c["id"]))
         A.write_credits(KELUAR, c["id"], dipakai, cdb)
