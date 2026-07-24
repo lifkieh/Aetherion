@@ -3,7 +3,7 @@ extends Node2D
 ## Level 40-55. Lightning monsters; driving rain + lightning flashes; the Thunder
 ## Dragon spawns SECRETLY at night during a thunderstorm. Zephyr Spire is its dungeon.
 
-const TILE := 16
+const TILE := 32   # R2b #287: Storm Island ikut petak 32
 const MAP_W := 72
 const MAP_H := 54
 const SPAWN_TABLE := ["volt_weasel", "storm_crab", "thunder_hawk", "cloud_ray", "volt_eel", "storm_elemental"]
@@ -41,9 +41,9 @@ func _ready() -> void:
 			get_tree().quit())
 
 func _dress_wild() -> void:
-	var spawn := Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
-	var avoid := [Rect2(spawn - Vector2(140, 140), Vector2(280, 220))]
-	WildDresser.dress(self, "storm", MAP_W, MAP_H, avoid, [])
+	var spawn := Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120)
+	var avoid := [Rect2(spawn - Vector2(280, 280), Vector2(560, 440))]   # 2x
+	WildDresser.dress(self, "storm", MAP_W, MAP_H, avoid, [], TILE)
 	var amb := Node2D.new()
 	amb.set_script(load("res://scenes/systems/Ambience.gd"))
 	add_child(amb)
@@ -86,7 +86,7 @@ func _spawn_dragon() -> void:
 	_dragon_spawned = true
 	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 	add_child(m)
-	m.global_position = Vector2(MAP_W * TILE * 0.5, 120)
+	m.global_position = Vector2(MAP_W * TILE * 0.5, 240)
 	m.setup(inst, self)
 	_monster_count += 1
 	CombatFeel.shake(6.0, 0.4)
@@ -125,7 +125,7 @@ func _build_boundaries() -> void:
 	add_child(walls)
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
-	for rc in [Rect2(-16, -16, w + 32, 16), Rect2(-16, h, w + 32, 16), Rect2(-16, 0, 16, h), Rect2(w, 0, 16, h)]:
+	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, h, w + 64, 32), Rect2(-32, 0, 32, h), Rect2(w, 0, 32, h)]:
 		var cs := CollisionShape2D.new()
 		var shape := RectangleShape2D.new()
 		shape.size = rc.size
@@ -149,8 +149,11 @@ func _spawn_player() -> void:
 		player.global_position = WorldState.pending_return_pos
 		WorldState.pending_return_pos = null
 	else:
-		player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
+		player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120)
 	add_child(player)
+	for c in player.get_children():   # kamera dunia 32 (#287)
+		if c is Camera2D:
+			c.zoom = Vector2(1.0, 1.0)
 
 func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
@@ -162,17 +165,19 @@ func _add_ui() -> void:
 	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Kembali ke Greenvale [E]")
-	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 32)
+	portal.scale = Vector2(2, 2)
+	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 64)
 	var spire := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(spire)
 	spire.dungeon_scene = "res://scenes/world/ZephyrSpire.tscn"
 	spire.dungeon_label = "Zephyr Spire ▲ [E]"
 	spire.setup("dungeon")
-	spire.global_position = Vector2(MAP_W * TILE * 0.5 + 120, MAP_H * TILE - 140)
-	_keeper(Vector2(MAP_W * TILE * 0.5 - 100, MAP_H * TILE - 140), "storm_island")   # penjaga menara (#30)
-	TownFolk.place(self, "storm_island", Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 170))      # Hukum NPC Aneh (E6 #78)
-	MiracleSystem.manifest(self, Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 170), 240.0)   # keajaiban hari ini (E7 #79)
-	_world_gate(Vector2(MAP_W * TILE * 0.5 - 60, MAP_H * TILE - 60))   # Gerbang Penjelajah di dermaga (#43)
+	spire.scale = Vector2(2, 2)
+	spire.global_position = Vector2(MAP_W * TILE * 0.5 + 240, MAP_H * TILE - 280)
+	_keeper(Vector2(MAP_W * TILE * 0.5 - 200, MAP_H * TILE - 280), "storm_island")   # penjaga menara (#30)
+	TownFolk.place(self, "storm_island", Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 340), 114)      # Hukum NPC Aneh (E6 #78)
+	MiracleSystem.manifest(self, Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 340), 480.0)   # keajaiban hari ini (E7 #79)
+	_world_gate(Vector2(MAP_W * TILE * 0.5 - 120, MAP_H * TILE - 120))   # Gerbang Penjelajah di dermaga (#43)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -181,7 +186,8 @@ func _spawn_gathering() -> void:
 	for i in range(10):
 		var node := preload("res://scenes/world/GatherNode.tscn").instantiate()
 		holder.add_child(node)
-		node.global_position = Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
+		node.global_position = Vector2(randf_range(96, MAP_W * TILE - 96), randf_range(96, MAP_H * TILE - 96))
+		node.scale = Vector2(2, 2)
 		node.setup("sandstone", "si_rock_%d" % i)
 
 func _prime_monsters() -> void:
@@ -197,9 +203,9 @@ func _spawn_one() -> void:
 		return
 	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 	add_child(m)
-	var pos := Vector2(randf_range(64, MAP_W * TILE - 64), randf_range(64, MAP_H * TILE - 64))
-	if player and pos.distance_to(player.global_position) < 120:
-		pos += Vector2(140, 140)
+	var pos := Vector2(randf_range(128, MAP_W * TILE - 128), randf_range(128, MAP_H * TILE - 128))
+	if player and pos.distance_to(player.global_position) < 240:
+		pos += Vector2(280, 280)
 	m.global_position = pos
 	m.setup(inst, self)
 	_monster_count += 1
@@ -209,8 +215,8 @@ func on_monster_died(_m) -> void:
 
 func _keeper(pos: Vector2, loc: String) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos
+	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.scale = Vector2(2, 2); n.global_position = pos
 
 func _world_gate(pos: Vector2) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup("world_gate"); n.global_position = pos
+	add_child(n); n.setup("world_gate"); n.scale = Vector2(2, 2); n.global_position = pos

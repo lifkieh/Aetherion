@@ -1,10 +1,9 @@
 extends Node2D
 ## Homestead (M6) — private instance: 4 plots, real-time crop growth, portal back.
 
-const TILE := 16
+const TILE := 32   # R2b #287: homestead ikut petak 32
 const MAP_W := 28
 const MAP_H := 20
-const GRASS := Vector2i(1, 7)
 
 var canvas_mod: CanvasModulate
 var player: Player
@@ -54,19 +53,20 @@ func _ensure_plots() -> void:
 		PlayerData.homestead_plots.append({})
 
 func _build_ground() -> void:
+	# lpc32 (#287): rumput yang sama dengan Greenvale/Ashbrook64
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE, TILE)
 	var src := TileSetAtlasSource.new()
-	src.texture = load("res://assets/game/tiles/field.png")
+	src.texture = load("res://assets/game/tiles/lpc32/grass32.png")
 	src.texture_region_size = Vector2i(TILE, TILE)
-	src.create_tile(GRASS)
+	src.create_tile(Vector2i(0, 0))
 	ts.add_source(src, 0)
 	var layer := TileMapLayer.new()
 	layer.tile_set = ts
 	add_child(layer)
 	for y in range(MAP_H):
 		for x in range(MAP_W):
-			layer.set_cell(Vector2i(x, y), 0, GRASS)
+			layer.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
 
 func _build_boundaries() -> void:
 	var walls := StaticBody2D.new()
@@ -75,7 +75,7 @@ func _build_boundaries() -> void:
 	add_child(walls)
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
-	for rc in [Rect2(-16, -16, w + 32, 16), Rect2(-16, h, w + 32, 16), Rect2(-16, 0, 16, h), Rect2(w, 0, 16, h)]:
+	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, h, w + 64, 32), Rect2(-32, 0, 32, h), Rect2(w, 0, 32, h)]:
 		var cs := CollisionShape2D.new()
 		var shape := RectangleShape2D.new()
 		shape.size = rc.size
@@ -92,23 +92,28 @@ func _build_plots() -> void:
 	var holder := Node2D.new()
 	holder.y_sort_enabled = true
 	add_child(holder)
-	var start := Vector2(MAP_W * TILE * 0.5 - 60, MAP_H * TILE * 0.5)
+	var start := Vector2(MAP_W * TILE * 0.5 - 120, MAP_H * TILE * 0.5)
 	for i in range(4):
 		var plot := preload("res://scenes/homestead/PlotNode.tscn").instantiate()
 		holder.add_child(plot)
-		plot.global_position = start + Vector2(i * 40, 0)
+		plot.scale = Vector2(2, 2)   # petak tanam 16px (#287)
+		plot.global_position = start + Vector2(i * 80, 0)
 		plot.setup(i)
 
 func _build_portal() -> void:
 	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Kembali ke Greenvale [E]")
-	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 40)
+	portal.scale = Vector2(2, 2)
+	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 80)
 
 func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
-	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 64)
+	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 128)
 	add_child(player)
+	for c in player.get_children():   # kamera dunia 32 (#287)
+		if c is Camera2D:
+			c.zoom = Vector2(1.2, 1.2)
 
 func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())

@@ -2,7 +2,7 @@ extends Node2D
 ## Candyveil Meadows (Fase 1 content, GDD v0.2 §4) — pastel cotton-candy region
 ## built from original Aetherion candy tiles. Level 18-32 candy monsters.
 
-const TILE := 16
+const TILE := 32   # R2b #287: Candyveil ikut petak 32
 const MAP_W := 70
 const MAP_H := 52
 const SPAWN_TABLE := ["gummy_slime", "candyfloss_sheep", "jellybean_bunny", "choco_bear",
@@ -45,9 +45,9 @@ func _ready() -> void:
 
 func _dress_wild() -> void:
 	# R2 Part 2 — candy-themed density: cotton-candy trees, gumdrops, landmarks, edge.
-	var spawn := Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
-	var avoid := [Rect2(spawn - Vector2(130, 140), Vector2(260, 220))]
-	WildDresser.dress(self, "candy", MAP_W, MAP_H, avoid, [])
+	var spawn := Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120)
+	var avoid := [Rect2(spawn - Vector2(260, 280), Vector2(520, 440))]   # 2x
+	WildDresser.dress(self, "candy", MAP_W, MAP_H, avoid, [], TILE)
 	var amb := Node2D.new()
 	amb.set_script(load("res://scenes/systems/Ambience.gd"))
 	add_child(amb)
@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	if canvas_mod:
 		canvas_mod.color = GameClock.ambient_color().lerp(Color(1.0, 0.85, 0.95), 0.15)
 	if rain and player:
-		rain.position = player.global_position + Vector2(0, -180)
+		rain.position = player.global_position + Vector2(0, -360)
 	_spawn_timer -= delta
 	if _spawn_timer <= 0.0:
 		_spawn_timer = 3.0
@@ -106,7 +106,7 @@ func _build_boundaries() -> void:
 	add_child(walls)
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
-	for rc in [Rect2(-16, -16, w + 32, 16), Rect2(-16, h, w + 32, 16), Rect2(-16, 0, 16, h), Rect2(w, 0, 16, h)]:
+	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, h, w + 64, 32), Rect2(-32, 0, 32, h), Rect2(w, 0, 32, h)]:
 		var cs := CollisionShape2D.new()
 		var shape := RectangleShape2D.new()
 		shape.size = rc.size
@@ -131,14 +131,16 @@ func _scatter_props() -> void:
 		var s := Sprite2D.new()
 		s.texture = load(deco[randi() % deco.size()])
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		s.position = Vector2(randf_range(24, MAP_W * TILE - 24), randf_range(24, MAP_H * TILE - 24))
+		s.scale = Vector2(2, 2)   # prop 16px, dunia 32 (#287)
+		s.position = Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
 		props.add_child(s)
 	# animated soda pools
 	for i in range(8):
 		var a := AnimatedSprite2D.new()
 		a.sprite_frames = SheetUtil.build_strip(load("res://assets/game/tiles/candyveil/candy_soda_f1_16.png"), 16, 1, "s", 2.0)
 		a.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		a.position = Vector2(randf_range(40, MAP_W * TILE - 40), randf_range(40, MAP_H * TILE - 40))
+		a.scale = Vector2(2, 2)   # kolam soda 16px (#287)
+		a.position = Vector2(randf_range(80, MAP_W * TILE - 80), randf_range(80, MAP_H * TILE - 80))
 		a.play("s")
 		props.add_child(a)
 
@@ -154,7 +156,7 @@ func _build_weather() -> void:
 	rain.emitting = false
 	var mat := ParticleProcessMaterial.new()
 	mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
-	mat.emission_box_extents = Vector3(280, 10, 1)
+	mat.emission_box_extents = Vector3(560, 10, 1)   # 2x (#287)
 	mat.gravity = Vector3(0, 700, 0)
 	mat.initial_velocity_min = 220.0
 	mat.initial_velocity_max = 320.0
@@ -175,8 +177,11 @@ func _spawn_player() -> void:
 		player.global_position = WorldState.pending_return_pos
 		WorldState.pending_return_pos = null
 	else:
-		player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 60)
+		player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120)
 	add_child(player)
+	for c in player.get_children():   # kamera dunia 32 (#287)
+		if c is Camera2D:
+			c.zoom = Vector2(1.0, 1.0)
 
 func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
@@ -189,18 +194,20 @@ func _add_ui() -> void:
 	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Kembali ke Greenvale [E]")
-	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 32)
+	portal.scale = Vector2(2, 2)
+	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 64)
 	# side-view dungeon entrance
 	var dungeon := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(dungeon)
 	dungeon.dungeon_scene = "res://scenes/world/GummyCavern.tscn"
 	dungeon.dungeon_label = "Gummy Cavern ▼ [E]"
 	dungeon.setup("dungeon")
-	dungeon.global_position = Vector2(MAP_W * TILE * 0.5 + 80, MAP_H * TILE - 90)
-	_keeper(Vector2(MAP_W * TILE * 0.5 - 90, MAP_H * TILE - 90), "candyveil_palace")   # altar istana (#30)
-	TownFolk.place(self, "candyveil_palace", Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120))      # Hukum NPC Aneh (E6 #78)
-	MiracleSystem.manifest(self, Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 120), 240.0)   # keajaiban hari ini (E7 #79)
-	_world_gate(Vector2(MAP_W * TILE * 0.5 - 160, MAP_H * TILE - 60))   # Gerbang Penjelajah (#43)
+	dungeon.scale = Vector2(2, 2)
+	dungeon.global_position = Vector2(MAP_W * TILE * 0.5 + 160, MAP_H * TILE - 180)
+	_keeper(Vector2(MAP_W * TILE * 0.5 - 180, MAP_H * TILE - 180), "candyveil_palace")   # altar istana (#30)
+	TownFolk.place(self, "candyveil_palace", Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 240), 95)      # Hukum NPC Aneh (E6 #78)
+	MiracleSystem.manifest(self, Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 240), 480.0)   # keajaiban hari ini (E7 #79)
+	_world_gate(Vector2(MAP_W * TILE * 0.5 - 320, MAP_H * TILE - 120))   # Gerbang Penjelajah (#43)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -209,7 +216,8 @@ func _spawn_gathering() -> void:
 	for i in range(12):
 		var node := preload("res://scenes/world/GatherNode.tscn").instantiate()
 		holder.add_child(node)
-		node.global_position = Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
+		node.global_position = Vector2(randf_range(96, MAP_W * TILE - 96), randf_range(96, MAP_H * TILE - 96))
+		node.scale = Vector2(2, 2)
 		node.setup("lollipop", "cv_lolli_%d" % i)
 
 func _prime_monsters() -> void:
@@ -225,9 +233,9 @@ func _spawn_one() -> void:
 		return
 	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 	add_child(m)
-	var pos := Vector2(randf_range(64, MAP_W * TILE - 64), randf_range(64, MAP_H * TILE - 64))
-	if player and pos.distance_to(player.global_position) < 120:
-		pos += Vector2(140, 140)
+	var pos := Vector2(randf_range(128, MAP_W * TILE - 128), randf_range(128, MAP_H * TILE - 128))
+	if player and pos.distance_to(player.global_position) < 240:
+		pos += Vector2(280, 280)
 	m.global_position = pos
 	m.setup(inst, self)
 	_monster_count += 1
@@ -237,8 +245,8 @@ func on_monster_died(_m) -> void:
 
 func _keeper(pos: Vector2, loc: String) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos
+	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.scale = Vector2(2, 2); n.global_position = pos
 
 func _world_gate(pos: Vector2) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup("world_gate"); n.global_position = pos
+	add_child(n); n.setup("world_gate"); n.scale = Vector2(2, 2); n.global_position = pos

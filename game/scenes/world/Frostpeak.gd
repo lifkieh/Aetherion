@@ -3,7 +3,7 @@ extends Node2D
 ## procedural snow/ice tiles. Level 22-38. Ice/Wind monsters; falling snow ambience;
 ## pine + snow-pine forest (WildDresser "frost"). Reached from Greenvale's north gate.
 
-const TILE := 16
+const TILE := 32   # R2b #287: Frostpeak ikut petak 32
 const MAP_W := 70
 const MAP_H := 52
 const SPAWN_TABLE := ["frost_fox", "ice_wolf", "snow_owl", "yeti_cub", "ice_wolf",
@@ -38,11 +38,11 @@ func _ready() -> void:
 			print("[fps] Frostpeak fps=%.1f nodes=%d" % [Engine.get_frames_per_second(), get_tree().get_node_count()])
 			get_tree().quit())
 
-const VC := Vector2(560, 640)   # village centre
+const VC := Vector2(1120, 1280)   # village centre (2x, #287)
 
 func _dress_wild() -> void:
-	var avoid := [Rect2(VC - Vector2(240, 200), Vector2(480, 400))]   # keep the village clear
-	WildDresser.dress(self, "frost", MAP_W, MAP_H, avoid, [])
+	var avoid := [Rect2(VC - Vector2(480, 400), Vector2(960, 800))]   # keep the village clear (2x)
+	WildDresser.dress(self, "frost", MAP_W, MAP_H, avoid, [], TILE)
 	var amb := Node2D.new()
 	amb.set_script(load("res://scenes/systems/Ambience.gd"))
 	add_child(amb)
@@ -96,7 +96,7 @@ func _build_boundaries() -> void:
 	add_child(walls)
 	var w := MAP_W * TILE
 	var h := MAP_H * TILE
-	for rc in [Rect2(-16, -16, w + 32, 16), Rect2(-16, h, w + 32, 16), Rect2(-16, 0, 16, h), Rect2(w, 0, 16, h)]:
+	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, h, w + 64, 32), Rect2(-32, 0, 32, h), Rect2(w, 0, 32, h)]:
 		var cs := CollisionShape2D.new()
 		var shape := RectangleShape2D.new()
 		shape.size = rc.size
@@ -114,8 +114,11 @@ func _spawn_player() -> void:
 		player.global_position = WorldState.pending_return_pos
 		WorldState.pending_return_pos = null
 	else:
-		player.global_position = VC + Vector2(0, 90)   # arrive at the outpost
+		player.global_position = VC + Vector2(0, 180)   # arrive at the outpost
 	add_child(player)
+	for c in player.get_children():   # kamera dunia 32 (#287)
+		if c is Camera2D:
+			c.zoom = Vector2(1.0, 1.0)
 
 func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())
@@ -127,7 +130,8 @@ func _add_ui() -> void:
 	var portal := preload("res://scenes/homestead/Portal.tscn").instantiate()
 	add_child(portal)
 	portal.setup("res://scenes/Main.tscn", "Kembali ke Greenvale [E]")
-	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 32)
+	portal.scale = Vector2(2, 2)
+	portal.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE - 64)
 
 func _spawn_gathering() -> void:
 	var holder := Node2D.new()
@@ -136,7 +140,8 @@ func _spawn_gathering() -> void:
 	for i in range(12):
 		var node := preload("res://scenes/world/GatherNode.tscn").instantiate()
 		holder.add_child(node)
-		node.global_position = Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
+		node.global_position = Vector2(randf_range(96, MAP_W * TILE - 96), randf_range(96, MAP_H * TILE - 96))
+		node.scale = Vector2(2, 2)
 		node.setup("tree", "fp_tree_%d" % i, "frost")
 
 func _prime_monsters() -> void:
@@ -150,11 +155,11 @@ func _spawn_one() -> void:
 	var inst := MonsterFactory.make(species)
 	if inst.is_empty():
 		return
-	var pos := Vector2(randf_range(64, MAP_W * TILE - 64), randf_range(64, MAP_H * TILE - 64))
+	var pos := Vector2(randf_range(128, MAP_W * TILE - 128), randf_range(128, MAP_H * TILE - 128))
 	for _t in range(6):
-		if not SafeZone.contains(pos) and not (player and pos.distance_to(player.global_position) < 120):
+		if not SafeZone.contains(pos) and not (player and pos.distance_to(player.global_position) < 240):
 			break
-		pos = Vector2(randf_range(64, MAP_W * TILE - 64), randf_range(64, MAP_H * TILE - 64))
+		pos = Vector2(randf_range(128, MAP_W * TILE - 128), randf_range(128, MAP_H * TILE - 128))
 	if SafeZone.contains(pos):
 		return
 	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
@@ -176,7 +181,8 @@ func _build_village() -> void:
 	var snow := Color(0.85, 0.92, 1.05)
 	# cobble ground patch under the outpost
 	var ts := TileSet.new(); ts.tile_size = Vector2i(TILE, TILE)
-	for t in ["cobble_0", "cobble_1"]:
+	# lpc32 (#287): perkerasan pos = keluarga visual Ashbrook/Greenvale
+	for t in ["lpc32/cobble32", "lpc32/stone32"]:
 		var src := TileSetAtlasSource.new(); src.texture = load("res://assets/game/tiles/%s.png" % t)
 		src.texture_region_size = Vector2i(TILE, TILE); src.create_tile(Vector2i(0, 0)); ts.add_source(src)
 	var gl := TileMapLayer.new(); gl.tile_set = ts; gl.z_index = 1; add_child(gl)
@@ -185,15 +191,16 @@ func _build_village() -> void:
 		for x in range(ct.x - 12, ct.x + 13):
 			gl.set_cell(Vector2i(x, y), randi() % 2, Vector2i(0, 0))
 	# buildings (frost-tinted) with doors
+	# fasad lpc32 (#287) — pos pendaki satu bahasa dgn Greenvale; tint salju tetap
 	var blds := [
-		["inn", 74, 98, Vector2(-120, -70), "Penginapan Pendaki", "inn"],
-		["store", 74, 66, Vector2(120, -60), "Toko Perbekalan", "store"],
-		["house_blue", 58, 62, Vector2(-110, 70), "Pondok", "house"],
-		["house_green", 58, 62, Vector2(110, 70), "Pondok", "house"],
+		["fasad_inn", 160, 224, Vector2(-240, -140), "Penginapan Pendaki", "inn"],
+		["fasad_shop", 96, 192, Vector2(240, -120), "Toko Perbekalan", "store"],
+		["fasad_rumah", 160, 192, Vector2(-220, 140), "Pondok", "house"],
+		["fasad_rumah", 160, 192, Vector2(220, 140), "Pondok", "house"],
 	]
 	for b in blds:
 		var spr := Sprite2D.new()
-		spr.texture = load("res://assets/game/sprites/buildings/%s.png" % b[0])
+		spr.texture = load("res://assets/game/sprites/lpc32/%s.png" % b[0])
 		spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		spr.modulate = snow
 		spr.global_position = VC + b[3]
@@ -205,13 +212,15 @@ func _build_village() -> void:
 		body.add_child(cs); add_child(body)
 		var door := preload("res://scenes/world/Interactable.tscn").instantiate()
 		door.kind = "house_door"; door.custom_label = "%s [E]" % b[4]; door.interior_variant = b[5]
-		add_child(door); door.global_position = VC + b[3] + Vector2(0, b[2] * 0.5 - 4)
+		door.scale = Vector2(2, 2)
+		add_child(door); door.global_position = VC + b[3] + Vector2(0, b[2] * 0.5 - 8)
 	# service NPC (human trader) + deco
-	_vnpc("shop", VC + Vector2(150, -10))
-	_keeper(VC + Vector2(-90, 40), "frostpeak_village")   # Penjaga Pohon Es (#30)
-	_world_gate(VC + Vector2(90, 40))   # Gerbang Penjelajah (#43)
-	for d in [["crate", Vector2(-150, -20)], ["barrel", Vector2(-138, -12)], ["hay", Vector2(150, 60)], ["barrel", Vector2(90, -10)]]:
+	_vnpc("shop", VC + Vector2(300, -20))
+	_keeper(VC + Vector2(-180, 80), "frostpeak_village")   # Penjaga Pohon Es (#30)
+	_world_gate(VC + Vector2(180, 80))   # Gerbang Penjelajah (#43)
+	for d in [["crate", Vector2(-300, -40)], ["barrel", Vector2(-276, -24)], ["hay", Vector2(300, 120)], ["barrel", Vector2(180, -20)]]:
 		var s := Sprite2D.new(); s.texture = load("res://assets/game/sprites/props/%s.png" % d[0])
+		s.scale = Vector2(2, 2)
 		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST; s.global_position = VC + d[1]
 		s.z_index = int(s.global_position.y); add_child(s)
 	# walking villagers — frostkin / wolfkin / bundled humans (a climber mix)
@@ -222,32 +231,38 @@ func _build_village() -> void:
 		["Ibu Sena", {"head_race": "human", "torso_race": "wolfkin", "legs_race": "human", "hair": "long", "hair_color": "#3a2a1a", "shirt": "#5c4a3a", "pants": "#3a2a1a"}, [Vector2(-120, 60), Vector2(-40, 30), Vector2(-140, 20)]],
 		["Pak Tuor", _frost_cfg("human", "short", "#e8e2f4", "#453d5c", "#2b2b3a"), [Vector2(90, 40), Vector2(150, 100), Vector2(60, 70)]],
 	]
+	var lpc_i := 100   # LPC warga_100.. (#287)
 	for r in routes:
 		var v := preload("res://scenes/actors/Villager.tscn").instantiate()
 		var wps: Array = []
-		for w in r[2]: wps.append(VC + w)
+		for w in r[2]: wps.append(VC + w * 2.0)
+		v.lpc_sheet = "warga_%03d" % lpc_i
+		lpc_i += 1
 		add_child(v); v.setup(r[0], r[1], wps); v.global_position = wps[0]
-	TownFolk.place(self, "frostpeak_village", VC)       # Hukum NPC Aneh (E6 #78)
-	MiracleSystem.manifest(self, VC, 220.0)             # keajaiban hari ini (E7 #79)
+	TownFolk.place(self, "frostpeak_village", VC, 105)  # Hukum NPC Aneh (E6 #78) — LPC (#287)
+	MiracleSystem.manifest(self, VC, 440.0)             # keajaiban hari ini (E7 #79)
 	# gate guards + the Foothill Barrow dungeon entrance
+	var g_i := 110   # penjaga LPC (#287)
 	for g in SafeZone.gates():
 		var guard := Node2D.new(); guard.set_script(load("res://scenes/actors/Guard.gd"))
+		guard.set("lpc_sheet", "warga_%03d" % g_i); g_i += 1
 		add_child(guard); guard.global_position = g
 	var barrow := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(barrow)
 	barrow.dungeon_scene = "res://scenes/world/FoothillBarrow.tscn"
 	barrow.dungeon_label = "Foothill Barrow ▼ [E]"
 	barrow.setup("dungeon")
-	barrow.global_position = VC + Vector2(240, -120)
+	barrow.scale = Vector2(2, 2)
+	barrow.global_position = VC + Vector2(480, -240)
 
 func _vnpc(kind: String, pos: Vector2) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup(kind); n.global_position = pos
+	add_child(n); n.setup(kind); n.scale = Vector2(2, 2); n.global_position = pos
 
 func _keeper(pos: Vector2, loc: String) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.global_position = pos
+	add_child(n); n.setup("tree_keeper"); n.keeper_location = loc; n.scale = Vector2(2, 2); n.global_position = pos
 
 func _world_gate(pos: Vector2) -> void:
 	var n := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(n); n.setup("world_gate"); n.global_position = pos
+	add_child(n); n.setup("world_gate"); n.scale = Vector2(2, 2); n.global_position = pos
