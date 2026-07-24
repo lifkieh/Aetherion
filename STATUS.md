@@ -11,11 +11,29 @@
      peringatan yang tak diperbarui berubah menjadi persis hal yang diperingatkannya.
      Perbarui angkanya di commit yang sama dengan pekerjaan yang mengubahnya.
      ══════════════════════════════════════════════════════════════════════════ -->
-## ✅ TEST — angka SUNGGUHAN (diukur 2026-07-21)
+## ✅ TEST — angka SUNGGUHAN (diukur 2026-07-24)
 
-**1119 assertion lulus, 0 gagal.** Runner memanggil **113 fungsi `_test_*`**.
+**1129 assertion lulus, 0 gagal.** Runner memanggil **115 fungsi `_test_*`**
+(baru: `_test_player_look_lpc_280`, `_test_chargen_no_stack_280`).
+Perakit: `test_perakit.py` **16 hijau** · rangka monster: **60/60 berisi**.
 
-*(Riwayat: 947 hantu → 1024 diukur 2026-07-17 → 1119 diukur 2026-07-21.)*
+*(Riwayat: 947 hantu → 1024 diukur 2026-07-17 → 1119 diukur 2026-07-21 →
+1129 diukur 2026-07-24. Ingat #273: angka bergoyang ikut kalender — gerbangnya
+0 gagal + baris RESULT, bukan totalnya.)*
+
+### Ronde #278–#282 (2026-07-24) — fondasi visual & lisensi
+- **Bug dasar (#280):** pemain kini LPC 64px di dalam game (dulu `_charsys` 32px
+  "mengecil"); panel chargen tak lagi menumpuk saat klik cepat; potret HUD = wajah
+  LPC pemain sendiri.
+- **Monster (#278-1):** 60 spesies LPC 64px BERANIMASI 4 arah (`gen_monster_lpc.py`),
+  DCSS statis pensiun; arah tiap paket dipetakan mata; kredit lengkap; pendekatan
+  visual yang belum ideal DICATAT di `sprites/monsters/monster_lpc.credits.txt`.
+- **Perakit (#278-2/3):** skintone 22 nada hidup; baris expanded terkalibrasi
+  (sit/run/jump di-slice, penjaga anti-telanjang); `[TODO kredit]` = NOL di 130
+  manifest (CREDITS.csv ULPC resmi, beku di repo).
+- **Arsitektur (#281):** `reports/AUDIT_ARSITEKTUR.md` — temuan terukur (48 autoload,
+  Ashbrook64 2.385 baris, dualitas CharGen/LpcGen) + peta migrasi era-16px per-wilayah
+  (#279 §D) menunggu putusan Direktur.
 
 **Cara menjalankan (dari root repo):**
 ```bash

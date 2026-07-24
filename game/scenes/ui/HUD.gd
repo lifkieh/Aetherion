@@ -95,10 +95,22 @@ func _build_character_panel() -> void:
 	pf.add_theme_stylebox_override("panel", psb)
 	head.add_child(pf)
 	var portrait := TextureRect.new()
-	var at := AtlasTexture.new()
-	at.atlas = load("res://assets/game/sprites/player/idle.png")
-	at.region = Rect2(0, 0, 16, 16)
-	portrait.texture = at
+	# Potret = wajah pemain SESUNGGUHNYA (LPC 64px, #279/#280a) — bukan ikon 16px
+	# era lama yang tampil sebagai gumpalan hijau untuk semua orang. Kepala+bahu
+	# menempati kira-kira (16,2)..(48,34) di sel idle_down 64px. Ikon lama tinggal
+	# cadangan bila manifest LPC absen.
+	var ptex: Texture2D = null
+	if LpcGen.siap():
+		var pet: ImageTexture = LpcGen.petak(LpcGen.rapikan(PlayerData.char_config), 2, 0)
+		if pet != null:
+			ptex = ImageTexture.create_from_image(
+				pet.get_image().get_region(Rect2i(16, 2, 32, 32)))
+	if ptex == null:
+		var at := AtlasTexture.new()
+		at.atlas = load("res://assets/game/sprites/player/idle.png")
+		at.region = Rect2(0, 0, 16, 16)
+		ptex = at
+	portrait.texture = ptex
 	portrait.set_anchors_preset(Control.PRESET_FULL_RECT)
 	portrait.offset_left = 3; portrait.offset_top = 3; portrait.offset_right = -3; portrait.offset_bottom = -3
 	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
