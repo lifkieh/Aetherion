@@ -280,12 +280,18 @@ func _cycler_pakaian(label: String, slot: String) -> void:
 ## Panel dibangun ULANG, bukan ditambal. Mengganti badan mengubah SELURUH daftar
 ## pilihan (anak punya 3 baju, perempuan 29) — menambal label satu per satu akan
 ## menyisakan baris yang menunjuk pilihan yang sudah tak ada.
+##
+## SINKRON, tanpa await (#280b). Versi lama `queue_free` + `await process_frame`:
+## dua klik yang mendarat di SATU frame (mudah — merakit sheet 832×2944 membuat
+## frame panjang) sama-sama melewati await lalu sama-sama menambah panel penuh —
+## panel berlipat 12, 18 baris ("ketimpa-timpa"). `remove_child` melepas anak
+## SEKARANG, jadi pembangunan berikutnya selalu mulai dari kotak kosong.
 func _rebuild_opsi() -> void:
 	if _opts_box == null:
 		return
 	for c in _opts_box.get_children():
+		_opts_box.remove_child(c)
 		c.queue_free()
-	await get_tree().process_frame
 	if LpcGen.siap():
 		_cycler_lpc("Bentuk Badan", "build", LpcGen.builds(), BUILD_NAME)
 		_cycler_lpc("Warna Kulit", "kulit", LpcGen.kulit(_lb()), {})

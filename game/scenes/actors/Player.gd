@@ -37,11 +37,27 @@ func _ready() -> void:
 	add_child(cam)
 
 func _build_sprite() -> void:
-	# Aetherion Character System: build the look from the saved config (CharGen).
-	var cfg: Dictionary = PlayerData.char_config if not PlayerData.char_config.is_empty() else CharGen.default_config()
-	sprite.sprite_frames = CharGen.sprite_frames(cfg)
+	# Tiga bentuk config hidup berdampingan, dan pemilih inilah bugnya (#280a):
+	#   1. bentuk LpcGen (`build`/`kulit`/`torso`…) — keluaran CharacterCreator LPC.
+	#      Dulu bentuk ini DISUAPKAN ke CharGen yang tak mengenalnya, jadi pemain
+	#      buatan-sendiri selalu jatuh ke `_charsys` 32px — satu-satunya aktor kecil
+	#      di kota 64px ("player mengecil", laporan Direktur).
+	#   2. kosong — pemain default → `CharGen.default_config()` (kunci `lpc` #254,
+	#      lembar panggang `player_default` 64px).
+	#   3. bentuk `_charsys` lama (`head_race`…) dari save lama → CharGen legacy 32px.
+	var cfg: Dictionary = PlayerData.char_config
+	var sf: SpriteFrames = null
+	if LpcGen.siap() and cfg.has("build"):
+		sf = LpcGen.sprite_frames(LpcGen.rapikan(cfg))
+	if sf == null:
+		sf = CharGen.sprite_frames(cfg if not cfg.is_empty() else CharGen.default_config())
+	sprite.sprite_frames = sf
+	# Offset DIUKUR dari sel frame, bukan ditebak dari jalur: 64px → kaki di titik
+	# asal butuh -20 (pola Villager LPC); 32px `_charsys` butuh -8. Jalur baked-LPC
+	# lama selalu memakai -8 — pemain default 64px melayang 12px tanpa ada yang lapor.
+	var t0: Texture2D = sf.get_frame_texture("idle_down", 0) if sf.has_animation("idle_down") else null
+	sprite.offset = Vector2(0, -20) if (t0 != null and t0.get_height() >= 64) else Vector2(0, -8)
 	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	sprite.offset = Vector2(0, -8)     # 32px cell: lift so the character's feet sit at the node origin
 	sprite.play("idle_down")
 
 ## Rebuild the sprite after the player re-customizes (Cermin Jiwa).

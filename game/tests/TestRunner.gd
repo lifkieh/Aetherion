@@ -155,6 +155,9 @@ func _ready() -> void:
 	await _test_core_loop_ashbrook_besar()
 	await _test_solo_loop_ashbrook_besar()
 	await _test_examine_papan_otha()
+	# #280 — dua bug dasar visual pemain (2026-07-24)
+	await _test_player_look_lpc_280()
+	await _test_chargen_no_stack_280()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5248,3 +5251,68 @@ func _test_solo_loop_ashbrook_besar() -> void:
 	check("dan sesuatu TETAP hilang (#226 #3)", String(r.loss).strip_edges() != "", str(r.loss))
 	if is_instance_valid(scene):
 		scene.queue_free()
+
+
+## ═══════════════ #280 — dua bug dasar visual pemain (2026-07-24) ═══════════════
+
+## #280a — pemain buatan-creator (bentuk LpcGen: `build`/`kulit`/…) WAJIB dirakit
+## LPC 64px. Dulu bentuk itu disuapkan ke CharGen yang tak mengenalnya → pemain
+## jatuh ke `_charsys` 32px, satu-satunya aktor kecil di kota 64px. #151b: ukur
+## scene Player NYATA (frame, offset, animasi), bukan konstanta.
+func _test_player_look_lpc_280() -> void:
+	print("[#280a — pemain LPC 64px lewat scene Player nyata]")
+	var lama: Dictionary = PlayerData.char_config
+	PlayerData.char_config = LpcGen.rapikan({"build": "female"})
+	var p: Node = load("res://scenes/actors/Player.tscn").instantiate()
+	add_child(p)
+	await get_tree().process_frame
+	var spr: AnimatedSprite2D = p.get_node("Sprite")
+	var sf: SpriteFrames = spr.sprite_frames
+	var t0: Texture2D = sf.get_frame_texture("idle_down", 0) if sf and sf.has_animation("idle_down") else null
+	check("frame pemain 64px (bukan 32 _charsys)", t0 != null and t0.get_height() == 64)
+	check("offset kaki sel-64 (0,-20)", spr.offset == Vector2(0, -20))
+	check("attack_down ada — baris slash LPC, 6 frame, non-loop",
+		sf.has_animation("attack_down") and sf.get_frame_count("attack_down") == 6
+		and not sf.get_animation_loop("attack_down"))
+	check("walk_down LPC 8 frame", sf.has_animation("walk_down") and sf.get_frame_count("walk_down") == 8)
+	p.queue_free()
+	PlayerData.char_config = lama
+
+## #280b — dua klik ▶ yang mendarat di SATU frame tidak boleh menggandakan panel
+## opsi. Race lama: `_rebuild_opsi()` ber-`await` → kedua klik sama-sama lolos lalu
+## sama-sama menambah panel penuh (6 → 12 → 18 baris, "ketimpa-timpa"). #151: masuk
+## lewat pintu pemain (tombol yang benar-benar di-emit), bukan memanggil internal.
+func _test_chargen_no_stack_280() -> void:
+	print("[#280b — panel chargen tak menumpuk saat klik cepat]")
+	var cc: Node = load("res://scenes/ui/CharacterCreator.tscn").instantiate()
+	add_child(cc)
+	await get_tree().process_frame
+	get_tree().paused = false   # mode=edit menjeda tree; test tak boleh mewarisinya
+	await get_tree().process_frame
+	var box: VBoxContainer = cc._opts_box
+	check("panel opsi terbangun", box != null and box.get_child_count() > 0)
+	if box == null:
+		cc.queue_free()
+		return
+	var awal := box.get_child_count()
+	var btn: Button = null
+	for row in box.get_children():
+		for c in row.get_children():
+			if c is Button and (c as Button).text == "▶":
+				btn = c
+				break
+		if btn != null:
+			break
+	check("tombol ▶ ditemukan", btn != null)
+	if btn != null:
+		btn.pressed.emit()
+		btn.pressed.emit()
+		await get_tree().process_frame
+		await get_tree().process_frame
+		var kini := 0
+		for c in box.get_children():
+			if not c.is_queued_for_deletion():
+				kini += 1
+		check("dua klik satu frame -> panel tetap %d baris (dulu %d)" % [awal, awal * 2], kini == awal)
+	cc.queue_free()
+	get_tree().paused = false

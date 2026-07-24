@@ -200,4 +200,16 @@ func sprite_frames(cfg: Dictionary) -> SpriteFrames:
 					ImageTexture.create_from_image(img.get_region(r)))
 		sf.add_frame("idle_" + arah[i],
 			ImageTexture.create_from_image(img.get_region(Rect2i(0, baris * C, C, C))))
+		# attack = baris SLASH LPC (12..15, urutan arah sama dengan walk; 6 frame).
+		# Player memainkan "attack_<arah>" — tanpa animasi ini AnimatedSprite2D
+		# berteriak "Animation not found" tiap serangan dan pose membeku.
+		var slash: int = 12 + i
+		var nm: String = "attack_" + arah[i]
+		sf.add_animation(nm)
+		sf.set_animation_speed(nm, 14.0)
+		sf.set_animation_loop(nm, false)
+		for f in range(6):
+			var r2 := Rect2i(f * C, slash * C, C, C)
+			if r2.position.x + C <= img.get_width() and r2.position.y + C <= img.get_height():
+				sf.add_frame(nm, ImageTexture.create_from_image(img.get_region(r2)))
 	return sf

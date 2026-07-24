@@ -427,34 +427,30 @@ dibuktikan dengan **menaruh pemain di sana** dan memeriksa lampu **masuk kotak k
 
 **Retrofit:** test yang memeriksa string alih-alih dunia ditandai **`[SHALLOW]`** dan dimigrasi.
 
-## HUKUM SKALA VISUAL (#253) — **"KEINDAHAN DARI SENI YANG LEBIH BAIK, BUKAN PIKSEL YANG LEBIH BANYAK"**
+## HUKUM SKALA VISUAL (#256, menggantikan #253 — dicabut; amandemen #278/#279)
 
-> **Dunia Aetherion = 16px. Karakter = `_charsys` 32px. FINAL.**
+> **Karakter · NPC · monster = LPC 64px (sheet ULPC expanded 832×2944).**
+> **Dunia (petak/objek/bangunan) = 32px.** `TILE := 32`; satu karakter setinggi dua petak —
+> itu konvensi LPC (badan mengisi ~34–40px dari sel 64), bukan cacat.
 > Kalau sebuah adegan kurang indah, yang diperbaiki **SENINYA** — palet, komposisi, siluet,
-> pencahayaan — **bukan ukuran kanvasnya.**
+> pencahayaan — **bukan ukuran kanvasnya.** (Kalimat ini satu-satunya bagian #253 yang bertahan.)
 
-**Preseden yang dipegang Direktur:** Stardew Valley 16px · Celeste 8px · Suikoden resolusi rendah.
-Semuanya indah karena **tangan, palet, dan komposisi** — bukan karena kanvas besar.
+**Rantai keputusannya (supaya sejarah terlacak):** #250 (LPC = sumber karakter) → #251 →
+#253 ("dunia 16px FINAL") → **DICABUT** oleh #254 (LPC sumber tunggal karakter+dunia; SA
+diterima penuh, #277) → **#256 mengunci bentuk akhirnya: karakter LPC 64px + dunia 32px.**
+Angka terukur di `reports/`: Ashbrook64 = 60×44 petak 32px, viewport 1280×720, zoom 2.0.
 
-**Kenapa 64px ditutup (bukan selera — ketiadaan bahan):** survei OpenGameArt menemukan
-**nol tileset dunia 64px CC0/CC-BY yang lengkap.** Yang ada di 64px gagal di lisensi SA,
-cakupan dungeon-saja, atau gaya 3D-render. Seni dunia top-down piksel yang terbuka
-terkonsentrasi di **16px dan 32px**; 64px hanya dihuni penjual berbayar (48×48, ekosistem
-RPG Maker MZ). Maka "pindah 64px" = **membeli**, atau **menggambar 148 aset dunia dari nol
-(~2 tahun solo)** — itu keputusan menghentikan game, bukan keputusan visual.
-Bukti & angka: `reports/BURU_64PX_HASIL.md` · `reports/BUKTI_64PX.md`.
+**#279 (2026-07-24): era 16px DIAKHIRI.** Aset 16px warisan (props/, tiles/ akar, dungeon,
+desert, candyveil, wilayah lama) **diganti/di-upgrade** ke standar di atas — bukan dipelihara
+berdampingan. Tiga zaman aset dalam satu repo = utang visual dan utang arsitektur.
 
-**Yang DICABUT:** #250 (LPC 64px = sumber karakter tunggal). `_charsys` **dipertahankan**,
-bukan dipensiunkan — 32px milik sendiri, cocok dunia 16px, nol beban lisensi.
+**Aturan pengadaan aset (#279):** cari **online/gudang dulu** (OGA dsb.); membuat sendiri
+hanya bila tak ada. Setiap kandidat **diperiksa MATA/screenshot — bukan nama file.**
+Kredit wajib tiap aset (#277), `credits_db.json` + `ASSET_LOG.md`.
 
-**Yang DIARSIPKAN, bukan dibuang:** pipeline LPC (`_tools/lpc_assembler/`, ter-commit #251).
-Kerja tidak hangus. **Pintu tetap terbuka:** bila kelak Direktur MEMBELI tileset 64px pro,
-64px jadi mungkin dan pipeline itu langsung bisa dipakai.
-
-**⚠ Yang sudah terbukti dan tetap berlaku walau 16px:** CC0 **tidak** melindungi identitas
-visual (CC0 = domain publik; pesaing boleh memakai aset yang sama). Yang melindungi hanya
-**digambar sendiri** atau **dibeli proprietary**. Ini alasan tambahan untuk memperbaiki
-seni 16px milik sendiri ketimbang menumpuk aset gratisan.
+**⚠ Tetap berlaku:** CC0 **tidak** melindungi identitas visual (pesaing boleh memakai aset
+yang sama). Yang melindungi hanya **digambar sendiri** atau **dibeli proprietary** — alasan
+untuk terus menyeleksi dan mengkurasi, bukan menumpuk gratisan.
 
 ## HUKUM GERBANG TEST (#249, diperketat #273) — **"0 GAGAL, DAN SUITE HARUS SELESAI"**
 
