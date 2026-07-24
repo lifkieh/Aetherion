@@ -374,8 +374,12 @@ func _jejak(nama: String, pos: Vector2, skala := SKALA_JEJAK) -> Sprite2D:
 	#   di antara ratusan baris keluaran uji.
 	#   Sekarang akarnya dipilih dari BERKASNYA ADA DI MANA, bukan dari tebakan nama.
 	var akar := P_T if nama.ends_with("32.png") else P_OLD
-	if not nama.ends_with("32.png") and not ResourceLoader.exists(P_OLD + nama) \
-			and ResourceLoader.exists(P_S + nama):
+	# Pemilihan akar dari KEBERADAAN berkas untuk KEDUA cabang (#283). Cabang
+	# `*32.png` dulu dikunci ke tiles/lpc32 tanpa cek — `kayu_tumpuk32`/`kayu_batang32`/
+	# `gerobak32` pindah ke sprites/lpc32 saat rapikan aset dan LIMA prop tak pernah
+	# tergambar; peringatannya tenggelam di ratusan baris log (kelas cacat yang sama
+	# dengan bench_lpc dulu, di cabang yang satunya).
+	if not ResourceLoader.exists(akar + nama) and ResourceLoader.exists(P_S + nama):
 		akar = P_S
 	var s := _put(akar + nama, pos)
 	if s:

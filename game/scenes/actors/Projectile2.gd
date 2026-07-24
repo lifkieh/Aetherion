@@ -106,7 +106,11 @@ func _on_body(body: Node) -> void:
 func _deactivate() -> void:
 	active = false
 	visible = false
-	monitoring = false
+	# _deactivate dipanggil dari _on_body_entered — mengubah `monitoring` DI DALAM
+	# sinyal area diblokir mesin fisika ("Function blocked during in/out signal").
+	# Galatnya tak menghentikan apa pun, tapi monitoring TIDAK berubah — proyektil
+	# "mati" masih bisa mencatat tabrakan satu frame lagi. set_deferred = jalur resmi.
+	set_deferred("monitoring", false)
 	set_physics_process(false)
 	velocity_v = Vector2.ZERO
 	if _pool != null:
