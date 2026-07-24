@@ -90,3 +90,70 @@ Animated Wild Animals (ScratchIO, CC0)
   Punya persis yang dicari secara nama — rusa, beruang, SERIGALA, rubah, BABI,
   kelinci, dengan jalan/lari/diam. Tapi seluruhnya TAMPAK SAMPING, satu baris
   (tinggi 26..52 px). Untuk peta atas-bawah ia tak terpakai sama sekali.
+
+
+## 5. [LPC] Golem
+Berkas : golem-walk.png · golem-atk.png · golem-die.png
+Seniman: Stephen "Redshrike" Challener (grafis), William.Thompsonj (kontributor)
+Lisensi: CC-BY 4.0/3.0 / GPL 3.0/2.0 / OGA-BY 3.0
+URL    : https://opengameart.org/content/lpc-golem
+Dipakai: rock_golem · glacier_core (warna asli es) · caramel_golem (re-warna)
+
+## 6. Stendhal dragons
+Berkas : stendhal_dragons.zip (PNG/96x128/*.png, 3 kolom x 4 baris N/E/S/W)
+Seniman: Kimmo Rundelin (kiheru) untuk Stendhal
+Lisensi: CC-BY-SA 3.0 (LICENSE.txt di dalam zip)
+Dipakai: thunder_dragon (blue) · storm_sovereign (purple) · frost_wyvern (green
+         re-warna es) · blizzard_wyvern (blue pudar)
+
+## 7. Kobolds (Dog Soldier Rework)
+Berkas : kobold-soldier-001.png (144x256 = 3x4 sel 48x64, N/E/S/W)
+Seniman: yolkati · Svetlana Kushnariova (Cabbit) · diamonddmgirl ·
+         Michael Williams · GrumpyDiamond · Jordan Irwin (AntumDeluge)
+Lisensi: CC-BY-SA 3.0 — kredit Cabbit: "Svetlana Kushnariova" lana-chan@yandex.ru
+URL    : https://opengameart.org/content/kobolds-dog-soldier-rework
+Dipakai: anubis_warden
+
+## 8. Elephant Rework
+Berkas : elephant-NESW.png (288x384 = 3x4 sel 96x96)
+Seniman: Kimmo Rundelin, berbasis elephant lawnjelly
+Lisensi: CC-BY 3.0
+URL    : https://opengameart.org/content/elephant-rework
+Dipakai: mammoth (tint cokelat)
+
+## 9. Big Red Crab
+Berkas : crab-walk.png · crab-claws.png (frame 32x32)
+Seniman: rapidpunches
+Lisensi: CC-BY 4.0/3.0 — atribusi "RAPIDPUNCHES"
+URL    : https://opengameart.org/content/big-red-crab
+Dipakai: storm_crab · tempest_crab (re-warna)
+
+## 10. LPC beetle
+Berkas : beetle5.png (latar magenta + kisi putih; dipotong per-sel 5x4)
+Seniman: Stephen "Redshrike" Challener; recolor cemkalyoncu; layout William.Thompsonj
+Lisensi: CC-BY 3.0 / CC-BY-SA 3.0 / GPL 2.0 / OGA-BY 3.0
+URL    : https://opengameart.org/content/lpc-beetle
+Dipakai: sand_scarab (tint pasir)
+
+## 11. Burung (lpc_birds + eagle)
+Berkas : lpc_birds_black.png · lpc_birds_white.png · bird_2_eagle.png
+         (96x256 = 3 kolom x 8 baris sel 32; baris 0-3 terbang [kiri,atas,depan,kanan])
+Seniman: Tuomo Untinen (Reemax) — lihat juga assets_raw/lpc/lpc_birds_*.credits.txt
+Lisensi: CC-BY 3.0 / CC-BY-SA 3.0 / GPL — "Raven and Seagull by Tuomo Untinen"
+URL    : https://opengameart.org/content/lpc-raven-and-seagull
+Dipakai: vulture · timberwing_owl · snow_owl · thunder_hawk · storm_roc
+⚠ 32px — KECIL untuk thunder_hawk/storm_roc; gap dicatat di monster_lpc.credits.txt
+
+## 12. Bunnysheet
+Berkas : bunnysheet5.png (lembar tak-seragam; deteksi komponen per pita-y)
+Seniman: [dari gudang lpc lama — halaman OGA "bunny rabbit"; kredit berkas
+         menyertai pack asal di assets_raw/lpc]
+Lisensi: LPC (CC-BY-SA 3.0 / GPL 3.0)
+Dipakai: fluffbit · moonbit (tint ungu) · jellybean_bunny (tint merah muda)
+
+## PEMAKAIAN WOLFSHEET (butir 4 di atas — kini DIPAKAI)
+Wilayah dipetakan mata (reports/preview/wolf_region_proof*.png):
+  depan y192 x0-160 (5f 32x64) · belakang y192 x160-320 (5f) ·
+  kiri y128 [x320,x384,x576] (3f 64x32) · kanan = cermin kiri
+Dipakai: grey_wolf(s3) · alpha_wolf(s1) · dire_wolf(s2) · ice_wolf(s3 es) ·
+         frost_dire_wolf(s2 es)

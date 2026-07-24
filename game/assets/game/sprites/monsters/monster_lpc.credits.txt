@@ -1,0 +1,29 @@
+# Monster LPC beranimasi — dirakit `_tools/gen_monster_lpc.py` (#278).
+# Lembar N kolom x 4 baris, baris = SheetUtil.DIRS [down, up, left, right],
+# frame 0 = idle. Makhluk kecil DIBIARKAN kecil (32px) — kepadatan piksel sama,
+# tanpa pembesaran blok.
+#
+# SUMBER (semua tercantum di assets_raw/oga/monsters/CREDITS.txt dengan URL):
+#   [LPC] Monsters — CharlesGabriel, bagzie, bluecarrot16 (CC-BY-SA 3.0/GPL 3.0)
+#     slime* bat snake* big_worm ghost* man_eater_flower* bee
+#   [LPC] bears, deer, lions and more — tapatilorenzo (CC0) + Sevarihk (CC-BY 4.0)
+#     fox* deer bear* giant-rat* mushroom-walker
+#   [LPC] Wild Boar — BenCreating, daneeklu, Sharm (CC-BY-SA 3.0/GPL 3.0)
+#   [LPC] Golem — Redshrike + William.Thompsonj (CC-BY/OGA-BY 3.0): golem*
+#   Stendhal dragons — Kimmo Rundelin (CC-BY-SA 3.0): naga & wyvern*
+#   Kobolds (Dog Soldier Rework) — yolkati, Cabbit/Svetlana Kushnariova,
+#     diamonddmgirl, GrumpyDiamond, AntumDeluge (CC-BY-SA 3.0): anubis_warden
+#   Elephant Rework — Kimmo Rundelin, dari lawnjelly (CC-BY 3.0): mammoth
+#   LPC style farm animals — daneeklu (CC-BY 3.0): woolly_calf candyfloss_sheep
+#   Big Red Crab — rapidpunches (CC-BY 3.0/4.0): storm_crab tempest_crab
+#   LPC Raven and Seagull — Tuomo Untinen (CC-BY 3.0): vulture owl*
+#   Bird sprites (bird_2_eagle) — lihat lpc_birds credits: thunder_hawk storm_roc
+#   (* = termasuk varian re-warna hue-shift deterministik oleh generator)
+#
+# PENDEKATAN VISUAL YANG DILAPORKAN (bukan disembunyikan):
+#   volt_eel/levia_eel = ular re-warna · cloud_ray/nimbus_ray = hantu re-warna
+#   frost/storm_elemental = hantu re-warna · peppermint_fairy/lollipop_sprite = hantu
+#   volt_weasel/raiju = tikus raksasa re-warna · frost_titan = beruang kutub (boss)
+#   thunder_hawk/storm_roc/owl/vulture = burung 32px (KECIL untuk hawk/roc)
+# WAVE-2 (belum diganti, masih seni lama): grey_wolf alpha_wolf ice_wolf dire_wolf
+#   frost_dire_wolf fluffbit moonbit jellybean_bunny sand_scarab
