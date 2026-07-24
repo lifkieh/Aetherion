@@ -104,6 +104,19 @@ def ladder():
     return im
 
 
+def torch():
+    """Obor dinding 32 — nyala 3 nada + gagang kayu; menggantikan obor 16 di-skala."""
+    im = Image.new("RGBA", (16, 32), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rectangle([6, 14, 9, 30], fill=(110, 78, 46, 255))       # gagang
+    d.line([(6, 14), (6, 30)], fill=(134, 98, 62, 255))
+    d.rectangle([4, 11, 11, 15], fill=(70, 50, 30, 255))       # ikatan
+    d.polygon([(8, 1), (12, 8), (10, 12), (5, 12), (3, 8)], fill=(255, 176, 64, 255))
+    d.polygon([(8, 3), (10, 8), (8, 11), (6, 8)], fill=(255, 224, 120, 255))
+    d.point((8, 5), fill=(255, 255, 200, 255))
+    return im
+
+
 def bg():
     im = Image.new("RGBA", (T, T), (24, 27, 38, 255))
     _noise(im, (30, 34, 47, 255), 26, 2)
@@ -118,6 +131,9 @@ def main():
                      ("ladder", ladder), ("bg", bg)]:
         fn().save(os.path.join(DST, nama + ".png"))
         print("  ->", nama + ".png (32x32)")
+    tp = os.path.join(REPO, "game", "assets", "game", "sprites", "dungeon", "torch.png")
+    torch().save(tp)
+    print("  -> sprites/dungeon/torch.png (16x32)")
     # lembar kontak bukti
     kontak = Image.new("RGBA", (7 * (T * 3 + 6), T * 3 + 18), (30, 28, 34, 255))
     d = ImageDraw.Draw(kontak)

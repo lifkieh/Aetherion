@@ -3,7 +3,7 @@ extends Node2D
 ## digested: survive 60s while stomach acid wells up. Die = fail permanent.
 ## Clear -> material [S] Ambergris Star + permanent... (Fase 0: reward only).
 
-const TILE := 16
+const TILE := 32   # bersih-bersih #289
 const MAP_W := 42
 const MAP_H := 30
 const SURVIVE_TIME := 60.0
@@ -90,6 +90,12 @@ func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
 	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE * 0.5)
 	add_child(player)
+	for c in player.get_children():   # kamera dunia 32 (#289)
+		if c is Camera2D:
+			c.zoom = Vector2(1.2, 1.2)
+			# limit kamera = tepi peta (#289) — pita void di luar peta tak pernah terlihat
+			c.limit_left = 0; c.limit_top = 0
+			c.limit_right = MAP_W * TILE; c.limit_bottom = MAP_H * TILE
 
 func _spawn_parasites() -> void:
 	# a couple of slow digestive parasites to pressure movement
@@ -101,7 +107,7 @@ func _spawn_parasites() -> void:
 		inst["aggro_radius"] = 1200.0
 		var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 		add_child(m)
-		m.global_position = Vector2(randf_range(40, MAP_W * TILE - 40), randf_range(40, MAP_H * TILE - 40))
+		m.global_position = Vector2(randf_range(80, MAP_W * TILE - 80), randf_range(80, MAP_H * TILE - 80))
 		m.setup(inst, self)
 
 func _spawn_acid() -> void:

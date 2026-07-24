@@ -154,6 +154,9 @@ func _spawn_player() -> void:
 	for c in player.get_children():   # kamera dunia 32 (#287)
 		if c is Camera2D:
 			c.zoom = Vector2(1.0, 1.0)
+			# limit kamera = tepi peta (#289) — pita void di luar peta tak pernah terlihat
+			c.limit_left = 0; c.limit_top = 0
+			c.limit_right = MAP_W * TILE; c.limit_bottom = MAP_H * TILE
 
 func _add_ui() -> void:
 	add_child(preload("res://scenes/ui/HUD.tscn").instantiate())

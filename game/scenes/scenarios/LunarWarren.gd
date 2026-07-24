@@ -3,7 +3,7 @@ extends Node2D
 ## Survive 60s chased by the Moon Rabbit Berserker WITHOUT killing a single
 ## rabbit (sin must be atoned). Kill a rabbit or die = fail permanent.
 
-const TILE := 16
+const TILE := 32   # bersih-bersih #289: skenario ikut petak 32
 const MAP_W := 40
 const MAP_H := 30
 const SURVIVE_TIME := 60.0
@@ -49,9 +49,9 @@ func _build_ground() -> void:
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE, TILE)
 	var src := TileSetAtlasSource.new()
-	src.texture = load("res://assets/game/tiles/field.png")
+	src.texture = load("res://assets/game/tiles/lpc32/grass32.png")
 	src.texture_region_size = Vector2i(TILE, TILE)
-	src.create_tile(Vector2i(1, 7))
+	src.create_tile(Vector2i(0, 0))
 	ts.add_source(src, 0)
 	var layer := TileMapLayer.new()
 	layer.tile_set = ts
@@ -59,7 +59,7 @@ func _build_ground() -> void:
 	add_child(layer)
 	for y in range(MAP_H):
 		for x in range(MAP_W):
-			layer.set_cell(Vector2i(x, y), 0, Vector2i(1, 7))
+			layer.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
 
 func _build_boundaries() -> void:
 	var walls := StaticBody2D.new()
@@ -85,13 +85,19 @@ func _spawn_player() -> void:
 	player = preload("res://scenes/actors/Player.tscn").instantiate()
 	player.global_position = Vector2(MAP_W * TILE * 0.5, MAP_H * TILE * 0.5)
 	add_child(player)
+	for c in player.get_children():   # kamera dunia 32 (#289)
+		if c is Camera2D:
+			c.zoom = Vector2(1.2, 1.2)
+			# limit kamera = tepi peta (#289) — pita void di luar peta tak pernah terlihat
+			c.limit_left = 0; c.limit_top = 0
+			c.limit_right = MAP_W * TILE; c.limit_bottom = MAP_H * TILE
 
 func _spawn_rabbits() -> void:
 	for i in range(8):
 		var inst := MonsterFactory.make("fluffbit", 1, 3)
 		var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 		add_child(m)
-		m.global_position = Vector2(randf_range(48, MAP_W * TILE - 48), randf_range(48, MAP_H * TILE - 48))
+		m.global_position = Vector2(randf_range(96, MAP_W * TILE - 96), randf_range(96, MAP_H * TILE - 96))
 		m.setup(inst, self)
 
 func _spawn_berserker() -> void:
@@ -107,7 +113,7 @@ func _spawn_berserker() -> void:
 	inst["is_rabbit"] = true
 	var m := preload("res://scenes/actors/Monster.tscn").instantiate()
 	add_child(m)
-	m.global_position = Vector2(60, 60)
+	m.global_position = Vector2(120, 120)
 	m.setup(inst, self)
 	m.scale = Vector2(1.6, 1.6)
 

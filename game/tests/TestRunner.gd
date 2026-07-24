@@ -139,7 +139,7 @@ func _ready() -> void:
 	await _test_projectile_survives_dead_source()
 	_test_save_routing_274()
 	await _test_ashbrook64_padat()
-	await _test_frozen_regions_stay_charsys()
+	await _test_lpc_optin_mechanism()   # dulu "_test_frozen_regions_stay_charsys" — nama diluruskan #289: wilayah beku sudah tak ada, MEKANISME opt-in yang dijaga
 	await _test_kamar_tak_menelan_pemain()
 	await _test_jendela_terlupa()
 	_test_evidence_counts_kinds_not_items()
@@ -4524,8 +4524,12 @@ func _test_ashbrook64_padat() -> void:
 ## dijalankan, lalu UKURAN FRAME jadinya dibaca. 32 px = `_charsys`, 64 px = LPC.
 ## Cabang Ashbrook64 diuji BERDAMPINGAN — tanpa itu, test yang selalu lulus tak bisa
 ## dibedakan dari test yang bekerja.
-func _test_frozen_regions_stay_charsys() -> void:
-	print("[gerbang wilayah-beku: opt-in LPC tak bocor dari Ashbrook64]")
+func _test_lpc_optin_mechanism() -> void:
+	# #289: dulu bernama _test_frozen_regions_stay_charsys. Wilayah beku sudah TIDAK
+	# ADA (#286-#288, semua dunia 32/LPC) — tapi mekanisme opt-in TownFolk tetap
+	# kontrak: 3-argumen = charsys (cadangan), argumen ke-4 = LPC. Nama lama akan
+	# menyuruh orang "menjaga" wilayah yang sudah dimigrasi.
+	print("[mekanisme opt-in LPC TownFolk: 3-arg=charsys, 4-arg=LPC]")
 
 	var host := Node2D.new()
 	add_child(host)

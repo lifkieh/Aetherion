@@ -208,7 +208,7 @@ func _place_torches(tcol: Color) -> void:
 			var spr := Sprite2D.new()
 			spr.texture = load("res://assets/game/sprites/dungeon/torch.png")
 			spr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-			spr.scale = Vector2(2, 2)   # obor 16px di dunia 32 (#286) — sementara sampai obor 32 digambar
+			# obor 16x32 asli (#289) — hack skala 2 dicabut, gen_tiles_dungeon32 menggambarnya
 			spr.position = tp
 			spr.z_index = 2
 			add_child(spr)
