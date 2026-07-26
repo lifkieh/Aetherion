@@ -1,5 +1,5 @@
 # RENCANA — COMPANION IRISAN v0.5: SORA & ARLEN
-**Status: USULAN — menunggu coretan Direktur. Nol kode sebelum ketok (#128).**
+**Status: DIKETOK Direktur 2026-07-26 (#295)** — K1 proxy-Ashbrook · K2 kejam-penuh · K3 loss_by_missing_kind · K4 bangun-sekarang · K5 surat-lamaran-kurir · K6 S1→S4 · K7 draft-provisional.
 Sumber kanon: `companion_13_sora_lanternwick.md` · `companion_01_arlen_vale.md` ·
 bible A2 §5 (sinyal Sora) · bible A3 §4 (jalur Sora) · #122 · #224 · #228 · #229.1 · D-3/D-4.
 
