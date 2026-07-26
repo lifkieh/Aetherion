@@ -45,7 +45,7 @@ dunia hidup = Ashbrook, dan sudut kosong pemakamannya sudah disiapkan untuknya.
 ## 2. SORA — layout & rantai
 
 ### 2.1 Kehadiran (jam WIB nyata, #159)
-- **Malam (19–24 WIB):** Sora di sudut TIMUR-LAUT pemakaman — `Vector2(820, 1150)`
+- **Malam (19–24 WIB):** Sora di sudut TIMUR-LAUT pemakaman — `Vector2(814, 1139)` *(koordinat kanonik yang sudah menunggu di kode — `Ashbrook64.gd:598`)*
   (dalam pagar, sudut yang dikosongkan nisan). Di dekatnya 2–3 lampu kecil menyala
   (sprite `lentera32` skala kecil + PointLight redup). Ini satu-satunya cahaya pemakaman.
 - **Siang:** posisi lamanya (672,1024), duduk/berdiri diam — figur latar, D-3, tak
@@ -59,7 +59,7 @@ Mesin `nyai_temani` digenerikkan: `Temani.mulai(id, pos, detik)` (radius 120, me
    - *"Kau bukan orang sini. Orang sini tidak datang malam-malam."*
    - *"...Kau boleh ikut. Asal tidak bilang lampunya buang-buang minyak."*
 2. **Menemani:** berada ≤120 px selama **10 detik** × **2 nisan** (ia berpindah sekali;
-   titik kedua `(700, 1240)` — tengah pemakaman). Selesai → `sora_kenal = 1` (senyap).
+   titik kedua `(624, 1240)` — tengah pemakaman, baris nisan terbuka). Selesai → `sora_kenal = 1` (senyap).
 3. **Sesudah kenal:** baris barunya terbuka (E8) — termasuk baris kunci #224:
    - *"Kadang aku bangun dan tahu ada yang harus dinyalakan. Jangan tanya dari mana tahunya."*
 
@@ -112,7 +112,7 @@ Nyai dan Sora, lampu bersebelahan, TANPA dialog. Satu titik periksa netral:
   `gen_batu_penanda.py` (#240): batu tegak polos + satu sisi aus.
 - Teks periksa: *"Batu batas desa. Sisi utaranya lebih aus — disentuh, ribuan kali,
   oleh tangan yang sama."* (D-3: tak menyebut Arlen.)
-- Arlen PINDAH: dari (726,570) ke dekat jalan utara `(760, 300)` siang hari —
+- Arlen PINDAH: dari (726,570) ke sisi batu penanda `(868, 140)` siang hari *(koreksi mockup: (760,300) jatuh di fasad rumah Merrit)* —
   kurir memandangi rute. (Kesaksian `orang` Merrit ikut pindah — masih <130 px dari
   rumah singgah? TIDAK: kesaksiannya justru "melihat dari jalan" — jalan utara MASIH
   memandang teras rumah singgah? Tidak. → titik kesaksian TETAP (726,598) sebagai
