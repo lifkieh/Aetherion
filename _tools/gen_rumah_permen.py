@@ -201,6 +201,206 @@ def wafel():
 	return im
 
 
+
+# ═══════════════ GELOMBANG 2 (#299 v5 — "perbanyak variasi") ═══════════════
+UNGU = (196, 150, 228, 255)
+UNGU_G = (150, 104, 186, 255)
+BIRU = (150, 200, 240, 255)
+KACA = (222, 240, 250, 200)
+PERAK = (216, 220, 228, 255)
+
+
+def kastil_gula():
+	im, d = kanvas(110, 92)
+	# dua menara sudut bergaris permen
+	for tx in (4, 90):
+		d.rectangle([tx, 30, tx + 16, 84], fill=PUTIH, outline=GARIS)
+		for yy in range(32, 82, 8):
+			d.polygon([(tx + 1, yy + 6), (tx + 15, yy), (tx + 15, yy + 4), (tx + 1, yy + 10)], fill=MERAH)
+		d.polygon([(tx - 3, 32), (tx + 8, 14), (tx + 19, 32)], fill=PINK, outline=GARIS)
+		d.line([(tx + 8, 14), (tx + 8, 8)], fill=GARIS)
+		d.polygon([(tx + 8, 8), (tx + 16, 11), (tx + 8, 14)], fill=KUNING)
+	# badan utama
+	d.rectangle([18, 38, 92, 86], fill=PINK_T, outline=GARIS)
+	d.rectangle([18, 38, 92, 46], fill=PINK)
+	# benteng icing (crenellation)
+	for x in range(18, 90, 10):
+		d.rectangle([x, 32, x + 6, 40], fill=PUTIH, outline=KRIM_G)
+	# atap tengah + bendera
+	d.polygon([(34, 38), (55, 20), (76, 38)], fill=UNGU, outline=GARIS)
+	d.line([(55, 20), (55, 12)], fill=GARIS)
+	d.polygon([(55, 12), (65, 15), (55, 18)], fill=MERAH)
+	# gerbang lengkung + jendela
+	d.rounded_rectangle([46, 60, 64, 86], 8, fill=COKL_G, outline=GARIS)
+	d.rounded_rectangle([49, 64, 61, 86], 6, fill=KRIM, outline=GARIS)
+	jendela(d, 30, 56, 4)
+	jendela(d, 80, 56, 4)
+	jendela(d, 55, 50, 3)
+	taburan(d, (20, 40, 90, 58), 8, 21)
+	return im
+
+
+def kincir():
+	im, d = kanvas(64, 84)
+	# badan wafel silinder
+	d.polygon([(18, 34), (46, 34), (42, 80), (22, 80)], fill=KUNING, outline=GARIS)
+	for yy in range(40, 78, 9):
+		d.line([(20, yy), (44, yy)], fill=KUNING_G)
+	for xx in range(24, 42, 7):
+		d.line([(xx, 36), (xx, 78)], fill=KUNING_G)
+	# kubah frosting
+	d.ellipse([14, 24, 50, 42], fill=KRIM, outline=GARIS)
+	# empat bilah candy cane
+	import math as m
+	cx, cy = 32, 30
+	for a in (35, 125, 215, 305):
+		x2 = cx + int(26 * m.cos(m.radians(a)))
+		y2 = cy + int(26 * m.sin(m.radians(a)))
+		d.line([(cx, cy), (x2, y2)], fill=PUTIH, width=5)
+		d.line([(cx, cy), (x2, y2)], fill=MERAH, width=2)
+	d.ellipse([cx - 4, cy - 4, cx + 4, cy + 4], fill=KUNING, outline=GARIS)
+	pintu(d, 32, 79, 13, 10)
+	jendela(d, 32, 56, 4)
+	return im
+
+
+def cokelat_batang():
+	im, d = kanvas(66, 56)
+	# lempeng cokelat 3x2
+	d.rounded_rectangle([4, 16, 62, 54], 3, fill=COKL, outline=GARIS)
+	for i, x in enumerate(range(6, 60, 19)):
+		for j, y in enumerate(range(18, 52, 18)):
+			d.rounded_rectangle([x, y, x + 17, y + 16], 2, fill=COKL_T, outline=COKL_G)
+	# foil perak terkelupas sudut kiri-atas
+	d.polygon([(4, 16), (30, 16), (4, 38)], fill=PERAK, outline=GARIS)
+	d.line([(8, 20), (24, 20)], fill=(180, 186, 196, 255))
+	d.line([(8, 26), (18, 26)], fill=(180, 186, 196, 255))
+	pintu(d, 33, 53, 14, 11, KRIM)
+	jendela(d, 14, 44, 3)
+	jendela(d, 52, 44, 3)
+	return im
+
+
+def makaron():
+	im, d = kanvas(56, 58)
+	# tiga keping makaron + krim
+	for (y1, y2, w) in ((40, 56, UNGU), (24, 40, PINK), (8, 26, MINT)):
+		d.ellipse([6, y1, 50, y2 + 2], fill=w, outline=GARIS)
+		d.ellipse([8, y1 + 10, 48, y2 + 4], fill=KRIM, outline=GARIS)
+	d.ellipse([6, 40, 50, 58], fill=UNGU, outline=GARIS)
+	d.ellipse([10, 26, 46, 42], fill=PINK, outline=GARIS)
+	d.ellipse([14, 10, 42, 28], fill=MINT, outline=GARIS)
+	d.ellipse([18, 13, 28, 18], fill=(200, 240, 220, 255))
+	pintu(d, 28, 56, 12, 10)
+	jendela(d, 28, 34, 4)
+	return im
+
+
+def toples():
+	im, d = kanvas(50, 66)
+	# toples kaca berisi permen
+	d.rounded_rectangle([6, 16, 44, 62], 8, fill=KACA, outline=GARIS)
+	import random
+	rr = random.Random(9)
+	for _ in range(14):
+		x, y = rr.randrange(10, 36), rr.randrange(30, 54)
+		w = rr.choice(TABUR)
+		d.ellipse([x, y, x + 6, y + 6], fill=w, outline=GARIS)
+	d.rounded_rectangle([6, 16, 44, 28], 8, fill=KACA)
+	d.line([(10, 20), (26, 18)], fill=PUTIH, width=2)   # kilau kaca
+	# tutup
+	d.rounded_rectangle([4, 8, 46, 20], 5, fill=MERAH, outline=GARIS)
+	d.rectangle([4, 13, 46, 15], fill=(190, 50, 66, 255))
+	pintu(d, 25, 61, 13, 10)
+	return im
+
+
+def permen_karet():
+	im, d = kanvas(54, 62)
+	# mesin gumball: kubah kaca penuh bola
+	d.ellipse([5, 4, 49, 46], fill=KACA, outline=GARIS)
+	import random
+	rr = random.Random(4)
+	for _ in range(16):
+		x, y = rr.randrange(11, 38), rr.randrange(12, 36)
+		w = rr.choice(TABUR)
+		d.ellipse([x, y, x + 7, y + 7], fill=w, outline=GARIS)
+	d.ellipse([12, 8, 24, 18], fill=(255, 255, 255, 120))
+	# badan merah
+	d.rounded_rectangle([8, 40, 46, 60], 4, fill=MERAH, outline=GARIS)
+	d.rectangle([8, 44, 46, 46], fill=(190, 50, 66, 255))
+	pintu(d, 27, 59, 12, 10, KRIM)
+	jendela(d, 15, 51, 3)
+	jendela(d, 39, 51, 3)
+	return im
+
+
+# ─────────────── DEKORASI ───────────────
+def lampu_lolipop():
+	im, d = kanvas(20, 40)
+	d.rectangle([9, 14, 11, 38], fill=(150, 120, 140, 255), outline=None)
+	d.ellipse([2, 2, 18, 18], fill=PINK, outline=GARIS)
+	# spiral
+	d.arc([4, 4, 16, 16], 0, 270, fill=PUTIH, width=2)
+	d.arc([7, 7, 13, 13], 90, 360, fill=PUTIH, width=2)
+	return im
+
+
+def kios_permen():
+	im, d = kanvas(52, 46)
+	# meja
+	d.rectangle([6, 26, 46, 42], fill=COKL_T, outline=GARIS)
+	d.rectangle([6, 26, 46, 30], fill=KRIM)
+	import random
+	rr = random.Random(6)
+	for _ in range(8):
+		x = rr.randrange(9, 40)
+		w = rr.choice(TABUR)
+		d.ellipse([x, 31 + rr.randrange(0, 6), x + 5, 36 + rr.randrange(0, 6)], fill=w, outline=GARIS)
+	# tiang + tenda garis
+	d.rectangle([6, 12, 8, 28], fill=GARIS)
+	d.rectangle([44, 12, 46, 28], fill=GARIS)
+	for i, x in enumerate(range(2, 50, 8)):
+		d.polygon([(x, 16), (x + 8, 16), (x + 6, 8), (x + 2, 8)],
+			fill=PINK if i % 2 else PUTIH, outline=GARIS)
+	d.rectangle([2, 14, 50, 17], fill=PINK_G)
+	return im
+
+
+def gapura():
+	im, d = kanvas(84, 64)
+	# dua candy cane melengkung jadi gerbang
+	for x0, arah in ((6, 1), (78, -1)):
+		d.line([(x0, 62), (x0, 22)], fill=PUTIH, width=7)
+		d.line([(x0, 62), (x0, 22)], fill=MERAH, width=3)
+	d.arc([6, 4, 78, 42], 180, 360, fill=PUTIH, width=7)
+	d.arc([6, 4, 78, 42], 180, 360, fill=MERAH, width=3)
+	# spanduk
+	d.rectangle([18, 24, 66, 36], fill=KRIM, outline=GARIS)
+	for i, x in enumerate(range(20, 64, 6)):
+		d.ellipse([x, 27, x + 4, 31], fill=TABUR[i % len(TABUR)])
+	return im
+
+
+def main2():
+	os.makedirs(OUT, exist_ok=True)
+	daftar = [("kastil_gula", kastil_gula()), ("kincir", kincir()),
+		("cokelat_batang", cokelat_batang()), ("makaron", makaron()),
+		("toples", toples()), ("permen_karet", permen_karet()),
+		("lampu_lolipop", lampu_lolipop()), ("kios_permen", kios_permen()),
+		("gapura", gapura())]
+	lebar = sum(im.width * 2 + 8 for _, im in daftar) + 8
+	kontak = Image.new("RGBA", (lebar, 210), (24, 20, 34, 255))
+	x = 8
+	for nama, im in daftar:
+		im2 = im.resize((im.width * 2, im.height * 2), Image.NEAREST)
+		im2.save(os.path.join(OUT, nama + ".png"))
+		kontak.alpha_composite(im2, (x, 200 - im2.height))
+		x += im2.width + 8
+	kontak.save(os.path.join(OUT, "_kontak2.png"))
+	print("-> aset_permen gelombang 2 (9 sprite + _kontak2.png)")
+
+
 def main():
 	os.makedirs(OUT, exist_ok=True)
 	daftar = [("kue_mangkuk", kue_mangkuk()), ("roti_jahe", roti_jahe()),
@@ -220,3 +420,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
+	main2()
