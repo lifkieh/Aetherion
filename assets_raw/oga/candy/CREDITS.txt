@@ -17,6 +17,13 @@ Lisensi: CC0
 Alasan tak dipakai: gaya vektor datar, bentrok pixel-art LPC 32px kita.
 Disimpan sebagai referensi pola taburan/frosting.
 
+## mushroom_houses/  (DIPAKAI — SEMUA rumah kota peri)
+Sumber : https://opengameart.org/content/mushroom-houses
+Pembuat: Jordan Irwin (AntumDeluge), dibuat untuk Stendhal
+Lisensi: CC0
+Isi    : 12 rumah jamur 64x64 -> di-recolor frosting pastel (recolor = olahan
+         sendiri); balai = jamur raksasa, kedai = jamur cokelat susu.
+
 ## Sudah ada di repo (tidak diunduh ulang):
 - Ubin candy 32px  : gen_tiles_wilayah32.py — ASLI Aetherion.
 - Props permen     : lollipop/candy_cane/gumdrop/tree_candy — era awal repo.
