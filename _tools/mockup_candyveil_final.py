@@ -22,6 +22,7 @@ G = os.path.join(ROOT, "game", "assets", "game")
 CANDY = os.path.join(ROOT, "assets_raw", "oga", "candy", "lpc_candy")
 JAMUR = os.path.join(ROOT, "assets_raw", "oga", "candy", "mushroom_houses",
 	"PNG", "64x64", "mushroom_houses-RGB.png")
+PERMEN = os.path.join(ROOT, "reports", "mockup", "aset_permen")
 FONT = os.path.join(ROOT, "game", "assets", "game", "fonts", "m5x7.ttf")
 T = 32
 W, H = 40 * T, 26 * T
@@ -171,20 +172,24 @@ def main():
 		rm = sheet.crop((kol * 64, bar * 64, kol * 64 + 64, bar * 64 + 64))
 		return geser_rona(rm, rona, sat, 1.05)
 
-	tempel(im, jamur(1, 0, 0.45), (13 * T, 8 * T), 2.0)     # mint
-	tempel(im, jamur(2, 0, 0.12), (30 * T, 9 * T), 2.2)     # lemon
-	tempel(im, jamur(0, 1, 0.80), (4 * T, 16 * T), 2.0)     # blueberry
-	tempel(im, jamur(1, 1, 0.99), (31 * T, 20 * T), 1.9)    # ceri
-	tempel(im, jamur(2, 1, 0.06), (9 * T, 23 * T), 1.7)     # jeruk
-	tempel(im, jamur(0, 2, 0.93), (30 * T, 24 * T), 1.7)    # gulali
-	# pinggiran timur: frosting yang kehilangan warna
-	tempel(im, pudar(jamur(1, 2, 0.9, 0.55)), (37 * T, 11 * T), 1.9)
-	tempel(im, pudar(jamur(2, 2, 0.9, 0.5), 0.72), (37 * T, 21 * T), 1.7)
+	# ── RUMAH PERMEN (gen_rumah_permen.py — DIGAMBAR SENDIRI, revisi-2
+	# Direktur: "jangan mushroom doang, kan temanya candy") + jamur = aksen ──
+	def permen(nama):
+		return buka(os.path.join(PERMEN, nama + ".png"), G)
 
-	# ── BALAI GULA & KEDAI COKELAT = keluarga jamur juga (revisi mata:
-	# konstruksi bata bolong dibuang; kota peri = SEMUA cendawan) ──
-	tempel(im, jamur(0, 0, 0.97, 1.3), (10 * T, 11 * T), 3.4)   # BALAI — jamur stroberi raksasa
-	tempel(im, jamur(1, 3, 0.07, 0.85), (25 * T, 21 * T), 2.6)  # KEDAI — jamur cokelat susu
+	tempel(im, permen("roti_jahe"), (10 * T, 11 * T), 1.5)      # BALAI GULA — roti jahe besar
+	tempel(im, permen("wafel"), (30 * T, 9 * T), 1.3)           # PENGINAPAN WAFEL
+	tempel(im, permen("es_krim"), (25 * T, 21 * T), 1.25)       # KEDAI ES KRIM
+	tempel(im, permen("kue_tart"), (4 * T, 16 * T), 1.2)        # TOKO SIRUP — tart mint
+	tempel(im, permen("kue_mangkuk"), (13 * T, 8 * T), 1.1)     # rumah warga cupcake
+	tempel(im, permen("donat"), (31 * T, 20 * T), 1.1)          # rumah warga donat
+	tempel(im, permen("kue_mangkuk"), (9 * T, 23 * T), 0.95)    # cupcake kecil
+	tempel(im, permen("donat"), (30 * T, 24 * T), 0.9)          # donat kecil
+	tempel(im, jamur(1, 1, 0.99), (16 * T, 6 * T), 1.6)         # jamur ceri — aksen peri
+	tempel(im, jamur(1, 3, 0.07, 0.85), (6 * T, 9 * T), 1.5)    # jamur cokelat — aksen
+	# pinggiran timur: rumah yang kehilangan warna
+	tempel(im, pudar(jamur(1, 2, 0.9, 0.55)), (37 * T, 11 * T), 1.9)
+	tempel(im, pudar(permen("donat"), 0.72), (37 * T, 21 * T), 1.0)
 	cok = buka("milkchocolate.png", CANDY)
 
 	# ── MENARA LONCENG PERMEN (candy cane LPC Candy) ──
@@ -275,14 +280,14 @@ def main():
 	# ── judul + keterangan ──
 	d = ImageDraw.Draw(im, "RGBA")
 	d.rectangle([0, 0, W, 40], fill=(26, 33, 56, 235))
-	d.text((14, 6), "MOCKUP FINAL v3 - LEMBAH PERMEN-PERI Candyveil: dunia fantasi (aset sungguhan, 40x26 petak)",
+	d.text((14, 6), "MOCKUP FINAL v4 - LEMBAH PERMEN-PERI Candyveil: dunia fantasi (aset sungguhan, 40x26 petak)",
 		font=f(24), fill=(244, 197, 66))
 	d.rectangle([0, H, W, H + 70], fill=(26, 33, 56, 255))
 	d.text((14, H + 6),
-		"ASLI: rumah jamur CC0 (AntumDeluge) recolor frosting - LPC Candy CC0 (menara cane, bata cokelat, gummy) - ubin & props permen repo",
+		"ASLI: LPC Candy CC0 (menara cane, gummy) - jamur CC0 AntumDeluge (aksen) - ubin & props permen repo",
 		font=f(15), fill=(228, 232, 245))
 	d.text((14, H + 28),
-		"GAMBAR SENDIRI: jembatan wafer, kawat lampu peri, peri bercahaya, kilau, senja+vignette, kerucut+lonceng menara, recolor frosting/sirup",
+		"GAMBAR SENDIRI (gen_rumah_permen.py): 6 rumah permen - roti jahe, cupcake, tart, donat, es krim, wafel + jembatan, kawat peri, kilau, senja",
 		font=f(15), fill=(150, 156, 178))
 	d.text((14, H + 48),
 		"DUNIA: hutan permen memeluk lembah - sungai soda + jembatan - jalan berkelok - bayangan + cahaya senja - timur tetap memudar (K3)",
