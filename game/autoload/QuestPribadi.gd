@@ -55,7 +55,7 @@ func _on_talk(nama: String) -> void:
 				# gosip ketiga menyebut "kursi favorit" — bertanya = mencarinya
 				if WorldState.get_counter("qp_bram_n") >= 3:
 					_tahapkan("bram", AKTIF)
-					EventBus.toast.emit("🪑 Bram: \"Kursi ini pengganti. Punya ayahku hilang waktu rumah timur runtuh. Kalau kau iseng ke sana...\"")
+					EventBus.toast.emit("🪑 Bram: \"Kursi ini pengganti. Punya ayahku hilang waktu rumah lama kami di distrik tua runtuh. Kalau kau iseng ke sana...\"")
 		_:
 			# HALLORAN — membagi roti: bicara dengan penduduk mana pun sambil
 			# membawa roti = memberikannya. Tiap orang menerima dengan caranya.

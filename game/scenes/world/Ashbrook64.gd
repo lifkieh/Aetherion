@@ -187,15 +187,25 @@ func _ready() -> void:
 ## pertama; sesudah ditemani sekali, pola Kamisnya tetap (ia tak berubah — pemain
 ## yang kini mengerti), tapi titik temani tak menawarkan apa pun lagi.
 func _titik_quest_pribadi() -> void:
-	# perhentian rute pos Merrit — tanah tanpa rumah, dekat fondasi berumput
-	var antar := _prop(Vector2(270, 540))
+	# perhentian rute pos Merrit — rumput terbuka tepi utara ("rute utara" di
+	# suratnya). ⚠ Dulu (270,540): bukti-mata menunjukkan label tenggelam di
+	# belakang deretan rumah jalan barat — bukan "tanah lapang" bagi siapa pun.
+	var antar := _prop(Vector2(820, 240))
 	antar.qp_id = "merrit_antar"
 	antar.setup_bicara([
 		"Tanah lapang. Tak ada rumah, tak ada kotak pos.",
 		"Tapi rumputnya pendek di satu garis — tanah yang sering diinjak, oleh langkah yang sama.",
 	], "Tanah lapang [E]")
-	# rangka bangku ayah Bram — reruntuhan timur
-	var kursi := _prop(Vector2(1700, 620))
+	# rangka bangku ayah Bram — fondasi baris selatan distrik barat-laut (denah
+	# 452,420 di _pinggir_jejak). ⚠ Dua salah tempat sebelumnya, dua-duanya ketahuan
+	# MATA bukan kode: (1700,620) di dalam rumah utuh; (742,570) di jalan berbatu
+	# ramai. Rangkanya digambar — bangku LPC dilapukkan (kusam, miring), bukan cuma
+	# label di rumput.
+	var kayu := _put(P_S + "bench_lpc.png", Vector2(452, 424))
+	if kayu:
+		kayu.modulate = Color(0.52, 0.46, 0.38)
+		kayu.rotation = 0.14
+	var kursi := _prop(Vector2(452, 440))
 	kursi.qp_id = "bram_kursi"
 	kursi.setup_bicara([
 		"Rangka bangku lapuk, terkubur separuh di antara fondasi.",
