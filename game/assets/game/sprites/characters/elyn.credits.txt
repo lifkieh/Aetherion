@@ -1,0 +1,10 @@
+# Kredit sprite: elyn
+# Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
+
+- body:female: body_female_light.png — Benjamin K. Smith (BenCreating),bluecarrot16,TheraHedwig,Evert,MuffinElZangano,Durrani,Pierre Vigier (pvigier),ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_tokoh_eulpc_legs_pants_thin_charcoal: eulpc_legs_pants_thin_charcoal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:_tokoh_eulpc_feet_shoes_thin: eulpc_feet_shoes_thin.png — JaidynReiman,Joe White,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- undershirt:ls_female_charcoal: eulpc_torso_longsleeve_female_charcoal.png — JaidynReiman,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- torso:_tokoh_eulpc_torso_longsleeve_female_forest: eulpc_torso_longsleeve_female_forest.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- head:female: head_female_light.png — bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- headwear:hood_charcoal: eulpc_hat_hood_charcoal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk) (CC-BY-SA 3.0 / GPL 3.0)

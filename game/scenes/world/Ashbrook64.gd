@@ -95,6 +95,8 @@ const OTHA_KAKI := Vector2(1252, 660)
 ##   4200 aman dengan margin: dari mana pun di peta (x maks 1920) jangkauan
 ##   terjauh pada zoom 0,55 adalah 1920 + 1164 = 3084.
 const INTERIOR := Vector2(4200, 160)
+const INTERIOR2 := Vector2(4200, 560)       # ruang perpustakaan (#293 lanjutan)
+const PERPUS_KAKI := Vector2(1480, 560)     # perpustakaan Ashbrook — timur alun-alun
 const ZOOM := 1.0                   # 16px zoom 2 -> layar memuat 40x22 petak.
                                     # petak 32 pada zoom 1.4 -> ~28x16 petak: alun-alun
                                     # 17x11 MUAT, dan karakter 64px tetap terbaca.
@@ -243,8 +245,13 @@ func _titik_quest_pribadi() -> void:
 		"Rangka bangku lapuk, terkubur separuh di antara fondasi.",
 		"Kayunya keras — dibuat untuk dipakai puluhan tahun.",
 	], "Rangka bangku [E]")
-	# Nyai Tuminah — Kamis sore, di depan toko yang tak ia ingat
-	if QuestPribadi.kamis_sore() and QuestPribadi.tahap("nyai") != QuestPribadi.SELESAI:
+	# Nyai Tuminah — Kamis sore, di depan toko yang tak ia ingat.
+	# R3/bible A3: bukti `orang` ini BERUMUR (decay `stopped`, 21 hari sejak halaman
+	# dicoret). Saat umurnya habis, Nyai berhenti datang — Kamis sore lewat begitu
+	# saja, dan tak seorang pun (termasuk pemain) diberi tahu kenapa (D-3, #229.4:
+	# mungkin ia mati; mungkin kakinya saja yang akhirnya lupa jalan).
+	if QuestPribadi.kamis_sore() and QuestPribadi.tahap("nyai") != QuestPribadi.SELESAI \
+			and not Evidence.is_decayed("ev_otha_nyai_tuminah_kamis"):
 		var p := P_C + "nyai_idle.png"
 		if ResourceLoader.exists(p):
 			var s := Sprite2D.new()
@@ -1197,6 +1204,9 @@ func _village() -> void:
 	_building(P_S + "fasad_gudang.png", GUDANG_KAKI)               # gudang gandum — C3
 	_building(P_S + "fasad_shop.png", OTHA_KAKI)                   # toko Otha — tutup dua musim
 	_building(P_S + "fasad_kosong.png", Vector2(1408, 800))        # rumah kosong
+	# PERPUSTAKAAN ASHBROOK (#293 lanjutan, bible A3) — fasad pudar DENGAN SENGAJA:
+	# rumah ingatan di kota yang memudar, dan hanya satu orang yang menjaganya.
+	_building(P_S + "fasad_adobe_pudar.png", PERPUS_KAKI)
 	_building(P_S + "fasad_rumah.png", Vector2(640, 992))          # rumah Lyra (masih dihuni)
 
 	# ── C2 BARAT: GRADIEN DI RUANG (koreksi 6) ───────────────────────────────
@@ -2180,11 +2190,16 @@ func _kotak(pos: Vector2, size: Vector2, col: Color, z: int) -> ColorRect:
 ## mengatakannya — bukan karena ia melihatnya.
 func _pintu_dan_interior() -> void:
 	_bangun_kamar_merrit()
+	_bangun_perpustakaan()
 	_gerbang_keluar()
 
 	# pintu MASUK — di kaki fasad Merrit, tempat pintunya digambar
 	var masuk := _prop(MERRIT_HOUSE + Vector2(0, -8))
 	masuk.setup_pindah(INTERIOR + Vector2(150, 170), true, "Masuk rumah Merrit [E]")
+
+	# pintu perpustakaan (#293 lanjutan)
+	var perpus := _prop(PERPUS_KAKI + Vector2(0, -8))
+	perpus.setup_pindah(INTERIOR2 + Vector2(150, 180), true, "Perpustakaan [E]")
 
 	# --- PINTU TOKO OTHA — dua tahap A1 (#291-2) ---
 	# SEBELUM: pintu tertutup tapi HIDUP — merespons dengan netral.
@@ -2386,6 +2401,107 @@ func _bangun_kamar_merrit() -> void:
 	var keluar := _prop(o + Vector2(150, 205))
 	keluar.setup_pindah(MERRIT_HOUSE + Vector2(0, 36), false, "Keluar [E]")
 
+	# PERABOT (#293 lanjutan — temuan mata: kamar cuma kotak warna). Kasur, permadani,
+	# rak — sprite interior 16px repo, skala 2 mengikuti dunia 32 (#286).
+	for pr in [["int_bed.png", Vector2(52, 130)], ["int_rug.png", Vector2(160, 160)],
+			["int_shelf.png", Vector2(250, 26)]]:
+		var f := _put(P_OLD + str(pr[0]), o + pr[1])
+		if f:
+			f.scale = Vector2(2, 2)
+
+
+## PERPUSTAKAAN ASHBROOK (#293 lanjutan — bible A3). Ruang Elyn Thornewood:
+## rak yang tersisa, meja salin, dan LACI itu. Elyn HARUS ditemui di sini sebelum
+## jalur juru-tulis Elyn terbuka di Kitab (elyn_kenal) — juru tulis bukan fitur
+## menu, ia orang. D-3: nol penanda; laci berlabel sama netral dengan titik lain.
+func _bangun_perpustakaan() -> void:
+	var o := INTERIOR2
+	_kotak(o, Vector2(320, 240), Color(0.16, 0.14, 0.12), 0)                   # lantai
+	_kotak(o + Vector2(0, -14), Vector2(320, 14), Color(0.09, 0.08, 0.08), 1)  # dinding
+
+	# lampu baca — satu-satunya cahaya; perpustakaan hidup dari satu meja
+	var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
+	img.fill(Color(1, 1, 1))
+	var api := PointLight2D.new()
+	api.energy = 2.2
+	api.texture_scale = 15.0
+	api.color = Color(1.0, 0.86, 0.6)
+	api.texture = ImageTexture.create_from_image(img)
+	api.global_position = o + Vector2(160, 110)
+	add_child(api)
+
+	# rak sepanjang dinding utara — yang tersisa dari perpustakaan kota besar
+	for i in 5:
+		var rak := _put(P_OLD + "int_shelf.png", o + Vector2(40 + i * 56, 24))
+		if rak:
+			rak.scale = Vector2(2, 2)
+	var permadani := _put(P_OLD + "int_rug.png", o + Vector2(160, 140))
+	if permadani:
+		permadani.scale = Vector2(2, 2)
+
+	# meja salin + Elyn di baliknya + LACI di bawah meja
+	var meja := _put(P_OLD + "int_table.png", o + Vector2(160, 112))
+	if meja:
+		meja.scale = Vector2(2, 2)
+	var pe := P_C + "elyn_idle.png"
+	if ResourceLoader.exists(pe):
+		var s := Sprite2D.new()
+		var at := AtlasTexture.new()
+		at.atlas = load(pe)
+		at.region = Rect2(0, 128, 64, 64)
+		s.texture = at
+		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		s.global_position = o + Vector2(160, 92)
+		s.z_index = int(s.global_position.y)
+		add_child(s)
+
+	# Bicara dengan Elyn = mengenal juru tulis (elyn_kenal, senyap). Ia tidak
+	# menawarkan apa-apa; penawarannya muncul di Kitab, tempat halaman berada.
+	var elyn := _prop(o + Vector2(160, 138))
+	elyn.set_counter = "elyn_kenal"
+	elyn.setup_bicara([
+		"Rak-rak ini yang tersisa dari perpustakaan Ashbrook. Aku yang menjaganya.",
+		"Elyn Thornewood. Juru tulis.",
+		"Kalau kau membawa bekas seseorang — bukalah Kitabmu. Aku bisa menulis dari sana.",
+	], "Elyn [E]", "Elyn Thornewood")
+
+	# LACI (bible A3 §2 — "dan ini seluruh adegan"). Tertutup selamanya bagi yang
+	# belum melimpahkan; sesudah TRIASE lewat tangan Elyn, sekali terlihat isinya.
+	var sudah := _laci_pernah_terbuka()
+	# rapat ke sisi kanan meja (temuan mata: di 208 ia mengambang seperti peti lepas;
+	# menempel = terbaca "laci meja", bukan perabot sendiri)
+	var laci := _put(P_OLD + ("laci_elyn_buka.png" if sudah else "laci_elyn_tutup.png"),
+		o + Vector2(186, 122))
+	if laci:
+		laci.scale = Vector2(2, 2)
+	var titik_laci := _prop(o + Vector2(208, 152))
+	if sudah:
+		titik_laci.setup_bicara([
+			"Terbuka sekejap tadi, waktu ia menaruh lipatan itu: tumpukan. Puluhan. Semuanya terlipat sekali. Semuanya tercoret.",
+			"\"Yang tidak kutulis.\"",
+		], "Laci meja [E]", "Elyn Thornewood")
+	else:
+		titik_laci.setup_bicara([
+			"Laci meja, tertutup. Kayunya licin di pegangannya — sering dibuka, selalu tertutup.",
+		], "Laci meja [E]")
+
+	# pintu KELUAR
+	var keluar2 := _prop(o + Vector2(150, 215))
+	keluar2.setup_pindah(PERPUS_KAKI + Vector2(0, 36), false, "Keluar [E]")
+
+
+## Laci terlihat terbuka HANYA bila TRIASE terjadi lewat tangan Elyn: satu dari
+## dua halaman orang dipulihkan dengan scribe elyn saat saudaranya tercoret.
+func _laci_pernah_terbuka() -> bool:
+	if WorldState.get_counter("warisan:triase_otha") == 0 \
+			and WorldState.get_counter("warisan:triase_merrit") == 0:
+		return false
+	for e in WorldState.chronicle:
+		if e.get("id", "") in ["person_otha_renn", "person_merrit_fane"] \
+				and e.get("state", "") == "restored" and str(e.get("scribe", "")) == "elyn":
+			return true
+	return false
+
 
 # ---------------------------------------------------------------- penduduk
 ## Enam wajah LPC. Hook siluet berbeda per #231 (uji hitam: reports/preview/siluet231.png).
@@ -2462,6 +2578,9 @@ func _folk() -> void:
 		["nyai", VC + Vector2(160, 128)],
 		["otha_renn", OTHA_KAKI + Vector2(96, 12)],      # A1-SEBELUM: di bangkunya
 		["sora", Vector2(672, 1024)],
+		# ARLEN (#293 lanjutan, KANON_MERRIT_ARLEN) — anak rumah pos. Berdiri di
+		# jalan depan rumah singgah: dari sinilah ia MELIHAT obrolan tiap malam.
+		["arlen", MERRIT_HOUSE + Vector2(-64, 130)],
 	]:
 		# A1 (#291-2): SESUDAH penghapusan, Otha TIDAK PERNAH muncul di layar lagi
 		# (spec A1 §1). Sebelum: ia duduk di bangku depan tokonya — tidak bicara.
@@ -2480,6 +2599,17 @@ func _folk() -> void:
 		s.global_position = spec[1]
 		s.z_index = int(s.global_position.y)
 		add_child(s)
+
+	# Kesaksian Arlen (`orang` — ev_merrit_arlen_ingat, bible A2 §6): bicara
+	# dengannya = mendengar apa yang ia lihat dari jalan, tiap malam. Notice-nya
+	# kalimatnya sendiri; penemuannya senyap (D-3). Benar SEBELUM A2 juga — ia
+	# memang melihat kalian mengobrol; artinya saja yang belum lahir.
+	var ar := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(ar)
+	ar.evidence_id = "ev_merrit_arlen_ingat"
+	ar.custom_label = "Arlen [E]"
+	ar.setup("examine")
+	ar.global_position = MERRIT_HOUSE + Vector2(-64, 158)
 
 
 ## Langit & lentera mengikuti jam WIB — aturan yang SAMA dengan `Ashbrook.gd`

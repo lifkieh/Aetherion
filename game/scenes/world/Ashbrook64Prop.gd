@@ -22,6 +22,8 @@ var speaker := ""
 var teleport_to := Vector2.ZERO       # untuk MASUK/KELUAR
 var label_text := "Periksa [E]"
 var qp_id := ""                       # #291-3: titik quest pribadi — QuestPribadi.titik(id)
+var set_counter := ""                 # #293-lanjutan: BICARA menandai counter dunia
+                                      # (mis. elyn_kenal) — senyap, sesudah teksnya habis
 
 var _label: Label
 var _cd := 0.0
@@ -89,6 +91,8 @@ func interact() -> void:
 			await Stage.say(lines, speaker)
 			if qp_id != "":
 				QuestPribadi.titik(qp_id, global_position)   # #291-3: teks dulu, dunia menyusul
+			if set_counter != "":
+				WorldState.counters[set_counter] = 1   # senyap (D-3): dunia mencatat, bukan UI
 		Mode.GERBANG:
 			# ⚠ SEMENTARA — kembali ke menu, BUKAN ke Greenvale.
 			# Alur dunia permanen (Ashbrook64 ganti vs dampingi 16px) belum diputus

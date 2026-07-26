@@ -1,0 +1,37 @@
+{
+ "id": "arlen",
+ "named": true,
+ "race": "human",
+ "body": "teen",
+ "head": "teen",
+ "skin": "light",
+ "hair": "parted2",
+ "headwear": null,
+ "facial": {
+  "beard": null
+ },
+ "race_overlay": [],
+ "story_prop": [],
+ "palette_shift": null,
+ "_hook": "Belah samping (parted2) badan remaja — anak rumah pos yang menggambar peta sejak umur 11 (KANON_MERRIT_ARLEN). Beda siluet dari Sora (swoop_side): rambut belah vs poni sapu. Saksi `orang` halaman Merrit: ia MELIHAT obrolan tiap malam dari jalan.",
+ "undershirt": "ls_male_walnut",
+ "tint": {
+  "body": "#c69a78"
+ },
+ "_skin": "Variasi kulit lewat tint.body.",
+ "build": "teen",
+ "garmen": {
+  "torso": {
+   "garmen": "longsleeve2",
+   "warna": "brown"
+  },
+  "legs": {
+   "garmen": "pants",
+   "warna": "charcoal"
+  },
+  "feet": {
+   "garmen": "shoes",
+   "warna": "polos"
+  }
+ }
+}

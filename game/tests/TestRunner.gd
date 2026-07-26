@@ -164,6 +164,7 @@ func _ready() -> void:
 	await _test_quest_pribadi_291()
 	await _test_serikat_291()
 	await _test_a2_a3_291()
+	await _test_ditunda_294()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -4126,8 +4127,10 @@ func _test_kitab_shows_no_counts() -> void:
 		src.contains("func _kitab_prompt_elyn") and src.contains("Umurnya berkurang"))
 	# #257 — penolakan ruang penuh, dan Elyn tetap tersedia di layar itu
 	check("penolakan ruang penuh (#257) ada", src.contains("func _kitab_prompt_full"))
+	# #294: jalur Elyn kini lewat gerbang kenal (_elyn_tersedia = kenal + cukup bukti)
+	# — yang dijaga #257 tetap: layar ruang-penuh MENAWARKAN jalur Elyn.
 	check("Elyn tetap tersedia saat ruang penuh",
-		src.split("func _kitab_prompt_full")[1].split("func ")[0].contains("SCRIBE_ELYN"))
+		src.split("func _kitab_prompt_full")[1].split("func ")[0].contains("_elyn_tersedia"))
 
 ## #267 — penuaan Elyn adalah AMBANG, bukan hitungan.
 ##
@@ -5795,3 +5798,101 @@ func _test_a2_a3_291() -> void:
 	for k in ["a2_sudah", "a2_kunjungan", "merrit_bicara",
 			"warisan:triase_merrit", "warisan:triase_otha"]:
 		WorldState.counters[k] = 0
+
+
+## #294 — YANG DITUNDA #293 DIBAYAR: perpustakaan+Elyn+laci (jalur Elyn A3),
+## Arlen (bukti `orang` Merrit), Nyai berumur (R3 di dunia), perabot kamar.
+## #151b: semuanya dicek sebagai NODE di scene sungguhan, bukan data.
+func _test_ditunda_294() -> void:
+	print("[#294 — Elyn/laci · Arlen · Nyai berumur · perabot kamar]")
+	for a in ["characters/elyn_idle.png", "characters/arlen_idle.png",
+			"props/laci_elyn_tutup.png", "props/laci_elyn_buka.png"]:
+		check("aset ada: %s" % a, ResourceLoader.exists("res://assets/game/sprites/" + a))
+
+	for pid in ["person_otha_renn", "person_merrit_fane"]:
+		for i in range(WorldState.chronicle.size() - 1, -1, -1):
+			if WorldState.chronicle[i].get("id", "") == pid:
+				WorldState.chronicle.remove_at(i)
+	for k in ["a2_sudah", "elyn_kenal", "warisan:triase_otha", "warisan:triase_merrit"]:
+		WorldState.counters[k] = 0
+	Evidence.decayed.erase("ev_otha_nyai_tuminah_kamis")
+	WorldState.counters["uji_kamis_sore"] = 1
+	WorldState.counters["qp_nyai"] = 0
+
+	# ── muat 1: perpustakaan berdiri + Arlen hidup + kamar berperabot ──
+	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("Elyn ada di perpustakaan (sprite)", _a1_cari_sprite("elyn_idle") != null)
+	check("laci TERTUTUP sebelum ada limpahan", _a1_cari_sprite("laci_elyn_tutup") != null
+		and _a1_cari_sprite("laci_elyn_buka") == null)
+	var elyn_prop := _294_prop("Elyn [E]")
+	check("titik bicara Elyn menandai elyn_kenal", elyn_prop != null
+		and str(elyn_prop.get("set_counter")) == "elyn_kenal")
+	check("perabot kamar Merrit tergambar (int_bed)", _a1_cari_sprite("int_bed") != null)
+	check("Arlen berdiri di jalan depan rumah singgah", _a1_cari_sprite("arlen_idle") != null)
+	check("kesaksian Arlen = titik `orang` di dunia", _a1_ada_examine("ev_merrit_arlen_ingat"))
+	var ar_node: Node = null
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == "ev_merrit_arlen_ingat":
+			ar_node = n
+			break
+	var ucap := str(node_examine(ar_node)) if ar_node else ""
+	check("dari mulut Arlen: \"Kalian ngobrol tiap malam\"", "Kalian ngobrol" in ucap)
+	check("bukti `orang` Merrit tercatat", Evidence.has("ev_merrit_arlen_ingat"))
+	check("Nyai masih datang Kamis (bukti belum busuk)", _qp_cari_prop("nyai_temani") != null)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── TRIASE lewat tangan ELYN → laci terlihat isinya SEKALI ──
+	Chronicle.record_person("person_otha_renn", "uji otha")
+	Chronicle.record_person("person_merrit_fane", "uji merrit")
+	Chronicle.strike("person_otha_renn")
+	Chronicle.strike("person_merrit_fane")
+	WorldState.counters["elyn_kenal"] = 1
+	var burden_awal: Array = PlayerData.elyn_burden.duplicate()
+	PlayerData.elyn_burden = []
+	for ev in ["ev_merrit_kartu_pos_kosong", "ev_merrit_cangkir_kedua"]:
+		Evidence.find(ev)
+	var r: Dictionary = Chronicle.restore_elyn("person_merrit_fane", Evidence.for_page("person_merrit_fane"))
+	check("halaman pulih lewat tangan Elyn (2 jenis)", r.get("ok", false), str(r))
+	check("Elyn memikulnya (elyn_burden)", "person_merrit_fane" in PlayerData.elyn_burden)
+	check("TRIASE-elyn tercatat senyap", WorldState.get_counter("warisan:triase_merrit") == 1)
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("laci TERBUKA sesudah triase-elyn (tumpukan terlihat)",
+		_a1_cari_sprite("laci_elyn_buka") != null)
+	var laci_prop := _294_prop("Laci meja [E]")
+	var laci_bicara := ""
+	if laci_prop:
+		for l in laci_prop.get("lines"):
+			laci_bicara += str(l)
+	check("\"Yang tidak kutulis.\" keluar di laci", "Yang tidak kutulis" in laci_bicara)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── NYAI BERUMUR: bukti busuk = Kamis sore lewat tanpa dia (D-3) ──
+	Evidence.decayed["ev_otha_nyai_tuminah_kamis"] = {"decayed_at": "uji"}
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("Nyai TIDAK datang lagi — dan tak ada yang mengumumkannya",
+		_qp_cari_prop("nyai_temani") == null)
+	s.queue_free()
+	await get_tree().process_frame
+
+	Evidence.decayed.erase("ev_otha_nyai_tuminah_kamis")
+	PlayerData.elyn_burden = burden_awal
+	for k in ["uji_kamis_sore", "elyn_kenal", "warisan:triase_otha", "warisan:triase_merrit"]:
+		WorldState.counters[k] = 0
+
+
+func _294_prop(label: String) -> Node:
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("label_text")) == label:
+			return n
+	return null

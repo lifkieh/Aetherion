@@ -1,0 +1,12 @@
+# Kredit sprite: arlen
+# Lisensi: CC-BY-SA 3.0 (LPC). Atribusi WAJIB.
+
+- body:teen: body_teen_light.png — bluecarrot16,Evert,TheraHedwig,Benjamin K. Smith (BenCreating),MuffinElZangano,Durrani,Pierre Vigier (pvigier),Eliza Wyatt (ElizaWy),Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- legs:_tokoh_eulpc_legs_pants_thin_charcoal: eulpc_legs_pants_thin_charcoal.png — Kontributor ULPC (daftar per-lapisan belum dibaca dari disk — zip unduhan hanya berisi PNG) (CC-BY-SA 3.0 / GPL 3.0)
+- feet:_tokoh_eulpc_feet_shoes_thin: eulpc_feet_shoes_thin.png — JaidynReiman,Joe White,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- undershirt:ls_male_walnut: eulpc_torso_longsleeve_male_walnut.png — JaidynReiman,Johannes Sjölund (wulax) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- torso:_tokoh_eulpc_torso_longsleeve2_teen_brown: eulpc_torso_longsleeve2_teen_brown.png — [TODO kredit: CC-BY-SA 3.0 LPC, seniman belum dicatat]
+- head:teen: head_female_light.png — bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) (OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0)
+- hair:parted2: eulpc_hair_parted2.png — JaidynReiman, bluecarrot16, ElizaWy, Nila122, Fabzy, thecilekli, Mandi Paugh, Barbara Riviera, Cobra Hubbard (BlueVortexGames), Skorpio, kcilds/Rocetti/Eredah, Yamilian, Emilio J. Sanchez-Sierra, Radomir Dopieralski, Joe White, Johannes Sjolund (wulax), Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Stephen Challener (Redshrike), William.Thompsonj (CC-BY-SA 3.0)
+
+# ⚠ ada lapisan tanpa kredit tercatat — lengkapi credits_db.json sebelum rilis (kewajiban SA).

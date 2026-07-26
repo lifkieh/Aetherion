@@ -1347,6 +1347,10 @@ const KITAB_TXT := {
 		"id": "Bekas yang kaubawa belum cukup untuk tanganmu sendiri.",
 		"en": "The traces you carry are not enough for your own hand.",
 	},
+	"elyn_belum_kenal": {
+		"id": "Tak ada juru tulis lain yang kau kenal.",
+		"en": "There is no other scribe you know.",
+	},
 	"elyn_locked": {
 		"id": "Bekas yang kaubawa belum cukup, bahkan untuk Elyn.",
 		"en": "The traces you carry are not enough, even for Elyn.",
@@ -1486,7 +1490,7 @@ func _kitab_card_struck(e: Dictionary) -> void:
 
 	# Ya/tidak untuk satu aksi konkret — bukan skor (D-4).
 	var can_self: bool = Evidence.enough_for(pid, Chronicle.SCRIBE_SELF)
-	var can_elyn: bool = Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN)
+	var can_elyn: bool = _elyn_tersedia(pid)
 	if can_self or can_elyn:
 		var b := _btn(_kt("rewrite"), func():
 			_kitab_view = "path:" + pid
@@ -1585,7 +1589,7 @@ func _kitab_prompt_path(pid: String) -> void:
 	else:
 		_kitab_line(box, _kt("self_locked"), 12, KITAB_INK_DIM)
 
-	if Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN):
+	if _elyn_tersedia(pid):
 		# #259 — TIDAK langsung menulis. Tekan ini → layar keterbukaan dulu.
 		var be := _btn(_kt("take_elyn"), func():
 			_kitab_view = "elyn:" + pid
@@ -1593,7 +1597,15 @@ func _kitab_prompt_path(pid: String) -> void:
 		be.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		box.add_child(be)
 	else:
-		_kitab_line(box, _kt("elyn_locked"), 12, KITAB_INK_DIM)
+		_kitab_line(box, _kt("elyn_locked" if WorldState.get_counter("elyn_kenal") == 1
+			else "elyn_belum_kenal"), 12, KITAB_INK_DIM)
+
+
+## Jalur Elyn hanya SETELAH pemain mengenalnya di perpustakaan (#293 lanjutan):
+## juru tulis bukan fitur menu — ia orang, dan orang harus ditemui dulu.
+func _elyn_tersedia(pid: String) -> bool:
+	return WorldState.get_counter("elyn_kenal") == 1 \
+		and Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN)
 
 	_kitab_back_btn()
 
@@ -1636,7 +1648,7 @@ func _kitab_prompt_full(pid: String) -> void:
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	l.custom_minimum_size = Vector2(450, 0)
 	box.add_child(l)
-	if Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN):
+	if _elyn_tersedia(pid):
 		var be := _btn("[ %s ]" % _kt("take_elyn"), func():
 			_kitab_view = "elyn:" + pid
 			_rebuild())

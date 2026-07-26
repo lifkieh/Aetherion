@@ -1,0 +1,37 @@
+{
+ "id": "elyn",
+ "named": true,
+ "race": "human",
+ "body": "female",
+ "head": "female",
+ "skin": "light",
+ "hair": null,
+ "headwear": "hood_charcoal",
+ "facial": {
+  "beard": null
+ },
+ "race_overlay": [],
+ "story_prop": [],
+ "palette_shift": null,
+ "_hook": "KERUDUNG charcoal (hood — nol tokoh lain memakainya): arsiparis yang membelakangi dunia. Elf di kanon (sheet #002); telinga tersembunyi di kerudung, dan itu jujur — Ashbrook pun tak pernah melihatnya jelas. Nol prop: pena terlalu kecil untuk terbaca 64px.",
+ "undershirt": "ls_female_charcoal",
+ "tint": {
+  "body": "#e8cdb2"
+ },
+ "_skin": "Pucat perpustakaan — seratus tahun di dalam ruangan.",
+ "build": "female",
+ "garmen": {
+  "torso": {
+   "garmen": "longsleeve",
+   "warna": "forest"
+  },
+  "legs": {
+   "garmen": "pants",
+   "warna": "charcoal"
+  },
+  "feet": {
+   "garmen": "shoes",
+   "warna": "polos"
+  }
+ }
+}
