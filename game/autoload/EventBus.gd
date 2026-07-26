@@ -69,6 +69,8 @@ signal evidence_found(id: String, kind: String)                # R2: bekas ditem
 signal input_device_changed(device: String)                    # keyboard | gamepad (#99)
 signal language_changed(lang: String)                          # ID/EN (#100)
 signal board_visited()                           # player opened the Quest Board (onboarding)
+signal villager_talked(nama: String)             # pemain bicara dgn penduduk (guide #291)
+signal kitab_opened()                            # tab Kitab dibuka (guide #291)
 
 # --- Homestead ---
 signal crop_planted(plot_index: int, crop_id: String)

@@ -88,6 +88,7 @@ func _build_frame() -> void:
 				_ctx = null   # tab = tampilan upgrade-di-mana-pun (tanpa lokasi keeper)
 			if m[0] == "kitab":
 				_kitab_view = ""   # buka tab = kembali ke daftar halaman, bukan prompt lama
+				EventBus.kitab_opened.emit()   # guide #291
 			_rebuild())
 		UiFx.button(b)
 		tabs.add_child(b)

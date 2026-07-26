@@ -202,6 +202,7 @@ func interact() -> void:
 	if Stage.is_busy():
 		return
 	velocity = Vector2.ZERO
+	EventBus.villager_talked.emit(_name)   # guide #291: "bicara dengan penduduk"
 	if not _persona.is_empty():
 		await Stage.say(persona_line(), _name)
 		return

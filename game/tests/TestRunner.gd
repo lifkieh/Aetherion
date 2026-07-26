@@ -1042,12 +1042,12 @@ func _test_life_path() -> void:
 	var res := SkillTreeSystem.unlock("life_cooking", "greenvale")
 	check("buka pohon domain sukses", res.ok)
 	check("node GRATIS: pohon domain langsung level 2", SkillTreeSystem.level("life_cooking") == 2)
-	# quest pembuka bercabang: langkah 2 jalur kehidupan = domain, bukan skill class
-	check("langkah 2 bercabang ke domain (prof_xp)", Onboarding.step_at(1).get("kind", "") == "prof_xp")
+	# #291: rantai Chronicle berlaku KEDUA jalur — langkah 2 = bicara penduduk utk semua
+	check("langkah 2 = bicara penduduk (rantai Chronicle, kedua jalur)", Onboarding.step_at(1).get("kind", "") == "talk")
 	# END-TO-END jalur tempur tetap utuh
 	PlayerData.new_game("necromancer")
 	check("jalur tempur tetap: 3 skill + tanpa sub", PlayerData.known_skills.size() == 3 and PlayerData.combat_sub == "")
-	check("langkah 2 jalur tempur = skill class", Onboarding.step_at(1).get("kind", "") == "skill")
+	check("langkah 2 jalur tempur juga bicara (rantai satu, #291)", Onboarding.step_at(1).get("kind", "") == "talk")
 	# persist combat_sub
 	PlayerData.new_game("penjinak", "", "archer")
 	SaveManager.save_game(3, true)
@@ -1247,16 +1247,16 @@ func _test_opening() -> void:
 	EventBus.monster_killed.emit("verdant_slime", null)
 	check("step 1 (kill 2) completes", PlayerData.guide_step == 1)
 	check("step 1 reward: +40G +2 potion", PlayerData.gold == g0 + 40 and PlayerData.item_count("minor_potion") == p0 + 2)
-	# step 2: cast a class skill via the hotbar hook
-	EventBus.skill_cast.emit("flame_slash")
-	check("step 2 (skill cast) completes", PlayerData.guide_step == 2)
+	# step 2 (#291): bicara dengan penduduk
+	EventBus.villager_talked.emit("Uji")
+	check("step 2 (bicara penduduk) completes", PlayerData.guide_step == 2)
 	# every step declares a reward (reward loop 5-10 menit pertama)
 	var all_rewarded := true
 	for s in Onboarding.STEPS:
 		if not (s.has("reward_gold") or s.has("reward_item")):
 			all_rewarded = false
 	check("every opening step has a clear reward", all_rewarded)
-	check("opening has 6 steps (one system each)", Onboarding.STEPS.size() == 6)
+	check("opening = 5 langkah rantai Chronicle (#291)", Onboarding.STEPS.size() == 5)
 	PlayerData.new_game()
 
 func _test_save_modern() -> void:
@@ -1481,11 +1481,12 @@ func _test_chargen() -> void:
 		CharGen.sprite_frames(bogus).get_frame_count("walk_down") == 4)
 
 func _test_onboarding() -> void:
-	print("[Onboarding + Guide chain]")
-	check("STEPS chain is 6 long (FF-2g)", Onboarding.STEPS.size() == 6)
-	check("tips cover the six contexts", Onboarding.TIPS.has("town") and Onboarding.TIPS.has("tree") \
+	print("[Onboarding + Guide chain — rantai Chronicle #291]")
+	check("STEPS = 5 langkah rantai Chronicle (#291)", Onboarding.STEPS.size() == 5)
+	check("tips cover the contexts", Onboarding.TIPS.has("town") and Onboarding.TIPS.has("tree") \
 		and Onboarding.TIPS.has("monster") and Onboarding.TIPS.has("levelup") \
-		and Onboarding.TIPS.has("orb") and Onboarding.TIPS.has("dungeon_door"))
+		and Onboarding.TIPS.has("orb") and Onboarding.TIPS.has("dungeon_door") \
+		and Onboarding.TIPS.has("craft_first"))
 	# one-time tip gating
 	PlayerData.onboarding_seen = []
 	Onboarding.tip("town")
@@ -1493,31 +1494,25 @@ func _test_onboarding() -> void:
 	check("tip shown once, then suppressed", PlayerData.onboarding_seen.count("town") == 1)
 	Onboarding.tip("nonexistent_tip")
 	check("unknown tip id is a no-op", not ("nonexistent_tip" in PlayerData.onboarding_seen))
-	# opening quest chain (FF-2g order): kill 2 -> skill -> chop 3 -> craft -> tame -> board
+	# rantai Chronicle: kill 2 -> bicara -> periksa -> Kitab -> pulihkan
 	PlayerData.guide_step = 0
 	PlayerData.guide_progress = 0
-	EventBus.node_harvested.emit("tree", "wood_log", 1)
-	check("wrong kind doesn't advance (tree during kill step)", PlayerData.guide_step == 0 and PlayerData.guide_progress == 0)
-	EventBus.monster_killed.emit("grey_wolf", null)
-	check("kill 1/2 — still step 1", PlayerData.guide_step == 0 and PlayerData.guide_progress == 1)
-	EventBus.monster_killed.emit("grey_wolf", null)
-	check("kill 2/2 advances to skill step", PlayerData.guide_step == 1)
-	EventBus.skill_cast.emit("flame_slash")
-	check("skill cast advances to gather step", PlayerData.guide_step == 2)
-	EventBus.node_harvested.emit("tree", "wood_log", 1)
-	EventBus.node_harvested.emit("tree", "wood_log", 1)
-	EventBus.node_harvested.emit("tree", "wood_log", 1)
-	check("chop 3/3 advances to craft step", PlayerData.guide_step == 3)
-	EventBus.item_crafted.emit("x", false)
-	check("failed craft doesn't advance", PlayerData.guide_step == 3)
-	EventBus.item_crafted.emit("plank", true)
-	check("craft advances to tame step", PlayerData.guide_step == 4)
-	EventBus.pet_added.emit({})
-	check("tame advances to board step", PlayerData.guide_step == 5)
-	EventBus.board_visited.emit()
-	check("visiting board completes the chain", PlayerData.guide_step == 6)
-	EventBus.monster_killed.emit("grey_wolf", null)
-	check("events after completion are ignored", PlayerData.guide_step == 6)
+	EventBus.villager_talked.emit("Uji")
+	check("jenis salah tak maju (bicara saat langkah kill)", PlayerData.guide_step == 0 and PlayerData.guide_progress == 0)
+	EventBus.monster_killed.emit("wild_boar", null)
+	check("kill 1/2 — masih langkah 1", PlayerData.guide_step == 0 and PlayerData.guide_progress == 1)
+	EventBus.monster_killed.emit("wild_boar", null)
+	check("kill 2/2 -> langkah bicara", PlayerData.guide_step == 1)
+	EventBus.villager_talked.emit("Merrit Fane")
+	check("bicara -> langkah periksa", PlayerData.guide_step == 2)
+	EventBus.evidence_found.emit("ev_uji", "benda")
+	check("periksa yang janggal -> langkah Kitab", PlayerData.guide_step == 3)
+	EventBus.kitab_opened.emit()
+	check("buka Kitab -> langkah tulis-ulang", PlayerData.guide_step == 4)
+	EventBus.chronicle_restored.emit("page_uji", "loss uji")
+	check("pulihkan halaman menyelesaikan rantai", PlayerData.guide_step == 5)
+	EventBus.monster_killed.emit("wild_boar", null)
+	check("event sesudah selesai diabaikan", PlayerData.guide_step == 5)
 	# reset for a clean save state
 	PlayerData.guide_step = 0
 	PlayerData.guide_progress = 0

@@ -8,8 +8,11 @@ extends CanvasLayer
 # --- contextual tips --------------------------------------------------------
 const TIPS := {
 	"town": {
-		"title": "Selamat datang di Greenvale",
-		"text": "Ini kota — zona aman. Monster tak bisa masuk dan penjaga gerbang menjagamu. Jelajahi dengan tenang, lalu ikuti Panduan di kanan layar."},
+		"title": "Selamat datang",
+		"text": "Ini pemukiman — jelajahi dengan tenang, bicaralah dengan penduduknya, lalu ikuti Panduan di kanan layar."},
+	"craft_first": {
+		"title": "Meracik barang",
+		"text": "Barang pertamamu jadi! Racik lewat menu Craft (Esc) — resep baru terbuka seiring bahan yang kau temukan."},
 	"tree": {
 		"title": "Menebang & memungut",
 		"text": "Hanya pohon pinus berjenjang & pohon batang telanjang (bergaris tebal) yang bisa ditebang — dekati lalu tekan E berulang. Pohon rimbun membulat lain cuma hiasan. Batu ditambang dengan cara sama."},
@@ -30,21 +33,25 @@ const TIPS := {
 		"text": "Kamu mem-prime DUA elemen sekaligus! Klik kiri untuk melepas paduannya. Resep yang benar menghasilkan sihir baru; yang salah... fizzle. Semua temuanmu tercatat di tab Grimoire (Esc). Tekan angka yang sama atau klik kanan untuk batal."},
 }
 
-# --- opening quest chain (FF-2g) ---------------------------------------------
-# One system per step, one CLEAR reward per step — the first 30 minutes tour.
+# --- opening quest chain — RANTAI CHRONICLE (#291) ---------------------------
+# Rantai lama (kill→skill→tebang→craft→tame→papan) lahir untuk Greenvale dan BUNTU
+# di Ashbrook (bengkelnya mati by-design #206, dungeonnya tak ada). Rantai baru
+# mengajarkan GAME YANG SEBENARNYA: bertarung, lalu loop Chronicle — bicara,
+# memeriksa yang janggal, membuka Kitab, menulis ulang. Craft/tame/dungeon tetap
+# diajarkan lewat TIP KONTEKSTUAL saat pemain menyentuh sistemnya.
+# ⚠ D-3 dijaga: langkah 3 berkata "periksa sesuatu yang janggal" — TIDAK pernah
+#   menyebut kata "bukti", dan notice-nya tetap narasi biasa tanpa penanda.
 const STEPS := [
 	{"desc": "COMBAT — Kalahkan 2 monster di luar gerbang (TAHAN klik kiri)", "kind": "kill", "count": 2,
 		"reward_gold": 40, "reward_item": "minor_potion", "reward_qty": 2},
-	{"desc": "SKILL CLASS-mu — Tekan 1 (prime) lalu TAHAN klik kiri ke musuh", "kind": "skill", "count": 1,
-		"reward_gold": 30},
-	{"desc": "GATHERING — Tebang 3 pohon pinus berjenjang (tekan E)", "kind": "gather_tree", "count": 3,
-		"reward_item": "copper_ore", "reward_qty": 3},
-	{"desc": "CRAFTING — Ramu 1 barang di Bengkel pandai besi (E)", "kind": "craft", "count": 1,
-		"reward_gold": 60},
-	{"desc": "TAMING — Lemahkan monster sampai sekarat, lalu tekan T", "kind": "tame", "count": 1,
-		"reward_item": "basic_orb", "reward_qty": 2},
-	{"desc": "QUEST — Kunjungi Papan Quest di balai kota (E)", "kind": "board", "count": 1,
-		"reward_gold": 100},
+	{"desc": "PENDUDUK — Bicara dengan seseorang di desa (E)", "kind": "talk", "count": 1,
+		"reward_gold": 20},
+	{"desc": "PERIKSA — Ada yang janggal di desa ini. Periksa satu (E)", "kind": "examine", "count": 1,
+		"reward_gold": 40},
+	{"desc": "KITAB — Buka Kitab (Esc → tab Kitab)", "kind": "kitab", "count": 1,
+		"reward_gold": 20},
+	{"desc": "TULIS ULANG — Pulihkan satu halaman yang tercoret", "kind": "restore", "count": 1,
+		"reward_gold": 120},
 ]
 
 var _panel: PanelContainer
@@ -63,13 +70,12 @@ func _ready() -> void:
 	_build_tracker()
 	EventBus.player_leveled_up.connect(func(_lv): tip("levelup"))
 	EventBus.item_gained.connect(_on_item_gained)
-	EventBus.node_harvested.connect(func(t, _i, _q): _advance("gather_tree" if t == "tree" else "", t))
-	EventBus.item_crafted.connect(func(_i, ok): if ok: _advance("craft"))
+	EventBus.item_crafted.connect(func(_i, ok): if ok: tip("craft_first"))
 	EventBus.monster_killed.connect(func(_s, _m): _advance("kill"))
-	EventBus.pet_added.connect(func(_p): _advance("tame"))
-	EventBus.board_visited.connect(func(): _advance("board"))
-	EventBus.skill_cast.connect(func(_sid): _advance("skill"))
-	EventBus.prof_xp_gained.connect(func(_p, _t): _advance("prof_xp"))   # cabang jalur kehidupan (#33)
+	EventBus.villager_talked.connect(func(_n): _advance("talk"))
+	EventBus.evidence_found.connect(func(_id, _k): _advance("examine"))
+	EventBus.kitab_opened.connect(func(): _advance("kitab"))
+	EventBus.chronicle_restored.connect(func(_id, _l): _advance("restore"))
 	EventBus.game_loaded.connect(func(_s): _refresh_tracker())
 	call_deferred("_refresh_tracker")
 
@@ -121,12 +127,9 @@ func _next() -> void:
 # --- Opening quest chain ----------------------------------------------------
 
 
-## Quest pembuka BERCABANG ringan (Decision Log #33): jalur kehidupan mengganti
-## langkah "skill class" dengan langkah domain profesi.
+## #291: cabang jalur-kehidupan lama (langkah skill→prof) ikut pensiun bersama
+## rantai RPG — rantai Chronicle berlaku untuk KEDUA jalur (loop-nya memang satu).
 func step_at(i: int) -> Dictionary:
-	if i == 1 and Db.cls(PlayerData.char_class).get("path", "combat") == "life":
-		return {"desc": "JALUR KEHIDUPAN — lakukan aktivitas domainmu (tebang/tambang/masak/jinakkan...)",
-			"kind": "prof_xp", "count": 1, "reward_gold": 30}
 	return STEPS[i]
 
 func _advance(kind: String, _target := "") -> void:
