@@ -1,0 +1,29 @@
+# ASET CANDYVEIL v0.6b — hasil buruan #299 (2026-07-27)
+
+## lpc_candy/  (DIPAKAI — inti kota gula)
+Sumber : https://opengameart.org/content/lpc-candy
+Pembuat: Mark Weyer (caeles)
+Lisensi: pilihan CC0 / OGA-BY 3.0 / CC-BY 3.0 (dipakai sebagai CC0; kredit
+         Mark Weyer tetap dicantumkan sebagai apresiasi)
+Isi    : candy cane setinggi orang (tileable) -> MENARA LONCENG PERMEN & pilar;
+         terrain bata cokelat 3 rasa + transisi -> dinding Kedai Cokelat;
+         gummy bear 7 rasa (animasi LPC) -> penghuni/critter kota gula.
+Catatan: preview.png TIDAK dipakai (lisensinya GPL/CC-BY-SA, milik S. Challener).
+
+## kenney_candyland_overworld.png  (REFERENSI SAJA — tidak masuk game)
+Sumber : https://opengameart.org/content/kenneys-candy-land-overworld-expansion-v1
+Pembuat: EdSquare (basis Kenney.nl)
+Lisensi: CC0
+Alasan tak dipakai: gaya vektor datar, bentrok pixel-art LPC 32px kita.
+Disimpan sebagai referensi pola taburan/frosting.
+
+## Sudah ada di repo (tidak diunduh ulang):
+- Ubin candy 32px  : gen_tiles_wilayah32.py — ASLI Aetherion.
+- Props permen     : lollipop/candy_cane/gumdrop/tree_candy — era awal repo.
+- Dinding/atap kota: LPC Revised 4-Seasons (OGA-BY 3.0, JaidynReiman dkk) via
+                     pipeline gen_fasad.py — fasad permen = recolor + rakit.
+
+## DIGAMBAR SENDIRI (deklarasi ke Direktur):
+- Trim icing fasad, pintu permen, kerucut atap menara, air mancur sirup
+  (recolor fountain repo), papan penggusuran, gubuk Sora kusam.
+  Semua lewat generator ter-commit (#240).

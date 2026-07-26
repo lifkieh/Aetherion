@@ -66,3 +66,8 @@ sekali: ia mengunduh langsung dari repo generator LPC resmi.
 
 Semuanya bisa dihapus dan dibuat ulang. Kalau salah satu disunting tangan, suntingannya
 akan hilang tanpa peringatan pada panen berikutnya.
+
+## oga/candy (2026-07-27, #299 Candyveil)
+- lpc_candy.tar — "LPC Candy", Mark Weyer, CC0 (pilihan) — candy cane tileable,
+  bata cokelat 3 rasa, gummy bear 7 rasa. https://opengameart.org/content/lpc-candy
+- kenney_candyland_overworld.png — EdSquare/Kenney, CC0 — REFERENSI saja (gaya bentrok).
