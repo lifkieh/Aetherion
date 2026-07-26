@@ -511,12 +511,67 @@ func _build_quests() -> void:
 			var tag := _mk_label(QUEST_TYPE_LABEL.get(qt, qt), 11, QUEST_TYPE_COLOR.get(qt, Color(0.7, 0.75, 0.85)))
 			tag.tooltip_text = "Taksonomi quest: %s" % qt
 			h.add_child(tag)
+		# poster BERTANDA TANGAN (E8 #291-4): tiap misi harian punya wajah pemberi
+		var ttd := ""
+		for dq in Db.quests:
+			if dq.get("id", "") == q.get("id", ""):
+				ttd = str(dq.get("giver", ""))
+				break
+		if ttd != "":
+			h.add_child(_mk_label("ttd. %s" % ttd, 11, Color(0.75, 0.7, 0.55)))
 		if q.done and not q.claimed:
 			h.add_child(_btn("Klaim", func(): QuestSystem.claim(q.id); _rebuild()))
 		elif q.claimed:
 			h.add_child(_mk_label("diklaim", 12))
 		else:
 			h.add_child(_btn("Lacak", _do_track.bind(q.get("id", ""))))
+	_build_serikat_block()
+
+## SERIKAT PENJELAJAH (#291-4) — kontrak berperingkat di bawah papan harian.
+## Tombol Ambil hanya hidup saat menu dibuka DARI penjaga cabang (#122: merobek
+## poster = aksi di dunia, bukan menu melayang); progres & klaim boleh dari mana pun.
+func _build_serikat_block() -> void:
+	content.add_child(_mk_label(" ", 6))
+	content.add_child(_mk_label("🧭 Serikat Penjelajah — Cabang Greenvale", 16, Color(0.55, 0.75, 1.0)))
+	content.add_child(_mk_label("Peringkat: %s · Kontrak selesai: %d" % [Serikat.rank(), Serikat.rep()], 12, Color(0.7, 0.75, 0.85)))
+	var di_cabang: bool = _ctx is Node2D and str(_ctx.get("kind")) == "serikat"
+	if not di_cabang:
+		content.add_child(_mk_label("(mengambil poster hanya bisa di papan cabang — temui Sela di Greenvale)", 11, Color(0.6, 0.62, 0.7)))
+	for a in Serikat.aktif():
+		var k: Dictionary = Serikat.data(str(a.id))
+		var h := _row()
+		var status: String = "✔" if a.done else "%d/%d" % [int(a.progress), int(k.get("count", 1))]
+		var l := _mk_label("[%s] %s  [%s]" % [k.get("rank", "?"), k.get("name", a.id), status], 14)
+		l.custom_minimum_size = Vector2(360, 0)
+		l.tooltip_text = "%s\n— ttd. %s" % [k.get("desc", ""), k.get("giver", "?")]
+		h.add_child(l)
+		if a.done:
+			var aid := str(a.id)
+			h.add_child(_btn("Klaim", func(): Serikat.klaim(aid); _rebuild()))
+	for r in Serikat.RANKS:
+		if not Serikat.rank_terbuka(r):
+			content.add_child(_mk_label("Peringkat %s terkunci — selesaikan %d kontrak lagi." % [r, int(Serikat.RANK_BUTUH[r]) - Serikat.rep()], 12, Color(0.55, 0.55, 0.62)))
+			continue
+		for k in Db.kontrak_serikat:
+			if str(k.get("rank", "")) != r:
+				continue
+			var id := str(k.get("id", ""))
+			if id in Serikat.selesai_ids() or Serikat.sedang_aktif(id):
+				continue
+			var h2 := _row()
+			var reward := "%dG" % int(k.get("reward_gold", 0))
+			if str(k.get("reward_item", "")) != "":
+				reward += " + %s x%d" % [Db.item_name(str(k.get("reward_item", ""))), int(k.get("reward_qty", 1))]
+			var l2 := _mk_label("[%s] %s  → %s" % [r, k.get("name", id), reward], 13)
+			l2.custom_minimum_size = Vector2(360, 0)
+			l2.tooltip_text = str(k.get("desc", ""))
+			h2.add_child(l2)
+			var qt2: String = str(k.get("quest_type", ""))
+			if qt2 != "":
+				h2.add_child(_mk_label(QUEST_TYPE_LABEL.get(qt2, qt2), 11, QUEST_TYPE_COLOR.get(qt2, Color(0.7, 0.75, 0.85))))
+			h2.add_child(_mk_label("ttd. %s" % k.get("giver", "?"), 11, Color(0.75, 0.7, 0.55)))
+			if di_cabang and Serikat.aktif().size() < Serikat.MAX_AKTIF:
+				h2.add_child(_btn("Ambil", func(): Serikat.ambil(id); _rebuild()))
 
 ## JALUR LANJUTAN (#101; gerbang mengikuti band konten — #153) — janji teaser ClassSelect akhirnya dibayar.
 func _build_advanced_block() -> void:

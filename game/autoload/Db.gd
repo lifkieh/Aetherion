@@ -15,6 +15,7 @@ var loot_tables: Dictionary = {}   # id -> table
 var sky_calendar: Array = []
 var achievements: Array = []
 var quests: Array = []
+var kontrak_serikat: Array = []    # poster Serikat Penjelajah berperingkat (#291-4)
 var fish: Array = []
 var echo_vendors: Array = []
 var projectiles: Dictionary = {}   # id -> def
@@ -53,6 +54,7 @@ func load_all() -> void:
 	sky_calendar = _load_array("sky_calendar.json")
 	achievements = _load_array("achievements.json")
 	quests = _load_array("quests.json")
+	kontrak_serikat = _load_array("kontrak_serikat.json")
 	fish = _load_array("fish.json")
 	echo_vendors = _load_array("echo_vendors.json")
 	projectiles = _load_indexed("projectiles.json", "id")

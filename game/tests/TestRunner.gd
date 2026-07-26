@@ -162,6 +162,7 @@ func _ready() -> void:
 	await _test_halaman_orang_hidup_290()
 	await _test_a1_penghapusan_pertama()
 	await _test_quest_pribadi_291()
+	await _test_serikat_291()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5615,3 +5616,67 @@ func _qp_sisir(n: Node, id: String) -> Node:
 		if hasil != null:
 			return hasil
 	return null
+
+
+## #291-4 — SERIKAT PENJELAJAH: poster bertanda tangan, kontrak berperingkat,
+## reputasi = opportunity (#179), E8 (sapaan penjaga berubah mengikuti kerja).
+## #151b: penjaga cabang diuji sebagai NODE dunia (Interactable "serikat"),
+## kemajuan kontrak diuji lewat SINYAL dunia nyata, bukan panggilan internal.
+func _test_serikat_291() -> void:
+	print("[#291-4 — Serikat Penjelajah]")
+	WorldState.counters["serikat_rep"] = 0
+	PlayerData.kontrak = {}
+
+	# data: 10 kontrak, semua bertanda tangan; 9 harian juga bertanda tangan (E8)
+	check("10 kontrak berperingkat termuat", Db.kontrak_serikat.size() == 10)
+	var semua_ttd := true
+	for k in Db.kontrak_serikat:
+		if str(k.get("giver", "")) == "" or str(k.get("desc", "")) == "":
+			semua_ttd = false
+	for q in Db.quests:
+		if str(q.get("giver", "")) == "":
+			semua_ttd = false
+	check("SEMUA poster bertanda tangan — kontrak & harian (E8)", semua_ttd)
+
+	# gerbang peringkat (#179 — akses): F terbuka, E terkunci pada rep 0
+	check("rep 0: F terbuka, E terkunci, peringkat F",
+		Serikat.rank_terbuka("F") and not Serikat.rank_terbuka("E") and Serikat.rank() == "F")
+	check("kontrak E ditolak saat terkunci", not Serikat.ambil("k_e_boar"))
+
+	# ambil -> maju lewat sinyal dunia -> klaim
+	check("ambil k_f_fluffbit", Serikat.ambil("k_f_fluffbit"))
+	check("poster sama tak bisa dirobek dua kali", not Serikat.ambil("k_f_fluffbit"))
+	check("ambil k_f_kayu (slot 2)", Serikat.ambil("k_f_kayu"))
+	check("slot penuh: kontrak ke-3 ditolak (MAX_AKTIF)", not Serikat.ambil("k_f_slime"))
+	for i in 6:
+		EventBus.monster_killed.emit("fluffbit", null)
+	var fluff_done := false
+	for a in Serikat.aktif():
+		if a.id == "k_f_fluffbit" and a.done:
+			fluff_done = true
+	check("6 fluffbit dari sinyal dunia -> kontrak rampung", fluff_done)
+	var emas0: int = PlayerData.gold
+	check("klaim k_f_fluffbit", Serikat.klaim("k_f_fluffbit"))
+	check("upah 80G + rep 1 + poster pindah ke selesai",
+		PlayerData.gold == emas0 + 80 and Serikat.rep() == 1
+		and "k_f_fluffbit" in Serikat.selesai_ids() and not Serikat.sedang_aktif("k_f_fluffbit"))
+	check("kontrak selesai tak bisa diambil ulang", not Serikat.ambil("k_f_fluffbit"))
+
+	# E8: sapaan penjaga BERUBAH saat peringkat naik; #179: yang berubah AKSES
+	var sapa_f: Array = Serikat.sapaan()
+	WorldState.counters["serikat_rep"] = 2
+	check("rep 2: peringkat E terbuka + sapaan Sela berubah (E8)",
+		Serikat.rank() == "E" and Serikat.sapaan() != sapa_f)
+	check("kontrak E kini bisa diambil", Serikat.ambil("k_e_boar"))
+
+	# #151b: penjaga cabang = node dunia sungguhan
+	var pj := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(pj)
+	pj.setup("serikat")
+	await get_tree().process_frame
+	check("penjaga cabang: node interactable berlabel Serikat",
+		pj.is_in_group("interactable") and "Serikat" in pj.label.text)
+	pj.queue_free()
+
+	WorldState.counters["serikat_rep"] = 0
+	PlayerData.kontrak = {}

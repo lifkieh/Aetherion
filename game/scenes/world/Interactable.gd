@@ -76,6 +76,12 @@ func _build() -> void:
 		sprite.scale = Vector2(2.2, 2.6)
 		sprite.modulate = Color(0.75, 0.6, 0.4)
 		label.text = "Papan Quest [E]"
+	elif kind == "serikat":
+		# Sela — penjaga cabang Serikat Penjelajah (#291-4); biru penjelajah = warna
+		# keluarga Gerbang (#43). HANYA dipasang Town Greenvale; Ashbrook tanpa cabang.
+		_char_sprite({"head_race": "human", "torso_race": "human", "legs_race": "human",
+			"hair": "bun", "hair_color": "#8f2611", "shirt": "#2a6b8f", "pants": "#2b2b3a"})
+		label.text = "🧭 Serikat Penjelajah [E]"
 	elif kind == "house_door":
 		# R2: the building sprite is drawn by Town; the door is an invisible hotspot.
 		sprite.visible = false
@@ -231,6 +237,10 @@ func interact() -> void:
 	elif kind == "board":
 		EventBus.board_visited.emit()
 		await Stage.say("Papan misi desa. Ambil tugas harian untuk emas & EXP.", "Papan Quest")
+		menu.open("quest", self)
+	elif kind == "serikat":
+		# E8: sapaan bergeser mengikuti peringkat — Serikat mengenalmu dari kerjamu.
+		await Stage.say(Serikat.sapaan(), "Sela — Serikat Penjelajah", sprite.texture)
 		menu.open("quest", self)
 	elif kind == "guide":
 		await Stage.say([

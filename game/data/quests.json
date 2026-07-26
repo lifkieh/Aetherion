@@ -9,7 +9,8 @@
   "reward_item": "minor_potion",
   "reward_qty": 2,
   "desc": "Ternak Bu Sari hilang tiga ekor pekan ini. Kalahkan 8 monster di sekitar ladang — ia menghitungnya dari jendela.",
-  "quest_type": "Need"
+  "quest_type": "Need",
+  "giver": "Bu Sari"
  },
  {
   "id": "q_wet_hunt",
@@ -22,7 +23,8 @@
   "reward_item": "greater_orb",
   "reward_qty": 1,
   "desc": "Warga tak berani keluar saat badai; monster jadi berani. Kalahkan 5 monster saat hujan agar mereka bisa tidur.",
-  "quest_type": "Fear"
+  "quest_type": "Fear",
+  "giver": "Nenek Ijah"
  },
  {
   "id": "q_wolves",
@@ -34,7 +36,8 @@
   "reward_item": "saddle",
   "reward_qty": 1,
   "desc": "Serigala mendekati kandang. Kalahkan 4 Grey Wolf — Pak Budi menunggu kabarnya, tak tidur semalaman.",
-  "quest_type": "Fear"
+  "quest_type": "Fear",
+  "giver": "Pak Budi"
  },
  {
   "id": "q_wood",
@@ -46,7 +49,8 @@
   "reward_item": "plank",
   "reward_qty": 3,
   "desc": "Kayu bakar desa menipis menjelang malam dingin. Tebang kayu 6 kali.",
-  "quest_type": "Need"
+  "quest_type": "Need",
+  "giver": "Rina"
  },
  {
   "id": "q_mine",
@@ -58,7 +62,8 @@
   "reward_item": "copper_bar",
   "reward_qty": 2,
   "desc": "Pandai besi ingin membuktikan tembaganya setara baja kota. Tambang bijih 5 kali untuknya.",
-  "quest_type": "Ambition"
+  "quest_type": "Ambition",
+  "giver": "Pandai Besi Greenvale"
  },
  {
   "id": "q_craft",
@@ -70,7 +75,8 @@
   "reward_item": "mana_draught",
   "reward_qty": 2,
   "desc": "Belajar menempa adalah cara Nenek Ijah bilang \"kau menetap di sini\". Buat 3 item di bengkel.",
-  "quest_type": "Dream"
+  "quest_type": "Dream",
+  "giver": "Nenek Ijah"
  },
  {
   "id": "q_tame",
@@ -82,7 +88,8 @@
   "reward_item": "greater_orb",
   "reward_qty": 1,
   "desc": "Anak-anak desa ingin melihat monster yang tidak menakutkan. Jinakkan 1 monster dan bawalah lewat alun-alun.",
-  "quest_type": "Dream"
+  "quest_type": "Dream",
+  "giver": "Joko"
  },
  {
   "id": "q_moon_hunt",
@@ -95,7 +102,8 @@
   "reward_item": "master_orb",
   "reward_qty": 1,
   "desc": "Purnama membuat monster ganas dan warga berkumpul di balai desa. Kalahkan 10 monster saat purnama.",
-  "quest_type": "Fear"
+  "quest_type": "Fear",
+  "giver": "Kepala Desa Wira"
  },
  {
   "id": "q_candy",
@@ -107,6 +115,7 @@
   "reward_item": "sugar_crystal",
   "reward_qty": 3,
   "desc": "Pembuat kue istana kehabisan bahan menjelang pesta teh. Panen 4 pohon lolipop di Candyveil.",
-  "quest_type": "Need"
+  "quest_type": "Need",
+  "giver": "Juru Kue Istana"
  }
 ]

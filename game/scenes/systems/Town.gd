@@ -258,6 +258,7 @@ static func _place_npcs(host: Node2D, center: Vector2) -> void:
 		["astrologer", Vector2(-300, 78)],    # astrologer by the tower
 		["inn", Vector2(292, -62)],           # innkeeper by the inn
 		["board", Vector2(48, -104)],         # quest board at the town hall
+		["serikat", Vector2(112, -104)],      # Sela, cabang Serikat Penjelajah (#291-4)
 		["guide", Vector2(-40, 96)],          # Pemandu by the plaza/well
 		["mirror", Vector2(198, -56)],        # Cermin Jiwa (re-customize) by the inn
 		["trainer", Vector2(-232, 96)],       # Guru Skill near the forge/plaza
