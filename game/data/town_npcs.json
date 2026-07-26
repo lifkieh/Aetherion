@@ -1597,7 +1597,8 @@
     "Kamar-kamar itu masih kusapu. Bukan karena ada yang datang. Karena kalau berdebu, aku akan terbiasa.",
     "Tulisan tanganmu jelek. Bagus. Yang jelek biasanya jujur.",
     "Dulu aku hafal tulisan tangan setiap keluarga di sini. Sekarang aku hafal semuanya karena tinggal sedikit.",
-    "Kalau kau pergi ke Greenvale, jangan menoleh. Atau menolehlah. Terserah. Lampunya tetap menyala."
+    "Kalau kau pergi ke Greenvale, jangan menoleh. Atau menolehlah. Terserah. Lampunya tetap menyala.",
+    "Mantel pos ini? Orang-orang menyuruhku menggantinya sejak dua puluh tahun lalu. Lihat jahitan di sikunya — rapi, bukan? Bukan buatanku. Aku tak pernah bisa menjahit serapi itu, dan aku tak ingat siapa yang memperbaikinya. Tapi mantel ini yang kupakai waktu ia melihatku terakhir kali."
    ],
    "schedule": {
     "pagi": {
@@ -1652,7 +1653,9 @@
     790,
     512
    ],
-   "_anchor_note": "teras rumah singgah — pintunya menghadap selatan"
+   "_anchor_note": "teras rumah singgah — pintunya menghadap selatan",
+   "evidence_id": "ev_otha_jahitan_mantel_merrit",
+   "evidence_line": 4
   },
   {
    "name": "Old Bram",

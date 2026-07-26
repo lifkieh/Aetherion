@@ -1274,6 +1274,11 @@ func _props_and_evidence() -> void:
 
 	# PAPAN OTHA — kosong + BEKAS CAT (bukti `akibat`). Diskalakan 4x supaya
 	# persegi bekasnya TETAP TERBACA pada petak 32 (16x14 -> 64x56).
+	# BANGKU OTHA + EMPAT CEKUNGAN (#290, ev kebiasaan) — bangku tempat seseorang
+	# duduk tiap sore selama 34 tahun. Bangkunya masih ada. Kosong. Titik-periksa
+	# berjarak 105 px dari papan (aturan radius-72 Interactable, pelajaran alun-alun).
+	_put(P_S + "bench_lpc.png", OTHA_KAKI + Vector2(96, 28))
+	_examine(OTHA_KAKI + Vector2(96, 56), "ev_otha_bangku_cekungan")
 	var sign := _put(P_OLD + "otha_sign_fadedmark.png", OTHA_KAKI + Vector2(0, 40))
 	if sign:
 		sign.scale = Vector2(4, 4)
@@ -2261,6 +2266,14 @@ func _bangun_kamar_merrit() -> void:
 	# mencatat kapan ia menambahkannya.
 	_kotak(o + Vector2(250, 34), Vector2(44, 6), Color(0.30, 0.24, 0.18), 3)
 	_examine(o + Vector2(272, 40), "ev_merrit_rute_pos_berubah")
+
+	# MEJA TEH KECIL + CANGKIR KEDUA (#290, ev kebiasaan A2) — dekat perapian,
+	# tempat ia minum teh pagi. Dua cangkir, yang kedua dingin tanpa disentuh.
+	# `schedule: pagi` di data = kapan RITUALNYA terjadi; cangkirnya sendiri ada
+	# sepanjang hari (yang kedua selalu dingin) — titiknya boleh diperiksa kapan pun.
+	# Jarak ke titik lain: kartu pos 84 · surat 131 · keluar 105 (aturan radius-72).
+	_kotak(o + Vector2(30, 172), Vector2(36, 16), Color(0.30, 0.22, 0.14), 3)
+	_examine(o + Vector2(48, 180), "ev_merrit_cangkir_kedua")
 
 	# pintu KELUAR
 	var keluar := _prop(o + Vector2(150, 205))

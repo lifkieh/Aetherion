@@ -158,6 +158,8 @@ func _ready() -> void:
 	# #280 — dua bug dasar visual pemain (2026-07-24)
 	await _test_player_look_lpc_280()
 	await _test_chargen_no_stack_280()
+	# #290 — konten v0.5: halaman orang
+	await _test_halaman_orang_hidup_290()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5320,3 +5322,72 @@ func _test_chargen_no_stack_280() -> void:
 		check("dua klik satu frame -> panel tetap %d baris (dulu %d)" % [awal, awal * 2], kini == awal)
 	cc.queue_free()
 	get_tree().paused = false
+
+
+## ═══════════ #290 — dua halaman ORANG hidup (Otha & Merrit) ═══════════
+## Audit gameplay: "seluruh jenis `orang` hilang; 2 dari 3 halaman mustahil
+## dipulihkan". Ronde #290 memasang bangku Otha (kebiasaan), cangkir kedua
+## (kebiasaan), dan kesaksian-tak-disadari Merrit soal jahitan mantel (benda,
+## pola Bram). #151b: bukti ditemukan lewat TITIK NYATA di scene + MULUT NYATA
+## Villager — lalu KEDUA halaman orang dipulihkan jalur SENDIRI (#228).
+func _test_halaman_orang_hidup_290() -> void:
+	print("[#290 — halaman Otha & Merrit dipulihkan dari dunia nyata]")
+	Evidence.found.clear()
+	Evidence.decayed.clear()
+	Evidence._clock_start.clear()
+	for pid in ["person_otha_renn", "person_merrit_fane"]:
+		for i in range(WorldState.chronicle.size() - 1, -1, -1):
+			if WorldState.chronicle[i].get("id", "") == pid:
+				WorldState.chronicle.remove_at(i)
+	Chronicle.record_person("person_otha_renn", "Otha Renn — penjahit Ashbrook")
+	Chronicle.record_person("person_merrit_fane", "Merrit Fane — tukang pos Ashbrook")
+	Chronicle.strike("person_otha_renn")
+	Chronicle.strike("person_merrit_fane")
+
+	var scene: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	# lima titik-periksa nyata (papan sudah lama; bangku/cangkir baru #290)
+	var target := ["ev_otha_papan_bekas_cat", "ev_otha_bangku_cekungan",
+		"ev_merrit_kartu_pos_kosong", "ev_merrit_rute_pos_berubah",
+		"ev_merrit_cangkir_kedua"]
+	for ev_id in target:
+		var node: Node = null
+		for n in get_tree().get_nodes_in_group("interactable"):
+			if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == ev_id:
+				node = n
+				break
+		check("titik %s ADA di Ashbrook64" % ev_id, node != null)
+		if node:
+			node_examine(node)
+		check("%s ditemukan lewat titiknya" % ev_id, Evidence.has(ev_id))
+
+	# kesaksian tak disadari Merrit (baris ke-5, pola Bram) — lewat MULUTNYA
+	var merrit: Node = null
+	for v in get_tree().get_nodes_in_group("villagers"):
+		if v.has_method("persona") and str(v.persona().get("name", "")) == "Merrit Fane":
+			merrit = v
+			break
+	if merrit == null:
+		for v in scene.get_children():
+			if v.has_method("persona") and str(v.persona().get("name", "")) == "Merrit Fane":
+				merrit = v
+				break
+	check("Merrit Fane hidup di scene (persona)", merrit != null)
+	if merrit:
+		for i in range(40):   # cabang acak (sapaan/gosip) dilewati; idx tetap maju
+			merrit.persona_line()
+	check("jahitan mantel ditemukan dari MULUT Merrit (#226 gosip)",
+		Evidence.has("ev_otha_jahitan_mantel_merrit"))
+
+	# kedua halaman ORANG kini pulih jalur SENDIRI (3 jenis, #228)
+	for pid in ["person_otha_renn", "person_merrit_fane"]:
+		var r: Dictionary = Chronicle.restore(pid, Evidence.for_page(pid), Chronicle.SCRIBE_SELF)
+		check("%s pulih SENDIRI" % pid, bool(r.get("ok", false)), str(r.get("reason", "")))
+		check("%s: sesuatu TETAP hilang (#226#3)" % pid,
+			String(r.get("loss", "")).strip_edges() != "")
+	if is_instance_valid(scene):
+		scene.queue_free()
+	await get_tree().process_frame
