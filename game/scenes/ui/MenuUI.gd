@@ -1351,6 +1351,17 @@ const KITAB_TXT := {
 		"id": "Tak ada juru tulis lain yang kau kenal.",
 		"en": "There is no other scribe you know.",
 	},
+	"sora_disclosure": {
+		"id": "Sora akan menulis ini. Ia merasakan lebih banyak dari yang ia ceritakan,\ndan tiap halaman menambah beratnya. Ia tidak akan menolak. Ia tidak pernah menolak.",
+		"en": "Sora will write this. She feels more than she tells,\nand every page adds to the weight. She will not refuse. She never does.",
+	},
+	"take_sora": {"id": "Minta Sora menuliskannya", "en": "Ask Sora to write it"},
+	"sora_coba_dua": {
+		"id": "\"Aku bisa coba dua-duanya.\"",
+		"en": "\"I can try both.\"",
+	},
+	"sora_biarkan": {"id": "Biarkan ia mencoba", "en": "Let her try"},
+	"sora_pilihkan": {"id": "Pilihkan satu", "en": "Choose one for her"},
 	"elyn_locked": {
 		"id": "Bekas yang kaubawa belum cukup, bahkan untuk Elyn.",
 		"en": "The traces you carry are not enough, even for Elyn.",
@@ -1449,6 +1460,7 @@ func _build_kitab() -> void:
 		match parts[0]:
 			"path": _kitab_prompt_path(pid); return
 			"elyn": _kitab_prompt_elyn(pid); return
+			"sora": _kitab_prompt_sora(pid); return
 			"full": _kitab_prompt_full(pid); return
 			"done": _kitab_done(pid); return
 	_kitab_list()
@@ -1460,6 +1472,7 @@ func _kitab_list() -> void:
 	if struck.is_empty() and readable.is_empty():
 		content.add_child(_mk_label(_kt("empty"), 13, KITAB_INK_DIM))
 		return
+	_kitab_tawaran_sora()   # #295 S2 — tawaran "coba dua", sekali seumur buku
 
 	var note := _mk_label(_kt("who_bothered"), 12, KITAB_INK_DIM)
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -1599,6 +1612,14 @@ func _kitab_prompt_path(pid: String) -> void:
 	else:
 		_kitab_line(box, _kt("elyn_locked" if WorldState.get_counter("elyn_kenal") == 1
 			else "elyn_belum_kenal"), 12, KITAB_INK_DIM)
+	# #295 S2 — jalur SORA. Tanpa baris "terkunci" saat belum kenal: pemain yang
+	# belum menemani ritualnya tak pernah tahu jalur ini ada (D-3, sejalan #228).
+	if _sora_tersedia(pid):
+		var bo := _btn(_kt("take_sora"), func():
+			_kitab_view = "sora:" + pid
+			_rebuild())
+		bo.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		box.add_child(bo)
 
 
 ## Jalur Elyn hanya SETELAH pemain mengenalnya di perpustakaan (#293 lanjutan):
@@ -1606,6 +1627,74 @@ func _kitab_prompt_path(pid: String) -> void:
 func _elyn_tersedia(pid: String) -> bool:
 	return WorldState.get_counter("elyn_kenal") == 1 \
 		and Evidence.enough_for(pid, Chronicle.SCRIBE_ELYN)
+
+
+## Jalur Sora (#295 S2) — gerbang yang sama: temani ritualnya dulu (sora_kenal).
+func _sora_tersedia(pid: String) -> bool:
+	return WorldState.get_counter("sora_kenal") == 1 \
+		and Evidence.enough_for(pid, Chronicle.SCRIBE_SORA)
+
+
+## Keterbukaan pra-konfirmasi jalur Sora (#259 — sejajar Elyn, harganya beda:
+## bukan tahun, melainkan berat yang ia tanggung tanpa pernah menolak).
+func _kitab_prompt_sora(pid: String) -> void:
+	var box := _kitab_head(pid)
+	var l := _mk_label(_kt("sora_disclosure"), 15, KITAB_LOSS)
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.custom_minimum_size = Vector2(450, 0)
+	box.add_child(l)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	box.add_child(row)
+	row.add_child(_btn("[ %s ]" % _kt("take_sora"), func():
+		var r: Dictionary = Chronicle.restore_sora(pid, Evidence.for_page(pid))
+		if r.get("ok", false):
+			_kitab_view = "done:" + pid
+		_rebuild()))
+	row.add_child(_btn("[ %s ]" % _kt("take_self"), func(): _kitab_do_self(pid)))
+	_kitab_back_btn()
+
+
+## JEBAKAN "coba dua" (#295 S2 · bible A3 §4 · K2 KEJAM PENUH). Muncul SEKALI:
+## dua halaman orang tercoret, Sora dikenal, bukti cukup untuk >=1. Membiarkannya
+## mencoba = satu tertulis, satu GAGAL SENYAP — nol pengumuman, nol kalimat;
+## bebannya dicatat diam (D-4). Menghentikannya = "...Oke." — dan ia tak bertanya.
+func _kitab_tawaran_sora() -> void:
+	var DUA := ["person_otha_renn", "person_merrit_fane"]
+	if WorldState.get_counter("sora_kenal") != 1 \
+			or WorldState.get_counter("sora_coba_dua") != 0:
+		return
+	if not (Chronicle.is_struck(DUA[0]) and Chronicle.is_struck(DUA[1])):
+		return
+	var cukup := false
+	for pid in DUA:
+		if Evidence.enough_for(pid, Chronicle.SCRIBE_SORA):
+			cukup = true
+	if not cukup:
+		return
+	var box := VBoxContainer.new()
+	content.add_child(box)
+	var l := _mk_label(_kt("sora_coba_dua"), 16, KITAB_INK)
+	box.add_child(l)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	box.add_child(row)
+	row.add_child(_btn(_kt("sora_biarkan"), func():
+		WorldState.counters["sora_coba_dua"] = 1
+		var sukses := 0
+		for pid in DUA:
+			var r: Dictionary = Chronicle.restore_sora(pid, Evidence.for_page(pid))
+			if r.get("ok", false):
+				sukses += 1
+		# mencoba dua = memikul dua — termasuk yang gagal (#229.1). Kegagalannya
+		# sendiri TIDAK diumumkan: halaman itu cuma tetap tercoret di daftar.
+		for i in range(2 - sukses):
+			WorldState.add_counter("sora_beban")
+		_rebuild()))
+	row.add_child(_btn(_kt("sora_pilihkan"), func():
+		WorldState.counters["sora_coba_dua"] = 1
+		EventBus.toast.emit("🏮 \"...Oke.\"")
+		_rebuild()))
 
 	_kitab_back_btn()
 

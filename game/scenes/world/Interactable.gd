@@ -239,6 +239,18 @@ func interact() -> void:
 		await Stage.say("Papan misi desa. Ambil tugas harian untuk emas & EXP.", "Papan Quest")
 		menu.open("quest", self)
 	elif kind == "serikat":
+		# #295 S3 — surat Arlen diserahkan DI SINI, ke tangan Sela (#122: aksi di
+		# dunia). Balasannya menanam babak v0.6: "suruh ia datang sendiri."
+		if PlayerData.item_count("paket_arlen") > 0 and WorldState.get_counter("arlen_titipan") == 1:
+			PlayerData.remove_item("paket_arlen", 1)
+			WorldState.counters["arlen_titipan"] = 2
+			WorldState.counters["arlen_pulang_hari"] = int(Time.get_unix_time_from_system() / 86400.0)
+			await Stage.say(["Amplop dari Ashbrook? ...Lamaran kurir.",
+				"Tulisannya rapi. Orangnya belum pernah kulihat.",
+				"Katakan padanya: Serikat membalas lewat papan, bukan lewat pos. Suruh ia datang sendiri."],
+				"Sela — Serikat Penjelajah", sprite.texture)
+			EventBus.toast.emit("📮 Surat Arlen sampai di tangan Sela.")
+			return
 		# E8: sapaan bergeser mengikuti peringkat — Serikat mengenalmu dari kerjamu.
 		await Stage.say(Serikat.sapaan(), "Sela — Serikat Penjelajah", sprite.texture)
 		menu.open("quest", self)

@@ -165,6 +165,7 @@ func _ready() -> void:
 	await _test_serikat_291()
 	await _test_a2_a3_291()
 	await _test_ditunda_294()
+	await _test_companion_296()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5606,6 +5607,8 @@ func _test_quest_pribadi_291() -> void:
 
 func _qp_cari_prop(id: String) -> Node:
 	for root in get_tree().root.get_children():
+		if root.is_queued_for_deletion():
+			continue   # scene lama yang sedang dibuang — jangan disisir (#296)
 		var hasil := _qp_sisir(root, id)
 		if hasil != null:
 			return hasil
@@ -5818,6 +5821,7 @@ func _test_ditunda_294() -> void:
 	Evidence.decayed.erase("ev_otha_nyai_tuminah_kamis")
 	WorldState.counters["uji_kamis_sore"] = 1
 	WorldState.counters["qp_nyai"] = 0
+	WorldState.counters["uji_jam_paksa"] = 23   # #296: Arlen malam (kesaksian) butuh jam malam
 
 	# ── muat 1: perpustakaan berdiri + Arlen hidup + kamar berperabot ──
 	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
@@ -5827,7 +5831,7 @@ func _test_ditunda_294() -> void:
 	check("Elyn ada di perpustakaan (sprite)", _a1_cari_sprite("elyn_idle") != null)
 	check("laci TERTUTUP sebelum ada limpahan", _a1_cari_sprite("laci_elyn_tutup") != null
 		and _a1_cari_sprite("laci_elyn_buka") == null)
-	var elyn_prop := _294_prop("Elyn [E]")
+	var elyn_prop := _294_prop(s, "Elyn [E]")
 	check("titik bicara Elyn menandai elyn_kenal", elyn_prop != null
 		and str(elyn_prop.get("set_counter")) == "elyn_kenal")
 	check("perabot kamar Merrit tergambar (int_bed)", _a1_cari_sprite("int_bed") != null)
@@ -5841,7 +5845,7 @@ func _test_ditunda_294() -> void:
 	var ucap := str(node_examine(ar_node)) if ar_node else ""
 	check("dari mulut Arlen: \"Kalian ngobrol tiap malam\"", "Kalian ngobrol" in ucap)
 	check("bukti `orang` Merrit tercatat", Evidence.has("ev_merrit_arlen_ingat"))
-	check("Nyai masih datang Kamis (bukti belum busuk)", _qp_cari_prop("nyai_temani") != null)
+	check("Nyai masih datang Kamis (bukti belum busuk)", _qp_sisir(s, "nyai_temani") != null)
 	s.queue_free()
 	await get_tree().process_frame
 
@@ -5865,7 +5869,7 @@ func _test_ditunda_294() -> void:
 	await get_tree().process_frame
 	check("laci TERBUKA sesudah triase-elyn (tumpukan terlihat)",
 		_a1_cari_sprite("laci_elyn_buka") != null)
-	var laci_prop := _294_prop("Laci meja [E]")
+	var laci_prop := _294_prop(s, "Laci meja [E]")
 	var laci_bicara := ""
 	if laci_prop:
 		for l in laci_prop.get("lines"):
@@ -5881,18 +5885,194 @@ func _test_ditunda_294() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	check("Nyai TIDAK datang lagi — dan tak ada yang mengumumkannya",
-		_qp_cari_prop("nyai_temani") == null)
+		_qp_sisir(s, "nyai_temani") == null)
 	s.queue_free()
 	await get_tree().process_frame
 
 	Evidence.decayed.erase("ev_otha_nyai_tuminah_kamis")
 	PlayerData.elyn_burden = burden_awal
-	for k in ["uji_kamis_sore", "elyn_kenal", "warisan:triase_otha", "warisan:triase_merrit"]:
+	for k in ["uji_kamis_sore", "uji_jam_paksa", "elyn_kenal",
+			"warisan:triase_otha", "warisan:triase_merrit"]:
 		WorldState.counters[k] = 0
 
 
-func _294_prop(label: String) -> Node:
-	for n in get_tree().get_nodes_in_group("interactable"):
-		if str(n.get("label_text")) == label:
-			return n
+func _294_prop(akar: Node, label: String) -> Node:
+	# ⚠ SISIR DI DALAM SCENE AKTIF, bukan grup global: queue_free hanya menandai
+	# AKAR scene lama — anak-anaknya tetap terdaftar di grup pada frame yang sama,
+	# jadi pencarian grup mengembalikan prop BASI dari scene sebelumnya (#296).
+	if akar.get("label_text") != null and str(akar.get("label_text")) == label:
+		return akar
+	for c in akar.get_children():
+		var h := _294_prop(c, label)
+		if h != null:
+			return h
 	return null
+
+
+## #296 — COMPANION IRISAN v0.5 (#295 S1-S4): ritual Sora dua malam, jalur
+## juru-tulis Sora + beban senyap, Arlen batu penanda + rantai titipan, Nyai×Sora.
+## #151b: titik & figur dicek sebagai NODE scene; kemajuan lewat sinyal/mesin nyata.
+func _test_companion_296() -> void:
+	print("[#296 — Sora & Arlen (companion irisan v0.5)]")
+	for k in ["sora_kenal", "sora_temani_n", "sora_hari_terakhir", "sora_beban",
+			"sora_coba_dua", "arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari",
+			"a2_sudah", "uji_kamis_malam"]:
+		WorldState.counters[k] = 0
+	for pid in ["person_otha_renn", "person_merrit_fane"]:
+		for i in range(WorldState.chronicle.size() - 1, -1, -1):
+			if WorldState.chronicle[i].get("id", "") == pid:
+				WorldState.chronicle.remove_at(i)
+	check("aset batu penanda ada (#240 gen_batu_penanda.py)",
+		ResourceLoader.exists("res://assets/game/sprites/props/batu_penanda.png"))
+
+	# ── MALAM (jam dipaksa 21): ritual Sora, label netral ──
+	WorldState.counters["uji_jam_paksa"] = 22
+	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("Sora malam: figur di pemakaman", _a1_cari_sprite("sora_idle") != null)
+	var sp := _294_prop(s, "Anak berlentera [E]")
+	check("label NETRAL sebelum kenal + qp sora_ritual", sp != null
+		and str(sp.get("qp_id")) == "sora_ritual")
+	check("lampu ritual menyala (lentera32)", _a1_cari_sprite("lentera32") != null)
+
+	# ── rekrut DUA MALAM lewat mesin temani nyata ──
+	var suara: Array = []
+	var cb := func(t): suara.append(t)
+	EventBus.toast.connect(cb)
+	var pl = get_tree().get_first_node_in_group("player")
+	check("pemain ada di scene", pl != null)
+	if pl and sp:
+		pl.global_position = sp.global_position
+		QuestPribadi.titik("sora_ritual", sp.global_position)
+		QuestPribadi._temani["sora"]["sisa"] = 0.05
+		for i in 12:
+			await get_tree().process_frame
+		check("malam 1: ditemani (n=1), belum kenal",
+			WorldState.get_counter("sora_temani_n") == 1
+			and WorldState.get_counter("sora_kenal") == 0)
+		QuestPribadi.titik("sora_ritual", sp.global_position)
+		check("malam yang sama tak dihitung dua kali",
+			not QuestPribadi._temani.has("sora"))
+		WorldState.counters["sora_hari_terakhir"] = 0   # besok malamnya
+		QuestPribadi.titik("sora_ritual", sp.global_position)
+		QuestPribadi._temani["sora"]["sisa"] = 0.05
+		for i in 12:
+			await get_tree().process_frame
+		check("malam 2: sora_kenal menyala", WorldState.get_counter("sora_kenal") == 1)
+	EventBus.toast.disconnect(cb)
+	var bocor := []
+	for tt in suara:
+		var ts := str(tt).to_lower()
+		for kata in ["sora", "kenal", "ritual", "lampu"]:
+			if kata in ts:
+				bocor.append(tt)
+	check("rekrut SENYAP total (D-3)", bocor.is_empty(), str(bocor))
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── SINYAL A2 + nama terbuka + S4 Nyai×Sora ──
+	Chronicle.record_person("person_merrit_fane", "uji merrit")
+	Chronicle.record_person("person_otha_renn", "uji otha")
+	Chronicle.strike("person_merrit_fane")
+	Chronicle.strike("person_otha_renn")
+	WorldState.counters["a2_sudah"] = 1
+	WorldState.counters["uji_kamis_malam"] = 1
+	Evidence.decayed.erase("ev_otha_nyai_tuminah_kamis")
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var sp2 := _294_prop(s, "Sora [E]")
+	check("sesudah kenal: namanya keluar (Sora [E])", sp2 != null)
+	var baris := ""
+	if sp2:
+		for l in sp2.get("lines"):
+			baris += str(l) + "|"
+	check("sinyal A2 dari mulutnya: \"Nggak tahu. Cuma... ada yang perlu.\"",
+		"Nggak tahu. Cuma" in baris)
+	var dua_baris := _296_baris_semua(s, "Periksa [E]")
+	check("S4 Kamis malam: \"Dua lampu.\" hadir di pemakaman", "Dua lampu" in dua_baris)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── jalur juru-tulis SORA (2 jenis) + beban senyap ──
+	for ev in ["ev_merrit_kartu_pos_kosong", "ev_merrit_cangkir_kedua"]:
+		Evidence.find(ev)
+	var beban0 := WorldState.get_counter("sora_beban")
+	var r: Dictionary = Chronicle.restore_sora("person_merrit_fane", Evidence.for_page("person_merrit_fane"))
+	check("halaman pulih lewat tangan Sora (2 jenis)", r.get("ok", false), str(r))
+	check("loss hadir (#226 #3) + beban Sora bertambah DIAM (D-4)",
+		str(r.get("loss", "")) != "" and WorldState.get_counter("sora_beban") == beban0 + 1)
+	var src: String = load("res://scenes/ui/MenuUI.gd").source_code
+	check("Kitab: tombol Sora bergerbang kenal (_sora_tersedia)",
+		src.contains("_sora_tersedia") and src.contains("take_sora"))
+	check("jebakan \"coba dua\" terpasang SEKALI-seumur-buku + gagal-senyap",
+		src.contains("_kitab_tawaran_sora") and src.contains("sora_coba_dua"))
+
+	# ── S3 ARLEN: siang di batu, rantai titipan ──
+	WorldState.counters["uji_jam_paksa"] = 13
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("batu penanda berdiri + teksnya", _a1_cari_sprite("batu_penanda") != null
+		and _294_prop(s, "Batu penanda [E]") != null)
+	var ap := _294_prop(s, "Arlen [E]")
+	check("Arlen siang: prop bicara ber-talk_name", ap != null
+		and str(ap.get("talk_name")) == "Arlen")
+	for i in 3:
+		EventBus.villager_talked.emit("Arlen")
+	check("bicara 3x: surat lamaran dititipkan",
+		WorldState.get_counter("arlen_titipan") == 1
+		and PlayerData.item_count("paket_arlen") >= 1)
+	var isrc: String = load("res://scenes/world/Interactable.gd").source_code
+	check("Sela menerima surat di cabang (#122)", isrc.contains("paket_arlen")
+		and isrc.contains("arlen_pulang_hari"))
+	s.queue_free()
+	await get_tree().process_frame
+	# pulang: dua hari euforia, lalu baris permanen
+	PlayerData.remove_item("paket_arlen", 1)
+	WorldState.counters["arlen_titipan"] = 2
+	WorldState.counters["arlen_pulang_hari"] = int(Time.get_unix_time_from_system() / 86400.0)
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var ap2 := _294_prop(s, "Arlen [E]")
+	var ab := ""
+	if ap2:
+		for l in ap2.get("lines"):
+			ab += str(l)
+	check("dua hari sesudah pulang: bicara tanpa henti (E8)", "SELA" in ab)
+	s.queue_free()
+	await get_tree().process_frame
+	WorldState.counters["arlen_pulang_hari"] = 1   # sudah lama berlalu
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var ap3 := _294_prop(s, "Arlen [E]")
+	var ab3 := ""
+	if ap3:
+		for l in ap3.get("lines"):
+			ab3 += str(l)
+	check("baris permanen: \"Suratnya sampai. Aku yang membawanya.\"",
+		"Suratnya sampai" in ab3)
+	s.queue_free()
+	await get_tree().process_frame
+
+	for k in ["sora_kenal", "sora_temani_n", "sora_hari_terakhir", "sora_beban",
+			"sora_coba_dua", "arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari",
+			"a2_sudah", "uji_kamis_malam", "uji_jam_paksa"]:
+		WorldState.counters[k] = 0
+
+
+## Gabungkan baris SEMUA prop berlabel `label` di dalam scene `akar` (#296).
+func _296_baris_semua(akar: Node, label: String) -> String:
+	var out := ""
+	if akar.get("label_text") != null and str(akar.get("label_text")) == label 			and akar.get("lines") != null:
+		for l in akar.get("lines"):
+			out += str(l) + "|"
+	for c in akar.get_children():
+		out += _296_baris_semua(c, label)
+	return out

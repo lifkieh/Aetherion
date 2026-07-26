@@ -2577,10 +2577,6 @@ func _folk() -> void:
 		#   yang dicabut). Ia bisa diajak bicara, dan baris kelimanya adalah kesaksian.
 		["nyai", VC + Vector2(160, 128)],
 		["otha_renn", OTHA_KAKI + Vector2(96, 12)],      # A1-SEBELUM: di bangkunya
-		["sora", Vector2(672, 1024)],
-		# ARLEN (#293 lanjutan, KANON_MERRIT_ARLEN) — anak rumah pos. Berdiri di
-		# jalan depan rumah singgah: dari sinilah ia MELIHAT obrolan tiap malam.
-		["arlen", MERRIT_HOUSE + Vector2(-64, 130)],
 	]:
 		# A1 (#291-2): SESUDAH penghapusan, Otha TIDAK PERNAH muncul di layar lagi
 		# (spec A1 §1). Sebelum: ia duduk di bangku depan tokonya — tidak bicara.
@@ -2600,16 +2596,168 @@ func _folk() -> void:
 		s.z_index = int(s.global_position.y)
 		add_child(s)
 
-	# Kesaksian Arlen (`orang` — ev_merrit_arlen_ingat, bible A2 §6): bicara
-	# dengannya = mendengar apa yang ia lihat dari jalan, tiap malam. Notice-nya
-	# kalimatnya sendiri; penemuannya senyap (D-3). Benar SEBELUM A2 juga — ia
-	# memang melihat kalian mengobrol; artinya saja yang belum lahir.
-	var ar := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(ar)
-	ar.evidence_id = "ev_merrit_arlen_ingat"
-	ar.custom_label = "Arlen [E]"
-	ar.setup("examine")
-	ar.global_position = MERRIT_HOUSE + Vector2(-64, 158)
+	_sora()
+	_arlen()
+
+
+## Jam WIB untuk KEPUTUSAN BUILD scene. Dipaksa `uji_jam_paksa` (nilai = jam+1)
+## khusus harness — keputusan berbasis jam nyata tanpa override = test yang
+## lulus siang dan gagal malam (#273).
+func _wib_jam() -> int:
+	var paksa := WorldState.get_counter("uji_jam_paksa")
+	if paksa > 0:
+		return paksa - 1
+	return GameClock.wib_hour()
+
+
+## Figur tokoh bernama statis (idle hadap-bawah) — pola yang sama dengan _folk.
+func _figur(nama: String, pos: Vector2) -> void:
+	var p := P_C + nama + "_idle.png"
+	if not ResourceLoader.exists(p):
+		push_warning("[ash64] NPC belum dirakit: %s" % nama)
+		return
+	var s := Sprite2D.new()
+	var at := AtlasTexture.new()
+	at.atlas = load(p)
+	at.region = Rect2(0, 128, 64, 64)
+	s.texture = at
+	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.global_position = pos
+	s.z_index = int(s.global_position.y)
+	add_child(s)
+
+
+## Lampu kecil ritual Sora — lentera + cahaya redup (satu-satunya terang pemakaman).
+func _lampu_kecil(pos: Vector2) -> void:
+	if _put(P_S + "lentera32.png", pos) == null:
+		return
+	var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
+	img.fill(Color(1, 1, 1))
+	var l := PointLight2D.new()
+	l.energy = 1.1
+	l.texture_scale = 4.0
+	l.color = Color(1.0, 0.82, 0.55)
+	l.texture = ImageTexture.create_from_image(img)
+	l.global_position = pos + Vector2(0, -10)
+	add_child(l)
+
+
+# ⚠ Sudut TL kanonik lama (814,1139) DIGESER 46 px ke timur oleh bukti-mata:
+# rumah selatan (736,1184) ber-z lebih tinggi menelan Sora & lampunya dari kamera.
+const SORA_RITUAL_1 := Vector2(860, 1150)   # sudut TL pemakaman, lolos bayangan rumah
+const SORA_RITUAL_2 := Vector2(624, 1240)   # tengah pemakaman, baris nisan terbuka
+
+
+## SORA LANTERNWICK (#295 S1/S2/S4 · sheet #013 + amandemen #296). Malam ia
+## menyalakan lampu di antara nisan; siang ia figur latar yang tak diperhatikan.
+## Rekrut = menemani ritual dua malam (QuestPribadi.sora_ritual). D-3 penuh.
+func _sora() -> void:
+	var malam := _wib_jam() >= 19
+	var kenal := WorldState.get_counter("sora_kenal") == 1
+	var pos := Vector2(672, 1024)
+	if malam:
+		pos = SORA_RITUAL_1
+		if not kenal and WorldState.get_counter("sora_temani_n") == 1:
+			pos = SORA_RITUAL_2   # malam kedua: nisan yang berikutnya
+	_figur("sora", pos)
+
+	var sinyal := false
+	if malam:
+		_lampu_kecil(pos + Vector2(-26, 8))
+		_lampu_kecil(pos + Vector2(28, -6))
+		# SINYAL A2 (bible A2 §5): satu lampu EKSTRA — dan hanya itu. Ia tidak
+		# tahu untuk siapa; tak seorang pun menjelaskan (#229.4).
+		sinyal = WorldState.get_counter("a2_sudah") == 1 and kenal \
+			and Chronicle.state_of("person_merrit_fane") == Chronicle.ST_STRUCK
+		if sinyal:
+			_lampu_kecil(pos + Vector2(2, 30))
+
+	var t := _prop(pos + Vector2(0, 36))
+	if not kenal:
+		if malam:
+			t.qp_id = "sora_ritual"
+			t.setup_bicara([
+				"\"Yang ini belum. Sebentar.\"",
+				"Ia menyalakan lampunya dulu. Baru menoleh.",
+				"\"Kau bukan orang sini. Orang sini tidak datang malam-malam.\"",
+				"\"...Kau boleh ikut. Asal tidak bilang lampunya buang-buang minyak.\"",
+			], "Anak berlentera [E]", "")
+		else:
+			t.setup_bicara([
+				"Anak kurus dengan lentera padam di pangkuan. Ia tidak menoleh.",
+			], "Anak berlentera [E]", "")
+	else:
+		var lines := [
+			"\"Kadang aku bangun dan tahu ada yang harus dinyalakan. Jangan tanya dari mana tahunya.\"",
+			"\"Nyai juga menyalakan satu, tiap malam. Kami tidak pernah membicarakannya.\"",
+		]
+		if sinyal:
+			lines = ["\"Nggak tahu. Cuma... ada yang perlu.\""] + lines
+		t.setup_bicara(lines, "Sora [E]", "Sora")
+
+	# S4 — KAMIS MALAM: Nyai di sebelahnya. Dua lampu. Nol dialog.
+	if malam and kenal and QuestPribadi.kamis_malam() \
+			and not Evidence.is_decayed("ev_otha_nyai_tuminah_kamis"):
+		_figur("nyai", pos + Vector2(38, 13))
+		_lampu_kecil(pos + Vector2(52, 22))
+		var dua := _prop(pos + Vector2(80, 44))
+		dua.setup_bicara([
+			"Dua lampu. Tak ada yang bicara. Tak ada yang perlu.",
+		], "Periksa [E]")
+
+
+## ARLEN VALE (#295 S3 · sheet #001). Siang: di sisi batu penanda, memandangi
+## rute yang tak pernah ia lewati; rantai titipan lewat mulutnya (villager_talked
+## -> QuestPribadi). Malam: di jalan depan rumah singgah — kesaksian `orang`
+## Merrit (#294, mekanisme examine TIDAK berubah).
+func _arlen() -> void:
+	# batu penanda batas desa — fakta dunia, ada siang-malam (D-3: tanpa nama)
+	_put(P_OLD + "batu_penanda.png", Vector2(820, 96))
+	var b := _prop(Vector2(820, 126))
+	b.setup_bicara([
+		"Batu batas desa. Sisi utaranya lebih aus — disentuh, ribuan kali, oleh tangan yang sama.",
+	], "Batu penanda [E]")
+
+	if _wib_jam() >= 19:
+		_figur("arlen", MERRIT_HOUSE + Vector2(-64, 130))
+		var ar := preload("res://scenes/world/Interactable.tscn").instantiate()
+		add_child(ar)
+		ar.evidence_id = "ev_merrit_arlen_ingat"
+		ar.custom_label = "Arlen [E]"
+		ar.setup("examine")
+		ar.global_position = MERRIT_HOUSE + Vector2(-64, 158)
+		return
+
+	_figur("arlen", Vector2(868, 140))
+	# (876,180): jarak ke prop batu (820,126) = 78 px — di atas radius label 72
+	var t := _prop(Vector2(876, 180))
+	t.talk_name = "Arlen"
+	var tit := WorldState.get_counter("arlen_titipan")
+	var hari := int(Time.get_unix_time_from_system() / 86400.0)
+	if tit == 2 and hari - WorldState.get_counter("arlen_pulang_hari") <= 2:
+		# dua hari bicara tanpa henti (bible #001 chain #2)
+		t.setup_bicara([
+			"\"Sela bilang tulisanku rapi. SELA. Yang di Greenvale!\"",
+			"\"Ia bilang datang sendiri. Ke Greenvale. Aku. Datang sendiri.\"",
+			"\"...Kau sudah pernah lihat papannya? Besar? Pasti besar.\"",
+		], "Arlen [E]", "Arlen")
+	elif tit == 2:
+		t.setup_bicara([
+			"\"Kau datang dari arah mana? Di sana seperti apa?\"",
+			"\"Suratnya sampai. Aku yang membawanya.\"",
+			"\"Sebelas jalan. Tapi yang kedua belas sudah tahu namaku.\"",
+		], "Arlen [E]", "Arlen")
+	elif tit == 1:
+		t.setup_bicara([
+			"\"Suratnya... masih kau bawa, kan? Tidak usah buru-buru.\"",
+			"\"(Ia melirik tasmu dua kali.)\"",
+		], "Arlen [E]", "Arlen")
+	else:
+		t.setup_bicara([
+			"\"Kau datang dari arah mana? Di sana seperti apa?\"",
+			"\"Aku kurir. Sebelas jalan. Hafal sampai lubang-lubangnya.\"",
+			"\"Sampai batu itu. Aku selalu sampai batu itu.\"",
+		], "Arlen [E]", "Arlen")
 
 
 ## Langit & lentera mengikuti jam WIB — aturan yang SAMA dengan `Ashbrook.gd`

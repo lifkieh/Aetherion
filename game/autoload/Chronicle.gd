@@ -233,6 +233,16 @@ func restore_self(id: String, witnesses: Array) -> Dictionary:
 ## tabel §2), bukan laju belanjanya.
 const ELYN_YEARS_PER_PAGE := 10
 
+## Tulis ulang lewat SORA (#295 S2) — 2 jenis, loss sedang. Harganya bukan tahun
+## (itu Elyn): tiap halaman MENGUATKAN kepekaannya (#229.1) — `sora_beban`,
+## senyap (D-4), dibaca arc Sora v1.0 ("Aku capek ingat" / retak).
+func restore_sora(id: String, witnesses: Array) -> Dictionary:
+	var r := restore(id, witnesses, SCRIBE_SORA)
+	if r.get("ok", false):
+		WorldState.add_counter("sora_beban")
+	return r
+
+
 func restore_elyn(id: String, witnesses: Array) -> Dictionary:
 	var r := restore(id, witnesses, SCRIBE_ELYN)
 	if r.get("ok", false):

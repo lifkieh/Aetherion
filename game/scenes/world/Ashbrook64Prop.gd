@@ -24,6 +24,8 @@ var label_text := "Periksa [E]"
 var qp_id := ""                       # #291-3: titik quest pribadi — QuestPribadi.titik(id)
 var set_counter := ""                 # #293-lanjutan: BICARA menandai counter dunia
                                       # (mis. elyn_kenal) — senyap, sesudah teksnya habis
+var talk_name := ""                   # #296: BICARA memancarkan villager_talked(nama) —
+                                      # tokoh non-persona (Arlen) ikut rantai QuestPribadi
 
 var _label: Label
 var _cd := 0.0
@@ -93,6 +95,8 @@ func interact() -> void:
 				QuestPribadi.titik(qp_id, global_position)   # #291-3: teks dulu, dunia menyusul
 			if set_counter != "":
 				WorldState.counters[set_counter] = 1   # senyap (D-3): dunia mencatat, bukan UI
+			if talk_name != "":
+				EventBus.villager_talked.emit(talk_name)
 		Mode.GERBANG:
 			# ⚠ SEMENTARA — kembali ke menu, BUKAN ke Greenvale.
 			# Alur dunia permanen (Ashbrook64 ganti vs dampingi 16px) belum diputus

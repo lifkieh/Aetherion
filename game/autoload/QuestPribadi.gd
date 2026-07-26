@@ -56,6 +56,16 @@ func _on_talk(nama: String) -> void:
 				if WorldState.get_counter("qp_bram_n") >= 3:
 					_tahapkan("bram", AKTIF)
 					EventBus.toast.emit("🪑 Bram: \"Kursi ini pengganti. Punya ayahku hilang waktu rumah lama kami di distrik tua runtuh. Kalau kau iseng ke sana...\"")
+		"Arlen":
+			# #295 S3 — pintu pertama yang murah (chain #2): bicara ke-3, ia
+			# menitipkan surat lamaran kurir Serikat yang tak pernah berani ia
+			# kirim (#122: permintaan keluar dari dialog; menerima = membawanya).
+			WorldState.add_counter("arlen_bicara_n")
+			if WorldState.get_counter("arlen_bicara_n") >= 3 \
+					and WorldState.get_counter("arlen_titipan") == 0:
+				WorldState.counters["arlen_titipan"] = 1
+				PlayerData.add_item("paket_arlen", 1)
+				EventBus.toast.emit("📮 Arlen menitipkan amplop tipis: \"Untuk Sela. Serikat, Greenvale. ...Jangan dibaca di depanku.\"")
 		_:
 			# HALLORAN — membagi roti: bicara dengan penduduk mana pun sambil
 			# membawa roti = memberikannya. Tiap orang menerima dengan caranya.
@@ -79,6 +89,8 @@ func titik(id: String, pos := Vector2.ZERO) -> void:
 	match id:
 		"nyai_temani":
 			nyai_temani(pos)
+		"sora_ritual":
+			sora_ritual(pos)
 		"merrit_antar":
 			if tahap("merrit") == AKTIF:
 				_tahapkan("merrit", SELESAI)
@@ -103,31 +115,68 @@ func kamis_sore() -> bool:
 		and int(kini.get("hour", 0)) < 18
 
 
-var _nyai_pos := Vector2.ZERO
-var _nyai_t := 0.0
+# ─────────────────────────────────── SORA — ritual malam (#295 S1: dua malam)
+## Rekrut = MENEMANI ritualnya (bukan menu, #122): berada dekat 10 detik saat ia
+## menyalakan lampu, DUA MALAM BERBEDA (satu nisan per malam — scene statis, dan
+## dua malam adalah komitmen; dua puluh detik bukan). Semuanya senyap (D-3).
+func sora_ritual(pos: Vector2) -> void:
+	if WorldState.get_counter("sora_kenal") == 1:
+		return
+	var hari := int(Time.get_unix_time_from_system() / 86400.0)
+	if WorldState.get_counter("sora_hari_terakhir") == hari:
+		return   # malam ini sudah ditemani — ritual berikutnya besok
+	temani_mulai("sora", pos, 10.0, func():
+		WorldState.counters["sora_hari_terakhir"] = hari
+		WorldState.add_counter("sora_temani_n")
+		if WorldState.get_counter("sora_temani_n") >= 2:
+			WorldState.counters["sora_kenal"] = 1)
 
-## Dipanggil saat pemain menyapa Nyai di depan toko (Kamis sore). Menemani =
-## BERADA DI DEKATNYA beberapa saat — bukan dialog, bukan tombol.
+
+## S4 — Kamis MALAM (Nyai × Sora). Override `uji_kamis_malam` khusus harness.
+func kamis_malam() -> bool:
+	if WorldState.get_counter("uji_kamis_malam") == 1:
+		return true
+	var kini: Dictionary = Time.get_datetime_dict_from_unix_time(
+		int(Time.get_unix_time_from_system()) + GameClock.WIB_OFFSET)
+	return int(kini.get("weekday", -1)) == 4 and int(kini.get("hour", 0)) >= 19
+
+
+# ─────────────────────────────────────── MESIN TEMANI generik (jadwal-observe, #296)
+## Menemani = BERADA DI DEKAT sebuah titik selama N detik — bukan dialog, bukan
+## tombol. Lahir untuk Nyai (#291-3), digenerikkan untuk ritual Sora (#295 S1).
+## Menjauh = mulai ulang; menemani tak bisa disambil. Selesai = callable (senyap).
+var _temani := {}   # id -> {"pos": Vector2, "sisa": float, "detik": float, "beres": Callable}
+
+
+func temani_mulai(id: String, pos: Vector2, detik: float, beres: Callable) -> void:
+	_temani[id] = {"pos": pos, "sisa": detik, "detik": detik, "beres": beres}
+
+
+## Dipanggil saat pemain menyapa Nyai di depan toko (Kamis sore).
 func nyai_temani(pos: Vector2) -> void:
 	if tahap("nyai") == SELESAI:
 		return
 	_tahapkan("nyai", AKTIF)
-	_nyai_pos = pos
-	_nyai_t = 8.0
+	temani_mulai("nyai", pos, 8.0, func():
+		if tahap("nyai") == AKTIF:
+			_tahapkan("nyai", SELESAI)
+			# Pengamatan = bukti `orang` halaman Otha (SENYAP — D-3: notice-nya
+			# narasi biasa lewat jalur Evidence, tanpa penanda apa pun).
+			Evidence.find("ev_otha_nyai_tuminah_kamis"))
 
 
 func _process(delta: float) -> void:
-	if _nyai_t <= 0.0:
+	if _temani.is_empty():
 		return
 	var p := get_tree().get_first_node_in_group("player")
 	if p == null:
 		return
-	if p.global_position.distance_to(_nyai_pos) <= 120.0:
-		_nyai_t -= delta
-		if _nyai_t <= 0.0 and tahap("nyai") == AKTIF:
-			_tahapkan("nyai", SELESAI)
-			# Pengamatan = bukti `orang` halaman Otha (SENYAP — D-3: notice-nya
-			# narasi biasa lewat jalur Evidence, tanpa penanda apa pun).
-			Evidence.find("ev_otha_nyai_tuminah_kamis")
-	else:
-		_nyai_t = 8.0   # menjauh = mulai lagi; menemani tak bisa disambi
+	for id in _temani.keys():
+		var t: Dictionary = _temani[id]
+		if p.global_position.distance_to(t["pos"]) <= 120.0:
+			t["sisa"] -= delta
+			if t["sisa"] <= 0.0:
+				_temani.erase(id)
+				(t["beres"] as Callable).call()
+		else:
+			t["sisa"] = t["detik"]   # menjauh = mulai lagi

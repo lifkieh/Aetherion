@@ -80,3 +80,24 @@ Dari **anak terlupakan yang menjaga yang terlupakan** → (bila diberi pintu) me
 **Echo ≠ Origin:** Sora bergema dengan Chronicle (karakter utama kedua) dan dengan tema pelupaan — tapi ia bukan asal-usul apa pun, bukan petunjuk plot menuju Nirnama. Ia adalah *manusia kecil yang kebetulan berdiri di poros tema*. Sensitivitasnya dijelaskan sebagai keanehan individual (seperti Luna Vesper #10 yang kadang mengingat masa depan — sudah ada preseden anak dengan kepekaan ganjil di kanon), bukan takdir kosmik.
 
 **Fungsi desain terpenting:** Sora adalah *uji coba tesis Item Penglihat Potensi & L14*. Ia harus ditempatkan sedemikian rupa sehingga pemain yang punya Item Penglihat akan melihat potensi Legendary-nya, lalu menghadapi pilihan telanjang: aku tahu anak ini bisa jadi luar biasa — apakah aku memberinya kesempatan, atau aku punya hal yang lebih penting untuk dilakukan? Jawaban pemain terhadap pertanyaan itu adalah jawaban mereka terhadap seluruh tema game. Sora adalah tempat filosofi Aetherion berhenti menjadi teori dan menjadi seorang anak dengan lentera yang menunggu seseorang melihatnya.
+
+---
+## AMANDEMEN #296 — PENEMPATAN v0.5: KENAPA IA DI ASHBROOK
+*(Ditambahkan atas mandat Direktur 2026-07-26. TIDAK mengubah identitas, relasi
+Candyveil, atau konflik penggusuran — semuanya tetap kanon dan menunggu wilayahnya.)*
+
+Sora lahir dan tinggal di pinggiran Candyveil. Tapi kepekaannya tidak mengenal batas
+desa: **ia terbangun tahu bahwa seseorang, di suatu tempat, baru saja terlupakan** —
+dan beberapa musim terakhir, arah yang ia rasakan selalu sama. Ashbrook.
+
+Ia tidak tahu kenapa. Ia hanya tahu di sana ada pemakaman yang lampunya tak pernah
+dinyalakan siapa pun, di sebuah kota yang kehilangan orang lebih cepat daripada
+kota mana pun yang pernah ia rasakan. Maka ia datang, sebagaimana ia selalu datang:
+tanpa diminta, tanpa dibayar, tanpa mengumumkan apa-apa. Siang ia duduk di tepi
+pemakaman. Malam ia menyalakan lampu di antara nisan yang tak lagi dikunjungi.
+
+**Aturan penempatan:** kehadirannya di Ashbrook adalah KUNJUNGAN PANJANG, bukan
+pindah. Saat Candyveil punya dunianya sendiri, ia pulang — dan penggusuran makam
+menunggunya di sana. Kepekaannya yang menariknya ke Ashbrook TIDAK dijelaskan
+kepada pemain (D-3, #229.4); pemain yang bertanya hanya mendapat: *"Kadang aku
+bangun dan tahu ada yang harus dinyalakan. Jangan tanya dari mana tahunya."*

@@ -1369,5 +1369,13 @@
   "price": 0,
   "sell": 0,
   "flavor": "Masih hangat. Dipanggang pagi ini — satu dari dua ratus, untuk empat puluh orang."
+ },
+ {
+  "id": "paket_arlen",
+  "name": "Surat Arlen",
+  "type": "key",
+  "price": 0,
+  "sell": 0,
+  "flavor": "Amplop tipis, ditutup rapat, disegel dua kali. Alamatnya ditulis dengan tangan yang gemetar menahan rapi: Sela — Serikat Penjelajah, Greenvale."
  }
 ]
