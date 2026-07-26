@@ -217,6 +217,30 @@ func persona_line() -> String:
 	# gilirannya. Bukan hadiah menu; ucapan yang sebelumnya tak akan pernah keluar.
 	if _persona.has("qp") and QuestPribadi.tahap(String(_persona["qp"])) == QuestPribadi.SELESAI:
 		lines = lines + _persona.get("lines_selesai", [])
+	# ── A2 "SESEORANG MELUPAKANMU" (bible A2 · #291) ──────────────────────────
+	# Merrit terlupa: SELURUH gilirannya diganti set perkenalan (lines_lupa) — ia
+	# menyapa pemain sebagaimana pengelana di hari pertama, setiap kali. Ramah,
+	# hangat, dan itu kekejamannya. D-3: nol penanda; #229.4: sebabnya tak pernah
+	# dikonfirmasi ke siapa pun (mungkin kabut; mungkin ia memang 58 tahun).
+	# Kesaksian mantel (baris bukti) ikut tenggelam selama ia terlupa — jalur
+	# Otha tetap terbuka lewat 3 jenis lain (#228).
+	if _persona.get("a2", false) and WorldState.get_counter("a2_sudah") == 1 \
+			and Chronicle.state_of("person_merrit_fane") == Chronicle.ST_STRUCK:
+		var lupa: Array = _persona.get("lines_lupa", [])
+		if not lupa.is_empty():
+			var li := _line_idx % lupa.size()
+			_line_idx += 1
+			return str(lupa[li])
+	# sesudah dipulihkan: ia ingat lagi — dan menertawakan dirinya (#226 #3:
+	# sesuatu tetap tak kembali, tapi ITU dicatat Chronicle, bukan mulutnya)
+	if _persona.get("a2", false) \
+			and Chronicle.state_of("person_merrit_fane") == Chronicle.ST_RESTORED:
+		lines = lines + _persona.get("lines_pulih", [])
+	# warga lain menormalkan ("umur, Nak" — #229.4): baris ini HANYA hidup selama
+	# Merrit terlupa, dan tidak satu pun dari mereka salah
+	if _persona.has("lines_a2") and WorldState.get_counter("a2_sudah") == 1 \
+			and Chronicle.state_of("person_merrit_fane") == Chronicle.ST_STRUCK:
+		lines = lines + _persona.get("lines_a2", [])
 	if lines.is_empty():
 		return "..."
 	# kota sedang membicarakan sebuah pencapaian? itu lebih hangat daripada gosip biasa

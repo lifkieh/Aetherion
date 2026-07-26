@@ -163,6 +163,7 @@ func _ready() -> void:
 	await _test_a1_penghapusan_pertama()
 	await _test_quest_pribadi_291()
 	await _test_serikat_291()
+	await _test_a2_a3_291()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5680,3 +5681,117 @@ func _test_serikat_291() -> void:
 
 	WorldState.counters["serikat_rep"] = 0
 	PlayerData.kontrak = {}
+
+
+## #291 — A2 "SESEORANG MELUPAKANMU" + A3 TRIASE jalur sendiri (bible A2/A3).
+## Pemicu diuji lewat SCENE nyata (kunjungan Ashbrook64 sungguhan), dialog lewat
+## MULUT Villager sungguhan (#151b). D-3: peralihan senyap total. D-4: metrik
+## triase tercatat tanpa pernah tampil.
+func _test_a2_a3_291() -> void:
+	print("[#291 — A2 Seseorang Melupakanmu + A3 TRIASE (jalur sendiri)]")
+	for pid in ["person_otha_renn", "person_merrit_fane"]:
+		for i in range(WorldState.chronicle.size() - 1, -1, -1):
+			if WorldState.chronicle[i].get("id", "") == pid:
+				WorldState.chronicle.remove_at(i)
+	WorldState.counters["a1_mulai"] = 1
+	WorldState.counters["a1_sudah"] = 1
+	WorldState.counters["a2_sudah"] = 0
+	WorldState.counters["a2_kunjungan"] = 0
+	WorldState.counters["merrit_bicara"] = 0
+	WorldState.counters["warisan:triase_otha"] = 0
+	WorldState.counters["warisan:triase_merrit"] = 0
+
+	# ── belum kenal Merrit: kunjungan tak pernah dihitung ──
+	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	s.queue_free()
+	await get_tree().process_frame
+	check("belum kenal Merrit: A2 tak bergerak", WorldState.get_counter("a2_kunjungan") == 0
+		and WorldState.get_counter("a2_sudah") == 0)
+
+	# ── kenal (2 obrolan) -> pagi pertama masih biasa ──
+	WorldState.counters["merrit_bicara"] = 2
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	s.queue_free()
+	await get_tree().process_frame
+	check("pagi pertama sesudah kenal: belum", WorldState.get_counter("a2_sudah") == 0)
+
+	# ── pagi kedua: A2 terjadi — dan HARUS SENYAP (D-3) ──
+	var suara: Array = []
+	var cb := func(t): suara.append(t)
+	EventBus.toast.connect(cb)
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	EventBus.toast.disconnect(cb)
+	check("pagi kedua: A2 terjadi (a2_sudah = 1)", WorldState.get_counter("a2_sudah") == 1)
+	check("dua halaman orang tercoret pada malam yang sama (bible A3 §1)",
+		Chronicle.state_of("person_otha_renn") == Chronicle.ST_STRUCK
+		and Chronicle.state_of("person_merrit_fane") == Chronicle.ST_STRUCK)
+	var bocor := []
+	for t in suara:
+		var ts := str(t).to_lower()
+		for kata in ["merrit", "lupa", "otha", "halaman", "tercoret", "kabut"]:
+			if kata in ts:
+				bocor.append(t)
+	check("A2 SENYAP total (D-3)", bocor.is_empty(), str(bocor))
+
+	# ── mulut Merrit: set perkenalan menggantikan SEMUA gilirannya ──
+	var merrit: Node = null
+	var bram: Node = null
+	for v in get_tree().get_nodes_in_group("villagers"):
+		if v.has_method("persona"):
+			if str(v.persona().get("name", "")) == "Merrit Fane":
+				merrit = v
+			elif str(v.persona().get("name", "")) == "Old Bram":
+				bram = v
+	check("Merrit hidup di scene", merrit != null)
+	if merrit:
+		var kamar := false
+		var pribadi := false
+		for i in range(12):
+			var l: String = str(merrit.persona_line())
+			if "Butuh kamar" in l:
+				kamar = true
+			if "Perhentian itu" in l or "mantel" in l.to_lower():
+				pribadi = true
+		check("Merrit menyapa sebagai orang asing (\"Butuh kamar?\")", kamar)
+		check("nol baris pribadi/kesaksian selama terlupa", not pribadi)
+	var umur := false
+	if bram:
+		for i in range(60):
+			if "Umur, Nak" in str(bram.persona_line()):
+				umur = true
+				break
+	check("warga menormalkan: \"Umur, Nak\" dari mulut Bram (#229.4)", umur)
+
+	# ── A3 jalur SENDIRI (#228): 3 jenis bukti Merrit -> pulih; TRIASE tercatat ──
+	for ev in ["ev_merrit_kartu_pos_kosong", "ev_merrit_cangkir_kedua", "ev_merrit_rute_pos_berubah"]:
+		Evidence.find(ev)
+	var r: Dictionary = Chronicle.restore_self("person_merrit_fane", Evidence.for_page("person_merrit_fane"))
+	check("halaman Merrit pulih jalur SENDIRI (3 jenis)", r.get("ok", false), str(r))
+	check("loss hadir — halaman pulih tak pernah identik (#226 #3)", str(r.get("loss", "")) != "")
+	check("TRIASE tercatat SENYAP: Merrit dipilih saat Otha masih tercoret (D-4)",
+		WorldState.get_counter("warisan:triase_merrit") == 1
+		and WorldState.get_counter("warisan:triase_otha") == 0)
+	if merrit:
+		var asing := false
+		var pulih := false
+		for i in range(60):
+			var l2: String = str(merrit.persona_line())
+			if "Butuh kamar" in l2:
+				asing = true
+			if "pasti sudah tua" in l2:
+				pulih = true
+		check("sesudah pulih: sapaan-asing mati", not asing)
+		check("sesudah pulih: ia menertawakan dirinya (\"pasti sudah tua\")", pulih)
+
+	s.queue_free()
+	await get_tree().process_frame
+	for k in ["a2_sudah", "a2_kunjungan", "merrit_bicara",
+			"warisan:triase_merrit", "warisan:triase_otha"]:
+		WorldState.counters[k] = 0

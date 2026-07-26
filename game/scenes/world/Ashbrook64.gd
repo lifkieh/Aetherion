@@ -148,6 +148,11 @@ func _a1_sebelum() -> bool:
 	return WorldState.get_counter("a1_mulai") == 1 and WorldState.get_counter("a1_sudah") == 0
 
 
+func _a2_dengar_obrolan(nama: String) -> void:
+	if nama == "Merrit Fane":
+		WorldState.add_counter("merrit_bicara")
+
+
 func _ready() -> void:
 	WorldState.mark_visited("ashbrook")
 	SafeZone.set_region("ashbrook")
@@ -156,6 +161,33 @@ func _ready() -> void:
 		WorldState.add_counter("a1_kunjungan")
 		if WorldState.get_counter("a1_kunjungan") >= 3:
 			WorldState.counters["a1_sudah"] = 1   # senyap — tanpa emit, tanpa kata
+			# Halaman kedua ORANG ditulis di sini (bible A1/A3): Merrit — mesin
+			# ingatan terkecil Ashbrook (#011) — mencatat Otha; Rumah Singgahnya
+			# sendiri tercatat sejak lama. Keduanya HIDUP di Kitab sampai malam A2
+			# mencoret keduanya sekaligus. Idempoten — save lama aman.
+			Chronicle.record_person("person_otha_renn", "Otha Renn, penjahit", "merrit_fane")
+			Chronicle.record_person("person_merrit_fane", "Rumah Singgah Fane", "merrit_fane")
+	# A2 — SESEORANG MELUPAKANMU (bible A2 · #291). Prasyarat: A1 lewat + pemain
+	# KENAL Merrit (≥2 obrolan). Pagi kedua sesudah itu = paginya: "satu pagi,
+	# tanpa peringatan". SENYAP TOTAL (D-3) — nol toast, nol musik, nol kamera;
+	# pemain tahu dari MULUT Merrit ("Selamat pagi. Butuh kamar?"), bukan dari UI.
+	# Kedua halaman orang dicoret pada MALAM YANG SAMA (bible A3 §1) — dan sejak
+	# detik ini bekas Otha mulai membusuk (R3, jam mulai di Chronicle.strike):
+	# TRIASE lahir di sini, dari dunia — bukan dari menu.
+	if WorldState.get_counter("a1_sudah") == 1 and WorldState.get_counter("a2_sudah") == 0 \
+			and WorldState.get_counter("merrit_bicara") >= 2:
+		WorldState.add_counter("a2_kunjungan")
+		if WorldState.get_counter("a2_kunjungan") >= 2:
+			WorldState.counters["a2_sudah"] = 1
+			# record idempoten = jaring pengaman save yang melewati A1 pra-patch
+			Chronicle.record_person("person_otha_renn", "Otha Renn, penjahit", "merrit_fane")
+			Chronicle.record_person("person_merrit_fane", "Rumah Singgah Fane", "merrit_fane")
+			Chronicle.strike("person_otha_renn")
+			Chronicle.strike("person_merrit_fane")
+	# Hitung obrolan Merrit (prasyarat "kenal" A2). Method-bound (bukan lambda):
+	# koneksi mati bersama scene — lambda ke autoload hidup selamanya dan
+	# menggandakan hitungan tiap kali Ashbrook dimuat ulang.
+	EventBus.villager_talked.connect(_a2_dengar_obrolan)
 	_canvas_mod = CanvasModulate.new()
 	# Siang dipatok HANYA untuk harness tangkap-layar (hasil sama tiap dijalankan).
 	# Di permainan sungguhan langit ikut GameClock — kalau tidak, Ashbrook tak pernah

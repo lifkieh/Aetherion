@@ -185,6 +185,14 @@ func restore(id: String, witnesses: Array, scribe: String = SCRIBE_SELF) -> Dict
 	WorldState.add_counter("warisan:pulih")
 	if scribe == SCRIBE_SELF:
 		WorldState.add_counter("warisan:pulih_sendiri")
+	# A3 TRIASE (bible A3 · #291, SENYAP — D-4): dua halaman orang dicoret pada
+	# malam yang sama. Yang dipulihkan DULUAN saat saudaranya masih tercoret =
+	# pilihan pemain — bentuk kehilangan mana yang dibiarkan (#265). Dicatat untuk
+	# hakim endgame (v1.0); tak pernah tampil, tak pernah disebut siapa pun.
+	if id == "person_otha_renn" and is_struck("person_merrit_fane"):
+		WorldState.counters["warisan:triase_otha"] = 1
+	elif id == "person_merrit_fane" and is_struck("person_otha_renn"):
+		WorldState.counters["warisan:triase_merrit"] = 1
 	return {"ok": true, "reason": "", "loss": e["loss"]}
 
 # ══════════════════════════════════════════════════════════════════════════════

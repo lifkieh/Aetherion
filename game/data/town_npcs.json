@@ -1659,6 +1659,17 @@
    "qp": "merrit",
    "lines_selesai": [
     "Perhentian itu... kau merasakannya juga? Tanahnya. Seperti tanah yang menunggu."
+   ],
+   "a2": true,
+   "lines_lupa": [
+    "Selamat pagi. Butuh kamar?",
+    "Silakan duduk dulu. Kuseduhkan teh — jalanmu kelihatan jauh.",
+    "Kau datang dari arah mana? Selatan? Jalannya masih buruk, kudengar.",
+    "Kamar di atas kosong. Murah saja, untuk pengelana."
+   ],
+   "lines_pulih": [
+    "Ah... kau. Maaf. Aku pasti sudah tua.",
+    "Duduklah. Tehnya masih hangat."
    ]
   },
   {
@@ -1739,6 +1750,9 @@
    "qp": "bram",
    "lines_selesai": [
     "Ayahku menyebut penggilingan itu tiap makan malam. Antrean sampai jembatan, katanya. Jembatan! Sekarang... sekarang aku mulai percaya."
+   ],
+   "lines_a2": [
+    "Merrit? Ah, dia sudah mulai begitu tahun lalu. Lupa nama. Umur, Nak."
    ]
   },
   {
@@ -1811,7 +1825,10 @@
     470,
     1050
    ],
-   "_anchor_note": "ladang selatan yang masih digarap"
+   "_anchor_note": "ladang selatan yang masih digarap",
+   "lines_a2": [
+    "Kemarin Merrit memanggilku dengan nama ibuku. Ibuku sudah mati dua belas tahun."
+   ]
   },
   {
    "name": "Spoon Man",
@@ -1959,6 +1976,9 @@
    "qp": "halloran",
    "lines_selesai": [
     "Empat puluh cukup, ternyata. Entah kenapa dulu kubuat dua ratus."
+   ],
+   "lines_a2": [
+    "Merrit? ...aku nggak perhatiin. Maaf."
    ]
   }
  ]
