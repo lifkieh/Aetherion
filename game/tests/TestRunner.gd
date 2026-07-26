@@ -160,6 +160,7 @@ func _ready() -> void:
 	await _test_chargen_no_stack_280()
 	# #290 — konten v0.5: halaman orang
 	await _test_halaman_orang_hidup_290()
+	await _test_a1_penghapusan_pertama()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5327,6 +5328,9 @@ func _test_chargen_no_stack_280() -> void:
 ## Villager — lalu KEDUA halaman orang dipulihkan jalur SENDIRI (#228).
 func _test_halaman_orang_hidup_290() -> void:
 	print("[#290 — halaman Otha & Merrit dipulihkan dari dunia nyata]")
+	# dunia SESUDAH A1 dipaksa eksplisit (titik bekas-cat hanya ada sesudah, #291-2)
+	WorldState.counters["a1_mulai"] = 1
+	WorldState.counters["a1_sudah"] = 1
 	Evidence.found.clear()
 	Evidence.decayed.clear()
 	Evidence._clock_start.clear()
@@ -5386,3 +5390,117 @@ func _test_halaman_orang_hidup_290() -> void:
 	if is_instance_valid(scene):
 		scene.queue_free()
 	await get_tree().process_frame
+
+
+## ═══════════ #291-2 — A1 PENGHAPUSAN PERTAMA ═══════════
+## Spec docs/A1_PENGHAPUSAN_PERTAMA.md: SEBELUM (papan bertulis, pintu hidup,
+## Otha di bangkunya) -> kunjungan ke-3 -> SESUDAH (papan polos berbekas cat,
+## pintu = tembok, Otha tak pernah tampil lagi) — dan peralihannya SENYAP TOTAL
+## (D-3, test wajib _test_a1_is_silent digabung di sini). #151b: scene nyata.
+func _test_a1_penghapusan_pertama() -> void:
+	print("[#291-2 — A1: dua tahap dunia + peralihan senyap]")
+	var simpan := {"a1_mulai": WorldState.get_counter("a1_mulai"),
+		"a1_sudah": WorldState.get_counter("a1_sudah"),
+		"a1_kunjungan": WorldState.get_counter("a1_kunjungan")}
+	WorldState.counters["a1_mulai"] = 1
+	WorldState.counters["a1_sudah"] = 0
+	WorldState.counters["a1_kunjungan"] = 0
+
+	# ── kunjungan 1: SEBELUM ──
+	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("k1: papan Otha BERTULIS", _a1_cari_sprite("otha_sign_written") != null)
+	check("k1: Otha duduk di bangkunya", _a1_cari_sprite("otha_renn_idle") != null)
+	check("k1: pintu toko HIDUP", _a1_cari_pintu_otha() != null)
+	check("k1: titik bekas-cat BELUM ada (belum ada bekas)",
+		not _a1_ada_examine("ev_otha_papan_bekas_cat"))
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── kunjungan 2: masih sebelum ──
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	s.queue_free()
+	await get_tree().process_frame
+	check("k2: masih SEBELUM", WorldState.get_counter("a1_sudah") == 0)
+
+	# ── kunjungan 3: peralihan — dan HARUS SENYAP (D-3) ──
+	var suara: Array = []
+	var cb := func(t): suara.append(t)
+	EventBus.toast.connect(cb)
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	EventBus.toast.disconnect(cb)
+	check("k3: peralihan terjadi (a1_sudah = 1)", WorldState.get_counter("a1_sudah") == 1)
+	# Sky Report dkk = siaran masuk-scene bawaan, bukan suara A1. Yang dilarang
+	# D-3: satu pun kata tentang toko/Otha/kabut/halaman/hilang.
+	var bocor := []
+	for t in suara:
+		var ts := str(t).to_lower()
+		for kata in ["otha", "toko", "kabut", "halaman", "hilang", "papan"]:
+			if ts.contains(kata):
+				bocor.append(t)
+				break
+	check("k3 SENYAP: nol kata soal penghapusan (D-3)", bocor.is_empty(), str(bocor))
+	check("k3: papan kini POLOS berbekas cat", _a1_cari_sprite("otha_sign_fadedmark") != null
+		and _a1_cari_sprite("otha_sign_written") == null)
+	check("k3: Otha TIDAK PERNAH tampil lagi", _a1_cari_sprite("otha_renn_idle") == null)
+	check("k3: pintu = TEMBOK (nol respons)", _a1_cari_pintu_otha() == null)
+	check("k3: titik bekas-cat kini ADA", _a1_ada_examine("ev_otha_papan_bekas_cat"))
+	s.queue_free()
+	await get_tree().process_frame
+	for k in simpan:
+		WorldState.counters[k] = simpan[k]
+
+
+func _a1_cari_sprite(potongan: String) -> Node:
+	for n in get_tree().root.get_children():
+		var hasil := _a1_sisir(n, potongan)
+		if hasil != null:
+			return hasil
+	return null
+
+
+func _a1_sisir(n: Node, potongan: String) -> Node:
+	if n is Sprite2D and n.texture != null:
+		var p := str(n.texture.resource_path)
+		if p == "" and n.texture is AtlasTexture:
+			p = str((n.texture as AtlasTexture).atlas.resource_path)
+		if p.contains(potongan):
+			return n
+	for c in n.get_children():
+		var hasil := _a1_sisir(c, potongan)
+		if hasil != null:
+			return hasil
+	return null
+
+
+func _a1_cari_pintu_otha() -> Node:
+	# pintu toko = Ashbrook64Prop (label_text), bukan Interactable (custom_label)
+	for root in get_tree().root.get_children():
+		var hasil := _a1_sisir_prop(root)
+		if hasil != null:
+			return hasil
+	return null
+
+
+func _a1_sisir_prop(n: Node) -> Node:
+	if "label_text" in n and str(n.get("label_text")).contains("Pintu toko"):
+		return n
+	for c in n.get_children():
+		var hasil := _a1_sisir_prop(c)
+		if hasil != null:
+			return hasil
+	return null
+
+
+func _a1_ada_examine(ev_id: String) -> bool:
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == ev_id:
+			return true
+	return false

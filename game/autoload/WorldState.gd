@@ -223,6 +223,9 @@ func from_save(d: Dictionary) -> void:
 
 func new_game() -> void:
 	counters = {}
+	# A1 (#291-2): penanda "save ini lahir SEBELUM Penghapusan Pertama". Save lama
+	# tanpa penanda ini diperlakukan sesudah — dunia mereka memang sudah begitu.
+	counters["a1_mulai"] = 1
 	node_states = {}
 	visited_regions = []
 	last_free_travel = ""

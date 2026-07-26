@@ -64,6 +64,7 @@ func find(evidence_id: String) -> String:
 		return ""
 	found[evidence_id] = {"found_at": GameClock.date_string()}
 	EventBus.evidence_found.emit(evidence_id, def.get("kind", ""))
+	WorldState.add_counter("warisan:bekas")   # metrik senyap (#291-2, D-4)
 	return Loc.c(def.get("notice", {}))
 
 func has(evidence_id: String) -> bool:

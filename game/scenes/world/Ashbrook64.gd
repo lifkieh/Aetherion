@@ -138,9 +138,24 @@ var _canvas_mod: CanvasModulate
 var _player: Node2D
 
 
+## A1 PENGHAPUSAN PERTAMA (#291-2, spec docs/A1_PENGHAPUSAN_PERTAMA.md).
+## SEBELUM = save baru (`a1_mulai` ditanam WorldState.new_game) yang belum sampai
+## kunjungan ketiga: papan Otha BERTULIS, pintunya hidup, Otha duduk di bangkunya.
+## Peralihan terjadi SENYAP saat kunjungan ke-3 (D-3: nol toast/banner/musik —
+## dijaga _test_a1_is_silent). Save lama tanpa penanda = SESUDAH, keadaan yang
+## selama ini ada. Yang berubah TIDAK diumumkan siapa pun (#210).
+func _a1_sebelum() -> bool:
+	return WorldState.get_counter("a1_mulai") == 1 and WorldState.get_counter("a1_sudah") == 0
+
+
 func _ready() -> void:
 	WorldState.mark_visited("ashbrook")
 	SafeZone.set_region("ashbrook")
+	# Peralihan A1 dihitung SEBELUM dunia dibangun: kunjungan ke-3 = pagi kabutnya.
+	if WorldState.get_counter("a1_mulai") == 1 and WorldState.get_counter("a1_sudah") == 0:
+		WorldState.add_counter("a1_kunjungan")
+		if WorldState.get_counter("a1_kunjungan") >= 3:
+			WorldState.counters["a1_sudah"] = 1   # senyap — tanpa emit, tanpa kata
 	_canvas_mod = CanvasModulate.new()
 	# Siang dipatok HANYA untuk harness tangkap-layar (hasil sama tiap dijalankan).
 	# Di permainan sungguhan langit ikut GameClock — kalau tidak, Ashbrook tak pernah
@@ -1275,14 +1290,19 @@ func _props_and_evidence() -> void:
 	# PAPAN OTHA — kosong + BEKAS CAT (bukti `akibat`). Diskalakan 4x supaya
 	# persegi bekasnya TETAP TERBACA pada petak 32 (16x14 -> 64x56).
 	# BANGKU OTHA + EMPAT CEKUNGAN (#290, ev kebiasaan) — bangku tempat seseorang
-	# duduk tiap sore selama 34 tahun. Bangkunya masih ada. Kosong. Titik-periksa
-	# berjarak 105 px dari papan (aturan radius-72 Interactable, pelajaran alun-alun).
+	# duduk tiap sore selama 34 tahun. Titik-periksa berjarak 105 px dari papan
+	# (aturan radius-72 Interactable). Cekungannya ada di KEDUA tahap A1 — tanah
+	# sudah ingat jauh sebelum kabut datang.
 	_put(P_S + "bench_lpc.png", OTHA_KAKI + Vector2(96, 28))
 	_examine(OTHA_KAKI + Vector2(96, 56), "ev_otha_bangku_cekungan")
-	var sign := _put(P_OLD + "otha_sign_fadedmark.png", OTHA_KAKI + Vector2(0, 40))
+	# A1 (#291-2): SEBELUM = papan masih BERTULIS; SESUDAH = kayu polos + bekas cat.
+	# Titik-periksa bekas cat hanya ada SESUDAH — sebelum dihapus, tak ada bekas.
+	var sign := _put(P_OLD + ("otha_sign_written.png" if _a1_sebelum()
+		else "otha_sign_fadedmark.png"), OTHA_KAKI + Vector2(0, 40))
 	if sign:
 		sign.scale = Vector2(4, 4)
-	_examine(OTHA_KAKI + Vector2(0, 92), "ev_otha_papan_bekas_cat")
+	if not _a1_sebelum():
+		_examine(OTHA_KAKI + Vector2(0, 92), "ev_otha_papan_bekas_cat")
 
 	# reruntuhan: garis fondasi di rumput + batu fondasi berpahat di alun-alun
 	# ⚠ URUTAN PENTING (#batas): titik ini DULU di y=1152 — di LUAR tanah 34 petak
@@ -2082,14 +2102,17 @@ func _pintu_dan_interior() -> void:
 	var masuk := _prop(MERRIT_HOUSE + Vector2(0, -8))
 	masuk.setup_pindah(INTERIOR + Vector2(150, 170), true, "Masuk rumah Merrit [E]")
 
-	# --- PINTU YANG BERCERITA (nol interior, nol bukti) ---
-	# Toko Otha. #269: Otha adalah D3 — tak pernah tercatat. Teksnya tak boleh
-	# menyebut namanya; yang tersisa cuma pintu dan musim yang lewat.
-	var otha := _prop(OTHA_KAKI + Vector2(0, -8))
-	otha.setup_bicara([
-		"Terkunci. Debu di ambangnya rata — tak ada yang membukanya sejak dua musim.",
-		"Tak ada papan nama. Cuma persegi yang catnya lebih gelap, tempat sesuatu dulu tergantung.",
-	], "Pintu toko [E]")
+	# --- PINTU TOKO OTHA — dua tahap A1 (#291-2) ---
+	# SEBELUM: pintu tertutup tapi HIDUP — merespons dengan netral.
+	# SESUDAH: TIDAK ADA respons sama sekali (spec A1 §2: "seperti berinteraksi
+	# dengan tembok" — bukan "Pintu terkunci"). Prop-nya tak pernah dibuat.
+	# Menutup cacat audit "pintunya menjawab, rencananya justru diam".
+	if _a1_sebelum():
+		var otha := _prop(OTHA_KAKI + Vector2(0, -8))
+		otha.setup_bicara([
+			"Tertutup. Tapi ambangnya bersih — seseorang masih keluar-masuk tiap hari.",
+			"Dari dalam, sesekali, bunyi mesin jahit tua.",
+		], "Pintu toko [E]")
 
 	# Rumah kosong. #269: DITINGGALKAN (D2) — pernah ada penghuninya, dan itu harus
 	# terbaca. "Belum jadi" akan membuatnya D3, dan itu kematian yang berbeda.
@@ -2353,9 +2376,13 @@ func _folk() -> void:
 		#   `anchor: [736, 800]` (bangku ini, koordinat yang sama persis dengan baris
 		#   yang dicabut). Ia bisa diajak bicara, dan baris kelimanya adalah kesaksian.
 		["nyai", VC + Vector2(160, 128)],
-		["otha_renn", OTHA_KAKI + Vector2(58, 52)],      # di luar tokonya yang tutup
+		["otha_renn", OTHA_KAKI + Vector2(96, 12)],      # A1-SEBELUM: di bangkunya
 		["sora", Vector2(672, 1024)],
 	]:
+		# A1 (#291-2): SESUDAH penghapusan, Otha TIDAK PERNAH muncul di layar lagi
+		# (spec A1 §1). Sebelum: ia duduk di bangku depan tokonya — tidak bicara.
+		if str(spec[0]) == "otha_renn" and not _a1_sebelum():
+			continue
 		var p := P_C + str(spec[0]) + "_idle.png"
 		if not ResourceLoader.exists(p):
 			push_warning("[ash64] NPC belum dirakit: %s" % spec[0])

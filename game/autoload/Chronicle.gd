@@ -139,6 +139,9 @@ func strike(id: String, cause: String = "kabut") -> bool:
 			# R3 — dunia mulai melupakan SAAT halaman dicoret (bukan saat find).
 			Evidence.start_decay_clock(id)
 			EventBus.chronicle_struck.emit(id)
+			# METRIK WARISAN (#291-2) — pencatat SENYAP untuk penilaian endgame
+			# (HYBRID FINAL JUDGE #134). D-4: angka ini TIDAK PERNAH tampil ke pemain.
+			WorldState.add_counter("warisan:tercoret")
 			return true
 	return false
 
@@ -177,6 +180,11 @@ func restore(id: String, witnesses: Array, scribe: String = SCRIBE_SELF) -> Dict
 	e["witnesses"] = witnesses.duplicate(true)
 	e["loss"] = _compute_loss(e, kinds, scribe)
 	EventBus.chronicle_restored.emit(id, e["loss"])
+	# METRIK WARISAN (#291-2, senyap — D-4): berapa yang ditulis ulang, dan berapa
+	# di antaranya oleh tangan pemain sendiri (#228). Dibaca hakim endgame (v1.0).
+	WorldState.add_counter("warisan:pulih")
+	if scribe == SCRIBE_SELF:
+		WorldState.add_counter("warisan:pulih_sendiri")
 	return {"ok": true, "reason": "", "loss": e["loss"]}
 
 # ══════════════════════════════════════════════════════════════════════════════
