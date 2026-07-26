@@ -1,0 +1,12 @@
+# Kredit sprite kota Candyveil (#300)
+# Lisensi: CC0 / gambar-sendiri (milik Aetherion). Rincian:
+- Rumah & dekor permen (kue_mangkuk, roti_jahe, kue_tart, donat, es_krim, wafel,
+  kastil_gula, kincir, cokelat_batang, makaron, toples, permen_karet,
+  lampu_lolipop, kios_permen, gapura, menara_lonceng, *_pudar, fountain_sirup):
+  DIGAMBAR SENDIRI — _tools/gen_rumah_permen.py — milik Aetherion.
+- jamur_*.png: turunan "Mushroom Houses" — Jordan Irwin (AntumDeluge), CC0,
+  https://opengameart.org/content/mushroom-houses
+- gummy_*.png: turunan "LPC Candy" — Mark Weyer, CC0 (pilihan lisensi),
+  https://opengameart.org/content/lpc-candy
+- soda_biru_*.png (tiles/candyveil): recolor ubin soda asli Aetherion.
+Lisensi: CC0

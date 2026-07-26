@@ -167,6 +167,7 @@ func _ready() -> void:
 	await _test_ditunda_294()
 	await _test_companion_296()
 	await _test_arlen_babak_298()
+	await _test_candyveil_kota_300()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -6175,3 +6176,71 @@ func _test_arlen_babak_298() -> void:
 	for k in ["arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari", "arlen_gagal",
 			"arlen_jangkar", "arlen_pergi", "arlen_ditemani", "corvin_tatap", "uji_jam_paksa"]:
 		WorldState.counters[k] = 0
+
+
+## #300 — CANDYVEIL: kota permen-peri masuk game (mockup v6 = penempatan).
+## #151b: bangunan/pintu/papan/gubuk dicek sebagai NODE scene sungguhan.
+func _test_candyveil_kota_300() -> void:
+	print("[#300 — Candyveil: kota gula, ladang, pemakaman tersembunyi]")
+	for a in ["kastil_gula", "menara_lonceng", "roti_jahe", "kincir", "donat_pudar",
+			"fountain_sirup", "jamur_ceri", "gummy_merah", "roti_jahe_pudar"]:
+		check("aset kota ada: %s" % a,
+			ResourceLoader.exists("res://assets/game/sprites/candyveil/%s.png" % a))
+	check("ubin sungai soda biru ada",
+		ResourceLoader.exists("res://assets/game/tiles/candyveil/soda_biru_a.png"))
+
+	var s: Node = load("res://scenes/world/Candyveil.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("peta 64x58 (kota + padang)", s.MAP_W == 64 and s.MAP_H == 58)
+	check("istana gula berdiri di poros utara", _a1_cari_sprite("kastil_gula") != null)
+	check("menara lonceng candy cane hadir", _a1_cari_sprite("menara_lonceng") != null)
+	check("balai roti jahe di cincin plaza", _a1_cari_sprite("roti_jahe") != null)
+	check("air mancur sirup di plaza", _a1_cari_sprite("fountain_sirup") != null)
+	check("pinggiran timur PUDAR terpasang", _a1_cari_sprite("donat_pudar") != null)
+	check("penghuni gummy di plaza", _a1_cari_sprite("gummy_merah") != null)
+
+	var gerbang := _294_prop(s, "Gerbang Istana Gula [E]")
+	check("gerbang istana menjawab (D-3: label netral)", gerbang != null)
+	var papan := _294_prop(s, "Papan kota [E]")
+	var pb := ""
+	if papan:
+		for l in papan.get("lines"):
+			pb += str(l)
+	check("papan penggusuran: \"LAHAN PERLUASAN\" (benih busur Sora)",
+		"LAHAN PERLUASAN" in pb)
+	var gubuk := _294_prop(s, "Gubuk kayu manis [E]")
+	var gb2 := ""
+	if gubuk:
+		for l in gubuk.get("lines"):
+			gb2 += str(l)
+	check("gubuk Sora menunggu: \"ia berniat pulang\"", "berniat pulang" in gb2)
+
+	# jalan & sungai di lapisan tanah (grid v6)
+	var g: TileMapLayer = s.ground
+	check("boulevard lurus di y20", g.get_cell_source_id(Vector2i(10, 20)) == 2
+		and g.get_cell_source_id(Vector2i(50, 21)) == 2)
+	check("sungai soda kolom barat", g.get_cell_source_id(Vector2i(4, 5)) in [3, 4])
+	check("jembatan = boulevard menerus di sungai",
+		g.get_cell_source_id(Vector2i(4, 20)) == 2)
+	check("jalur memutar pemakaman ada (belokan x48,y50)",
+		g.get_cell_source_id(Vector2i(48, 50)) == 2)
+
+	# sistem lama utuh: inn, shop, dungeon, world gate; monster hanya di padang
+	var ada := {"inn": false, "shop": false, "dungeon": false, "world_gate": false}
+	for n in get_tree().get_nodes_in_group("interactable"):
+		var k := str(n.get("kind"))
+		if ada.has(k):
+			ada[k] = true
+	check("inn wafel + pedagang pasar + dungeon + world gate hidup",
+		ada["inn"] and ada["shop"] and ada["dungeon"] and ada["world_gate"])
+	var kota_aman := true
+	for m in get_tree().get_nodes_in_group("monsters"):
+		# hanya monster MILIK scene ini — grup global masih memuat sisa scene
+		# test sebelumnya yang sedang antre bebas (pelajaran #296)
+		if m is Node2D and s.is_ancestor_of(m) 				and m.global_position.y < (s.KOTA_H + 1) * s.TILE:
+			kota_aman = false
+	check("monster TIDAK pernah lahir di dalam kota", kota_aman)
+	s.queue_free()
+	await get_tree().process_frame

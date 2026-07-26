@@ -418,6 +418,127 @@ def main():
 	print("-> reports/mockup/aset_permen/ (6 rumah + _kontak.png)")
 
 
+
+
+# ═══════════ PROMOSI KE GAME (#300 — eksekusi Candyveil) ═══════════
+GAME_OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+	"game", "assets", "game", "sprites", "candyveil")
+
+
+def _rona_geser(im, rona, sat=1.0, terang=1.0):
+	import colorsys
+	out = im.copy()
+	px = out.load()
+	for y in range(out.height):
+		for x in range(out.width):
+			r, g, b, a = px[x, y]
+			if a == 0:
+				continue
+			h_, l_, s_ = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+			dlt = (h_ - rona + 0.5) % 1.0 - 0.5
+			h2 = (rona + dlt * 0.15) % 1.0
+			l2 = min(1.0, l_ * terang)
+			s2 = min(1.0, max(s_ * sat, 0.30 if s_ > 0.08 else s_ * 0.6))
+			r2, g2, b2 = colorsys.hls_to_rgb(h2, l2, s2)
+			px[x, y] = (int(r2 * 255), int(g2 * 255), int(b2 * 255), a)
+	return out
+
+
+def _pudar(im, kadar=0.6):
+	out = im.copy()
+	px = out.load()
+	for y in range(out.height):
+		for x in range(out.width):
+			r, g, b, a = px[x, y]
+			if a == 0:
+				continue
+			abu = (r + g + b) // 3
+			px[x, y] = (int(r + (abu - r) * kadar), int(g + (abu - g) * kadar),
+				int(b + (abu - b) * kadar), a)
+	return out
+
+
+def menara_lonceng():
+	"""Menara lonceng candy cane — digambar sendiri (pola garis dari LPC Candy)."""
+	im, d = kanvas(56, 130)
+	for bx in (8, 24, 40):
+		d.rectangle([bx, 22, bx + 9, 126], fill=PUTIH, outline=GARIS)
+		for yy in range(24, 124, 8):
+			d.polygon([(bx + 1, yy + 5), (bx + 8, yy), (bx + 8, yy + 3), (bx + 1, yy + 8)], fill=MERAH)
+	d.polygon([(2, 24), (28, 4), (54, 24)], fill=PINK, outline=GARIS)
+	for x in range(4, 50, 8):
+		d.ellipse([x, 21, x + 8, 29], fill=PUTIH, outline=KRIM_G)
+	d.ellipse([20, 30, 37, 47], fill=KUNING, outline=GARIS)   # lonceng menggantung
+	d.line([(28, 24), (28, 31)], fill=GARIS)
+	return im
+
+
+def main3():
+	os.makedirs(GAME_OUT, exist_ok=True)
+	# 1) semua bangunan + dekor gelombang 1&2 (skala 2, siap dunia 32)
+	semua = [("kue_mangkuk", kue_mangkuk()), ("roti_jahe", roti_jahe()),
+		("kue_tart", kue_tart()), ("donat", donat()), ("es_krim", es_krim()),
+		("wafel", wafel()), ("kastil_gula", kastil_gula()), ("kincir", kincir()),
+		("cokelat_batang", cokelat_batang()), ("makaron", makaron()),
+		("toples", toples()), ("permen_karet", permen_karet()),
+		("lampu_lolipop", lampu_lolipop()), ("kios_permen", kios_permen()),
+		("gapura", gapura()), ("menara_lonceng", menara_lonceng())]
+	for nama, im in semua:
+		im.resize((im.width * 2, im.height * 2), Image.NEAREST).save(
+			os.path.join(GAME_OUT, nama + ".png"))
+	# 2) varian pudar (pinggiran timur + gubuk Sora)
+	for nama, im in semua:
+		if nama in ("donat", "kue_mangkuk", "roti_jahe"):
+			_pudar(im.resize((im.width * 2, im.height * 2), Image.NEAREST), 0.68).save(
+				os.path.join(GAME_OUT, nama + "_pudar.png"))
+	# 3) jamur frosting dari lembar CC0 (AntumDeluge) + varian pudar
+	jam = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+		"assets_raw", "oga", "candy", "mushroom_houses", "PNG", "64x64",
+		"mushroom_houses-RGB.png")
+	sheet = Image.open(jam).convert("RGBA")
+	for nama, kol, bar, rona, sat in [("jamur_ceri", 1, 1, 0.99, 1.2),
+			("jamur_cokelat", 1, 3, 0.07, 0.85), ("jamur_gulali", 0, 2, 0.93, 1.2)]:
+		sel = sheet.crop((kol * 64, bar * 64, kol * 64 + 64, bar * 64 + 64))
+		_rona_geser(sel, rona, sat, 1.05).save(os.path.join(GAME_OUT, nama + ".png"))
+	sel = sheet.crop((1 * 64, 2 * 64, 2 * 64, 3 * 64))
+	_pudar(_rona_geser(sel, 0.9, 0.55), 0.62).save(os.path.join(GAME_OUT, "jamur_pudar.png"))
+	# 4) gummy statis (LPC Candy CC0, frame idle depan) — penghuni kota
+	bear = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+		"assets_raw", "oga", "candy", "lpc_candy", "bear.png")).convert("RGBA")
+	for nama, i in [("gummy_merah", 0), ("gummy_hijau", 1), ("gummy_putih", 3),
+			("gummy_biru", 4)]:
+		bear.crop((i * 3 * 32 + 32, 0, i * 3 * 32 + 64, 64)).save(
+			os.path.join(GAME_OUT, nama + ".png"))
+	# 5) air mancur sirup (recolor fountain repo)
+	ftn = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+		"game", "assets", "game", "sprites", "lpc32", "fountain.png")).convert("RGBA")
+	_rona_geser(ftn, 0.07, 1.3, 1.05).save(os.path.join(GAME_OUT, "fountain_sirup.png"))
+	# 6) ubin sungai soda biru
+	td = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+		"game", "assets", "game", "tiles", "candyveil")
+	for src, dst in (("candy_soda_f1_16.png", "soda_biru_a.png"),
+			("candy_soda_f2_16.png", "soda_biru_b.png")):
+		s0 = Image.open(os.path.join(td, src)).convert("RGBA").resize((32, 32), Image.NEAREST)
+		_rona_geser(s0, 0.55, 1.6, 0.93).save(os.path.join(td, dst))
+	# 7) kredit
+	with open(os.path.join(GAME_OUT, "candyveil.credits.txt"), "w", encoding="utf-8") as fh:
+		fh.write("""# Kredit sprite kota Candyveil (#300)
+# Lisensi: CC0 / gambar-sendiri (milik Aetherion). Rincian:
+- Rumah & dekor permen (kue_mangkuk, roti_jahe, kue_tart, donat, es_krim, wafel,
+  kastil_gula, kincir, cokelat_batang, makaron, toples, permen_karet,
+  lampu_lolipop, kios_permen, gapura, menara_lonceng, *_pudar, fountain_sirup):
+  DIGAMBAR SENDIRI — _tools/gen_rumah_permen.py — milik Aetherion.
+- jamur_*.png: turunan "Mushroom Houses" — Jordan Irwin (AntumDeluge), CC0,
+  https://opengameart.org/content/mushroom-houses
+- gummy_*.png: turunan "LPC Candy" — Mark Weyer, CC0 (pilihan lisensi),
+  https://opengameart.org/content/lpc-candy
+- soda_biru_*.png (tiles/candyveil): recolor ubin soda asli Aetherion.
+Lisensi: CC0
+""")
+	print("-> game/assets/game/sprites/candyveil/ (%d+ berkas) + soda_biru tiles" % (len(semua) + 12))
+
+
 if __name__ == "__main__":
 	main()
 	main2()
+	main3()
