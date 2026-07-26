@@ -1,0 +1,37 @@
+{
+ "id": "corvin_vale",
+ "named": true,
+ "race": "human",
+ "body": "muscular",
+ "head": "muscular",
+ "skin": "light",
+ "hair": "jewfro_ash",
+ "headwear": null,
+ "facial": {
+  "beard": null
+ },
+ "race_overlay": [],
+ "story_prop": [],
+ "palette_shift": null,
+ "_hook": "BADAN KEKAR petani (build muscular — nol tokoh bernama lain) + rambut abu mengembang. Corvin Vale, ayah Arlen (sheet #001): tubuh yang dibesarkan ladang, punggung yang akhirnya menagih. Jangkar dari kasih sayang, bukan tiran.",
+ "undershirt": "ls_male_walnut",
+ "tint": {
+  "body": "#b98d68"
+ },
+ "_skin": "Terbakar matahari ladang.",
+ "build": "muscular",
+ "garmen": {
+  "torso": {
+   "garmen": "overalls",
+   "warna": "brown"
+  },
+  "legs": {
+   "garmen": "pants",
+   "warna": "brown"
+  },
+  "feet": {
+   "garmen": "boots",
+   "warna": "polos"
+  }
+ }
+}

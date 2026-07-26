@@ -2711,21 +2711,88 @@ func _sora() -> void:
 ## -> QuestPribadi). Malam: di jalan depan rumah singgah — kesaksian `orang`
 ## Merrit (#294, mekanisme examine TIDAK berubah).
 func _arlen() -> void:
+	# ── MESIN BABAK (#298 · sheet #001 chain #3–#5). Waktu berjalan sendiri:
+	# hari epoch dihitung saat scene dibangun — dunia tidak menunggu pemain.
+	var hari := int(Time.get_unix_time_from_system() / 86400.0)
+	var pulang := WorldState.get_counter("arlen_pulang_hari")
+	if WorldState.get_counter("arlen_titipan") == 2 and WorldState.get_counter("arlen_pergi") == 0:
+		# chain #3 — KEGAGALAN (wajib, uji Effort C45): hari ke-3 ia berangkat
+		# mengambil kontrak pertamanya; hari ke-5 kabar buruknya sampai duluan.
+		if WorldState.get_counter("arlen_gagal") == 0 and hari - pulang >= 5:
+			WorldState.counters["arlen_gagal"] = 1   # senyap — memalukan itu sunyi
+		# chain #4 — JANGKAR: sesudah malu (dan pemain sempat/tak sempat datang),
+		# punggung Corvin menagih. Arlen memutuskan tinggal — SENDIRI.
+		if WorldState.get_counter("arlen_gagal") == 1 and WorldState.get_counter("arlen_jangkar") == 0 \
+				and (hari - pulang >= 8
+					or (WorldState.get_counter("arlen_ditemani") >= 1 and hari - pulang >= 6)):
+			WorldState.counters["arlen_jangkar"] = 1
+		# chain #5 — KEBERANGKATAN: jangkar dilepas → kunjungan berikutnya ia
+		# sudah melewati batu itu. Tanpa adegan. Tanpa menoleh.
+		if WorldState.get_counter("arlen_jangkar") == 2:
+			WorldState.counters["arlen_pergi"] = 1
+
 	# batu penanda batas desa — fakta dunia, ada siang-malam (D-3: tanpa nama)
 	_put(P_OLD + "batu_penanda.png", Vector2(820, 96))
 	var b := _prop(Vector2(820, 126))
-	b.setup_bicara([
-		"Batu batas desa. Sisi utaranya lebih aus — disentuh, ribuan kali, oleh tangan yang sama.",
-	], "Batu penanda [E]")
+	if WorldState.get_counter("arlen_pergi") == 1:
+		b.setup_bicara([
+			"Batu batas desa. Sisi utaranya licin, seperti baru disentuh.",
+			"Jejak kaki menyeberangi garisnya — lurus, mantap, tidak berbalik.",
+		], "Batu penanda [E]")
+	else:
+		b.setup_bicara([
+			"Batu batas desa. Sisi utaranya lebih aus — disentuh, ribuan kali, oleh tangan yang sama.",
+		], "Batu penanda [E]")
+
+	_corvin()
+
+	# PERGI (chain #5): tak ada figur, tak ada kesaksian — ia membawa matanya
+	# bersamanya. ⚠ SADAR: `ev_merrit_arlen_ingat` ikut hilang bagi yang belum
+	# mendengarnya; halaman Merrit tetap terbuka lewat 3 jenis lain (#228).
+	if WorldState.get_counter("arlen_pergi") == 1:
+		return
+
+	# GAGAL/JANGKAR (chain #3–#4): siang-malam ia di ladang — bukan di batunya.
+	if WorldState.get_counter("arlen_gagal") == 1:
+		# (330,1160): 89 px dari prop Corvin & jauh dari rute Lyra — bukti mata
+		# menangkap tiga figur bertumpuk di titik pertama (430,1096).
+		_figur("arlen", Vector2(330, 1160))
+		var tg := _prop(Vector2(322, 1192))
+		tg.talk_name = "Arlen"
+		match WorldState.get_counter("arlen_jangkar"):
+			0:
+				tg.setup_bicara([
+					"\"...Kau dengar? Pasti sudah dengar.\"",
+					"\"Muatannya hilang di hutan barat. Semuanya. Aku bahkan tidak tahu di mana hilangnya.\"",
+					"\"Sela tidak marah. Itu yang paling buruk.\"",
+				], "Arlen [E]", "Arlen")
+			1:
+				tg.setup_bicara([
+					"\"Punggung ayah. Dua musim, sekarang tidak bisa bangun sama sekali.\"",
+					"\"Ladang tidak menunggu. Aku tinggal.\"",
+					"\"...Jangan tanya soal Greenvale.\"",
+				], "Arlen [E]", "Arlen")
+			2:
+				tg.setup_bicara([
+					"\"Besok subuh. Lewat batu itu.\"",
+					"\"Ayah tidak mau menatapku waktu bilang ya. Kurasa itu caranya memeluk.\"",
+					"\"...Terima kasih.\"",
+				], "Arlen [E]", "Arlen")
+		return
+
+	# KONTRAK PERTAMA (hari 3–4): ia di Greenvale — Ashbrook tak melihatnya.
+	if WorldState.get_counter("arlen_titipan") == 2 \
+			and hari - pulang >= 3 and WorldState.get_counter("arlen_gagal") == 0:
+		return
 
 	if _wib_jam() >= 19:
 		_figur("arlen", MERRIT_HOUSE + Vector2(-64, 130))
-		var ar := preload("res://scenes/world/Interactable.tscn").instantiate()
-		add_child(ar)
-		ar.evidence_id = "ev_merrit_arlen_ingat"
-		ar.custom_label = "Arlen [E]"
-		ar.setup("examine")
-		ar.global_position = MERRIT_HOUSE + Vector2(-64, 158)
+		var ar2 := preload("res://scenes/world/Interactable.tscn").instantiate()
+		add_child(ar2)
+		ar2.evidence_id = "ev_merrit_arlen_ingat"
+		ar2.custom_label = "Arlen [E]"
+		ar2.setup("examine")
+		ar2.global_position = MERRIT_HOUSE + Vector2(-64, 158)
 		return
 
 	_figur("arlen", Vector2(868, 140))
@@ -2733,8 +2800,7 @@ func _arlen() -> void:
 	var t := _prop(Vector2(876, 180))
 	t.talk_name = "Arlen"
 	var tit := WorldState.get_counter("arlen_titipan")
-	var hari := int(Time.get_unix_time_from_system() / 86400.0)
-	if tit == 2 and hari - WorldState.get_counter("arlen_pulang_hari") <= 2:
+	if tit == 2 and hari - WorldState.get_counter("arlen_pulang_hari") <= 1:
 		# dua hari bicara tanpa henti (bible #001 chain #2)
 		t.setup_bicara([
 			"\"Sela bilang tulisanku rapi. SELA. Yang di Greenvale!\"",
@@ -2758,6 +2824,31 @@ func _arlen() -> void:
 			"\"Aku kurir. Sebelas jalan. Hafal sampai lubang-lubangnya.\"",
 			"\"Sampai batu itu. Aku selalu sampai batu itu.\"",
 		], "Arlen [E]", "Arlen")
+
+
+## CORVIN VALE (#298 · sheet #001) — ayah Arlen, ladang selatan. Jangkar yang
+## terbuat dari kasih sayang. Melepasnya = MENGHAPUS JANGKARNYA (upah tenaga
+## tani semusim, 500G, dua sentuhan #122) — bukan menyeret orangnya.
+func _corvin() -> void:
+	_figur("corvin_vale", Vector2(392, 1104))
+	var c := _prop(Vector2(392, 1136))
+	c.qp_id = "corvin_upah"
+	if WorldState.get_counter("arlen_jangkar") == 1:
+		c.setup_bicara([
+			"Ia mencoba berdiri tegak waktu melihatmu. Gagal separuh jalan.",
+			"\"Punggung? Masih bisa berdiri. Berdiri cukup.\"",
+			"\"Anak itu tinggal. Aku tidak memintanya. Aku cuma... tidak menolaknya.\"",
+		], "Corvin Vale [E]", "Corvin Vale")
+	elif WorldState.get_counter("arlen_jangkar") == 2:
+		c.setup_bicara([
+			"\"Tenaga upahan datang subuh tadi. Tangannya kasar. Kerjanya bagus.\"",
+			"\"...Jangan bilang siapa-siapa aku menangis waktu ia pamit.\"",
+		], "Corvin Vale [E]", "Corvin Vale")
+	else:
+		c.setup_bicara([
+			"Petani berpunggung kaku, mencangkul dengan sudut yang salah supaya tidak membungkuk.",
+			"\"Anak itu... kurir yang baik. Jangan bilang padanya aku bilang begitu.\"",
+		], "Corvin Vale [E]", "Corvin Vale")
 
 
 ## Langit & lentera mengikuti jam WIB — aturan yang SAMA dengan `Ashbrook.gd`

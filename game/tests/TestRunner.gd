@@ -166,6 +166,7 @@ func _ready() -> void:
 	await _test_a2_a3_291()
 	await _test_ditunda_294()
 	await _test_companion_296()
+	await _test_arlen_babak_298()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5916,6 +5917,7 @@ func _test_companion_296() -> void:
 	print("[#296 — Sora & Arlen (companion irisan v0.5)]")
 	for k in ["sora_kenal", "sora_temani_n", "sora_hari_terakhir", "sora_beban",
 			"sora_coba_dua", "arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari",
+			"arlen_gagal", "arlen_jangkar", "arlen_pergi", "arlen_ditemani", "corvin_tatap",
 			"a2_sudah", "uji_kamis_malam"]:
 		WorldState.counters[k] = 0
 	for pid in ["person_otha_renn", "person_merrit_fane"]:
@@ -6047,7 +6049,7 @@ func _test_companion_296() -> void:
 	check("dua hari sesudah pulang: bicara tanpa henti (E8)", "SELA" in ab)
 	s.queue_free()
 	await get_tree().process_frame
-	WorldState.counters["arlen_pulang_hari"] = 1   # sudah lama berlalu
+	WorldState.counters["arlen_pulang_hari"] = int(Time.get_unix_time_from_system() / 86400.0) - 2   # euforia lewat, kontrak belum (#298)
 	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
 	get_tree().root.add_child(s)
 	await get_tree().process_frame
@@ -6063,6 +6065,7 @@ func _test_companion_296() -> void:
 
 	for k in ["sora_kenal", "sora_temani_n", "sora_hari_terakhir", "sora_beban",
 			"sora_coba_dua", "arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari",
+			"arlen_gagal", "arlen_jangkar", "arlen_pergi", "arlen_ditemani", "corvin_tatap",
 			"a2_sudah", "uji_kamis_malam", "uji_jam_paksa"]:
 		WorldState.counters[k] = 0
 
@@ -6076,3 +6079,99 @@ func _296_baris_semua(akar: Node, label: String) -> String:
 	for c in akar.get_children():
 		out += _296_baris_semua(c, label)
 	return out
+
+
+## #298 — BABAK ARLEN chain #3–#5 (sheet #001): kegagalan → jangkar Corvin →
+## keberangkatan tanpa menoleh. Waktu disimulasikan lewat arlen_pulang_hari;
+## #151b: figur, prop, dan dialog dicek sebagai NODE scene per fase.
+func _test_arlen_babak_298() -> void:
+	print("[#298 — Arlen: gagal, jangkar, berangkat]")
+	var hari := int(Time.get_unix_time_from_system() / 86400.0)
+	for k in ["arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari", "arlen_gagal",
+			"arlen_jangkar", "arlen_pergi", "arlen_ditemani", "corvin_tatap"]:
+		WorldState.counters[k] = 0
+	WorldState.counters["uji_jam_paksa"] = 13
+	WorldState.counters["arlen_titipan"] = 2
+	check("aset Corvin dirakit (guard #231 lolos via badan kekar)",
+		ResourceLoader.exists("res://assets/game/sprites/characters/corvin_vale_idle.png"))
+
+	# ── hari 3: ia di Greenvale — Ashbrook tak melihatnya ──
+	WorldState.counters["arlen_pulang_hari"] = hari - 3
+	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	check("hari 3: Arlen ABSEN (mengambil kontrak pertamanya)",
+		_294_prop(s, "Arlen [E]") == null and WorldState.get_counter("arlen_gagal") == 0)
+	check("Corvin selalu di ladangnya", _a1_cari_sprite("corvin_vale_idle") != null
+		and _294_prop(s, "Corvin Vale [E]") != null)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── hari 5: kabar buruk sampai duluan — pulang malu ──
+	WorldState.counters["arlen_pulang_hari"] = hari - 5
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	check("hari 5: gagal menyala SENYAP", WorldState.get_counter("arlen_gagal") == 1)
+	var ap := _294_prop(s, "Arlen [E]")
+	var ab := ""
+	if ap:
+		for l in ap.get("lines"):
+			ab += str(l)
+	check("ia di ladang, bukan di batunya — dan malu", "Sela tidak marah" in ab)
+	# reaksi pemain dicatat senyap (E8): datang = jawaban
+	EventBus.villager_talked.emit("Arlen")
+	check("menemani yang malu DICATAT diam", WorldState.get_counter("arlen_ditemani") == 1)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── hari 6 (sudah ditemani): jangkar — punggung Corvin menagih ──
+	WorldState.counters["arlen_pulang_hari"] = hari - 6
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	check("jangkar menyala", WorldState.get_counter("arlen_jangkar") == 1)
+	var ab2 := ""
+	var ap2 := _294_prop(s, "Arlen [E]")
+	if ap2:
+		for l in ap2.get("lines"):
+			ab2 += str(l)
+	check("\"Ladang tidak menunggu. Aku tinggal.\"", "Aku tinggal" in ab2)
+	# melepas jangkar: dua sentuhan Corvin (#122) + 500G
+	PlayerData.gold = 800
+	QuestPribadi.titik("corvin_upah", Vector2.ZERO)
+	check("sentuhan 1: ia cuma menatap (belum ada transaksi)",
+		WorldState.get_counter("arlen_jangkar") == 1 and PlayerData.gold == 800)
+	QuestPribadi.titik("corvin_upah", Vector2.ZERO)
+	check("sentuhan 2: 500G terbayar, jangkar LEPAS",
+		WorldState.get_counter("arlen_jangkar") == 2 and PlayerData.gold == 300)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── kunjungan berikutnya: ia sudah melewati batu itu ──
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	check("berangkat: arlen_pergi menyala", WorldState.get_counter("arlen_pergi") == 1)
+	check("tak ada figur, tak ada kesaksian — matanya ikut pergi",
+		_294_prop(s, "Arlen [E]") == null
+		and not _a1_ada_examine("ev_merrit_arlen_ingat"))
+	var bp := _294_prop(s, "Batu penanda [E]")
+	var bb := ""
+	if bp:
+		for l in bp.get("lines"):
+			bb += str(l)
+	check("batu bercerita: jejak menyeberang, tidak berbalik", "tidak berbalik" in bb)
+	var cb2 := _294_prop(s, "Corvin Vale [E]")
+	var cbb := ""
+	if cb2:
+		for l in cb2.get("lines"):
+			cbb += str(l)
+	check("Corvin: tenaga upahan datang — dan ia menangis waktu anaknya pamit",
+		"menangis" in cbb)
+	s.queue_free()
+	await get_tree().process_frame
+
+	for k in ["arlen_bicara_n", "arlen_titipan", "arlen_pulang_hari", "arlen_gagal",
+			"arlen_jangkar", "arlen_pergi", "arlen_ditemani", "corvin_tatap", "uji_jam_paksa"]:
+		WorldState.counters[k] = 0

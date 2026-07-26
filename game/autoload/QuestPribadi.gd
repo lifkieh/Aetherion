@@ -57,6 +57,11 @@ func _on_talk(nama: String) -> void:
 					_tahapkan("bram", AKTIF)
 					EventBus.toast.emit("🪑 Bram: \"Kursi ini pengganti. Punya ayahku hilang waktu rumah lama kami di distrik tua runtuh. Kalau kau iseng ke sana...\"")
 		"Arlen":
+			# #298 chain #3 — reaksi pemain pada kegagalannya DICATAT senyap:
+			# datang menemui orang yang sedang malu adalah jawaban, bukan tombol.
+			if WorldState.get_counter("arlen_gagal") == 1 \
+					and WorldState.get_counter("arlen_jangkar") == 0:
+				WorldState.add_counter("arlen_ditemani")
 			# #295 S3 — pintu pertama yang murah (chain #2): bicara ke-3, ia
 			# menitipkan surat lamaran kurir Serikat yang tak pernah berani ia
 			# kirim (#122: permintaan keluar dari dialog; menerima = membawanya).
@@ -91,6 +96,19 @@ func titik(id: String, pos := Vector2.ZERO) -> void:
 			nyai_temani(pos)
 		"sora_ritual":
 			sora_ritual(pos)
+		"corvin_upah":
+			# #298 chain #4 — MENGHAPUS JANGKAR (#122 dua sentuhan): sentuhan
+			# pertama ia cuma menatap pundinya; sentuhan kedua = keputusan.
+			if WorldState.get_counter("arlen_jangkar") != 1:
+				return
+			if WorldState.get_counter("corvin_tatap") == 0:
+				WorldState.counters["corvin_tatap"] = 1
+				EventBus.toast.emit("🪙 Corvin menatap pundimu lama. Tidak berkata apa-apa.")
+			elif PlayerData.spend_gold(500):
+				WorldState.counters["arlen_jangkar"] = 2
+				EventBus.toast.emit("🪙 500G — upah tenaga tani semusim. Corvin: \"Jangan tinggal karena aku. Aku tidak sanggup jadi alasan.\"")
+			else:
+				EventBus.toast.emit("🪙 Tenaga tani semusim: 500G. Pundimu belum cukup.")
 		"merrit_antar":
 			if tahap("merrit") == AKTIF:
 				_tahapkan("merrit", SELESAI)
