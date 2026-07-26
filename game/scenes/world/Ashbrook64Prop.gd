@@ -21,6 +21,7 @@ var lines: Array = []                 # untuk BICARA
 var speaker := ""
 var teleport_to := Vector2.ZERO       # untuk MASUK/KELUAR
 var label_text := "Periksa [E]"
+var qp_id := ""                       # #291-3: titik quest pribadi — QuestPribadi.titik(id)
 
 var _label: Label
 var _cd := 0.0
@@ -86,6 +87,8 @@ func interact() -> void:
 	match mode:
 		Mode.BICARA:
 			await Stage.say(lines, speaker)
+			if qp_id != "":
+				QuestPribadi.titik(qp_id, global_position)   # #291-3: teks dulu, dunia menyusul
 		Mode.GERBANG:
 			# ⚠ SEMENTARA — kembali ke menu, BUKAN ke Greenvale.
 			# Alur dunia permanen (Ashbrook64 ganti vs dampingi 16px) belum diputus

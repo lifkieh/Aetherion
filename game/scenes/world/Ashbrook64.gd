@@ -175,9 +175,51 @@ func _ready() -> void:
 	_props_and_evidence()
 	_pintu_dan_interior()
 	_folk()
+	_titik_quest_pribadi()
 	_spawn_player()
 	_add_ui()
 	_kehidupan()
+
+
+## TITIK QUEST PRIBADI (#291-3). Titik-titiknya FAKTA DUNIA — selalu ada, teksnya
+## netral; quest hanya mengubah maknanya (QuestPribadi.titik yang menggerbangi).
+## Nyai muncul di depan toko HANYA Kamis sore WIB nyata (#159) — jadwal-observe
+## pertama; sesudah ditemani sekali, pola Kamisnya tetap (ia tak berubah — pemain
+## yang kini mengerti), tapi titik temani tak menawarkan apa pun lagi.
+func _titik_quest_pribadi() -> void:
+	# perhentian rute pos Merrit — tanah tanpa rumah, dekat fondasi berumput
+	var antar := _prop(Vector2(270, 540))
+	antar.qp_id = "merrit_antar"
+	antar.setup_bicara([
+		"Tanah lapang. Tak ada rumah, tak ada kotak pos.",
+		"Tapi rumputnya pendek di satu garis — tanah yang sering diinjak, oleh langkah yang sama.",
+	], "Tanah lapang [E]")
+	# rangka bangku ayah Bram — reruntuhan timur
+	var kursi := _prop(Vector2(1700, 620))
+	kursi.qp_id = "bram_kursi"
+	kursi.setup_bicara([
+		"Rangka bangku lapuk, terkubur separuh di antara fondasi.",
+		"Kayunya keras — dibuat untuk dipakai puluhan tahun.",
+	], "Rangka bangku [E]")
+	# Nyai Tuminah — Kamis sore, di depan toko yang tak ia ingat
+	if QuestPribadi.kamis_sore() and QuestPribadi.tahap("nyai") != QuestPribadi.SELESAI:
+		var p := P_C + "nyai_idle.png"
+		if ResourceLoader.exists(p):
+			var s := Sprite2D.new()
+			var at := AtlasTexture.new()
+			at.atlas = load(p)
+			at.region = Rect2(0, 128, 64, 64)
+			s.texture = at
+			s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			s.global_position = OTHA_KAKI + Vector2(-40, 30)
+			s.z_index = int(s.global_position.y)
+			add_child(s)
+		var temani := _prop(OTHA_KAKI + Vector2(-40, 64))
+		temani.qp_id = "nyai_temani"
+		temani.setup_bicara([
+			"\"Kaki tua. Sudah hafal jalannya sendiri.\"",
+			"\"Temani saja, kalau kau tak sibuk.\"",
+		], "Nyai Tuminah [E]", "Nyai Tuminah")
 
 
 ## Sampai LANGKAH 7, scene ini adalah DIORAMA: nol pemain, nol UI, nol pengendali —

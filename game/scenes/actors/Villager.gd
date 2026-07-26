@@ -213,6 +213,10 @@ func interact() -> void:
 ## generator), sesekali diselingi GOSIP yang boleh saja tidak akurat (E5 #77).
 func persona_line() -> String:
 	var lines: Array = _persona.get("lines", [])
+	# #291-3 (E8): quest pribadi selesai = ORANGNYA berubah — baris barunya masuk
+	# gilirannya. Bukan hadiah menu; ucapan yang sebelumnya tak akan pernah keluar.
+	if _persona.has("qp") and QuestPribadi.tahap(String(_persona["qp"])) == QuestPribadi.SELESAI:
+		lines = lines + _persona.get("lines_selesai", [])
 	if lines.is_empty():
 		return "..."
 	# kota sedang membicarakan sebuah pencapaian? itu lebih hangat daripada gosip biasa

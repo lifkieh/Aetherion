@@ -161,6 +161,7 @@ func _ready() -> void:
 	# #290 — konten v0.5: halaman orang
 	await _test_halaman_orang_hidup_290()
 	await _test_a1_penghapusan_pertama()
+	await _test_quest_pribadi_291()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -5504,3 +5505,113 @@ func _a1_ada_examine(ev_id: String) -> bool:
 		if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == ev_id:
 			return true
 	return false
+
+
+## ═══════════ #291-3 — EMPAT QUEST PRIBADI ═══════════
+## E8: tiap quest MENGUBAH NPC-nya. #151b: pemicu lewat sinyal dialog nyata,
+## titik lewat prop NYATA di scene, baris-selesai keluar dari MULUT Villager.
+func _test_quest_pribadi_291() -> void:
+	print("[#291-3 — quest pribadi: Merrit·Halloran·Bram·Nyai]")
+	for k in ["qp_merrit", "qp_merrit_n", "qp_halloran", "qp_halloran_n",
+			"qp_bram", "qp_bram_n", "qp_nyai", "uji_kamis_sore"]:
+		WorldState.counters[k] = 0
+	WorldState.counters["a1_mulai"] = 1
+	WorldState.counters["a1_sudah"] = 1
+
+	# ── MERRIT: dua kali bicara -> surat dititipkan ──
+	EventBus.villager_talked.emit("Merrit Fane")
+	check("Merrit 1x: belum menitip", QuestPribadi.tahap("merrit") == 0)
+	EventBus.villager_talked.emit("Merrit Fane")
+	check("Merrit 2x: surat dititipkan (AKTIF)", QuestPribadi.tahap("merrit") == QuestPribadi.AKTIF)
+
+	# ── BRAM: gosip ketiga menyebut kursinya ──
+	for i in 3:
+		EventBus.villager_talked.emit("Old Bram")
+	check("Bram 3x: kursi disebut (AKTIF)", QuestPribadi.tahap("bram") == QuestPribadi.AKTIF)
+
+	# ── HALLORAN: keranjang roti + membagi ke 5 penduduk ──
+	var roti0: int = PlayerData.item_count("roti_halloran")
+	EventBus.villager_talked.emit("Halloran Muda")
+	check("Halloran: keranjang diberikan (AKTIF, +5 roti)",
+		QuestPribadi.tahap("halloran") == QuestPribadi.AKTIF
+		and PlayerData.item_count("roti_halloran") == roti0 + 5)
+	for nama in ["Lyra", "Spoon Man", "Bu A", "Pak B", "Anak C"]:
+		EventBus.villager_talked.emit(nama)
+	check("5 roti terbagi: Halloran SELESAI, keranjang kosong",
+		QuestPribadi.tahap("halloran") == QuestPribadi.SELESAI
+		and PlayerData.item_count("roti_halloran") == roti0)
+
+	# ── dunia: titik-titiknya FAKTA, Nyai hadir (override kamis utk harness) ──
+	WorldState.counters["uji_kamis_sore"] = 1
+	Evidence.found.erase("ev_otha_nyai_tuminah_kamis")
+	var scene: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var antar := _qp_cari_prop("merrit_antar")
+	var kursi := _qp_cari_prop("bram_kursi")
+	var temani := _qp_cari_prop("nyai_temani")
+	check("titik antar-surat ADA di dunia", antar != null)
+	check("titik rangka-bangku ADA di dunia", kursi != null)
+	check("Nyai + titik temani ADA (kamis sore)", temani != null)
+
+	# ── selesaikan lewat titik dunia (jalur prop.interact tanpa UI) ──
+	if antar:
+		QuestPribadi.titik("merrit_antar", antar.global_position)
+	check("surat terantar: Merrit SELESAI", QuestPribadi.tahap("merrit") == QuestPribadi.SELESAI)
+	if kursi:
+		QuestPribadi.titik("bram_kursi", kursi.global_position)
+	check("kursi ditemukan: Bram SELESAI", QuestPribadi.tahap("bram") == QuestPribadi.SELESAI)
+
+	# ── NYAI: menemani = BERADA DI DEKATNYA (timer diperpendek utk test) ──
+	if temani:
+		QuestPribadi.titik("nyai_temani", temani.global_position)
+		QuestPribadi._nyai_t = 0.25
+		var pl := get_tree().get_first_node_in_group("player")
+		if pl:
+			pl.global_position = temani.global_position
+		await get_tree().create_timer(0.6).timeout
+	check("menemani Kamis sore: Nyai SELESAI", QuestPribadi.tahap("nyai") == QuestPribadi.SELESAI)
+	check("pengamatan = bukti orang Otha (jadwal-observe lahir)",
+		Evidence.has("ev_otha_nyai_tuminah_kamis"))
+
+	# ── E8: orangnya BERUBAH — baris selesai keluar dari mulut Merrit ──
+	var merrit: Node = null
+	for v in get_tree().get_nodes_in_group("villagers"):
+		if v.has_method("persona") and str(v.persona().get("name", "")) == "Merrit Fane":
+			merrit = v
+			break
+	if merrit == null:
+		for v in scene.get_children():
+			if v.has_method("persona") and str(v.persona().get("name", "")) == "Merrit Fane":
+				merrit = v
+				break
+	var ketemu := false
+	if merrit:
+		for i in range(60):
+			if str(merrit.persona_line()).contains("merasakannya juga"):
+				ketemu = true
+				break
+	check("baris-selesai Merrit keluar dari mulutnya (E8)", ketemu)
+
+	scene.queue_free()
+	await get_tree().process_frame
+	WorldState.counters["uji_kamis_sore"] = 0
+
+
+func _qp_cari_prop(id: String) -> Node:
+	for root in get_tree().root.get_children():
+		var hasil := _qp_sisir(root, id)
+		if hasil != null:
+			return hasil
+	return null
+
+
+func _qp_sisir(n: Node, id: String) -> Node:
+	if "qp_id" in n and str(n.get("qp_id")) == id:
+		return n
+	for c in n.get_children():
+		var hasil := _qp_sisir(c, id)
+		if hasil != null:
+			return hasil
+	return null

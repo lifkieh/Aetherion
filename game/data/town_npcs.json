@@ -1655,7 +1655,11 @@
    ],
    "_anchor_note": "teras rumah singgah — pintunya menghadap selatan",
    "evidence_id": "ev_otha_jahitan_mantel_merrit",
-   "evidence_line": 4
+   "evidence_line": 4,
+   "qp": "merrit",
+   "lines_selesai": [
+    "Perhentian itu... kau merasakannya juga? Tanahnya. Seperti tanah yang menunggu."
+   ]
   },
   {
    "name": "Old Bram",
@@ -1731,7 +1735,11 @@
    ],
    "evidence_line": 4,
    "evidence_id": "ev_ashbrook_bram_ingat_ayahnya",
-   "_note_bukti": "BARIS KE-5 = kesaksian, dan Bram TIDAK TAHU ia sedang bersaksi. Ia bergosip tentang bapaknya yang suka membesar-besarkan. Empat baris gosip mendahuluinya BUKAN sebagai basa-basi melainkan sebagai tangga: pemain harus mengobrol berkali-kali sebelum sampai ke sana, dan waktu ia sampai, nadanya tetap obrolan sore. Bukti yang diucapkan seperti bukti berhenti jadi bukti — ia jadi tugas."
+   "_note_bukti": "BARIS KE-5 = kesaksian, dan Bram TIDAK TAHU ia sedang bersaksi. Ia bergosip tentang bapaknya yang suka membesar-besarkan. Empat baris gosip mendahuluinya BUKAN sebagai basa-basi melainkan sebagai tangga: pemain harus mengobrol berkali-kali sebelum sampai ke sana, dan waktu ia sampai, nadanya tetap obrolan sore. Bukti yang diucapkan seperti bukti berhenti jadi bukti — ia jadi tugas.",
+   "qp": "bram",
+   "lines_selesai": [
+    "Ayahku menyebut penggilingan itu tiap makan malam. Antrean sampai jembatan, katanya. Jembatan! Sekarang... sekarang aku mulai percaya."
+   ]
   },
   {
    "name": "Lyra",
@@ -1947,7 +1955,11 @@
     1232,
     524
    ],
-   "_anchor_note": "depan toko roti Halloran"
+   "_anchor_note": "depan toko roti Halloran",
+   "qp": "halloran",
+   "lines_selesai": [
+    "Empat puluh cukup, ternyata. Entah kenapa dulu kubuat dua ratus."
+   ]
   }
  ]
 }

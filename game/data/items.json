@@ -1360,5 +1360,14 @@
   "shop_demand": 8,
   "desc": "Tanam di alam liar (bukan di petak Homestead). Tanah mengingat siapa yang menanam.",
   "flavor": "Ia tak akan tumbuh besar semasa hidupmu. Tanam saja."
+ },
+ {
+  "id": "roti_halloran",
+  "name": "Roti Halloran",
+  "type": "consume",
+  "heal": 12,
+  "price": 0,
+  "sell": 0,
+  "flavor": "Masih hangat. Dipanggang pagi ini — satu dari dua ratus, untuk empat puluh orang."
  }
 ]
