@@ -45,6 +45,7 @@ func _ready() -> void:
 	_sungai_soda()
 	_kota()
 	_ladang_dan_makam()
+	_sora_pulang()
 	_scatter_props()
 	_dress_wild()
 	_build_sky()
@@ -405,6 +406,72 @@ func _ladang_dan_makam() -> void:
 		"Sebuah lentera disimpan rapi di ambang jendela, sumbunya baru.",
 		"Siapa pun pemiliknya, ia berniat pulang.",
 	], "Gubuk kayu manis [E]")
+
+
+## Jam WIB untuk keputusan build — override `uji_jam_paksa` (jam+1) khusus
+## harness, counter yang sama dengan Ashbrook64 (#296, anti-flake #273).
+func _wib_jam() -> int:
+	var paksa := WorldState.get_counter("uji_jam_paksa")
+	if paksa > 0:
+		return paksa - 1
+	return GameClock.wib_hour()
+
+
+func _lampu_kecil(pos: Vector2) -> void:
+	if _put("res://assets/game/sprites/lpc32/lentera32.png", pos) == null:
+		return
+	var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
+	img.fill(Color(1, 1, 1))
+	var l := PointLight2D.new()
+	l.energy = 1.1
+	l.texture_scale = 4.0
+	l.color = Color(1.0, 0.82, 0.55)
+	l.texture = ImageTexture.create_from_image(img)
+	l.global_position = pos + Vector2(0, -10)
+	add_child(l)
+
+
+## #302 — SORA PULANG (v0.6c). Panggilan Ashbrook selesai; ia kembali ke
+## gubuknya: siang di ambang gubuk, malam beritual di pemakaman kotanya
+## sendiri — pemakaman yang mau digusur papan itu. Dialog = E8: kalimatnya
+## bergeser lagi begitu ada saksi kedua (penggusuran_saksi).
+func _sora_pulang() -> void:
+	QuestPribadi.cek_sora_pulang()
+	if WorldState.get_counter("sora_pulang") != 1:
+		return
+	var p_sora := "res://assets/game/sprites/characters/sora_idle.png"
+	if not ResourceLoader.exists(p_sora):
+		return
+	var malam := _wib_jam() >= 19
+	var pos := Vector2(55 * TILE, 53 * TILE) if malam else Vector2(58 * TILE, 55 * TILE + 20)
+	var s := Sprite2D.new()
+	var at := AtlasTexture.new()
+	at.atlas = load(p_sora)
+	at.region = Rect2(0, 128, 64, 64)
+	s.texture = at
+	s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	s.global_position = pos - Vector2(0, 32)
+	s.z_index = int(pos.y)
+	add_child(s)
+	if malam:
+		_lampu_kecil(pos + Vector2(-30, 6))
+		_lampu_kecil(pos + Vector2(30, -4))
+	var t := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+	add_child(t)
+	t.global_position = pos + Vector2(0, 26)
+	if WorldState.get_counter("penggusuran_saksi") == 1:
+		t.setup_bicara([
+			"\"Kau menghitungnya juga, kan. Empat puluh tujuh.\"",
+			"\"Kalau mereka datang musim depan, setidaknya ada dua orang yang tahu berapa jumlahnya.\"",
+			"\"Itu bukan perlawanan. Belum. Tapi semua perlawanan mulai dari hitungan.\"",
+		], "Sora [E]", "Sora")
+	else:
+		t.qp_id = "sora_makam"
+		t.setup_bicara([
+			"\"Kau. ...Jauh dari Ashbrook.\"",
+			"\"Ini rumahku. Mereka semua — aku yang jaga.\"",
+			"\"Kau lihat papan itu? 'Musim depan.' Mereka menghitung musim; aku menghitung nisan.\"",
+		], "Sora [E]", "Sora")
 
 
 # ─────────────────────────────────────────────── (sistem lama — dipertahankan)

@@ -168,6 +168,7 @@ func _ready() -> void:
 	await _test_companion_296()
 	await _test_arlen_babak_298()
 	await _test_candyveil_kota_300()
+	await _test_sora_pulang_302()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -6244,3 +6245,104 @@ func _test_candyveil_kota_300() -> void:
 	check("monster TIDAK pernah lahir di dalam kota", kota_aman)
 	s.queue_free()
 	await get_tree().process_frame
+
+
+## #302 — KEPULANGAN SORA (v0.6c): panggilan Ashbrook selesai -> ia pulang ke
+## Candyveil; benih busur penggusuran. #151b: dua scene sungguhan, mesin temani.
+func _test_sora_pulang_302() -> void:
+	print("[#302 — Sora pulang ke Candyveil]")
+	for k in ["sora_pulang", "penggusuran_saksi", "uji_kamis_malam"]:
+		WorldState.counters[k] = 0
+	WorldState.counters["sora_kenal"] = 1
+	WorldState.counters["uji_jam_paksa"] = 23
+	var dua := ["person_otha_renn", "person_merrit_fane"]
+	for pid in dua:
+		for i in range(WorldState.chronicle.size() - 1, -1, -1):
+			if WorldState.chronicle[i].get("id", "") == pid:
+				WorldState.chronicle.remove_at(i)
+		Chronicle.record_person(pid, "uji " + pid)
+		Chronicle.strike(pid)
+	for e in WorldState.chronicle:
+		if e.get("id", "") in dua:
+			e["state"] = Chronicle.ST_RESTORED   # kedua halaman pulih — beban selesai
+
+	# ── Ashbrook: ia sudah tidak ada; satu lampu tertinggal ──
+	var suara: Array = []
+	var cb := func(t): suara.append(t)
+	EventBus.toast.connect(cb)
+	var s: Node = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	EventBus.toast.disconnect(cb)
+	check("pemicu kepulangan menyala SENYAP", WorldState.get_counter("sora_pulang") == 1)
+	var bocor := []
+	for tt in suara:
+		var ts := str(tt).to_lower()
+		for kata in ["sora", "pulang", "candyveil", "pergi"]:
+			if kata in ts:
+				bocor.append(tt)
+	check("kepulangan tanpa satu pun pengumuman (D-3)", bocor.is_empty(), str(bocor))
+	# sisir DI DALAM scene ini — sprite global bisa milik scene lama yang masih
+	# antre bebas (pelajaran #296/#300, kali ketiga: kini jadi hukum helper)
+	check("Sora TIDAK lagi di Ashbrook", _a1_sisir(s, "sora_idle") == null)
+	var jejak := _294_prop(s, "Lampu kecil [E]")
+	var jb := ""
+	if jejak:
+		for l in jejak.get("lines"):
+			jb += str(l)
+	check("yang tertinggal bercerita: \"Ia cuma selesai.\"", "cuma selesai" in jb)
+	# S4 ikut berhenti: Kamis malam tak ada lagi "Dua lampu."
+	WorldState.counters["uji_kamis_malam"] = 1
+	s.queue_free()
+	await get_tree().process_frame
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	check("S4 Nyai x Sora berhenti sesudah kepulangan",
+		not ("Dua lampu" in _296_baris_semua(s, "Periksa [E]")))
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── Candyveil: ia di rumahnya — malam beritual di pemakaman kota ──
+	s = load("res://scenes/world/Candyveil.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("Sora ADA di Candyveil (malam: pemakaman)", _a1_sisir(s, "sora_idle") != null)
+	var sp := _294_prop(s, "Sora [E]")
+	var sb := ""
+	if sp:
+		for l in sp.get("lines"):
+			sb += str(l)
+	check("dialog kepulangan: \"Ini rumahku.\"", "rumahku" in sb)
+	check("papan penggusuran masuk mulutnya: \"aku menghitung nisan\"",
+		"menghitung nisan" in sb)
+	# benih penggusuran: menemani ritual SEKALI = kesaksian
+	var pl = get_tree().get_first_node_in_group("player")
+	check("pemain ada di Candyveil", pl != null)
+	if pl and sp:
+		pl.global_position = sp.global_position
+		QuestPribadi.titik("sora_makam", sp.global_position)
+		QuestPribadi._temani["sora_makam"]["sisa"] = 0.05
+		for i in 12:
+			await get_tree().process_frame
+		check("kesaksian tercatat DIAM (penggusuran_saksi)",
+			WorldState.get_counter("penggusuran_saksi") == 1)
+	s.queue_free()
+	await get_tree().process_frame
+	s = load("res://scenes/world/Candyveil.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var sp2 := _294_prop(s, "Sora [E]")
+	var sb2 := ""
+	if sp2:
+		for l in sp2.get("lines"):
+			sb2 += str(l)
+	check("barisnya bergeser (E8): \"dua orang yang tahu berapa jumlahnya\"",
+		"dua orang yang tahu" in sb2)
+	s.queue_free()
+	await get_tree().process_frame
+	for k in ["sora_pulang", "penggusuran_saksi", "uji_kamis_malam", "uji_jam_paksa",
+			"sora_kenal"]:
+		WorldState.counters[k] = 0

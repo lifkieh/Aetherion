@@ -96,6 +96,13 @@ func titik(id: String, pos := Vector2.ZERO) -> void:
 			nyai_temani(pos)
 		"sora_ritual":
 			sora_ritual(pos)
+		"sora_makam":
+			# #302 — benih busur penggusuran: menemani ritualnya DI RUMAHNYA.
+			# Sekali cukup; yang dicatat bukan jasa, melainkan KESAKSIAN (senyap).
+			if WorldState.get_counter("sora_pulang") == 1 \
+					and WorldState.get_counter("penggusuran_saksi") == 0:
+				temani_mulai("sora_makam", pos, 10.0, func():
+					WorldState.counters["penggusuran_saksi"] = 1)
 		"corvin_upah":
 			# #298 chain #4 — MENGHAPUS JANGKAR (#122 dua sentuhan): sentuhan
 			# pertama ia cuma menatap pundinya; sentuhan kedua = keputusan.
@@ -148,6 +155,20 @@ func sora_ritual(pos: Vector2) -> void:
 		WorldState.add_counter("sora_temani_n")
 		if WorldState.get_counter("sora_temani_n") >= 2:
 			WorldState.counters["sora_kenal"] = 1)
+
+
+## KEPULANGAN SORA (#302, v0.6c — amandemen #296 dibayar). Beban yang menariknya
+## ke Ashbrook adalah kota yang kehilangan orang; saat KEDUA halaman orang pulih
+## dan pemain sudah mengenalnya, panggilan itu selesai — ia pulang ke Candyveil.
+## Senyap total (D-3): tak ada adegan; dunia yang berubah. Dicek saat build scene.
+func cek_sora_pulang() -> void:
+	if WorldState.get_counter("sora_pulang") == 1:
+		return
+	if WorldState.get_counter("sora_kenal") != 1:
+		return
+	if Chronicle.state_of("person_otha_renn") == Chronicle.ST_RESTORED \
+			and Chronicle.state_of("person_merrit_fane") == Chronicle.ST_RESTORED:
+		WorldState.counters["sora_pulang"] = 1
 
 
 ## S4 — Kamis MALAM (Nyai × Sora). Override `uji_kamis_malam` khusus harness.

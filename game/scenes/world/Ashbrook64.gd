@@ -2652,6 +2652,17 @@ const SORA_RITUAL_2 := Vector2(624, 1240)   # tengah pemakaman, baris nisan terb
 ## menyalakan lampu di antara nisan; siang ia figur latar yang tak diperhatikan.
 ## Rekrut = menemani ritual dua malam (QuestPribadi.sora_ritual). D-3 penuh.
 func _sora() -> void:
+	# #302 — KEPULANGAN: panggilan Ashbrook selesai (kedua halaman pulih).
+	QuestPribadi.cek_sora_pulang()
+	if WorldState.get_counter("sora_pulang") == 1:
+		# Ia tidak berpamitan — ia cuma selesai. Yang tertinggal: satu lampu.
+		_lampu_kecil(SORA_RITUAL_1)
+		var jejak := _prop(SORA_RITUAL_1 + Vector2(0, 30))
+		jejak.setup_bicara([
+			"Lampu kecil, masih hangat. Di bawahnya, tanah bekas lutut.",
+			"Ia tidak berpamitan. Ia cuma selesai.",
+		], "Lampu kecil [E]")
+		return
 	var malam := _wib_jam() >= 19
 	var kenal := WorldState.get_counter("sora_kenal") == 1
 	var pos := Vector2(672, 1024)
