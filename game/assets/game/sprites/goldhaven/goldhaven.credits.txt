@@ -1,8 +1,10 @@
-# Kredit sprite Goldhaven (#309)
+# Kredit sprite Goldhaven v2 — KERAJAAN MAKMUR (#311)
 # Lisensi: OGA-BY 3.0 (turunan) + gambar-sendiri (milik Aetherion)
-- fasad_*.png: RECOLOR batu-pasir/emas dari fasad repo — asal LPC Revised
-  4-Seasons (OGA-BY 3.0, JaidynReiman dkk; dirakit _tools/gen_fasad.py;
-  pintu digambar sendiri). Kredit hulu tetap berlaku.
-- menara_timbangan / gerbang_batu / kios_dagang / segel_pintu:
-  DIGAMBAR SENDIRI — _tools/gen_goldhaven.py — milik Aetherion.
+- fasad_* / badan menara & gerbang: dirakit dari atlas LPC Revised 4-Seasons
+  (OGA-BY 3.0 — JaidynReiman, dari LPC Revised Eliza Wyatt dkk) lewat pipeline
+  _tools/gen_fasad.py. Kredit hulu tetap berlaku.
+- SEMUA ORNAMEN DIGAMBAR SENDIRI (_tools/gen_goldhaven.py — milik Aetherion):
+  lis/pilaster emas, menara kerucut, panji, kubah, pedimen, balustrade,
+  jendela agung, pintu ganda, lambang timbangan, kios_dagang, segel_pintu.
+- [LPC] Castle Mega-Pack diburu lalu DITOLAK: CC-BY-SA 3.0 menular (#254).
 Lisensi: OGA-BY 3.0
