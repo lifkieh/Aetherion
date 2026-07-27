@@ -187,10 +187,11 @@ func _tembok_kota() -> void:
 		cs.position = px_rect.position + px_rect.size / 2
 		body.add_child(cs)
 	# GERBANG BATU di keempat celah + gerobak karavan menunggu giliran masuk
-	_put(P + "gerbang_batu.png", Vector2(JX * TILE + 16, 3 * TILE), 1.4)
-	_put(P + "gerbang_batu.png", Vector2(JX * TILE + 16, 55 * TILE), 1.4)
-	_put(P + "gerbang_batu.png", Vector2(3 * TILE, 32 * TILE), 1.2)
-	_put(P + "gerbang_batu.png", Vector2(77 * TILE, 32 * TILE), 1.2)
+	# skala v3: sprite gerbang pack lebih besar (184 px) — celah gerbang 7 petak
+	_put(P + "gerbang_batu.png", Vector2(JX * TILE + 16, 3 * TILE), 1.2)
+	_put(P + "gerbang_batu.png", Vector2(JX * TILE + 16, 55 * TILE), 1.2)
+	_put(P + "gerbang_batu.png", Vector2(3 * TILE, 32 * TILE), 1.0)
+	_put(P + "gerbang_batu.png", Vector2(77 * TILE, 32 * TILE), 1.0)
 	for g in [Vector2(37 * TILE, 7 * TILE), Vector2(44 * TILE, 51 * TILE),
 			Vector2(8 * TILE, 27 * TILE + 16), Vector2(72 * TILE, 30 * TILE)]:
 		_put(P_L + "gerobak32.png", g, 1.3)
@@ -317,7 +318,7 @@ func _kota() -> void:
 # ─────────────────────────────────────────────── PASAR AGUNG & MENARA
 func _pasar_agung() -> void:
 	# MENARA TIMBANGAN di pusat plaza — empat jalan bertemu di bawahnya
-	var m := _put(P + "menara_timbangan.png", Vector2(CX, CY - 8), 1.5)
+	var m := _put(P + "menara_timbangan.png", Vector2(CX, CY - 8), 1.1)
 	if m:
 		var body := StaticBody2D.new()
 		body.collision_layer = 4

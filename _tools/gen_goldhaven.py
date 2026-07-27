@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
-"""ASET GOLDHAVEN v2 — KERAJAAN MAKMUR (#311; menggantikan recolor v1 #309).
+"""ASET GOLDHAVEN v3 — dirakit dari [LPC] Castle Mega-Pack (#313).
 
-Arahan Direktur: "bernuansa kerajaan besar dan fantasy... sangat mewah dan
-megah, kerajaan yang makmur." Tata letak #308 tetap; bahasa visual baru:
-MARMER PUTIH + AKSEN EMAS + ATAP NILA ROYAL + menara kerucut + panji + kubah.
+v2 (rakitan LPC Revised + ornamen gambar-sendiri) DITOLAK Direktur ("jelek
+banget") sekaligus putusan lisensi baru: CC-BY-SA DIPERBOLEHKAN (menular
+diterima, termasuk peta & kota). Maka bahan naik kelas:
 
-Bahan & lisensi (putusan #254 dipertahankan — nol CC-BY-SA):
-  * dinding/atap/jendela : atlas LPC Revised 4-Seasons — OGA-BY 3.0
-    (JaidynReiman dkk) — dirakit lewat pipeline _tools/gen_fasad.py.
-    [LPC] Castle Mega-Pack DIBURU lalu DITOLAK: CC-BY-SA 3.0 menular.
-  * SEMUA ORNAMEN DIGAMBAR SENDIRI (deklarasi #311): lis & pilaster emas,
-    menara kerucut, panji kota, kubah bank, pedimen, jendela agung lengkung,
-    balustrade, lambang timbangan, menara_timbangan, gerbang_batu,
-    kios_dagang, segel_pintu, pintu ganda emas.
+  "[LPC] Castle Mega-Pack" oleh bluecarrot16 — CC-BY-SA 3.0
+  http://opengameart.org/content/lpc-castle-mega-pack
+  berdasarkan karya: Hyptosis, Zabin, Daniel Cook; Evert, Xenodora,
+  Lanea Zimmerman (Sharm); theidiotmachine; Daniel Armstrong (HughSpectrum).
 
-Keluaran -> game/assets/game/sprites/goldhaven/ (nama file = v1, scene tak
-berubah). #240: generator ter-commit = aset bisa dilahirkan ulang.
+Potongan bernama + rect kalibrasi mata: _tools/gen_goldhaven_potong.py.
+Sprite turunan di game/assets/game/sprites/goldhaven ikut CC-BY-SA 3.0.
+Gambar-sendiri yang TERSISA (deklarasi): panji kota, lambang timbangan,
+kios_dagang, segel_pintu. #240: generator ter-commit.
 """
 import os
 import sys
@@ -24,58 +22,41 @@ from PIL import Image, ImageDraw
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import gen_fasad as F   # pipeline fasad Suikoden (atlas + nine-slice + atap)
+from gen_goldhaven_potong import muat, potong
 
 REPO = os.path.abspath(os.path.join(HERE, ".."))
 OUT = os.path.join(REPO, "game", "assets", "game", "sprites", "goldhaven")
-T = 32
 
-# palet EMAS + ROYAL (milik Aetherion)
-G1 = (255, 224, 130, 255)   # emas terang
-G2 = (230, 182, 74, 255)    # emas
-G3 = (158, 116, 38, 255)    # emas gelap
-G0 = (92, 66, 20, 255)      # outline emas
-NILA = (46, 64, 120, 255)   # kerucut royal
-NILA_T = (74, 100, 172, 255)
+G1 = (255, 224, 130, 255)
+G2 = (230, 182, 74, 255)
+G3 = (158, 116, 38, 255)
+NILA = (46, 64, 120, 255)
 NILA_G = (30, 42, 84, 255)
-KACA = (96, 140, 200, 255)
-KACA_T = (150, 190, 236, 255)
-MARMER = (226, 222, 210, 255)
-MARMER_G = (168, 162, 148, 255)
-GARIS = (52, 44, 34, 255)
 
 
-# ─────────────────────────────────────────────── ORNAMEN (digambar sendiri)
-def lis_emas(im, y, x0=0, x1=None):
-	"""Sabuk emas mendatar — kemakmuran yang terbaca dari jauh."""
-	d = ImageDraw.Draw(im)
-	if x1 is None:
-		x1 = im.width
-	d.rectangle([x0, y, x1 - 1, y + 2], fill=G2)
-	d.line([(x0, y), (x1 - 1, y)], fill=G1)
-	d.line([(x0, y + 2), (x1 - 1, y + 2)], fill=G3)
-
-
-def kerucut(w, h):
-	"""Atap menara kerucut nila + finial emas."""
+# ─────────────────────────────────────────────── perkakas rakit
+def ubin(piece, w, h):
+	"""Isi bidang w×h dengan piece diulang (potong sisa di tepi)."""
 	im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	px, py = w // 2, 9
-	d.polygon([(0, h - 1), (px, py), (w - 1, h - 1)], fill=NILA, outline=NILA_G)
-	d.polygon([(px, py), (0, h - 1), (w // 3, h - 1)], fill=NILA_T)
-	d.polygon([(px, py), (w - 1, h - 1), (w * 3 // 4, h - 1)], fill=NILA_G)
-	for k in range(1, 4):
-		yy = py + (h - py) * k // 4
-		lx = px - (px * (yy - py)) // (h - py)
-		rx = px + ((w - 1 - px) * (yy - py)) // (h - py)
-		d.line([(lx, yy), (rx, yy)], fill=NILA_G)
-	d.line([(px, py), (px, 3)], fill=G3)
-	d.ellipse([px - 3, 0, px + 3, 6], fill=G2, outline=G0)
+	for y in range(0, h, piece.height):
+		for x in range(0, w, piece.width):
+			im.alpha_composite(piece.crop((0, 0, min(piece.width, w - x),
+				min(piece.height, h - y))), (x, y))
 	return im
 
 
+def baris(piece, w):
+	"""Satu baris piece diulang mendatar selebar w."""
+	return ubin(piece, w, piece.height)
+
+
+def tempel_kaki(kanvas, im, cx, y_kaki):
+	"""Tempel dengan titik tengah-bawah di (cx, y_kaki)."""
+	kanvas.alpha_composite(im, (cx - im.width // 2, y_kaki - im.height))
+
+
 def panji(h=34):
-	"""Panji kota: biru royal, lambang timbangan emas, ekor walet."""
+	"""Panji kota (GAMBAR SENDIRI): biru royal + lambang timbangan emas."""
 	im = Image.new("RGBA", (12, h), (0, 0, 0, 0))
 	d = ImageDraw.Draw(im)
 	d.polygon([(0, 0), (11, 0), (11, h - 8), (6, h - 3), (0, h - 8)],
@@ -88,79 +69,8 @@ def panji(h=34):
 	return im
 
 
-def jendela_agung(w=44, h=84):
-	"""Jendela lengkung tinggi berkaca biru + tiang tengah emas — katedral."""
-	im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	d.rounded_rectangle([0, 0, w - 1, h - 1], w // 2 - 1, fill=MARMER_G)
-	d.rounded_rectangle([2, 2, w - 3, h - 1], w // 2 - 3, fill=MARMER)
-	d.rounded_rectangle([5, 5, w - 6, h - 1], w // 2 - 6, fill=KACA)
-	d.rounded_rectangle([5, 5, w - 6, h - 1], w // 2 - 6, outline=G3)
-	# kilau kaca miring
-	d.polygon([(8, 26), (16, 10), (22, 10), (10, 34)], fill=KACA_T)
-	# tiang tengah + palang emas
-	d.line([(w // 2, 6), (w // 2, h - 2)], fill=G2)
-	d.line([(6, h // 2), (w - 7, h // 2)], fill=G2)
-	d.rectangle([0, h - 3, w - 1, h - 1], fill=G3)
-	return im
-
-
-def pedimen(w):
-	"""Segitiga kuil di atas pintu — bank & balai."""
-	im = Image.new("RGBA", (w, w // 3 + 6), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	h = w // 3
-	d.polygon([(0, h + 4), (w // 2, 0), (w - 1, h + 4)], fill=MARMER, outline=MARMER_G)
-	d.polygon([(6, h + 2), (w // 2, 6), (w - 7, h + 2)], outline=G3)
-	d.line([(3, h + 4), (w - 4, h + 4)], fill=G2)
-	d.line([(3, h + 5), (w - 4, h + 5)], fill=G3)
-	return im
-
-
-def kubah(w=72, h=44):
-	"""Kubah emas — mahkota bank."""
-	im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	d.pieslice([0, 10, w - 1, 10 + (h - 12) * 2], 180, 360, fill=G2, outline=G0)
-	d.pieslice([6, 14, w // 2 + 8, 10 + (h - 16) * 2], 180, 300, fill=G1)
-	for k in (0.25, 0.5, 0.75):
-		x = int(w * k)
-		d.arc([x - w // 3, 10, x + w // 3, 10 + (h - 12) * 2], 200, 340, fill=G3)
-	d.line([(w // 2, 10), (w // 2, 3)], fill=G3)
-	d.ellipse([w // 2 - 3, 0, w // 2 + 3, 6], fill=G1, outline=G0)
-	return im
-
-
-def balustrade(w):
-	"""Pagar tiang emas untuk atap datar."""
-	im = Image.new("RGBA", (w, 12), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	for x in range(2, w - 2, 8):
-		d.rectangle([x, 3, x + 2, 11], fill=G2, outline=G3)
-	d.rectangle([0, 0, w - 1, 2], fill=G2)
-	d.line([(0, 0), (w - 1, 0)], fill=G1)
-	d.line([(0, 2), (w - 1, 2)], fill=G3)
-	return im
-
-
-def pintu_ganda(w=48, h=64):
-	"""Pintu ganda kayu tua berlengkung, ornamen emas — pintu orang penting."""
-	im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	d.rounded_rectangle([0, 0, w - 1, h - 1], w // 2 - 1, fill=MARMER_G)
-	d.rounded_rectangle([2, 2, w - 3, h - 1], w // 2 - 3, fill=(70, 50, 30, 255))
-	for x in range(6, w - 4, 6):
-		d.line([(x, 8), (x, h - 4)], fill=(52, 38, 22, 255))
-	d.line([(w // 2, 4), (w // 2, h - 2)], fill=G3)
-	d.arc([6, 4, w - 7, 40], 180, 360, fill=G2)
-	for y in (h // 3, 2 * h // 3):
-		d.ellipse([w // 2 - 8, y - 1, w // 2 - 6, y + 1], fill=G2)
-		d.ellipse([w // 2 + 6, y - 1, w // 2 + 8, y + 1], fill=G2)
-	d.rectangle([0, h - 3, w - 1, h - 1], fill=(110, 106, 98, 255))
-	return im
-
-
 def lambang_timbangan(s=22):
+	"""GAMBAR SENDIRI — jiwa kota."""
 	im = Image.new("RGBA", (s, s), (0, 0, 0, 0))
 	d = ImageDraw.Draw(im)
 	c = s // 2
@@ -171,208 +81,214 @@ def lambang_timbangan(s=22):
 	return im
 
 
-def menara_sisi(src, rows):
-	"""Menara marmer 1 petak + kerucut nila — pengapit gedung agung."""
-	badan = F.wall(src, "krem", 1, rows)
-	atap = kerucut(T + 16, 54)
-	im = Image.new("RGBA", (T + 16, rows * T + 50), (0, 0, 0, 0))
-	im.alpha_composite(badan, (8, 50))
-	for k in range(rows - 1):
-		pass
-	im.alpha_composite(atap, (0, 0))
-	p = panji(30)
-	im.alpha_composite(p, (T + 4, 26))
+def menara_pengapit(P, tinggi_badan, kerucut_key="kerucut_biru", lebar_kerucut=76):
+	"""Menara kotak diperpanjang + kerucut pack + panji."""
+	t = P["tower_kotak"]
+	badan_w = t.width
+	kr = P[kerucut_key].resize((lebar_kerucut,
+		int(P[kerucut_key].height * lebar_kerucut / P[kerucut_key].width)), Image.NEAREST)
+	kr_h = min(kr.height, 150)
+	kr = kr.crop((0, 0, kr.width, kr_h)) if kr.height > kr_h else kr
+	im = Image.new("RGBA", (max(badan_w, kr.width) + 14, tinggi_badan + kr_h - 10),
+		(0, 0, 0, 0))
+	x0 = (im.width - badan_w) // 2
+	# badan: isian dinding lalu mahkota menara asli (battlement ikut)
+	isi = ubin(P["wall_batu"].crop((0, 0, badan_w, P["wall_batu"].height)),
+		badan_w, tinggi_badan)
+	im.alpha_composite(isi, (x0, im.height - tinggi_badan))
+	im.alpha_composite(t, (x0, im.height - tinggi_badan - 0))
+	im.alpha_composite(kr, ((im.width - kr.width) // 2, 0))
+	im.alpha_composite(panji(30), (im.width - 13, kr_h - 24))
 	return im
 
 
-# ─────────────────────────────────────────────── GEDUNG-GEDUNG
-def serikat(src):
-	"""Kantor Pusat Serikat: marmer 5 petak + 2 menara kerucut + jendela agung."""
-	rows_w = 7
-	inti = F.facade(src, F.MAT_INDIGO, F.GABLE5, 5, "krem", rows_w,
-		F.WIN_PANEL, (), door=False, name="serikat_inti", sabuk=(3,))
-	tw = T + 16
-	kanvas = Image.new("RGBA", (5 * T + 2 * tw - 16, inti.height + 26), (0, 0, 0, 0))
-	x0 = tw - 8
-	kanvas.alpha_composite(inti, (x0, 26))
-	m = menara_sisi(src, rows_w + 1)
-	kanvas.alpha_composite(m, (0, kanvas.height - m.height))
-	kanvas.alpha_composite(m, (kanvas.width - tw, kanvas.height - m.height))
-	ja = jendela_agung()
-	kanvas.alpha_composite(ja, (x0 + int(0.7 * T), 26 + 3 * T - 6))
-	kanvas.alpha_composite(ja, (x0 + 5 * T - ja.width - int(0.7 * T), 26 + 3 * T - 6))
-	lis_emas(kanvas, 26 + 2 * T + 2, x0 + 2, x0 + 5 * T - 2)
-	lis_emas(kanvas, 26 + 5 * T + 8, x0 + 2, x0 + 5 * T - 2)
-	kanvas.alpha_composite(lambang_timbangan(26), (kanvas.width // 2 - 13, 26 + T + 10))
-	pd = pintu_ganda()
-	kanvas.alpha_composite(pd, (kanvas.width // 2 - pd.width // 2, kanvas.height - pd.height))
-	return kanvas
+# ─────────────────────────────────────────────── gedung-gedung
+def serikat(P):
+	"""Serikat Pusat: istana plester + cornice + 2 gotik putih + pintu agung,
+	diapit dua menara kastil berkerucut biru."""
+	bw, bh = 160, 232
+	badan = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+	badan.alpha_composite(ubin(P["wall_plester"], bw, bh), (0, 0))
+	badan.alpha_composite(baris(P["balustrade"], bw), (0, 0))
+	badan.alpha_composite(baris(P["cornice"], bw), (0, 30))
+	g = P["gotik_putih"]
+	badan.alpha_composite(g.resize((66, 117), Image.NEAREST), (8, 44))
+	badan.alpha_composite(g.resize((66, 117), Image.NEAREST), (bw - 74, 44))
+	tempel_kaki(badan, P["pintu_agung"], bw // 2, bh)
+	badan.alpha_composite(lambang_timbangan(24), (bw // 2 - 12, 44))
+	mn = menara_pengapit(P, 190)
+	im = Image.new("RGBA", (bw + 2 * mn.width - 24, max(bh + 40, mn.height)),
+		(0, 0, 0, 0))
+	im.alpha_composite(badan, ((im.width - bw) // 2, im.height - bh))
+	im.alpha_composite(mn, (0, im.height - mn.height))
+	im.alpha_composite(mn, (im.width - mn.width, im.height - mn.height))
+	return im
 
 
-def bank(src):
-	"""Bank Goldhaven: marmer, atap datar berbalustrade emas, KUBAH, pedimen."""
-	inti = F.facade(src, F.MAT_INDIGO, F.GABLE5, 5, "krem", 6, F.WIN_PANEL,
-		(1, 3), win_row=(1, 3), win_state="terang", door=False,
-		name="bank_inti", atap="datar", sabuk=(2,))
-	kb = kubah()
-	kanvas = Image.new("RGBA", (inti.width, inti.height + 34), (0, 0, 0, 0))
-	kanvas.alpha_composite(inti, (0, 34))
-	kanvas.alpha_composite(balustrade(inti.width), (0, 34 - 4))
-	kanvas.alpha_composite(kb, (inti.width // 2 - kb.width // 2, 0))
-	# pilaster emas mengapit pintu
-	d = ImageDraw.Draw(kanvas)
-	for x in (2 * T - 6, 3 * T + 4):
-		d.rectangle([x, kanvas.height - 3 * T, x + 2, kanvas.height - 4], fill=G2)
-		d.line([(x, kanvas.height - 3 * T), (x + 2, kanvas.height - 3 * T)], fill=G1)
-	pm = pedimen(2 * T + 24)
-	kanvas.alpha_composite(pm, (kanvas.width // 2 - pm.width // 2,
-		kanvas.height - 2 * T - pm.height - 20))
-	pd2 = pintu_ganda(44, 60)
-	kanvas.alpha_composite(pd2, (kanvas.width // 2 - pd2.width // 2, kanvas.height - pd2.height))
-	lis_emas(kanvas, 34 + 2 * T)
-	return kanvas
+def bank(P):
+	"""Bank: plester + balustrade + jendela besar ×2 + pintu kofer + kerucut emas kecil."""
+	bw, bh = 160, 250
+	im = Image.new("RGBA", (bw, bh + 40), (0, 0, 0, 0))
+	im.alpha_composite(ubin(P["wall_plester"], bw, bh), (0, 40))
+	im.alpha_composite(baris(P["balustrade"], bw), (0, 40))
+	im.alpha_composite(baris(P["cornice"], bw), (0, 40 + 32))
+	jb = P["jendela_besar"]
+	im.alpha_composite(jb, (8, 84))
+	im.alpha_composite(jb, (bw - jb.width - 8, 84))
+	tempel_kaki(im, P["pintu_kofer"], bw // 2, bh + 40)
+	im.alpha_composite(P["jendela_tirai"].resize((50, 78), Image.NEAREST), (10, bh - 62))
+	im.alpha_composite(P["jendela_tirai"].resize((50, 78), Image.NEAREST), (bw - 60, bh - 62))
+	# kerucut sudut = kerucut emas BESAR diperkecil — crop "_s" di baris atlas
+	# rapat selalu membawa sliver tetangga (mata v3)
+	ke = P["kerucut_emas"].resize((44, 108), Image.NEAREST)
+	im.alpha_composite(ke, (2, 40 - ke.height + 16))
+	im.alpha_composite(ke, (bw - ke.width - 2, 40 - ke.height + 16))
+	im.alpha_composite(lambang_timbangan(22), (bw // 2 - 11, 52))
+	return im
 
 
-def rumah_kontrak(src):
-	"""Rumah Kontrak: menara nila ramping + kerucut tinggi + panji."""
-	inti = F.facade(src, F.MAT_INDIGO, F.GABLE3, 3, "nila", 7, F.WIN_PANEL,
-		(1,), win_row=(1, 4), door=False, name="kontrak_inti", atap="datar",
-		atap_rows=1, sabuk=(3,))
-	kr = kerucut(3 * T + 12, 64)
-	kanvas = Image.new("RGBA", (3 * T + 12, inti.height + 58), (0, 0, 0, 0))
-	kanvas.alpha_composite(inti, (6, 58))
-	kanvas.alpha_composite(kr, (0, 0))
-	kanvas.alpha_composite(panji(38), (3 * T + 0, 34))
-	lis_emas(kanvas, 58 + 3 * T + 6, 8, 3 * T + 4)
-	pd = pintu_ganda(40, 58)
-	kanvas.alpha_composite(pd, (kanvas.width // 2 - pd.width // 2, kanvas.height - pd.height))
-	return kanvas
+def rumah_kontrak(P):
+	"""Rumah Kontrak: menara bundar tinggi + kerucut biru + lancet biru."""
+	t = P["tower_bundar"]
+	badan_h = 220
+	kr = P["kerucut_biru"].resize((84, 208), Image.NEAREST).crop((0, 0, 84, 150))
+	im = Image.new("RGBA", (max(t.width, kr.width) + 12, badan_h + 140), (0, 0, 0, 0))
+	x0 = (im.width - t.width) // 2
+	silinder = t.crop((0, 40, t.width, 120))
+	for y in range(im.height - badan_h, im.height, silinder.height):
+		im.alpha_composite(silinder, (x0, y))
+	im.alpha_composite(t, (x0, im.height - badan_h - 24))
+	im.alpha_composite(kr, ((im.width - kr.width) // 2, 0))
+	im.alpha_composite(panji(38), (im.width - 13, 116))
+	gb = P["gotik_biru"].resize((66, 62), Image.NEAREST)
+	im.alpha_composite(gb, ((im.width - gb.width) // 2, im.height - 140))
+	pd = P["pintu_ganda_kayu"]
+	tempel_kaki(im, pd, im.width // 2, im.height)
+	return im
 
 
-def balai(src):
-	"""Balai Kota: marmer + pedimen besar + lambang timbangan emas."""
-	inti = F.facade(src, F.MAT_INDIGO, F.GABLE3, 3, "krem", 5, F.WIN_KISI,
-		(0, 2), win_row=1, win_state="terang", door=False, name="balai_inti")
-	kanvas = Image.new("RGBA", (inti.width, inti.height + 10), (0, 0, 0, 0))
-	kanvas.alpha_composite(inti, (0, 10))
-	lis_emas(kanvas, 10 + 2 * T + 2)
-	kanvas.alpha_composite(lambang_timbangan(20), (kanvas.width // 2 - 10, 10 + 2 * T + 14))
-	pd = pintu_ganda(40, 56)
-	# pedimen TEPAT di atas pintu — versi pertama melayang di tengah fasad (mata)
-	pm = pedimen(pd.width + 16)
-	kanvas.alpha_composite(pd, (kanvas.width // 2 - pd.width // 2, kanvas.height - pd.height))
-	kanvas.alpha_composite(pm, (kanvas.width // 2 - pm.width // 2,
-		kanvas.height - pd.height - pm.height + 4))
-	return kanvas
+def balai(P):
+	"""Balai Kota: keep kastil asli + pintu ganda + lambang."""
+	k = P["keep"]
+	im = Image.new("RGBA", (k.width, k.height + 30), (0, 0, 0, 0))
+	im.alpha_composite(k, (0, 30))
+	tempel_kaki(im, P["pintu_ganda_kayu"], k.width // 2, im.height)
+	im.alpha_composite(lambang_timbangan(24), (k.width // 2 - 12, 66))
+	im.alpha_composite(panji(30), (2, 8))
+	im.alpha_composite(panji(30), (k.width - 14, 8))
+	return im
 
 
-def aula(src):
-	"""Aula Dagang: lebar, jendela agung ganda, sabuk emas."""
-	inti = F.facade(src, F.MAT_INDIGO, F.GABLE5, 5, "krem", 5, F.WIN_PANEL,
-		(), door=False, name="aula_inti", sabuk=(2,))
-	kanvas = inti.copy()
-	ja = jendela_agung(40, 72)
-	kanvas.alpha_composite(ja, (int(0.6 * T), 2 * T + 24))
-	kanvas.alpha_composite(ja, (5 * T - ja.width - int(0.6 * T), 2 * T + 24))
-	lis_emas(kanvas, 2 * T + 4)
-	pd = pintu_ganda(52, 62)
-	kanvas.alpha_composite(pd, (kanvas.width // 2 - pd.width // 2, kanvas.height - pd.height))
-	return kanvas
+def aula(P):
+	"""Aula Dagang: dinding batu + battlement + sepasang jendela lengkung + gapura."""
+	bw, bh = 160, 196
+	im = Image.new("RGBA", (bw, bh + 16), (0, 0, 0, 0))
+	im.alpha_composite(ubin(P["wall_batu"], bw, bh), (0, 16))
+	im.alpha_composite(baris(P["battlement"], bw), (0, 0))
+	jl = P["jendela_lengkung"]
+	im.alpha_composite(jl, ((bw - jl.width) // 2, 40))
+	tempel_kaki(im, P["gerbang_lengkung"], bw // 2, bh + 16)
+	tempel_kaki(im, P["pintu_ganda_kayu"].resize((48, 48), Image.NEAREST),
+		bw // 2, bh + 14)
+	im.alpha_composite(P["jendela_tirai"].resize((44, 68), Image.NEAREST), (6, bh - 72))
+	im.alpha_composite(P["jendela_tirai"].resize((44, 68), Image.NEAREST), (bw - 50, bh - 72))
+	return im
 
 
-def hunian_a(src):
-	"""Townhouse makmur A: marmer krem, 2 lantai, kisi menyala, kotak bunga."""
-	im = F.facade(src, F.MAT_INDIGO, F.GABLE5, 5, "krem", 5, F.WIN_KISI,
-		(1, 3), win_row=(1, 3), win_state="terang", name="hunian_a", sabuk=(2,))
-	lis_emas(im, 2 * T + 4 * T // 2 + 2)
+def hunian_a(P):
+	"""Townhouse plester mewah: balustrade + jendela besar + pintu kofer."""
+	bw, bh = 128, 196
+	im = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+	im.alpha_composite(ubin(P["wall_plester"], bw, bh), (0, 0))
+	im.alpha_composite(baris(P["balustrade"], bw), (0, 0))
+	im.alpha_composite(baris(P["cornice"], bw), (0, 30))
+	jb = P["jendela_besar"].resize((58, 78), Image.NEAREST)
+	im.alpha_composite(jb, (8, 42))
+	im.alpha_composite(jb, (bw - jb.width - 8, 42))
+	# pintu di TENGAH — versi offset menabrak jendela kanan (mata v3)
+	tempel_kaki(im, P["pintu_kofer"].resize((60, 88), Image.NEAREST), bw // 2, bh)
+	return im
+
+
+def hunian_b(P):
+	"""Townhouse batu cokelat hangat: battlement + lancet biru + pintu kayu."""
+	bw, bh = 96, 180
+	im = Image.new("RGBA", (bw, bh + 14), (0, 0, 0, 0))
+	im.alpha_composite(ubin(P["brn_wall"], bw, bh), (0, 14))
+	im.alpha_composite(baris(P["brn_battlement"], bw), (0, 0))
+	gb = P["gotik_biru"].resize((70, 66), Image.NEAREST)
+	im.alpha_composite(gb, ((bw - gb.width) // 2, 34))
+	tempel_kaki(im, P["pintu_ganda_kayu"].resize((52, 52), Image.NEAREST), bw // 2, bh + 14)
+	im.alpha_composite(P["jendela_tirai"].resize((36, 56), Image.NEAREST), (bw // 2 - 18, 104))
+	return im
+
+
+def gudang(P):
+	"""Gudang karavan: batu kastil polos + battlement + gerbang lengkung lebar."""
+	bw, bh = 160, 150
+	im = Image.new("RGBA", (bw, bh + 16), (0, 0, 0, 0))
+	im.alpha_composite(ubin(P["wall_batu"], bw, bh), (0, 16))
+	im.alpha_composite(baris(P["battlement"], bw), (0, 0))
+	tempel_kaki(im, P["gerbang_lengkung"].resize((80, 80), Image.NEAREST), bw // 2, bh + 16)
+	tempel_kaki(im, P["pintu_ganda_kayu"].resize((64, 64), Image.NEAREST), bw // 2, bh + 14)
 	d = ImageDraw.Draw(im)
-	for x in (1, 3):   # kotak bunga di jendela lantai atas
-		bx = x * T
-		d.rectangle([bx + 2, 2 * T + 2 * T - 6, bx + T - 3, 2 * T + 2 * T - 1],
-			fill=(120, 84, 48, 255), outline=GARIS)
-		for fx in range(bx + 4, bx + T - 4, 5):
-			d.point((fx, 2 * T + 2 * T - 8), fill=(214, 80, 100, 255))
-			d.point((fx + 2, 2 * T + 2 * T - 7), fill=(240, 150, 170, 255))
+	d.rectangle([bw // 2 + 44, bh - 44, bw // 2 + 58, bh - 32], fill=G2, outline=G3)
 	return im
 
 
-def hunian_b(src):
-	"""Townhouse makmur B: bata nila royal, atap hitam, lis emas."""
-	# jendela satu kolom TENGAH lantai ATAS saja — kolom tepi menempel bingkai,
-	# kolom tengah lantai bawah menabrak pintu (dua-duanya ketahuan mata)
-	im = F.facade(src, F.MAT_BLACK, F.GABLE3, 3, "nila", 5, F.WIN_PANEL,
-		(1,), win_row=(1,), win_state="terang", name="hunian_b", sabuk=(2,))
-	lis_emas(im, 2 * T + 4 * T // 2 + 2)
-	im.alpha_composite(panji(26), (im.width - 13, 2 * T - 8))
-	return im
-
-
-def gudang(src):
-	"""Gudang karavan kerajaan: batu abu rapi, atap datar nila, plakat emas."""
-	im = F.facade(src, F.MAT_INDIGO, F.GABLE5, 5, "abu", 4, F.WIN_PANEL,
-		(0, 4), win_row=1, name="gudang_gh", atap="datar", door=False)
+def menara_timbangan(P):
+	"""MENARA TIMBANGAN: menara kastil tinggi + kerucut EMAS + jam-lambang + panji."""
+	t = P["tower_kotak"]
+	badan_h = 210
+	kr = P["kerucut_emas"].resize((92, 228), Image.NEAREST).crop((0, 0, 92, 158))
+	im = Image.new("RGBA", (t.width + 40, badan_h + 148), (0, 0, 0, 0))
+	x0 = (im.width - t.width) // 2
+	isi = ubin(P["wall_batu"].crop((0, 0, t.width, P["wall_batu"].height)),
+		t.width, badan_h)
+	im.alpha_composite(isi, (x0, im.height - badan_h))
+	im.alpha_composite(t, (x0, im.height - badan_h - 20))
+	im.alpha_composite(kr, ((im.width - kr.width) // 2, 0))
+	im.alpha_composite(panji(34), (x0 - 12, 130))
+	im.alpha_composite(panji(34), (x0 + t.width - 2, 130))
+	# wajah jam = lambang timbangan dalam cakram batu
 	d = ImageDraw.Draw(im)
-	# gerbang muat lebar
-	d.rectangle([3 * T // 2, im.height - 2 * T + 6, 3 * T // 2 + 2 * T, im.height - 1],
-		fill=(70, 52, 34, 255), outline=GARIS)
-	for x in range(3 * T // 2 + 5, 3 * T // 2 + 2 * T - 3, 7):
-		d.line([(x, im.height - 2 * T + 9), (x, im.height - 3)], fill=(52, 38, 24, 255))
-	d.rectangle([3 * T // 2 + 26, im.height - 2 * T - 6, 3 * T // 2 + 38,
-		im.height - 2 * T + 2], fill=G2, outline=G3)   # plakat nomor petak
+	cx, cy = im.width // 2, im.height - badan_h + 34
+	d.ellipse([cx - 18, cy - 18, cx + 18, cy + 18], fill=(232, 226, 214, 255),
+		outline=(120, 112, 100, 255), width=2)
+	im.alpha_composite(lambang_timbangan(26), (cx - 13, cy - 13))
+	gb = P["gotik_biru"].resize((54, 50), Image.NEAREST)
+	im.alpha_composite(gb, (cx - 27, cy + 30))
+	tempel_kaki(im, P["pintu_ganda_kayu"].resize((50, 50), Image.NEAREST),
+		im.width // 2, im.height)
 	return im
 
 
-# ─────────────────────────────── LANDMARK & PERABOT (digambar sendiri penuh)
-def menara_timbangan(src):
-	"""MENARA TIMBANGAN v2: badan marmer atlas + kubah emas + panji + emblem."""
-	rows = 5
-	badan = F.wall(src, "krem", 2, rows)
-	im = Image.new("RGBA", (96, rows * T + 84), (0, 0, 0, 0))
-	x0 = (96 - badan.width) // 2
-	y0 = 84
-	im.alpha_composite(badan, (x0, y0))
-	lis_emas(im, y0 + T + 2, x0, x0 + badan.width)
-	lis_emas(im, y0 + 3 * T + 2, x0, x0 + badan.width)
-	# balkon lonceng + kubah emas besar
-	d = ImageDraw.Draw(im)
-	d.rectangle([x0 - 8, y0 - 12, x0 + badan.width + 7, y0], fill=MARMER, outline=MARMER_G)
-	lis_emas(im, y0 - 12, x0 - 8, x0 + badan.width + 8)
-	kb = kubah(badan.width + 24, 46)
-	im.alpha_composite(kb, (48 - kb.width // 2, y0 - 12 - 44))
-	im.alpha_composite(panji(34), (x0 - 13, y0 - 30))
-	im.alpha_composite(panji(34), (x0 + badan.width + 1, y0 - 30))
-	# jendela sempit + EMBLEM
-	for yy in (y0 + 6, y0 + 2 * T + 6):
-		d.rounded_rectangle([44, yy, 52, yy + 20], 4, fill=KACA, outline=MARMER_G)
-	im.alpha_composite(lambang_timbangan(26), (48 - 13, y0 + int(1.55 * T)))
-	pd = pintu_ganda(36, 52)
-	im.alpha_composite(pd, (48 - pd.width // 2, im.height - pd.height))
-	return im
-
-
-def gerbang_batu(src):
-	"""Gerbang karavan v2: pilon marmer bergerigi + ambang emas + panji."""
-	im = Image.new("RGBA", (128, 96), (0, 0, 0, 0))
-	d = ImageDraw.Draw(im)
-	pil = F.wall(src, "krem", 1, 2)
-	for x0 in (0, 96):
-		im.alpha_composite(pil, (x0, 28))
-		# crenellation
-		for k in range(3):
-			d.rectangle([x0 + k * 12, 18, x0 + k * 12 + 8, 28], fill=MARMER,
-				outline=MARMER_G)
-	d.rectangle([24, 28, 104, 44], fill=MARMER, outline=MARMER_G)
-	lis_emas(im, 30, 26, 103)
-	im.alpha_composite(lambang_timbangan(18), (55, 27))
-	im.alpha_composite(panji(30), (2, 0))
-	im.alpha_composite(panji(30), (114, 0))
+def gerbang_batu(P):
+	"""Gerbang karavan: dua menara kastil mengapit tembok-ambang bergerigi
+	di atas gapura — battlement DUDUK di tembok, bukan melayang (mata v3)."""
+	t = P["tower_kotak"]
+	ga = P["gerbang_lengkung"].resize((72, 72), Image.NEAREST)
+	im = Image.new("RGBA", (2 * t.width + ga.width - 16, 176), (0, 0, 0, 0))
+	x_t = (im.width - ga.width) // 2
+	ambang = ubin(P["wall_batu"], ga.width + 24, 34)
+	im.alpha_composite(ambang, (x_t - 12, im.height - ga.height - 34))
+	im.alpha_composite(baris(P["battlement"], ga.width + 24),
+		(x_t - 12, im.height - ga.height - 34 - 18))
+	tempel_kaki(im, ga, im.width // 2, im.height)
+	kb = P["kerucut_biru_s"]
+	for x0 in (0, im.width - t.width):
+		im.alpha_composite(t, (x0, im.height - t.height))
+		im.alpha_composite(kb, (x0 + (t.width - kb.width) // 2,
+			im.height - t.height - kb.height + 14))
+	im.alpha_composite(panji(28), (t.width - 10, im.height - t.height - 30))
 	return im
 
 
 def kios_dagang(warna, warna2):
-	"""Kios Pasar Agung v2: kanopi royal + tiang emas + dagangan."""
+	"""Kios Pasar Agung (GAMBAR SENDIRI): kanopi royal + tiang emas."""
 	im = Image.new("RGBA", (52, 48), (0, 0, 0, 0))
 	d = ImageDraw.Draw(im)
+	GARIS = (52, 44, 34, 255)
 	d.rectangle([6, 28, 46, 44], fill=(140, 100, 60, 255), outline=GARIS)
 	d.rectangle([6, 28, 46, 32], fill=(246, 238, 220, 255))
 	import random
@@ -395,8 +311,7 @@ def kios_dagang(warna, warna2):
 
 
 def segel_pintu():
-	"""Pintu besi bawah-kota — tersegel, netral, nol lambang (HIDDEN). Tetap v1:
-	satu-satunya benda di kota ini yang TIDAK ikut memakmur — disengaja."""
+	"""Pintu besi bawah-kota (GAMBAR SENDIRI) — sengaja kusam, HIDDEN."""
 	im = Image.new("RGBA", (36, 46), (0, 0, 0, 0))
 	d = ImageDraw.Draw(im)
 	d.rounded_rectangle([2, 2, 34, 44], 5, fill=(88, 92, 100, 255), outline=(40, 42, 48, 255))
@@ -411,18 +326,18 @@ def segel_pintu():
 
 def main():
 	os.makedirs(OUT, exist_ok=True)
-	src = Image.open(F.SRC).convert("RGBA")
+	P = potong(muat())
 	out = {
-		"fasad_serikat": serikat(src),
-		"fasad_bank": bank(src),
-		"fasad_kontrak": rumah_kontrak(src),
-		"fasad_balai_gh": balai(src),
-		"fasad_aula": aula(src),
-		"fasad_hunian_a": hunian_a(src),
-		"fasad_hunian_b": hunian_b(src),
-		"fasad_gudang_gh": gudang(src),
-		"menara_timbangan": menara_timbangan(src),
-		"gerbang_batu": gerbang_batu(src),
+		"fasad_serikat": serikat(P),
+		"fasad_bank": bank(P),
+		"fasad_kontrak": rumah_kontrak(P),
+		"fasad_balai_gh": balai(P),
+		"fasad_aula": aula(P),
+		"fasad_hunian_a": hunian_a(P),
+		"fasad_hunian_b": hunian_b(P),
+		"fasad_gudang_gh": gudang(P),
+		"menara_timbangan": menara_timbangan(P),
+		"gerbang_batu": gerbang_batu(P),
 		"kios_dagang": kios_dagang(NILA, (246, 238, 220, 255)),
 		"kios_dagang_b": kios_dagang((160, 60, 60, 255), G1),
 		"segel_pintu": segel_pintu(),
@@ -431,16 +346,19 @@ def main():
 		im.save(os.path.join(OUT, nama + ".png"))
 		print("  %-18s %dx%d" % (nama, im.width, im.height))
 	with open(os.path.join(OUT, "goldhaven.credits.txt"), "w", encoding="utf-8") as fh:
-		fh.write("""# Kredit sprite Goldhaven v2 — KERAJAAN MAKMUR (#311)
-# Lisensi: OGA-BY 3.0 (turunan) + gambar-sendiri (milik Aetherion)
-- fasad_* / badan menara & gerbang: dirakit dari atlas LPC Revised 4-Seasons
-  (OGA-BY 3.0 — JaidynReiman, dari LPC Revised Eliza Wyatt dkk) lewat pipeline
-  _tools/gen_fasad.py. Kredit hulu tetap berlaku.
-- SEMUA ORNAMEN DIGAMBAR SENDIRI (_tools/gen_goldhaven.py — milik Aetherion):
-  lis/pilaster emas, menara kerucut, panji, kubah, pedimen, balustrade,
-  jendela agung, pintu ganda, lambang timbangan, kios_dagang, segel_pintu.
-- [LPC] Castle Mega-Pack diburu lalu DITOLAK: CC-BY-SA 3.0 menular (#254).
-Lisensi: OGA-BY 3.0
+		fh.write("""# Kredit sprite Goldhaven v3 (#313)
+# Lisensi: CC-BY-SA 3.0 (turunan Castle Mega-Pack) + gambar-sendiri
+- fasad_* / menara_timbangan / gerbang_batu: dirakit dari
+  "[LPC] Castle Mega-Pack" oleh bluecarrot16. Lisensi: CC-BY-SA 3.0.
+  http://opengameart.org/content/lpc-castle-mega-pack
+  Berdasarkan karya: Hyptosis, Zabin, Daniel Cook (Castle Tiles for RPGs,
+  CC-BY 3.0); Evert, Xenodora, Lanea Zimmerman/Sharm (LPC castle, CC-BY 3.0);
+  Xenodora, Lanea Zimmerman (LPC Style Well); theidiotmachine (Another LPC
+  style castle, CC-BY-SA 3.0); Daniel Armstrong/HughSpectrum (LPC Base
+  Assets, CC-BY 3.0). Sprite turunan ini ikut CC-BY-SA 3.0.
+- GAMBAR SENDIRI (milik Aetherion): panji kota, lambang timbangan,
+  kios_dagang(_b), segel_pintu.
+Lisensi: CC-BY-SA 3.0
 """)
 	print("-> %s (14 berkas)" % OUT)
 
