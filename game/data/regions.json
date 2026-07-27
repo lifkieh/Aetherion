@@ -22,6 +22,17 @@
   "flavor": "Desa perbatasan, rumah pertama semua petualang."
  },
  {
+  "id": "goldhaven",
+  "name": "Goldhaven",
+  "kingdom": "valenford",
+  "lv_min": 5,
+  "lv_max": 20,
+  "scene": "res://scenes/world/Goldhaven.tscn",
+  "color": "#deb25c",
+  "icon": "earth",
+  "flavor": "Persimpangan Aurelia. Tiga puluh lima ribu jiwa, empat gerbang karavan, dan satu menara yang menimbang semuanya."
+ },
+ {
   "id": "desert",
   "name": "Desert of Ruins",
   "kingdom": "thornreach",

@@ -1,0 +1,8 @@
+# Kredit sprite Goldhaven (#309)
+# Lisensi: OGA-BY 3.0 (turunan) + gambar-sendiri (milik Aetherion)
+- fasad_*.png: RECOLOR batu-pasir/emas dari fasad repo — asal LPC Revised
+  4-Seasons (OGA-BY 3.0, JaidynReiman dkk; dirakit _tools/gen_fasad.py;
+  pintu digambar sendiri). Kredit hulu tetap berlaku.
+- menara_timbangan / gerbang_batu / kios_dagang / segel_pintu:
+  DIGAMBAR SENDIRI — _tools/gen_goldhaven.py — milik Aetherion.
+Lisensi: OGA-BY 3.0

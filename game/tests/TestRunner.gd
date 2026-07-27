@@ -170,6 +170,7 @@ func _ready() -> void:
 	await _test_candyveil_kota_300()
 	await _test_sora_pulang_302()
 	await _test_selesai_304()
+	await _test_goldhaven_309()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -862,12 +863,12 @@ func _test_travel_hub() -> void:
 	WorldState.mark_visited("frostpeak")   # idempotent
 	check("visited tercatat & idempotent", WorldState.visited_regions == ["greenvale", "frostpeak"])
 	check("current_region terpasang", WorldState.current_region == "frostpeak")
-	# 6 wilayah terdaftar dengan scene valid (Ashbrook menambah satu, #216)
+	# 7 wilayah terdaftar dengan scene valid (Goldhaven menambah satu, #309)
 	var ok := true
 	for r in TravelUI.regions():
 		if not ResourceLoader.exists(r.scene):
 			ok = false
-	check("6 wilayah terdaftar + scene valid", TravelUI.regions().size() == 6 and ok)
+	check("7 wilayah terdaftar + scene valid", TravelUI.regions().size() == 7 and ok)
 	# travel pertama hari ini GRATIS, berikutnya berbiaya
 	WorldState.last_free_travel = ""
 	check("travel pertama hari ini gratis", TravelUI.travel_cost_today() == 0)
@@ -2452,7 +2453,7 @@ func _test_rumors() -> void:
 
 func _test_town_folk() -> void:
 	print("[Hukum NPC Aneh E6]")
-	var towns := ["greenvale", "frostpeak_village", "candyveil_palace", "desert_ruins", "storm_island", "ashbrook"]
+	var towns := ["greenvale", "frostpeak_village", "candyveil_palace", "desert_ruins", "storm_island", "ashbrook", "goldhaven"]
 	var total := 0
 	var oddwalkers := 0
 	for t in towns:
@@ -2467,8 +2468,8 @@ func _test_town_folk() -> void:
 				check("%s: %s punya config CharGen" % [t, p.get("name", "?")], false)
 			if bool(p.get("oddwalker", false)):
 				oddwalkers += 1
-	check("30 NPC berkepribadian total (Ashbrook menambah 5)", total == 30, str(total))
-	check("Oddwalker ~10% (1-5 dari 30)", oddwalkers >= 1 and oddwalkers <= 5, str(oddwalkers))
+	check("35 NPC berkepribadian total (Goldhaven menambah 5)", total == 35, str(total))
+	check("Oddwalker ~10% (1-5 dari 35)", oddwalkers >= 1 and oddwalkers <= 5, str(oddwalkers))
 	# persona hidup: dialog bergilir (bukan acak murni)
 	var v = preload("res://scenes/actors/Villager.tscn").instantiate()
 	add_child(v)
@@ -3385,7 +3386,7 @@ func _test_personality() -> void:
 					"talent", "effort", "opportunity", "luck", "mental_state"]:
 				if not prof.has(f):
 					check("profil %s punya lapis '%s'" % [np.get("name", "?"), f], false)
-	check("30 NPC berkepribadian = profil tulis tangan (tak digenerate)", hand == 30, str(hand))
+	check("35 NPC berkepribadian = profil tulis tangan (tak digenerate)", hand == 35, str(hand))
 	# NPC lain (juru lelang, penawar, tawanan) digenerate & dipersist
 	var havel := Personality.of("Saudagar Havel")
 	check("NPC generik dapat profil generate", not bool(havel.get("handwritten", false)) and havel.has("big5"))
@@ -6498,3 +6499,90 @@ func _304_semua_label(akar: Node) -> String:
 	for c in akar.get_children():
 		out += _304_semua_label(c)
 	return out
+
+
+## #309 — GOLDHAVEN (kota 002): tata cincin blockout #308, Menara Timbangan,
+## pasar radial, pintu bawah-kota TERSEGEL tanpa nama (HIDDEN), E6, nol monster.
+func _test_goldhaven_309() -> void:
+	print("[#309 — Goldhaven: Persimpangan Aurelia]")
+	for a in ["menara_timbangan", "gerbang_batu", "kios_dagang", "kios_dagang_b",
+			"segel_pintu", "fasad_serikat", "fasad_bank", "fasad_kontrak",
+			"fasad_balai_gh", "fasad_aula", "fasad_hunian_a", "fasad_hunian_b",
+			"fasad_gudang_gh"]:
+		check("aset goldhaven ada: %s" % a,
+			ResourceLoader.exists("res://assets/game/sprites/goldhaven/%s.png" % a))
+
+	# wilayah terdaftar (regions.json)
+	var ada_region := false
+	for r in Db.regions:
+		if r.get("id", "") == "goldhaven" \
+				and r.get("scene", "") == "res://scenes/world/Goldhaven.tscn":
+			ada_region = true
+	check("goldhaven terdaftar di regions.json", ada_region)
+	# E6: TEPAT 5 persona
+	check("E6: tepat 5 persona goldhaven", TownFolk.personas("goldhaven").size() == 5
+		and TownFolk.satisfies_law("goldhaven"))
+
+	var s: Node = load("res://scenes/world/Goldhaven.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("peta 80x56 (blockout #308)", s.MAP_W == 80 and s.MAP_H == 56)
+	check("Menara Timbangan berdiri di pusat plaza", _a1_sisir(s, "menara_timbangan") != null)
+	check("gerbang batu terpasang (4 arah)", _a1_sisir(s, "gerbang_batu") != null)
+	check("kios pasar radial hadir", _a1_sisir(s, "kios_dagang") != null)
+	check("fasad serikat pusat berdiri", _a1_sisir(s, "fasad_serikat") != null)
+	check("blok hunian berdiri", _a1_sisir(s, "fasad_hunian_a") != null)
+
+	# jalan raya silang + plaza di lapisan tanah
+	var g: TileMapLayer = s.ground
+	check("jalan raya utara-selatan menembus gerbang",
+		g.get_cell_source_id(Vector2i(40, 4)) == 2
+		and g.get_cell_source_id(Vector2i(40, 52)) == 2)
+	check("jalan raya barat-timur menembus gerbang",
+		g.get_cell_source_id(Vector2i(4, 28)) == 2
+		and g.get_cell_source_id(Vector2i(76, 28)) == 2)
+	check("plaza pasar agung batu (pusat 40,28)",
+		g.get_cell_source_id(Vector2i(36, 26)) == 2
+		and g.get_cell_source_id(Vector2i(44, 31)) == 2)
+
+	# pintu-pintu bercerita (D-3: label netral)
+	var menara := _294_prop(s, "Menara Timbangan [E]")
+	var mb := ""
+	if menara:
+		for l in menara.get("lines"):
+			mb += str(l)
+	check("menara bercerita: empat jalan bertemu", "Empat jalan" in mb)
+	var serikat := _294_prop(s, "Kantor Pusat Serikat Penjelajah [E]")
+	var kb := ""
+	if serikat:
+		for l in serikat.get("lines"):
+			kb += str(l)
+	check("kanon 002: dunia jauh lebih besar (Ashbrook titik kecil)",
+		"titik kecil" in kb)
+	# HIDDEN: pintu tersegel ada, teksnya netral, NOL nama terlarang
+	var pintu := _294_prop(s, "Pintu besi tua [E]")
+	var pb := ""
+	if pintu:
+		for l in pintu.get("lines"):
+			pb += str(l)
+	check("pintu bawah-kota tersegel ada di gang", pintu != null)
+	check("segel bercerita tanpa membuka: dilas + angin dari bawah",
+		"dilas" in pb.to_lower() and "BAWAH" in pb)
+	check("NOL nama bocor pada segel (HIDDEN)",
+		not ("netherdeep" in pb.to_lower()) and not ("nirnama" in pb.to_lower()))
+
+	# inn + shop + world gate hidup — dan NOL monster (kota, bukan medan buru)
+	var ada := {"inn": false, "shop": false, "world_gate": false}
+	for n in get_tree().get_nodes_in_group("interactable"):
+		if s.is_ancestor_of(n) and ada.has(str(n.get("kind"))):
+			ada[str(n.get("kind"))] = true
+	check("penginapan karavan + pedagang pasar + world gate hidup",
+		ada["inn"] and ada["shop"] and ada["world_gate"])
+	var bersih := true
+	for m in get_tree().get_nodes_in_group("monsters"):
+		if m is Node2D and s.is_ancestor_of(m):
+			bersih = false
+	check("NOL monster di seluruh scene Goldhaven", bersih)
+	s.queue_free()
+	await get_tree().process_frame

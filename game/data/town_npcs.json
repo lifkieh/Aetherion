@@ -1981,5 +1981,312 @@
     "Merrit? ...aku nggak perhatiin. Maaf."
    ]
   }
+ ],
+ "goldhaven": [
+  {
+   "name": "Nona Saldis",
+   "archetype": "aneh",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "bun",
+    "hair_color": "#3a2c1e",
+    "shirt": "#c9a227",
+    "pants": "#4a4436"
+   },
+   "lines": [
+    "Penukar uang tak butuh percaya orang. Cukup percaya timbangan.",
+    "Koin dari tujuh kerajaan lewat mejaku. Semuanya bohong soal beratnya sendiri.",
+    "Kau dari barat? Desa kecil? Simpan uangmu di ikat pinggang, bukan di kantong."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -60,
+      -40
+     ],
+     "do": "menata anak timbangan satu per satu"
+    },
+    "sore": {
+     "at": [
+      -60,
+      -40
+     ],
+     "do": "menggigit koin yang mencurigakan"
+    },
+    "malam": {
+     "at": [
+      40,
+      80
+     ],
+     "do": "menghitung ulang, selalu menghitung ulang"
+    }
+   },
+   "profile": {
+    "temperament": "koleris",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 45,
+     "conscientiousness": 95,
+     "extraversion": 50,
+     "agreeableness": 35,
+     "neuroticism": 40
+    },
+    "moral": 70,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 75,
+    "effort": 90,
+    "opportunity": 0,
+    "luck": 45,
+    "mental_state": 100
+   }
+  },
+  {
+   "name": "Pak Dorren",
+   "archetype": "tragis",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "none",
+    "hair_color": "#000000",
+    "shirt": "#6b4a2e",
+    "pants": "#2f2a24"
+   },
+   "lines": [
+    "Empat puluh tahun angkut peti. Punggungku hafal jalan lebih baik dari mataku.",
+    "Karavan datang, karavan pergi. Yang tinggal cuma debu dan kami.",
+    "Peti paling berat bukan yang isinya emas. Yang isinya surat orang mati."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -90,
+      120
+     ],
+     "do": "memanggul peti dari gerbang selatan"
+    },
+    "sore": {
+     "at": [
+      70,
+      -30
+     ],
+     "do": "istirahat di tepi plaza, meluruskan punggung"
+    },
+    "malam": {
+     "at": [
+      -100,
+      150
+     ],
+     "do": "tidur duduk bersandar gudang"
+    }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "sanguinis",
+    "big5": {
+     "openness": 35,
+     "conscientiousness": 80,
+     "extraversion": 55,
+     "agreeableness": 75,
+     "neuroticism": 30
+    },
+    "moral": 80,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 40,
+    "effort": 95,
+    "opportunity": 0,
+    "luck": 35,
+    "mental_state": 100
+   }
+  },
+  {
+   "name": "Marla Peta",
+   "archetype": "misterius",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#8a4b2a",
+    "shirt": "#2e4a6b",
+    "pants": "#4a4436"
+   },
+   "lines": [
+    "Aku jual peta. Peta jalan, peta sungai. Peta bawah kota? Tidak ada. Tidak pernah ada.",
+    "Semua jalan Aurelia lewat sini. Makanya semua kebohongan juga lewat sini.",
+    "Orang barat sepertimu biasanya berdiri melongo di plaza. Jangan. Copet menghitung."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      55,
+      35
+     ],
+     "do": "membentangkan peta di kios, menindih dengan koin"
+    },
+    "sore": {
+     "at": [
+      -30,
+      60
+     ],
+     "do": "mengekor karavan baru, mencatat asalnya"
+    },
+    "malam": {
+     "at": [
+      55,
+      35
+     ],
+     "do": "menggulung peta, satu disembunyikan"
+    }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "koleris",
+    "big5": {
+     "openness": 85,
+     "conscientiousness": 60,
+     "extraversion": 75,
+     "agreeableness": 50,
+     "neuroticism": 45
+    },
+    "moral": 55,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 70,
+    "effort": 65,
+    "opportunity": 0,
+    "luck": 60,
+    "mental_state": 100
+   }
+  },
+  {
+   "name": "Kakek Vantur",
+   "archetype": "tak_masuk_akal",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "short",
+    "hair_color": "#cfc9d6",
+    "shirt": "#4a4436",
+    "pants": "#2f2a24"
+   },
+   "lines": [
+    "Dulu aku penjaga gerbang barat. Sekarang gerbang yang menjagaku tetap bangun pagi.",
+    "Tiap sore aku mencocokkan detak jantungku dengan lonceng menara. Kalau selisih, yang kubetulkan jantungku.",
+    "Ada pintu yang tak kubuka empat puluh tahun. Jangan tanya yang mana. Kau sudah tahu itu berarti jangan."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      -150,
+      0
+     ],
+     "do": "duduk di bangku dekat gerbang barat, mengangguk pada karavan"
+    },
+    "sore": {
+     "at": [
+      0,
+      -60
+     ],
+     "do": "berdiri di bawah menara, mencocokkan jam tubuhnya"
+    },
+    "malam": {
+     "at": [
+      -150,
+      0
+     ],
+     "do": "meronda jalur yang sudah tak jadi tugasnya"
+    }
+   },
+   "profile": {
+    "temperament": "plegmatis",
+    "temperament_sub": "melankolis",
+    "big5": {
+     "openness": 40,
+     "conscientiousness": 85,
+     "extraversion": 45,
+     "agreeableness": 70,
+     "neuroticism": 35
+    },
+    "moral": 85,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 50,
+    "effort": 75,
+    "opportunity": 0,
+    "luck": 40,
+    "mental_state": 100
+   }
+  },
+  {
+   "name": "Timo Roda",
+   "archetype": "lucu",
+   "oddwalker": false,
+   "config": {
+    "head_race": "human",
+    "torso_race": "human",
+    "legs_race": "human",
+    "hair": "spiky",
+    "hair_color": "#3a2c1e",
+    "shirt": "#8a3a2e",
+    "pants": "#2e4a6b"
+   },
+   "lines": [
+    "Aku lahir di gerobak. Kata ibu, kota ini cuma tempat gerobak kami berhenti paling lama.",
+    "Aku hafal bunyi roda semua karavan. Yang bunyinya pincang, itu bawa muatan bohong.",
+    "Kalau besar nanti aku mau punya kios sendiri. Yang menghadap menara. Biar waktuku tak dicuri orang."
+   ],
+   "schedule": {
+    "pagi": {
+     "at": [
+      30,
+      -70
+     ],
+     "do": "berlari mengitari kios pasar"
+    },
+    "sore": {
+     "at": [
+      90,
+      40
+     ],
+     "do": "menonton kuli membongkar muatan"
+    },
+    "malam": {
+     "at": [
+      -40,
+      -40
+     ],
+     "do": "menghitung roda gerobak yang parkir"
+    }
+   },
+   "profile": {
+    "temperament": "sanguinis",
+    "temperament_sub": "plegmatis",
+    "big5": {
+     "openness": 75,
+     "conscientiousness": 40,
+     "extraversion": 90,
+     "agreeableness": 80,
+     "neuroticism": 25
+    },
+    "moral": 75,
+    "moral_drift": 0,
+    "trauma": [],
+    "talent": 55,
+    "effort": 50,
+    "opportunity": 0,
+    "luck": 70,
+    "mental_state": 100
+   }
+  }
  ]
 }
