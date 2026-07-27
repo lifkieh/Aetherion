@@ -8,6 +8,11 @@
   Xenodora, Lanea Zimmerman (LPC Style Well); theidiotmachine (Another LPC
   style castle, CC-BY-SA 3.0); Daniel Armstrong/HughSpectrum (LPC Base
   Assets, CC-BY 3.0). Sprite turunan ini ikut CC-BY-SA 3.0.
+- fasad_hunian_a/b/c/d + fasad_mansion (#317): dirakit dari
+  "[LPC] Victorian Buildings" oleh bluecarrot16, Lanea Zimmerman (Sharm),
+  Casper Nilsson, Lyndsay Takacs (cyanowl), Redshrike — CC-BY-SA 3.0 /
+  CC-BY-SA 4.0 / GPL 3.0. https://opengameart.org/content/lpc-victorian-buildings
+  (rincian CREDITS-victorian.txt). Sprite turunan ikut CC-BY-SA 3.0.
 - GAMBAR SENDIRI (milik Aetherion): panji kota, lambang timbangan,
   kios_dagang(_b), segel_pintu.
 Lisensi: CC-BY-SA 3.0

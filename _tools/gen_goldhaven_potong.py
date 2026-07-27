@@ -47,14 +47,42 @@ PIECES = {
 	"kerucut_hijau":    ("e", 416, 264, 512, 512),
 	"kerucut_biru_s":   ("e", 0, 248, 64, 310),
 	"kerucut_emas_s":   ("e", 316, 250, 376, 310),  # 352-416 kena kerucut hijau (mata)
+	# ── victorian (#317): band warna — biru y0, krem y224, maroon y448, tan y672 ──
+	"vt_wall_biru":     ("t", 96, 0, 192, 96),
+	"vt_wall_krem":     ("t", 0, 224, 96, 320),   # kolom 96-192 band krem BOLONG (mata)
+	"vt_wall_maroon":   ("t", 96, 448, 192, 544),
+	"vt_wall_tan":      ("t", 96, 672, 192, 768),
+	"vt_bay_biru":      ("t", 800, 0, 900, 96),
+	"vt_bay_krem":      ("t", 800, 224, 900, 320),
+	"vt_bay_maroon":    ("t", 800, 448, 900, 544),
+	"vt_bay_tan":       ("t", 800, 672, 900, 768),
+	"vt_cornice_biru":  ("t", 604, 112, 704, 152),
+	"vt_cornice_krem":  ("t", 604, 336, 704, 376),
+	"vt_cornice_maroon": ("t", 604, 560, 704, 600),
+	"vt_cornice_tan":   ("t", 604, 784, 704, 824),
+	# mansion: band sage y0, merah y256, kuning y512, hijau y768
+	"vm_palladian":     ("m", 416, 152, 512, 256),   # jendela agung grid putih
+	"vm_porch":         ("m", 900, 152, 1024, 256),  # kolom kanan saja — crop lebar kena dinding bolong (mata)
+	"vm_pediment":      ("m", 344, 8, 440, 60),      # y ketat — 0-96 bawa mansard gelap tetangga (mata)
+	"vm_dormer":        ("m", 352, 96, 416, 160),  # varian bersih — x472 menempel mansard gelap (mata)
+	"vm_atap_sage":     ("m", 256, 0, 352, 96),      # mansard lengkung
+	# windows-doors
+	"vw_portico":       ("w", 64, 64, 140, 136),
+	"vw_pintu_cokelat": ("w", 0, 544, 48, 616),
+	"vw_pintu_hijau":   ("w", 712, 544, 762, 616),
+	"vw_pintu_arch":    ("w", 836, 600, 900, 688),
 }
 
 
 def muat():
+	V = os.path.join(RAW, "victorian", "lpc-victorian-buildings")
 	return {
 		"c": Image.open(os.path.join(RAW, "castle8_0.png")).convert("RGBA"),
 		"b": Image.open(os.path.join(RAW, "castle8brn.png")).convert("RGBA"),
 		"e": Image.open(os.path.join(RAW, "castle-extras_0.png")).convert("RGBA"),
+		"t": Image.open(os.path.join(V, "victorian-tenement.png")).convert("RGBA"),
+		"m": Image.open(os.path.join(V, "victorian-mansion.png")).convert("RGBA"),
+		"w": Image.open(os.path.join(V, "victorian-windows-doors.png")).convert("RGBA"),
 	}
 
 
@@ -94,8 +122,12 @@ def potong(sheets=None):
 	out = {}
 	for n, (s, x0, y0, x1, y1) in PIECES.items():
 		im = sheets[s].crop((x0, y0, x1, y1))
-		if n.startswith("kerucut"):
-			im = _komponen_terbesar(im)
+		if n.startswith(("kerucut", "vm_pediment", "vm_dormer")):
+			im = _komponen_terbesar(im)   # serpihan sheet tetangga ikut (mata #317)
+		if n.startswith(("vt_", "vm_", "vw_")):
+			bb = im.getbbox()
+			if bb:
+				im = im.crop(bb)
 		out[n] = im
 	return out
 

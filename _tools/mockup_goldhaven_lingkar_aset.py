@@ -37,7 +37,8 @@ def f(sz):
 def muat_sprite():
 	S = {}
 	for n in ["fasad_serikat", "fasad_bank", "fasad_kontrak", "fasad_balai_gh",
-			"fasad_aula", "fasad_hunian_a", "fasad_hunian_b", "fasad_gudang_gh",
+			"fasad_aula", "fasad_hunian_a", "fasad_hunian_b", "fasad_hunian_c",
+			"fasad_hunian_d", "fasad_mansion", "fasad_gudang_gh",
 			"menara_timbangan", "gerbang_batu", "kios_dagang", "kios_dagang_b",
 			"segel_pintu"]:
 		S[n] = Image.open(os.path.join(G, "goldhaven", n + ".png")).convert("RGBA")
@@ -195,15 +196,14 @@ def main():
 		a = (a8 + 0.5) * math.tau / 8
 		taruh(S["lentera"], (C + math.cos(a) * 6) * T, (C + math.sin(a) * 5) * T)
 
-	# ── LINGKAR 2: mansion bangsawan atas (bank & serikat sebagai mansion) ──
-	for i, key in enumerate(["fasad_bank", "fasad_serikat", "fasad_bank",
-			"fasad_serikat", "fasad_bank", "fasad_serikat"]):
-		a = (i + 0.5) * math.tau / 6
+	# ── LINGKAR 2: MANSION Victorian bangsawan atas (#317) ──
+	for i in range(8):
+		a = (i + 0.5) * math.tau / 8
 		rr = (R1 + R2) / 2
 		tx, ty = C + math.cos(a) * rr, C + math.sin(a) * rr
 		if abs(tx - C) <= 6 or abs(ty - C) <= 6:
 			continue
-		taruh(S[key], tx * T, ty * T, 0.9)
+		taruh(S["fasad_mansion"], tx * T, ty * T)
 
 	# ── LINGKAR 3: townhouse RAPAT dua baris menghadap jalan cincin ──
 	for sisi, rr in [(-1, (R2 + R3) / 2 - 3.4), (1, (R2 + R3) / 2 + 3.6)]:
@@ -213,14 +213,14 @@ def main():
 			tx, ty = C + math.cos(a) * rr, C + math.sin(a) * rr
 			if abs(tx - C) <= 5 or abs(ty - C) <= 5:
 				continue
-			taruh(S["fasad_hunian_a" if i % 3 else "fasad_balai_gh"],
-				tx * T, ty * T, 0.82)
+			taruh(S[["fasad_hunian_a", "fasad_hunian_c", "fasad_hunian_a",
+				"fasad_hunian_b"][i % 4]], tx * T, ty * T, 0.82)
 
 	# ── LINGKAR 4: gedung publik warga elit ──
 	publik = ["fasad_bank", "fasad_aula", "fasad_kontrak", "fasad_balai_gh",
-		"fasad_hunian_a", "fasad_hunian_a", "fasad_aula", "fasad_hunian_a",
-		"fasad_kontrak", "fasad_hunian_a", "fasad_hunian_a", "fasad_hunian_a",
-		"fasad_bank", "fasad_hunian_a"]
+		"fasad_hunian_a", "fasad_hunian_c", "fasad_aula", "fasad_hunian_d",
+		"fasad_kontrak", "fasad_hunian_a", "fasad_hunian_b", "fasad_hunian_c",
+		"fasad_bank", "fasad_hunian_d"]
 	for sisi, rr in [(-1, (R3 + R4) / 2 - 3.6), (1, (R3 + R4) / 2 + 3.8)]:
 		nb = 30 if sisi < 0 else 36
 		for i in range(nb):
@@ -243,8 +243,8 @@ def main():
 				continue
 			if math.hypot(tx - mx, ty - my) < 8.5:
 				continue   # plaza pasar bersih dari hunian
-			taruh(S["fasad_hunian_b" if (i + int(baris_r)) % 2 else "fasad_hunian_a"],
-				tx * T, ty * T, 0.72)
+			taruh(S[["fasad_hunian_d", "fasad_hunian_b", "fasad_hunian_c",
+				"fasad_hunian_a"][(i + int(baris_r)) % 4]], tx * T, ty * T, 0.72)
 	# PASAR AGUNG tenggara — plaza terang + kios radial + gerobak
 	for ty in range(N):
 		for tx in range(N):

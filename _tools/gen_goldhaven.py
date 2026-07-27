@@ -202,32 +202,63 @@ def aula(P):
 	return im
 
 
-def hunian_a(P):
-	"""Townhouse plester mewah: balustrade + jendela besar + pintu kofer."""
-	bw, bh = 128, 196
-	im = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
-	im.alpha_composite(ubin(P["wall_plester"], bw, bh), (0, 0))
-	im.alpha_composite(baris(P["balustrade"], bw), (0, 0))
-	im.alpha_composite(baris(P["cornice"], bw), (0, 30))
-	jb = P["jendela_besar"].resize((58, 78), Image.NEAREST)
-	im.alpha_composite(jb, (8, 42))
-	im.alpha_composite(jb, (bw - jb.width - 8, 42))
-	# pintu di TENGAH — versi offset menabrak jendela kanan (mata v3)
-	tempel_kaki(im, P["pintu_kofer"].resize((60, 88), Image.NEAREST), bw // 2, bh)
+def townhouse(P, warna, pintu_key="vw_pintu_cokelat"):
+	"""Townhouse Victorian (#317): panel wall 2 tingkat + cornice mansard +
+	jendela palladian atas + bay window & portico-pintu bawah. Rapi, flat-top."""
+	W_ = P["vt_wall_%s" % warna]
+	bw = 96
+	tinggi = 2 * W_.height
+	cor = P["vt_cornice_%s" % warna].resize((bw + 8, 33), Image.NEAREST)
+	im = Image.new("RGBA", (bw + 8, tinggi + 28), (0, 0, 0, 0))
+	x0 = 4
+	im.alpha_composite(ubin(W_, bw, tinggi), (x0, 28))
+	im.alpha_composite(cor, (0, 0))
+	pl = P["vm_palladian"].resize((60, 66), Image.NEAREST)
+	im.alpha_composite(pl, (x0 + (bw - pl.width) // 2, 34))
+	bay = P["vt_bay_%s" % warna]
+	im.alpha_composite(bay, (x0 + bw - bay.width - 2, im.height - bay.height))
+	po = P["vw_portico"].resize((50, 46), Image.NEAREST)
+	pt = P[pintu_key].resize((30, 44), Image.NEAREST)
+	im.alpha_composite(po, (x0 + 2, im.height - po.height))
+	im.alpha_composite(pt, (x0 + 2 + (po.width - pt.width) // 2, im.height - pt.height))
 	return im
+
+
+def mansion(P):
+	"""Mansion bangsawan L2: badan krem lebar + pediment ornate + dormer +
+	2 bay tower + palladian ganda + pintu arch berportico."""
+	W_ = P["vt_wall_krem"]
+	bw = 160
+	tinggi = 2 * W_.height
+	im = Image.new("RGBA", (bw + 40, tinggi + 62), (0, 0, 0, 0))
+	x0 = 20
+	im.alpha_composite(ubin(W_, bw, tinggi), (x0, 62))
+	cor = P["vt_cornice_krem"].resize((bw + 16, 34), Image.NEAREST)
+	im.alpha_composite(cor, (x0 - 8, 34))
+	# pediment sheet menyatu dgn mansard gelap tetangga (mata) — tiga dormer saja
+	dr = P["vm_dormer"]
+	im.alpha_composite(dr, (x0 + 4, 8))
+	im.alpha_composite(dr, ((im.width - dr.width) // 2, 2))
+	im.alpha_composite(dr, (x0 + bw - dr.width - 4, 8))
+	pl = P["vm_palladian"].resize((64, 70), Image.NEAREST)
+	im.alpha_composite(pl, (x0 + 12, 70))
+	im.alpha_composite(pl, (x0 + bw - pl.width - 12, 70))
+	bay = P["vt_bay_krem"]
+	im.alpha_composite(bay, (0, im.height - bay.height))
+	im.alpha_composite(bay, (im.width - bay.width, im.height - bay.height))
+	po = P["vw_portico"].resize((64, 58), Image.NEAREST)
+	pa = P["vw_pintu_arch"].resize((44, 54), Image.NEAREST)
+	im.alpha_composite(po, ((im.width - po.width) // 2, im.height - po.height))
+	tempel_kaki(im, pa, im.width // 2, im.height)
+	return im
+
+
+def hunian_a(P):
+	return townhouse(P, "krem")
 
 
 def hunian_b(P):
-	"""Townhouse batu cokelat hangat: battlement + lancet biru + pintu kayu."""
-	bw, bh = 96, 180
-	im = Image.new("RGBA", (bw, bh + 14), (0, 0, 0, 0))
-	im.alpha_composite(ubin(P["brn_wall"], bw, bh), (0, 14))
-	im.alpha_composite(baris(P["brn_battlement"], bw), (0, 0))
-	gb = P["gotik_biru"].resize((70, 66), Image.NEAREST)
-	im.alpha_composite(gb, ((bw - gb.width) // 2, 34))
-	tempel_kaki(im, P["pintu_ganda_kayu"].resize((52, 52), Image.NEAREST), bw // 2, bh + 14)
-	im.alpha_composite(P["jendela_tirai"].resize((36, 56), Image.NEAREST), (bw // 2 - 18, 104))
-	return im
+	return townhouse(P, "biru", "vw_pintu_hijau")
 
 
 def gudang(P):
@@ -342,6 +373,9 @@ def main():
 		"fasad_aula": aula(P),
 		"fasad_hunian_a": hunian_a(P),
 		"fasad_hunian_b": hunian_b(P),
+		"fasad_hunian_c": townhouse(P, "maroon", "vw_pintu_hijau"),
+		"fasad_hunian_d": townhouse(P, "tan"),
+		"fasad_mansion": mansion(P),
 		"fasad_gudang_gh": gudang(P),
 		"menara_timbangan": menara_timbangan(P),
 		"gerbang_batu": gerbang_batu(P),
@@ -363,11 +397,16 @@ def main():
   Xenodora, Lanea Zimmerman (LPC Style Well); theidiotmachine (Another LPC
   style castle, CC-BY-SA 3.0); Daniel Armstrong/HughSpectrum (LPC Base
   Assets, CC-BY 3.0). Sprite turunan ini ikut CC-BY-SA 3.0.
+- fasad_hunian_a/b/c/d + fasad_mansion (#317): dirakit dari
+  "[LPC] Victorian Buildings" oleh bluecarrot16, Lanea Zimmerman (Sharm),
+  Casper Nilsson, Lyndsay Takacs (cyanowl), Redshrike — CC-BY-SA 3.0 /
+  CC-BY-SA 4.0 / GPL 3.0. https://opengameart.org/content/lpc-victorian-buildings
+  (rincian CREDITS-victorian.txt). Sprite turunan ikut CC-BY-SA 3.0.
 - GAMBAR SENDIRI (milik Aetherion): panji kota, lambang timbangan,
   kios_dagang(_b), segel_pintu.
 Lisensi: CC-BY-SA 3.0
 """)
-	print("-> %s (14 berkas)" % OUT)
+	print("-> %s (17 berkas)" % OUT)
 
 
 if __name__ == "__main__":
