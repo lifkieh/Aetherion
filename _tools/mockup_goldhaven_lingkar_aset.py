@@ -123,18 +123,30 @@ def main():
 	W = N * T
 	im = Image.new("RGBA", (W, W), (0, 0, 0, 255))
 
-	# ── TANAH per lingkar (NOL dirt di dalam tembok — arahan #315) ──
-	for ty in range(N):
-		for tx in range(N):
-			d = math.hypot(tx - C, ty - C)
-			L = lingkar_dari(d)
-			if L == 6:
-				t = TN["L6"] if d <= R5 + 10 else TN["luar"]
-			else:
-				t = TN["L%d" % L]
-			if di_jalan(tx, ty) and d <= R5 + 12:
-				t = TN["jalan"]
-			im.alpha_composite(t, (tx * T, ty * T))
+	# ── TANAH per-PIKSEL (#317b): mask ellipse — lingkar BULAT sungguhan,
+	# bukan tangga 32px ("kotak-kotak melingkar", mata Direktur) ──
+	def tiled(tile):
+		tt = Image.new("RGBA", (W, W))
+		for yy in range(0, W, tile.height):
+			for xx in range(0, W, tile.width):
+				tt.paste(tile, (xx, yy))
+		return tt
+	def cakram(r_t):
+		m = Image.new("L", (W, W), 0)
+		ImageDraw.Draw(m).ellipse([C * T - r_t * T, C * T - r_t * T,
+			C * T + r_t * T, C * T + r_t * T], fill=255)
+		return m
+	im.paste(tiled(TN["luar"]), (0, 0))
+	im.paste(tiled(TN["L6"]), (0, 0), cakram(R5 + 10))
+	for r_t, kunci in [(R5, "L5"), (R4, "L4"), (R3, "L3"), (R2, "L2"), (R1, "L1")]:
+		im.paste(tiled(TN[kunci]), (0, 0), cakram(r_t))
+	# jalan raya silang lurus (per-piksel)
+	jalan_t = tiled(TN["jalan"])
+	m_j = Image.new("L", (W, W), 0)
+	dj = ImageDraw.Draw(m_j)
+	dj.rectangle([(C - LEBAR_JALAN) * T, 0, (C + LEBAR_JALAN + 1) * T, W], fill=255)
+	dj.rectangle([0, (C - LEBAR_JALAN) * T, W, (C + LEBAR_JALAN + 1) * T], fill=255)
+	im.paste(jalan_t, (0, 0), m_j)
 
 	sprites = []   # (foot_y, Image, x_kiri, y_kaki)
 	def taruh(img, cx, kaki_y, skala=1.0):
@@ -143,39 +155,51 @@ def main():
 				Image.NEAREST)
 		sprites.append((kaki_y, img, int(cx - img.width / 2), int(kaki_y - img.height)))
 
-	# ── JALAN CINCIN di tengah tiap lingkar — tulang punggung keramaian ──
+	# ── JALAN CINCIN annulus per-piksel ──
 	RING_ROAD = [(R1 + R2) / 2, (R2 + R3) / 2, (R3 + R4) / 2, (R4 + R5) / 2 - 3]
 	for rr in RING_ROAD:
-		for ty in range(N):
-			for tx in range(N):
-				d = math.hypot(tx - C, ty - C)
-				if rr - 1.2 <= d < rr + 1.2:
-					im.alpha_composite(TN["jalan"], (tx * T, ty * T))
+		m_r = Image.new("L", (W, W), 0)
+		dr_ = ImageDraw.Draw(m_r)
+		dr_.ellipse([(C - rr - 1.2) * T, (C - rr - 1.2) * T,
+			(C + rr + 1.2) * T, (C + rr + 1.2) * T], fill=255)
+		dr_.ellipse([(C - rr + 1.2) * T, (C - rr + 1.2) * T,
+			(C + rr - 1.2) * T, (C + rr - 1.2) * T], fill=0)
+		im.paste(jalan_t, (0, 0), m_r)
 
 	# ── TEMBOK 5 cincin: band ubin RAPI (tanpa jitter battlement per ubin) ──
-	# isian tembok pakai crop TENGAH (crop sudut membawa bayangan tepi ->
-	# band terbaca berkolom-kolom, mata); outline gelap dua sisi supaya
-	# tembok terbaca TEMBOK, bukan tanah abu
-	wall_fill = P["wall_batu"]
-	batt = P["battlement"]
+	# ── TEMBOK BULAT per-piksel (#317b): annulus tekstur batu + tepi gelap +
+	# merlon mengikuti keliling (tangensial) — nol tangga petak ──
+	wall_t = tiled(P["wall_batu"].crop((T, T, 2 * T, 2 * T)))
 	dd = ImageDraw.Draw(im, "RGBA")
 	for ri, r in enumerate([R1, R2, R3, R4, R5]):
 		tebal = 3 if r == R5 else 2      # tembok besar AoT paling tebal
-		for ty in range(N):
-			for tx in range(N):
-				d = math.hypot(tx - C, ty - C)
-				if r <= d < r + tebal and not di_jalan(tx, ty):
-					im.alpha_composite(wall_fill.crop((T, T, 2 * T, 2 * T)), (tx * T, ty * T))
-		for rr2, w2 in [(r, 3), (r + tebal, 3)]:
+		m_w = Image.new("L", (W, W), 0)
+		dw = ImageDraw.Draw(m_w)
+		dw.ellipse([(C - r - tebal) * T, (C - r - tebal) * T,
+			(C + r + tebal) * T, (C + r + tebal) * T], fill=255)
+		dw.ellipse([(C - r) * T, (C - r) * T, (C + r) * T, (C + r) * T], fill=0)
+		dw.rectangle([(C - LEBAR_JALAN) * T, 0, (C + LEBAR_JALAN + 1) * T, W], fill=0)
+		dw.rectangle([0, (C - LEBAR_JALAN) * T, W, (C + LEBAR_JALAN + 1) * T], fill=0)
+		im.paste(wall_t, (0, 0), m_w)
+		for rr2, warna, w2 in [(r + tebal, (58, 52, 46, 255), 4),
+				(r, (58, 52, 46, 255), 3), (r + 0.28, (214, 210, 200, 160), 2)]:
 			dd.ellipse([(C - rr2) * T, (C - rr2) * T, (C + rr2) * T, (C + rr2) * T],
-				outline=(70, 64, 58, 200), width=w2)
-		# battlement SATU baris bersih di tepi luar (bukan offset acak tiap ubin)
-		for ty in range(N):
-			for tx in range(N):
-				d = math.hypot(tx - C, ty - C)
-				if r + tebal - 0.9 <= d < r + tebal and not di_jalan(tx, ty):
-					im.alpha_composite(batt.crop((0, 0, T, batt.height)),
-						(tx * T, ty * T + 8))
+				outline=warna, width=w2)
+		kel = math.tau * (r + tebal) * T
+		n_m = int(kel / 26)
+		for k in range(n_m):
+			a = k * math.tau / n_m
+			if abs(math.cos(a)) * (r + tebal) <= LEBAR_JALAN + 1.6 \
+					or abs(math.sin(a)) * (r + tebal) <= LEBAR_JALAN + 1.6:
+				continue
+			mx0 = C * T + math.cos(a) * (r + tebal - 0.22) * T
+			my0 = C * T + math.sin(a) * (r + tebal - 0.22) * T
+			ux, uy = math.cos(a), math.sin(a)
+			vx, vy = -uy, ux
+			pts = []
+			for sx, sy in [(-6, -4), (6, -4), (6, 8), (-6, 8)]:
+				pts.append((mx0 + vx * sx + ux * sy, my0 + vy * sx + uy * sy))
+			dd.polygon(pts, fill=(196, 192, 184, 255), outline=(58, 52, 46, 255))
 		# menara jaga tiap 1/8 keliling (lewati poros jalan)
 		for k in range(8):
 			a = (k + 0.5) * math.tau / 8
@@ -205,46 +229,65 @@ def main():
 			continue
 		taruh(S["fasad_mansion"], tx * T, ty * T)
 
-	# ── LINGKAR 3: townhouse RAPAT dua baris menghadap jalan cincin ──
-	for sisi, rr in [(-1, (R2 + R3) / 2 - 3.4), (1, (R2 + R3) / 2 + 3.6)]:
-		nb = 26 if sisi < 0 else 30
-		for i in range(nb):
-			a = (i + 0.5) * math.tau / nb
+	# ── strip rowhouse: rumah DISATUKAN berbagi dinding (#317b) ──
+	def strip_rumah(kunci_list, skala=1.0):
+		imgs = [S[k] for k in kunci_list]
+		imgs = [i.resize((int(i.width * skala), int(i.height * skala)),
+			Image.NEAREST) for i in imgs]
+		w = sum(i.width for i in imgs) - 6 * (len(imgs) - 1)
+		h = max(i.height for i in imgs)
+		out = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+		x = 0
+		for i in imgs:
+			out.alpha_composite(i, (x, h - i.height))
+			x += i.width - 6
+		return out
+	VAR = ["fasad_hunian_a", "fasad_hunian_c", "fasad_hunian_b", "fasad_hunian_d"]
+	def busur_strip(rr, skala, panjang, mulai=0.0):
+		kel = math.tau * rr
+		n_s = max(6, int(kel / panjang))
+		for i in range(n_s):
+			a = (i + 0.5 + mulai) * math.tau / n_s
 			tx, ty = C + math.cos(a) * rr, C + math.sin(a) * rr
-			if abs(tx - C) <= 5 or abs(ty - C) <= 5:
+			if abs(tx - C) <= 5.5 or abs(ty - C) <= 5.5:
 				continue
-			taruh(S[["fasad_hunian_a", "fasad_hunian_c", "fasad_hunian_a",
-				"fasad_hunian_b"][i % 4]], tx * T, ty * T, 0.82)
+			st = strip_rumah([VAR[(i + j) % 4] for j in range(3)], skala)
+			taruh(st, tx * T, ty * T)
+
+	# ── LINGKAR 3: dua busur rowhouse menyambung ──
+	busur_strip((R2 + R3) / 2 - 3.4, 0.82, 10.2)
+	busur_strip((R2 + R3) / 2 + 3.6, 0.82, 10.2, 0.5)
 
 	# ── LINGKAR 4: gedung publik warga elit ──
 	publik = ["fasad_bank", "fasad_aula", "fasad_kontrak", "fasad_balai_gh",
 		"fasad_hunian_a", "fasad_hunian_c", "fasad_aula", "fasad_hunian_d",
 		"fasad_kontrak", "fasad_hunian_a", "fasad_hunian_b", "fasad_hunian_c",
 		"fasad_bank", "fasad_hunian_d"]
-	for sisi, rr in [(-1, (R3 + R4) / 2 - 3.6), (1, (R3 + R4) / 2 + 3.8)]:
-		nb = 30 if sisi < 0 else 36
-		for i in range(nb):
-			a = (i + 0.5) * math.tau / nb
-			tx, ty = C + math.cos(a) * rr, C + math.sin(a) * rr
-			if abs(tx - C) <= 5 or abs(ty - C) <= 5:
-				continue
-			taruh(S[publik[(i * 3 + (0 if sisi < 0 else 1)) % len(publik)]],
-				tx * T, ty * T, 0.9)
+	# gedung publik tetap berdiri sendiri (landmark), busur rowhouse di baris luar
+	for i, key in enumerate(publik):
+		a = (i + 0.5) * math.tau / len(publik)
+		rr = (R3 + R4) / 2 - 3.6
+		tx, ty = C + math.cos(a) * rr, C + math.sin(a) * rr
+		if abs(tx - C) <= 5 or abs(ty - C) <= 5:
+			continue
+		taruh(S[key], tx * T, ty * T, 0.9)
+	busur_strip((R3 + R4) / 2 + 3.8, 0.9, 11.5, 0.5)
 
 	# ── LINGKAR 5: rakyat — hunian PADAT 3 baris (ramai!) + PASAR + gudang + segel ──
 	a = math.tau / 8
 	mx, my = C + math.cos(a) * (R4 + 11), C + math.sin(a) * (R4 + 11)
-	for baris_r in [(R4 + 4.5), (R4 + 11), (R4 + 17.5)]:
-		nb = int(baris_r * 0.72)
-		for i in range(nb):
-			aa2 = (i + 0.5) * math.tau / nb
+	for bi, baris_r in enumerate([(R4 + 4.5), (R4 + 11), (R4 + 17.5)]):
+		kel = math.tau * baris_r
+		n_s = int(kel / 8.6)
+		for i in range(n_s):
+			aa2 = (i + 0.5 + bi * 0.4) * math.tau / n_s
 			tx, ty = C + math.cos(aa2) * baris_r, C + math.sin(aa2) * baris_r
 			if abs(tx - C) <= 5 or abs(ty - C) <= 5:
 				continue
-			if math.hypot(tx - mx, ty - my) < 8.5:
+			if math.hypot(tx - mx, ty - my) < 9.5:
 				continue   # plaza pasar bersih dari hunian
-			taruh(S[["fasad_hunian_d", "fasad_hunian_b", "fasad_hunian_c",
-				"fasad_hunian_a"][(i + int(baris_r)) % 4]], tx * T, ty * T, 0.72)
+			st = strip_rumah([VAR[(i + j + bi) % 4] for j in range(3)], 0.72)
+			taruh(st, tx * T, ty * T)
 	# PASAR AGUNG tenggara — plaza terang + kios radial + gerobak
 	for ty in range(N):
 		for tx in range(N):
