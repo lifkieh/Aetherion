@@ -6414,9 +6414,20 @@ func _test_selesai_304() -> void:
 	s.queue_free()
 	await get_tree().process_frame
 
-	# ── C2: GERBANG KABUT muncul saat dunia siap ──
+	# ── C2: GERBANG KABUT — menatap dulu, menerima hanya sesudah busur dijalani ──
 	WorldState.counters["a2_sudah"] = 1
 	WorldState.counters["warisan:pulih"] = max(1, WorldState.get_counter("warisan:pulih"))
+	WorldState.counters["sora_pulang"] = 0
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	check("kabut BERPALING bila busur belum dijalani (#306: klimaks, bukan pintu samping)",
+		_294_prop(s, "Kabut menatap [E]") != null
+		and _294_prop(s, "Masuk ke kabut [E]") == null)
+	s.queue_free()
+	await get_tree().process_frame
+	WorldState.counters["sora_pulang"] = 1
+	WorldState.counters["penggusuran_saksi"] = 1
 	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
 	get_tree().root.add_child(s)
 	await get_tree().process_frame

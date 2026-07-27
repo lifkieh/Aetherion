@@ -2616,6 +2616,18 @@ func _gerbang_kabut() -> void:
 		"Di dalamnya, samar: nisan yang hurufnya sedang pergi.",
 		"Selangkah lagi bukan jalan pulang.",
 	], "Kabut menebal [E]")
+	# ⚖ KOREKSI DIREKTUR (#306): penghakiman adalah KLIMAKS, bukan pintu samping.
+	# Dunia kanon = 7 kerajaan, 10 kota utama — kabut baru MENERIMA orang yang
+	# sudah menjalani busurnya: kedua halaman pulih (Sora pulang), dan menjadi
+	# saksi di tanah lain. Sebelum itu ia menatap, lalu berpaling.
+	if WorldState.get_counter("sora_pulang") != 1 			or WorldState.get_counter("penggusuran_saksi") < 1:
+		var t0 := _prop(Vector2(560, 1408))
+		t0.setup_bicara([
+			"Kabut bergerak seperti sedang menimbang.",
+			"Lalu ia berpaling darimu — pelan, hampir sopan.",
+			"Belum. Masih ada yang menunggumu di tanah-tanah lain.",
+		], "Kabut menatap [E]")
+		return
 	var t2 := _prop(Vector2(560, 1408))
 	t2.go_scene = "res://scenes/world/BadaiPenghapusan.tscn"
 	t2.setup_bicara([
