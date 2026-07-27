@@ -26,6 +26,7 @@ var set_counter := ""                 # #293-lanjutan: BICARA menandai counter d
                                       # (mis. elyn_kenal) — senyap, sesudah teksnya habis
 var talk_name := ""                   # #296: BICARA memancarkan villager_talked(nama) —
                                       # tokoh non-persona (Arlen) ikut rantai QuestPribadi
+var go_scene := ""                    # #304: BICARA lalu pindah scene (gerbang endgame)
 
 var _label: Label
 var _cd := 0.0
@@ -97,6 +98,8 @@ func interact() -> void:
 				WorldState.counters[set_counter] = 1   # senyap (D-3): dunia mencatat, bukan UI
 			if talk_name != "":
 				EventBus.villager_talked.emit(talk_name)
+			if go_scene != "":
+				Stage.go_to_scene(go_scene)
 		Mode.GERBANG:
 			# ⚠ SEMENTARA — kembali ke menu, BUKAN ke Greenvale.
 			# Alur dunia permanen (Ashbrook64 ganti vs dampingi 16px) belum diputus

@@ -5,6 +5,7 @@ extends Node
 var weather: String = "sunny"          # sunny/rain/thunderstorm/blizzard/blood_moon
 var pending_return_pos = null           # Vector2 set by a dungeon door; consumed on overworld re-entry
 var pending_interior := "house"         # interior variant to build on HouseInterior entry (R2 town)
+var pending_ending := ""                # id ending untuk EndingScene (#304, HYBRID FINAL JUDGE)
 var counters: Dictionary = {}          # key -> int
 var node_states: Dictionary = {}       # gathering node id -> {harvested_at:unix}
 var visited_regions: Array = []        # wilayah yang pernah dikunjungi (Gerbang Penjelajah, #43)

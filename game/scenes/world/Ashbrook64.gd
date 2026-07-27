@@ -2598,6 +2598,30 @@ func _folk() -> void:
 
 	_sora()
 	_arlen()
+	_gerbang_kabut()
+
+
+## GERBANG ENDGAME (#304 · #134). Kabut di tepi selatan pemakaman MENEBAL hanya
+## bila dunia sudah cukup terluka DAN cukup menjawab (a2 lewat + >=1 halaman
+## pulih). Dua LANGKAH fisik (#122): titik pertama memperingatkan; titik kedua,
+## lebih dalam di kabut, adalah keputusan.
+func _gerbang_kabut() -> void:
+	if WorldState.get_counter("badai_selesai") == 1:
+		return
+	if WorldState.get_counter("a2_sudah") != 1 			or WorldState.get_counter("warisan:pulih") < 1:
+		return
+	var t1 := _prop(Vector2(560, 1330))
+	t1.setup_bicara([
+		"Kabut di sini lebih tebal dari kemarin. Dan lebih tebal dari sejam lalu.",
+		"Di dalamnya, samar: nisan yang hurufnya sedang pergi.",
+		"Selangkah lagi bukan jalan pulang.",
+	], "Kabut menebal [E]")
+	var t2 := _prop(Vector2(560, 1408))
+	t2.go_scene = "res://scenes/world/BadaiPenghapusan.tscn"
+	t2.setup_bicara([
+		"Dingin yang tidak menggigit — dingin yang MELUPAKAN.",
+		"Kau melangkah masuk.",
+	], "Masuk ke kabut [E]")
 
 
 ## Jam WIB untuk KEPUTUSAN BUILD scene. Dipaksa `uji_jam_paksa` (nilai = jam+1)
@@ -2759,6 +2783,17 @@ func _arlen() -> void:
 
 	# PERGI (chain #5): tak ada figur, tak ada kesaksian — ia membawa matanya
 	# bersamanya. ⚠ SADAR: `ev_merrit_arlen_ingat` ikut hilang bagi yang belum
+	# KARTU POS (#304 — payoff sheet #001): tujuh hari sesudah ia menyeberang,
+	# sesuatu tiba di rumah pos. Merrit yang mengantarnya ke pakunya sendiri.
+	if hari - WorldState.get_counter("arlen_pulang_hari") >= 12 			and WorldState.get_counter("arlen_kartu") == 0:
+		WorldState.counters["arlen_kartu"] = 1   # senyap — kabar baik pun tak berpengumuman
+	if WorldState.get_counter("arlen_kartu") == 1:
+		var kp := _prop(MERRIT_HOUSE + Vector2(34, 4))
+		kp.setup_bicara([
+			"Kartu pos, terpaku di pintu rumah singgah. Cap pos pesisir.",
+			"\"Sampai. Lautnya lebih besar dari petaku. Bilang ke Ayah: pagarnya kuperbaiki begitu pulang. — A.\"",
+			"Di sudutnya, tulisan tangan lain, lebih tua: \"Sudah kubaca duluan. Hak tukang pos.\"",
+		], "Kartu pos [E]")
 	# mendengarnya; halaman Merrit tetap terbuka lewat 3 jenis lain (#228).
 	if WorldState.get_counter("arlen_pergi") == 1:
 		return

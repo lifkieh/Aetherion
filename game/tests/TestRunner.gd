@@ -169,6 +169,7 @@ func _ready() -> void:
 	await _test_arlen_babak_298()
 	await _test_candyveil_kota_300()
 	await _test_sora_pulang_302()
+	await _test_selesai_304()
 	print("===== RESULT: %d passed, %d failed =====\n" % [passed, failed])
 	get_tree().quit(1 if failed > 0 else 0)
 
@@ -6346,3 +6347,143 @@ func _test_sora_pulang_302() -> void:
 	for k in ["sora_pulang", "penggusuran_saksi", "uji_kamis_malam", "uji_jam_paksa",
 			"sora_kenal"]:
 		WorldState.counters[k] = 0
+
+
+## #304 — SAMPAI SELESAI: resolusi busur v0.7 + endgame slice v1.0
+## (HYBRID FINAL JUDGE #134: gerbang kabut -> badai -> penghakiman -> 5 ending).
+func _test_selesai_304() -> void:
+	print("[#304 — lapor penggusuran · kartu pos · gerbang kabut · lima ending]")
+	# ── C1a: LAPOR HITUNGAN di Balai Gula ──
+	for k in ["penggusuran_lapor", "warisan:penggusuran_ditunda", "arlen_kartu",
+			"badai_selesai", "uji_badai_cepat"]:
+		WorldState.counters[k] = 0
+	WorldState.counters["sora_pulang"] = 1
+	WorldState.counters["penggusuran_saksi"] = 1
+	WorldState.counters["uji_jam_paksa"] = 23
+	var s: Node = load("res://scenes/world/Candyveil.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var balai := _294_prop(s, "Balai Gula [E]")
+	check("balai menerima hitungan (set_counter penggusuran_lapor)",
+		balai != null and str(balai.get("set_counter")) == "penggusuran_lapor")
+	check("gummy plaza berdialog", _294_prop(s, "Gummy merah [E]") != null)
+	s.queue_free()
+	await get_tree().process_frame
+	WorldState.counters["penggusuran_lapor"] = 1
+	s = load("res://scenes/world/Candyveil.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var papan := _294_prop(s, "Papan kota [E]")
+	var pb := ""
+	if papan:
+		for l in papan.get("lines"):
+			pb += str(l)
+	check("papan berubah: DITINJAU ULANG (bukan menang — waktu)",
+		"DITINJAU ULANG" in pb)
+	check("metrik hakim menyala DIAM (penggusuran_ditunda)",
+		WorldState.get_counter("warisan:penggusuran_ditunda") == 1)
+	var sora_p := _294_prop(s, "Sora [E]")
+	var sb := ""
+	if sora_p:
+		for l in sora_p.get("lines"):
+			sb += str(l)
+	check("Sora tahap-3: \"Terima kasih. Untuk ikut menghitung.\"",
+		"ikut menghitung" in sb)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── C1b: KARTU POS ARLEN ──
+	var hari := int(Time.get_unix_time_from_system() / 86400.0)
+	WorldState.counters["arlen_titipan"] = 2
+	WorldState.counters["arlen_pergi"] = 1
+	WorldState.counters["arlen_pulang_hari"] = hari - 13
+	WorldState.counters["uji_jam_paksa"] = 13
+	WorldState.counters["a2_sudah"] = 0
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var kp := _294_prop(s, "Kartu pos [E]")
+	var kb := ""
+	if kp:
+		for l in kp.get("lines"):
+			kb += str(l)
+	check("kartu pos tiba: \"Lautnya lebih besar dari petaku\"",
+		"Lautnya lebih besar" in kb and WorldState.get_counter("arlen_kartu") == 1)
+	check("gerbang kabut TIDAK ada tanpa prasyarat",
+		_294_prop(s, "Masuk ke kabut [E]") == null)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── C2: GERBANG KABUT muncul saat dunia siap ──
+	WorldState.counters["a2_sudah"] = 1
+	WorldState.counters["warisan:pulih"] = max(1, WorldState.get_counter("warisan:pulih"))
+	s = load("res://scenes/world/Ashbrook64.tscn").instantiate()
+	get_tree().root.add_child(s)
+	await get_tree().process_frame
+	var t1 := _294_prop(s, "Kabut menebal [E]")
+	var t2 := _294_prop(s, "Masuk ke kabut [E]")
+	check("dua langkah kabut: peringatan + keputusan (#122)",
+		t1 != null and t2 != null
+		and str(t2.get("go_scene")) == "res://scenes/world/BadaiPenghapusan.tscn")
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── BADAI: gelombang pertama lahir, Yang-Terhapus memutih ──
+	WorldState.counters["uji_badai_cepat"] = 1
+	s = load("res://scenes/world/BadaiPenghapusan.tscn").instantiate()
+	get_tree().root.add_child(s)
+	for i in 6:
+		await get_tree().process_frame
+	var putih := 0
+	for m in get_tree().get_nodes_in_group("monsters"):
+		if m is Node2D and s.is_ancestor_of(m):
+			putih += 1
+	check("gelombang 1 Yang-Terhapus lahir di arena", putih >= 3)
+	check("arena memutih (nisan hadir)", _a1_sisir(s, "nisan_") != null)
+	s.queue_free()
+	await get_tree().process_frame
+
+	# ── HAKIM murni: lima ending, deterministik ──
+	var E := load("res://scenes/world/EndingScene.gd")
+	check("hakim: nol pulih -> FINAL SILENCE (dunia lupa, bukan berakhir)",
+		E.tentukan({}) == "final_silence")
+	check("hakim: sedikit pulih, banyak tercoret -> LAST SKY",
+		E.tentukan({"warisan:pulih": 1, "warisan:tercoret": 5}) == "last_sky")
+	check("hakim: jawaban dibayar orang lain -> BROKEN ANSWER",
+		E.tentukan({"warisan:pulih": 1, "sora_beban": 3}) == "broken_answer")
+	check("hakim: dunia mulai menjawab -> DAWN",
+		E.tentukan({"warisan:pulih": 2, "warisan:tercoret": 3}) == "dawn")
+	check("hakim: banyak tangan mengingat -> THE WORLD REMEMBERS",
+		E.tentukan({"warisan:pulih": 3, "warisan:pulih_sendiri": 1,
+			"warisan:penggusuran_ditunda": 1, "arlen_kartu": 1}) == "world_remembers")
+
+	# ── layar ending: lima-limanya berdiri, judul benar, D-4 nol angka ──
+	for id2 in ["dawn", "final_silence", "last_sky", "broken_answer", "world_remembers"]:
+		WorldState.pending_ending = id2
+		var es: Node = load("res://scenes/world/EndingScene.tscn").instantiate()
+		get_tree().root.add_child(es)
+		await get_tree().process_frame
+		var teks := _304_semua_label(es)
+		check("ending %s tampil + tanpa angka metrik (D-4)" % id2,
+			E.DATA[id2]["judul"] in teks
+			and not ("warisan" in teks) and not ("%d" in teks))
+		es.queue_free()
+		await get_tree().process_frame
+	check("penghakiman tercatat untuk era berikutnya",
+		WorldState.get_counter("warisan:ending_world_remembers") == 1)
+
+	for k in ["penggusuran_lapor", "penggusuran_saksi", "sora_pulang", "arlen_kartu",
+			"arlen_pergi", "arlen_titipan", "arlen_pulang_hari", "a2_sudah",
+			"uji_jam_paksa", "uji_badai_cepat", "badai_selesai"]:
+		WorldState.counters[k] = 0
+	for id2 in ["dawn", "final_silence", "last_sky", "broken_answer", "world_remembers"]:
+		WorldState.counters["warisan:ending_" + id2] = 0
+
+
+func _304_semua_label(akar: Node) -> String:
+	var out := ""
+	if akar is Label:
+		out += akar.text + "|"
+	for c in akar.get_children():
+		out += _304_semua_label(c)
+	return out

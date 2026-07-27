@@ -244,10 +244,37 @@ func _kota() -> void:
 	_put(P + "menara_lonceng.png", Vector2(CX + 7 * TILE, 8 * TILE))
 
 	# CINCIN PLAZA — 4 toko menghadap plaza
-	_bangunan("roti_jahe", Vector2(24 * TILE, 17 * TILE), 1.4, "Balai Gula [E]", [
-		"Balai kota dari roti jahe. Icing ambangnya diganti tiap musim — kata mereka.",
-		"Papan pengumumannya penuh: festival, arisan gula, jadwal hujan sirup.",
-	])
+	# #304 — LAPOR HITUNGAN: sesudah menjadi saksi, angka itu bisa dibawa ke
+	# balai. Kota tidak dilawan; kota DIBUAT CANGGUNG oleh satu angka (#122:
+	# menyerahkan hitungan = membacakan barisnya di ambang pintu).
+	if WorldState.get_counter("penggusuran_saksi") == 1 			and WorldState.get_counter("penggusuran_lapor") == 0:
+		var balai := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+		add_child(balai)
+		balai.global_position = Vector2(24 * TILE, 17 * TILE + 10)
+		balai.set_counter = "penggusuran_lapor"
+		balai.setup_bicara([
+			"Petugas balai menerima hitunganmu tanpa mendongak. Lalu membacanya. Lalu mendongak.",
+			"\"Empat puluh tujuh? Kau... menghitungnya? Tak ada yang pernah menghitungnya.\"",
+			"Ia menaruh kertas itu di tumpukan paling atas. Tangannya pelan.",
+		], "Balai Gula [E]", "")
+		var s_b := _put(P + "roti_jahe.png", Vector2(24 * TILE, 17 * TILE), 1.4)
+		if s_b:
+			pass
+		var body_b := StaticBody2D.new()
+		body_b.collision_layer = 4
+		body_b.collision_mask = 0
+		add_child(body_b)
+		var cs_b := CollisionShape2D.new()
+		var sh_b := RectangleShape2D.new()
+		sh_b.size = Vector2(150, 30)
+		cs_b.shape = sh_b
+		cs_b.position = Vector2(24 * TILE, 17 * TILE - 12)
+		body_b.add_child(cs_b)
+	else:
+		_bangunan("roti_jahe", Vector2(24 * TILE, 17 * TILE), 1.4, "Balai Gula [E]", [
+			"Balai kota dari roti jahe. Icing ambangnya diganti tiap musim — kata mereka.",
+			"Papan pengumumannya penuh: festival, arisan gula, jadwal hujan sirup.",
+		])
 	_bangunan("toples", Vector2(40 * TILE, 17 * TILE), 1.2, "Toples Permen [E]", [
 		"Toko permen. Stoknya terlihat dari luar — itulah gunanya rumah toples.",
 	])
@@ -344,6 +371,22 @@ func _kota() -> void:
 			pl.global_position = pos + Vector2(0, -40)
 			add_child(pl)
 
+	# dua gummy plaza BERDIALOG (#304) — kota yang bisa diajak bicara
+	var g1 := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+	add_child(g1)
+	g1.global_position = Vector2(CX - 2 * TILE, JY * TILE + 34)
+	g1.setup_bicara([
+		"\"Grrmlb. Mlb.\" (Ia memantul pelan, ramah.)",
+		"Gummy merah. Aromanya stroberi. Sepertinya itu keseluruhan pendapatnya.",
+	], "Gummy merah [E]")
+	var g2 := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+	add_child(g2)
+	g2.global_position = Vector2(CX + TILE, (JY + 1) * TILE + 46)
+	g2.setup_bicara([
+		"\"Blbl. Grr... mlb?\" (Ia menunjuk air mancur sirup, lalu perutnya.)",
+		"Permintaannya jelas sekaligus mustahil ditolak dan mustahil dipahami.",
+	], "Gummy hijau [E]")
+
 	# PENGHUNI GUMMY statis (LPC Candy CC0) — plaza & pasar, tempat berkumpul
 	for spec in [["gummy_merah", Vector2(CX - 2 * TILE, JY * TILE + 8)],
 			["gummy_hijau", Vector2(CX + TILE, (JY + 1) * TILE + 20)],
@@ -376,10 +419,18 @@ func _ladang_dan_makam() -> void:
 	var papan := preload("res://scenes/world/Ashbrook64Prop.gd").new()
 	add_child(papan)
 	papan.global_position = Vector2(45 * TILE, 40 * TILE + 16)
-	papan.setup_bicara([
-		"PAPAN KOTA: \"LAHAN PERLUASAN LADANG GULA — MUSIM DEPAN.\"",
-		"Di bawahnya, huruf kecil: \"termasuk petak tenggara.\" Tak ada yang menyebut petak itu punya nama.",
-	], "Papan kota [E]")
+	if WorldState.get_counter("penggusuran_lapor") == 1:
+		# DITUNDA, bukan dimenangkan — kota cuma tidak menyangka ada yang melihat.
+		WorldState.counters["warisan:penggusuran_ditunda"] = 1   # metrik hakim (D-4)
+		papan.setup_bicara([
+			"PAPAN KOTA: \"PERLUASAN DITINJAU ULANG — MENUNGGU PENDATAAN.\"",
+			"Kata \"pendataan\" ditulis dengan tinta yang lebih baru daripada papannya.",
+		], "Papan kota [E]")
+	else:
+		papan.setup_bicara([
+			"PAPAN KOTA: \"LAHAN PERLUASAN LADANG GULA — MUSIM DEPAN.\"",
+			"Di bawahnya, huruf kecil: \"termasuk petak tenggara.\" Tak ada yang menyebut petak itu punya nama.",
+		], "Papan kota [E]")
 
 	# PEMAKAMAN TUA tersembunyi di tenggara — pagar patah, nisan aus
 	var rng2 := RandomNumberGenerator.new()
@@ -459,7 +510,13 @@ func _sora_pulang() -> void:
 	var t := preload("res://scenes/world/Ashbrook64Prop.gd").new()
 	add_child(t)
 	t.global_position = pos + Vector2(0, 26)
-	if WorldState.get_counter("penggusuran_saksi") == 1:
+	if WorldState.get_counter("penggusuran_lapor") == 1:
+		t.setup_bicara([
+			"\"'Ditinjau ulang.' Itu kata kota untuk 'kami tidak menyangka ada yang melihat.'\"",
+			"\"Musim depan mereka akan coba lagi. Musim depannya lagi, aku masih di sini.\"",
+			"\"...Terima kasih. Untuk ikut menghitung.\"",
+		], "Sora [E]", "Sora")
+	elif WorldState.get_counter("penggusuran_saksi") == 1:
 		t.setup_bicara([
 			"\"Kau menghitungnya juga, kan. Empat puluh tujuh.\"",
 			"\"Kalau mereka datang musim depan, setidaknya ada dua orang yang tahu berapa jumlahnya.\"",
