@@ -117,3 +117,69 @@ tumbuh menjadi apa pun yang ia mau.*
 *(Konsisten HUKUM ENVIRONMENTAL #210: **jangan jelaskan ini lewat papan info.** Tunjukkan — lewat
 apa yang tidak ada di sana: tak ada pos jaga, tak ada bendera, tak ada kantor pajak, tak ada makam
 yang bertanda.)*
+
+---
+
+# SHEET KOTA 002–010 (#307 — draft kanon, menunggu coretan Direktur)
+*(Field wajib dipenuhi semua. Setiap kota harus bisa DIBENCI atau DICINTAI.)*
+
+## CITY 002 — GOLDHAVEN · *Crossroads of Aurelia* (Valenford)
+- **Fungsi:** simpul empat jalan raya besar; pasar agung; gerbang dunia bagi pemula.
+- **Populasi:** 35.000 — "setiap orang berasal dari tempat berbeda."
+- **Identitas:** kota yang tak pernah tidur dan tak pernah bertanya asal-usulmu — itu kebaikannya sekaligus penyakitnya.
+- **AROMA:** debu jalan + rempah karavan + logam koin yang berpindah tangan.
+- **Konflik:** kriminalitas tinggi; NETHERDEEP berakar di bawah pasar (kanon, HIDDEN).
+- **Relasi:** pasangan tesis Ashbrook (kelimpahan ↔ kehilangan); Serikat Penjelajah punya kantor pusat di sini.
+- **Design goal (kanon lama, dikunci):** tempat pemain PERTAMA KALI sadar dunia jauh lebih besar.
+
+## CITY 003 — AURELIS · *The City of Ten Thousand Books* (Lumeria)
+- **Fungsi:** universitas & Perpustakaan Agung; pusat ilmu Aurelia.
+- **Populasi:** 52.000. **Identitas:** kota berundak mengelilingi menara-spiral Perpustakaan; belajar = kebanggaan, dan kesombongan.
+- **AROMA:** kertas tua + lilin baca + hujan di batu pualam.
+- **Konflik:** intelektual meremehkan rakyat biasa; buku tentang "orang tak penting" tak pernah dianggarkan.
+- **Relasi:** Elyn Thornewood pernah menolak kursi kehormatan di sini (benih adegan); peta Arlen kelak diarsipkan di sini.
+
+## CITY 004 — STONEHEARTH · *Jantung Batu* (Durnhold)
+- **Fungsi:** benteng-industri di perut gunung; tambang & tempa.
+- **Populasi:** 28.000. **Identitas:** kota bertingkat ke DALAM gunung; menghormati kerja, mencurigai perubahan.
+- **AROMA:** arang + besi panas + air tambang dingin.
+- **Konflik:** urat tambang menua; generasi muda ingin keluar, tetua menyebut itu pengkhianatan.
+- **Wilayah engine (usulan):** kaki Frostpeak.
+
+## CITY 005 — ROSECOURT · *Taman Berpedang* (Rosenhal)
+- **Fungsi:** ibu kota budaya; gelanggang duel legal.
+- **Populasi:** 31.000. **Identitas:** boulevard bunga sekaligus arena — keindahan yang menuntut darah penjaganya.
+- **AROMA:** mawar penuh + minyak asah pedang.
+- **Konflik:** bangsawan arogan; duel "legal" jadi alat membungkam yang lemah.
+
+## CITY 006 — THORNWATCH · *Mata Perbatasan* (Thornreach)
+- **Fungsi:** kota palisade pemburu monster; gerbang tanah liar.
+- **Populasi:** 9.000. **Identitas:** semua bangunan menghadap KELUAR; kota yang berdiri karena berani mati.
+- **AROMA:** resin pinus + kulit samak + darah kering di papan misi.
+- **Konflik:** tingkat kematian tinggi — papan misinya lebih ramai daripada pemakamannya sempat mencatat.
+- **Wilayah engine (usulan):** tepi Desert of Ruins.
+
+## CITY 007 — TIDEGATE · *Gerbang Pasang* (Veskar)
+- **Fungsi:** pelabuhan terbesar Aurelia; bank & rumah kontrak.
+- **Populasi:** 44.000. **Identitas:** kota yang percaya semua bisa dirundingkan — kecuali laut.
+- **AROMA:** garam + tar kapal + tinta kontrak basah.
+- **Konflik:** korupsi; kapal Arlen kelak bertolak dari sini (kanon sheet #001: surat terakhir).
+- **Wilayah engine (usulan):** pesisir Storm Island.
+
+## CITY 008 — VEILMARK · *Kota Bertirai* (Astraveil)
+- **Fungsi:** ibu kota diplomasi & rahasia; kanal berkabut.
+- **Populasi:** 22.000. **Identitas:** rumah-rumah bertopeng kain; semua orang sopan, tak ada yang percaya.
+- **AROMA:** kabut dingin + dupa + lilin yang baru dipadamkan.
+- **Konflik:** kebenaran diperdagangkan lebih mahal daripada emas.
+
+## CITY 009 — HOLLOWSPIRE · *Menara Berongga* (INDEPENDEN)
+- **Fungsi:** kota vertikal di dalam menara raksasa berongga purba.
+- **Populasi:** 12.000. **Identitas:** naik = status; dasar menara tak pernah dipetakan penuh.
+- **AROMA:** batu basah + angin dalam yang bernyanyi di rongga.
+- **Konflik:** tak ada kerajaan yang mengklaim — semua kerajaan menaruh mata di sini.
+
+## CITY 010 — SKYREST · *Peristirahatan Langit* (INDEPENDEN)
+- **Fungsi:** kota persinggahan di dataran tinggi; perhentian terakhir sebelum langit.
+- **Populasi:** 6.000. **Identitas:** kota tali, kanvas, dan menara pandang; semua penghuninya pernah kehilangan sesuatu di bawah.
+- **AROMA:** angin tipis + tali basah + teh mendidih di ketinggian.
+- **Konflik:** netral bagi semua — berarti tak dibela siapa pun.
