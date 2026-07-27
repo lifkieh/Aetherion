@@ -81,7 +81,7 @@ def lambang_timbangan(s=22):
 	return im
 
 
-def menara_pengapit(P, tinggi_badan, kerucut_key="kerucut_biru", lebar_kerucut=76):
+def menara_pengapit(P, tinggi_badan, kerucut_key="kerucut_biru", lebar_kerucut=64):
 	"""Menara kotak diperpanjang + kerucut pack + panji."""
 	t = P["tower_kotak"]
 	badan_w = t.width
@@ -89,7 +89,8 @@ def menara_pengapit(P, tinggi_badan, kerucut_key="kerucut_biru", lebar_kerucut=7
 		int(P[kerucut_key].height * lebar_kerucut / P[kerucut_key].width)), Image.NEAREST)
 	kr_h = min(kr.height, 150)
 	kr = kr.crop((0, 0, kr.width, kr_h)) if kr.height > kr_h else kr
-	im = Image.new("RGBA", (max(badan_w, kr.width) + 14, tinggi_badan + kr_h - 10),
+	# overlap kerucut 2 px saja — 10 px menelan mahkota menara (mata #315)
+	im = Image.new("RGBA", (max(badan_w, kr.width) + 14, tinggi_badan + kr_h - 2),
 		(0, 0, 0, 0))
 	x0 = (im.width - badan_w) // 2
 	# badan: isian dinding lalu mahkota menara asli (battlement ikut)
@@ -168,14 +169,20 @@ def rumah_kontrak(P):
 
 
 def balai(P):
-	"""Balai Kota: keep kastil asli + pintu ganda + lambang."""
-	k = P["keep"]
-	im = Image.new("RGBA", (k.width, k.height + 30), (0, 0, 0, 0))
-	im.alpha_composite(k, (0, 30))
-	tempel_kaki(im, P["pintu_ganda_kayu"], k.width // 2, im.height)
-	im.alpha_composite(lambang_timbangan(24), (k.width // 2 - 12, 66))
-	im.alpha_composite(panji(30), (2, 8))
-	im.alpha_composite(panji(30), (k.width - 14, 8))
+	"""Balai Kota: plester + balustrade + jendela lengkung + pintu ganda.
+	(v3 pakai crop `keep` — mahkotanya membawa balkon kayu & atap dalam
+	yang terbaca cacat pada zoom; presisi, mata #315.)"""
+	bw, bh = 128, 224
+	im = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+	im.alpha_composite(ubin(P["wall_plester"], bw, bh), (0, 0))
+	im.alpha_composite(baris(P["balustrade"], bw), (0, 0))
+	im.alpha_composite(baris(P["cornice"], bw), (0, 30))
+	jl = P["jendela_lengkung"].resize((116, 94), Image.NEAREST)
+	im.alpha_composite(jl, ((bw - jl.width) // 2, 42))
+	im.alpha_composite(lambang_timbangan(22), (bw // 2 - 11, 6))
+	tempel_kaki(im, P["pintu_ganda_kayu"], bw // 2, bh)
+	im.alpha_composite(panji(28), (2, 34))
+	im.alpha_composite(panji(28), (bw - 14, 34))
 	return im
 
 
