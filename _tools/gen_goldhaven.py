@@ -301,6 +301,59 @@ def menara_timbangan(P):
 	return im
 
 
+## ── RUKO MODULAR 3-slice horizontal (#318, spek Direktur) ────────────────
+## Deret = ujung-kiri + N×tengah + ujung-kanan. Modul TENGAH dipotong dari
+## interior panel (tanpa pilaster tepi) → tembok bersama antar unit, nol
+## outline sisi. Atap = layer terpisah (cap kiri / tile tengah / cap kanan)
+## sehingga deret terbaca SATU bangunan panjang, bukan rumah berjejer.
+def modul_ruko(P, warna):
+	W_ = P["vt_wall_%s" % warna]           # 96×96 panel berpilaster dua sisi
+	tinggi = 2 * W_.height                  # dua tingkat
+	def badan(crop_x0, crop_x1):
+		kolom = W_.crop((crop_x0, 0, crop_x1, W_.height))
+		return ubin(kolom, crop_x1 - crop_x0, tinggi)
+	def isi(im, pintu=False):
+		pl = P["vm_palladian"].resize((48, 52), Image.NEAREST)
+		im.alpha_composite(pl, ((im.width - pl.width) // 2, 20))
+		if pintu:
+			po = P["vw_portico"].resize((44, 42), Image.NEAREST)
+			pt = P["vw_pintu_cokelat"].resize((28, 40), Image.NEAREST)
+			im.alpha_composite(po, ((im.width - po.width) // 2, im.height - po.height))
+			im.alpha_composite(pt, ((im.width - pt.width) // 2, im.height - pt.height))
+		else:
+			jd = P["vm_palladian"].resize((44, 48), Image.NEAREST)
+			im.alpha_composite(jd, ((im.width - jd.width) // 2, im.height - 66))
+		return im
+	cor = P["vt_cornice_%s" % warna]        # 96×33 mansard dua ujung
+	out = {
+		"kiri": isi(badan(0, 64)),
+		"tengah": isi(badan(16, 80)),
+		"pintu": isi(badan(16, 80), pintu=True),
+		"kanan": isi(badan(32, 96)),
+		"atap_kiri": cor.crop((0, 0, 48, cor.height)),
+		"atap_tengah": cor.crop((24, 0, 72, cor.height)),
+		"atap_kanan": cor.crop((48, 0, 96, cor.height)),
+	}
+	return out
+
+
+def menara_sudut(P):
+	"""Bangunan SUDUT poligon (#318): menara kastil + kerucut — penutup belokan
+	sekaligus landmark ritme kota."""
+	t = P["tower_kotak"]
+	kb = P["kerucut_biru_s"]
+	im = Image.new("RGBA", (t.width + 8, 128 + kb.height + 34), (0, 0, 0, 0))
+	x0 = (im.width - t.width) // 2
+	isi = ubin(P["wall_batu"].crop((0, 0, t.width, P["wall_batu"].height)),
+		t.width, 170)
+	im.alpha_composite(isi, (x0, im.height - 170))
+	im.alpha_composite(t, (x0, im.height - 170 - 14))
+	im.alpha_composite(kb, ((im.width - kb.width) // 2,
+		im.height - 170 - 14 - kb.height + 16))
+	im.alpha_composite(panji(26), (im.width - 12, im.height - 170 - 20))
+	return im
+
+
 def gerbang_batu(P):
 	"""Gerbang karavan: dua menara kastil mengapit tembok-ambang bergerigi
 	di atas gapura — battlement DUDUK di tembok, bukan melayang (mata v3)."""
@@ -383,6 +436,11 @@ def main():
 		"kios_dagang_b": kios_dagang((160, 60, 60, 255), G1),
 		"segel_pintu": segel_pintu(),
 	}
+	# modul ruko per warna (#318) + menara sudut
+	for warna in ["krem", "biru", "maroon", "tan"]:
+		for bagian, im_m in modul_ruko(P, warna).items():
+			out["ruko_%s_%s" % (warna, bagian)] = im_m
+	out["menara_sudut"] = menara_sudut(P)
 	for nama, im in out.items():
 		im.save(os.path.join(OUT, nama + ".png"))
 		print("  %-18s %dx%d" % (nama, im.width, im.height))
