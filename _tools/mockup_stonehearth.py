@@ -321,6 +321,20 @@ def peta():
 		dd0.line([(cx * T, cy * T), (cx * T + rr.randint(-46, 46), cy * T + rr.randint(-46, 46))],
 			fill=(210, 232, 244, 200), width=2)
 
+	# GUNDUKAN SALJU (drift) — blotch lebih terang, memecah datar
+	drift = Image.new("RGBA", (W, W), (0, 0, 0, 0))
+	dd_dr = ImageDraw.Draw(drift)
+	for _ in range(70):
+		dx = rr.randint(0, W); dy = rr.randint(0, W); dr2 = rr.randint(40, 130)
+		dd_dr.ellipse([dx - dr2, dy - int(dr2 * 0.5), dx + dr2, dy + int(dr2 * 0.5)],
+			fill=(255, 255, 255, 26))
+	im.alpha_composite(drift)
+	# SAPUAN ANGIN halus (streak diagonal)
+	dw_ = ImageDraw.Draw(im, "RGBA")
+	for _ in range(120):
+		wx = rr.randint(0, W); wy = rr.randint(0, W); ln = rr.randint(30, 90)
+		dw_.line([(wx, wy), (wx + ln, wy - int(ln * 0.25))], fill=(255, 255, 255, 30), width=1)
+
 	# NODA MUTASI timur-laut (radial hijau di atas salju)
 	cxm, cym = 150, 40
 	nd = Image.new("RGBA", (W, W), (0, 0, 0, 0))
@@ -460,8 +474,41 @@ def peta():
 		elif rr.random() < 0.25:
 			taruh(kristal(rr.choice([0.8, 1.0, 1.2])), kx, ky, 1.0)
 
+	# BATU ES (repo rock disepuh biru) + BANGKAI karavan (gambar-sendiri)
+	rock = Image.open(os.path.join(G, "sprites", "props", "rock.png")).convert("RGBA")
+	rock_es = geser_rona(rock, 6, 22, 40)
+	for _ in range(50):
+		rx0 = rr.randint(4, NN - 4); ry0 = rr.randint(4, NN - 4)
+		if 80 <= rx0 <= 118 and 160 <= ry0 <= 200:
+			continue
+		taruh(rock_es, rx0, ry0, rr.choice([0.7, 1.0, 1.3]))
+	def bangkai():
+		b = Image.new("RGBA", (40, 26), (0, 0, 0, 0))
+		db = ImageDraw.Draw(b)
+		db.line([(4, 20), (36, 20)], fill=(210, 214, 210, 255), width=2)      # tulang belakang
+		for rx2 in range(8, 34, 5):
+			db.line([(rx2, 20), (rx2 - 4, 10)], fill=(198, 202, 198, 255))    # iga
+			db.line([(rx2, 20), (rx2 + 4, 10)], fill=(198, 202, 198, 255))
+		db.ellipse([2, 14, 12, 24], outline=(210, 214, 210, 255))             # tengkorak
+		return b
+	for _ in range(9):
+		bx = rr.randint(10, NN - 10); by = rr.randint(10, NN - 10)
+		if math.hypot(bx - cxm, by - cym) < 40 or (80 <= bx <= 118 and 160 <= by <= 200):
+			continue
+		taruh(bangkai(), bx, by, rr.choice([1.0, 1.3]))
+
 	for kaki, img, x, y in sorted(sprites, key=lambda s: s[0]):
 		im.alpha_composite(img, (x, max(0, y)))
+
+	# AURORA — pita hijau-ungu tembus di langit utara (kesan dingin fantasi)
+	aur = Image.new("RGBA", (W, W), (0, 0, 0, 0))
+	da = ImageDraw.Draw(aur)
+	for i, (col, yb) in enumerate([((90, 240, 170, 40), 6), ((150, 130, 240, 32), 22),
+			((100, 220, 220, 28), 40)]):
+		for x in range(0, W, 6):
+			yy = yb * T + int(math.sin(x / 220.0 + i) * 5 * T)
+			da.line([(x, yy - 4 * T), (x, yy + 4 * T)], fill=col, width=7)
+	im.alpha_composite(aur)
 
 	out = im.resize((W // 4, W // 4), Image.LANCZOS).convert("RGB")
 	d = ImageDraw.Draw(out)
