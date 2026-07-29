@@ -267,7 +267,7 @@ def mockup():
 	d.text((12, 6), "MOCKUP ASET STONEHEARTH — ladang es + gletser & gua es + benteng + KAWAH MUTASI (aberasi + beast terkorupsi)",
 		font=f(20), fill=ES)
 	d.text((12, out.height - 24),
-		"Aset: snow/ice repo · [LPC] Mountains (gletser/gua, CC-BY-SA) · Castle Mega-Pack (benteng) · [LPC] Monsters (aberasi) · frost-beast RECOLOR mutasi · obelisk gambar-sendiri",
+		"Aset: [LPC] Terrains salju+es (CC-BY-SA) · [LPC] Mountains gletser+gua · Castle Mega-Pack benteng · [LPC] Monsters aberasi · pohon gundul/pinus repo · frost-beast RECOLOR mutasi · kristal+obelisk gambar-sendiri",
 		font=f(13), fill=REDUP)
 	out.save(os.path.join(MOCK, "stonehearth_mockup.png"))
 
@@ -281,8 +281,14 @@ def peta():
 	W = NN * T
 	im = Image.new("RGBA", (W, W), (0, 0, 0, 255))
 	rr = random.Random(11)
-	snow = [Image.open(os.path.join(G, "tiles", "snow_%d.png" % i)).convert("RGBA")
-		for i in (0, 1)]
+	# TANAH ES KAYA dari [LPC] Terrains (bukan snow_0 polos) — center-tile seragam
+	tv = Image.open(os.path.join(RAW, "terrains", "lpc-terrains",
+		"terrain-v7.png")).convert("RGBA")
+	snow_a = tv.crop((608, 320, 640, 352))     # salju biru-putih
+	snow_b = tv.crop((704, 320, 736, 352))     # salju kelabu
+	ice_full = tv.crop((736, 480, 768, 512))   # es beku retak
+	ice_dark = tv.crop((608, 480, 640, 512))   # es tebal gelap
+	snow = [snow_a, snow_a, snow_b]
 	ice = Image.open(os.path.join(G, "tiles", "ice_patch.png")).convert("RGBA")
 
 	def tiled(tile, mask=None):
@@ -292,27 +298,28 @@ def peta():
 				tt.paste(tile, (xx, yy))
 		return tt
 
-	# hamparan salju (dua nada acak)
+	# hamparan salju kaya (dua nada LPC acak)
 	for ty in range(NN):
 		for tx in range(NN):
-			im.alpha_composite(snow[rr.randint(0, 1)], (tx * T, ty * T))
+			im.alpha_composite(snow[rr.randint(0, 2)], (tx * T, ty * T))
 
 	def poly_px(pts):
 		return [(x * T, y * T) for x, y in pts]
 
-	# DANAU BEKU barat — lembar es (ice_patch di-tile + tepi biru)
+	# DANAU BEKU barat — lembar es tebal LPC + retakan
 	danau = [(6, 60), (52, 48), (60, 110), (30, 150), (4, 130)]
 	m = Image.new("L", (W, W), 0)
 	ImageDraw.Draw(m).polygon(poly_px(danau), fill=255)
-	es_biru = Image.new("RGBA", (T, T), (170, 200, 224, 255))
-	im.paste(tiled(ice), (0, 0), m)
+	lembar = tiled(ice_full)
+	# selingi es gelap supaya kedalaman terbaca
+	dpx = lembar.load()
+	im.paste(lembar, (0, 0), m)
 	dd0 = ImageDraw.Draw(im, "RGBA")
-	dd0.line(poly_px(danau) + [poly_px(danau)[0]], fill=(120, 160, 190, 200), width=6)
-	# retakan
-	for _ in range(30):
+	dd0.line(poly_px(danau) + [poly_px(danau)[0]], fill=(120, 160, 190, 220), width=8)
+	for _ in range(34):
 		cx = rr.randint(8, 56); cy = rr.randint(52, 145)
-		dd0.line([(cx * T, cy * T), (cx * T + rr.randint(-40, 40), cy * T + rr.randint(-40, 40))],
-			fill=(150, 180, 205, 180), width=2)
+		dd0.line([(cx * T, cy * T), (cx * T + rr.randint(-46, 46), cy * T + rr.randint(-46, 46))],
+			fill=(210, 232, 244, 200), width=2)
 
 	# NODA MUTASI timur-laut (radial hijau di atas salju)
 	cxm, cym = 150, 40
@@ -402,10 +409,56 @@ def peta():
 			if rr.random() < 0.5:
 				taruh(ff, mx, my, 1.0)
 
-	# tambalan es tersebar (bukan di danau)
-	for _ in range(180):
-		ix = rr.randint(2, NN - 2); iy = rr.randint(2, NN - 2)
-		im.alpha_composite(ice, (ix * T, iy * T))
+	# KOLAM BEKU kecil tersebar (es LPC, bukan tambalan polos)
+	for _ in range(14):
+		px0 = rr.randint(10, NN - 14); py0 = rr.randint(10, NN - 14)
+		if math.hypot(px0 - cxm, py0 - cym) < 30 or (82 <= px0 <= 118 and 160 <= py0 <= 200):
+			continue
+		rw = rr.randint(4, 8); rh = rr.randint(3, 6)
+		mk = Image.new("L", (W, W), 0)
+		ImageDraw.Draw(mk).ellipse([px0 * T, py0 * T, (px0 + rw) * T, (py0 + rh) * T], fill=255)
+		im.paste(tiled(ice_full), (0, 0), mk)
+		ImageDraw.Draw(im, "RGBA").ellipse([px0 * T, py0 * T, (px0 + rw) * T, (py0 + rh) * T],
+			outline=(150, 180, 205, 180), width=4)
+
+	# HUTAN GUNDUL BEKU — pohon gundul (repo) memberi siluet ke ladang kosong;
+	# rumpun jarang, menjauhi benteng & kawah
+	gundul = Image.open(os.path.join(G, "sprites", "props", "pohon_gundul.png")).convert("RGBA")
+	pinus = Image.open(os.path.join(G, "sprites", "props", "pinus_pohon.png")).convert("RGBA")
+	def di_danau(tx0, ty0):
+		# uji kasar poligon danau (bounding + sisi kiri)
+		return tx0 < 62 and 46 < ty0 < 152 and (tx0 - 4) * 1.0 < (60 - abs(ty0 - 100))
+	for _ in range(60):
+		tx0 = rr.randint(4, NN - 4); ty0 = rr.randint(4, NN - 4)
+		dk = math.hypot(tx0 - cxm, ty0 - cym)
+		if dk < 55 or (78 <= tx0 <= 120 and 158 <= ty0 <= 200) or di_danau(tx0, ty0):
+			continue
+		pohon = gundul if rr.random() < 0.7 else pinus
+		# pinus disepuh salju (dipucatkan)
+		if pohon is pinus:
+			pohon = geser_rona(pohon, 40, 46, 50)
+		taruh(pohon, tx0, ty0, rr.choice([0.8, 1.0, 1.1]))
+
+	# KRISTAL ES (DIGAMBAR SENDIRI) — rumpun sian di gletser & sekitar kawah
+	def kristal(besar):
+		k = Image.new("RGBA", (int(20 * besar), int(30 * besar)), (0, 0, 0, 0))
+		dk = ImageDraw.Draw(k)
+		w2 = k.width
+		for off, tint in [(-4, (120, 210, 236)), (3, (170, 232, 248)), (0, (200, 246, 255))]:
+			cx2 = w2 // 2 + int(off * besar)
+			dk.polygon([(cx2, 2), (cx2 + int(5 * besar), k.height - 4),
+				(cx2 - int(5 * besar), k.height - 4)], fill=tint + (235,),
+				outline=(60, 130, 160, 255))
+		return k
+	for _ in range(40):
+		kx = rr.randint(4, NN - 4); ky = rr.randint(4, NN - 4)
+		dk = math.hypot(kx - cxm, ky - cym)
+		# padat dekat kawah (kristal terkorupsi) + acak di gletser
+		if dk < 50:
+			kk = geser_rona(kristal(rr.choice([1.0, 1.4])), -40, 40, -30)  # kristal mutasi hijau
+			taruh(kk, kx, ky, 1.0)
+		elif rr.random() < 0.25:
+			taruh(kristal(rr.choice([0.8, 1.0, 1.2])), kx, ky, 1.0)
 
 	for kaki, img, x, y in sorted(sprites, key=lambda s: s[0]):
 		im.alpha_composite(img, (x, max(0, y)))
