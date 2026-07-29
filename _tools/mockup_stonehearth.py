@@ -272,10 +272,158 @@ def mockup():
 	out.save(os.path.join(MOCK, "stonehearth_mockup.png"))
 
 
+def peta():
+	"""MOCKUP PETA PENUH 200x200 (6400px) — aset nyata di seluruh zona blockout.
+	Koordinat = koordinat eksekusi. Render 1:1 lalu simpan skala kecil."""
+	import random
+	T = 32
+	NN = 200
+	W = NN * T
+	im = Image.new("RGBA", (W, W), (0, 0, 0, 255))
+	rr = random.Random(11)
+	snow = [Image.open(os.path.join(G, "tiles", "snow_%d.png" % i)).convert("RGBA")
+		for i in (0, 1)]
+	ice = Image.open(os.path.join(G, "tiles", "ice_patch.png")).convert("RGBA")
+
+	def tiled(tile, mask=None):
+		tt = Image.new("RGBA", (W, W))
+		for yy in range(0, W, tile.height):
+			for xx in range(0, W, tile.width):
+				tt.paste(tile, (xx, yy))
+		return tt
+
+	# hamparan salju (dua nada acak)
+	for ty in range(NN):
+		for tx in range(NN):
+			im.alpha_composite(snow[rr.randint(0, 1)], (tx * T, ty * T))
+
+	def poly_px(pts):
+		return [(x * T, y * T) for x, y in pts]
+
+	# DANAU BEKU barat — lembar es (ice_patch di-tile + tepi biru)
+	danau = [(6, 60), (52, 48), (60, 110), (30, 150), (4, 130)]
+	m = Image.new("L", (W, W), 0)
+	ImageDraw.Draw(m).polygon(poly_px(danau), fill=255)
+	es_biru = Image.new("RGBA", (T, T), (170, 200, 224, 255))
+	im.paste(tiled(ice), (0, 0), m)
+	dd0 = ImageDraw.Draw(im, "RGBA")
+	dd0.line(poly_px(danau) + [poly_px(danau)[0]], fill=(120, 160, 190, 200), width=6)
+	# retakan
+	for _ in range(30):
+		cx = rr.randint(8, 56); cy = rr.randint(52, 145)
+		dd0.line([(cx * T, cy * T), (cx * T + rr.randint(-40, 40), cy * T + rr.randint(-40, 40))],
+			fill=(150, 180, 205, 180), width=2)
+
+	# NODA MUTASI timur-laut (radial hijau di atas salju)
+	cxm, cym = 150, 40
+	nd = Image.new("RGBA", (W, W), (0, 0, 0, 0))
+	dn = ImageDraw.Draw(nd)
+	for rad, a in [(46, 70), (32, 90), (20, 130)]:
+		dn.ellipse([(cxm - rad) * T, (cym - rad) * T, (cxm + rad) * T, (cym + rad) * T],
+			fill=(120, 240, 150, a))
+	im.alpha_composite(nd)
+
+	sprites = []
+	def taruh(img, cx, kaki, skala=1.0):
+		if skala != 1.0:
+			img = img.resize((max(1, int(img.width * skala)), max(1, int(img.height * skala))),
+				Image.NEAREST)
+		sprites.append((kaki * T, img, int(cx * T - img.width / 2), int(kaki * T - img.height)))
+
+	ms = Image.open(os.path.join(RAW, "mountains", "submission",
+		"mountains-v6-snow.png")).convert("RGBA")
+	tebing = ms.crop((0, 512, 96, 700))
+	gua = ms.crop((128, 160, 192, 288))
+	# PUNGGUNG GLETSER: dua pita diagonal — deret tebing sepanjang garis
+	def punggung(a, b, n):
+		for i in range(n):
+			t = i / float(n - 1)
+			x = a[0] + (b[0] - a[0]) * t
+			y = a[1] + (b[1] - a[1]) * t
+			taruh(tebing, x, y + 1.5, 1.0)
+	punggung((60, 30), (150, 120), 18)
+	punggung((140, 70), (196, 96), 10)
+	# mulut gua es (dungeon)
+	for gx, gy in [(88, 42), (120, 82), (168, 68), (110, 118)]:
+		taruh(gua, gx, gy, 1.0)
+
+	# BENTENG STONEHEARTH selatan-tengah
+	cd = Image.open(os.path.join(RAW, "castle8dark.png")).convert("RGBA")
+	keep = cd.crop((192, 0, 320, 224))
+	tower = cd.crop((96, 96, 160, 224))
+	wall = cd.crop((0, 96, 96, 168))
+	# tembok benteng (kotak) + keep + menara sudut
+	for wx in range(86, 116, 3):
+		taruh(wall, wx, 170, 1.0)
+		taruh(wall, wx, 196, 1.0)
+	taruh(keep, 100, 190, 1.2)
+	for tx2 in (85, 116):
+		taruh(tower, tx2, 172, 1.0)
+		taruh(tower, tx2, 196, 1.0)
+
+	# RERUNTUHAN tersebar (batu gelap didinginkan)
+	for rx, ry in [(40, 30), (70, 150), (120, 150), (176, 140), (150, 168), (30, 92)]:
+		taruh(geser_rona(wall, 16, 22, 30), rx, ry, 0.8)
+
+	# INTI MUTASI (obelisk pendar) di kawah
+	ob = Image.new("RGBA", (48, 120), (0, 0, 0, 0))
+	do = ImageDraw.Draw(ob)
+	do.polygon([(24, 0), (40, 26), (34, 112), (14, 112), (8, 26)], fill=(40, 70, 60, 255),
+		outline=(18, 34, 30, 255))
+	for yy in range(20, 108, 12):
+		do.line([(14, yy), (34, yy - 5)], fill=(150, 240, 170, 255))
+	do.ellipse([14, 38, 34, 70], fill=(190, 255, 205, 230))
+	taruh(ob, cxm, cym + 1, 1.2)
+
+	# MONSTER: mutan makin padat ke kawah; beast normal dekat benteng
+	MON = os.path.join(RAW, "monsters", "lpc-monsters")
+	ab = {n: frame0(os.path.join(MON, n + ".png")) for n in
+		["eyeball", "big_worm", "small_worm", "slime", "snake"]}
+	man = frame0(os.path.join(MON, "man_eater_flower.png"), 96).crop((16, 16, 96, 96))
+	fw = Image.open(os.path.join(G, "sprites", "monsters", "frost_wyvern.png")).convert("RGBA").crop((0, 0, 128, 128))
+	ff = Image.open(os.path.join(G, "sprites", "monsters", "frost_fox.png")).convert("RGBA").crop((0, 0, 64, 64))
+	mut_fw = geser_rona(fw, -30, 40, -20)
+	mut_ff = geser_rona(ff, -20, 50, -10)
+	for _ in range(150):
+		mx = rr.randint(6, NN - 6); my = rr.randint(6, NN - 6)
+		dk = math.hypot(mx - cxm, my - cym)
+		if rr.random() > max(0.05, 1.25 - dk / 85.0):
+			continue
+		if 82 <= mx <= 118 and 166 <= my <= 198:
+			continue
+		if dk < 60:                     # dekat kawah = aberasi + beast mutasi
+			pick = rr.choice([ab["eyeball"], ab["big_worm"], man, ab["slime"],
+				mut_fw, mut_ff, mut_ff])
+			taruh(pick, mx, my, 1.1 if pick is man or pick is mut_fw else 1.2)
+		elif dk < 110:                  # sedang = campur mutasi & beast
+			pick = rr.choice([mut_ff, ff, ab["small_worm"], ab["snake"], ff])
+			taruh(pick, mx, my, 1.1)
+		else:                            # jauh = beast normal jarang
+			if rr.random() < 0.5:
+				taruh(ff, mx, my, 1.0)
+
+	# tambalan es tersebar (bukan di danau)
+	for _ in range(180):
+		ix = rr.randint(2, NN - 2); iy = rr.randint(2, NN - 2)
+		im.alpha_composite(ice, (ix * T, iy * T))
+
+	for kaki, img, x, y in sorted(sprites, key=lambda s: s[0]):
+		im.alpha_composite(img, (x, max(0, y)))
+
+	out = im.resize((W // 4, W // 4), Image.LANCZOS).convert("RGB")
+	d = ImageDraw.Draw(out)
+	d.rectangle([0, 0, out.width, 34], fill=(24, 34, 54))
+	d.text((10, 5), "MOCKUP PETA PENUH STONEHEARTH 200x200 (#321) - benteng selatan -> ladang -> gletser+gua -> KAWAH MUTASI timur-laut",
+		font=f(16), fill=ES)
+	out.save(os.path.join(MOCK, "stonehearth_peta.png"))
+	print("-> stonehearth_peta.png (%dx%d)" % out.size)
+
+
 def main():
 	kartu()
 	blockout()
 	mockup()
+	peta()
 	print("-> stonehearth_konsep.png + stonehearth_blockout.png + stonehearth_mockup.png")
 
 
