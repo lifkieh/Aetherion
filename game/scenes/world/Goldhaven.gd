@@ -1,46 +1,50 @@
 extends Node2D
-## GOLDHAVEN (#309 — kota 002, Crossroads of Aurelia, Valenford).
-## Tata CINCIN blockout #308 yang di-ACC: tembok bata + 4 gerbang karavan ->
-## jalan raya silang + cincin jalan dalam -> PASAR AGUNG radial (12 kios)
-## dengan MENARA TIMBANGAN di pusatnya -> cincin-1 gedung serikat/bank/balai ->
-## blok hunian padat -> gudang karavan dekat gerbang selatan.
-## Gang timur-laut: pintu besi TERSEGEL (HIDDEN — teks netral, nol nama, D-3).
+## GOLDHAVEN (#319 — kota 002, Persimpangan Aurelia, Valenford).
+## ENAM LINGKAR POLIGON bertembok (spek Direktur #318, mockup di-ACC):
+##   L1 KERAJAAN (istana + alun-alun Menara Timbangan)  · poligon 8 sisi
+##   L2 bangsawan atas (mansion Victorian)               · 12 sisi
+##   L3 bangsawan rendah (deret ruko modular)            · 16 sisi
+##   L4 warga elit (Serikat/Bank/Aula/Kontrak + ruko)    · 24 sisi
+##   L5 rakyat (3 baris ruko + PASAR AGUNG + gudang)     · 32 sisi — tembok besar
+##   L6 desa pinggiran (gubuk, kamp karavan) di luar tembok
+## Gerbang 4 arah SEGARIS; jalan raya silang menembus sampai istana.
+## Deret ruko = modul 3-slice (kiri + N×tengah + kanan, atap layer menyambung);
+## tiap vertex = bangunan sudut. Konvensi hadap-kamera. NOL monster.
 ##
-## 35.000 jiwa = ILUSI KEPADATAN: fasad menjulang + kerumunan TownFolk +
-## karavan/gerobak + kios radial. NOL monster — ini kota, bukan medan buru.
-## Kanon 002: "pemain pertama kali menyadari dunia jauh lebih besar" — spawn
-## default gerbang BARAT (arah Ashbrook), plaza & menara menjulang di depannya.
-##
-## Blockout = penempatan: koordinat petak menyalin _tools/mockup_goldhaven_blockout.py.
-## Aset: sprites/goldhaven (#240, goldhaven.credits.txt — recolor + gambar-rakit).
+## Ground + tembok = pre-render 4 kuadran (gen_goldhaven_ground.py) — geometri
+## verts() DI SINI = geometri generator (koordinat mockup = eksekusi).
+## Gang tersegel timur-laut: teks netral, nol nama (HIDDEN, D-3).
 
 const TILE := 32
-const MAP_W := 80
-const MAP_H := 56
-const JX := 40                  # sumbu jalan utara-selatan (x 38..42)
-const JY := 28                  # sumbu jalan barat-timur  (y 26..30)
+const MAP_W := 200
+const MAP_H := 200
+const C := 100
+const LEBAR_JALAN := 3
+const RING := [[20, 8, 2], [36, 12, 2], [52, 16, 2], [70, 24, 2], [92, 32, 3]]
 const P := "res://assets/game/sprites/goldhaven/"
 const P_L := "res://assets/game/sprites/lpc32/"
-const P_T := "res://assets/game/tiles/lpc32/"
+const WARNA := ["krem", "biru", "maroon", "tan", "hijau", "abu"]
 
-var ground: TileMapLayer
 var canvas_mod: CanvasModulate
 var rain: GPUParticles2D
 var player
 var _shot_at := -1.0
 
-@onready var CX := JX * TILE + 16
-@onready var CY := JY * TILE + 16
+@onready var CPX := C * TILE + 16
+@onready var PASAR := Vector2(CPX, CPX) + Vector2.from_angle(TAU / 8.0) * (70.0 + 11.0) * TILE
 
 
 func _ready() -> void:
 	WorldState.mark_visited("goldhaven")
 	randomize()
-	_build_ground()
-	_build_boundaries()
-	_tembok_kota()
-	_kota()
-	_pasar_agung()
+	_ground()
+	_batas_peta()
+	_tembok_dan_gerbang()
+	_lingkar1_istana()
+	_lingkar2_mansion()
+	_lingkar3_4_deret()
+	_lingkar5_pasar()
+	_lingkar6_desa()
 	_gang_tersegel()
 	_build_sky()
 	_build_weather()
@@ -49,8 +53,8 @@ func _ready() -> void:
 	EventBus.weather_changed.connect(_on_weather)
 	Settings.changed.connect(func(): _on_weather(WorldState.weather))
 	_on_weather(WorldState.weather)
-	SafeZone.clear()   # nol monster di scene — kota sepenuhnya aman
-	Stage.enter_region("Goldhaven", "Persimpangan Aurelia — semua jalan lewat sini, dan semua ditimbang", "town.ogg")
+	SafeZone.clear()
+	Stage.enter_region("Goldhaven", "Persimpangan Aurelia — enam lingkar, lima tembok, satu timbangan", "town.ogg")
 	if OS.get_environment("AETHER_SHOT") == "1":
 		_shot_at = 1.6
 	if OS.get_environment("AETHER_FPS") == "1":
@@ -61,7 +65,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if canvas_mod:
-		# AETHER_PIN_DAY: harness tangkap-layar mematok siang (pola Ashbrook64).
 		if OS.get_environment("AETHER_PIN_DAY") == "1":
 			canvas_mod.color = Color(1, 1, 1)
 		else:
@@ -77,127 +80,96 @@ func _process(delta: float) -> void:
 			get_tree().quit()
 
 
-# ─────────────────────────────────────────────────────────────── TANAH & JALAN
-func _tileset() -> TileSet:
-	var ts := TileSet.new()
-	ts.tile_size = Vector2i(TILE, TILE)
-	for i in [["grass32", 0], ["ladang_tanah32", 1], ["stone32", 2], ["cobble32", 3]]:
-		var src := TileSetAtlasSource.new()
-		src.texture = load(P_T + "%s.png" % i[0])
-		src.texture_region_size = Vector2i(TILE, TILE)
-		src.create_tile(Vector2i(0, 0))
-		ts.add_source(src, i[1])
-	return ts
+## Vertex poligon dalam px — SALINAN verts() generator (rot = tau/2n:
+## sisi datar tepat di 4 poros jalan, gerbang selalu di sisi lurus).
+func _verts(r: float, n: int) -> Array:
+	var out := []
+	var rot := TAU / (2.0 * n)
+	for k in n:
+		out.append(Vector2(CPX, CPX) + Vector2.from_angle(rot + k * TAU / n) * r * TILE)
+	return out
 
 
-func _jalan(x: int, y: int) -> void:
-	ground.set_cell(Vector2i(x, y), 2, Vector2i(0, 0))
+func _dekat_poros(p: Vector2, ambang := 5.5) -> bool:
+	return abs(p.x - CPX) <= ambang * TILE or abs(p.y - CPX) <= ambang * TILE
+
+## CATATAN #319: warga TownFolk & prop bersama menyetel z_index=int(global_pos.y);
+## di peta 6400 px itu > CANVAS_ITEM_Z_MAX (4096) → galat render NON-FATAL (engine
+## meng-clamp; urutan tetap benar lewat y_sort root). Sprite MILIK scene ini
+## dikecilkan *0.5 di _put. Membetulkan warga/prop = menyentuh 6 kota lain, ditunda.
 
 
-func _build_ground() -> void:
-	ground = TileMapLayer.new()
-	ground.tile_set = _tileset()
-	add_child(ground)
-	# luar tembok = rumput; dalam tembok = tanah karavan terinjak (selang cobble)
-	for y in range(MAP_H):
-		for x in range(MAP_W):
-			if x < 2 or x > 78 or y < 2 or y > 54:
-				ground.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
-			else:
-				# tanah karavan nyaris polos — cobble 22% terbaca sebagai ubin
-				# rusak belang-belang dari kamera main (mata #309), bukan tekstur
-				ground.set_cell(Vector2i(x, y), 3 if randf() < 0.05 else 1, Vector2i(0, 0))
-	# JALAN RAYA SILANG (blockout: x38..42, y26..30) — menembus keluar gerbang
-	for y in range(MAP_H):
-		for x in range(38, 43):
-			_jalan(x, y)
-	for x in range(MAP_W):
-		for y in range(26, 31):
-			_jalan(x, y)
-	# CINCIN JALAN DALAM mengitari plaza (blockout: x26..54 / y16..40, lebar 2)
-	for x in range(26, 55):
-		_jalan(x, 16); _jalan(x, 17); _jalan(x, 39); _jalan(x, 40)
-	for y in range(16, 41):
-		_jalan(26, y); _jalan(27, y); _jalan(53, y); _jalan(54, y)
-	# PASAR AGUNG — plaza ellipse batu (pusat 40,28; rx 11, ry 9)
-	for tx in range(JX - 12, JX + 13):
-		for ty in range(JY - 10, JY + 11):
-			if pow(tx - 40.0, 2) / 121.0 + pow(ty - 28.0, 2) / 81.0 <= 1.0:
-				_jalan(tx, ty)
-	# setapak pintu -> cincin jalan (di LAPISAN TANAH — tak menimpa fasad)
-	for sx in [31, 48]:
-		for sy in range(18, 26):   # serikat & bank turun ke jalan barat-timur
-			_jalan(sx, sy)
-		for sy in range(31, 39):   # balai & rumah kontrak naik dari selatan
-			_jalan(sx, sy)
-	for sy in [27, 28, 29]:
-		for sx in range(22, 26):   # penginapan ke cincin barat
-			_jalan(sx, sy)
-		for sx in range(55, 59):   # aula dagang ke cincin timur
-			_jalan(sx, sy)
-	# gang hunian: baris utara (y 14) dan selatan (y 42) + gang gudang (y 50)
-	for x in range(10, 71):
-		_jalan(x, 14)
-	for x in range(10, 71):
-		_jalan(x, 42)
-	for x in range(10, 71):
-		_jalan(x, 50)
-	for y in range(14, 27):
-		_jalan(14, y); _jalan(66, y)
-	for y in range(30, 51):
-		_jalan(14, y); _jalan(66, y)
-	# gang timur-laut menuju pintu tersegel (sengaja BUNTU) — di CELAH antara
-	# hunian x57 dan x65, bukan menembus rumah (mata #309)
-	for y in range(9, 15):
-		_jalan(61, y)
+# ─────────────────────────────────────────────── LANTAI & TEMBOK
+func _ground() -> void:
+	for qy in 2:
+		for qx in 2:
+			var s := Sprite2D.new()
+			s.texture = load(P + "ground/q%d%d.png" % [qx, qy])
+			s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			s.centered = false
+			# offset dari UKURAN tekstur — angka mati 2560 patah saat peta
+			# naik 160→200 (kuadran jadi 3200; mata #319)
+			s.position = Vector2(qx, qy) * float(s.texture.get_width())
+			s.z_index = -10
+			add_child(s)
 
 
-# ─────────────────────────────────────────────────────── TEMBOK & 4 GERBANG
-## Tembok bata keliling (blockout: bingkai 2..78 x 2..54) dengan celah gerbang:
-## utara/selatan x37..43, barat/timur y25..31. Collision per segmen.
-func _tembok_kota() -> void:
+func _batas_peta() -> void:
+	var walls := StaticBody2D.new()
+	walls.collision_layer = 4
+	walls.collision_mask = 0
+	add_child(walls)
+	var w := MAP_W * TILE
+	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, w, w + 64, 32),
+			Rect2(-32, 0, 32, w), Rect2(w, 0, 32, w)]:
+		var cs := CollisionShape2D.new()
+		var sh := RectangleShape2D.new()
+		sh.size = rc.size
+		cs.shape = sh
+		cs.position = rc.position + rc.size / 2
+		walls.add_child(cs)
+
+
+## Collision tembok: tiap sisi poligon dipecah potongan ~64 px; potongan yang
+## menyentuh poros jalan dilewati (itulah celah gerbang). Visual tembok sudah
+## di pre-render ground.
+func _tembok_dan_gerbang() -> void:
 	var body := StaticBody2D.new()
 	body.collision_layer = 4
 	body.collision_mask = 0
 	add_child(body)
-	var seg := [
-		# [rect petak] — dinding utara & selatan terbelah gerbang
-		Rect2(2, 2, 35, 1), Rect2(44, 2, 35, 1),
-		Rect2(2, 54, 35, 1), Rect2(44, 54, 35, 1),
-		# barat & timur
-		Rect2(2, 3, 1, 22), Rect2(2, 32, 1, 22),
-		Rect2(78, 3, 1, 22), Rect2(78, 32, 1, 22),
-	]
-	for rc in seg:
-		var px_rect := Rect2(rc.position * TILE, rc.size * TILE)
-		var s := Sprite2D.new()
-		s.texture = load(P_L + "wall_brick.png")
-		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		s.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
-		s.region_enabled = true
-		s.region_rect = Rect2(Vector2.ZERO, px_rect.size)
-		s.centered = false
-		s.position = px_rect.position
-		s.z_index = 2
-		add_child(s)
-		var cs := CollisionShape2D.new()
-		var sh := RectangleShape2D.new()
-		sh.size = px_rect.size
-		cs.shape = sh
-		cs.position = px_rect.position + px_rect.size / 2
-		body.add_child(cs)
-	# GERBANG BATU di keempat celah + gerobak karavan menunggu giliran masuk
-	# skala v3: sprite gerbang pack lebih besar (184 px) — celah gerbang 7 petak
-	_put(P + "gerbang_batu.png", Vector2(JX * TILE + 16, 3 * TILE), 1.2)
-	_put(P + "gerbang_batu.png", Vector2(JX * TILE + 16, 55 * TILE), 1.2)
-	_put(P + "gerbang_batu.png", Vector2(3 * TILE, 32 * TILE), 1.0)
-	_put(P + "gerbang_batu.png", Vector2(77 * TILE, 32 * TILE), 1.0)
-	for g in [Vector2(37 * TILE, 7 * TILE), Vector2(44 * TILE, 51 * TILE),
-			Vector2(8 * TILE, 27 * TILE + 16), Vector2(72 * TILE, 30 * TILE)]:
-		_put(P_L + "gerobak32.png", g, 1.3)
+	for ring in RING:
+		var r: float = ring[0]
+		var n_s: int = ring[1]
+		var tebal: float = ring[2]
+		var vo := _verts(r + tebal, n_s)
+		var vi := _verts(r, n_s)
+		for k in n_s:
+			var a_o: Vector2 = vo[k]
+			var b_o: Vector2 = vo[(k + 1) % n_s]
+			var a_i: Vector2 = vi[k]
+			var b_i: Vector2 = vi[(k + 1) % n_s]
+			var L: float = a_o.distance_to(b_o)
+			var seg := int(L / 64.0) + 1
+			for q in seg:
+				var t0 := float(q) / seg
+				var t1 := float(q + 1) / seg
+				var tengah := (a_o.lerp(b_o, (t0 + t1) / 2.0) + a_i.lerp(b_i, (t0 + t1) / 2.0)) / 2.0
+				if _dekat_poros(tengah, LEBAR_JALAN + 1.2):
+					continue
+				var cs := CollisionPolygon2D.new()
+				cs.polygon = PackedVector2Array([a_o.lerp(b_o, t0), a_o.lerp(b_o, t1),
+					a_i.lerp(b_i, t1), a_i.lerp(b_i, t0)])
+				body.add_child(cs)
+		# menara jaga tiap vertex + gerbang segaris 4 arah
+		for v in _verts(r + tebal / 2.0, n_s):
+			_put(P + "menara_sudut.png", v + Vector2(0, 40), 0.9)
+		for k in 4:
+			var g := Vector2(CPX, CPX) + Vector2.from_angle(k * TAU / 4.0) * (r + tebal / 2.0) * TILE
+			_put(P + "gerbang_batu.png", g + Vector2(0, 46))
 
 
-# ───────────────────────────────────────────────────────────────────── KOTA
+# ─────────────────────────────────────────────── perkakas
 func _put(path: String, pos: Vector2, skala := 1.0, z := -1) -> Sprite2D:
 	if not ResourceLoader.exists(path):
 		push_warning("[goldhaven] aset hilang: %s" % path)
@@ -208,188 +180,273 @@ func _put(path: String, pos: Vector2, skala := 1.0, z := -1) -> Sprite2D:
 	if skala != 1.0:
 		s.scale = Vector2(skala, skala)
 	s.position = pos - Vector2(0, s.texture.get_height() * skala * 0.5)
-	s.z_index = int(pos.y) if z < 0 else z
+	# y-sort via z_index, tapi DIKECILKAN: peta 6400px > CANVAS_ITEM_Z_MAX 4096.
+	# *0.5 tetap mempertahankan urutan kaki, muat dalam ±4096 (mata #319 hitam).
+	s.z_index = clampi(int(pos.y * 0.5), -4000, 4000) if z < 0 else z
 	add_child(s)
 	return s
 
 
-## Pola Candyveil: sprite (kaki di `kaki`) + tembok tabrak + pintu bicara.
-## Fasad BERCERITA (D-3: label netral, teks keluar saat ditanya).
-func _bangunan(nama: String, kaki: Vector2, skala: float, label: String, baris: Array) -> void:
-	var s := _put(P + nama + ".png", kaki, skala)
-	if s == null:
-		return
-	var w := s.texture.get_width() * skala
+func _tabrak(pos: Vector2, w: float, h := 30.0) -> void:
 	var body := StaticBody2D.new()
 	body.collision_layer = 4
 	body.collision_mask = 0
 	add_child(body)
 	var cs := CollisionShape2D.new()
 	var sh := RectangleShape2D.new()
-	sh.size = Vector2(w * 0.82, 30)
+	sh.size = Vector2(w, h)
 	cs.shape = sh
-	cs.position = kaki - Vector2(0, 12)
+	cs.position = pos - Vector2(0, h * 0.4)
 	body.add_child(cs)
+
+
+func _bangunan(nama: String, kaki: Vector2, skala: float, label: String, baris: Array) -> void:
+	var s := _put(P + nama + ".png", kaki, skala)
+	if s == null:
+		return
+	_tabrak(kaki, s.texture.get_width() * skala * 0.82)
 	var pintu := preload("res://scenes/world/Ashbrook64Prop.gd").new()
 	add_child(pintu)
 	pintu.global_position = kaki + Vector2(0, 10)
 	pintu.setup_bicara(baris, label, "")
 
 
-func _kota() -> void:
-	# CINCIN-1 — gedung menghadap plaza (nomor blockout 2-7)
-	_bangunan("fasad_serikat", Vector2(31 * TILE + 16, 24 * TILE), 1.0, "Kantor Pusat Serikat Penjelajah [E]", [
-		"KANTOR PUSAT SERIKAT PENJELAJAH. Papan misinya empat kali papan Greenvale — dan penuh.",
-		"Petugasnya menyebut cabang-cabang: Greenvale, Thornwatch, Tidegate... daftarnya masih panjang.",
-		"Di dinding: peta Aurelia. Ashbrook cuma titik kecil di sudut barat. Titik. Kecil.",
+# ─────────────────────────────────────────────── LINGKAR 1 & 2
+func _lingkar1_istana() -> void:
+	_bangunan("istana", Vector2(CPX, (C - 6) * TILE), 1.0, "Gerbang Istana Goldhaven [E]", [
+		"Istana Goldhaven. Panji timbangan berkibar di dua menara kerucutnya.",
+		"Penjaga gerbang berdiri sempurna. Hanya matanya yang mengikuti karavan lewat.",
+		"Dari balik tembok: gemericik air taman, dan bunyi pena — istana ini menghitung.",
 	])
-	_bangunan("fasad_bank", Vector2(48 * TILE + 16, 24 * TILE), 1.0, "Bank Goldhaven [E]", [
-		"Bank Goldhaven. Pintunya dua lapis; yang dalam katanya perlu tiga kunci berbeda.",
-		"Antrean penukar uang mengular. Tujuh mata uang, satu timbangan, nol senyum.",
-	])
-	_bangunan("fasad_kontrak", Vector2(48 * TILE + 16, 38 * TILE), 1.0, "Rumah Kontrak [E]", [
-		"Rumah Kontrak. Semua janji di kota ini ditulis, disegel, dan ditimbang di sini.",
-		"Di ambang: \"LISAN TIDAK DIHITUNG.\" Hurufnya sudah aus disentuh orang yang berharap.",
-	])
-	_bangunan("fasad_balai_gh", Vector2(31 * TILE + 16, 38 * TILE), 1.0, "Balai Kota Goldhaven [E]", [
-		"Balai kota. Pengumumannya bertumpuk tujuh lapis; yang terbawah sudah jadi sejarah.",
-		"Tarif gerbang naik musim ini. Karavan mengeluh. Karavan tetap datang.",
-	])
-	_bangunan("fasad_hunian_a", Vector2(24 * TILE + 16, 24 * TILE), 1.0, "Penginapan Karavan [E]", [
-		"Penginapan Karavan. Kandang di belakang, kasur di atas, cerita di ruang tengahnya.",
-		"Papan tarifnya tiga bahasa. Coretan di bawahnya lebih banyak lagi.",
-	])
-	var inn := preload("res://scenes/world/Interactable.tscn").instantiate()
-	add_child(inn)
-	inn.setup("inn")
-	inn.scale = Vector2(2, 2)
-	inn.global_position = Vector2(24 * TILE + 16, 24 * TILE + 40)
-	_bangunan("fasad_aula", Vector2(56 * TILE, 30 * TILE + 16), 1.0, "Aula Dagang [E]", [
-		"Aula Dagang. Lelang pagi: rempah dan kain. Lelang sore: apa saja yang tersisa.",
-		"Suara juru lelangnya terdengar sampai plaza — kota ini menganggapnya musik.",
-	])
-
-	# BLOK HUNIAN — baris rapi (blockout 8-19), selang dua fasad supaya tak kembar
-	var rumah_baris := [
-		[Vector2(14, 12), "a"], [Vector2(22, 12), "b"], [Vector2(57, 12), "b"], [Vector2(65, 12), "a"],
-		[Vector2(14, 22), "b"], [Vector2(65, 22), "a"],
-		[Vector2(14, 40), "a"], [Vector2(22, 40), "b"], [Vector2(57, 40), "a"], [Vector2(65, 40), "b"],
-	]
-	var kisah := [
-		"Hunian batu-pasir. Cucian melintang antar jendela — bendera sesungguhnya kota ini.",
-		"Dari jendela atas, seorang nenek menghitung karavan. Katanya lebih jujur dari koran.",
-		"Pintu ini dicat ulang tiap tahun baru. Tahun ini: merah tanah. Tahun lalu: juga.",
-		"Tiga keluarga satu atap. Di Goldhaven itu bukan miskin — itu strategi.",
-	]
-	for i in range(rumah_baris.size()):
-		var r: Array = rumah_baris[i]
-		var pt: Vector2 = r[0]
-		_bangunan("fasad_hunian_%s" % r[1], Vector2(pt.x * TILE + 16, pt.y * TILE), 0.85,
-			"Hunian [E]", [kisah[i % kisah.size()]])
-	# GUDANG KARAVAN dekat gerbang selatan (blockout 20-21)
-	_bangunan("fasad_gudang_gh", Vector2(15 * TILE + 16, 49 * TILE), 1.0, "Gudang Karavan [E]", [
-		"Gudang karavan. Nomor petak dicat besar; salah taruh peti di sini = perang kecil.",
-	])
-	_bangunan("fasad_gudang_gh", Vector2(64 * TILE + 16, 49 * TILE), 1.0, "Gudang Karavan [E]", [
-		"Bau goni, tar, dan rempah. Kuli menyebutnya parfum Goldhaven.",
-	])
-
-	# LAMPU sepanjang jalan raya + lentera bercahaya di empat pintu plaza
-	for lx in range(8, MAP_W - 6, 7):
-		if abs(lx - JX) <= 3:
-			continue
-		_put(P_L + "lentera32.png", Vector2(lx * TILE, 26 * TILE - 6))
-		_put(P_L + "lentera32.png", Vector2(lx * TILE + 16, 31 * TILE + 8))
-	var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
-	img.fill(Color(1, 1, 1))
-	var lentera_tex := ImageTexture.create_from_image(img)
-	for pos in [Vector2(CX - 10 * TILE, CY), Vector2(CX + 10 * TILE, CY),
-			Vector2(CX, CY - 8 * TILE), Vector2(CX, CY + 8 * TILE)]:
-		if _put(P_L + "lentera32.png", pos, 1.4):
-			var pl := PointLight2D.new()
-			pl.energy = 1.0
-			pl.texture_scale = 5.0
-			pl.color = Color(1.0, 0.84, 0.55)
-			pl.texture = lentera_tex
-			pl.global_position = pos + Vector2(0, -40)
-			add_child(pl)
-
-
-# ─────────────────────────────────────────────── PASAR AGUNG & MENARA
-func _pasar_agung() -> void:
-	# MENARA TIMBANGAN di pusat plaza — empat jalan bertemu di bawahnya
-	var m := _put(P + "menara_timbangan.png", Vector2(CX, CY - 8), 1.1)
-	if m:
-		var body := StaticBody2D.new()
-		body.collision_layer = 4
-		body.collision_mask = 0
-		add_child(body)
-		var cs := CollisionShape2D.new()
-		var sh := RectangleShape2D.new()
-		sh.size = Vector2(64, 34)
-		cs.shape = sh
-		cs.position = Vector2(CX, CY - 26)
-		body.add_child(cs)
-	var menara := preload("res://scenes/world/Ashbrook64Prop.gd").new()
-	add_child(menara)
-	menara.global_position = Vector2(CX, CY + 12)
-	menara.setup_bicara([
-		"MENARA TIMBANGAN. Empat jalan raya Aurelia bertemu tepat di bawah lengkungnya.",
-		"Lambang timbangan emasnya bukan hiasan: dulu semua sengketa dagang ditimbang di sini, harfiah.",
-		"Loncengnya berbunyi tiap jam. Kata orang, satu-satunya hal gratis di Goldhaven.",
+	var menara := _put(P + "menara_timbangan.png", Vector2(CPX, (C + 5) * TILE + 16), 1.1)
+	if menara:
+		_tabrak(Vector2(CPX, (C + 5) * TILE + 16), 70, 34)
+	var prop := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+	add_child(prop)
+	prop.global_position = Vector2(CPX, (C + 5) * TILE + 44)
+	prop.setup_bicara([
+		"MENARA TIMBANGAN. Empat jalan raya Aurelia bertemu tepat di alun-alun ini.",
+		"Lambang timbangan emasnya bukan hiasan: semua sengketa dagang dulu ditimbang di sini.",
+		"Loncengnya berbunyi tiap jam — kata orang, satu-satunya yang gratis di Goldhaven.",
 	], "Menara Timbangan [E]")
-	# 12 KIOS RADIAL (blockout: radius 7.5 / 6 petak) + dua pedagang sungguhan
-	for i in range(12):
-		var a := i * TAU / 12.0
-		var kpos := Vector2(CX + cos(a) * 7.5 * TILE, CY + sin(a) * 6.0 * TILE)
-		_put(P + ("kios_dagang" if i % 2 == 0 else "kios_dagang_b") + ".png", kpos, 1.15)
-	for spos in [Vector2(CX - 7.5 * TILE, CY + 24), Vector2(CX + 7.5 * TILE, CY + 24)]:
+	for a8 in 8:
+		var a := (a8 + 0.5) * TAU / 8.0
+		_lentera(Vector2(CPX, CPX) + Vector2(cos(a) * 6.0, sin(a) * 5.0) * TILE)
+
+
+func _lingkar2_mansion() -> void:
+	var vv := _verts((20.0 + 36.0) / 2.0 + 3.4, 12)
+	var kisah := [
+		"Mansion bangsawan. Pagar rendah — kepercayaan diri yang hanya dimiliki lingkar dalam.",
+		"Tamannya dipangkas bentuk timbangan. Tukang kebunnya dibayar lebih dari juru tulis balai.",
+		"Dormer atapnya menyala semalaman. Bangsawan Goldhaven tidur larut — menghitung.",
+	]
+	for k in 12:
+		var m: Vector2 = (vv[k] + vv[(k + 1) % 12]) / 2.0
+		if _dekat_poros(m, 6.0):
+			continue
+		_bangunan("fasad_mansion", m, 1.0, "Mansion Bangsawan [E]", [kisah[k % 3]])
+
+
+# ─────────────────────────────────────────────── DERET RUKO (L3-L5)
+## Deret modul 3-slice per sisi poligon — port 1:1 dari mockup (#318).
+func _deret_sisi(r_row: float, n_s: int, skala: float, benih: int, tiga := false,
+		bebas_pasar := false) -> void:
+	var vv := _verts(r_row, n_s)
+	for k in n_s:
+		var v0: Vector2 = vv[k]
+		var v1: Vector2 = vv[(k + 1) % n_s]
+		var L := v0.distance_to(v1)
+		var arah := (v1 - v0) / L
+		var warna: String = WARNA[(k + benih) % WARNA.size()]
+		var pakai3 := tiga and ((k + benih) % 3 == 0)
+		var awalan := "ruko3_" if pakai3 and warna in ["krem", "biru", "hijau", "abu"] else "ruko_"
+		var mw := int(64 * skala)
+		var m_c := int((L - 30.0) / mw)
+		if m_c < 2:
+			continue
+		var pad := (L - m_c * mw) / 2.0
+		var titik := []
+		for i in m_c:
+			var pp := v0 + arah * (pad + (i + 0.5) * mw)
+			if _dekat_poros(pp) or (bebas_pasar and pp.distance_to(PASAR) < 8.5 * TILE):
+				titik.append(null)
+			else:
+				titik.append(pp)
+		var i := 0
+		while i < m_c:
+			if titik[i] == null:
+				i += 1
+				continue
+			var j := i
+			while j + 1 < m_c and titik[j + 1] != null:
+				j += 1
+			for q in range(i, j + 1):
+				var b := "tengah"
+				if q == i: b = "kiri"
+				elif q == j: b = "kanan"
+				elif (q - i) % 3 == 2: b = "pintu"
+				var pos: Vector2 = titik[q]
+				var atap_b := "atap_tengah"
+				if b == "kiri": atap_b = "atap_kiri"
+				elif b == "kanan": atap_b = "atap_kanan"
+				var s := _put(P + awalan + warna + "_" + b + ".png", pos, skala)
+				if s:
+					_put(P + awalan + warna + "_" + atap_b + ".png",
+						pos - Vector2(0, s.texture.get_height() * skala - 2), skala)
+					_tabrak(pos, mw)
+				if b == "pintu" and (q + k) % 2 == 0:
+					var pr := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+					add_child(pr)
+					pr.global_position = pos + Vector2(0, 8)
+					pr.setup_bicara(_baris_lingkar(r_row), "Pintu deret [E]")
+			i = j + 1
+	for v in vv:
+		if _dekat_poros(v) or (bebas_pasar and v.distance_to(PASAR) < 8.5 * TILE):
+			continue
+		var ms := _put(P + "menara_sudut.png", v + Vector2(0, 8), skala)
+		if ms:
+			_tabrak(v + Vector2(0, 8), 52 * skala)
+
+
+func _baris_lingkar(r_row: float) -> Array:
+	if r_row < 46.0:
+		return ["Pintu jati berukir. Dari dalam: dentang cangkir porselen dan tawa kecil yang sopan."]
+	if r_row < 64.0:
+		return ["Papan kuningan kecil di ambang: nama keluarga, dan tahun mereka naik lingkar."]
+	return ["Pintu deret rakyat. Bau roti, suara anak, dan cucian yang diangkat buru-buru."]
+
+
+func _lingkar3_4_deret() -> void:
+	_deret_sisi((36.0 + 52.0) / 2.0 - 3.4, 16, 0.82, 0)
+	_deret_sisi((36.0 + 52.0) / 2.0 + 3.6, 16, 0.82, 2)
+	# L4: gedung publik landmark di baris dalam + deret (selang 3 tingkat) di luar
+	var publik := [
+		["fasad_serikat", "Kantor Pusat Serikat Penjelajah [E]", [
+			"KANTOR PUSAT SERIKAT PENJELAJAH. Papan misinya empat kali papan Greenvale — dan penuh.",
+			"Petugasnya menyebut cabang-cabang: Greenvale, Thornwatch, Tidegate... daftarnya masih panjang.",
+			"Di dinding: peta Aurelia. Ashbrook cuma titik kecil di sudut barat. Titik. Kecil."]],
+		["fasad_bank", "Bank Goldhaven [E]", [
+			"Bank Goldhaven. Pintunya dua lapis; yang dalam katanya perlu tiga kunci berbeda.",
+			"Antrean penukar uang mengular. Tujuh mata uang, satu timbangan, nol senyum."]],
+		["fasad_aula", "Aula Dagang [E]", [
+			"Aula Dagang. Lelang pagi: rempah dan kain. Lelang sore: apa saja yang tersisa.",
+			"Suara juru lelangnya terdengar sampai dua lingkar — kota menganggapnya musik."]],
+		["fasad_kontrak", "Rumah Kontrak [E]", [
+			"Rumah Kontrak. Semua janji kota ini ditulis, disegel, dan ditimbang di sini.",
+			"Di ambang: \"LISAN TIDAK DIHITUNG.\" Hurufnya aus disentuh orang yang berharap."]],
+		["fasad_balai_gh", "Balai Kota Goldhaven [E]", [
+			"Balai kota. Pengumumannya bertumpuk tujuh lapis; terbawah sudah jadi sejarah.",
+			"Tarif gerbang naik musim ini. Karavan mengeluh. Karavan tetap datang."]],
+	]
+	var vv4 := _verts((52.0 + 70.0) / 2.0 - 3.6, 24)
+	var pi := 0
+	for k in range(0, 24, 2):
+		var m: Vector2 = (vv4[k] + vv4[(k + 1) % 24]) / 2.0
+		if _dekat_poros(m, 6.0):
+			continue
+		var pb: Array = publik[pi % publik.size()]
+		_bangunan(pb[0], m, 0.9, pb[1], pb[2])
+		pi += 1
+	_deret_sisi((52.0 + 70.0) / 2.0 + 3.8, 24, 0.9, 1, true)
+
+
+# ─────────────────────────────────────────────── LINGKAR 5 & 6
+func _lingkar5_pasar() -> void:
+	_deret_sisi(70.0 + 4.5, 32, 0.72, 0, false, true)
+	_deret_sisi(70.0 + 11.0, 32, 0.72, 1, true, true)
+	_deret_sisi(70.0 + 17.5, 32, 0.72, 3, false, true)
+	# PASAR AGUNG: kios radial + pedagang + inn + gerobak
+	for i in 10:
+		var aa := i * TAU / 10.0
+		_put(P + ("kios_dagang" if i % 2 == 0 else "kios_dagang_b") + ".png",
+			PASAR + Vector2(cos(aa) * 5.0 * TILE, sin(aa) * 4.0 * TILE), 1.1)
+	for spos in [PASAR + Vector2(-2 * TILE, 24), PASAR + Vector2(2 * TILE, 24)]:
 		var pedagang := preload("res://scenes/world/Interactable.tscn").instantiate()
 		add_child(pedagang)
 		pedagang.setup("shop")
 		pedagang.scale = Vector2(2, 2)
 		pedagang.global_position = spos
-	# gerobak bongkar-muat di tepi plaza — pasar yang sedang BEKERJA
-	_put(P_L + "gerobak32.png", Vector2(CX - 4 * TILE, CY + 7 * TILE), 1.2)
-	_put(P_L + "gerobak32.png", Vector2(CX + 5 * TILE, CY - 7 * TILE), 1.2)
+	var inn := preload("res://scenes/world/Interactable.tscn").instantiate()
+	add_child(inn)
+	inn.setup("inn")
+	inn.scale = Vector2(2, 2)
+	inn.global_position = PASAR + Vector2(0, -3 * TILE)
+	_put(P_L + "gerobak32.png", PASAR + Vector2(-2 * TILE, TILE), 1.2)
+	_put(P_L + "gerobak32.png", PASAR + Vector2(3 * TILE, -2 * TILE), 1.2)
+	var pr := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+	add_child(pr)
+	pr.global_position = PASAR + Vector2(0, 5 * TILE)
+	pr.setup_bicara([
+		"PASAR AGUNG. Sepuluh kios, tujuh bahasa, satu aturan: timbang dulu, tawar kemudian.",
+		"Kuli bergantian memanggul dari gerbang selatan. Karavan tak pernah benar-benar berhenti.",
+	], "Papan pasar [E]")
+	# gudang karavan dekat gerbang selatan
+	_bangunan("fasad_gudang_gh", Vector2((C - 8) * TILE, (C + 86) * TILE), 1.0,
+		"Gudang Karavan [E]", [
+		"Gudang karavan. Nomor petak dicat besar; salah taruh peti = perang kecil.",
+	])
+	_bangunan("fasad_gudang_gh", Vector2((C + 8) * TILE, (C + 86) * TILE), 1.0,
+		"Gudang Karavan [E]", [
+		"Bau goni, tar, dan rempah. Kuli menyebutnya parfum Goldhaven.",
+	])
 
 
-# ────────────────────────────────────── GANG TIMUR-LAUT — PINTU TERSEGEL
-## HIDDEN (kanon 002): pintu besi tua di ujung gang buntu. Teks netral,
-## NOL nama, NOL penanda (D-3). Kota di atasnya tak membicarakannya.
+func _lingkar6_desa() -> void:
+	for i in 20:
+		var a := (i + 0.5) * TAU / 20.0
+		var pp := Vector2(CPX, CPX) + Vector2.from_angle(a) * (92.0 + 7.0) * TILE
+		if _dekat_poros(pp) or pp.x < 4 * TILE or pp.y < 4 * TILE \
+				or pp.x > (MAP_W - 4) * TILE or pp.y > (MAP_H - 4) * TILE:
+			continue
+		var s := _put(P + "ruko_tan_kiri.png", pp, 0.62)
+		if s:
+			_tabrak(pp, 40)
+	for k in 4:
+		var a := k * TAU / 4.0 + 0.12
+		_put(P_L + "gerobak32.png",
+			Vector2(CPX, CPX) + Vector2.from_angle(a) * (92.0 + 5.0) * TILE, 1.2)
+	var pr := preload("res://scenes/world/Ashbrook64Prop.gd").new()
+	add_child(pr)
+	pr.global_position = Vector2(CPX, CPX) + Vector2.from_angle(TAU * 0.13) * 99.0 * TILE
+	pr.setup_bicara([
+		"Gubuk-gubuk bersandar ke tembok besar. Yang di luar selalu paling dulu kena angin.",
+		"Anak-anak desa menghitung menara jaga. Katanya kalau hafal semua, boleh bermimpi masuk.",
+	], "Desa pinggiran [E]")
+
+
+## HIDDEN (kanon 002): pintu besi tersegel di kaki tembok besar timur-laut.
 func _gang_tersegel() -> void:
-	var s := _put(P + "segel_pintu.png", Vector2(61 * TILE + 16, 8 * TILE + 16), 1.4)
+	var pos := Vector2(CPX, CPX) + Vector2.from_angle(-3.0 * TAU / 8.0) * (70.0 + 6.0) * TILE
+	var s := _put(P + "segel_pintu.png", pos, 1.3)
 	if s:
 		s.z_index = 3
 	var pintu := preload("res://scenes/world/Ashbrook64Prop.gd").new()
 	add_child(pintu)
-	pintu.global_position = Vector2(61 * TILE + 16, 9 * TILE)
+	pintu.global_position = pos + Vector2(0, 14)
 	pintu.setup_bicara([
 		"Pintu besi tua di ujung gang. Palang bajanya dilas mati — bukan dikunci. Dilas.",
 		"Engselnya dirawat. Seseorang rutin meminyaki pintu yang tak boleh dibuka.",
 		"Dari celah bawahnya: udara dingin. Gang ini buntu; anginnya datang dari BAWAH.",
 	], "Pintu besi tua [E]")
-	# gerobak parkir menyamarkan mulut gang — bukan penanda, kota menumpuk barang
-	_put(P_L + "gerobak32.png", Vector2(60 * TILE - 12, 13 * TILE + 20), 1.0)
+	_put(P_L + "gerobak32.png", pos + Vector2(-40, 30), 1.0)
 
 
-# ─────────────────────────────────────────────── (kerangka standar scene)
-func _build_boundaries() -> void:
-	var walls := StaticBody2D.new()
-	walls.collision_layer = 4
-	walls.collision_mask = 0
-	add_child(walls)
-	var w := MAP_W * TILE
-	var h := MAP_H * TILE
-	for rc in [Rect2(-32, -32, w + 64, 32), Rect2(-32, h, w + 64, 32), Rect2(-32, 0, 32, h), Rect2(w, 0, 32, h)]:
-		var cs := CollisionShape2D.new()
-		var shape := RectangleShape2D.new()
-		shape.size = rc.size
-		cs.shape = shape
-		cs.position = rc.position + rc.size / 2
-		walls.add_child(cs)
+func _lentera(pos: Vector2) -> void:
+	if _put(P_L + "lentera32.png", pos) == null:
+		return
+	var img := Image.create(8, 8, false, Image.FORMAT_RGBA8)
+	img.fill(Color(1, 1, 1))
+	var pl := PointLight2D.new()
+	pl.energy = 1.0
+	pl.texture_scale = 5.0
+	pl.color = Color(1.0, 0.84, 0.55)
+	pl.texture = ImageTexture.create_from_image(img)
+	pl.global_position = pos + Vector2(0, -30)
+	add_child(pl)
 
 
+# ─────────────────────────────────────────────── kerangka standar
 func _build_sky() -> void:
 	canvas_mod = CanvasModulate.new()
 	add_child(canvas_mod)
@@ -426,9 +483,8 @@ func _spawn_player() -> void:
 		player.global_position = WorldState.pending_return_pos
 		WorldState.pending_return_pos = null
 	else:
-		# GERBANG BARAT — arah Ashbrook. Momen kanon 002: dari sini plaza,
-		# kios, dan menara terlihat MENJULANG sekaligus.
-		player.global_position = Vector2(5 * TILE, 28 * TILE + 16)
+		# GERBANG BARAT terluar — momen kanon: lima gerbang segaris sampai istana
+		player.global_position = Vector2((C - 92 - 5) * TILE, CPX)
 	add_child(player)
 	for c in player.get_children():
 		if c is Camera2D:
@@ -444,24 +500,20 @@ func _add_ui() -> void:
 	var pm := Node.new()
 	pm.set_script(load("res://scenes/systems/PetManager.gd"))
 	add_child(pm)
-	# world gate di dalam gerbang barat — pintu karavan kota
 	var gate := preload("res://scenes/world/Interactable.tscn").instantiate()
 	add_child(gate)
 	gate.setup("world_gate")
 	gate.scale = Vector2(2, 2)
-	gate.global_position = Vector2(6 * TILE, 26 * TILE - 16)
-	# kerumunan: warga goldhaven (E6 — TEPAT 5 persona) berputar di plaza.
-	# Sheet LPC warga_070..074 — rentang kosong di antara Greenvale (60..64)
-	# dan Desert (90..94); indeks di luar 0..119 TIDAK punya sheet.
-	TownFolk.place(self, "goldhaven", Vector2(CX, CY + 3 * TILE), 70)
-	# ILUSI 35.000 JIWA: latar tanpa dialog memadati pasar & gerbang (75..88).
-	# Zona menjauhi titik-periksa (aturan Ashbrook64: warga latar merebut tombol E).
+	gate.global_position = Vector2((C - 92 - 3) * TILE, (C - 3) * TILE)
+	# kerumunan: 5 persona di pasar (E6) + latar per lingkar (sheet 070..088)
+	TownFolk.place(self, "goldhaven", PASAR, 70)
 	TownFolk.place_latar(self, [
-		{"pos": Vector2(CX - 5 * TILE, CY - 4 * TILE), "r": 70.0, "n": 3},   # kios barat-laut
-		{"pos": Vector2(CX + 5 * TILE, CY + 4 * TILE), "r": 70.0, "n": 3},   # kios tenggara
-		{"pos": Vector2(CX, CY + 8 * TILE), "r": 60.0, "n": 2},              # mulut selatan plaza
-		{"pos": Vector2(10 * TILE, 28 * TILE), "r": 64.0, "n": 2},           # arus gerbang barat
-		{"pos": Vector2(48 * TILE + 16, 21 * TILE), "r": 56.0, "n": 2},      # antrean bank
-		{"pos": Vector2(15 * TILE, 47 * TILE), "r": 60.0, "n": 2},           # kuli gudang selatan
+		{"pos": PASAR + Vector2(-3 * TILE, 2 * TILE), "r": 80.0, "n": 3},
+		{"pos": Vector2(CPX, (C + 3) * TILE), "r": 90.0, "n": 2},          # alun-alun
+		{"pos": Vector2(CPX - 30 * TILE, CPX), "r": 80.0, "n": 2},          # jalan barat L4
+		{"pos": Vector2(CPX, CPX - 44 * TILE), "r": 80.0, "n": 2},          # jalan utara L3
+		{"pos": Vector2((C - 8) * TILE, (C + 84) * TILE), "r": 70.0, "n": 2},  # kuli gudang
+		{"pos": Vector2((C - 97) * TILE, CPX), "r": 64.0, "n": 2},          # desa barat
+		{"pos": Vector2(CPX + 40 * TILE, CPX), "r": 80.0, "n": 1},          # jalan timur
 	], 75)
-	MiracleSystem.manifest(self, Vector2(CX, CY), 520.0)
+	MiracleSystem.manifest(self, Vector2(CPX, CPX), 520.0)

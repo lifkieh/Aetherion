@@ -60,6 +60,12 @@ PIECES = {
 	"vt_cornice_krem":  ("t", 604, 336, 704, 376),
 	"vt_cornice_maroon": ("t", 604, 560, 704, 600),
 	"vt_cornice_tan":   ("t", 604, 784, 704, 824),
+	"vt_wall_hijau":    ("t", 96, 896, 192, 992),
+	"vt_bay_hijau":     ("t", 800, 896, 900, 992),
+	"vt_cornice_hijau": ("t", 604, 1008, 704, 1048),
+	"vt_wall_abu":      ("t", 96, 1120, 192, 1216),
+	"vt_bay_abu":       ("t", 800, 1120, 900, 1216),
+	"vt_cornice_abu":   ("t", 604, 1232, 704, 1272),
 	# mansion: band sage y0, merah y256, kuning y512, hijau y768
 	"vm_palladian":     ("m", 416, 152, 512, 256),   # jendela agung grid putih
 	"vm_porch":         ("m", 900, 152, 1024, 256),  # kolom kanan saja — crop lebar kena dinding bolong (mata)

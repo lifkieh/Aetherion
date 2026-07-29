@@ -1,0 +1,7 @@
+# Ground pre-render Goldhaven (#319)
+# Lisensi: CC-BY-SA (turunan)
+- Ubin tanah/jalan: "[LPC] Terrains" — bluecarrot16, Lanea Zimmerman,
+  Daniel Eddeland, Richard Kettering, Zachariah Husiar dkk (CC-BY-SA 3.0/4.0;
+  rincian CREDITS-terrain.txt). https://opengameart.org/content/lpc-terrains
+- Dinding tembok: "[LPC] Castle Mega-Pack" — bluecarrot16 dkk (CC-BY-SA 3.0).
+Lisensi: CC-BY-SA 3.0

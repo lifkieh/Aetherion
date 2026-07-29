@@ -5511,8 +5511,12 @@ func _a1_sisir_prop(n: Node) -> Node:
 	return null
 
 
-func _a1_ada_examine(ev_id: String) -> bool:
+func _a1_ada_examine(ev_id: String, akar: Node = null) -> bool:
+	# `akar` WAJIB untuk asersi ketiadaan — pencarian grup global memungut
+	# bangkai scene yang antre bebas (insiden ke-4 hukum #296/#300/#302)
 	for n in get_tree().get_nodes_in_group("interactable"):
+		if akar != null and not akar.is_ancestor_of(n):
+			continue
 		if str(n.get("kind")) == "examine" and str(n.get("evidence_id")) == ev_id:
 			return true
 	return false
@@ -6159,7 +6163,7 @@ func _test_arlen_babak_298() -> void:
 	check("berangkat: arlen_pergi menyala", WorldState.get_counter("arlen_pergi") == 1)
 	check("tak ada figur, tak ada kesaksian — matanya ikut pergi",
 		_294_prop(s, "Arlen [E]") == null
-		and not _a1_ada_examine("ev_merrit_arlen_ingat"))
+		and not _a1_ada_examine("ev_merrit_arlen_ingat", s))
 	var bp := _294_prop(s, "Batu penanda [E]")
 	var bb := ""
 	if bp:
@@ -6507,8 +6511,10 @@ func _test_goldhaven_309() -> void:
 	print("[#309 — Goldhaven: Persimpangan Aurelia]")
 	for a in ["menara_timbangan", "gerbang_batu", "kios_dagang", "kios_dagang_b",
 			"segel_pintu", "fasad_serikat", "fasad_bank", "fasad_kontrak",
-			"fasad_balai_gh", "fasad_aula", "fasad_hunian_a", "fasad_hunian_b",
-			"fasad_gudang_gh"]:
+			"fasad_balai_gh", "fasad_aula", "fasad_mansion", "fasad_gudang_gh",
+			"istana", "menara_sudut", "ruko_krem_kiri", "ruko_krem_tengah",
+			"ruko_krem_pintu", "ruko_krem_kanan", "ruko_hijau_tengah",
+			"ruko_abu_tengah", "ruko3_biru_tengah", "ground/q00", "ground/q11"]:
 		check("aset goldhaven ada: %s" % a,
 			ResourceLoader.exists("res://assets/game/sprites/goldhaven/%s.png" % a))
 
@@ -6527,24 +6533,30 @@ func _test_goldhaven_309() -> void:
 	get_tree().root.add_child(s)
 	await get_tree().process_frame
 	await get_tree().process_frame
-	check("peta 80x56 (blockout #308)", s.MAP_W == 80 and s.MAP_H == 56)
-	check("Menara Timbangan berdiri di pusat plaza", _a1_sisir(s, "menara_timbangan") != null)
-	check("gerbang batu terpasang (4 arah)", _a1_sisir(s, "gerbang_batu") != null)
-	check("kios pasar radial hadir", _a1_sisir(s, "kios_dagang") != null)
-	check("fasad serikat pusat berdiri", _a1_sisir(s, "fasad_serikat") != null)
-	check("blok hunian berdiri", _a1_sisir(s, "fasad_hunian_a") != null)
-
-	# jalan raya silang + plaza di lapisan tanah
-	var g: TileMapLayer = s.ground
-	check("jalan raya utara-selatan menembus gerbang",
-		g.get_cell_source_id(Vector2i(40, 4)) == 2
-		and g.get_cell_source_id(Vector2i(40, 52)) == 2)
-	check("jalan raya barat-timur menembus gerbang",
-		g.get_cell_source_id(Vector2i(4, 28)) == 2
-		and g.get_cell_source_id(Vector2i(76, 28)) == 2)
-	check("plaza pasar agung batu (pusat 40,28)",
-		g.get_cell_source_id(Vector2i(36, 26)) == 2
-		and g.get_cell_source_id(Vector2i(44, 31)) == 2)
+	check("peta 200x200 — enam lingkar poligon (#318)", s.MAP_W == 200 and s.MAP_H == 200)
+	check("ISTANA berdiri di lingkar 1", _a1_sisir(s, "istana") != null)
+	check("Menara Timbangan di alun-alun", _a1_sisir(s, "menara_timbangan") != null)
+	check("gerbang batu segaris terpasang", _a1_sisir(s, "gerbang_batu") != null)
+	check("kios Pasar Agung hadir", _a1_sisir(s, "kios_dagang") != null)
+	check("mansion bangsawan lingkar 2 berdiri", _a1_sisir(s, "fasad_mansion") != null)
+	check("deret ruko modular terpasang (tengah tanpa outline)",
+		_a1_sisir(s, "ruko_krem_tengah") != null or _a1_sisir(s, "ruko_biru_tengah") != null)
+	check("bangunan sudut di belokan poligon", _a1_sisir(s, "menara_sudut") != null)
+	# ground pre-render 4 kuadran terpasang
+	var q_ada := 0
+	for c2 in s.get_children():
+		if c2 is Sprite2D and c2.texture and "ground/q" in str(c2.texture.resource_path):
+			q_ada += 1
+	check("lantai poligon pre-render 4 kuadran", q_ada == 4)
+	# tembok punya collision (StaticBody berisi banyak poligon sisi)
+	var poly_n := 0
+	for c2 in s.get_children():
+		if c2 is StaticBody2D:
+			for cc in c2.get_children():
+				if cc is CollisionPolygon2D:
+					poly_n += 1
+	check("collision tembok poligon per sisi terpasang (>=60 segmen)", poly_n >= 60,
+		str(poly_n))
 
 	# pintu-pintu bercerita (D-3: label netral)
 	var menara := _294_prop(s, "Menara Timbangan [E]")

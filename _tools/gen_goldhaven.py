@@ -306,15 +306,16 @@ def menara_timbangan(P):
 ## interior panel (tanpa pilaster tepi) → tembok bersama antar unit, nol
 ## outline sisi. Atap = layer terpisah (cap kiri / tile tengah / cap kanan)
 ## sehingga deret terbaca SATU bangunan panjang, bukan rumah berjejer.
-def modul_ruko(P, warna):
+def modul_ruko(P, warna, tingkat=2):
 	W_ = P["vt_wall_%s" % warna]           # 96×96 panel berpilaster dua sisi
-	tinggi = 2 * W_.height                  # dua tingkat
+	tinggi = tingkat * W_.height
 	def badan(crop_x0, crop_x1):
 		kolom = W_.crop((crop_x0, 0, crop_x1, W_.height))
 		return ubin(kolom, crop_x1 - crop_x0, tinggi)
 	def isi(im, pintu=False):
 		pl = P["vm_palladian"].resize((48, 52), Image.NEAREST)
-		im.alpha_composite(pl, ((im.width - pl.width) // 2, 20))
+		for tk in range(tingkat - 1):
+			im.alpha_composite(pl, ((im.width - pl.width) // 2, 20 + tk * W_.height))
 		if pintu:
 			po = P["vw_portico"].resize((44, 42), Image.NEAREST)
 			pt = P["vw_pintu_cokelat"].resize((28, 40), Image.NEAREST)
@@ -436,11 +437,24 @@ def main():
 		"kios_dagang_b": kios_dagang((160, 60, 60, 255), G1),
 		"segel_pintu": segel_pintu(),
 	}
-	# modul ruko per warna (#318) + menara sudut
-	for warna in ["krem", "biru", "maroon", "tan"]:
+	# modul ruko per warna (#318/#319: 6 warna + varian 3 tingkat) + menara sudut
+	for warna in ["krem", "biru", "maroon", "tan", "hijau", "abu"]:
 		for bagian, im_m in modul_ruko(P, warna).items():
 			out["ruko_%s_%s" % (warna, bagian)] = im_m
+	for warna in ["krem", "biru", "hijau", "abu"]:
+		for bagian, im_m in modul_ruko(P, warna, tingkat=3).items():
+			out["ruko3_%s_%s" % (warna, bagian)] = im_m
 	out["menara_sudut"] = menara_sudut(P)
+	# ISTANA (#319): komposit serikat 1.7x diapit dua menara kontrak
+	inti = out["fasad_serikat"].resize((int(out["fasad_serikat"].width * 1.7),
+		int(out["fasad_serikat"].height * 1.7)), Image.NEAREST)
+	tw2 = out["fasad_kontrak"]
+	ist = Image.new("RGBA", (inti.width + 2 * tw2.width - 30,
+		max(inti.height, tw2.height) + 30), (0, 0, 0, 0))
+	ist.alpha_composite(tw2, (0, ist.height - tw2.height))
+	ist.alpha_composite(tw2, (ist.width - tw2.width, ist.height - tw2.height))
+	ist.alpha_composite(inti, ((ist.width - inti.width) // 2, ist.height - inti.height))
+	out["istana"] = ist
 	for nama, im in out.items():
 		im.save(os.path.join(OUT, nama + ".png"))
 		print("  %-18s %dx%d" % (nama, im.width, im.height))

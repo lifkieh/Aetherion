@@ -24,7 +24,7 @@ RAW = os.path.join(ROOT, "assets_raw", "lpc_castle")
 FONT = os.path.join(ROOT, "game", "assets", "game", "fonts", "m5x7.ttf")
 
 T = 32
-N = 160
+N = 200   # 160 membuat tembok besar (R5=92) keluar peta di 4 poros (mata #319)
 C = N // 2
 
 # (radius petak, jumlah sisi poligon) — makin luar makin banyak sisi
